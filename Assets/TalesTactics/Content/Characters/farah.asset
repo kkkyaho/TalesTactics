@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: farah
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: farah
+  DisplayName: "\uD30C\uB77C \uC5D8\uC2A4\uD14C\uB4DC"
+  Job: "\uACA9\uD22C\uAC00"
+  SourceTitle: Tales of Eternia
+  PassiveSkill: 
+  AudioTheme: farah.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 3
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 19
+    MDF: 16
+    SPD: 25
+    MOV: 5
+    JMP: 3
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uACA9\uD22C\uAC00"
+  BasicAttack: {fileID: 11400000, guid: f12a100f5cc1a0d4190d56ac44089d37, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: ee1e5cb848a852a48b851bf4cadcc25c, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 468e99039b4acde4c9de4b6f835f26b6, type: 2}
+  - {fileID: 11400000, guid: 7edfd3ed5d0cffe408ac5d1cee2c2279, type: 2}
+  - {fileID: 11400000, guid: 70828afba70a7c645a8106b307e0a4dd, type: 2}
+  - {fileID: 11400000, guid: 180b01fd3d8c52542ba9c8f60e0678a4, type: 2}
+  - {fileID: 11400000, guid: facd608fe52ded14c82e7a0271c9f2ca, type: 2}
+  - {fileID: 11400000, guid: d15ebe9f3acd8ad439dfc6edb038cb75, type: 2}
+  - {fileID: 11400000, guid: 7ad296d6f6427a54badb90fceea4340c, type: 2}
+  PlaceholderColor: {r: 0.53199995, g: 0.95, b: 0.42749998, a: 1}

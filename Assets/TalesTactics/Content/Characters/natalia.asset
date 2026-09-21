@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: natalia
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: natalia
+  DisplayName: "\uB098\uD0C8\uB9AC\uC544"
+  Job: "\uC544\uCC98"
+  SourceTitle: Tales of the Abyss
+  PassiveSkill: 
+  AudioTheme: natalia.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 5
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 19
+    MDF: 16
+    SPD: 14
+    MOV: 4
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uC544\uCC98"
+  BasicAttack: {fileID: 11400000, guid: 7a55725046df8ba4c87cffd4fea7e2e5, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: f3ecc907a9ea142468fa21a63b9612c3, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 14a0ba54f1b3c8643bd93e155b3b7abb, type: 2}
+  - {fileID: 11400000, guid: c2f7de6ecb3477b458d382e09f305e4a, type: 2}
+  - {fileID: 11400000, guid: 606516b7e5974e8428fe20fd88e11c9e, type: 2}
+  - {fileID: 11400000, guid: 45e955969635bf243b8262c2ffe2c0ea, type: 2}
+  - {fileID: 11400000, guid: 8140fc86eafe54641a0dbe0c81aa42d8, type: 2}
+  - {fileID: 11400000, guid: 2a54c71e9d0b47f48bf67a93986d22f9, type: 2}
+  - {fileID: 11400000, guid: 92a4f78c8cdf4f74880d87fe3915542c, type: 2}
+  PlaceholderColor: {r: 0.42749998, g: 0.6364999, b: 0.95, a: 1}

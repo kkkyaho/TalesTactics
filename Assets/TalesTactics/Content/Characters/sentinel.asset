@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: sentinel
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: sentinel
+  DisplayName: "\uC720\uC801 \uD30C\uC218\uBCD1"
+  Job: Sentinel
+  SourceTitle: 
+  PassiveSkill: 
+  AudioTheme: 
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 0
+  BaseStats:
+    HP: 145
+    MP: 30
+    STR: 30
+    MAG: 20
+    DEF: 15
+    MDF: 12
+    SPD: 13
+    MOV: 3
+    JMP: 1
+  GrowthStats:
+    HP: 5
+    MP: 0
+    STR: 1
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 0
+    MP: 0
+    STR: 0
+    MAG: 0
+    DEF: 0
+    MDF: 0
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: 
+  BasicAttack: {fileID: 11400000, guid: 4d9c5d43104e26d4996aac8e6bc6ec44, type: 2}
+  UltimateSkill: {fileID: 0}
+  Skills: []
+  PlaceholderColor: {r: 0.85, g: 0.25, b: 0.23, a: 1}

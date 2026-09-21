@@ -1,0 +1,119 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+namespace TalesTactics
+{
+    public sealed class BattleDirector:MonoBehaviour
+    {
+        public BattleCatalog Catalog;
+        public BattleHud Hud;
+        public BoardView Board;
+        public BattleAudio Audio;
+        public BattleSession Session {get;private set;}
+        public BattleState State {get;private set;}
+        public SkillData SelectedSkill;
+        public Vector2Int? Target;
+        public readonly List<int> Deployment=new List<int>{0,1,3};
+        public CampaignSave Campaign;
+        public bool TrainingMode, TimingActive, TimingSuccess;
+        public float TimingProgress;
+        public string Message="출전 인원을 선택하세요 (1–6명).";
+        bool completed, timingAttempted;
+        public bool IsPlayerCommand=>Session!=null&&Session.Active!=null&&Session.Active.Team==Team.Player&&State is CommandState;
+        void Start(){Campaign=CampaignStorage.Load();Hud.Initialize(this);Board.Initialize(this);Hud.ShowDeployment();}
+        void Update()
+        {
+            if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();
+            if(Session==null||State==null)return;
+            if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&!(State is ActionExecutionState))State.Cancel();
+            var mouse=Mouse.current;if(mouse==null||EventSystem.current!=null&&EventSystem.current.IsPointerOverGameObject())return;
+            if(Board.Pick(mouse.position.ReadValue(),out var p))
+            {
+                if(State is MoveSelectionState)Board.ShowPath(Session.Grid.Path(Session.Active,p));
+                if(mouse.leftButton.wasPressedThisFrame)State.Tile(p);
+            }
+        }
+        public void SetState(BattleState state){State=state;Target=null;state.Enter();}
+        public void BeginBattle()
+        {
+            if(Deployment.Count<1)return;completed=false;
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1);
+            if(!TrainingMode)foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
+            {
+                var progress=Campaign.Get(u.Data.Id);u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;
+                for(int i=0;i<3;i++){string id=progress.Equipment!=null&&i<progress.Equipment.Length?progress.Equipment[i]:null;u.Equipment[i]=Catalog.Equipment?.FirstOrDefault(e=>e.Id==id&&(int)e.Slot==i&&(i!=0||e.Weapon==u.Data.Weapon));}
+                u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
+            }
+            Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
+        }
+        public void Restart(){StopAllCoroutines();TimingActive=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
+        public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved)SetState(new MoveSelectionState(this));}
+        public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted)SelectSkill(Session.Active.Data.BasicAttack);}
+        public void SkillCommand(){if(IsPlayerCommand)SetState(new ActionSelectionState(this));}
+        public void WaitCommand(){if(IsPlayerCommand)SetState(new FacingSelectionState(this));}
+        public void Undo(){if(IsPlayerCommand&&Session.UndoMove()){RefreshViews();Hud.Refresh();}}
+        public void Guard(){if(IsPlayerCommand&&!Session.Active.Acted){Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);SetState(new FacingSelectionState(this));}}
+        public bool IsFollowup(SkillData s)=>Session.Active.Acted&&Session.Active.FlamingChain&&s.Gate==SkillGate.FlamingEdge;
+        public void SelectSkill(SkillData s)
+        {
+            if(Session.Active.Team!=Team.Player)return;
+            var error=Session.Resolver.CanUse(Session.Active,s,IsFollowup(s));if(error!=null){Message=error;Hud.Refresh();return;}
+            SelectedSkill=s;SetState(new TargetSelectionState(this));
+        }
+        public void SelectTarget(Vector2Int p)
+        {
+            var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
+            if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
+            Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Hud.Refresh();
+        }
+        public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}
+        public void ChooseFacing(Facing f){if(!(State is FacingSelectionState))return;Session.Active.Facing=f;RefreshViews();SetState(new TurnEndState(this));}
+        public IEnumerator MoveUnit(Vector2Int p)
+        {
+            var u=Session.Active;var path=Session.Grid.Path(u,p);if(path.Count<2||!Session.Move(p))yield break;
+            SetState(new ActionExecutionState(this));yield return Board.AnimateMove(u,path);RefreshViews();SetState(new CommandState(this));
+        }
+        public IEnumerator Execute(SkillData s,Vector2Int p,bool followup=false)
+        {
+            SetState(new ActionExecutionState(this));var u=Session.Active;
+            if(s.IsLionHowl&&u.Data.Skills.All(u.Unlocked)&&Session.Resolver.CanUse(u,u.Data.UltimateSkill,true)==null)
+            {
+                TimingActive=true;TimingSuccess=false;timingAttempted=false;float start=Time.time;
+                while(Time.time-start<Catalog.Rules.TimingDuration)
+                {
+                    TimingProgress=(Time.time-start)/Catalog.Rules.TimingDuration;
+                    Board.ShowTimingSpin(u,TimingProgress);
+                    if(Campaign.AutoTiming&&!timingAttempted&&TimingProgress>=Catalog.Rules.TimingWindowStart)TimingInput();
+                    Hud.UpdateTiming();yield return null;
+                }
+                TimingActive=false;if(TimingSuccess){s=u.Data.UltimateSkill;followup=true;}
+            }
+            var old=u.Facing;if(p!=u.Position)u.Facing=SkillResolver.Toward(u.Position,p);
+            if(!Session.Resolver.Execute(u,s,p,out var message,followup))u.Facing=old;
+            Message=message;Board.SetAnimation(u,s.Animation);yield return new WaitForSeconds(Catalog.Rules.ActionSeconds);
+            RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
+        }
+        public void TimingInput(){if(!TimingActive||timingAttempted)return;timingAttempted=true;TimingSuccess=TimingProgress>=Catalog.Rules.TimingWindowStart&&TimingProgress<=Catalog.Rules.TimingWindowEnd;}
+        public IEnumerator SkipTurn(){Message=Session.Active.Data.DisplayName+" 행동 불가";Hud.Refresh();yield return new WaitForSeconds(0.35f);SetState(new TurnEndState(this));}
+        public IEnumerator EnemyTurn()
+        {
+            SetState(new ActionExecutionState(this));yield return new WaitForSeconds(0.4f);
+            var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);
+            if(plan.Destination!=u.Position){var path=Session.Grid.Path(u,plan.Destination);if(Session.Move(plan.Destination))yield return Board.AnimateMove(u,path);}
+            if(plan.Target!=null){u.Facing=SkillResolver.Toward(u.Position,plan.Target.Position);Session.Resolver.Execute(u,plan.Skill,plan.Target.Position,out var text);Message=text;Board.SetAnimation(u,AnimationKind.Attack);yield return new WaitForSeconds(0.3f);}
+            RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new TurnEndState(this):new BattleEndState(this));
+        }
+        public void RefreshViews(){Board.Sync();}
+        public void CompleteBattle()
+        {
+            if(completed)return;completed=true;Message=Session.Result==BattleResult.Victory?"승리 — 모든 적을 격파했습니다.":"패배 — 다시 도전하세요.";
+            if(Session.Result==BattleResult.Victory)
+            {
+                Audio.Play("victory");if(!TrainingMode){foreach(var u in Session.Units.Where(x=>x.Team==Team.Player)){var c=Campaign.Get(u.Data.Id);c.AddExperience(120);c.UnlockedSkills=u.Data.Skills.Where(s=>s.UnlockLevel<=c.Level).Select(s=>s.Id).ToList();}if(!CampaignStorage.Save(Campaign))Message+="\n저장 실패: 로그를 확인하세요.";}
+            }
+        }
+    }
+}

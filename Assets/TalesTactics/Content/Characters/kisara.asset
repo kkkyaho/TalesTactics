@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: kisara
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: kisara
+  DisplayName: "\uD0A4\uC0AC\uB77C"
+  Job: "\uAC00\uB514\uC5B8"
+  SourceTitle: Tales of Arise
+  PassiveSkill: Directional Guard Ignition
+  AudioTheme: kisara.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 7
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 32
+    MDF: 16
+    SPD: 11
+    MOV: 3
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uAC00\uB514\uC5B8"
+  BasicAttack: {fileID: 11400000, guid: 432daeeda17ce1745ac2d5bbd68e2975, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: d5f98b8a606c4234699f7b8ef45b581e, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 9cf2c582b434f1942a72fa2453d1d21f, type: 2}
+  - {fileID: 11400000, guid: 720f873410b2acb4aa43e34154e384a0, type: 2}
+  - {fileID: 11400000, guid: e3a642c663368c142857ed3437d2e449, type: 2}
+  - {fileID: 11400000, guid: 4f52d75fcc30c954ba9fdd507ae5c9c5, type: 2}
+  - {fileID: 11400000, guid: b04149dfeb492f34e93061d78203ec7d, type: 2}
+  - {fileID: 11400000, guid: 9a7b876e4a93ed84688e5288559680a4, type: 2}
+  - {fileID: 11400000, guid: dd5942455d4662c41a9bd3a8c5a2023f, type: 2}
+  PlaceholderColor: {r: 0.95, g: 0.42749998, b: 0.74100006, a: 1}

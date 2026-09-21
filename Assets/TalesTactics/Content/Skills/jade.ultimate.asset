@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a8a88be9c9fba42a87e723b0bad3ac, type: 3}
+  m_Name: jade.ultimate
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.SkillData
+  Id: jade.ultimate
+  DisplayName: "\uBBF8\uC2A4\uD2F1 \uCF00\uC774\uC9C0 / Mystic Cage"
+  MPCost: 30
+  HPCost: 0
+  MinRange: 1
+  Range: 4
+  Area: 2
+  UnlockLevel: 20
+  Cooldown: 0
+  GaugeCost: 100
+  HPPercentCost: 0
+  Element: 0
+  Target: 0
+  Animation: 8
+  Gate: 0
+  IsUltimate: 1
+  StartsFlamingChain: 0
+  IsLionHowl: 0
+  Effects:
+  - Kind: 0
+    Status: 0
+    Magic: 1
+    IgnoreDefense: 0
+    AffectCaster: 0
+    Power: 3.5
+    Chance: 1
+    Drain: 0
+    Flat: 0
+    Duration: 2
+    Distance: 1
+  - Kind: 3
+    Status: 5
+    Magic: 0
+    IgnoreDefense: 0
+    AffectCaster: 0
+    Power: 1
+    Chance: 1
+    Drain: 0
+    Flat: 0
+    Duration: 3
+    Distance: 1

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: alphen
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: alphen
+  DisplayName: "\uC54C\uD39C"
+  Job: "\uD654\uC5FC\uAC80\uC0AC"
+  SourceTitle: Tales of Arise
+  PassiveSkill: Flaming Edge
+  AudioTheme: alphen.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 0
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 19
+    MDF: 16
+    SPD: 13
+    MOV: 4
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uD654\uC5FC\uAC80\uC0AC"
+  BasicAttack: {fileID: 11400000, guid: 6cbf166510b154b46833c141a0867f2c, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: e96d974d2497fe54d9032cd343ed1198, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 44864f8c4ef02fc408a5348d856c78ae, type: 2}
+  - {fileID: 11400000, guid: b0a80a249de1f6e42944e3da9b884f4c, type: 2}
+  - {fileID: 11400000, guid: 7ee5fb5daac8815489e428e97d12c1c2, type: 2}
+  - {fileID: 11400000, guid: 7f0d4c42821d49d4584dc1ec53b29292, type: 2}
+  - {fileID: 11400000, guid: e967f6bd8cd16174280b9ff057dd3323, type: 2}
+  - {fileID: 11400000, guid: e8bd17669af32b946b0de404ac79b09d, type: 2}
+  - {fileID: 11400000, guid: dae5531cc7a799943b6f537dd71cbe42, type: 2}
+  PlaceholderColor: {r: 0.53199995, g: 0.42749998, b: 0.95, a: 1}

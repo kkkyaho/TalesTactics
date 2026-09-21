@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: velvet
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: velvet
+  DisplayName: "\uBCA8\uBCB3 \uD06C\uB77C\uC6B0"
+  Job: "\uD074\uB85C \uB51C\uB7EC"
+  SourceTitle: Tales of Berseria
+  PassiveSkill: Consume Claw combo
+  AudioTheme: velvet.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 2
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 19
+    MDF: 16
+    SPD: 18
+    MOV: 5
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uD074\uB85C \uB51C\uB7EC"
+  BasicAttack: {fileID: 11400000, guid: 1e2b78d6413e0514ca2cae4ffad78e45, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: a2d8d58b775c33c48bbbbb3a65f3d405, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 9f427a3910fcf554ab7a650d68db641c, type: 2}
+  - {fileID: 11400000, guid: fffd9a5a4651a2347acd5f62f1d117dc, type: 2}
+  - {fileID: 11400000, guid: 65f7a5ee2cf8e78478b1c1e663df44a6, type: 2}
+  - {fileID: 11400000, guid: d28f24a2ae3f2764e904ad4e98e427fb, type: 2}
+  PlaceholderColor: {r: 0.8455, g: 0.95, b: 0.42749998, a: 1}

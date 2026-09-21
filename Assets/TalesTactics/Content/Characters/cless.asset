@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: cless
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: cless
+  DisplayName: "\uD06C\uB808\uC2A4 \uC54C\uBCA0\uC778"
+  Job: "\uC2DC\uACF5\uAC80\uC0AC"
+  SourceTitle: Tales of Phantasia
+  PassiveSkill: 
+  AudioTheme: cless.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 0
+  BaseStats:
+    HP: 190
+    MP: 85
+    STR: 42
+    MAG: 27
+    DEF: 19
+    MDF: 16
+    SPD: 20
+    MOV: 4
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 2
+    MAG: 1
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uC2DC\uACF5\uAC80\uC0AC"
+  BasicAttack: {fileID: 11400000, guid: 6b199a476c8c91e458ed0b675f08df5c, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: f290bf85c43450f4db21ff414d1a72a5, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: cbb75d83c1cbec74d9255bfc4d42f947, type: 2}
+  - {fileID: 11400000, guid: 210d4a915f950a948afa75af4db937c9, type: 2}
+  - {fileID: 11400000, guid: e1f491500b4aba242b4207c5d30f8d60, type: 2}
+  - {fileID: 11400000, guid: 194e195ec81729f469975bb514b6bfdd, type: 2}
+  - {fileID: 11400000, guid: e56a04f54af5d9644881a9b479e89cfa, type: 2}
+  - {fileID: 11400000, guid: c941c7e18f24c9043a0baa2efd851496, type: 2}
+  - {fileID: 11400000, guid: ed7770d6acf6e86439a7d7cdf481330b, type: 2}
+  PlaceholderColor: {r: 0.95, g: 0.42749998, b: 0.42749998, a: 1}

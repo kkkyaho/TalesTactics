@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: mint
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: mint
+  DisplayName: "\uBBFC\uD2B8 \uC544\uB4DC\uB124\uC774\uB4DC"
+  Job: "\uD790\uB7EC"
+  SourceTitle: Tales of Phantasia
+  PassiveSkill: 
+  AudioTheme: mint.theme
+  Portrait: {fileID: 0}
+  Sprites:
+    Front: {fileID: 0}
+    Back: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
+  Animator: {fileID: 0}
+  Weapon: 1
+  BaseStats:
+    HP: 135
+    MP: 120
+    STR: 22
+    MAG: 48
+    DEF: 19
+    MDF: 26
+    SPD: 19
+    MOV: 4
+    JMP: 2
+  GrowthStats:
+    HP: 7
+    MP: 3
+    STR: 1
+    MAG: 3
+    DEF: 1
+    MDF: 1
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 40
+    MP: 20
+    STR: 8
+    MAG: 8
+    DEF: 5
+    MDF: 5
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: "\uC0C1\uAE09 \uD790\uB7EC"
+  BasicAttack: {fileID: 11400000, guid: 25d848e6691c70e408393f4c8f0b7202, type: 2}
+  UltimateSkill: {fileID: 11400000, guid: 3942282379a57294c911f82d75afb960, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 92ff5d0f9b249b0458c7f7db2b1e0cd1, type: 2}
+  - {fileID: 11400000, guid: 3bad2e0cdc48d3449af51e6039066690, type: 2}
+  - {fileID: 11400000, guid: 4079b4b39f660e9439f31b6f91426fcc, type: 2}
+  - {fileID: 11400000, guid: cc4a7f63c1ca3374c830b4e4bf756dcf, type: 2}
+  - {fileID: 11400000, guid: 0b09810a5b418d443b87dfc08b02e5f7, type: 2}
+  - {fileID: 11400000, guid: 8bd0902d51c8ad043b8f58cf4a206aaf, type: 2}
+  - {fileID: 11400000, guid: 3b6d751449db2b94bbbf4d2e88f612c5, type: 2}
+  PlaceholderColor: {r: 0.95, g: 0.741, b: 0.42749998, a: 1}
