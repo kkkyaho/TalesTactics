@@ -1,51 +1,35 @@
 # 검증 기록 — 2026-09-22
 
-## 통과
+## 통과한 검증
 
-1. Unity 6000.6.0f1 엔진 DLL, 설치된 동일 uGUI 2.6.0 및 InputSystem 어셈블리에 대해 C# API 컴파일.
-   - TalesTactics.Runtime: PASS
-   - TalesTactics.Editor: PASS
-   - TalesTactics.Tests: PASS
-   - Unity AssetDatabase 컴파일이 아니라 Roslyn 정적 API 호환성 확인이다.
-   - 패키지 어셈블리는 기존 C:/dev/ProjectAbyss/ProjectAbyss/Library/ScriptAssemblies를 읽기만 했다. 해당 프로젝트는 변경하지 않았다.
-2. 엔진 독립 NUnit 규칙 테스트: 30 PASS / 0 FAIL.
-   - 가중치 이동/고저차/장애물·점유/경로/Root.
-   - KO 스케줄러 제외, 행동 제한, 이동 취소, 행동 후 이동, 행동으로 이동 확정.
-   - 비용 검증, SO 불변성, KO 점유 해제, 1회 자동 부활, 부활 충돌.
-   - 정면/후면/가드, 컨슘 클로 자신의 3턴, 선행 공격 제한, HP 비용.
-   - 스턴 기간, 회복 상한, Pull 점유 갱신, Cooldown, 성장/승급.
-   - 자동 전투가 300턴 이내 실제 결과로 종료, 매 턴 점유 불변식 확인.
-   - UnityShims.cs로 엔진 일부를 대체한 실행이다. Unity 콜백/렌더링/입력/파일 직렬화 검증을 의미하지 않는다.
+- Unity 6000.6.0f1, 실제 TestBattle/Content/TMP 에셋 import 및 생성 확인.
+- 실제 Unity EditMode 34/34 통과: unity-test-run.json.
+- 실제 Unity PlayMode 5/5 통과: unity-playmode-results.json.
+- 전장 카메라 수정 후 PlayMode 5/5 재실행 통과: unity-playmode-viewport.xml. 출전 버튼, 참조/폰트, 전체 타일 viewport 포함, 이동/취소, 공격 미리보기/실행/턴 종료, 승리/패배/재시작 검증.
+- Windows x64 플레이어 빌드 성공. 카메라 수정 후 재빌드 성공: windows-build-results.json에 Unity 빌드 결과와 실행 파일/런타임 DLL SHA256 보관.
+- Computer Use로 Windows 실행 파일 검수: 출전, Lv25 훈련 전투 시작, 한글과 파라 궁극기의 일본어 한자, 전장 전체 표시, 실제 타일 클릭 이동, 이동 취소, 스킬 목록과 취소, 방향 선택과 다음 유닛 턴 전환, Restart 출전 화면 복귀.
+- 엔진 독립 규칙 테스트 34/34 통과: managed-test-results.txt. 이는 Unity 실행과 별개의 .NET 대체 API 검사다.
+- 실제 프로젝트 Library DLL 참조 API 컴파일: Runtime/Editor/EditMode/PlayMode 4개 통과 (api-compile-results.txt).
 
-실행 결과는 api-compile-results.txt와 managed-test-results.txt에 보관한다. 재현 도구는 Tools/CompileApi.ps1, Tools/ManagedChecks/Run.ps1.
+## 이번에 수정한 문제
 
-## 차단된 검증
+- 출전 전 Catalog, Rules, roster, 공격 및 스킬 참조를 검증하고 누락 시 원인이 드러나는 오류 화면을 표시한다.
+- TMP Essentials 비동기 import가 끝난 뒤 Scene을 생성한다. 미완성 Scene으로 빌드하지 않는다.
+- Windows 맑은 고딕과 Yu Gothic 대체 폰트를 사용하고 소유한 동적 폰트 리소스를 정리한다.
+- 최초 PlayMode 검증에서 fallbackFontAssetTable null로 5개 모두 초기화 실패했다. 목록 초기화 후 모두 통과했다. 실패 근거는 unity-playmode-initial-failure.json.
+- 좁은 창에서 UI가 전장을 가리는 현상을 확인했다. UI 바깥 viewport에 카메라를 배치하고 전장 bounds 전체를 맞추도록 수정했다. 수정본에서 클릭 이동과 취소를 다시 확인했다.
+- Unity가 Scene에 추가한 URP 카메라/조명 컴포넌트와 빌드 시 직렬화한 URP 설정을 보존했다.
 
-Unity 배치 실행을 두 번 시도했으나 라이선스 IPC가 거부되었다.
+## 한계 및 후속 검수
 
-```
-[Licensing::IpcConnector] Connection to channel LicenseClient-USER-PC refused
-[Licensing::Module] Timed-out after 60.00s, waiting for channel: "LicenseClient-USER-PC"
-```
+- 완성 게임이 아닌 임시 아트 전투 프로토타입이다. 최종 캐릭터 아트/애니메이션/음원은 포함하지 않는다.
+- 실행 파일에서 전투를 끝까지 수동 플레이한 승리/패배 검수는 아직 없다. 승패와 재시작은 실제 Unity PlayMode 테스트에서 검증했다.
+- 좁은 세로 창에서도 모든 타일은 보이지만 전장이 작다. 세로 창 HUD 재배치와 확대 조작은 후속 작업이다.
+- 장시간 성능/메모리/저장 마이그레이션, 10명 전체 기술의 수동 검수는 미완료다.
+- 빌드에는 Pipeline RuntimePipelineConfig 미지정, URP 디버그 셰이더 stripping, TMP 셰이더 pragma, Unity UAC1001 직렬화 분석기 경고가 있었다. 빌드는 성공했으며 런타임 Pipeline 원격 제어는 이번 검수에 사용하지 않았다.
 
-첫 실행은 추가로 패키지 캐시 EPERM이 있었다. 사용자가 Unity 캐시 폴더 쓰기/네트워크 권한을 허용한 뒤 재시도에서도 라이선스 IPC가 거부되었다. 이 작업에서 띄운 두 번째 배치 프로세스만 종료했으며 기존 Unity 에디터들은 건드리지 않았다.
+## 작업 도구
 
-따라서 다음은 **미검증/미완료**다.
+CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한다. 파일 읽기 승인만으로 Windows ACL이 바뀌지는 않았다. Computer Use 플러그인의 node_repl + @oai/sky를 통해 Unity 메뉴, Test Runner, 빌드 및 플레이어를 직접 제어할 수 있다. 브라우저 cua 도구의 native 비활성화는 이 별도 경로의 비활성화를 의미하지 않는다.
 
-- Unity 최초 import 및 실제 Content ScriptableObject 생성.
-- 실제 TestBattle Scene 생성 및 serialized reference 검증.
-- Unity Test Runner, Play Mode, 화면·입력·한글 폰트·셰이더.
-- 전투 UI를 통한 수동 승리/패배/Restart.
-- Windows Player 빌드와 실행.
-
-최종 에셋/Scene은 ProjectSetup의 첫 import 초기화 또는 메뉴로 생성한다. 기본 URP 템플릿 SampleScene이 있는 것은 TestBattle 생성 완료를 의미하지 않는다.
-
-## 우선 수동 검수
-
-1. Hub에서 프로젝트 열기 → 패키지 import → Console 오류 0 확인.
-2. TestBattle 자동 생성 확인. 누락 시 Tales Tactics/Create Test Battle.
-3. Play → 기본 3명 → 이동/취소/공격/힐/턴 종료.
-4. 훈련 Lv25 → 벨벳/알펜/파라/키사라 및 부활/Pull 확인.
-5. EditMode tests 실행 → Windows build → 실제 플레이 검수.
-
-현재 사용된 데이터 수치는 초기 임시 밸런스이며 원작 아트/음악은 포함하지 않았다.
+실행 파일은 Builds/Windows/TalesTactics.exe. Builds, Library, Logs 등은 Git에서 제외한다. 배포는 폴더 전체가 필요하며 exe 하나만 복사하지 않는다.

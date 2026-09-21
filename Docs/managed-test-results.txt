@@ -28,4 +28,8 @@ PASS MoveCanBeUndoneAndCannotRepeat
 PASS AttackThenMoveAllowedButAttackCommitsPriorMove
 PASS ActionAfterMoveDisablesUndo
 PASS AutomatedBattleReachesAnOutcome
-RESULT 30 passed, 0 failed (managed rules only; Unity runtime not exercised)
+PASS CatalogReportsMissingRosterReference
+PASS CatalogRejectsMissingAttack
+PASS CatalogRejectsDuplicateRosterIDs
+PASS ValidCatalogCanStartBattle
+RESULT 34 passed, 0 failed (managed rules only; Unity runtime not exercised)

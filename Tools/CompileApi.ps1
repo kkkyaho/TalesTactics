@@ -28,3 +28,5 @@ $editorRefs=@(Get-ChildItem "$UnityData/Managed/UnityEditor*.dll" | Where-Object
 CompilePart 'TalesTactics.Editor' 'Editor' ($editorRefs+@($runtime))
 $nunit=Get-Item "$UnityData/Resources/PackageManager/BuiltInPackages/com.unity.ext.nunit/net472/unity-custom/nunit.framework.dll"
 CompilePart 'TalesTactics.Tests' 'Tests' @($runtime,$nunit)
+$testRunner=Get-Item "$PackageAssemblies/UnityEngine.TestRunner.dll"
+CompilePart 'TalesTactics.PlayModeTests' 'PlayModeTests' @($runtime,$nunit,$testRunner)

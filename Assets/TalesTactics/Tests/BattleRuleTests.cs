@@ -65,6 +65,16 @@ namespace TalesTactics.Tests
             }
             Assert.That(b.Result,Is.Not.EqualTo(BattleResult.Ongoing));
         }
+        BattleCatalog ValidCatalog()
+        {var c=New<BattleCatalog>();c.Rules=rules;c.Characters=new[]{data};c.Enemy=data;data.BasicAttack=Skill(EffectKind.Damage);return c;}
+        [Test] public void CatalogReportsMissingRosterReference()
+        {var c=ValidCatalog();c.Characters=new CharacterData[]{null};Assert.That(CatalogValidation.TryValidate(c,out var error),Is.False);Assert.That(error,Does.Contain("Characters[0]"));}
+        [Test] public void CatalogRejectsMissingAttack()
+        {var c=ValidCatalog();data.BasicAttack=null;Assert.That(CatalogValidation.TryValidate(c,out var error),Is.False);Assert.That(error,Does.Contain("BasicAttack"));}
+        [Test] public void CatalogRejectsDuplicateRosterIDs()
+        {var c=ValidCatalog();c.Characters=new[]{data,data};Assert.That(CatalogValidation.TryValidate(c,out var error),Is.False);Assert.That(error,Does.Contain("Duplicate"));}
+        [Test] public void ValidCatalogCanStartBattle()
+        {Assert.That(CatalogValidation.TryValidate(ValidCatalog(),out var error),Is.True,error);}
     }
 }
 

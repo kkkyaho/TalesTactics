@@ -4,11 +4,11 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **Unity 라이선스 IPC가 이 실행 환경에서 거부되어 TestBattle Scene의 실제 생성, Play Mode, Windows 빌드는 아직 검증하지 못했습니다.** 플레이 가능한 완성 빌드로 간주하지 마세요.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 34개·PlayMode 5개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
-- 엔진 독립 규칙 테스트 30개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
-- 다른 게임 프로젝트는 수정하지 않았습니다. API 검사에 이미 설치된 동일 uGUI/InputSystem DLL만 읽었습니다.
+- 엔진 독립 규칙 테스트 34개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
+- API 검사는 현재 프로젝트의 Library DLL을 사용합니다. 실제 실행 검증과 한계는 Docs/VALIDATION.md에 기록했습니다.
 
 ## 실행
 
@@ -19,6 +19,8 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 5. 모든 일반 스킬은 **훈련: Lv25** 모드로 확인합니다. 일반 모드는 Lv1부터 저장된 성장치를 사용합니다.
 
 `Launch.ps1`은 설치된 에디터에서 프로젝트를 여는 선택적 편의 스크립트입니다. 테스트 Scene은 기존 사용자 작업을 자동으로 덮어쓰지 않습니다. 생성 이후 수치 변경은 Content의 asset을 편집하세요. 생성기 코드는 초기 데이터의 출처이며 기획 원본은 Docs/GAME_DESIGN.md입니다.
+
+Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git에서 제외됩니다.
 
 ## 조작
 

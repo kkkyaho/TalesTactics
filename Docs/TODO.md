@@ -16,24 +16,20 @@
 - [x] 성장/승급/장비/저장 기본 구조, 승리 EXP 및 파일 저장 연결.
 - [x] Audio ID 및 Sprite/Animator 교체 구조.
 - [x] 런타임/에디터/테스트 각각 실제 Unity API DLL 참조 컴파일 통과.
-- [x] 엔진 독립 규칙 테스트 30개 통과, 자동 전투 종료 확인.
+- [x] 엔진 독립 규칙 테스트 34개 통과, 자동 전투 종료 확인.
 - [x] 재실행 도구 및 후속 세션 문서.
 
-## IN PROGRESS — 외부 환경에 막힘
+## 실행 검증 및 배포 기록
 
-- [ ] Unity AssetDatabase 최초 import 및 실제 TestBattle/Content 생성.
-- [ ] Unity Test Runner 실행, Play Mode, 화면/입력/셰이더/TMP 검증.
-- [ ] Windows 플레이어 빌드 및 실제 승리/패배 플레이테스트.
+- [x] 사용자 Unity에서 TestBattle/Content/TMP 및 .meta 생성 확인.
+- [x] GitHub main 최초 업로드 확인 (49d815a).
+- [x] 초기화 참조 검증, TMP import 순서 및 한자 대체 폰트 보강.
+- [x] 엔진 독립 테스트 34개와 실제 Unity API 어셈블리 4개 컴파일 통과.
+- [x] 실제 Unity EditMode 34개 / PlayMode 5개 테스트 통과. 전장 viewport 보강 후 PlayMode 재실행 통과.
+- [x] Windows 빌드, 출전·이동·취소·스킬 목록·턴 전환·Restart 수동 검수. 승패는 PlayMode 테스트에서 검증.
+- [x] 결과 검토 및 검증 기록 정리. 커밋/푸시 여부는 Git main과 origin/main으로 확인.
 
-차단 근거: work/create.log 및 work/import.log의 `Connection to channel LicenseClient-USER-PC refused`. 캐시 쓰기 권한은 승인받았지만 재시도에서도 IPC 연결 거부. 현재 산출물에 생성 완료된 TestBattle Scene 또는 실행 파일은 없고 생성 코드가 있다. 전체 vertical slice 완료로 표시하지 않는다.
-
-## NEXT
-
-1. 사용자 계정의 정상 Unity Hub/Editor에서 이 프로젝트를 열어 초기화 실행.
-2. Console 오류 수정 → EditMode 테스트 → Play Mode에서 출전/이동/취소/공격/스킬/AI/승패/재시작 검수.
-3. Inspector 생성 참조, TMP Essentials/한국어 폰트, URP Sprite 셰이더 확인.
-4. Windows 빌드 → 실제 화면/입력 검증. 결과를 Docs/VALIDATION.md 갱신.
-5. 생성된 .meta 포함 로컬 버전관리 도입 및 최초 커밋. 원격 저장소는 별도 지정 시 연결.
+CLI는 Windows 계정 ACL로 연결 불가. Computer Use의 node_repl + @oai/sky로 Unity 메뉴, Test Runner, Windows 빌드 및 플레이어를 직접 조작하는 경로를 확인했다. 브라우저용 cua API의 native 비활성화를 전체 Computer Use 제한으로 오해하지 않는다.
 
 ## LATER
 
@@ -44,3 +40,6 @@
 - [ ] 장비 교체 UI, 캠페인/승급 이벤트, 세이브 마이그레이션.
 - [ ] CT 스케줄러/Utility AI/보스·도착·호위·생존 승리 조건 구현체.
 - [ ] 카메라 회전, 게임패드, 배포용 한국어 폰트.
+
+- [ ] 실행 파일에서 전투 끝까지 수동 승리/패배, 장시간 메모리/FPS 검수.
+- [ ] 좁은 세로 창용 HUD 재배치 및 전장 확대 조작.

@@ -10,20 +10,65 @@ namespace TalesTactics
         BattleDirector battle;
         RectTransform canvas,left,commands,header,footer;
         TMP_Text message,timing;
+        readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.045f,0.07f,0.1f,0.96f);
+        public Rect BattlefieldViewport
+        {
+            get
+            {
+                float scale=GetComponent<Canvas>().scaleFactor;
+                float x=292*scale,y=138*scale;
+                return new Rect(x/Screen.width,y/Screen.height,
+                    Mathf.Max(1,Screen.width-x-312*scale)/Screen.width,
+                    Mathf.Max(1,Screen.height-y-106*scale)/Screen.height);
+            }
+        }
         public void Initialize(BattleDirector b)
         {
             battle=b;canvas=GetComponent<RectTransform>();
             if(Font==null)
             {
-                Font=TMP_FontAsset.CreateFontAsset("Malgun Gothic","Regular",48);
-                if(Font==null)Font=TMP_FontAsset.CreateFontAsset("Arial","Regular",48);
+                Font=SystemFont("Malgun Gothic");
+                if(Font==null)Font=SystemFont("Arial");
                 if(Font==null)Font=TMP_Settings.defaultFontAsset;
+                else
+                {
+                    var japanese=SystemFont("Yu Gothic");
+                    if(japanese!=null)
+                    {
+                        if(Font.fallbackFontAssetTable==null)
+                            Font.fallbackFontAssetTable=new System.Collections.Generic.List<TMP_FontAsset>();
+                        Font.fallbackFontAssetTable.Add(japanese);
+                    }
+                }
             }
             header=Panel("Header",new Vector2(0,1),new Vector2(1,1),new Vector2(12,-94),new Vector2(-12,-12));
             left=Panel("Unit",new Vector2(0,0),new Vector2(0,1),new Vector2(12,138),new Vector2(280,-106));
             commands=Panel("Commands",new Vector2(1,0),new Vector2(1,1),new Vector2(-300,138),new Vector2(-12,-106));
             footer=Panel("Message",Vector2.zero,new Vector2(1,0),new Vector2(12,12),new Vector2(-12,126));
+        }
+        TMP_FontAsset SystemFont(string family)
+        {
+            var font=TMP_FontAsset.CreateFontAsset(family,"Regular",48);
+            if(font!=null){font.name=family+" Runtime";ownedFonts.Add(font);}
+            return font;
+        }
+        void OnDestroy()
+        {
+            foreach(var font in ownedFonts)
+            {
+                if(font==null)continue;
+                foreach(var texture in font.atlasTextures)if(texture!=null)Destroy(texture);
+                if(font.material!=null)Destroy(font.material);
+                Destroy(font);
+            }
+        }
+        public void ShowSetupError(string detail)
+        {
+            Clear(header);Clear(left);Clear(commands);Clear(footer);
+            Label(header,"TALES / TACTICS",12,45,27);
+            Label(left,"전투 데이터를 불러오지 못했습니다.",20,120,22);
+            Label(footer,detail,12,94,17);
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
         {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;return r;}

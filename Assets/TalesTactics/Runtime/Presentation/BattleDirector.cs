@@ -23,7 +23,17 @@ namespace TalesTactics
         public string Message="출전 인원을 선택하세요 (1–6명).";
         bool completed, timingAttempted;
         public bool IsPlayerCommand=>Session!=null&&Session.Active!=null&&Session.Active.Team==Team.Player&&State is CommandState;
-        void Start(){Campaign=CampaignStorage.Load();Hud.Initialize(this);Board.Initialize(this);Hud.ShowDeployment();}
+        void Start()
+        {
+            if(Hud==null||Board==null||Audio==null)
+            {Debug.LogError("TalesTactics: BattleDirector requires HUD, Board and Audio references.");enabled=false;return;}
+            Campaign=CampaignStorage.Load();Hud.Initialize(this);
+            if(!CatalogValidation.TryValidate(Catalog,out var error))
+            {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}
+            Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
+            if(Deployment.Count==0)Deployment.Add(0);
+            Board.Initialize(this);Hud.ShowDeployment();
+        }
         void Update()
         {
             if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();

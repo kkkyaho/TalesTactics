@@ -11,18 +11,28 @@ namespace TalesTactics.Editor
     public static class ProjectSetup
     {
         public const string ScenePath="Assets/TalesTactics/Scenes/TestBattle.unity";
+        static bool importingResources;
         static ProjectSetup(){EditorApplication.delayCall+=FirstImport;}
         static void FirstImport()
         {
-            if(Application.isBatchMode||EditorApplication.isCompiling||EditorApplication.isPlayingOrWillChangePlaymode||File.Exists(ScenePath))return;
+            if(Application.isBatchMode||AssetDatabase.IsAssetImportWorkerProcess()||EditorApplication.isPlayingOrWillChangePlaymode||File.Exists(ScenePath))return;
+            if(EditorApplication.isCompiling||EditorApplication.isUpdating){EditorApplication.delayCall+=FirstImport;return;}
             CreateScene();
         }
         [MenuItem("Tales Tactics/Create Test Battle")]
         public static void CreateScene()
         {
             if(!Application.isBatchMode&&!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
-            if(!File.Exists("Assets/TextMesh Pro/Resources/TMP Settings.asset"))TMPro.TMP_PackageResourceImporter.ImportResources(true,false,false);
+            if(!File.Exists("Assets/TextMesh Pro/Resources/TMP Settings.asset"))
+            {
+                if(importingResources)return;
+                importingResources=true;AssetDatabase.importPackageCompleted+=ResourcesImported;
+                AssetDatabase.importPackageFailed+=ResourcesFailed;
+                TMPro.TMP_PackageResourceImporter.ImportResources(true,false,false);
+                return;
+            }
             var catalog=AssetDatabase.LoadAssetAtPath<BattleCatalog>("Assets/TalesTactics/Content/BattleCatalog.asset")??DemoContent.Create();
+            if(!CatalogValidation.TryValidate(catalog,out var error))throw new System.InvalidOperationException("Cannot create battle scene: "+error);
             Directory.CreateDirectory("Assets/TalesTactics/Scenes");Directory.CreateDirectory("Assets/TalesTactics/Materials");
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
             var root=new GameObject("Battle Systems");var director=root.AddComponent<BattleDirector>();director.Catalog=catalog;
@@ -40,6 +50,18 @@ namespace TalesTactics.Editor
             EditorSceneManager.SaveScene(scene,ScenePath);EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)};AssetDatabase.SaveAssets();
             Debug.Log("TalesTactics: TestBattle created. Press Play for deployment.");
         }
+        static void ResourcesImported(string packageName)
+        {
+            if(packageName!="TMP Essential Resources")return;
+            FinishResourceImport();EditorApplication.delayCall+=CreateScene;
+        }
+        static void ResourcesFailed(string packageName,string error)
+        {
+            if(packageName!="TMP Essential Resources")return;
+            FinishResourceImport();Debug.LogError("TalesTactics: TMP resource import failed: "+error);
+        }
+        static void FinishResourceImport()
+        {importingResources=false;AssetDatabase.importPackageCompleted-=ResourcesImported;AssetDatabase.importPackageFailed-=ResourcesFailed;}
         static Material Material(string name,string shaderName)
         {
             var path="Assets/TalesTactics/Materials/"+name+".mat";var mat=AssetDatabase.LoadAssetAtPath<Material>(path);if(mat!=null)return mat;
@@ -49,7 +71,9 @@ namespace TalesTactics.Editor
         [MenuItem("Tales Tactics/Build Windows Player")]
         public static void Build()
         {
-            if(!File.Exists(ScenePath))CreateScene();Directory.CreateDirectory("Builds/Windows");
+            if(!File.Exists(ScenePath))CreateScene();
+            if(!File.Exists(ScenePath))throw new System.InvalidOperationException("TestBattle is not ready. Wait for TMP import and scene creation before building.");
+            Directory.CreateDirectory("Builds/Windows");
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{ScenePath},locationPathName="Builds/Windows/TalesTactics.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.None});
             if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)throw new System.Exception("Player build failed");
         }

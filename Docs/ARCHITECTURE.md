@@ -32,6 +32,8 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 레벨 1–50, 고정 성장. EXP는 현재 레벨 ×100마다 레벨업, 전투 승리 기본 EXP120. 장비 3슬롯의 ID를 저장하고 Catalog에서 해결한다. 장비 교체 UI와 스토리 승급 UI는 후속 작업이다. 승급은 레벨 및 Story Flag 검사 API가 준비되어 있다. Battle Runtime은 저장하지 않는다.
 
-## 실제 검증 제한
+## 화면과 검증
 
-Unity API 참조 C# 컴파일은 Runtime/Editor/Tests 각각 성공. 이것은 Unity AssetDatabase import, Scene 직렬화, 셰이더, TMP 폰트, 입력, 렌더링 검증을 대체하지 않는다. 최초 Scene 및 Content 생성은 라이선스가 정상인 에디터에서 수행되어야 한다. 현재 라이선스 IPC 거부로 해당 검증 및 Windows 빌드는 미완료.
+BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
+
+실제 Unity EditMode 34개, PlayMode 5개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.

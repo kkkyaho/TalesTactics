@@ -15,6 +15,27 @@ namespace TalesTactics
         readonly Dictionary<UnitRuntime,Animator> animators=new Dictionary<UnitRuntime,Animator>();
         readonly Dictionary<UnitRuntime,Transform> bars=new Dictionary<UnitRuntime,Transform>();
         BattleDirector battle;Transform root;LineRenderer line;Sprite placeholder;
+        Rect lastViewport;
+        Bounds battlefieldBounds;
+        void LateUpdate(){if(root!=null)FitBattlefield();}
+        void FitBattlefield(bool force=false)
+        {
+            var viewport=battle.Hud.BattlefieldViewport;
+            if(!force&&viewport==lastViewport)return;
+            lastViewport=viewport;BattleCamera.rect=viewport;
+            var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);
+            var max=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
+            for(int i=0;i<8;i++)
+            {
+                var p=battlefieldBounds.center+Vector3.Scale(battlefieldBounds.extents,
+                    new Vector3((i&1)==0?-1:1,(i&2)==0?-1:1,(i&4)==0?-1:1));
+                var local=BattleCamera.transform.InverseTransformPoint(p);
+                min=Vector2.Min(min,new Vector2(local.x,local.y));max=Vector2.Max(max,new Vector2(local.x,local.y));
+            }
+            var center=(min+max)*0.5f;var size=(max-min)*0.5f;
+            BattleCamera.transform.position+=BattleCamera.transform.right*center.x+BattleCamera.transform.up*center.y;
+            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.08f;
+        }
         public void Initialize(BattleDirector b){battle=b;}
         public void ResetBoard(){if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();bars.Clear();}
         public void Build(BattleSession session)
@@ -40,7 +61,15 @@ namespace TalesTactics
                 var marker=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(marker.GetComponent<Collider>());marker.name="Facing";marker.transform.SetParent(g.transform,false);marker.transform.localScale=new Vector3(0.14f,0.04f,0.25f);marker.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(marker.GetComponent<Renderer>(),Color.white);
             }
             var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.07f;line.startColor=line.endColor=Color.cyan;
-            Sync();
+            battlefieldBounds=new Bounds();bool first=true;
+            foreach(var tile in session.Grid.Tiles.Values)
+            {
+                var p=tile.WorldPosition(session.Rules.TileHeight);
+                if(first){battlefieldBounds=new Bounds(p,Vector3.zero);first=false;}
+                battlefieldBounds.Encapsulate(p+new Vector3(-0.5f,-0.3f,-0.5f));
+                battlefieldBounds.Encapsulate(p+new Vector3(0.5f,1.5f,0.5f));
+            }
+            Sync();FitBattlefield(true);
         }
         public bool Pick(Vector2 screen,out Vector2Int p)
         {
