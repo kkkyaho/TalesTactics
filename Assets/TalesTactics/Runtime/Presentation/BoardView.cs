@@ -17,6 +17,25 @@ namespace TalesTactics
         BattleDirector battle;Transform root;LineRenderer line;Sprite placeholder;
         Rect lastViewport;
         Bounds battlefieldBounds;
+        Quaternion initialRotation;
+        Vector3 initialPosition;
+        float zoom=1;
+        public void RotateCamera(float degrees)
+        {
+            if(root==null||battle.TimingActive)return;
+            BattleCamera.transform.RotateAround(battlefieldBounds.center,Vector3.up,degrees);
+            FitBattlefield(true);
+            foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
+        }
+        public void ZoomCamera(float factor)
+        {if(root==null)return;zoom=Mathf.Clamp(zoom*factor,0.55f,1.3f);FitBattlefield(true);}
+        public void ResetCamera()
+        {
+            zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
+            if(root==null)return;
+            FitBattlefield(true);
+            foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
+        }
         void LateUpdate(){if(root!=null)FitBattlefield();}
         void FitBattlefield(bool force=false)
         {
@@ -34,9 +53,9 @@ namespace TalesTactics
             }
             var center=(min+max)*0.5f;var size=(max-min)*0.5f;
             BattleCamera.transform.position+=BattleCamera.transform.right*center.x+BattleCamera.transform.up*center.y;
-            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.08f;
+            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.08f*zoom;
         }
-        public void Initialize(BattleDirector b){battle=b;}
+        public void Initialize(BattleDirector b){battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;}
         public void ResetBoard(){if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();bars.Clear();}
         public void Build(BattleSession session)
         {
@@ -69,11 +88,11 @@ namespace TalesTactics
                 battlefieldBounds.Encapsulate(p+new Vector3(-0.5f,-0.3f,-0.5f));
                 battlefieldBounds.Encapsulate(p+new Vector3(0.5f,1.5f,0.5f));
             }
-            Sync();FitBattlefield(true);
+            ResetCamera();Sync();
         }
         public bool Pick(Vector2 screen,out Vector2Int p)
         {
-            p=default;if(BattleCamera==null)return false;
+            p=default;if(BattleCamera==null||!BattleCamera.pixelRect.Contains(screen))return false;
             if(Physics.Raycast(BattleCamera.ScreenPointToRay(screen),out var hit,200)){var t=hit.collider.GetComponent<TileView>();if(t!=null){p=t.Coordinate;return true;}}return false;
         }
         public void Sync()

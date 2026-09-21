@@ -4,7 +4,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 34개·PlayMode 5개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 34개·PlayMode 6개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
 - 엔진 독립 규칙 테스트 34개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
@@ -49,3 +49,5 @@ Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git�
 - 정적 API 검사: 최초 Unity import 후 `./Tools/CompileApi.ps1`.
 
 구현 구조, 현재 한계와 다음 작업은 Docs/ARCHITECTURE.md 및 Docs/TODO.md를 확인하세요.
+
+카메라: 유닛 정보 아래 좌회전/우회전, 확대/축소, 초기화 버튼을 사용합니다. 전장 위 휠로 확대/축소할 수 있습니다. Q/E와 Home 단축키도 제공합니다. 세로 창에서는 정보·명령 패널을 전장 아래에 배치합니다.

@@ -38,8 +38,20 @@ namespace TalesTactics
         {
             if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();
             if(Session==null||State==null)return;
+            var keyboard=Keyboard.current;
+            if(keyboard!=null)
+            {
+                if(keyboard.qKey.wasPressedThisFrame)Board.RotateCamera(-90);
+                if(keyboard.eKey.wasPressedThisFrame)Board.RotateCamera(90);
+                if(keyboard.homeKey.wasPressedThisFrame&&!TimingActive)Board.ResetCamera();
+            }
             if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&!(State is ActionExecutionState))State.Cancel();
             var mouse=Mouse.current;if(mouse==null||EventSystem.current!=null&&EventSystem.current.IsPointerOverGameObject())return;
+            if(Board.BattleCamera.pixelRect.Contains(mouse.position.ReadValue()))
+            {
+                float scroll=mouse.scroll.ReadValue().y;
+                if(scroll!=0)Board.ZoomCamera(scroll>0?0.9f:1.1f);
+            }
             if(Board.Pick(mouse.position.ReadValue(),out var p))
             {
                 if(State is MoveSelectionState)Board.ShowPath(Session.Grid.Path(Session.Active,p));

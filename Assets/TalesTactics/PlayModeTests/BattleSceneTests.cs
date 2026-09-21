@@ -63,6 +63,31 @@ namespace TalesTactics.PlayModeTests
             Assert.That(u.Position,Is.EqualTo(origin));Assert.That(u.Moved,Is.False);
             Assert.That(director.Session.Grid[origin].Occupant,Is.SameAs(u));
         }
+        [UnityTest] public IEnumerator CameraRotationZoomAndResetPreserveBattle()
+        {
+            Click("전투 시작");yield return null;
+            var camera=director.Board.BattleCamera;
+            var rotation=camera.transform.rotation;float size=camera.orthographicSize;
+            var active=director.Session.Active;var position=active.Position;
+            for(int i=0;i<4;i++)
+            {
+                Click("우회전");
+                foreach(var tile in director.Session.Grid.Tiles.Values)
+                {
+                    var p=camera.WorldToScreenPoint(tile.WorldPosition(director.Catalog.Rules.TileHeight));
+                    Assert.That(camera.pixelRect.Contains(new Vector2(p.x,p.y)),Is.True,"Rotation must fit the entire board.");
+                }
+            }
+            Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(0.01f));
+            Click("확대 +");Assert.That(camera.orthographicSize,Is.LessThan(size));
+            Assert.That(director.Board.Pick(new Vector2(-10,-10),out _),Is.False);
+            Click("초기화");
+            Assert.That(camera.orthographicSize,Is.EqualTo(size).Within(0.01f));
+            Assert.That(active.Position,Is.EqualTo(position));Assert.That(active.Moved,Is.False);
+            Assert.That(director.State,Is.InstanceOf<CommandState>());
+            Click("Restart");yield return null;Click("전투 시작");yield return null;
+            Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(0.01f));
+        }
         [UnityTest] public IEnumerator TargetPreviewExecutesAndTurnEnds()
         {
             Click("전투 시작");yield return null;
