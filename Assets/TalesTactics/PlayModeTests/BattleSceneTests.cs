@@ -31,6 +31,7 @@ namespace TalesTactics.PlayModeTests
             var button=Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name==name);
             Assert.That(button.interactable,Is.True);
             ExecuteEvents.Execute(button.gameObject,new BaseEventData(EventSystem.current),ExecuteEvents.submitHandler);
+            if(name=="전투 시작"&&director.StoryActive)director.FinishStory();
         }
         [UnityTest] public IEnumerator CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards()
         {

@@ -100,6 +100,7 @@ namespace TalesTactics
             var button = FindButton(b => b.name == name);
             if (!button.interactable) throw new InvalidOperationException("Button unavailable: " + name);
             ExecuteEvents.Execute(button.gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+            if(name=="전투 시작")while(battle.StoryActive)battle.AdvanceStory();
         }
 
         IEnumerator Run()
@@ -167,6 +168,10 @@ namespace TalesTactics
                 var saved = File.ReadAllBytes(savePath);
                 battle.CompleteBattle(); battle.SaveBattleReward();
                 Check(File.ReadAllBytes(savePath).SequenceEqual(saved), "Repeated completion does not duplicate saved rewards");
+                Click("전투 후 이야기"); yield return null;
+                Check(battle.StoryActive,"Victory opens chapter ending dialogue");
+                while(battle.StoryActive){battle.AdvanceStory();yield return null;}
+                Check(File.ReadAllBytes(savePath).SequenceEqual(saved),"Reading ending does not change saved rewards");
                 yield return Capture("victory");
                 Click("출전 화면 / Restart"); yield return null;
                 Check(battle.Session == null, "Victory restart returns to deployment");

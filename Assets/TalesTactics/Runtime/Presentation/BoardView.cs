@@ -55,7 +55,17 @@ namespace TalesTactics
             BattleCamera.transform.position+=BattleCamera.transform.right*center.x+BattleCamera.transform.up*center.y;
             BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.08f*zoom;
         }
-        public void Initialize(BattleDirector b){battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;}
+        public void Initialize(BattleDirector b)
+        {
+            battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;
+            // The battlefield uses a partial viewport. Clear its surrounding screen too,
+            // otherwise full-screen dialogue pixels can survive after the panel closes.
+            var background=new GameObject("Screen Background Camera",typeof(Camera));
+            background.transform.SetParent(transform,false);
+            var camera=background.GetComponent<Camera>();camera.cullingMask=0;
+            camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
+            camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
+        }
         public void ResetBoard(){if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();bars.Clear();}
         public void Build(BattleSession session)
         {

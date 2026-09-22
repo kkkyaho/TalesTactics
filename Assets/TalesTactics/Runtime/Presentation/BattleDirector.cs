@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 namespace TalesTactics
 {
-    public sealed class BattleDirector:MonoBehaviour
+    public sealed partial class BattleDirector:MonoBehaviour
     {
         public BattleCatalog Catalog;
         public BattleHud Hud;
@@ -40,6 +40,7 @@ namespace TalesTactics
         }
         void Update()
         {
+            if(StoryActive)return;
             if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();
             if(Session==null||State==null)return;
             var keyboard=Keyboard.current;
@@ -67,7 +68,7 @@ namespace TalesTactics
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2);
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2,TrainingMode?-1:SelectedStage);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);
@@ -77,7 +78,7 @@ namespace TalesTactics
             }
             Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
+        public void Restart(){CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved)SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted)SelectSkill(Session.Active.Data.BasicAttack);}
         public void SkillCommand(){if(IsPlayerCommand)SetState(new ActionSelectionState(this));}

@@ -13,15 +13,15 @@ namespace TalesTactics
         public IVictoryCondition Victory=new EliminateEnemies();
         public UnitRuntime Active;
         public BattleResult Result=>Victory.Evaluate(Units);
-        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null)
+        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1)
         {
-            Rules=catalog.Rules;Grid=GridMap.TestStage();int i=0;
+            Rules=catalog.Rules;Grid=campaignStage<0?GridMap.TestStage():CampaignContent.Map(campaignStage);int i=0;
             foreach(int index in deployment)
             {
                 if(i>=Rules.MaxDeployment)break;
-                var u=new UnitRuntime(catalog.Characters[index],Team.Player,Rules,level);Units.Add(u);Grid.Place(u,new Vector2Int(1+i%2,1+i/2));i++;
+                var u=new UnitRuntime(catalog.Characters[index],Team.Player,Rules,level);Units.Add(u);Grid.Place(u,campaignStage<0?new Vector2Int(1+i%2,1+i/2):CampaignContent.PlayerSpawn(campaignStage,i));i++;
             }
-            for(i=0;i<4;i++){var u=new UnitRuntime(catalog.Enemy,Team.Enemy,Rules,enemyLevel??level);u.Facing=Facing.Front;Units.Add(u);Grid.Place(u,new Vector2Int(7+i%2,5+i/2));}
+            for(i=0;i<4;i++){var u=new UnitRuntime(catalog.Enemy,Team.Enemy,Rules,enemyLevel??level);u.Facing=Facing.Front;Units.Add(u);Grid.Place(u,campaignStage<0?new Vector2Int(7+i%2,5+i/2):CampaignContent.EnemySpawn(campaignStage,i));}
             Resolver=new SkillResolver(Grid,Units,Rules);
         }
         public void Advance(){Active=Scheduler.Next(Units);Active?.BeginTurn();}

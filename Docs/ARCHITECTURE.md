@@ -36,7 +36,7 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 57개, PlayMode 12개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 65개, PlayMode 18개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
@@ -46,7 +46,7 @@ CampaignFile은 경로별 저장 I/O를 분리한다. Version 1의 누락 컬렉
 
 ## 캠페인 진행 프로토타입
 
-CampaignStages는 chapter1 → chapter2 완료 플래그와 순차 해금을 정의한다. 동일 TestStage를 재사용하며 1장 적 Lv1, 2장 적 Lv3이다. 훈련은 Lv25를 유지하고 완료 기록·EXP를 저장하지 않는다. 반복 클리어도 출전 전원 EXP120을 주며, 장 완료 플래그는 중복 추가하지 않는다. 상세 스토리/대사/전용 맵 및 성장 속도 밸런스는 미구현이다.
+CampaignStages는 chapter1 → chapter2 완료 플래그와 순차 해금을 정의한다. CampaignContent의 전용 맵을 사용하며 1장 적 Lv1, 2장 적 Lv3이다. 훈련만 기존 TestStage를 사용한다. 훈련은 Lv25를 유지하고 완료 기록·EXP를 저장하지 않는다. 반복 클리어도 출전 전원 EXP120을 주며, 장 완료 플래그는 중복 추가하지 않는다. 전투 전후 대사·다시 읽기와 두 장 전용 맵을 제공한다. 성장 속도 밸런스는 후속 작업이다.
 
 BattleDirector는 시작 시 선택 장과 훈련 여부를 고정한다. 승리에만 CampaignStages.TryReward를 호출하며, 실패 시 레벨/EXP/스킬/완료 플래그를 복원한다. 결과 화면에서 보상 저장을 재시도할 수 있고 성공 후에는 중복 지급하지 않는다. 저장 실패 후 출전 화면으로 돌아가면 해당 보상을 포기한다. PersistCampaign 콜백은 기본 CampaignStorage.Save이며 PlayMode 테스트에서는 사용자 파일을 건드리지 않는 콜백으로 교체한다.
 
@@ -69,3 +69,8 @@ ShopContent.AddSamples는 기존 카탈로그에 가죽 갑옷/생명의 부적�
 상점 단계 해금: EquipmentData.RequiredStoryFlag가 비어 있으면 기본 상품이다. CampaignInventory.PurchaseUnlockRequirement/PurchaseUnavailable이 실제 완료 기록을 검사하므로 UI 외 구매 호출도 잠긴 상품을 구매할 수 없다. 기존 보유 장비의 사용/매각은 해금 조건과 독립적이다. ChapterShopContent는 기존 에셋을 덮어쓰지 않고 철검/강화 갑옷을 추가하는 명시적 메뉴다. 저장 형식은 Version 2를 유지한다.
 
 확정 장비 보상은 CampaignStages.EquipmentReward로 장별 ID를 정의한다(1장 vital-charm, 2장 iron-sword). TryReward가 장비 수량과 EXP·골드·완료 기록을 함께 저장하고 실패/예외 시 복원한다. 상한에서는 장비만 건너뛰며 다른 보상은 정상 지급한다. BattleDirector의 RewardPending이 동일 전투의 성공 이후 중복 지급을 막는다. 전투 자체는 저장하지 않으며 확률 추첨은 없다. 기존 Version 2 형식을 유지한다.
+
+
+CampaignContent는 1장 11×9 물길/돌다리/우회로, 2장 12×10 계단/제단 맵과 6명 아군·4명 적 출전 좌표, 장별 전후 대사를 제공한다. BattleSession의 선택적 campaignStage는 기본 -1로 기존 테스트 맵/엔진 독립 테스트를 유지하며 캠페인에서만 전용 맵을 선택한다.
+CampaignStory는 전체 화면 uGUI 이야기와 진행/건너뛰기를 담당한다. RequestBattle은 캠페인 도입 후 BeginBattle을 호출하고 훈련은 즉시 시작한다. 승리/보상 저장 성공 이후에만 후일담을 읽을 수 있으며 다시 읽기는 저장을 호출하지 않는다. 대화 중 전장 입력은 차단한다. 대화 위치는 저장하지 않으며 완료된 장의 대사는 언제든 다시 읽는다. 대사는 이 프로젝트용 창작 시나리오다.
+BoardView는 전장 부분 viewport 아래에서 전체 화면을 지우는 cullingMask=0 배경 카메라를 생성하여 대사 패널 종료 뒤 화면 가장자리의 잔상을 방지한다.
