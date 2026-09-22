@@ -1,4 +1,4 @@
-param([string]$Player = "$PSScriptRoot/../Builds/CampaignReview/TalesTactics.exe")
+param([string]$Player = "$PSScriptRoot/../Builds/CampaignReview/TalesTactics.exe", [switch]$Tactical)
 $ErrorActionPreference = 'Stop'
 $playerPath = (Resolve-Path -LiteralPath $Player).Path
 $runId = [Guid]::NewGuid().ToString('N')
@@ -19,7 +19,9 @@ $failure = $null
 try {
     foreach ($phase in @('chapter1', 'chapter2', 'resume')) {
         $log = Join-Path $reviewRoot "$phase-player.log"
-        $process = Start-Process -FilePath $playerPath -ArgumentList @('--campaign-review', $runId, $phase, '-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '800', '-logFile', "`"$log`"") -WindowStyle Hidden -PassThru
+        $reviewArgs = @('--campaign-review', $runId, $phase, '-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '800', '-logFile', "`"$log`"")
+        if ($Tactical) { $reviewArgs += '--tactical-review' }
+        $process = Start-Process -FilePath $playerPath -ArgumentList $reviewArgs -WindowStyle Hidden -PassThru
         Write-Output "Started $phase (PID $($process.Id)), evidence: $reviewRoot"
         $deadline = [DateTime]::UtcNow.AddSeconds(330)
         while (!$process.WaitForExit(1000)) {
@@ -57,4 +59,3 @@ finally {
 if (!$unchanged) { throw 'User save or backup changed during review.' }
 if ($failure) { throw $failure }
 Write-Output "PASS: three separate player launches; user save unchanged. Summary: $evidence/$runId-summary.json"
-

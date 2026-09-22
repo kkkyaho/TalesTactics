@@ -184,3 +184,16 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 개발 빌드20.353초/오류0/경고8, 일반 배포 빌드15.861초/오류0/경고6 성공. unity-complete-combat-development-build.json, unity-complete-combat-release-build.json. Builds/Windows/TalesTactics.exe 갱신.
 - Windows 개발 플레이어를 세 번 실행해 1장27턴/공격16회, 2장27턴/공격17회 승리와 후일담·재실행 저장 유지·정상 패배·중복 보상 방지·사용자 저장/백업 해시 불변을 확인했다. PlayerReviews/d9f22427982b4efcbaf46fa558673c1a-summary.json. 자동 이벤트와 4배속 검수이며 수동 완주를 뜻하지 않는다.
 - 실제 Editor GameView 1920×1080에서 피어싱 라인의 형태·높이 제한·시야·높이 사거리·물리 보정·비용 및 목표 선택 버튼을 확인했다(combat-details-editor.png). 임시 캠페인/저장 실패 콜백을 사용하여 사용자 저장을 쓰지 않았다. 모든 스킬 상세와 모든 창 비율의 시각 전수 검수는 수행하지 않았다.
+
+## 3번 완료 — CT·Utility AI·다양한 전투 목표
+
+- CTTurnScheduler, UtilityPlanner, 보스/도착/호위/생존 목표와 출전 전 설정 UI를 구현했다. 기본 SPD/기본 AI 및 캠페인 전멸 목표를 보존하며 새 목표는 훈련에서 선택한다. 정확한 조건과 제한은 TACTICAL_SYSTEMS.md 참조. 기존 에셋·씬과 저장 버전은 변경하지 않았다.
+- 실제 Unity EditMode **83/83**, PlayMode **25/25** 통과: unity-editmode-tactical-systems.json, unity-playmode-tactical-systems.json. 별도 .NET 엔진 독립 검사 **83/83** 통과(실제 Unity 실행과 구분).
+- CT 미리보기 비변경/실제 순서 일치/속도별 빈도/속도 변경/KO/부활/0속도, AI 복수 대상/회복/부활/점유 복원/비용/게이트/시야/대기 가드, 보스 격파/호위 KO/도착/생존 패배 우선순위와 종료 중복 집계를 검사했다. 실제 씬에서 설정 버튼으로 CT/Utility/보스 훈련을 시작하고 저장 미호출, 정상 이동 코루틴의 도착 승리, 호위 KO 실패, 적 코루틴의 회복 기술/MP 소비를 확인했다.
+- tactical-scenarios.csv: CT+Utility, 아군6명 Lv25/적 Lv10으로 강제 피해 없이 전멸4턴/보스4턴/도착16턴/호위20턴/생존12턴에 완료했다. 턴 수는 양 팀 행동 합계이며, 생존 목표 집계는 아군 턴 종료다. 레벨 우위의 기능 검증이며 동레벨/모든 파티 밸런스 증거가 아니다.
+- Windows CT+Utility 캠페인: PlayerReviews/0263642c29ca4a6380bef5975ba62406-summary.json. 1장12회 아군 턴·기술7회, 2장9회·기술7회로 정상 승리했다. 세 번의 별도 프로세스로 보상·성장·장비·후일담·재실행 저장 유지·정상 패배와 사용자 저장/백업 불변을 확인했다.
+- Windows 기본 SPD/기본 AI 회귀: PlayerReviews/2ac080b012524ebe9444f1c9b6bbccc8-summary.json. 1장27회 아군 턴·공격16회, 2장27회·공격17회 및 별도 재실행 검사 통과. 두 실행 모두 자동 이벤트/4배속이며 물리 마우스 수동 완주를 뜻하지 않는다.
+- 개발 Windows 빌드19.290초/오류0/경고8, 일반 배포 빌드15.150초/오류0/경고6 성공. unity-tactical-development-build.json, unity-tactical-release-build.json 보관. Builds/Windows/TalesTactics.exe 갱신.
+- 실제 Editor GameView 1920×1080에서 tactical-options-editor.png의 설정·설명·버튼과 tactical-escort-editor.png의 금색 도착 타일·호위 대상 막대·목표/CT/AI 안내를 확인했다. 임시 캠페인과 저장 실패 콜백으로 사용자 저장을 쓰지 않았다. 모든 해상도 및 장시간 성능 검수는 미수행이다.
+- Utility는 단일 행동 점수 비교이고 추가 연계/다중 턴 최적화는 하지 않는다. 호위는 첫 출전 캐릭터를 직접 조작하는 방식이다. 특수 목표의 캠페인 장 편성·전용 보스 아트/패턴·행동별 CT 지연은 후속 확장이다.
+- 사용자 지속 지침(완료 및 관련 검증 통과 후 별도 확인 없이 커밋/푸시)을 AGENTS.md에 기록했다.

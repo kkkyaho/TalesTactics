@@ -76,6 +76,7 @@ namespace TalesTactics
                 float height=0.25f+t.Height*session.Rules.TileHeight;g.transform.position=new Vector3(t.Coordinate.x,height/2-0.25f,t.Coordinate.y);g.transform.localScale=new Vector3(0.96f,height,0.96f);
                 g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=TileMaterial;
                 Color color=t.Terrain==TerrainType.Water?new Color(0.12f,0.43f,0.57f):t.Walkable?Color.Lerp(new Color(0.28f,0.39f,0.37f),new Color(0.51f,0.6f,0.42f),t.Height/2f):new Color(0.23f,0.26f,0.3f);
+                if((session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)&&t.Coordinate==session.Destination)color=new Color(1,0.75f,0.12f);
                 tiles[t.Coordinate]=renderer;colors[t.Coordinate]=color;SetColor(renderer,color);
                 if(!t.Walkable){var rock=GameObject.CreatePrimitive(PrimitiveType.Cube);rock.transform.SetParent(root,false);rock.transform.position=t.WorldPosition(session.Rules.TileHeight)+Vector3.up*0.45f;rock.transform.localScale=new Vector3(0.7f,0.9f,0.7f);rock.transform.rotation=Quaternion.Euler(0,20,0);rock.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(rock.GetComponent<Renderer>(),new Color(0.35f,0.38f,0.4f));}
             }
@@ -86,7 +87,7 @@ namespace TalesTactics
                 var visual=new GameObject("Directional Sprite");visual.transform.SetParent(g.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
                 var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=SpriteMaterial;sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
-                var bar=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(bar.GetComponent<Collider>());bar.name="HP";bar.transform.SetParent(g.transform,false);bar.transform.localPosition=Vector3.up*1.3f;bar.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(bar.GetComponent<Renderer>(),u.Team==Team.Player?Color.cyan:new Color(1,0.3f,0.25f));bars[u]=bar.transform;
+                var bar=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(bar.GetComponent<Collider>());bar.name="HP";bar.transform.SetParent(g.transform,false);bar.transform.localPosition=Vector3.up*1.3f;bar.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(bar.GetComponent<Renderer>(),u==session.ObjectiveUnit?new Color(1,0.75f,0.12f):u.Team==Team.Player?Color.cyan:new Color(1,0.3f,0.25f));bars[u]=bar.transform;
                 var marker=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(marker.GetComponent<Collider>());marker.name="Facing";marker.transform.SetParent(g.transform,false);marker.transform.localScale=new Vector3(0.14f,0.04f,0.25f);marker.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(marker.GetComponent<Renderer>(),Color.white);
             }
             var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.07f;line.startColor=line.endColor=Color.cyan;

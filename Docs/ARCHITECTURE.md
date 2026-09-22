@@ -36,7 +36,7 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 73개, PlayMode 21개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 83개, PlayMode 25개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
@@ -80,3 +80,7 @@ SkillGeometry는 사거리/영향 타일/시야를 공유 계산한다. Shape=Di
 대표 적용 메뉴 SkillGeometryContent.Apply는 피어싱 라인(Line/Range4/높이차2), 쌍장저파(Cone/Range3/높이차1), 나탈리아/시온 기본 공격(기존 사거리/높이차2)에 시야 필요를 지정한다. 명시적 적용 메뉴이며 이후 사용자 기하 규칙을 수정한 뒤 무조건 재실행하지 않는다. 비용·위력·해금 레벨은 변경하지 않는다. 이 대표 설정은 현재 CombatTuning.Apply의 전체 89개 기술 기준선으로 대체되었다. 전체 적용표는 COMBAT_BALANCE.md를 따른다.
 
 CombatTuning은 기존 에셋의 기하·속성·저항을 명시적으로 적용하며 DemoContent를 재생성하지 않는다. 사용자 튜닝 이후 재실행하면 해당 필드를 덮어쓰므로 자동 실행하지 않는다. SkillGeometry.EffectiveRange는 활/총 물리 기술에 시전자-대상 높이 차를 최대 ±2칸 반영한다. DamagePreview의 선택적 SkillData 인자를 실제 실행과 EnemyPlanner가 공유한다. 속성은 피해에만 적용하며 상태 확률·회복에는 영향을 주지 않는다. 비용·위력·해금·게이트는 기존 값을 보존한다.
+
+CTTurnScheduler는 ITurnScheduler의 선택 가능한 구현체로 CT1000/행동·SPD/틱·잔여 CT·순서 미리보기 복사본을 사용한다. BattleDirector.UseCT/UseUtilityAI를 출전 전 설정하고 세션 생성 시 고정한다. UtilityPlanner는 사용 가능한 기술과 도달 위치/목표를 점수화하며 실제 실행은 기존 SkillResolver와 EnemyTurn 코루틴을 사용한다. 기본 모드는 기존 SPD/기본 AI다.
+
+BattleObjectives의 DefeatBoss, ReachDestination(일반/호위), SurviveTurns가 IVictoryCondition을 구현한다. BattleSession.EndTurn이 생존 카운터와 상태 종료를 한 번만 처리한다. 특수 목표는 훈련 맵만 허용하며 캠페인 생성자로 특수 목표를 요청하면 거부한다. 목표 설명은 HUD 하단에 표시하고 금색 타일/HP 막대로 목표를 표시한다. 세부 조건과 한계는 TACTICAL_SYSTEMS.md를 따른다.

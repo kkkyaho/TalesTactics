@@ -17,6 +17,7 @@ namespace TalesTactics
         public readonly List<RuntimeStatus> Statuses=new List<RuntimeStatus>();
         public readonly Dictionary<string,int> Cooldowns=new Dictionary<string,int>();
         public readonly EquipmentData[] Equipment=new EquipmentData[3];
+        public SkillData[] TacticalSkills=new SkillData[0];
         public bool Alive=>CurrentHP>0;
         public Stats Stats
         {

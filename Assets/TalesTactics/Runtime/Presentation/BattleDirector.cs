@@ -19,6 +19,8 @@ namespace TalesTactics
         public readonly List<int> Deployment=new List<int>{0,1,3};
         public CampaignSave Campaign;
         public bool TrainingMode, TimingActive, TimingSuccess;
+        public bool UseCT, UseUtilityAI;
+        public ObjectiveKind TrainingObjective;
         public float TimingProgress;
         public string Message="출전 인원을 선택하세요 (1–6명).";
         bool completed, timingAttempted, battleTraining;
@@ -68,7 +70,7 @@ namespace TalesTactics
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2,TrainingMode?-1:SelectedStage);
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2,TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);
@@ -103,7 +105,7 @@ namespace TalesTactics
         public IEnumerator MoveUnit(Vector2Int p)
         {
             var u=Session.Active;var path=Session.Grid.Path(u,p);if(path.Count<2||!Session.Move(p))yield break;
-            SetState(new ActionExecutionState(this));yield return Board.AnimateMove(u,path);RefreshViews();SetState(new CommandState(this));
+            SetState(new ActionExecutionState(this));yield return Board.AnimateMove(u,path);RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
         }
         public IEnumerator Execute(SkillData s,Vector2Int p,bool followup=false)
         {
@@ -132,14 +134,15 @@ namespace TalesTactics
             SetState(new ActionExecutionState(this));yield return new WaitForSeconds(0.4f);
             var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);
             if(plan.Destination!=u.Position){var path=Session.Grid.Path(u,plan.Destination);if(Session.Move(plan.Destination))yield return Board.AnimateMove(u,path);}
-            if(plan.Target!=null){u.Facing=SkillResolver.Toward(u.Position,plan.Target.Position);Session.Resolver.Execute(u,plan.Skill,plan.Target.Position,out var text);Message=text;Board.SetAnimation(u,AnimationKind.Attack);yield return new WaitForSeconds(0.3f);}
+            if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null)){var aim=plan.Aim??plan.Target.Position;if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);Session.Resolver.Execute(u,plan.Skill,aim,out var text);Message=text;Board.SetAnimation(u,plan.Skill.Animation);yield return new WaitForSeconds(0.3f);}
+            else if(plan.Guard&&!u.Acted){u.Acted=true;u.AddStatus(StatusKind.Guard,2);Message=u.Data.DisplayName+" : 가드";}
             RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new TurnEndState(this):new BattleEndState(this));
         }
         public void RefreshViews(){Board.Sync();}
         public void CompleteBattle()
         {
             if(completed||Session==null||Session.Result==BattleResult.Ongoing)return;
-            completed=true;Message=Session.Result==BattleResult.Victory?"승리 — 모든 적을 격파했습니다.":"패배 — 다시 도전하세요.";
+            completed=true;Message=Session.Result==BattleResult.Victory?"승리 — "+Session.ObjectiveDescription:"패배 — 다시 도전하세요.";
             if(Session.Result!=BattleResult.Victory)return;
             Audio.Play("victory");
             if(battleTraining){Message+="\n훈련: 경험치·골드·장비·장 완료 기록은 저장하지 않습니다.";return;}

@@ -112,10 +112,11 @@ namespace TalesTactics
         {
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
+            Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,battle.TrainingMode?"훈련 / "+ObjectiveNames.Name(battle.TrainingObjective):CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
             Label(left,"ROSTER  ·  "+battle.Deployment.Count+" / 6  ·  캠페인 6인 권장",12,30,16);
             for(int i=0;i<battle.Catalog.Characters.Length;i++){int index=i;var c=battle.Catalog.Characters[i];Button(left,(battle.Deployment.Contains(i)?"● ":"○ ")+c.DisplayName,50+i*39,()=>{if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);ShowDeployment();},true,34);}
             Label(commands,"BATTLE SETTINGS · "+battle.Campaign.Gold+"G",12,35,20);
+            Button(left,"전투 규칙 설정",465,ShowBattleOptions);
             Button(commands,battle.TrainingMode?"훈련: Lv25 / 모든 일반 스킬":"캠페인: 저장된 성장 사용",58,()=>{battle.TrainingMode=!battle.TrainingMode;ShowDeployment();});
             Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;battle.PersistCampaign(battle.Campaign);ShowDeployment();});
             Button(commands,"전투 시작",166,battle.RequestBattle,battle.Deployment.Count>0,48);
@@ -213,7 +214,7 @@ namespace TalesTactics
             Label(header,"TALES / TACTICS     ·     "+battle.State.Title,10,34,25);
             Label(header,"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),48,30,16);
             message=Label(footer,battle.Message,12,65,17);
-            Label(footer,"카메라  Q/E 회전 · 휠 확대/축소 · Home 초기화",83,26,15);
+            Label(footer,battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,26,15);
             if(u==null)return;
             Label(left,u.Data.DisplayName,16,58,25);Label(left,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" / Lv"+u.Level+" / "+u.Team,78,36,17);
             Label(left,$"HP  {u.CurrentHP} / {u.Stats.HP}\nMP  {u.CurrentMP} / {u.Stats.MP}\nGAUGE  {u.SpecialGauge} / 100\n\nSPD {u.Stats.SPD}   MOV {u.Stats.MOV}   JMP {u.Stats.JMP}\n\n이동: {(u.Moved?"사용":"가능")}\n행동: {(u.Acted?"사용":"가능")}\n\n{string.Join(" / ",u.Statuses.Select(s=>s.Kind+" "+s.Turns))}",125,285,20);

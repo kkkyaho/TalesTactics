@@ -1,0 +1,36 @@
+{
+    "phase": "resume",
+    "unityVersion": "6000.6.0f1",
+    "runId": "0263642c29ca4a6380bef5975ba62406",
+    "error": "",
+    "passed": true,
+    "tactical": true,
+    "captureWarnings": [
+        "resume-deployment: black capture in hidden player; not visual validation evidence.",
+        "defeat: black capture in hidden player; not visual validation evidence."
+    ],
+    "seconds": 3.759495258331299,
+    "playerTurns": 5,
+    "moves": 0,
+    "attacks": 0,
+    "checks": [
+        "Scene initialized",
+        "Expected isolated save exists/missing",
+        "Save loads without fallback or corruption",
+        "Disk contains exactly the expected completion flags",
+        "Disk contains exact party levels and EXP",
+        "No premature promotion",
+        "Reload uses schema version 2",
+        "Disk contains chapter equipment reward 0",
+        "Disk contains chapter equipment reward 1",
+        "Disk contains exact purchase and victory gold",
+        "Purchased and equipped armor survives process restart",
+        "Reloaded chapter 2 completion appears in deployment UI",
+        "Passive party reaches defeat without forced damage",
+        "Defeat leaves saved progress byte-for-byte unchanged",
+        "Defeat restart returns to deployment",
+        "New battle restores all party members to full health",
+        "Starting another battle does not grant duplicate rewards"
+    ],
+    "errors": []
+}

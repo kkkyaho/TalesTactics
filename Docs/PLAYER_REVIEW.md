@@ -39,3 +39,5 @@ unity command build_status --project-path C:/dev/TalesTactics --caller plugin --
 장비 보상 검수: 각 장 완료 후 생명의 부적/철검을 각각 1개 소유하는지 실제 파일에서 확인하고 프로세스 재실행 뒤에도 같은 수량을 검사한다.
 
 전용 맵/이야기 검수: 캠페인 시작 버튼 이후 도입 대사를 끝까지 진행한다. 1장 외곽/2장 제단에서 정상 전투로 승리하고 후일담을 읽은 뒤 저장 바이트 불변을 확인한다.
+
+CT+Utility 회귀는 같은 개발 빌드에서 ./Tools/RunCampaignReview.ps1 -Tactical 로 실행한다. 적과 검수용 아군이 UtilityPlanner를 사용하며 동일한 격리 저장 검증을 수행한다. 기본 실행은 기존 SPD/기본 AI를 유지한다.

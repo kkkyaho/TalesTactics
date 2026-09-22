@@ -17,7 +17,7 @@ namespace TalesTactics
         [Serializable] public sealed class Report
         {
             public string phase, unityVersion, runId, error;
-            public bool passed;
+            public bool passed, tactical;
             public List<string> captureWarnings = new List<string>();
             public float seconds;
             public int playerTurns, moves, attacks;
@@ -45,6 +45,7 @@ namespace TalesTactics
             { Debug.LogError("Invalid campaign review arguments."); Application.Quit(2); return; }
             var review = new GameObject("Campaign player review").AddComponent<CampaignPlayerReview>();
             review.report = new Report { phase = args[index + 2], runId = args[index + 1], unityVersion = Application.unityVersion };
+            review.report.tactical=args.Contains("--tactical-review");
             review.directory = Path.Combine(Application.persistentDataPath, "Reviews", review.report.runId);
             review.savePath = Path.Combine(review.directory, "campaign.json");
         }
@@ -114,6 +115,7 @@ namespace TalesTactics
             Check(store.CanSave && string.IsNullOrEmpty(store.Notice), "Save loads without fallback or corruption");
             battle.PersistCampaign = store.Save;
             battle.TrainingMode = false;
+            battle.UseCT=battle.UseUtilityAI=report.tactical;
             battle.Deployment.Clear();
             battle.Deployment.AddRange(party);
             battle.Hud.ShowDeployment();
@@ -225,7 +227,8 @@ namespace TalesTactics
                 }
                 if (attack && plan.Target != null)
                 {
-                    Click("Attack / 공격"); battle.State.Tile(plan.Target.Position);
+                    if(report.tactical)battle.SelectSkill(plan.Skill);else Click("Attack / 공격");
+                    battle.State.Tile(plan.Aim??plan.Target.Position);
                     Check(battle.Target.HasValue, "Attack preview selected a valid target");
                     Click("실행");
                     while (battle.State is ActionExecutionState) yield return null;

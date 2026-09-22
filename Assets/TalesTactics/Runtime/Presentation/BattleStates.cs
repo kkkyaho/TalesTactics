@@ -48,7 +48,7 @@ namespace TalesTactics
     public sealed class TurnEndState:BattleState
     {
         public TurnEndState(BattleDirector b):base(b){}
-        public override void Enter(){B.Session.Active.EndTurn();B.SetState(new TurnStartState(B));}
+        public override void Enter(){B.Session.EndTurn();B.SetState(new TurnStartState(B));}
     }
     public sealed class BattleEndState:BattleState
     {
