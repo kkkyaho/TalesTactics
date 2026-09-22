@@ -20,15 +20,11 @@ namespace TalesTactics
     public static class CampaignStorage
     {
         public static string PathName=>Path.Combine(Application.persistentDataPath,"campaign.json");
-        public static CampaignSave Load()
-        {
-            try{if(!File.Exists(PathName))return new CampaignSave();var save=JsonUtility.FromJson<CampaignSave>(File.ReadAllText(PathName));if(save==null||save.Version!=1||save.Characters==null||save.StoryProgress==null)throw new InvalidDataException("Unsupported save");return save;}
-            catch(Exception e){Debug.LogWarning("Campaign load failed; original file preserved: "+e.Message);return new CampaignSave();}
-        }
-        public static bool Save(CampaignSave save)
-        {
-            try{var path=PathName;Directory.CreateDirectory(Path.GetDirectoryName(path));File.WriteAllText(path+".tmp",JsonUtility.ToJson(save,true));if(File.Exists(path))File.Replace(path+".tmp",path,path+".bak");else File.Move(path+".tmp",path);return true;}
-            catch(Exception e){Debug.LogWarning("Campaign save failed: "+e.Message);return false;}
-        }
+        static CampaignFile file;
+        static CampaignFile FileStore=>file??(file=new CampaignFile(PathName));
+        public static string Notice=>FileStore.Notice;
+        public static bool CanSave=>FileStore.CanSave;
+        public static CampaignSave Load()=>FileStore.Load();
+        public static bool Save(CampaignSave save)=>FileStore.Save(save);
     }
 }

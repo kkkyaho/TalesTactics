@@ -121,7 +121,7 @@ namespace TalesTactics
             Button(commands,"전투 시작",166,()=>battle.SetState(new BattleStartState(battle)),battle.Deployment.Count>0,48);
             Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,200,17);
             Button(commands,"장비 관리",455,ShowEquipmentRoster);
-            Label(footer,"조작: 타일 클릭 → 목표 미리보기 → 실행  |  이동/행동 순서 자유  |  ESC: 취소\n기본 스킬은 레벨에 따라 해금됩니다. 훈련 모드로 전체 일반 스킬을 확인할 수 있습니다.",14,88,18);
+            Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?"조작: 타일 클릭 → 목표 미리보기 → 실행  |  이동/행동 순서 자유  |  ESC: 취소\n기본 스킬은 레벨에 따라 해금됩니다. 훈련 모드로 전체 일반 스킬을 확인할 수 있습니다.":CampaignStorage.Notice,14,88,18);
         }
         void ShowEquipmentRoster()
         {

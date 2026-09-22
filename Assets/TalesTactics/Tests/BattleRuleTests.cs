@@ -77,6 +77,48 @@ namespace TalesTactics.Tests
         {Assert.That(CatalogValidation.TryValidate(ValidCatalog(),out var error),Is.True,error);}
         EquipmentData Sword()
         {var item=New<EquipmentData>();item.Id="sword";item.Slot=EquipmentSlot.Weapon;item.Weapon=WeaponType.Sword;item.Bonus=new Stats{STR=4};return item;}
+        string SaveTestPath()
+        {
+            string folder=System.IO.Path.Combine(Application.persistentDataPath,"StorageTests",System.Guid.NewGuid().ToString("N"));
+            System.IO.Directory.CreateDirectory(folder);return System.IO.Path.Combine(folder,"campaign.json");
+        }
+        [Test] public void SaveNormalizationRepairsLegacyFieldsWithoutLosingGear()
+        {
+            var s=new CampaignSave{StoryProgress=null};s.Characters.Add(new CharacterProgress{Id="hero",Level=0,EXP=-1,Equipment=new[]{"sword"},UnlockedSkills=null});
+            CampaignFile.Normalize(s);var p=s.Get("hero");Assert.That(p.Level,Is.EqualTo(1));Assert.That(p.EXP,Is.EqualTo(0));
+            Assert.That(p.Equipment.Length,Is.EqualTo(3));Assert.That(p.Equipment[0],Is.EqualTo("sword"));Assert.That(p.UnlockedSkills,Is.Not.Null);Assert.That(s.StoryProgress,Is.Not.Null);
+        }
+        [Test] public void CampaignFileRoundTripPreservesProgressAndBackup()
+        {
+            string path=SaveTestPath();var store=new CampaignFile(path);var s=store.Load();var p=s.Get("hero");p.Level=12;p.Promoted=true;p.Equipment[0]="sword";s.StoryProgress.Add("chapter2");
+            Assert.That(store.Save(s),Is.True);p.Level=13;Assert.That(store.Save(s),Is.True);
+            var loaded=new CampaignFile(path).Load();Assert.That(loaded.Get("hero").Level,Is.EqualTo(13));Assert.That(loaded.Get("hero").Promoted,Is.True);Assert.That(loaded.Get("hero").Equipment[0],Is.EqualTo("sword"));Assert.That(loaded.StoryProgress,Does.Contain("chapter2"));
+            Assert.That(new CampaignFile(path+".bak").Load().Get("hero").Level,Is.EqualTo(12));
+        }
+        [Test] public void CorruptPrimaryRecoversBackupAndArchivesOriginalOnSave()
+        {
+            string path=SaveTestPath();var s=new CampaignSave();s.Get("hero").Level=7;
+            string backup=JsonUtility.ToJson(s);System.IO.File.WriteAllText(path+".bak",backup);System.IO.File.WriteAllText(path,"broken");
+            var store=new CampaignFile(path);var loaded=store.Load();Assert.That(loaded.Get("hero").Level,Is.EqualTo(7));Assert.That(store.Notice,Does.Contain("백업"));
+            Assert.That(store.Save(loaded),Is.True);Assert.That(System.IO.File.ReadAllText(path+".bak"),Is.EqualTo(backup));
+            var archive=System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(path),"*.corrupt-*");Assert.That(archive.Length,Is.EqualTo(1));Assert.That(System.IO.File.ReadAllText(archive[0]),Is.EqualTo("broken"));
+        }
+        [Test] public void FutureVersionIsNeverReplacedByOlderBackupOrSave()
+        {
+            string path=SaveTestPath();string future="{\"Version\":99,\"Characters\":[]}";System.IO.File.WriteAllText(path,future);System.IO.File.WriteAllText(path+".bak",JsonUtility.ToJson(new CampaignSave()));
+            var store=new CampaignFile(path);var s=store.Load();Assert.That(store.CanSave,Is.False);Assert.That(store.Save(s),Is.False);Assert.That(System.IO.File.ReadAllText(path),Is.EqualTo(future));
+        }
+        [Test] public void UnrecoverableSaveBlocksAutomaticOverwrite()
+        {
+            string path=SaveTestPath();System.IO.File.WriteAllText(path,"{}");var store=new CampaignFile(path);var s=store.Load();
+            Assert.That(store.Save(s),Is.False);Assert.That(System.IO.File.ReadAllText(path),Is.EqualTo("{}"));Assert.That(System.IO.File.Exists(path+".tmp"),Is.False);
+        }
+        [Test] public void DuplicateCharacterIDsRecoverFromValidBackup()
+        {
+            string path=SaveTestPath();var s=new CampaignSave();s.Characters.Add(new CharacterProgress{Id="hero"});s.Characters.Add(new CharacterProgress{Id="hero"});
+            System.IO.File.WriteAllText(path,JsonUtility.ToJson(s));var backup=new CampaignSave();backup.Get("hero").Level=8;System.IO.File.WriteAllText(path+".bak",JsonUtility.ToJson(backup));
+            Assert.That(new CampaignFile(path).Load().Get("hero").Level,Is.EqualTo(8));
+        }
         [Test] public void EquipmentDraftRejectsWrongWeaponAndSlot()
         {
             var sword=Sword();data.Weapon=WeaponType.Staff;var draft=new EquipmentLoadout(data,new CharacterProgress(),new[]{sword});
@@ -120,4 +162,3 @@ namespace TalesTactics.Tests
         }
     }
 }
-
