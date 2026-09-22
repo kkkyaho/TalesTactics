@@ -121,6 +121,7 @@ namespace TalesTactics
             Button(commands,"전투 시작",166,()=>battle.SetState(new BattleStartState(battle)),battle.Deployment.Count>0,48);
             Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,200,17);
             Button(commands,"장비 관리",455,ShowEquipmentRoster);
+            Button(commands,"성장 · 승급",501,ShowGrowthRoster);
             Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?"조작: 타일 클릭 → 목표 미리보기 → 실행  |  이동/행동 순서 자유  |  ESC: 취소\n기본 스킬은 레벨에 따라 해금됩니다. 훈련 모드로 전체 일반 스킬을 확인할 수 있습니다.":CampaignStorage.Notice,14,88,18);
         }
         void ShowEquipmentRoster()
@@ -163,7 +164,45 @@ namespace TalesTactics
             Button(commands,"돌아가기 (미적용 취소)",443,ShowEquipmentRoster);
             Label(footer,notice??"능력치는 미리보기입니다. 적용 · 저장을 눌러 확정하세요.\n훈련 전투에도 저장된 장비가 적용됩니다.",14,88,17);
         }
-        public void Refresh()
+        void ShowGrowthRoster()
+        {
+            Clear(header);Clear(left);Clear(commands);Clear(footer);
+            Label(header,"TALES / TACTICS     ·     성장 · 승급",12,45,25);
+            Label(left,"캐릭터 선택",12,35,20);
+            foreach(var character in battle.Catalog.Characters)
+            {var selected=character;Button(left,character.DisplayName,50+Array.IndexOf(battle.Catalog.Characters,character)*39,()=>ShowGrowth(selected),true,34);}
+            Label(commands,"성장을 확인할 캐릭터를\n선택하세요.",24,100,20);
+            Button(commands,"출전 준비로",150,ShowDeployment);
+            Label(footer,"캐릭터마다 고정 직업에서 한 번만 승급합니다.\n저장된 레벨과 스토리 조건을 모두 충족해야 합니다.",14,88,17);
+        }
+        void ShowGrowth(CharacterData character,string notice=null)
+        {
+            if(battle.Session!=null)return;
+            var progress=battle.Campaign.Get(character.Id);
+            var gear=new EquipmentLoadout(character,progress,battle.Catalog.Equipment);
+            var before=gear.Preview(progress.Level,progress.Promoted);var after=gear.Preview(progress.Level,true);
+            Clear(header);Clear(left);Clear(commands);Clear(footer);
+            Label(header,"TALES / TACTICS     ·     성장 · 승급",12,45,25);
+            Label(left,character.DisplayName,12,65,23);
+            string exp=progress.Level>=50?"EXP MAX":$"EXP {progress.EXP} / {progress.Level*100}";
+            Label(left,$"Lv{progress.Level} · {exp}\n현재 → 승급 후\n\nHP {before.HP} → {after.HP}\nMP {before.MP} → {after.MP}\nSTR {before.STR} → {after.STR}\nMAG {before.MAG} → {after.MAG}\nDEF {before.DEF} → {after.DEF}\nMDF {before.MDF} → {after.MDF}\nSPD {before.SPD} → {after.SPD}\nMOV {before.MOV} → {after.MOV}\nJMP {before.JMP} → {after.JMP}",85,370,18);
+            Label(commands,character.Job+"\n→ "+character.PromotionJob,12,95,19);
+            bool story=battle.Campaign.StoryProgress.Contains(character.PromotionStoryFlag);
+            string storyName=character.PromotionStoryFlag=="chapter2"?"2장 완료":character.PromotionStoryFlag;
+            Label(commands,$"레벨 조건: Lv{character.PromotionLevel}\n{(progress.Level>=character.PromotionLevel?"충족":"미충족")} (현재 Lv{progress.Level})\n\n스토리 조건: {storyName}\n{(story?"충족":"미충족")}",115,170,17);
+            string reason=CampaignPromotion.Unavailable(progress,character,battle.Campaign.StoryProgress);
+            if(battle.TrainingMode)reason="훈련 모드에서는 승급할 수 없습니다.";
+            else if(!CampaignStorage.CanSave)reason="저장 보호 상태에서는 승급할 수 없습니다.";
+            Label(commands,reason??"승급할 수 있습니다.",290,70,17);
+            Button(commands,progress.Promoted?"승급 완료":"승급 · 저장",380,()=>
+            {
+                if(battle.TrainingMode||!CampaignStorage.CanSave)return;
+                bool saved=CampaignPromotion.TrySave(battle.Campaign,character,CampaignStorage.Save);
+                ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
+            },reason==null);
+            Button(commands,"캐릭터 목록으로",428,ShowGrowthRoster);
+            Label(footer,notice??"저장된 성장과 장비 기준의 능력치입니다. 훈련 레벨은 적용하지 않습니다.\n스토리 이벤트 연결은 후속 단계입니다.",14,88,17);
+        }        public void Refresh()
         {
             if(battle.Session==null)return;
             UpdateLayout();
@@ -173,7 +212,7 @@ namespace TalesTactics
             message=Label(footer,battle.Message,12,65,17);
             Label(footer,"카메라  Q/E 회전 · 휠 확대/축소 · Home 초기화",83,26,15);
             if(u==null)return;
-            Label(left,u.Data.DisplayName,16,58,25);Label(left,u.Data.Job+" / Lv"+u.Level+" / "+u.Team,78,36,17);
+            Label(left,u.Data.DisplayName,16,58,25);Label(left,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" / Lv"+u.Level+" / "+u.Team,78,36,17);
             Label(left,$"HP  {u.CurrentHP} / {u.Stats.HP}\nMP  {u.CurrentMP} / {u.Stats.MP}\nGAUGE  {u.SpecialGauge} / 100\n\nSPD {u.Stats.SPD}   MOV {u.Stats.MOV}   JMP {u.Stats.JMP}\n\n이동: {(u.Moved?"사용":"가능")}\n행동: {(u.Acted?"사용":"가능")}\n\n{string.Join(" / ",u.Statuses.Select(s=>s.Kind+" "+s.Turns))}",125,285,20);
             CameraButton("좌회전",0,3,435,()=>battle.Board.RotateCamera(-90),!battle.TimingActive);
             CameraButton("초기화",1,3,435,()=>{if(!battle.TimingActive)battle.Board.ResetCamera();},!battle.TimingActive);

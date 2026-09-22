@@ -77,7 +77,27 @@ namespace TalesTactics.Tests
         {Assert.That(CatalogValidation.TryValidate(ValidCatalog(),out var error),Is.True,error);}
         EquipmentData Sword()
         {var item=New<EquipmentData>();item.Id="sword";item.Slot=EquipmentSlot.Weapon;item.Weapon=WeaponType.Sword;item.Bonus=new Stats{STR=4};return item;}
-        string SaveTestPath()
+        [Test] public void PromotionSaveRequiresBothConditionsAndRunsOnlyOnce()
+        {
+            data.PromotionJob="상급";var campaign=new CampaignSave();var p=campaign.Get(data.Id);int writes=0;
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>{writes++;return true;}),Is.False);
+            p.Level=data.PromotionLevel;Assert.That(CampaignPromotion.TrySave(campaign,data,_=>{writes++;return true;}),Is.False);
+            campaign.StoryProgress.Add(data.PromotionStoryFlag);
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>{writes++;return true;}),Is.True);
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>{writes++;return true;}),Is.False);
+            Assert.That(writes,Is.EqualTo(1));Assert.That(p.Promoted,Is.True);
+        }
+        [Test] public void PromotionSaveFailureRollsBackAndCanRetry()
+        {
+            data.PromotionJob="상급";var campaign=new CampaignSave();var p=campaign.Get(data.Id);p.Level=data.PromotionLevel;p.EXP=35;p.Equipment[0]="sword";campaign.StoryProgress.Add(data.PromotionStoryFlag);
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>false),Is.False);Assert.That(p.Promoted,Is.False);
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>true),Is.True);Assert.That(p.EXP,Is.EqualTo(35));Assert.That(p.Equipment[0],Is.EqualTo("sword"));
+        }
+        [Test] public void MissingPromotionDataCannotSave()
+        {
+            var campaign=new CampaignSave();campaign.Get(data.Id).Level=50;campaign.StoryProgress.Add(data.PromotionStoryFlag);data.PromotionJob="";
+            Assert.That(CampaignPromotion.TrySave(campaign,data,_=>true),Is.False);
+        }        string SaveTestPath()
         {
             string folder=System.IO.Path.Combine(Application.persistentDataPath,"StorageTests",System.Guid.NewGuid().ToString("N"));
             System.IO.Directory.CreateDirectory(folder);return System.IO.Path.Combine(folder,"campaign.json");

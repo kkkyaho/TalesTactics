@@ -126,7 +126,28 @@ namespace TalesTactics.PlayModeTests
             Assert.That(unit.Equipment[0],Is.SameAs(sword));Assert.That(unit.Stats.STR,Is.EqualTo(character.StatsAt(25).STR+sword.Bonus.STR));
             Assert.That(unit.CurrentHP,Is.EqualTo(unit.Stats.HP));
         }
-        [UnityTest] public IEnumerator TargetPreviewExecutesAndTurnEnds()
+        [UnityTest] public IEnumerator GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign()
+        {
+            director.Campaign=new CampaignSave();director.TrainingMode=false;
+            var c=director.Catalog.Characters[0];var progress=director.Campaign.Get(c.Id);
+            Click("성장 · 승급");yield return null;Click(c.DisplayName);yield return null;
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="승급 · 저장").interactable,Is.False);
+            Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.text.Contains("미충족")),Is.True);
+            Click("캐릭터 목록으로");yield return null;
+            progress.Level=c.PromotionLevel;director.Campaign.StoryProgress.Add(c.PromotionStoryFlag);
+            Click(c.DisplayName);yield return null;
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="승급 · 저장").interactable,Is.True);
+            Assert.That(progress.Promoted,Is.False,"Preview must not promote.");
+            // Exercise the same transaction with an isolated persistence callback, never the user's save.
+            Assert.That(CampaignPromotion.TrySave(director.Campaign,c,_=>true),Is.True);
+            Click("캐릭터 목록으로");yield return null;Click(c.DisplayName);yield return null;
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="승급 완료").interactable,Is.False);
+            Click("캐릭터 목록으로");yield return null;Click("출전 준비로");yield return null;
+            director.Deployment.Clear();director.Deployment.Add(0);Click("전투 시작");yield return null;
+            var unit=director.Session.Units.Single(u=>u.Team==Team.Player);
+            Assert.That(unit.Promoted,Is.True);Assert.That(unit.Stats.HP,Is.EqualTo(c.StatsAt(progress.Level,true).HP));
+            Assert.That(unit.CurrentHP,Is.EqualTo(unit.Stats.HP));
+        }        [UnityTest] public IEnumerator TargetPreviewExecutesAndTurnEnds()
         {
             Click("전투 시작");yield return null;
             var u=director.Session.Active;var enemy=director.Session.Units.First(x=>x.Team==Team.Enemy);
