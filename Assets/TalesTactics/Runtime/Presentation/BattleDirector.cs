@@ -63,10 +63,11 @@ namespace TalesTactics
         {
             if(Deployment.Count<1)return;completed=false;
             Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1);
-            if(!TrainingMode)foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
+            foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
-                var progress=Campaign.Get(u.Data.Id);u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;
-                for(int i=0;i<3;i++){string id=progress.Equipment!=null&&i<progress.Equipment.Length?progress.Equipment[i]:null;u.Equipment[i]=Catalog.Equipment?.FirstOrDefault(e=>e.Id==id&&(int)e.Slot==i&&(i!=0||e.Weapon==u.Data.Weapon));}
+                var progress=Campaign.Get(u.Data.Id);
+                if(!TrainingMode){u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
+                new EquipmentLoadout(u.Data,progress,Catalog.Equipment).Apply(u);
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
             Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));

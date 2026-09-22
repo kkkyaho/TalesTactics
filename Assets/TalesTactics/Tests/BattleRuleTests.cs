@@ -75,6 +75,33 @@ namespace TalesTactics.Tests
         {var c=ValidCatalog();c.Characters=new[]{data,data};Assert.That(CatalogValidation.TryValidate(c,out var error),Is.False);Assert.That(error,Does.Contain("Duplicate"));}
         [Test] public void ValidCatalogCanStartBattle()
         {Assert.That(CatalogValidation.TryValidate(ValidCatalog(),out var error),Is.True,error);}
+        EquipmentData Sword()
+        {var item=New<EquipmentData>();item.Id="sword";item.Slot=EquipmentSlot.Weapon;item.Weapon=WeaponType.Sword;item.Bonus=new Stats{STR=4};return item;}
+        [Test] public void EquipmentDraftRejectsWrongWeaponAndSlot()
+        {
+            var sword=Sword();data.Weapon=WeaponType.Staff;var draft=new EquipmentLoadout(data,new CharacterProgress(),new[]{sword});
+            Assert.That(draft.Equip(EquipmentSlot.Weapon,sword),Is.False);
+            data.Weapon=WeaponType.Sword;Assert.That(draft.Equip(EquipmentSlot.Armor,sword),Is.False);
+            Assert.That(draft.Equip(EquipmentSlot.Weapon,sword),Is.True);
+            Assert.That(draft.Preview(1,false).STR,Is.EqualTo(data.BaseStats.STR+4));
+        }
+        [Test] public void EquipmentDraftOnlyCommitsAfterSuccessfulSave()
+        {
+            var sword=Sword();data.Weapon=WeaponType.Sword;var campaign=new CampaignSave();var progress=campaign.Get(data.Id);
+            var draft=new EquipmentLoadout(data,progress,new[]{sword});draft.Equip(EquipmentSlot.Weapon,sword);
+            Assert.That(progress.Equipment[0],Is.Null);var original=progress.Equipment;
+            Assert.That(draft.TrySave(campaign,_=>false),Is.False);Assert.That(progress.Equipment,Is.SameAs(original));
+            Assert.That(draft.TrySave(campaign,s=>s.Get(data.Id).Equipment[0]==sword.Id),Is.True);
+            Assert.That(progress.Equipment[0],Is.EqualTo(sword.Id));draft.Cycle(EquipmentSlot.Weapon);
+            Assert.That(progress.Equipment[0],Is.EqualTo(sword.Id),"Draft changes after saving must remain detached.");
+        }
+        [Test] public void MissingOrLegacyEquipmentIDsLoadAsEmptySlots()
+        {
+            var sword=Sword();var progress=new CharacterProgress{Equipment=new[]{"missing"}};
+            var draft=new EquipmentLoadout(data,progress,new[]{sword});Assert.That(draft.ExportIDs().Length,Is.EqualTo(3));
+            Assert.That(draft.ExportIDs().All(id=>id==null),Is.True);
+            progress.Equipment=null;Assert.That(new EquipmentLoadout(data,progress,null).ExportIDs().All(id=>id==null),Is.True);
+        }
         [Test] public void SkillDetailsUseActualHPAndResourceCosts()
         {
             var skill=Skill(EffectKind.Damage);skill.HPPercentCost=0.15f;skill.HPCost=3;skill.MPCost=12;skill.GaugeCost=25;

@@ -120,7 +120,48 @@ namespace TalesTactics
             Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;CampaignStorage.Save(battle.Campaign);ShowDeployment();});
             Button(commands,"전투 시작",166,()=>battle.SetState(new BattleStartState(battle)),battle.Deployment.Count>0,48);
             Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,200,17);
+            Button(commands,"장비 관리",455,ShowEquipmentRoster);
             Label(footer,"조작: 타일 클릭 → 목표 미리보기 → 실행  |  이동/행동 순서 자유  |  ESC: 취소\n기본 스킬은 레벨에 따라 해금됩니다. 훈련 모드로 전체 일반 스킬을 확인할 수 있습니다.",14,88,18);
+        }
+        void ShowEquipmentRoster()
+        {
+            Clear(header);Clear(left);Clear(commands);Clear(footer);
+            Label(header,"TALES / TACTICS     ·     장비 관리",12,45,25);
+            Label(left,"캐릭터 선택",12,35,20);
+            for(int i=0;i<battle.Catalog.Characters.Length;i++)
+            {var character=battle.Catalog.Characters[i];Button(left,character.DisplayName,50+i*39,()=>ShowEquipment(character),true,34);}
+            Label(commands,"장비를 바꿀 캐릭터를\n선택하세요.",24,100,20);
+            Button(commands,"출전 준비로",150,ShowDeployment);
+            Label(footer,"무기 / 방어구 / 장신구 3슬롯. 현재 등록된 장비를 교체합니다.\n장비 수량·획득·상점 시스템은 아직 연결되지 않았습니다.",14,88,17);
+        }
+        void ShowEquipment(CharacterData character,EquipmentLoadout draft=null,string notice=null)
+        {
+            if(battle.Session!=null)return;
+            var progress=battle.Campaign.Get(character.Id);
+            if(draft==null)draft=new EquipmentLoadout(character,progress,battle.Catalog.Equipment);
+            var current=draft;
+            Clear(header);Clear(left);Clear(commands);Clear(footer);
+            Label(header,"TALES / TACTICS     ·     장비 교체",12,45,25);
+            int level=battle.TrainingMode?25:Mathf.Clamp(progress.Level,1,50);bool promoted=!battle.TrainingMode&&progress.Promoted;
+            var before=new EquipmentLoadout(character,progress,battle.Catalog.Equipment).Preview(level,promoted);
+            var after=current.Preview(level,promoted);
+            Label(left,character.DisplayName,12,70,23);
+            Label(left,$"Lv{level} · {character.Weapon}\n현재 → 변경 후\n\nHP {before.HP} → {after.HP}\nMP {before.MP} → {after.MP}\nSTR {before.STR} → {after.STR}\nMAG {before.MAG} → {after.MAG}\nDEF {before.DEF} → {after.DEF}\nMDF {before.MDF} → {after.MDF}\nSPD {before.SPD} → {after.SPD}\nMOV {before.MOV} → {after.MOV}\nJMP {before.JMP} → {after.JMP}",90,355,18);
+            Label(commands,"슬롯을 눌러 장비 변경",12,65,19);
+            foreach(EquipmentSlot slot in Enum.GetValues(typeof(EquipmentSlot)))
+            {
+                var selected=slot;string title=slot==EquipmentSlot.Weapon?"무기":slot==EquipmentSlot.Armor?"방어구":"장신구";
+                var item=current.Get(slot);bool available=current.Options(slot).Length>0;
+                Button(commands,title+": "+(item!=null?item.DisplayName:"없음"),90+(int)slot*65,()=>{current.Cycle(selected);ShowEquipment(character,current);},available,48);
+            }
+            Label(commands,"등록된 호환 장비와 해제를\n차례로 선택합니다.",290,85,17);
+            Button(commands,"적용 · 저장",390,()=>
+            {
+                bool saved=current.TrySave(battle.Campaign,CampaignStorage.Save);
+                ShowEquipment(character,current,saved?"장비를 저장했습니다. 다음 전투에 적용됩니다.":"저장 실패. 기존 장비는 유지했습니다. 다시 시도하세요.");
+            });
+            Button(commands,"돌아가기 (미적용 취소)",443,ShowEquipmentRoster);
+            Label(footer,notice??"능력치는 미리보기입니다. 적용 · 저장을 눌러 확정하세요.\n훈련 전투에도 저장된 장비가 적용됩니다.",14,88,17);
         }
         public void Refresh()
         {

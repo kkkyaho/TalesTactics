@@ -4,12 +4,12 @@
     "type": "PlayerBuildInfo",
     "version": 2,
     "phase": "Immediate",
-    "time": 1790035757860,
+    "time": 1790044153933,
     "processId": 168336,
     "steps": [
       {
         "description": "Call PrepareForBuild callbacks",
-        "duration": 2
+        "duration": 1
       },
       {
         "description": "Call internal build started callbacks",
@@ -17,7 +17,7 @@
       },
       {
         "description": "Preprocess Player",
-        "duration": 254
+        "duration": 278
       },
       {
         "description": "Save scenes before build",
@@ -29,15 +29,15 @@
       },
       {
         "description": "ProducePlayerScriptAssemblies",
-        "duration": 4342
+        "duration": 5345
       },
       {
         "description": "Verify Build setup",
-        "duration": 237
+        "duration": 222
       },
       {
         "description": "Prepare assets for target platform",
-        "duration": 3
+        "duration": 2
       },
       {
         "description": "Prepare splash screen",
@@ -45,24 +45,24 @@
       },
       {
         "description": "Run script only build",
-        "duration": 51
+        "duration": 38
       },
       {
         "description": "Build scripts DLLs",
-        "duration": 50
+        "duration": 25
       },
       {
         "description": "Postprocess built player",
-        "duration": 4762
+        "duration": 4705
       },
       {
         "description": "Call Post-Process callbacks",
-        "duration": 169
+        "duration": 209
       }
     ],
-    "duration": 9878
+    "duration": 10833
   },
   "exe": "Builds/Windows/TalesTactics.exe",
   "sha256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
-  "runtimeAssemblySha256": "4BF310E2836B9071101962A809C4F0E56E25ABFC617245BEDB86DEE410483F09"
+  "runtimeAssemblySha256": "E78C55DDF6DFE16AEDDDF1E27D3589205AEAFA8FF64795C590824642EB696943"
 }

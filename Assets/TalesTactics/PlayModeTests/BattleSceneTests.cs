@@ -107,6 +107,25 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.State,Is.InstanceOf<TargetSelectionState>());Assert.That(director.SelectedSkill,Is.SameAs(skill));
             Assert.That(unit.CurrentMP,Is.EqualTo(mp));Assert.That(unit.Acted,Is.False);
         }
+        [UnityTest] public IEnumerator EquipmentDraftCancelAndTrainingBattleUseSavedLoadout()
+        {
+            director.Campaign=new CampaignSave(); // Isolate this test from the user's saved campaign.
+            var character=director.Catalog.Characters.First(c=>c.Weapon==WeaponType.Sword);
+            var sword=director.Catalog.Equipment.First(e=>e.Slot==EquipmentSlot.Weapon&&e.Weapon==character.Weapon);
+            Click("장비 관리");yield return null;Click(character.DisplayName);yield return null;
+            Click("무기: 없음");yield return null;
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: "+sword.DisplayName),Is.True);
+            Assert.That(director.Campaign.Get(character.Id).Equipment[0],Is.Null);
+            Click("돌아가기 (미적용 취소)");yield return null;Click(character.DisplayName);yield return null;
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: 없음"),Is.True);
+            Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
+            director.Campaign.Get(character.Id).Equipment[0]=sword.Id;
+            director.Deployment.Clear();director.Deployment.Add(System.Array.IndexOf(director.Catalog.Characters,character));
+            Click("전투 시작");yield return null;
+            var unit=director.Session.Units.Single(u=>u.Team==Team.Player);
+            Assert.That(unit.Equipment[0],Is.SameAs(sword));Assert.That(unit.Stats.STR,Is.EqualTo(character.StatsAt(25).STR+sword.Bonus.STR));
+            Assert.That(unit.CurrentHP,Is.EqualTo(unit.Stats.HP));
+        }
         [UnityTest] public IEnumerator TargetPreviewExecutesAndTurnEnds()
         {
             Click("전투 시작");yield return null;
