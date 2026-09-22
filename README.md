@@ -4,7 +4,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 88개·PlayMode 27개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 88개·PlayMode 36개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·기본 동작·캐릭터별 VFX를 연결했으며 최종 아트·프레임 작화·제공 BGM은 진행 중입니다. 전체 기획 완성본은 아닙니다. 범위와 한계는 Docs/ART_PRESENTATION.md를 참고하세요.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
 - 엔진 독립 규칙 테스트 88개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
@@ -35,8 +35,9 @@ Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git�
 
 ## 확장 지점
 
-- CharacterData: 초상화, Front/Back/Left/Right Sprite, Animator, 능력치/성장, 스킬, 승급, 테마.
+- CharacterData: 초상화, Front/Back/Left/Right Sprite, Poses(공격/시전/방어/피격 × 4방향), Animator, 능력치/성장, 스킬, 승급, 테마.
 - Animator를 연결할 경우 Int 파라미터 `Facing`, `Action`을 Definitions.cs enum 값에 맞춥니다.
+- CharacterData.VisualStyle은 캐릭터 효과 유형, SkillData.VisualStyle은 기술별 재정의입니다. Automatic은 캐릭터/무기 기본값을 사용합니다.
 - SkillData: MP/HP/게이지, 사거리, 범위, 속성, 대상, 복수 효과, 해금 레벨, 연계 조건.
 - AudioLibrary: battle/victory/boss/story 및 10명 테마 ID. 실제 음원은 제공된 파일을 연결합니다.
 - 저장: Unity persistentDataPath 아래 campaign.json, 교체 시 .bak 보관. 훈련 모드에서는 경험치를 저장하지 않습니다.

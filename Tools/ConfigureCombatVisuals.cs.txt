@@ -1,0 +1,17 @@
+// Explicit, non-destructive default migration. Never resets combat stats or supplied styles.
+var styles=new System.Collections.Generic.Dictionary<string,TalesTactics.CombatVisualStyle>
+{
+    {"cless",TalesTactics.CombatVisualStyle.Sword},{"mint",TalesTactics.CombatVisualStyle.Sacred},
+    {"velvet",TalesTactics.CombatVisualStyle.Claw},{"farah",TalesTactics.CombatVisualStyle.Martial},
+    {"tear",TalesTactics.CombatVisualStyle.Song},{"jade",TalesTactics.CombatVisualStyle.Spear},
+    {"natalia",TalesTactics.CombatVisualStyle.Bow},{"alphen",TalesTactics.CombatVisualStyle.FlameSword},
+    {"shionne",TalesTactics.CombatVisualStyle.Rifle},{"kisara",TalesTactics.CombatVisualStyle.Shield}
+};
+int count=0;
+foreach(var guid in UnityEditor.AssetDatabase.FindAssets("t:CharacterData"))
+{
+    var data=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.CharacterData>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
+    if(data.VisualStyle!=TalesTactics.CombatVisualStyle.Automatic||!styles.TryGetValue(data.Id,out var style))continue;
+    data.VisualStyle=style;UnityEditor.EditorUtility.SetDirty(data);count++;
+}
+UnityEditor.AssetDatabase.SaveAssets();return count+" default character visual styles assigned";

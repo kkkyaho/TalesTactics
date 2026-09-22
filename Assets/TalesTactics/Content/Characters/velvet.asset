@@ -18,12 +18,33 @@ MonoBehaviour:
   SourceTitle: Tales of Berseria
   PassiveSkill: Consume Claw combo
   AudioTheme: velvet.theme
-  Portrait: {fileID: 0}
+  Portrait: {fileID: 153137845, guid: 58c6e47474dd9d7488eac5dc2590c775, type: 3}
   Sprites:
-    Front: {fileID: 0}
-    Back: {fileID: 0}
-    Left: {fileID: 0}
-    Right: {fileID: 0}
+    Front: {fileID: 153137845, guid: 58c6e47474dd9d7488eac5dc2590c775, type: 3}
+    Back: {fileID: -2133332964, guid: 58c6e47474dd9d7488eac5dc2590c775, type: 3}
+    Left: {fileID: 11352982, guid: 58c6e47474dd9d7488eac5dc2590c775, type: 3}
+    Right: {fileID: 1752349657, guid: 58c6e47474dd9d7488eac5dc2590c775, type: 3}
+  Poses:
+    Attack:
+      Front: {fileID: 1884118117, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Back: {fileID: -1226964146, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Left: {fileID: -1014897710, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Right: {fileID: -1374011392, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+    Cast:
+      Front: {fileID: -1164134547, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Back: {fileID: -192347507, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Left: {fileID: -1328864040, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Right: {fileID: -1467144011, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+    Guard:
+      Front: {fileID: 1158109930, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Back: {fileID: -382704358, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Left: {fileID: -656583069, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Right: {fileID: -1533576670, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+    Damage:
+      Front: {fileID: 517299018, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Back: {fileID: 1929591302, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Left: {fileID: 1553216500, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
+      Right: {fileID: 369920821, guid: 7db53a0d7ea43f046b41a550bdf7f017, type: 3}
   Animator: {fileID: 0}
   Affinities:
   - Element: 6
@@ -31,6 +52,7 @@ MonoBehaviour:
   - Element: 5
     Multiplier: 1.25
   Weapon: 2
+  VisualStyle: 3
   BaseStats:
     HP: 190
     MP: 85

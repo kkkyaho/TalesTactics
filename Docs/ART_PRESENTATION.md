@@ -1,0 +1,93 @@
+# 5번 아트·연출 진행 기록
+
+## 현재 구현
+
+- 10명 × 앞/뒤/좌/우 총 40개 스프라이트. CharacterData 참조로 연결하며 파일명을 런타임 코드에 넣지 않는다.
+- 원본 시트는 imagegen 생성 결과이며 공식 원화 파일 자체를 배포 에셋으로 복사하지 않았다.
+- 카메라 회전을 고려한 방향 표시와 이동 경로별 바라보기.
+- Idle/Walk/Attack/Skill/Cast/Guard/Damage/Dead/Ultimate 9개 상태의 **Transform 기반 기본 동작**. 별도 Animator가 지정되면 기존 Animator를 우선한다.
+- 공격 준비 → 판정 → 타격 효과 순서, 속성색 궤적·충격 고리, 실제 HP 변화 숫자, 피격/KO 표현.
+- 파라 타이밍 진행 고리와 성공 구간 색. 기존 입력 판정과 자동 타이밍 규칙을 유지한다.
+- 공격/타격/회복/시전의 자체 합성 효과음 4개. 음악과 별도 AudioSource를 사용하고 재시작 시 정지한다.
+- 임시 효과는 수명 종료 시 제거하며 Restart에서 코루틴과 전장 하위 효과를 함께 정리한다.
+
+## 완료로 간주하지 않는 부분
+
+- 생성 시트의 윤곽 잔여 픽셀, 장비의 방향별 일관성, 일부 가장자리 여백을 다듬는 최종 아트 검수.
+- 공격/시전/방어/피격은 아래 후속 단계에서 개별 포즈를 연결했다. 걷기·쓰러짐 등의 연속 프레임, 기술·궁극기 전용 포즈는 남아 있다. **4방향 × 9상태의 전체 프레임 작화 완료를 뜻하지 않는다.**
+- 10명별 기본 VFX 유형은 아래 후속 단계에서 구현했다. 89개 기술 각각의 독립적인 원작 연출 재현은 남아 있다.
+- 제공 BGM/음원 파일이 프로젝트에 없어 실제 음악 연결은 대기 중이다. 원작 음원을 내려받지 않았다.
+
+따라서 5번 전체는 진행 중이다. 사용자 요청으로 검증된 중간 구현을 커밋·푸시하며, 위 미완료 범위를 전체 완료로 표현하지 않는다.
+
+## 후속 단계 — 4방향 행동 포즈
+
+- 10명 × 4방향 × Attack/Cast/Guard/Damage = 160개 포즈를 CharacterData.Poses에 연결했다. 기존 방향 그림 40개와 별도다.
+- 공격은 준비 자세 → 공격 포즈(0.08–0.34초) → 기본 자세로 복귀한다. 피격 포즈는 0.28초 뒤 복귀하고 방어·시전은 상태가 유지되는 동안 표시한다.
+- Skill은 Attack, Ultimate는 Cast 포즈를 재사용한다. 기술·궁극기마다 새로 그린 독립 포즈가 아니다. Idle/Walk/Dead는 기존 방향 그림과 Transform 연출을 유지한다.
+- 카메라 기준 방향 선택, 기존 Animator 우선, 누락된 포즈의 기본 방향 그림 대체를 유지한다. 별도 웅크린 방어 그림에 기존 세로 축소를 중복 적용하지 않는다.
+- 시트 행/열 간격이 불규칙해 Tools/character-pose-layout.csv에 각 그림의 실제 알파 윤곽 경계와 발 중심 pivot을 기록했다. Tools/character-pose-outlines.csv의 개별 렌더링 윤곽으로 이웃 그림의 조각을 제외한다. Tools/ImportCharacterPoses.cs.txt를 Editor eval로 실행해 2D Sprite API로 분할한다. 원본 이미지 픽셀은 변경하지 않는다.
+- Tools/MeasureCharacterPoses.py는 Pillow/NumPy로 원본 알파를 읽어 분할/윤곽 CSV를 작성하는 분석 도구다. 그림을 다시 그리거나 원본 PNG를 저장하지 않는다. 분리된 큰 무기/새 레이아웃을 갖는 교체 시트는 자동 결과를 그대로 신뢰하지 말고 다시 검수한다.
+- 임포트는 Poses 참조만 교체하며 능력치/장비/스킬/Animator/기존 방향 아트를 보존한다. 사용자 포즈 교체 후 자동 재실행하지 않는다. 원본 시트를 교체하면 분할 좌표도 다시 검수해야 한다.
+- 생성 원화의 윤곽 잡색, 장비 방향 일관성, 자세 사이 체형/크기 차이는 최종 아트 보정 대상이다. 연속 프레임 애니메이션 완성을 뜻하지 않는다.
+- poses-front/back/right/left-preview.png는 Game View에서 160개 포즈를 검수한 임시 갤러리다. 행 순서는 공격/시전/방어/피격. 기존 장면에 저장하지 않으며 Play Mode 종료로 폐기한다.
+- 최종 실제 Unity EditMode 88/88·PlayMode 36/36 통과: unity-poses-editmode-results.json, unity-poses-playmode-results.json. 새 PlayMode 검사는 10명×4방향 포즈 선택, 공격 복귀, 방어 유지, 누락 포즈 대체를 포함한다. 도중 테스트 도구 문제와 복구 과정은 VALIDATION.md 참조.
+- 최종 Windows 개발/일반 빌드 성공: unity-poses-development-build.json, unity-poses-windows-build.json. 실제 플레이어 캠페인 회귀 통과 및 사용자 저장 불변: PlayerReviews/ba00f74860894b488a721abb8692741e-summary.json.
+
+## 공식 외형 자료
+
+| 캐릭터 | 확인한 공식 자료 |
+|---|---|
+| 크레스·민트 | https://tales-ch.jp/titles/top/ |
+| 벨벳 | https://tales-ch.jp/titles/tob/ |
+| 파라 | https://to-readinglive.tales-ch.jp/eternia/index.html |
+| 티아·제이드·나탈리아 | https://tales-ch.jp/titles/toa/ |
+| 나탈리아 보조 자료 | https://www.bandainamcoent.co.jp/cs/list/talesoffandom2/character/natalia.php |
+| 알펜·시온·키사라 | https://tales-ch.jp/titles/toarise/ |
+
+확인한 페이지 일부는 상반신 자료이므로 하반신/후면 세부의 정확성을 모두 증명하지는 않는다. 파라의 녹색 단발·주황 의상·붉은 어깨 망토, 나탈리아의 금발 단발·갈색 머리띠·청록/백색 의상·노란 목장식을 우선 반영했다.
+
+## 재실행 및 교체
+
+Unity Editor가 열려 있고 Play Mode가 아닐 때 Tools/ImportCharacterArt.cs.txt 내용을 CLI eval로 실행한다. 2D Sprite 패키지의 편집 capability를 먼저 확인하며 실패 시 중단한다. 기존 Sprite GUID를 보존한다. 이 명령은 지정한 10명 아트 참조를 교체하므로 사용자 아트 교체 후 무조건 재실행하지 않는다. DemoContent.Create는 실행하지 않는다.
+
+Tools/CreatePresentationAudio.cs.txt는 존재하는 WAV와 AudioEntry.Clip을 덮어쓰지 않는다. 제공 음악은 Content/AudioLibrary의 battle/story/victory 항목에 AudioClip을 지정한다. 파일 출처는 SourceMetadata에 기록한다. 런타임은 누락된 음악을 무음으로 처리한다.
+
+## 검증 증거
+
+- unity-art-editmode-results.json: 실제 Unity EditMode 88/88.
+- unity-art-playmode-results.json: 실제 Unity PlayMode 30/30. 아트·동작·방향, 임시 효과 수명/재시작, 효과음 소스 분리 검사 포함.
+- unity-art-hpbar-playmode-results.json: HP 바 위치 수정 후 방향·카메라 회전·머리 위 표시 1개 재검사 통과.
+- unity-art-development-build.json / unity-art-windows-build.json: Windows 개발·일반 빌드 성공. PlayerReviews/6615117d84a24aeb88ba48e0e01c2188-summary.json: 실제 실행 파일 캠페인 회귀 통과, 사용자 저장 불변.
+- ManagedChecks 88/88은 엔진 독립 규칙 검사이며 Unity 테스트와 별개다.
+- art-battle-preview.png: Unity Game View의 6인 배치 화면. 최종 아트·프레임 애니메이션 또는 Windows 수동 완주 검수 완료를 뜻하지 않는다.
+
+## 후속 단계 — 캐릭터별 VFX와 대상별 피드백
+
+CharacterData.VisualStyle에 캐릭터 기본값, SkillData.VisualStyle에 기술별 선택적 재정의를 둔다. Automatic은 캐릭터 기본값 또는 무기 유형을 사용한다. 원작 연출의 완전한 복제를 뜻하지 않는 프로젝트용 절차적 효과다.
+
+| 캐릭터 | 기본 표현 |
+|---|---|
+| 크레스 | 교차 검격 호 |
+| 민트 | 성광 고리·십자 |
+| 벨벳 | 3줄 클로 궤적 |
+| 파라 | 이중 충격파·방사선 |
+| 티아 | 3중 음파 |
+| 제이드 | 긴 창 찌르기 |
+| 나탈리아 | 이동하는 화살 궤적 |
+| 알펜 | 검격과 불꽃 기둥 |
+| 시온 | 총탄 궤적·교차 섬광 |
+| 키사라 | 이중 육각 방패 |
+
+- 궁극기는 유형별 기본 도형에 회전 문양 두 개를 더한다. 색상은 기술 속성을 따른다.
+- 회복은 녹색 상승 십자, 부활은 금색 기둥, HP 변화 없는 보조 기술은 보호 문양을 사용한다.
+- 판정 전에 대상 목록을 보관하므로 KO/밀치기/부활 후에도 실제 대상마다 효과가 표시된다. HP 숫자는 실제 변화만 표시한다.
+- 시전자 HP 비용은 `HP -수치`로 분리하며 피격 동작을 재생하지 않는다. 흡혈 회복이 시전자의 공격 동작을 덮어쓰지 않는다.
+- 같은 공격·기술·피격 상태의 연속 호출은 동작 시간을 새로 시작한다. 타이밍 진행 갱신은 매 프레임 동작을 초기화하지 않는다.
+- CombatEffect는 0.6초 뒤 소멸하며 Restart에서 전장과 함께 제거된다. 재질은 공유한다.
+- Tools/ConfigureCombatVisuals.cs.txt는 Automatic인 기존 캐릭터만 갱신한다. 수동 지정값·전투 수치·스킬은 보존한다.
+- 화면 검수에서 기존 URP Unlit 하이라이트 재질이 정점 색/알파를 무시하는 것을 확인했다. VFX와 타이밍 고리는 이미 연결된 Sprites/Default 재질을 공유해 색·페이드를 표시한다.
+- unity-vfx-editmode-results.json: 실제 EditMode 88/88. unity-vfx-playmode-results.json: 실제 PlayMode 34/34. 별도 ManagedChecks 88/88.
+- vfx-gallery-preview.png: 10가지 기본 기하 표현의 Game View 검수. Tools/ReviewCombatEffects.cs.txt로 만든 임시 정지 갤러리이며 실제 전투 UI에 표시되는 메뉴가 아니다. 검수 후 시간 배율을 1로 복구하고 Play Mode를 종료했다.
+- 최종 Windows 개발/일반 빌드 성공: unity-vfx-development-build.json, unity-vfx-windows-build.json. 첫 개발 빌드의 Pipeline 분석 단계 실패와 재시도 기록은 VALIDATION.md를 따른다.
+- 실제 플레이어 캠페인 회귀 통과: PlayerReviews/100d320ccf4d488c86833f7892d5a47d-summary.json. 기존 사용자 저장/백업 불변.

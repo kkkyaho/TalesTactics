@@ -1,0 +1,45 @@
+// Original synthesized effects only; never replaces supplied clips or downloads music.
+var folder="Assets/TalesTactics/Audio/Generated";
+System.IO.Directory.CreateDirectory(folder);
+var ids=new[]{"swing","hit","heal","cast"};
+for(int kind=0;kind<ids.Length;kind++)
+{
+    string path=folder+"/"+ids[kind]+".wav";
+    if(System.IO.File.Exists(path))continue;
+    const int rate=22050;
+    int samples=(int)(rate*(kind==0?0.16:kind==1?0.2:0.42));
+    var random=new System.Random(31415+kind);
+    using(var stream=System.IO.File.Create(path))
+    using(var writer=new System.IO.BinaryWriter(stream))
+    {
+        writer.Write(System.Text.Encoding.ASCII.GetBytes("RIFF"));writer.Write(36+samples*2);
+        writer.Write(System.Text.Encoding.ASCII.GetBytes("WAVEfmt "));writer.Write(16);
+        writer.Write((short)1);writer.Write((short)1);writer.Write(rate);writer.Write(rate*2);writer.Write((short)2);writer.Write((short)16);
+        writer.Write(System.Text.Encoding.ASCII.GetBytes("data"));writer.Write(samples*2);
+        for(int i=0;i<samples;i++)
+        {
+            double t=(double)i/rate,p=(double)i/samples;
+            double envelope=System.Math.Min(1,p*40)*System.Math.Pow(1-p,2);
+            double noise=random.NextDouble()*2-1;
+            double wave=kind==0?noise*0.35:kind==1?noise*0.22+System.Math.Sin(2*System.Math.PI*(130*t-70*t*t))*0.6:
+                (System.Math.Sin(2*System.Math.PI*(kind==2?660:440)*t)+0.5*System.Math.Sin(2*System.Math.PI*(kind==2?990:660)*t))*0.3;
+            writer.Write((short)(wave*envelope*16000));
+        }
+    }
+}
+UnityEditor.AssetDatabase.Refresh();
+var library=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.AudioLibrary>("Assets/TalesTactics/Content/AudioLibrary.asset");
+var entries=new System.Collections.Generic.List<TalesTactics.AudioEntry>(library.Entries);
+foreach(var id in ids)
+{
+    var path=folder+"/"+id+".wav";
+    var importer=(UnityEditor.AudioImporter)UnityEditor.AssetImporter.GetAtPath(path);
+    var settings=importer.defaultSampleSettings;settings.loadType=UnityEngine.AudioClipLoadType.DecompressOnLoad;
+    settings.compressionFormat=UnityEngine.AudioCompressionFormat.PCM;importer.defaultSampleSettings=settings;
+    importer.forceToMono=true;importer.SaveAndReimport();
+    var entry=entries.Find(x=>x.Id==id);
+    if(entry==null){entry=new TalesTactics.AudioEntry{Id=id,Usage="전투 효과음"};entries.Add(entry);}
+    if(entry.Clip==null){entry.Clip=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.AudioClip>(path);entry.SourceMetadata="Original procedural synthesis; Tools/CreatePresentationAudio.cs.txt";}
+}
+library.Entries=entries.ToArray();UnityEditor.EditorUtility.SetDirty(library);UnityEditor.AssetDatabase.SaveAssets();
+return "Four original effects connected; supplied BGM unchanged";

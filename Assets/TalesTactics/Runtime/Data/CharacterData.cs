@@ -7,9 +7,11 @@ namespace TalesTactics
         public string Id, DisplayName, Job, SourceTitle, PassiveSkill, AudioTheme;
         public Sprite Portrait;
         public DirectionalSprites Sprites = new DirectionalSprites();
+        public CharacterPoses Poses = new CharacterPoses();
         public RuntimeAnimatorController Animator;
         public ElementAffinity[] Affinities=new ElementAffinity[0];
         public WeaponType Weapon;
+        public CombatVisualStyle VisualStyle;
         public Stats BaseStats, GrowthStats, PromotionBonus;
         public int PromotionLevel=20;
         public string PromotionStoryFlag="chapter2", PromotionJob;

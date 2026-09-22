@@ -82,7 +82,7 @@ namespace TalesTactics
             }
             Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
+        public void Restart(){CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved)SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted)SelectSkill(Session.Active.Data.BasicAttack);}
         public void SkillCommand(){if(IsPlayerCommand)SetState(new ActionSelectionState(this));}
@@ -122,11 +122,16 @@ namespace TalesTactics
                     if(Campaign.AutoTiming&&!timingAttempted&&TimingProgress>=Catalog.Rules.TimingWindowStart)TimingInput();
                     Hud.UpdateTiming();yield return null;
                 }
-                TimingActive=false;if(TimingSuccess){s=u.Data.UltimateSkill;followup=true;}
+                TimingActive=false;Board.ClearTiming();if(TimingSuccess){s=u.Data.UltimateSkill;followup=true;}
             }
             var old=u.Facing;if(p!=u.Position)u.Facing=SkillResolver.Toward(u.Position,p);
-            if(!Session.Resolver.Execute(u,s,p,out var message,followup))u.Facing=old;
-            Message=message;Board.SetAnimation(u,s.Animation);yield return new WaitForSeconds(Catalog.Rules.ActionSeconds);
+            Board.SetAnimation(u,s.Animation);Audio.PlayEffect("swing");
+            yield return new WaitForSeconds(Catalog.Rules.ActionSeconds*0.35f);
+            var before=Board.CaptureHealth();
+            var recipients=Session.Resolver.Targets(u,s,p).ToArray();
+            bool executed=Session.Resolver.Execute(u,s,p,out var message,followup);
+            if(!executed)u.Facing=old;else Board.PresentImpact(u,s,p,before,recipients);
+            Message=message;yield return new WaitForSeconds(Catalog.Rules.ActionSeconds*0.65f);
             RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
         }
         public void TimingInput(){if(!TimingActive||timingAttempted)return;timingAttempted=true;TimingSuccess=TimingProgress>=Catalog.Rules.TimingWindowStart&&TimingProgress<=Catalog.Rules.TimingWindowEnd;}
@@ -136,7 +141,15 @@ namespace TalesTactics
             SetState(new ActionExecutionState(this));yield return new WaitForSeconds(0.4f);
             var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);
             if(plan.Destination!=u.Position){var path=Session.Grid.Path(u,plan.Destination);if(Session.Move(plan.Destination))yield return Board.AnimateMove(u,path);}
-            if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null)){var aim=plan.Aim??plan.Target.Position;if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);Session.Resolver.Execute(u,plan.Skill,aim,out var text);Message=text;Board.SetAnimation(u,plan.Skill.Animation);yield return new WaitForSeconds(0.3f);}
+            if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null))
+            {
+                var aim=plan.Aim??plan.Target.Position;
+                if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);
+                Board.SetAnimation(u,plan.Skill.Animation);Audio.PlayEffect("swing");yield return new WaitForSeconds(0.12f);
+                var before=Board.CaptureHealth();var recipients=Session.Resolver.Targets(u,plan.Skill,aim).ToArray();
+                if(Session.Resolver.Execute(u,plan.Skill,aim,out var text))Board.PresentImpact(u,plan.Skill,aim,before,recipients);
+                Message=text;yield return new WaitForSeconds(0.18f);
+            }
             else if(plan.Guard&&!u.Acted){u.Acted=true;u.AddStatus(StatusKind.Guard,2);Message=u.Data.DisplayName+" : 가드";}
             RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new TurnEndState(this):new BattleEndState(this));
         }

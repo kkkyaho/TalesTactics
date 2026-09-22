@@ -18,12 +18,33 @@ MonoBehaviour:
   SourceTitle: Tales of Arise
   PassiveSkill: Flaming Edge
   AudioTheme: alphen.theme
-  Portrait: {fileID: 0}
+  Portrait: {fileID: -1648903676, guid: 4724ca7e0ec7b814daadffb650b423a8, type: 3}
   Sprites:
-    Front: {fileID: 0}
-    Back: {fileID: 0}
-    Left: {fileID: 0}
-    Right: {fileID: 0}
+    Front: {fileID: -1648903676, guid: 4724ca7e0ec7b814daadffb650b423a8, type: 3}
+    Back: {fileID: 170606510, guid: 4724ca7e0ec7b814daadffb650b423a8, type: 3}
+    Left: {fileID: 472329403, guid: 4724ca7e0ec7b814daadffb650b423a8, type: 3}
+    Right: {fileID: -491657857, guid: 4724ca7e0ec7b814daadffb650b423a8, type: 3}
+  Poses:
+    Attack:
+      Front: {fileID: -153107917, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Back: {fileID: -2072547140, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Left: {fileID: -336926251, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Right: {fileID: 819783056, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+    Cast:
+      Front: {fileID: -942421580, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Back: {fileID: -1644234140, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Left: {fileID: -524219361, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Right: {fileID: -470106885, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+    Guard:
+      Front: {fileID: -209841725, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Back: {fileID: 1701471037, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Left: {fileID: -1763600636, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Right: {fileID: 1192602016, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+    Damage:
+      Front: {fileID: -68287406, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Back: {fileID: -780499582, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Left: {fileID: 1832932681, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
+      Right: {fileID: -781276088, guid: 680da0f6529ebde49b64bdf20659c1ee, type: 3}
   Animator: {fileID: 0}
   Affinities:
   - Element: 1
@@ -31,6 +52,7 @@ MonoBehaviour:
   - Element: 2
     Multiplier: 1.25
   Weapon: 0
+  VisualStyle: 8
   BaseStats:
     HP: 190
     MP: 85

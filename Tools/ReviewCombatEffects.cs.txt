@@ -1,0 +1,23 @@
+// Temporary Play Mode gallery for visual review; stop Play Mode to discard.
+// Does not change content assets or save campaign data.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();
+if(battle==null||battle.Session==null)throw new System.Exception("Start an isolated training battle first");
+var camera=battle.Board.BattleCamera;
+var root=new UnityEngine.GameObject("Temporary VFX Gallery");
+root.transform.SetParent(battle.Board.transform,false);
+UnityEngine.Time.timeScale=0;
+for(int i=0;i<battle.Catalog.Characters.Length;i++)
+{
+    var character=battle.Catalog.Characters[i];
+    var center=camera.ViewportToWorldPoint(new UnityEngine.Vector3(0.1f+(i%5)*0.2f,0.7f-(i/5)*0.4f,3));
+    var g=new UnityEngine.GameObject(character.Id);g.transform.SetParent(root.transform,false);
+    var effect=g.AddComponent<TalesTactics.CombatEffect>();
+    effect.Initialize(battle.Board.SpriteMaterial,camera,character.VisualStyle,TalesTactics.CombatFeedback.Strike,
+        battle.Session.Active,center-camera.transform.right*0.7f,center,UnityEngine.Color.cyan,false);
+    typeof(TalesTactics.CombatEffect).GetField("age",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).SetValue(effect,0.23f);
+    var label=new UnityEngine.GameObject("Style label");label.transform.SetParent(root.transform,false);
+    var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=character.DisplayName+"\n"+character.VisualStyle;
+    text.fontSize=2.1f;text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(2,0.65f);
+    label.transform.position=center-camera.transform.up*0.8f;label.transform.rotation=camera.transform.rotation;
+}
+return "Temporary gallery ready; restore timeScale=1 and stop Play Mode after capture";

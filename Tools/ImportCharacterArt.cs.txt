@@ -1,0 +1,67 @@
+// Run as a statement block through Unity CLI eval, with the Editor outside Play mode.
+// Preserves existing sprite IDs and unrelated CharacterData fields. Does not run DemoContent.
+UnityEditor.AssetDatabase.Refresh();
+var ids = new[] {"cless","mint","velvet","farah","tear","jade","natalia","alphen","shionne","kisara"};
+foreach (var id in ids)
+{
+    var path = "Assets/TalesTactics/Art/Characters/" + id + "-turnaround.png";
+    var importer = UnityEditor.AssetImporter.GetAtPath(path) as UnityEditor.TextureImporter;
+    if (importer == null) throw new System.Exception("Missing sheet: " + path);
+    importer.textureType = UnityEditor.TextureImporterType.Sprite;
+    importer.spriteImportMode = UnityEditor.SpriteImportMode.Multiple;
+    importer.alphaIsTransparency = true;
+    importer.mipmapEnabled = false;
+    importer.filterMode = UnityEngine.FilterMode.Bilinear;
+    importer.textureCompression = UnityEditor.TextureImporterCompression.Uncompressed;
+    importer.maxTextureSize = 4096;
+    importer.GetSourceTextureWidthAndHeight(out int width, out int height);
+    importer.spritePixelsPerUnit = height / 1.35f;
+    importer.SaveAndReimport();
+    var factories = new UnityEditor.U2D.Sprites.SpriteDataProviderFactories();
+    factories.Init();
+    var provider = factories.GetSpriteEditorDataProviderFromObject(importer);
+    if (provider == null) throw new System.Exception("No sprite provider: " + id);
+    provider.InitSpriteEditorDataProvider();
+    var capability = provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteFrameEditCapability>();
+    if (capability == null || !capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.CreateAndDeleteSprite)
+        || !capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditSpriteRect)
+        || !capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditPivot))
+        throw new System.Exception("Sprite editing not supported: " + id);
+    var previous = provider.GetSpriteRects();
+    var names = new[] {"Front","Back","Right","Left"};
+    var rects = new UnityEditor.SpriteRect[4];
+    var pairs = new System.Collections.Generic.List<UnityEditor.SpriteNameFileIdPair>();
+    for (int column = 0; column < 4; column++)
+    {
+        var name = id + "_" + names[column];
+        var existing = System.Array.Find(previous, x => x.name == name);
+        var guid = existing != null ? existing.spriteID : UnityEngine.GUID.Generate();
+        rects[column] = new UnityEditor.SpriteRect {name=name, spriteID=guid,
+            rect=new UnityEngine.Rect(column * width / 4f, 0, width / 4f, height),
+            alignment=UnityEngine.SpriteAlignment.Custom, pivot=new UnityEngine.Vector2(0.5f,0.03f)};
+        pairs.Add(new UnityEditor.SpriteNameFileIdPair(name,guid));
+    }
+    var nameProvider=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteNameFileIdDataProvider>();
+    if(nameProvider==null)throw new System.Exception("Missing stable sprite ID provider");
+    nameProvider.SetNameFileIdPairs(pairs);
+    provider.SetSpriteRects(rects);provider.Apply();importer.SaveAndReimport();
+    var assets=UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
+    var directions=new TalesTactics.DirectionalSprites();
+    foreach(var asset in assets)if(asset is UnityEngine.Sprite sprite)
+    {
+        if(sprite.name==id+"_Front")directions.Front=sprite;
+        if(sprite.name==id+"_Back")directions.Back=sprite;
+        if(sprite.name==id+"_Left")directions.Left=sprite;
+        if(sprite.name==id+"_Right")directions.Right=sprite;
+    }
+    if(directions.Front==null||directions.Back==null||directions.Left==null||directions.Right==null)
+        throw new System.Exception("Incomplete sheet: "+id);
+    foreach(var guid in UnityEditor.AssetDatabase.FindAssets("t:CharacterData"))
+    {
+        var data=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.CharacterData>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
+        if(data.Id!=id)continue;
+        data.Sprites=directions;data.Portrait=directions.Front;UnityEditor.EditorUtility.SetDirty(data);
+    }
+}
+UnityEditor.AssetDatabase.SaveAssets();
+return "Imported 10 character sheets / 40 directional sprites";

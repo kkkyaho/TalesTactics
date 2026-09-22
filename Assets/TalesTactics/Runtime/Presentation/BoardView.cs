@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TalesTactics
 {
     public sealed class TileView:MonoBehaviour { public Vector2Int Coordinate; }
-    public sealed class BoardView:MonoBehaviour
+    public sealed partial class BoardView:MonoBehaviour
     {
         public Camera BattleCamera;
         public Material TileMaterial, HighlightMaterial, SpriteMaterial;
@@ -13,6 +13,7 @@ namespace TalesTactics
         readonly Dictionary<UnitRuntime,Transform> units=new Dictionary<UnitRuntime,Transform>();
         readonly Dictionary<UnitRuntime,SpriteRenderer> sprites=new Dictionary<UnitRuntime,SpriteRenderer>();
         readonly Dictionary<UnitRuntime,Animator> animators=new Dictionary<UnitRuntime,Animator>();
+        readonly Dictionary<UnitRuntime,CharacterMotion> motions=new Dictionary<UnitRuntime,CharacterMotion>();
         readonly Dictionary<UnitRuntime,Transform> bars=new Dictionary<UnitRuntime,Transform>();
         BattleDirector battle;Transform root;LineRenderer line;Sprite placeholder;
         Rect lastViewport;
@@ -36,7 +37,16 @@ namespace TalesTactics
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
         }
-        void LateUpdate(){if(root!=null)FitBattlefield();}
+        void LateUpdate()
+        {
+            if(root==null)return;
+            FitBattlefield();
+            foreach(var pair in bars)
+            {
+                pair.Value.position=units[pair.Key].position+BattleCamera.transform.up*1.43f;
+                pair.Value.rotation=BattleCamera.transform.rotation;
+            }
+        }
         void FitBattlefield(bool force=false)
         {
             var viewport=battle.Hud.BattlefieldViewport;
@@ -66,7 +76,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();bars.Clear();}
+        public void ResetBoard(){StopAllCoroutines();if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();timingRing=null;}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
@@ -87,6 +97,7 @@ namespace TalesTactics
                 var visual=new GameObject("Directional Sprite");visual.transform.SetParent(g.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
                 var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=SpriteMaterial;sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
+                else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera);motions[u]=motion;}
                 var bar=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(bar.GetComponent<Collider>());bar.name="HP";bar.transform.SetParent(g.transform,false);bar.transform.localPosition=Vector3.up*1.3f;bar.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(bar.GetComponent<Renderer>(),u==session.ObjectiveUnit?new Color(1,0.75f,0.12f):u.Team==Team.Player?Color.cyan:new Color(1,0.3f,0.25f));bars[u]=bar.transform;
                 var marker=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(marker.GetComponent<Collider>());marker.name="Facing";marker.transform.SetParent(g.transform,false);marker.transform.localScale=new Vector3(0.14f,0.04f,0.25f);marker.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(marker.GetComponent<Renderer>(),Color.white);
             }
@@ -121,6 +132,7 @@ namespace TalesTactics
         }
         public void SetAnimation(UnitRuntime u,AnimationKind kind)
         {
+            if(motions.TryGetValue(u,out var motion))motion.Set(kind);
             if(!animators.TryGetValue(u,out var animator))return;
             foreach(var parameter in animator.parameters)
             {
@@ -129,12 +141,13 @@ namespace TalesTactics
             }
         }
         public void ShowTimingSpin(UnitRuntime u,float progress)
-        {if(sprites.TryGetValue(u,out var sprite))sprite.transform.rotation=BattleCamera.transform.rotation*Quaternion.Euler(0,0,-progress*360);}
+        {bool starting=timingRing==null;ShowTimingRing(u,progress);if(starting)SetAnimation(u,AnimationKind.Skill);}
         public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path)
         {
             SetAnimation(u,AnimationKind.Walk);
             for(int i=1;i<path.Count;i++)
             {
+                if(motions.TryGetValue(u,out var motion))motion.WalkFacing(SkillResolver.Toward(path[i-1],path[i]));
                 Vector3 from=battle.Session.Grid[path[i-1]].WorldPosition(battle.Catalog.Rules.TileHeight),to=battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight);
                 for(float t=0;t<1;t+=Time.deltaTime/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
                 units[u].position=to;

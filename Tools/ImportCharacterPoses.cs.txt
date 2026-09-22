@@ -1,0 +1,80 @@
+// Standalone Unity CLI eval. Import measured rectangles without changing source pixels.
+// Only CharacterData.Poses is assigned; gameplay data, Animator and idle art are preserved.
+// If the CLI has a short main-thread timeout, run with a one-character ids array per call.
+// A timed-out response can still finish importing: inspect assets before retrying.
+UnityEditor.AssetDatabase.Refresh();
+var rows=System.IO.File.ReadAllLines("Tools/character-pose-layout.csv");
+var outlineRows=System.IO.File.ReadAllLines("Tools/character-pose-outlines.csv");
+var culture=System.Globalization.CultureInfo.InvariantCulture;
+var ids=new[]{"cless","mint","velvet","farah","tear","jade","natalia","alphen","shionne","kisara"};
+foreach(var id in ids)
+{
+    var path="Assets/TalesTactics/Art/Characters/"+id+"-poses.png";
+    var importer=UnityEditor.AssetImporter.GetAtPath(path) as UnityEditor.TextureImporter;
+    if(importer==null)throw new System.Exception("Missing sheet: "+path);
+    var factories=new UnityEditor.U2D.Sprites.SpriteDataProviderFactories();factories.Init();
+    var provider=factories.GetSpriteEditorDataProviderFromObject(importer);
+    if(provider==null)throw new System.Exception("No sprite provider: "+id);
+    provider.InitSpriteEditorDataProvider();
+    var capability=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteFrameEditCapability>();
+    if(capability==null||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.CreateAndDeleteSprite)
+        ||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditSpriteRect)
+        ||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditPivot))
+        throw new System.Exception("Sprite editing not supported: "+id);
+    importer.textureType=UnityEditor.TextureImporterType.Sprite;importer.spriteImportMode=UnityEditor.SpriteImportMode.Multiple;
+    importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.filterMode=UnityEngine.FilterMode.Bilinear;
+    importer.textureCompression=UnityEditor.TextureImporterCompression.Uncompressed;importer.maxTextureSize=4096;
+    var settings=new UnityEditor.TextureImporterSettings();importer.ReadTextureSettings(settings);
+    settings.spriteMeshType=UnityEngine.SpriteMeshType.Tight;importer.SetTextureSettings(settings);
+    importer.SaveAndReimport();
+    provider=factories.GetSpriteEditorDataProviderFromObject(importer);provider.InitSpriteEditorDataProvider();
+    var previous=provider.GetSpriteRects();
+    var outlineProvider=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteOutlineDataProvider>();
+    if(outlineProvider==null)throw new System.Exception("No render outline provider: "+id);
+    var rects=new System.Collections.Generic.List<UnityEditor.SpriteRect>();
+    var pairs=new System.Collections.Generic.List<UnityEditor.SpriteNameFileIdPair>();
+    importer.GetSourceTextureWidthAndHeight(out int width,out int height);
+    foreach(var row in rows)
+    {
+        var c=row.Split(',');if(c[0]!=id)continue;
+        if(int.Parse(c[9])!=width||int.Parse(c[10])!=height)throw new System.Exception("Sheet dimensions changed: "+id);
+        var name=id+"_"+c[1]+"_"+c[2];
+        var old=System.Array.Find(previous,x=>x.name==name);
+        var guid=old!=null?old.spriteID:UnityEngine.GUID.Generate();
+        float left=float.Parse(c[3],culture),top=float.Parse(c[4],culture),w=float.Parse(c[5],culture),h=float.Parse(c[6],culture);
+        rects.Add(new UnityEditor.SpriteRect{name=name,spriteID=guid,rect=new UnityEngine.Rect(left,height-top-h,w,h),
+            alignment=UnityEngine.SpriteAlignment.Custom,pivot=new UnityEngine.Vector2(float.Parse(c[7],culture),2f/h)});
+        pairs.Add(new UnityEditor.SpriteNameFileIdPair(name,guid));
+        importer.spritePixelsPerUnit=float.Parse(c[8],culture);
+    }
+    if(rects.Count!=16)throw new System.Exception("Expected 16 poses: "+id);
+    var names=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteNameFileIdDataProvider>();
+    if(names==null)throw new System.Exception("No stable name provider: "+id);
+    names.SetNameFileIdPairs(pairs);provider.SetSpriteRects(rects.ToArray());
+    foreach(var rect in rects)
+    {
+        var line=System.Array.Find(outlineRows,x=>x.StartsWith(rect.name+",",System.StringComparison.Ordinal));
+        if(line==null)throw new System.Exception("Missing outline: "+rect.name);
+        var points=line.Split(',');var polygon=new UnityEngine.Vector2[points.Length-1];
+        for(int i=1;i<points.Length;i++){var xy=points[i].Split(':');polygon[i-1]=new UnityEngine.Vector2(float.Parse(xy[0],culture),float.Parse(xy[1],culture));}
+        outlineProvider.SetOutlines(rect.spriteID,new System.Collections.Generic.List<UnityEngine.Vector2[]>{polygon});
+        outlineProvider.SetTessellationDetail(rect.spriteID,1);
+    }
+    provider.Apply();importer.SaveAndReimport();
+    var poses=new TalesTactics.CharacterPoses();
+    foreach(var asset in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path))if(asset is UnityEngine.Sprite sprite)
+    {
+        var parts=sprite.name.Split('_');if(parts.Length!=3)throw new System.Exception("Unexpected sprite: "+sprite.name);
+        var directions=parts[1]=="Attack"?poses.Attack:parts[1]=="Cast"?poses.Cast:parts[1]=="Guard"?poses.Guard:poses.Damage;
+        switch(parts[2]){case "Front":directions.Front=sprite;break;case "Back":directions.Back=sprite;break;case "Right":directions.Right=sprite;break;case "Left":directions.Left=sprite;break;}
+    }
+    foreach(var action in new[]{TalesTactics.AnimationKind.Attack,TalesTactics.AnimationKind.Cast,TalesTactics.AnimationKind.Guard,TalesTactics.AnimationKind.Damage})
+        foreach(TalesTactics.Facing facing in System.Enum.GetValues(typeof(TalesTactics.Facing)))
+            if(poses.Get(action,facing)==null)throw new System.Exception("Missing pose: "+id+action+facing);
+    foreach(var guid in UnityEditor.AssetDatabase.FindAssets("t:CharacterData"))
+    {
+        var data=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.CharacterData>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
+        if(data.Id!=id)continue;data.Poses=poses;UnityEditor.EditorUtility.SetDirty(data);
+    }
+}
+UnityEditor.AssetDatabase.SaveAssets();return "Imported 160 directional action poses; existing gameplay fields preserved.";

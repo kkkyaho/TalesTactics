@@ -18,12 +18,33 @@ MonoBehaviour:
   SourceTitle: Tales of Phantasia
   PassiveSkill: 
   AudioTheme: mint.theme
-  Portrait: {fileID: 0}
+  Portrait: {fileID: -1785587509, guid: e9947c78ea4de1042976c849440204f6, type: 3}
   Sprites:
-    Front: {fileID: 0}
-    Back: {fileID: 0}
-    Left: {fileID: 0}
-    Right: {fileID: 0}
+    Front: {fileID: -1785587509, guid: e9947c78ea4de1042976c849440204f6, type: 3}
+    Back: {fileID: 1086136452, guid: e9947c78ea4de1042976c849440204f6, type: 3}
+    Left: {fileID: 1826617713, guid: e9947c78ea4de1042976c849440204f6, type: 3}
+    Right: {fileID: 443968059, guid: e9947c78ea4de1042976c849440204f6, type: 3}
+  Poses:
+    Attack:
+      Front: {fileID: 1281854498, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Back: {fileID: 318567130, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Left: {fileID: 1495863983, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Right: {fileID: -1232021125, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+    Cast:
+      Front: {fileID: -1934936635, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Back: {fileID: 1958937324, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Left: {fileID: -714987538, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Right: {fileID: -857415644, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+    Guard:
+      Front: {fileID: 2233663, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Back: {fileID: -827750665, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Left: {fileID: 626085995, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Right: {fileID: 452142566, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+    Damage:
+      Front: {fileID: -381074635, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Back: {fileID: 1610030281, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Left: {fileID: -704657077, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
+      Right: {fileID: 935541302, guid: bc610fd2d4dd5224c8f3ff5d87c8b3b8, type: 3}
   Animator: {fileID: 0}
   Affinities:
   - Element: 5
@@ -31,6 +52,7 @@ MonoBehaviour:
   - Element: 6
     Multiplier: 1.25
   Weapon: 1
+  VisualStyle: 2
   BaseStats:
     HP: 135
     MP: 120

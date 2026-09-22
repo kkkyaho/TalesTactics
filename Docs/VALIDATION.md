@@ -210,3 +210,37 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 개발 빌드27.222초/오류0/경고8, 배포 빌드15.279초/오류0/경고6 성공. unity-economy-development-build.json, unity-economy-release-build.json. Builds/Windows/TalesTactics.exe 갱신.
 - Editor GameView 1920×1080에서 economy-deployment-editor.png의 보상/확률, economy-reward-editor.png의 확정·추가 장비 안내를 확인했다. 메모리 전용 임시 캠페인과 파일을 쓰지 않는 성공 콜백을 사용했다. 다른 모든 창 크기를 전수 검사하지는 않았다.
 - ECONOMY_BALANCE.md에 가격·매각·기대 가치와 조정 이유, economy-progression.csv에20회 성장 곡선을 보관했다. 경제 초기 기준선 완료이며 장기간 사람 플레이 기반 최종 튜닝은 후속이다. 미저장 보상은 출전 복귀/앱 종료 시 포기되고 전투/보상 대기 상태 복구는 제공하지 않는다.
+# 2026-09-23 — 5번 아트·연출 중간 구현
+
+5번 전체 완료가 아니다. 구현 범위와 남은 최종 아트/개별 포즈 프레임/전용 VFX/제공 음원은 [ART_PRESENTATION.md](ART_PRESENTATION.md)를 따른다.
+
+- 실제 Unity EditMode 88/88, PlayMode 30/30 통과. 증거: unity-art-editmode-results.json, unity-art-playmode-results.json.
+- ManagedChecks 88/88은 별도 엔진 독립 검사다.
+- Windows Development 빌드 성공: 오류 0, 경고 8. 일반 빌드 성공: 오류 0, 경고 6. 증거: unity-art-development-build.json, unity-art-windows-build.json. 기존 shader stripping/DEVELOPMENT_BUILD/nullable 관련 경고 포함.
+- Windows 실제 플레이어 3회 실행: 1장 27턴/16공격, 2장 27턴/17공격, 재실행·패배/재출전·보상 중복 방지 통과. 기존 사용자 저장/백업 불변. 증거: PlayerReviews/6615117d84a24aeb88ba48e0e01c2188-summary.json.
+- Unity Game View에서 6명 스프라이트 표시 확인. HP 바가 얼굴을 가리는 것을 발견해 카메라 기준 머리 위로 수정했다.
+- 위 검증은 최종 원작 외형 일치, 정교한 프레임 작화, 기술별 전용 연출, 실제 BGM 재생, 사람의 캠페인 수동 완주 또는 장시간 성능 검수를 증명하지 않는다.
+
+## 5번 후속 — 캐릭터별 VFX 및 대상별 피드백
+
+- 10명에 서로 다른 기본 VFX 유형을 연결했다. CharacterData/SkillData.VisualStyle로 기본값·재정의를 지정하며 전투 규칙/비용/위력/저장 형식은 변경하지 않았다.
+- 판정 직전 대상 목록으로 범위 공격의 KO 대상까지 개별 연출한다. HP 비용은 피격과 분리하고, 회복·부활·보조 기술은 다른 도형/색으로 표현한다. 같은 기술 연속 동작 재생과 타이밍 갱신 중 동작 리셋도 수정했다.
+- 실제 Unity EditMode 88/88, PlayMode 34/34 통과(unity-vfx-editmode-results.json, unity-vfx-playmode-results.json). 별도 엔진 독립 ManagedChecks 88/88 통과.
+- 추가 검사는 10명 유형/도형 생성과 소멸, 4명 동시 KO 후 대상 보존, 회복·부활·HP 비용과 공격 동작 유지, 연속 동작 및 타이밍 갱신을 확인한다.
+- Game View 갤러리 검수에서 효과가 흰색으로 나오는 재질 문제를 발견해 Sprite 재질로 수정했다. 수정 후 청색 정점 색·형태를 확인했다(vfx-gallery-preview.png). 임시 검수 화면은 저장하지 않았다.
+- 5번 전체는 여전히 진행 중이다. 최종 아트 보정·개별 포즈 프레임·89개 기술별 상세 연출·제공 BGM은 완료되지 않았다.
+- 첫 개발 빌드는 Bee의 Unity.Pipeline ExtractUsedFeatures 단계에서 상세 메시지 없이 실패했다(unity-vfx-development-build-initial-failure.json). 소스·설정 변경 없는 재시도가 성공했다. 최종 개발 빌드 6.700초/오류0/경고1, 일반 빌드 16.657초/오류0/경고6(unity-vfx-development-build.json, unity-vfx-windows-build.json). 일회성 실패의 근본 원인을 확정한 것은 아니다.
+- 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 모두 통과. 사용자 저장/백업 불변. 증거: PlayerReviews/100d320ccf4d488c86833f7892d5a47d-summary.json. 수동 플레이 또는 장시간 성능 검증을 뜻하지 않는다.
+
+## 5번 후속 — 160개 행동 포즈
+
+- 10명 × 앞/뒤/좌/우 × 공격/시전/방어/피격 포즈를 연결했다. 일반 기술은 공격, 궁극기는 시전 포즈를 재사용한다. 공격 준비/복귀, 방어 유지, 피격 후 복귀, 포즈 누락 시 기존 그림 사용을 구현했다. 기존 Animator 우선 동작과 전투 수치를 보존한다.
+- 실제 Unity EditMode 88/88 통과(unity-poses-editmode-results.json). 별도 ManagedChecks 88/88은 엔진 독립 검사다.
+- 최초 PlayMode 36/36 통과(unity-poses-playmode-initial-results.json). 새 검사는 160개 개별 Sprite/크기, 실제 SpriteRenderer의 카메라 4방향 선택, 공격 복귀·방어 유지·레거시 데이터 대체를 다룬다.
+- Game View 1920×1080에서 앞/뒤/좌/우 갤러리 4개로 전체 포즈를 검수했다(poses-*-preview.png). 사각 분할에 이웃 행의 머리/발이 섞이는 문제를 발견해 개별 알파 기반 렌더링 윤곽으로 제외했다. 발 pivot도 보정했다. 원본 PNG 픽셀은 변경하지 않았다.
+- 임포트 중 CLI의 main-thread 응답 시간이 초과됐지만 에디터에서 10명 마지막 에셋까지 윤곽/참조 적용을 확인했다. 응답 시간 초과를 전체 적용 실패나 성공으로 단정하지 않는다.
+- 수동 Play Mode 검수 후 재검사가 0개를 반환했다(unity-poses-playmode-empty-run.json). 이는 통과 증거가 아니다. 테스트 목록에는 36개가 나타나 스크립트 캐시를 재빌드한 뒤 재검사했다.
+- 최종 윤곽 에셋으로 실제 PlayMode 36/36 재통과(unity-poses-playmode-results.json). 캐시 재빌드로 실행이 복구됐으며 0개 보고의 근본 원인을 확정한 것은 아니다.
+- 최종 Windows 개발 빌드 5.454초/오류0/경고1, 일반 빌드 22.640초/오류0/경고6 성공(unity-poses-development-build.json, unity-poses-windows-build.json). 첫 개발 빌드는 Succeeded이지만 빌드 중 별도 CLI 상태 조회의 main-thread 시간 초과가 오류1개로 집계돼 초기 보고서를 보관하고 재빌드했다(unity-poses-development-build-initial.json). 최종 빌드 중에는 해당 조회를 실행하지 않았다.
+- 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 불변. 증거: PlayerReviews/ba00f74860894b488a721abb8692741e-summary.json. 자동 실행 검사이며 수동 완주와 장시간 성능 검증은 아니다.
+- 이 검수는 최종 원작 외형 일치, 걷기/쓰러짐의 연속 프레임, 기술별 독립 포즈, BGM, 사람의 캠페인 수동 완주를 증명하지 않는다. 5번 전체는 진행 중이다.
