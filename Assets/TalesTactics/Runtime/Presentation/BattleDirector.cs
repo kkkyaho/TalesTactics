@@ -21,7 +21,11 @@ namespace TalesTactics
         public bool TrainingMode, TimingActive, TimingSuccess;
         public float TimingProgress;
         public string Message="출전 인원을 선택하세요 (1–6명).";
-        bool completed, timingAttempted;
+        bool completed, timingAttempted, battleTraining;
+        int battleStage;
+        public int SelectedStage;
+        public bool RewardPending {get;private set;}
+        public System.Func<CampaignSave,bool> PersistCampaign=CampaignStorage.Save;
         public bool IsPlayerCommand=>Session!=null&&Session.Active!=null&&Session.Active.Team==Team.Player&&State is CommandState;
         void Start()
         {
@@ -61,8 +65,9 @@ namespace TalesTactics
         public void SetState(BattleState state){State=state;Target=null;state.Enter();}
         public void BeginBattle()
         {
-            if(Deployment.Count<1)return;completed=false;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1);
+            if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
+            battleStage=SelectedStage;battleTraining=TrainingMode;
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);
@@ -72,7 +77,7 @@ namespace TalesTactics
             }
             Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){StopAllCoroutines();TimingActive=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
+        public void Restart(){StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Hud.ShowDeployment();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved)SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted)SelectSkill(Session.Active.Data.BasicAttack);}
         public void SkillCommand(){if(IsPlayerCommand)SetState(new ActionSelectionState(this));}
@@ -132,11 +137,20 @@ namespace TalesTactics
         public void RefreshViews(){Board.Sync();}
         public void CompleteBattle()
         {
-            if(completed)return;completed=true;Message=Session.Result==BattleResult.Victory?"승리 — 모든 적을 격파했습니다.":"패배 — 다시 도전하세요.";
-            if(Session.Result==BattleResult.Victory)
-            {
-                Audio.Play("victory");if(!TrainingMode){foreach(var u in Session.Units.Where(x=>x.Team==Team.Player)){var c=Campaign.Get(u.Data.Id);c.AddExperience(120);c.UnlockedSkills=u.Data.Skills.Where(s=>s.UnlockLevel<=c.Level).Select(s=>s.Id).ToList();}if(!CampaignStorage.Save(Campaign))Message+="\n저장 실패: 로그를 확인하세요.";}
-            }
+            if(completed||Session==null||Session.Result==BattleResult.Ongoing)return;
+            completed=true;Message=Session.Result==BattleResult.Victory?"승리 — 모든 적을 격파했습니다.":"패배 — 다시 도전하세요.";
+            if(Session.Result!=BattleResult.Victory)return;
+            Audio.Play("victory");
+            if(battleTraining){Message+="\n훈련: 경험치와 장 완료 기록은 저장하지 않습니다.";return;}
+            RewardPending=true;SaveBattleReward();
+        }
+        public void SaveBattleReward()
+        {
+            if(!RewardPending)return;
+            bool saved=CampaignStages.TryReward(Campaign,battleStage,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign);
+            RewardPending=!saved;
+            Message=saved?CampaignStages.Title(battleStage)+" 완료 · 출전 전원 EXP +120 저장":"저장 실패 — 보상 미적용. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";
+            Hud.Refresh();
         }
     }
 }

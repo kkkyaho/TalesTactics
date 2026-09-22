@@ -1,3 +1,5 @@
+PASS CampaignStagesUnlockInOrderAndPersistCompletion
+PASS CampaignRewardFailureRollsBackAndCanRetry
 PASS OccupiedTileCannotBeTraversed
 PASS WaterCostsTwoMovement
 PASS JumpLimitBlocksCliff
@@ -32,4 +34,18 @@ PASS CatalogReportsMissingRosterReference
 PASS CatalogRejectsMissingAttack
 PASS CatalogRejectsDuplicateRosterIDs
 PASS ValidCatalogCanStartBattle
-RESULT 34 passed, 0 failed (managed rules only; Unity runtime not exercised)
+PASS PromotionSaveRequiresBothConditionsAndRunsOnlyOnce
+PASS PromotionSaveFailureRollsBackAndCanRetry
+PASS MissingPromotionDataCannotSave
+PASS SaveNormalizationRepairsLegacyFieldsWithoutLosingGear
+PASS CampaignFileRoundTripPreservesProgressAndBackup
+PASS CorruptPrimaryRecoversBackupAndArchivesOriginalOnSave
+PASS FutureVersionIsNeverReplacedByOlderBackupOrSave
+PASS UnrecoverableSaveBlocksAutomaticOverwrite
+PASS DuplicateCharacterIDsRecoverFromValidBackup
+PASS EquipmentDraftRejectsWrongWeaponAndSlot
+PASS EquipmentDraftOnlyCommitsAfterSuccessfulSave
+PASS MissingOrLegacyEquipmentIDsLoadAsEmptySlots
+PASS SkillDetailsUseActualHPAndResourceCosts
+PASS MixedEffectsPreviewNamesCasterAndDoesNotMutateResources
+RESULT 50 passed, 0 failed (managed rules only; Unity runtime not exercised)

@@ -32,6 +32,24 @@ namespace TalesTactics.PlayModeTests
             Assert.That(button.interactable,Is.True);
             ExecuteEvents.Execute(button.gameObject,new BaseEventData(EventSystem.current),ExecuteEvents.submitHandler);
         }
+        [UnityTest] public IEnumerator CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards()
+        {
+            director.Campaign=new CampaignSave();director.TrainingMode=false;director.SelectedStage=1;
+            director.BeginBattle();Assert.That(director.Session,Is.Null);
+            director.SelectedStage=0;int writes=0;director.PersistCampaign=_=>++writes>1;
+            director.BeginBattle();yield return null;
+            foreach(var u in director.Session.Units.Where(u=>u.Team==Team.Enemy))u.Damage(99999,director.Session.Grid);
+            director.SetState(new TurnStartState(director));yield return null;
+            Assert.That(director.RewardPending,Is.True);Assert.That(director.Campaign.StoryProgress,Is.Empty);
+            Click("보상 저장 재시도");yield return null;
+            Assert.That(director.RewardPending,Is.False);Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter1"));
+            director.CompleteBattle();director.SaveBattleReward();Assert.That(writes,Is.EqualTo(2));
+            director.Restart();yield return null;director.SelectedStage=1;director.BeginBattle();yield return null;
+            Assert.That(director.Session.Units.First(u=>u.Team==Team.Enemy).Level,Is.EqualTo(3));
+            foreach(var u in director.Session.Units.Where(u=>u.Team==Team.Enemy))u.Damage(99999,director.Session.Grid);
+            director.SetState(new TurnStartState(director));yield return null;
+            Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter2"));
+        }
         [UnityTest] public IEnumerator DeploymentButtonStartsWiredScene()
         {
             Assert.That(director.Catalog.Characters.Length,Is.EqualTo(10));
@@ -173,13 +191,14 @@ namespace TalesTactics.PlayModeTests
         }
         [UnityTest] public IEnumerator DefeatShowsRestartCommand()
         {
+            director.Campaign=new CampaignSave();director.TrainingMode=false;director.PersistCampaign=_=>throw new System.Exception("Defeat must not save");
             Click("전투 시작");yield return null;
             foreach(var u in director.Session.Units.Where(u=>u.Team==Team.Player))u.Damage(99999,director.Session.Grid);
             director.SetState(new TurnStartState(director));yield return null;
             Assert.That(director.Session.Result,Is.EqualTo(BattleResult.Defeat));
+            Assert.That(director.Campaign.StoryProgress,Is.Empty);
             Assert.That(director.State,Is.InstanceOf<BattleEndState>());Click("출전 화면 / Restart");yield return null;
             Assert.That(director.Session,Is.Null);
         }
     }
 }
-

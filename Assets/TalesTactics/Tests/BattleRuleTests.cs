@@ -18,6 +18,29 @@ namespace TalesTactics.Tests
         [TearDown] public void Cleanup(){foreach(var o in created)Object.DestroyImmediate(o);created.Clear();}
         SkillData Skill(EffectKind kind,TargetType target=TargetType.Enemy)
         {var s=New<SkillData>();s.Id="test";s.DisplayName="Test";s.Range=6;s.MinRange=0;s.Target=target;s.Effects=new[]{new SkillEffect{Kind=kind}};return s;}
+        [Test] public void CampaignStagesUnlockInOrderAndPersistCompletion()
+        {
+            var save=new CampaignSave();data.Skills=new SkillData[0];
+            Assert.That(CampaignStages.TryReward(save,1,new[]{data},_=>true),Is.False);
+            Assert.That(CampaignStages.TryReward(save,0,new[]{data},_=>true),Is.True);
+            Assert.That(CampaignStages.Unlocked(save,1),Is.True);
+            Assert.That(CampaignStages.TryReward(save,1,new[]{data},_=>true),Is.True);
+            Assert.That(save.StoryProgress,Does.Contain("chapter2"));
+            Assert.That(CampaignStages.TryReward(save,1,new[]{data},_=>true),Is.True);
+            Assert.That(save.StoryProgress.Count,Is.EqualTo(2));
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(3));
+            var file=new CampaignFile(SaveTestPath());Assert.That(file.Save(save),Is.True);
+            Assert.That(file.Load().StoryProgress,Does.Contain("chapter2"));
+        }
+        [Test] public void CampaignRewardFailureRollsBackAndCanRetry()
+        {
+            var save=new CampaignSave();data.Skills=new SkillData[0];var p=save.Get(data.Id);var skills=p.UnlockedSkills;
+            Assert.That(CampaignStages.TryReward(save,0,new[]{data},_=>false),Is.False);
+            Assert.That(p.Level,Is.EqualTo(1));Assert.That(p.EXP,Is.Zero);Assert.That(p.UnlockedSkills,Is.SameAs(skills));
+            Assert.That(save.StoryProgress,Is.Empty);
+            Assert.That(CampaignStages.TryReward(save,0,new[]{data},_=>true),Is.True);
+            Assert.That(p.Level,Is.EqualTo(2));Assert.That(p.EXP,Is.EqualTo(20));
+        }
         [Test] public void OccupiedTileCannotBeTraversed(){var reachable=grid.Reachable(player,out _);Assert.That(reachable.ContainsKey(enemy.Position),Is.False);}
         [Test] public void WaterCostsTwoMovement(){grid.Place(player,new Vector2Int(3,0));var costs=grid.Reachable(player,out _);Assert.That(costs[new Vector2Int(4,0)],Is.EqualTo(2));}
         [Test] public void JumpLimitBlocksCliff(){grid[new Vector2Int(1,2)].Height=4;Assert.That(grid.Reachable(player,out _).ContainsKey(new Vector2Int(1,2)),Is.False);}

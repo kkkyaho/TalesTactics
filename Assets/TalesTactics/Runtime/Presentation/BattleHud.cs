@@ -112,16 +112,17 @@ namespace TalesTactics
         {
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,"유적의 경계   /   모든 적 격파   /   최대 6명",49,28,16);
+            Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
             Label(left,"ROSTER  ·  "+battle.Deployment.Count+" / 6",12,30,19);
             for(int i=0;i<battle.Catalog.Characters.Length;i++){int index=i;var c=battle.Catalog.Characters[i];Button(left,(battle.Deployment.Contains(i)?"● ":"○ ")+c.DisplayName,50+i*39,()=>{if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);ShowDeployment();},true,34);}
             Label(commands,"BATTLE SETTINGS",12,35,20);
             Button(commands,battle.TrainingMode?"훈련: Lv25 / 모든 일반 스킬":"캠페인: 저장된 성장 사용",58,()=>{battle.TrainingMode=!battle.TrainingMode;ShowDeployment();});
             Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;CampaignStorage.Save(battle.Campaign);ShowDeployment();});
             Button(commands,"전투 시작",166,()=>battle.SetState(new BattleStartState(battle)),battle.Deployment.Count>0,48);
-            Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,200,17);
-            Button(commands,"장비 관리",455,ShowEquipmentRoster);
-            Button(commands,"성장 · 승급",501,ShowGrowthRoster);
+            Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,150,17);
+            Button(commands,"장비 관리",405,ShowEquipmentRoster);
+            Button(commands,"성장 · 승급",451,ShowGrowthRoster);
+            for(int i=0;i<CampaignStages.Count;i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+i*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
             Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?"조작: 타일 클릭 → 목표 미리보기 → 실행  |  이동/행동 순서 자유  |  ESC: 취소\n기본 스킬은 레벨에 따라 해금됩니다. 훈련 모드로 전체 일반 스킬을 확인할 수 있습니다.":CampaignStorage.Notice,14,88,18);
         }
         void ShowEquipmentRoster()
@@ -201,7 +202,7 @@ namespace TalesTactics
                 ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
             },reason==null);
             Button(commands,"캐릭터 목록으로",428,ShowGrowthRoster);
-            Label(footer,notice??"저장된 성장과 장비 기준의 능력치입니다. 훈련 레벨은 적용하지 않습니다.\n스토리 이벤트 연결은 후속 단계입니다.",14,88,17);
+            Label(footer,notice??"저장된 성장과 장비 기준의 능력치입니다. 훈련 레벨은 적용하지 않습니다.\n캠페인 1장 → 2장 승리로 스토리 조건을 충족합니다.",14,88,17);
         }        public void Refresh()
         {
             if(battle.Session==null)return;
@@ -220,7 +221,7 @@ namespace TalesTactics
             CameraButton("확대 +",0,2,477,()=>battle.Board.ZoomCamera(0.9f));
             CameraButton("축소 −",1,2,477,()=>battle.Board.ZoomCamera(1.1f));
             Label(commands,battle.State.Title,12,36,20);
-            if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);return;}
+            if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);if(battle.RewardPending)Button(commands,"보상 저장 재시도",200,battle.SaveBattleReward);return;}
             if(battle.State is CommandState&&u.Team==Team.Player)
             {
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);

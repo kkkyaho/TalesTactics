@@ -30,16 +30,22 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 ## 저장과 성장
 
-레벨 1–50, 고정 성장. EXP는 현재 레벨 ×100마다 레벨업, 전투 승리 기본 EXP120. 장비 3슬롯의 ID를 저장하고 Catalog에서 해결한다. EquipmentLoadout의 분리된 초안으로 장비를 미리보고 적용 시 저장한다. 슬롯 및 무기 종류를 검증하며 저장 실패 시 기존 장비로 복원한다. 훈련과 캠페인 모두 저장된 장비를 적용한다. 성장·승급 화면은 저장된 성장과 장비 기준으로 승급 전후 수치를 표시한다. CampaignPromotion이 조건 재검사와 1회 승급·저장 실패 복원을 담당한다. 스토리 완료 이벤트 연결은 후속 작업이다. 승급은 레벨 및 Story Flag 검사 API가 준비되어 있다. Battle Runtime은 저장하지 않는다.
+레벨 1–50, 고정 성장. EXP는 현재 레벨 ×100마다 레벨업, 전투 승리 기본 EXP120. 장비 3슬롯의 ID를 저장하고 Catalog에서 해결한다. EquipmentLoadout의 분리된 초안으로 장비를 미리보고 적용 시 저장한다. 슬롯 및 무기 종류를 검증하며 저장 실패 시 기존 장비로 복원한다. 훈련과 캠페인 모두 저장된 장비를 적용한다. 성장·승급 화면은 저장된 성장과 장비 기준으로 승급 전후 수치를 표시한다. CampaignPromotion이 조건 재검사와 1회 승급·저장 실패 복원을 담당한다. 캠페인 두 장의 완료 이벤트로 스토리 조건을 기록한다. 승급은 레벨 및 Story Flag 검사 API가 준비되어 있다. Battle Runtime은 저장하지 않는다.
 
 ## 화면과 검증
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 48개, PlayMode 9개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 50개, PlayMode 10개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
 ActionSelection → SkillDetails → TargetSelection 순서로 스킬을 조회한다. 상세 조회는 CanUse 결과를 보여 주며 전투 상태/자원을 소모하지 않는다. SkillResolver.Describe와 Preview가 실제 SkillData 효과를 표시하고, AffectCaster 효과는 시전자 대상으로 구분한다.
 
 CampaignFile은 경로별 저장 I/O를 분리한다. Version 1의 누락 컬렉션·장비 슬롯과 성장 범위를 정규화하며, 중복/빈 캐릭터 ID는 유효한 저장으로 취급하지 않는다. 기본 파일 손상 시 .bak를 읽고, 다음 저장 시 손상 원본을 .corrupt-GUID로 보존한 뒤 기본 파일을 교체한다. 복구 불가 또는 미래 버전은 세션 저장을 차단한다. 출전 화면에 상태를 표시하며 원본 파일을 고친 뒤 재실행해야 한다.
+
+## 캠페인 진행 프로토타입
+
+CampaignStages는 chapter1 → chapter2 완료 플래그와 순차 해금을 정의한다. 동일 TestStage를 재사용하며 1장 적 Lv1, 2장 적 Lv3이다. 훈련은 Lv25를 유지하고 완료 기록·EXP를 저장하지 않는다. 반복 클리어도 출전 전원 EXP120을 주며, 장 완료 플래그는 중복 추가하지 않는다. 상세 스토리/대사/전용 맵 및 성장 속도 밸런스는 미구현이다.
+
+BattleDirector는 시작 시 선택 장과 훈련 여부를 고정한다. 승리에만 CampaignStages.TryReward를 호출하며, 실패 시 레벨/EXP/스킬/완료 플래그를 복원한다. 결과 화면에서 보상 저장을 재시도할 수 있고 성공 후에는 중복 지급하지 않는다. 저장 실패 후 출전 화면으로 돌아가면 해당 보상을 포기한다. PersistCampaign 콜백은 기본 CampaignStorage.Save이며 PlayMode 테스트에서는 사용자 파일을 건드리지 않는 콜백으로 교체한다.
