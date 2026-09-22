@@ -10,7 +10,7 @@ $compileArgs=@('-nologo','-target:exe','-langversion:9',('-out:"'+$testOutput+'/
 $compileArgs+=Get-ChildItem "$UnityData/DotNetSdk/packs/Microsoft.NETCore.App.Ref/*/ref/net8.0/*.dll" | ForEach-Object {'-r:"'+$_.FullName+'"'}
 $compileArgs+='-r:"'+$nunit+'"'
 $compileArgs+=Get-ChildItem "$projectRoot/Assets/TalesTactics/Runtime/Core","$projectRoot/Assets/TalesTactics/Runtime/Data",$PSScriptRoot -Filter '*.cs' -Recurse | ForEach-Object {'"'+$_.FullName+'"'}
-$compileArgs+='"'+$projectRoot+'/Assets/TalesTactics/Tests/BattleRuleTests.cs"'
+$compileArgs+=Get-ChildItem "$projectRoot/Assets/TalesTactics/Tests" -Filter '*.cs' | ForEach-Object {'"'+$_.FullName+'"'}
 $responsePath=Join-Path $testOutput 'compile.rsp'
 $compileArgs | Set-Content $responsePath
 & "$UnityData/NetCoreRuntime/dotnet.exe" $compiler.FullName ('@'+$responsePath)
@@ -19,5 +19,3 @@ Copy-Item $nunit $testOutput -Force
 @{runtimeOptions=@{tfm='net8.0';framework=@{name='Microsoft.NETCore.App';version=$framework.Name}}} | ConvertTo-Json -Depth 4 | Set-Content "$testOutput/Rules.runtimeconfig.json"
 & "$UnityData/NetCoreRuntime/dotnet.exe" "$testOutput/Rules.dll"
 exit $LASTEXITCODE
-
-

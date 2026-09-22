@@ -13,7 +13,9 @@ namespace TalesTactics
     }
     [Serializable] public class CampaignSave
     {
-        public int Version=1;public bool AutoTiming;
+        public int Version=2;public bool AutoTiming;
+        public int Gold=CampaignInventory.StartingGold;
+        public List<OwnedEquipment> Inventory=CampaignInventory.StartingItems();
         public List<string> StoryProgress=new List<string>();public List<CharacterProgress> Characters=new List<CharacterProgress>();
         public CharacterProgress Get(string id){var c=Characters.Find(x=>x.Id==id);if(c==null){c=new CharacterProgress{Id=id};Characters.Add(c);}return c;}
     }

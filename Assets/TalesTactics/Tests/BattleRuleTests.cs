@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 namespace TalesTactics.Tests
 {
-    public class BattleRuleTests
+    public partial class BattleRuleTests
     {
         BattleRules rules;CharacterData data;GridMap grid;UnitRuntime player,enemy;SkillResolver resolver;
         readonly List<ScriptableObject> created=new List<ScriptableObject>();
@@ -127,13 +127,13 @@ namespace TalesTactics.Tests
         }
         [Test] public void SaveNormalizationRepairsLegacyFieldsWithoutLosingGear()
         {
-            var s=new CampaignSave{StoryProgress=null};s.Characters.Add(new CharacterProgress{Id="hero",Level=0,EXP=-1,Equipment=new[]{"sword"},UnlockedSkills=null});
+            var s=new CampaignSave{Version=1,StoryProgress=null};s.Characters.Add(new CharacterProgress{Id="hero",Level=0,EXP=-1,Equipment=new[]{"sword"},UnlockedSkills=null});
             CampaignFile.Normalize(s);var p=s.Get("hero");Assert.That(p.Level,Is.EqualTo(1));Assert.That(p.EXP,Is.EqualTo(0));
             Assert.That(p.Equipment.Length,Is.EqualTo(3));Assert.That(p.Equipment[0],Is.EqualTo("sword"));Assert.That(p.UnlockedSkills,Is.Not.Null);Assert.That(s.StoryProgress,Is.Not.Null);
         }
         [Test] public void CampaignFileRoundTripPreservesProgressAndBackup()
         {
-            string path=SaveTestPath();var store=new CampaignFile(path);var s=store.Load();var p=s.Get("hero");p.Level=12;p.Promoted=true;p.Equipment[0]="sword";s.StoryProgress.Add("chapter2");
+            string path=SaveTestPath();var store=new CampaignFile(path);var s=store.Load();var p=s.Get("hero");p.Level=12;p.Promoted=true;p.Equipment[0]="sword";s.Inventory.Add(new OwnedEquipment{Id="sword",Count=1});s.StoryProgress.Add("chapter2");
             Assert.That(store.Save(s),Is.True);p.Level=13;Assert.That(store.Save(s),Is.True);
             var loaded=new CampaignFile(path).Load();Assert.That(loaded.Get("hero").Level,Is.EqualTo(13));Assert.That(loaded.Get("hero").Promoted,Is.True);Assert.That(loaded.Get("hero").Equipment[0],Is.EqualTo("sword"));Assert.That(loaded.StoryProgress,Does.Contain("chapter2"));
             Assert.That(new CampaignFile(path+".bak").Load().Get("hero").Level,Is.EqualTo(12));
@@ -172,7 +172,7 @@ namespace TalesTactics.Tests
         }
         [Test] public void EquipmentDraftOnlyCommitsAfterSuccessfulSave()
         {
-            var sword=Sword();data.Weapon=WeaponType.Sword;var campaign=new CampaignSave();var progress=campaign.Get(data.Id);
+            var sword=Sword();data.Weapon=WeaponType.Sword;var campaign=new CampaignSave();campaign.Inventory.Add(new OwnedEquipment{Id=sword.Id,Count=1});var progress=campaign.Get(data.Id);
             var draft=new EquipmentLoadout(data,progress,new[]{sword});draft.Equip(EquipmentSlot.Weapon,sword);
             Assert.That(progress.Equipment[0],Is.Null);var original=progress.Equipment;
             Assert.That(draft.TrySave(campaign,_=>false),Is.False);Assert.That(progress.Equipment,Is.SameAs(original));

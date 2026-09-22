@@ -72,7 +72,7 @@ namespace TalesTactics
             {
                 var progress=Campaign.Get(u.Data.Id);
                 if(!TrainingMode){u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
-                new EquipmentLoadout(u.Data,progress,Catalog.Equipment).Apply(u);
+                new EquipmentLoadout(u.Data,progress,Catalog.Equipment,Campaign).Apply(u);
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
             Board.Build(Session);Audio.Play("battle");Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
@@ -141,15 +141,20 @@ namespace TalesTactics
             completed=true;Message=Session.Result==BattleResult.Victory?"승리 — 모든 적을 격파했습니다.":"패배 — 다시 도전하세요.";
             if(Session.Result!=BattleResult.Victory)return;
             Audio.Play("victory");
-            if(battleTraining){Message+="\n훈련: 경험치와 장 완료 기록은 저장하지 않습니다.";return;}
+            if(battleTraining){Message+="\n훈련: 경험치·골드·장비·장 완료 기록은 저장하지 않습니다.";return;}
             RewardPending=true;SaveBattleReward();
         }
         public void SaveBattleReward()
         {
             if(!RewardPending)return;
+            string rewardId=CampaignStages.EquipmentReward(battleStage);
+            var rewardItem=Catalog.Equipment.FirstOrDefault(e=>e!=null&&e.Id==rewardId);
+            string rewardName=rewardItem!=null?rewardItem.DisplayName:rewardId;
+            bool inventoryFull=CampaignInventory.Owned(Campaign,rewardId)>=CampaignInventory.MaxQuantity;
+            string lootText=inventoryFull?rewardName+" 미지급 (보유 상한 99개)":rewardName+" +1";
             bool saved=CampaignStages.TryReward(Campaign,battleStage,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign);
             RewardPending=!saved;
-            Message=saved?CampaignStages.Title(battleStage)+" 완료 · 출전 전원 EXP +120 저장":"저장 실패 — 보상 미적용. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";
+            Message=saved?CampaignStages.Title(battleStage)+" 완료 · 출전 전원 EXP +120 / "+CampaignStages.GoldReward(battleStage)+"G 저장\n장비: "+lootText:"저장 실패 — 보상 미적용. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";
             Hud.Refresh();
         }
     }

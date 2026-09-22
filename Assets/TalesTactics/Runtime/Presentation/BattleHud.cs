@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 namespace TalesTactics
 {
-    public sealed class BattleHud:MonoBehaviour
+    public sealed partial class BattleHud:MonoBehaviour
     {
         public TMP_FontAsset Font;
         BattleDirector battle;
@@ -115,11 +115,12 @@ namespace TalesTactics
             Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
             Label(left,"ROSTER  ·  "+battle.Deployment.Count+" / 6",12,30,19);
             for(int i=0;i<battle.Catalog.Characters.Length;i++){int index=i;var c=battle.Catalog.Characters[i];Button(left,(battle.Deployment.Contains(i)?"● ":"○ ")+c.DisplayName,50+i*39,()=>{if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);ShowDeployment();},true,34);}
-            Label(commands,"BATTLE SETTINGS",12,35,20);
+            Label(commands,"BATTLE SETTINGS · "+battle.Campaign.Gold+"G",12,35,20);
             Button(commands,battle.TrainingMode?"훈련: Lv25 / 모든 일반 스킬":"캠페인: 저장된 성장 사용",58,()=>{battle.TrainingMode=!battle.TrainingMode;ShowDeployment();});
-            Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;CampaignStorage.Save(battle.Campaign);ShowDeployment();});
+            Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;battle.PersistCampaign(battle.Campaign);ShowDeployment();});
             Button(commands,"전투 시작",166,()=>battle.SetState(new BattleStartState(battle)),battle.Deployment.Count>0,48);
-            Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,150,17);
+            Label(commands,"아트: 교체용 플레이스홀더\n음악: Audio Library에서 연결\n\n훈련 전투는 성장 저장을 변경하지 않습니다.",235,100,17);
+            Button(commands,"장비 상점",350,()=>ShowShop());
             Button(commands,"장비 관리",405,ShowEquipmentRoster);
             Button(commands,"성장 · 승급",451,ShowGrowthRoster);
             for(int i=0;i<CampaignStages.Count;i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+i*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
@@ -134,18 +135,18 @@ namespace TalesTactics
             {var character=battle.Catalog.Characters[i];Button(left,character.DisplayName,50+i*39,()=>ShowEquipment(character),true,34);}
             Label(commands,"장비를 바꿀 캐릭터를\n선택하세요.",24,100,20);
             Button(commands,"출전 준비로",150,ShowDeployment);
-            Label(footer,"무기 / 방어구 / 장신구 3슬롯. 현재 등록된 장비를 교체합니다.\n장비 수량·획득·상점 시스템은 아직 연결되지 않았습니다.",14,88,17);
+            Label(footer,"무기 / 방어구 / 장신구 3슬롯. 현재 등록된 장비를 교체합니다.\n구매한 장비는 파티가 공유합니다. 같은 장비는 보유 수량만큼 장착할 수 있습니다.",14,88,17);
         }
         void ShowEquipment(CharacterData character,EquipmentLoadout draft=null,string notice=null)
         {
             if(battle.Session!=null)return;
             var progress=battle.Campaign.Get(character.Id);
-            if(draft==null)draft=new EquipmentLoadout(character,progress,battle.Catalog.Equipment);
+            if(draft==null)draft=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign);
             var current=draft;
             Clear(header);Clear(left);Clear(commands);Clear(footer);
             Label(header,"TALES / TACTICS     ·     장비 교체",12,45,25);
             int level=battle.TrainingMode?25:Mathf.Clamp(progress.Level,1,50);bool promoted=!battle.TrainingMode&&progress.Promoted;
-            var before=new EquipmentLoadout(character,progress,battle.Catalog.Equipment).Preview(level,promoted);
+            var before=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign).Preview(level,promoted);
             var after=current.Preview(level,promoted);
             Label(left,character.DisplayName,12,70,23);
             Label(left,$"Lv{level} · {character.Weapon}\n현재 → 변경 후\n\nHP {before.HP} → {after.HP}\nMP {before.MP} → {after.MP}\nSTR {before.STR} → {after.STR}\nMAG {before.MAG} → {after.MAG}\nDEF {before.DEF} → {after.DEF}\nMDF {before.MDF} → {after.MDF}\nSPD {before.SPD} → {after.SPD}\nMOV {before.MOV} → {after.MOV}\nJMP {before.JMP} → {after.JMP}",90,355,18);
@@ -153,14 +154,14 @@ namespace TalesTactics
             foreach(EquipmentSlot slot in Enum.GetValues(typeof(EquipmentSlot)))
             {
                 var selected=slot;string title=slot==EquipmentSlot.Weapon?"무기":slot==EquipmentSlot.Armor?"방어구":"장신구";
-                var item=current.Get(slot);bool available=current.Options(slot).Length>0;
+                var item=current.Get(slot);bool available=current.Options(slot).Length>0||item!=null;
                 Button(commands,title+": "+(item!=null?item.DisplayName:"없음"),90+(int)slot*65,()=>{current.Cycle(selected);ShowEquipment(character,current);},available,48);
             }
-            Label(commands,"등록된 호환 장비와 해제를\n차례로 선택합니다.",290,85,17);
+            Label(commands,"보유한 호환 장비와 해제를\n차례로 선택합니다. 다른 캐릭터가\n모두 장착한 장비는 제외됩니다.",290,85,17);
             Button(commands,"적용 · 저장",390,()=>
             {
-                bool saved=current.TrySave(battle.Campaign,CampaignStorage.Save);
-                ShowEquipment(character,current,saved?"장비를 저장했습니다. 다음 전투에 적용됩니다.":"저장 실패. 기존 장비는 유지했습니다. 다시 시도하세요.");
+                bool saved=current.TrySave(battle.Campaign,battle.PersistCampaign);
+                ShowEquipment(character,current,saved?"장비를 저장했습니다. 다음 전투에 적용됩니다.":"수량 부족 또는 저장 실패. 기존 장비는 유지했습니다.");
             });
             Button(commands,"돌아가기 (미적용 취소)",443,ShowEquipmentRoster);
             Label(footer,notice??"능력치는 미리보기입니다. 적용 · 저장을 눌러 확정하세요.\n훈련 전투에도 저장된 장비가 적용됩니다.",14,88,17);
@@ -180,7 +181,7 @@ namespace TalesTactics
         {
             if(battle.Session!=null)return;
             var progress=battle.Campaign.Get(character.Id);
-            var gear=new EquipmentLoadout(character,progress,battle.Catalog.Equipment);
+            var gear=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign);
             var before=gear.Preview(progress.Level,progress.Promoted);var after=gear.Preview(progress.Level,true);
             Clear(header);Clear(left);Clear(commands);Clear(footer);
             Label(header,"TALES / TACTICS     ·     성장 · 승급",12,45,25);
@@ -198,7 +199,7 @@ namespace TalesTactics
             Button(commands,progress.Promoted?"승급 완료":"승급 · 저장",380,()=>
             {
                 if(battle.TrainingMode||!CampaignStorage.CanSave)return;
-                bool saved=CampaignPromotion.TrySave(battle.Campaign,character,CampaignStorage.Save);
+                bool saved=CampaignPromotion.TrySave(battle.Campaign,character,battle.PersistCampaign);
                 ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
             },reason==null);
             Button(commands,"캐릭터 목록으로",428,ShowGrowthRoster);

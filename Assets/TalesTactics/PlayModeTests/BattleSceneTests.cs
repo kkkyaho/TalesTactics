@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 namespace TalesTactics.PlayModeTests
 {
-    public class BattleSceneTests
+    public partial class BattleSceneTests
     {
         BattleDirector director;
         [UnitySetUp] public IEnumerator LoadBattle()
