@@ -34,15 +34,17 @@ namespace TalesTactics
             return s.Target==TargetType.Self?t==u&&t.Alive:s.Target==TargetType.FallenAlly?t.Team==u.Team&&!t.Alive:s.Target==TargetType.Ally?t.Team==u.Team&&t.Alive:t.Team!=u.Team&&t.Alive;
         }
         public bool InRange(UnitRuntime u,SkillData s,Vector2Int p)
-        {int d=GridMap.Distance(u.Position,p);return grid[p]!=null&&d>=s.MinRange&&d<=s.Range;}
-        public IEnumerable<UnitRuntime> Targets(UnitRuntime u,SkillData s,Vector2Int p)=>units.Where(t=>ValidTarget(u,s,t)&&GridMap.Distance(t.Position,p)<=s.Area);
+        {return SkillGeometry.CanAim(grid,u.Position,s,p);}
+        public IEnumerable<Vector2Int> AreaTiles(UnitRuntime u,SkillData s,Vector2Int p)=>SkillGeometry.Area(grid,u.Position,s,p);
+        public IEnumerable<UnitRuntime> Targets(UnitRuntime u,SkillData s,Vector2Int p)
+        {var area=new HashSet<Vector2Int>(AreaTiles(u,s,p));return units.Where(t=>ValidTarget(u,s,t)&&area.Contains(t.Position));}
         public float DirectionMultiplier(UnitRuntime attacker,UnitRuntime defender)
         {
             var d=attacker.Position-defender.Position;
             var f=FacingVector(defender.Facing);int dot=d.x*f.x+d.y*f.y;
             return dot>0?rules.FrontMultiplier:dot<0?rules.RearMultiplier:rules.SideMultiplier;
         }
-        public int DamagePreview(UnitRuntime u,UnitRuntime t,SkillEffect e)
+        public int DamagePreview(UnitRuntime u,UnitRuntime t,SkillEffect e,SkillData skill=null)
         {
             var a=u.Stats;var b=t.Stats;
             float defense=e.IgnoreDefense?0:(e.Magic?b.MDF:b.DEF)*rules.DefenseFactor;
@@ -54,6 +56,18 @@ namespace TalesTactics
                 var delta=u.Position-t.Position;var facing=FacingVector(t.Facing);int dot=delta.x*facing.x+delta.y*facing.y;
                 value*=dot>0?rules.GuardFront:dot<0?rules.GuardRear:rules.GuardSide;
             }
+            if(skill!=null)
+            {
+                float affinity=ElementalRules.Multiplier(t.Data,skill.Element);
+                if(affinity<=0)return 0;
+                if(skill.UsesHeightDamage&&!e.Magic&&grid[u.Position]!=null&&grid[t.Position]!=null)
+                {
+                    int cap=Math.Max(0,rules.HeightDamageMaxSteps);
+                    int delta=Mathf.Clamp(grid[u.Position].Height-grid[t.Position].Height,-cap,cap);
+                    value*=Mathf.Max(0.1f,1+delta*Math.Max(0f,Math.Min(0.4f,rules.HeightDamagePerStep)));
+                }
+                value*=affinity;
+            }
             return Mathf.Max(1,Mathf.RoundToInt(value));
         }
         public string Preview(UnitRuntime u,SkillData s,UnitRuntime t)
@@ -62,9 +76,10 @@ namespace TalesTactics
             foreach(var e in s.Effects)
             {
                 var recipient=e.AffectCaster?u:t;
-                string effect=e.Kind==EffectKind.Damage?"피해 "+DamagePreview(u,recipient,e):
+                string effect=e.Kind==EffectKind.Damage?"피해 "+DamagePreview(u,recipient,e,s):
                     e.Kind==EffectKind.Heal?"회복량 "+Mathf.RoundToInt(u.Stats.MAG*e.Power+e.Flat):EffectDescription(e);
                 if(e.Kind==EffectKind.Damage||e.Kind==EffectKind.Heal)effect+=$" ({Mathf.RoundToInt(e.Chance*100)}%)";
+                if(e.Kind==EffectKind.Damage)effect+=" · "+ElementalRules.Name(s.Element)+" ×"+ElementalRules.Multiplier(recipient.Data,s.Element).ToString("0.##");
                 messages.Add((e.AffectCaster?"시전자: ":"")+effect);
             }
             return string.Join(" / ",messages);
@@ -72,7 +87,10 @@ namespace TalesTactics
         public string Describe(UnitRuntime u,SkillData s)
         {
             string target=s.Target==TargetType.Self?"자신":s.Target==TargetType.Ally?"아군":s.Target==TargetType.FallenAlly?"전투불능 아군":"적";
-            string details=$"{s.DisplayName}\nMP {s.MPCost} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · 범위 반경 {s.Area}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
+            string areaText=s.Shape==SkillAreaShape.Diamond?"범위 반경 "+s.Area:"방향 선택 · 사거리 끝까지";
+            string details=$"{s.DisplayName}\nMP {s.MPCost} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · {areaText}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
+            details+="\n형태 "+(s.Shape==SkillAreaShape.Line?"직선 관통":s.Shape==SkillAreaShape.Cone?"부채꼴":"마름모")+" · 높이 차 "+(s.MaxHeightDifference<0?"무제한":s.MaxHeightDifference.ToString())+(s.RequiresLineOfSight?" · 시야 필요":" · 시야 무시");
+            details+="\n속성 "+ElementalRules.Name(s.Element)+(s.UsesHeightDamage?" · 물리 고저차 보정":"")+(s.HeightRangeLimit>0?" · 높이 사거리 ±"+s.HeightRangeLimit:"");
             if(s.Cooldown>0)details+=$"\n재사용 대기 {s.Cooldown}턴";
             foreach(var effect in s.Effects)details+="\n"+(effect.AffectCaster?"시전자: ":"")+EffectDescription(effect);
             if(s.StartsFlamingChain)details+="\n검술 후 Flaming Edge 연계 가능";
@@ -135,7 +153,7 @@ namespace TalesTactics
                     if(random.NextDouble()>e.Chance)continue;
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
-                        int damage=DamagePreview(u,t,e);int actual=Mathf.Min(damage,t.CurrentHP);
+                        int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
                         if(t.Has(StatusKind.Guard)&&DirectionMultiplier(u,t)!=rules.RearMultiplier)t.GuardIgnition=true;
                         t.Damage(damage,grid);u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*e.Drain));
                     }

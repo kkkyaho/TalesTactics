@@ -95,7 +95,7 @@ namespace TalesTactics
         public void SelectTarget(Vector2Int p)
         {
             var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
-            if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
+            if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Target=null;Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
             Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Hud.Refresh();
         }
         public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}

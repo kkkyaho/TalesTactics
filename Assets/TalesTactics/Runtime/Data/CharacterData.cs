@@ -8,6 +8,7 @@ namespace TalesTactics
         public Sprite Portrait;
         public DirectionalSprites Sprites = new DirectionalSprites();
         public RuntimeAnimatorController Animator;
+        public ElementAffinity[] Affinities=new ElementAffinity[0];
         public WeaponType Weapon;
         public Stats BaseStats, GrowthStats, PromotionBonus;
         public int PromotionLevel=20;

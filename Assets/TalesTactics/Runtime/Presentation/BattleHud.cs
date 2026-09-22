@@ -113,7 +113,7 @@ namespace TalesTactics
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);
             Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
-            Label(left,"ROSTER  ·  "+battle.Deployment.Count+" / 6",12,30,19);
+            Label(left,"ROSTER  ·  "+battle.Deployment.Count+" / 6  ·  캠페인 6인 권장",12,30,16);
             for(int i=0;i<battle.Catalog.Characters.Length;i++){int index=i;var c=battle.Catalog.Characters[i];Button(left,(battle.Deployment.Contains(i)?"● ":"○ ")+c.DisplayName,50+i*39,()=>{if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);ShowDeployment();},true,34);}
             Label(commands,"BATTLE SETTINGS · "+battle.Campaign.Gold+"G",12,35,20);
             Button(commands,battle.TrainingMode?"훈련: Lv25 / 모든 일반 스킬":"캠페인: 저장된 성장 사용",58,()=>{battle.TrainingMode=!battle.TrainingMode;ShowDeployment();});

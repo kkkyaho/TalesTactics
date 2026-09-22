@@ -142,7 +142,7 @@ namespace TalesTactics
         public void ClearHighlights(){foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);if(line!=null)line.positionCount=0;}
         public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r))SetColor(r,Color.Lerp(colors[p],color,0.65f));}
         public void ShowSkillRange(UnitRuntime u,SkillData skill){var points=new List<Vector2Int>();foreach(var p in tiles.Keys)if(battle.Session.Resolver.InRange(u,skill,p))points.Add(p);ShowRange(points,new Color(0.8f,0.25f,0.2f));}
-        public void ShowArea(Vector2Int center,int radius){ShowSkillRange(battle.Session.Active,battle.SelectedSkill);foreach(var p in tiles.Keys)if(GridMap.Distance(p,center)<=radius)SetColor(tiles[p],new Color(1,0.7f,0.25f));}
+        public void ShowArea(Vector2Int center,int radius){ShowSkillRange(battle.Session.Active,battle.SelectedSkill);foreach(var p in battle.Session.Resolver.AreaTiles(battle.Session.Active,battle.SelectedSkill,center))SetColor(tiles[p],new Color(1,0.7f,0.25f));}
         public void ShowPath(List<Vector2Int> path){line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
         static void SetColor(Renderer r,Color c){var properties=new MaterialPropertyBlock();properties.SetColor("_BaseColor",c);properties.SetColor("_Color",c);r.SetPropertyBlock(properties);}
         static Sprite CreatePlaceholder()

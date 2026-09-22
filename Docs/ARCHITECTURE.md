@@ -16,9 +16,9 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 이동은 4방향 Dijkstra, 이동비용 합산, 개별 계단 차이 <= JMP. 타일 점유는 살아 있는 유닛만. KO 위치는 런타임에 보존하여 부활 대상으로 사용한다. 부활 위치에 다른 유닛이 있으면 실행하지 않는다.
 
-기본 피해는 max(1, round((공격 능력치 × 배율 + 고정값 − 방어 × 방어계수) × 방향 × 가드)). 현재 명중 100%, 피해 확정값; 상태 효과만 확률이다. 속성은 메타데이터이며 저항 시스템은 후속 작업.
+기본 피해는 max(1, round((공격 능력치 × 배율 + 고정값 − 방어 × 방어계수) × 방향 × 가드)). 현재 명중 100%, 피해 확정값; 상태 효과만 확률이다. ElementalRules가 CharacterData.Affinities의 피해 배율을 적용한다. 무속성/미지정은 1, 무효는 0이며 유효 배율은 0~2로 제한한다. 물리 높이 보정은 단계당 10%, 최대 두 단계다. 마법·회복에는 높이 피해 보정을 적용하지 않는다.
 
-현재 AoE는 맨해튼 거리 다이아몬드. 시야 차단/높이별 사거리/직선 관통 형태는 아직 없다. Effects의 AffectCaster로 가디언 필드의 적 피해와 자신의 회복을 분리한다.
+기본 AoE는 맨해튼 거리 마름모이며 스킬별 직선/부채꼴, 시야 차단과 높이 차 제한도 지원한다. Effects의 AffectCaster로 가디언 필드의 적 피해와 자신의 회복을 분리한다.
 
 ## 고유 규칙
 
@@ -36,7 +36,7 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 65개, PlayMode 18개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 73개, PlayMode 21개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
@@ -74,3 +74,9 @@ ShopContent.AddSamples는 기존 카탈로그에 가죽 갑옷/생명의 부적�
 CampaignContent는 1장 11×9 물길/돌다리/우회로, 2장 12×10 계단/제단 맵과 6명 아군·4명 적 출전 좌표, 장별 전후 대사를 제공한다. BattleSession의 선택적 campaignStage는 기본 -1로 기존 테스트 맵/엔진 독립 테스트를 유지하며 캠페인에서만 전용 맵을 선택한다.
 CampaignStory는 전체 화면 uGUI 이야기와 진행/건너뛰기를 담당한다. RequestBattle은 캠페인 도입 후 BeginBattle을 호출하고 훈련은 즉시 시작한다. 승리/보상 저장 성공 이후에만 후일담을 읽을 수 있으며 다시 읽기는 저장을 호출하지 않는다. 대화 중 전장 입력은 차단한다. 대화 위치는 저장하지 않으며 완료된 장의 대사는 언제든 다시 읽는다. 대사는 이 프로젝트용 창작 시나리오다.
 BoardView는 전장 부분 viewport 아래에서 전체 화면을 지우는 cullingMask=0 배경 카메라를 생성하여 대사 패널 종료 뒤 화면 가장자리의 잔상을 방지한다.
+
+SkillGeometry는 사거리/영향 타일/시야를 공유 계산한다. Shape=Diamond는 기존 목표 중심 마름모, Line/Cone은 시전자에서 선택한 상하좌우 방향으로 Range까지 뻗는다. Line은 폭0 관통, Cone은 전방거리>측면거리이면서 맨해튼 거리<=Range인 타일이다. 방향형 스킬은 대각선/자기 타일을 조준할 수 없다. MaxHeightDifference=-1은 제한 없음, RequiresLineOfSight=false는 기존 시야 무시 동작이다.
+시야는 supercover 격자 광선으로 두 모서리 옆칸까지 검사한다. 비보행 타일/맵 구멍/시전자와 목표의 지면+1 높이를 잇는 선 이상인 중간 지형은 차단하며 유닛은 차단하지 않는다. 범위 내 각 영향 타일에도 높이/시야 규칙을 적용한다. Targets/Execute/ShowArea가 AreaTiles를 공유하고 EnemyPlanner의 기본 공격은 InRange를 사용한다.
+대표 적용 메뉴 SkillGeometryContent.Apply는 피어싱 라인(Line/Range4/높이차2), 쌍장저파(Cone/Range3/높이차1), 나탈리아/시온 기본 공격(기존 사거리/높이차2)에 시야 필요를 지정한다. 명시적 적용 메뉴이며 이후 사용자 기하 규칙을 수정한 뒤 무조건 재실행하지 않는다. 비용·위력·해금 레벨은 변경하지 않는다. 이 대표 설정은 현재 CombatTuning.Apply의 전체 89개 기술 기준선으로 대체되었다. 전체 적용표는 COMBAT_BALANCE.md를 따른다.
+
+CombatTuning은 기존 에셋의 기하·속성·저항을 명시적으로 적용하며 DemoContent를 재생성하지 않는다. 사용자 튜닝 이후 재실행하면 해당 필드를 덮어쓰므로 자동 실행하지 않는다. SkillGeometry.EffectiveRange는 활/총 물리 기술에 시전자-대상 높이 차를 최대 ±2칸 반영한다. DamagePreview의 선택적 SkillData 인자를 실제 실행과 EnemyPlanner가 공유한다. 속성은 피해에만 적용하며 상태 확률·회복에는 영향을 주지 않는다. 비용·위력·해금·게이트는 기존 값을 보존한다.
