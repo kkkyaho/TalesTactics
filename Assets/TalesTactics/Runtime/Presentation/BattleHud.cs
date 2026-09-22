@@ -126,7 +126,7 @@ namespace TalesTactics
             Button(commands,"장비 관리",405,ShowEquipmentRoster);
             Button(commands,"성장 · 승급",451,ShowGrowthRoster);
             for(int i=0;i<CampaignStages.Count;i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+i*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
-            Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?(battle.TrainingMode?"훈련: 기존 테스트 맵 / 저장 보상 없음":CampaignContent.Location(battle.SelectedStage)+"\n"+CampaignContent.Briefing(battle.SelectedStage)):CampaignStorage.Notice,14,88,18);
+            Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?(battle.TrainingMode?"훈련: 기존 테스트 맵 / 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):CampaignStorage.Notice,14,88,17);
         }
         void ShowEquipmentRoster()
         {

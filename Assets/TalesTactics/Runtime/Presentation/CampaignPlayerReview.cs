@@ -114,6 +114,7 @@ namespace TalesTactics
             battle.Campaign = store.Load();
             Check(store.CanSave && string.IsNullOrEmpty(store.Notice), "Save loads without fallback or corruption");
             battle.PersistCampaign = store.Save;
+            battle.RewardRoll=()=>2500; // Deterministic 15% drop branch; distribution is checked separately.
             battle.TrainingMode = false;
             battle.UseCT=battle.UseUtilityAI=report.tactical;
             battle.Deployment.Clear();
@@ -200,13 +201,14 @@ namespace TalesTactics
         {
             var loaded = new CampaignFile(savePath).Load();
             Check(loaded.StoryProgress.Count == chapters && Enumerable.Range(0, chapters).All(i => loaded.StoryProgress.Contains(CampaignStages.Id(i))), "Disk contains exactly the expected completion flags");
-            Check(party.All(i => { var p = loaded.Get(battle.Catalog.Characters[i].Id); return p.Level == 2 && p.EXP == chapters * 120 - 100; }), "Disk contains exact party levels and EXP");
+            Check(party.All(i => { var p = loaded.Get(battle.Catalog.Characters[i].Id); return p.Level == (chapters==1?2:3) && p.EXP == (chapters==1?20:0); }), "Disk contains exact party levels and EXP");
             Check(!loaded.Characters.Any(c => c.Promoted), "No premature promotion");
             var armor=battle.Catalog.Equipment.Single(e=>e.Id=="leather-armor");
             Check(loaded.Version==2,"Reload uses schema version 2");
             for(int stage=0;stage<chapters;stage++)Check(CampaignInventory.Owned(loaded,CampaignStages.EquipmentReward(stage))==1,"Disk contains chapter equipment reward "+stage);
             Check(loaded.Gold==CampaignInventory.StartingGold-armor.BuyPrice+Enumerable.Range(0,chapters).Sum(CampaignStages.GoldReward),"Disk contains exact purchase and victory gold");
-            Check(CampaignInventory.Owned(loaded,armor.Id)==1&&loaded.Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Purchased and equipped armor survives process restart");
+            Check(CampaignInventory.Owned(loaded,armor.Id)==2&&loaded.Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Purchased armor and chapter1 bonus drop survive process restart");
+            if(chapters==2)Check(CampaignInventory.Owned(loaded,"reinforced-armor")==1,"Chapter2 bonus drop survives process restart");
         }
 
         IEnumerator Fight(bool attack)

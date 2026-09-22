@@ -15,7 +15,7 @@ namespace TalesTactics.Editor
             var sword = Create(root + "IronSword.asset", "iron-sword", "철검", EquipmentSlot.Weapon,
                 240, new Stats { STR = 8 });
             var armor = Create(root + "ReinforcedArmor.asset", "reinforced-armor", "강화 갑옷", EquipmentSlot.Armor,
-                280, new Stats { HP = 35, DEF = 6 });
+                300, new Stats { HP = 35, DEF = 6 });
             catalog.Equipment = (catalog.Equipment ?? new EquipmentData[0]).Concat(new[] { sword, armor }).Distinct().ToArray();
             EditorUtility.SetDirty(catalog); AssetDatabase.SaveAssets();
         }

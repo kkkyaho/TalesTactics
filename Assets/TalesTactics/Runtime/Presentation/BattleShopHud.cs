@@ -24,7 +24,7 @@ namespace TalesTactics
             Label(commands,$"소지금 {battle.Campaign.Gold}G\n\n장비를 선택하면 능력치와\n보유 수량을 확인합니다.",20,180,20);
             Button(commands,"장비 매각",240,()=>ShowSellShop());
             Button(commands,"출전 준비로",296,ShowDeployment);
-            Label(footer,"장비는 파티가 공유합니다. 장착 중인 수량도 보유 수량에 포함됩니다.\n캠페인 승리 보상: 1장 120G / 2장 180G. 훈련에서는 구매할 수 없습니다.",14,88,17);
+            Label(footer,"장비는 파티가 공유합니다. 장착 중인 수량도 보유 수량에 포함됩니다.\n최초 승리: 1장 120G / 2장 180G · 반복: 60G / 90G. 훈련에서는 구매할 수 없습니다.",14,88,17);
         }
 
         void ShowShopItem(EquipmentData item,int page,string notice=null)

@@ -27,6 +27,8 @@ namespace TalesTactics
         int battleStage;
         public int SelectedStage;
         public bool RewardPending {get;private set;}
+        CampaignReward pendingReward;
+        public System.Func<int> RewardRoll=()=>UnityEngine.Random.Range(0,10000);
         public System.Func<CampaignSave,bool> PersistCampaign=CampaignStorage.Save;
         public bool IsPlayerCommand=>Session!=null&&Session.Active!=null&&Session.Active.Team==Team.Player&&State is CommandState;
         void Start()
@@ -69,7 +71,7 @@ namespace TalesTactics
         public void BeginBattle()
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
-            battleStage=SelectedStage;battleTraining=TrainingMode;
+            battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
             Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:1+SelectedStage*2,TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
@@ -146,19 +148,23 @@ namespace TalesTactics
             if(Session.Result!=BattleResult.Victory)return;
             Audio.Play("victory");
             if(battleTraining){Message+="\n훈련: 경험치·골드·장비·장 완료 기록은 저장하지 않습니다.";return;}
-            RewardPending=true;SaveBattleReward();
+            pendingReward=CampaignEconomy.Prepare(Campaign,battleStage,RewardRoll());RewardPending=true;SaveBattleReward();
         }
         public void SaveBattleReward()
         {
-            if(!RewardPending)return;
-            string rewardId=CampaignStages.EquipmentReward(battleStage);
-            var rewardItem=Catalog.Equipment.FirstOrDefault(e=>e!=null&&e.Id==rewardId);
-            string rewardName=rewardItem!=null?rewardItem.DisplayName:rewardId;
-            bool inventoryFull=CampaignInventory.Owned(Campaign,rewardId)>=CampaignInventory.MaxQuantity;
-            string lootText=inventoryFull?rewardName+" 미지급 (보유 상한 99개)":rewardName+" +1";
-            bool saved=CampaignStages.TryReward(Campaign,battleStage,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign);
+            if(!RewardPending||pendingReward==null)return;
+            string ItemText(string id)
+            {
+                var item=Catalog.Equipment.FirstOrDefault(e=>e!=null&&e.Id==id);string name=item!=null?item.DisplayName:id;
+                return name+(CampaignInventory.Owned(Campaign,id)>=CampaignInventory.MaxQuantity?" 미지급 (보유 상한 99개)":" +1");
+            }
+            string lootText=ItemText(CampaignStages.EquipmentReward(battleStage))+" · 추가: "+(pendingReward.BonusEquipment==null?"없음":ItemText(pendingReward.BonusEquipment));
+            int goldGranted=System.Math.Min(pendingReward.Gold,CampaignInventory.MaxGold-Campaign.Gold);
+            bool saved;
+            try{saved=CampaignStages.TryReward(Campaign,pendingReward,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign);}
+            catch(System.Exception){saved=false;}
             RewardPending=!saved;
-            Message=saved?CampaignStages.Title(battleStage)+" 완료 · 출전 전원 EXP +120 / "+CampaignStages.GoldReward(battleStage)+"G 저장\n장비: "+lootText:"저장 실패 — 보상 미적용. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";
+            Message=saved?CampaignStages.Title(battleStage)+" 완료 · "+(pendingReward.Repeat?"반복":"최초")+" EXP +"+pendingReward.Experience+" / "+goldGranted+"G 저장"+(goldGranted<pendingReward.Gold?" (골드 상한 적용)":"")+"\n장비: "+lootText:"저장 실패 — 보상 미적용. 추첨 결과는 유지됩니다. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";
             Hud.Refresh();
         }
     }

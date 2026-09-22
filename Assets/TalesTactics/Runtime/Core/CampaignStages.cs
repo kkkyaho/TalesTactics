@@ -2,22 +2,23 @@ using System;
 using System.Linq;
 namespace TalesTactics
 {
-    // Prototype scenarios share TestStage; IDs are persisted story completion flags.
+    // IDs are persisted story completion flags. Rewards are committed atomically.
     public static class CampaignStages
     {
         public const int Count=2;
-        public static int GoldReward(int stage)=>stage==0?120:180;
+        public static int GoldReward(int stage)=>CampaignEconomy.Gold(stage,false);
         public static string EquipmentReward(int stage)=>stage==0?"vital-charm":stage==1?"iron-sword":null;
         public static string Id(int stage)=>"chapter"+(stage+1);
         public static string Title(int stage)=>stage==0?"1장 · 유적의 경계":"2장 · 유적의 수호자";
         public static bool Unlocked(CampaignSave save,int stage)=>stage>=0&&stage<Count&&(stage==0||save.StoryProgress.Contains(Id(stage-1)));
         public static bool TryReward(CampaignSave save,int stage,CharacterData[] party,Func<CampaignSave,bool> persist)
+            =>!Unlocked(save,stage)?false:TryReward(save,CampaignEconomy.Prepare(save,stage,9999),party,persist);
+        public static bool TryReward(CampaignSave save,CampaignReward reward,CharacterData[] party,Func<CampaignSave,bool> persist)
         {
-            if(!Unlocked(save,stage)||persist==null)return false;
-            string rewardId=EquipmentReward(stage);
-            var rewardEntry=save.Inventory.Find(e=>e.Id==rewardId);
-            int originalCount=rewardEntry?.Count??0;
-            bool rewardAdded=false;
+            if(reward==null||reward.Applied||!Unlocked(save,reward.Stage)||persist==null)return false;
+            int stage=reward.Stage;
+            if(save.StoryProgress.Contains(Id(stage))!=reward.Repeat)return false;
+            var originalInventory=save.Inventory.ToArray();var counts=originalInventory.Select(e=>e.Count).ToArray();
             int originalGold=save.Gold;
             var originalCharacters=save.Characters.ToArray();
             var progress=party.Distinct().Select(c=>save.Get(c.Id)).ToArray();
@@ -27,22 +28,24 @@ namespace TalesTactics
             try
             {
                 foreach(var character in party.Distinct())
-                {var p=save.Get(character.Id);p.AddExperience(120);p.UnlockedSkills=character.Skills.Where(s=>s.UnlockLevel<=p.Level).Select(s=>s.Id).ToList();}
-                save.Gold=(int)Math.Min(CampaignInventory.MaxGold,(long)save.Gold+GoldReward(stage));
-                if(originalCount<CampaignInventory.MaxQuantity)
+                {var p=save.Get(character.Id);p.AddExperience(reward.Experience);p.UnlockedSkills=character.Skills.Where(s=>s.UnlockLevel<=p.Level).Select(s=>s.Id).ToList();}
+                save.Gold=(int)Math.Min(CampaignInventory.MaxGold,(long)save.Gold+reward.Gold);
+                foreach(var rewardId in new[]{EquipmentReward(stage),reward.BonusEquipment}.Where(id=>id!=null))
                 {
-                    if(rewardEntry==null){rewardEntry=new OwnedEquipment{Id=rewardId};save.Inventory.Add(rewardEntry);rewardAdded=true;}
-                    rewardEntry.Count++;
+                    var entry=save.Inventory.Find(e=>e.Id==rewardId);
+                    if(entry==null){entry=new OwnedEquipment{Id=rewardId};save.Inventory.Add(entry);}
+                    if(entry.Count<CampaignInventory.MaxQuantity)entry.Count++;
                 }
                 if(added)save.StoryProgress.Add(Id(stage));
-                return saved=persist(save);
+                saved=persist(save);if(saved)reward.Applied=true;return saved;
             }
             finally
             {
                 if(!saved)
                 {
                     for(int i=0;i<progress.Length;i++){progress[i].Level=levels[i];progress[i].EXP=exp[i];progress[i].UnlockedSkills=skills[i];}
-                    if(rewardAdded)save.Inventory.Remove(rewardEntry);else if(rewardEntry!=null)rewardEntry.Count=originalCount;
+                    for(int i=0;i<originalInventory.Length;i++)originalInventory[i].Count=counts[i];
+                    save.Inventory.Clear();save.Inventory.AddRange(originalInventory);
                     save.Gold=originalGold;save.Characters.Clear();save.Characters.AddRange(originalCharacters);
                     if(added)save.StoryProgress.Remove(Id(stage));
                 }

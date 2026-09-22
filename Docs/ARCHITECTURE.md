@@ -30,13 +30,13 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 ## 저장과 성장
 
-레벨 1–50, 고정 성장. EXP는 현재 레벨 ×100마다 레벨업, 전투 승리 기본 EXP120. 장비 3슬롯의 ID를 저장하고 Catalog에서 해결한다. EquipmentLoadout의 분리된 초안으로 장비를 미리보고 적용 시 저장한다. 슬롯 및 무기 종류를 검증하며 저장 실패 시 기존 장비로 복원한다. 훈련과 캠페인 모두 저장된 장비를 적용한다. 성장·승급 화면은 저장된 성장과 장비 기준으로 승급 전후 수치를 표시한다. CampaignPromotion이 조건 재검사와 1회 승급·저장 실패 복원을 담당한다. 캠페인 두 장의 완료 이벤트로 스토리 조건을 기록한다. 승급은 레벨 및 Story Flag 검사 API가 준비되어 있다. Battle Runtime은 저장하지 않는다.
+레벨 1–50, 고정 성장. EXP는 현재 레벨 ×100마다 레벨업, 최초 클리어 EXP는 1장120/2장180, 반복은60/90. 장비 3슬롯의 ID를 저장하고 Catalog에서 해결한다. EquipmentLoadout의 분리된 초안으로 장비를 미리보고 적용 시 저장한다. 슬롯 및 무기 종류를 검증하며 저장 실패 시 기존 장비로 복원한다. 훈련과 캠페인 모두 저장된 장비를 적용한다. 성장·승급 화면은 저장된 성장과 장비 기준으로 승급 전후 수치를 표시한다. CampaignPromotion이 조건 재검사와 1회 승급·저장 실패 복원을 담당한다. 캠페인 두 장의 완료 이벤트로 스토리 조건을 기록한다. 승급은 레벨 및 Story Flag 검사 API가 준비되어 있다. Battle Runtime은 저장하지 않는다.
 
 ## 화면과 검증
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 83개, PlayMode 25개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 88개, PlayMode 27개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
@@ -46,7 +46,7 @@ CampaignFile은 경로별 저장 I/O를 분리한다. Version 1의 누락 컬렉
 
 ## 캠페인 진행 프로토타입
 
-CampaignStages는 chapter1 → chapter2 완료 플래그와 순차 해금을 정의한다. CampaignContent의 전용 맵을 사용하며 1장 적 Lv1, 2장 적 Lv3이다. 훈련만 기존 TestStage를 사용한다. 훈련은 Lv25를 유지하고 완료 기록·EXP를 저장하지 않는다. 반복 클리어도 출전 전원 EXP120을 주며, 장 완료 플래그는 중복 추가하지 않는다. 전투 전후 대사·다시 읽기와 두 장 전용 맵을 제공한다. 성장 속도 밸런스는 후속 작업이다.
+CampaignStages는 chapter1 → chapter2 완료 플래그와 순차 해금을 정의한다. CampaignContent의 전용 맵을 사용하며 1장 적 Lv1, 2장 적 Lv3이다. 훈련만 기존 TestStage를 사용한다. 훈련은 Lv25를 유지하고 완료 기록·EXP를 저장하지 않는다. 반복 클리어는 출전 전원에게 장별 EXP60/90을 주며, 장 완료 플래그는 중복 추가하지 않는다. 전투 전후 대사·다시 읽기와 두 장 전용 맵을 제공한다. 두 장 최초 완료 시 Lv3/EXP0이 되는 초기 성장 기준선을 적용했다.
 
 BattleDirector는 시작 시 선택 장과 훈련 여부를 고정한다. 승리에만 CampaignStages.TryReward를 호출하며, 실패 시 레벨/EXP/스킬/완료 플래그를 복원한다. 결과 화면에서 보상 저장을 재시도할 수 있고 성공 후에는 중복 지급하지 않는다. 저장 실패 후 출전 화면으로 돌아가면 해당 보상을 포기한다. PersistCampaign 콜백은 기본 CampaignStorage.Save이며 PlayMode 테스트에서는 사용자 파일을 건드리지 않는 콜백으로 교체한다.
 
@@ -58,7 +58,7 @@ CampaignPlayerReview는 UNITY_EDITOR 또는 DEVELOPMENT_BUILD에서만 컴파일
 
 CampaignSave Version 2는 Gold와 Inventory(ID/Count)를 저장한다. Count는 장착분을 포함한 전체 보유량이며 Equipped를 제외한 수량이 미장착 수량이다. EquipmentLoadout은 초안 캐릭터를 제외한 다른 모든 캐릭터의 장착분을 예약으로 계산하고 적용 직전 다시 검사한다. 구매/장착은 PersistCampaign을 통해 저장하며 실패/예외 시 소지금·수량·슬롯을 복원한다. HUD의 장비/승급/타이밍 설정도 동일 저장 콜백을 사용한다.
 
-CampaignInventory는 초기 300G/청동검 1개, 최대 9,999,999G/장비별 99개를 정의한다. EquipmentData.BuyPrice가 양수인 장비만 상점에 표시하며 가격/보너스는 Content 에셋에서 조정한다. 캠페인 보상은 EXP와 완료 플래그에 골드(1장 120/2장 180)를 묶어 원자적으로 저장/복원한다. 훈련·패배에는 보상을 지급하지 않는다. 현재는 구매만 지원하고 매각/드롭은 후속 범위다.
+CampaignInventory는 초기 300G/청동검 1개, 최대 9,999,999G/장비별 99개를 정의한다. EquipmentData.BuyPrice가 양수인 장비만 상점에 표시하며 가격/보너스는 Content 에셋에서 조정한다. 캠페인 보상은 EXP와 완료 플래그에 골드(최초 120/180, 반복60/90)를 묶어 원자적으로 저장/복원한다. 훈련·패배에는 보상을 지급하지 않는다. 구매·매각·확정/확률 드롭을 지원한다.
 
 Version 1을 로드할 때 기존 장착 ID별 개수와 최소 청동검 1개를 이관한다. 원본은 즉시 수정하지 않으며 다음 저장 시 .v1.bak를 1회 보관한다. Version 2의 중복 ID/잘못된 수량/보유 초과 장착은 손상 저장으로 취급해 기존 백업 복구 또는 덮어쓰기 차단 경로를 따른다. Version 3 이상은 저장을 차단한다.
 
@@ -68,7 +68,7 @@ ShopContent.AddSamples는 기존 카탈로그에 가죽 갑옷/생명의 부적�
 
 상점 단계 해금: EquipmentData.RequiredStoryFlag가 비어 있으면 기본 상품이다. CampaignInventory.PurchaseUnlockRequirement/PurchaseUnavailable이 실제 완료 기록을 검사하므로 UI 외 구매 호출도 잠긴 상품을 구매할 수 없다. 기존 보유 장비의 사용/매각은 해금 조건과 독립적이다. ChapterShopContent는 기존 에셋을 덮어쓰지 않고 철검/강화 갑옷을 추가하는 명시적 메뉴다. 저장 형식은 Version 2를 유지한다.
 
-확정 장비 보상은 CampaignStages.EquipmentReward로 장별 ID를 정의한다(1장 vital-charm, 2장 iron-sword). TryReward가 장비 수량과 EXP·골드·완료 기록을 함께 저장하고 실패/예외 시 복원한다. 상한에서는 장비만 건너뛰며 다른 보상은 정상 지급한다. BattleDirector의 RewardPending이 동일 전투의 성공 이후 중복 지급을 막는다. 전투 자체는 저장하지 않으며 확률 추첨은 없다. 기존 Version 2 형식을 유지한다.
+확정 장비 보상은 CampaignStages.EquipmentReward로 장별 ID를 정의한다(1장 vital-charm, 2장 iron-sword). TryReward가 장비 수량과 EXP·골드·완료 기록을 함께 저장하고 실패/예외 시 복원한다. 상한에서는 장비만 건너뛰며 다른 보상은 정상 지급한다. BattleDirector의 RewardPending이 동일 전투의 성공 이후 중복 지급을 막는다. 전투 자체와 미저장 보상은 디스크에 저장하지 않는다. 기존 Version 2 형식을 유지한다.
 
 
 CampaignContent는 1장 11×9 물길/돌다리/우회로, 2장 12×10 계단/제단 맵과 6명 아군·4명 적 출전 좌표, 장별 전후 대사를 제공한다. BattleSession의 선택적 campaignStage는 기본 -1로 기존 테스트 맵/엔진 독립 테스트를 유지하며 캠페인에서만 전용 맵을 선택한다.
@@ -84,3 +84,7 @@ CombatTuning은 기존 에셋의 기하·속성·저항을 명시적으로 적�
 CTTurnScheduler는 ITurnScheduler의 선택 가능한 구현체로 CT1000/행동·SPD/틱·잔여 CT·순서 미리보기 복사본을 사용한다. BattleDirector.UseCT/UseUtilityAI를 출전 전 설정하고 세션 생성 시 고정한다. UtilityPlanner는 사용 가능한 기술과 도달 위치/목표를 점수화하며 실제 실행은 기존 SkillResolver와 EnemyTurn 코루틴을 사용한다. 기본 모드는 기존 SPD/기본 AI다.
 
 BattleObjectives의 DefeatBoss, ReachDestination(일반/호위), SurviveTurns가 IVictoryCondition을 구현한다. BattleSession.EndTurn이 생존 카운터와 상태 종료를 한 번만 처리한다. 특수 목표는 훈련 맵만 허용하며 캠페인 생성자로 특수 목표를 요청하면 거부한다. 목표 설명은 HUD 하단에 표시하고 금색 타일/HP 막대로 목표를 표시한다. 세부 조건과 한계는 TACTICAL_SYSTEMS.md를 따른다.
+
+CampaignEconomy.Prepare는 승리 시 최초/반복 EXP·골드·추가 장비 추첨 결과를 CampaignReward에 고정한다. BattleDirector가 이 객체를 실패/예외 후에도 보관하며 TryReward는 재추첨 없이 모든 수량·골드·성장·완료 플래그를 원자적으로 저장/복원한다. 성공한 객체의 Applied는 중복 적용을 차단한다. 최초/반복 상태가 달라진 오래된 객체도 거부한다. 기존 stage 인자 TryReward 오버로드는 추가 추첨 없는 결정적 호환 경로이며 실제 게임은 준비한 CampaignReward 경로를 사용한다.
+
+추가 드롭은 청동검25%/장별 방어구15%/없음60%의 상호 배타적 한 번 추첨이다. 장비99개 상한은 해당 아이템만 건너뛰고 재추첨하지 않는다. 재고 객체 참조와 순서까지 실패 시 복원한다. 저장 버전2 및 기존 성장/재고를 보존하며 기존 완료 기록이 있는 장에는 반복 보상을 적용한다. 미저장 보상은 출전 화면으로 나가거나 앱을 종료하면 포기한다.
