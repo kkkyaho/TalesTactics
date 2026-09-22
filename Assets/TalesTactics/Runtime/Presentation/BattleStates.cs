@@ -29,6 +29,14 @@ namespace TalesTactics
         public override void Tile(Vector2Int p){B.StartCoroutine(B.MoveUnit(p));}
     }
     public sealed class ActionSelectionState:BattleState {public ActionSelectionState(BattleDirector b):base(b){} }
+    public sealed class SkillDetailsState:BattleState
+    {
+        public readonly SkillData Skill;
+        public SkillDetailsState(BattleDirector b,SkillData skill):base(b){Skill=skill;}
+        public override string Title=>"스킬 상세";
+        public override void Enter(){B.Board.ClearHighlights();base.Enter();}
+        public override void Cancel(){B.SetState(new ActionSelectionState(B));}
+    }
     public sealed class TargetSelectionState:BattleState
     {
         public TargetSelectionState(BattleDirector b):base(b){}

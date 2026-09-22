@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="36" result="Passed" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.0922456">
+  <test-suite type="TestSuite" id="1050" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.092246" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1038" name="TalesTactics.Tests.dll" fullname="C:/Users/USER-PC/Documents/Codex/2026-09-22/new-chat/outputs/TalesTactics/Library/ScriptAssemblies/TalesTactics.Tests.dll" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.079907" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="168336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1039" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.079083" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1040" name="Tests" fullname="TalesTactics.Tests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.078484" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="BattleRuleTests" fullname="TalesTactics.Tests.BattleRuleTests" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.076550" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1030" name="ActionAfterMoveDisablesUndo" fullname="TalesTactics.Tests.BattleRuleTests.ActionAfterMoveDisablesUndo" methodname="ActionAfterMoveDisablesUndo" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1275037059" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.022614" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="AttackThenMoveAllowedButAttackCommitsPriorMove" fullname="TalesTactics.Tests.BattleRuleTests.AttackThenMoveAllowedButAttackCommitsPriorMove" methodname="AttackThenMoveAllowedButAttackCommitsPriorMove" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="917901211" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.001534" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="AutomatedBattleReachesAnOutcome" fullname="TalesTactics.Tests.BattleRuleTests.AutomatedBattleReachesAnOutcome" methodname="AutomatedBattleReachesAnOutcome" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="481395291" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.017837" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="AutoReviveIsConsumedOnce" fullname="TalesTactics.Tests.BattleRuleTests.AutoReviveIsConsumedOnce" methodname="AutoReviveIsConsumedOnce" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1159314196" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000657" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="CatalogRejectsDuplicateRosterIDs" fullname="TalesTactics.Tests.BattleRuleTests.CatalogRejectsDuplicateRosterIDs" methodname="CatalogRejectsDuplicateRosterIDs" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1465241727" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.001205" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="CatalogRejectsMissingAttack" fullname="TalesTactics.Tests.BattleRuleTests.CatalogRejectsMissingAttack" methodname="CatalogRejectsMissingAttack" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="2063429918" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000228" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="CatalogReportsMissingRosterReference" fullname="TalesTactics.Tests.BattleRuleTests.CatalogReportsMissingRosterReference" methodname="CatalogReportsMissingRosterReference" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1323805930" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000207" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="ConsumeClawLastsThreeSubsequentOwnTurns" fullname="TalesTactics.Tests.BattleRuleTests.ConsumeClawLastsThreeSubsequentOwnTurns" methodname="ConsumeClawLastsThreeSubsequentOwnTurns" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1516754395" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000336" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="CooldownBlocksReuseUntilNextTurn" fullname="TalesTactics.Tests.BattleRuleTests.CooldownBlocksReuseUntilNextTurn" methodname="CooldownBlocksReuseUntilNextTurn" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="789694865" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000853" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="DamageDoesNotMutateCharacterData" fullname="TalesTactics.Tests.BattleRuleTests.DamageDoesNotMutateCharacterData" methodname="DamageDoesNotMutateCharacterData" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1136644405" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000682" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="FixedGrowthAndLevelCap" fullname="TalesTactics.Tests.BattleRuleTests.FixedGrowthAndLevelCap" methodname="FixedGrowthAndLevelCap" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="163284009" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000235" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="FlamingEdgeNeedsChain" fullname="TalesTactics.Tests.BattleRuleTests.FlamingEdgeNeedsChain" methodname="FlamingEdgeNeedsChain" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1474534677" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000282" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="GuardProtectsFrontNotRear" fullname="TalesTactics.Tests.BattleRuleTests.GuardProtectsFrontNotRear" methodname="GuardProtectsFrontNotRear" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="897043534" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.002147" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="HealClampsToMaximum" fullname="TalesTactics.Tests.BattleRuleTests.HealClampsToMaximum" methodname="HealClampsToMaximum" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="471891150" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000266" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="HPCostCannotKOUser" fullname="TalesTactics.Tests.BattleRuleTests.HPCostCannotKOUser" methodname="HPCostCannotKOUser" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="23256491" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000187" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="InvalidTargetDoesNotSpendMP" fullname="TalesTactics.Tests.BattleRuleTests.InvalidTargetDoesNotSpendMP" methodname="InvalidTargetDoesNotSpendMP" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1687538528" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000208" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="JumpLimitBlocksCliff" fullname="TalesTactics.Tests.BattleRuleTests.JumpLimitBlocksCliff" methodname="JumpLimitBlocksCliff" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="772067899" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000260" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="KOClearsOccupancy" fullname="TalesTactics.Tests.BattleRuleTests.KOClearsOccupancy" methodname="KOClearsOccupancy" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1387108043" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000194" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="MixedEffectsPreviewNamesCasterAndDoesNotMutateResources" fullname="TalesTactics.Tests.BattleRuleTests.MixedEffectsPreviewNamesCasterAndDoesNotMutateResources" methodname="MixedEffectsPreviewNamesCasterAndDoesNotMutateResources" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="236676728" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.001668" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="MoveCanBeUndoneAndCannotRepeat" fullname="TalesTactics.Tests.BattleRuleTests.MoveCanBeUndoneAndCannotRepeat" methodname="MoveCanBeUndoneAndCannotRepeat" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="224165089" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000516" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="NightmareRequiresPriorAttack" fullname="TalesTactics.Tests.BattleRuleTests.NightmareRequiresPriorAttack" methodname="NightmareRequiresPriorAttack" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="224923411" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000212" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="OccupiedTileCannotBeTraversed" fullname="TalesTactics.Tests.BattleRuleTests.OccupiedTileCannotBeTraversed" methodname="OccupiedTileCannotBeTraversed" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1000916641" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000226" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="OneActionPerTurn" fullname="TalesTactics.Tests.BattleRuleTests.OneActionPerTurn" methodname="OneActionPerTurn" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1292648278" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000198" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="PathStartsAndEndsCorrectly" fullname="TalesTactics.Tests.BattleRuleTests.PathStartsAndEndsCorrectly" methodname="PathStartsAndEndsCorrectly" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="2088739486" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000934" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="PromotionRequiresStoryAndLevel" fullname="TalesTactics.Tests.BattleRuleTests.PromotionRequiresStoryAndLevel" methodname="PromotionRequiresStoryAndLevel" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1642164529" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000452" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="PullRespectsOccupancy" fullname="TalesTactics.Tests.BattleRuleTests.PullRespectsOccupancy" methodname="PullRespectsOccupancy" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1617186089" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000691" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="RearAttackOutdamagesFront" fullname="TalesTactics.Tests.BattleRuleTests.RearAttackOutdamagesFront" methodname="RearAttackOutdamagesFront" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="483791314" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000249" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="ReviveCannotOverlapLivingUnit" fullname="TalesTactics.Tests.BattleRuleTests.ReviveCannotOverlapLivingUnit" methodname="ReviveCannotOverlapLivingUnit" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="327111664" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000412" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="ReviveRestoresOccupancy" fullname="TalesTactics.Tests.BattleRuleTests.ReviveRestoresOccupancy" methodname="ReviveRestoresOccupancy" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="683654593" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000357" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="RootPreventsMovement" fullname="TalesTactics.Tests.BattleRuleTests.RootPreventsMovement" methodname="RootPreventsMovement" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="1111093765" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000273" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="SchedulerSkipsKO" fullname="TalesTactics.Tests.BattleRuleTests.SchedulerSkipsKO" methodname="SchedulerSkipsKO" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="757658826" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="SkillDetailsUseActualHPAndResourceCosts" fullname="TalesTactics.Tests.BattleRuleTests.SkillDetailsUseActualHPAndResourceCosts" methodname="SkillDetailsUseActualHPAndResourceCosts" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="2033198173" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000899" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="StunOneTurnExpiresAfterOneTurn" fullname="TalesTactics.Tests.BattleRuleTests.StunOneTurnExpiresAfterOneTurn" methodname="StunOneTurnExpiresAfterOneTurn" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="2065332321" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000267" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="ValidCatalogCanStartBattle" fullname="TalesTactics.Tests.BattleRuleTests.ValidCatalogCanStartBattle" methodname="ValidCatalogCanStartBattle" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="278443814" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000262" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="VictoryAndDefeatAreDetected" fullname="TalesTactics.Tests.BattleRuleTests.VictoryAndDefeatAreDetected" methodname="VictoryAndDefeatAreDetected" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="970782655" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000349" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="WaterCostsTwoMovement" fullname="TalesTactics.Tests.BattleRuleTests.WaterCostsTwoMovement" methodname="WaterCostsTwoMovement" classname="TalesTactics.Tests.BattleRuleTests" runstate="Runnable" seed="509048427" result="Passed" start-time="2026-09-22 00:07:02Z" end-time="2026-09-22 00:07:02Z" duration="0.000384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

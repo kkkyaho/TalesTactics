@@ -75,6 +75,22 @@ namespace TalesTactics.Tests
         {var c=ValidCatalog();c.Characters=new[]{data,data};Assert.That(CatalogValidation.TryValidate(c,out var error),Is.False);Assert.That(error,Does.Contain("Duplicate"));}
         [Test] public void ValidCatalogCanStartBattle()
         {Assert.That(CatalogValidation.TryValidate(ValidCatalog(),out var error),Is.True,error);}
+        [Test] public void SkillDetailsUseActualHPAndResourceCosts()
+        {
+            var skill=Skill(EffectKind.Damage);skill.HPPercentCost=0.15f;skill.HPCost=3;skill.MPCost=12;skill.GaugeCost=25;
+            string detail=resolver.Describe(player,skill);
+            Assert.That(detail,Does.Contain("HP "+resolver.HPCost(player,skill)));
+            Assert.That(detail,Does.Contain("MP 12"));Assert.That(detail,Does.Contain("게이지 25"));
+            Assert.That(player.Acted,Is.False);
+        }
+        [Test] public void MixedEffectsPreviewNamesCasterAndDoesNotMutateResources()
+        {
+            var skill=Skill(EffectKind.Damage);skill.Effects=new[]{new SkillEffect{Kind=EffectKind.Damage},new SkillEffect{Kind=EffectKind.Heal,AffectCaster=true},new SkillEffect{Kind=EffectKind.Pull,Distance=2}};
+            int hp=player.CurrentHP,mp=player.CurrentMP,enemyHP=enemy.CurrentHP;
+            string preview=resolver.Preview(player,skill,enemy);
+            Assert.That(preview,Does.Contain("시전자: 회복량"));Assert.That(preview,Does.Contain("끌어당김 최대 2칸"));
+            Assert.That(player.CurrentHP,Is.EqualTo(hp));Assert.That(player.CurrentMP,Is.EqualTo(mp));Assert.That(enemy.CurrentHP,Is.EqualTo(enemyHP));
+        }
     }
 }
 

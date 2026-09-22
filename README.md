@@ -4,10 +4,10 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 34개·PlayMode 6개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 36개·PlayMode 7개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 임시 아트를 사용하는 전투 프로토타입이며 전체 기획 완성본은 아닙니다.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
-- 엔진 독립 규칙 테스트 34개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
+- 엔진 독립 규칙 테스트 36개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
 - API 검사는 현재 프로젝트의 Library DLL을 사용합니다. 실제 실행 검증과 한계는 Docs/VALIDATION.md에 기록했습니다.
 
 ## 실행
@@ -25,7 +25,8 @@ Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git�
 ## 조작
 
 - Move → 파란 타일 클릭: 경로를 따라 이동. Undo Move로 원위치 복귀.
-- Attack 또는 Skill → 타일 선택 → 피해/효과 Preview → 실행.
+- Attack → 타일 선택 → 피해/효과 Preview → 실행.
+- Skill → 스킬 상세(비용·사거리·효과·사용 조건) → 목표 선택 → 타일 선택 → 실행. 잠긴 스킬도 상세를 열어볼 수 있습니다.
 - 이동과 행동 순서는 자유. 공격 후 이동도 가능. 이동 뒤 행동하면 이동 취소가 잠깁니다.
 - Wait 또는 Guard → Front/Back/Left/Right 선택 → 턴 종료.
 - 파라의 사자전후: 모든 일반 기술 해금, MP50 이상일 때 회전 진행률 40–75%에서 Space 또는 버튼 입력. 성공하면 MP50의 사후폭쇄진, 실패하면 사자전후만 실행. 자동 입력 옵션 제공.

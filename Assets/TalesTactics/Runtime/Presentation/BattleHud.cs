@@ -152,9 +152,18 @@ namespace TalesTactics
                 int i=0;foreach(var s in u.Data.Skills.Concat(new[]{u.Data.UltimateSkill}).Where(x=>x!=null))
                 {
                     var skill=s;string error=battle.Session.Resolver.CanUse(u,s,battle.IsFollowup(s));
-                    Button(commands,s.DisplayName+" · MP"+s.MPCost+(s.HPPercentCost>0?" HP"+Mathf.RoundToInt(s.HPPercentCost*100)+"%":"")+(u.Unlocked(s)?"":" Lv"+s.UnlockLevel),48+i*40,()=>battle.SelectSkill(skill),error==null,35);i++;
+                    Button(commands,s.DisplayName+" · MP"+s.MPCost+(error!=null?" · 조건 확인":""),48+i*40,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,35);i++;
                 }
                 Button(commands,"취소",48+i*40,()=>battle.SetState(new CommandState(battle)));
+            }
+            else if(battle.State is SkillDetailsState detail)
+            {
+                string error=battle.Session.Resolver.CanUse(u,detail.Skill,battle.IsFollowup(detail.Skill));
+                Label(commands,battle.Session.Resolver.Describe(u,detail.Skill),52,275,17);
+                var reason=Label(commands,SkillResolver.ExplainUnavailable(error),335,60,17);
+                reason.color=error==null?new Color(0.5f,1,0.7f):new Color(1,0.75f,0.4f);
+                Button(commands,"목표 선택",405,()=>battle.SelectSkill(detail.Skill),error==null);
+                Button(commands,"스킬 목록으로",453,()=>battle.State.Cancel());
             }
             else if(battle.State is TargetSelectionState)
             {

@@ -61,11 +61,61 @@ namespace TalesTactics
             var messages=new List<string>();
             foreach(var e in s.Effects)
             {
-                if(e.Kind==EffectKind.Damage)messages.Add("Damage "+DamagePreview(u,t,e)+" · Hit 100%");
-                if(e.Kind==EffectKind.Heal)messages.Add("Heal "+Mathf.RoundToInt(u.Stats.MAG*e.Power+e.Flat));
-                if(e.Kind==EffectKind.Status)messages.Add(e.Status+" "+Mathf.RoundToInt(e.Chance*100)+"%");
+                var recipient=e.AffectCaster?u:t;
+                string effect=e.Kind==EffectKind.Damage?"피해 "+DamagePreview(u,recipient,e):
+                    e.Kind==EffectKind.Heal?"회복량 "+Mathf.RoundToInt(u.Stats.MAG*e.Power+e.Flat):EffectDescription(e);
+                if(e.Kind==EffectKind.Damage||e.Kind==EffectKind.Heal)effect+=$" ({Mathf.RoundToInt(e.Chance*100)}%)";
+                messages.Add((e.AffectCaster?"시전자: ":"")+effect);
             }
             return string.Join(" / ",messages);
+        }
+        public string Describe(UnitRuntime u,SkillData s)
+        {
+            string target=s.Target==TargetType.Self?"자신":s.Target==TargetType.Ally?"아군":s.Target==TargetType.FallenAlly?"전투불능 아군":"적";
+            string details=$"{s.DisplayName}\nMP {s.MPCost} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · 범위 반경 {s.Area}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
+            if(s.Cooldown>0)details+=$"\n재사용 대기 {s.Cooldown}턴";
+            foreach(var effect in s.Effects)details+="\n"+(effect.AffectCaster?"시전자: ":"")+EffectDescription(effect);
+            if(s.StartsFlamingChain)details+="\n검술 후 Flaming Edge 연계 가능";
+            if(s.IsLionHowl)details+="\n조건 충족 시 타이밍 궁극기 연계";
+            return details;
+        }
+        static string EffectDescription(SkillEffect e)
+        {
+            string text;
+            switch(e.Kind)
+            {
+                case EffectKind.Damage:text=$"{(e.Magic?"마법":"물리")} 피해 ×{e.Power:0.##}"+(e.Flat!=0?$" +{e.Flat}":"")+(e.IgnoreDefense?" · 방어 무시":"")+(e.Drain>0?$" · 흡혈 {e.Drain:P0}":"");break;
+                case EffectKind.Heal:text=$"회복 MAG ×{e.Power:0.##} +{e.Flat}";break;
+                case EffectKind.Revive:text=$"부활 HP {e.Power:P0} (타일이 비어 있어야 함)";break;
+                case EffectKind.Cleanse:text="기절/수면/속박/케이지 해제";break;
+                case EffectKind.ConsumeClaw:text=$"컨슘 클로 활성화";break;
+                case EffectKind.AutoRevive:text=$"자동 부활 {e.Duration}턴";break;
+                case EffectKind.Gauge:text=$"게이지 {e.Flat:+0;-0;0}";break;
+                case EffectKind.Pull:text=$"끌어당김 최대 {e.Distance}칸";break;
+                case EffectKind.Push:text=$"밀치기 최대 {e.Distance}칸";break;
+                case EffectKind.Move:text=$"이동 최대 {e.Distance}칸";break;
+                default:text=$"{e.Status} {e.Duration}턴";break;
+            }
+            return text+(e.Chance<1?$" · 확률 {e.Chance:P0}":"");
+        }
+        public static string ExplainUnavailable(string reason)
+        {
+            switch(reason)
+            {
+                case null:return "사용 가능";
+                case "Action already used":return "행동을 이미 사용했거나 전투불능입니다.";
+                case "Level requirement":return "해금 레벨이 부족합니다.";
+                case "Not enough MP":return "MP가 부족합니다.";
+                case "Not enough HP":return "HP 비용 지불 후 1 이상 남아야 합니다.";
+                case "Not enough gauge":return "게이지가 부족합니다.";
+                case "Cooldown":return "재사용 대기 중입니다.";
+                case "Consume Claw required":return "컨슘 클로가 필요합니다.";
+                case "Use another claw attack first":return "클로 상태에서 선행 공격이 필요합니다.";
+                case "Guard Ignition required":return "가드 이그니션이 필요합니다.";
+                case "Use a sword arte first":return "같은 턴에 검술을 먼저 사용하세요.";
+                case "Chain from Lion Howl timing":return "사자전후의 타이밍 입력으로 발동합니다.";
+                default:return reason;
+            }
         }
         public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false)
         {
