@@ -1,0 +1,74 @@
+// Standalone Unity Editor eval. Assigns Walk/Dead only; all other character fields survive.
+UnityEditor.AssetDatabase.Refresh();
+var rows=System.IO.File.ReadAllLines("Tools/locomotion-layout.csv");
+var outlineRows=System.IO.File.ReadAllLines("Tools/locomotion-outlines.csv");
+var culture=System.Globalization.CultureInfo.InvariantCulture;
+foreach(var id in new[]{"farah","natalia"})foreach(var action in new[]{"Walk","Dead"})
+{
+    int count=action=="Walk"?4:3;
+    var suffix=id=="natalia"&&action=="Walk"?"-v2":"";
+    var path="Assets/TalesTactics/Art/Characters/"+id+"-"+action.ToLowerInvariant()+suffix+".png";
+    var importer=UnityEditor.AssetImporter.GetAtPath(path) as UnityEditor.TextureImporter;
+    if(importer==null)throw new System.Exception("Missing sheet: "+path);
+    var factories=new UnityEditor.U2D.Sprites.SpriteDataProviderFactories();factories.Init();
+    var provider=factories.GetSpriteEditorDataProviderFromObject(importer);
+    if(provider==null)throw new System.Exception("No sprite provider: "+path);
+    provider.InitSpriteEditorDataProvider();
+    var capability=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteFrameEditCapability>();
+    if(capability==null||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.CreateAndDeleteSprite)
+        ||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditSpriteRect)
+        ||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditPivot))
+        throw new System.Exception("Sprite editing unavailable: "+path);
+    importer.textureType=UnityEditor.TextureImporterType.Sprite;importer.spriteImportMode=UnityEditor.SpriteImportMode.Multiple;
+    importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.filterMode=UnityEngine.FilterMode.Bilinear;
+    importer.textureCompression=UnityEditor.TextureImporterCompression.Uncompressed;importer.maxTextureSize=4096;
+    var settings=new UnityEditor.TextureImporterSettings();importer.ReadTextureSettings(settings);
+    settings.spriteMeshType=UnityEngine.SpriteMeshType.Tight;importer.SetTextureSettings(settings);importer.SaveAndReimport();
+    provider=factories.GetSpriteEditorDataProviderFromObject(importer);provider.InitSpriteEditorDataProvider();
+    var previous=provider.GetSpriteRects();
+    var outlineProvider=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteOutlineDataProvider>();
+    var names=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteNameFileIdDataProvider>();
+    if(outlineProvider==null||names==null)throw new System.Exception("Missing outline/name provider: "+path);
+    var rects=new System.Collections.Generic.List<UnityEditor.SpriteRect>();
+    var pairs=new System.Collections.Generic.List<UnityEditor.SpriteNameFileIdPair>();
+    importer.GetSourceTextureWidthAndHeight(out int width,out int height);
+    foreach(var row in rows)
+    {
+        var c=row.Split(',');if(c[0]!=id||c[1]!=action)continue;
+        if(int.Parse(c[10])!=width||int.Parse(c[11])!=height)throw new System.Exception("Sheet dimensions changed: "+path);
+        var name=id+"_"+action+"_"+c[2]+"_"+c[3];var old=System.Array.Find(previous,x=>x.name==name);
+        var guid=old!=null?old.spriteID:UnityEngine.GUID.Generate();
+        float left=float.Parse(c[4],culture),top=float.Parse(c[5],culture),w=float.Parse(c[6],culture),h=float.Parse(c[7],culture);
+        rects.Add(new UnityEditor.SpriteRect{name=name,spriteID=guid,rect=new UnityEngine.Rect(left,height-top-h,w,h),
+            alignment=UnityEngine.SpriteAlignment.Custom,pivot=new UnityEngine.Vector2(float.Parse(c[8],culture),2f/h)});
+        pairs.Add(new UnityEditor.SpriteNameFileIdPair(name,guid));importer.spritePixelsPerUnit=float.Parse(c[9],culture);
+    }
+    if(rects.Count!=count*4)throw new System.Exception("Incomplete frame layout: "+path);
+    names.SetNameFileIdPairs(pairs);provider.SetSpriteRects(rects.ToArray());
+    foreach(var rect in rects)
+    {
+        var line=System.Array.Find(outlineRows,x=>x.StartsWith(rect.name+",",System.StringComparison.Ordinal));
+        if(line==null)throw new System.Exception("Missing outline: "+rect.name);
+        var points=line.Split(',');var polygon=new UnityEngine.Vector2[points.Length-1];
+        for(int i=1;i<points.Length;i++){var xy=points[i].Split(':');polygon[i-1]=new UnityEngine.Vector2(float.Parse(xy[0],culture),float.Parse(xy[1],culture));}
+        outlineProvider.SetOutlines(rect.spriteID,new System.Collections.Generic.List<UnityEngine.Vector2[]>{polygon});
+        outlineProvider.SetTessellationDetail(rect.spriteID,1);
+    }
+    provider.Apply();importer.SaveAndReimport();
+    var clip=new TalesTactics.DirectionalSpriteClip{Frames=new TalesTactics.DirectionalSprites[count],FramesPerSecond=action=="Walk"?8:6};
+    for(int i=0;i<count;i++)clip.Frames[i]=new TalesTactics.DirectionalSprites();
+    foreach(var asset in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path))if(asset is UnityEngine.Sprite sprite)
+    {
+        var parts=sprite.name.Split('_');if(parts.Length!=4)throw new System.Exception("Unexpected sprite: "+sprite.name);
+        var directions=clip.Frames[int.Parse(parts[2])];
+        switch(parts[3]){case "Front":directions.Front=sprite;break;case "Back":directions.Back=sprite;break;case "Right":directions.Right=sprite;break;case "Left":directions.Left=sprite;break;}
+    }
+    foreach(var frame in clip.Frames)foreach(TalesTactics.Facing facing in System.Enum.GetValues(typeof(TalesTactics.Facing)))
+        if(frame.Get(facing)==null)throw new System.Exception("Missing directional frame: "+path);
+    var data=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.CharacterData>("Assets/TalesTactics/Content/Characters/"+id+".asset");
+    if(data==null)throw new System.Exception("Missing character: "+id);
+    if(data.Poses==null)data.Poses=new TalesTactics.CharacterPoses();
+    if(action=="Walk")data.Poses.Walk=clip;else data.Poses.Dead=clip;
+    UnityEditor.EditorUtility.SetDirty(data);
+}
+UnityEditor.AssetDatabase.SaveAssets();return "Imported 56 walk/collapse frames for Farah and Natalia";

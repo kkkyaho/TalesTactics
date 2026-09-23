@@ -1,0 +1,26 @@
+// Temporary Play Mode gallery; all scene changes disappear when Play Mode stops.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Temporary Walk Collapse Gallery");
+var camera=root.AddComponent<UnityEngine.Camera>();camera.orthographic=true;camera.orthographicSize=5.9f;
+camera.transform.position=new UnityEngine.Vector3(0,0,-10);camera.backgroundColor=new UnityEngine.Color(0.14f,0.17f,0.20f);
+camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;
+var facings=new[]{TalesTactics.Facing.Front,TalesTactics.Facing.Back,TalesTactics.Facing.Right,TalesTactics.Facing.Left};
+var ids=new[]{"farah","natalia"};
+for(int character=0;character<2;character++)for(int direction=0;direction<4;direction++)
+{
+    var data=System.Array.Find(battle.Catalog.Characters,x=>x.Id==ids[character]);
+    int column=character*4+direction;float x=(column-3.5f)*1.8f;
+    for(int row=0;row<7;row++)
+    {
+        var g=new UnityEngine.GameObject(data.Id+" "+facings[direction]+" "+row);g.transform.SetParent(root.transform);
+        g.transform.position=new UnityEngine.Vector3(x,3.7f-row*1.45f,0);
+        var renderer=g.AddComponent<UnityEngine.SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;
+        renderer.sprite=(row<4?data.Poses.Walk.Frames[row]:data.Poses.Dead.Frames[row-4]).Get(facings[direction]);
+    }
+    var label=new UnityEngine.GameObject("Label");label.transform.SetParent(root.transform);var text=label.AddComponent<TMPro.TextMeshPro>();
+    text.font=battle.Hud.Font;text.text=data.DisplayName+"\n"+facings[direction];text.fontSize=1.8f;text.alignment=TMPro.TextAlignmentOptions.Center;
+    text.rectTransform.sizeDelta=new UnityEngine.Vector2(1.75f,0.65f);label.transform.position=new UnityEngine.Vector3(x,5.35f,-0.1f);
+}
+UnityEditor.EditorApplication.ExecuteMenuItem("Window/General/Game");return "Rows Walk 0/1/2/3, Dead 0/1/2; stop Play Mode to discard";

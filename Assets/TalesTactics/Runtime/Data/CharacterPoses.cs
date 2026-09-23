@@ -5,6 +5,7 @@ namespace TalesTactics
     [Serializable]
     public sealed class CharacterPoses
     {
+        public DirectionalSpriteClip Walk=new DirectionalSpriteClip(), Dead=new DirectionalSpriteClip();
         public DirectionalSprites Attack=new DirectionalSprites(), Cast=new DirectionalSprites(),
             Guard=new DirectionalSprites(), Damage=new DirectionalSprites();
 

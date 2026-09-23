@@ -74,7 +74,10 @@ foreach(var id in ids)
     foreach(var guid in UnityEditor.AssetDatabase.FindAssets("t:CharacterData"))
     {
         var data=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.CharacterData>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
-        if(data.Id!=id)continue;data.Poses=poses;UnityEditor.EditorUtility.SetDirty(data);
+        if(data.Id!=id)continue;
+        if(data.Poses==null)data.Poses=new TalesTactics.CharacterPoses();
+        data.Poses.Attack=poses.Attack;data.Poses.Cast=poses.Cast;data.Poses.Guard=poses.Guard;data.Poses.Damage=poses.Damage;
+        UnityEditor.EditorUtility.SetDirty(data);
     }
 }
 UnityEditor.AssetDatabase.SaveAssets();return "Imported 160 directional action poses; existing gameplay fields preserved.";

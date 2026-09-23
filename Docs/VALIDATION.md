@@ -244,3 +244,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 최종 Windows 개발 빌드 5.454초/오류0/경고1, 일반 빌드 22.640초/오류0/경고6 성공(unity-poses-development-build.json, unity-poses-windows-build.json). 첫 개발 빌드는 Succeeded이지만 빌드 중 별도 CLI 상태 조회의 main-thread 시간 초과가 오류1개로 집계돼 초기 보고서를 보관하고 재빌드했다(unity-poses-development-build-initial.json). 최종 빌드 중에는 해당 조회를 실행하지 않았다.
 - 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 불변. 증거: PlayerReviews/ba00f74860894b488a721abb8692741e-summary.json. 자동 실행 검사이며 수동 완주와 장시간 성능 검증은 아니다.
 - 이 검수는 최종 원작 외형 일치, 걷기/쓰러짐의 연속 프레임, 기술별 독립 포즈, BGM, 사람의 캠페인 수동 완주를 증명하지 않는다. 5번 전체는 진행 중이다.
+
+## 5번 후속 — 파라·나탈리아 보행/쓰러짐 프레임
+
+- 2명 × 4방향 × 보행4/쓰러짐3 = 56개 Sprite를 연결했다. 보행 8fps 반복, 쓰러짐 6fps 마지막 프레임 유지, 부활 후 기본 자세 복구를 구현했다. 나머지 8명은 기존 Transform 동작을 사용하며 5번 전체 완료가 아니다.
+- 실제 Unity EditMode 90/90·PlayMode 38/38 통과(unity-locomotion-editmode-results.json, unity-locomotion-playmode-results.json). 별도 엔진 독립 ManagedChecks 90/90 통과.
+- 새 EditMode 검사는 프레임 경계·반복·종료 유지·빈 배열·비정상 시간/FPS를 확인한다. 새 PlayMode 검사는 두 캐릭터의 카메라 4방향에서 모든 보행 프레임 표시, Idle 복귀, KO 3단계 진행, 동일 KO 갱신 시 재시작 방지, 부활 시 스프라이트/크기 복구를 확인한다.
+- Game View 1920×1080에서 전체 56개를 검수했다(locomotion-frames-preview.png). 초기 나탈리아 보행 시트의 행간 접촉을 발견해 여백을 넓힌 v2로 교체했다. 분석 도구는 원본 알파를 읽어 사각 경계·발/몸 중심 pivot·렌더링 윤곽 CSV만 작성한다. PNG 픽셀을 코드로 편집하지 않았다.
+- 기존 행동 포즈 임포트가 새 Walk/Dead 필드를 보존하도록 수정했다. DemoContent 재생성, 능력치 변경, 원작 음원 다운로드는 하지 않았다.
+- 방향별 장비·체형 일관성 및 더 많은 중간 프레임은 최종 아트 보정 대상이다. 임시 갤러리는 Play Mode를 종료해 폐기했으며 장면 에셋에 저장하지 않았다.
+- Windows 개발 빌드 21.491초/오류0/경고8, 일반 빌드 15.693초/오류0/경고6 성공(unity-locomotion-development-build.json, unity-locomotion-windows-build.json). 기존 Pipeline/셰이더 관련 경고는 유지된다.
+- 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 사용자 저장/백업 불변. 증거: PlayerReviews/8106f621368046a7984dabc4180f5a3a-summary.json. 자동 회귀 검사이며 수동 완주·장시간 성능 검수는 아니다.

@@ -14,7 +14,7 @@
 ## 완료로 간주하지 않는 부분
 
 - 생성 시트의 윤곽 잔여 픽셀, 장비의 방향별 일관성, 일부 가장자리 여백을 다듬는 최종 아트 검수.
-- 공격/시전/방어/피격은 아래 후속 단계에서 개별 포즈를 연결했다. 걷기·쓰러짐 등의 연속 프레임, 기술·궁극기 전용 포즈는 남아 있다. **4방향 × 9상태의 전체 프레임 작화 완료를 뜻하지 않는다.**
+- 공격/시전/방어/피격은 아래 후속 단계에서 개별 포즈를 연결했다. 파라·나탈리아에는 걷기·쓰러짐의 연속 프레임도 연결했다. 나머지 8명의 해당 프레임, 기술·궁극기 전용 포즈는 남아 있다. **4방향 × 9상태의 전체 프레임 작화 완료를 뜻하지 않는다.**
 - 10명별 기본 VFX 유형은 아래 후속 단계에서 구현했다. 89개 기술 각각의 독립적인 원작 연출 재현은 남아 있다.
 - 제공 BGM/음원 파일이 프로젝트에 없어 실제 음악 연결은 대기 중이다. 원작 음원을 내려받지 않았다.
 
@@ -33,6 +33,18 @@
 - poses-front/back/right/left-preview.png는 Game View에서 160개 포즈를 검수한 임시 갤러리다. 행 순서는 공격/시전/방어/피격. 기존 장면에 저장하지 않으며 Play Mode 종료로 폐기한다.
 - 최종 실제 Unity EditMode 88/88·PlayMode 36/36 통과: unity-poses-editmode-results.json, unity-poses-playmode-results.json. 새 PlayMode 검사는 10명×4방향 포즈 선택, 공격 복귀, 방어 유지, 누락 포즈 대체를 포함한다. 도중 테스트 도구 문제와 복구 과정은 VALIDATION.md 참조.
 - 최종 Windows 개발/일반 빌드 성공: unity-poses-development-build.json, unity-poses-windows-build.json. 실제 플레이어 캠페인 회귀 통과 및 사용자 저장 불변: PlayerReviews/ba00f74860894b488a721abb8692741e-summary.json.
+
+## 후속 단계 — 파라·나탈리아 걷기·쓰러짐
+
+- 파라·나탈리아 각 4방향 × 걷기 4프레임/쓰러짐 3프레임, 총 56개 Sprite를 추가했다. 원본은 기존 외형 시트를 참고한 imagegen 결과다.
+- Walk는 8fps 반복, Dead는 6fps로 휘청임→무릎 꿇음→바닥 자세를 재생하고 마지막 프레임을 유지한다. 방향 전환/동일 KO 상태 갱신은 재생 시간을 초기화하지 않는다. 부활하면 기본 자세와 크기를 복구한다.
+- 새 프레임에는 기존 보행 bob/기울기 및 KO 세로 축소를 중복 적용하지 않는다. 나머지 캐릭터·누락 프레임에는 기존 방향 그림/Transform 연출을 유지한다. 별도 Animator 우선 정책도 동일하다.
+- DirectionalSpriteClip은 빈 배열/누락 프레임, 음수·비정상 시간 및 FPS를 안전하게 처리한다. 런타임에 이미지 파일을 찾지 않고 직렬화된 Sprite 참조를 사용한다.
+- Tools/MeasureLocomotion.py는 원본 알파를 읽어 locomotion-layout/outlines.csv만 작성한다. Tools/ImportLocomotion.cs.txt는 Sprite Editor API로 해당 56개를 분할하고 Walk/Dead 필드만 교체한다. 능력치·장비·기존 160개 포즈는 보존한다.
+- 나탈리아 첫 걷기 시트는 그림끼리 붙어 있어 채택하지 않았다. 여백을 다시 만든 natalia-walk-v2.png를 사용한다. 방향별 장비/체형의 최종 일관성 보정과 더 많은 중간 프레임은 여전히 남아 있다.
+- 기존 ImportCharacterPoses 도구도 Walk/Dead를 보존하도록 바꿨다. 사용자 아트 편집 이후 임포트 도구를 무조건 재실행하지 않는다.
+- 실제 Unity EditMode 90/90·PlayMode 38/38 통과(unity-locomotion-editmode-results.json, unity-locomotion-playmode-results.json). 별도 ManagedChecks 90/90은 엔진 독립 검사다. locomotion-frames-preview.png에서 56개 프레임을 Game View로 검수했다. 행 순서는 걷기 0–3, 쓰러짐 0–2다.
+- Windows 개발/일반 빌드 성공(unity-locomotion-development-build.json, unity-locomotion-windows-build.json). 플레이어 캠페인 회귀 및 사용자 저장 불변 확인: PlayerReviews/8106f621368046a7984dabc4180f5a3a-summary.json. 검증된 중간 구현을 푸시하며 5번 전체 완료를 뜻하지 않는다.
 
 ## 공식 외형 자료
 
