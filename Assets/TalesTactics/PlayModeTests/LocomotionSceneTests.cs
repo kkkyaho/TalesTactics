@@ -8,10 +8,11 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        static readonly string[] LocomotionRoster={"cless","mint","velvet","farah","tear","jade","natalia","alphen","shionne","kisara"};
         [UnityTest] public IEnumerator WalkCyclesAllFramesInEveryViewAndStopsAtIdle()
         {
             var camera=director.Board.BattleCamera;
-            foreach(var id in new[]{"farah","natalia"})
+            foreach(var id in LocomotionRoster)
             {
                 var data=director.Catalog.Characters.Single(x=>x.Id==id);
                 Assert.That(data.Poses.Walk.Frames.Length,Is.EqualTo(4));
@@ -36,26 +37,31 @@ namespace TalesTactics.PlayModeTests
         }
         [UnityTest] public IEnumerator CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle()
         {
-            director.Deployment.Clear();
-            foreach(var id in new[]{"farah","natalia"})director.Deployment.Add(System.Array.FindIndex(director.Catalog.Characters,x=>x.Id==id));
-            director.BeginBattle();yield return null;
-            foreach(var unit in director.Session.Units.Where(x=>x.Team==Team.Player))
+            for(int start=0;start<LocomotionRoster.Length;start+=5)
             {
-                var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(x=>x.transform.parent.name==unit.Data.DisplayName);
-                var renderer=motion.GetComponent<SpriteRenderer>();
-                var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
-                unit.CurrentHP=0;director.Board.Sync();yield return new WaitForEndOfFrame();
-                Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Dead.Frames[0].Get(facing)));
-                yield return new WaitForSeconds(0.2f);yield return new WaitForEndOfFrame();
-                Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Dead.Frames[1].Get(facing)));
-                yield return new WaitForSeconds(0.2f);yield return new WaitForEndOfFrame();
-                var final=unit.Data.Poses.Dead.Frames[2].Get(facing);Assert.That(renderer.sprite,Is.EqualTo(final));
-                director.Board.Sync();yield return new WaitForEndOfFrame();
-                Assert.That(renderer.sprite,Is.EqualTo(final),"Repeated KO refresh must not restart collapse");
-                Assert.That(renderer.transform.localScale.y,Is.EqualTo(1),"Authored collapse must not be squashed");
-                unit.CurrentHP=unit.Stats.HP;director.Board.Sync();yield return new WaitForEndOfFrame();
-                Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Sprites.Get(facing)));
-                Assert.That(renderer.transform.localScale.y,Is.InRange(0.99f,1.01f));
+                director.Restart();yield return null;
+                director.Deployment.Clear();
+                foreach(var id in LocomotionRoster.Skip(start).Take(5))director.Deployment.Add(System.Array.FindIndex(director.Catalog.Characters,x=>x.Id==id));
+                director.BeginBattle();yield return null;
+                Assert.That(director.Session.Units.Count(x=>x.Team==Team.Player),Is.EqualTo(5));
+                foreach(var unit in director.Session.Units.Where(x=>x.Team==Team.Player))
+                {
+                    var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(x=>x.transform.parent.name==unit.Data.DisplayName);
+                    var renderer=motion.GetComponent<SpriteRenderer>();
+                    var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
+                    unit.CurrentHP=0;director.Board.Sync();yield return new WaitForEndOfFrame();
+                    Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Dead.Frames[0].Get(facing)));
+                    yield return new WaitForSeconds(0.2f);yield return new WaitForEndOfFrame();
+                    Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Dead.Frames[1].Get(facing)));
+                    yield return new WaitForSeconds(0.2f);yield return new WaitForEndOfFrame();
+                    var final=unit.Data.Poses.Dead.Frames[2].Get(facing);Assert.That(renderer.sprite,Is.EqualTo(final));
+                    director.Board.Sync();yield return new WaitForEndOfFrame();
+                    Assert.That(renderer.sprite,Is.EqualTo(final),"Repeated KO refresh must not restart collapse");
+                    Assert.That(renderer.transform.localScale.y,Is.EqualTo(1),"Authored collapse must not be squashed");
+                    unit.CurrentHP=unit.Stats.HP;director.Board.Sync();yield return new WaitForEndOfFrame();
+                    Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Sprites.Get(facing)));
+                    Assert.That(renderer.transform.localScale.y,Is.InRange(0.99f,1.01f));
+                }
             }
         }
     }

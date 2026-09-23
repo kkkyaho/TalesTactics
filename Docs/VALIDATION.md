@@ -255,3 +255,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 방향별 장비·체형 일관성 및 더 많은 중간 프레임은 최종 아트 보정 대상이다. 임시 갤러리는 Play Mode를 종료해 폐기했으며 장면 에셋에 저장하지 않았다.
 - Windows 개발 빌드 21.491초/오류0/경고8, 일반 빌드 15.693초/오류0/경고6 성공(unity-locomotion-development-build.json, unity-locomotion-windows-build.json). 기존 Pipeline/셰이더 관련 경고는 유지된다.
 - 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 사용자 저장/백업 불변. 증거: PlayerReviews/8106f621368046a7984dabc4180f5a3a-summary.json. 자동 회귀 검사이며 수동 완주·장시간 성능 검수는 아니다.
+
+## 5번 후속 — 전체 10명 보행/쓰러짐 연결
+
+- 크레스·민트·벨벳·티아·제이드·알펜·시온·키사라의 224개 프레임을 추가했다. 전체 10명의 4방향 보행4/쓰러짐3, 총 280개다. 기존 재생기를 재사용하며 런타임 전투 규칙은 변경하지 않았다.
+- 실제 Unity EditMode 90/90·PlayMode 38/38 통과(unity-locomotion-roster-editmode-results.json, unity-locomotion-roster-playmode-results.json). PlayMode 대상은 기존 2명에서 전체 10명으로 확대했다. 보행 4방향 전체 프레임 표시/Idle 복귀와, 5명씩 두 번 출전시킨 KO 3단계/최종 프레임 유지/부활 복구를 확인했다. 별도 ManagedChecks 90/90도 통과했다.
+- Game View 1920×1080에서 새 224개 프레임의 잘림·이웃 그림 혼입·투명도를 검수했다. 증거: locomotion-cless-mint-preview.png, locomotion-velvet-tear-preview.png, locomotion-jade-alphen-preview.png, locomotion-shionne-kisara-preview.png. 임시 갤러리는 저장하지 않고 Play Mode 종료로 폐기했다.
+- 원본 PNG 픽셀은 편집하지 않았다. 알파 분석은 CSV만 생성하며 Sprite Editor API가 경계/pivot/렌더링 윤곽/안정된 Sprite ID를 적용했다. Git 기준 비교로 새 8명 데이터의 Walk/Dead 외 필드가 모두 보존됐고 파라·나탈리아 및 ProjectSettings 변경이 없음을 확인했다.
+- Windows 개발 빌드 21.668초/오류0/경고5, 일반 빌드 14.852초/오류0/경고4 성공(unity-locomotion-roster-development-build.json, unity-locomotion-roster-windows-build.json). Pipeline 런타임 설정 없음/셰이더 관련 경고가 있다. 개발 빌드에는 미컴파일 코드 변경 경고가 추가로 기록됐다. 이 단계에서 런타임·Editor 후처리 코드를 바꾸지 않았으며 이후 recompile_status는 completed/failed=false/compilationFailed=false였다. 일반 빌드에는 해당 경고가 없다.
+- 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 불변. 증거: PlayerReviews/68ca64ec4d8a4864bd1f3c54142dc776-summary.json.
+- 이 검증은 최종 원작 외형 일치, 방향별 장비·체형 일관성, 부드러운 중간 작화, 기술/궁극기 전용 연출, 제공 BGM, 수동 캠페인 완주 또는 장시간 성능을 증명하지 않는다. 5번 전체는 진행 중이다.

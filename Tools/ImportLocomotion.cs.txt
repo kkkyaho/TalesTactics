@@ -3,7 +3,9 @@ UnityEditor.AssetDatabase.Refresh();
 var rows=System.IO.File.ReadAllLines("Tools/locomotion-layout.csv");
 var outlineRows=System.IO.File.ReadAllLines("Tools/locomotion-outlines.csv");
 var culture=System.Globalization.CultureInfo.InvariantCulture;
-foreach(var id in new[]{"farah","natalia"})foreach(var action in new[]{"Walk","Dead"})
+// Select a small batch explicitly before running; this replaces its Walk/Dead clips.
+var ids=new[]{"cless","mint","velvet","tear","jade","alphen","shionne","kisara"};
+foreach(var id in ids)foreach(var action in new[]{"Walk","Dead"})
 {
     int count=action=="Walk"?4:3;
     var suffix=id=="natalia"&&action=="Walk"?"-v2":"";
@@ -71,4 +73,4 @@ foreach(var id in new[]{"farah","natalia"})foreach(var action in new[]{"Walk","D
     if(action=="Walk")data.Poses.Walk=clip;else data.Poses.Dead=clip;
     UnityEditor.EditorUtility.SetDirty(data);
 }
-UnityEditor.AssetDatabase.SaveAssets();return "Imported 56 walk/collapse frames for Farah and Natalia";
+UnityEditor.AssetDatabase.SaveAssets();return "Imported "+(ids.Length*28)+" walk/collapse frames: "+string.Join(", ",ids);

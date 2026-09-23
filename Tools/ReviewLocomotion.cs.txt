@@ -1,6 +1,8 @@
 // Temporary Play Mode gallery; all scene changes disappear when Play Mode stops.
-var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
 if(battle==null)throw new System.Exception("Enter Play Mode first");
+var previous=UnityEngine.GameObject.Find("Temporary Walk Collapse Gallery");
+if(previous!=null)UnityEngine.Object.DestroyImmediate(previous);
 foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
 var root=new UnityEngine.GameObject("Temporary Walk Collapse Gallery");
 var camera=root.AddComponent<UnityEngine.Camera>();camera.orthographic=true;camera.orthographicSize=5.9f;

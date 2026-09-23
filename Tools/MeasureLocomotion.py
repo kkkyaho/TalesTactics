@@ -1,12 +1,16 @@
 """Read-only analysis of walk/dead PNGs. Writes Unity layout/outline CSV only."""
 from pathlib import Path
 import csv
+import sys
 import numpy as np
 from PIL import Image
 from MeasureCharacterPoses import contour
 
-layouts=[]; outlines=[]
-for character in ('farah','natalia'):
+characters=sys.argv[1:] or ['cless','mint','velvet','farah','tear','jade','natalia','alphen','shionne','kisara']
+# Incremental analysis preserves previously reviewed character rows.
+layouts=[r for r in list(csv.reader(Path('Tools/locomotion-layout.csv').open()))[1:] if r[0] not in characters]
+outlines=[r for r in csv.reader(Path('Tools/locomotion-outlines.csv').open()) if r[0].split('_')[0] not in characters]
+for character in characters:
     for action,rows in (('walk',4),('dead',3)):
         suffix='-v2' if character=='natalia' and action=='walk' else ''
         path=Path(f'Assets/TalesTactics/Art/Characters/{character}-{action}{suffix}.png')

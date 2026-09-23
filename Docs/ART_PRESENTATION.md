@@ -14,7 +14,7 @@
 ## 완료로 간주하지 않는 부분
 
 - 생성 시트의 윤곽 잔여 픽셀, 장비의 방향별 일관성, 일부 가장자리 여백을 다듬는 최종 아트 검수.
-- 공격/시전/방어/피격은 아래 후속 단계에서 개별 포즈를 연결했다. 파라·나탈리아에는 걷기·쓰러짐의 연속 프레임도 연결했다. 나머지 8명의 해당 프레임, 기술·궁극기 전용 포즈는 남아 있다. **4방향 × 9상태의 전체 프레임 작화 완료를 뜻하지 않는다.**
+- 공격/시전/방어/피격은 아래 후속 단계에서 개별 포즈를 연결했다. 전체 10명에 걷기·쓰러짐의 연속 프레임도 연결했다. 기술·궁극기 전용 포즈는 남아 있다. **4방향 × 9상태의 전체 프레임 작화 완료를 뜻하지 않는다.**
 - 10명별 기본 VFX 유형은 아래 후속 단계에서 구현했다. 89개 기술 각각의 독립적인 원작 연출 재현은 남아 있다.
 - 제공 BGM/음원 파일이 프로젝트에 없어 실제 음악 연결은 대기 중이다. 원작 음원을 내려받지 않았다.
 
@@ -45,6 +45,16 @@
 - 기존 ImportCharacterPoses 도구도 Walk/Dead를 보존하도록 바꿨다. 사용자 아트 편집 이후 임포트 도구를 무조건 재실행하지 않는다.
 - 실제 Unity EditMode 90/90·PlayMode 38/38 통과(unity-locomotion-editmode-results.json, unity-locomotion-playmode-results.json). 별도 ManagedChecks 90/90은 엔진 독립 검사다. locomotion-frames-preview.png에서 56개 프레임을 Game View로 검수했다. 행 순서는 걷기 0–3, 쓰러짐 0–2다.
 - Windows 개발/일반 빌드 성공(unity-locomotion-development-build.json, unity-locomotion-windows-build.json). 플레이어 캠페인 회귀 및 사용자 저장 불변 확인: PlayerReviews/8106f621368046a7984dabc4180f5a3a-summary.json. 검증된 중간 구현을 푸시하며 5번 전체 완료를 뜻하지 않는다.
+
+## 후속 단계 — 전체 10명 걷기·쓰러짐
+
+- 크레스·민트·벨벳·티아·제이드·알펜·시온·키사라의 224개 프레임을 추가했다. 기존 파라·나탈리아 56개와 합쳐 전체 10명 × 4방향 × 보행4/쓰러짐3 = 280개다. 위 두 단계의 구현 범위는 당시 기록이며 현재 Walk/Dead는 전원 프레임 클립을 사용한다.
+- 기존 turnaround 시트를 참조해 생성한 PNG 16장을 Sprite Editor API로 분할했다. 원본 픽셀은 수정하지 않고, 알파 분석으로 프레임 경계·pivot·렌더링 윤곽을 지정한다. MeasureLocomotion.py에 캐릭터 ID를 전달하면 선택한 캐릭터의 CSV 행만 갱신한다.
+- ImportLocomotion.cs.txt의 ids를 명시적으로 선택해 작은 묶음으로 실행한다. 해당 Walk/Dead를 교체하므로 사용자 편집 이후 자동 재실행하지 않는다. 이번에는 새 8명만 임포트했으며 기존 파라·나탈리아 데이터 및 공격/시전/방어/피격 포즈를 보존했다.
+- 실제 Unity EditMode 90/90·PlayMode 38/38 통과(unity-locomotion-roster-editmode-results.json, unity-locomotion-roster-playmode-results.json). 테스트 수는 같지만 보행 4방향 반복/Idle 복귀 및 KO 진행/유지/부활 검사의 대상이 2명에서 10명으로 늘었다. 별도 ManagedChecks 90/90도 통과했다.
+- Game View 1920×1080에서 새 224개 프레임의 잘림·이웃 그림 혼입·배경 투명도를 확인했다. 증거: locomotion-cless-mint-preview.png, locomotion-velvet-tear-preview.png, locomotion-jade-alphen-preview.png, locomotion-shionne-kisara-preview.png. 임시 갤러리는 Play Mode 종료로 폐기했다.
+- 4프레임 보행과 3프레임 쓰러짐을 연결한 단계다. 방향별 장비/얼굴/체형의 일관성, 가장자리 잔여 픽셀, 부드러운 중간 작화는 최종 보정 대상이다. 기술/궁극기 전용 포즈·상세 연출·제공 BGM도 남아 있으므로 5번 전체 완료는 아니다.
+- Windows 개발/일반 빌드 및 실제 플레이어 캠페인 회귀 통과: unity-locomotion-roster-development-build.json, unity-locomotion-roster-windows-build.json, PlayerReviews/68ca64ec4d8a4864bd1f3c54142dc776-summary.json. 빌드 경고와 검증 한계는 VALIDATION.md에 기록했다.
 
 ## 공식 외형 자료
 

@@ -4,7 +4,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 90개·PlayMode 38개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·파라/나탈리아 보행·쓰러짐 프레임·캐릭터별 VFX를 연결했으며 최종 아트·프레임 작화·제공 BGM은 진행 중입니다. 전체 기획 완성본은 아닙니다. 범위와 한계는 Docs/ART_PRESENTATION.md를 참고하세요.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 90개·PlayMode 38개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·전체 10명 보행/쓰러짐 280개 프레임·캐릭터별 VFX를 연결했으며 최종 아트·기술/궁극기 전용 프레임·제공 BGM은 진행 중입니다. 전체 기획 완성본은 아닙니다. 범위와 한계는 Docs/ART_PRESENTATION.md를 참고하세요.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
 - 엔진 독립 규칙 테스트 90개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
