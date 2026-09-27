@@ -1,0 +1,24 @@
+// Read-only review: real reward rules, in-memory saves, no asset or user-save writes.
+var catalog=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.BattleCatalog>("Assets/TalesTactics/Content/BattleCatalog.asset");
+var rows=new System.Collections.Generic.List<object>();
+foreach(var character in catalog.Characters)
+{
+    var save=new TalesTactics.CampaignSave();
+    var party=new[]{character};
+    int clears=0;
+    while(save.Get(character.Id).Level<50)
+    {
+        int stage=clears==0?0:1;
+        var reward=TalesTactics.CampaignEconomy.Prepare(save,stage,9999);
+        int before=save.Get(character.Id).Level;
+        if(!TalesTactics.CampaignStages.TryReward(save,reward,party,_=>true))throw new System.Exception("Reward failed");
+        clears++;
+        var progress=save.Get(character.Id);
+        if(progress.Level!=before)
+            rows.Add(new {character=character.Id,level=progress.Level,clears,chapter2Repeats=System.Math.Max(0,clears-2),exp=progress.EXP,gold=save.Gold,
+                promotionEligible=progress.Level>=character.PromotionLevel&&save.StoryProgress.Contains(character.PromotionStoryFlag),
+                unlockedSkills=progress.UnlockedSkills.Count});
+        if(clears>2000)throw new System.Exception("Progression did not converge");
+    }
+}
+return rows;
