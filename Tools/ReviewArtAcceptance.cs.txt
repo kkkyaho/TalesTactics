@@ -1,0 +1,32 @@
+// Play Mode only: 10 characters x 9 authored action states, one facing per capture.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+var old=UnityEngine.GameObject.Find("Art acceptance gallery");if(old!=null)UnityEngine.Object.DestroyImmediate(old);
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Art acceptance gallery");var camera=root.AddComponent<UnityEngine.Camera>();
+camera.orthographic=true;camera.orthographicSize=8.3f;camera.transform.position=new UnityEngine.Vector3(0,0,-10);
+camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;camera.backgroundColor=new UnityEngine.Color(.14f,.17f,.20f);
+var facing=TalesTactics.Facing.Front;
+var states=new[]{TalesTactics.AnimationKind.Idle,TalesTactics.AnimationKind.Walk,TalesTactics.AnimationKind.Attack,TalesTactics.AnimationKind.Skill,TalesTactics.AnimationKind.Cast,TalesTactics.AnimationKind.Guard,TalesTactics.AnimationKind.Damage,TalesTactics.AnimationKind.Dead,TalesTactics.AnimationKind.Ultimate};
+for(int column=0;column<10;column++)
+{
+    var data=battle.Catalog.Characters[column];float x=(column-4.5f)*2.4f;
+    var heading=new UnityEngine.GameObject("Heading");heading.transform.SetParent(root.transform);
+    var title=heading.AddComponent<TMPro.TextMeshPro>();title.font=battle.Hud.Font;title.text=data.DisplayName;title.fontSize=2.4f;
+    title.alignment=TMPro.TextAlignmentOptions.Center;title.rectTransform.sizeDelta=new UnityEngine.Vector2(2.3f,.6f);heading.transform.position=new UnityEngine.Vector3(x,7.65f,0);
+    for(int row=0;row<states.Length;row++)
+    {
+        var state=states[row];var sprite=data.Poses.Get(state,facing)??data.Sprites.Get(facing);
+        if(state==TalesTactics.AnimationKind.Walk)sprite=data.Poses.Walk.Frames[1].Get(facing);
+        if(state==TalesTactics.AnimationKind.Dead)sprite=data.Poses.Dead.Frames[2].Get(facing);
+        if(state==TalesTactics.AnimationKind.Skill)sprite=data.Poses.Skill.Frames[1].Get(facing);
+        if(state==TalesTactics.AnimationKind.Ultimate)sprite=data.Poses.Ultimate.Frames[1].Get(facing);
+        var g=new UnityEngine.GameObject(data.Id+" "+state);g.transform.SetParent(root.transform);g.transform.position=new UnityEngine.Vector3(x,5.9f-row*1.6f,0);
+        var renderer=g.AddComponent<UnityEngine.SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;renderer.sprite=sprite;
+        if(column!=0)continue;
+        var label=new UnityEngine.GameObject("State label");label.transform.SetParent(root.transform);
+        var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=state.ToString();text.fontSize=2.1f;
+        text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(1.5f,.5f);label.transform.position=new UnityEngine.Vector3(-13.4f,6.35f-row*1.6f,0);
+    }
+}
+UnityEditor.EditorApplication.ExecuteMenuItem("Window/General/Game");return "Acceptance gallery "+facing+"; exit Play Mode to restore scene";

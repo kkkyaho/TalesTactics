@@ -1,0 +1,23 @@
+// Explicit Editor import. Fill missing clips only; preserve supplied audio and metadata.
+UnityEditor.AssetDatabase.Refresh();
+var library=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.AudioLibrary>("Assets/TalesTactics/Content/AudioLibrary.asset");
+if(library==null)throw new System.Exception("Missing AudioLibrary");
+int count=0;
+foreach(var entry in library.Entries)
+{
+    if(entry.Clip!=null)continue;
+    var path="Assets/TalesTactics/Audio/Original/"+entry.Id+".wav";
+    var importer=UnityEditor.AssetImporter.GetAtPath(path) as UnityEditor.AudioImporter;
+    if(importer==null)throw new System.Exception("Missing original music "+entry.Id);
+    importer.forceToMono=false;importer.loadInBackground=false;
+    var settings=importer.defaultSampleSettings;
+    settings.loadType=entry.Id=="battle"||entry.Id=="boss"||entry.Id=="story"?UnityEngine.AudioClipLoadType.Streaming:UnityEngine.AudioClipLoadType.CompressedInMemory;
+    settings.compressionFormat=UnityEngine.AudioCompressionFormat.Vorbis;settings.quality=0.85f;
+    settings.sampleRateSetting=UnityEditor.AudioSampleRateSetting.PreserveSampleRate;settings.preloadAudioData=true;
+    importer.defaultSampleSettings=settings;importer.SaveAndReimport();
+    entry.Clip=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.AudioClip>(path);
+    if(entry.Clip==null||entry.Clip.channels!=2||entry.Clip.length<6)throw new System.Exception("Invalid music import "+entry.Id);
+    entry.SourceMetadata="Original project composition and synthesis; Tools/ComposeOriginalMusic.py; no source-game recording or melody used.";
+    count++;
+}
+UnityEditor.EditorUtility.SetDirty(library);UnityEditor.AssetDatabase.SaveAssets();return "Connected "+count+" original music clips; supplied clips preserved";

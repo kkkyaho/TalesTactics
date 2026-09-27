@@ -8,9 +8,11 @@ Poses.Walk/Dead는 DirectionalSpriteClip의 방향별 프레임 배열과 FPS로
 
 CharacterMotion은 Animator가 없는 유닛에 방향 그림과 Transform 기반 기본 동작을 제공한다. 카메라 회전 기준으로 화면 방향을 선택하며 실제 전투 Facing은 바꾸지 않는다. BattleDirector가 판정 전에 HP와 대상 목록을 보관하고 BoardView.PresentImpact에 전달한다. KO 후 Targets에서 사라진 유닛도 해당 목록으로 연출한다. HP 소모 비용과 실제 회복/피격은 구분한다.
 
-CombatEffect는 SkillData.Presentation.Pattern이 있으면 기술 패턴을, Automatic이면 기존 10가지 VisualStyle을 사용한다. VisualStyle은 기술의 명시값 → 캐릭터 명시값 → 무기 기본값 순으로 선택한다. 회복/부활은 의미가 명확한 기존 전용 효과를 우선한다. Presentation.Pulses는 시각 반복만 제어하며 판정·비용·RNG에는 관여하지 않는다. 준비 시간 동안 축소 고리/기술명을 표시하고 판정 후 발동 프레임·효과를 시작한다. Windup/Recovery는 유한한 0.08–1.5초로 제한한다. 효과는 0.6초 뒤 소멸하며 Restart는 전장 하위 효과와 BoardView 코루틴을 함께 정리한다.
+CombatEffect는 SkillData.Presentation.Pattern이 있으면 기술 패턴을, Automatic/CharacterStyle이면 기존 10가지 VisualStyle을 사용한다. 모든 기본 공격은 명시적 CharacterStyle 프로필로 무기별 표현을 유지한다. VisualStyle은 기술의 명시값 → 캐릭터 명시값 → 무기 기본값 순으로 선택한다. 회복/부활은 의미가 명확한 기존 전용 효과를 우선한다. Presentation.Pulses는 시각 반복만 제어하며 판정·비용·RNG에는 관여하지 않는다. 준비 시간 동안 축소 고리/기술명을 표시하고 판정 후 발동 프레임·효과를 시작한다. Windup/Recovery는 유한한 0.08–1.5초로 제한한다. 효과는 0.6초 뒤 소멸하며 Restart는 전장 하위 효과와 BoardView 코루틴을 함께 정리한다.
 
-BattleAudio.PlayBattle은 2장의 boss 또는 battle을 선택한다. BeginTheme은 실제 캐릭터 테마가 있을 때만 이전 AudioClip·샘플 위치·반복/재생 상태를 보관한다. EndTheme은 복귀하고 Play/StopAll은 예약 복귀를 취소한다. 음원이 없는 테마는 기존 음악을 끊지 않는다. 현재 실제 BGM 파일은 없으며 최종 프레임 작화와 음원 검수의 남은 범위는 ART_PRESENTATION.md를 따른다.
+BattleAudio.PlayBattle은 2장의 boss 또는 battle을 선택한다. BeginTheme은 실제 캐릭터 테마가 있을 때만 이전 AudioClip·샘플 위치·반복/재생 상태를 보관한다. EndTheme은 복귀하고 Play/StopAll은 예약 복귀를 취소한다. 음원이 없는 테마는 기존 음악을 끊지 않는다. 현재 프로젝트 오리지널 14곡이 연결돼 있다. MusicVolume은 기본 0.28이며 효과음 소스는 0.45다. 긴 BGM은 Streaming, 테마/승리는 CompressedInMemory를 사용한다. 제작법과 출처는 ORIGINAL_MUSIC.md를 따른다.
+
+방향 선택은 카메라 pitch를 버리고 yaw의 4분면으로 양자화한다. 45도 경계는 일관된 방향을 선택해 기울어진 카메라에서 앞/뒤가 좌/우에 합쳐지는 문제를 막는다. 파라 타이밍 연출은 이 선택기에 시각 회전 720도를 전달하며 UnitRuntime.Facing은 바꾸지 않는다. 바닥 진행 고리 바깥에 성공 구간을 별도 표시한다. ClearTiming/ResetBoard는 두 고리와 회전 상태를 모두 정리한다.
 
 ## 레이어
 

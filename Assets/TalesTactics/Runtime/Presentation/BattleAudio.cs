@@ -6,6 +6,7 @@ namespace TalesTactics
     public sealed class BattleAudio:MonoBehaviour
     {
         public AudioLibrary Library;
+        [Range(0,1)] public float MusicVolume=0.28f;
         AudioSource effects;
         AudioClip resumeClip;
         int resumeSample;
@@ -15,6 +16,7 @@ namespace TalesTactics
         {
             themeActive=false;resumeClip=null;
             var source=GetComponent<AudioSource>();var clip=Entry(id)?.Clip;
+            source.volume=MusicVolume;
             if(clip==null){source.Stop();source.clip=null;return;}
             if(source.clip==clip&&source.isPlaying)return;
             source.clip=clip;source.loop=id!="victory";source.Play();
@@ -24,6 +26,7 @@ namespace TalesTactics
         {
             var clip=Entry(id)?.Clip;if(clip==null||themeActive)return;
             var source=GetComponent<AudioSource>();
+            source.volume=MusicVolume;
             resumeClip=source.clip;resumeSample=source.timeSamples;resumeLoop=source.loop;resumePlaying=source.isPlaying;
             themeActive=true;source.clip=clip;source.loop=true;source.Play();
         }

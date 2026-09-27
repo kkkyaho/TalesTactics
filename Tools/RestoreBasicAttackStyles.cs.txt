@@ -1,0 +1,11 @@
+// One-time migration from the initial shared basic Slash/Thrust patterns; preserve custom patterns.
+int count=0;
+foreach(var guid in UnityEditor.AssetDatabase.FindAssets("t:SkillData",new[]{"Assets/TalesTactics/Content/Skills"}))
+{
+    var skill=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.SkillData>(UnityEditor.AssetDatabase.GUIDToAssetPath(guid));
+    if(skill==null||!skill.Id.EndsWith(".attack")||skill.Presentation==null)continue;
+    if(skill.Presentation.Pattern!=TalesTactics.SkillVisualPattern.Slash&&skill.Presentation.Pattern!=TalesTactics.SkillVisualPattern.Thrust)continue;
+    skill.Presentation.Pattern=TalesTactics.SkillVisualPattern.CharacterStyle;skill.Presentation.Pulses=1;
+    UnityEditor.EditorUtility.SetDirty(skill);count++;
+}
+UnityEditor.AssetDatabase.SaveAssets();return "Restored "+count+" basic attack styles";

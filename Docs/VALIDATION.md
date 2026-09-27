@@ -276,3 +276,17 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 실제 Windows 플레이어 3회 실행: 1장 27턴/16공격, 2장 27턴/17공격 승리; 재실행 5턴/0공격으로 정상 적 공격에 의한 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 SHA256 불변. 증거: PlayerReviews/8fde9a7b98ae496c8cd266ad21b52ff6-summary.json. 자동 캠페인 회귀이며 수동 마우스 완주 또는 모든 기술의 시각 검수는 아니다.
 - 99개 캐릭터/기술 에셋의 기존 필드가 보존된 것을 Git HEAD와 읽기 비교했다. Sprite 편집은 Editor API로만 수행했고 원본 PNG를 코드로 수정하지 않았다. ProjectSettings/Scene 변경이 없다.
 - 현재 한계: 일반 기술은 캐릭터별 2개 단계 포즈와 공통 VFX 패턴을 공유한다. 고밀도 애니메이션, 원작 외형의 최종 정확성·장비/체형 일관성, 제공 BGM 연결/청음은 미완료다. 5번 전체 완료나 최종 아트 승인으로 해석하지 않는다.
+
+## 2026-09-27 — 5번 프로토타입 통합 마감
+
+- 10명 기본 그림 40개의 경계·발 pivot·렌더링 윤곽을 Sprite Editor API로 보정했다. 10개 PNG와 Sprite ID 및 CharacterData 참조는 보존했다. 파라/나탈리아 PNG 재작화 시도는 확실한 품질 개선이 없어 채택하지 않았다. 강한 적색 주변 점을 읽기 분석한 결과 대부분 alpha 1–3/255였으며 렌더링 윤곽은 alpha>32의 본체를 기준으로 했다.
+- 카메라 pitch 때문에 45도 isometric 시점에서 회전 4방향이 2방향으로 합쳐지는 문제를 새 검사에서 발견했다. 최초 43개 중 42개 통과/1개 실패(unity-polish-playmode-initial.json). yaw만 사용한 4분면 선택으로 수정했다. 파라 타이밍 연출은 실제 그림 방향을 두 바퀴 회전시키고 성공 구간을 별도 고리로 표시하며 전투 Facing은 유지한다.
+- HP 숫자에 공통 한국어 폰트를 지정했다. 기본 공격 11개의 공통 Slash/Thrust 재정의를 CharacterStyle로 바꿔 주먹·클로·노래·창·활·화염검·총·방패 등 기존 캐릭터 표현을 복구했다. 변경은 연출 패턴/반복 필드에 한정하며 전투 수치는 유지했다.
+- 오리지널 BGM/캐릭터 테마 14곡을 신규 제작·연결했다. 원작 음원/외부 샘플 다운로드가 없고 제작 음표/합성 코드는 Tools/ComposeOriginalMusic.py에 보존한다. 44.1kHz 스테레오 WAV 총 약 28.8MB. 각 파일의 비무음·피크<0.9·RMS 범위와 SHA256은 original-music-manifest.json에 기록했다.
+- Unity import 재조회(unity-original-music-import.json): 14개 모두 stereo/44.1kHz/Vorbis quality0.85, 3개 긴 BGM Streaming·11개 테마/승리 CompressedInMemory. 런타임 Windows 출력은 48kHz, listener1·믹서0, 음악 음량0.28/효과음0.45. 다른 플랫폼의 메모리/CPU 최적화 수치는 측정하지 않았다.
+- Game View 1920×1080에서 10명×9상태×4방향 360칸 비교(polish-front/back/right/left-preview.png). 전체 89개 VFX 프로필을 4페이지로 표시해 검수(polish-skills-0/1/2/3-preview.png). 고밀도 중간 프레임이나 원작 작화의 완전한 일치를 증명하는 검사가 아니다. 임시 갤러리/시간 배율은 복구했고 Scene은 저장하지 않았다.
+- 첫 Windows 오디오 검수는 최초 GetOutputData 직후 빈 버퍼를 읽어 실패했다(PlayerReviews/072a90d3ad6c4b069ff7827bc07c7c4d-summary.json). 검수 도구를 선행 버퍼 조회 후 최대2초 신호 대기로 수정했으며 통과 기준(재생 중·샘플 진행·RMS>0.00001)은 유지했다. 재실행 d07e7a20da694b28b8d269b32bb29cf4에서 14곡 신호와 캠페인 회귀를 확인했다. 이는 사람의 청음 평가가 아니다.
+- 5번의 완료 상태는 ART_ACCEPTANCE.md의 프로토타입 구현/통합 검수 기준이다. 원작 세부 외형의 전문가 감수, 고밀도 추가 작화, 제공 원작 음원, 주관적인 음악 평가, 수동 캠페인 완주·장시간 FPS/메모리 검수는 이 증거에 포함하지 않는다.
+- 실제 Unity EditMode **90/90** 통과(0.45초, unity-polish-editmode-results.json), 최종 기본 공격 표현 수정 후 PlayMode **44/44** 통과(79.85초, unity-polish-playmode-results.json). 14곡 재생과 회전 방향/전투 Facing 보존 검사를 추가했다. 별도 ManagedChecks를 이번 단계에서 재실행하지 않았으며 이전 90/90 결과는 엔진 독립 검사다.
+- 최종 Windows 개발 빌드 **16.402초/오류0/경고8**, 일반 빌드 **20.329초/오류0/경고6** 성공(unity-polish-development-build.json, unity-polish-windows-build.json). 기존 Pipeline/개발 검수 API/직렬화/셰이더 관련 경고가 남아 있다.
+- 최종 실행 파일로 Windows 플레이어 3회 실행 통과: 1장27턴/16공격, 2장27턴/17공격, 재실행5턴/0공격으로 정상 패배·재출전·중복 보상 방지 확인. 각 실행에서 14곡의 재생/샘플 진행/출력 RMS 기준을 통과했고 사용자 저장/백업 SHA256은 불변이다. 증거: PlayerReviews/74c693e4c79145d59022b0f1749a85c3-summary.json. 숨겨진 플레이어의 검은 캡처는 시각 검수 증거로 사용하지 않으며 위 Editor 갤러리와 구분한다.

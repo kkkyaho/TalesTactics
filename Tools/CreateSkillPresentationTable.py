@@ -23,7 +23,7 @@ for path in sorted(Path('Assets/TalesTactics/Content/Skills').glob('*.asset')):
     identity=re.search(r'^  Id: (.+)$',text,re.M)[1].strip()
     owner,index=identity.split('.')
     basic=index=='attack';ultimate=index=='ultimate'
-    if basic: pattern='Thrust' if owner in ('jade','natalia','shionne','enemy') else 'Slash'
+    if basic: pattern='CharacterStyle'
     elif ultimate: pattern=finales[owner]
     else: pattern=patterns[owner].split()[int(index)]
     animation=int(re.search(r'^  Animation: (\d+)',text,re.M)[1])

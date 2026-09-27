@@ -104,11 +104,33 @@ namespace TalesTactics
             if(name=="전투 시작")while(battle.StoryActive)battle.AdvanceStory();
         }
 
+        IEnumerator ReviewMusic()
+        {
+            var entries=battle.Audio.Library.Entries.Where(e=>e.Id=="battle"||e.Id=="boss"||e.Id=="story"||e.Id=="victory"||e.Id.EndsWith(".theme")).ToArray();
+            Check(entries.Length==14&&entries.All(e=>e.Clip!=null),"All 14 music tracks included in player");
+            var samples=new float[1024];var source=battle.Audio.GetComponent<AudioSource>();
+            foreach(var entry in entries)
+            {
+                battle.Audio.Play(entry.Id);source.GetOutputData(samples,0);
+                float rms=0,deadline=Time.realtimeSinceStartup+2;
+                do
+                {
+                    yield return new WaitForSecondsRealtime(0.05f);
+                    source.GetOutputData(samples,0);float power=0;foreach(float sample in samples)power+=sample*sample;
+                    rms=Mathf.Sqrt(power/samples.Length);
+                }while(rms<=0.00001f&&Time.realtimeSinceStartup<deadline);
+                Check(source.isPlaying&&source.timeSamples>0&&rms>0.00001f,"Music signal "+entry.Id+" RMS="+rms.ToString("F5",System.Globalization.CultureInfo.InvariantCulture)
+                    +" playing="+source.isPlaying+" samples="+source.timeSamples+" volume="+source.volume+" listener="+AudioListener.volume+" paused="+AudioListener.pause+" loaded="+entry.Clip.loadState);
+            }
+            battle.Audio.StopAll();
+        }
+
         IEnumerator Run()
         {
             yield return null; // Allow the scene's normal Start methods to initialize.
             battle = UnityEngine.Object.FindAnyObjectByType<BattleDirector>();
             Check(battle != null && battle.enabled, "Scene initialized");
+            yield return ReviewMusic();
             Check(report.phase == "chapter1" ? !File.Exists(savePath) : File.Exists(savePath), "Expected isolated save exists/missing");
             store = new CampaignFile(savePath);
             battle.Campaign = store.Load();

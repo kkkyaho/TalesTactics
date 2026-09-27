@@ -55,7 +55,7 @@ namespace TalesTactics
             if(view==null)return;
             var color=tint;color.a=Mathf.Clamp01((1-t)*1.8f);
             foreach(var line in lines){line.positionCount=0;line.startColor=line.endColor=color;}
-            if(Pattern!=SkillVisualPattern.Automatic&&Feedback!=CombatFeedback.Heal&&Feedback!=CombatFeedback.Revive)
+            if(Pattern!=SkillVisualPattern.Automatic&&Pattern!=SkillVisualPattern.CharacterStyle&&Feedback!=CombatFeedback.Heal&&Feedback!=CombatFeedback.Revive)
             {DrawPattern(t);return;}
             float radius=Mathf.Lerp(0.12f,Ultimate?0.95f:0.5f,t);
             if(Feedback==CombatFeedback.Heal||Feedback==CombatFeedback.Revive)

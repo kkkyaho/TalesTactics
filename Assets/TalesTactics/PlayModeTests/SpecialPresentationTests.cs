@@ -8,6 +8,44 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        [UnityTest] public IEnumerator OriginalMusicCatalogPlaysEveryRegisteredTrack()
+        {
+            var music=director.Audio.Library.Entries.Where(e=>e.Id=="battle"||e.Id=="boss"||e.Id=="story"||e.Id=="victory"||e.Id.EndsWith(".theme")).ToArray();
+            Assert.That(music.Length,Is.EqualTo(14));
+            foreach(var entry in music)
+            {
+                Assert.That(entry.Clip,Is.Not.Null,entry.Id);Assert.That(entry.Clip.channels,Is.EqualTo(2));
+                director.Audio.Play(entry.Id);yield return new WaitForSeconds(0.15f);
+                var source=director.Audio.GetComponent<AudioSource>();
+                Assert.That(source.isPlaying,Is.True,entry.Id);Assert.That(source.timeSamples,Is.GreaterThan(0),entry.Id);
+                Assert.That(source.volume,Is.EqualTo(director.Audio.MusicVolume));
+            }
+            director.Audio.StopAll();
+        }
+
+        [UnityTest] public IEnumerator TimingSpinCyclesFourViewsWithoutChangingCombatFacing()
+        {
+            director.BeginBattle();yield return null;
+            var owner=director.Session.Units.First(u=>u.Data.Id=="farah");var original=owner.Facing;
+            var frames=new HashSet<Sprite>();
+            var motions=Object.FindObjectsByType<CharacterMotion>();
+            var motion=motions.Single(m=>(UnitRuntime)typeof(CharacterMotion).GetField("unit",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).GetValue(m)==owner);
+            for(int i=0;i<4;i++)
+            {
+                director.Board.ShowTimingSpin(owner,i/8f);yield return new WaitForEndOfFrame();
+                frames.Add(motion.GetComponent<SpriteRenderer>().sprite);
+                Assert.That(owner.Facing,Is.EqualTo(original));
+            }
+            Assert.That(frames.Count,Is.EqualTo(4));
+            Assert.That(GameObject.Find("Timing success window"),Is.Not.Null);
+            director.Board.ClearTiming();yield return null;
+            Assert.That(motion.Action,Is.EqualTo(AnimationKind.Idle));
+            Assert.That(GameObject.Find("Timing success window"),Is.Null);
+            director.Board.ShowTimingSpin(owner,0.5f);director.Restart();yield return null;yield return null;
+            Assert.That(GameObject.Find("Timing arc"),Is.Null);
+            Assert.That(GameObject.Find("Timing success window"),Is.Null);
+        }
+
         [UnityTest] public IEnumerator SpecialPosesPrepareReleaseAndRecoverForEntireRoster()
         {
             var camera=director.Board.BattleCamera;
@@ -48,6 +86,7 @@ namespace TalesTactics.PlayModeTests
             var all=catalog.SelectMany(c=>c.Skills.Concat(new[]{c.BasicAttack,c.UltimateSkill})).Distinct().ToArray();
             Assert.That(all.Length,Is.EqualTo(88));
             Assert.That(all.All(s=>s.Presentation!=null&&s.Presentation.Pattern!=SkillVisualPattern.Automatic),Is.True);
+            Assert.That(catalog.All(c=>c.BasicAttack.Presentation.Pattern==SkillVisualPattern.CharacterStyle),Is.True,"Basic attacks retain each character's weapon effects");
             Assert.That(catalog.Select(c=>c.UltimateSkill.Presentation.Pattern).Distinct().Count(),Is.EqualTo(10));
             director.BeginBattle();yield return null;var unit=director.Session.Active;int hp=unit.CurrentHP;
             var shapes=new HashSet<string>();

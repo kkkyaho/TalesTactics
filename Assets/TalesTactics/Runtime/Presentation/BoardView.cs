@@ -76,7 +76,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();timingRing=null;}
+        public void ResetBoard(){StopAllCoroutines();ClearTiming();if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
@@ -141,7 +141,10 @@ namespace TalesTactics
             }
         }
         public void ShowTimingSpin(UnitRuntime u,float progress)
-        {bool starting=timingRing==null;ShowTimingRing(u,progress);if(starting)SetAnimation(u,AnimationKind.Skill);}
+        {
+            bool starting=timingRing==null;ShowTimingRing(u,progress);if(starting)SetAnimation(u,AnimationKind.Skill);
+            if(motions.TryGetValue(u,out var motion)){timingMotion=motion;motion.Spin(progress);}
+        }
         public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path)
         {
             SetAnimation(u,AnimationKind.Walk);

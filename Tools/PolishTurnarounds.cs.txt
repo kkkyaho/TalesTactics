@@ -1,0 +1,44 @@
+// Editor-only explicit import; preserves sprite IDs, PNGs and CharacterData references.
+var ids=new[]{"cless","mint","velvet","farah","tear","jade","natalia","alphen","shionne","kisara"};
+var rows=System.IO.File.ReadAllLines("Tools/turnaround-layout.csv");
+var outlines=System.IO.File.ReadAllLines("Tools/turnaround-outlines.csv");
+var culture=System.Globalization.CultureInfo.InvariantCulture;
+foreach(var id in ids)
+{
+    var path="Assets/TalesTactics/Art/Characters/"+id+"-turnaround.png";
+    var importer=UnityEditor.AssetImporter.GetAtPath(path) as UnityEditor.TextureImporter;
+    if(importer==null)throw new System.Exception("Missing texture "+id);
+    var factories=new UnityEditor.U2D.Sprites.SpriteDataProviderFactories();factories.Init();
+    var provider=factories.GetSpriteEditorDataProviderFromObject(importer);
+    if(provider==null)throw new System.Exception("Missing provider "+id);
+    provider.InitSpriteEditorDataProvider();
+    var capability=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteFrameEditCapability>();
+    if(capability==null||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditSpriteRect)
+        ||!capability.GetEditCapability().HasCapability(UnityEditor.U2D.Sprites.EEditCapability.EditPivot))
+        throw new System.Exception("Editing unavailable "+id);
+    var rects=provider.GetSpriteRects();if(rects.Length!=4)throw new System.Exception("Expected four existing sprites "+id);
+    var shapes=provider.GetDataProvider<UnityEditor.U2D.Sprites.ISpriteOutlineDataProvider>();
+    if(shapes==null)throw new System.Exception("Missing outline provider "+id);
+    importer.GetSourceTextureWidthAndHeight(out int width,out int height);
+    foreach(var rect in rects)
+    {
+        var row=System.Array.Find(rows,r=>r.StartsWith(id+","+rect.name+",",System.StringComparison.Ordinal));
+        if(row==null)throw new System.Exception("Missing layout "+rect.name);var c=row.Split(',');
+        if(int.Parse(c[8])!=width||int.Parse(c[9])!=height)throw new System.Exception("Source dimensions changed "+id);
+        float left=float.Parse(c[2],culture),top=float.Parse(c[3],culture),w=float.Parse(c[4],culture),h=float.Parse(c[5],culture);
+        rect.rect=new UnityEngine.Rect(left,height-top-h,w,h);rect.alignment=UnityEngine.SpriteAlignment.Custom;
+        rect.pivot=new UnityEngine.Vector2(float.Parse(c[6],culture),2f/h);importer.spritePixelsPerUnit=float.Parse(c[7],culture);
+    }
+    provider.SetSpriteRects(rects);
+    foreach(var rect in rects)
+    {
+        var line=System.Array.Find(outlines,r=>r.StartsWith(rect.name+",",System.StringComparison.Ordinal));
+        if(line==null)throw new System.Exception("Missing outline "+rect.name);
+        var c=line.Split(',');var vertices=new UnityEngine.Vector2[c.Length-1];
+        for(int i=1;i<c.Length;i++){var xy=c[i].Split(':');vertices[i-1]=new UnityEngine.Vector2(float.Parse(xy[0],culture),float.Parse(xy[1],culture));}
+        shapes.SetOutlines(rect.spriteID,new System.Collections.Generic.List<UnityEngine.Vector2[]>{vertices});shapes.SetTessellationDetail(rect.spriteID,1);
+    }
+    var settings=new UnityEditor.TextureImporterSettings();importer.ReadTextureSettings(settings);settings.spriteMeshType=UnityEngine.SpriteMeshType.Tight;importer.SetTextureSettings(settings);
+    provider.Apply();importer.SaveAndReimport();
+}
+return "Polished idle contours and ground pivots for "+ids.Length+" characters; stable Sprite IDs preserved";

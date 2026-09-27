@@ -1,0 +1,26 @@
+// Play Mode only, pages of 24 actual skill profiles; temporary comparison camera.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+var old=UnityEngine.GameObject.Find("Skill catalog gallery");if(old!=null)UnityEngine.Object.DestroyImmediate(old);
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Skill catalog gallery");var camera=root.AddComponent<UnityEngine.Camera>();
+camera.orthographic=true;camera.orthographicSize=7.1f;camera.transform.position=new UnityEngine.Vector3(0,0,-10);
+camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;camera.backgroundColor=new UnityEngine.Color(.14f,.17f,.20f);
+var entries=new System.Collections.Generic.List<System.Tuple<TalesTactics.CharacterData,TalesTactics.SkillData>>();
+foreach(var c in battle.Catalog.Characters){entries.Add(System.Tuple.Create(c,c.BasicAttack));foreach(var s in c.Skills)entries.Add(System.Tuple.Create(c,s));entries.Add(System.Tuple.Create(c,c.UltimateSkill));}
+var enemy=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.SkillData>("Assets/TalesTactics/Content/Skills/enemy.attack.asset");entries.Add(System.Tuple.Create(battle.Catalog.Enemy,enemy));
+int page=0;UnityEngine.Time.timeScale=0;
+for(int n=0;n<24&&page*24+n<entries.Count;n++)
+{
+    var entry=entries[page*24+n];var c=entry.Item1;var s=entry.Item2;var center=new UnityEngine.Vector3((n%8-3.5f)*3.0f,4.3f-(n/8)*4.1f,0);
+    var feedback=TalesTactics.CombatFeedback.Support;
+    foreach(var e in s.Effects)if(e.Kind==TalesTactics.EffectKind.Revive){feedback=TalesTactics.CombatFeedback.Revive;break;}else if(e.Kind==TalesTactics.EffectKind.Heal)feedback=TalesTactics.CombatFeedback.Heal;else if(e.Kind==TalesTactics.EffectKind.Damage){feedback=TalesTactics.CombatFeedback.Strike;break;}
+    var color=(UnityEngine.Color)typeof(TalesTactics.BoardView).GetMethod("ElementColor",System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic).Invoke(null,new object[]{s.Element});
+    if(feedback==TalesTactics.CombatFeedback.Heal)color=new UnityEngine.Color(.35f,1,.6f);if(feedback==TalesTactics.CombatFeedback.Revive)color=new UnityEngine.Color(1,.95f,.5f);
+    var g=new UnityEngine.GameObject(s.Id);g.transform.SetParent(root.transform);var effect=g.AddComponent<TalesTactics.CombatEffect>();
+    effect.Initialize(battle.Board.SpriteMaterial,camera,TalesTactics.CombatEffect.Resolve(c,s),feedback,null,center-UnityEngine.Vector3.right,center,color,s.IsUltimate,s.Presentation);
+    typeof(TalesTactics.CombatEffect).GetField("age",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance).SetValue(effect,.22f);
+    var label=new UnityEngine.GameObject("Label");label.transform.SetParent(root.transform);label.transform.position=center+new UnityEngine.Vector3(0,-1.4f,-.1f);
+    var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=s.Id+"\n"+s.DisplayName;text.fontSize=1.9f;text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(3,.65f);
+}
+return "Skill catalog page "+page+" of 4, 89 profiles; restore timeScale after review";

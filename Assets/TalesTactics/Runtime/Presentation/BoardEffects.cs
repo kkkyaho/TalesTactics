@@ -8,6 +8,8 @@ namespace TalesTactics
     public sealed partial class BoardView
     {
         LineRenderer timingRing;
+        LineRenderer timingWindow;
+        CharacterMotion timingMotion;
         public Dictionary<UnitRuntime,int> CaptureHealth()
         {
             var snapshot=new Dictionary<UnitRuntime,int>();
@@ -38,17 +40,26 @@ namespace TalesTactics
         {
             if(root==null||!units.ContainsKey(unit))return;
             if(timingRing==null)timingRing=EffectLine("Timing arc",Color.white,0.06f);
+            if(timingWindow==null)timingWindow=EffectLine("Timing success window",new Color(0.3f,1,0.55f,0.5f),0.09f);
             var rules=battle.Catalog.Rules;
             var color=progress>=rules.TimingWindowStart&&progress<=rules.TimingWindowEnd?Color.green:Color.yellow;
             timingRing.startColor=timingRing.endColor=color;
             timingRing.positionCount=33;
+            timingWindow.positionCount=33;
             for(int i=0;i<33;i++)
             {
                 float a=(float)i/32*progress*Mathf.PI*2;
                 timingRing.SetPosition(i,units[unit].position+new Vector3(Mathf.Cos(a)*0.55f,0.1f,Mathf.Sin(a)*0.55f));
+                float w=Mathf.Lerp(rules.TimingWindowStart,rules.TimingWindowEnd,i/32f)*Mathf.PI*2;
+                timingWindow.SetPosition(i,units[unit].position+new Vector3(Mathf.Cos(w)*0.67f,0.1f,Mathf.Sin(w)*0.67f));
             }
         }
-        public void ClearTiming(){if(timingRing!=null)Destroy(timingRing.gameObject);timingRing=null;}
+        public void ClearTiming()
+        {
+            if(timingRing!=null)Destroy(timingRing.gameObject);timingRing=null;
+            if(timingWindow!=null)Destroy(timingWindow.gameObject);timingWindow=null;
+            if(timingMotion!=null)timingMotion.EndSpin();timingMotion=null;
+        }
         public void PresentImpact(UnitRuntime caster,SkillData skill,Vector2Int aim,Dictionary<UnitRuntime,int> before,UnitRuntime[] recipients=null)
         {
             if(root==null)return;
@@ -85,6 +96,7 @@ namespace TalesTactics
         {
             var g=new GameObject("HP feedback");g.transform.SetParent(root,false);
             var label=g.AddComponent<TextMeshPro>();label.text=cost?"HP "+delta:delta>0?"+"+delta:delta.ToString();
+            label.font=battle.Hud.Font;
             label.fontSize=4;label.alignment=TextAlignmentOptions.Center;
             label.color=cost?new Color(1,0.65f,0.3f):delta>0?new Color(0.4f,1,0.6f):new Color(1,0.8f,0.6f);
             label.sortingOrder=30;label.rectTransform.sizeDelta=new Vector2(2,0.5f);

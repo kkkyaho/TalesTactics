@@ -16,8 +16,12 @@ namespace TalesTactics.PlayModeTests
             Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f));
             director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.12f);
             Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.GreaterThan(0.03f));
+            director.Board.ShowTimingSpin(caster,0);
+            var clock=typeof(CharacterMotion).GetField("started",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+            float started=(float)clock.GetValue(motion);
             for(float t=0;t<0.15f;t+=Time.deltaTime){director.Board.ShowTimingSpin(caster,t);yield return null;}
-            Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.GreaterThan(0.03f));
+            Assert.That((float)clock.GetValue(motion),Is.EqualTo(started));
+            Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),"Spin stays grounded instead of lunging every update");
             director.Board.ClearTiming();
         }
         SkillData PresentationSkill(TargetType target,params SkillEffect[] effects)
