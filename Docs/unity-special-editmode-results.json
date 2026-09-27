@@ -1,0 +1,643 @@
+{
+  "status": "completed",
+  "duration": 0.69,
+  "summary": {
+    "total": 90,
+    "passed": 90,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ActionAfterMoveDisablesUndo",
+      "Status": "Passed",
+      "Duration": 0.0369742,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.AttackThenMoveAllowedButAttackCommitsPriorMove",
+      "Status": "Passed",
+      "Duration": 0.0010223,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.AutomatedBattleReachesAnOutcome",
+      "Status": "Passed",
+      "Duration": 0.0111425,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.AutoReviveIsConsumedOnce",
+      "Status": "Passed",
+      "Duration": 0.0005855,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.BossVictoryIgnoresAddsButPartyDefeatHasPriority",
+      "Status": "Passed",
+      "Duration": 0.0006936,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CampaignFileRoundTripPreservesProgressAndBackup",
+      "Status": "Passed",
+      "Duration": 0.0276994,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CampaignMapsHaveDistinctTerrainAndConnectedSpawnPoints",
+      "Status": "Passed",
+      "Duration": 0.0055851,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CampaignRewardFailureRollsBackAndCanRetry",
+      "Status": "Passed",
+      "Duration": 0.0047269,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CampaignStagesUnlockInOrderAndPersistCompletion",
+      "Status": "Passed",
+      "Duration": 0.0096647,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CatalogRejectsDuplicateRosterIDs",
+      "Status": "Passed",
+      "Duration": 0.0010363,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CatalogRejectsMissingAttack",
+      "Status": "Passed",
+      "Duration": 0.0003021,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CatalogReportsMissingRosterReference",
+      "Status": "Passed",
+      "Duration": 0.0002201,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ChapterStockUnlockRequiresSavedCompletionAndSurvivesReload",
+      "Status": "Passed",
+      "Duration": 0.0204007,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ConeRotatesAndExcludesBehindAndOutsideManhattanRange",
+      "Status": "Passed",
+      "Duration": 0.0014028,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ConsumeClawLastsThreeSubsequentOwnTurns",
+      "Status": "Passed",
+      "Duration": 0.0004636,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CooldownBlocksReuseUntilNextTurn",
+      "Status": "Passed",
+      "Duration": 0.0010449,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CorruptPrimaryRecoversBackupAndArchivesOriginalOnSave",
+      "Status": "Passed",
+      "Duration": 0.0352281,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CTHandlesKORevivalZeroSpeedAndDynamicSpeed",
+      "Status": "Passed",
+      "Duration": 0.0104958,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.CTPreviewMatchesNextWithoutMutatingAndFasterUnitsActMore",
+      "Status": "Passed",
+      "Duration": 0.0013304,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.DamageDoesNotMutateCharacterData",
+      "Status": "Passed",
+      "Duration": 0.0001923,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.DropBucketsExhaustivelyMatchPublishedProbabilities",
+      "Status": "Passed",
+      "Duration": 0.0036857,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.DuplicateCharacterIDsRecoverFromValidBackup",
+      "Status": "Passed",
+      "Duration": 0.0118395,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ElementResistanceWeaknessAndImmunityMatchActualDamage",
+      "Status": "Passed",
+      "Duration": 0.0010698,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.EquipmentDraftOnlyCommitsAfterSuccessfulSave",
+      "Status": "Passed",
+      "Duration": 0.0026094,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.EquipmentDraftRejectsWrongWeaponAndSlot",
+      "Status": "Passed",
+      "Duration": 0.0004547,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.EquipmentRewardRollbackRetryReloadAndRepeatVictory",
+      "Status": "Passed",
+      "Duration": 0.0119491,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.EveryChapterHasCompleteBeforeAndAfterDialogue",
+      "Status": "Passed",
+      "Duration": 0.0011079,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FirstClearAndRepeatGrowthUseSeparateRewardsAndRespectLevelCap",
+      "Status": "Passed",
+      "Duration": 0.0009559,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FixedGrowthAndLevelCap",
+      "Status": "Passed",
+      "Duration": 0.0002631,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FlamingEdgeNeedsChain",
+      "Status": "Passed",
+      "Duration": 0.000233,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FullBonusInventorySkipsOnlyThatItemAndRollbackPreservesReferences",
+      "Status": "Passed",
+      "Duration": 0.0005175,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FullRewardInventoryKeepsOtherRewardsAndEquippedCopies",
+      "Status": "Passed",
+      "Duration": 0.0005249,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.FutureVersionIsNeverReplacedByOlderBackupOrSave",
+      "Status": "Passed",
+      "Duration": 0.0019798,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.GoldRewardsRollbackRetryAndClampWithoutOverflow",
+      "Status": "Passed",
+      "Duration": 0.0005316,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.GuardProtectsFrontNotRear",
+      "Status": "Passed",
+      "Duration": 0.0011133,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.HealClampsToMaximum",
+      "Status": "Passed",
+      "Duration": 0.0002472,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.HeightAndSightApplyToActualAreaAndDefaultsPreserveLegacy",
+      "Status": "Passed",
+      "Duration": 0.0008953,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.HeightDamageCapsAndDoesNotModifyMagic",
+      "Status": "Passed",
+      "Duration": 0.0006761,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.HeightRangeUsesSignedDeltaAndAppliesToArea",
+      "Status": "Passed",
+      "Duration": 0.0005053,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.HPCostCannotKOUser",
+      "Status": "Passed",
+      "Duration": 0.000199,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.InvalidAffinityValuesAreBoundedAndMissingElementsAreNeutral",
+      "Status": "Passed",
+      "Duration": 0.0010447,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.InvalidTargetDoesNotSpendMP",
+      "Status": "Passed",
+      "Duration": 0.000244,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.JumpLimitBlocksCliff",
+      "Status": "Passed",
+      "Duration": 0.0002469,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.KOClearsOccupancy",
+      "Status": "Passed",
+      "Duration": 0.0001904,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.LegacyInventoryMigrationPreservesEveryEquippedCopyAndOriginalFile",
+      "Status": "Passed",
+      "Duration": 0.0417247,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.LineHitsMultipleEnemiesAndRejectsDiagonalAimWithoutSpending",
+      "Status": "Passed",
+      "Duration": 0.0008733,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.LockedAndStaleFirstClearRewardCannotBypassCompletionState",
+      "Status": "Passed",
+      "Duration": 0.0005847,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.MissingOrLegacyEquipmentIDsLoadAsEmptySlots",
+      "Status": "Passed",
+      "Duration": 0.0005092,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.MissingPromotionDataCannotSave",
+      "Status": "Passed",
+      "Duration": 0.0004976,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.MixedEffectsPreviewNamesCasterAndDoesNotMutateResources",
+      "Status": "Passed",
+      "Duration": 0.0011429,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.MoveCanBeUndoneAndCannotRepeat",
+      "Status": "Passed",
+      "Duration": 0.0005467,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.NightmareRequiresPriorAttack",
+      "Status": "Passed",
+      "Duration": 0.000277,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.OccupiedTileCannotBeTraversed",
+      "Status": "Passed",
+      "Duration": 0.0002721,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.OneActionPerTurn",
+      "Status": "Passed",
+      "Duration": 0.0002787,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PathStartsAndEndsCorrectly",
+      "Status": "Passed",
+      "Duration": 0.0010115,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PromotionRequiresStoryAndLevel",
+      "Status": "Passed",
+      "Duration": 0.0004292,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PromotionSaveFailureRollsBackAndCanRetry",
+      "Status": "Passed",
+      "Duration": 0.0004503,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PromotionSaveRequiresBothConditionsAndRunsOnlyOnce",
+      "Status": "Passed",
+      "Duration": 0.0004096,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PullRespectsOccupancy",
+      "Status": "Passed",
+      "Duration": 0.0006013,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PurchaseAndLoadoutPersistTogetherAcrossReload",
+      "Status": "Passed",
+      "Duration": 0.0184687,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PurchaseFailureOrExceptionRestoresGoldAndQuantity",
+      "Status": "Passed",
+      "Duration": 0.0011187,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.PurchaseRejectsUnaffordableUnpricedAndFullInventory",
+      "Status": "Passed",
+      "Duration": 0.0004025,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ReachAndEscortRequireLivingCorrectUnitAndDoNotUseElimination",
+      "Status": "Passed",
+      "Duration": 0.0006939,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.RearAttackOutdamagesFront",
+      "Status": "Passed",
+      "Duration": 0.0002746,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ReviveCannotOverlapLivingUnit",
+      "Status": "Passed",
+      "Duration": 0.0003602,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ReviveRestoresOccupancy",
+      "Status": "Passed",
+      "Duration": 0.0002906,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.RewardSnapshotRetriesSameDropAndCannotApplyTwice",
+      "Status": "Passed",
+      "Duration": 0.010209,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.RootPreventsMovement",
+      "Status": "Passed",
+      "Duration": 0.0003103,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SaleFailureAndExceptionRestoreLastCopyAndInventoryOrder",
+      "Status": "Passed",
+      "Duration": 0.0093642,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SalePreservesEquippedCopiesAndBlocksOverflowAndUnpricedItems",
+      "Status": "Passed",
+      "Duration": 0.0007274,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SaveNormalizationRepairsLegacyFieldsWithoutLosingGear",
+      "Status": "Passed",
+      "Duration": 0.0004535,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SchedulerSkipsKO",
+      "Status": "Passed",
+      "Duration": 0.0003154,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SightBlocksCornersObstaclesAndHighTerrainSymmetrically",
+      "Status": "Passed",
+      "Duration": 0.00037,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SkillDetailsUseActualHPAndResourceCosts",
+      "Status": "Passed",
+      "Duration": 0.0007988,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SpriteClipLoopsAtFrameBoundariesAndClampsCollapse",
+      "Status": "Passed",
+      "Duration": 0.0005654,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SpriteClipMissingFramesAndInvalidTimingAreSafe",
+      "Status": "Passed",
+      "Duration": 0.0005152,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.StunOneTurnExpiresAfterOneTurn",
+      "Status": "Passed",
+      "Duration": 0.0002146,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SurvivalCountsOnlyLivingPlayerTurnsAndDefeatWinsTies",
+      "Status": "Passed",
+      "Duration": 0.0008328,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.SurvivalSessionEndTurnIsIdempotent",
+      "Status": "Passed",
+      "Duration": 0.0006768,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.TwoDraftsCannotReserveOneCopyAndUnequipReleasesIt",
+      "Status": "Passed",
+      "Duration": 0.0009521,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UnknownUnlockFlagStaysLockedAndDoesNotRestrictOwnedEquipmentSale",
+      "Status": "Passed",
+      "Duration": 0.0003378,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UnrecoverableSaveBlocksAutomaticOverwrite",
+      "Status": "Passed",
+      "Duration": 0.0018437,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UtilityCannotAttackThroughBlockedSightAndGuardsWhenRooted",
+      "Status": "Passed",
+      "Duration": 0.0038508,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UtilityChoosesAreaDamageAndPlanningPreservesWorldAndResources",
+      "Status": "Passed",
+      "Duration": 0.0014202,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UtilityHealsCriticalAllyAndAvoidsFullHealthHealing",
+      "Status": "Passed",
+      "Duration": 0.0006884,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.UtilityRevivesOnlyUnoccupiedTilesAndRespectsCostsAndGates",
+      "Status": "Passed",
+      "Duration": 0.0008462,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.ValidCatalogCanStartBattle",
+      "Status": "Passed",
+      "Duration": 0.0002508,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.Version2RejectsDuplicateInventoryAndOverallocatedEquipment",
+      "Status": "Passed",
+      "Duration": 0.0104193,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.VictoryAndDefeatAreDetected",
+      "Status": "Passed",
+      "Duration": 0.0003876,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.Tests.BattleRuleTests.WaterCostsTwoMovement",
+      "Status": "Passed",
+      "Duration": 0.0003259,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

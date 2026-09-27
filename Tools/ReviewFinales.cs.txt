@@ -1,0 +1,22 @@
+// Temporary Play Mode gallery, discarded on leaving Play Mode.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Temporary Finale Gallery");
+var camera=root.AddComponent<UnityEngine.Camera>();camera.orthographic=true;camera.orthographicSize=4.4f;
+camera.transform.position=new UnityEngine.Vector3(0,0,-10);camera.backgroundColor=new UnityEngine.Color(0.14f,0.17f,0.20f);camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;
+UnityEngine.Time.timeScale=0;
+for(int i=0;i<battle.Catalog.Characters.Length;i++)
+{
+    var c=battle.Catalog.Characters[i];var center=new UnityEngine.Vector3((i%5-2)*3.0f,2-(i/5)*4,0);
+    var g=new UnityEngine.GameObject(c.Id);g.transform.SetParent(root.transform);
+    var effect=g.AddComponent<TalesTactics.CombatEffect>();
+    effect.Initialize(battle.Board.SpriteMaterial,camera,c.VisualStyle,TalesTactics.CombatFeedback.Strike,null,
+        center-UnityEngine.Vector3.right,center,new UnityEngine.Color(0.5f,0.85f,1),true,c.UltimateSkill.Presentation);
+    typeof(TalesTactics.CombatEffect).GetField("age",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).SetValue(effect,0.23f);
+    var label=new UnityEngine.GameObject("Label");label.transform.SetParent(root.transform);
+    var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=c.DisplayName+"\n"+c.UltimateSkill.DisplayName;
+    text.fontSize=2;text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(2.8f,0.75f);
+    label.transform.position=center+new UnityEngine.Vector3(0,-1.5f,-0.1f);
+}
+return "Finale gallery; restore timeScale and stop Play Mode after capture";

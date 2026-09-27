@@ -4,22 +4,27 @@ namespace TalesTactics
     public enum CombatFeedback { Strike, Heal, Revive, Support }
 
     // One short-lived effect per actual recipient. All renderers share the board material.
-    public sealed class CombatEffect:MonoBehaviour
+    public sealed partial class CombatEffect:MonoBehaviour
     {
         public CombatVisualStyle Style {get;private set;}
         public CombatFeedback Feedback {get;private set;}
         public UnitRuntime Recipient {get;private set;}
         public bool Ultimate {get;private set;}
-        readonly LineRenderer[] lines=new LineRenderer[7];
+        readonly LineRenderer[] lines=new LineRenderer[12];
+        public SkillVisualPattern Pattern {get;private set;}
+        int pulses=1;
+        float size=1;
         Camera view;
         Vector3 origin,target;
         Color tint;
         float age;
         public const float Lifetime=0.6f;
         public void Initialize(Material material,Camera camera,CombatVisualStyle style,CombatFeedback feedback,
-            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate)
+            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null)
         {
             Style=style;Feedback=feedback;Recipient=recipient;Ultimate=ultimate;
+            Pattern=presentation?.Pattern??SkillVisualPattern.Automatic;
+            pulses=Mathf.Clamp(presentation?.Pulses??1,1,6);size=SafeSize(presentation?.Size??1);
             view=camera;origin=from;target=to;tint=color;
             for(int i=0;i<lines.Length;i++)
             {
@@ -50,6 +55,8 @@ namespace TalesTactics
             if(view==null)return;
             var color=tint;color.a=Mathf.Clamp01((1-t)*1.8f);
             foreach(var line in lines){line.positionCount=0;line.startColor=line.endColor=color;}
+            if(Pattern!=SkillVisualPattern.Automatic&&Feedback!=CombatFeedback.Heal&&Feedback!=CombatFeedback.Revive)
+            {DrawPattern(t);return;}
             float radius=Mathf.Lerp(0.12f,Ultimate?0.95f:0.5f,t);
             if(Feedback==CombatFeedback.Heal||Feedback==CombatFeedback.Revive)
             {

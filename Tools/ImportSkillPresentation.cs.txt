@@ -1,0 +1,16 @@
+// Standalone Editor eval: fill unconfigured presentation fields only.
+var rows=System.IO.File.ReadAllLines("Tools/skill-presentation.csv");
+var culture=System.Globalization.CultureInfo.InvariantCulture;
+int count=0;
+foreach(var row in rows)
+{
+    var c=row.Split(',');if(c[0]=="id")continue;
+    var s=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.SkillData>("Assets/TalesTactics/Content/Skills/"+c[0]+".asset");
+    if(s==null)throw new System.Exception("Missing skill: "+c[0]);
+    if(s.Presentation!=null&&s.Presentation.Pattern!=TalesTactics.SkillVisualPattern.Automatic)continue;
+    s.Presentation=new TalesTactics.SkillPresentation{
+        Pattern=(TalesTactics.SkillVisualPattern)System.Enum.Parse(typeof(TalesTactics.SkillVisualPattern),c[1]),
+        Pulses=int.Parse(c[2]),Windup=float.Parse(c[3],culture),Recovery=float.Parse(c[4],culture),Size=float.Parse(c[5],culture)};
+    UnityEditor.EditorUtility.SetDirty(s);count++;
+}
+UnityEditor.AssetDatabase.SaveAssets();return "Configured "+count+" skill presentations; existing custom values preserved";

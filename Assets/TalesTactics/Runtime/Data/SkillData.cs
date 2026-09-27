@@ -15,6 +15,7 @@ namespace TalesTactics
         public TargetType Target;
         public AnimationKind Animation=AnimationKind.Skill;
         public CombatVisualStyle VisualStyle;
+        public SkillPresentation Presentation=new SkillPresentation();
         public SkillGate Gate;
         public bool IsUltimate, StartsFlamingChain, IsLionHowl;
         public SkillEffect[] Effects = new SkillEffect[0];

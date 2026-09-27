@@ -2,13 +2,15 @@
 
 ## 아트·전투 연출
 
-CharacterData.Poses는 Attack/Cast/Guard/Damage의 4방향 Sprite 참조다. CharacterMotion은 카메라 상대 방향으로 포즈를 고르고 공격 준비/복귀 및 피격 종료 뒤 기본 그림으로 돌아온다. Skill/Ultimate는 각각 Attack/Cast를 재사용한다. 누락된 포즈는 기존 방향 그림으로 대체하고 별도 Animator가 있으면 BoardView가 CharacterMotion을 추가하지 않는다. 포즈별 실제 사각 경계·발 pivot·렌더링 윤곽은 Tools의 CSV에서 Sprite Editor Data Provider API로 임포트한다. 원본 PNG와 전투 데이터는 유지한다.
+CharacterData.Poses는 Attack/Cast/Guard/Damage의 4방향 Sprite와 Walk/Dead/Skill/Ultimate의 DirectionalSpriteClip 참조다. CharacterMotion은 카메라 상대 방향으로 포즈를 고르고 공격 준비/복귀 및 피격 종료 뒤 기본 그림으로 돌아온다. Skill/Ultimate는 각 2개 준비/발동 프레임이며 BoardView.BeginSkill → ReleaseSkill로 실제 판정에 맞춰 전환한다. 일반 시전도 준비/발동 단계에서는 Skill 클립을 사용한다. 클립이 없으면 Attack/Cast 포즈를 대체 사용한다. 별도 Animator가 있으면 BoardView가 CharacterMotion을 추가하지 않는다. 포즈별 실제 사각 경계·발 pivot·렌더링 윤곽은 Tools의 CSV에서 Sprite Editor Data Provider API로 임포트한다. 원본 PNG와 기존 전투 수치는 유지한다.
 
 Poses.Walk/Dead는 DirectionalSpriteClip의 방향별 프레임 배열과 FPS로 구성한다. Walk는 반복, Dead는 마지막 프레임 유지이며 상태 시간은 CharacterMotion이 관리한다. 경로 방향 전환과 동일 KO 상태 갱신은 시간을 초기화하지 않는다. 부활로 Idle에 들어가면 기존 그림·크기를 복구한다. 누락된 현재 프레임은 기본 그림과 기존 Transform 동작으로 대체한다. 전체 10명에 각 4방향 걷기 4프레임/쓰러짐 3프레임, 총 280개를 연결했다. 별도 프레임이 없는 적 캐릭터는 기존 동작을 사용한다.
 
 CharacterMotion은 Animator가 없는 유닛에 방향 그림과 Transform 기반 기본 동작을 제공한다. 카메라 회전 기준으로 화면 방향을 선택하며 실제 전투 Facing은 바꾸지 않는다. BattleDirector가 판정 전에 HP와 대상 목록을 보관하고 BoardView.PresentImpact에 전달한다. KO 후 Targets에서 사라진 유닛도 해당 목록으로 연출한다. HP 소모 비용과 실제 회복/피격은 구분한다.
 
-CombatEffect는 캐릭터/기술 VisualStyle을 받아 10개 유형의 짧은 절차적 VFX를 그린다. 기술의 명시값 → 캐릭터 명시값 → 무기 기본값 순으로 선택한다. 전투 수치나 RNG에는 관여하지 않으며 0.6초 뒤 소멸한다. Restart는 전장 하위 효과와 BoardView 코루틴을 함께 정리한다. 최종 프레임 작화와 제공 BGM의 남은 범위는 ART_PRESENTATION.md를 따른다.
+CombatEffect는 SkillData.Presentation.Pattern이 있으면 기술 패턴을, Automatic이면 기존 10가지 VisualStyle을 사용한다. VisualStyle은 기술의 명시값 → 캐릭터 명시값 → 무기 기본값 순으로 선택한다. 회복/부활은 의미가 명확한 기존 전용 효과를 우선한다. Presentation.Pulses는 시각 반복만 제어하며 판정·비용·RNG에는 관여하지 않는다. 준비 시간 동안 축소 고리/기술명을 표시하고 판정 후 발동 프레임·효과를 시작한다. Windup/Recovery는 유한한 0.08–1.5초로 제한한다. 효과는 0.6초 뒤 소멸하며 Restart는 전장 하위 효과와 BoardView 코루틴을 함께 정리한다.
+
+BattleAudio.PlayBattle은 2장의 boss 또는 battle을 선택한다. BeginTheme은 실제 캐릭터 테마가 있을 때만 이전 AudioClip·샘플 위치·반복/재생 상태를 보관한다. EndTheme은 복귀하고 Play/StopAll은 예약 복귀를 취소한다. 음원이 없는 테마는 기존 음악을 끊지 않는다. 현재 실제 BGM 파일은 없으며 최종 프레임 작화와 음원 검수의 남은 범위는 ART_PRESENTATION.md를 따른다.
 
 ## 레이어
 

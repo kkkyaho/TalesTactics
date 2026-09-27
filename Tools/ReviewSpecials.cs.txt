@@ -1,0 +1,22 @@
+// Temporary Play Mode gallery. Does not save scenes or edit character assets.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+var characters=battle.Catalog.Characters;var previous=UnityEngine.GameObject.Find("Temporary Special Gallery");if(previous!=null)UnityEngine.Object.DestroyImmediate(previous);
+foreach(var rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())rootObject.SetActive(false);
+var root=new UnityEngine.GameObject("Temporary Special Gallery");
+var cam=root.AddComponent<UnityEngine.Camera>();cam.orthographic=true;cam.orthographicSize=4.65f;
+cam.transform.position=new UnityEngine.Vector3(0,0,-10);cam.backgroundColor=new UnityEngine.Color(0.14f,0.17f,0.20f);cam.clearFlags=UnityEngine.CameraClearFlags.SolidColor;
+var actions=new[]{"Skill prepare","Skill release","Ultimate prepare","Ultimate release"};
+for(int column=0;column<characters.Length;column++)for(int row=0;row<4;row++)
+{
+    var data=characters[column];var g=new UnityEngine.GameObject(data.Id+" "+actions[row]);g.transform.SetParent(root.transform);
+    g.transform.position=new UnityEngine.Vector3((column-4.5f)*1.5f,1.65f-row*1.5f,0);
+    var renderer=g.AddComponent<UnityEngine.SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;
+    renderer.sprite=(row<2?data.Poses.Skill.Frames[row]:data.Poses.Ultimate.Frames[row-2]).Get(TalesTactics.Facing.Front);
+    if(row!=0)continue;
+    var label=new UnityEngine.GameObject(data.Id);label.transform.SetParent(root.transform);
+    var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=data.DisplayName;
+    text.fontSize=1.8f;text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(1.4f,0.6f);
+    label.transform.position=new UnityEngine.Vector3((column-4.5f)*1.5f,3.35f,-0.1f);
+}
+UnityEditor.EditorApplication.ExecuteMenuItem("Window/General/Game");return "Gallery rows: Skill prepare/release, Ultimate prepare/release; stop Play Mode to restore scene.";

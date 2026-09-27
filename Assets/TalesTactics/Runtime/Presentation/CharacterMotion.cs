@@ -11,15 +11,25 @@ namespace TalesTactics
         AnimationKind action;
         float started;
         Facing facing;
+        bool presenting, released;
+        float windup=0.18f,recovery=0.3f,releasedAt;
+        bool specialUltimate;
         public AnimationKind Action=>action;
         public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera)
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)
         {
+            presenting=false;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
             facing=unit.Facing;
         }
+        public void BeginSkill(SkillData skill,float prepare,float recover)
+        {
+            Set(skill.Animation);started=Time.time;presenting=skill.Animation!=AnimationKind.Attack;
+            specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;
+        }
+        public void ReleaseSkill(){released=true;releasedAt=Time.time;}
         public void WalkFacing(Facing value){facing=value;}
         public static Facing ViewFacing(Facing world,Quaternion cameraRotation)
         {
@@ -34,6 +44,14 @@ namespace TalesTactics
             float t=Time.time-started, bob=0,angle=0,x=0,scaleY=1;
             var frame=action==AnimationKind.Walk?unit.Data.Poses?.Walk?.Sample(view,t,true):
                 action==AnimationKind.Dead?unit.Data.Poses?.Dead?.Sample(view,t,false):null;
+            if(presenting)
+            {
+                var clip=specialUltimate?unit.Data.Poses?.Ultimate:unit.Data.Poses?.Skill;
+                int index=released?1:0;
+                if(clip?.Frames!=null&&clip.Frames.Length>index)
+                    frame=clip.Frames[index]?.Get(view);
+                if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
+            }
             var pose=unit.Data.Poses?.Get(action,view);
             if((action==AnimationKind.Attack||action==AnimationKind.Skill)&&(t<0.08f||t>=0.34f))pose=null;
             if(action==AnimationKind.Damage&&t>=0.28f)pose=null;
@@ -45,7 +63,8 @@ namespace TalesTactics
                 case AnimationKind.Idle: scaleY=1+Mathf.Sin(t*3)*0.008f;break;
                 case AnimationKind.Walk:if(frame==null){bob=Mathf.Abs(Mathf.Sin(t*14))*0.055f;angle=Mathf.Sin(t*14)*2;}break;
                 case AnimationKind.Attack:case AnimationKind.Skill:
-                    float swing=Mathf.Sin(Mathf.Clamp01(t/0.42f)*Mathf.PI);x=sign*swing*0.14f;angle=-sign*swing*9;break;
+                    float motionTime=presenting?(released?windup+Time.time-releasedAt:Mathf.Min(t,windup)):t;
+                    float swing=Mathf.Sin(Mathf.Clamp01(motionTime/(presenting?windup+recovery:0.42f))*Mathf.PI);x=sign*swing*0.14f;angle=-sign*swing*9;break;
                 case AnimationKind.Cast:bob=0.025f+Mathf.Sin(t*8)*0.018f;color=Color.Lerp(Color.white,new Color(0.6f,0.85f,1),0.25f+Mathf.Sin(t*8)*0.15f);break;
                 case AnimationKind.Guard:scaleY=pose!=null?1:0.92f;angle=pose!=null?0:-sign*4;break;
                 case AnimationKind.Damage:x=sign*Mathf.Sin(t*55)*0.04f*Mathf.Max(0,1-t*3);color=Color.Lerp(new Color(1,0.3f,0.3f),color,Mathf.Clamp01(t*4));break;

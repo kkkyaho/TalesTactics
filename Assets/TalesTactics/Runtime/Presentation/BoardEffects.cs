@@ -70,7 +70,7 @@ namespace TalesTactics
                     feedback==CombatFeedback.Heal?new Color(0.35f,1,0.6f):ElementColor(skill.Element);
                 var effect=new GameObject("Combat VFX");effect.transform.SetParent(root,false);
                 effect.AddComponent<CombatEffect>().Initialize(SpriteMaterial,BattleCamera,style,feedback,unit,
-                    units[caster].position+BattleCamera.transform.up*0.65f,units[unit].position+BattleCamera.transform.up*0.65f,color,skill.IsUltimate);
+                    units[caster].position+BattleCamera.transform.up*0.65f,units[unit].position+BattleCamera.transform.up*0.65f,color,skill.IsUltimate,skill.Presentation);
                 if(delta!=0)
                 {
                     // Self costs/drain must not interrupt the caster's attack or ultimate.

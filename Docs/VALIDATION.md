@@ -265,3 +265,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 개발 빌드 21.668초/오류0/경고5, 일반 빌드 14.852초/오류0/경고4 성공(unity-locomotion-roster-development-build.json, unity-locomotion-roster-windows-build.json). Pipeline 런타임 설정 없음/셰이더 관련 경고가 있다. 개발 빌드에는 미컴파일 코드 변경 경고가 추가로 기록됐다. 이 단계에서 런타임·Editor 후처리 코드를 바꾸지 않았으며 이후 recompile_status는 completed/failed=false/compilationFailed=false였다. 일반 빌드에는 해당 경고가 없다.
 - 실제 Windows 플레이어 3회 실행: 1장27턴/16공격, 2장27턴/17공격, 재실행·정상 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 불변. 증거: PlayerReviews/68ca64ec4d8a4864bd1f3c54142dc776-summary.json.
 - 이 검증은 최종 원작 외형 일치, 방향별 장비·체형 일관성, 부드러운 중간 작화, 기술/궁극기 전용 연출, 제공 BGM, 수동 캠페인 완주 또는 장시간 성능을 증명하지 않는다. 5번 전체는 진행 중이다.
+
+## 2026-09-27 — 5번 기술·궁극기 전용 프레임과 단계 연출
+
+- 10명×4방향×Skill/Ultimate 준비·발동 160개 Sprite와 89개 연출 프로필을 연결했다. 준비 중 고리/기술명, 실제 판정 시 발동 전환, 10명별 궁극기 도형, 음악 테마 복귀를 추가했다. 기존 비용·위력·해금·기하·보유 포즈는 보존했다.
+- 실제 Unity EditMode **90/90** 통과(0.69초, unity-special-editmode-results.json). 실제 PlayMode **42/42** 통과(78.0초, unity-special-playmode-results.json). 기존 38개 회귀에 4개 검사를 추가했다. 별도 ManagedChecks 90/90은 Unity 실행 결과가 아니다. 실제 Unity API DLL 참조 Runtime/Editor/EditMode/PlayMode 컴파일도 통과했다.
+- 새 PlayMode 검사는 전체 10명×4카메라 방향에서 기술/궁극기 준비·발동·Idle 복귀, 아군 88개 프로필과 궁극기 10개 기하 구분, 준비 중 HP/MP 불변·피해/비용 1회·시각 반복의 무해성, Restart 고리/이름 정리, 테마 누락/재생 위치 복귀/보스 선택/정지 후 재개 방지를 확인했다. 음악 검사는 임시 무음 AudioClip을 사용했으며 실제 BGM 청음 검증이 아니다.
+- Game View 1920×1080 갤러리 검수: special-front-preview.png, special-back-preview.png, special-right-preview.png, special-left-preview.png. 총 160개 포즈의 경계·투명도·이웃 그림 혼입을 확인했다. special-finales-preview.png는 동일 색상의 궁극기 기하 비교다. 갤러리는 Play Mode 종료로 폐기했고 시간 배율은 1로 복구했다.
+- Windows 개발 빌드 **33.133초/오류0/경고8**, 일반 빌드 **20.360초/오류0/경고6** 성공(unity-special-development-build.json, unity-special-windows-build.json). 경고는 기존 Pipeline 런타임 설정 없음, 개발 검수 코드의 deprecated API/DEVELOPMENT_BUILD, nullable Vector2Int 직렬화, URP 디버그 셰이더 stripping, TMP pragma다. 이번 빌드에 미컴파일 변경 경고는 없다.
+- 실제 Windows 플레이어 3회 실행: 1장 27턴/16공격, 2장 27턴/17공격 승리; 재실행 5턴/0공격으로 정상 적 공격에 의한 패배·재출전·중복 보상 방지 통과. 기존 사용자 저장/백업 SHA256 불변. 증거: PlayerReviews/8fde9a7b98ae496c8cd266ad21b52ff6-summary.json. 자동 캠페인 회귀이며 수동 마우스 완주 또는 모든 기술의 시각 검수는 아니다.
+- 99개 캐릭터/기술 에셋의 기존 필드가 보존된 것을 Git HEAD와 읽기 비교했다. Sprite 편집은 Editor API로만 수행했고 원본 PNG를 코드로 수정하지 않았다. ProjectSettings/Scene 변경이 없다.
+- 현재 한계: 일반 기술은 캐릭터별 2개 단계 포즈와 공통 VFX 패턴을 공유한다. 고밀도 애니메이션, 원작 외형의 최종 정확성·장비/체형 일관성, 제공 BGM 연결/청음은 미완료다. 5번 전체 완료나 최종 아트 승인으로 해석하지 않는다.
