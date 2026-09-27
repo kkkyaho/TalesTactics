@@ -4,11 +4,12 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 90개·PlayMode 44개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·보행/쓰러짐 280개·기술/궁극기 160개 프레임, 89개 기술 연출과 10명 궁극기를 연결했습니다. 기본 그림 윤곽/피벗·카메라 방향 선택·파라 회전 타이밍을 보정하고 오리지널 BGM/테마 14곡을 추가했습니다. 5번은 프로토타입 구현·통합 검수 기준으로 완료했으며 전체 게임 완성본은 아닙니다. 범위와 한계는 Docs/ART_ACCEPTANCE.md를 참고하세요.
+전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 90개·PlayMode 47개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·보행/쓰러짐 280개·기술/궁극기 160개 프레임, 89개 기술 연출과 10명 궁극기를 연결했습니다. 기본 그림 윤곽/피벗·카메라 방향 선택·파라 회전 타이밍을 보정하고 오리지널 BGM/테마 14곡을 추가했습니다. 5번은 프로토타입 구현·통합 검수 기준으로 완료했으며 전체 게임 완성본은 아닙니다. 범위와 한계는 Docs/ART_ACCEPTANCE.md를 참고하세요.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
 - 엔진 독립 규칙 테스트 90개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
 - API 검사는 현재 프로젝트의 Library DLL을 사용합니다. 실제 실행 검증과 한계는 Docs/VALIDATION.md에 기록했습니다.
+- 6번 입력·배포 구현 완료: 게임패드 조작 및 배포용 한국어 폰트·라이선스 포함. 가상 Gamepad와 Windows 플레이어 검증을 통과했으며 실제 기기별 검수는 별도입니다.
 
 ## 실행
 
@@ -23,6 +24,8 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git에서 제외됩니다.
 
 ## 조작
+
+게임패드: 왼쪽 스틱으로 화면 커서 이동, 방향키로 메뉴 순환, A/× 선택·타이밍 입력, B/○ 취소, LB/RB 카메라 회전, 오른쪽 스틱 확대/축소, R3 초기화. 마우스와 자동 전환됩니다. 상세 조작·폰트 출처·검증 범위는 [입력·배포 안내](Docs/INPUT_DISTRIBUTION.md)를 참고하세요.
 
 - Move → 파란 타일 클릭: 경로를 따라 이동. Undo Move로 원위치 복귀.
 - Attack → 타일 선택 → 피해/효과 Preview → 실행.
@@ -41,7 +44,7 @@ Windows 실행 파일: `Builds/Windows/TalesTactics.exe`. Builds 폴더는 Git�
 - SkillData: MP/HP/게이지, 사거리, 범위, 속성, 대상, 복수 효과, 해금 레벨, 연계 조건. Presentation은 효과 패턴·시각 반복·준비/복귀 시간·크기이며 전투 판정 횟수는 바꾸지 않습니다.
 - AudioLibrary: battle/victory/boss/story 및 10명 테마 ID에 프로젝트 오리지널 14곡을 연결했습니다. 제공 음원으로 교체할 수 있습니다. 2장은 boss(누락 시 battle), 궁극기는 테마를 재생한 뒤 이전 음악 위치로 복귀합니다. 음악 음량 기본값은 0.28입니다. 출처/제작법은 Docs/ORIGINAL_MUSIC.md를 참고하세요.
 - 저장: Unity persistentDataPath 아래 campaign.json, 교체 시 .bak 보관. 훈련 모드에서는 경험치를 저장하지 않습니다.
-- 최종 한국어 폰트는 BattleHud.Font에 지정하세요. 현재는 Windows 맑은 고딕을 실행 시 읽으며 폰트 파일은 포함하지 않습니다.
+- 배포용 Noto Sans CJK KR 폰트와 라이선스를 포함했습니다. BattleHud.Font를 지정하면 사용자 폰트를 우선하며 미지정 시 포함 폰트를 사용합니다. 운영체제에 한국어 폰트가 없어도 표시할 수 있습니다.
 
 ## 검증 명령
 

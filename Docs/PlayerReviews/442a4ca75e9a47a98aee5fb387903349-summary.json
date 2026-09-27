@@ -1,0 +1,31 @@
+{
+  "runId": "442a4ca75e9a47a98aee5fb387903349",
+  "utc": "2026-09-27T11:10:56.6289679Z",
+  "playerSHA256": "718444F6A718FA668DA96EB0A58445B009673310E6129152A63DBF7A92B8DE00",
+  "runtimeSHA256": "EC0F52C9E4162CD384AAAB943603771AA48144C2711551E165344436B68DEA45",
+  "passed": false,
+  "userSaveUnchanged": true,
+  "error": "Review failed: chapter1. System.InvalidOperationException: Gamepad event opens shop in player\r\n  at TalesTactics.CampaignPlayerReview.Check (System.Boolean condition, System.String message) [0x0001b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:94 \r\n  at TalesTactics.CampaignPlayerReview+<ReviewGamepad>d__14.MoveNext () [0x00160] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:119 \r\n  at TalesTactics.CampaignPlayerReview+<Start>d__9.MoveNext () [0x0008b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:68 ",
+  "reports": [
+    {
+      "phase": "chapter1",
+      "unityVersion": "6000.6.0f1",
+      "runId": "442a4ca75e9a47a98aee5fb387903349",
+      "error": "System.InvalidOperationException: Gamepad event opens shop in player\r\n  at TalesTactics.CampaignPlayerReview.Check (System.Boolean condition, System.String message) [0x0001b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:94 \r\n  at TalesTactics.CampaignPlayerReview+<ReviewGamepad>d__14.MoveNext () [0x00160] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:119 \r\n  at TalesTactics.CampaignPlayerReview+<Start>d__9.MoveNext () [0x0008b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs:68 ",
+      "passed": false,
+      "tactical": false,
+      "captureWarnings": [],
+      "seconds": 0.17621660232543945,
+      "playerTurns": 0,
+      "moves": 0,
+      "attacks": 0,
+      "checks": [
+        "Scene initialized",
+        "Bundled Korean font selected without OS font lookup",
+        "Bundled Korean and CJK glyph coverage",
+        "Font license and copyright included in player"
+      ],
+      "errors": []
+    }
+  ]
+}

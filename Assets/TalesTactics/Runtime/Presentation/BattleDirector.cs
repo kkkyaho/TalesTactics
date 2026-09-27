@@ -41,6 +41,7 @@ namespace TalesTactics
             Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
             if(Deployment.Count==0)Deployment.Add(0);
             Board.Initialize(this);Hud.ShowDeployment();
+            gameObject.AddComponent<GamepadPointer>().Initialize(this);
         }
         void Update()
         {

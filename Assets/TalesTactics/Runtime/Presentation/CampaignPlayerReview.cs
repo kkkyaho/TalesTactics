@@ -104,6 +104,34 @@ namespace TalesTactics
             if(name=="전투 시작")while(battle.StoryActive)battle.AdvanceStory();
         }
 
+        IEnumerator ReviewGamepad()
+        {
+            // The review runner intentionally hides the window. Permit its synthetic device
+            // while unfocused, then restore the normal player's background-input policy.
+            var background=UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior;
+            UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior=UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+            var pad=UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Gamepad>();
+            try
+            {
+                yield return new WaitForSecondsRealtime(.25f);
+                var pointer=battle.GetComponent<GamepadPointer>();
+                var button=FindButton(b=>b.name=="장비 상점");Canvas.ForceUpdateCanvases();
+                var rect=(RectTransform)button.transform;
+                pointer.MoveTo(RectTransformUtility.WorldToScreenPoint(null,rect.TransformPoint(rect.rect.center)));
+                UnityEngine.InputSystem.InputSystem.QueueStateEvent(pad,new UnityEngine.InputSystem.LowLevel.GamepadState().WithButton(UnityEngine.InputSystem.LowLevel.GamepadButton.South));
+                yield return null;yield return null;
+                UnityEngine.InputSystem.InputSystem.QueueStateEvent(pad,new UnityEngine.InputSystem.LowLevel.GamepadState());yield return null;
+                Check(FindButton(b=>b.name=="출전 준비로")!=null,"Gamepad event opens shop in player; active="+pointer.Active+" deviceEnabled="+pad.enabled+" focused="+Application.isFocused);
+                UnityEngine.InputSystem.InputSystem.QueueStateEvent(pad,new UnityEngine.InputSystem.LowLevel.GamepadState().WithButton(UnityEngine.InputSystem.LowLevel.GamepadButton.East));
+                yield return null;yield return null;
+                UnityEngine.InputSystem.InputSystem.QueueStateEvent(pad,new UnityEngine.InputSystem.LowLevel.GamepadState());yield return null;
+                Check(FindButton(b=>b.name=="전투 시작")!=null,"Gamepad cancel returns to deployment in player");
+            }
+            finally{UnityEngine.InputSystem.InputSystem.RemoveDevice(pad);UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior=background;}
+            yield return null;
+            Check(!battle.GetComponent<GamepadPointer>().Active,"Gamepad removal restores mouse UI in player");
+        }
+
         IEnumerator ReviewMusic()
         {
             var entries=battle.Audio.Library.Entries.Where(e=>e.Id=="battle"||e.Id=="boss"||e.Id=="story"||e.Id=="victory"||e.Id.EndsWith(".theme")).ToArray();
@@ -130,6 +158,11 @@ namespace TalesTactics
             yield return null; // Allow the scene's normal Start methods to initialize.
             battle = UnityEngine.Object.FindAnyObjectByType<BattleDirector>();
             Check(battle != null && battle.enabled, "Scene initialized");
+            var font=Resources.Load<TMPro.TMP_FontAsset>("TalesTactics/Korean");
+            Check(font!=null&&battle.Hud.Font==font&&font.atlasPopulationMode==TMPro.AtlasPopulationMode.Static,"Bundled Korean font selected without OS font lookup");
+            Check(font.HasCharacters("전투 출전 승리 패배 장비 사후폭쇄진 魔神剣",out uint[] missing,true,true),"Bundled Korean and CJK glyph coverage");
+            Check(File.Exists(Path.Combine(Application.streamingAssetsPath,"Licenses/NotoSansCJK-OFL.txt"))&&File.Exists(Path.Combine(Application.streamingAssetsPath,"Licenses/NotoSansCJK-NOTICE.txt")),"Font license and copyright included in player");
+            yield return ReviewGamepad();
             yield return ReviewMusic();
             Check(report.phase == "chapter1" ? !File.Exists(savePath) : File.Exists(savePath), "Expected isolated save exists/missing");
             store = new CampaignFile(savePath);

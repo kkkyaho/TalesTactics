@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 게임패드와 포함 폰트
+
+BattleDirector.Start가 GamepadPointer를 생성한다. Gamepad 이벤트를 화면 포인터로 변환하고 EventSystem의 UI raycast/기존 클릭 콜백 또는 Board.Pick/State.Tile을 사용한다. 전투 규칙을 별도 구현하지 않는다. 메뉴 순환은 현재 활성·상호작용 가능한 버튼만 대상으로 하고, B 취소는 상태의 Cancel 또는 메뉴의 돌아가기/목록/출전 준비 버튼을 사용한다. 실행 순서 -100으로 기본 UI submit보다 먼저 게임패드 사용을 감지하고 sendNavigationEvents를 끄므로 A 입력이 두 번 실행되지 않는다. 마우스 전환·장치 해제·컴포넌트 비활성화 시 기존 설정을 복원한다. 커서 Canvas는 raycast를 막지 않는다. 가상 Mouse 장치를 만들거나 실제 OS 포인터를 이동하지 않는다.
+
+BattleHud.Font가 미지정이면 Resources/TalesTactics/Korean의 정적 TMP 폰트를 선택한다. Noto Sans CJK KR 원본 OTF와 라이선스를 포함하고 같은 원본의 동적 fallback(1024, Clear Dynamic Data On Build)을 연결한다. 런타임 소유 OS 폰트와 공유 Resources 폰트의 수명을 구분하며 사용자 지정 Font는 덮어쓰지 않는다. 생성 도구와 배포 경로는 INPUT_DISTRIBUTION.md를 따른다.
+
 ## 아트·전투 연출
 
 CharacterData.Poses는 Attack/Cast/Guard/Damage의 4방향 Sprite와 Walk/Dead/Skill/Ultimate의 DirectionalSpriteClip 참조다. CharacterMotion은 카메라 상대 방향으로 포즈를 고르고 공격 준비/복귀 및 피격 종료 뒤 기본 그림으로 돌아온다. Skill/Ultimate는 각 2개 준비/발동 프레임이며 BoardView.BeginSkill → ReleaseSkill로 실제 판정에 맞춰 전환한다. 일반 시전도 준비/발동 단계에서는 Skill 클립을 사용한다. 클립이 없으면 Attack/Cast 포즈를 대체 사용한다. 별도 Animator가 있으면 BoardView가 CharacterMotion을 추가하지 않는다. 포즈별 실제 사각 경계·발 pivot·렌더링 윤곽은 Tools의 CSV에서 Sprite Editor Data Provider API로 임포트한다. 원본 PNG와 기존 전투 수치는 유지한다.

@@ -1,5 +1,17 @@
 # 검증 기록 — 2026-09-22
 
+## 2026-09-27 — 6번 입력·배포
+
+- GamepadPointer가 왼쪽 스틱 화면 커서, 방향키 활성 메뉴 순환, A 선택/타이밍, B 취소, LB/RB 회전, 오른쪽 스틱 확대/축소·누름 초기화를 제공한다. 기존 UI 클릭/전투 상태 경로를 사용하고 가상 Mouse나 OS 포인터 조작은 하지 않는다. 기본 UI submit과 중복되지 않도록 게임패드 사용 중 navigation 이벤트를 제어하고 마우스 전환/장치 해제 시 복원한다.
+- Noto Sans CJK KR Regular 2.004 원본 OTF, 정적 TMP 문자563개/2048 아틀라스1개 및 동적1024 fallback을 포함했다. fallback의 Clear Dynamic Data On Build=1을 재조회했다. Resources 폰트가 사용자 미지정 HUD의 기본이며, 원본 폰트 저작권·OFL 전문은 StreamingAssets/Licenses에 포함한다. 파일 해시와 출처는 INPUT_DISTRIBUTION.md에 기록했다.
+- 실제 Unity EditMode **90/90** 통과(0.45초, unity-input-editmode-results.json), PlayMode **47/47** 통과(60.29초, unity-input-playmode-results.json). 초기 실행도47/47이었다(61.01초, unity-input-playmode-initial.json). 신규 검사는 InputSystem 가상 Gamepad 이벤트로 A 중복 실행 방지, 메뉴 순환/스틱, 연결 해제/재연결, 전투 시작·이동 타일 선택·B 취소·카메라·타이밍을 확인한다. 별도 폰트 검사는 Resources 선택, 정적/동적 구성 및 카탈로그 한글/한자 표시를 확인했다.
+- 실제 Unity API DLL 참조 Runtime/Editor/EditMode/PlayMode 4개 컴파일 통과. 엔진 독립 규칙을 바꾸지 않아 ManagedChecks는 재실행하지 않았다. 과거 ManagedChecks 결과를 Unity 검사로 재표기하지 않는다.
+- 1920×1080 Game View에서 출전/전투 한국어와 게임패드 커서를 확인했다(input-deployment-preview.png, input-battle-preview.png). 폰트 변경 후 출전 인원 제목이 두 줄로 내려가는 것을 발견해 짧은 문구로 수정하고 재촬영했다. 이 문구 수정은 전체 테스트 후 화면 검수와 아래 최종 빌드에서 확인했다. 임시 가상 장치와 Play Mode는 종료했고 Scene/ProjectSettings를 변경하지 않았다.
+- Windows 개발 빌드 **25.613초/오류0/경고8**, 일반 빌드 **20.785초/오류0/경고6** 성공(unity-input-development-build.json, unity-input-windows-build.json). 기존 Pipeline/개발 검수 API/직렬화/셰이더 경고가 남아 있다. 이후 개발 전용 검수 도구의 포커스 처리를 바꾸었으며 일반 빌드에는 해당 코드가 포함되지 않는다.
+- 초기 개발 빌드26.755초/오류0/경고8은 성공했으나 숨겨진 플레이어의 상점 진입 입력 검사에서 실패했다(PlayerReviews/442a4ca75e9a47a98aee5fb387903349-summary.json). 검수 도구에 초기 화면 안정화 대기와 일시적 IgnoreFocus를 추가하고 종료 시 원래 정책을 복구했다. 일반 게임의 입력 정책을 바꾸지 않았다. 포커스와 초기 화면 배치 중 단일 원인을 분리해 확정한 것은 아니다.
+- 최종 플레이어 **3회 실행 통과**: 1장27턴/16공격, 2장27턴/17공격, 재실행5턴/0공격. 각 실행에서 포함 폰트 선택/한글·한자/라이선스 파일, 가상 패드로 상점 진입·B 복귀·장치 제거, 음악14곡 출력, 정상 승패·재출전·중복 보상 방지를 확인했다. 사용자 저장/백업 불변. 증거: PlayerReviews/3f47658fcdbc40f38c7e4d8c7fd1348c-summary.json.
+- 한계: 실제 USB/Bluetooth 기기·드라이버별 검수, 사람이 게임패드로 캠페인 완주한 결과는 아니다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 사용하지 않는다. 7번의 수동 완주·장시간 성능 검수는 남아 있다.
+
 ## 통과한 검증
 
 - Unity 6000.6.0f1, 실제 TestBattle/Content/TMP 에셋 import 및 생성 확인.

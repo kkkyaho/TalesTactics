@@ -1,0 +1,30 @@
+// Explicit one-time import. Never replace a project's custom assigned font.
+UnityEditor.AssetDatabase.Refresh();
+var path="Assets/TalesTactics/Resources/TalesTactics";
+System.IO.Directory.CreateDirectory(path);UnityEditor.AssetDatabase.Refresh();
+if(UnityEditor.AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>(path+"/Korean.asset")!=null)throw new System.Exception("Font already exists; inspect before regenerating");
+var source=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Font>("Assets/TalesTactics/Fonts/NotoSansCJKkr-Regular.otf");
+if(source==null)throw new System.Exception("Source font not imported");
+var chars=new System.Collections.Generic.SortedSet<char>();
+foreach(var file in System.IO.Directory.GetFiles("Assets/TalesTactics","*",System.IO.SearchOption.AllDirectories))
+    if(file.EndsWith(".cs")||file.EndsWith(".asset"))foreach(char c in System.IO.File.ReadAllText(file))if(!char.IsControl(c)&&!char.IsSurrogate(c))chars.Add(c);
+for(char c=' ';c<127;c++)chars.Add(c);
+var text=new string(System.Linq.Enumerable.ToArray(chars));
+var main=TMPro.TMP_FontAsset.CreateFontAsset(source,48,5,UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA,2048,2048,TMPro.AtlasPopulationMode.Dynamic,true);
+main.name="Korean";
+main.TryAddCharacters(text,out string missing);
+if(!string.IsNullOrEmpty(missing))throw new System.Exception("Missing source glyphs: "+missing);
+main.atlasPopulationMode=TMPro.AtlasPopulationMode.Static;
+UnityEditor.AssetDatabase.CreateAsset(main,path+"/Korean.asset");
+UnityEditor.AssetDatabase.AddObjectToAsset(main.material,main);
+foreach(var atlas in main.atlasTextures)UnityEditor.AssetDatabase.AddObjectToAsset(atlas,main);
+var fallback=TMPro.TMP_FontAsset.CreateFontAsset(source,48,5,UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA,1024,1024,TMPro.AtlasPopulationMode.Dynamic,true);
+fallback.name="Korean Dynamic Fallback";
+UnityEditor.AssetDatabase.CreateAsset(fallback,path+"/KoreanFallback.asset");
+UnityEditor.AssetDatabase.AddObjectToAsset(fallback.material,fallback);
+foreach(var atlas in fallback.atlasTextures)UnityEditor.AssetDatabase.AddObjectToAsset(atlas,fallback);
+var serialized=new UnityEditor.SerializedObject(fallback);
+serialized.FindProperty("m_ClearDynamicDataOnBuild").boolValue=true;serialized.ApplyModifiedPropertiesWithoutUndo();
+main.fallbackFontAssetTable=new System.Collections.Generic.List<TMPro.TMP_FontAsset>{fallback};
+UnityEditor.EditorUtility.SetDirty(main);UnityEditor.EditorUtility.SetDirty(fallback);UnityEditor.AssetDatabase.SaveAssets();
+return new {characters=chars.Count,atlases=main.atlasTextures.Length,missing=missing,main=main.atlasPopulationMode.ToString(),fallback=fallback.atlasPopulationMode.ToString()};
