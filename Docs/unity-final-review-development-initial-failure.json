@@ -1,0 +1,242 @@
+{
+  "status": "completed",
+  "buildId": "build_8d9d6a71fda9",
+  "result": "Failed",
+  "platform": "StandaloneWindows64",
+  "outputPath": "C:/dev/TalesTactics/Builds/ManualReview/TalesTactics.exe",
+  "totalSizeBytes": 74791910,
+  "buildTimeMs": 11977,
+  "buildStartedAt": "2026-09-27T12:56:48.9659132Z",
+  "buildEndedAt": "2026-09-27T12:57:00.9437917Z",
+  "totalWarnings": 6,
+  "totalErrors": 1,
+  "buildSteps": [
+    {
+      "name": "Build player",
+      "durationMs": 11963,
+      "depth": 0,
+      "messages": []
+    },
+    {
+      "name": "Call PrepareForBuild callbacks",
+      "durationMs": 9,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Call internal build started callbacks",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Preprocess Player",
+      "durationMs": 313,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "1 URP assets included in build\r\n- PC_RPAsset - Assets/Settings/PC_RPAsset.asset\r\n\t - PC_Renderer - Assets/Settings/PC_Renderer.asset - UnityEngine.Rendering.Universal.UniversalRendererData\r\n"
+        },
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunInfo.json' (2221 bytes)"
+        },
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunSettings.json' (23 bytes)"
+        },
+        {
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        }
+      ]
+    },
+    {
+      "name": "Save scenes before build",
+      "durationMs": 4,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prepare For Build",
+      "durationMs": 11,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "ProducePlayerScriptAssemblies",
+      "durationMs": 6535,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prebuild Cleanup and Recompile",
+      "durationMs": 4705,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Compile scripts",
+      "durationMs": 4589,
+      "depth": 3,
+      "messages": [
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs(97,58): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'"
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs(97,13): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\ManualPlayerReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\BattleDirector.cs(18,28): warning UAC1001: Field 'Target' type 'UnityEngine.Vector2Int?' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)"
+        }
+      ]
+    },
+    {
+      "name": "Generate and validate platform script types",
+      "durationMs": 37,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Verify Build setup",
+      "durationMs": 274,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "GetUnityAssemblies",
+      "durationMs": 31,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "GetPlayerAssemblies",
+      "durationMs": 29,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Check old data build",
+      "durationMs": 190,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Set up scripts only build",
+      "durationMs": 0,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Prepare assets for target platform",
+      "durationMs": 5,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prepare splash screen",
+      "durationMs": 1,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "Including Unity Splash Screen logo because 'Show Unity Logo' is enabled."
+        }
+      ]
+    },
+    {
+      "name": "Run script only build",
+      "durationMs": 49,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Build scripts DLLs",
+      "durationMs": 26,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "GetSystemAssemblies",
+      "durationMs": 1,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Postprocess built player",
+      "durationMs": 4079,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Error",
+          "content": "Building Library\\Bee\\artifacts\\WinPlayerBuildProgram\\AsyncPluginsFromLinker failed with output:\nUnityEditor.Build.BuildFailedException: Burst compiler failed running\r\n\r\nstdout:\r\nstderr:\r\n\r\n  at Unity.Burst.Editor.BurstAotCompiler+BclRunner.RunProgram (UnityEditor.Utils.Program p, System.String exe, System.Collections.Generic.IEnumerable`1[T] args, System.String workingDirectory, UnityEditor.Scripting.Compilers.CompilerOutputParserBase parser) [0x00231] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAotCompiler+BclRunner.RunManagedProgram (System.String exe, System.Collections.Generic.IReadOnlyList`1[T] args, UnityEditor.Scripting.Compilers.CompilerOutputParserBase parser, System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue] environment) [0x00031] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAotCompiler.OnPostBuildPlayerScriptDLLsImpl (Unity.Burst.Editor.BurstAotCompiler+BurstAOTSettings settings, UnityEditor.Compilation.Assembly[] playerAssemblies) [0x00acf] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAOTCompilerPostprocessor.GenerateNativePluginsForAssemblies (UnityEditor.Build.IGenerateNativePluginsForAssemblies+GenerateArgs args) [0x00053] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at UnityEditor.Modules.BeeBuildPostprocessor.GenerateNativePluginsForAssemblies (PlayerBuildProgramLibrary.Data.GenerateNativePluginsForAssembliesArgs args) [0x00065] in <2194b77af8ea43e69caba13ba778a69a>:0 \r\n  at Bee.BeeDriver.BuildRequest+<>c__DisplayClass63_0`1[T].<RegisterRPCCallback>b__0 (System.Object o) [0x00000] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 \r\n  at Bee.BeeDriver.BeeDriver_RunBackend+<>c__DisplayClass1_0.<ProcessRPCRequest>b__0 () [0x00021] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 \r\n  at System.Threading.Tasks.Task.InnerInvoke () [0x0000f] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n  at System.Threading.Tasks.Task.Execute () [0x00000] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n--- End of stack trace from previous location where exception was thrown ---\r\n\r\n  at Bee.BeeDriver.BeeDriver_RunBackend.ProcessRPCRequest (Bee.BinLog.RPCActionMessage msg, Bee.BeeDriver.BuildRequest+RPCCallback rpcCallback, IPCConnection ipcConnection, System.Threading.Tasks.Task writePipeConnectionTask, Bee.BeeDriver.InternalState state) [0x00102] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 "
+        }
+      ]
+    },
+    {
+      "name": "Setup incremental player build",
+      "durationMs": 62,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Incremental player build",
+      "durationMs": 3983,
+      "depth": 2,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "Pipeline: generated code-reload host-binding link.xml at C:\\dev\\TalesTactics\\Temp\\UnityTempFile-3d8eb32f4401d5e4e9689a6bef0f000b-hostbindings.link.xml — 41 host-binding type(s) and 0 reloadable target type(s) across 3 assembly(ies); target assemblies: none; 95 assembly(ies) preserved wholesale for demand-time auto-bind"
+        }
+      ]
+    },
+    {
+      "name": "Call Post-Process callbacks",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": []
+    }
+  ],
+  "errors": [
+    {
+      "message": "Building Library\\Bee\\artifacts\\WinPlayerBuildProgram\\AsyncPluginsFromLinker failed with output:\nUnityEditor.Build.BuildFailedException: Burst compiler failed running\r\n\r\nstdout:\r\nstderr:\r\n\r\n  at Unity.Burst.Editor.BurstAotCompiler+BclRunner.RunProgram (UnityEditor.Utils.Program p, System.String exe, System.Collections.Generic.IEnumerable`1[T] args, System.String workingDirectory, UnityEditor.Scripting.Compilers.CompilerOutputParserBase parser) [0x00231] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAotCompiler+BclRunner.RunManagedProgram (System.String exe, System.Collections.Generic.IReadOnlyList`1[T] args, UnityEditor.Scripting.Compilers.CompilerOutputParserBase parser, System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue] environment) [0x00031] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAotCompiler.OnPostBuildPlayerScriptDLLsImpl (Unity.Burst.Editor.BurstAotCompiler+BurstAOTSettings settings, UnityEditor.Compilation.Assembly[] playerAssemblies) [0x00acf] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at Unity.Burst.Editor.BurstAOTCompilerPostprocessor.GenerateNativePluginsForAssemblies (UnityEditor.Build.IGenerateNativePluginsForAssemblies+GenerateArgs args) [0x00053] in <2179461ad21b46c2a855070b335dc418>:0 \r\n  at UnityEditor.Modules.BeeBuildPostprocessor.GenerateNativePluginsForAssemblies (PlayerBuildProgramLibrary.Data.GenerateNativePluginsForAssembliesArgs args) [0x00065] in <2194b77af8ea43e69caba13ba778a69a>:0 \r\n  at Bee.BeeDriver.BuildRequest+<>c__DisplayClass63_0`1[T].<RegisterRPCCallback>b__0 (System.Object o) [0x00000] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 \r\n  at Bee.BeeDriver.BeeDriver_RunBackend+<>c__DisplayClass1_0.<ProcessRPCRequest>b__0 () [0x00021] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 \r\n  at System.Threading.Tasks.Task.InnerInvoke () [0x0000f] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n  at System.Threading.Tasks.Task.Execute () [0x00000] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n--- End of stack trace from previous location where exception was thrown ---\r\n\r\n  at Bee.BeeDriver.BeeDriver_RunBackend.ProcessRPCRequest (Bee.BinLog.RPCActionMessage msg, Bee.BeeDriver.BuildRequest+RPCCallback rpcCallback, IPCConnection ipcConnection, System.Threading.Tasks.Task writePipeConnectionTask, Bee.BeeDriver.InternalState state) [0x00102] in <5adb23dd9a2f44e6b9f9bd54a56c9d99>:0 "
+    }
+  ],
+  "warnings": [
+    {
+      "message": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+    },
+    {
+      "message": "warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs"
+    },
+    {
+      "message": "warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\ManualPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC1001: Field 'Target' type 'UnityEngine.Vector2Int?' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\BattleDirector.cs"
+    }
+  ]
+}

@@ -108,3 +108,5 @@ BattleObjectives의 DefeatBoss, ReachDestination(일반/호위), SurviveTurns가
 CampaignEconomy.Prepare는 승리 시 최초/반복 EXP·골드·추가 장비 추첨 결과를 CampaignReward에 고정한다. BattleDirector가 이 객체를 실패/예외 후에도 보관하며 TryReward는 재추첨 없이 모든 수량·골드·성장·완료 플래그를 원자적으로 저장/복원한다. 성공한 객체의 Applied는 중복 적용을 차단한다. 최초/반복 상태가 달라진 오래된 객체도 거부한다. 기존 stage 인자 TryReward 오버로드는 추가 추첨 없는 결정적 호환 경로이며 실제 게임은 준비한 CampaignReward 경로를 사용한다.
 
 추가 드롭은 청동검25%/장별 방어구15%/없음60%의 상호 배타적 한 번 추첨이다. 장비99개 상한은 해당 아이템만 건너뛰고 재추첨하지 않는다. 재고 객체 참조와 순서까지 실패 시 복원한다. 저장 버전2 및 기존 성장/재고를 보존하며 기존 완료 기록이 있는 장에는 반복 보상을 적용한다. 미저장 보상은 출전 화면으로 나가거나 앱을 종료하면 포기한다.
+
+ManualPlayerReview는 DEVELOPMENT_BUILD/UNITY_EDITOR 조건부 검수 도구다. 명시적 --manual-review GUID로만 활성화하고 CampaignFile 저장 경로를 ManualReviews/GUID로 분리한다. 프레임시간·메모리·상태를 수집하며 전투 명령을 선택하지 않는다. MeasurePlayerProcess.ps1의 Windows 프로세스 메모리 기록과 함께 사용한다. 결과 및 재실행 파일 보존 절차는 FINAL_REVIEW.md를 따른다.

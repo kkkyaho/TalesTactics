@@ -302,3 +302,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 실제 Unity EditMode **90/90** 통과(0.45초, unity-polish-editmode-results.json), 최종 기본 공격 표현 수정 후 PlayMode **44/44** 통과(79.85초, unity-polish-playmode-results.json). 14곡 재생과 회전 방향/전투 Facing 보존 검사를 추가했다. 별도 ManagedChecks를 이번 단계에서 재실행하지 않았으며 이전 90/90 결과는 엔진 독립 검사다.
 - 최종 Windows 개발 빌드 **16.402초/오류0/경고8**, 일반 빌드 **20.329초/오류0/경고6** 성공(unity-polish-development-build.json, unity-polish-windows-build.json). 기존 Pipeline/개발 검수 API/직렬화/셰이더 관련 경고가 남아 있다.
 - 최종 실행 파일로 Windows 플레이어 3회 실행 통과: 1장27턴/16공격, 2장27턴/17공격, 재실행5턴/0공격으로 정상 패배·재출전·중복 보상 방지 확인. 각 실행에서 14곡의 재생/샘플 진행/출력 RMS 기준을 통과했고 사용자 저장/백업 SHA256은 불변이다. 증거: PlayerReviews/74c693e4c79145d59022b0f1749a85c3-summary.json. 숨겨진 플레이어의 검은 캡처는 시각 검수 증거로 사용하지 않으며 위 Editor 갤러리와 구분한다.
+
+## 2026-09-27 — 7번 추가 검수
+
+- 실제 Unity PlayMode **48/48** 통과(66.10초). 전체89개 기술 상세의 글자 누락0, 영역 넘침0, 열람 중 HP/MP 불변을 추가 검증했다. `unity-final-review-playmode-results.json`, `skill-panel-review.csv`.
+- Windows 개발 플레이어를 화면 기반으로 조작해 6인 캠페인1·2장 전원 생존 승리, 전후 대사·상점 구매/매각·장비 적용·성장 조건·보상/해금을 확인했다. 나탈리아1인 정상 적 공격 패배, Restart 재출전 회복, 프로세스 재실행의400G/Lv3/장비/두 장 완료 복원도 확인했다. 저장 데이터나 HP를 주입하지 않았다.
+- 첫 세션4038.73초에서 초기 대기 등을 제외한 약53분의 분당 FPS992.30–1203.63, p95 1.528–1.951ms, Unity 할당190.26–191.75MiB, 예약544.375MiB 고정을 관찰했다. 별도 Windows 측정120개/약30분의 작업 집합290.48–371.95MiB, 전용 메모리924.22–962.64MiB. 혼합 전투/메뉴이며 다른 기기 성능이나 누수 부재를 보장하지 않는다.
+- Mono WorkingSet64=0은 유효한 측정값으로 쓰지 않고 외부 측정으로 대체했다. 조회 불가를 빈칸으로 기록하도록 수정하고 재실행 CSV에서 검증했다. 수집기에 런타임 Error/Exception/Assert가 없었다.
+- 최종 Windows 개발 빌드 **8.267초/오류0/경고1**, 일반 빌드 **3.495초/오류0/경고1**. 경고는 Pipeline RuntimePipelineConfig 부재(플레이어에서 Pipeline 비활성)다. 개발 최초 시도는 Burst 컴파일러 실행 실패, 일반 최초 시도는 내용 없는 빌드 오류1개로 실패했으며 설정/코드 변경 없는 각각의 재시도가 성공했다. 근본 원인 해결로 주장하지 않는다. `unity-final-review-*-initial-failure.json`과 최종 `*-build.json`에 보존했다.
+- 일반 사용자 저장/백업 SHA256 불변, 검수 저장도 패배 전/재실행 후 동일하다. `ManualReview/save-integrity.json` 참조. 폰트 동적 캐시 등 검수 부산물은 복원했다.
+- 실제 Gamepad 장치는0개였으므로 물리 기기별 검수는 미완료다. 전체89개 수동 발동이나 사람의 난이도·장기 성장 평가, 전문가의 원작 외형/청음 승인도 별도다. 7번 완료 범위는 `FINAL_REVIEW.md`의 전수 자동 검사와 대표 기술 화면 검수다.
