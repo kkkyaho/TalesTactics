@@ -356,3 +356,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - combat-party-matrix.csv의 두6인 편성이 전6장 승리(6장37/41턴·각6명생존), 기본3인 도전은2/4/6장 패배다. 초기AI기준선으로 사람의 체감난이도나 모든조합승률을 보장하지 않는다.
 - 3D 회전 카메라와 비정수 확대에서 완전한 pixel-perfect를 보장하지 않는다. 각 일반 기술의 고유 전신 작화, 실물 게임패드·사람 장기 난이도·전문가 원작외형/음악청음 승인은 별도다. 기존2026-09-27 시각검수 수치/이미지는 이전아트 이력으로 보존한다.
 - CT+Utility 개발 플레이어도7회 독립 실행 통과:1~6장15/12/17/14/17/9플레이어턴, 재실행 정상 패배3턴·재출전·저장 복원/중복 보상 방지 통과. PlayerReviews/0c0fa920a15c45e09355f16b3876531b-summary.json. 두 검수 모두 원본/백업 저장 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. 최종 빌드/저장 해시는 PixelCampaign/final-hashes.json에 보관했다.
+
+## 2026-09-29 — 픽셀 전장 조작 가독성·재출전 검증
+
+- 6장 중계핵의 이동 범위가 어두운 바닥 무늬에 묻히는 것을 GameView에서 확인했다(PixelInteraction/move-before.png). 이동/공격 범위에 밝은 청색/적색 선, 선택 효과 범위에 굵은 금색 선을 추가했다. 경로 선에도 URP Unlit 색상을 MaterialPropertyBlock으로 지정했다. 범위 판정·HP·이동·저장 로직은 바꾸지 않았다.
+- 타일별 선은 같은 전장에서 재사용하며 취소 시 비활성화, Restart 시 전장과 함께 제거한다. 새 collider나 개별 material 복제를 만들지 않는다. 수정 후 실제 화면은 PixelInteraction/move-after.png, attack-after.png, area-after.png다. 메모리 캠페인/저장 비활성 상태로 촬영했고 효과 범위는 표시 함수를 직접 호출했다.
+- 실제 Unity PlayMode **53/53**,65.50초 통과(unity-pixel-interaction-playmode-results.json). 신규 검사에서6장×2회 전장 생성/재출전의 UI Submit 이동·취소·공격·4회전·확대/초기화, 실제 합법 범위와 선 표시 일치, 선 재사용·충돌체 없음·지면 위 높이·밝은 소재 색상, 위치/HP 불변, 참조된 장식 소재/선 삭제를 확인했다. 장시간 FPS/메모리 프로파일링이나 모든 자원 누수 부재 증명은 아니다.
+- Runtime/Editor/EditMode/PlayMode 실제 API 컴파일4개 통과(pixel-interaction-api-results.txt). 전투 규칙 변경이 없어 EditMode/ManagedChecks는 다시 실행하지 않았고 이전93/93 결과를 유지한다.
+- Windows Computer Use로 배포 플레이어를 실행했지만 화면이 검게 캡처됐고, 대상 창 재조회 후에도 `failed to activate captured window`로 활성화가 실패했다. 수동 Windows 마우스 검수는 보류다. 화면 검토는 Editor GameView, 입력 검증은 실제 PlayMode UI Submit과 구분한다. 검수용으로 시작한 플레이어 두 개는 종료했다.
+- 사용자 campaign.json 및 .bak SHA256은 모두324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1로 이전과 동일하다. 임시 Assets/Docs는 Editor API로 삭제했으며 Scene을 저장하지 않았다.
+- Windows 일반 빌드14.224초/오류0/경고4, 개발 빌드26.048초/오류0/경고9 성공(unity-pixel-interaction-windows-build.json, unity-pixel-interaction-development-build.json). 기존 Pipeline/사용 중단 API·전처리기/직렬화·셰이더 관련 경고는 유지된다.
+- 수정 후 Windows 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴 및 재출전·중복 보상 방지·저장 복원 통과. 사용자 저장/백업 불변. PlayerReviews/3739dcc79fc54d92b0b9f8feca3c8587-summary.json. CT 모드 Windows 완주를 이번 표시 변경 후 별도로 반복하지 않았으며 이전 개편 결과와 구분한다. 빌드/저장 해시는 PixelInteraction 폴더에 기록했다.

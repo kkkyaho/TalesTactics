@@ -7,6 +7,53 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        [UnityTest] public IEnumerator PixelRangesStayReadableAndReleaseSceneryAcrossRestarts()
+        {
+            director.TrainingMode=false;director.Campaign=new CampaignSave();director.PersistCampaign=_=>false;
+            for(int s=0;s<6;s++)director.Campaign.StoryProgress.Add(CampaignStages.Id(s));
+            for(int cycle=0;cycle<12;cycle++)
+            {
+                director.SelectedStage=cycle%6;director.BeginBattle();yield return null;
+                var active=director.Session.Active;var origin=active.Position;
+                var hp=director.Session.Units.Select(u=>u.CurrentHP).ToArray();
+                Click("Move / 이동");yield return null;
+                var reachable=director.Session.Grid.Reachable(active,out _).Keys.ToArray();
+                var borders=Object.FindObjectsByType<LineRenderer>().Where(r=>r.name.StartsWith("Range border ")).ToArray();
+                var shown=borders.Where(r=>r.enabled).ToArray();
+                CollectionAssert.AreEquivalent(reachable,shown.Select(r=>r.GetComponentInParent<TileView>().Coordinate).ToArray());
+                foreach(var r in shown)
+                {
+                    Assert.That(r.GetComponents<Collider>(),Is.Empty);
+                    Assert.That(r.sharedMaterial,Is.SameAs(director.Board.HighlightMaterial));
+                    var block=new MaterialPropertyBlock();r.GetPropertyBlock(block);
+                    Assert.That(block.GetColor("_BaseColor").maxColorComponent,Is.GreaterThan(.65f),"Border must remain bright independently of terrain texture");
+                    Assert.That(r.GetPosition(0).y,Is.GreaterThan(r.GetComponentInParent<TileView>().GetComponent<Renderer>().bounds.max.y));
+                }
+                var destination=reachable.First(p=>p!=origin);
+                director.Board.ShowPath(director.Session.Grid.Path(active,destination));
+                var path=Object.FindObjectsByType<LineRenderer>().Single(r=>r.name=="Movement Path");
+                Assert.That(path.positionCount,Is.GreaterThan(1));
+                Click("취소");yield return null;
+                Assert.That(borders.All(r=>!r.enabled),Is.True);Assert.That(path.positionCount,Is.Zero);
+                Click("Move / 이동");yield return null;
+                Assert.That(Object.FindObjectsByType<LineRenderer>().Count(r=>r.name.StartsWith("Range border ")),Is.EqualTo(borders.Length),"Reuse existing border renderers");
+                Click("취소");Click("Attack / 공격");yield return null;
+                var inRange=director.Session.Grid.Tiles.Keys.Where(p=>director.Session.Resolver.InRange(active,director.SelectedSkill,p)).ToArray();
+                CollectionAssert.AreEquivalent(inRange,Object.FindObjectsByType<LineRenderer>().Where(r=>r.enabled&&r.name.StartsWith("Range border ")).Select(r=>r.GetComponentInParent<TileView>().Coordinate).ToArray());
+                director.Board.ShowArea(inRange.First(),0);yield return null;
+                Assert.That(Object.FindObjectsByType<LineRenderer>().Any(r=>r.enabled&&r.name.StartsWith("Range border ")&&r.startWidth>.06f),Is.True,"Selected area gets a stronger gold border");
+                for(int turn=0;turn<4;turn++){Click("우회전");yield return null;}
+                Click("확대 +");Click("초기화");
+                Assert.That(active.Position,Is.EqualTo(origin));CollectionAssert.AreEqual(hp,director.Session.Units.Select(u=>u.CurrentHP).ToArray());
+                var scenery=Object.FindAnyObjectByType<PixelBattlefield>();
+                var materials=scenery.GetComponentsInChildren<Renderer>().Select(r=>r.sharedMaterial).Where(m=>m!=director.Board.HighlightMaterial&&m!=director.Board.TileMaterial&&m!=director.Board.SpriteMaterial).Distinct().ToArray();
+                Assert.That(materials.Length,Is.GreaterThan(0));
+                director.Restart();yield return null;yield return null;
+                Assert.That(Object.FindObjectsByType<PixelBattlefield>(),Is.Empty);
+                Assert.That(Object.FindObjectsByType<LineRenderer>().Any(r=>r.name.StartsWith("Range border ")),Is.False);
+                Assert.That(materials.All(m=>m==null),Is.True,"All generated scenery materials must be destroyed on restart");
+            }
+        }
         [UnityTest] public IEnumerator PixelRosterAndSceneryPreserveSixChapterInteraction()
         {
             Assert.That(director.Catalog.Enemies.Length,Is.EqualTo(10));

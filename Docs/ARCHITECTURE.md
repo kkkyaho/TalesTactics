@@ -129,3 +129,5 @@ BattleCatalog.Enemies는 ID로 조회하는 새 적 목록이다. CampaignEnemie
 PixelCampaignContent.CreateEnemies는 Content/PixelCampaign에 없는 새 캐릭터/기술만 생성한다. PixelArtImporter.Import는 alpha 읽기 분석 CSV를 사용해 Sprite Editor API로 경계·pivot·윤곽과 CharacterData의 아트 참조를 명시적으로 교체한다. 기존 캐릭터 능력치/스킬/성장 필드는 변경하지 않는다. 사용자 아트 참조 변경 후 자동 재실행하지 않는다. Tools/pixel-final-generation.json은 채택 원본/프롬프트 이력이며 실행 의존 경로가 아니다.
 
 BoardView가 PixelBattlefield를 전장 수명에 맞춰 생성/삭제한다. PixelTerrain의16개 atlas구역을 타일 소재로 쓰고, PixelProps의16개 Sprite로 비보행칸/외곽을 장식한다. PixelBackdrops의2×3패널을 장별 원경으로 사용한다. 장식 충돌체는 제거하고 모든 소유 Material은 OnDestroy에서 정리한다. 카메라를 따라 도는 billboard와 수면 흔들림은 전투 RNG/좌표를 바꾸지 않는다. Point/무압축/밉맵 없음 설정이며 3D 회전/비정수 확대에서 정수 픽셀 배율을 보장하지 않는다.
+
+BoardView의 rangeBorders는 타일별 LineRenderer를 필요할 때 생성해 전장 안에서 재사용한다. 경계는 실제 타일 Renderer.bounds 위에 놓고 공유 HighlightMaterial의 _BaseColor/_Color를 PropertyBlock으로 지정한다. ClearHighlights는 선을 숨기고 경로를 지우며, ResetBoard는 전장과 사전을 정리한다. 타일 색상과 함께 쓰므로 바닥 그림을 유지하면서 경계를 식별할 수 있다. 이동 가능성/사거리/효과 범위는 기존 Grid와 SkillResolver 결과를 그대로 사용한다.
