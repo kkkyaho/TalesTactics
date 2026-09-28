@@ -22,7 +22,7 @@ namespace TalesTactics.Editor
             var report=new StringBuilder("# 경제 기준선 실측표\n\n현재 에셋 기준 가격. 매각은 구매가의 절반(소수점 버림).\n\n|장비|구매G|매각G|해금|\n|---|---:|---:|---|\n");
             foreach(var item in catalog.Equipment)report.AppendLine($"|{item.DisplayName}|{item.BuyPrice}|{item.BuyPrice/2}|{(string.IsNullOrEmpty(item.RequiredStoryFlag)?"기본":item.RequiredStoryFlag)}|");
             report.AppendLine("\n|장|최초 EXP/G|반복 EXP/G|확정|추가 장비 매각 기대G|\n|---|---|---|---|---:|");
-            for(int stage=0;stage<2;stage++)
+            for(int stage=0;stage<CampaignStages.Count;stage++)
             {
                 decimal expected=0;
                 for(int roll=0;roll<10000;roll++){string id=CampaignEconomy.Drop(stage,roll);if(id!=null)expected+=catalog.Equipment.Single(e=>e.Id==id).BuyPrice/2;}

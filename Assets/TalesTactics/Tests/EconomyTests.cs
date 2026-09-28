@@ -6,9 +6,33 @@ namespace TalesTactics.Tests
 {
     public partial class BattleRuleTests
     {
+        [Test] public void ThirdChapterContinuesExistingSaveAndRollsBackFailedReward()
+        {
+            var save=new CampaignSave();var party=new[]{data};
+            Assert.That(CampaignStages.Unlocked(save,2),Is.False);
+            CampaignStages.TryReward(save,0,party,_=>true);
+            Assert.That(CampaignStages.Unlocked(save,2),Is.False);
+            CampaignStages.TryReward(save,1,party,_=>true);
+            var file=new CampaignFile(SaveTestPath());Assert.That(file.Save(save),Is.True);
+            save=file.Load();Assert.That(save.Version,Is.EqualTo(2));
+            Assert.That(CampaignStages.Unlocked(save,2),Is.True);
+            var reward=CampaignEconomy.Prepare(save,2,2500);
+            Assert.That(CampaignStages.TryReward(save,reward,party,_=>false),Is.False);
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(3));Assert.That(save.Gold,Is.EqualTo(600));
+            Assert.That(save.StoryProgress.Count,Is.EqualTo(2));
+            Assert.That(CampaignInventory.Owned(save,"reinforced-armor"),Is.Zero);
+            Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.True);
+            Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.False);
+            save=file.Load();Assert.That(save.Get(data.Id).Level,Is.EqualTo(4));Assert.That(save.Get(data.Id).EXP,Is.Zero);
+            Assert.That(save.Gold,Is.EqualTo(840));Assert.That(save.StoryProgress.Count,Is.EqualTo(3));
+            Assert.That(CampaignInventory.Owned(save,"reinforced-armor"),Is.EqualTo(2));
+            Assert.That(CampaignStages.TryReward(save,2,party,file.Save),Is.True);
+            save=file.Load();Assert.That(save.Get(data.Id).EXP,Is.EqualTo(150));Assert.That(save.Gold,Is.EqualTo(960));
+            Assert.That(save.StoryProgress.Count,Is.EqualTo(3));Assert.That(CampaignStages.Unlocked(save,3),Is.False);
+        }
         [Test] public void DropBucketsExhaustivelyMatchPublishedProbabilities()
         {
-            for(int stage=0;stage<2;stage++)
+            for(int stage=0;stage<CampaignStages.Count;stage++)
             {
                 var rolls=Enumerable.Range(0,10000).Select(i=>CampaignEconomy.Drop(stage,i)).ToArray();
                 Assert.That(rolls.Count(id=>id=="bronze-sword"),Is.EqualTo(2500));
@@ -17,7 +41,7 @@ namespace TalesTactics.Tests
             }
             Assert.Throws<ArgumentOutOfRangeException>(()=>CampaignEconomy.Drop(0,-1));
             Assert.Throws<ArgumentOutOfRangeException>(()=>CampaignEconomy.Drop(0,10000));
-            Assert.Throws<ArgumentOutOfRangeException>(()=>CampaignEconomy.Drop(2,0));
+            Assert.Throws<ArgumentOutOfRangeException>(()=>CampaignEconomy.Drop(CampaignStages.Count,0));
         }
         [Test] public void RewardSnapshotRetriesSameDropAndCannotApplyTwice()
         {

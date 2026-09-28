@@ -11,7 +11,8 @@ namespace TalesTactics.Tests
         {
             Assert.That(CampaignContent.Map(0).Tiles.Count, Is.EqualTo(99));
             Assert.That(CampaignContent.Map(1).Tiles.Count, Is.EqualTo(120));
-            for (int stage = 0; stage < 2; stage++)
+            Assert.That(CampaignContent.Map(2).Tiles.Count, Is.EqualTo(130));
+            for (int stage = 0; stage < CampaignStages.Count; stage++)
             {
                 var map = CampaignContent.Map(stage);
                 var spawns = Enumerable.Range(0, 6).Select(i => CampaignContent.PlayerSpawn(stage, i))

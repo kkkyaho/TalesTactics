@@ -12,24 +12,26 @@ namespace TalesTactics
     // Original scenario for this project; training retains the original test map.
     public static class CampaignContent
     {
-        public static string Location(int stage) => stage == 0 ? "유적 외곽 · 갈라진 물길" : "심층 제단 · 수호자의 계단";
+        public static string Location(int stage) => stage == 0 ? "유적 외곽 · 갈라진 물길" : stage == 1 ? "심층 제단 · 수호자의 계단" : "바람 협곡 · 끊어진 연락로";
         public static string Briefing(int stage) => stage == 0
             ? "물길의 돌다리와 북쪽 우회로로 진입하세요.\n목표: 모든 적 격파. 보상: 120G / 생명의 부적."
-            : "계단을 따라 중앙 고지로 진입하세요.\n목표: 모든 적 격파. 보상: 180G / 철검.";
+            : stage == 1 ? "계단을 따라 중앙 고지로 진입하세요.\n목표: 모든 적 격파. 보상: 180G / 철검."
+            : "두 돌다리로 물길을 건너 동쪽 능선을 확보하세요.\n목표: 모든 적 격파. 적 Lv4 / 최초 240G·EXP300 / 강화 갑옷.";
 
         public static GridMap Map(int stage)
         {
             if (stage < 0 || stage >= CampaignStages.Count) throw new ArgumentOutOfRangeException(nameof(stage));
-            var map = new GridMap(); int width = stage == 0 ? 11 : 12, depth = stage == 0 ? 9 : 10;
+            var map = new GridMap(); int width = stage == 0 ? 11 : stage == 1 ? 12 : 13, depth = stage == 0 ? 9 : 10;
             for (int x = 0; x < width; x++) for (int z = 0; z < depth; z++)
             {
                 var p = new Vector2Int(x, z);
-                int height = stage == 0 ? (x >= 7 ? 1 : 0) : (z >= 6 ? 2 : z >= 4 ? 1 : 0);
+                int height = stage == 0 ? (x >= 7 ? 1 : 0) : stage == 1 ? (z >= 6 ? 2 : z >= 4 ? 1 : 0) : (x >= 10 ? 2 : x >= 8 ? 1 : 0);
                 var tile = new GridTile { Coordinate = p, Height = height, Terrain = height > 0 ? TerrainType.HighGround : TerrainType.Normal };
-                if (stage == 0 && x == 5 && z != 2 && z != 6)
+                if (stage == 0 && x == 5 && z != 2 && z != 6 || stage == 2 && x == 6 && z != 2 && z != 7)
                 { tile.Terrain = TerrainType.Water; tile.MovementCost = 2; }
                 bool obstacle = stage == 0 ? (x == 4 && z == 4 || x == 7 && z == 3 || x == 8 && z == 7)
-                    : ((x == 3 || x == 8) && (z == 4 || z == 7));
+                    : stage == 1 ? ((x == 3 || x == 8) && (z == 4 || z == 7))
+                    : ((x == 4 || x == 8) && (z == 4 || z == 5));
                 if (obstacle) { tile.Terrain = TerrainType.Obstacle; tile.Walkable = false; }
                 map.Tiles.Add(p, tile);
             }
@@ -37,12 +39,24 @@ namespace TalesTactics
         }
 
         public static Vector2Int PlayerSpawn(int stage, int index) => stage == 0
-            ? new Vector2Int(1 + index % 2, 1 + index / 2) : new Vector2Int(4 + index % 3, 1 + index / 3);
+            ? new Vector2Int(1 + index % 2, 1 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 3, 1 + index / 3) : new Vector2Int(1 + index % 2, 3 + index / 2);
         public static Vector2Int EnemySpawn(int stage, int index) => stage == 0
-            ? new Vector2Int(8 + index % 2, 4 + index / 2) : new Vector2Int(4 + index % 2 * 3, 7 + index / 2);
+            ? new Vector2Int(8 + index % 2, 4 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 2 * 3, 7 + index / 2) : new Vector2Int(10 + index % 2, 3 + index / 2 * 3);
 
         public static StoryLine[] Story(int stage, bool after)
         {
+            if (stage == 2 && !after) return new[] {
+                new StoryLine("기록", "마을로 돌아온 일행은 제단의 기록에서 산 너머 관측소의 표식을 발견했다. 그러나 관측소로 향하는 연락로에서는 며칠째 봉화가 오르지 않았다."),
+                new StoryLine("제이드", "제단은 끝이 아니라 연결점이었군요. 기록의 다음 부분은 저 관측소에서 찾을 수 있겠습니다."),
+                new StoryLine("나탈리아", "연락이 끊겼다면 사람들도 고립되어 있을지 몰라요. 먼저 협곡을 통과할 길을 확보해야 해요."),
+                new StoryLine("파라", "돌다리는 남쪽과 북쪽에 하나씩 있어. 물을 건너면 느려지니까, 앞사람만 너무 멀리 가지 말자."),
+                new StoryLine("키사라", "동쪽 능선에 수호병이 있다. 다리를 건넌 뒤 대열을 정비하고 올라가겠다.") };
+            if (stage == 2) return new[] {
+                new StoryLine("알펜", "길이 열렸어. 봉화대도 무사해. 이제 마을에 신호를 보낼 수 있겠군."),
+                new StoryLine("티아", "저 멀리 관측소에서도 빛이 돌아왔어. 누군가 우리 신호를 보고 있어."),
+                new StoryLine("제이드", "수호병에 새겨진 문양이 제단과 같습니다. 장치들이 같은 명령에 반응했다면, 관측소의 기록이 이유를 알려 주겠지요."),
+                new StoryLine("민트", "오늘은 여기서 쉬어요. 다음 길을 가려면 모두 힘을 되찾아야 해요."),
+                new StoryLine("기록", "협곡의 연락로가 다시 이어졌다. 일행은 봉화대에서 찾은 강화 갑옷을 정비하고 산 너머를 바라본다. 관측소로 향하는 이야기는 다음 장에서 계속된다.") };
             if (stage == 0 && !after) return new[] {
                 new StoryLine("서막 · 경계의 빛", "서로 다른 길을 걷던 일행은 같은 빛을 따라 무너진 유적에 모였다. 밤마다 울리는 진동은 산 아래 마을까지 번지고 있었다."),
                 new StoryLine("크레스", "안쪽에서 또 진동이 왔어. 마을로 돌아가기 전에 원인을 확인하자."),

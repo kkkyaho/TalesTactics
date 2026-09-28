@@ -15,8 +15,8 @@ namespace TalesTactics
     }
     public static class CampaignEconomy
     {
-        public static int Gold(int stage,bool repeat)=>stage==0?(repeat?60:120):stage==1?(repeat?90:180):0;
-        public static int Experience(int stage,bool repeat)=>stage==0?(repeat?60:120):stage==1?(repeat?90:180):0;
+        public static int Gold(int stage,bool repeat)=>stage==0?(repeat?60:120):stage==1?(repeat?90:180):stage==2?(repeat?120:240):0;
+        public static int Experience(int stage,bool repeat)=>stage==0?(repeat?60:120):stage==1?(repeat?90:180):stage==2?(repeat?150:300):0;
         public static string Drop(int stage,int roll)
         {
             if(stage<0||stage>=CampaignStages.Count)throw new ArgumentOutOfRangeException(nameof(stage));
@@ -32,7 +32,7 @@ namespace TalesTactics
         {
             bool repeat=save.StoryProgress.Contains(CampaignStages.Id(stage));
             return (repeat?"반복":"최초")+" 보상: 전원 EXP "+Experience(stage,repeat)+" / "+Gold(stage,repeat)+"G\n"+
-                "확정: "+(stage==0?"생명의 부적":"철검")+" 1개 · 추가: 청동검 25%, "+(stage==0?"가죽 갑옷":"강화 갑옷")+" 15%, 없음 60%";
+                "확정: "+(stage==0?"생명의 부적":stage==1?"철검":"강화 갑옷")+" 1개 · 추가: 청동검 25%, "+(stage==0?"가죽 갑옷":"강화 갑옷")+" 15%, 없음 60%";
         }
     }
 }

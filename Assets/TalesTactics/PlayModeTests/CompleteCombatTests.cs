@@ -58,10 +58,10 @@ namespace TalesTactics.PlayModeTests
         {
             var report=new List<string>{"stage,party,level,result,turns,survivors,totalHP"};
             int[][] parties={new[]{0,1,3},new[]{0,2,3,6,7,9},new[]{1,4,5,6,8,9}};
-            for(int stage=0;stage<2;stage++)foreach(var party in parties)
+            for(int stage=0;stage<CampaignStages.Count;stage++)foreach(var party in parties)
             {
-                int level=stage==0?1:2;
-                var session=new BattleSession(director.Catalog,party,level,1+stage*2,stage);
+                int level=stage+1;
+                var session=new BattleSession(director.Catalog,party,level,CampaignStages.EnemyLevel(stage),stage);
                 var ai=new EnemyPlanner();int turns=0;
                 while(session.Result==BattleResult.Ongoing&&turns++<400)
                 {

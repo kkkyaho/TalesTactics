@@ -5,11 +5,12 @@ namespace TalesTactics
     // IDs are persisted story completion flags. Rewards are committed atomically.
     public static class CampaignStages
     {
-        public const int Count=2;
+        public const int Count=3;
         public static int GoldReward(int stage)=>CampaignEconomy.Gold(stage,false);
-        public static string EquipmentReward(int stage)=>stage==0?"vital-charm":stage==1?"iron-sword":null;
+        public static string EquipmentReward(int stage)=>stage==0?"vital-charm":stage==1?"iron-sword":stage==2?"reinforced-armor":null;
+        public static int EnemyLevel(int stage)=>stage==0?1:stage==1?3:stage==2?4:throw new ArgumentOutOfRangeException(nameof(stage));
         public static string Id(int stage)=>"chapter"+(stage+1);
-        public static string Title(int stage)=>stage==0?"1장 · 유적의 경계":"2장 · 유적의 수호자";
+        public static string Title(int stage)=>stage==0?"1장 · 유적의 경계":stage==1?"2장 · 유적의 수호자":"3장 · 협곡의 봉화";
         public static bool Unlocked(CampaignSave save,int stage)=>stage>=0&&stage<Count&&(stage==0||save.StoryProgress.Contains(Id(stage-1)));
         public static bool TryReward(CampaignSave save,int stage,CharacterData[] party,Func<CampaignSave,bool> persist)
             =>!Unlocked(save,stage)?false:TryReward(save,CampaignEconomy.Prepare(save,stage,9999),party,persist);

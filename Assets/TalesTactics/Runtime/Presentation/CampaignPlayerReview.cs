@@ -41,7 +41,7 @@ namespace TalesTactics
             if (index < 0) return;
             // A GUID, not a caller-supplied filesystem path, confines all writes to Reviews.
             if (index + 2 >= args.Length || !Guid.TryParseExact(args[index + 1], "N", out _) ||
-                !new[] { "chapter1", "chapter2", "resume" }.Contains(args[index + 2]))
+                !new[] { "chapter1", "chapter2", "chapter3", "resume" }.Contains(args[index + 2]))
             { Debug.LogError("Invalid campaign review arguments."); Application.Quit(2); return; }
             var review = new GameObject("Campaign player review").AddComponent<CampaignPlayerReview>();
             review.report = new Report { phase = args[index + 2], runId = args[index + 1], unityVersion = Application.unityVersion };
@@ -181,10 +181,10 @@ namespace TalesTactics
 
             if (report.phase == "resume")
             {
-                VerifyProgress(2);
+                VerifyProgress(3);
                 var original = File.ReadAllBytes(savePath);
-                var completed = FindButton(b => b.name.Contains(CampaignStages.Title(1)));
-                Check(completed.interactable && completed.name.Contains("완료"), "Reloaded chapter 2 completion appears in deployment UI");
+                var completed = FindButton(b => b.name.Contains(CampaignStages.Title(2)));
+                Check(completed.interactable && completed.name.Contains("완료"), "Reloaded chapter 3 completion appears in deployment UI");
                 yield return Capture("resume-deployment");
                 // A normal, deliberately passive one-person party loses through enemy attacks.
                 battle.Deployment.Clear(); battle.Deployment.Add(1);
@@ -204,7 +204,7 @@ namespace TalesTactics
             }
             else
             {
-                int stage = report.phase == "chapter1" ? 0 : 1;
+                int stage = report.phase == "chapter1" ? 0 : report.phase == "chapter2" ? 1 : 2;
                 if (stage == 0)
                 {
                     Check(!CampaignStages.Unlocked(battle.Campaign, 1), "New campaign has chapter 2 locked");
@@ -212,13 +212,13 @@ namespace TalesTactics
                 }
                 else
                 {
-                    VerifyProgress(1);
-                    Click(FindButton(b => b.name.Contains(CampaignStages.Title(1))).name);
+                    VerifyProgress(stage);
+                    Click(FindButton(b => b.name.Contains(CampaignStages.Title(stage))).name);
                     yield return null;
-                    Check(battle.SelectedStage == 1, "Reloaded chapter 2 can be selected through UI");
+                    Check(battle.SelectedStage == stage, "Reloaded chapter " + (stage + 1) + " can be selected through UI");
                 }
                 Click("전투 시작"); yield return null;
-                Check(battle.Session.Units.First(u => u.Team == Team.Enemy).Level == 1 + stage * 2, "Correct campaign enemy level");
+                Check(battle.Session.Units.First(u => u.Team == Team.Enemy).Level == CampaignStages.EnemyLevel(stage), "Correct campaign enemy level");
                 yield return Fight(true);
                 Check(battle.Session.Result == BattleResult.Victory, "Normal attacks complete chapter " + (stage + 1));
                 Check(!battle.RewardPending, "Victory reward saved on first attempt");
@@ -256,14 +256,14 @@ namespace TalesTactics
         {
             var loaded = new CampaignFile(savePath).Load();
             Check(loaded.StoryProgress.Count == chapters && Enumerable.Range(0, chapters).All(i => loaded.StoryProgress.Contains(CampaignStages.Id(i))), "Disk contains exactly the expected completion flags");
-            Check(party.All(i => { var p = loaded.Get(battle.Catalog.Characters[i].Id); return p.Level == (chapters==1?2:3) && p.EXP == (chapters==1?20:0); }), "Disk contains exact party levels and EXP");
+            Check(party.All(i => { var p = loaded.Get(battle.Catalog.Characters[i].Id); return p.Level == (chapters+1) && p.EXP == (chapters==1?20:0); }), "Disk contains exact party levels and EXP");
             Check(!loaded.Characters.Any(c => c.Promoted), "No premature promotion");
             var armor=battle.Catalog.Equipment.Single(e=>e.Id=="leather-armor");
             Check(loaded.Version==2,"Reload uses schema version 2");
-            for(int stage=0;stage<chapters;stage++)Check(CampaignInventory.Owned(loaded,CampaignStages.EquipmentReward(stage))==1,"Disk contains chapter equipment reward "+stage);
+            for(int stage=0;stage<chapters;stage++)Check(CampaignInventory.Owned(loaded,CampaignStages.EquipmentReward(stage))==(stage==2?3:1),"Disk contains chapter equipment reward "+stage);
             Check(loaded.Gold==CampaignInventory.StartingGold-armor.BuyPrice+Enumerable.Range(0,chapters).Sum(CampaignStages.GoldReward),"Disk contains exact purchase and victory gold");
             Check(CampaignInventory.Owned(loaded,armor.Id)==2&&loaded.Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Purchased armor and chapter1 bonus drop survive process restart");
-            if(chapters==2)Check(CampaignInventory.Owned(loaded,"reinforced-armor")==1,"Chapter2 bonus drop survives process restart");
+            if(chapters>=2)Check(CampaignInventory.Owned(loaded,"reinforced-armor")== (chapters==2?1:3),"Chapter2 bonus drop survives process restart");
         }
 
         IEnumerator Fight(bool attack)
