@@ -8,6 +8,9 @@ namespace TalesTactics
     {
         public TMP_FontAsset Font;
         BattleDirector battle;
+        int chapterPage;
+        public int ChapterPage=>chapterPage;
+        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,0,(CampaignStages.Count-1)/3);ShowDeployment();}
         RectTransform canvas,left,commands,header,footer;
         TMP_Text message,timing;
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
@@ -126,7 +129,10 @@ namespace TalesTactics
             Button(commands,"장비 상점",350,()=>ShowShop());
             Button(commands,"장비 관리",405,ShowEquipmentRoster);
             Button(commands,"성장 · 승급",451,ShowGrowthRoster);
-            for(int i=0;i<CampaignStages.Count;i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+i*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
+            Button(left,"이전 장 목록",515,()=>ShowChapterPage(chapterPage-1),chapterPage>0);
+            Button(left,"다음 장 목록",561,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count);
+            Label(left,"장 목록 "+(chapterPage+1)+" / "+((CampaignStages.Count+2)/3),607,30,16);
+            for(int i=chapterPage*3;i<Mathf.Min(CampaignStages.Count,(chapterPage+1)*3);i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+(i%3)*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
             Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?(battle.TrainingMode?"훈련: 기존 테스트 맵 / 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):CampaignStorage.Notice,14,88,17);
         }
         void ShowEquipmentRoster()

@@ -56,7 +56,7 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 88개, PlayMode 27개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+실제 Unity EditMode 92개, PlayMode 51개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
 
 화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
@@ -110,3 +110,14 @@ CampaignEconomy.Prepare는 승리 시 최초/반복 EXP·골드·추가 장비 �
 추가 드롭은 청동검25%/장별 방어구15%/없음60%의 상호 배타적 한 번 추첨이다. 장비99개 상한은 해당 아이템만 건너뛰고 재추첨하지 않는다. 재고 객체 참조와 순서까지 실패 시 복원한다. 저장 버전2 및 기존 성장/재고를 보존하며 기존 완료 기록이 있는 장에는 반복 보상을 적용한다. 미저장 보상은 출전 화면으로 나가거나 앱을 종료하면 포기한다.
 
 ManualPlayerReview는 DEVELOPMENT_BUILD/UNITY_EDITOR 조건부 검수 도구다. 명시적 --manual-review GUID로만 활성화하고 CampaignFile 저장 경로를 ManualReviews/GUID로 분리한다. 프레임시간·메모리·상태를 수집하며 전투 명령을 선택하지 않는다. MeasurePlayerProcess.ps1의 Windows 프로세스 메모리 기록과 함께 사용한다. 결과 및 재실행 파일 보존 절차는 FINAL_REVIEW.md를 따른다.
+
+
+## 6장 확장
+
+CampaignStages.Chapter의 추가 전용 배열이 제목·적/진입 레벨·최초/반복EXP/골드·확정 장비·보스 음악을 관리한다. 기존 stage0~2의 값과 chapter1~3 ID는 유지하며 새 장은 배열 뒤에 붙인다. Count는 배열 길이다. ExpansionCampaignContent는4~6장의 맵/스폰/전후 대사를 제공한다. 모든 캠페인 목표는 기존 적 전멸이다.
+
+BattleHud.ChapterPage는3장 단위로 목록을 탐색하는 일시적UI 상태이며 저장하지 않는다. 목록 탐색 자체는 SelectedStage를 바꾸지 않는다. 장 버튼을 눌러야 실제 선택이 바뀐다. 장비/이야기 화면에서 돌아와도 페이지를 유지한다.
+
+ExpansionShopContent.Add는 GuardianMedal/TemperedArmor가 없을 때만 새 에셋을 만들고 기존 카탈로그에 추가한다. 기존 에셋/사용자 튜닝은 덮어쓰지 않는다. 수호의 메달은chapter4, 단련 갑옷은chapter5로 판매를 해금한다. 보유 장비의 장착/매각은 기존 해금 독립 정책을 유지한다.
+
+신규 캠페인의 동일 출전자는6장 최초 완료 시 Lv9/EXP0이 된다. 기존V2 저장 스키마·Lv20 승급·Lv50 상한은 유지하며 기존 저장의 경험치나 레벨을 다시 계산하지 않는다.

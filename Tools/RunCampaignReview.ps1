@@ -17,7 +17,7 @@ $before = @(UserSaveState)
 $results = @()
 $failure = $null
 try {
-    foreach ($phase in @('chapter1', 'chapter2', 'chapter3', 'resume')) {
+    foreach ($phase in @('chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'resume')) {
         $log = Join-Path $reviewRoot "$phase-player.log"
         $reviewArgs = @('--campaign-review', $runId, $phase, '-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '800', '-logFile', "`"$log`"")
         if ($Tactical) { $reviewArgs += '--tactical-review' }
@@ -49,7 +49,7 @@ finally {
         utc = [DateTime]::UtcNow.ToString('o')
         playerSHA256 = (Get-FileHash -LiteralPath $playerPath -Algorithm SHA256).Hash
         runtimeSHA256 = (Get-FileHash -LiteralPath (Join-Path (Split-Path $playerPath) 'TalesTactics_Data/Managed/TalesTactics.Runtime.dll') -Algorithm SHA256).Hash
-        passed = !$failure -and $unchanged -and $results.Count -eq 4
+        passed = !$failure -and $unchanged -and $results.Count -eq 7
         userSaveUnchanged = $unchanged
         error = $failure
         reports = $results
@@ -58,4 +58,4 @@ finally {
 }
 if (!$unchanged) { throw 'User save or backup changed during review.' }
 if ($failure) { throw $failure }
-Write-Output "PASS: four separate player launches; user save unchanged. Summary: $evidence/$runId-summary.json"
+Write-Output "PASS: seven separate player launches; user save unchanged. Summary: $evidence/$runId-summary.json"

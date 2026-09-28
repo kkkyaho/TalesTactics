@@ -60,7 +60,7 @@ namespace TalesTactics.PlayModeTests
             int[][] parties={new[]{0,1,3},new[]{0,2,3,6,7,9},new[]{1,4,5,6,8,9}};
             for(int stage=0;stage<CampaignStages.Count;stage++)foreach(var party in parties)
             {
-                int level=stage+1;
+                int level=CampaignStages.Get(stage).EntryLevel;
                 var session=new BattleSession(director.Catalog,party,level,CampaignStages.EnemyLevel(stage),stage);
                 var ai=new EnemyPlanner();int turns=0;
                 while(session.Result==BattleResult.Ongoing&&turns++<400)

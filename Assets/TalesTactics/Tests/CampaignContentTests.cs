@@ -12,6 +12,9 @@ namespace TalesTactics.Tests
             Assert.That(CampaignContent.Map(0).Tiles.Count, Is.EqualTo(99));
             Assert.That(CampaignContent.Map(1).Tiles.Count, Is.EqualTo(120));
             Assert.That(CampaignContent.Map(2).Tiles.Count, Is.EqualTo(130));
+            Assert.That(CampaignContent.Map(3).Tiles.Count, Is.EqualTo(144));
+            Assert.That(CampaignContent.Map(4).Tiles.Count, Is.EqualTo(140));
+            Assert.That(CampaignContent.Map(5).Tiles.Count, Is.EqualTo(169));
             for (int stage = 0; stage < CampaignStages.Count; stage++)
             {
                 var map = CampaignContent.Map(stage);

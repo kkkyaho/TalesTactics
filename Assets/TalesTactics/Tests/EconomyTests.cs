@@ -6,6 +6,30 @@ namespace TalesTactics.Tests
 {
     public partial class BattleRuleTests
     {
+        [Test] public void SixChapterProgressionPersistsAndFailedExpansionRewardsAreAtomic()
+        {
+            var file=new CampaignFile(SaveTestPath());var save=new CampaignSave();var party=new[]{data};
+            int[] levels={2,3,4,5,7,9},exp={20,0,0,200,0,0},gold={420,600,840,1160,1580,2140};
+            for(int stage=0;stage<6;stage++)
+            {
+                Assert.That(CampaignStages.Unlocked(save,stage),Is.True);
+                Assert.That(CampaignStages.Unlocked(save,stage+1),Is.False);
+                var reward=CampaignEconomy.Prepare(save,stage,9999);
+                int beforeGold=save.Gold,beforeLevel=save.Get(data.Id).Level,beforeEXP=save.Get(data.Id).EXP;
+                Assert.That(CampaignStages.TryReward(save,reward,party,_=>false),Is.False);
+                Assert.That(save.Gold,Is.EqualTo(beforeGold));Assert.That(save.Get(data.Id).Level,Is.EqualTo(beforeLevel));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(beforeEXP));
+                Assert.That(save.StoryProgress.Count,Is.EqualTo(stage));
+                Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.True);
+                Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.False);
+                save=file.Load();Assert.That(save.Get(data.Id).Level,Is.EqualTo(levels[stage]));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(exp[stage]));Assert.That(save.Gold,Is.EqualTo(gold[stage]));
+            }
+            Assert.That(save.Version,Is.EqualTo(2));Assert.That(CampaignInventory.Owned(save,"guardian-medal"),Is.EqualTo(2));
+            Assert.That(CampaignInventory.Owned(save,"tempered-armor"),Is.EqualTo(1));
+            Assert.That(CampaignStages.Unlocked(save,6),Is.False);
+            Assert.That(CampaignStages.TryReward(save,5,party,file.Save),Is.True);
+            save=file.Load();Assert.That(save.Gold,Is.EqualTo(2420));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(750));
+            Assert.That(save.StoryProgress.Count,Is.EqualTo(6));
+        }
         [Test] public void ThirdChapterContinuesExistingSaveAndRollsBackFailedReward()
         {
             var save=new CampaignSave();var party=new[]{data};
@@ -28,7 +52,7 @@ namespace TalesTactics.Tests
             Assert.That(CampaignInventory.Owned(save,"reinforced-armor"),Is.EqualTo(2));
             Assert.That(CampaignStages.TryReward(save,2,party,file.Save),Is.True);
             save=file.Load();Assert.That(save.Get(data.Id).EXP,Is.EqualTo(150));Assert.That(save.Gold,Is.EqualTo(960));
-            Assert.That(save.StoryProgress.Count,Is.EqualTo(3));Assert.That(CampaignStages.Unlocked(save,3),Is.False);
+            Assert.That(save.StoryProgress.Count,Is.EqualTo(3));Assert.That(CampaignStages.Unlocked(save,3),Is.True);
         }
         [Test] public void DropBucketsExhaustivelyMatchPublishedProbabilities()
         {

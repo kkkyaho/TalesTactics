@@ -10,10 +10,10 @@ namespace TalesTactics
     }
 
     // Original scenario for this project; training retains the original test map.
-    public static class CampaignContent
+    public static partial class CampaignContent
     {
-        public static string Location(int stage) => stage == 0 ? "유적 외곽 · 갈라진 물길" : stage == 1 ? "심층 제단 · 수호자의 계단" : "바람 협곡 · 끊어진 연락로";
-        public static string Briefing(int stage) => stage == 0
+        public static string Location(int stage) => stage >= 3 ? ExpansionLocation(stage) : stage == 0 ? "유적 외곽 · 갈라진 물길" : stage == 1 ? "심층 제단 · 수호자의 계단" : "바람 협곡 · 끊어진 연락로";
+        public static string Briefing(int stage) => stage >= 3 ? ExpansionBriefing(stage) : stage == 0
             ? "물길의 돌다리와 북쪽 우회로로 진입하세요.\n목표: 모든 적 격파. 보상: 120G / 생명의 부적."
             : stage == 1 ? "계단을 따라 중앙 고지로 진입하세요.\n목표: 모든 적 격파. 보상: 180G / 철검."
             : "두 돌다리로 물길을 건너 동쪽 능선을 확보하세요.\n목표: 모든 적 격파. 적 Lv4 / 최초 240G·EXP300 / 강화 갑옷.";
@@ -21,6 +21,7 @@ namespace TalesTactics
         public static GridMap Map(int stage)
         {
             if (stage < 0 || stage >= CampaignStages.Count) throw new ArgumentOutOfRangeException(nameof(stage));
+            if (stage >= 3) return ExpansionMap(stage);
             var map = new GridMap(); int width = stage == 0 ? 11 : stage == 1 ? 12 : 13, depth = stage == 0 ? 9 : 10;
             for (int x = 0; x < width; x++) for (int z = 0; z < depth; z++)
             {
@@ -38,13 +39,14 @@ namespace TalesTactics
             return map;
         }
 
-        public static Vector2Int PlayerSpawn(int stage, int index) => stage == 0
+        public static Vector2Int PlayerSpawn(int stage, int index) => stage >= 3 ? ExpansionPlayerSpawn(stage,index) : stage == 0
             ? new Vector2Int(1 + index % 2, 1 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 3, 1 + index / 3) : new Vector2Int(1 + index % 2, 3 + index / 2);
-        public static Vector2Int EnemySpawn(int stage, int index) => stage == 0
+        public static Vector2Int EnemySpawn(int stage, int index) => stage >= 3 ? ExpansionEnemySpawn(stage,index) : stage == 0
             ? new Vector2Int(8 + index % 2, 4 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 2 * 3, 7 + index / 2) : new Vector2Int(10 + index % 2, 3 + index / 2 * 3);
 
         public static StoryLine[] Story(int stage, bool after)
         {
+            if (stage >= 3) return ExpansionStory(stage,after);
             if (stage == 2 && !after) return new[] {
                 new StoryLine("기록", "마을로 돌아온 일행은 제단의 기록에서 산 너머 관측소의 표식을 발견했다. 그러나 관측소로 향하는 연락로에서는 며칠째 봉화가 오르지 않았다."),
                 new StoryLine("제이드", "제단은 끝이 아니라 연결점이었군요. 기록의 다음 부분은 저 관측소에서 찾을 수 있겠습니다."),

@@ -41,7 +41,7 @@ namespace TalesTactics
             if (index < 0) return;
             // A GUID, not a caller-supplied filesystem path, confines all writes to Reviews.
             if (index + 2 >= args.Length || !Guid.TryParseExact(args[index + 1], "N", out _) ||
-                !new[] { "chapter1", "chapter2", "chapter3", "resume" }.Contains(args[index + 2]))
+                !Enumerable.Range(0,CampaignStages.Count).Select(CampaignStages.Id).Concat(new[]{"resume"}).Contains(args[index + 2]))
             { Debug.LogError("Invalid campaign review arguments."); Application.Quit(2); return; }
             var review = new GameObject("Campaign player review").AddComponent<CampaignPlayerReview>();
             review.report = new Report { phase = args[index + 2], runId = args[index + 1], unityVersion = Application.unityVersion };
@@ -181,10 +181,11 @@ namespace TalesTactics
 
             if (report.phase == "resume")
             {
-                VerifyProgress(3);
+                VerifyProgress(CampaignStages.Count);
+                yield return SelectChapter(CampaignStages.Count-1);
                 var original = File.ReadAllBytes(savePath);
-                var completed = FindButton(b => b.name.Contains(CampaignStages.Title(2)));
-                Check(completed.interactable && completed.name.Contains("완료"), "Reloaded chapter 3 completion appears in deployment UI");
+                var completed = FindButton(b => b.name.Contains(CampaignStages.Title(CampaignStages.Count-1)));
+                Check(completed.interactable && completed.name.Contains("완료"), "Reloaded final chapter completion appears in deployment UI");
                 yield return Capture("resume-deployment");
                 // A normal, deliberately passive one-person party loses through enemy attacks.
                 battle.Deployment.Clear(); battle.Deployment.Add(1);
@@ -204,7 +205,7 @@ namespace TalesTactics
             }
             else
             {
-                int stage = report.phase == "chapter1" ? 0 : report.phase == "chapter2" ? 1 : 2;
+                int stage = int.Parse(report.phase.Substring("chapter".Length))-1;
                 if (stage == 0)
                 {
                     Check(!CampaignStages.Unlocked(battle.Campaign, 1), "New campaign has chapter 2 locked");
@@ -213,7 +214,7 @@ namespace TalesTactics
                 else
                 {
                     VerifyProgress(stage);
-                    Click(FindButton(b => b.name.Contains(CampaignStages.Title(stage))).name);
+                    yield return SelectChapter(stage);
                     yield return null;
                     Check(battle.SelectedStage == stage, "Reloaded chapter " + (stage + 1) + " can be selected through UI");
                 }
@@ -233,7 +234,7 @@ namespace TalesTactics
                 yield return Capture("victory");
                 Click("출전 화면 / Restart"); yield return null;
                 Check(battle.Session == null, "Victory restart returns to deployment");
-                Check(FindButton(b => b.name.Contains(CampaignStages.Title(1))).interactable, "Chapter 2 is available after victory");
+                Check(CampaignStages.Unlocked(battle.Campaign,Math.Min(stage+1,CampaignStages.Count-1)), "Next chapter is available after victory");
             }
             Time.timeScale = 1;
         }
@@ -252,18 +253,27 @@ namespace TalesTactics
             Check(new CampaignFile(savePath).Load().Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Equipment UI persists purchased armor");
             Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
         }
+        IEnumerator SelectChapter(int stage)
+        {
+            while(battle.Hud.ChapterPage<stage/3){Click("다음 장 목록");yield return null;}
+            while(battle.Hud.ChapterPage>stage/3){Click("이전 장 목록");yield return null;}
+            Click(FindButton(b=>b.name.Contains(CampaignStages.Title(stage))).name);yield return null;
+        }
         void VerifyProgress(int chapters)
         {
-            var loaded = new CampaignFile(savePath).Load();
-            Check(loaded.StoryProgress.Count == chapters && Enumerable.Range(0, chapters).All(i => loaded.StoryProgress.Contains(CampaignStages.Id(i))), "Disk contains exactly the expected completion flags");
-            Check(party.All(i => { var p = loaded.Get(battle.Catalog.Characters[i].Id); return p.Level == (chapters+1) && p.EXP == (chapters==1?20:0); }), "Disk contains exact party levels and EXP");
-            Check(!loaded.Characters.Any(c => c.Promoted), "No premature promotion");
-            var armor=battle.Catalog.Equipment.Single(e=>e.Id=="leather-armor");
+            var loaded=new CampaignFile(savePath).Load();
+            Check(loaded.StoryProgress.Count==chapters&&Enumerable.Range(0,chapters).All(i=>loaded.StoryProgress.Contains(CampaignStages.Id(i))),"Disk contains exactly expected chapter flags");
+            int[] levels={2,3,4,5,7,9},exp={20,0,0,200,0,0},gold={120,180,240,320,420,560};
+            Check(party.All(i=>{var p=loaded.Get(battle.Catalog.Characters[i].Id);return p.Level==levels[chapters-1]&&p.EXP==exp[chapters-1];}),"Disk contains exact party levels and EXP");
+            Check(!loaded.Characters.Any(c=>c.Promoted),"No premature promotion");
             Check(loaded.Version==2,"Reload uses schema version 2");
-            for(int stage=0;stage<chapters;stage++)Check(CampaignInventory.Owned(loaded,CampaignStages.EquipmentReward(stage))==(stage==2?3:1),"Disk contains chapter equipment reward "+stage);
-            Check(loaded.Gold==CampaignInventory.StartingGold-armor.BuyPrice+Enumerable.Range(0,chapters).Sum(CampaignStages.GoldReward),"Disk contains exact purchase and victory gold");
-            Check(CampaignInventory.Owned(loaded,armor.Id)==2&&loaded.Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Purchased armor and chapter1 bonus drop survive process restart");
-            if(chapters>=2)Check(CampaignInventory.Owned(loaded,"reinforced-armor")== (chapters==2?1:3),"Chapter2 bonus drop survives process restart");
+            Check(loaded.Gold==150+gold.Take(chapters).Sum(),"Disk contains exact purchase and victory gold");
+            Check(CampaignInventory.Owned(loaded,"vital-charm")==1,"First chapter charm persists");
+            Check(CampaignInventory.Owned(loaded,"iron-sword")== (chapters>=2?1:0),"Second chapter sword persists");
+            Check(CampaignInventory.Owned(loaded,"reinforced-armor")==Math.Max(0,chapters-1)+(chapters>=3?1:0),"All deterministic armor drops persist");
+            Check(CampaignInventory.Owned(loaded,"guardian-medal")== (chapters>=4?1:0)+(chapters>=6?1:0),"Medal rewards persist");
+            Check(CampaignInventory.Owned(loaded,"tempered-armor")== (chapters>=5?1:0),"Tempered armor reward persists");
+            Check(CampaignInventory.Owned(loaded,"leather-armor")==2&&loaded.Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]=="leather-armor","Purchased equipment survives process restart");
         }
 
         IEnumerator Fight(bool attack)
