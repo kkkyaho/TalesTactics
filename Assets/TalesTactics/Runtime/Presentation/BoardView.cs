@@ -68,6 +68,7 @@ namespace TalesTactics
         public void Initialize(BattleDirector b)
         {
             battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;
+            BattleCamera.allowMSAA=false;BattleCamera.allowHDR=false;BattleCamera.allowDynamicResolution=false;
             // The battlefield uses a partial viewport. Clear its surrounding screen too,
             // otherwise full-screen dialogue pixels can survive after the panel closes.
             var background=new GameObject("Screen Background Camera",typeof(Camera));
@@ -80,15 +81,16 @@ namespace TalesTactics
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
+            var scenery=root.gameObject.AddComponent<PixelBattlefield>();scenery.Initialize(session.CampaignStage,TileMaterial,SpriteMaterial,BattleCamera);
             foreach(var t in session.Grid.Tiles.Values)
             {
                 var g=GameObject.CreatePrimitive(PrimitiveType.Cube);g.name="Tile "+t.Coordinate;g.transform.SetParent(root,false);
                 float height=0.25f+t.Height*session.Rules.TileHeight;g.transform.position=new Vector3(t.Coordinate.x,height/2-0.25f,t.Coordinate.y);g.transform.localScale=new Vector3(0.96f,height,0.96f);
-                g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=TileMaterial;
-                Color color=t.Terrain==TerrainType.Water?new Color(0.12f,0.43f,0.57f):t.Walkable?Color.Lerp(new Color(0.28f,0.39f,0.37f),new Color(0.51f,0.6f,0.42f),t.Height/2f):new Color(0.23f,0.26f,0.3f);
+                g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=scenery.Surface(t);
+                Color color=scenery.Tint(t);
                 if((session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)&&t.Coordinate==session.Destination)color=new Color(1,0.75f,0.12f);
                 tiles[t.Coordinate]=renderer;colors[t.Coordinate]=color;SetColor(renderer,color);
-                if(!t.Walkable){var rock=GameObject.CreatePrimitive(PrimitiveType.Cube);rock.transform.SetParent(root,false);rock.transform.position=t.WorldPosition(session.Rules.TileHeight)+Vector3.up*0.45f;rock.transform.localScale=new Vector3(0.7f,0.9f,0.7f);rock.transform.rotation=Quaternion.Euler(0,20,0);rock.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(rock.GetComponent<Renderer>(),new Color(0.35f,0.38f,0.4f));}
+                scenery.Decorate(t,session.Grid,session.Rules.TileHeight);
             }
             if(placeholder==null)placeholder=CreatePlaceholder();
             foreach(var u in session.Units)

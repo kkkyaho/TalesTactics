@@ -342,3 +342,17 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 직접 검수에서 발견한 상점의1·2장 한정 보상 안내를 장별 출전 화면 안내로 수정했다. 이후 변경은 이 문자열1개뿐이며 전투/저장/보상 로직은 동일하다. 전체 테스트 및 두 플레이어 완주 보고서는 문자열 수정 전 빌드 기준이다. 최종 빌드/상점 화면 재확인은 아래 기록을 따른다.
 - 상점 안내 수정 후 최종 개발 빌드28.007초/오류0/경고9 성공. 일반 빌드 첫 시도3.542초/오류2/경고4는 빈 오류와 스크립트 컴파일 오류 메시지로 실패했다. 에디터 scriptCompilationFailed=false/isCompiling=false를 확인한 뒤 코드 변경 없이 재시도하여19.663초/오류0/경고4로 성공했다. 근본 원인 해결로 주장하지 않는다. unity-expansion-final-windows-initial-failure.json 및 final-*-build.json에 기록했다.
 - 최종 일반 배포 플레이어에서 수정한 상점 안내와 신규2종 가격/잠금 표시를 직접 재확인했다(ExpansionReview/release-final-shop.png). 최종 빌드 해시는final-build-hashes.json에 보관했다. 검수 후 원본/백업 저장 해시도 동일하다. 6장까지 구현·자동 검증·대표 화면 검수가 완료되었으며 물리 게임패드/사람 체감 밸런스/전문가 아트·청음 승인 및7장 이후는 이번 확장 완료 범위에 포함하지 않는다.
+
+## 2026-09-29 — 6장 픽셀 아트·적 편성 개편
+
+- 기존 영웅10명 전원을 특징을 유지한3등신 고밀도 픽셀 아트로 교체했다. 각 기본/동작/보충48개 그림, 시온 오른쪽4개 보정, 일반 적9종×20개·다오스32개, 재질16종·장식16종·6장별 원경을 제작/연결했다. 채택 PNG45개 약79.9MB, 프롬프트/원본 이력은 Tools/pixel-final-generation.json. 개별 일반 기술은 시전/공격 그림과 기존VFX를 공유한다. 자세한 범위는 PixelCampaign/README.md를 따른다.
+- 신규 적 편성과 창작 전후 대사를6장까지 연결했다. 다오스는 기본AI에서도 레이저와 범위 블래스트를 선택한다. 기존 영웅10명 및 레거시 파수병의 Animator 이후 능력치/기술/성장 필드는 기준커밋2999c64와 일치한다(파수병의 기본값VisualStyle=0 직렬화 추가 제외). 지형/스폰/장별 보상/V2저장은 유지했고 DemoContent.Create를 실행하지 않았다.
+- 실제 Unity EditMode **93/93**,0.96초(unity-pixel-editmode-results.json). 실제 Unity PlayMode **52/52**,65.29초(unity-pixel-playmode-results.json). 20개 캐릭터의 아트 참조/크기/import,6장별 적ID·장식·전6장4회전의 모든 보행 타일 선택, 기존 기술89개·보행/궁극기·UI/저장 검사를 통과했다.
+- 초기 PlayMode49/52,34.63초(unity-pixel-playmode-initial.json)는 파라 피격 행 잘림, 보행의서로다른그림 부족, 일반기술/궁극기 그림 공유로 실패했다. 행 경계 탐색범위를 넓히고,10명 보충160개 그림을 제작해4개 보행/궁극기 전용2개를 연결한 뒤 기존 기준을 바꾸지 않고52개를 모두 통과했다.
+- 엔진 독립 ManagedChecks **93/93**(pixel-managed-results.txt)은 Unity 실행 결과가 아니다. 실제 Unity DLL 참조 Runtime/Editor/EditMode/PlayMode API 컴파일4개도 통과(pixel-api-compile-results.txt). 마지막 테스트 코드 변경은 지면 probe 설명 주석1줄뿐이다.
+- 최종 GameView1920×1080에서6개 전장(PixelCampaign/chapter1-final.png~chapter6-final.png)과10명×12그림×4방향480칸(heroes-front/back/right/left-final.png)을 확인했다. 검수용 메모리 캠페인에 해금 플래그를 주고 PersistCampaign을 비활성화했으므로 정상 완주 증거가 아니다. 임시갤러리/캡처용Assets/Docs는 제거하고 Scene은 저장하지 않았다. Native Computer Use의창활성화가 실패하여 Unity의capture_game_view screen 경로를 사용했다. 이번 새아트 수동Windows마우스 검수나 원작 세부 외형 전문가 승인을 주장하지 않는다.
+- Windows 개발 빌드 **46.578초/오류0/경고9**, 일반 빌드 **31.688초/오류0/경고7** 성공(unity-pixel-development-build.json, unity-pixel-windows-build.json). 기존 Pipeline Runtime 설정 부재·deprecated API/전처리기·직렬화 분석기·URP 디버그셰이더/TMP pragma 경고가 남는다.
+- 기본 SPD/AI 개발 플레이어7회 독립 실행 통과:1~6장 정상 전투 승리27/20/34/22/33/22플레이어턴, 재실행의 정상 패배2턴·재출전·중복 보상 방지 통과. 각실행의14곡출력신호/가상패드상점검사도 통과. PlayerReviews/72b5027d48df4bc498b12c2204857869-summary.json. 숨긴 플레이어의 검은 캡처는 시각 증거로 쓰지 않는다.
+- combat-party-matrix.csv의 두6인 편성이 전6장 승리(6장37/41턴·각6명생존), 기본3인 도전은2/4/6장 패배다. 초기AI기준선으로 사람의 체감난이도나 모든조합승률을 보장하지 않는다.
+- 3D 회전 카메라와 비정수 확대에서 완전한 pixel-perfect를 보장하지 않는다. 각 일반 기술의 고유 전신 작화, 실물 게임패드·사람 장기 난이도·전문가 원작외형/음악청음 승인은 별도다. 기존2026-09-27 시각검수 수치/이미지는 이전아트 이력으로 보존한다.
+- CT+Utility 개발 플레이어도7회 독립 실행 통과:1~6장15/12/17/14/17/9플레이어턴, 재실행 정상 패배3턴·재출전·저장 복원/중복 보상 방지 통과. PlayerReviews/0c0fa920a15c45e09355f16b3876531b-summary.json. 두 검수 모두 원본/백업 저장 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. 최종 빌드/저장 해시는 PixelCampaign/final-hashes.json에 보관했다.

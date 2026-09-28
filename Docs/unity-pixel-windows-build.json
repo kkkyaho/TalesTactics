@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "buildId": "build_a0c0e84bc93d",
+  "result": "Succeeded",
+  "platform": "StandaloneWindows64",
+  "outputPath": "C:/dev/TalesTactics/Builds/Windows/TalesTactics.exe",
+  "totalSizeBytes": 419418876,
+  "buildTimeMs": 31688,
+  "buildStartedAt": "2026-09-28T16:34:13.5839074Z",
+  "buildEndedAt": "2026-09-28T16:34:45.2724793Z",
+  "totalWarnings": 7,
+  "totalErrors": 0,
+  "errors": [],
+  "warnings": [
+    {
+      "message": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\ManualPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC1001: Field 'Target' type 'UnityEngine.Vector2Int?' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\BattleDirector.cs"
+    },
+    {
+      "message": "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+    },
+    {
+      "message": "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+    },
+    {
+      "message": "Shader warning in 'TextMeshPro/Mobile/Distance Field': #pragma enable_d3d11_debug_symbols has been deprecated, instead please use #pragma enable_debug_symbols at line 84"
+    }
+  ]
+}

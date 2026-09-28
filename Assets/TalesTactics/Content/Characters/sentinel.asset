@@ -18,12 +18,89 @@ MonoBehaviour:
   SourceTitle: 
   PassiveSkill: 
   AudioTheme: 
-  Portrait: {fileID: 0}
+  Portrait: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
   Sprites:
-    Front: {fileID: 0}
-    Back: {fileID: 0}
-    Left: {fileID: 0}
-    Right: {fileID: 0}
+    Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+    Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+    Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+    Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
+  Poses:
+    Walk:
+      Frames:
+      - Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -1636774474, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -1972040654, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -10380610, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -155632629, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -1103513076, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -309482274, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -186463178, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -1866268855, guid: b569b93b153550940895ca436b213373, type: 3}
+      FramesPerSecond: 8
+    Dead:
+      Frames:
+      - Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -1236035630, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -202776218, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -1710981133, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: 459656167, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -1236035630, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -202776218, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -1710981133, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: 459656167, guid: b569b93b153550940895ca436b213373, type: 3}
+      FramesPerSecond: 6
+    Skill:
+      Frames:
+      - Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+      FramesPerSecond: 8
+    Ultimate:
+      Frames:
+      - Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+      - Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+        Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+        Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+        Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+      FramesPerSecond: 8
+    Attack:
+      Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+      Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+      Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+      Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+    Cast:
+      Front: {fileID: -340055544, guid: b569b93b153550940895ca436b213373, type: 3}
+      Back: {fileID: -1709305105, guid: b569b93b153550940895ca436b213373, type: 3}
+      Left: {fileID: -917953246, guid: b569b93b153550940895ca436b213373, type: 3}
+      Right: {fileID: -2127357728, guid: b569b93b153550940895ca436b213373, type: 3}
+    Guard:
+      Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+      Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+      Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+      Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
+    Damage:
+      Front: {fileID: -658488376, guid: b569b93b153550940895ca436b213373, type: 3}
+      Back: {fileID: 2096556791, guid: b569b93b153550940895ca436b213373, type: 3}
+      Left: {fileID: -1714906598, guid: b569b93b153550940895ca436b213373, type: 3}
+      Right: {fileID: 1727216249, guid: b569b93b153550940895ca436b213373, type: 3}
   Animator: {fileID: 0}
   Affinities:
   - Element: 4
@@ -31,6 +108,7 @@ MonoBehaviour:
   - Element: 7
     Multiplier: 1.25
   Weapon: 0
+  VisualStyle: 0
   BaseStats:
     HP: 145
     MP: 30

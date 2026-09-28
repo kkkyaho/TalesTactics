@@ -25,7 +25,7 @@ function CompilePart($name,$folder,$extraRefs) {
 CompilePart 'TalesTactics.Runtime' 'Runtime' @()
 $runtime=Get-Item "$checkOutput/TalesTactics.Runtime.dll"
 $editorRefs=@(Get-ChildItem "$UnityData/Managed/UnityEditor*.dll" | Where-Object Name -ne 'UnityEditor.dll')
-CompilePart 'TalesTactics.Editor' 'Editor' ($editorRefs+@($runtime))
+CompilePart 'TalesTactics.Editor' 'Editor' ($editorRefs+@($runtime,(Get-Item "$PackageAssemblies/Unity.2D.Sprite.Editor.dll")))
 $nunit=Get-Item "$UnityData/Resources/PackageManager/BuiltInPackages/com.unity.ext.nunit/net472/unity-custom/nunit.framework.dll"
 CompilePart 'TalesTactics.Tests' 'Tests' @($runtime,$nunit)
 $testRunner=Get-Item "$PackageAssemblies/UnityEngine.TestRunner.dll"

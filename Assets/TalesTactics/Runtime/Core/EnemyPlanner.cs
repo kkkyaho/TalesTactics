@@ -7,7 +7,7 @@ namespace TalesTactics
     {
         public EnemyPlan Plan(BattleSession battle,UnitRuntime u)
         {
-            if(battle.UseUtilityAI)return new UtilityPlanner().Plan(battle,u);
+            if(battle.UseUtilityAI||u.Data.Id=="dhaos")return new UtilityPlanner().Plan(battle,u);
             var enemies=battle.Units.Where(t=>t.Team!=u.Team&&t.Alive).ToArray();
             var plan=new EnemyPlan{Destination=u.Position};if(enemies.Length==0)return plan;
             float best=float.NegativeInfinity;var origin=u.Position;

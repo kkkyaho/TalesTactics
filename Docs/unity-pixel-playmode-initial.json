@@ -1,0 +1,377 @@
+{
+  "status": "completed",
+  "duration": 34.63,
+  "summary": {
+    "total": 52,
+    "passed": 49,
+    "failed": 3,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCatalogSkillsExecuteWithMatchingPreviewAndFiniteCosts",
+      "Status": "Passed",
+      "Duration": 1.5254584,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections",
+      "Status": "Failed",
+      "Duration": 0.27760049999999997,
+      "Message": "  Pose scale: farah-motion_2_0\r\n  Expected: in range (0.8,1.6)\r\n  But was:  0.602606118f\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<AllCharacterPosesRenderInFourCameraDirections>d__18.MoveNext () [0x00147] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\CharacterPoseSceneTests.cs:24\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllSkillDetailPanelsFitAndKeepBattleValues",
+      "Status": "Passed",
+      "Duration": 4.5065653,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ArrivalMovementEndsBattleAndEscortDeathFails",
+      "Status": "Passed",
+      "Duration": 0.3913408,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ArtDirectionsMotionAndCameraRotationRemainConnected",
+      "Status": "Passed",
+      "Duration": 0.2086579,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AttackRecoversGuardPersistsAndMissingPoseFallsBack",
+      "Status": "Passed",
+      "Duration": 1.155318,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.BundledFontCoversCatalogWithoutOperatingSystemFonts",
+      "Status": "Passed",
+      "Duration": 0.1267765,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CameraRotationZoomAndResetPreserveBattle",
+      "Status": "Passed",
+      "Duration": 0.2217595,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CampaignBalanceScenariosFinishAndReportCasualties",
+      "Status": "Passed",
+      "Duration": 0.3469978,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards",
+      "Status": "Passed",
+      "Duration": 0.230601,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CatalogProfilesRenderDistinctFinalesWithoutChangingHealth",
+      "Status": "Passed",
+      "Duration": 0.882216,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ChapterShopShowsLockedDetailsThenUnlocksAfterReward",
+      "Status": "Passed",
+      "Duration": 0.2088362,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle",
+      "Status": "Passed",
+      "Duration": 4.3185404,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame",
+      "Status": "Passed",
+      "Duration": 0.963831,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CTUtilityScenariosReachEveryObjectiveWithoutForcedDamage",
+      "Status": "Passed",
+      "Duration": 1.9696531,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.DefeatShowsRestartCommand",
+      "Status": "Passed",
+      "Duration": 0.2786837,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.DeploymentButtonStartsWiredScene",
+      "Status": "Passed",
+      "Duration": 0.2106728,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EffectsAudioDoesNotReplaceMusicSource",
+      "Status": "Passed",
+      "Duration": 0.1396273,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EffectsExpireAndRestartCleansPresentation",
+      "Status": "Passed",
+      "Duration": 1.010659,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EquipmentDraftCancelAndTrainingBattleUseSavedLoadout",
+      "Status": "Passed",
+      "Duration": 0.3676692,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ExpansionEquipmentUnlocksPurchasesAndPersistsStats",
+      "Status": "Passed",
+      "Duration": 0.489972,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ExpansionPagesUnlockAndAllStoriesAndMapsFit",
+      "Status": "Passed",
+      "Duration": 0.8600933,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.FullLootInventoryDisplaysReasonAndStillSavesVictory",
+      "Status": "Passed",
+      "Duration": 0.1752962,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GamepadMenusDoNotDoubleSubmitAndReconnect",
+      "Status": "Passed",
+      "Duration": 0.211488,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GamepadSelectsTilesCancelsAndHandlesTiming",
+      "Status": "Passed",
+      "Duration": 1.2133176,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign",
+      "Status": "Passed",
+      "Duration": 0.2033828,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.HealingRevivalAndHealthCostsUseSeparateFeedback",
+      "Status": "Passed",
+      "Duration": 1.5549627,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.LethalAreaEffectsRetainAllRecipientsAfterResolution",
+      "Status": "Passed",
+      "Duration": 0.1524918,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.LockedEndingAndFailedRewardsDoNotOpenAfterStory",
+      "Status": "Passed",
+      "Duration": 0.1926835,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MovementCoroutineAndUndoRestoreOccupancy",
+      "Status": "Passed",
+      "Duration": 0.2991072,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MusicThemeRestoresPositionAndMissingThemePreservesBattle",
+      "Status": "Passed",
+      "Duration": 0.1352411,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OriginalMusicCatalogPlaysEveryRegisteredTrack",
+      "Status": "Passed",
+      "Duration": 2.2338202,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.PiercingSkillPreviewAndExecutionShareSightAndLineArea",
+      "Status": "Passed",
+      "Duration": 0.1666119,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.PixelRosterAndSceneryPreserveSixChapterInteraction",
+      "Status": "Passed",
+      "Duration": 0.4645312,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards",
+      "Status": "Passed",
+      "Duration": 0.2283837,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry",
+      "Status": "Passed",
+      "Duration": 0.1683942,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ShopBlocksTrainingAndInsufficientGoldWithoutSaving",
+      "Status": "Passed",
+      "Duration": 0.1255991,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ShopPurchaseRetryEquipAndBattleUseRealIsolatedSave",
+      "Status": "Passed",
+      "Duration": 0.2211686,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SkillWindupDefersSingleResolutionAndRestartClearsCues",
+      "Status": "Passed",
+      "Duration": 0.9942931,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SpecialPosesPrepareReleaseAndRecoverForEntireRoster",
+      "Status": "Failed",
+      "Duration": 0.1045422,
+      "Message": "  Expected: True\r\n  But was:  False\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<SpecialPosesPrepareReleaseAndRecoverForEntireRoster>d__52.MoveNext () [0x00137] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\SpecialPresentationTests.cs:59\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.StoryFlowBuildsChapterMapsAndReplaysWithoutRewards",
+      "Status": "Passed",
+      "Duration": 0.2498471,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave",
+      "Status": "Passed",
+      "Duration": 0.1830202,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TargetPreviewExecutesAndTurnEnds",
+      "Status": "Passed",
+      "Duration": 0.5728914,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TenCharacterStylesHaveDistinctGeometryAndExpire",
+      "Status": "Passed",
+      "Duration": 0.8798131,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ThirdChapterSelectionStoryMapAndRewardAreConnected",
+      "Status": "Passed",
+      "Duration": 0.2497538,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TimingSpinCyclesFourViewsWithoutChangingCombatFacing",
+      "Status": "Passed",
+      "Duration": 0.1536533,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TrainingAndDefeatNeverRollRandomRewards",
+      "Status": "Passed",
+      "Duration": 0.2863061,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.UnavailableSkillCanBeInspectedButCannotBeSelected",
+      "Status": "Passed",
+      "Duration": 0.182551,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.UtilityEnemyCoroutineUsesHealingThroughNormalResolver",
+      "Status": "Passed",
+      "Duration": 1.749401,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.VictoryAndRestartRecoverKOUnits",
+      "Status": "Passed",
+      "Duration": 0.1931526,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing",
+      "Status": "Passed",
+      "Duration": 0.2554814,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.WalkCyclesAllFramesInEveryViewAndStopsAtIdle",
+      "Status": "Failed",
+      "Duration": 0.1123056,
+      "Message": "  Expected: 4\r\n  But was:  3\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<WalkCyclesAllFramesInEveryViewAndStopsAtIdle>d__37.MoveNext () [0x00241] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\LocomotionSceneTests.cs:29\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    }
+  ]
+}

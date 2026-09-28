@@ -4,10 +4,10 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-전투 vertical slice의 코드, 캐릭터 데이터 생성기, Scene 생성기와 검증 도구를 구현했습니다. **실제 Unity EditMode 92개·PlayMode 51개 통과, Windows 빌드 및 기본 화면·마우스 입력 검증을 완료했습니다.** 10명 방향별 아트·160개 행동 포즈·보행/쓰러짐 280개·기술/궁극기 160개 프레임, 89개 기술 연출과 10명 궁극기를 연결했습니다. 기본 그림 윤곽/피벗·카메라 방향 선택·파라 회전 타이밍을 보정하고 오리지널 BGM/테마 14곡을 추가했습니다. 5번은 프로토타입 구현·통합 검수 기준으로 완료했으며 전체 게임 완성본은 아닙니다. 범위와 한계는 Docs/ART_ACCEPTANCE.md를 참고하세요.
+6장 캠페인과 전투·성장·장비·저장 시스템을 구현했습니다. **실제 Unity EditMode 93개·PlayMode 52개를 통과했습니다.** 기존 영웅 10명 모두를 특징을 유지한 3등신 고밀도 픽셀 아트로 교체하고, 방향별 보행 4프레임·궁극기 전용 준비/발동 동작을 연결했습니다. 일반 적 9종과 최종 보스 다오스, 16종 전장 재질·16종 장식·6장별 원경을 적용했습니다. 실제 화면과 상세 범위는 [픽셀 아트 개편](Docs/PixelCampaign/README.md)을 참고하세요. 기존 89개 기술 연출과 오리지널 음악 14곡은 유지합니다. 전체 게임 완성본이나 전문가의 원작 작화 승인을 뜻하지 않으며, 최신 빌드·실행 검증과 한계는 Docs/VALIDATION.md를 따릅니다.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
-- 엔진 독립 규칙 테스트 92개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
+- 엔진 독립 규칙 테스트 93개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
 - API 검사는 현재 프로젝트의 Library DLL을 사용합니다. 실제 실행 검증과 한계는 Docs/VALIDATION.md에 기록했습니다.
 - 6번 입력·배포 구현 완료: 게임패드 조작 및 배포용 한국어 폰트·라이선스 포함. 가상 Gamepad와 Windows 플레이어 검증을 통과했으며 실제 기기별 검수는 별도입니다.
 
@@ -17,7 +17,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 1. Unity Hub에서 이 README가 있는 `TalesTactics` 폴더를 기존 프로젝트로 추가합니다.
 2. 설치된 **6000.6.0f1**으로 엽니다. 패키지 다운로드와 최초 import를 기다립니다.
-3. 초기화 코드가 `Assets/TalesTactics/Scenes/TestBattle.unity`와 `Content`의 실제 ScriptableObject를 생성합니다. 자동 생성되지 않으면 상단 **Tales Tactics → Create Test Battle**을 실행합니다.
+3. 포함된 `Assets/TalesTactics/Scenes/TestBattle.unity`를 엽니다. 현재 Content는 아트·전투 튜닝이 적용된 실제 에셋이므로 **Create Test Battle / DemoContent.Create를 다시 실행하지 않습니다.**
 4. Play를 눌러 출전 화면에서 1–6명을 선택하고 **전투 시작**을 누릅니다. 기본 선택은 크레스·민트·파라, 적은 4명입니다.
 5. 모든 일반 스킬은 **훈련: Lv25** 모드로 확인합니다. 일반 모드는 Lv1부터 저장된 성장치를 사용합니다.
 

@@ -17,6 +17,17 @@ namespace TalesTactics
                 if(!ids.Add(c.Id)){error="Duplicate character ID: "+c.Id;return false;}
             }
             if(!Character(catalog.Enemy,"Enemy",out error))return false;
+            if(catalog.Enemies!=null&&catalog.Enemies.Length>0)
+            {
+                var enemyIds=new HashSet<string>();
+                foreach(var enemy in catalog.Enemies)
+                {
+                    if(!Character(enemy,"Enemies",out error))return false;
+                    if(!enemyIds.Add(enemy.Id)){error="Duplicate enemy ID: "+enemy.Id;return false;}
+                }
+                for(int stage=0;stage<CampaignStages.Count;stage++)for(int slot=0;slot<4;slot++)
+                    if(!enemyIds.Contains(CampaignEnemies.Id(stage,slot))){error="Missing campaign enemy: "+CampaignEnemies.Id(stage,slot);return false;}
+            }
             error=null;return true;
         }
         static bool Character(CharacterData c,string location,out string error)

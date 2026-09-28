@@ -121,3 +121,11 @@ BattleHud.ChapterPage는3장 단위로 목록을 탐색하는 일시적UI 상태
 ExpansionShopContent.Add는 GuardianMedal/TemperedArmor가 없을 때만 새 에셋을 만들고 기존 카탈로그에 추가한다. 기존 에셋/사용자 튜닝은 덮어쓰지 않는다. 수호의 메달은chapter4, 단련 갑옷은chapter5로 판매를 해금한다. 보유 장비의 장착/매각은 기존 해금 독립 정책을 유지한다.
 
 신규 캠페인의 동일 출전자는6장 최초 완료 시 Lv9/EXP0이 된다. 기존V2 저장 스키마·Lv20 승급·Lv50 상한은 유지하며 기존 저장의 경험치나 레벨을 다시 계산하지 않는다.
+
+## 픽셀 캠페인 개편
+
+BattleCatalog.Enemies는 ID로 조회하는 새 적 목록이다. CampaignEnemies가 장/슬롯별ID를 결정하며, 목록이 없는 레거시 카탈로그와 훈련은 기존 Enemy를 사용한다. 목록이 있는데 필수ID가 없으면 검증/세션 생성에서 실패한다. 캠페인 적은 자신의 기술만 사용하며, 플레이어 기술을 빌리는 훈련 UtilityAI 동작은 유지한다. 다오스는 기본AI에서도 UtilityPlanner를 사용한다.
+
+PixelCampaignContent.CreateEnemies는 Content/PixelCampaign에 없는 새 캐릭터/기술만 생성한다. PixelArtImporter.Import는 alpha 읽기 분석 CSV를 사용해 Sprite Editor API로 경계·pivot·윤곽과 CharacterData의 아트 참조를 명시적으로 교체한다. 기존 캐릭터 능력치/스킬/성장 필드는 변경하지 않는다. 사용자 아트 참조 변경 후 자동 재실행하지 않는다. Tools/pixel-final-generation.json은 채택 원본/프롬프트 이력이며 실행 의존 경로가 아니다.
+
+BoardView가 PixelBattlefield를 전장 수명에 맞춰 생성/삭제한다. PixelTerrain의16개 atlas구역을 타일 소재로 쓰고, PixelProps의16개 Sprite로 비보행칸/외곽을 장식한다. PixelBackdrops의2×3패널을 장별 원경으로 사용한다. 장식 충돌체는 제거하고 모든 소유 Material은 OnDestroy에서 정리한다. 카메라를 따라 도는 billboard와 수면 흔들림은 전투 RNG/좌표를 바꾸지 않는다. Point/무압축/밉맵 없음 설정이며 3D 회전/비정수 확대에서 정수 픽셀 배율을 보장하지 않는다.
