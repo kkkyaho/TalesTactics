@@ -7,4 +7,6 @@
 - 추가 PlayMode 검사는 6장씩 2회, 총 12회 전장 생성/재출전에서 실제 UI Submit 경로의 이동·취소·공격·4회전·확대/초기화, 합법 범위와 표시 일치, 기존 테두리 재사용, 충돌체 없음, HP/위치 불변, 참조된 장식 소재와 선의 해제를 검사한다. 53/53 통과(65.50초).
 - Windows Computer Use는 창 재선택 후에도 `failed to activate captured window`로 실패했다. 수동 Windows 마우스 검수 완료로 간주하지 않는다. 검수용으로 시작한 두 플레이어는 종료했고 사용자 저장/백업은 보존했다.
 
+2026-09-30 후속 세션에서 Windows 창 제어가 정상 작동하여 [새 아트 Windows 화면·마우스 검수](../PixelWindowsReview/README.md)를 완료했다. 위 오류는 당시 이력이며 원인을 수정했다고 주장하지 않는다. 후속 검수는 동일 빌드의 1~6장 대표 화면과 이동/선택/카메라 조작을 확인했다.
+
 테두리는 전장 수명에 속하며 공유 HighlightMaterial과 MaterialPropertyBlock을 사용한다. 범위를 다시 표시할 때 기존 LineRenderer를 재사용하고, 취소하면 숨기며, Restart 시 전장과 함께 삭제한다. 새로운 이동/전투/저장 규칙은 추가하지 않았다.

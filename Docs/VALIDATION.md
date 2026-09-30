@@ -367,3 +367,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 사용자 campaign.json 및 .bak SHA256은 모두324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1로 이전과 동일하다. 임시 Assets/Docs는 Editor API로 삭제했으며 Scene을 저장하지 않았다.
 - Windows 일반 빌드14.224초/오류0/경고4, 개발 빌드26.048초/오류0/경고9 성공(unity-pixel-interaction-windows-build.json, unity-pixel-interaction-development-build.json). 기존 Pipeline/사용 중단 API·전처리기/직렬화·셰이더 관련 경고는 유지된다.
 - 수정 후 Windows 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴 및 재출전·중복 보상 방지·저장 복원 통과. 사용자 저장/백업 불변. PlayerReviews/3739dcc79fc54d92b0b9f8feca3c8587-summary.json. CT 모드 Windows 완주를 이번 표시 변경 후 별도로 반복하지 않았으며 이전 개편 결과와 구분한다. 빌드/저장 해시는 PixelInteraction 폴더에 기록했다.
+
+## 2026-09-30 — 새 아트 Windows 화면·마우스 검수 완료
+
+- 이전에 보류했던 Windows 창 제어가 이번 세션에서 정상 작동했다. Computer Use의 node_repl + @oai/sky로 실제1280×800 게임 창을 관찰하고 마우스로 조작했다. 도구/게임 코드 변경 없이 재시도한 결과이며 이전 활성화 오류의 근본 원인 해결로 주장하지 않는다.
+- 일반 배포 실행본에서 출전 준비·1장 도입 건너뛰기·전장 진입, 청색 이동 범위·타일 클릭 이동/보행·Undo 원위치 복원·카메라 우회전을 확인했다. 격리 개발 실행본에서는2~6장 선택·도입 첫 대사/건너뛰기·전장·Restart와 장 목록2페이지를 확인했다. 새 배경/장식/영웅/적 그림 누락, 메뉴 글자 잘림, 기본 카메라에서 HUD가 전장을 가리는 문제는 발견하지 못했다.
+- 6장에서 파라를 다오스 인접 타일로 이동하고 Attack의 적색 사거리와 다오스 클릭의 금색 선택 범위를 확인했다. 피해43/100%/무속성×1 미리보기와 실행 버튼 활성화, 확대·우회전·초기화 중 대상 유지, 취소 시 테두리 해제, Restart 복귀를 확인했다. 표시 함수를 직접 호출하지 않았다. 공격 실행/승리까지 진행한 검사는 아니다.
+- 격리 슬롯7d58cb747397401587b342fd7d2e02b8에는 기존 정상6장 자동 완주3739dcc79fc54d92b0b9f8feca3c8587의 저장을 복사했다. 별도 값/HP/해금 편집 없이1990G/Lv9 상태를 사용했다. 사용자 원본·백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 검수 전후 동일하다.
+- 개발 수집기 errors.txt 없음, player.log의 Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두 exe/두 Runtime DLL 해시가 기존 PixelInteraction/build-hashes.json과 일치한다. PixelWindowsReview/save-integrity.json 및 원본 창 캡처21장, events.txt/hardware.txt/performance.csv에 기록했다. 약442.6초 혼합 구간의 성능 수집은 장시간 안정성/벤치마크가 아니다.
+- 이번 변경은 문서·증거뿐이며 코드/에셋/빌드 및 Scene 변경이 없다. Unity EditMode93/93·PlayMode53/53과 빌드/자동 완주 결과는 이전 기록을 유지하며 이번에 재실행했다고 표현하지 않는다. 새 아트 Windows 대표 화면·마우스 검수 보류 항목은 완료했으며 전6장 수동 완주·전체 기술 수동 발동·사람 난이도/전문가 아트·실물 패드 검수는 별도다. 상세 확인 흐름: PixelWindowsReview/README.md.
