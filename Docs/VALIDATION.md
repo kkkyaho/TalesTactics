@@ -376,3 +376,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 격리 슬롯7d58cb747397401587b342fd7d2e02b8에는 기존 정상6장 자동 완주3739dcc79fc54d92b0b9f8feca3c8587의 저장을 복사했다. 별도 값/HP/해금 편집 없이1990G/Lv9 상태를 사용했다. 사용자 원본·백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 검수 전후 동일하다.
 - 개발 수집기 errors.txt 없음, player.log의 Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두 exe/두 Runtime DLL 해시가 기존 PixelInteraction/build-hashes.json과 일치한다. PixelWindowsReview/save-integrity.json 및 원본 창 캡처21장, events.txt/hardware.txt/performance.csv에 기록했다. 약442.6초 혼합 구간의 성능 수집은 장시간 안정성/벤치마크가 아니다.
 - 이번 변경은 문서·증거뿐이며 코드/에셋/빌드 및 Scene 변경이 없다. Unity EditMode93/93·PlayMode53/53과 빌드/자동 완주 결과는 이전 기록을 유지하며 이번에 재실행했다고 표현하지 않는다. 새 아트 Windows 대표 화면·마우스 검수 보류 항목은 완료했으며 전6장 수동 완주·전체 기술 수동 발동·사람 난이도/전문가 아트·실물 패드 검수는 별도다. 상세 확인 흐름: PixelWindowsReview/README.md.
+
+## 2026-10-01 — 새 아트 대표 전투 연출 후속 검수
+
+- 기존 Windows 개발 빌드1280×800을 Computer Use로 조작했다. 격리 슬롯4974b814b4554128a3d15cf451038bba에는 이전 정상6장 자동 완주3739dcc79fc54d92b0b9f8feca3c8587 저장을 복사했다. 기본3인 편성은 크레스·파라Lv9, 민트Lv1이다. 이전 PixelWindowsReview의 기본3인 전원Lv9 표기를 동일 원본 저장과 실제 민트 턴 화면을 근거로 정정했다. 원본 완료 저장에 민트 성장 항목이 없어 기본Lv1로 시작한다.
+- 파라의 합법 이동→일반 공격과 다오스 피격, 크레스의 마신검 상세→직선 목표→시전/복귀를 확인했다. 피해 미리보기43+58=101과 다음 다오스 턴 HP315→214가 일치했다. 크레스MP109→103, 공격자 게이지0→20, 행동 사용 뒤 Undo 비활성화를 확인했다.
+- 민트 퍼스트 에이드의 기술명/시전과MP120→114, 재사용 시 녹색 회복 효과/+60 표시·MP114→108을 확인했다. 미리보기 회복77은 상한 적용 전 값이다. 첫 회복의 직전 대상 HP 숫자는 확보하지 않아 첫 실행의 실제 회복량은 주장하지 않는다.
+- 다오스의 정상 AI 블래스트에서 기술명/시전 자세, 두 아군 각각30 피해 숫자/피격 표시, 다음 적 턴과 결과 문구를 기록했다. 단일 방향의 짧은 캡처이며 모든 프레임이나 레이저 시각 검수는 아니다. 파라가 정상 적 공격으로 HP246→141→42 이후 쓰러지고 턴 목록에서 빠지는 것을 관찰했다. HP0 숫자 캡처 자체는 없다. Restart 후 파라 생존·HP246/246·MP109/109·게이지0·위치/명령 복원을 확인했다.
+- 사용자 원본/백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 보존됐다. 수집기errors.txt 없음, player.log Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두exe/두Runtime DLL도 기존 PixelInteraction 빌드 해시와 일치한다.
+- PixelCombatReview에 캡처22장·events/hardware/performance 및 save-integrity.json을 보존했다. 약570초 혼합 구간은 장시간 성능 시험이 아니다. 코드/에셋 변경이나 Unity 테스트/빌드 재실행은 없고 기존93/53 통과 기록을 유지한다. 대표 연출 검수 완료이며 전6장 수동 완주·보스 격파·전체 기술/방향 검수·사람 난이도/실물 패드 평가를 뜻하지 않는다.

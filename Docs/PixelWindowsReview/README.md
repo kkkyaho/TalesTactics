@@ -20,7 +20,7 @@
 ## 저장·실행 증거
 
 - 일반 배포는 기존 사용자 저장을 읽었다. 전투를 완료하거나 저장하는 메뉴를 사용하지 않았다.
-- 2~6장은 `--manual-review 7d58cb747397401587b342fd7d2e02b8`로 실행한 별도 슬롯을 사용했다. 기존 정상 전투 자동 완주 `3739dcc79fc54d92b0b9f8feca3c8587`의 완료 저장을 복사했으며 값/해금/HP를 편집하지 않았다. 1990G와 기본 3인 Lv9 상태다. 이는 이번 세션에서 장들을 완주했다는 의미가 아니다.
+- 2~6장은 `--manual-review 7d58cb747397401587b342fd7d2e02b8`로 실행한 별도 슬롯을 사용했다. 기존 정상 전투 자동 완주 `3739dcc79fc54d92b0b9f8feca3c8587`의 완료 저장을 복사했으며 값/해금/HP를 편집하지 않았다. 1990G와 기본 3인 편성(크레스·파라Lv9, 민트Lv1)이다. 2026-10-01 후속 전투 화면과 동일 원본 저장을 확인해 종전의 '기본3인Lv9' 표기를 정정했다. 이는 이번 세션에서 장들을 완주했다는 의미가 아니다.
 - 사용자 원본·백업과 격리 저장의 시작/종료 SHA256이 각각 일치한다. 실행 파일2개와 Runtime DLL2개의 해시도 이전 `PixelInteraction/build-hashes.json`과 일치했다. [save-integrity.json](save-integrity.json) 참조.
 - 개발 검수 수집기의 `errors.txt`가 없고 player.log의 Error/Exception/Assert 검색 결과는0건이다. 두 검수 플레이어를 종료한 뒤 실행 중인 TalesTactics 프로세스가 없음을 확인했다.
 - [hardware.txt](hardware.txt), [events.txt](events.txt), [performance.csv](performance.csv)는 개발 세션의 수동 조작 중 자동 수집 기록이다. 저장소의 events.txt는 줄 끝 공백만 제거했다. 약442.6초의 메뉴/대기/전장 혼합 구간으로 성능 벤치마크나 장시간 안정성 시험으로 사용하지 않는다. Windows 작업 집합은 조회 불가로 빈칸이다.
