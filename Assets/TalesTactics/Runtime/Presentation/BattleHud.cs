@@ -19,6 +19,9 @@ namespace TalesTactics
         void LateUpdate(){if(left!=null)UpdateLayout();}
         void UpdateLayout()
         {
+            if(battle.Session!=null){UpdateBattleLayout();return;}
+            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-94),new Vector2(-12,-12));
+            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,12),new Vector2(-12,126));
             if(CompactLayout)
             {
                 Place(left,Vector2.zero,new Vector2(0.5f,0),new Vector2(12,138),new Vector2(-6,658));
@@ -37,6 +40,7 @@ namespace TalesTactics
             get
             {
                 float scale=GetComponent<Canvas>().scaleFactor;
+                if(battle.Session!=null)return BattleViewport(scale);
                 bool compact=CompactLayout;
                 float x=(compact?12:292)*scale,y=(compact?670:138)*scale;
                 return new Rect(x/Screen.width,y/Screen.height,
@@ -114,6 +118,7 @@ namespace TalesTactics
         }
         public void ShowDeployment()
         {
+            CloseUnitDetails();
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);
             Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,battle.TrainingMode?"훈련 / "+ObjectiveNames.Name(battle.TrainingObjective):CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
@@ -216,27 +221,25 @@ namespace TalesTactics
         }        public void Refresh()
         {
             if(battle.Session==null)return;
+            CloseUnitDetails();
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
-            Label(header,"TALES / TACTICS     ·     "+battle.State.Title,10,34,25);
-            Label(header,"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),48,30,16);
+            var heading=Label(header,BattleTitle+"  ·  "+battle.Session.ObjectiveDescription,8,26,19);
+            heading.rectTransform.offsetMax=new Vector2(-350,heading.rectTransform.offsetMax.y);
+            var next=Label(header,"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
+            next.rectTransform.offsetMax=new Vector2(-350,next.rectTransform.offsetMax.y);
             message=Label(footer,battle.Message,12,65,17);
             Label(footer,battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,26,15);
             if(u==null)return;
-            Label(left,u.Data.DisplayName,16,58,25);Label(left,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" / Lv"+u.Level+" / "+u.Team,78,36,17);
-            Label(left,$"HP  {u.CurrentHP} / {u.Stats.HP}\nMP  {u.CurrentMP} / {u.Stats.MP}\nGAUGE  {u.SpecialGauge} / 100\n\nSPD {u.Stats.SPD}   MOV {u.Stats.MOV}   JMP {u.Stats.JMP}\n\n이동: {(u.Moved?"사용":"가능")}\n행동: {(u.Acted?"사용":"가능")}\n\n{string.Join(" / ",u.Statuses.Select(s=>s.Kind+" "+s.Turns))}",125,285,20);
-            CameraButton("좌회전",0,3,435,()=>battle.Board.RotateCamera(-90),!battle.TimingActive);
-            CameraButton("초기화",1,3,435,()=>{if(!battle.TimingActive)battle.Board.ResetCamera();},!battle.TimingActive);
-            CameraButton("우회전",2,3,435,()=>battle.Board.RotateCamera(90),!battle.TimingActive);
-            CameraButton("확대 +",0,2,477,()=>battle.Board.ZoomCamera(0.9f));
-            CameraButton("축소 −",1,2,477,()=>battle.Board.ZoomCamera(1.1f));
-            Label(commands,battle.State.Title,12,36,20);
+            DrawUnitSummary(u);DrawCameraControls();
+            Label(commands,BattleTitle,12,36,20);
             if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);if(battle.RewardPending)Button(commands,"보상 저장 재시도",200,battle.SaveBattleReward);else if(battle.CanReadEnding)Button(commands,"전투 후 이야기",200,battle.ReadEnding);return;}
             if(battle.State is CommandState&&u.Team==Team.Player)
             {
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);
                 Button(commands,"Skill / 스킬",147,battle.SkillCommand,!u.Acted||u.FlamingChain);Button(commands,"Guard / 가드",193,battle.Guard,!u.Acted);
                 Button(commands,"Undo Move / 이동 취소",239,battle.Undo,u.CanUndoMove);Button(commands,"Wait / 방향 선택",285,battle.WaitCommand);Button(commands,"Restart",385,battle.Restart);
+                ArrangeCommandMenu();
             }
             else if(battle.State is ActionSelectionState)
             {
@@ -258,7 +261,7 @@ namespace TalesTactics
             }
             else if(battle.State is TargetSelectionState)
             {
-                Label(commands,battle.SelectedSkill.DisplayName+"\n타일을 클릭해 효과를 확인하세요.",60,100,20);Button(commands,"실행",180,battle.Confirm,battle.Target.HasValue);Button(commands,"취소",230,()=>battle.State.Cancel());
+                Label(commands,battle.SelectedSkill.DisplayName,45,35,17);Button(commands,"실행",88,battle.Confirm,battle.Target.HasValue,32);Button(commands,"취소",128,()=>battle.State.Cancel(),true,32);
             }
             else if(battle.State is FacingSelectionState)
             {int i=0;foreach(Facing f in Enum.GetValues(typeof(Facing))){var facing=f;Button(commands,f.ToString(),60+i++*48,()=>battle.ChooseFacing(facing));}}

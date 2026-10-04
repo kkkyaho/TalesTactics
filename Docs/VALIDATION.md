@@ -394,3 +394,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **32.812초/오류0/경고7**, 개발 빌드 **27.000초/오류0/경고9** 성공. 기존 Pipeline 비활성 안내·개발 검수의 사용 중단 API/전처리기·직렬화·셰이더 경고가 남아 있다. AnimationPolish/windows-build.json, development-build.json, build-hashes.json에 결과와 해시를 보관했다.
 - 새 개발 플레이어7회 독립 실행 통과: 1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원 통과. 사용자 원본/백업 불변, 실행 로그 Exception/Assertion/Error 검색0건. PlayerReviews/fd83d49d46c040e486b3a8b7c21a83c5-summary.json 및 장별 보고서. 기본 SPD/AI 자동 검증이며 CT 완주를 새로 반복하지 않았다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 쓰지 않는다.
 - 요청한 중간 프레임 및 자세별 외형 일관성 개선은 완료했다. 전6장 사람 수동 완주·전체 기술별 독립 작화·외부 전문가 원작 외형 승인·사람 난이도/실물 패드 검수는 이번 완료 범위에 포함하지 않는다.
+
+## 2026-10-04 — 슈로대 참고 소형 캐릭터 HUD
+
+- 캐릭터 정보를 좌하단344×174 Canvas 단위의 요약창으로 줄였다. 기본1440×900 기준 기존268×656 대비 면적 약66% 감소. 이름/Lv·기존 캐릭터 그림·HP/MP/SP·이동/행동 상태를 표시하고 직업/세부 능력치/상태는 능력 버튼의 상세창에 분리했다.
+- 명령은 캐릭터 바깥쪽, 기술 목록/상세는 오른쪽, 대상 실행/취소는 하단, 카메라는 상단으로 배치했다. 상세창 중 배경 UI/전장 입력 차단, 닫기/Esc/우클릭/패드B 복귀를 구현했다. Scene/콘텐츠/전투 규칙은 변경하지 않았다.
+- 실제 Unity EditMode95/95, PlayMode55/55(102.62초) 통과. CompactHud/editmode-results.json, playmode-results.json. 새 검사는 요약창 면적·전장 폭·명령 버튼 경계·상세창 단독 입력·패드 취소 후 State/HP/MP 보존·출전 화면 복원을 확인한다. 전체89개 기술 설명 크기/폰트 검사도 통과했으며 새 결과를 CompactHud/skill-panel-review.csv에 보관했다. ManagedChecks는 재실행하지 않았다.
+- 1920×1080 및1366×768 Game View에서 요약/명령·상세·기술·대상 선택을 확인했다. 최종 원본1366×768 캡처4장은 CompactHud/에 있다. 게임 프레임 증가와 상태를 확인했으며, Game View의 갱신이 늦은 캡처는 Repaint 후 다시 취득했다. 검수 후 해상도 선택과 runInBackground=false를 복원하고 Assets 임시 캡처를 제거했다. 세로 창의 별도 배치는 구현했으나 이번 시각 검수는 가로 창 기준이다.
+- 기존 Builds/Windows 출력의 첫 빌드는 실행 중인 사용자 플레이어가 lib_burst_generated.dll을 점유하여 실패했다(25.570초/오류1, windows-build-locked.json). 플레이어를 강제 종료하지 않고 별도 Builds/WindowsCompactHud/TalesTactics.exe로 빌드하여 성공했다(4.569초/오류0/경고1). 현재 새 UI 실행 경로는 WindowsCompactHud이며 기존 Windows 폴더를 최신 검증본으로 사용하지 않는다.
+- 개발 Builds/CampaignReview 빌드25.335초/오류0/경고9 성공. 최종 일반 빌드는 Pipeline 비활성 안내1건, 개발 빌드는 기존 사용 중단 API/전처리기·직렬화·셰이더 경고 포함9건이다. CompactHud/windows-build.json, development-build.json, build-hashes.json 참조.
+- 새 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원. 사용자 원본/백업 불변. PlayerReviews/d216ec73315643378d3e07d433b72264-summary.json. 실행 로그 Exception/Assertion/Error 검색0건. 숨겨진 플레이어 캡처는 시각 검수로 사용하지 않는다. 기본 SPD/AI 자동 검증이며 사람의 전6장 수동 완주나 실물 패드 검수가 아니다.

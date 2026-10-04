@@ -137,3 +137,9 @@ BoardView의 rangeBorders는 타일별 LineRenderer를 필요할 때 생성해 �
 CharacterPoses.AttackMotion은 준비/기존 타격/후속/복귀 4프레임이다. Skill은 준비/기존 Cast/Attack/후속/복귀 5프레임, Ultimate는 준비/기존 전용 charge/release/복귀 4프레임이다. DirectionalSpriteClip.ReleaseFrame은 준비와 발동 구간을 나누며 SamplePhase는 각 구간의 시간 비율을 사용한다. CharacterMotion.BeginSkill과 ReleaseSkill은 기존 전투 코루틴의 준비/회복 시간을 받아 발동 전에 타격 그림이 노출되는 것을 막고 회복 끝에 대기로 돌아간다. Set 호출은 현재 연출을 중단한다. Walk/Dead는 기존 FPS 기반 Sample을 유지한다.
 
 AnimationPolishImporter는 BattleCatalog의 영웅/적20종에만 보충 시트를 연결한다. 기존 핵심 그림과 전투 데이터는 보존하며, 재실행 시 이미 확장된 Ultimate에서도 기존 핵심2장을 유지한다. AssetPostprocessor나 자동 생성 메뉴는 추가하지 않는다. Tools/MeasureAnimationPolish.py는 원본 이미지 픽셀을 수정하지 않고 경계/윤곽 CSV와 감사 JSON을 만든다. 검수 갤러리 스크립트는 Play Mode 임시 오브젝트만 만든다.
+
+## 2026-10-04 — 전투 HUD 공간 분리
+
+BattleCompactHud는 기존 BattleHud의 전투 레이아웃을 보완하는 partial이다. 좌하단 Unit 패널은344×174 Canvas 단위의 요약, 상세 정보는 별도 UnitDetails 패널이다. 상세창은 CanvasGroup.interactable로 기존 버튼을 잠그고 BattleDirector/GamepadPointer의 전장·카메라 입력을 차단한다. 닫기/취소는 전투 State와 HP/MP를 변경하지 않는다. Refresh 또는 Restart에서 상세창을 닫고 원래 상호작용을 복원한다.
+
+CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 제한 배치한다. Skill 목록/상세는 오른쪽 패널로 전장 viewport와 분리하고 TargetSelection은 하단으로 이동한다. 기존 Button 오브젝트 이름을 유지해 게임패드/자동 검수 경로를 보존하며 표시 문구만 간결하게 바꾼다. 기존 데이터·Scene·출전/상점/장비 구조는 재생성하지 않는다.

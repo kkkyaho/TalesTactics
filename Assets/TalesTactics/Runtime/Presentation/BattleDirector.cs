@@ -46,6 +46,11 @@ namespace TalesTactics
         void Update()
         {
             if(StoryActive)return;
+            if(Hud.UnitDetailsOpen)
+            {
+                if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame)Hud.CloseUnitDetails();
+                return;
+            }
             if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();
             if(Session==null||State==null)return;
             var keyboard=Keyboard.current;
@@ -56,6 +61,7 @@ namespace TalesTactics
                 if(keyboard.homeKey.wasPressedThisFrame&&!TimingActive)Board.ResetCamera();
             }
             if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&!(State is ActionExecutionState))State.Cancel();
+            if(Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame&&!(State is ActionExecutionState)){State.Cancel();return;}
             var mouse=Mouse.current;if(mouse==null||EventSystem.current!=null&&EventSystem.current.IsPointerOverGameObject())return;
             if(Board.BattleCamera.pixelRect.Contains(mouse.position.ReadValue()))
             {
