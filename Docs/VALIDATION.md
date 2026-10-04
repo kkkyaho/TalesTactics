@@ -385,3 +385,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 다오스의 정상 AI 블래스트에서 기술명/시전 자세, 두 아군 각각30 피해 숫자/피격 표시, 다음 적 턴과 결과 문구를 기록했다. 단일 방향의 짧은 캡처이며 모든 프레임이나 레이저 시각 검수는 아니다. 파라가 정상 적 공격으로 HP246→141→42 이후 쓰러지고 턴 목록에서 빠지는 것을 관찰했다. HP0 숫자 캡처 자체는 없다. Restart 후 파라 생존·HP246/246·MP109/109·게이지0·위치/명령 복원을 확인했다.
 - 사용자 원본/백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 보존됐다. 수집기errors.txt 없음, player.log Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두exe/두Runtime DLL도 기존 PixelInteraction 빌드 해시와 일치한다.
 - PixelCombatReview에 캡처22장·events/hardware/performance 및 save-integrity.json을 보존했다. 약570초 혼합 구간은 장시간 성능 시험이 아니다. 코드/에셋 변경이나 Unity 테스트/빌드 재실행은 없고 기존93/53 통과 기록을 유지한다. 대표 연출 검수 완료이며 전6장 수동 완주·보스 격파·전체 기술/방향 검수·사람 난이도/실물 패드 평가를 뜻하지 않는다.
+
+## 2026-10-04 — 전체20종 중간 동작/외형 보강(1번)
+
+- 영웅10명·일반 적9종·다오스에 20개 보충 시트/320개 그림을 추가하고 공격4·일반 기술5·궁극기4프레임을 연결했다. 기존 핵심 타격/궁극기 그림과 준비/복귀 공유를 포함한 수치다. ReleaseFrame으로 준비/발동 구간을 나누고 기존 ReleaseSkill 판정 시점과 회복 시간에 맞춰 재생한다. 전투 규칙/능력치/비용/피해/저장 스키마는 변경하지 않았다.
+- 실제 Unity EditMode **95/95**(0.69초), PlayMode **54/54**(102.77초) 통과. AnimationPolish/editmode-results.json, playmode-results.json. 새 테스트는 단계 범위/레거시 클립과20종의 실제 준비 대기·발동·후속·복귀·쓰러짐/대기 중단을 확인한다. 엔진 독립 ManagedChecks는 이번에 재실행하지 않았다.
+- Sprite Editor API로 경계/윤곽/발 피벗/PPU를 연결했다. 채택320칸은 alpha 분석에서 빈 칸·불투명 배경·경계 잘림 검사를 통과했다. 실제 Unity 렌더링 영웅/적 ×4방향8장으로 체형·장비 식별·크기·잘림을 비교했다. 시온2개 행의 좌우 참조를 보정했다. 임시 Play Mode 갤러리와 Assets 아래 임시 캡처는 제거했고 Scene/ProjectSettings 변경은 없다. Application.runInBackground도 검수 전 false로 복원했다. 상세 화면/한계: AnimationPolish/README.md.
+- Windows 일반 빌드 **32.812초/오류0/경고7**, 개발 빌드 **27.000초/오류0/경고9** 성공. 기존 Pipeline 비활성 안내·개발 검수의 사용 중단 API/전처리기·직렬화·셰이더 경고가 남아 있다. AnimationPolish/windows-build.json, development-build.json, build-hashes.json에 결과와 해시를 보관했다.
+- 새 개발 플레이어7회 독립 실행 통과: 1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원 통과. 사용자 원본/백업 불변, 실행 로그 Exception/Assertion/Error 검색0건. PlayerReviews/fd83d49d46c040e486b3a8b7c21a83c5-summary.json 및 장별 보고서. 기본 SPD/AI 자동 검증이며 CT 완주를 새로 반복하지 않았다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 쓰지 않는다.
+- 요청한 중간 프레임 및 자세별 외형 일관성 개선은 완료했다. 전6장 사람 수동 완주·전체 기술별 독립 작화·외부 전문가 원작 외형 승인·사람 난이도/실물 패드 검수는 이번 완료 범위에 포함하지 않는다.

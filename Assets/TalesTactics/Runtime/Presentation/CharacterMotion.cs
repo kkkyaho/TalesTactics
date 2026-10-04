@@ -28,7 +28,7 @@ namespace TalesTactics
         }
         public void BeginSkill(SkillData skill,float prepare,float recover)
         {
-            Set(skill.Animation);started=Time.time;presenting=skill.Animation!=AnimationKind.Attack;
+            Set(skill.Animation);started=Time.time;presenting=true;
             specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;
         }
         public void ReleaseSkill(){released=true;releasedAt=Time.time;}
@@ -62,10 +62,9 @@ namespace TalesTactics
                 action==AnimationKind.Dead?unit.Data.Poses?.Dead?.Sample(view,t,false):null;
             if(presenting)
             {
-                var clip=specialUltimate?unit.Data.Poses?.Ultimate:unit.Data.Poses?.Skill;
-                int index=released?1:0;
-                if(clip?.Frames!=null&&clip.Frames.Length>index)
-                    frame=clip.Frames[index]?.Get(view);
+                var clip=specialUltimate?unit.Data.Poses?.Ultimate:
+                    action==AnimationKind.Attack?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
+                frame=clip?.SamplePhase(view,released?Time.time-releasedAt:t,released?recovery:windup,released);
                 if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
             }
             var pose=unit.Data.Poses?.Get(action,view);

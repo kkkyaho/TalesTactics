@@ -51,10 +51,10 @@ namespace TalesTactics.PlayModeTests
             var camera=director.Board.BattleCamera;
             foreach(var data in director.Catalog.Characters)
             {
-                var unique=new HashSet<Sprite>();
                 foreach(var clip in new[]{data.Poses.Skill,data.Poses.Ultimate})
                 {
-                    Assert.That(clip.Frames.Length,Is.EqualTo(2),data.Id);
+                    var unique=new HashSet<Sprite>();
+                    Assert.That(clip.Frames.Length,Is.GreaterThanOrEqualTo(4),data.Id);
                     foreach(var frame in clip.Frames)foreach(Facing f in System.Enum.GetValues(typeof(Facing)))
                     {Assert.That(frame.Get(f),Is.Not.Null);Assert.That(unique.Add(frame.Get(f)),Is.True);}
                 }
@@ -68,11 +68,11 @@ namespace TalesTactics.PlayModeTests
                     foreach(var skill in new[]{data.Skills[0],data.UltimateSkill})
                     {
                         var clip=skill.IsUltimate?data.Poses.Ultimate:data.Poses.Skill;
-                        motion.BeginSkill(skill,0.2f,0.1f);yield return new WaitForEndOfFrame();
+                        motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
                         Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
                         motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[1].Get(facing)),data.Id+facing);
-                        yield return new WaitForSeconds(0.12f);yield return new WaitForEndOfFrame();
+                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame].Get(facing)),data.Id+facing);
+                        yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
                         Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
                     }
                 }

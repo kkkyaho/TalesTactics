@@ -3,6 +3,30 @@ namespace TalesTactics.Tests
 {
     public partial class BattleRuleTests
     {
+        [Test] public void ActionPhasesHoldPreparationUntilExplicitRelease()
+        {
+            var clip=new DirectionalSpriteClip{Frames=new DirectionalSprites[5],ReleaseFrame=2};
+            Assert.That(clip.PhaseFrameIndex(0,1,false),Is.EqualTo(0));
+            Assert.That(clip.PhaseFrameIndex(.5f,1,false),Is.EqualTo(1));
+            Assert.That(clip.PhaseFrameIndex(100,1,false),Is.EqualTo(1));
+            Assert.That(clip.PhaseFrameIndex(0,1,true),Is.EqualTo(2));
+            Assert.That(clip.PhaseFrameIndex(.4f,1,true),Is.EqualTo(3));
+            Assert.That(clip.PhaseFrameIndex(.8f,1,true),Is.EqualTo(4));
+            Assert.That(clip.PhaseFrameIndex(100,1,true),Is.EqualTo(4));
+        }
+        [Test] public void ActionPhasesKeepLegacyPairsAndHandleInvalidData()
+        {
+            var clip=new DirectionalSpriteClip{Frames=new DirectionalSprites[2]};
+            Assert.That(clip.PhaseFrameIndex(100,1,false),Is.Zero);
+            Assert.That(clip.PhaseFrameIndex(100,1,true),Is.EqualTo(1));
+            clip.ReleaseFrame=99;
+            Assert.That(clip.PhaseFrameIndex(100,1,true),Is.EqualTo(1));
+            clip.ReleaseFrame=-2;
+            Assert.That(clip.PhaseFrameIndex(float.NaN,1,false),Is.Zero);
+            Assert.That(clip.PhaseFrameIndex(-2,0,true),Is.EqualTo(1));
+            clip.Frames=null;
+            Assert.That(clip.SamplePhase(Facing.Front,1,1,true),Is.Null);
+        }
         [Test] public void SpriteClipLoopsAtFrameBoundariesAndClampsCollapse()
         {
             var clip=new DirectionalSpriteClip{Frames=new DirectionalSprites[4],FramesPerSecond=8};

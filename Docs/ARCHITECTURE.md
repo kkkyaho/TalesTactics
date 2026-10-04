@@ -131,3 +131,9 @@ PixelCampaignContent.CreateEnemies는 Content/PixelCampaign에 없는 새 캐릭
 BoardView가 PixelBattlefield를 전장 수명에 맞춰 생성/삭제한다. PixelTerrain의16개 atlas구역을 타일 소재로 쓰고, PixelProps의16개 Sprite로 비보행칸/외곽을 장식한다. PixelBackdrops의2×3패널을 장별 원경으로 사용한다. 장식 충돌체는 제거하고 모든 소유 Material은 OnDestroy에서 정리한다. 카메라를 따라 도는 billboard와 수면 흔들림은 전투 RNG/좌표를 바꾸지 않는다. Point/무압축/밉맵 없음 설정이며 3D 회전/비정수 확대에서 정수 픽셀 배율을 보장하지 않는다.
 
 BoardView의 rangeBorders는 타일별 LineRenderer를 필요할 때 생성해 전장 안에서 재사용한다. 경계는 실제 타일 Renderer.bounds 위에 놓고 공유 HighlightMaterial의 _BaseColor/_Color를 PropertyBlock으로 지정한다. ClearHighlights는 선을 숨기고 경로를 지우며, ResetBoard는 전장과 사전을 정리한다. 타일 색상과 함께 쓰므로 바닥 그림을 유지하면서 경계를 식별할 수 있다. 이동 가능성/사거리/효과 범위는 기존 Grid와 SkillResolver 결과를 그대로 사용한다.
+
+## 2026-10-04 — 단계별 중간 동작
+
+CharacterPoses.AttackMotion은 준비/기존 타격/후속/복귀 4프레임이다. Skill은 준비/기존 Cast/Attack/후속/복귀 5프레임, Ultimate는 준비/기존 전용 charge/release/복귀 4프레임이다. DirectionalSpriteClip.ReleaseFrame은 준비와 발동 구간을 나누며 SamplePhase는 각 구간의 시간 비율을 사용한다. CharacterMotion.BeginSkill과 ReleaseSkill은 기존 전투 코루틴의 준비/회복 시간을 받아 발동 전에 타격 그림이 노출되는 것을 막고 회복 끝에 대기로 돌아간다. Set 호출은 현재 연출을 중단한다. Walk/Dead는 기존 FPS 기반 Sample을 유지한다.
+
+AnimationPolishImporter는 BattleCatalog의 영웅/적20종에만 보충 시트를 연결한다. 기존 핵심 그림과 전투 데이터는 보존하며, 재실행 시 이미 확장된 Ultimate에서도 기존 핵심2장을 유지한다. AssetPostprocessor나 자동 생성 메뉴는 추가하지 않는다. Tools/MeasureAnimationPolish.py는 원본 이미지 픽셀을 수정하지 않고 경계/윤곽 CSV와 감사 JSON을 만든다. 검수 갤러리 스크립트는 Play Mode 임시 오브젝트만 만든다.
