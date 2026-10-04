@@ -404,3 +404,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 기존 Builds/Windows 출력의 첫 빌드는 실행 중인 사용자 플레이어가 lib_burst_generated.dll을 점유하여 실패했다(25.570초/오류1, windows-build-locked.json). 플레이어를 강제 종료하지 않고 별도 Builds/WindowsCompactHud/TalesTactics.exe로 빌드하여 성공했다(4.569초/오류0/경고1). 현재 새 UI 실행 경로는 WindowsCompactHud이며 기존 Windows 폴더를 최신 검증본으로 사용하지 않는다.
 - 개발 Builds/CampaignReview 빌드25.335초/오류0/경고9 성공. 최종 일반 빌드는 Pipeline 비활성 안내1건, 개발 빌드는 기존 사용 중단 API/전처리기·직렬화·셰이더 경고 포함9건이다. CompactHud/windows-build.json, development-build.json, build-hashes.json 참조.
 - 새 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원. 사용자 원본/백업 불변. PlayerReviews/d216ec73315643378d3e07d433b72264-summary.json. 실행 로그 Exception/Assertion/Error 검색0건. 숨겨진 플레이어 캡처는 시각 검수로 사용하지 않는다. 기본 SPD/AI 자동 검증이며 사람의 전6장 수동 완주나 실물 패드 검수가 아니다.
+
+## 2026-10-04 — 판매 준비 개선안 1–2: 전장 가독성·편성/장비/상점
+
+- 실제 타일의 투영 경계로 전체 카메라를 맞추고 현재 유닛/선택 대상 집중 보기, 흰 행동자·금색 대상·청록 목적지 테두리, 이전/다음 대상 버튼·Tab/Shift+Tab·LT/RT를 추가했다. 대상 순환과 실행 확정을 분리하며 기존 Resolver로 유효성을 판단한다.
+- 출전 준비를 장 선택/초상화 편성/선택 유닛 정보의 3열과 하단 고정 출전 버튼으로 구성했다. 카드 선택과 편성 변경을 분리했다. 장비 직접 후보 선택과 능력치 증감 비교, 구매/매각 공통 화면·종류 필터·거래 후 페이지 유지·구매 직후 장비 비교 동선, 별도 훈련/전투 설정을 연결했다. 저장 스키마/전투 규칙은 변경하지 않았다.
+- 실제 Unity EditMode **95/95**(0.38초), PlayMode **58/58**(104.98초) 통과. ReleaseUi/editmode-results.json, playmode-results.json. 신규 3개 검사는 6장×4회전/집중 보기·복귀/목적지·재출전, 편성 선택 분리/구매→비교→저장, 대상 순환/능력창 입력 보호를 확인한다. 기존 테스트는 변경된 명시적 장비 후보 선택 동선을 따른다. 엔진 독립 ManagedChecks는 재실행하지 않았다.
+- 최초 PlayMode 38/55 통과·17실패에서 전투 종료 후 지연 파괴 중 카메라 null 참조와 빈 매각 안내 차이를 찾았다. ResetBoard가 즉시 런타임 참조를 비우고 LateUpdate가 Session을 확인하도록 수정했다. 신규 테스트의 NUnit 구문 컴파일 오류를 수정한 뒤 테스트 도구의 중단/0개 검색 상태가 발생해 스크립트 재로드로 복구했다. 0개 결과는 검증으로 인정하지 않고 최종 58개 실제 실행 결과로 교체했다. 초기 실패 증거는 ReleaseUi/playmode-initial.json에 남겼다.
+- Game View 1920×1080에서 편성/전체 전장/현재 유닛 확대, 1366×768에서 편성/상점 목록·상세/장비 증감/설정/전장/대상 선택 화면을 직접 확인했다. 화면별 Repaint와 증가한 frameCount를 확인하고 격리 CampaignSave/저장 콜백으로 구매→장착 비교를 조작했다. 캡처는 ReleaseUi/*.png. 임시 Assets 캡처를 제거했고 Game View 기본 Full HD·runInBackground=false로 복원했다. Scene은 dirty=false이며 ProjectSettings 변경은 없다.
+- Windows 일반 빌드 **26.508초/오류0/경고7**, 개발 빌드 **27.902초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. ReleaseUi/windows-build.json, development-build.json 및 build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsReleaseUi/TalesTactics.exe**다. 기존 실행 중인 Builds/Windows 플레이어를 종료하지 않고 별도 위치에 빌드했다.
+- 새 개발 플레이어 **7회 독립 실행 모두 통과**: 1~6장 승리 27/20/34/22/33/22 플레이어턴, 재실행 정상 패배 2턴과 재출전/저장 복원/중복 보상 보호. 구매 가격·보유 수량·새 UI 장비 장착 저장, 가상 패드 상점 진입/취소도 통과했다. PlayerReviews/85f1af87e4634056a8f36f59db07d54c-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error 검색 0건(ReleaseUi/save-and-log-check.json).
+- 범위/한계: 이번 요청의 1–2번 UI 개선 완료이며 전체 판매 준비 완료를 뜻하지 않는다. 기본 SPD/AI 자동 캠페인 검수이며 사람이 전6장을 수동 완주하거나 실물 게임패드·세로 화면·전체 모니터 비율을 검수한 결과는 아니다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 사용하지 않는다. 전체 UI 화면과 조작은 ReleaseUi/README.md 참고.

@@ -38,7 +38,7 @@ namespace TalesTactics
             hint=label.GetComponent<TextMeshProUGUI>();hint.font=battle.Hud.Font;hint.fontSize=16;hint.raycastTarget=false;
             hint.alignment=TextAlignmentOptions.Bottom;hint.color=Color.yellow;
             var rect=hint.rectTransform;rect.anchorMin=new Vector2(0,0);rect.anchorMax=new Vector2(1,0);rect.pivot=new Vector2(.5f,0);rect.sizeDelta=new Vector2(0,24);
-            hint.text="왼쪽 스틱: 커서 · 방향키: 메뉴 순환 · A/×: 선택 · B/○: 취소 · LB/RB: 회전 · 오른쪽 스틱: 확대 · R3: 초기화";
+            hint.text="왼쪽 스틱: 커서 · 방향키: 메뉴 순환 · A/×: 선택 · B/○: 취소 · LB/RB: 회전 · LT/RT: 대상 · 오른쪽 스틱: 확대 · R3: 초기화";
             overlay.enabled=false;
         }
         void Activate(bool value)
@@ -65,7 +65,7 @@ namespace TalesTactics
             if(pad==null){Activate(false);return;}
             var stick=pad.leftStick.ReadValue();var right=pad.rightStick.ReadValue();
             bool pressed=pad.buttonSouth.wasPressedThisFrame||pad.buttonEast.wasPressedThisFrame||pad.dpad.ReadValue()!=Vector2.zero||
-                pad.leftShoulder.wasPressedThisFrame||pad.rightShoulder.wasPressedThisFrame||pad.rightStickButton.wasPressedThisFrame;
+                pad.leftShoulder.wasPressedThisFrame||pad.rightShoulder.wasPressedThisFrame||pad.rightStickButton.wasPressedThisFrame||pad.leftTrigger.wasPressedThisFrame||pad.rightTrigger.wasPressedThisFrame;
             if(stick.sqrMagnitude>.01f||right.sqrMagnitude>.01f||pressed)Activate(true);
             else if(Mouse.current!=null&&(Mouse.current.delta.ReadValue().sqrMagnitude>1||Mouse.current.leftButton.wasPressedThisFrame))Activate(false);
             if(!active)return;
@@ -76,6 +76,8 @@ namespace TalesTactics
             var target=Hit();Hover(target);
             if(battle.Session!=null&&!battle.StoryActive&&!battle.Hud.UnitDetailsOpen)
             {
+                if(pad.leftTrigger.wasPressedThisFrame)battle.CycleTarget(-1);
+                if(pad.rightTrigger.wasPressedThisFrame)battle.CycleTarget(1);
                 if(pad.leftShoulder.wasPressedThisFrame)battle.Board.RotateCamera(-90);
                 if(pad.rightShoulder.wasPressedThisFrame)battle.Board.RotateCamera(90);
                 if(!battle.TimingActive&&pad.rightStickButton.wasPressedThisFrame)battle.Board.ResetCamera();

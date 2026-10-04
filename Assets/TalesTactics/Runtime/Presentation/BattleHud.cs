@@ -20,18 +20,7 @@ namespace TalesTactics
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
-            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-94),new Vector2(-12,-12));
-            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,12),new Vector2(-12,126));
-            if(CompactLayout)
-            {
-                Place(left,Vector2.zero,new Vector2(0.5f,0),new Vector2(12,138),new Vector2(-6,658));
-                Place(commands,new Vector2(0.5f,0),new Vector2(1,0),new Vector2(6,138),new Vector2(-12,658));
-            }
-            else
-            {
-                Place(left,Vector2.zero,new Vector2(0,1),new Vector2(12,138),new Vector2(280,-106));
-                Place(commands,new Vector2(1,0),Vector2.one,new Vector2(-300,138),new Vector2(-12,-106));
-            }
+            PreparationLayout();
         }
         static void Place(RectTransform r,Vector2 min,Vector2 max,Vector2 low,Vector2 high)
         {r.anchorMin=min;r.anchorMax=max;r.offsetMin=low;r.offsetMax=high;}
@@ -98,7 +87,7 @@ namespace TalesTactics
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
         {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.61f,0.46f,0.25f,0.9f);border.effectDistance=new Vector2(1,-1);return r;}
-        void Clear(Transform parent){foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
+        void Clear(Transform parent){if(parent==header){preparationLayout=false;if(center!=null)center.gameObject.SetActive(false);}foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
@@ -116,70 +105,10 @@ namespace TalesTactics
             r.anchorMin=new Vector2((float)column/count,1);r.anchorMax=new Vector2((float)(column+1)/count,1);
             r.sizeDelta=new Vector2(-12,32);
         }
-        public void ShowDeployment()
-        {
-            CloseUnitDetails();
-            UpdateLayout();
-            Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     출전 준비",12,34,27);Label(header,battle.TrainingMode?"훈련 / "+ObjectiveNames.Name(battle.TrainingObjective):CampaignStages.Title(battle.SelectedStage)+" / 모든 적 격파",49,28,16);
-            Label(left,"출전 "+battle.Deployment.Count+" / 6 · 캠페인 6인 권장",12,30,16);
-            for(int i=0;i<battle.Catalog.Characters.Length;i++){int index=i;var c=battle.Catalog.Characters[i];Button(left,(battle.Deployment.Contains(i)?"● ":"○ ")+c.DisplayName,50+i*39,()=>{if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);ShowDeployment();},true,34);}
-            Label(commands,"BATTLE SETTINGS · "+battle.Campaign.Gold+"G",12,35,20);
-            Button(left,"전투 규칙 설정",465,ShowBattleOptions);
-            Button(commands,battle.TrainingMode?"훈련: Lv25 / 모든 일반 스킬":"캠페인: 저장된 성장 사용",58,()=>{battle.TrainingMode=!battle.TrainingMode;ShowDeployment();});
-            Button(commands,battle.Campaign.AutoTiming?"파라 타이밍: 자동":"파라 타이밍: 수동",106,()=>{battle.Campaign.AutoTiming=!battle.Campaign.AutoTiming;battle.PersistCampaign(battle.Campaign);ShowDeployment();});
-            Button(commands,"전투 시작",166,battle.RequestBattle,battle.Deployment.Count>0,48);
-            Button(commands,"전투 전 이야기",235,()=>battle.ReplayStory(false));
-            Button(commands,"전투 후 이야기",281,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));
-            Button(commands,"장비 상점",350,()=>ShowShop());
-            Button(commands,"장비 관리",405,ShowEquipmentRoster);
-            Button(commands,"성장 · 승급",451,ShowGrowthRoster);
-            Button(left,"이전 장 목록",515,()=>ShowChapterPage(chapterPage-1),chapterPage>0);
-            Button(left,"다음 장 목록",561,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count);
-            Label(left,"장 목록 "+(chapterPage+1)+" / "+((CampaignStages.Count+2)/3),607,30,16);
-            for(int i=chapterPage*3;i<Mathf.Min(CampaignStages.Count,(chapterPage+1)*3);i++){int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(commands,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),497+(i%3)*46,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked);}
-            Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?(battle.TrainingMode?"훈련: 기존 테스트 맵 / 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):CampaignStorage.Notice,14,88,17);
-        }
-        void ShowEquipmentRoster()
-        {
-            Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     장비 관리",12,45,25);
-            Label(left,"캐릭터 선택",12,35,20);
-            for(int i=0;i<battle.Catalog.Characters.Length;i++)
-            {var character=battle.Catalog.Characters[i];Button(left,character.DisplayName,50+i*39,()=>ShowEquipment(character),true,34);}
-            Label(commands,"장비를 바꿀 캐릭터를\n선택하세요.",24,100,20);
-            Button(commands,"출전 준비로",150,ShowDeployment);
-            Label(footer,"무기 / 방어구 / 장신구 3슬롯. 현재 등록된 장비를 교체합니다.\n구매한 장비는 파티가 공유합니다. 같은 장비는 보유 수량만큼 장착할 수 있습니다.",14,88,17);
-        }
+        public void ShowDeployment(){RenderDeployment();}
+        void ShowEquipmentRoster(){RenderEquipmentRoster();}
         void ShowEquipment(CharacterData character,EquipmentLoadout draft=null,string notice=null)
-        {
-            if(battle.Session!=null)return;
-            var progress=battle.Campaign.Get(character.Id);
-            if(draft==null)draft=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign);
-            var current=draft;
-            Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     장비 교체",12,45,25);
-            int level=battle.TrainingMode?25:Mathf.Clamp(progress.Level,1,50);bool promoted=!battle.TrainingMode&&progress.Promoted;
-            var before=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign).Preview(level,promoted);
-            var after=current.Preview(level,promoted);
-            Label(left,character.DisplayName,12,70,23);
-            Label(left,$"Lv{level} · {character.Weapon}\n현재 → 변경 후\n\nHP {before.HP} → {after.HP}\nMP {before.MP} → {after.MP}\nSTR {before.STR} → {after.STR}\nMAG {before.MAG} → {after.MAG}\nDEF {before.DEF} → {after.DEF}\nMDF {before.MDF} → {after.MDF}\nSPD {before.SPD} → {after.SPD}\nMOV {before.MOV} → {after.MOV}\nJMP {before.JMP} → {after.JMP}",90,355,18);
-            Label(commands,"슬롯을 눌러 장비 변경",12,65,19);
-            foreach(EquipmentSlot slot in Enum.GetValues(typeof(EquipmentSlot)))
-            {
-                var selected=slot;string title=slot==EquipmentSlot.Weapon?"무기":slot==EquipmentSlot.Armor?"방어구":"장신구";
-                var item=current.Get(slot);bool available=current.Options(slot).Length>0||item!=null;
-                Button(commands,title+": "+(item!=null?item.DisplayName:"없음"),90+(int)slot*65,()=>{current.Cycle(selected);ShowEquipment(character,current);},available,48);
-            }
-            Label(commands,"보유한 호환 장비와 해제를\n차례로 선택합니다. 다른 캐릭터가\n모두 장착한 장비는 제외됩니다.",290,85,17);
-            Button(commands,"적용 · 저장",390,()=>
-            {
-                bool saved=current.TrySave(battle.Campaign,battle.PersistCampaign);
-                ShowEquipment(character,current,saved?"장비를 저장했습니다. 다음 전투에 적용됩니다.":"수량 부족 또는 저장 실패. 기존 장비는 유지했습니다.");
-            });
-            Button(commands,"돌아가기 (미적용 취소)",443,ShowEquipmentRoster);
-            Label(footer,notice??"능력치는 미리보기입니다. 적용 · 저장을 눌러 확정하세요.\n훈련 전투에도 저장된 장비가 적용됩니다.",14,88,17);
-        }
+        {RenderEquipment(character,draft,notice);}
         void ShowGrowthRoster()
         {
             Clear(header);Clear(left);Clear(commands);Clear(footer);
@@ -225,9 +154,9 @@ namespace TalesTactics
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
             var heading=Label(header,BattleTitle+"  ·  "+battle.Session.ObjectiveDescription,8,26,19);
-            heading.rectTransform.offsetMax=new Vector2(-350,heading.rectTransform.offsetMax.y);
+            heading.rectTransform.offsetMax=new Vector2(-420,heading.rectTransform.offsetMax.y);
             var next=Label(header,"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
-            next.rectTransform.offsetMax=new Vector2(-350,next.rectTransform.offsetMax.y);
+            next.rectTransform.offsetMax=new Vector2(-420,next.rectTransform.offsetMax.y);
             message=Label(footer,battle.Message,12,65,17);
             Label(footer,battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,26,15);
             if(u==null)return;
@@ -262,6 +191,9 @@ namespace TalesTactics
             else if(battle.State is TargetSelectionState)
             {
                 Label(commands,battle.SelectedSkill.DisplayName,45,35,17);Button(commands,"실행",88,battle.Confirm,battle.Target.HasValue,32);Button(commands,"취소",128,()=>battle.State.Cancel(),true,32);
+                bool available=battle.AvailableTargets().Length>0;
+                Button(footer,"이전 대상",128,()=>battle.CycleTarget(-1),available,32);HalfButton(footer,0);
+                Button(footer,"다음 대상 · Tab",128,()=>battle.CycleTarget(1),available,32);HalfButton(footer,1);
             }
             else if(battle.State is FacingSelectionState)
             {int i=0;foreach(Facing f in Enum.GetValues(typeof(Facing))){var facing=f;Button(commands,f.ToString(),60+i++*48,()=>battle.ChooseFacing(facing));}}

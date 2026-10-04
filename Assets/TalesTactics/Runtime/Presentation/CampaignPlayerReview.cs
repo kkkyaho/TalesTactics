@@ -249,7 +249,7 @@ namespace TalesTactics
             Check(CampaignInventory.Owned(battle.Campaign,armor.Id)==1,"Shop grants one owned armor");
             Click("출전 준비로");yield return null;Click("장비 관리");yield return null;
             Click(battle.Catalog.Characters[0].DisplayName);yield return null;
-            Click("방어구: 없음");yield return null;Click("적용 · 저장");yield return null;
+            Click("방어구: 없음");yield return null;Click("장착 후보: "+armor.DisplayName);yield return null;Click("적용 · 저장");yield return null;
             Check(new CampaignFile(savePath).Load().Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Equipment UI persists purchased armor");
             Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
         }

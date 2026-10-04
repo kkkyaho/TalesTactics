@@ -11,6 +11,8 @@ namespace TalesTactics
             battle.State is SkillDetailsState?"기술 정보":battle.State is TargetSelectionState?"대상 선택":
             battle.State is MoveSelectionState?"이동 위치":battle.State is FacingSelectionState?"방향 선택":
             battle.State is ActionExecutionState?"행동 중":battle.State is BattleEndState?"전투 결과":"턴 진행";
+        void HalfButton(Transform parent,int column)
+        {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-76),new Vector2(-12,-12));
@@ -29,14 +31,14 @@ namespace TalesTactics
                 Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
             if(CompactLayout)
             {
-                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,198),new Vector2(-12,312));
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(SkillPanel?-420:-246,324),new Vector2(-12,SkillPanel?904:700));
+                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,198),new Vector2(-12,battle.State is TargetSelectionState?372:312));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(SkillPanel?-420:-246,battle.State is TargetSelectionState?384:324),new Vector2(-12,SkillPanel?904:700));
             }
             if(battle.State is CommandState&&!CompactLayout)PlaceCommandBesideUnit();
         }
         Rect BattleViewport(float scale)
         {
-            float bottom=(CompactLayout?(SkillPanel?916:712):198)*scale;
+            float bottom=(CompactLayout?(SkillPanel?916:battle.State is TargetSelectionState?772:712):198)*scale;
             float right=(!CompactLayout&&SkillPanel?432:12)*scale;
             return new Rect(12*scale/Screen.width,bottom/Screen.height,
                 Mathf.Max(1,Screen.width-12*scale-right)/Screen.width,
@@ -95,13 +97,14 @@ namespace TalesTactics
         }
         void DrawCameraControls()
         {
-            string[] names={"좌회전","초기화","우회전","확대 +","축소 −"};
-            System.Action[] actions={()=>battle.Board.RotateCamera(-90),()=>battle.Board.ResetCamera(),()=>battle.Board.RotateCamera(90),()=>battle.Board.ZoomCamera(.9f),()=>battle.Board.ZoomCamera(1.1f)};
+            string[] names={"좌회전","초기화","우회전","확대 +","축소 −","현재 유닛"};
+            System.Action[] actions={()=>battle.Board.RotateCamera(-90),()=>battle.Board.ResetCamera(),()=>battle.Board.RotateCamera(90),()=>battle.Board.ZoomCamera(.9f),()=>battle.Board.ZoomCamera(1.1f),()=>battle.Board.FocusCurrent()};
             for(int i=0;i<names.Length;i++)
             {
                 Button(header,names[i],16,actions[i],!battle.TimingActive,32);
-                var r=(RectTransform)header.GetChild(header.childCount-1);r.anchorMin=r.anchorMax=Vector2.one;r.pivot=new Vector2(1,1);r.sizeDelta=new Vector2(62,32);r.anchoredPosition=new Vector2(-8-(4-i)*66,-16);
+                var r=(RectTransform)header.GetChild(header.childCount-1);r.anchorMin=r.anchorMax=Vector2.one;r.pivot=new Vector2(1,1);r.sizeDelta=new Vector2(62,32);r.anchoredPosition=new Vector2(-8-(5-i)*66,-16);
                 var label=r.GetComponentInChildren<TMPro.TMP_Text>();label.fontSize=14;label.rectTransform.sizeDelta=new Vector2(-4,29);label.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
+                if(names[i]=="초기화")label.text="전체 보기";
             }
         }
         public void ShowUnitDetails(UnitRuntime u)

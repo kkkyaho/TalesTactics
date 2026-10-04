@@ -56,6 +56,7 @@ namespace TalesTactics
             var keyboard=Keyboard.current;
             if(keyboard!=null)
             {
+                if(keyboard.tabKey.wasPressedThisFrame)CycleTarget(keyboard.shiftKey.isPressed?-1:1);
                 if(keyboard.qKey.wasPressedThisFrame)Board.RotateCamera(-90);
                 if(keyboard.eKey.wasPressedThisFrame)Board.RotateCamera(90);
                 if(keyboard.homeKey.wasPressedThisFrame&&!TimingActive)Board.ResetCamera();
@@ -74,7 +75,7 @@ namespace TalesTactics
                 if(mouse.leftButton.wasPressedThisFrame)State.Tile(p);
             }
         }
-        public void SetState(BattleState state){State=state;Target=null;state.Enter();}
+        public void SetState(BattleState state){State=state;Target=null;state.Enter();Board.RefreshFocus();}
         public void BeginBattle()
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
@@ -107,7 +108,7 @@ namespace TalesTactics
         {
             var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
             if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Target=null;Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
-            Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Hud.Refresh();
+            Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Board.RefreshFocus();Hud.Refresh();
         }
         public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}
         public void ChooseFacing(Facing f){if(!(State is FacingSelectionState))return;Session.Active.Facing=f;RefreshViews();SetState(new TurnEndState(this));}

@@ -143,3 +143,9 @@ AnimationPolishImporter는 BattleCatalog의 영웅/적20종에만 보충 시트�
 BattleCompactHud는 기존 BattleHud의 전투 레이아웃을 보완하는 partial이다. 좌하단 Unit 패널은344×174 Canvas 단위의 요약, 상세 정보는 별도 UnitDetails 패널이다. 상세창은 CanvasGroup.interactable로 기존 버튼을 잠그고 BattleDirector/GamepadPointer의 전장·카메라 입력을 차단한다. 닫기/취소는 전투 State와 HP/MP를 변경하지 않는다. Refresh 또는 Restart에서 상세창을 닫고 원래 상호작용을 복원한다.
 
 CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 제한 배치한다. Skill 목록/상세는 오른쪽 패널로 전장 viewport와 분리하고 TargetSelection은 하단으로 이동한다. 기존 Button 오브젝트 이름을 유지해 게임패드/자동 검수 경로를 보존하며 표시 문구만 간결하게 바꾼다. 기존 데이터·Scene·출전/상점/장비 구조는 재생성하지 않는다.
+
+## 전장 가독성과 출전 준비 UI
+
+BoardReadability는 행동자/대상/이동 목적지의 테두리와 집중 보기 상태를 관리한다. BoardView.FitBattlefield는 각 타일의 높이/유닛 여유를 포함한 카메라 공간 경계를 투영한다. ResetCamera는 집중 상태를 해제하고 ResetBoard는 지연 파괴 전에 런타임 참조를 비운다. BattleTargetNavigation은 기존 Resolver의 InRange/Targets 결과로 유효한 위치를 순환하고 실행 판정은 기존 Confirm 경로에 남긴다.
+
+BattlePreparationHud는 기존 header/left/commands/footer를 재사용하고 준비 화면에만 중앙 PreparationContent 패널을 표시한다. 카드 선택과 Deployment 변경은 분리한다. EquipmentLoadout의 분리된 초안을 슬롯/후보 목록으로 수정하며 TrySave로 확정한다. BattleMarketHud는 구매/매각 공통 목록과 종류 필터·선택 상세·페이지를 렌더링하고 기존 CampaignInventory 거래/보호 검사를 재사용한다. 구매 장비 장착은 호환 캐릭터를 선택한 뒤 장비 초안 비교로 연결하며 저장 전 원본 장비를 변경하지 않는다.

@@ -23,11 +23,12 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Campaign.Gold,Is.EqualTo(150));Assert.That(CampaignInventory.Owned(director.Campaign,item.Id),Is.EqualTo(1));
             Click("출전 준비로");yield return null;Click("장비 관리");yield return null;
             var character=director.Catalog.Characters[0];Click(character.DisplayName);yield return null;
-            Click("방어구: 없음");yield return null;Click("적용 · 저장");yield return null;
+            Click("방어구: 없음");yield return null;Click("장착 후보: "+item.DisplayName);yield return null;Click("적용 · 저장");yield return null;
             var saved=new CampaignFile(path).Load();Assert.That(saved.Gold,Is.EqualTo(150));
             Assert.That(saved.Get(character.Id).Equipment[(int)EquipmentSlot.Armor],Is.EqualTo(item.Id));
             Click("돌아가기 (미적용 취소)");yield return null;Click(director.Catalog.Characters[1].DisplayName);yield return null;
-            Assert.That(UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="방어구: 없음").interactable,Is.False);
+            Click("방어구: 없음");yield return null;
+            Assert.That(UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="장착 후보: "+item.DisplayName),Is.False,"Equipped inventory cannot be offered twice");
             Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
             director.Campaign=saved;Click("전투 시작");yield return null;
             var unit=director.Session.Units.Single(u=>u.Team==Team.Player&&u.Data.Id==character.Id);

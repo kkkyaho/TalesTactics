@@ -1,0 +1,398 @@
+{
+  "status": "completed",
+  "duration": 102.34,
+  "summary": {
+    "total": 55,
+    "passed": 38,
+    "failed": 17,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCatalogSkillsExecuteWithMatchingPreviewAndFiniteCosts",
+      "Status": "Passed",
+      "Duration": 1.4862004,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections",
+      "Status": "Passed",
+      "Duration": 2.0231677,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllSkillDetailPanelsFitAndKeepBattleValues",
+      "Status": "Passed",
+      "Duration": 1.553878,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ArrivalMovementEndsBattleAndEscortDeathFails",
+      "Status": "Passed",
+      "Duration": 0.2902091,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ArtDirectionsMotionAndCameraRotationRemainConnected",
+      "Status": "Passed",
+      "Duration": 0.1656047,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AttackRecoversGuardPersistsAndMissingPoseFallsBack",
+      "Status": "Passed",
+      "Duration": 1.0911275,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.BundledFontCoversCatalogWithoutOperatingSystemFonts",
+      "Status": "Passed",
+      "Duration": 0.0975481,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CameraRotationZoomAndResetPreserveBattle",
+      "Status": "Failed",
+      "Duration": 0.1732157,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CampaignBalanceScenariosFinishAndReportCasualties",
+      "Status": "Passed",
+      "Duration": 0.3210117,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards",
+      "Status": "Failed",
+      "Duration": 0.1940491,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CatalogProfilesRenderDistinctFinalesWithoutChangingHealth",
+      "Status": "Passed",
+      "Duration": 0.86628,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ChapterShopShowsLockedDetailsThenUnlocksAfterReward",
+      "Status": "Passed",
+      "Duration": 0.1876011,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle",
+      "Status": "Passed",
+      "Duration": 4.3277746,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CompactUnitSummaryAndDetailsPreserveBattleAndInput",
+      "Status": "Failed",
+      "Duration": 0.1918316,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame",
+      "Status": "Passed",
+      "Duration": 0.8788607,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CTUtilityScenariosReachEveryObjectiveWithoutForcedDamage",
+      "Status": "Passed",
+      "Duration": 1.3929218,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.DefeatShowsRestartCommand",
+      "Status": "Failed",
+      "Duration": 0.1499912,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.DeploymentButtonStartsWiredScene",
+      "Status": "Passed",
+      "Duration": 0.1118527,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EffectsAudioDoesNotReplaceMusicSource",
+      "Status": "Passed",
+      "Duration": 0.0900903,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EffectsExpireAndRestartCleansPresentation",
+      "Status": "Failed",
+      "Duration": 0.961534,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EntireRosterUsesAuthoredAttackPhasesAndCanBeInterrupted",
+      "Status": "Passed",
+      "Duration": 18.4443297,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.EquipmentDraftCancelAndTrainingBattleUseSavedLoadout",
+      "Status": "Passed",
+      "Duration": 0.2237328,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ExpansionEquipmentUnlocksPurchasesAndPersistsStats",
+      "Status": "Passed",
+      "Duration": 0.2052897,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ExpansionPagesUnlockAndAllStoriesAndMapsFit",
+      "Status": "Failed",
+      "Duration": 0.3086953,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.FullLootInventoryDisplaysReasonAndStillSavesVictory",
+      "Status": "Passed",
+      "Duration": 0.1520822,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GamepadMenusDoNotDoubleSubmitAndReconnect",
+      "Status": "Passed",
+      "Duration": 0.1823159,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GamepadSelectsTilesCancelsAndHandlesTiming",
+      "Status": "Passed",
+      "Duration": 1.210486,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign",
+      "Status": "Passed",
+      "Duration": 0.1700815,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.HealingRevivalAndHealthCostsUseSeparateFeedback",
+      "Status": "Passed",
+      "Duration": 1.5282472,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.LethalAreaEffectsRetainAllRecipientsAfterResolution",
+      "Status": "Failed",
+      "Duration": 0.145157,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.LockedEndingAndFailedRewardsDoNotOpenAfterStory",
+      "Status": "Failed",
+      "Duration": 0.150245,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MovementCoroutineAndUndoRestoreOccupancy",
+      "Status": "Passed",
+      "Duration": 0.2542428,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MusicThemeRestoresPositionAndMissingThemePreservesBattle",
+      "Status": "Passed",
+      "Duration": 0.0962732,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OriginalMusicCatalogPlaysEveryRegisteredTrack",
+      "Status": "Passed",
+      "Duration": 2.1976409,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.PiercingSkillPreviewAndExecutionShareSightAndLineArea",
+      "Status": "Passed",
+      "Duration": 0.1444603,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.PixelRangesStayReadableAndReleaseSceneryAcrossRestarts",
+      "Status": "Failed",
+      "Duration": 0.2016807,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.PixelRosterAndSceneryPreserveSixChapterInteraction",
+      "Status": "Failed",
+      "Duration": 0.1669383,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards",
+      "Status": "Passed",
+      "Duration": 0.2041642,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry",
+      "Status": "Failed",
+      "Duration": 0.1683877,
+      "Message": "  Expected: True\r\n  But was:  False\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry>d__48.MoveNext () [0x0048d] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\SaleSceneTests.cs:40\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ShopBlocksTrainingAndInsufficientGoldWithoutSaving",
+      "Status": "Passed",
+      "Duration": 0.1211983,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ShopPurchaseRetryEquipAndBattleUseRealIsolatedSave",
+      "Status": "Passed",
+      "Duration": 0.2648246,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SkillWindupDefersSingleResolutionAndRestartClearsCues",
+      "Status": "Failed",
+      "Duration": 0.9748152,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.SpecialPosesPrepareReleaseAndRecoverForEntireRoster",
+      "Status": "Passed",
+      "Duration": 28.5871411,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.StoryFlowBuildsChapterMapsAndReplaysWithoutRewards",
+      "Status": "Failed",
+      "Duration": 0.2273265,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave",
+      "Status": "Passed",
+      "Duration": 0.1655656,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TargetPreviewExecutesAndTurnEnds",
+      "Status": "Passed",
+      "Duration": 0.5754168,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TenCharacterStylesHaveDistinctGeometryAndExpire",
+      "Status": "Passed",
+      "Duration": 0.865885,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ThirdChapterSelectionStoryMapAndRewardAreConnected",
+      "Status": "Failed",
+      "Duration": 0.1921877,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TimingSpinCyclesFourViewsWithoutChangingCombatFacing",
+      "Status": "Failed",
+      "Duration": 0.1369152,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TrainingAndDefeatNeverRollRandomRewards",
+      "Status": "Passed",
+      "Duration": 0.1550248,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.UnavailableSkillCanBeInspectedButCannotBeSelected",
+      "Status": "Passed",
+      "Duration": 0.1739454,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.UtilityEnemyCoroutineUsesHealingThroughNormalResolver",
+      "Status": "Passed",
+      "Duration": 1.6247696,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.VictoryAndRestartRecoverKOUnits",
+      "Status": "Failed",
+      "Duration": 0.1598197,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing",
+      "Status": "Failed",
+      "Duration": 0.1627268,
+      "Message": "Unhandled log message: '[Exception] NullReferenceException: Object reference not set to an instance of an object'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "TalesTactics.BoardView.FitBattlefield (System.Boolean force) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:59)\r\nTalesTactics.BoardView.LateUpdate () (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:44)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.WalkCyclesAllFramesInEveryViewAndStopsAtIdle",
+      "Status": "Passed",
+      "Duration": 25.1979459,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
