@@ -31,7 +31,7 @@ namespace TalesTactics
             CloseUnitDetails();Clear(header);Clear(left);Clear(commands);Clear(footer);
             if(center==null)center=Panel("PreparationContent",new Vector2(.23f,0),new Vector2(.74f,1),new Vector2(6,126),new Vector2(-6,-94));
             Clear(center);preparationLayout=true;center.gameObject.SetActive(true);PreparationLayout();
-            Label(header,title+"    ·    "+battle.Campaign.Gold+" G",16,38,25);
+            var heading=Label(header,title+"    ·    "+battle.Campaign.Gold+" G",16,38,25);heading.rectTransform.offsetMax=new Vector2(-238,heading.rectTransform.offsetMax.y);DrawHelpEntry(true);
         }
         void Portrait(Transform parent,CharacterData c,Vector2 low,Vector2 high)
         {

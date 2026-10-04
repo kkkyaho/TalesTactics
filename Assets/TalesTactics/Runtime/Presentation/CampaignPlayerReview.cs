@@ -177,7 +177,7 @@ namespace TalesTactics
             battle.Hud.ShowDeployment();
             yield return null;
             Time.timeScale = 4;
-            if (report.phase == "chapter1") yield return BuyAndEquipArmor();
+            if (report.phase == "chapter1") { yield return ReviewTutorial(); yield return BuyAndEquipArmor(); }
 
             if (report.phase == "resume")
             {
@@ -239,6 +239,28 @@ namespace TalesTactics
             Time.timeScale = 1;
         }
 
+        IEnumerator ReviewTutorial()
+        {
+            var original=JsonUtility.ToJson(battle.Campaign);var deployment=battle.Deployment.ToArray();
+            Click("처음 플레이 · 도움말");yield return null;
+            Check(battle.Hud.HelpOpen,"Player opens first-play help");
+            Click("입문 연습 시작");yield return null;
+            Check(battle.Tutorial==TutorialStep.Movement,"Player enters isolated tutorial");
+            Click("Move / 이동");battle.State.Tile(BattleDirector.TutorialDestination);
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Attack,"Tutorial movement advances only after completion");
+            Click("Attack / 공격");Click("다음 대상 · Tab");Click("실행");
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Healing,"Tutorial attack advances to Mint");
+            var heal=battle.Session.Active.Data.Skills.Single(s=>s.Id=="mint.0");int mp=battle.Session.Active.CurrentMP;
+            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);Click("목표 선택");Click("다음 대상 · Tab");Click("실행");
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Waiting&&battle.Session.Active.CurrentMP==mp-heal.MPCost,"Tutorial healing restores HP through normal resolver and spends MP");
+            Click("Wait / 방향 선택");Click("Front");yield return null;
+            Check(battle.Tutorial==TutorialStep.Complete,"Tutorial finishes after facing selection");
+            Click("출전 준비로");yield return null;
+            Check(!battle.TutorialActive&&battle.Session==null&&JsonUtility.ToJson(battle.Campaign)==original&&battle.Deployment.SequenceEqual(deployment)&&!File.Exists(savePath),"Tutorial leaves campaign, deployment and save untouched");
+        }
         IEnumerator BuyAndEquipArmor()
         {
             var armor=battle.Catalog.Equipment.Single(e=>e.Id=="leather-armor");

@@ -109,6 +109,7 @@ namespace TalesTactics
         }
         public void ShowUnitDetails(UnitRuntime u)
         {
+            if(HelpOpen)return;
             if(unitDetails==null)unitDetails=Panel("UnitDetails",new Vector2(.5f,.5f),new Vector2(.5f,.5f),new Vector2(-230,-240),new Vector2(230,240));
             Clear(unitDetails);unitDetails.gameObject.SetActive(true);unitDetails.SetAsLastSibling();SetMainInteraction(false);
             Label(unitDetails,u.Data.DisplayName+" · Lv"+u.Level,16,36,24);
@@ -123,8 +124,8 @@ namespace TalesTactics
         }
         void SetMainInteraction(bool enabled)
         {
-            foreach(var p in new[]{left,commands,header,footer})
-            {if(p==null)continue;var group=p.GetComponent<CanvasGroup>();if(group==null)group=p.gameObject.AddComponent<CanvasGroup>();group.interactable=enabled;}
+            foreach(var p in new[]{left,commands,header,footer,center})
+            {if(p==null)continue;var group=p.GetComponent<CanvasGroup>();if(group==null)group=p.gameObject.AddComponent<CanvasGroup>();group.interactable=enabled&&!HelpOpen;}
         }
     }
 }

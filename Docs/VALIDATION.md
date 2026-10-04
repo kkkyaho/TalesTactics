@@ -415,3 +415,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **26.508초/오류0/경고7**, 개발 빌드 **27.902초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. ReleaseUi/windows-build.json, development-build.json 및 build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsReleaseUi/TalesTactics.exe**다. 기존 실행 중인 Builds/Windows 플레이어를 종료하지 않고 별도 위치에 빌드했다.
 - 새 개발 플레이어 **7회 독립 실행 모두 통과**: 1~6장 승리 27/20/34/22/33/22 플레이어턴, 재실행 정상 패배 2턴과 재출전/저장 복원/중복 보상 보호. 구매 가격·보유 수량·새 UI 장비 장착 저장, 가상 패드 상점 진입/취소도 통과했다. PlayerReviews/85f1af87e4634056a8f36f59db07d54c-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error 검색 0건(ReleaseUi/save-and-log-check.json).
 - 범위/한계: 이번 요청의 1–2번 UI 개선 완료이며 전체 판매 준비 완료를 뜻하지 않는다. 기본 SPD/AI 자동 캠페인 검수이며 사람이 전6장을 수동 완주하거나 실물 게임패드·세로 화면·전체 모니터 비율을 검수한 결과는 아니다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 사용하지 않는다. 전체 UI 화면과 조작은 ReleaseUi/README.md 참고.
+
+## 2026-10-05 — 판매 준비 개선안 3: 입문 연습·도움말
+
+- 출전 준비의 처음 플레이 · 도움말에서 Lv1 크레스 이동→공격→민트 회복→대기/방향을 직접 수행하는 연습을 추가했다. 단계별 명령/대상을 제한하고 실제 이동·SkillResolver·턴 시작/종료를 사용한다. 연습용 부상을 명시하고 적은 기다린다. 재시작/중단/완료에서 성장·편성·장비·골드·기존 설정·저장을 보존한다.
+- 준비/전투 도움말 및 F1로 여는 8페이지 가이드에 이동/공격/회복/대기, 고저차/방향, 상태, 10명 궁극기 조건, 편성/저장, 입력을 설명한다. 수치/궁극기 조건은 현재 Catalog에서 읽는다. 모달 동안 배경 메뉴와 전장 입력을 차단하고 닫기/F1/Esc/우클릭/패드B로 기존 선택을 유지한다.
+- 실제 Unity EditMode **95/95**(1.01초), PlayMode **61/61**(107.35초) 통과. TutorialHelp/editmode-results.json, playmode-results.json. 신규3개 검사는 실제 행동·취소·잘못된 대상·피해 미리보기·MP 비용·턴 종료 상태 지속시간·캠페인 불변, 도움말8페이지 글자/범위/단독 입력, 연습 중단 후 정상 캠페인을 확인한다. ManagedChecks는 이번에 실행하지 않았다.
+- 최초 PlayMode60/61에서 테스트의 Campaign JSON 기준을 준비 화면의 기본 캐릭터 초기화 전에 수집한 문제를 수정했다. 준비 화면 표시 후 기준을 잡아61/61을 확인했다. 실제 화면에서 가려진 피해 미리보기와 과도한 모달 외곽 효과를 수정했다. 후속 검토에서 연습의 직접 Active 교체를 PracticeTurns+Session.Advance로 바꾸어 정상 EndTurn 경로를 보장했고 최종 전체 검사를 다시 통과했다. 초기 결과는 playmode-initial.json.
+- 1366×768 실제 Game View에서 도움말·궁극기 조건, 이동·공격 미리보기·회복·방향·완료를 확인했다. 버튼 콜백과 타일 선택으로 정상 연출을 진행해 크레스HP145→190, 민트MP120→114를 확인했다. TutorialHelp/*.png에 보존했다. 검수 후 Game View Full HD/runInBackground=false 복원, 임시 Assets 캡처 제거, 테스트가 변경한 폰트 캐시 복원. Scene/ProjectSettings 변경 없음.
+- Windows 일반 빌드 **33.388초/오류0/경고7**, 개발 빌드 **28.010초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. TutorialHelp/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsTutorial/TalesTactics.exe**. 기존 실행 중인 플레이어는 종료하지 않았다.
+- 새 개발 플레이어 **7회 독립 실행 모두 통과**: 입문 연습 정상 완료/무저장 확인 후 1~6장 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·저장 복원·중복 보상 방지. PlayerReviews/161b177e75074f2b8eda8a36df6ee532-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error0건(TutorialHelp/save-and-log-check.json).
+- 범위/한계: 3번 입문 연습·도움말 구현/검증 완료. 기본 SPD/AI 자동 캠페인 검수이며 사람의 전6장 수동 완주·초보자 학습성·실물 패드 검수는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 4번 저장·이어하기·설정이다.

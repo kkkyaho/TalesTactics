@@ -149,3 +149,9 @@ CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 
 BoardReadability는 행동자/대상/이동 목적지의 테두리와 집중 보기 상태를 관리한다. BoardView.FitBattlefield는 각 타일의 높이/유닛 여유를 포함한 카메라 공간 경계를 투영한다. ResetCamera는 집중 상태를 해제하고 ResetBoard는 지연 파괴 전에 런타임 참조를 비운다. BattleTargetNavigation은 기존 Resolver의 InRange/Targets 결과로 유효한 위치를 순환하고 실행 판정은 기존 Confirm 경로에 남긴다.
 
 BattlePreparationHud는 기존 header/left/commands/footer를 재사용하고 준비 화면에만 중앙 PreparationContent 패널을 표시한다. 카드 선택과 Deployment 변경은 분리한다. EquipmentLoadout의 분리된 초안을 슬롯/후보 목록으로 수정하며 TrySave로 확정한다. BattleMarketHud는 구매/매각 공통 목록과 종류 필터·선택 상세·페이지를 렌더링하고 기존 CampaignInventory 거래/보호 검사를 재사용한다. 구매 장비 장착은 호환 캐릭터를 선택한 뒤 장비 초안 비교로 연결하며 저장 전 원본 장비를 변경하지 않는다.
+
+## 입문 연습과 도움말
+
+BattleTutorial은 캠페인과 분리된 Lv1 BattleSession을 만든다. PracticeTurns가 크레스→민트만 순환시키고 Session.Advance/EndTurn으로 실제 턴 시작·종료를 처리한다. PracticeObjective는 자동 승패를 막으며 네 단계의 실제 이동/Resolver 실행/방향 선택으로 완료한다. 허용 명령·타일·기술·대상을 제한하고 취소 시 단계를 유지한다. 캠페인 저장·보상은 호출하지 않으며 Restart로 기존 편성과 옵션을 복원한다.
+
+BattleHelpHud는 준비/전투에서 호출하는 8페이지 모달이다. InputModalOpen을 상세창/도움말 공통 입력 차단 조건으로 사용하며 중앙 편성 영역도 잠근다. 도움말은 선택 상태를 바꾸지 않는다. 전투 수치와 궁극기 조건은 Catalog를 읽고 별도 복사본으로 유지하지 않는다. CampaignPlayerReview의 chapter1은 격리 저장에서 입문 연습을 완료한 후 기존 6장 검증을 진행한다.

@@ -46,9 +46,10 @@ namespace TalesTactics
         void Update()
         {
             if(StoryActive)return;
-            if(Hud.UnitDetailsOpen)
+            if(Keyboard.current!=null&&Keyboard.current.f1Key.wasPressedThisFrame){if(!Hud.CloseHelp())Hud.ShowHelp();return;}
+            if(Hud.InputModalOpen)
             {
-                if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame)Hud.CloseUnitDetails();
+                if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame){if(!Hud.CloseHelp())Hud.CloseUnitDetails();}
                 return;
             }
             if(TimingActive&&Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame)TimingInput();
@@ -90,32 +91,34 @@ namespace TalesTactics
             }
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
-        public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved)SetState(new MoveSelectionState(this));}
-        public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted)SelectSkill(Session.Active.Data.BasicAttack);}
-        public void SkillCommand(){if(IsPlayerCommand)SetState(new ActionSelectionState(this));}
-        public void WaitCommand(){if(IsPlayerCommand)SetState(new FacingSelectionState(this));}
-        public void Undo(){if(IsPlayerCommand&&Session.UndoMove()){RefreshViews();Hud.Refresh();}}
-        public void Guard(){if(IsPlayerCommand&&!Session.Active.Acted){Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);SetState(new FacingSelectionState(this));}}
+        public void Restart(){Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
+        public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved&&TutorialAllows(TutorialStep.Movement))SetState(new MoveSelectionState(this));}
+        public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
+        public void SkillCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
+        public void WaitCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Waiting))SetState(new FacingSelectionState(this));}
+        public void Undo(){if(!TutorialActive&&IsPlayerCommand&&Session.UndoMove()){RefreshViews();Hud.Refresh();}}
+        public void Guard(){if(!TutorialActive&&IsPlayerCommand&&!Session.Active.Acted){Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);SetState(new FacingSelectionState(this));}}
         public bool IsFollowup(SkillData s)=>Session.Active.Acted&&Session.Active.FlamingChain&&s.Gate==SkillGate.FlamingEdge;
         public void SelectSkill(SkillData s)
         {
-            if(Session.Active.Team!=Team.Player)return;
+            if(Session.Active.Team!=Team.Player||!TutorialSkillAllowed(s))return;
             var error=Session.Resolver.CanUse(Session.Active,s,IsFollowup(s));if(error!=null){Message=error;Hud.Refresh();return;}
             SelectedSkill=s;SetState(new TargetSelectionState(this));
         }
         public void SelectTarget(Vector2Int p)
         {
+            if(!TutorialTargetAllowed(p))return;
             var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
             if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Target=null;Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
             Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Board.RefreshFocus();Hud.Refresh();
         }
         public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}
-        public void ChooseFacing(Facing f){if(!(State is FacingSelectionState))return;Session.Active.Facing=f;RefreshViews();SetState(new TurnEndState(this));}
+        public void ChooseFacing(Facing f){if(!(State is FacingSelectionState)||!TutorialAllows(TutorialStep.Waiting))return;Session.Active.Facing=f;RefreshViews();if(!TutorialEndTurn())SetState(new TurnEndState(this));}
         public IEnumerator MoveUnit(Vector2Int p)
         {
+            if(!TutorialAllows(TutorialStep.Movement)||TutorialActive&&p!=TutorialDestination)yield break;
             var u=Session.Active;var path=Session.Grid.Path(u,p);if(path.Count<2||!Session.Move(p))yield break;
-            SetState(new ActionExecutionState(this));yield return Board.AnimateMove(u,path);RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
+            SetState(new ActionExecutionState(this));yield return Board.AnimateMove(u,path);TutorialMoved();RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
         }
         public IEnumerator Execute(SkillData s,Vector2Int p,bool followup=false)
         {
@@ -141,6 +144,7 @@ namespace TalesTactics
             if(!executed)u.Facing=old;else{Board.ReleaseSkill(u);Board.PresentImpact(u,s,p,before,recipients);}
             Message=message;yield return new WaitForSeconds(BoardView.Recovery(s));
             if(s.IsUltimate)Audio.EndTheme();
+            TutorialExecuted(s,executed);
             RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new CommandState(this):new BattleEndState(this));
         }
         public void TimingInput(){if(!TimingActive||timingAttempted)return;timingAttempted=true;TimingSuccess=TimingProgress>=Catalog.Rules.TimingWindowStart&&TimingProgress<=Catalog.Rules.TimingWindowEnd;}

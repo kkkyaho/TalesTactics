@@ -74,7 +74,7 @@ namespace TalesTactics
             if(pad.dpad.down.wasPressedThisFrame||pad.dpad.right.wasPressedThisFrame)Cycle(1);
             if(pad.dpad.up.wasPressedThisFrame||pad.dpad.left.wasPressedThisFrame)Cycle(-1);
             var target=Hit();Hover(target);
-            if(battle.Session!=null&&!battle.StoryActive&&!battle.Hud.UnitDetailsOpen)
+            if(battle.Session!=null&&!battle.StoryActive&&!battle.Hud.InputModalOpen)
             {
                 if(pad.leftTrigger.wasPressedThisFrame)battle.CycleTarget(-1);
                 if(pad.rightTrigger.wasPressedThisFrame)battle.CycleTarget(1);
@@ -115,7 +115,7 @@ namespace TalesTactics
                 ExecuteEvents.ExecuteHierarchy(hit,data,ExecuteEvents.pointerClickHandler);
                 return;
             }
-            if(!battle.Hud.UnitDetailsOpen&&!battle.StoryActive&&battle.Session!=null&&battle.Session.Active.Team==Team.Player&&
+            if(!battle.Hud.InputModalOpen&&!battle.StoryActive&&battle.Session!=null&&battle.Session.Active.Team==Team.Player&&
                 !(battle.State is ActionExecutionState)&&battle.Board.Pick(position,out var tile))battle.State?.Tile(tile);
         }
         public void Cycle(int direction)
@@ -129,7 +129,7 @@ namespace TalesTactics
         }
         public void Cancel()
         {
-            if(battle.Hud.CloseUnitDetails())return;
+            if(battle.Hud.CloseHelp()||battle.Hud.CloseUnitDetails())return;
             if(battle.TimingActive||battle.StoryActive)return;
             if(battle.Session!=null)
             {

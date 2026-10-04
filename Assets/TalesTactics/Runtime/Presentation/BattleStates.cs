@@ -25,7 +25,7 @@ namespace TalesTactics
     public sealed class MoveSelectionState:BattleState
     {
         public MoveSelectionState(BattleDirector b):base(b){}
-        public override void Enter(){B.Board.ShowRange(B.Session.Grid.Reachable(B.Session.Active,out _).Keys,new Color(0.15f,0.65f,1));base.Enter();}
+        public override void Enter(){B.Board.ShowRange(B.TutorialActive?(System.Collections.Generic.IEnumerable<Vector2Int>)new[]{BattleDirector.TutorialDestination}:B.Session.Grid.Reachable(B.Session.Active,out _).Keys,new Color(0.15f,0.65f,1));base.Enter();}
         public override void Tile(Vector2Int p){B.StartCoroutine(B.MoveUnit(p));}
     }
     public sealed class ActionSelectionState:BattleState {public ActionSelectionState(BattleDirector b):base(b){} }

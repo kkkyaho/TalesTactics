@@ -153,26 +153,27 @@ namespace TalesTactics
             CloseUnitDetails();
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
-            var heading=Label(header,BattleTitle+"  ·  "+battle.Session.ObjectiveDescription,8,26,19);
-            heading.rectTransform.offsetMax=new Vector2(-420,heading.rectTransform.offsetMax.y);
-            var next=Label(header,"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
-            next.rectTransform.offsetMax=new Vector2(-420,next.rectTransform.offsetMax.y);
-            message=Label(footer,battle.Message,12,65,17);
-            Label(footer,battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,26,15);
+            var heading=Label(header,BattleTitle+"  ·  "+(battle.TutorialActive?"입문 연습":battle.Session.ObjectiveDescription),8,26,19);
+            heading.rectTransform.offsetMax=new Vector2(-500,heading.rectTransform.offsetMax.y);
+            var next=Label(header,battle.TutorialActive?"이동 → 공격 → 회복 → 대기 · 적은 기다리는 연습 전장입니다.":"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
+            next.rectTransform.offsetMax=new Vector2(-500,next.rectTransform.offsetMax.y);
+            message=Label(footer,battle.TutorialActive?battle.TutorialInstruction:battle.Message,12,65,17);
+            Label(footer,battle.TutorialActive?(battle.State is TargetSelectionState&&battle.Target.HasValue?battle.Message:"입문 연습 · 보상/저장 없음"):battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,battle.TutorialActive?36:26,15);
             if(u==null)return;
-            DrawUnitSummary(u);DrawCameraControls();
+            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);
             Label(commands,BattleTitle,12,36,20);
+            if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);if(battle.RewardPending)Button(commands,"보상 저장 재시도",200,battle.SaveBattleReward);else if(battle.CanReadEnding)Button(commands,"전투 후 이야기",200,battle.ReadEnding);return;}
             if(battle.State is CommandState&&u.Team==Team.Player)
             {
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);
                 Button(commands,"Skill / 스킬",147,battle.SkillCommand,!u.Acted||u.FlamingChain);Button(commands,"Guard / 가드",193,battle.Guard,!u.Acted);
                 Button(commands,"Undo Move / 이동 취소",239,battle.Undo,u.CanUndoMove);Button(commands,"Wait / 방향 선택",285,battle.WaitCommand);Button(commands,"Restart",385,battle.Restart);
-                ArrangeCommandMenu();
+                ArrangeCommandMenu();ApplyTutorialCommands();
             }
             else if(battle.State is ActionSelectionState)
             {
-                int i=0;foreach(var s in u.Data.Skills.Concat(new[]{u.Data.UltimateSkill}).Where(x=>x!=null))
+                int i=0;foreach(var s in u.Data.Skills.Concat(new[]{u.Data.UltimateSkill}).Where(x=>x!=null&&(!battle.TutorialActive||battle.TutorialSkillAllowed(x))))
                 {
                     var skill=s;string error=battle.Session.Resolver.CanUse(u,s,battle.IsFollowup(s));
                     Button(commands,s.DisplayName+" · MP"+s.MPCost+(error!=null?" · 조건 확인":""),48+i*40,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,35);i++;
@@ -196,8 +197,8 @@ namespace TalesTactics
                 Button(footer,"다음 대상 · Tab",128,()=>battle.CycleTarget(1),available,32);HalfButton(footer,1);
             }
             else if(battle.State is FacingSelectionState)
-            {int i=0;foreach(Facing f in Enum.GetValues(typeof(Facing))){var facing=f;Button(commands,f.ToString(),60+i++*48,()=>battle.ChooseFacing(facing));}}
-            else if(battle.State is MoveSelectionState){Label(commands,"푸른 타일: 이동 가능\n경로 위로 마우스를 움직여 확인하세요.",60,130);Button(commands,"취소",230,()=>battle.State.Cancel());}
+            {int i=0;foreach(Facing f in Enum.GetValues(typeof(Facing))){var facing=f;Button(commands,f.ToString(),60+i++*48,()=>battle.ChooseFacing(facing));var label=commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>();label.text=f==Facing.Front?"앞쪽":f==Facing.Back?"뒤쪽":f==Facing.Left?"왼쪽":"오른쪽";}}
+            else if(battle.State is MoveSelectionState){Label(commands,battle.TutorialActive?"푸른 목표 타일을 선택하세요.\n이동을 마치면 공격을 연습합니다.":"푸른 타일: 이동 가능\n경로 위로 마우스를 움직여 확인하세요.",60,130);Button(commands,"취소",230,()=>battle.State.Cancel());}
             else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,"타이밍 입력 (Space)",280,battle.TimingInput);}
         }
         public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":"Space / 버튼 입력")}";}
