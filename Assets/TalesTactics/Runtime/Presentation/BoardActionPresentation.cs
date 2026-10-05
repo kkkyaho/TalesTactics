@@ -8,17 +8,17 @@ namespace TalesTactics
         public static float Windup(SkillData skill)=>Duration(skill.Presentation?.Windup??0.18f,0.18f);
         public static float Recovery(SkillData skill)=>Duration(skill.Presentation?.Recovery??0.3f,0.3f);
         static float Duration(float value,float fallback)=>float.IsNaN(value)||float.IsInfinity(value)?fallback:Mathf.Clamp(value,0.08f,1.5f);
-        public void BeginSkill(UnitRuntime caster,SkillData skill,Vector2Int aim)
+        public void BeginSkill(UnitRuntime caster,SkillData skill,Vector2Int aim,float speed=1)
         {
             SetAnimation(caster,skill.Animation);
-            if(motions.TryGetValue(caster,out var motion))motion.BeginSkill(skill,Windup(skill),Recovery(skill));
+            if(motions.TryGetValue(caster,out var motion))motion.BeginSkill(skill,Windup(skill)/speed,Recovery(skill)/speed);
             battle.Audio.PlayEffect(skill.Animation==AnimationKind.Cast||skill.IsUltimate?"cast":"swing");
             if(skill.IsUltimate)battle.Audio.BeginTheme(caster.Data.AudioTheme);
-            if(root!=null&&skill.Animation!=AnimationKind.Attack)StartCoroutine(PrepareSkill(caster,skill,aim));
+            if(root!=null&&skill.Animation!=AnimationKind.Attack)StartCoroutine(PrepareSkill(caster,skill,aim,speed));
         }
         public void ReleaseSkill(UnitRuntime caster)
         {if(motions.TryGetValue(caster,out var motion))motion.ReleaseSkill();}
-        IEnumerator PrepareSkill(UnitRuntime caster,SkillData skill,Vector2Int aim)
+        IEnumerator PrepareSkill(UnitRuntime caster,SkillData skill,Vector2Int aim,float speed)
         {
             var ring=EffectLine("Skill preparation",ElementColor(skill.Element),skill.IsUltimate?0.045f:0.025f);
             ring.positionCount=33;
@@ -27,7 +27,7 @@ namespace TalesTactics
             label.text=skill.DisplayName;label.fontSize=skill.IsUltimate?3.8f:2.8f;
             label.alignment=TextAlignmentOptions.Center;label.sortingOrder=35;
             label.rectTransform.sizeDelta=new Vector2(4,0.7f);label.color=ElementColor(skill.Element);
-            float duration=Windup(skill);
+            float duration=Windup(skill)/speed;
             for(float elapsed=0;elapsed<duration;elapsed+=Time.deltaTime)
             {
                 float progress=elapsed/duration,radius=Mathf.Lerp(skill.IsUltimate?0.8f:0.5f,0.18f,progress);

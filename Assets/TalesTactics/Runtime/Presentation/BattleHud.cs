@@ -87,7 +87,7 @@ namespace TalesTactics
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
         {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.61f,0.46f,0.25f,0.9f);border.effectDistance=new Vector2(1,-1);return r;}
-        void Clear(Transform parent){if(parent==header){preparationLayout=false;if(center!=null)center.gameObject.SetActive(false);}foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
+        void Clear(Transform parent){if(parent==header){HideResult();preparationLayout=false;if(center!=null)center.gameObject.SetActive(false);}foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
@@ -163,7 +163,7 @@ namespace TalesTactics
             DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);
             Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
-            if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);if(battle.RewardPending)Button(commands,"보상 저장 재시도",200,battle.SaveBattleReward);else if(battle.CanReadEnding)Button(commands,"전투 후 이야기",200,battle.ReadEnding);return;}
+            if(battle.State is BattleEndState){DrawResult();return;}
             if(battle.State is CommandState&&u.Team==Team.Player)
             {
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);
@@ -176,7 +176,7 @@ namespace TalesTactics
                 int i=0;foreach(var s in u.Data.Skills.Concat(new[]{u.Data.UltimateSkill}).Where(x=>x!=null&&(!battle.TutorialActive||battle.TutorialSkillAllowed(x))))
                 {
                     var skill=s;string error=battle.Session.Resolver.CanUse(u,s,battle.IsFollowup(s));
-                    Button(commands,s.DisplayName+" · MP"+s.MPCost+(error!=null?" · 조건 확인":""),48+i*40,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,35);i++;
+                    Button(commands,s.DisplayName+" · MP"+s.MPCost+(error!=null?" · 조건 확인":""),48+i*40,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,35);RememberedSkillButton(skill);i++;
                 }
                 Button(commands,"취소",48+i*40,()=>battle.SetState(new CommandState(battle)));
             }

@@ -163,3 +163,11 @@ BattlePersistence는 Director별 CampaignProfiles/PreferenceFile을 소유한다
 BattleCheckpoint는 캠페인 아군 CommandState에서만 만든다. 콘텐츠 ID, 단계/유닛 수, 위치/점유, 수치, 상태, 큐 인덱스를 검증해 임시 BattleSession을 구성한 뒤 저장 성공 후 Director에 연결한다. SPD는 남은 queue/Round, CT는 유닛별 charge를 내보내고 복원한다. Active.BeginTurn을 다시 호출하지 않아 행동 사용 여부/쿨다운을 보존한다. Random.State는 검증/소비 저장이 성공한 뒤 복원한다. CampaignSave.HasSuspendedBattle은 Unity JsonUtility가 null인 인라인 객체를 재생성하는 동작과 실제 중단 기록을 구분한다. 이전 V2 파일의 누락된 필드는 기본값으로 읽고 미래 중단 버전은 원본 보호 상태로 처리한다.
 
 시스템 메뉴는 기존 Canvas 위 별도 모달이며 InputModalOpen을 재사용한다. PlayerPreferences 초안은 성공적으로 저장한 후 복사해 적용하고 추가 편집이 적용된 설정을 바꾸지 않게 한다. 화면 설정은 Windows에서만 Screen.SetResolution으로 적용하며 음악/효과음 소스와 패드 커서 배율은 즉시 반영한다. CT/AI는 진행 중 Session을 재구성하지 않는다. PreferenceFile은 미지원/손상 파일을 덮어쓰지 않는다.
+
+## 전투 속도와 결과 흐름
+
+BattleFlow는 캐릭터 ID별 마지막 SkillData와 결과 직전 성장/재고/골드 기준을 보관한다. TargetSelection 취소는 일반 공격만 CommandState로, 기술은 SkillDetailsState로 복귀한다. 목록은 GamepadPointer.FocusButton으로 선택을 복원하되 실행하지 않는다.
+
+EnemyTurn 시작 시 PlayerPreferences의 속도/간략 설정을 읽는다. 이동 보간·준비/복귀 대기만 조정하고 SkillResolver.Execute와 턴 종료는 모든 모드에서 동일하게 한 번 실행한다. 전역 Time.timeScale은 변경하지 않는다. 기존 설정 파일의 누락 필드는 정상 속도/전체 연출 기본값이다.
+
+BattleResultHud는 BattleEndState 전용 패널이며 시스템/도움말 모달의 입력 차단에 포함된다. 보상 성공 후 실제 캠페인 차이로 결과를 표시하고 실패 시 성장 행을 감춘다. 기존 pendingReward와 저장 롤백을 사용해 재시도 추첨/중복 지급을 막는다. 다음 장은 준비 화면으로, 재도전은 같은 편성/장으로 BeginBattle을 호출해 이야기를 생략한다.

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 namespace TalesTactics
 {
     // Opt-in development-player check. No code from this file enters release players.
-    // Only the isolated CampaignFile callback is used; never click settings/equipment save buttons.
+    // Every save and settings operation uses the isolated review storage root.
     public sealed class CampaignPlayerReview : MonoBehaviour
     {
         [Serializable] public sealed class Report
@@ -21,6 +21,8 @@ namespace TalesTactics
             public List<string> captureWarnings = new List<string>();
             public float seconds;
             public int playerTurns, moves, attacks;
+            public int enemySpeed;
+            public bool briefEnemies;
             public List<string> checks = new List<string>();
             public List<string> errors = new List<string>();
         }
@@ -172,6 +174,12 @@ namespace TalesTactics
             battle.RewardRoll=()=>2500; // Deterministic 15% drop branch; distribution is checked separately.
             battle.TrainingMode = false;
             battle.UseCT=battle.UseUtilityAI=report.tactical;
+            var flow=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));
+            flow.CT=flow.Utility=report.tactical;
+            flow.EnemySpeedMode=report.phase=="chapter2"?1:report.phase=="chapter3"?2:0;
+            flow.SkipEnemyAnimations=report.phase=="chapter4"||report.phase=="chapter5";
+            Check(battle.SavePreferences(flow,false),"Enemy presentation settings persisted in isolated profile");
+            report.enemySpeed=1<<flow.EnemySpeedMode;report.briefEnemies=flow.SkipEnemyAnimations;
             battle.Deployment.Clear();
             battle.Deployment.AddRange(party);
             battle.Hud.ShowDeployment();

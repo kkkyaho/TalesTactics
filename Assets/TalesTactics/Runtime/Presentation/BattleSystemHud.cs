@@ -23,10 +23,23 @@ namespace TalesTactics
             }
             systemOverlay.gameObject.SetActive(true);systemOverlay.SetAsLastSibling();SetMainInteraction(false);Clear(systemWindow);
             Label(systemWindow,"시스템 · 슬롯 "+(battle.Profiles.Slot+1),16,36,24);
-            Button(systemWindow,"저장 / 이어하기",62,()=>ShowSystemMenu(0));HalfButton(systemWindow,0);
-            Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});HalfButton(systemWindow,1);
-            if(page==0)DrawSaveMenu();else DrawPreferences();
+            Button(systemWindow,"저장 / 이어하기",62,()=>ShowSystemMenu(0));SystemTab(0);
+            Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
+            Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
+            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else DrawFlowPreferences();
             Button(systemWindow,"메뉴 닫기",592,()=>CloseSystemMenu(),true,40);
+        }
+        void SystemTab(int index)
+        {var r=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);r.anchorMin=new Vector2(index/3f,1);r.anchorMax=new Vector2((index+1)/3f,1);}
+        void DrawFlowPreferences()
+        {
+            if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
+            Label(systemWindow,"적 행동 연출",124,38,24);
+            Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",182,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,48);
+            Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",250,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,48);
+            Label(systemWindow,"속도는 적의 이동·준비·복귀 대기에만 적용됩니다.\n간략 모드도 피해·회복·비용·상태 판정을 그대로 실행합니다.\n적 기술명과 처리 결과는 하단 메시지에 남습니다.\n\n아군 연출과 파라 타이밍 입력 시간은 바뀌지 않습니다.\n기술 대상 선택을 취소하면 기술 정보로 돌아가며,\n목록은 캐릭터마다 마지막으로 본 기술을 기억합니다.",324,190,19);
+            Button(systemWindow,"전투 진행 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(2);},true,44);
+            Label(systemWindow,battle.SaveNotice,574,20,14);
         }
         public bool CloseSystemMenu()
         {

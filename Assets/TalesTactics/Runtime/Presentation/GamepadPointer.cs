@@ -127,6 +127,11 @@ namespace TalesTactics
             MoveTo(RectTransformUtility.WorldToScreenPoint(null,buttons[index].transform.TransformPoint(((RectTransform)buttons[index].transform).rect.center)));
             Hover(Hit());
         }
+        public void FocusButton(Button button)
+        {
+            if(!active){EventSystem.current?.SetSelectedGameObject(button.gameObject);return;}
+            MoveTo(RectTransformUtility.WorldToScreenPoint(null,button.transform.TransformPoint(((RectTransform)button.transform).rect.center)));Hover(Hit());
+        }
         public void Cancel()
         {
             if(battle.Hud.CloseSystemMenu()||battle.Hud.CloseHelp()||battle.Hud.CloseUnitDetails())return;

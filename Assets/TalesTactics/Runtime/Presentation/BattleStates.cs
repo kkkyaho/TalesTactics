@@ -34,7 +34,7 @@ namespace TalesTactics
         public readonly SkillData Skill;
         public SkillDetailsState(BattleDirector b,SkillData skill):base(b){Skill=skill;}
         public override string Title=>"스킬 상세";
-        public override void Enter(){B.Board.ClearHighlights();base.Enter();}
+        public override void Enter(){B.RememberSkill(Skill);B.Board.ClearHighlights();base.Enter();}
         public override void Cancel(){B.SetState(new ActionSelectionState(B));}
     }
     public sealed class TargetSelectionState:BattleState
@@ -42,6 +42,7 @@ namespace TalesTactics
         public TargetSelectionState(BattleDirector b):base(b){}
         public override void Enter(){B.Board.ShowSkillRange(B.Session.Active,B.SelectedSkill);base.Enter();}
         public override void Tile(Vector2Int p){B.SelectTarget(p);}
+        public override void Cancel(){B.CancelTarget();}
     }
     public sealed class ActionExecutionState:BattleState {public ActionExecutionState(BattleDirector b):base(b){}public override void Cancel(){} }
     public sealed class FacingSelectionState:BattleState {public FacingSelectionState(BattleDirector b):base(b){} }

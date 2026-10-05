@@ -152,14 +152,14 @@ namespace TalesTactics
             bool starting=timingRing==null;ShowTimingRing(u,progress);if(starting)SetAnimation(u,AnimationKind.Skill);
             if(motions.TryGetValue(u,out var motion)){timingMotion=motion;motion.Spin(progress);}
         }
-        public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path)
+        public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path,float speed=1)
         {
             SetAnimation(u,AnimationKind.Walk);
             for(int i=1;i<path.Count;i++)
             {
                 if(motions.TryGetValue(u,out var motion))motion.WalkFacing(SkillResolver.Toward(path[i-1],path[i]));
                 Vector3 from=battle.Session.Grid[path[i-1]].WorldPosition(battle.Catalog.Rules.TileHeight),to=battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight);
-                for(float t=0;t<1;t+=Time.deltaTime/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
+                for(float t=0;t<1;t+=Time.deltaTime*Mathf.Max(1,speed)/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
                 units[u].position=to;
             }
         }

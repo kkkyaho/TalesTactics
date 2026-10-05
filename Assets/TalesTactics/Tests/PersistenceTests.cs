@@ -26,8 +26,9 @@ namespace TalesTactics.Tests
         [Test] public void SettingsRoundTripAndFutureSettingsRemainUntouched()
         {
             var path=Path.Combine(root,"settings.json");var file=new PreferenceFile(path);file.Load();
-            Assert.That(file.Save(new PlayerPreferences{Music=.6f,Effects=.2f,CursorSpeed=1.5f,CT=true,Utility=true,AutoTiming=true,Slot=2,Width=1366,Height=768}),Is.True);
+            Assert.That(file.Save(new PlayerPreferences{Music=.6f,Effects=.2f,CursorSpeed=1.5f,CT=true,Utility=true,AutoTiming=true,Slot=2,Width=1366,Height=768,EnemySpeedMode=2,SkipEnemyAnimations=true}),Is.True);
             var read=new PreferenceFile(path).Load();Assert.That(read.Slot,Is.EqualTo(2));Assert.That(read.Music,Is.EqualTo(.6f));Assert.That(read.CursorSpeed,Is.EqualTo(1.5f));Assert.That(read.CT&&read.Utility&&read.AutoTiming,Is.True);
+            Assert.That(read.EnemySpeedMode,Is.EqualTo(2));Assert.That(read.SkipEnemyAnimations,Is.True);
             File.WriteAllText(path,"{\"Version\":99}");file=new PreferenceFile(path);file.Load();Assert.That(file.Save(read),Is.False);Assert.That(File.ReadAllText(path),Is.EqualTo("{\"Version\":99}"));
         }
     }

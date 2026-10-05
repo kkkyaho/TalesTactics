@@ -124,7 +124,7 @@ namespace TalesTactics
         }
         void SetMainInteraction(bool enabled)
         {
-            foreach(var p in new[]{left,commands,header,footer,center})
+            foreach(var p in new[]{left,commands,header,footer,center,resultPanel})
             {if(p==null)continue;var group=p.GetComponent<CanvasGroup>();if(group==null)group=p.gameObject.AddComponent<CanvasGroup>();group.interactable=enabled&&!HelpOpen&&!SystemMenuOpen;}
         }
     }
