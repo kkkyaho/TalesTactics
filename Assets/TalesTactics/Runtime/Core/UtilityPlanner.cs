@@ -26,7 +26,7 @@ namespace TalesTactics
                         distance=GridMap.Distance(position,battle.Destination)*3;
                     float exposure=opponents.Where(e=>e.Data.BasicAttack!=null&&battle.Resolver.InRange(e,e.Data.BasicAttack,position))
                         .Sum(e=>battle.Resolver.DamagePreview(e,unit,e.Data.BasicAttack.Effects[0],e.Data.BasicAttack));
-                    float movement=-distance*2-exposure*(unit.CurrentHP<unit.Stats.HP/3?0.3f:0.06f)-GridMap.Distance(origin,position)*0.05f;
+                    float movement=-distance*2-exposure*(unit.CurrentHP<unit.Stats.HP/3?0.3f:0.06f)-GridMap.Distance(origin,position)*0.05f+EnemyRoles.PositionScore(battle,unit,position);
                     if(movement>best){best=movement;result=new EnemyPlan{Destination=position,Guard=!unit.Acted};}
                     foreach(var skill in skills)
                     foreach(var aim in battle.Grid.Tiles.Keys)
@@ -40,7 +40,7 @@ namespace TalesTactics
                             value+=Value(battle,unit,target,skill,effect);
                         value-=skill.MPCost*0.4f+battle.Resolver.HPCost(unit,skill)*0.7f+skill.GaugeCost*0.1f;
                         if(value<=0)continue;
-                        float score=movement+value;
+                        float score=movement+value+targets.Max(t=>EnemyRoles.TargetScore(battle,unit,t));
                         if(score>best){best=score;result=new EnemyPlan{Destination=position,Target=targets[0],Skill=skill,Aim=aim};}
                     }
                     unit.Facing=facing;

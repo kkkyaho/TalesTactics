@@ -171,3 +171,9 @@ BattleFlow는 캐릭터 ID별 마지막 SkillData와 결과 직전 성장/재고
 EnemyTurn 시작 시 PlayerPreferences의 속도/간략 설정을 읽는다. 이동 보간·준비/복귀 대기만 조정하고 SkillResolver.Execute와 턴 종료는 모든 모드에서 동일하게 한 번 실행한다. 전역 Time.timeScale은 변경하지 않는다. 기존 설정 파일의 누락 필드는 정상 속도/전체 연출 기본값이다.
 
 BattleResultHud는 BattleEndState 전용 패널이며 시스템/도움말 모달의 입력 차단에 포함된다. 보상 성공 후 실제 캠페인 차이로 결과를 표시하고 실패 시 성장 행을 감춘다. 기존 pendingReward와 저장 롤백을 사용해 재시도 추첨/중복 지급을 막는다. 다음 장은 준비 화면으로, 재도전은 같은 편성/장으로 BeginBattle을 호출해 이야기를 생략한다.
+
+## 임무 정보와 적 역할
+
+MissionBriefing은 Session의 실제 목표/생존 적 수를 읽는다. BattleMissionHud는 별도 모달이며 출전 전에는 선택 장의 CampaignEnemies를, 진행 중에는 Session.Units를 읽어 같은 적 구성을 표시한다. InputModalOpen 및 키보드/패드 취소와 시스템·도움말 전환에 연결하고 배경 CanvasGroup 상호작용을 차단한다. 세이브를 쓰거나 AI 예측을 실행하지 않는다.
+
+EnemyRoles는 콘텐츠 ID를 전열/돌격/사격/마법/보스로 분류한다. EnemyPlanner와 UtilityPlanner의 점수에 캠페인 적 전용 선호를 더한다. 사격/마법은 가장 가까운 아군과 기본 사거리(최대3칸) 안에서 거리를 확보하고 돌격은 공격 가능한 부상자에 추가 점수를 준다. 실제 이동/사거리/비용/효과 판정은 GridMap/SkillResolver에 남겨 두며 훈련·아군 플래너에는 역할 보정을 적용하지 않는다. 다오스의 기존 Utility 선택은 유지한다.

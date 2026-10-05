@@ -64,7 +64,8 @@ namespace TalesTactics
             {int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(left,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),60+(i%3)*72,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked,60);}
             Button(left,"이전 장 목록",282,()=>ShowChapterPage(chapterPage-1),chapterPage>0,34);HalfButton(left,0);
             Button(left,"다음 장 목록",282,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count,34);HalfButton(left,1);
-            Label(left,CampaignStages.Title(battle.SelectedStage)+"\n\n목표 · 모든 적 격파\n권장 편성 · 6명\n"+(battle.TrainingMode?"훈련 모드 · 저장 보상 없음":"캠페인 · 저장된 성장 사용"),338,145,18);
+            Label(left,CampaignStages.Title(battle.SelectedStage)+"\n목표 · "+(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):"모든 적 격파")+"\n권장 편성 · 6명\n"+(battle.TrainingMode?"훈련 모드 · 저장 보상 없음":"캠페인 · 저장된 성장 사용"),338,100,18);
+            Button(left,"임무 · 적 정보",444,ShowMission);
             Button(left,"전투 전 이야기",494,()=>battle.ReplayStory(false));
             Button(left,"전투 후 이야기",542,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));
             var c=battle.Catalog.Characters[selectedCharacter];var progress=battle.Campaign.Get(c.Id);

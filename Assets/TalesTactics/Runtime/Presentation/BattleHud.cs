@@ -154,13 +154,13 @@ namespace TalesTactics
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
             var heading=Label(header,BattleTitle+"  ·  "+(battle.TutorialActive?"입문 연습":battle.Session.ObjectiveDescription),8,26,19);
-            heading.rectTransform.offsetMax=new Vector2(-600,heading.rectTransform.offsetMax.y);
-            var next=Label(header,battle.TutorialActive?"이동 → 공격 → 회복 → 대기 · 적은 기다리는 연습 전장입니다.":"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
-            next.rectTransform.offsetMax=new Vector2(-600,next.rectTransform.offsetMax.y);
+            heading.rectTransform.offsetMax=new Vector2(-720,heading.rectTransform.offsetMax.y);
+            var next=Label(header,battle.TutorialActive?"이동 → 공격 → 회복 → 대기 · 적은 기다리는 연습 전장입니다.":"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(3).Select(x=>x.Data.DisplayName)),34,24,15);
+            next.rectTransform.offsetMax=new Vector2(-720,next.rectTransform.offsetMax.y);
             message=Label(footer,battle.TutorialActive?battle.TutorialInstruction:battle.Message,12,65,17);
-            Label(footer,battle.TutorialActive?(battle.State is TargetSelectionState&&battle.Target.HasValue?battle.Message:"입문 연습 · 보상/저장 없음"):battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,battle.TutorialActive?36:26,15);
+            Label(footer,battle.TutorialActive?(battle.State is TargetSelectionState&&battle.Target.HasValue?battle.Message:"입문 연습 · 보상/저장 없음"):MissionBriefing.Progress(battle.Session)+" · "+(battle.Session.Objective==ObjectiveKind.Escort?"호위/아군 전멸 시 패배":"아군 전멸 시 패배"),83,battle.TutorialActive?36:26,15);
             if(u==null)return;
-            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);
+            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);DrawMissionEntry();
             Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){DrawResult();return;}

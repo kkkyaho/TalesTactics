@@ -7,7 +7,7 @@ namespace TalesTactics
         RectTransform helpOverlay,helpWindow;
         int helpPage;
         public bool HelpOpen=>helpOverlay!=null&&helpOverlay.gameObject.activeSelf;
-        public bool InputModalOpen=>UnitDetailsOpen||HelpOpen||SystemMenuOpen;
+        public bool InputModalOpen=>UnitDetailsOpen||HelpOpen||SystemMenuOpen||MissionOpen;
         public bool CanOpenHelp=>!SystemMenuOpen&&!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||
             battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState));
         static readonly string[] helpTitles={"처음 시작","이동 · 공격","회복 · 대기","높이 · 방향","상태이상","궁극기 · 조건","편성 · 저장","조작 안내"};
@@ -20,7 +20,7 @@ namespace TalesTactics
         }
         public void ShowHelp(int page=0)
         {
-            if(!CanOpenHelp)return;CloseUnitDetails();helpPage=Mathf.Clamp(page,0,helpTitles.Length-1);
+            if(!CanOpenHelp)return;CloseMission();CloseUnitDetails();helpPage=Mathf.Clamp(page,0,helpTitles.Length-1);
             if(helpOverlay==null)
             {
                 helpOverlay=Panel("HelpOverlay",Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);

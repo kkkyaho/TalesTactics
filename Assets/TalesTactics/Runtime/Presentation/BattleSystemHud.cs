@@ -15,7 +15,7 @@ namespace TalesTactics
         }
         public void ShowSystemMenu(int page=0)
         {
-            if(!CanOpenSystemMenu)return;CloseHelp();CloseUnitDetails();
+            if(!CanOpenSystemMenu)return;CloseMission();CloseHelp();CloseUnitDetails();
             if(systemOverlay==null)
             {
                 systemOverlay=Panel("SystemOverlay",Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);systemOverlay.GetComponent<UnityEngine.UI.Image>().color=new Color(0,0,0,.8f);systemOverlay.GetComponent<UnityEngine.UI.Outline>().enabled=false;
