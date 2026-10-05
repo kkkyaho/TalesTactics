@@ -7,8 +7,8 @@ namespace TalesTactics
         RectTransform helpOverlay,helpWindow;
         int helpPage;
         public bool HelpOpen=>helpOverlay!=null&&helpOverlay.gameObject.activeSelf;
-        public bool InputModalOpen=>UnitDetailsOpen||HelpOpen;
-        public bool CanOpenHelp=>!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||
+        public bool InputModalOpen=>UnitDetailsOpen||HelpOpen||SystemMenuOpen;
+        public bool CanOpenHelp=>!SystemMenuOpen&&!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||
             battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState));
         static readonly string[] helpTitles={"처음 시작","이동 · 공격","회복 · 대기","높이 · 방향","상태이상","궁극기 · 조건","편성 · 저장","조작 안내"};
         void DrawHelpEntry(bool preparation)
@@ -61,8 +61,8 @@ namespace TalesTactics
                 case 5:return "궁극기도 해금 레벨·MP·SP·고유 조건을 모두 만족해야 합니다. 잠겨 있어도 기술 상세를 읽을 수 있습니다.\n\n"+
                     string.Join("\n",battle.Catalog.Characters.Where(c=>c.UltimateSkill!=null).Select(c=>{var s=c.UltimateSkill;return c.DisplayName+" · Lv"+s.UnlockLevel+" / MP"+s.MPCost+" / SP"+s.GaugeCost;}))+
                     $"\n\n파라는 모든 일반 기술 해금 후 사자전후에서 연계합니다. 회전 진행률 {r.TimingWindowStart:P0}–{r.TimingWindowEnd:P0}에 Space/패드 A를 누르세요. 훈련 · 전투 설정에 자동 타이밍 옵션도 있습니다.\n다른 고유 조건은 기술 상세의 안내를 따르세요.";
-                case 6:return "출전 준비의 카드는 캐릭터를 선택합니다. 우측 출전 추가/제외로 편성을 바꾸고 1–6명을 출전시킵니다. 캠페인은 6명을 권장합니다.\n\n장비: 슬롯 → 보유 후보 → 능력치 비교 → 적용 · 저장. 저장 전에 돌아가면 변경을 취소합니다.\n\n상점: 종류 선택 → 상품 → 구매/매각 · 저장. 장착 중인 수량은 팔 수 없습니다. 구매 장비 장착으로 비교 화면에 바로 이동합니다.\n\n승리 보상·구매·매각·장비 적용·승급 시 저장합니다. 저장 실패 안내가 나오면 재시도하세요.\n현재 전투 중간 상태는 저장하지 않습니다. 훈련·입문 연습에는 성장·골드·장 완료 보상이 없습니다.";
-                default:return "마우스: 버튼·타일 클릭 / 우클릭: 취소\n전장 위 휠: 확대·축소\n\n키보드: Esc 취소, Q/E 회전, Home 전체 보기\nTab/Shift+Tab: 다음/이전 대상\nSpace: 파라 타이밍 / F1: 도움말\n\n패드: 왼쪽 스틱 커서 / 방향키 메뉴 순환\nA/× 선택 / B/○ 취소\nLB/RB 회전 / LT/RT 대상 순환\n오른쪽 스틱 확대 / R3 전체 보기\n\n상단 현재 유닛 버튼은 행동자와 선택 대상을 확대합니다. 전체 보기로 지도 전체를 다시 볼 수 있습니다. 능력 버튼은 상세 정보를 엽니다.";
+                case 6:return "출전 준비의 카드는 캐릭터를 선택합니다. 우측 출전 추가/제외로 편성을 바꾸고 1–6명을 출전시킵니다. 캠페인은 6명을 권장합니다.\n\n장비: 슬롯 → 보유 후보 → 능력치 비교 → 적용 · 저장. 저장 전에 돌아가면 변경을 취소합니다.\n\n상점: 종류 선택 → 상품 → 구매/매각 · 저장. 장착 중인 수량은 팔 수 없습니다. 구매 장비 장착으로 비교 화면에 바로 이동합니다.\n\n승리 보상·구매·매각·장비 적용·승급 시 저장합니다. 저장 실패 안내가 나오면 재시도하세요.\n아군 명령 대기 중 메뉴에서 중단 저장할 수 있습니다. 이어하기는 기록을 한 번 소비합니다. 훈련·입문 연습에는 성장·골드·장 완료 보상이 없습니다.";
+                default:return "마우스: 버튼·타일 클릭 / 우클릭: 취소\n전장 위 휠: 확대·축소\n\n키보드: Esc 취소, Q/E 회전, Home 전체 보기\nTab/Shift+Tab: 다음/이전 대상\nSpace: 파라 타이밍 / F1: 도움말 / F5: 메뉴\n\n패드: 왼쪽 스틱 커서 / 방향키 메뉴 순환\nA/× 선택 / B/○ 취소\nLB/RB 회전 / LT/RT 대상 순환\n오른쪽 스틱 확대 / R3 전체 보기\n\n상단 현재 유닛 버튼은 행동자와 선택 대상을 확대합니다. 전체 보기로 지도 전체를 다시 볼 수 있습니다. 능력 버튼은 상세 정보를 엽니다.";
             }
         }
         void ApplyTutorialCommands()

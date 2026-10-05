@@ -31,7 +31,7 @@ namespace TalesTactics
             CloseUnitDetails();Clear(header);Clear(left);Clear(commands);Clear(footer);
             if(center==null)center=Panel("PreparationContent",new Vector2(.23f,0),new Vector2(.74f,1),new Vector2(6,126),new Vector2(-6,-94));
             Clear(center);preparationLayout=true;center.gameObject.SetActive(true);PreparationLayout();
-            var heading=Label(header,title+"    ·    "+battle.Campaign.Gold+" G",16,38,25);heading.rectTransform.offsetMax=new Vector2(-238,heading.rectTransform.offsetMax.y);DrawHelpEntry(true);
+            var heading=Label(header,title+"    ·    "+battle.Campaign.Gold+" G",16,38,25);heading.rectTransform.offsetMax=new Vector2(-400,heading.rectTransform.offsetMax.y);DrawHelpEntry(true);DrawSystemEntry(true);
         }
         void Portrait(Transform parent,CharacterData c,Vector2 low,Vector2 high)
         {
@@ -78,7 +78,7 @@ namespace TalesTactics
             Button(commands,"선택 캐릭터 성장",406,()=>ShowGrowth(c));
             Button(commands,"장비 관리",454,ShowEquipmentRoster);Button(commands,"장비 상점",502,()=>ShowShop());
             Button(commands,"성장 · 승급",550,ShowGrowthRoster);
-            var notice=Label(footer,string.IsNullOrEmpty(CampaignStorage.Notice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):CampaignStorage.Notice,10,76,16);notice.rectTransform.offsetMax=new Vector2(-520,notice.rectTransform.offsetMax.y);
+            var notice=Label(footer,string.IsNullOrEmpty(battle.SaveNotice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):battle.SaveNotice,10,76,16);notice.rectTransform.offsetMax=new Vector2(-520,notice.rectTransform.offsetMax.y);
             Button(footer,"전투 규칙 설정",20,ShowBattleOptions,true,58);var options=(RectTransform)footer.GetChild(footer.childCount-1);options.anchorMin=options.anchorMax=Vector2.one;options.pivot=new Vector2(1,1);options.sizeDelta=new Vector2(210,58);options.anchoredPosition=new Vector2(-290,-20);options.GetComponentInChildren<TMPro.TMP_Text>().text="훈련 · 전투 설정";
             Button(footer,"전투 시작",20,battle.RequestBattle,battle.Deployment.Count>0,58);var start=(RectTransform)footer.GetChild(footer.childCount-1);start.anchorMin=start.anchorMax=Vector2.one;start.pivot=new Vector2(1,1);start.sizeDelta=new Vector2(258,58);start.anchoredPosition=new Vector2(-12,-20);
         }

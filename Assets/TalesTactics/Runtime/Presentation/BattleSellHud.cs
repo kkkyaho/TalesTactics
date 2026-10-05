@@ -11,7 +11,7 @@ namespace TalesTactics
         string SaleBlocked(EquipmentData item)
         {
             if (battle.TrainingMode) return "훈련 모드에서는 매각할 수 없습니다.";
-            if (!CampaignStorage.CanSave) return "저장 보호 상태에서는 매각할 수 없습니다.";
+            if (!battle.CanSave) return "저장 보호 상태에서는 매각할 수 없습니다.";
             return CampaignInventory.SaleUnavailable(battle.Campaign, item);
         }
     }

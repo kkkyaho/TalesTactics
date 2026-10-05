@@ -426,3 +426,16 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **33.388초/오류0/경고7**, 개발 빌드 **28.010초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. TutorialHelp/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsTutorial/TalesTactics.exe**. 기존 실행 중인 플레이어는 종료하지 않았다.
 - 새 개발 플레이어 **7회 독립 실행 모두 통과**: 입문 연습 정상 완료/무저장 확인 후 1~6장 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·저장 복원·중복 보상 방지. PlayerReviews/161b177e75074f2b8eda8a36df6ee532-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error0건(TutorialHelp/save-and-log-check.json).
 - 범위/한계: 3번 입문 연습·도움말 구현/검증 완료. 기본 SPD/AI 자동 캠페인 검수이며 사람의 전6장 수동 완주·초보자 학습성·실물 패드 검수는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 4번 저장·이어하기·설정이다.
+
+## 2026-10-05 — 판매 준비 개선안 4: 저장·이어하기·설정
+
+- 기존 campaign.json을 슬롯1로 보존하면서 슬롯2/3, 마지막 슬롯 기억, 저장 시각/진행 요약/중단 기록 표시, 현재 편성·선택 장 저장을 추가했다. 기존 보상·거래·장비·승급 자동 저장에 성공 시각/슬롯 안내를 연결했다. V1 이관·V2 호환·백업 복구·미래 버전 덮어쓰기 보호를 유지한다.
+- 캠페인 아군 명령 대기에서 전투 중단 저장/이어하기를 추가했다. HP/MP/SP·위치·상태·쿨다운·장비·이동/행동/취소/고유 플래그·SPD 대기열/CT 누적·난수 상태를 보존한다. 복원 검증 및 중단 기록 소비 저장이 성공한 뒤 재개한다. 실패 시 현재 전투/원본을 유지한다. 훈련·연습·연출·적 턴·결과 중에는 중단할 수 없다. 재개 후 강제 종료는 복원하지 않으며 다시 중단 저장해야 한다.
+- 창/전체화면·3개 해상도·음악/효과음·패드 커서 속도·자동 타이밍·기본 턴 순서/AI를 별도 설정 파일에 저장한다. 저장 후에도 초안을 분리해 미적용 변경이 현재 설정을 바꾸지 않게 했다. 미지원/손상 설정은 원본 보호 상태가 된다. 키 전체 재지정이나 임의 프레임 자동 저장을 구현한 것은 아니다.
+- 실제 Unity EditMode **98/98**(4.39초), PlayMode **64/64**(109.67초) 통과. Persistence/editmode-results.json, playmode-results.json. 신규 검사는 슬롯 분리/기존 저장/미래 버전, 설정 재읽기/초안 취소, 실제 SPD/CT 이동·상태·KO·행동·난수 복원과 이후20턴 일치, 중단 실패/손상 기록 원본 보존 및 모달 입력 보호를 확인한다. 기존 PlayMode 테스트도 임시 저장 루트로 격리했다. ManagedChecks는 실행하지 않았다.
+- 최초 PlayMode63/64에서 Unity JsonUtility가 null인 인라인 중단 객체를 다시 생성하는 문제를 발견했다. HasSuspendedBattle 플래그를 추가하고 소비 후 파일 재읽기까지 통과했다. 초기 결과는 Persistence/playmode-initial.json에 남겼다.
+- 실제1366×768 Game View에서 슬롯·설정·중단 안내·저장 시각·이어하기·재개된 전장을 확인했다. 헤더 메뉴의 줄바꿈을 수정하고 최종 화면을 다시 확인했다. 프레임 갱신/Repaint와 격리 파일을 사용했으며 검수 후 기본 Full HD·runInBackground=false·Scene dirty=false 복원, Assets 임시 캡처를 제거했다. 이미지/조작/제한은 Persistence/README.md 참조.
+- Windows 일반 빌드 **39.471초/오류0/경고8**, 개발 빌드 **24.945초/오류0/경고10** 성공. 기존 Pipeline·사용 중단 API/DEVELOPMENT_BUILD 전처리기·직렬화·셰이더 경고와 같은 종류이며 새 개발 검수 클래스의 전처리기 경고1건이 추가됐다. Persistence/windows-build.json, development-build.json 및 build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPersistence/TalesTactics.exe**다. 기존 실행 중인 사용자 플레이어는 종료하지 않았다.
+- 새 Windows 플레이어 **4회 독립 프로세스 저장/재실행 검증 통과**: SPD/CT 각각 이동·상태·게이지를 저장하고 종료한 뒤 같은 상태 복원, 디스크의 중단 기록 소비, 이후20턴 순서 일치, 다른 슬롯의 골드123 보존, 설정 재읽기·1366×768 실제 화면 적용 확인. Persistence/47fad1e280e3403f9d00007259b152e4/summary.json 및 격리 저장 원본. 실행 로그 원본은 PersistentDataPath/PersistenceReviews의 같은 GUID 폴더에 보존한다. 사용자 campaign.json/.bak 해시 불변, settings.json/슬롯2/3은 생성하지 않음, 실행 로그 오류0건.
+- 새 개발 플레이어 캠페인 **7회 독립 실행 모두 통과**: 입문 연습·상점·장비 후 1~6장 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·저장 복원·중복 보상 방지. PlayerReviews/8503653e73c04252aad78ac7f7d108bc-summary.json 및 장별 보고서. 사용자 원본/백업 해시 불변, 실행 로그 오류0건(Persistence/save-and-log-check.json).
+- 범위/한계: 4번 저장·이어하기·설정 구현/검증 완료. 캠페인 완주는 기본 SPD/AI 자동 검수이며 CT는 별도 저장·복원/20턴 일치를 검수했다. 사람의 전6장 수동 완주, 실물 패드, 모든 모니터/전체화면 전환 조합 검수는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 5번 전투 진행 속도/결과 흐름이다.

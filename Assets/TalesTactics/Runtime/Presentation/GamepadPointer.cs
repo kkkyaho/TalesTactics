@@ -70,7 +70,7 @@ namespace TalesTactics
             else if(Mouse.current!=null&&(Mouse.current.delta.ReadValue().sqrMagnitude>1||Mouse.current.leftButton.wasPressedThisFrame))Activate(false);
             if(!active)return;
             MoveTo(position);hint.fontSize=Mathf.Clamp(Screen.width/90f,9,16);
-            if(stick.sqrMagnitude>.01f)MoveTo(position+stick*(Screen.height*.85f*Time.unscaledDeltaTime));
+            if(stick.sqrMagnitude>.01f)MoveTo(position+stick*(Screen.height*.85f*(battle.Preferences?.CursorSpeed??1)*Time.unscaledDeltaTime));
             if(pad.dpad.down.wasPressedThisFrame||pad.dpad.right.wasPressedThisFrame)Cycle(1);
             if(pad.dpad.up.wasPressedThisFrame||pad.dpad.left.wasPressedThisFrame)Cycle(-1);
             var target=Hit();Hover(target);
@@ -129,7 +129,7 @@ namespace TalesTactics
         }
         public void Cancel()
         {
-            if(battle.Hud.CloseHelp()||battle.Hud.CloseUnitDetails())return;
+            if(battle.Hud.CloseSystemMenu()||battle.Hud.CloseHelp()||battle.Hud.CloseUnitDetails())return;
             if(battle.TimingActive||battle.StoryActive)return;
             if(battle.Session!=null)
             {

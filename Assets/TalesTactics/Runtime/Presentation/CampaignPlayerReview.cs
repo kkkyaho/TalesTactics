@@ -165,10 +165,10 @@ namespace TalesTactics
             yield return ReviewGamepad();
             yield return ReviewMusic();
             Check(report.phase == "chapter1" ? !File.Exists(savePath) : File.Exists(savePath), "Expected isolated save exists/missing");
-            store = new CampaignFile(savePath);
-            battle.Campaign = store.Load();
+            battle.ConfigureStorage(directory);
+            store = battle.Profiles.Store;
             Check(store.CanSave && string.IsNullOrEmpty(store.Notice), "Save loads without fallback or corruption");
-            battle.PersistCampaign = store.Save;
+
             battle.RewardRoll=()=>2500; // Deterministic 15% drop branch; distribution is checked separately.
             battle.TrainingMode = false;
             battle.UseCT=battle.UseUtilityAI=report.tactical;

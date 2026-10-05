@@ -23,6 +23,8 @@ namespace TalesTactics
             if(header.Version==2&&(header.Gold<0||header.Inventory==null))throw new InvalidDataException("Missing economy fields");
             var save=JsonUtility.FromJson<CampaignSave>(json);
             if(save==null)throw new InvalidDataException("Empty campaign");
+            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>1)throw new FutureVersion();
+            if(!save.HasSuspendedBattle)save.SuspendedBattle=null; // JsonUtility recreates inline null classes.
             Normalize(save);return save;
         }
         public static void Normalize(CampaignSave save)
@@ -78,6 +80,7 @@ namespace TalesTactics
                     var oldHeader=JsonUtility.FromJson<Header>(File.ReadAllText(previousPath));
                     if(oldHeader!=null&&oldHeader.Version==1)File.Copy(previousPath,path+".v1.bak");
                 }
+                save.HasSuspendedBattle=save.SuspendedBattle!=null;
                 File.WriteAllText(path+".tmp",JsonUtility.ToJson(save,true));
                 if(File.Exists(path))File.Replace(path+".tmp",path,recovered?null:path+".bak");
                 else File.Move(path+".tmp",path);

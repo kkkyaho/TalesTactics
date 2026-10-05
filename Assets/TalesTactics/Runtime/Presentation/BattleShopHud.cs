@@ -11,7 +11,7 @@ namespace TalesTactics
         string ShopUnavailable(EquipmentData item)
         {
             if(battle.TrainingMode)return "훈련 모드에서는 구매할 수 없습니다.";
-            if(!CampaignStorage.CanSave)return "저장 보호 상태에서는 구매할 수 없습니다.";
+            if(!battle.CanSave)return "저장 보호 상태에서는 구매할 수 없습니다.";
             return CampaignInventory.PurchaseUnavailable(battle.Campaign,item);
         }
 

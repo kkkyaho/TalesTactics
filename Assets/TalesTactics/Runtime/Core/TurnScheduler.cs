@@ -7,6 +7,8 @@ namespace TalesTactics
     {
         readonly Queue<UnitRuntime> queue=new Queue<UnitRuntime>();
         public int Round {get;private set;}
+        public int[] Capture(IReadOnlyList<UnitRuntime> units)=>queue.Select(u=>System.Array.IndexOf(units.ToArray(),u)).ToArray();
+        public void Restore(IReadOnlyList<UnitRuntime> units,int[] order,int round){queue.Clear();foreach(int i in order)queue.Enqueue(units[i]);Round=round;}
         public UnitRuntime Next(IReadOnlyList<UnitRuntime> units)
         {
             while(queue.Count>0){var u=queue.Dequeue();if(u.Alive)return u;}

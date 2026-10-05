@@ -137,11 +137,11 @@ namespace TalesTactics
             Label(commands,$"레벨 조건: Lv{character.PromotionLevel}\n{(progress.Level>=character.PromotionLevel?"충족":"미충족")} (현재 Lv{progress.Level})\n\n스토리 조건: {storyName}\n{(story?"충족":"미충족")}",115,170,17);
             string reason=CampaignPromotion.Unavailable(progress,character,battle.Campaign.StoryProgress);
             if(battle.TrainingMode)reason="훈련 모드에서는 승급할 수 없습니다.";
-            else if(!CampaignStorage.CanSave)reason="저장 보호 상태에서는 승급할 수 없습니다.";
+            else if(!battle.CanSave)reason="저장 보호 상태에서는 승급할 수 없습니다.";
             Label(commands,reason??"승급할 수 있습니다.",290,70,17);
             Button(commands,progress.Promoted?"승급 완료":"승급 · 저장",380,()=>
             {
-                if(battle.TrainingMode||!CampaignStorage.CanSave)return;
+                if(battle.TrainingMode||!battle.CanSave)return;
                 bool saved=CampaignPromotion.TrySave(battle.Campaign,character,battle.PersistCampaign);
                 ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
             },reason==null);
@@ -154,13 +154,13 @@ namespace TalesTactics
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
             var heading=Label(header,BattleTitle+"  ·  "+(battle.TutorialActive?"입문 연습":battle.Session.ObjectiveDescription),8,26,19);
-            heading.rectTransform.offsetMax=new Vector2(-500,heading.rectTransform.offsetMax.y);
+            heading.rectTransform.offsetMax=new Vector2(-600,heading.rectTransform.offsetMax.y);
             var next=Label(header,battle.TutorialActive?"이동 → 공격 → 회복 → 대기 · 적은 기다리는 연습 전장입니다.":"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(5).Select(x=>x.Data.DisplayName)),34,24,15);
-            next.rectTransform.offsetMax=new Vector2(-500,next.rectTransform.offsetMax.y);
+            next.rectTransform.offsetMax=new Vector2(-600,next.rectTransform.offsetMax.y);
             message=Label(footer,battle.TutorialActive?battle.TutorialInstruction:battle.Message,12,65,17);
             Label(footer,battle.TutorialActive?(battle.State is TargetSelectionState&&battle.Target.HasValue?battle.Message:"입문 연습 · 보상/저장 없음"):battle.Session.ObjectiveDescription+" · "+(battle.Session.Scheduler is CTTurnScheduler?"CT":"SPD 라운드")+" · "+(battle.Session.UseUtilityAI?"Utility AI":"기본 AI"),83,battle.TutorialActive?36:26,15);
             if(u==null)return;
-            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);
+            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);
             Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){Label(commands,battle.Session.Result.ToString(),70,60,32);Button(commands,"출전 화면 / Restart",150,battle.Restart);if(battle.RewardPending)Button(commands,"보상 저장 재시도",200,battle.SaveBattleReward);else if(battle.CanReadEnding)Button(commands,"전투 후 이야기",200,battle.ReadEnding);return;}

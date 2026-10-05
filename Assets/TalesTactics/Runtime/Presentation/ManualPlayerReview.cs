@@ -35,7 +35,7 @@ namespace TalesTactics
             Directory.CreateDirectory(directory);
             battle=UnityEngine.Object.FindAnyObjectByType<BattleDirector>();
             var store=new CampaignFile(Path.Combine(directory,"campaign.json"));
-            battle.Campaign=store.Load();battle.PersistCampaign=store.Save;battle.Hud.ShowDeployment();
+            battle.ConfigureStorage(directory);battle.Hud.ShowDeployment();
             Application.runInBackground=true;
             started=interval=Time.realtimeSinceStartup;
             File.WriteAllText(Path.Combine(directory,"hardware.txt"),Application.unityVersion+"\n"+SystemInfo.operatingSystem+"\n"+SystemInfo.processorType+"\n"+SystemInfo.graphicsDeviceName+"\n"+Screen.width+"x"+Screen.height+"\n");

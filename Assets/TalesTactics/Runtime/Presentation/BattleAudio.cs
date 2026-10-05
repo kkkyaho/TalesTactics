@@ -7,6 +7,8 @@ namespace TalesTactics
     {
         public AudioLibrary Library;
         [Range(0,1)] public float MusicVolume=0.28f;
+        public float EffectsVolume=.45f;
+        public void SetVolumes(float music,float sound){MusicVolume=music;EffectsVolume=sound;GetComponent<AudioSource>().volume=music;if(effects!=null)effects.volume=sound;}
         AudioSource effects;
         AudioClip resumeClip;
         int resumeSample;
@@ -42,7 +44,7 @@ namespace TalesTactics
             var entry=Library?.Entries?.FirstOrDefault(x=>x.Id==id);
             if(entry?.Clip==null)return;
             if(effects==null){effects=gameObject.AddComponent<AudioSource>();effects.playOnAwake=false;effects.spatialBlend=0;effects.volume=0.45f;}
-            effects.PlayOneShot(entry.Clip);
+            effects.volume=EffectsVolume;effects.PlayOneShot(entry.Clip);
         }
         public void StopAll(){themeActive=false;resumeClip=null;GetComponent<AudioSource>().Stop();if(effects!=null)effects.Stop();}
     }

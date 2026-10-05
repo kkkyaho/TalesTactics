@@ -155,3 +155,11 @@ BattlePreparationHud는 기존 header/left/commands/footer를 재사용하고 �
 BattleTutorial은 캠페인과 분리된 Lv1 BattleSession을 만든다. PracticeTurns가 크레스→민트만 순환시키고 Session.Advance/EndTurn으로 실제 턴 시작·종료를 처리한다. PracticeObjective는 자동 승패를 막으며 네 단계의 실제 이동/Resolver 실행/방향 선택으로 완료한다. 허용 명령·타일·기술·대상을 제한하고 취소 시 단계를 유지한다. 캠페인 저장·보상은 호출하지 않으며 Restart로 기존 편성과 옵션을 복원한다.
 
 BattleHelpHud는 준비/전투에서 호출하는 8페이지 모달이다. InputModalOpen을 상세창/도움말 공통 입력 차단 조건으로 사용하며 중앙 편성 영역도 잠근다. 도움말은 선택 상태를 바꾸지 않는다. 전투 수치와 궁극기 조건은 Catalog를 읽고 별도 복사본으로 유지하지 않는다. CampaignPlayerReview의 chapter1은 격리 저장에서 입문 연습을 완료한 후 기존 6장 검증을 진행한다.
+
+## 저장 슬롯·전투 중단·설정
+
+BattlePersistence는 Director별 CampaignProfiles/PreferenceFile을 소유한다. 기본 슬롯1은 기존 campaign.json이며 슬롯2/3은 campaign-slot2/3.json이다. 테스트·개발 검수는 ConfigureStorage로 별도 루트를 사용한다. 기존 PersistCampaign 콜백은 SaveProgress에 연결해 자동 저장 시각/준비 편성을 기록하고 오래된 중단 기록을 해제한다. 실패 시 추가 메타데이터를 복원하고 기존 거래/보상 실패 복원 경로를 유지한다.
+
+BattleCheckpoint는 캠페인 아군 CommandState에서만 만든다. 콘텐츠 ID, 단계/유닛 수, 위치/점유, 수치, 상태, 큐 인덱스를 검증해 임시 BattleSession을 구성한 뒤 저장 성공 후 Director에 연결한다. SPD는 남은 queue/Round, CT는 유닛별 charge를 내보내고 복원한다. Active.BeginTurn을 다시 호출하지 않아 행동 사용 여부/쿨다운을 보존한다. Random.State는 검증/소비 저장이 성공한 뒤 복원한다. CampaignSave.HasSuspendedBattle은 Unity JsonUtility가 null인 인라인 객체를 재생성하는 동작과 실제 중단 기록을 구분한다. 이전 V2 파일의 누락된 필드는 기본값으로 읽고 미래 중단 버전은 원본 보호 상태로 처리한다.
+
+시스템 메뉴는 기존 Canvas 위 별도 모달이며 InputModalOpen을 재사용한다. PlayerPreferences 초안은 성공적으로 저장한 후 복사해 적용하고 추가 편집이 적용된 설정을 바꾸지 않게 한다. 화면 설정은 Windows에서만 Screen.SetResolution으로 적용하며 음악/효과음 소스와 패드 커서 배율은 즉시 반영한다. CT/AI는 진행 중 Session을 재구성하지 않는다. PreferenceFile은 미지원/손상 파일을 덮어쓰지 않는다.

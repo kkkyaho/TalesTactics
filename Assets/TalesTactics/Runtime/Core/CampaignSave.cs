@@ -14,6 +14,11 @@ namespace TalesTactics
     [Serializable] public class CampaignSave
     {
         public int Version=2;public bool AutoTiming;
+        public BattleCheckpoint SuspendedBattle;
+        public bool HasSuspendedBattle;
+        public string SavedAt;
+        public int SelectedStage;
+        public int[] Deployment;
         public int Gold=CampaignInventory.StartingGold;
         public List<OwnedEquipment> Inventory=CampaignInventory.StartingItems();
         public List<string> StoryProgress=new List<string>();public List<CharacterProgress> Characters=new List<CharacterProgress>();
