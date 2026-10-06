@@ -21,6 +21,9 @@ namespace TalesTactics
         bool navigation;
         bool active;
         Vector2 position;
+        UnityEngine.UI.Outline keyboardOutline;
+        Color previousOutlineColor;
+        Vector2 previousOutlineDistance;
         readonly List<RaycastResult> hits=new List<RaycastResult>();
         public Vector2 Position=>position;
         public bool Active=>active;
@@ -57,10 +60,39 @@ namespace TalesTactics
                 eventSystem=null;
             }
         }
-        void OnDisable(){if(overlay!=null)Activate(false);}
+        void OnDisable(){if(overlay!=null)Activate(false);ClearKeyboardFocus();}
+        void ClearKeyboardFocus()
+        {
+            if(keyboardOutline!=null){keyboardOutline.effectColor=previousOutlineColor;keyboardOutline.effectDistance=previousOutlineDistance;}
+            keyboardOutline=null;
+        }
+        void KeyboardMenus()
+        {
+            var keyboard=Keyboard.current;
+            if(keyboard!=null&&keyboard.anyKey.wasPressedThisFrame)Activate(false);
+            bool menu=battle.Session==null||battle.StoryActive||battle.Hud.InputModalOpen||battle.State is BattleEndState;
+            if(menu&&keyboard!=null&&keyboard.tabKey.wasPressedThisFrame)
+            {
+                var events=EventSystem.current;
+                var buttons=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.isActiveAndEnabled&&b.IsInteractable()).ToArray();
+                if(events!=null&&buttons.Length>0)
+                {
+                    int direction=keyboard.shiftKey.isPressed?-1:1;
+                    int index=System.Array.FindIndex(buttons,b=>b.gameObject==events.currentSelectedGameObject);
+                    index=index<0?(direction>0?0:buttons.Length-1):(index+direction+buttons.Length)%buttons.Length;
+                    events.SetSelectedGameObject(buttons[index].gameObject);
+                }
+            }
+            var selected=EventSystem.current?.currentSelectedGameObject;
+            var outline=!active&&selected!=null&&selected.activeInHierarchy?selected.GetComponent<UnityEngine.UI.Outline>():null;
+            if(outline==keyboardOutline)return;
+            ClearKeyboardFocus();keyboardOutline=outline;
+            if(outline!=null){previousOutlineColor=outline.effectColor;previousOutlineDistance=outline.effectDistance;outline.effectColor=new Color(1,.85f,.2f);outline.effectDistance=new Vector2(3,-3);}
+        }
         void Update()
         {
             if(battle==null||!battle.enabled)return;
+            KeyboardMenus();
             var pad=Gamepad.current;
             if(pad==null){Activate(false);return;}
             var stick=pad.leftStick.ReadValue();var right=pad.rightStick.ReadValue();

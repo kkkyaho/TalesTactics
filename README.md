@@ -4,7 +4,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-6장 캠페인과 전투·성장·장비·저장 시스템을 구현했습니다. **실제 Unity EditMode 102개·PlayMode 72개를 통과했습니다.** 기존 영웅 10명 모두를 특징을 유지한 3등신 고밀도 픽셀 아트로 교체하고, 방향별 보행 4프레임·궁극기 전용 준비/발동 동작을 연결했습니다. 일반 적 9종과 최종 보스 다오스, 16종 전장 재질·16종 장식·6장별 원경을 적용했습니다. 실제 화면과 상세 범위는 [픽셀 아트 개편](Docs/PixelCampaign/README.md)을 참고하세요. 기존 89개 기술 연출과 오리지널 음악 14곡은 유지합니다. 전체 게임 완성본이나 전문가의 원작 작화 승인을 뜻하지 않으며, 최신 빌드·실행 검증과 한계는 Docs/VALIDATION.md를 따릅니다.
+6장 캠페인과 전투·성장·장비·저장 시스템을 구현했습니다. **실제 Unity EditMode 102개·PlayMode 73개를 통과했습니다.** 기존 영웅 10명 모두를 특징을 유지한 3등신 고밀도 픽셀 아트로 교체하고, 방향별 보행 4프레임·궁극기 전용 준비/발동 동작을 연결했습니다. 일반 적 9종과 최종 보스 다오스, 16종 전장 재질·16종 장식·6장별 원경을 적용했습니다. 실제 화면과 상세 범위는 [픽셀 아트 개편](Docs/PixelCampaign/README.md)을 참고하세요. 기존 89개 기술 연출과 오리지널 음악 14곡은 유지합니다. 전체 게임 완성본이나 전문가의 원작 작화 승인을 뜻하지 않으며, 최신 빌드·실행 검증과 한계는 Docs/VALIDATION.md를 따릅니다.
 
 - 런타임·에디터·테스트 C#을 설치된 Unity 실제 API DLL로 각각 컴파일: 통과.
 - 엔진 독립 규칙 테스트 93개: 통과. Unity API 일부를 대체한 별도 .NET 테스트입니다.
@@ -31,6 +31,8 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 실행
 
+울트라와이드 준비 화면의 겹침을 수정하고 메뉴에 Tab/Shift+Tab 순환·금색 선택 표시를 추가했습니다. 5개 해상도와 입력 회귀 결과·실물 기기 검수 한계는 [화면·입력 검수](Docs/Accessibility/README.md)를 참고하세요.
+
 1. Unity Hub에서 이 README가 있는 `TalesTactics` 폴더를 기존 프로젝트로 추가합니다.
 2. 설치된 **6000.6.0f1**으로 엽니다. 패키지 다운로드와 최초 import를 기다립니다.
 3. 포함된 `Assets/TalesTactics/Scenes/TestBattle.unity`를 엽니다. 현재 Content는 아트·전투 튜닝이 적용된 실제 에셋이므로 **Create Test Battle / DemoContent.Create를 다시 실행하지 않습니다.**
@@ -39,7 +41,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 `Launch.ps1`은 설치된 에디터에서 프로젝트를 여는 선택적 편의 스크립트입니다. 테스트 Scene은 기존 사용자 작업을 자동으로 덮어쓰지 않습니다. 생성 이후 수치 변경은 Content의 asset을 편집하세요. 생성기 코드는 초기 데이터의 출처이며 기획 원본은 Docs/GAME_DESIGN.md입니다.
 
-최신 UI Windows 실행 파일: `Builds/WindowsPresentationQuality/TalesTactics.exe`. 이전 실행 중인 플레이어와 파일 충돌을 피하려고 별도 폴더에 빌드했습니다. Builds 폴더는 Git에서 제외됩니다.
+최신 UI Windows 실행 파일: `Builds/WindowsAccessibility/TalesTactics.exe`. 이전 실행 중인 플레이어와 파일 충돌을 피하려고 별도 폴더에 빌드했습니다. Builds 폴더는 Git에서 제외됩니다.
 
 ## 조작
 
@@ -111,7 +113,7 @@ Windows 캠페인 자동 검수: `Docs/PLAYER_REVIEW.md`의 별도 개발 빌드
 
 ## 전투 진행과 결과
 
-메뉴 F5 → 전투 진행에서 적 행동 속도 1/2/4배와 간략 연출을 저장합니다. 아군 조작과 타이밍 판정 속도는 유지합니다. 기술 목표 선택을 취소하면 상세로, 다시 취소하면 마지막 기술을 강조한 목록으로 돌아갑니다. 결과 화면은 실제 저장된 보상과 캐릭터 성장을 표시하며 재도전·다음 장 출전 준비로 이어집니다. 최신 실행 파일은 Builds/WindowsPresentationQuality/TalesTactics.exe이며 폴더 전체가 필요합니다. 검증 범위는 [BattleFlow](Docs/BattleFlow/README.md)와 [VALIDATION](Docs/VALIDATION.md)을 참고하세요.
+메뉴 F5 → 전투 진행에서 적 행동 속도 1/2/4배와 간략 연출을 저장합니다. 아군 조작과 타이밍 판정 속도는 유지합니다. 기술 목표 선택을 취소하면 상세로, 다시 취소하면 마지막 기술을 강조한 목록으로 돌아갑니다. 결과 화면은 실제 저장된 보상과 캐릭터 성장을 표시하며 재도전·다음 장 출전 준비로 이어집니다. 최신 실행 파일은 Builds/WindowsAccessibility/TalesTactics.exe이며 폴더 전체가 필요합니다. 검증 범위는 [BattleFlow](Docs/BattleFlow/README.md)와 [VALIDATION](Docs/VALIDATION.md)을 참고하세요.
 
 ## 임무와 적 정보
 

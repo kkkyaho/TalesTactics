@@ -185,3 +185,7 @@ BattleResultHud는 BattleEndState 전용 패널이며 시스템/도움말 모달
 MissionBriefing은 Session의 실제 목표/생존 적 수를 읽는다. BattleMissionHud는 별도 모달이며 출전 전에는 선택 장의 CampaignEnemies를, 진행 중에는 Session.Units를 읽어 같은 적 구성을 표시한다. InputModalOpen 및 키보드/패드 취소와 시스템·도움말 전환에 연결하고 배경 CanvasGroup 상호작용을 차단한다. 세이브를 쓰거나 AI 예측을 실행하지 않는다.
 
 EnemyRoles는 콘텐츠 ID를 전열/돌격/사격/마법/보스로 분류한다. EnemyPlanner와 UtilityPlanner의 점수에 캠페인 적 전용 선호를 더한다. 사격/마법은 가장 가까운 아군과 기본 사거리(최대3칸) 안에서 거리를 확보하고 돌격은 공격 가능한 부상자에 추가 점수를 준다. 실제 이동/사거리/비용/효과 판정은 GridMap/SkillResolver에 남겨 두며 훈련·아군 플래너에는 역할 보정을 적용하지 않는다. 다오스의 기존 Utility 선택은 유지한다.
+
+## 화면 비율과 메뉴 키보드 선택
+
+BattleHud.Initialize는 ScaleWithScreenSize CanvasScaler에 Expand를 적용해 논리 영역을 기준1440×900 이상으로 유지한다. 고정 높이의 편성 카드/상점/하단 출전 영역이21:9에서 서로 침범하던 문제를 해결하며, 임의 ConstantPixelSize 설정은 바꾸지 않는다. GamepadPointer는 메뉴/모달/이야기/결과에서만 Tab 순환을 처리하고 기존 EventSystem Submit을 그대로 사용한다. 활성 Button.IsInteractable 검사로 모달 뒤 CanvasGroup을 제외한다. 선택 Outline의 원래 색과 두께는 선택 변경/비활성화 때 복원한다. 전투 대상 Tab 처리는 BattleDirector에 남아 있다.

@@ -40,6 +40,9 @@ namespace TalesTactics
         public void Initialize(BattleDirector b)
         {
             battle=b;canvas=GetComponent<RectTransform>();
+            var scaler=GetComponent<UnityEngine.UI.CanvasScaler>();
+            if(scaler!=null&&scaler.uiScaleMode==UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize)
+                scaler.screenMatchMode=UnityEngine.UI.CanvasScaler.ScreenMatchMode.Expand;
             if(Font==null)
             {
                 Font=Resources.Load<TMP_FontAsset>("TalesTactics/Korean");

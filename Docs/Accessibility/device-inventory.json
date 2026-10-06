@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();d.ConfigureStorage(System.IO.Path.Combine(UnityEngine.Application.temporaryCachePath,\"AccessibilityReview\",System.Guid.NewGuid().ToString(\"N\")));d.TrainingMode=true;d.Hud.ShowDeployment();return new {UnityEngine.Time.frameCount,devices=UnityEngine.InputSystem.InputSystem.devices.Select(x=>new {x.name,x.layout,x.description.product}).ToArray()};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frameCount": 3366,
+        "devices": [
+          {
+            "name": "Keyboard",
+            "layout": "Keyboard",
+            "product": ""
+          },
+          {
+            "name": "Mouse",
+            "layout": "Mouse",
+            "product": ""
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
