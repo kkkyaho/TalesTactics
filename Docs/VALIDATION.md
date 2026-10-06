@@ -487,3 +487,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 새 개발 플레이어7회 독립 실행 모두 통과: 기본 SPD/AI의1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴과 재출전/저장 복원/중복 보상 방지. PlayerReviews/512cb66074294c8cbd2aada5c4f96f9f-summary.json 참조. 검수 도구의4배 시간 가속과 장별 적 속도 설정으로 수행한 자동 검사이며 사람 플레이 시간/청음 검수는 아니다. 숨김 플레이어 캡처는 시각 증거로 사용하지 않았다.
 - 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. settings.json/슬롯2/3 미생성. 실행 로그7개의 Exception/Assertion/Error 검색0건(PresentationPolish/save-and-log-check.json). 동적 폰트 캐시와 기존 시간/레이아웃 검사 CSV는 복원하고 새 검사 사본만 PresentationPolish에 보존했다.
 - 범위: 이번8번은 전투 표시·효과음 중첩의 구현 보강이다. 신규 원화/음원 제작이나 작화·스피커/헤드폰별 최종 청음 승인이 아니다. 전체8번 최종 품질 평가와7번 나머지 사람 균형 평가는 미완료로 유지한다. 완료한 보강과7번 실행 도구만 검증 후 반영한다.
+
+## 2026-10-07 — 8번 후속 에셋 감사·기술명 가독성
+
+- 기술명이 속성색으로 지형 위에 직접 표시되던 부분에 밝은 글자/반투명 어두운 배경을 적용했다. 일반 글자 크기2.8→3.4, 생성 시 preferred width를 한 번 측정해 긴 이름의 한 줄 표시를 보장한다. AutoSize를 표시 중 반복하지 않는다. 속성색은 준비 고리에 유지하고 카메라 회전/발동/재출전 정리를 기존 경로에 연결했다. 전투 수치·비용·판정·아트/음원 에셋은 변경하지 않았다.
+- 현재20종의 스프라이트1012개 참조(캐릭터별 중복 제거)에서 기본4방향 누락·텍스처 밖 rect·비정상 PPU0건, 오디오18개 참조 모두 존재. Tools/ReviewPresentationAssets.cs.txt 및 PresentationQuality/asset-inventory.json. 보충 동작20시트/320칸 알파 측정에서 빈 칸·셀 경계 접촉/잘림0건(alpha-audit.json). 이는 추가 시트의 알파/경계 검사이며 모든 작화 세부 품질 보장은 아니다.
+- 기존 AnimationPolish 갤러리8장(영웅/적×4방향)을 다시 읽고 머리/무기/망토 경계와 캐릭터별 식별을 확인했다. 새 갤러리 렌더링은 아니며 원화/스프라이트 참조는 그대로다. 음악14곡은 기존 manifest SHA256와 일치한다. 새 Tools/ReviewAudioQuality.py는 음악14+효과음4 WAV를 읽어 빈 데이터/완전 무음/PCM 클리핑0건을 기록했다(audio-audit.json). 혼합 출력의 최대 피크나 실제 장치 청음 평가는 아니다.
+- 실제 Unity EditMode **102/102**(3.91초), PlayMode **72/72**(113.23초) 통과. 신규 검사는 긴 한글 기술명의 한 줄/넘침 없음·배경 폭·밝은 글자·AutoSize 비활성·회전 추적·Restart 제거를 확인한다. 기존 준비/판정/비용1회 처리 및 전체 연출/음악 검사가 함께 통과했다. 이번 실행 실패 없음. ManagedChecks는 실행하지 않았다.
+- 1366×768 Game View의1~6장에 가장 긴 카탈로그 기술명 `미스틱 케이지 / Mystic Cage`를 구성하여 밝은/어두운 바닥 및 장별 원경에서 대비를 확인했다. chapter1~6.png. 격리 저장의 메모리 해금과 크레스 위 타 캐릭터 기술명 표시, Time.timeScale=0으로 캡처한 표시 검수이며 정상 습득/전투 완주 증거는 아니다. 프레임7558→9601 진행 확인. 종료 후Time.timeScale=1/runInBackground=false/Full HD·Scene dirty=false 복원, 임시 Assets 캡처 제거 완료.
+- Windows 일반 빌드 **21.640초/오류0/경고8**, 개발 빌드 **21.479초/오류0/경고10** 성공. 기존 Pipeline·전처리기/사용 중단 API·직렬화·셰이더 경고 유지. PresentationQuality/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPresentationQuality/TalesTactics.exe**다.
+- 새 개발 플레이어7회 독립 실행 통과:1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴·재출전/저장 복원/중복 보상 보호. PlayerReviews/029aceb694f24f07829e1a74d207ad5e-summary.json. 기본 SPD/AI 및 기존4배 시간 가속의 자동 검수이며 사람의 전투 시간/청음 증거가 아니다. 숨김 플레이어 캡처는 시각 증거로 사용하지 않았다. 실행 로그7개 오류 검색0건, 사용자 저장/백업 해시 불변, settings/슬롯2/3 미생성. PresentationQuality/save-and-log-check.json, user-files-after.json. 동적 폰트 캐시와 기존 검사 CSV를 복원했다.
+- 이번8번의 기술적 에셋 감사·확인된 가독성 보완은 완료했다. 작화 선호/실제 장치 청음 최종 평가는 별도로 남기며 다음 구현 순서는9번이다. 신규 원화·음원 제작이나 전체8번의 사람 최종 승인을 선언하지 않는다.

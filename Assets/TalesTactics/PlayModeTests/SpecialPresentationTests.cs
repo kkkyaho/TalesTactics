@@ -135,6 +135,30 @@ namespace TalesTactics.PlayModeTests
             finally{Object.Destroy(skill);}
         }
 
+        [UnityTest] public IEnumerator LongSkillNameFitsContrastPlateAndRestartClearsIt()
+        {
+            director.BeginBattle();yield return null;
+            var caster=director.Session.Active;
+            var skill=Object.Instantiate(caster.Data.Skills[0]);
+            try
+            {
+                skill.DisplayName="빛과 어둠을 가르는 최후의 심판";skill.Animation=AnimationKind.Cast;
+                skill.Presentation=new SkillPresentation{Windup=1.5f};
+                director.Board.BeginSkill(caster,skill,caster.Position);
+                yield return null;
+                var label=GameObject.Find("Skill name").GetComponent<TMPro.TextMeshPro>();label.ForceMeshUpdate();
+                Assert.That(label.text,Is.EqualTo(skill.DisplayName));Assert.That(label.isTextOverflowing,Is.False);
+                Assert.That(label.textInfo.lineCount,Is.EqualTo(1));Assert.That(label.color.r,Is.GreaterThan(.9f));
+                Assert.That(label.enableAutoSizing,Is.False);
+                var backing=label.transform.Find("Skill name backing");Assert.That(backing,Is.Not.Null);
+                Assert.That(label.preferredWidth,Is.LessThanOrEqualTo(backing.localScale.x));
+                director.Board.RotateCamera(90);yield return null;
+                Assert.That(Quaternion.Angle(label.transform.rotation,director.Board.BattleCamera.transform.rotation),Is.LessThan(.1f));
+                director.Restart();yield return null;yield return null;
+                Assert.That(GameObject.Find("Skill name backing"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);
+            }
+            finally {Object.Destroy(skill);}
+        }
         [UnityTest] public IEnumerator MusicThemeRestoresPositionAndMissingThemePreservesBattle()
         {
             var original=director.Audio.Library;var library=ScriptableObject.CreateInstance<AudioLibrary>();

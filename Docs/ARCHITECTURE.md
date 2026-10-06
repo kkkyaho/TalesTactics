@@ -4,6 +4,8 @@
 
 BoardView.Number는 숫자/배경을 같은 루트에 생성해0.65초 후 함께 정리한다. 카메라의 현재 up/right로 표시 위치를 매 프레임 계산하고 MaterialPropertyBlock으로 배경 투명도를 적용한다. 전투 수치·판정은 변경하지 않는다.
 
+PrepareSkill의 기술명은 밝은 글자/어두운 배경과 별도의 속성색 준비 고리를 사용한다. 생성 때 preferred width를 한 번 측정해 최대5.6월드 단위 안에 맞추며 표시 중 AutoSize를 사용하지 않는다. 배경은 기술명의 자식이므로 발동/Restart 시 함께 제거된다.
+
 BattleAudio의 음악 소스와 효과음 소스는 분리되어 있다. 효과음은45ms 동일ID 중복 방지, 최대4개 동시 재생, 새 음성의1/√n 게인을 적용한다. Time.unscaledTime으로 클립 수명을 추적하므로 전투 배속과 별개이며 StopAll에서 추적 상태를 비운다. 현재 효과음 소스의 pitch=1/비루프 재생을 전제로 한다. 효과음 pitch나 AudioListener.pause를 도입하면 이 수명 추적도 함께 변경해야 한다.
 
 ## 게임패드와 포함 폰트
