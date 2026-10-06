@@ -97,12 +97,15 @@ namespace TalesTactics
             var g=new GameObject("HP feedback");g.transform.SetParent(root,false);
             var label=g.AddComponent<TextMeshPro>();label.text=cost?"HP "+delta:delta>0?"+"+delta:delta.ToString();
             label.font=battle.Hud.Font;
-            label.fontSize=4;label.alignment=TextAlignmentOptions.Center;
+            label.fontSize=4.5f;label.alignment=TextAlignmentOptions.Center;
             label.color=cost?new Color(1,0.65f,0.3f):delta>0?new Color(0.4f,1,0.6f):new Color(1,0.8f,0.6f);
-            label.sortingOrder=30;label.rectTransform.sizeDelta=new Vector2(2,0.5f);
-            var origin=units[unit].position+BattleCamera.transform.up*(cost?1.05f:1.5f);
+            label.sortingOrder=30;label.rectTransform.sizeDelta=new Vector2(2.4f,0.65f);
+            var backing=GameObject.CreatePrimitive(PrimitiveType.Quad);backing.name="Feedback backing";Destroy(backing.GetComponent<Collider>());backing.transform.SetParent(g.transform,false);
+            backing.transform.localPosition=new Vector3(0,0,.02f);backing.transform.localScale=new Vector3(Mathf.Clamp(label.text.Length*.3f,.9f,2.4f),.48f,1);
+            var background=backing.GetComponent<Renderer>();background.sharedMaterial=SpriteMaterial;background.sortingOrder=29;
+            var origin=units[unit].position;
             for(float t=0;t<0.65f;t+=Time.deltaTime)
-            {g.transform.position=origin+Vector3.up*t*0.45f;g.transform.rotation=BattleCamera.transform.rotation;label.alpha=1-t/0.65f;yield return null;}
+            {g.transform.position=origin+BattleCamera.transform.up*((cost?1.05f:1.7f)+t*.45f)+BattleCamera.transform.right*(cost?-.4f:0);g.transform.rotation=BattleCamera.transform.rotation;float alpha=1-Mathf.InverseLerp(.38f,.65f,t);label.alpha=alpha;SetColor(background,new Color(.025f,.035f,.06f,.85f*alpha));yield return null;}
             Destroy(g);
         }
     }

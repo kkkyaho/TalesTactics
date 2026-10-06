@@ -465,3 +465,25 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 새 개발 플레이어 **14회 독립 실행 모두 통과**. 기본 SPD/AI: 1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴. CT/Utility: 1~6장 승리15/13/17/14/17/9플레이어턴, 재실행 정상 패배3턴. 상점·장비·입문 연습·설정·저장된 성장/보상·재출전·중복 보상 보호도 통과했다. PlayerReviews/331d12e51dfd4d7fb681a8a843c4e42b-summary.json 및 54383b23417641fbb0afff5ae7cca4ba-summary.json. 도구의 기존4배 시간 가속 및 장별 적 속도 설정으로 수행한 자동 검수이며 사람의 전투 시간 측정이 아니다.
 - 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. 사용자 settings.json/슬롯2/3은 생성하지 않았다. 두 실행의 로그 Exception/Assertion/Error 검색0건(MissionRoles/save-and-log-check.json). 동적 폰트와 기존 시간/레이아웃 검사 CSV를 복원했고 새 검사 사본은 MissionRoles에 보존했다. 실제 전투 결과가 바뀐 combat-party-matrix.csv만 새 기준선으로 갱신했다.
 - 범위/한계: 6번 구현·자동/시각 검증 완료. 실물 게임패드, 모든 화면 비율, 사람의 전6장 수동 완주·적 역할 인지성·체감 난이도 평가는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 7번 사람 플레이 기반 난이도·보상 균형 검수다.
+
+## 2026-10-05 — 판매 준비 개선안 7 준비 (진행 중)
+
+- 기존18개 자동 편성 결과·6장 경제를 검토하고 사람 검수 우선 항목을 정리했다: 기본3인과 권장6인의 난이도 차이, 후반 대기 캐릭터의 레벨 차이, 장비 구매/반복 사냥 필요성, 확정 장비 매각까지 포함한 반복 보상 체감. 이는 가설/검수 대상이며 새 사람 평가 결과가 아니다.
+- Tools/StartBalancePlaytest.ps1은 기존 개발 빌드의 --manual-review를 사용한다. 새 GUID별 저장/설정·피드백 CSV·실행 manifest/로그를 분리하고 같은 GUID 재실행 시 이전 performance/hardware 기록을 보존한다. 같은 테스트 저장 중복 실행을 막고32자리GUID만 허용한다. PrepareOnly는 게임을 실행하지 않는다.
+- 첫 숨김 실행에서 ManualPlayerReview.Start가 runInBackground 설정 전에 yield하여 기록 초기화가 멈췄다. 활성화 순서를 yield 앞으로 옮기고 미사용 CampaignFile 변수를 제거했다. 첫 실행 증거는 BalancePlaytest/launcher-initial.json. 개발 전용 검수 도구 변경이며 일반 게임 전투/보상 수치에는 변경이 없다.
+- 개발 Windows 빌드18.517초/오류0/경고10 성공(BalancePlaytest/development-build.json). 수정 후 숨김 초기화·프레임 진행·동일 GUID 재실행2회, 중복 실행/잘못된GUID 차단, 피드백 보존 및 이전 기록 백업을 확인했다(launcher-check.json). 두 검수 프로세스는 확인 후 종료했으며 기존 사용자 플레이어는 유지했다. 숨김 실행의 극단적으로 높은FPS 값은 렌더링 성능이나 사람 플레이 속도 증거로 사용하지 않는다.
+- 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. settings.json/슬롯2/3 미생성, 두 실행 로그 오류0건. 동적 폰트 캐시 복원. 현재 턴에는 EditMode/PlayMode 전체 검사를 재실행하지 않았다. 최신102/69 통과는 직전6번의 기록이다.
+- 사람의 난이도·보상 의견은 아직 제공되지 않았다. 따라서7번은 미완료이며 수치 조정/완료 처리/커밋·푸시를 하지 않았다. BalancePlaytest/README.md와 prepared-session.json에 직접 플레이 절차와 격리 세션을 준비했다. 기존 성장/보상/가격은 유지한다.
+
+## 2026-10-07 — 사용자 테스트 확인 및8번 전투 피드백·효과음 보강
+
+- 사용자가 테스트 진행을 알리고 다음 단계 진행을 요청했다. 준비한 격리 세션0f88102af8fa4bc7a63025060109e25d의 기록에서6인 편성(크레스·민트·파라·벨벳·시온·티아), chapter1 완료·420G 저장, Victory 후 출전 준비 복귀를 확인했다. 실행 로그 오류 검색0건. feedback.csv의6행은 평점/의견이 비어 있다. 사용자1장 테스트 확인이며2~6장 수동 완주나 난이도·보상 만족 승인으로 확대하지 않는다. BalancePlaytest/user-test-summary.json 참조. 사용자 요청에 따라 다음 보강으로 진행하며7번 전체 균형 평가는 남겨 둔다.
+- 피해·회복·HP 비용 숫자에 반투명 어두운 배경과 확대 글자, 초반0.38초 선명 유지/0.65초 제거를 적용했다. 카메라 회전 시 현재 화면 방향을 따라 머리 위 표시를 유지한다. 효과음은 동일ID45ms 중복 억제·동시4개 상한·신규 음성1/√n 게인으로 중첩을 완화한다. unscaledTime 수명 추적·음소거 시 예약 방지·StopAll 초기화를 적용하며 음악/테마 복귀와 전투 수치·난수·저장 형식은 유지한다. 마스터 리미터나 최대 음량 보장은 아니다.
+- 실제 Unity EditMode **102/102**(2.94초), 최종 PlayMode **71/71**(112.93초) 통과. PresentationPolish/editmode-results.json, playmode-results.json. 새2개 검사는 효과음 중복/상한/게인/음소거/정지/일시정지 중 만료와 숫자 배경/대비/카메라 회전/HP 불변/재출전 정리를 확인한다. 기존14곡 재생·테마 위치 복귀 검사도 통과했다. ManagedChecks는 이번에 실행하지 않았다.
+- 첫 PlayMode71/71(113.65초) 이후 화면 검수에서 회전 시 숫자 위치가 밀리는 문제를 발견해 수정했다. 다음 실행은 기존 SpecialPosesPrepareReleaseAndRecoverForEntireRoster 검사에서 프레임 지연으로 시작 프레임을 지나친 뒤 비교하여70/71이었다. 시작 프레임 검사 구간만 시간을 멈추고 실제 시간의 복귀 검사를 유지하도록 수정한 후 최종71/71 통과했다. 두 이전 결과는 playmode-before-rotation.json, playmode-pose-timing-failure.json에 보존했다.
+- 실제1366×768·1920×1080 Game View에서 피해/회복 대비와 회전 후 위치를 확인했다. 격리 훈련 저장에 HP 변화량을 구성하고 캡처 동안 시간을 멈춘 표시 검수다. 자연 전투 완주/실제 표시 지속 시간 증거는 아니다. 프레임 진행은1539→3694→3904로 확인했다. Full HD/runInBackground=false·Time.timeScale=1·Scene dirty=false로 복원하고 임시 Assets 캡처를 제거했다. feedback.png, feedback-rotated.png 참조.
+- Unity 시작의 Scene Backup Detected 숨김 창은 Computer Use 활성화가 실패했다. 이전 장면 백업을 LocalReview/SceneBackup-20261007에 보존하고 이번에 시작한 에디터만 재시작해 정상 연결했다. 백업은 로컬 보관하며 Git에 포함하지 않는다. 에셋 생성기/장면 재생성은 실행하지 않았다.
+- Windows 일반 빌드 **27.601초/오류0/경고8**, 개발 빌드 **20.595초/오류0/경고10** 성공. 기존 Pipeline·전처리기/사용 중단 API·직렬화·셰이더 경고가 남아 있다. PresentationPolish/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPresentationPolish/TalesTactics.exe**다.
+- 새 개발 플레이어7회 독립 실행 모두 통과: 기본 SPD/AI의1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴과 재출전/저장 복원/중복 보상 방지. PlayerReviews/512cb66074294c8cbd2aada5c4f96f9f-summary.json 참조. 검수 도구의4배 시간 가속과 장별 적 속도 설정으로 수행한 자동 검사이며 사람 플레이 시간/청음 검수는 아니다. 숨김 플레이어 캡처는 시각 증거로 사용하지 않았다.
+- 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. settings.json/슬롯2/3 미생성. 실행 로그7개의 Exception/Assertion/Error 검색0건(PresentationPolish/save-and-log-check.json). 동적 폰트 캐시와 기존 시간/레이아웃 검사 CSV는 복원하고 새 검사 사본만 PresentationPolish에 보존했다.
+- 범위: 이번8번은 전투 표시·효과음 중첩의 구현 보강이다. 신규 원화/음원 제작이나 작화·스피커/헤드폰별 최종 청음 승인이 아니다. 전체8번 최종 품질 평가와7번 나머지 사람 균형 평가는 미완료로 유지한다. 완료한 보강과7번 실행 도구만 검증 후 반영한다.

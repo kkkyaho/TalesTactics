@@ -68,12 +68,20 @@ namespace TalesTactics.PlayModeTests
                     foreach(var skill in new[]{data.Skills[0],data.UltimateSkill})
                     {
                         var clip=skill.IsUltimate?data.Poses.Ultimate:data.Poses.Skill;
-                        motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
-                        motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame].Get(facing)),data.Id+facing);
-                        yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
+                        float previousScale=Time.timeScale;
+                        try
+                        {
+                            // Inspect phase starts without a slow editor frame advancing past them.
+                            Time.timeScale=0;
+                            motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
+                            motion.ReleaseSkill();yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame].Get(facing)),data.Id+facing);
+                            Time.timeScale=previousScale;
+                            yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
+                        }
+                        finally {Time.timeScale=previousScale;}
                     }
                 }
                 Object.Destroy(go);

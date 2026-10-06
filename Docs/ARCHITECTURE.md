@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 전투 피드백과 효과음 중첩
+
+BoardView.Number는 숫자/배경을 같은 루트에 생성해0.65초 후 함께 정리한다. 카메라의 현재 up/right로 표시 위치를 매 프레임 계산하고 MaterialPropertyBlock으로 배경 투명도를 적용한다. 전투 수치·판정은 변경하지 않는다.
+
+BattleAudio의 음악 소스와 효과음 소스는 분리되어 있다. 효과음은45ms 동일ID 중복 방지, 최대4개 동시 재생, 새 음성의1/√n 게인을 적용한다. Time.unscaledTime으로 클립 수명을 추적하므로 전투 배속과 별개이며 StopAll에서 추적 상태를 비운다. 현재 효과음 소스의 pitch=1/비루프 재생을 전제로 한다. 효과음 pitch나 AudioListener.pause를 도입하면 이 수명 추적도 함께 변경해야 한다.
+
 ## 게임패드와 포함 폰트
 
 BattleDirector.Start가 GamepadPointer를 생성한다. Gamepad 이벤트를 화면 포인터로 변환하고 EventSystem의 UI raycast/기존 클릭 콜백 또는 Board.Pick/State.Tile을 사용한다. 전투 규칙을 별도 구현하지 않는다. 메뉴 순환은 현재 활성·상호작용 가능한 버튼만 대상으로 하고, B 취소는 상태의 Cancel 또는 메뉴의 돌아가기/목록/출전 준비 버튼을 사용한다. 실행 순서 -100으로 기본 UI submit보다 먼저 게임패드 사용을 감지하고 sendNavigationEvents를 끄므로 A 입력이 두 번 실행되지 않는다. 마우스 전환·장치 해제·컴포넌트 비활성화 시 기존 설정을 복원한다. 커서 Canvas는 raycast를 막지 않는다. 가상 Mouse 장치를 만들거나 실제 OS 포인터를 이동하지 않는다.
