@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();var b=d.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name.Contains(\" · MP\"));var r=(UnityEngine.RectTransform)b.transform;var p=d.GetComponent<TalesTactics.GamepadPointer>();p.MoveTo(UnityEngine.RectTransformUtility.WorldToScreenPoint(null,r.TransformPoint(r.rect.center)));int mp=d.Session.Active.CurrentMP;p.Submit();var target=d.State.GetType().Name;d.State.Cancel();return new {afterClick=target,afterCancel=d.State.GetType().Name,oldRangeCleared=!UnityEngine.Object.FindObjectsByType<UnityEngine.LineRenderer>().Any(r=>r.name.StartsWith(\"Range border \")&&r.enabled),mpUnchanged=mp==d.Session.Active.CurrentMP,frame=UnityEngine.Time.frameCount};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "afterClick": "TargetSelectionState",
+        "afterCancel": "ActionSelectionState",
+        "oldRangeCleared": true,
+        "mpUnchanged": true,
+        "frame": 6384
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

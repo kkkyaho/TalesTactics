@@ -6,11 +6,11 @@ namespace TalesTactics
     public sealed partial class BattleHud
     {
         SkillData[] VisibleSkills=>battle.Session.Active.Data.Skills.Concat(new[]{battle.Session.Active.Data.UltimateSkill})
-            .Where(s=>s!=null&&(!battle.TutorialActive||battle.TutorialSkillAllowed(s))).ToArray();
+            .Where(s=>s!=null&&(!battle.TutorialActive||battle.TutorialSkillAllowed(s))&&battle.Session.Resolver.CanUse(battle.Session.Active,s,battle.IsFollowup(s))==null).ToArray();
         int skillPage;
         UnitRuntime skillPageOwner;
         SkillData shownSkill;
-        float SkillCardHeight=>282;
+        float SkillCardHeight=222;
         void AddTacticalIcon(Transform parent,string kind,float size,Vector2 position,Color tint)
         {
             var g=new GameObject("Icon",typeof(RectTransform),typeof(TacticalIcon));g.transform.SetParent(parent,false);
@@ -47,57 +47,47 @@ namespace TalesTactics
         }
         void DrawSkillCards(UnitRuntime unit)
         {
-            var selected=(battle.State as SkillDetailsState)?.Skill;
             var skills=VisibleSkills;
             if(skillPageOwner!=unit){skillPageOwner=unit;skillPage=Mathf.Max(0,System.Array.IndexOf(skills,battle.LastSkill))/4;shownSkill=null;}
-            if(selected!=null&&selected!=shownSkill){int found=System.Array.IndexOf(skills,selected);if(found>=0)skillPage=found/4;shownSkill=selected;}
             skillPage=Mathf.Clamp(skillPage,0,Mathf.Max(0,(skills.Length-1)/4));
-            for(int i=0;i<Mathf.Min(4,skills.Length-skillPage*4);i++)
+            var page=skills.Skip(skillPage*4).Take(4).ToArray();
+            var legacy=(battle.State as SkillDetailsState)?.Skill;
+            shownSkill=legacy??(page.Contains(battle.LastSkill)?battle.LastSkill:page.FirstOrDefault());
+            int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>4;
+            float infoY=38+rows*30,buttonsY=infoY+(shownSkill!=null?28:0)+(pages?28:0);
+            SkillCardHeight=buttonsY+44;
+            Label(commands,"기술",7,24,16);
+            var mp=Label(commands,"MP "+unit.CurrentMP,7,24,14);mp.alignment=TextAlignmentOptions.TopRight;
+            var brief=Label(commands,"",infoY,26,13);brief.enableAutoSizing=true;brief.fontSizeMin=11;brief.fontSizeMax=13;
+            System.Action<SkillData> inspect=skill=>{shownSkill=skill;brief.text=skill==null?"":$"사거리 {skill.MinRange}–{skill.Range} · {ElementalRules.Name(skill.Element)}";};
+            inspect(shownSkill);
+            if(page.Length==0)Label(commands,"사용 가능한 기술 없음",38,30,15);
+            foreach(var skill in page)
             {
-                var skill=skills[skillPage*4+i];string error=battle.Session.Resolver.CanUse(unit,skill,battle.IsFollowup(skill));
-                Button(commands,skill.DisplayName+" · MP"+skill.MPCost+(error!=null?" · 조건 확인":""),0,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,90);
+                int i=System.Array.IndexOf(page,skill);
+                Button(commands,skill.DisplayName+" · MP"+skill.MPCost,38+i*30,()=>battle.SelectSkill(skill),true,28);
                 var r=(RectTransform)commands.GetChild(commands.childCount-1);
-                r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(12+i*148,-46);r.sizeDelta=new Vector2(144,98);
-                var text=r.GetComponentInChildren<TMP_Text>();text.text=skill.DisplayName;text.fontSize=14;text.enableAutoSizing=true;text.fontSizeMin=11;text.fontSizeMax=14;
-                Place(text.rectTransform,Vector2.zero,Vector2.right,new Vector2(3,4),new Vector2(-3,34));
-                var cost=Label(r,"MP "+skill.MPCost,4,18,12);cost.alignment=TextAlignmentOptions.TopRight;
-                cost.rectTransform.sizeDelta=new Vector2(-10,18);
-                bool friendly=skill.Target!=TargetType.Enemy;
-                var tint=error!=null?new Color(.5f,.55f,.65f):friendly?new Color(.45f,1,.72f):skill.IsUltimate?new Color(1,.72f,.24f):new Color(.5f,.8f,1);
-                string kind=friendly?"heal":skill.IsUltimate?"skill":skill.VisualStyle==CombatVisualStyle.Song?"song":
-                    unit.Data.Weapon==WeaponType.Fist||unit.Data.Weapon==WeaponType.Claw?"martial":unit.Data.Weapon==WeaponType.Bow?"bow":
-                    unit.Data.Weapon==WeaponType.Gun?"rifle":unit.Data.Weapon==WeaponType.Spear?"spear":unit.Data.Weapon==WeaponType.Shield?"guard":skill.Element!=Element.None?"skill":"attack";
-                AddTacticalIcon(r,kind,34,new Vector2(-13,-18),tint);
-                if(error!=null){var locked=Label(r,"!",25,24,14);locked.alignment=TextAlignmentOptions.TopRight;locked.color=new Color(1,.7f,.35f);}
-                if(selected==skill)
-                {r.GetComponent<UnityEngine.UI.Image>().color=new Color(.29f,.23f,.13f);r.GetComponent<UnityEngine.UI.Outline>().effectColor=new Color(1,.78f,.33f);}
-                else if(selected==null)RememberedSkillButton(skill);
+                var button=r.GetComponent<UnityEngine.UI.Button>();r.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+                r.GetComponent<UnityEngine.UI.Image>().color=Color.white;
+                var colors=button.colors;colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=colors.selectedColor=new Color(.14f,.3f,.45f);colors.pressedColor=new Color(.25f,.42f,.56f);button.colors=colors;
+                var name=r.GetComponentInChildren<TMP_Text>();name.text=skill.DisplayName;name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
+                Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,0),new Vector2(-62,0));
+                var cost=Label(r,skill.MPCost+" MP",0,28,13);cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,0),new Vector2(-6,0));
+                var trigger=r.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
+                foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select})
+                {var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>inspect(skill));trigger.triggers.Add(entry);}
+                if(skill==battle.LastSkill){Canvas.ForceUpdateCanvases();battle.GetComponent<GamepadPointer>()?.FocusButton(button);}
             }
-            Button(commands,"이전 기술 페이지",10,()=>{skillPage--;battle.SetState(new ActionSelectionState(battle));},skillPage>0,28);SkillPageButton(0);
-            Button(commands,"다음 기술 페이지",10,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/4,28);SkillPageButton(1);
-            float y=154;
-            if(selected!=null)
+            if(pages)
             {
-                string error=battle.Session.Resolver.CanUse(unit,selected,battle.IsFollowup(selected));
-                var brief=Label(commands,$"{selected.DisplayName} · 사거리 {selected.MinRange}–{selected.Range} · {ElementalRules.Name(selected.Element)}",y,24,16);
-                var reason=Label(commands,SkillResolver.ExplainUnavailable(error),y+28,26,15);reason.color=error==null?new Color(.5f,1,.7f):new Color(1,.72f,.4f);
-                Button(commands,"목표 선택",y+66,()=>battle.SelectSkill(selected),error==null,38);CardFooter(2,3);
-                Button(commands,"기술 상세",y+66,()=>ShowSkillInformation(unit,selected),true,38);CardFooter(1,3);
-                Button(commands,"스킬 목록으로",y+66,()=>battle.State.Cancel(),true,38);CardFooter(0,3);
+                Button(commands,"이전 기술 페이지",infoY+28,()=>{skillPage--;battle.SetState(new ActionSelectionState(battle));},skillPage>0,26);HalfButton(commands,0);
+                Button(commands,"다음 기술 페이지",infoY+28,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/4,26);HalfButton(commands,1);
+                commands.GetChild(commands.childCount-2).GetComponentInChildren<TMP_Text>().text="‹ 이전";
+                commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="다음 ›";
             }
-            else
-            {
-                Label(commands,"기술을 선택하면 사용 조건을 확인할 수 있습니다.",y+8,44,16);
-                Button(commands,"취소",y+66,()=>battle.SetState(new CommandState(battle)),true,38);CardFooter(0,3);
-            }
+            Button(commands,"취소",buttonsY,()=>battle.SetState(new CommandState(battle)),true,28);if(shownSkill!=null)HalfButton(commands,0);
+            if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,28);HalfButton(commands,1);}
         }
-        void SkillPageButton(int index)
-        {
-            var r=(RectTransform)commands.GetChild(commands.childCount-1);r.anchorMin=r.anchorMax=Vector2.one;r.pivot=Vector2.one;r.sizeDelta=new Vector2(70,28);r.anchoredPosition=new Vector2(-12-(1-index)*76,-10);
-            r.GetComponentInChildren<TMP_Text>().text=index==0?"‹ 이전":"다음 ›";
-        }
-        void CardFooter(int index,int count)
-        {var r=(RectTransform)commands.GetChild(commands.childCount-1);r.anchorMin=new Vector2((float)index/count,1);r.anchorMax=new Vector2((float)(index+1)/count,1);}
         void ShowSkillInformation(UnitRuntime unit,SkillData skill)
         {
             ShowUnitDetails(unit);if(!UnitDetailsOpen)return;Clear(unitDetails);

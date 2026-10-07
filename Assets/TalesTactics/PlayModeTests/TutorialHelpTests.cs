@@ -33,7 +33,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(enemy.CurrentHP,Is.LessThan(enemyHP));Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Healing));
             var mint=director.Session.Active;Assert.That(mint.Data.Id,Is.EqualTo("mint"));int hp=fighter.CurrentHP,mp=mint.CurrentMP;
             var heal=mint.Data.Skills.Single(s=>s.Id=="mint.0");Click("Skill / 스킬");yield return null;
-            Click(heal.DisplayName+" · MP"+heal.MPCost);yield return null;Click("목표 선택");yield return null;
+            Click(heal.DisplayName+" · MP"+heal.MPCost);yield return null;
             director.SelectTarget(mint.Position);Assert.That(director.Target,Is.Null);
             Click("다음 대상 · Tab");yield return null;Assert.That(director.Target,Is.EqualTo(fighter.Position));
             Click("실행");yield return FinishTutorialAction();

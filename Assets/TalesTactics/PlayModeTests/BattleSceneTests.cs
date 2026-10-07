@@ -114,22 +114,17 @@ namespace TalesTactics.PlayModeTests
             Click("메뉴 · 저장/설정");yield return null;Click("저장 없이 출전 준비로");yield return null;Click("전투 시작");yield return null;
             Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(0.01f));
         }
-        [UnityTest] public IEnumerator UnavailableSkillCanBeInspectedButCannotBeSelected()
+        [UnityTest] public IEnumerator UnavailableSkillsAreHiddenAndReturnWhenAffordable()
         {
             Click("전투 시작");yield return null;
             var unit=director.Session.Active;int mp=unit.CurrentMP,hp=unit.CurrentHP;
             var skill=unit.Data.Skills.First(s=>s.MPCost>0&&s.Gate==SkillGate.None);
             unit.CurrentMP=0;Click("Skill / 스킬");yield return null;
-            string button=Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name.StartsWith(skill.DisplayName+" · MP")).name;
-            Click(button);yield return null;
-            Assert.That(director.State,Is.InstanceOf<SkillDetailsState>());
-            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="목표 선택").interactable,Is.False);
-            Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.text.Contains("MP가 부족")),Is.True);
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name.StartsWith(skill.DisplayName+" · MP")),Is.False);
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="목표 선택"),Is.False);
             Assert.That(unit.CurrentMP,Is.Zero);Assert.That(unit.CurrentHP,Is.EqualTo(hp));Assert.That(unit.Acted,Is.False);
-            Click("스킬 목록으로");yield return null;
             unit.CurrentMP=mp;director.Hud.Refresh();yield return null;
-            button=Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name.StartsWith(skill.DisplayName+" · MP")).name;
-            Click(button);yield return null;Click("목표 선택");yield return null;
+            Click(skill.DisplayName+" · MP"+skill.MPCost);yield return null;
             Assert.That(director.State,Is.InstanceOf<TargetSelectionState>());Assert.That(director.SelectedSkill,Is.SameAs(skill));
             Assert.That(unit.CurrentMP,Is.EqualTo(mp));Assert.That(unit.Acted,Is.False);
         }

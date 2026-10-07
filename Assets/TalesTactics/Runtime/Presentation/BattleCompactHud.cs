@@ -20,7 +20,7 @@ namespace TalesTactics
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
             if(SkillPanel)
             {
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-624,12),new Vector2(-12,SkillCardHeight));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-312,12),new Vector2(-12,SkillCardHeight+12));
                 Place(footer,Vector2.zero,new Vector2(0,0),new Vector2(12,176),new Vector2(344,286));
             }
             else if(battle.State is TargetSelectionState)

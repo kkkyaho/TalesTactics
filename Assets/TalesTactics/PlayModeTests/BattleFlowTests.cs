@@ -7,14 +7,13 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator SkillCancelReturnsThroughDetailsAndRemembersEachCharacter()
+        [UnityTest] public IEnumerator SkillClickSkipsDetailsAndCancelRemembersEachCharacter()
         {
             director.BeginBattle();yield return null;var unit=director.Session.Active;int mp=unit.CurrentMP;
             var skill=unit.Data.Skills.First(s=>director.Session.Resolver.CanUse(unit,s)==null);
             director.SkillCommand();yield return null;Click(skill.DisplayName+" · MP"+skill.MPCost);yield return null;
-            Click("목표 선택");yield return null;director.State.Cancel();yield return null;
-            Assert.That(director.State,Is.TypeOf<SkillDetailsState>());Assert.That(((SkillDetailsState)director.State).Skill,Is.SameAs(skill));
-            director.State.Cancel();yield return null;Assert.That(director.State,Is.TypeOf<ActionSelectionState>());
+            Assert.That(director.State,Is.TypeOf<TargetSelectionState>());director.State.Cancel();yield return null;
+            Assert.That(director.State,Is.TypeOf<ActionSelectionState>());Assert.That(Object.FindObjectsByType<LineRenderer>().Any(r=>r.name.StartsWith("Range border ")&&r.enabled),Is.False);
             Assert.That(director.LastSkill,Is.SameAs(skill));Assert.That(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name,Is.EqualTo(skill.DisplayName+" · MP"+skill.MPCost));
             Assert.That(unit.CurrentMP,Is.EqualTo(mp));Assert.That(unit.Acted,Is.False);
             director.State.Cancel();director.AttackCommand();director.State.Cancel();Assert.That(director.State,Is.TypeOf<CommandState>());

@@ -542,3 +542,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 개발 플레이어를 별도 저장 공간으로7회 실행해1~6장 승리와 재실행을 통과했다. 턴 수는25/20/26/20/27/21 및 재실행2. 보상/장 해금/중복 지급 방지/저장 재실행 확인은 PlayerReviews/17118daf764c47928b433bc1d5a8a391-summary.json과 각 장 보고서 참조. 숨겨진 플레이어의 검은 캡처는 시각 증거로 사용하지 않았다.
 - 작업 전후 사용자 campaign.json 및 백업 SHA256 불변(SimpleHud/user-save-before.json, user-save-after.json). 임시 Game View 해상도와 캡처 에셋을 제거하고 Play Mode를 종료했으며 runInBackground=false로 복구했다. 사용자 Content/Scene 에셋은 변경하지 않았다.
 - 최신 일반 실행 파일: Builds/WindowsSimpleHud/TalesTactics.exe. 폴더 전체가 필요하다. 실제 하드웨어 게임패드 수동 검수 및 사람이6장을 완주한 결과는 아니다. 기존 릴리즈와 main은 변경하지 않는다.
+
+## 2026-10-07 — 기술 목록 축소와 중간 단계 제거
+
+- 기술 UI를 폭300, 최대4행의 세로 목록으로 줄였다. 이름/MP와 가리킨 기술의 사거리·속성을 표시한다. 목록 길이에 맞춰 높이를 줄이며 여러 페이지일 때만 이전/다음이 나온다. CanUse 및 연습 조건으로 비활성 기술을 숨긴다. 빈 목록에는 안내 한 줄과 취소만 표시한다.
+- 기술 클릭은 SelectSkill→TargetSelectionState로 바로 이어진다. 중간 ‘목표 선택’ 버튼을 제거했고 대상 확인 후 ‘실행’은 유지한다. 취소는 목록으로 바로 복귀하며 마지막 선택을 복원하고 사거리 표시를 지운다. 다른 기술 선택 시 이전 Target을 초기화한다. 도움말/입문 회복/개발 플레이어 검수 경로도 새 절차에 맞췄다.
+- 실제 Unity 전체 PlayMode **78/78** 통과(116.19초). 초기76/78의 실패2개는 구 UI 너비400 이상 요구와300의 부동소수점 정확 비교였다. 새 요구와 허용 오차에 맞춰 수정했다. 이후 시각 검수에서 취소 후 사거리 표시 정리와 빈 목록 문구를 보완하고 관련 **9/9** 재통과(최종7.84초). CompactSkills/playmode-initial.json, playmode-results.json, skill-regression-results.json 참조.
+- 직접 선택/취소/기술별 기억, MP 부족 시 숨김 및 회복 후 재표시, 빈 목록·페이지 보정, 선택/상세 보기 비용 유지, 대상 초기화, 실행 시 한 번만 MP 차감과 피해 적용을 확인했다. 실제 포인터 Submit도 대상 선택으로 진입했고 취소 후 범위 제거 및 MP 불변을 확인했다(pointer-review.json). EditMode109개는 직전 통과 기록이며 이번 UI 변경에서는 재실행하지 않았다. ManagedChecks도 재실행하지 않았다.
+- 1024×768,1280×800,1366×768,1920×1080,2560×1080의 목록/대상10개 상태에서 활성 버튼 화면 경계 이탈0건. 대표 화면을 직접 검수했고 마지막 사거리/빈 목록 정리 후1920×1080 재촬영했다. CompactSkills/aspect-matrix.json 및 README.md/PNG 참조. 별도 임시 저장 경로를 사용했으며 사용자 원본/백업 SHA256 불변.
+- 최종 Windows 일반 빌드 **11.944초/오류0/경고5** 성공(CompactSkills/windows-build.json). 기존 Pipeline 설정/개발 컴파일 지시어/nullable 직렬화 경고가 남아 있다.10초 숨김 실행에서 프로세스 유지와 로그 예외0건(startup-check.json, windows-startup.log). 이전 UI 실행 중인 사용자 게임은 종료하지 않았다.
+- 최신 실행 파일: Builds/WindowsCompactSkills/TalesTactics.exe. 폴더 전체가 필요하다. 실제 물리 패드 검수 및 새6장 수동 완주는 포함하지 않는다. 사용자 Content/Scene/저장 형식은 유지하고 임시 캡처 에셋·해상도와 Play Mode를 정리했다.

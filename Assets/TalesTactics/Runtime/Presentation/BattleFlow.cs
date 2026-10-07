@@ -9,7 +9,7 @@ namespace TalesTactics
         public void RememberSkill(SkillData skill){if(Session?.Active!=null&&skill!=null)lastSkills[Session.Active.Data.Id]=skill;}
         public void CancelTarget()
         {
-            if(SelectedSkill!=null&&SelectedSkill!=Session.Active.Data.BasicAttack)SetState(new SkillDetailsState(this,SelectedSkill));
+            if(SelectedSkill!=null&&SelectedSkill!=Session.Active.Data.BasicAttack)SetState(new ActionSelectionState(this));
             else SetState(new CommandState(this));
         }
         Dictionary<string,int> resultLevels,resultEXP,resultInventory;

@@ -104,7 +104,8 @@ namespace TalesTactics
         {
             if(Session.Active.Team!=Team.Player||!TutorialSkillAllowed(s))return;
             var error=Session.Resolver.CanUse(Session.Active,s,IsFollowup(s));if(error!=null){Message=error;Hud.Refresh();return;}
-            SelectedSkill=s;SetState(new TargetSelectionState(this));
+            if(s!=Session.Active.Data.BasicAttack)RememberSkill(s);
+            Target=null;SelectedSkill=s;SetState(new TargetSelectionState(this));
         }
         public void SelectTarget(Vector2Int p)
         {

@@ -28,7 +28,7 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(commands.rect.Contains(commands.InverseTransformPoint(r.TransformPoint(r.rect.max))),Is.True,button.name);
             }
             director.SkillCommand();yield return null;
-            Assert.That(commands.rect.width,Is.GreaterThanOrEqualTo(400));
+            Assert.That(commands.rect.width,Is.EqualTo(300).Within(.01f));
             director.State.Cancel();yield return null;
             director.AttackCommand();yield return null;
             Assert.That(commands.rect.height,Is.LessThanOrEqualTo(180));

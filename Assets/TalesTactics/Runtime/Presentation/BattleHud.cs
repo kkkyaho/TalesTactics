@@ -168,7 +168,7 @@ namespace TalesTactics
             message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
             DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();
-            if(!(battle.State is CommandState)&&!(battle.State is FacingSelectionState)&&!(battle.State is MoveSelectionState)&&!(battle.State is TargetSelectionState))Label(commands,BattleTitle,12,36,20);
+            if(!SkillPanel&&!(battle.State is CommandState)&&!(battle.State is FacingSelectionState)&&!(battle.State is MoveSelectionState)&&!(battle.State is TargetSelectionState))Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){DrawResult();return;}
             if(battle.State is CommandState&&u.Team==Team.Player)

@@ -261,7 +261,7 @@ namespace TalesTactics
             while(battle.State is ActionExecutionState)yield return null;
             Check(battle.Tutorial==TutorialStep.Healing,"Tutorial attack advances to Mint");
             var heal=battle.Session.Active.Data.Skills.Single(s=>s.Id=="mint.0");int mp=battle.Session.Active.CurrentMP;
-            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);Click("목표 선택");Click("다음 대상 · Tab");Click("실행");
+            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);Click("다음 대상 · Tab");Click("실행");
             while(battle.State is ActionExecutionState)yield return null;
             Check(battle.Tutorial==TutorialStep.Waiting&&battle.Session.Active.CurrentMP==mp-heal.MPCost,"Tutorial healing restores HP through normal resolver and spends MP");
             Click("Wait / 방향 선택");Click("Front");yield return null;
