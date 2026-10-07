@@ -19,6 +19,9 @@ namespace TalesTactics
         public static int Distance(Vector2Int a,Vector2Int b) => Mathf.Abs(a.x-b.x)+Mathf.Abs(a.y-b.y);
         public IEnumerable<GridTile> Neighbors(Vector2Int p) { foreach(var d in Directions) if(Tiles.TryGetValue(p+d,out var t)) yield return t; }
         public bool CanEnter(UnitRuntime u,GridTile from,GridTile to) => to!=null && to.Walkable && (to.Occupant==null || to.Occupant==u) && Mathf.Abs(from.Height-to.Height)<=u.Stats.JMP;
+        // Walking may pass allies; landing and forced displacement still require a vacant tile.
+        bool CanTraverse(UnitRuntime u,GridTile from,GridTile to) => to!=null && to.Walkable &&
+            (to.Occupant==null || to.Occupant==u || to.Occupant.Team==u.Team) && Mathf.Abs(from.Height-to.Height)<=u.Stats.JMP;
         public Dictionary<Vector2Int,int> Reachable(UnitRuntime unit,out Dictionary<Vector2Int,Vector2Int> parents)
         {
             parents=new Dictionary<Vector2Int,Vector2Int>();
@@ -30,13 +33,15 @@ namespace TalesTactics
                 open.Sort((a,b)=>costs[a].CompareTo(costs[b])); var p=open[0]; open.RemoveAt(0);
                 foreach(var t in Neighbors(p))
                 {
-                    if(!CanEnter(unit,this[p],t))continue;
+                    if(!CanTraverse(unit,this[p],t))continue;
                     int cost=costs[p]+Mathf.Max(1,t.MovementCost);
                     if(cost>unit.Stats.MOV || (costs.TryGetValue(t.Coordinate,out int old)&&cost>=old))continue;
                     costs[t.Coordinate]=cost; parents[t.Coordinate]=p;
                     if(!open.Contains(t.Coordinate))open.Add(t.Coordinate);
                 }
             }
+            foreach(var p in new List<Vector2Int>(costs.Keys))
+                if(this[p].Occupant!=null&&this[p].Occupant!=unit)costs.Remove(p);
             return costs;
         }
         public List<Vector2Int> Path(UnitRuntime u,Vector2Int destination)

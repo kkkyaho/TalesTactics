@@ -11,6 +11,7 @@ namespace TalesTactics
             mesh.Clear();
             switch(Kind)
             {
+                case "chevron": Line(mesh,.3f,.2f,.65f,.5f,.095f);Line(mesh,.65f,.5f,.3f,.8f,.095f);break;
                 case "move": Line(mesh,.25f,.3f,.65f,.3f);Line(mesh,.65f,.3f,.65f,.65f);Line(mesh,.45f,.5f,.65f,.7f);Line(mesh,.65f,.7f,.85f,.5f);break;
                 case "guard": Poly(mesh,new[]{new Vector2(.2f,.8f),new Vector2(.8f,.8f),new Vector2(.75f,.35f),new Vector2(.5f,.15f),new Vector2(.25f,.35f)});break;
                 case "wait": Line(mesh,.25f,.85f,.75f,.85f);Line(mesh,.25f,.15f,.75f,.15f);Line(mesh,.3f,.8f,.7f,.2f);Line(mesh,.7f,.8f,.3f,.2f);break;

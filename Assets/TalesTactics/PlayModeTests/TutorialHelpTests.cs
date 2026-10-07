@@ -42,7 +42,7 @@ namespace TalesTactics.PlayModeTests
             Click("Left");yield return null;Assert.That(mint.Facing,Is.EqualTo(Facing.Left));Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Complete));
             Assert.That(mint.Statuses.Single(s=>s.Kind==StatusKind.Song).Turns,Is.EqualTo(1));
             Assert.That(director.RewardPending,Is.False);Click("처음부터 연습");yield return null;
-            Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Movement));Click("Restart");yield return null;
+            Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Movement));Click("메뉴 · 저장/설정");yield return null;Click("저장 없이 출전 준비로");yield return null;
             Assert.That(director.TutorialActive,Is.False);Assert.That(director.Session,Is.Null);
             Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(original));Assert.That(director.Deployment,Is.EqualTo(party));
             Assert.That(director.TrainingMode,Is.False);Assert.That(director.UseCT&&director.UseUtilityAI,Is.True);
@@ -74,7 +74,7 @@ namespace TalesTactics.PlayModeTests
             director.Campaign=new CampaignSave();director.TrainingMode=false;director.SelectedStage=0;
             director.PersistCampaign=_=>throw new System.Exception("No reward should be written");
             director.BeginTutorial();yield return null;director.MoveCommand();yield return null;
-            director.GetComponent<GamepadPointer>().Cancel();yield return null;Click("Restart");yield return null;
+            director.GetComponent<GamepadPointer>().Cancel();yield return null;Click("메뉴 · 저장/설정");yield return null;Click("저장 없이 출전 준비로");yield return null;
             director.BeginBattle();yield return null;
             Assert.That(director.TutorialActive,Is.False);Assert.That(director.Session.CampaignStage,Is.Zero);
             Assert.That(director.Session.Victory,Is.TypeOf<EliminateEnemies>());Assert.That(director.Session.Units.Count,Is.EqualTo(7));

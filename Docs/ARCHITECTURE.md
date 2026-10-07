@@ -200,4 +200,10 @@ BattleHud.Initialize는 ScaleWithScreenSize CanvasScaler에 Expand를 적용해 
 
 BattleIconHud는 전투 상단 초상 순서, 4장 단위 기술 카드, 선택 기술 요약과 상세 창을 담당한다. TacticalIcon은 CanvasRenderer를 가진 MaskableGraphic으로 직접 도형을 그리며 클릭을 가로채지 않는다. 사용 조건과 비용은 SkillResolver가 판정한다. 페이지 전환은 ActionSelectionState로 돌아가 이전 페이지 기술의 실행 버튼을 남기지 않는다. 전체 설명은 기존 입력 차단을 사용하는 상세 모달에서 제공한다.
 
-BattleCompactHud는 유닛 옆 2×2 명령, 작은 캐릭터 요약, 대상 가까이의 결과 패널과 화면 경계 처리를 담당한다. BoardView는 전체 화면 카메라로 배경을 렌더링하되 BattlefieldViewport를 타일 배치의 안전 영역으로 사용한다. 카메라 크기와 중심 오프셋에 안전 영역 비율을 반영하므로 UI 때문에 검은 띠가 생기지 않는다. 기존 전투 상태/저장 형식/규칙 데이터는 유지한다.
+BattleCompactHud는 유닛 옆 세로 5줄 명령, 작은 캐릭터 요약, 대상 가까이의 결과 패널과 화면 경계 처리를 담당한다. BoardView는 전체 화면 카메라로 배경을 렌더링하되 BattlefieldViewport를 타일 배치의 안전 영역으로 사용한다. 카메라 크기와 중심 오프셋에 안전 영역 비율을 반영하므로 UI 때문에 검은 띠가 생기지 않는다. 기존 전투 상태/저장 형식/규칙 데이터는 유지한다.
+
+## 간결한 방향 UI와 아군 경로 통과
+
+BattleFacingHud는 월드 Facing을 CharacterMotion.ViewFacing으로 화면 방향에 대응시킨다. 캐릭터 투영 위치 주위에20×20 꺾쇠와40×40 투명 클릭 영역을 놓고 매 프레임 카메라와 화면 경계에 맞춘다. 기존 ChooseFacing 경로로 방향을 확정하고 턴을 종료한다. Commands 패널 배경/레이캐스트는 방향 선택 중에만 숨기며 상태 전환 시 복구한다.
+
+GridMap.Reachable은 내부 탐색에 CanTraverse를 사용해 같은 팀 점유 칸을 통과한다. 전체 탐색 후 점유된 다른 유닛의 칸을 도착 후보에서 제외하며 parents에는 통과 경로를 남긴다. CanEnter와 Place의 빈 칸 제약은 유지해 강제 이동 및 최종 점유가 겹치지 않는다. 애니메이션의 중간 통과는 시각 위치만 움직인다.

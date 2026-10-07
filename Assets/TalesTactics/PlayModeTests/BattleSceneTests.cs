@@ -111,7 +111,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(camera.orthographicSize,Is.EqualTo(size).Within(0.01f));
             Assert.That(active.Position,Is.EqualTo(position));Assert.That(active.Moved,Is.False);
             Assert.That(director.State,Is.InstanceOf<CommandState>());
-            Click("Restart");yield return null;Click("전투 시작");yield return null;
+            Click("메뉴 · 저장/설정");yield return null;Click("저장 없이 출전 준비로");yield return null;Click("전투 시작");yield return null;
             Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(0.01f));
         }
         [UnityTest] public IEnumerator UnavailableSkillCanBeInspectedButCannotBeSelected()

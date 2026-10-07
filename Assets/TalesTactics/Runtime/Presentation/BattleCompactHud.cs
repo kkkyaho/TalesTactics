@@ -25,13 +25,18 @@ namespace TalesTactics
             }
             else if(battle.State is TargetSelectionState)
             {
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-246,12),new Vector2(-12,186));
-                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-258,150));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-180,12),new Vector2(-12,124));
+                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-192,150));
             }
             else if(battle.State is MoveSelectionState)
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-300,12),new Vector2(-12,312));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-192,12),new Vector2(-12,90));
             else
                 Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
+            bool facing=battle.State is FacingSelectionState;
+            commands.GetComponent<UnityEngine.UI.Image>().enabled=!facing;
+            commands.GetComponent<UnityEngine.UI.Image>().raycastTarget=!facing;
+            commands.GetComponent<UnityEngine.UI.Outline>().enabled=!facing;
+            if(facing)UpdateFacingArrows();
             if(battle.State is CommandState)PlaceCommandBesideUnit();
             if(battle.State is TargetSelectionState&&battle.Target.HasValue&&!battle.TutorialActive)PlaceTargetPreview();
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
@@ -56,7 +61,7 @@ namespace TalesTactics
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,224,270);
+            PlaceBesideUnits(commands,unit.Position,104,12+26*(unit.CanUndoMove?6:5));
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
@@ -82,19 +87,20 @@ namespace TalesTactics
         }
         void ArrangeCommandMenu()
         {
-            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Wait / 방향 선택","Guard / 가드","Undo Move / 이동 취소","Restart"};
-            string[] labels={"이동","공격","기술","대기","방어","이동 취소","출전 화면"};
-            string[] icons={"move","attack","skill","wait","guard","undo","exit"};
+            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소"};
+            string[] labels={"이동","공격","기술","방어","대기","이동 취소"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
-                float x=i<4?12+(i%2)*102:12+(i-4)*68;
-                float y=i<4?44+(i/2)*80:208;
-                r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(x,-y);r.sizeDelta=new Vector2(i<4?98:64,i<4?74:50);
-                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=i<4?16:12;
-                Place(text.rectTransform,Vector2.zero,Vector2.right,new Vector2(2,3),new Vector2(-2,25));
-                AddTacticalIcon(child,icons[i],i<4?32:20, i<4?new Vector2(0,-8):new Vector2(0,-3),child.GetComponent<UnityEngine.UI.Button>().interactable?new Color(1,.81f,.43f):Color.gray);
+                r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
+                r.anchoredPosition=new Vector2(4,-6-i*26);r.sizeDelta=new Vector2(96,26);
+                child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+                child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
+                var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
+                colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
+                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,0),new Vector2(-2,0));
             }
         }
         void DrawUnitSummary(UnitRuntime u)
