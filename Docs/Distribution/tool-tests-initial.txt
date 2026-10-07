@@ -33,7 +33,7 @@ Traceback (most recent call last):
     self.ps('Verify-Package.ps1', '-Directory', self.root/'installed')
   File "C:\dev\TalesTactics\Tools\test_release.py", line 42, in ps
     self.assertEqual(proc.returncode == 0, success, proc.stdout+proc.stderr)
-AssertionError: False != True : File C:\dev\TalesTactics\Tools\Distribution\Verify-Package.ps1 cannot be loaded because running scripts is disabled on 
+AssertionError: False != True : File C:\dev\TalesTactics\Tools\Distribution\Verify-Package.ps1 cannot be loaded because running scripts is disabled on
 this system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
     + CategoryInfo          : SecurityError: (:) [], ParentContainsErrorRecordException
     + FullyQualifiedErrorId : UnauthorizedAccess
