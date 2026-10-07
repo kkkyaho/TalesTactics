@@ -1,0 +1,53 @@
+test_backup_preserves_all_slots_settings_and_history_without_touching_source (__main__.DistributionTests.test_backup_preserves_all_slots_settings_and_history_without_touching_source) ... FAIL
+test_backup_rejects_nested_destination_and_empty_source (__main__.DistributionTests.test_backup_rejects_nested_destination_and_empty_source) ... ok
+test_changed_archive_fails_hash (__main__.DistributionTests.test_changed_archive_fails_hash) ... ok
+test_development_review_assembly_rejected (__main__.DistributionTests.test_development_review_assembly_rejected) ... ok
+test_installed_missing_extra_and_escaping_manifest_fail (__main__.DistributionTests.test_installed_missing_extra_and_escaping_manifest_fail) ... ok
+test_missing_required_and_unlisted_files_fail (__main__.DistributionTests.test_missing_required_and_unlisted_files_fail) ... ok
+test_missing_required_build_file_rejected (__main__.DistributionTests.test_missing_required_build_file_rejected) ... ok
+test_pack_roundtrip_excludes_debug_artifacts_and_verifies_on_windows_powershell (__main__.DistributionTests.test_pack_roundtrip_excludes_debug_artifacts_and_verifies_on_windows_powershell) ... FAIL
+test_unsafe_and_case_duplicate_paths_fail (__main__.DistributionTests.test_unsafe_and_case_duplicate_paths_fail) ... ok
+test_unverified_runtime_and_user_save_rejected (__main__.DistributionTests.test_unverified_runtime_and_user_save_rejected) ... ok
+test_version_and_overwrite_protection (__main__.DistributionTests.test_version_and_overwrite_protection) ... ok
+
+======================================================================
+FAIL: test_backup_preserves_all_slots_settings_and_history_without_touching_source (__main__.DistributionTests.test_backup_preserves_all_slots_settings_and_history_without_touching_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\dev\TalesTactics\Tools\test_release.py", line 131, in test_backup_preserves_all_slots_settings_and_history_without_touching_source
+    destination = Path(self.ps('Backup-Saves.ps1', '-SaveDirectory', saves,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\TalesTactics\Tools\test_release.py", line 42, in ps
+    self.assertEqual(proc.returncode == 0, success, proc.stdout+proc.stderr)
+AssertionError: False != True : Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable pr
+ogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\dev\TalesTactics\Tools\Distribution\Backup-Saves.ps1:20 char:14
++     $before=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA2 ...
++              ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+======================================================================
+FAIL: test_pack_roundtrip_excludes_debug_artifacts_and_verifies_on_windows_powershell (__main__.DistributionTests.test_pack_roundtrip_excludes_debug_artifacts_and_verifies_on_windows_powershell)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\dev\TalesTactics\Tools\test_release.py", line 66, in test_pack_roundtrip_excludes_debug_artifacts_and_verifies_on_windows_powershell
+    self.ps('Verify-Package.ps1', '-Directory', self.root/'installed')
+  File "C:\dev\TalesTactics\Tools\test_release.py", line 42, in ps
+    self.assertEqual(proc.returncode == 0, success, proc.stdout+proc.stderr)
+AssertionError: False != True : Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable pr
+ogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\dev\TalesTactics\Tools\Distribution\Verify-Package.ps1:19 char:66
++ ... sContainer -or $file.Length -ne $item.bytes -or (Get-FileHash -Litera ...
++                                                      ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.600s
+
+FAILED (failures=2)

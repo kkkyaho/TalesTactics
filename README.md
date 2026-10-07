@@ -45,6 +45,8 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 조작
 
+버전별 로컬 배포 ZIP은 `Builds/Releases/TalesTactics-0.1.0-preview.1-windows-x64.zip`입니다. 새 폴더에 풀어 실행하며 무결성 검사·저장 백업 도구와 업데이트/복귀 안내가 포함됩니다. 제작 명령과 검증 범위는 [배포·업데이트 안내](Docs/Distribution/README.md)를 참고하세요.
+
 게임패드: 왼쪽 스틱으로 화면 커서 이동, 방향키로 메뉴 순환, A/× 선택·타이밍 입력, B/○ 취소, LB/RB 카메라 회전, 오른쪽 스틱 확대/축소, R3 초기화. 마우스와 자동 전환됩니다. 상세 조작·폰트 출처·검증 범위는 [입력·배포 안내](Docs/INPUT_DISTRIBUTION.md)를 참고하세요.
 
 - Move → 청색 테두리 타일 클릭: 경로를 따라 이동. Undo Move로 원위치 복귀. 공격 사거리는 적색, 선택한 효과 범위는 굵은 금색 테두리로 표시합니다.
