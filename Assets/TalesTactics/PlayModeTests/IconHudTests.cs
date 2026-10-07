@@ -37,7 +37,7 @@ namespace TalesTactics.PlayModeTests
             unit.CurrentMP=0;unit.Acted=true;director.Hud.Refresh();yield return null;
             Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name.Contains(" · MP")),Is.False);
             Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text=="사용 가능한 기술 없음"),Is.True);
-            Click("취소");yield return null;Assert.That(director.State,Is.TypeOf<CommandState>());
+            director.GetComponent<GamepadPointer>().MoveTo(new Vector2(Screen.width-2,Screen.height/2));director.GetComponent<GamepadPointer>().Submit();yield return null;Assert.That(director.State,Is.TypeOf<CommandState>());
             unit.Acted=false;unit.CurrentMP=mp;Assert.That(unit.CurrentHP,Is.EqualTo(hp));
         }
         [UnityTest] public IEnumerator DirectSkillSelectionClearsOldTargetAndExecutesOnce()

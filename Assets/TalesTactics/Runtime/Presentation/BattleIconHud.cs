@@ -55,7 +55,7 @@ namespace TalesTactics
             shownSkill=legacy??(page.Contains(battle.LastSkill)?battle.LastSkill:page.FirstOrDefault());
             int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>4;
             float infoY=38+rows*30,buttonsY=infoY+(shownSkill!=null?28:0)+(pages?28:0);
-            SkillCardHeight=buttonsY+44;
+            SkillCardHeight=buttonsY+(shownSkill!=null?44:8);
             Label(commands,"기술",7,24,16);
             var mp=Label(commands,"MP "+unit.CurrentMP,7,24,14);mp.alignment=TextAlignmentOptions.TopRight;
             var brief=Label(commands,"",infoY,26,13);brief.enableAutoSizing=true;brief.fontSizeMin=11;brief.fontSizeMax=13;
@@ -85,8 +85,7 @@ namespace TalesTactics
                 commands.GetChild(commands.childCount-2).GetComponentInChildren<TMP_Text>().text="‹ 이전";
                 commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="다음 ›";
             }
-            Button(commands,"취소",buttonsY,()=>battle.SetState(new CommandState(battle)),true,28);if(shownSkill!=null)HalfButton(commands,0);
-            if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,28);HalfButton(commands,1);}
+            if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,28);}
         }
         void ShowSkillInformation(UnitRuntime unit,SkillData skill)
         {

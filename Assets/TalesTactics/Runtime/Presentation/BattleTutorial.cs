@@ -51,7 +51,7 @@ namespace TalesTactics
                 switch(Tutorial)
                 {
                     case TutorialStep.Movement:return "1/4 이동 · ‘이동’을 누르고 하나뿐인 푸른 목표 타일을 선택하세요.\n취소해도 다시 시도할 수 있습니다. 흰 테두리는 현재 행동자입니다.";
-                    case TutorialStep.Attack:return "2/4 공격 · ‘공격’ → 적 선택(또는 다음 대상) → ‘실행’을 누르세요.\n금색은 선택 대상입니다. 미리보기만으로는 행동이 소모되지 않습니다.";
+                    case TutorialStep.Attack:return "2/4 공격 · ‘공격’ → 적 선택(또는 Tab) → ‘실행’을 누르세요.\n금색은 선택 대상입니다. 미리보기만으로는 행동이 소모되지 않습니다.";
                     case TutorialStep.Healing:return "3/4 회복 · 민트의 ‘기술’ → ‘퍼스트 에이드’.\n연습용으로 다친 크레스를 선택하고 ‘실행’을 누르세요.";
                     case TutorialStep.Waiting:return "4/4 대기 · 회복으로 MP를 사용했습니다. ‘대기 · 방향’을 누르세요.\n마지막으로 바라볼 방향을 하나 선택하면 턴과 연습을 마칩니다.";
                     default:return "연습 완료 · 이동, 공격 확정, 회복, 방향 선택을 모두 수행했습니다.\n출전 준비로 돌아가거나 처음부터 다시 연습할 수 있습니다.";

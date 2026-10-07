@@ -552,3 +552,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 1024×768,1280×800,1366×768,1920×1080,2560×1080의 목록/대상10개 상태에서 활성 버튼 화면 경계 이탈0건. 대표 화면을 직접 검수했고 마지막 사거리/빈 목록 정리 후1920×1080 재촬영했다. CompactSkills/aspect-matrix.json 및 README.md/PNG 참조. 별도 임시 저장 경로를 사용했으며 사용자 원본/백업 SHA256 불변.
 - 최종 Windows 일반 빌드 **11.944초/오류0/경고5** 성공(CompactSkills/windows-build.json). 기존 Pipeline 설정/개발 컴파일 지시어/nullable 직렬화 경고가 남아 있다.10초 숨김 실행에서 프로세스 유지와 로그 예외0건(startup-check.json, windows-startup.log). 이전 UI 실행 중인 사용자 게임은 종료하지 않았다.
 - 최신 실행 파일: Builds/WindowsCompactSkills/TalesTactics.exe. 폴더 전체가 필요하다. 실제 물리 패드 검수 및 새6장 수동 완주는 포함하지 않는다. 사용자 Content/Scene/저장 형식은 유지하고 임시 캡처 에셋·해상도와 Play Mode를 정리했다.
+
+## 2026-10-07 — 캐릭터 기준 기술 창과 바깥 클릭 취소
+
+- 기술 목록과 대상 피해/실행 창을 시전자 옆에 배치하고 카메라 회전에 맞춰 추적한다. 이전/다음 대상 창은 제거하고 Tab/Shift+Tab 및 패드 대상 전환은 유지한다. 대상 미리보기는 최대2명과 추가 인원 수를 표시한다.
+- 컨텍스트 밖 클릭은 한 단계 취소한다. 이동 직후 명령 상태에서는 되돌릴 수 있는 이동만 취소한다. 유효한 이동 칸/대상 선택을 우선하고 다른 UI, 모달, 이야기, 행동 연출, 결과 상태는 보호한다. 마우스와 패드 커서 Submit이 같은 처리 경로를 사용한다.
+- 실제 Unity 전체 PlayMode **81/81(117.08초)** 통과. 최종 배치 보정 후 관련 **3/3(1.71초)** 재통과. 실제 마우스 이벤트, 기술 행 클릭, Tab/Shift+Tab, 유효 칸 우선, 취소 단계, 이동 되돌리기, 모달 보호, 카메라4방향 추적을 확인했다. ContextHud/playmode-results.json, context-final-tests.json 참조. EditMode109개는 직전 통과 기록이며 이번에는 재실행하지 않았다. ManagedChecks도 재실행하지 않았다.
+- 최종1024×768/1280×800/1366×768/1920×1080/2560×1080의 기술/대상10조합에서 활성 버튼 화면 이탈0건. 대표3해상도6장 캡처를 저장하고 직접 확인했다. 해상도 전환 직후 측정의 일시적 헤더 이탈은 Canvas 갱신과 안정화 후 재측정하여 해소했다. ContextHud/aspect-matrix.json 및 README.md/PNG 참조.
+- Windows 일반 빌드 **18.712초, 오류0/경고5** 성공(ContextHud/windows-build.json). 기존 Pipeline 설정/개발 컴파일 지시어/nullable 직렬화 경고가 남는다. 최신 실행 파일은 Builds/WindowsContextHud/TalesTactics.exe이며 폴더 전체가 필요하다.
+- 10초 숨김 시작에서 프로세스 유지 및 로그 예외0건을 확인했다(ContextHud/startup-check.json, windows-startup.log). 기존 사용자 게임은 종료하지 않았다. 사용자 원본/백업 저장 SHA256은 작업 전후 동일하며 검수에는 임시 저장 경로를 사용했다.
+- 임시 캡처 에셋과 Game View 해상도를 정리하고 Play Mode 종료/runInBackground=false 복구를 완료했다. 실제 물리 패드 수동 검수 및6장 수동 완주는 이번 검증에 포함하지 않는다. Content/Scene/저장 형식과 게시 릴리즈는 변경하지 않았다.

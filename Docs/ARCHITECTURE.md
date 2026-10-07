@@ -213,3 +213,9 @@ GridMap.Reachable은 내부 탐색에 CanTraverse를 사용해 같은 팀 점유
 BattleIconHud.VisibleSkills는 CanUse(현재 유닛, 기술, IsFollowup)와 입문 연습 허용 조건으로 목록을 필터링한다. 페이지 범위를 보정하고 빈 목록에서도 취소를 제공한다. 기술 행은 SelectSkill을 직접 호출하며 비용은 실행 시에만 사용한다. PointerEnter/Select는 짧은 설명만 갱신하고 상태를 전환하지 않는다. 상세 모달은 필요할 때 따로 연다.
 
 SelectSkill은 마지막 기술을 기억하고 이전 Target을 지운 후 TargetSelectionState로 진입한다. CancelTarget은 일반 공격이면 CommandState, 기술이면 ActionSelectionState로 돌아간다. SkillDetailsState는 별도 상세 검수 경로로 유지되지만 일반 사용 흐름에 포함되지 않는다.
+
+## 캐릭터 옆 컨텍스트와 외부 클릭
+
+BattleCompactHud는 기술 목록과 대상 확인창에 PlaceBesideUnits를 적용하며 기준 위치는 항상 Session.Active.Position이다. 피해 미리보기는 Commands 안으로 합치고 별도 Message 대상 패널은 숨긴다. 일반 대상 전환은 키보드 Tab/Shift+Tab과 기존 패드 트리거 경로를 사용한다.
+
+BattleDirector.HandleBattleClick은 마우스와 GamepadPointer.Submit의 전장 클릭을 공통 처리한다. UI 레이캐스트/모달/이야기/행동 연출/결과를 먼저 제외하고, 유효 이동 경로나 타겟이면 선택을 수행한다. 나머지는 State.Cancel로 한 단계만 되돌린다. CommandState에서는 CanUndoMove일 때에만 Undo하며 튜토리얼은 기존 제한을 유지한다. 메뉴 선택과 이동 취소를 한 클릭으로 연쇄 실행하지 않는다.

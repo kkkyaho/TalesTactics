@@ -26,7 +26,7 @@ namespace TalesTactics.PlayModeTests
             director.State.Tile(BattleDirector.TutorialDestination);yield return FinishTutorialAction();
             Assert.That(fighter.Position,Is.EqualTo(BattleDirector.TutorialDestination));Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Attack));
             var enemy=director.Session.Units.Single(u=>u.Team==Team.Enemy);int enemyHP=enemy.CurrentHP;
-            Click("Attack / 공격");yield return null;Click("다음 대상 · Tab");yield return null;
+            Click("Attack / 공격");yield return null;director.CycleTarget(1);yield return null;
             Assert.That(enemy.CurrentHP,Is.EqualTo(enemyHP));
             Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.StartsWith(enemy.Data.DisplayName+": ")),Is.True,"Tutorial must keep the real damage preview visible");
             Click("실행");yield return FinishTutorialAction();
@@ -35,7 +35,7 @@ namespace TalesTactics.PlayModeTests
             var heal=mint.Data.Skills.Single(s=>s.Id=="mint.0");Click("Skill / 스킬");yield return null;
             Click(heal.DisplayName+" · MP"+heal.MPCost);yield return null;
             director.SelectTarget(mint.Position);Assert.That(director.Target,Is.Null);
-            Click("다음 대상 · Tab");yield return null;Assert.That(director.Target,Is.EqualTo(fighter.Position));
+            director.CycleTarget(1);yield return null;Assert.That(director.Target,Is.EqualTo(fighter.Position));
             Click("실행");yield return FinishTutorialAction();
             Assert.That(fighter.CurrentHP,Is.GreaterThan(hp));Assert.That(mint.CurrentMP,Is.EqualTo(mp-heal.MPCost));
             Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Waiting));mint.AddStatus(StatusKind.Song,2);Click("Wait / 방향 선택");yield return null;

@@ -65,7 +65,9 @@ namespace TalesTactics
             }
             if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&!(State is ActionExecutionState))State.Cancel();
             if(Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame&&!(State is ActionExecutionState)){State.Cancel();return;}
-            var mouse=Mouse.current;if(mouse==null||EventSystem.current!=null&&EventSystem.current.IsPointerOverGameObject())return;
+            var mouse=Mouse.current;if(mouse==null)return;
+            if(mouse.leftButton.wasPressedThisFrame){HandleBattleClick(mouse.position.ReadValue());return;}
+            if(EventSystem.current!=null&&EventSystem.current.IsPointerOverGameObject())return;
             if(Board.BattleCamera.pixelRect.Contains(mouse.position.ReadValue()))
             {
                 float scroll=mouse.scroll.ReadValue().y;
@@ -74,8 +76,26 @@ namespace TalesTactics
             if(Board.Pick(mouse.position.ReadValue(),out var p))
             {
                 if(State is MoveSelectionState)Board.ShowPath(Session.Grid.Path(Session.Active,p));
-                if(mouse.leftButton.wasPressedThisFrame)State.Tile(p);
+
             }
+        }
+        public void HandleBattleClick(Vector2 screen)
+        {
+            if(Session?.Active==null||Session.Active.Team!=Team.Player||Hud.InputModalOpen||StoryActive||TimingActive||State is ActionExecutionState||State is BattleEndState||State is TutorialCompleteState)return;
+            if(EventSystem.current!=null)
+            {
+                var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=screen},hits);
+                if(hits.Count>0)return;
+            }
+            bool picked=Board.Pick(screen,out var p);
+            if(State is MoveSelectionState&&picked&&(!TutorialActive||p==TutorialDestination)&&Session.Grid.Path(Session.Active,p).Count>1){State.Tile(p);return;}
+            if(State is TargetSelectionState&&picked&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any()){State.Tile(p);return;}
+            if(State is CommandState)
+            {
+                if(Session.Active.CanUndoMove&&!TutorialActive){Undo();return;}
+                if(picked)State.Tile(p);return;
+            }
+            State?.Cancel();
         }
         public void SetState(BattleState state){State=state;Target=null;state.Enter();Board.RefreshFocus();}
         public void BeginBattle()

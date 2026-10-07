@@ -181,10 +181,12 @@ namespace TalesTactics
             else if(SkillPanel)DrawSkillCards(u);
             else if(battle.State is TargetSelectionState)
             {
-                var skillName=Label(commands,battle.SelectedSkill.DisplayName,6,38,15);skillName.enableAutoSizing=true;skillName.fontSizeMin=11;skillName.fontSizeMax=15;Button(commands,"실행",46,battle.Confirm,battle.Target.HasValue,26);Button(commands,"취소",76,()=>battle.State.Cancel(),true,26);
-                bool available=battle.AvailableTargets().Length>0;
-                Button(footer,"이전 대상",94,()=>battle.CycleTarget(-1),available,32);HalfButton(footer,0);
-                Button(footer,"다음 대상 · Tab",94,()=>battle.CycleTarget(1),available,32);HalfButton(footer,1);
+                var skillName=Label(commands,battle.SelectedSkill.DisplayName+" · MP "+battle.SelectedSkill.MPCost,6,28,15);skillName.enableAutoSizing=true;skillName.fontSizeMin=11;skillName.fontSizeMax=15;
+                var lines=battle.Message.Split('\n');
+                string preview=battle.Target.HasValue?string.Join("\n",lines.Take(2))+(lines.Length>2?$"\n외 {lines.Length-2}명":""):"대상 선택 · Tab 전환";
+                float previewHeight=battle.Target.HasValue&&lines.Length>1?64:40;targetContextHeight=36+previewHeight+48;
+                var detail=Label(commands,preview,36,previewHeight,14);detail.enableAutoSizing=true;detail.fontSizeMin=10;detail.fontSizeMax=14;
+                Button(commands,"실행",36+previewHeight+8,battle.Confirm,battle.Target.HasValue,28);
             }
             else if(battle.State is FacingSelectionState)DrawFacingArrows();
             else if(battle.State is MoveSelectionState){Label(commands,"이동할 칸 선택",8,26,16);Button(commands,"취소",42,()=>battle.State.Cancel(),true,26);}

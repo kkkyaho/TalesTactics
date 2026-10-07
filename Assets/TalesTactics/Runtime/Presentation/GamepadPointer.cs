@@ -147,8 +147,7 @@ namespace TalesTactics
                 ExecuteEvents.ExecuteHierarchy(hit,data,ExecuteEvents.pointerClickHandler);
                 return;
             }
-            if(!battle.Hud.InputModalOpen&&!battle.StoryActive&&battle.Session!=null&&battle.Session.Active.Team==Team.Player&&
-                !(battle.State is ActionExecutionState)&&battle.Board.Pick(position,out var tile))battle.State?.Tile(tile);
+            battle.HandleBattleClick(position);
         }
         public void Cycle(int direction)
         {

@@ -5,6 +5,7 @@ namespace TalesTactics
     public sealed partial class BattleHud
     {
         RectTransform unitDetails;
+        float targetContextHeight=124;
         public bool UnitDetailsOpen=>unitDetails!=null&&unitDetails.gameObject.activeSelf;
         bool SkillPanel=>battle.State is ActionSelectionState||battle.State is SkillDetailsState;
         string BattleTitle=>battle.State is CommandState?"행동 선택":battle.State is ActionSelectionState?"기술 선택":
@@ -38,22 +39,19 @@ namespace TalesTactics
             commands.GetComponent<UnityEngine.UI.Outline>().enabled=!facing;
             if(facing)UpdateFacingArrows();
             if(battle.State is CommandState)PlaceCommandBesideUnit();
-            if(battle.State is TargetSelectionState&&battle.Target.HasValue&&!battle.TutorialActive)PlaceTargetPreview();
+            if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,300,SkillCardHeight);
+            if(battle.State is TargetSelectionState)PlaceBesideUnits(commands,battle.Session.Active.Position,300,targetContextHeight);
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
-            bool showMessage=battle.TutorialActive||battle.State is TargetSelectionState||battle.State is ActionExecutionState||battle.State is BattleEndState||battle.Message.StartsWith("Tile ");
+            bool showMessage=battle.TutorialActive||battle.State is ActionExecutionState||battle.State is BattleEndState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
             footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
             group.alpha=showMessage?1:0;group.blocksRaycasts=showMessage;
             footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=showMessage;
         }
-        void PlaceTargetPreview()
-        {
-            PlaceBesideUnits(footer,battle.Target.Value,420,138);
-        }
         Rect BattleViewport(float scale)
         {
-            float bottom=(SkillPanel?SkillCardHeight+12:198)*scale;
+            float bottom=198*scale;
             return new Rect(12*scale/Screen.width,bottom/Screen.height,
                 Mathf.Max(1,Screen.width-24*scale)/Screen.width,
                 Mathf.Max(1,Screen.height-bottom-88*scale)/Screen.height);
@@ -69,12 +67,15 @@ namespace TalesTactics
             float scale=GetComponent<Canvas>().scaleFactor,w=Screen.width/scale,h=Screen.height/scale;
             var projected=camera.WorldToScreenPoint(battle.Session.Grid[position].WorldPosition(battle.Catalog.Rules.TileHeight));
             var p=new Vector2(projected.x/scale,projected.y/scale);
-            var candidates=new[]{new Vector2(p.x-width-60,p.y-40),new Vector2(p.x+60,p.y-40),new Vector2(p.x-width*.5f,p.y+145),new Vector2(p.x-width*.5f,p.y-height-24)};
+            bool skillContext=window==commands&&(SkillPanel||battle.State is TargetSelectionState);
+            float gap=skillContext?90:60,sideY=skillContext?p.y+50-height*.5f:p.y-40;
+            var candidates=new[]{new Vector2(p.x-width-gap,sideY),new Vector2(p.x+gap,sideY),new Vector2(p.x-width*.5f,p.y+145),new Vector2(p.x-width*.5f,p.y-height-24)};
             var best=Vector2.zero;float bestScore=float.PositiveInfinity;
             foreach(var candidate in candidates)
             {
                 var low=new Vector2(Mathf.Clamp(candidate.x,12,w-width-12),Mathf.Clamp(candidate.y,198,h-height-88));
                 var rect=new Rect(low,new Vector2(width,height));float score=Vector2.SqrMagnitude(rect.center-p)*.000001f;
+                if(skillContext&&candidate==candidates[2])score+=1;
                 foreach(var unit in battle.Session.Units.Where(u=>u.Alive))
                 {
                     var screen=camera.WorldToScreenPoint(battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight));
