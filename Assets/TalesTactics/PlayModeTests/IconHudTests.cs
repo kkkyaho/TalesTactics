@@ -49,7 +49,7 @@ namespace TalesTactics.PlayModeTests
             int mp=unit.CurrentMP,hp=enemy.CurrentHP;director.Target=enemy.Position;
             Click("Skill / 스킬");yield return null;Click(skill.DisplayName+" · MP"+skill.MPCost);yield return null;
             Assert.That(director.State,Is.TypeOf<TargetSelectionState>());Assert.That(director.Target,Is.Null);Assert.That(unit.CurrentMP,Is.EqualTo(mp));
-            director.State.Tile(enemy.Position);Click("실행");director.Confirm();
+            director.HandleBattleClick(TileScreen(enemy.Position));director.HandleBattleClick(TileScreen(enemy.Position));director.Confirm();
             float deadline=Time.realtimeSinceStartup+10;while(director.State is ActionExecutionState&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.That(unit.CurrentMP,Is.EqualTo(mp-skill.MPCost));Assert.That(enemy.CurrentHP,Is.LessThan(hp));Assert.That(unit.Acted,Is.True);
         }

@@ -257,11 +257,11 @@ namespace TalesTactics
             Click("Move / 이동");battle.State.Tile(BattleDirector.TutorialDestination);
             while(battle.State is ActionExecutionState)yield return null;
             Check(battle.Tutorial==TutorialStep.Attack,"Tutorial movement advances only after completion");
-            Click("Attack / 공격");battle.CycleTarget(1);Click("실행");
+            Click("Attack / 공격");battle.CycleTarget(1);battle.Confirm();
             while(battle.State is ActionExecutionState)yield return null;
             Check(battle.Tutorial==TutorialStep.Healing,"Tutorial attack advances to Mint");
             var heal=battle.Session.Active.Data.Skills.Single(s=>s.Id=="mint.0");int mp=battle.Session.Active.CurrentMP;
-            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);battle.CycleTarget(1);Click("실행");
+            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);battle.CycleTarget(1);battle.Confirm();
             while(battle.State is ActionExecutionState)yield return null;
             Check(battle.Tutorial==TutorialStep.Waiting&&battle.Session.Active.CurrentMP==mp-heal.MPCost,"Tutorial healing restores HP through normal resolver and spends MP");
             Click("Wait / 방향 선택");Click("Front");yield return null;
@@ -327,7 +327,7 @@ namespace TalesTactics
                     if(report.tactical)battle.SelectSkill(plan.Skill);else Click("Attack / 공격");
                     battle.State.Tile(plan.Aim??plan.Target.Position);
                     Check(battle.Target.HasValue, "Attack preview selected a valid target");
-                    Click("실행");
+                    battle.Confirm();
                     while (battle.State is ActionExecutionState) yield return null;
                     Check(unit.Acted, "Normal attack consumed the action"); report.attacks++;
                 }

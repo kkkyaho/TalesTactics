@@ -58,6 +58,7 @@ namespace TalesTactics
             var keyboard=Keyboard.current;
             if(keyboard!=null)
             {
+                if((keyboard.enterKey.wasPressedThisFrame||keyboard.numpadEnterKey.wasPressedThisFrame)&&State is TargetSelectionState){Confirm();return;}
                 if(keyboard.tabKey.wasPressedThisFrame)CycleTarget(keyboard.shiftKey.isPressed?-1:1);
                 if(keyboard.qKey.wasPressedThisFrame)Board.RotateCamera(-90);
                 if(keyboard.eKey.wasPressedThisFrame)Board.RotateCamera(90);
@@ -76,6 +77,7 @@ namespace TalesTactics
             if(Board.Pick(mouse.position.ReadValue(),out var p))
             {
                 if(State is MoveSelectionState)Board.ShowPath(Session.Grid.Path(Session.Active,p));
+                if(State is TargetSelectionState&&mouse.delta.ReadValue().sqrMagnitude>0&&Target!=p&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any())SelectTarget(p);
 
             }
         }
@@ -89,7 +91,7 @@ namespace TalesTactics
             }
             bool picked=Board.Pick(screen,out var p);
             if(State is MoveSelectionState&&picked&&(!TutorialActive||p==TutorialDestination)&&Session.Grid.Path(Session.Active,p).Count>1){State.Tile(p);return;}
-            if(State is TargetSelectionState&&picked&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any()){State.Tile(p);return;}
+            if(State is TargetSelectionState&&picked&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any()){SelectTarget(p);Confirm();return;}
             if(State is CommandState)
             {
                 if(Session.Active.CanUndoMove&&!TutorialActive){Undo();return;}

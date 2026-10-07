@@ -562,3 +562,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **18.712초, 오류0/경고5** 성공(ContextHud/windows-build.json). 기존 Pipeline 설정/개발 컴파일 지시어/nullable 직렬화 경고가 남는다. 최신 실행 파일은 Builds/WindowsContextHud/TalesTactics.exe이며 폴더 전체가 필요하다.
 - 10초 숨김 시작에서 프로세스 유지 및 로그 예외0건을 확인했다(ContextHud/startup-check.json, windows-startup.log). 기존 사용자 게임은 종료하지 않았다. 사용자 원본/백업 저장 SHA256은 작업 전후 동일하며 검수에는 임시 저장 경로를 사용했다.
 - 임시 캡처 에셋과 Game View 해상도를 정리하고 Play Mode 종료/runInBackground=false 복구를 완료했다. 실제 물리 패드 수동 검수 및6장 수동 완주는 이번 검증에 포함하지 않는다. Content/Scene/저장 형식과 게시 릴리즈는 변경하지 않았다.
+
+## 2026-10-08 — 대상 클릭 즉시 사용
+
+- 기술 선택 후 유효한 전장 대상을 클릭하면 별도 실행 버튼 없이 발동한다. 마우스 이동은 피해/회복 미리보기만 표시하고 Tab/Shift+Tab 전환과 Enter/숫자패드 Enter 사용을 제공한다. 바깥 클릭 취소·모달 보호·행동 중 중복 입력 차단을 유지한다.
+- 최종 실제 Unity 전체 PlayMode **82/82(121.10초)** 통과(DirectCast/final-playmode-results.json). 실제 마우스 호버의 비용/피해 불변, 클릭 발동, 반복 클릭/확인 시 MP 한 번 차감, Tab/Enter 경로와 기존 입문 공격·회복 흐름을 포함한다. EditMode와 ManagedChecks는 이번 UI 변경에서 재실행하지 않았다.
+- 앞선81/81 및 호버 추가1/1은 공유 작업폴더의 전술 변경이 있던 중간 검증이다. 다른 작업자가 자신의 변경을 백업·분리한 뒤 이번 UI 변경만 있는 상태에서 최종82개를 다시 검증했다. 전술 변경은 이번 커밋/빌드에 포함하지 않는다.
+- 1920×1080 실제 대상 미리보기 화면에서 실행 버튼 제거와 캐릭터 옆 배치를 확인했다(DirectCast/target.png). 임시 저장 경로를 사용하고 Play Mode 및 runInBackground를 복구했다. 실제 하드웨어 패드·6장 수동 완주 검수는 포함하지 않는다.
+- 최종 Windows 일반 빌드 **28.564초/오류0/경고8** 성공(DirectCast/windows-build.json). 기존 Pipeline/개발 빌드 검사/nullable 직렬화/셰이더·TMP 경고가 남는다. Builds/WindowsDirectCast/TalesTactics.exe가 최신 실행 파일이며 폴더 전체가 필요하다.
+- 해당 빌드10초 숨김 시작에서 프로세스 유지 및 로그 예외0건(DirectCast/startup-check.json, windows-startup.log). 기존 실행 중인 사용자 게임은 종료하지 않았다.
