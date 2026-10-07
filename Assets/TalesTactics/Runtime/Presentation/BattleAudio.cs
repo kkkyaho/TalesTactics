@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TalesTactics
 {
     [RequireComponent(typeof(AudioSource))]
-    public sealed class BattleAudio:MonoBehaviour
+    public sealed partial class BattleAudio:MonoBehaviour
     {
         public AudioLibrary Library;
         [Range(0,1)] public float MusicVolume=0.28f;
@@ -21,25 +21,27 @@ namespace TalesTactics
         AudioEntry Entry(string id)=>Library?.Entries?.FirstOrDefault(x=>x!=null&&x.Id==id);
         public void Play(string id)
         {
-            themeActive=false;resumeClip=null;
-            var source=GetComponent<AudioSource>();var clip=Entry(id)?.Clip;
+            themeActive=false;resumeClip=null;resumeMusicId=null;currentMusicId=id;
+            var source=GetComponent<AudioSource>();var clip=MusicClip(id);
             source.volume=MusicVolume;
             if(clip==null){source.Stop();source.clip=null;return;}
+            source.loop=id!="victory";
             if(source.clip==clip&&source.isPlaying)return;
-            source.clip=clip;source.loop=id!="victory";source.Play();
+            source.clip=clip;source.Play();
         }
         public void PlayBattle(bool boss)=>Play(boss&&Entry("boss")?.Clip!=null?"boss":"battle");
         public void BeginTheme(string id)
         {
-            var clip=Entry(id)?.Clip;if(clip==null||themeActive)return;
+            var clip=MusicClip(id);if(clip==null||themeActive)return;
             var source=GetComponent<AudioSource>();
+            if(source.clip==clip&&source.isPlaying)return;
             source.volume=MusicVolume;
-            resumeClip=source.clip;resumeSample=source.timeSamples;resumeLoop=source.loop;resumePlaying=source.isPlaying;
+            resumeMusicId=currentMusicId;currentMusicId=id;resumeClip=source.clip;resumeSample=source.timeSamples;resumeLoop=source.loop;resumePlaying=source.isPlaying;
             themeActive=true;source.clip=clip;source.loop=true;source.Play();
         }
         public void EndTheme()
         {
-            if(!themeActive)return;themeActive=false;
+            if(!themeActive)return;themeActive=false;currentMusicId=resumeMusicId;resumeMusicId=null;
             var source=GetComponent<AudioSource>();source.Stop();source.clip=resumeClip;source.loop=resumeLoop;
             if(resumeClip!=null&&resumePlaying){source.timeSamples=Mathf.Clamp(resumeSample,0,resumeClip.samples-1);source.Play();}
             resumeClip=null;
@@ -55,6 +57,6 @@ namespace TalesTactics
             LastEffectGain=1/Mathf.Sqrt(voices+1);effectStarts[id]=now;effectEnds.Add(now+entry.Clip.length);
             effects.volume=EffectsVolume;effects.PlayOneShot(entry.Clip,LastEffectGain);
         }
-        public void StopAll(){themeActive=false;resumeClip=null;effectEnds.Clear();effectStarts.Clear();LastEffectGain=0;GetComponent<AudioSource>().Stop();if(effects!=null)effects.Stop();}
+        public void StopAll(){currentMusicId=resumeMusicId=null;themeActive=false;resumeClip=null;effectEnds.Clear();effectStarts.Clear();LastEffectGain=0;GetComponent<AudioSource>().Stop();if(effects!=null)effects.Stop();}
     }
 }

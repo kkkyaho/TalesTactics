@@ -17,6 +17,7 @@ namespace TalesTactics.PlayModeTests
             yield return null;
             director=Object.FindAnyObjectByType<BattleDirector>();
             Assert.That(director,Is.Not.Null);
+            director.Audio.PersonalMusicEnabled=false; // Keep regression tests independent of local user music.
             Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
             testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
             director.ConfigureStorage(testStorage);
