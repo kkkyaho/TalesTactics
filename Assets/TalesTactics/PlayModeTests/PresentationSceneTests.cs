@@ -52,5 +52,50 @@ namespace TalesTactics.PlayModeTests
             Assert.That(source.clip,Is.EqualTo(previous));Assert.That(director.Audio.GetComponents<AudioSource>().Length,Is.EqualTo(2));
             director.Audio.StopAll();Assert.That(director.Audio.GetComponents<AudioSource>().All(x=>!x.isPlaying),Is.True);
         }
+        [UnityTest] public IEnumerator EffectOverlapIsBoundedAndMuteAndStopResetPlayback()
+        {
+            var audio=director.Audio;var original=audio.Library;
+            var library=ScriptableObject.CreateInstance<AudioLibrary>();
+            var clip=AudioClip.Create("overlap-test",44100,1,44100,false);
+            library.Entries=new[]{"a","b","c","d","e"}.Select(id=>new AudioEntry{Id=id,Clip=clip}).ToArray();
+            try
+            {
+                audio.StopAll();audio.Library=library;
+                var music=audio.GetComponent<AudioSource>();var previous=music.clip;
+                audio.PlayEffect("a");audio.PlayEffect("a");
+                Assert.That(audio.ActiveEffectVoices,Is.EqualTo(1),"Same-frame impacts must not stack identical sounds.");
+                foreach(var id in new[]{"b","c","d","e"})audio.PlayEffect(id);
+                Assert.That(audio.ActiveEffectVoices,Is.EqualTo(4));Assert.That(audio.LastEffectGain,Is.EqualTo(.5f).Within(.001f));
+                Assert.That(music.clip,Is.EqualTo(previous));
+                audio.StopAll();Assert.That(audio.ActiveEffectVoices,Is.Zero);
+                audio.SetVolumes(.28f,0);audio.PlayEffect("a");Assert.That(audio.ActiveEffectVoices,Is.Zero);
+                audio.SetVolumes(.28f,.45f);audio.PlayEffect("a");Assert.That(audio.ActiveEffectVoices,Is.EqualTo(1));
+                Time.timeScale=0;
+                yield return new WaitForSecondsRealtime(1.1f);
+                Assert.That(audio.ActiveEffectVoices,Is.Zero,"Voice lifetime must follow audio, independently of battle speed.");
+            }
+            finally {Time.timeScale=1;audio.StopAll();audio.Library=original;Object.Destroy(library);Object.Destroy(clip);}
+        }
+        [UnityTest] public IEnumerator ImpactNumbersHoldContrastAndRestartRemovesBacking()
+        {
+            director.BeginBattle();yield return null;
+            var unit=director.Session.Units.First();var before=director.Board.CaptureHealth();unit.CurrentHP-=10;
+            int health=unit.CurrentHP;
+            director.Board.PresentImpact(unit,unit.Data.BasicAttack,unit.Position,before);
+            var feedback=GameObject.Find("HP feedback");Assert.That(feedback,Is.Not.Null);
+            var label=feedback.GetComponent<TMPro.TextMeshPro>();
+            var backing=feedback.transform.Find("Feedback backing");Assert.That(backing,Is.Not.Null);
+            Assert.That(backing.GetComponent<Renderer>().sortingOrder,Is.LessThan(label.sortingOrder));
+            yield return new WaitForSeconds(.2f);
+            Assert.That(label.alpha,Is.EqualTo(1).Within(.001f));Assert.That(unit.CurrentHP,Is.EqualTo(health));
+            director.Board.RotateCamera(90);yield return null;
+            var camera=director.Board.BattleCamera;
+            var basePosition=director.Session.Grid[unit.Position].WorldPosition(director.Catalog.Rules.TileHeight);
+            var offset=feedback.transform.position-basePosition;
+            Assert.That(Vector3.Dot(offset,camera.transform.right),Is.EqualTo(0).Within(.01f));
+            Assert.That(Vector3.Dot(offset,camera.transform.up),Is.GreaterThan(1.7f));
+            director.Restart();yield return null;yield return null;
+            Assert.That(GameObject.Find("HP feedback"),Is.Null);Assert.That(GameObject.Find("Feedback backing"),Is.Null);
+        }
     }
 }

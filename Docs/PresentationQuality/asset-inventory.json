@@ -1,0 +1,301 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "// Read-only catalog inventory for quality review. Run in an open TestBattle scene.\nvar battle=UnityEngine.Object.FindFirstObjectByType<TalesTactics.BattleDirector>();\nvar characters=battle.Catalog.Characters.Concat(battle.Catalog.Enemies).ToArray();\nvar rows=new System.Collections.Generic.List<object>();\nvar issues=new System.Collections.Generic.List<string>();\nforeach(var data in characters)\n{\n    var serialized=new UnityEditor.SerializedObject(data);var property=serialized.GetIterator();\n    var sprites=new System.Collections.Generic.HashSet<UnityEngine.Sprite>();\n    while(property.Next(true))\n    {\n        if(property.propertyType!=UnityEditor.SerializedPropertyType.ObjectReference)continue;\n        if(property.objectReferenceValue is UnityEngine.Sprite sprite)sprites.Add(sprite);\n    }\n    foreach(var sprite in sprites)\n    {\n        var rect=sprite.rect;\n        if(rect.xMin<0||rect.yMin<0||rect.xMax>sprite.texture.width||rect.yMax>sprite.texture.height)issues.Add(data.Id+\": sprite rectangle outside texture: \"+sprite.name);\n        if(sprite.pixelsPerUnit<=0)issues.Add(data.Id+\": invalid PPU: \"+sprite.name);\n    }\n    foreach(TalesTactics.Facing facing in System.Enum.GetValues(typeof(TalesTactics.Facing)))\n        if(data.Sprites.Get(facing)==null)issues.Add(data.Id+\": missing \"+facing);\n    rows.Add(new {id=data.Id,spriteCount=sprites.Count,textures=sprites.Select(s=>UnityEditor.AssetDatabase.GetAssetPath(s.texture)).Distinct().OrderBy(s=>s).ToArray()});\n}\nreturn new {characters=rows,issues=issues,audio=battle.Audio.Library.Entries.Select(e=>new {id=e.Id,clip=e.Clip==null?null:UnityEditor.AssetDatabase.GetAssetPath(e.Clip),seconds=e.Clip==null?0:e.Clip.length}).ToArray()};\n"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "characters": [
+          {
+            "id": "cless",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/cless-polish.png"
+            ]
+          },
+          {
+            "id": "mint",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/mint-polish.png"
+            ]
+          },
+          {
+            "id": "velvet",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png"
+            ]
+          },
+          {
+            "id": "farah",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/farah-polish.png"
+            ]
+          },
+          {
+            "id": "tear",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/tear-polish.png"
+            ]
+          },
+          {
+            "id": "jade",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/jade-polish.png"
+            ]
+          },
+          {
+            "id": "natalia",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png"
+            ]
+          },
+          {
+            "id": "alphen",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png"
+            ]
+          },
+          {
+            "id": "shionne",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+              "Assets/TalesTactics/Art/PixelCampaign/shionne-right.png"
+            ]
+          },
+          {
+            "id": "kisara",
+            "spriteCount": 64,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png",
+              "Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png"
+            ]
+          },
+          {
+            "id": "wolf",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/wolf.png",
+              "Assets/TalesTactics/Art/PixelCampaign/wolf-polish.png"
+            ]
+          },
+          {
+            "id": "slime",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/slime.png",
+              "Assets/TalesTactics/Art/PixelCampaign/slime-polish.png"
+            ]
+          },
+          {
+            "id": "golem",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/golem.png",
+              "Assets/TalesTactics/Art/PixelCampaign/golem-polish.png"
+            ]
+          },
+          {
+            "id": "sentinel",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/sentinel.png",
+              "Assets/TalesTactics/Art/PixelCampaign/sentinel-polish.png"
+            ]
+          },
+          {
+            "id": "archer",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/archer.png",
+              "Assets/TalesTactics/Art/PixelCampaign/archer-polish.png"
+            ]
+          },
+          {
+            "id": "mage",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/mage.png",
+              "Assets/TalesTactics/Art/PixelCampaign/mage-polish.png"
+            ]
+          },
+          {
+            "id": "polwigle",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/polwigle.png",
+              "Assets/TalesTactics/Art/PixelCampaign/polwigle-polish.png"
+            ]
+          },
+          {
+            "id": "eggbear",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/eggbear.png",
+              "Assets/TalesTactics/Art/PixelCampaign/eggbear-polish.png"
+            ]
+          },
+          {
+            "id": "penguinist",
+            "spriteCount": 36,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/penguinist.png",
+              "Assets/TalesTactics/Art/PixelCampaign/penguinist-polish.png"
+            ]
+          },
+          {
+            "id": "dhaos",
+            "spriteCount": 48,
+            "textures": [
+              "Assets/TalesTactics/Art/PixelCampaign/dhaos-hq.png",
+              "Assets/TalesTactics/Art/PixelCampaign/dhaos-motion.png",
+              "Assets/TalesTactics/Art/PixelCampaign/dhaos-polish.png"
+            ]
+          }
+        ],
+        "issues": [],
+        "audio": [
+          {
+            "id": "battle",
+            "clip": "Assets/TalesTactics/Audio/Original/battle.wav",
+            "seconds": 29.0909061
+          },
+          {
+            "id": "victory",
+            "clip": "Assets/TalesTactics/Audio/Original/victory.wav",
+            "seconds": 6.66666651
+          },
+          {
+            "id": "boss",
+            "clip": "Assets/TalesTactics/Audio/Original/boss.wav",
+            "seconds": 25.2631512
+          },
+          {
+            "id": "story",
+            "clip": "Assets/TalesTactics/Audio/Original/story.wav",
+            "seconds": 22.8571434
+          },
+          {
+            "id": "cless.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/cless.theme.wav",
+            "seconds": 7.27272129
+          },
+          {
+            "id": "mint.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/mint.theme.wav",
+            "seconds": 10
+          },
+          {
+            "id": "velvet.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/velvet.theme.wav",
+            "seconds": 6.66666651
+          },
+          {
+            "id": "farah.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/farah.theme.wav",
+            "seconds": 6.48648548
+          },
+          {
+            "id": "tear.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/tear.theme.wav",
+            "seconds": 9.6
+          },
+          {
+            "id": "jade.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/jade.theme.wav",
+            "seconds": 8
+          },
+          {
+            "id": "natalia.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/natalia.theme.wav",
+            "seconds": 7.74192762
+          },
+          {
+            "id": "alphen.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/alphen.theme.wav",
+            "seconds": 6.857143
+          },
+          {
+            "id": "shionne.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/shionne.theme.wav",
+            "seconds": 8.571428
+          },
+          {
+            "id": "kisara.theme",
+            "clip": "Assets/TalesTactics/Audio/Original/kisara.theme.wav",
+            "seconds": 8.275873
+          },
+          {
+            "id": "swing",
+            "clip": "Assets/TalesTactics/Audio/Generated/swing.wav",
+            "seconds": 0.16
+          },
+          {
+            "id": "hit",
+            "clip": "Assets/TalesTactics/Audio/Generated/hit.wav",
+            "seconds": 0.2
+          },
+          {
+            "id": "heal",
+            "clip": "Assets/TalesTactics/Audio/Generated/heal.wav",
+            "seconds": 0.42
+          },
+          {
+            "id": "cast",
+            "clip": "Assets/TalesTactics/Audio/Generated/cast.wav",
+            "seconds": 0.42
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

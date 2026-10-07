@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var v=typeof(UnityEditor.Editor).Assembly.GetType(\"UnityEditor.GameView\");return new {UnityEngine.Time.timeScale,UnityEngine.Application.runInBackground,dirty=UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty,gameViewSize=v.GetProperty(\"selectedSizeIndex\",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.NonPublic).GetValue(UnityEditor.EditorWindow.GetWindow(v))};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "timeScale": 1,
+        "runInBackground": false,
+        "dirty": false,
+        "gameViewSize": 3
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

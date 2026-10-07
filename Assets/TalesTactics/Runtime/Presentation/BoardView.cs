@@ -10,6 +10,7 @@ namespace TalesTactics
         public Material TileMaterial, HighlightMaterial, SpriteMaterial;
         readonly Dictionary<Vector2Int,Renderer> tiles=new Dictionary<Vector2Int,Renderer>();
         readonly Dictionary<Vector2Int,Color> colors=new Dictionary<Vector2Int,Color>();
+        readonly Dictionary<Vector2Int,LineRenderer> rangeBorders=new Dictionary<Vector2Int,LineRenderer>();
         readonly Dictionary<UnitRuntime,Transform> units=new Dictionary<UnitRuntime,Transform>();
         readonly Dictionary<UnitRuntime,SpriteRenderer> sprites=new Dictionary<UnitRuntime,SpriteRenderer>();
         readonly Dictionary<UnitRuntime,Animator> animators=new Dictionary<UnitRuntime,Animator>();
@@ -29,18 +30,19 @@ namespace TalesTactics
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
         }
         public void ZoomCamera(float factor)
-        {if(root==null)return;zoom=Mathf.Clamp(zoom*factor,0.55f,1.3f);FitBattlefield(true);}
+        {if(root==null||battle.Session==null)return;zoom=Mathf.Clamp(zoom*factor,0.55f,1.3f);FitBattlefield(true);}
         public void ResetCamera()
         {
-            zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
-            if(root==null)return;
+            focusAction=false;zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
+            if(root==null||battle.Session==null)return;
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
         }
         void LateUpdate()
         {
-            if(root==null)return;
+            if(root==null||battle.Session==null)return;
             FitBattlefield();
+            UpdateSelectionMarkers();
             foreach(var pair in bars)
             {
                 pair.Value.position=units[pair.Key].position+BattleCamera.transform.up*1.43f;
@@ -54,20 +56,24 @@ namespace TalesTactics
             lastViewport=viewport;BattleCamera.rect=viewport;
             var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);
             var max=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
-            for(int i=0;i<8;i++)
+            foreach(var tile in battle.Session.Grid.Tiles.Values)
             {
-                var p=battlefieldBounds.center+Vector3.Scale(battlefieldBounds.extents,
-                    new Vector3((i&1)==0?-1:1,(i&2)==0?-1:1,(i&4)==0?-1:1));
-                var local=BattleCamera.transform.InverseTransformPoint(p);
-                min=Vector2.Min(min,new Vector2(local.x,local.y));max=Vector2.Max(max,new Vector2(local.x,local.y));
+                var p=tile.WorldPosition(battle.Catalog.Rules.TileHeight);
+                for(int i=0;i<8;i++)
+                {
+                    var local=BattleCamera.transform.InverseTransformPoint(p+new Vector3((i&1)==0?-.5f:.5f,(i&2)==0?-.3f:1.5f,(i&4)==0?-.5f:.5f));
+                    min=Vector2.Min(min,new Vector2(local.x,local.y));max=Vector2.Max(max,new Vector2(local.x,local.y));
+                }
             }
+            if(focusAction&&battle.Session.Active!=null)FocusBounds(ref min,ref max);
             var center=(min+max)*0.5f;var size=(max-min)*0.5f;
             BattleCamera.transform.position+=BattleCamera.transform.right*center.x+BattleCamera.transform.up*center.y;
-            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.08f*zoom;
+            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.04f*zoom;
         }
         public void Initialize(BattleDirector b)
         {
             battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;
+            BattleCamera.allowMSAA=false;BattleCamera.allowHDR=false;BattleCamera.allowDynamicResolution=false;
             // The battlefield uses a partial viewport. Clear its surrounding screen too,
             // otherwise full-screen dialogue pixels can survive after the panel closes.
             var background=new GameObject("Screen Background Camera",typeof(Camera));
@@ -76,19 +82,20 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();ClearTiming();if(root!=null)Destroy(root.gameObject);tiles.Clear();colors.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
+        public void ResetBoard(){StopAllCoroutines();ClearTiming();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
+            var scenery=root.gameObject.AddComponent<PixelBattlefield>();scenery.Initialize(session.CampaignStage,TileMaterial,SpriteMaterial,BattleCamera);
             foreach(var t in session.Grid.Tiles.Values)
             {
                 var g=GameObject.CreatePrimitive(PrimitiveType.Cube);g.name="Tile "+t.Coordinate;g.transform.SetParent(root,false);
                 float height=0.25f+t.Height*session.Rules.TileHeight;g.transform.position=new Vector3(t.Coordinate.x,height/2-0.25f,t.Coordinate.y);g.transform.localScale=new Vector3(0.96f,height,0.96f);
-                g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=TileMaterial;
-                Color color=t.Terrain==TerrainType.Water?new Color(0.12f,0.43f,0.57f):t.Walkable?Color.Lerp(new Color(0.28f,0.39f,0.37f),new Color(0.51f,0.6f,0.42f),t.Height/2f):new Color(0.23f,0.26f,0.3f);
+                g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=scenery.Surface(t);
+                Color color=scenery.Tint(t);
                 if((session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)&&t.Coordinate==session.Destination)color=new Color(1,0.75f,0.12f);
                 tiles[t.Coordinate]=renderer;colors[t.Coordinate]=color;SetColor(renderer,color);
-                if(!t.Walkable){var rock=GameObject.CreatePrimitive(PrimitiveType.Cube);rock.transform.SetParent(root,false);rock.transform.position=t.WorldPosition(session.Rules.TileHeight)+Vector3.up*0.45f;rock.transform.localScale=new Vector3(0.7f,0.9f,0.7f);rock.transform.rotation=Quaternion.Euler(0,20,0);rock.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(rock.GetComponent<Renderer>(),new Color(0.35f,0.38f,0.4f));}
+                scenery.Decorate(t,session.Grid,session.Rules.TileHeight);
             }
             if(placeholder==null)placeholder=CreatePlaceholder();
             foreach(var u in session.Units)
@@ -101,7 +108,7 @@ namespace TalesTactics
                 var bar=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(bar.GetComponent<Collider>());bar.name="HP";bar.transform.SetParent(g.transform,false);bar.transform.localPosition=Vector3.up*1.3f;bar.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(bar.GetComponent<Renderer>(),u==session.ObjectiveUnit?new Color(1,0.75f,0.12f):u.Team==Team.Player?Color.cyan:new Color(1,0.3f,0.25f));bars[u]=bar.transform;
                 var marker=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(marker.GetComponent<Collider>());marker.name="Facing";marker.transform.SetParent(g.transform,false);marker.transform.localScale=new Vector3(0.14f,0.04f,0.25f);marker.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(marker.GetComponent<Renderer>(),Color.white);
             }
-            var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.07f;line.startColor=line.endColor=Color.cyan;
+            var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.07f;line.startColor=line.endColor=Color.cyan;SetColor(line,Color.cyan);
             battlefieldBounds=new Bounds();bool first=true;
             foreach(var tile in session.Grid.Tiles.Values)
             {
@@ -145,22 +152,37 @@ namespace TalesTactics
             bool starting=timingRing==null;ShowTimingRing(u,progress);if(starting)SetAnimation(u,AnimationKind.Skill);
             if(motions.TryGetValue(u,out var motion)){timingMotion=motion;motion.Spin(progress);}
         }
-        public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path)
+        public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path,float speed=1)
         {
             SetAnimation(u,AnimationKind.Walk);
             for(int i=1;i<path.Count;i++)
             {
                 if(motions.TryGetValue(u,out var motion))motion.WalkFacing(SkillResolver.Toward(path[i-1],path[i]));
                 Vector3 from=battle.Session.Grid[path[i-1]].WorldPosition(battle.Catalog.Rules.TileHeight),to=battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight);
-                for(float t=0;t<1;t+=Time.deltaTime/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
+                for(float t=0;t<1;t+=Time.deltaTime*Mathf.Max(1,speed)/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
                 units[u].position=to;
             }
         }
-        public void ClearHighlights(){foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);if(line!=null)line.positionCount=0;}
-        public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r))SetColor(r,Color.Lerp(colors[p],color,0.65f));}
+        public void ClearHighlights(){foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);foreach(var border in rangeBorders.Values)border.enabled=false;if(line!=null)line.positionCount=0;if(destinationMarker!=null)destinationMarker.enabled=false;}
+        public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r)){SetColor(r,Color.Lerp(colors[p],color,0.65f));ShowBorder(p,Color.Lerp(color,Color.white,0.3f));}}
         public void ShowSkillRange(UnitRuntime u,SkillData skill){var points=new List<Vector2Int>();foreach(var p in tiles.Keys)if(battle.Session.Resolver.InRange(u,skill,p))points.Add(p);ShowRange(points,new Color(0.8f,0.25f,0.2f));}
-        public void ShowArea(Vector2Int center,int radius){ShowSkillRange(battle.Session.Active,battle.SelectedSkill);foreach(var p in battle.Session.Resolver.AreaTiles(battle.Session.Active,battle.SelectedSkill,center))SetColor(tiles[p],new Color(1,0.7f,0.25f));}
-        public void ShowPath(List<Vector2Int> path){line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
+        public void ShowArea(Vector2Int center,int radius){ShowSkillRange(battle.Session.Active,battle.SelectedSkill);foreach(var p in battle.Session.Resolver.AreaTiles(battle.Session.Active,battle.SelectedSkill,center)){SetColor(tiles[p],new Color(1,0.7f,0.25f));ShowBorder(p,new Color(1,0.85f,0.25f),0.065f);}}
+        void ShowBorder(Vector2Int p,Color color,float width=0.035f)
+        {
+            if(!rangeBorders.TryGetValue(p,out var border))
+            {
+                var g=new GameObject("Range border "+p);g.transform.SetParent(tiles[p].transform,false);
+                border=g.AddComponent<LineRenderer>();rangeBorders[p]=border;
+                border.sharedMaterial=HighlightMaterial;border.useWorldSpace=true;border.loop=true;
+                border.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;
+                border.receiveShadows=false;border.positionCount=4;
+                var b=tiles[p].bounds;float y=b.max.y+0.025f;
+                border.SetPositions(new[]{new Vector3(b.min.x+0.045f,y,b.min.z+0.045f),new Vector3(b.max.x-0.045f,y,b.min.z+0.045f),new Vector3(b.max.x-0.045f,y,b.max.z-0.045f),new Vector3(b.min.x+0.045f,y,b.max.z-0.045f)});
+            }
+            border.startWidth=border.endWidth=width;border.startColor=border.endColor=color;
+            SetColor(border,color);border.enabled=true;
+        }
+        public void ShowPath(List<Vector2Int> path){if(battle.TutorialActive&&path.Count>0&&path[path.Count-1]!=BattleDirector.TutorialDestination)path=new List<Vector2Int>();Marker(ref destinationMarker,"Movement destination",path.Count>1?path[path.Count-1]:(Vector2Int?)null,Color.cyan,.42f);line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
         static void SetColor(Renderer r,Color c){var properties=new MaterialPropertyBlock();properties.SetColor("_BaseColor",c);properties.SetColor("_Color",c);r.SetPropertyBlock(properties);}
         static Sprite CreatePlaceholder()
         {

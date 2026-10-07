@@ -8,6 +8,8 @@ namespace TalesTactics
     {
         const long Threshold=1000;
         readonly Dictionary<UnitRuntime,long> charge=new Dictionary<UnitRuntime,long>();
+        public long[] Capture(IReadOnlyList<UnitRuntime> units)=>units.Select(u=>charge.TryGetValue(u,out var value)?value:0).ToArray();
+        public void Restore(IReadOnlyList<UnitRuntime> units,long[] values){charge.Clear();for(int i=0;i<units.Count;i++)charge[units[i]]=values[i];}
         public UnitRuntime Next(IReadOnlyList<UnitRuntime> units)=>Next(units,charge);
         static UnitRuntime Next(IReadOnlyList<UnitRuntime> units,Dictionary<UnitRuntime,long> state)
         {

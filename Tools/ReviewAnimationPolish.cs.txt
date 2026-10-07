@@ -1,0 +1,32 @@
+// Temporary Play Mode gallery. Substitute REVIEW_ENEMIES and REVIEW_FACING before eval.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+var previous=UnityEngine.GameObject.Find("Animation polish gallery");
+if(previous!=null)UnityEngine.Object.DestroyImmediate(previous);
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Animation polish gallery");
+var camera=root.AddComponent<UnityEngine.Camera>();camera.orthographic=true;camera.orthographicSize=7.2f;
+camera.transform.position=new UnityEngine.Vector3(0,0,-10);camera.backgroundColor=new UnityEngine.Color(.09f,.12f,.16f);
+camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;
+var facing=TalesTactics.Facing.REVIEW_FACING;
+var roster=REVIEW_ENEMIES?battle.Catalog.Enemies:battle.Catalog.Characters;
+var labels=new[]{"Idle","Windup","Impact","Follow","Prepare","Recover"};
+for(int column=0;column<roster.Length;column++)
+{
+    var data=roster[column];float x=(column-4.5f)*2.5f;
+    var frames=new[]{data.Sprites,data.Poses.AttackMotion.Frames[0],data.Poses.AttackMotion.Frames[1],data.Poses.AttackMotion.Frames[2],data.Poses.Skill.Frames[0],data.Poses.AttackMotion.Frames[3]};
+    var heading=new UnityEngine.GameObject("Heading");heading.transform.SetParent(root.transform);
+    var title=heading.AddComponent<TMPro.TextMeshPro>();title.font=battle.Hud.Font;title.text=data.DisplayName+"\n"+facing;title.fontSize=2.2f;
+    title.alignment=TMPro.TextAlignmentOptions.Center;title.rectTransform.sizeDelta=new UnityEngine.Vector2(2.3f,.8f);heading.transform.position=new UnityEngine.Vector3(x,6.5f,0);
+    for(int row=0;row<frames.Length;row++)
+    {
+        var go=new UnityEngine.GameObject(data.Id+" "+labels[row]);go.transform.SetParent(root.transform);
+        go.transform.position=new UnityEngine.Vector3(x,4.1f-row*1.9f,0);
+        var renderer=go.AddComponent<UnityEngine.SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;renderer.sprite=frames[row].Get(facing);
+        if(column!=0)continue;
+        var label=new UnityEngine.GameObject(labels[row]);label.transform.SetParent(root.transform);
+        var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=labels[row];text.fontSize=2.1f;
+        text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(1.6f,.6f);label.transform.position=new UnityEngine.Vector3(-13.4f,4.8f-row*1.9f,0);
+    }
+}
+return "20-character phase review; stop Play Mode to discard gallery";

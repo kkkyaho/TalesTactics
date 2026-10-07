@@ -20,7 +20,7 @@ def simplify(points, tolerance=0.65):
     return np.concatenate((simplify(points[:i+1])[:-1], simplify(points[i:])))
 
 
-def contour(mask):
+def contour(mask, all_parts=False):
     # Include the source's antialiased edge without including distant neighbouring art.
     p = np.pad(mask, 1)
     m = np.logical_or.reduce([p[dy:dy+mask.shape[0], dx:dx+mask.shape[1]]
@@ -43,6 +43,8 @@ def contour(mask):
             if current==first: break
         if current==first: loops.append(np.array(loop, dtype=float))
     def area(p): return abs(np.sum(p[:,0]*np.roll(p[:,1],1)-p[:,1]*np.roll(p[:,0],1)))
+    if all_parts:
+        return [simplify(np.concatenate((p,p[:1])))[:-1] for p in loops if area(p)>24]
     outer=max(loops,key=area)
     return simplify(np.concatenate((outer,outer[:1])))[:-1]
 

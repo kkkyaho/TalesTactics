@@ -1,5 +1,19 @@
 # 아키텍처
 
+## 로컬 배포와 업데이트
+
+Tools/PackageRelease.py는 검증된 일반 Windows 빌드와 이전 빌드 보고서/실행 파일·Runtime DLL 해시를 확인하고 전체 배포 파일 해시를 manifest에 기록한다. 게임 소스 변경 상태에서는 패키징하지 않는다. 실행 파일의 제품 버전과 별도로 배포 ZIP 버전을 관리하며 같은 번호를 덮어쓰지 않는다. Unity 백업/심볼/로그와 사용자 저장을 배포에서 제외하고 기존 게임 폴더를 변경하지 않는다.
+
+포함된 Verify-Package.ps1은 파일 목록·크기·SHA256 및 예상치 못한 파일을 검사한다. Backup-Saves.ps1은 게임 종료 후3슬롯/설정과 백업·이관/손상 보관본만 새 날짜/GUID 폴더로 복사한다. 원본 삭제·자동 복원·원격 업로드는 하지 않는다. 업데이트는 새 폴더에 전체 ZIP을 풀어 공유 persistentDataPath를 사용하는 방식이며, 하위 버전 복귀는 별도 저장 백업이 필요하다. 소비자에게 Python 설치는 필요하지 않다. 상세 범위는 Docs/Distribution/README.md를 따른다.
+
+## 전투 피드백과 효과음 중첩
+
+BoardView.Number는 숫자/배경을 같은 루트에 생성해0.65초 후 함께 정리한다. 카메라의 현재 up/right로 표시 위치를 매 프레임 계산하고 MaterialPropertyBlock으로 배경 투명도를 적용한다. 전투 수치·판정은 변경하지 않는다.
+
+PrepareSkill의 기술명은 밝은 글자/어두운 배경과 별도의 속성색 준비 고리를 사용한다. 생성 때 preferred width를 한 번 측정해 최대5.6월드 단위 안에 맞추며 표시 중 AutoSize를 사용하지 않는다. 배경은 기술명의 자식이므로 발동/Restart 시 함께 제거된다.
+
+BattleAudio의 음악 소스와 효과음 소스는 분리되어 있다. 효과음은45ms 동일ID 중복 방지, 최대4개 동시 재생, 새 음성의1/√n 게인을 적용한다. Time.unscaledTime으로 클립 수명을 추적하므로 전투 배속과 별개이며 StopAll에서 추적 상태를 비운다. 현재 효과음 소스의 pitch=1/비루프 재생을 전제로 한다. 효과음 pitch나 AudioListener.pause를 도입하면 이 수명 추적도 함께 변경해야 한다.
+
 ## 게임패드와 포함 폰트
 
 BattleDirector.Start가 GamepadPointer를 생성한다. Gamepad 이벤트를 화면 포인터로 변환하고 EventSystem의 UI raycast/기존 클릭 콜백 또는 Board.Pick/State.Tile을 사용한다. 전투 규칙을 별도 구현하지 않는다. 메뉴 순환은 현재 활성·상호작용 가능한 버튼만 대상으로 하고, B 취소는 상태의 Cancel 또는 메뉴의 돌아가기/목록/출전 준비 버튼을 사용한다. 실행 순서 -100으로 기본 UI submit보다 먼저 게임패드 사용을 감지하고 sendNavigationEvents를 끄므로 A 입력이 두 번 실행되지 않는다. 마우스 전환·장치 해제·컴포넌트 비활성화 시 기존 설정을 복원한다. 커서 Canvas는 raycast를 막지 않는다. 가상 Mouse 장치를 만들거나 실제 OS 포인터를 이동하지 않는다.
@@ -121,3 +135,63 @@ BattleHud.ChapterPage는3장 단위로 목록을 탐색하는 일시적UI 상태
 ExpansionShopContent.Add는 GuardianMedal/TemperedArmor가 없을 때만 새 에셋을 만들고 기존 카탈로그에 추가한다. 기존 에셋/사용자 튜닝은 덮어쓰지 않는다. 수호의 메달은chapter4, 단련 갑옷은chapter5로 판매를 해금한다. 보유 장비의 장착/매각은 기존 해금 독립 정책을 유지한다.
 
 신규 캠페인의 동일 출전자는6장 최초 완료 시 Lv9/EXP0이 된다. 기존V2 저장 스키마·Lv20 승급·Lv50 상한은 유지하며 기존 저장의 경험치나 레벨을 다시 계산하지 않는다.
+
+## 픽셀 캠페인 개편
+
+BattleCatalog.Enemies는 ID로 조회하는 새 적 목록이다. CampaignEnemies가 장/슬롯별ID를 결정하며, 목록이 없는 레거시 카탈로그와 훈련은 기존 Enemy를 사용한다. 목록이 있는데 필수ID가 없으면 검증/세션 생성에서 실패한다. 캠페인 적은 자신의 기술만 사용하며, 플레이어 기술을 빌리는 훈련 UtilityAI 동작은 유지한다. 다오스는 기본AI에서도 UtilityPlanner를 사용한다.
+
+PixelCampaignContent.CreateEnemies는 Content/PixelCampaign에 없는 새 캐릭터/기술만 생성한다. PixelArtImporter.Import는 alpha 읽기 분석 CSV를 사용해 Sprite Editor API로 경계·pivot·윤곽과 CharacterData의 아트 참조를 명시적으로 교체한다. 기존 캐릭터 능력치/스킬/성장 필드는 변경하지 않는다. 사용자 아트 참조 변경 후 자동 재실행하지 않는다. Tools/pixel-final-generation.json은 채택 원본/프롬프트 이력이며 실행 의존 경로가 아니다.
+
+BoardView가 PixelBattlefield를 전장 수명에 맞춰 생성/삭제한다. PixelTerrain의16개 atlas구역을 타일 소재로 쓰고, PixelProps의16개 Sprite로 비보행칸/외곽을 장식한다. PixelBackdrops의2×3패널을 장별 원경으로 사용한다. 장식 충돌체는 제거하고 모든 소유 Material은 OnDestroy에서 정리한다. 카메라를 따라 도는 billboard와 수면 흔들림은 전투 RNG/좌표를 바꾸지 않는다. Point/무압축/밉맵 없음 설정이며 3D 회전/비정수 확대에서 정수 픽셀 배율을 보장하지 않는다.
+
+BoardView의 rangeBorders는 타일별 LineRenderer를 필요할 때 생성해 전장 안에서 재사용한다. 경계는 실제 타일 Renderer.bounds 위에 놓고 공유 HighlightMaterial의 _BaseColor/_Color를 PropertyBlock으로 지정한다. ClearHighlights는 선을 숨기고 경로를 지우며, ResetBoard는 전장과 사전을 정리한다. 타일 색상과 함께 쓰므로 바닥 그림을 유지하면서 경계를 식별할 수 있다. 이동 가능성/사거리/효과 범위는 기존 Grid와 SkillResolver 결과를 그대로 사용한다.
+
+## 2026-10-04 — 단계별 중간 동작
+
+CharacterPoses.AttackMotion은 준비/기존 타격/후속/복귀 4프레임이다. Skill은 준비/기존 Cast/Attack/후속/복귀 5프레임, Ultimate는 준비/기존 전용 charge/release/복귀 4프레임이다. DirectionalSpriteClip.ReleaseFrame은 준비와 발동 구간을 나누며 SamplePhase는 각 구간의 시간 비율을 사용한다. CharacterMotion.BeginSkill과 ReleaseSkill은 기존 전투 코루틴의 준비/회복 시간을 받아 발동 전에 타격 그림이 노출되는 것을 막고 회복 끝에 대기로 돌아간다. Set 호출은 현재 연출을 중단한다. Walk/Dead는 기존 FPS 기반 Sample을 유지한다.
+
+AnimationPolishImporter는 BattleCatalog의 영웅/적20종에만 보충 시트를 연결한다. 기존 핵심 그림과 전투 데이터는 보존하며, 재실행 시 이미 확장된 Ultimate에서도 기존 핵심2장을 유지한다. AssetPostprocessor나 자동 생성 메뉴는 추가하지 않는다. Tools/MeasureAnimationPolish.py는 원본 이미지 픽셀을 수정하지 않고 경계/윤곽 CSV와 감사 JSON을 만든다. 검수 갤러리 스크립트는 Play Mode 임시 오브젝트만 만든다.
+
+## 2026-10-04 — 전투 HUD 공간 분리
+
+BattleCompactHud는 기존 BattleHud의 전투 레이아웃을 보완하는 partial이다. 좌하단 Unit 패널은344×174 Canvas 단위의 요약, 상세 정보는 별도 UnitDetails 패널이다. 상세창은 CanvasGroup.interactable로 기존 버튼을 잠그고 BattleDirector/GamepadPointer의 전장·카메라 입력을 차단한다. 닫기/취소는 전투 State와 HP/MP를 변경하지 않는다. Refresh 또는 Restart에서 상세창을 닫고 원래 상호작용을 복원한다.
+
+CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 제한 배치한다. Skill 목록/상세는 오른쪽 패널로 전장 viewport와 분리하고 TargetSelection은 하단으로 이동한다. 기존 Button 오브젝트 이름을 유지해 게임패드/자동 검수 경로를 보존하며 표시 문구만 간결하게 바꾼다. 기존 데이터·Scene·출전/상점/장비 구조는 재생성하지 않는다.
+
+## 전장 가독성과 출전 준비 UI
+
+BoardReadability는 행동자/대상/이동 목적지의 테두리와 집중 보기 상태를 관리한다. BoardView.FitBattlefield는 각 타일의 높이/유닛 여유를 포함한 카메라 공간 경계를 투영한다. ResetCamera는 집중 상태를 해제하고 ResetBoard는 지연 파괴 전에 런타임 참조를 비운다. BattleTargetNavigation은 기존 Resolver의 InRange/Targets 결과로 유효한 위치를 순환하고 실행 판정은 기존 Confirm 경로에 남긴다.
+
+BattlePreparationHud는 기존 header/left/commands/footer를 재사용하고 준비 화면에만 중앙 PreparationContent 패널을 표시한다. 카드 선택과 Deployment 변경은 분리한다. EquipmentLoadout의 분리된 초안을 슬롯/후보 목록으로 수정하며 TrySave로 확정한다. BattleMarketHud는 구매/매각 공통 목록과 종류 필터·선택 상세·페이지를 렌더링하고 기존 CampaignInventory 거래/보호 검사를 재사용한다. 구매 장비 장착은 호환 캐릭터를 선택한 뒤 장비 초안 비교로 연결하며 저장 전 원본 장비를 변경하지 않는다.
+
+## 입문 연습과 도움말
+
+BattleTutorial은 캠페인과 분리된 Lv1 BattleSession을 만든다. PracticeTurns가 크레스→민트만 순환시키고 Session.Advance/EndTurn으로 실제 턴 시작·종료를 처리한다. PracticeObjective는 자동 승패를 막으며 네 단계의 실제 이동/Resolver 실행/방향 선택으로 완료한다. 허용 명령·타일·기술·대상을 제한하고 취소 시 단계를 유지한다. 캠페인 저장·보상은 호출하지 않으며 Restart로 기존 편성과 옵션을 복원한다.
+
+BattleHelpHud는 준비/전투에서 호출하는 8페이지 모달이다. InputModalOpen을 상세창/도움말 공통 입력 차단 조건으로 사용하며 중앙 편성 영역도 잠근다. 도움말은 선택 상태를 바꾸지 않는다. 전투 수치와 궁극기 조건은 Catalog를 읽고 별도 복사본으로 유지하지 않는다. CampaignPlayerReview의 chapter1은 격리 저장에서 입문 연습을 완료한 후 기존 6장 검증을 진행한다.
+
+## 저장 슬롯·전투 중단·설정
+
+BattlePersistence는 Director별 CampaignProfiles/PreferenceFile을 소유한다. 기본 슬롯1은 기존 campaign.json이며 슬롯2/3은 campaign-slot2/3.json이다. 테스트·개발 검수는 ConfigureStorage로 별도 루트를 사용한다. 기존 PersistCampaign 콜백은 SaveProgress에 연결해 자동 저장 시각/준비 편성을 기록하고 오래된 중단 기록을 해제한다. 실패 시 추가 메타데이터를 복원하고 기존 거래/보상 실패 복원 경로를 유지한다.
+
+BattleCheckpoint는 캠페인 아군 CommandState에서만 만든다. 콘텐츠 ID, 단계/유닛 수, 위치/점유, 수치, 상태, 큐 인덱스를 검증해 임시 BattleSession을 구성한 뒤 저장 성공 후 Director에 연결한다. SPD는 남은 queue/Round, CT는 유닛별 charge를 내보내고 복원한다. Active.BeginTurn을 다시 호출하지 않아 행동 사용 여부/쿨다운을 보존한다. Random.State는 검증/소비 저장이 성공한 뒤 복원한다. CampaignSave.HasSuspendedBattle은 Unity JsonUtility가 null인 인라인 객체를 재생성하는 동작과 실제 중단 기록을 구분한다. 이전 V2 파일의 누락된 필드는 기본값으로 읽고 미래 중단 버전은 원본 보호 상태로 처리한다.
+
+시스템 메뉴는 기존 Canvas 위 별도 모달이며 InputModalOpen을 재사용한다. PlayerPreferences 초안은 성공적으로 저장한 후 복사해 적용하고 추가 편집이 적용된 설정을 바꾸지 않게 한다. 화면 설정은 Windows에서만 Screen.SetResolution으로 적용하며 음악/효과음 소스와 패드 커서 배율은 즉시 반영한다. CT/AI는 진행 중 Session을 재구성하지 않는다. PreferenceFile은 미지원/손상 파일을 덮어쓰지 않는다.
+
+## 전투 속도와 결과 흐름
+
+BattleFlow는 캐릭터 ID별 마지막 SkillData와 결과 직전 성장/재고/골드 기준을 보관한다. TargetSelection 취소는 일반 공격만 CommandState로, 기술은 SkillDetailsState로 복귀한다. 목록은 GamepadPointer.FocusButton으로 선택을 복원하되 실행하지 않는다.
+
+EnemyTurn 시작 시 PlayerPreferences의 속도/간략 설정을 읽는다. 이동 보간·준비/복귀 대기만 조정하고 SkillResolver.Execute와 턴 종료는 모든 모드에서 동일하게 한 번 실행한다. 전역 Time.timeScale은 변경하지 않는다. 기존 설정 파일의 누락 필드는 정상 속도/전체 연출 기본값이다.
+
+BattleResultHud는 BattleEndState 전용 패널이며 시스템/도움말 모달의 입력 차단에 포함된다. 보상 성공 후 실제 캠페인 차이로 결과를 표시하고 실패 시 성장 행을 감춘다. 기존 pendingReward와 저장 롤백을 사용해 재시도 추첨/중복 지급을 막는다. 다음 장은 준비 화면으로, 재도전은 같은 편성/장으로 BeginBattle을 호출해 이야기를 생략한다.
+
+## 임무 정보와 적 역할
+
+MissionBriefing은 Session의 실제 목표/생존 적 수를 읽는다. BattleMissionHud는 별도 모달이며 출전 전에는 선택 장의 CampaignEnemies를, 진행 중에는 Session.Units를 읽어 같은 적 구성을 표시한다. InputModalOpen 및 키보드/패드 취소와 시스템·도움말 전환에 연결하고 배경 CanvasGroup 상호작용을 차단한다. 세이브를 쓰거나 AI 예측을 실행하지 않는다.
+
+EnemyRoles는 콘텐츠 ID를 전열/돌격/사격/마법/보스로 분류한다. EnemyPlanner와 UtilityPlanner의 점수에 캠페인 적 전용 선호를 더한다. 사격/마법은 가장 가까운 아군과 기본 사거리(최대3칸) 안에서 거리를 확보하고 돌격은 공격 가능한 부상자에 추가 점수를 준다. 실제 이동/사거리/비용/효과 판정은 GridMap/SkillResolver에 남겨 두며 훈련·아군 플래너에는 역할 보정을 적용하지 않는다. 다오스의 기존 Utility 선택은 유지한다.
+
+## 화면 비율과 메뉴 키보드 선택
+
+BattleHud.Initialize는 ScaleWithScreenSize CanvasScaler에 Expand를 적용해 논리 영역을 기준1440×900 이상으로 유지한다. 고정 높이의 편성 카드/상점/하단 출전 영역이21:9에서 서로 침범하던 문제를 해결하며, 임의 ConstantPixelSize 설정은 바꾸지 않는다. GamepadPointer는 메뉴/모달/이야기/결과에서만 Tab 순환을 처리하고 기존 EventSystem Submit을 그대로 사용한다. 활성 Button.IsInteractable 검사로 모달 뒤 CanvasGroup을 제외한다. 선택 Outline의 원래 색과 두께는 선택 변경/비활성화 때 복원한다. 전투 대상 Tab 처리는 BattleDirector에 남아 있다.

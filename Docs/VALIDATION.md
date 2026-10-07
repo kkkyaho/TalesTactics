@@ -342,3 +342,180 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 직접 검수에서 발견한 상점의1·2장 한정 보상 안내를 장별 출전 화면 안내로 수정했다. 이후 변경은 이 문자열1개뿐이며 전투/저장/보상 로직은 동일하다. 전체 테스트 및 두 플레이어 완주 보고서는 문자열 수정 전 빌드 기준이다. 최종 빌드/상점 화면 재확인은 아래 기록을 따른다.
 - 상점 안내 수정 후 최종 개발 빌드28.007초/오류0/경고9 성공. 일반 빌드 첫 시도3.542초/오류2/경고4는 빈 오류와 스크립트 컴파일 오류 메시지로 실패했다. 에디터 scriptCompilationFailed=false/isCompiling=false를 확인한 뒤 코드 변경 없이 재시도하여19.663초/오류0/경고4로 성공했다. 근본 원인 해결로 주장하지 않는다. unity-expansion-final-windows-initial-failure.json 및 final-*-build.json에 기록했다.
 - 최종 일반 배포 플레이어에서 수정한 상점 안내와 신규2종 가격/잠금 표시를 직접 재확인했다(ExpansionReview/release-final-shop.png). 최종 빌드 해시는final-build-hashes.json에 보관했다. 검수 후 원본/백업 저장 해시도 동일하다. 6장까지 구현·자동 검증·대표 화면 검수가 완료되었으며 물리 게임패드/사람 체감 밸런스/전문가 아트·청음 승인 및7장 이후는 이번 확장 완료 범위에 포함하지 않는다.
+
+## 2026-09-29 — 6장 픽셀 아트·적 편성 개편
+
+- 기존 영웅10명 전원을 특징을 유지한3등신 고밀도 픽셀 아트로 교체했다. 각 기본/동작/보충48개 그림, 시온 오른쪽4개 보정, 일반 적9종×20개·다오스32개, 재질16종·장식16종·6장별 원경을 제작/연결했다. 채택 PNG45개 약79.9MB, 프롬프트/원본 이력은 Tools/pixel-final-generation.json. 개별 일반 기술은 시전/공격 그림과 기존VFX를 공유한다. 자세한 범위는 PixelCampaign/README.md를 따른다.
+- 신규 적 편성과 창작 전후 대사를6장까지 연결했다. 다오스는 기본AI에서도 레이저와 범위 블래스트를 선택한다. 기존 영웅10명 및 레거시 파수병의 Animator 이후 능력치/기술/성장 필드는 기준커밋2999c64와 일치한다(파수병의 기본값VisualStyle=0 직렬화 추가 제외). 지형/스폰/장별 보상/V2저장은 유지했고 DemoContent.Create를 실행하지 않았다.
+- 실제 Unity EditMode **93/93**,0.96초(unity-pixel-editmode-results.json). 실제 Unity PlayMode **52/52**,65.29초(unity-pixel-playmode-results.json). 20개 캐릭터의 아트 참조/크기/import,6장별 적ID·장식·전6장4회전의 모든 보행 타일 선택, 기존 기술89개·보행/궁극기·UI/저장 검사를 통과했다.
+- 초기 PlayMode49/52,34.63초(unity-pixel-playmode-initial.json)는 파라 피격 행 잘림, 보행의서로다른그림 부족, 일반기술/궁극기 그림 공유로 실패했다. 행 경계 탐색범위를 넓히고,10명 보충160개 그림을 제작해4개 보행/궁극기 전용2개를 연결한 뒤 기존 기준을 바꾸지 않고52개를 모두 통과했다.
+- 엔진 독립 ManagedChecks **93/93**(pixel-managed-results.txt)은 Unity 실행 결과가 아니다. 실제 Unity DLL 참조 Runtime/Editor/EditMode/PlayMode API 컴파일4개도 통과(pixel-api-compile-results.txt). 마지막 테스트 코드 변경은 지면 probe 설명 주석1줄뿐이다.
+- 최종 GameView1920×1080에서6개 전장(PixelCampaign/chapter1-final.png~chapter6-final.png)과10명×12그림×4방향480칸(heroes-front/back/right/left-final.png)을 확인했다. 검수용 메모리 캠페인에 해금 플래그를 주고 PersistCampaign을 비활성화했으므로 정상 완주 증거가 아니다. 임시갤러리/캡처용Assets/Docs는 제거하고 Scene은 저장하지 않았다. Native Computer Use의창활성화가 실패하여 Unity의capture_game_view screen 경로를 사용했다. 이번 새아트 수동Windows마우스 검수나 원작 세부 외형 전문가 승인을 주장하지 않는다.
+- Windows 개발 빌드 **46.578초/오류0/경고9**, 일반 빌드 **31.688초/오류0/경고7** 성공(unity-pixel-development-build.json, unity-pixel-windows-build.json). 기존 Pipeline Runtime 설정 부재·deprecated API/전처리기·직렬화 분석기·URP 디버그셰이더/TMP pragma 경고가 남는다.
+- 기본 SPD/AI 개발 플레이어7회 독립 실행 통과:1~6장 정상 전투 승리27/20/34/22/33/22플레이어턴, 재실행의 정상 패배2턴·재출전·중복 보상 방지 통과. 각실행의14곡출력신호/가상패드상점검사도 통과. PlayerReviews/72b5027d48df4bc498b12c2204857869-summary.json. 숨긴 플레이어의 검은 캡처는 시각 증거로 쓰지 않는다.
+- combat-party-matrix.csv의 두6인 편성이 전6장 승리(6장37/41턴·각6명생존), 기본3인 도전은2/4/6장 패배다. 초기AI기준선으로 사람의 체감난이도나 모든조합승률을 보장하지 않는다.
+- 3D 회전 카메라와 비정수 확대에서 완전한 pixel-perfect를 보장하지 않는다. 각 일반 기술의 고유 전신 작화, 실물 게임패드·사람 장기 난이도·전문가 원작외형/음악청음 승인은 별도다. 기존2026-09-27 시각검수 수치/이미지는 이전아트 이력으로 보존한다.
+- CT+Utility 개발 플레이어도7회 독립 실행 통과:1~6장15/12/17/14/17/9플레이어턴, 재실행 정상 패배3턴·재출전·저장 복원/중복 보상 방지 통과. PlayerReviews/0c0fa920a15c45e09355f16b3876531b-summary.json. 두 검수 모두 원본/백업 저장 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. 최종 빌드/저장 해시는 PixelCampaign/final-hashes.json에 보관했다.
+
+## 2026-09-29 — 픽셀 전장 조작 가독성·재출전 검증
+
+- 6장 중계핵의 이동 범위가 어두운 바닥 무늬에 묻히는 것을 GameView에서 확인했다(PixelInteraction/move-before.png). 이동/공격 범위에 밝은 청색/적색 선, 선택 효과 범위에 굵은 금색 선을 추가했다. 경로 선에도 URP Unlit 색상을 MaterialPropertyBlock으로 지정했다. 범위 판정·HP·이동·저장 로직은 바꾸지 않았다.
+- 타일별 선은 같은 전장에서 재사용하며 취소 시 비활성화, Restart 시 전장과 함께 제거한다. 새 collider나 개별 material 복제를 만들지 않는다. 수정 후 실제 화면은 PixelInteraction/move-after.png, attack-after.png, area-after.png다. 메모리 캠페인/저장 비활성 상태로 촬영했고 효과 범위는 표시 함수를 직접 호출했다.
+- 실제 Unity PlayMode **53/53**,65.50초 통과(unity-pixel-interaction-playmode-results.json). 신규 검사에서6장×2회 전장 생성/재출전의 UI Submit 이동·취소·공격·4회전·확대/초기화, 실제 합법 범위와 선 표시 일치, 선 재사용·충돌체 없음·지면 위 높이·밝은 소재 색상, 위치/HP 불변, 참조된 장식 소재/선 삭제를 확인했다. 장시간 FPS/메모리 프로파일링이나 모든 자원 누수 부재 증명은 아니다.
+- Runtime/Editor/EditMode/PlayMode 실제 API 컴파일4개 통과(pixel-interaction-api-results.txt). 전투 규칙 변경이 없어 EditMode/ManagedChecks는 다시 실행하지 않았고 이전93/93 결과를 유지한다.
+- Windows Computer Use로 배포 플레이어를 실행했지만 화면이 검게 캡처됐고, 대상 창 재조회 후에도 `failed to activate captured window`로 활성화가 실패했다. 수동 Windows 마우스 검수는 보류다. 화면 검토는 Editor GameView, 입력 검증은 실제 PlayMode UI Submit과 구분한다. 검수용으로 시작한 플레이어 두 개는 종료했다.
+- 사용자 campaign.json 및 .bak SHA256은 모두324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1로 이전과 동일하다. 임시 Assets/Docs는 Editor API로 삭제했으며 Scene을 저장하지 않았다.
+- Windows 일반 빌드14.224초/오류0/경고4, 개발 빌드26.048초/오류0/경고9 성공(unity-pixel-interaction-windows-build.json, unity-pixel-interaction-development-build.json). 기존 Pipeline/사용 중단 API·전처리기/직렬화·셰이더 관련 경고는 유지된다.
+- 수정 후 Windows 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴 및 재출전·중복 보상 방지·저장 복원 통과. 사용자 저장/백업 불변. PlayerReviews/3739dcc79fc54d92b0b9f8feca3c8587-summary.json. CT 모드 Windows 완주를 이번 표시 변경 후 별도로 반복하지 않았으며 이전 개편 결과와 구분한다. 빌드/저장 해시는 PixelInteraction 폴더에 기록했다.
+
+## 2026-09-30 — 새 아트 Windows 화면·마우스 검수 완료
+
+- 이전에 보류했던 Windows 창 제어가 이번 세션에서 정상 작동했다. Computer Use의 node_repl + @oai/sky로 실제1280×800 게임 창을 관찰하고 마우스로 조작했다. 도구/게임 코드 변경 없이 재시도한 결과이며 이전 활성화 오류의 근본 원인 해결로 주장하지 않는다.
+- 일반 배포 실행본에서 출전 준비·1장 도입 건너뛰기·전장 진입, 청색 이동 범위·타일 클릭 이동/보행·Undo 원위치 복원·카메라 우회전을 확인했다. 격리 개발 실행본에서는2~6장 선택·도입 첫 대사/건너뛰기·전장·Restart와 장 목록2페이지를 확인했다. 새 배경/장식/영웅/적 그림 누락, 메뉴 글자 잘림, 기본 카메라에서 HUD가 전장을 가리는 문제는 발견하지 못했다.
+- 6장에서 파라를 다오스 인접 타일로 이동하고 Attack의 적색 사거리와 다오스 클릭의 금색 선택 범위를 확인했다. 피해43/100%/무속성×1 미리보기와 실행 버튼 활성화, 확대·우회전·초기화 중 대상 유지, 취소 시 테두리 해제, Restart 복귀를 확인했다. 표시 함수를 직접 호출하지 않았다. 공격 실행/승리까지 진행한 검사는 아니다.
+- 격리 슬롯7d58cb747397401587b342fd7d2e02b8에는 기존 정상6장 자동 완주3739dcc79fc54d92b0b9f8feca3c8587의 저장을 복사했다. 별도 값/HP/해금 편집 없이1990G/Lv9 상태를 사용했다. 사용자 원본·백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 검수 전후 동일하다.
+- 개발 수집기 errors.txt 없음, player.log의 Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두 exe/두 Runtime DLL 해시가 기존 PixelInteraction/build-hashes.json과 일치한다. PixelWindowsReview/save-integrity.json 및 원본 창 캡처21장, events.txt/hardware.txt/performance.csv에 기록했다. 약442.6초 혼합 구간의 성능 수집은 장시간 안정성/벤치마크가 아니다.
+- 이번 변경은 문서·증거뿐이며 코드/에셋/빌드 및 Scene 변경이 없다. Unity EditMode93/93·PlayMode53/53과 빌드/자동 완주 결과는 이전 기록을 유지하며 이번에 재실행했다고 표현하지 않는다. 새 아트 Windows 대표 화면·마우스 검수 보류 항목은 완료했으며 전6장 수동 완주·전체 기술 수동 발동·사람 난이도/전문가 아트·실물 패드 검수는 별도다. 상세 확인 흐름: PixelWindowsReview/README.md.
+
+## 2026-10-01 — 새 아트 대표 전투 연출 후속 검수
+
+- 기존 Windows 개발 빌드1280×800을 Computer Use로 조작했다. 격리 슬롯4974b814b4554128a3d15cf451038bba에는 이전 정상6장 자동 완주3739dcc79fc54d92b0b9f8feca3c8587 저장을 복사했다. 기본3인 편성은 크레스·파라Lv9, 민트Lv1이다. 이전 PixelWindowsReview의 기본3인 전원Lv9 표기를 동일 원본 저장과 실제 민트 턴 화면을 근거로 정정했다. 원본 완료 저장에 민트 성장 항목이 없어 기본Lv1로 시작한다.
+- 파라의 합법 이동→일반 공격과 다오스 피격, 크레스의 마신검 상세→직선 목표→시전/복귀를 확인했다. 피해 미리보기43+58=101과 다음 다오스 턴 HP315→214가 일치했다. 크레스MP109→103, 공격자 게이지0→20, 행동 사용 뒤 Undo 비활성화를 확인했다.
+- 민트 퍼스트 에이드의 기술명/시전과MP120→114, 재사용 시 녹색 회복 효과/+60 표시·MP114→108을 확인했다. 미리보기 회복77은 상한 적용 전 값이다. 첫 회복의 직전 대상 HP 숫자는 확보하지 않아 첫 실행의 실제 회복량은 주장하지 않는다.
+- 다오스의 정상 AI 블래스트에서 기술명/시전 자세, 두 아군 각각30 피해 숫자/피격 표시, 다음 적 턴과 결과 문구를 기록했다. 단일 방향의 짧은 캡처이며 모든 프레임이나 레이저 시각 검수는 아니다. 파라가 정상 적 공격으로 HP246→141→42 이후 쓰러지고 턴 목록에서 빠지는 것을 관찰했다. HP0 숫자 캡처 자체는 없다. Restart 후 파라 생존·HP246/246·MP109/109·게이지0·위치/명령 복원을 확인했다.
+- 사용자 원본/백업 SHA256은324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1, 격리 저장은82B5F74995EEEF4E79F3BE6AD934A1B5F715E01D843B2B355743CA2405B82181로 보존됐다. 수집기errors.txt 없음, player.log Error/Exception/Assert 검색0건, 플레이어 종료 확인. 두exe/두Runtime DLL도 기존 PixelInteraction 빌드 해시와 일치한다.
+- PixelCombatReview에 캡처22장·events/hardware/performance 및 save-integrity.json을 보존했다. 약570초 혼합 구간은 장시간 성능 시험이 아니다. 코드/에셋 변경이나 Unity 테스트/빌드 재실행은 없고 기존93/53 통과 기록을 유지한다. 대표 연출 검수 완료이며 전6장 수동 완주·보스 격파·전체 기술/방향 검수·사람 난이도/실물 패드 평가를 뜻하지 않는다.
+
+## 2026-10-04 — 전체20종 중간 동작/외형 보강(1번)
+
+- 영웅10명·일반 적9종·다오스에 20개 보충 시트/320개 그림을 추가하고 공격4·일반 기술5·궁극기4프레임을 연결했다. 기존 핵심 타격/궁극기 그림과 준비/복귀 공유를 포함한 수치다. ReleaseFrame으로 준비/발동 구간을 나누고 기존 ReleaseSkill 판정 시점과 회복 시간에 맞춰 재생한다. 전투 규칙/능력치/비용/피해/저장 스키마는 변경하지 않았다.
+- 실제 Unity EditMode **95/95**(0.69초), PlayMode **54/54**(102.77초) 통과. AnimationPolish/editmode-results.json, playmode-results.json. 새 테스트는 단계 범위/레거시 클립과20종의 실제 준비 대기·발동·후속·복귀·쓰러짐/대기 중단을 확인한다. 엔진 독립 ManagedChecks는 이번에 재실행하지 않았다.
+- Sprite Editor API로 경계/윤곽/발 피벗/PPU를 연결했다. 채택320칸은 alpha 분석에서 빈 칸·불투명 배경·경계 잘림 검사를 통과했다. 실제 Unity 렌더링 영웅/적 ×4방향8장으로 체형·장비 식별·크기·잘림을 비교했다. 시온2개 행의 좌우 참조를 보정했다. 임시 Play Mode 갤러리와 Assets 아래 임시 캡처는 제거했고 Scene/ProjectSettings 변경은 없다. Application.runInBackground도 검수 전 false로 복원했다. 상세 화면/한계: AnimationPolish/README.md.
+- Windows 일반 빌드 **32.812초/오류0/경고7**, 개발 빌드 **27.000초/오류0/경고9** 성공. 기존 Pipeline 비활성 안내·개발 검수의 사용 중단 API/전처리기·직렬화·셰이더 경고가 남아 있다. AnimationPolish/windows-build.json, development-build.json, build-hashes.json에 결과와 해시를 보관했다.
+- 새 개발 플레이어7회 독립 실행 통과: 1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원 통과. 사용자 원본/백업 불변, 실행 로그 Exception/Assertion/Error 검색0건. PlayerReviews/fd83d49d46c040e486b3a8b7c21a83c5-summary.json 및 장별 보고서. 기본 SPD/AI 자동 검증이며 CT 완주를 새로 반복하지 않았다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 쓰지 않는다.
+- 요청한 중간 프레임 및 자세별 외형 일관성 개선은 완료했다. 전6장 사람 수동 완주·전체 기술별 독립 작화·외부 전문가 원작 외형 승인·사람 난이도/실물 패드 검수는 이번 완료 범위에 포함하지 않는다.
+
+## 2026-10-04 — 슈로대 참고 소형 캐릭터 HUD
+
+- 캐릭터 정보를 좌하단344×174 Canvas 단위의 요약창으로 줄였다. 기본1440×900 기준 기존268×656 대비 면적 약66% 감소. 이름/Lv·기존 캐릭터 그림·HP/MP/SP·이동/행동 상태를 표시하고 직업/세부 능력치/상태는 능력 버튼의 상세창에 분리했다.
+- 명령은 캐릭터 바깥쪽, 기술 목록/상세는 오른쪽, 대상 실행/취소는 하단, 카메라는 상단으로 배치했다. 상세창 중 배경 UI/전장 입력 차단, 닫기/Esc/우클릭/패드B 복귀를 구현했다. Scene/콘텐츠/전투 규칙은 변경하지 않았다.
+- 실제 Unity EditMode95/95, PlayMode55/55(102.62초) 통과. CompactHud/editmode-results.json, playmode-results.json. 새 검사는 요약창 면적·전장 폭·명령 버튼 경계·상세창 단독 입력·패드 취소 후 State/HP/MP 보존·출전 화면 복원을 확인한다. 전체89개 기술 설명 크기/폰트 검사도 통과했으며 새 결과를 CompactHud/skill-panel-review.csv에 보관했다. ManagedChecks는 재실행하지 않았다.
+- 1920×1080 및1366×768 Game View에서 요약/명령·상세·기술·대상 선택을 확인했다. 최종 원본1366×768 캡처4장은 CompactHud/에 있다. 게임 프레임 증가와 상태를 확인했으며, Game View의 갱신이 늦은 캡처는 Repaint 후 다시 취득했다. 검수 후 해상도 선택과 runInBackground=false를 복원하고 Assets 임시 캡처를 제거했다. 세로 창의 별도 배치는 구현했으나 이번 시각 검수는 가로 창 기준이다.
+- 기존 Builds/Windows 출력의 첫 빌드는 실행 중인 사용자 플레이어가 lib_burst_generated.dll을 점유하여 실패했다(25.570초/오류1, windows-build-locked.json). 플레이어를 강제 종료하지 않고 별도 Builds/WindowsCompactHud/TalesTactics.exe로 빌드하여 성공했다(4.569초/오류0/경고1). 현재 새 UI 실행 경로는 WindowsCompactHud이며 기존 Windows 폴더를 최신 검증본으로 사용하지 않는다.
+- 개발 Builds/CampaignReview 빌드25.335초/오류0/경고9 성공. 최종 일반 빌드는 Pipeline 비활성 안내1건, 개발 빌드는 기존 사용 중단 API/전처리기·직렬화·셰이더 경고 포함9건이다. CompactHud/windows-build.json, development-build.json, build-hashes.json 참조.
+- 새 개발 플레이어7회 독립 실행 통과:1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·중복 보상 방지·저장 복원. 사용자 원본/백업 불변. PlayerReviews/d216ec73315643378d3e07d433b72264-summary.json. 실행 로그 Exception/Assertion/Error 검색0건. 숨겨진 플레이어 캡처는 시각 검수로 사용하지 않는다. 기본 SPD/AI 자동 검증이며 사람의 전6장 수동 완주나 실물 패드 검수가 아니다.
+
+## 2026-10-04 — 판매 준비 개선안 1–2: 전장 가독성·편성/장비/상점
+
+- 실제 타일의 투영 경계로 전체 카메라를 맞추고 현재 유닛/선택 대상 집중 보기, 흰 행동자·금색 대상·청록 목적지 테두리, 이전/다음 대상 버튼·Tab/Shift+Tab·LT/RT를 추가했다. 대상 순환과 실행 확정을 분리하며 기존 Resolver로 유효성을 판단한다.
+- 출전 준비를 장 선택/초상화 편성/선택 유닛 정보의 3열과 하단 고정 출전 버튼으로 구성했다. 카드 선택과 편성 변경을 분리했다. 장비 직접 후보 선택과 능력치 증감 비교, 구매/매각 공통 화면·종류 필터·거래 후 페이지 유지·구매 직후 장비 비교 동선, 별도 훈련/전투 설정을 연결했다. 저장 스키마/전투 규칙은 변경하지 않았다.
+- 실제 Unity EditMode **95/95**(0.38초), PlayMode **58/58**(104.98초) 통과. ReleaseUi/editmode-results.json, playmode-results.json. 신규 3개 검사는 6장×4회전/집중 보기·복귀/목적지·재출전, 편성 선택 분리/구매→비교→저장, 대상 순환/능력창 입력 보호를 확인한다. 기존 테스트는 변경된 명시적 장비 후보 선택 동선을 따른다. 엔진 독립 ManagedChecks는 재실행하지 않았다.
+- 최초 PlayMode 38/55 통과·17실패에서 전투 종료 후 지연 파괴 중 카메라 null 참조와 빈 매각 안내 차이를 찾았다. ResetBoard가 즉시 런타임 참조를 비우고 LateUpdate가 Session을 확인하도록 수정했다. 신규 테스트의 NUnit 구문 컴파일 오류를 수정한 뒤 테스트 도구의 중단/0개 검색 상태가 발생해 스크립트 재로드로 복구했다. 0개 결과는 검증으로 인정하지 않고 최종 58개 실제 실행 결과로 교체했다. 초기 실패 증거는 ReleaseUi/playmode-initial.json에 남겼다.
+- Game View 1920×1080에서 편성/전체 전장/현재 유닛 확대, 1366×768에서 편성/상점 목록·상세/장비 증감/설정/전장/대상 선택 화면을 직접 확인했다. 화면별 Repaint와 증가한 frameCount를 확인하고 격리 CampaignSave/저장 콜백으로 구매→장착 비교를 조작했다. 캡처는 ReleaseUi/*.png. 임시 Assets 캡처를 제거했고 Game View 기본 Full HD·runInBackground=false로 복원했다. Scene은 dirty=false이며 ProjectSettings 변경은 없다.
+- Windows 일반 빌드 **26.508초/오류0/경고7**, 개발 빌드 **27.902초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. ReleaseUi/windows-build.json, development-build.json 및 build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsReleaseUi/TalesTactics.exe**다. 기존 실행 중인 Builds/Windows 플레이어를 종료하지 않고 별도 위치에 빌드했다.
+- 새 개발 플레이어 **7회 독립 실행 모두 통과**: 1~6장 승리 27/20/34/22/33/22 플레이어턴, 재실행 정상 패배 2턴과 재출전/저장 복원/중복 보상 보호. 구매 가격·보유 수량·새 UI 장비 장착 저장, 가상 패드 상점 진입/취소도 통과했다. PlayerReviews/85f1af87e4634056a8f36f59db07d54c-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error 검색 0건(ReleaseUi/save-and-log-check.json).
+- 범위/한계: 이번 요청의 1–2번 UI 개선 완료이며 전체 판매 준비 완료를 뜻하지 않는다. 기본 SPD/AI 자동 캠페인 검수이며 사람이 전6장을 수동 완주하거나 실물 게임패드·세로 화면·전체 모니터 비율을 검수한 결과는 아니다. 숨겨진 플레이어의 검은 캡처는 시각 증거로 사용하지 않는다. 전체 UI 화면과 조작은 ReleaseUi/README.md 참고.
+
+## 2026-10-05 — 판매 준비 개선안 3: 입문 연습·도움말
+
+- 출전 준비의 처음 플레이 · 도움말에서 Lv1 크레스 이동→공격→민트 회복→대기/방향을 직접 수행하는 연습을 추가했다. 단계별 명령/대상을 제한하고 실제 이동·SkillResolver·턴 시작/종료를 사용한다. 연습용 부상을 명시하고 적은 기다린다. 재시작/중단/완료에서 성장·편성·장비·골드·기존 설정·저장을 보존한다.
+- 준비/전투 도움말 및 F1로 여는 8페이지 가이드에 이동/공격/회복/대기, 고저차/방향, 상태, 10명 궁극기 조건, 편성/저장, 입력을 설명한다. 수치/궁극기 조건은 현재 Catalog에서 읽는다. 모달 동안 배경 메뉴와 전장 입력을 차단하고 닫기/F1/Esc/우클릭/패드B로 기존 선택을 유지한다.
+- 실제 Unity EditMode **95/95**(1.01초), PlayMode **61/61**(107.35초) 통과. TutorialHelp/editmode-results.json, playmode-results.json. 신규3개 검사는 실제 행동·취소·잘못된 대상·피해 미리보기·MP 비용·턴 종료 상태 지속시간·캠페인 불변, 도움말8페이지 글자/범위/단독 입력, 연습 중단 후 정상 캠페인을 확인한다. ManagedChecks는 이번에 실행하지 않았다.
+- 최초 PlayMode60/61에서 테스트의 Campaign JSON 기준을 준비 화면의 기본 캐릭터 초기화 전에 수집한 문제를 수정했다. 준비 화면 표시 후 기준을 잡아61/61을 확인했다. 실제 화면에서 가려진 피해 미리보기와 과도한 모달 외곽 효과를 수정했다. 후속 검토에서 연습의 직접 Active 교체를 PracticeTurns+Session.Advance로 바꾸어 정상 EndTurn 경로를 보장했고 최종 전체 검사를 다시 통과했다. 초기 결과는 playmode-initial.json.
+- 1366×768 실제 Game View에서 도움말·궁극기 조건, 이동·공격 미리보기·회복·방향·완료를 확인했다. 버튼 콜백과 타일 선택으로 정상 연출을 진행해 크레스HP145→190, 민트MP120→114를 확인했다. TutorialHelp/*.png에 보존했다. 검수 후 Game View Full HD/runInBackground=false 복원, 임시 Assets 캡처 제거, 테스트가 변경한 폰트 캐시 복원. Scene/ProjectSettings 변경 없음.
+- Windows 일반 빌드 **33.388초/오류0/경고7**, 개발 빌드 **28.010초/오류0/경고9** 성공. 기존 Pipeline·검수 API·직렬화·셰이더 경고가 남아 있다. TutorialHelp/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsTutorial/TalesTactics.exe**. 기존 실행 중인 플레이어는 종료하지 않았다.
+- 새 개발 플레이어 **7회 독립 실행 모두 통과**: 입문 연습 정상 완료/무저장 확인 후 1~6장 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·저장 복원·중복 보상 방지. PlayerReviews/161b177e75074f2b8eda8a36df6ee532-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 Exception/Assertion/Error0건(TutorialHelp/save-and-log-check.json).
+- 범위/한계: 3번 입문 연습·도움말 구현/검증 완료. 기본 SPD/AI 자동 캠페인 검수이며 사람의 전6장 수동 완주·초보자 학습성·실물 패드 검수는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 4번 저장·이어하기·설정이다.
+
+## 2026-10-05 — 판매 준비 개선안 4: 저장·이어하기·설정
+
+- 기존 campaign.json을 슬롯1로 보존하면서 슬롯2/3, 마지막 슬롯 기억, 저장 시각/진행 요약/중단 기록 표시, 현재 편성·선택 장 저장을 추가했다. 기존 보상·거래·장비·승급 자동 저장에 성공 시각/슬롯 안내를 연결했다. V1 이관·V2 호환·백업 복구·미래 버전 덮어쓰기 보호를 유지한다.
+- 캠페인 아군 명령 대기에서 전투 중단 저장/이어하기를 추가했다. HP/MP/SP·위치·상태·쿨다운·장비·이동/행동/취소/고유 플래그·SPD 대기열/CT 누적·난수 상태를 보존한다. 복원 검증 및 중단 기록 소비 저장이 성공한 뒤 재개한다. 실패 시 현재 전투/원본을 유지한다. 훈련·연습·연출·적 턴·결과 중에는 중단할 수 없다. 재개 후 강제 종료는 복원하지 않으며 다시 중단 저장해야 한다.
+- 창/전체화면·3개 해상도·음악/효과음·패드 커서 속도·자동 타이밍·기본 턴 순서/AI를 별도 설정 파일에 저장한다. 저장 후에도 초안을 분리해 미적용 변경이 현재 설정을 바꾸지 않게 했다. 미지원/손상 설정은 원본 보호 상태가 된다. 키 전체 재지정이나 임의 프레임 자동 저장을 구현한 것은 아니다.
+- 실제 Unity EditMode **98/98**(4.39초), PlayMode **64/64**(109.67초) 통과. Persistence/editmode-results.json, playmode-results.json. 신규 검사는 슬롯 분리/기존 저장/미래 버전, 설정 재읽기/초안 취소, 실제 SPD/CT 이동·상태·KO·행동·난수 복원과 이후20턴 일치, 중단 실패/손상 기록 원본 보존 및 모달 입력 보호를 확인한다. 기존 PlayMode 테스트도 임시 저장 루트로 격리했다. ManagedChecks는 실행하지 않았다.
+- 최초 PlayMode63/64에서 Unity JsonUtility가 null인 인라인 중단 객체를 다시 생성하는 문제를 발견했다. HasSuspendedBattle 플래그를 추가하고 소비 후 파일 재읽기까지 통과했다. 초기 결과는 Persistence/playmode-initial.json에 남겼다.
+- 실제1366×768 Game View에서 슬롯·설정·중단 안내·저장 시각·이어하기·재개된 전장을 확인했다. 헤더 메뉴의 줄바꿈을 수정하고 최종 화면을 다시 확인했다. 프레임 갱신/Repaint와 격리 파일을 사용했으며 검수 후 기본 Full HD·runInBackground=false·Scene dirty=false 복원, Assets 임시 캡처를 제거했다. 이미지/조작/제한은 Persistence/README.md 참조.
+- Windows 일반 빌드 **39.471초/오류0/경고8**, 개발 빌드 **24.945초/오류0/경고10** 성공. 기존 Pipeline·사용 중단 API/DEVELOPMENT_BUILD 전처리기·직렬화·셰이더 경고와 같은 종류이며 새 개발 검수 클래스의 전처리기 경고1건이 추가됐다. Persistence/windows-build.json, development-build.json 및 build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPersistence/TalesTactics.exe**다. 기존 실행 중인 사용자 플레이어는 종료하지 않았다.
+- 새 Windows 플레이어 **4회 독립 프로세스 저장/재실행 검증 통과**: SPD/CT 각각 이동·상태·게이지를 저장하고 종료한 뒤 같은 상태 복원, 디스크의 중단 기록 소비, 이후20턴 순서 일치, 다른 슬롯의 골드123 보존, 설정 재읽기·1366×768 실제 화면 적용 확인. Persistence/47fad1e280e3403f9d00007259b152e4/summary.json 및 격리 저장 원본. 실행 로그 원본은 PersistentDataPath/PersistenceReviews의 같은 GUID 폴더에 보존한다. 사용자 campaign.json/.bak 해시 불변, settings.json/슬롯2/3은 생성하지 않음, 실행 로그 오류0건.
+- 새 개발 플레이어 캠페인 **7회 독립 실행 모두 통과**: 입문 연습·상점·장비 후 1~6장 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴과 재출전·저장 복원·중복 보상 방지. PlayerReviews/8503653e73c04252aad78ac7f7d108bc-summary.json 및 장별 보고서. 사용자 원본/백업 해시 불변, 실행 로그 오류0건(Persistence/save-and-log-check.json).
+- 범위/한계: 4번 저장·이어하기·설정 구현/검증 완료. 캠페인 완주는 기본 SPD/AI 자동 검수이며 CT는 별도 저장·복원/20턴 일치를 검수했다. 사람의 전6장 수동 완주, 실물 패드, 모든 모니터/전체화면 전환 조합 검수는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 5번 전투 진행 속도/결과 흐름이다.
+
+## 2026-10-05 — 판매 준비 개선안 5: 전투 진행 속도·결과 흐름
+
+- 캐릭터별 마지막 기술을 기억하고 목표 취소→상세→목록으로 복귀한다. 목록 강조/메뉴 포커스를 복원하며 취소로 MP/행동을 소비하지 않는다. 일반 공격 취소는 기존 명령으로 복귀한다.
+- F5 시스템의 전투 진행 탭에 적 행동 1/2/4배와 간략 연출을 추가하고 설정 파일에 저장한다. 적 이동 보간·준비/복귀 대기만 조정하며 전역 Time.timeScale, 아군 연출, 파라 입력 시간은 유지한다. 간략 모드도 실제 기술 처리/턴 종료를 실행한다.
+- 결과 전용 패널에 저장 상태·실제 골드/장비 증가량·6인 Lv/EXP와 새 기술 수를 표시한다. 실패 시 성장 행을 숨기고 같은 추첨으로 저장 재시도하며 보상 포기는 두 번 눌러 확정한다. 저장된 승리에서 다음 장 준비로 이동하고 패배/훈련/최종 장에서 이야기 없이 재도전한다.
+- 실제 Unity EditMode **98/98**(3.96초), PlayMode **67/67**(112.17초) 통과. BattleFlow/editmode-results.json, playmode-results.json. 신규3개 검사는 기술 복귀/자원 보존, 실제 적 이동·공격의 모드별 피해/비용/상태/난수/다음 턴 일치, 저장 실패→재시도/중복 지급 방지·성장 표시/글자 넘침·모달 차단/다음 장을 확인한다. 엔진 독립 ManagedChecks는 실행하지 않았다.
+- 첫67개 실행은 결과 제목 높이 부족으로66/67이었다. 제목 높이를 수정했다. 다음 실행은 적 행동 검사의300프레임 대기가 고FPS에서 실제 행동보다 먼저 끝나66/67이었다. 실제10초 제한으로 수정한 뒤67/67을 확인했다. 두 실패는 playmode-initial.json, playmode-frame-timeout.json에 남겼다. 최종 단일 장면 측정은1배1.102초/2배0.562초/4배0.286초/간략0.293초(enemy-speed.csv). 전체 성능 벤치마크는 아니다.
+- 실제1366×768 Game View에서 적 설정·6인 승리 성장·저장 실패·패배 화면을 확인했다. 결과 화면은 격리 저장에 승패를 구성한 시각 검수이며 수동 완주를 뜻하지 않는다. 패배 재도전의 CommandState/Ongoing 진입도 확인했다. Game View Full HD/runInBackground=false·Scene dirty=false로 복원하고 임시 Assets 캡처를 제거했다. BattleFlow/*.png 참조.
+- Windows 일반 빌드 **24.552초/오류0/경고8**, 개발 빌드 **20.920초/오류0/경고10** 성공. 기존 Pipeline·사용 중단 API/전처리기·직렬화·셰이더 경고가 남아 있다. BattleFlow/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsBattleFlow/TalesTactics.exe**이며 실행 중인 기존 Builds/Windows 플레이어는 유지했다.
+- 새 개발 플레이어 **7회 독립 실행 모두 통과**: 1~6장 정상 승리27/20/34/22/33/22플레이어턴, 재실행 정상 패배2턴·재출전·저장 복원·중복 보상 보호. 1장1배/2장2배/3장4배/4·5장간략/6장1배 설정을 저장하고 실제 EnemyTurn 경로로 실행했다. 검수 도구 자체의 기존 Time.timeScale=4 가속이 있으므로 실행 시간은 일반 플레이 속도 측정값이 아니다. PlayerReviews/22a4ecc31a8a4239b8c8ab8eed375034-summary.json 및 장별 보고서. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, 실행 로그 오류0건(BattleFlow/save-and-log-check.json).
+- 새 개발 플레이어 **4회 별도 저장/재개 실행도 통과**: SPD/CT 각각 중단 저장 후 프로세스 재실행·상태/난수/이후20턴 일치·설정 재읽기·다른 슬롯 보존. Persistence/8536d230797e4400acb6213f5b642b39/summary.json. 사용자 저장/설정 불변, 실행 로그 오류0건. 동적 폰트 캐시와 기존 검사 CSV는 복원했다.
+- 범위/한계: 5번 구현/검증 완료. 캠페인은 기본 SPD/AI 자동 검수이며 사람이 전6장을 수동 완주하거나 실물 패드·모든 화면 비율을 확인한 결과는 아니다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음은 6번 목표 전달 및 적 역할 차별화다.
+
+## 2026-10-05 — 판매 준비 개선안 6: 목표 전달·적 역할
+
+- 준비/전투의 임무 · 적 정보에서 승리·패배 조건, 진행 상태, 장별 접근 방법과 실제 적4명의 역할·기본 기술/사거리·대응법을 표시한다. 전투 중 HP/격파 상태를 읽고 하단에 남은 적 수를 상시 표시한다. 캠페인 목표는6장 모두 전멸로 유지하며 다오스만 격파하면 끝난다는 잘못된 안내를 하지 않는다. 훈련 보스/도착/호위/생존 조건도 구분한다.
+- 사격/마법형은 사거리 안에서 근접 위험을 피하고 돌격형은 공격 가능한 부상자에 추가 선호를 준다. 기본/Utility AI가 같은 보정을 사용하며 훈련·아군에는 적용하지 않는다. 전열의 기존 근접 행동과 다오스의 Utility 기술 선택을 유지했다. 수치·Content 에셋·보상·저장 스키마를 바꾸지 않았다. 행동 예정 확정 예고나 신규 기술 추가는 아니다.
+- 실제 Unity EditMode **102/102**(4.23초), PlayMode **69/69**(112.89초) 통과. MissionRoles/editmode-results.json, playmode-results.json. 첫 PlayMode도69/69(113.50초, playmode-initial.json)이었다. 이후 설명/상단 배치를 정리하고 목표 선택 상태의 패드B 복귀 검사를 보강해 최종 전체 검사를 다시 통과했다. 실패 결과는 없었다. ManagedChecks는 이번에 실행하지 않았다.
+- 신규 핵심 검사는 기본/Utility의 원거리 사거리3 유지·속박 이동 금지·판단 전후 위치/점유/자원/난수 불변, 돌격 대상 선호/적용 범위, 목표별 안내를 확인한다. UI 검사는6장 출전 전 적 구성·승패 문구/글자 넘침/배경 입력 차단·저장 불변, 전투 대상 선택 보존/패드B 취소·시스템 메뉴 전환·적 잔존 갱신/Restart를 확인한다.
+- 기존6장×3편성 자동 전투18행은15승/3패로 기존 승패 구성이 유지됐다. 일부 턴 수/생존 HP 변화는 Docs/combat-party-matrix.csv와 MissionRoles/combat-party-matrix.csv에 새 기준선으로 기록했다. 사람의 체감 난이도 평가나 모든 편성의 균형 보장을 뜻하지 않는다.
+- 실제1366×768 Game View에서6장 출전 전 임무·전투 HUD·격파/HP 갱신·호위 훈련 조건을 확인했다. 프레임 진행/Repaint를 확인하고 사용자 저장과 분리했다. 격파 화면은 적1명을 KO 처리한 표시 검수이며 수동 전투 완주 증거가 아니다. MissionRoles/briefing.png, battle.png, progress.png, escort.png. Game View Full HD/runInBackground=false·Scene dirty=false 복원 및 임시 Assets 캡처 제거 완료.
+- Windows 일반 빌드 **24.086초/오류0/경고8**, 개발 빌드 **27.180초/오류0/경고10** 성공. 기존 Pipeline·사용 중단 API/전처리기·직렬화·셰이더 경고가 남아 있다. MissionRoles/windows-build.json, development-build.json, build-hashes.json. 최신 실행 파일은 **Builds/WindowsMissionRoles/TalesTactics.exe**이며 기존 실행 중인 사용자 플레이어를 유지했다.
+- 새 개발 플레이어 **14회 독립 실행 모두 통과**. 기본 SPD/AI: 1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴. CT/Utility: 1~6장 승리15/13/17/14/17/9플레이어턴, 재실행 정상 패배3턴. 상점·장비·입문 연습·설정·저장된 성장/보상·재출전·중복 보상 보호도 통과했다. PlayerReviews/331d12e51dfd4d7fb681a8a843c4e42b-summary.json 및 54383b23417641fbb0afff5ae7cca4ba-summary.json. 도구의 기존4배 시간 가속 및 장별 적 속도 설정으로 수행한 자동 검수이며 사람의 전투 시간 측정이 아니다.
+- 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. 사용자 settings.json/슬롯2/3은 생성하지 않았다. 두 실행의 로그 Exception/Assertion/Error 검색0건(MissionRoles/save-and-log-check.json). 동적 폰트와 기존 시간/레이아웃 검사 CSV를 복원했고 새 검사 사본은 MissionRoles에 보존했다. 실제 전투 결과가 바뀐 combat-party-matrix.csv만 새 기준선으로 갱신했다.
+- 범위/한계: 6번 구현·자동/시각 검증 완료. 실물 게임패드, 모든 화면 비율, 사람의 전6장 수동 완주·적 역할 인지성·체감 난이도 평가는 별도다. 숨겨진 플레이어 캡처는 시각 증거로 사용하지 않는다. 다음 항목은 7번 사람 플레이 기반 난이도·보상 균형 검수다.
+
+## 2026-10-05 — 판매 준비 개선안 7 준비 (진행 중)
+
+- 기존18개 자동 편성 결과·6장 경제를 검토하고 사람 검수 우선 항목을 정리했다: 기본3인과 권장6인의 난이도 차이, 후반 대기 캐릭터의 레벨 차이, 장비 구매/반복 사냥 필요성, 확정 장비 매각까지 포함한 반복 보상 체감. 이는 가설/검수 대상이며 새 사람 평가 결과가 아니다.
+- Tools/StartBalancePlaytest.ps1은 기존 개발 빌드의 --manual-review를 사용한다. 새 GUID별 저장/설정·피드백 CSV·실행 manifest/로그를 분리하고 같은 GUID 재실행 시 이전 performance/hardware 기록을 보존한다. 같은 테스트 저장 중복 실행을 막고32자리GUID만 허용한다. PrepareOnly는 게임을 실행하지 않는다.
+- 첫 숨김 실행에서 ManualPlayerReview.Start가 runInBackground 설정 전에 yield하여 기록 초기화가 멈췄다. 활성화 순서를 yield 앞으로 옮기고 미사용 CampaignFile 변수를 제거했다. 첫 실행 증거는 BalancePlaytest/launcher-initial.json. 개발 전용 검수 도구 변경이며 일반 게임 전투/보상 수치에는 변경이 없다.
+- 개발 Windows 빌드18.517초/오류0/경고10 성공(BalancePlaytest/development-build.json). 수정 후 숨김 초기화·프레임 진행·동일 GUID 재실행2회, 중복 실행/잘못된GUID 차단, 피드백 보존 및 이전 기록 백업을 확인했다(launcher-check.json). 두 검수 프로세스는 확인 후 종료했으며 기존 사용자 플레이어는 유지했다. 숨김 실행의 극단적으로 높은FPS 값은 렌더링 성능이나 사람 플레이 속도 증거로 사용하지 않는다.
+- 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. settings.json/슬롯2/3 미생성, 두 실행 로그 오류0건. 동적 폰트 캐시 복원. 현재 턴에는 EditMode/PlayMode 전체 검사를 재실행하지 않았다. 최신102/69 통과는 직전6번의 기록이다.
+- 사람의 난이도·보상 의견은 아직 제공되지 않았다. 따라서7번은 미완료이며 수치 조정/완료 처리/커밋·푸시를 하지 않았다. BalancePlaytest/README.md와 prepared-session.json에 직접 플레이 절차와 격리 세션을 준비했다. 기존 성장/보상/가격은 유지한다.
+
+## 2026-10-07 — 사용자 테스트 확인 및8번 전투 피드백·효과음 보강
+
+- 사용자가 테스트 진행을 알리고 다음 단계 진행을 요청했다. 준비한 격리 세션0f88102af8fa4bc7a63025060109e25d의 기록에서6인 편성(크레스·민트·파라·벨벳·시온·티아), chapter1 완료·420G 저장, Victory 후 출전 준비 복귀를 확인했다. 실행 로그 오류 검색0건. feedback.csv의6행은 평점/의견이 비어 있다. 사용자1장 테스트 확인이며2~6장 수동 완주나 난이도·보상 만족 승인으로 확대하지 않는다. BalancePlaytest/user-test-summary.json 참조. 사용자 요청에 따라 다음 보강으로 진행하며7번 전체 균형 평가는 남겨 둔다.
+- 피해·회복·HP 비용 숫자에 반투명 어두운 배경과 확대 글자, 초반0.38초 선명 유지/0.65초 제거를 적용했다. 카메라 회전 시 현재 화면 방향을 따라 머리 위 표시를 유지한다. 효과음은 동일ID45ms 중복 억제·동시4개 상한·신규 음성1/√n 게인으로 중첩을 완화한다. unscaledTime 수명 추적·음소거 시 예약 방지·StopAll 초기화를 적용하며 음악/테마 복귀와 전투 수치·난수·저장 형식은 유지한다. 마스터 리미터나 최대 음량 보장은 아니다.
+- 실제 Unity EditMode **102/102**(2.94초), 최종 PlayMode **71/71**(112.93초) 통과. PresentationPolish/editmode-results.json, playmode-results.json. 새2개 검사는 효과음 중복/상한/게인/음소거/정지/일시정지 중 만료와 숫자 배경/대비/카메라 회전/HP 불변/재출전 정리를 확인한다. 기존14곡 재생·테마 위치 복귀 검사도 통과했다. ManagedChecks는 이번에 실행하지 않았다.
+- 첫 PlayMode71/71(113.65초) 이후 화면 검수에서 회전 시 숫자 위치가 밀리는 문제를 발견해 수정했다. 다음 실행은 기존 SpecialPosesPrepareReleaseAndRecoverForEntireRoster 검사에서 프레임 지연으로 시작 프레임을 지나친 뒤 비교하여70/71이었다. 시작 프레임 검사 구간만 시간을 멈추고 실제 시간의 복귀 검사를 유지하도록 수정한 후 최종71/71 통과했다. 두 이전 결과는 playmode-before-rotation.json, playmode-pose-timing-failure.json에 보존했다.
+- 실제1366×768·1920×1080 Game View에서 피해/회복 대비와 회전 후 위치를 확인했다. 격리 훈련 저장에 HP 변화량을 구성하고 캡처 동안 시간을 멈춘 표시 검수다. 자연 전투 완주/실제 표시 지속 시간 증거는 아니다. 프레임 진행은1539→3694→3904로 확인했다. Full HD/runInBackground=false·Time.timeScale=1·Scene dirty=false로 복원하고 임시 Assets 캡처를 제거했다. feedback.png, feedback-rotated.png 참조.
+- Unity 시작의 Scene Backup Detected 숨김 창은 Computer Use 활성화가 실패했다. 이전 장면 백업을 LocalReview/SceneBackup-20261007에 보존하고 이번에 시작한 에디터만 재시작해 정상 연결했다. 백업은 로컬 보관하며 Git에 포함하지 않는다. 에셋 생성기/장면 재생성은 실행하지 않았다.
+- Windows 일반 빌드 **27.601초/오류0/경고8**, 개발 빌드 **20.595초/오류0/경고10** 성공. 기존 Pipeline·전처리기/사용 중단 API·직렬화·셰이더 경고가 남아 있다. PresentationPolish/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPresentationPolish/TalesTactics.exe**다.
+- 새 개발 플레이어7회 독립 실행 모두 통과: 기본 SPD/AI의1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴과 재출전/저장 복원/중복 보상 방지. PlayerReviews/512cb66074294c8cbd2aada5c4f96f9f-summary.json 참조. 검수 도구의4배 시간 가속과 장별 적 속도 설정으로 수행한 자동 검사이며 사람 플레이 시간/청음 검수는 아니다. 숨김 플레이어 캡처는 시각 증거로 사용하지 않았다.
+- 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변. settings.json/슬롯2/3 미생성. 실행 로그7개의 Exception/Assertion/Error 검색0건(PresentationPolish/save-and-log-check.json). 동적 폰트 캐시와 기존 시간/레이아웃 검사 CSV는 복원하고 새 검사 사본만 PresentationPolish에 보존했다.
+- 범위: 이번8번은 전투 표시·효과음 중첩의 구현 보강이다. 신규 원화/음원 제작이나 작화·스피커/헤드폰별 최종 청음 승인이 아니다. 전체8번 최종 품질 평가와7번 나머지 사람 균형 평가는 미완료로 유지한다. 완료한 보강과7번 실행 도구만 검증 후 반영한다.
+
+## 2026-10-07 — 8번 후속 에셋 감사·기술명 가독성
+
+- 기술명이 속성색으로 지형 위에 직접 표시되던 부분에 밝은 글자/반투명 어두운 배경을 적용했다. 일반 글자 크기2.8→3.4, 생성 시 preferred width를 한 번 측정해 긴 이름의 한 줄 표시를 보장한다. AutoSize를 표시 중 반복하지 않는다. 속성색은 준비 고리에 유지하고 카메라 회전/발동/재출전 정리를 기존 경로에 연결했다. 전투 수치·비용·판정·아트/음원 에셋은 변경하지 않았다.
+- 현재20종의 스프라이트1012개 참조(캐릭터별 중복 제거)에서 기본4방향 누락·텍스처 밖 rect·비정상 PPU0건, 오디오18개 참조 모두 존재. Tools/ReviewPresentationAssets.cs.txt 및 PresentationQuality/asset-inventory.json. 보충 동작20시트/320칸 알파 측정에서 빈 칸·셀 경계 접촉/잘림0건(alpha-audit.json). 이는 추가 시트의 알파/경계 검사이며 모든 작화 세부 품질 보장은 아니다.
+- 기존 AnimationPolish 갤러리8장(영웅/적×4방향)을 다시 읽고 머리/무기/망토 경계와 캐릭터별 식별을 확인했다. 새 갤러리 렌더링은 아니며 원화/스프라이트 참조는 그대로다. 음악14곡은 기존 manifest SHA256와 일치한다. 새 Tools/ReviewAudioQuality.py는 음악14+효과음4 WAV를 읽어 빈 데이터/완전 무음/PCM 클리핑0건을 기록했다(audio-audit.json). 혼합 출력의 최대 피크나 실제 장치 청음 평가는 아니다.
+- 실제 Unity EditMode **102/102**(3.91초), PlayMode **72/72**(113.23초) 통과. 신규 검사는 긴 한글 기술명의 한 줄/넘침 없음·배경 폭·밝은 글자·AutoSize 비활성·회전 추적·Restart 제거를 확인한다. 기존 준비/판정/비용1회 처리 및 전체 연출/음악 검사가 함께 통과했다. 이번 실행 실패 없음. ManagedChecks는 실행하지 않았다.
+- 1366×768 Game View의1~6장에 가장 긴 카탈로그 기술명 `미스틱 케이지 / Mystic Cage`를 구성하여 밝은/어두운 바닥 및 장별 원경에서 대비를 확인했다. chapter1~6.png. 격리 저장의 메모리 해금과 크레스 위 타 캐릭터 기술명 표시, Time.timeScale=0으로 캡처한 표시 검수이며 정상 습득/전투 완주 증거는 아니다. 프레임7558→9601 진행 확인. 종료 후Time.timeScale=1/runInBackground=false/Full HD·Scene dirty=false 복원, 임시 Assets 캡처 제거 완료.
+- Windows 일반 빌드 **21.640초/오류0/경고8**, 개발 빌드 **21.479초/오류0/경고10** 성공. 기존 Pipeline·전처리기/사용 중단 API·직렬화·셰이더 경고 유지. PresentationQuality/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일은 **Builds/WindowsPresentationQuality/TalesTactics.exe**다.
+- 새 개발 플레이어7회 독립 실행 통과:1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴·재출전/저장 복원/중복 보상 보호. PlayerReviews/029aceb694f24f07829e1a74d207ad5e-summary.json. 기본 SPD/AI 및 기존4배 시간 가속의 자동 검수이며 사람의 전투 시간/청음 증거가 아니다. 숨김 플레이어 캡처는 시각 증거로 사용하지 않았다. 실행 로그7개 오류 검색0건, 사용자 저장/백업 해시 불변, settings/슬롯2/3 미생성. PresentationQuality/save-and-log-check.json, user-files-after.json. 동적 폰트 캐시와 기존 검사 CSV를 복원했다.
+- 이번8번의 기술적 에셋 감사·확인된 가독성 보완은 완료했다. 작화 선호/실제 장치 청음 최종 평가는 별도로 남기며 다음 구현 순서는9번이다. 신규 원화·음원 제작이나 전체8번의 사람 최종 승인을 선언하지 않는다.
+
+## 2026-10-07 — 9번 화면 비율·메뉴 키보드 보강
+
+- 2560×1080에서 준비 화면의5번째 편성 카드 행과 상점 버튼이 하단 메시지/출전 영역을 침범하는 문제를 재현했다. ScaleWithScreenSize CanvasScaler를 Expand로 전환해1440×900 논리 영역을 확보한다. ConstantPixelSize 설정과 전투 수치/콘텐츠 에셋은 변경하지 않았다. Accessibility/ultrawide-before.png, ultrawide-after.png.
+- 메뉴/모달/이야기/결과에서 Tab/Shift+Tab으로 활성·사용 가능한 버튼을 순환하며 선택 Outline을 금색으로 표시한다. 키보드 입력 시 패드 커서를 비활성화하고 기본 EventSystem Submit을 복원한다. 기존 전투 대상 Tab 및 패드 조작을 유지한다. 새 PlayMode 검사는 패드→키보드 전환·모달 뒤 버튼 제외·역순 순환·Enter1회 실행/닫기를 확인한다.
+- 실제 Unity EditMode **102/102**(3.83초), PlayMode **73/73**(113.74초) 통과. 단독 키보드 검사1/1(1.4초). 초기 단독 검사는 완료 보고가 갱신되지 않아 취소/재시도했다. EditMode 뒤 PlayMode0개로 종료한 시도2회는 무효 처리하고 스크립트 재로드/73개 발견 후 전체 실행했다. 테스트 실패0건, ManagedChecks는 실행하지 않았다. Accessibility/editmode-results.json, playmode-results.json, keyboard-test.json.
+- 실제 Game View1024×768/1280×800/1366×768/1920×1080/2560×1080의 준비·설정·기술 목록15화면 검수. 활성 버튼 경계 이탈0건, 편성/상점/하단 영역 겹침 해소 확인. 격리 저장·훈련 Lv25·1장, eval로 메뉴를 열었으며 프레임5245→23281 진행을 확인했다. 파라 기술 목록 대표 검수이며 모든 장/팝업 조합은 아니다. Keyboard Tab 이벤트 주입 후 금색 테두리 화면도 확인했다. Accessibility/aspect-matrix.json 및 README.md. 작은 화면의 사용자 체감 글자 가독성은 별도다.
+- Windows 일반 빌드 **22.870초/오류0/경고8**, 개발 빌드 **19.395초/오류0/경고10** 성공. 기존 Pipeline·전처리기/사용 중단 API·직렬화·셰이더 경고 유지. Accessibility/windows-build.json, development-build.json, build-hashes.json. 최신 일반 실행 파일 **Builds/WindowsAccessibility/TalesTactics.exe**.
+- 현재 물리 장치는 Keyboard/Mouse만 열거되었다. 가상 Gamepad 테스트는 실물 USB/Bluetooth·기종별 드라이버 검수가 아니다. 실제 모니터 DPI/전체화면·저시력/색각 사용자 평가는 남긴다. 키보드만의 전장 타일 조작·키 재설정·글자 배율/색각 옵션은 이번 변경에 포함하지 않았다. 완료한 화면/메뉴 개선만 반영하며9번 전체 완료로 표시하지 않는다.
+- 새 개발 플레이어7회 독립 실행 모두 통과:1~6장 승리27/23/35/24/29/25플레이어턴, 재실행 정상 패배2턴·재출전/저장 복원/중복 보상 보호. PlayerReviews/5ebe2f6eaad245ea819fae38dadc97e1-summary.json. 기존4배 시간 가속의 자동 검사이며 사람 플레이 시간이나 물리 입력 검수가 아니다. 로그7개 Exception/Assertion/Error 검색0건.
+- 사용자 campaign.json/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, settings/슬롯2/3 미생성. Accessibility/user-files-before.json, user-files-after.json, save-and-log-check.json. 동적 폰트/기존CSV·TimeManager 직렬화 변경을 복원하고 검사 사본만 보존했다. 임시 Assets 캡처와 검수용 Game View 항목을 제거하고 Full HD·Time.timeScale=1/runInBackground=false·Scene dirty=false 복원 확인(editor-restored.json).
+
+## 2026-10-07 — 10번 로컬 배포·전체 패키지 업데이트
+
+- Tools/PackageRelease.py와 배포용 Verify-Package.ps1/Backup-Saves.ps1, 플레이어 시작/업데이트/복귀/제보 안내 및 변경 내역을 추가했다. 새 버전 ZIP·전체 파일 manifest·SHA256 체크섬을 만들고 기존 버전을 덮어쓰지 않는다. 게임 소스 변경 상태/잘못된 빌드 증거/실행 파일·Runtime DLL 해시 불일치/개발 검수 코드/누락 파일/사용자 저장 포함을 거부한다. 원격 업로드·온라인 업데이트·자동 저장 복원은 없다.
+- 도구 **13/13 검사 통과(3.464초)**. 실제 Windows PowerShell로 정상 패키지/백업을 확인하고 변조·누락·추가·경로 탈출/대소문자 중복·같은 버전 덮어쓰기·개발 빌드/사용자 저장 포함 차단,3슬롯/설정/백업 이력 보존 및 별도 폴더 업데이트의 이전 버전/파일 분리를 검사했다. Distribution/tool-tests.txt. 첫 두 실행은 스크립트 실행 정책 및 이 환경의 Get-FileHash 모듈 검색 문제로 각각2개 실패했다. 프로세스 한정 실행 옵션과 .NET SHA256 계산으로 보완했으며 이전 실패 로그도 보존했다. Unity 검사와 합산하지 않는다.
+- 실제 배포 ZIP **0.1.0-preview.1**,199,546,142바이트,202개 파일+manifest 생성. SHA256 **10e792b1f683da7ece10d6d7f69267fbc3aba487cad56e2e737591575e739a11**. Builds/Releases/TalesTactics-0.1.0-preview.1-windows-x64.zip. 게임 소스 커밋20b8504, 제품 버전0.1.0/Unity6000.6.0f1/저장V2 유지. 새 게임 빌드가 아니라 직전 WindowsAccessibility 일반 빌드 포장이며 이전 검증의 EXE/Runtime DLL 해시와 일치한다. Unity 배포 제외 폴더의1개 파일을 제외하고 폰트 고지를 포함했다. Distribution/package-result.json, package-manifest.json.
+- ZIP을 Builds/ReleaseSmoke/0.1.0-preview.1의 새 폴더에 풀고 Windows PowerShell로202개 파일 검사 통과. 실제 사용자 원본/백업2개를 Builds/SaveBackups/20261007-203657-ae6ed3b42c63467f97ae4a34df49f97d에 복사하고 백업 해시 검사 통과. 사용자 원본/백업 SHA256 324E361730B35C466BEBE77A4D9E4730ED9BB8764BB8298FCE26807E6C7081C1 불변, settings/슬롯2/3 미생성. 백업 내용과 바이너리는 Git에서 제외한다. Distribution/user-backup-check.json, user-files-before.json, user-files-after.json.
+- 압축 해제한 일반 플레이어를 숨김 실행하여10초 후 프로세스 유지(작업 메모리296,050,688바이트), Mono/PhysX/입력 초기화와 로그 오류0건을 확인했다. 숨김 창 핸들0으로 CloseMainWindow가 불가능해 이 검수 프로세스PID39348만 종료했다. 정상 종료·화면/프레임 진행·사람 플레이 또는 성능 기준으로 계산하지 않는다. Distribution/release-startup.json. 실행 후 파일 무결성 검사도 통과했다.
+- 이번에는 게임 코드/콘텐츠를 바꾸지 않아 Unity 테스트·빌드/캠페인 전체 회귀를 반복하지 않았다. 직전 실제 Unity102Edit/73Play 및7회 플레이어 검증은 동일 EXE/Runtime DLL의 Accessibility 기록이다. 10번의 로컬 배포/수동 전체 패키지 업데이트 체계는 완료하며 온라인 자동 업데이트·설치/서명·스토어 공개는 배포 채널 결정 후 별도 범위다. 7~9번의 남은 사람/장치 검수는 유지한다.
+- 최종 패키징 점검에서 빌드 보고서의 전체 파일 목록도 사전 검사하도록 보강했다. 실제 보고서199개 중 배포 제외1개를 뺀198개 파일의 존재/크기 일치 확인(Distribution/build-file-check.json). 필수 이름 목록 밖의 런타임 의존 파일 누락을 차단하는 검사를 포함해 최종13/13 통과했다. 패키지에 포함된 두 도구와 시작 안내/변경 내역은 현재 소스 해시와 일치한다.

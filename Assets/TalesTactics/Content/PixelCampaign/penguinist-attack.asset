@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a8a88be9c9fba42a87e723b0bad3ac, type: 3}
+  m_Name: penguinist-attack
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.SkillData
+  Id: penguinist-attack
+  DisplayName: "\uC11C\uB9AC \uBD80\uB9AC"
+  MPCost: 0
+  HPCost: 0
+  MinRange: 1
+  Range: 2
+  Area: 0
+  UnlockLevel: 1
+  Cooldown: 0
+  GaugeCost: 0
+  HPPercentCost: 0
+  Shape: 0
+  MaxHeightDifference: -1
+  RequiresLineOfSight: 1
+  UsesHeightDamage: 0
+  HeightRangeLimit: 0
+  Element: 8
+  Target: 0
+  Animation: 2
+  VisualStyle: 0
+  Presentation:
+    Pattern: 0
+    Pulses: 1
+    Windup: 0.18
+    Recovery: 0.3
+    Size: 1
+  Gate: 0
+  IsUltimate: 0
+  StartsFlamingChain: 0
+  IsLionHowl: 0
+  Effects:
+  - Kind: 0
+    Status: 0
+    Magic: 1
+    IgnoreDefense: 0
+    AffectCaster: 0
+    Power: 1
+    Chance: 1
+    Drain: 0
+    Flat: 0
+    Duration: 2
+    Distance: 1

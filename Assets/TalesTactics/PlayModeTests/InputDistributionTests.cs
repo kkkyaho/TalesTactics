@@ -24,6 +24,33 @@ namespace TalesTactics.PlayModeTests
             var rect=(RectTransform)button.transform;
             pointer.MoveTo(RectTransformUtility.WorldToScreenPoint(null,rect.TransformPoint(rect.rect.center)));
         }
+        IEnumerator KeyboardPress(Keyboard keyboard,params Key[] keys)
+        {
+            InputSystem.QueueStateEvent(keyboard,new KeyboardState(keys));yield return null;yield return null;
+            InputSystem.QueueStateEvent(keyboard,new KeyboardState());yield return null;
+        }
+        [UnityTest] public IEnumerator KeyboardMenusCycleModalButtonsAndSubmitOnceAfterPad()
+        {
+            var keyboard=InputSystem.AddDevice<Keyboard>();var pad=InputSystem.AddDevice<Gamepad>();
+            try
+            {
+                var pointer=director.GetComponent<GamepadPointer>();
+                yield return PadPress(pad,GamepadButton.DpadDown);Assert.That(pointer.Active,Is.True);
+                director.Hud.ShowSystemMenu();yield return null;
+                EventSystem.current.SetSelectedGameObject(null);
+                var buttons=director.Hud.GetComponentsInChildren<Button>().Where(b=>b.isActiveAndEnabled&&b.IsInteractable()).ToArray();
+                yield return KeyboardPress(keyboard,Key.Tab);
+                Assert.That(pointer.Active,Is.False);Assert.That(EventSystem.current.sendNavigationEvents,Is.True);
+                Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(buttons[0].gameObject));
+                Assert.That(buttons[0].GetComponent<Outline>().effectDistance.x,Is.EqualTo(3));
+                yield return KeyboardPress(keyboard,Key.LeftShift,Key.Tab);
+                Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(buttons[buttons.Length-1].gameObject));
+                int submissions=0;buttons[buttons.Length-1].onClick.AddListener(()=>submissions++);
+                yield return KeyboardPress(keyboard,Key.Enter);
+                Assert.That(submissions,Is.EqualTo(1));Assert.That(director.Hud.SystemMenuOpen,Is.False);
+            }
+            finally {InputSystem.RemoveDevice(keyboard);InputSystem.RemoveDevice(pad);}
+        }
         [UnityTest] public IEnumerator GamepadMenusDoNotDoubleSubmitAndReconnect()
         {
             var pad=InputSystem.AddDevice<Gamepad>();

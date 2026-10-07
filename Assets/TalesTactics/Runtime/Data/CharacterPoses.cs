@@ -7,6 +7,7 @@ namespace TalesTactics
     {
         public DirectionalSpriteClip Walk=new DirectionalSpriteClip(), Dead=new DirectionalSpriteClip();
         public DirectionalSpriteClip Skill=new DirectionalSpriteClip(), Ultimate=new DirectionalSpriteClip();
+        public DirectionalSpriteClip AttackMotion=new DirectionalSpriteClip();
         public DirectionalSprites Attack=new DirectionalSprites(), Cast=new DirectionalSprites(),
             Guard=new DirectionalSprites(), Damage=new DirectionalSprites();
 

@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 namespace TalesTactics
 {
@@ -7,7 +8,13 @@ namespace TalesTactics
     {
         public AudioLibrary Library;
         [Range(0,1)] public float MusicVolume=0.28f;
+        public float EffectsVolume=.45f;
+        public void SetVolumes(float music,float sound){MusicVolume=music;EffectsVolume=sound;GetComponent<AudioSource>().volume=music;if(effects!=null)effects.volume=sound;}
         AudioSource effects;
+        readonly List<float> effectEnds=new List<float>();
+        readonly Dictionary<string,float> effectStarts=new Dictionary<string,float>();
+        public int ActiveEffectVoices {get{effectEnds.RemoveAll(t=>t<=Time.unscaledTime);return effectEnds.Count;}}
+        public float LastEffectGain {get;private set;}
         AudioClip resumeClip;
         int resumeSample;
         bool resumeLoop,themeActive,resumePlaying;
@@ -39,11 +46,15 @@ namespace TalesTactics
         }
         public void PlayEffect(string id)
         {
-            var entry=Library?.Entries?.FirstOrDefault(x=>x.Id==id);
-            if(entry?.Clip==null)return;
+            var entry=Entry(id);
+            if(entry?.Clip==null||EffectsVolume<=0)return;
+            float now=Time.unscaledTime;
+            if(effectStarts.TryGetValue(id,out var start)&&now-start<.045f)return;
+            int voices=ActiveEffectVoices;if(voices>=4)return;
             if(effects==null){effects=gameObject.AddComponent<AudioSource>();effects.playOnAwake=false;effects.spatialBlend=0;effects.volume=0.45f;}
-            effects.PlayOneShot(entry.Clip);
+            LastEffectGain=1/Mathf.Sqrt(voices+1);effectStarts[id]=now;effectEnds.Add(now+entry.Clip.length);
+            effects.volume=EffectsVolume;effects.PlayOneShot(entry.Clip,LastEffectGain);
         }
-        public void StopAll(){themeActive=false;resumeClip=null;GetComponent<AudioSource>().Stop();if(effects!=null)effects.Stop();}
+        public void StopAll(){themeActive=false;resumeClip=null;effectEnds.Clear();effectStarts.Clear();LastEffectGain=0;GetComponent<AudioSource>().Stop();if(effects!=null)effects.Stop();}
     }
 }

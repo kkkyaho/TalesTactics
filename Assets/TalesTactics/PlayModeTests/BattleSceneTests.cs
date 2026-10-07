@@ -10,6 +10,7 @@ namespace TalesTactics.PlayModeTests
     public partial class BattleSceneTests
     {
         BattleDirector director;
+        string testStorage;
         [UnitySetUp] public IEnumerator LoadBattle()
         {
             yield return SceneManager.LoadSceneAsync("TestBattle",LoadSceneMode.Single);
@@ -17,6 +18,8 @@ namespace TalesTactics.PlayModeTests
             director=Object.FindAnyObjectByType<BattleDirector>();
             Assert.That(director,Is.Not.Null);
             Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
+            testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
+            director.ConfigureStorage(testStorage);
             director.TrainingMode=true; // Never grant campaign EXP or write a save in these tests.
         }
         [UnityTearDown] public IEnumerator Cleanup()
@@ -24,6 +27,7 @@ namespace TalesTactics.PlayModeTests
             var battle=SceneManager.GetSceneByName("TestBattle");
             var empty=SceneManager.CreateScene("Test cleanup");SceneManager.SetActiveScene(empty);
             if(battle.isLoaded)yield return SceneManager.UnloadSceneAsync(battle);
+            if(System.IO.Directory.Exists(testStorage))System.IO.Directory.Delete(testStorage,true);
             LogAssert.NoUnexpectedReceived();
         }
         void Click(string name)
@@ -133,6 +137,7 @@ namespace TalesTactics.PlayModeTests
             var sword=director.Catalog.Equipment.First(e=>e.Slot==EquipmentSlot.Weapon&&e.Weapon==character.Weapon);
             Click("장비 관리");yield return null;Click(character.DisplayName);yield return null;
             Click("무기: 없음");yield return null;
+            Click("장착 후보: "+sword.DisplayName);yield return null;
             Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: "+sword.DisplayName),Is.True);
             Assert.That(director.Campaign.Get(character.Id).Equipment[0],Is.Null);
             Click("돌아가기 (미적용 취소)");yield return null;Click(character.DisplayName);yield return null;

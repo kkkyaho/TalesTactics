@@ -1,0 +1,25 @@
+// Read-only catalog inventory for quality review. Run in an open TestBattle scene.
+var battle=UnityEngine.Object.FindFirstObjectByType<TalesTactics.BattleDirector>();
+var characters=battle.Catalog.Characters.Concat(battle.Catalog.Enemies).ToArray();
+var rows=new System.Collections.Generic.List<object>();
+var issues=new System.Collections.Generic.List<string>();
+foreach(var data in characters)
+{
+    var serialized=new UnityEditor.SerializedObject(data);var property=serialized.GetIterator();
+    var sprites=new System.Collections.Generic.HashSet<UnityEngine.Sprite>();
+    while(property.Next(true))
+    {
+        if(property.propertyType!=UnityEditor.SerializedPropertyType.ObjectReference)continue;
+        if(property.objectReferenceValue is UnityEngine.Sprite sprite)sprites.Add(sprite);
+    }
+    foreach(var sprite in sprites)
+    {
+        var rect=sprite.rect;
+        if(rect.xMin<0||rect.yMin<0||rect.xMax>sprite.texture.width||rect.yMax>sprite.texture.height)issues.Add(data.Id+": sprite rectangle outside texture: "+sprite.name);
+        if(sprite.pixelsPerUnit<=0)issues.Add(data.Id+": invalid PPU: "+sprite.name);
+    }
+    foreach(TalesTactics.Facing facing in System.Enum.GetValues(typeof(TalesTactics.Facing)))
+        if(data.Sprites.Get(facing)==null)issues.Add(data.Id+": missing "+facing);
+    rows.Add(new {id=data.Id,spriteCount=sprites.Count,textures=sprites.Select(s=>UnityEditor.AssetDatabase.GetAssetPath(s.texture)).Distinct().OrderBy(s=>s).ToArray()});
+}
+return new {characters=rows,issues=issues,audio=battle.Audio.Library.Entries.Select(e=>new {id=e.Id,clip=e.Clip==null?null:UnityEditor.AssetDatabase.GetAssetPath(e.Clip),seconds=e.Clip==null?0:e.Clip.length}).ToArray()};

@@ -31,12 +31,12 @@ namespace TalesTactics
         }
         IEnumerator Start()
         {
+            // Enable ticking before yielding: an unfocused/hidden launch otherwise stalls here.
+            Application.runInBackground=true;
             yield return null;
             Directory.CreateDirectory(directory);
             battle=UnityEngine.Object.FindAnyObjectByType<BattleDirector>();
-            var store=new CampaignFile(Path.Combine(directory,"campaign.json"));
-            battle.Campaign=store.Load();battle.PersistCampaign=store.Save;battle.Hud.ShowDeployment();
-            Application.runInBackground=true;
+            battle.ConfigureStorage(directory);battle.Hud.ShowDeployment();
             started=interval=Time.realtimeSinceStartup;
             File.WriteAllText(Path.Combine(directory,"hardware.txt"),Application.unityVersion+"\n"+SystemInfo.operatingSystem+"\n"+SystemInfo.processorType+"\n"+SystemInfo.graphicsDeviceName+"\n"+Screen.width+"x"+Screen.height+"\n");
             File.WriteAllText(Path.Combine(directory,"performance.csv"),"sample,seconds,frames,fps,p50_ms,p95_ms,p99_ms,unity_allocated_mb,unity_reserved_mb,managed_mb,working_set_mb,state\n");

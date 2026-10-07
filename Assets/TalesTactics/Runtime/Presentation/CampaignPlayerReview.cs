@@ -11,7 +11,7 @@ using UnityEngine.UI;
 namespace TalesTactics
 {
     // Opt-in development-player check. No code from this file enters release players.
-    // Only the isolated CampaignFile callback is used; never click settings/equipment save buttons.
+    // Every save and settings operation uses the isolated review storage root.
     public sealed class CampaignPlayerReview : MonoBehaviour
     {
         [Serializable] public sealed class Report
@@ -21,6 +21,8 @@ namespace TalesTactics
             public List<string> captureWarnings = new List<string>();
             public float seconds;
             public int playerTurns, moves, attacks;
+            public int enemySpeed;
+            public bool briefEnemies;
             public List<string> checks = new List<string>();
             public List<string> errors = new List<string>();
         }
@@ -165,19 +167,25 @@ namespace TalesTactics
             yield return ReviewGamepad();
             yield return ReviewMusic();
             Check(report.phase == "chapter1" ? !File.Exists(savePath) : File.Exists(savePath), "Expected isolated save exists/missing");
-            store = new CampaignFile(savePath);
-            battle.Campaign = store.Load();
+            battle.ConfigureStorage(directory);
+            store = battle.Profiles.Store;
             Check(store.CanSave && string.IsNullOrEmpty(store.Notice), "Save loads without fallback or corruption");
-            battle.PersistCampaign = store.Save;
+
             battle.RewardRoll=()=>2500; // Deterministic 15% drop branch; distribution is checked separately.
             battle.TrainingMode = false;
             battle.UseCT=battle.UseUtilityAI=report.tactical;
+            var flow=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));
+            flow.CT=flow.Utility=report.tactical;
+            flow.EnemySpeedMode=report.phase=="chapter2"?1:report.phase=="chapter3"?2:0;
+            flow.SkipEnemyAnimations=report.phase=="chapter4"||report.phase=="chapter5";
+            Check(battle.SavePreferences(flow,false),"Enemy presentation settings persisted in isolated profile");
+            report.enemySpeed=1<<flow.EnemySpeedMode;report.briefEnemies=flow.SkipEnemyAnimations;
             battle.Deployment.Clear();
             battle.Deployment.AddRange(party);
             battle.Hud.ShowDeployment();
             yield return null;
             Time.timeScale = 4;
-            if (report.phase == "chapter1") yield return BuyAndEquipArmor();
+            if (report.phase == "chapter1") { yield return ReviewTutorial(); yield return BuyAndEquipArmor(); }
 
             if (report.phase == "resume")
             {
@@ -239,6 +247,28 @@ namespace TalesTactics
             Time.timeScale = 1;
         }
 
+        IEnumerator ReviewTutorial()
+        {
+            var original=JsonUtility.ToJson(battle.Campaign);var deployment=battle.Deployment.ToArray();
+            Click("처음 플레이 · 도움말");yield return null;
+            Check(battle.Hud.HelpOpen,"Player opens first-play help");
+            Click("입문 연습 시작");yield return null;
+            Check(battle.Tutorial==TutorialStep.Movement,"Player enters isolated tutorial");
+            Click("Move / 이동");battle.State.Tile(BattleDirector.TutorialDestination);
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Attack,"Tutorial movement advances only after completion");
+            Click("Attack / 공격");Click("다음 대상 · Tab");Click("실행");
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Healing,"Tutorial attack advances to Mint");
+            var heal=battle.Session.Active.Data.Skills.Single(s=>s.Id=="mint.0");int mp=battle.Session.Active.CurrentMP;
+            Click("Skill / 스킬");Click(heal.DisplayName+" · MP"+heal.MPCost);Click("목표 선택");Click("다음 대상 · Tab");Click("실행");
+            while(battle.State is ActionExecutionState)yield return null;
+            Check(battle.Tutorial==TutorialStep.Waiting&&battle.Session.Active.CurrentMP==mp-heal.MPCost,"Tutorial healing restores HP through normal resolver and spends MP");
+            Click("Wait / 방향 선택");Click("Front");yield return null;
+            Check(battle.Tutorial==TutorialStep.Complete,"Tutorial finishes after facing selection");
+            Click("출전 준비로");yield return null;
+            Check(!battle.TutorialActive&&battle.Session==null&&JsonUtility.ToJson(battle.Campaign)==original&&battle.Deployment.SequenceEqual(deployment)&&!File.Exists(savePath),"Tutorial leaves campaign, deployment and save untouched");
+        }
         IEnumerator BuyAndEquipArmor()
         {
             var armor=battle.Catalog.Equipment.Single(e=>e.Id=="leather-armor");
@@ -249,7 +279,7 @@ namespace TalesTactics
             Check(CampaignInventory.Owned(battle.Campaign,armor.Id)==1,"Shop grants one owned armor");
             Click("출전 준비로");yield return null;Click("장비 관리");yield return null;
             Click(battle.Catalog.Characters[0].DisplayName);yield return null;
-            Click("방어구: 없음");yield return null;Click("적용 · 저장");yield return null;
+            Click("방어구: 없음");yield return null;Click("장착 후보: "+armor.DisplayName);yield return null;Click("적용 · 저장");yield return null;
             Check(new CampaignFile(savePath).Load().Get(battle.Catalog.Characters[0].Id).Equipment[(int)EquipmentSlot.Armor]==armor.Id,"Equipment UI persists purchased armor");
             Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
         }

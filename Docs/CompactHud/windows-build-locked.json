@@ -1,0 +1,2207 @@
+{
+  "status": "completed",
+  "buildId": "build_ea7f527192a2",
+  "result": "Failed",
+  "platform": "StandaloneWindows64",
+  "outputPath": "C:/dev/TalesTactics/Builds/Windows/TalesTactics.exe",
+  "totalSizeBytes": 513469678,
+  "buildTimeMs": 25570,
+  "buildStartedAt": "2026-10-04T13:58:27.2462043Z",
+  "buildEndedAt": "2026-10-04T13:58:52.8165219Z",
+  "totalWarnings": 7,
+  "totalErrors": 1,
+  "buildSteps": [
+    {
+      "name": "Build player",
+      "durationMs": 25529,
+      "depth": 0,
+      "messages": []
+    },
+    {
+      "name": "Call PrepareForBuild callbacks",
+      "durationMs": 2,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Call internal build started callbacks",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Preprocess Player",
+      "durationMs": 234,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "1 URP assets included in build\r\n- PC_RPAsset - Assets/Settings/PC_RPAsset.asset\r\n\t - PC_Renderer - Assets/Settings/PC_Renderer.asset - UnityEngine.Rendering.Universal.UniversalRendererData\r\n"
+        },
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunInfo.json' (2221 bytes)"
+        },
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunSettings.json' (23 bytes)"
+        },
+        {
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        }
+      ]
+    },
+    {
+      "name": "Save scenes before build",
+      "durationMs": 2,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Back up scenes",
+      "durationMs": 95,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prepare For Build",
+      "durationMs": 8,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "ProducePlayerScriptAssemblies",
+      "durationMs": 6845,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prebuild Cleanup and Recompile",
+      "durationMs": 4871,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Compile scripts",
+      "durationMs": 4781,
+      "depth": 3,
+      "messages": [
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\ManualPlayerReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        },
+        {
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\BattleDirector.cs(18,28): warning UAC1001: Field 'Target' type 'UnityEngine.Vector2Int?' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)"
+        }
+      ]
+    },
+    {
+      "name": "Generate and validate platform script types",
+      "durationMs": 21,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Verify Build setup",
+      "durationMs": 63,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "GetUnityAssemblies",
+      "durationMs": 27,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "GetPlayerAssemblies",
+      "durationMs": 10,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Check old data build",
+      "durationMs": 11,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Prepare assets for target platform",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prepare splash screen",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "Including Unity Splash Screen logo because 'Show Unity Logo' is enabled."
+        }
+      ]
+    },
+    {
+      "name": "Build scripts DLLs",
+      "durationMs": 37,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "GetSystemAssemblies",
+      "durationMs": 2,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Compile Global Game Manager dependencies",
+      "durationMs": 73,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Load object[unnamed] (Sprite) from Library/SplashScreenCache/e9/e90129bf8381db191f79c6e7976051ce",
+      "durationMs": 7,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Load object[unnamed] (MonoManager) from Library/MonoManager.asset",
+      "durationMs": 3,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Building scenes",
+      "durationMs": 236,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Building scene Assets/TalesTactics/Scenes/TestBattle.unity",
+      "durationMs": 236,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Building scene 0: TestBattle",
+      "durationMs": 211,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Load scene (and close previous ones)",
+      "durationMs": 94,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Compile game scene dependencies",
+      "durationMs": 79,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load objectCharacterData (MonoScript) from Assets/TalesTactics/Runtime/Data/CharacterData.cs",
+      "durationMs": 9,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Compile game scene",
+      "durationMs": 37,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load objectpenguinist-polish_0_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/penguinist-polish.png",
+      "durationMs": 6,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Rebuild resources",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Analyze resource dependencies",
+      "durationMs": 9,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Compile Resources folder dependencies",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Build GlobalGameManagers file",
+      "durationMs": 442,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Writing asset files",
+      "durationMs": 2895,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Packaging assets - globalgamemanagers.assets",
+      "durationMs": 1060,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Extract assets to write",
+      "durationMs": 55,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write file:globalgamemanagers.assets",
+      "durationMs": 1005,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - ColorCurves (MonoScript) from Packages/com.unity.render-pipelines.universal/Runtime/Overrides/ColorCurves.cs",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - VirtualMouseInput (MonoScript) from Packages/com.unity.inputsystem/InputSystem/Plugins/UI/VirtualMouseInput.cs",
+      "durationMs": 4,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - ProbeVolumeBakingSet (MonoScript) from Packages/com.unity.render-pipelines.core/Runtime/Lighting/ProbeVolume/ProbeVolumeBakingSet.cs",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Sprites-Default (Material) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Splash Screen Unity Logo (Texture2D) from Library/SplashScreenCache/e9/e90129bf8381db191f79c6e7976051ce",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Library/SplashScreenCache/e9/e90129bf8381db191f79c6e7976051ce",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Sampling (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/Sampling.shader",
+      "durationMs": 470,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/ScreenSpaceAmbientOcclusion (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/ScreenSpaceAmbientOcclusion.shader",
+      "durationMs": 28,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Stop NaN (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/StopNaN.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/CoreSRP/CoreCopy (Shader) from Packages/com.unity.render-pipelines.core/Shaders/CoreCopy.shader",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/CameraMotionBlur (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/CameraMotionBlur.shader",
+      "durationMs": 21,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/ClusterDeferred (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/ClusterDeferred.shader",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/BokehDepthOfField (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/BokehDepthOfField.shader",
+      "durationMs": 28,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Core/FallbackError (Shader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/XR/XROcclusionMesh (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/XR/XROcclusionMesh.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/EdgeAdaptiveSpatialUpsampling.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal/HDRDebugView (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Debug/HDRDebugView.shader",
+      "durationMs": 12,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/GaussianDepthOfField (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/GaussianDepthOfField.shader",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Bloom (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/Bloom.shader",
+      "durationMs": 18,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Core/VrsVisualization (Shader) from Packages/com.unity.render-pipelines.core/Runtime/Vrs/Shaders/VrsVisualization.shader",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/ColorPyramidPS (Shader) from Packages/com.unity.render-pipelines.universal/Runtime/MipGen/Shaders/ColorPyramidPS.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/SubpixelMorphologicalAntialiasing.shader",
+      "durationMs": 9,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/LutBuilderLdr (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderLdr.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/LensFlareDataDriven (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LensFlareDataDriven.shader",
+      "durationMs": 19,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/LensFlareScreenSpace (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LensFlareScreenSpace.shader",
+      "durationMs": 19,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/ComputeScreenSpaceReflection (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/ComputeScreenSpaceReflection.shader",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal/BlitFullPrecision (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitFullPrecision.shader",
+      "durationMs": 7,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/UIBackdropFilterComposite (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/UIBackdropFilterComposite.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/StencilDitherMaskSeed (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/StencilDitherMaskSeed.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal/CoreBlit (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+      "durationMs": 72,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/TemporalAA (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/TemporalAA.shader",
+      "durationMs": 18,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/PaniniProjection (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/PaniniProjection.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal/BlitHDROverlay (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/BlitHDROverlay.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Core/DebugOccluder (Shader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/DebugOccluder.shader",
+      "durationMs": 0,
+      "depth": 4,
+      "messages": [
+        {
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        }
+      ]
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/FinalPost (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/FinalPost.shader",
+      "durationMs": 20,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/CameraMotionVectors (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/CameraMotionVectors.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Debug/DebugReplacement (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Debug/DebugReplacement.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal/CoreBlitColorAndDepth (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlitColorAndDepth.shader",
+      "durationMs": 8,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Core/DebugOcclusionTest (Shader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/DebugOcclusionTest.shader",
+      "durationMs": 0,
+      "depth": 4,
+      "messages": [
+        {
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        }
+      ]
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/XR/XRMirrorView (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/XR/XRMirrorView.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/CopyDepth (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/FallbackError (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/UberPost (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
+      "durationMs": 25,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/Scaling Setup (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/ScalingSetup.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/StencilDeferred (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Utils/StencilDeferred.shader",
+      "durationMs": 16,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/LutBuilderHdr (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderHdr.shader",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/DBufferClear (Shader) from Packages/com.unity.render-pipelines.universal/Runtime/Decal/DBuffer/DBufferClear.shader",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Universal Render Pipeline/XR/XRMotionVector (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/XR/XRMotionVector.shader",
+      "durationMs": 4,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - OccluderDepthPyramidKernels (ComputeShader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/OccluderDepthPyramidKernels.compute",
+      "durationMs": 6,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - ColorPyramid (ComputeShader) from Packages/com.unity.render-pipelines.universal/Runtime/MipGen/Shaders/ColorPyramid.compute",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - InstanceTransformUpdateKernels (ComputeShader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceTransformUpdateKernels.compute",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - DepthPyramid (ComputeShader) from Packages/com.unity.render-pipelines.universal/Runtime/MipGen/Shaders/DepthPyramid.compute",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - VrsTexture (ComputeShader) from Packages/com.unity.render-pipelines.core/Runtime/Vrs/Shaders/VrsTexture.compute",
+      "durationMs": 6,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - InstanceOcclusionCullingKernels (ComputeShader) from Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceOcclusionCullingKernels.compute",
+      "durationMs": 6,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - [unnamed] (Sprite) from Library/SplashScreenCache/e9/e90129bf8381db191f79c6e7976051ce",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - [unnamed] (MonoBehaviour) from Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Finish writing",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Packaging assets - resources.assets",
+      "durationMs": 108,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Extract assets to write",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write file:resources.assets",
+      "durationMs": 107,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Noto Sans CJK KR - Regular Atlas (Texture2D) from Assets/TalesTactics/Resources/TalesTactics/Korean.asset",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - PixelBackdrops (Texture2D) from Assets/TalesTactics/Resources/TalesTactics/PixelBackdrops.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - PixelTerrain (Texture2D) from Assets/TalesTactics/Resources/TalesTactics/PixelTerrain.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - PixelProps (Texture2D) from Assets/TalesTactics/Resources/TalesTactics/PixelProps.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Resources/TalesTactics/PixelProps.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - TextMeshPro/Mobile/Distance Field (Shader) from Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "durationMs": 53,
+      "depth": 4,
+      "messages": [
+        {
+          "type": "Warning",
+          "content": "Shader warning in 'TextMeshPro/Mobile/Distance Field': #pragma enable_d3d11_debug_symbols has been deprecated, instead please use #pragma enable_debug_symbols at line 84"
+        }
+      ]
+    },
+    {
+      "name": "Write object - NotoSansCJKkr-Regular (Font) from Assets/TalesTactics/Fonts/NotoSansCJKkr-Regular.otf",
+      "durationMs": 9,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - LiberationSans (Font) from Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "durationMs": 6,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Resources/TalesTactics/Korean.asset",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Finish writing",
+      "durationMs": 12,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Packaging assets - sharedassets0.assets = additional assets for scene 0: Assets/TalesTactics/Scenes/TestBattle.unity",
+      "durationMs": 1648,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Extract assets to write",
+      "durationMs": 215,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/sentinel.asset",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/tear.asset",
+      "durationMs": 10,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/PixelCampaign/penguinist.asset",
+      "durationMs": 4,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/alphen.asset",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/PixelCampaign/sentinel.asset",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/AudioLibrary.asset",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/natalia.asset",
+      "durationMs": 10,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/PixelCampaign/polwigle.asset",
+      "durationMs": 5,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/jade.asset",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/PixelCampaign/mage.asset",
+      "durationMs": 4,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/PixelCampaign/dhaos.asset",
+      "durationMs": 7,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/BattleCatalog.asset",
+      "durationMs": 103,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write file:sharedassets0.assets",
+      "durationMs": 1374,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+      "durationMs": 4,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+      "durationMs": 2,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/dhaos-hq.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/dhaos-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mage (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mage.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/mage.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - sentinel-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/sentinel-polish.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/sentinel-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - slime-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/slime-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - golem (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/golem.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - archer-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/archer-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/archer-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - mage-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mage-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - golem-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/golem-polish.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/golem-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-right (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/shionne-right.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/shionne-right.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "durationMs": 40,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+      "durationMs": 15,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+      "durationMs": 21,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png",
+      "durationMs": 16,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - wolf-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/wolf-polish.png",
+      "durationMs": 20,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/wolf-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png",
+      "durationMs": 7,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+      "durationMs": 7,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png",
+      "durationMs": 27,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png",
+      "durationMs": 14,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+      "durationMs": 18,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "durationMs": 17,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+      "durationMs": 17,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "durationMs": 18,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "durationMs": 30,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - penguinist-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/penguinist-polish.png",
+      "durationMs": 16,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - polwigle-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/polwigle-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - sentinel (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/sentinel.png",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/sentinel.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+      "durationMs": 48,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - wolf (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/wolf.png",
+      "durationMs": 6,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/wolf.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - eggbear (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/eggbear.png",
+      "durationMs": 10,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/eggbear.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/cless-polish.png",
+      "durationMs": 11,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/cless-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - polwigle (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/polwigle.png",
+      "durationMs": 15,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/polwigle.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "durationMs": 54,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - slime (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/slime.png",
+      "durationMs": 12,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/slime.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "durationMs": 49,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - penguinist (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/penguinist.png",
+      "durationMs": 12,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/dhaos-polish.png",
+      "durationMs": 28,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+      "durationMs": 24,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "durationMs": 20,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "durationMs": 38,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+      "durationMs": 10,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png",
+      "durationMs": 30,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-extra (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "durationMs": 12,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-motion (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/dhaos-motion.png",
+      "durationMs": 59,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - eggbear-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/eggbear-polish.png",
+      "durationMs": 26,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - archer (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/archer.png",
+      "durationMs": 26,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-hq (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "durationMs": 14,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "durationMs": 1,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-polish (Texture2D) from Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+      "durationMs": 28,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Load object from Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+      "durationMs": 3,
+      "depth": 5,
+      "messages": []
+    },
+    {
+      "name": "Write object - Skybox/Procedural (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 20,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - Universal Render Pipeline/Unlit (Shader) from Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader",
+      "durationMs": 100,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - battle (AudioClip) from Assets/TalesTactics/Audio/Original/battle.wav",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - boss (AudioClip) from Assets/TalesTactics/Audio/Original/boss.wav",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - golem_4_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/golem.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-motion_2_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - sentinel_3_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/sentinel.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-hq_0_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-extra_1_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "durationMs": 3,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - polwigle_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/polwigle.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-polish_2_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-motion_3_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-polish_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-hq_0_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - sentinel-polish_3_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/sentinel-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-extra_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - penguinist_2_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/penguinist.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - slime-polish_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/slime-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-motion_1_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-polish_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - eggbear_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/eggbear.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-motion_3_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - golem-polish_3_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/golem-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-motion_1_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-extra_2_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-polish_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-hq_2_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-polish_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-polish_3_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-extra_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-extra_1_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - polwigle-polish_0_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/polwigle-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-motion_3_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-hq_1_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-polish_3_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/dhaos-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-polish_3_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - penguinist-polish_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/penguinist-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mage-polish_1_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mage-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-motion_2_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/dhaos-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - velvet-motion_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-motion_3_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - wolf-polish_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/wolf-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - archer_4_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/archer.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-extra_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mage_2_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mage.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - alphen-hq_3_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-hq_3_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mint-hq_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - archer-polish_2_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/archer-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - wolf_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/wolf.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-extra_1_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-polish_1_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - tear-extra_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-hq_3_0 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - eggbear-polish_3_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/eggbear-polish.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - natalia-extra_2_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - slime_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/slime.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-extra_3_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-motion_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-hq_2_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - cless-polish_0_2 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/cless-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - jade-polish_0_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - farah-hq_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+      "durationMs": 2,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - dhaos-hq_1_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/dhaos-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - shionne-right_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/shionne-right.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - kisara-hq_2_1 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - mage-polish_0_3 (Sprite) from Assets/TalesTactics/Art/PixelCampaign/mage-polish.png",
+      "durationMs": 30,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/sentinel.asset",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Write object - [unnamed] (MonoBehaviour) from Assets/TalesTactics/Content/Characters/shionne.asset",
+      "durationMs": 1,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "Finish writing",
+      "durationMs": 59,
+      "depth": 4,
+      "messages": []
+    },
+    {
+      "name": "GarbageCollection - Memory collected: 443432226 (reduced usage from 1403363015 to 959930789)",
+      "durationMs": 53,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Building Resources/unity_builtin_extra",
+      "durationMs": 449,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Extract assets to write",
+      "durationMs": 3,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Load dependencies - Hidden/Internal-StencilWrite (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write file:Library/PlayerDataCache/Win642/Data/Resources/unity_builtin_extra",
+      "durationMs": 445,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Write object - Legacy Shaders/VertexLit (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 70,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Legacy Shaders/Diffuse (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 14,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-StencilWrite (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-DepthNormalsTexture (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 24,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-ScreenSpaceShadows (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 20,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-CombineDepthNormals (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitCopy (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitCopyDepth (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 3,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/ConvertTexture (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-DeferredShading (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 19,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-DeferredReflections (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-MotionVectors (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 5,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-Flare (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 5,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-Halo (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 5,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitCopyWithDepth (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitToDepth (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitToDepth_MSAA (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/BlitCopyHDRTonemap (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 3,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-DebugPattern (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUITextureClip (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUITextureClipText (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUITexture (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 11,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUITextureBlit (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUIRoundedRect (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 17,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-GUIRoundedRectWithColorPerBorder (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-UIRDefault (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 28,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-UIRAtlasBlitCopy (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Sprites/Default (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Sprites/Mask (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 10,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - UI/Default (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - UI/DefaultETC1 (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 10,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/CubeBlur (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 10,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/CubeCopy (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 7,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/CubeBlend (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 9,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/VR/BlitTexArraySlice (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-ODSWorldTexture (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 25,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Internal-CubemapToEquirect (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/VR/BlitFromTex2DToTexArraySlice (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 8,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/VideoComposite (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/VideoDecode (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 29,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Compositing (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 2,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/TextCore/Distance Field SSD (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 1,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Physics2D/SDF_CircleGeometry (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 3,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Physics2D/SDF_CapsuleGeometry (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Physics2D/SDF_PolygonGeometry (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 6,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Physics2D/SDF_Line (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 5,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write object - Hidden/Physics2D/SDF_Point (Shader) from Resources/unity_builtin_extra",
+      "durationMs": 4,
+      "depth": 3,
+      "messages": []
+    },
+    {
+      "name": "Write data build dirty tracking information",
+      "durationMs": 301,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Postprocess built player",
+      "durationMs": 13154,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Error",
+          "content": "Building Builds\\Windows\\TalesTactics_Data\\Plugins\\x86_64\\lib_burst_generated.dll failed with output:\nCopying the file failed: 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다.\r\n"
+        }
+      ]
+    },
+    {
+      "name": "Setup incremental player build",
+      "durationMs": 46,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Incremental player build",
+      "durationMs": 12977,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Call Post-Process callbacks",
+      "durationMs": 0,
+      "depth": 1,
+      "messages": []
+    }
+  ],
+  "errors": [
+    {
+      "message": "Building Builds\\Windows\\TalesTactics_Data\\Plugins\\x86_64\\lib_burst_generated.dll failed with output:\nCopying the file failed: 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다.\r\n"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\CampaignPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\ManualPlayerReview.cs"
+    },
+    {
+      "message": "warning UAC1001: Field 'Target' type 'UnityEngine.Vector2Int?' is skipped by serialization (missing the [Serializable] attribute). Refer to the Serialization rules analyzer reference. (https://docs.unity3d.com/6000.6/Documentation/Manual/script-serialization-analyzer.html#uac1001)",
+      "file": "Assets\\TalesTactics\\Runtime\\Presentation\\BattleDirector.cs"
+    },
+    {
+      "message": "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+    },
+    {
+      "message": "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+    },
+    {
+      "message": "Shader warning in 'TextMeshPro/Mobile/Distance Field': #pragma enable_d3d11_debug_symbols has been deprecated, instead please use #pragma enable_debug_symbols at line 84"
+    }
+  ]
+}

@@ -51,10 +51,10 @@ namespace TalesTactics.PlayModeTests
             var camera=director.Board.BattleCamera;
             foreach(var data in director.Catalog.Characters)
             {
-                var unique=new HashSet<Sprite>();
                 foreach(var clip in new[]{data.Poses.Skill,data.Poses.Ultimate})
                 {
-                    Assert.That(clip.Frames.Length,Is.EqualTo(2),data.Id);
+                    var unique=new HashSet<Sprite>();
+                    Assert.That(clip.Frames.Length,Is.GreaterThanOrEqualTo(4),data.Id);
                     foreach(var frame in clip.Frames)foreach(Facing f in System.Enum.GetValues(typeof(Facing)))
                     {Assert.That(frame.Get(f),Is.Not.Null);Assert.That(unique.Add(frame.Get(f)),Is.True);}
                 }
@@ -68,12 +68,20 @@ namespace TalesTactics.PlayModeTests
                     foreach(var skill in new[]{data.Skills[0],data.UltimateSkill})
                     {
                         var clip=skill.IsUltimate?data.Poses.Ultimate:data.Poses.Skill;
-                        motion.BeginSkill(skill,0.2f,0.1f);yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
-                        motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[1].Get(facing)),data.Id+facing);
-                        yield return new WaitForSeconds(0.12f);yield return new WaitForEndOfFrame();
-                        Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
+                        float previousScale=Time.timeScale;
+                        try
+                        {
+                            // Inspect phase starts without a slow editor frame advancing past them.
+                            Time.timeScale=0;
+                            motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
+                            motion.ReleaseSkill();yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame].Get(facing)),data.Id+facing);
+                            Time.timeScale=previousScale;
+                            yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
+                            Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
+                        }
+                        finally {Time.timeScale=previousScale;}
                     }
                 }
                 Object.Destroy(go);
@@ -127,6 +135,30 @@ namespace TalesTactics.PlayModeTests
             finally{Object.Destroy(skill);}
         }
 
+        [UnityTest] public IEnumerator LongSkillNameFitsContrastPlateAndRestartClearsIt()
+        {
+            director.BeginBattle();yield return null;
+            var caster=director.Session.Active;
+            var skill=Object.Instantiate(caster.Data.Skills[0]);
+            try
+            {
+                skill.DisplayName="빛과 어둠을 가르는 최후의 심판";skill.Animation=AnimationKind.Cast;
+                skill.Presentation=new SkillPresentation{Windup=1.5f};
+                director.Board.BeginSkill(caster,skill,caster.Position);
+                yield return null;
+                var label=GameObject.Find("Skill name").GetComponent<TMPro.TextMeshPro>();label.ForceMeshUpdate();
+                Assert.That(label.text,Is.EqualTo(skill.DisplayName));Assert.That(label.isTextOverflowing,Is.False);
+                Assert.That(label.textInfo.lineCount,Is.EqualTo(1));Assert.That(label.color.r,Is.GreaterThan(.9f));
+                Assert.That(label.enableAutoSizing,Is.False);
+                var backing=label.transform.Find("Skill name backing");Assert.That(backing,Is.Not.Null);
+                Assert.That(label.preferredWidth,Is.LessThanOrEqualTo(backing.localScale.x));
+                director.Board.RotateCamera(90);yield return null;
+                Assert.That(Quaternion.Angle(label.transform.rotation,director.Board.BattleCamera.transform.rotation),Is.LessThan(.1f));
+                director.Restart();yield return null;yield return null;
+                Assert.That(GameObject.Find("Skill name backing"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);
+            }
+            finally {Object.Destroy(skill);}
+        }
         [UnityTest] public IEnumerator MusicThemeRestoresPositionAndMissingThemePreservesBattle()
         {
             var original=director.Audio.Library;var library=ScriptableObject.CreateInstance<AudioLibrary>();
