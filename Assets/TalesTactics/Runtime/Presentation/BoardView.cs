@@ -53,7 +53,7 @@ namespace TalesTactics
         {
             var viewport=battle.Hud.BattlefieldViewport;
             if(!force&&viewport==lastViewport)return;
-            lastViewport=viewport;BattleCamera.rect=viewport;
+            lastViewport=viewport;BattleCamera.rect=new Rect(0,0,1,1);
             var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);
             var max=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
             foreach(var tile in battle.Session.Grid.Tiles.Values)
@@ -68,14 +68,17 @@ namespace TalesTactics
             if(focusAction&&battle.Session.Active!=null)FocusBounds(ref min,ref max);
             var center=(min+max)*0.5f;var size=(max-min)*0.5f;
             BattleCamera.transform.position+=BattleCamera.transform.right*center.x+BattleCamera.transform.up*center.y;
-            BattleCamera.orthographicSize=Mathf.Max(size.y,size.x/BattleCamera.aspect)*1.04f*zoom;
+            BattleCamera.orthographicSize=Mathf.Max(size.y/viewport.height,size.x/(BattleCamera.aspect*viewport.width))*1.04f*zoom;
+            // Render the scenery edge-to-edge while fitting playable tiles inside the HUD's safe area.
+            var offset=viewport.center-new Vector2(.5f,.5f);
+            BattleCamera.transform.position-=BattleCamera.transform.right*(offset.x*2*BattleCamera.orthographicSize*BattleCamera.aspect)
+                +BattleCamera.transform.up*(offset.y*2*BattleCamera.orthographicSize);
         }
         public void Initialize(BattleDirector b)
         {
             battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;
             BattleCamera.allowMSAA=false;BattleCamera.allowHDR=false;BattleCamera.allowDynamicResolution=false;
-            // The battlefield uses a partial viewport. Clear its surrounding screen too,
-            // otherwise full-screen dialogue pixels can survive after the panel closes.
+            // Clear the screen during setup and transitions before the battlefield is available.
             var background=new GameObject("Screen Background Camera",typeof(Camera));
             background.transform.SetParent(transform,false);
             var camera=background.GetComponent<Camera>();camera.cullingMask=0;

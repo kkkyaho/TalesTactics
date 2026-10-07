@@ -195,3 +195,9 @@ EnemyRoles는 콘텐츠 ID를 전열/돌격/사격/마법/보스로 분류한다
 ## 화면 비율과 메뉴 키보드 선택
 
 BattleHud.Initialize는 ScaleWithScreenSize CanvasScaler에 Expand를 적용해 논리 영역을 기준1440×900 이상으로 유지한다. 고정 높이의 편성 카드/상점/하단 출전 영역이21:9에서 서로 침범하던 문제를 해결하며, 임의 ConstantPixelSize 설정은 바꾸지 않는다. GamepadPointer는 메뉴/모달/이야기/결과에서만 Tab 순환을 처리하고 기존 EventSystem Submit을 그대로 사용한다. 활성 Button.IsInteractable 검사로 모달 뒤 CanvasGroup을 제외한다. 선택 Outline의 원래 색과 두께는 선택 변경/비활성화 때 복원한다. 전투 대상 Tab 처리는 BattleDirector에 남아 있다.
+
+## 아이콘 전투 HUD
+
+BattleIconHud는 전투 상단 초상 순서, 4장 단위 기술 카드, 선택 기술 요약과 상세 창을 담당한다. TacticalIcon은 CanvasRenderer를 가진 MaskableGraphic으로 직접 도형을 그리며 클릭을 가로채지 않는다. 사용 조건과 비용은 SkillResolver가 판정한다. 페이지 전환은 ActionSelectionState로 돌아가 이전 페이지 기술의 실행 버튼을 남기지 않는다. 전체 설명은 기존 입력 차단을 사용하는 상세 모달에서 제공한다.
+
+BattleCompactHud는 유닛 옆 2×2 명령, 작은 캐릭터 요약, 대상 가까이의 결과 패널과 화면 경계 처리를 담당한다. BoardView는 전체 화면 카메라로 배경을 렌더링하되 BattlefieldViewport를 타일 배치의 안전 영역으로 사용한다. 카메라 크기와 중심 오프셋에 안전 영역 비율을 반영하므로 UI 때문에 검은 띠가 생기지 않는다. 기존 전투 상태/저장 형식/규칙 데이터는 유지한다.

@@ -20,6 +20,10 @@ namespace TalesTactics
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
+            footer.GetComponent<UnityEngine.UI.Image>().enabled=true;
+            footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
+            footer.GetComponent<UnityEngine.UI.Outline>().enabled=true;
+            var footerGroup=footer.GetComponent<CanvasGroup>();if(footerGroup!=null){footerGroup.alpha=1;footerGroup.blocksRaycasts=true;}
             PreparationLayout();
         }
         static void Place(RectTransform r,Vector2 min,Vector2 max,Vector2 low,Vector2 high)
@@ -156,14 +160,11 @@ namespace TalesTactics
             CloseUnitDetails();
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
-            var heading=Label(header,BattleTitle+"  ·  "+(battle.TutorialActive?"입문 연습":battle.Session.ObjectiveDescription),8,26,19);
-            heading.rectTransform.offsetMax=new Vector2(-720,heading.rectTransform.offsetMax.y);
-            var next=Label(header,battle.TutorialActive?"이동 → 공격 → 회복 → 대기 · 적은 기다리는 연습 전장입니다.":"NEXT   "+string.Join("  →  ",battle.Session.Scheduler.Preview(battle.Session.Units).Take(3).Select(x=>x.Data.DisplayName)),34,24,15);
-            next.rectTransform.offsetMax=new Vector2(-720,next.rectTransform.offsetMax.y);
-            message=Label(footer,battle.TutorialActive?battle.TutorialInstruction:battle.Message,12,65,17);
-            Label(footer,battle.TutorialActive?(battle.State is TargetSelectionState&&battle.Target.HasValue?battle.Message:"입문 연습 · 보상/저장 없음"):MissionBriefing.Progress(battle.Session)+" · "+(battle.Session.Objective==ObjectiveKind.Escort?"호위/아군 전멸 시 패배":"아군 전멸 시 패배"),83,battle.TutorialActive?36:26,15);
+            DrawTacticalHeader();
+            message=Label(footer,battle.TutorialActive&&!(battle.State is TargetSelectionState&&battle.Target.HasValue)?battle.TutorialInstruction:battle.Message,10,78,17);
+            message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
-            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);DrawMissionEntry();
+            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();
             Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){DrawResult();return;}
@@ -174,30 +175,13 @@ namespace TalesTactics
                 Button(commands,"Undo Move / 이동 취소",239,battle.Undo,u.CanUndoMove);Button(commands,"Wait / 방향 선택",285,battle.WaitCommand);Button(commands,"Restart",385,battle.Restart);
                 ArrangeCommandMenu();ApplyTutorialCommands();
             }
-            else if(battle.State is ActionSelectionState)
-            {
-                int i=0;foreach(var s in u.Data.Skills.Concat(new[]{u.Data.UltimateSkill}).Where(x=>x!=null&&(!battle.TutorialActive||battle.TutorialSkillAllowed(x))))
-                {
-                    var skill=s;string error=battle.Session.Resolver.CanUse(u,s,battle.IsFollowup(s));
-                    Button(commands,s.DisplayName+" · MP"+s.MPCost+(error!=null?" · 조건 확인":""),48+i*40,()=>battle.SetState(new SkillDetailsState(battle,skill)),true,35);RememberedSkillButton(skill);i++;
-                }
-                Button(commands,"취소",48+i*40,()=>battle.SetState(new CommandState(battle)));
-            }
-            else if(battle.State is SkillDetailsState detail)
-            {
-                string error=battle.Session.Resolver.CanUse(u,detail.Skill,battle.IsFollowup(detail.Skill));
-                Label(commands,battle.Session.Resolver.Describe(u,detail.Skill),52,275,17);
-                var reason=Label(commands,SkillResolver.ExplainUnavailable(error),335,60,17);
-                reason.color=error==null?new Color(0.5f,1,0.7f):new Color(1,0.75f,0.4f);
-                Button(commands,"목표 선택",405,()=>battle.SelectSkill(detail.Skill),error==null);
-                Button(commands,"스킬 목록으로",453,()=>battle.State.Cancel());
-            }
+            else if(SkillPanel)DrawSkillCards(u);
             else if(battle.State is TargetSelectionState)
             {
                 Label(commands,battle.SelectedSkill.DisplayName,45,35,17);Button(commands,"실행",88,battle.Confirm,battle.Target.HasValue,32);Button(commands,"취소",128,()=>battle.State.Cancel(),true,32);
                 bool available=battle.AvailableTargets().Length>0;
-                Button(footer,"이전 대상",128,()=>battle.CycleTarget(-1),available,32);HalfButton(footer,0);
-                Button(footer,"다음 대상 · Tab",128,()=>battle.CycleTarget(1),available,32);HalfButton(footer,1);
+                Button(footer,"이전 대상",94,()=>battle.CycleTarget(-1),available,32);HalfButton(footer,0);
+                Button(footer,"다음 대상 · Tab",94,()=>battle.CycleTarget(1),available,32);HalfButton(footer,1);
             }
             else if(battle.State is FacingSelectionState)
             {int i=0;foreach(Facing f in Enum.GetValues(typeof(Facing))){var facing=f;Button(commands,f.ToString(),60+i++*48,()=>battle.ChooseFacing(facing));var label=commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>();label.text=f==Facing.Front?"앞쪽":f==Facing.Back?"뒤쪽":f==Facing.Left?"왼쪽":"오른쪽";}}

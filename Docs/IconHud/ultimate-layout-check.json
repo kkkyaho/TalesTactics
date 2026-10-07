@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();d.ConfigureStorage(System.IO.Path.Combine(UnityEngine.Application.temporaryCachePath,\"IconHudFinal\",System.Guid.NewGuid().ToString(\"N\")));d.TrainingMode=true;d.BeginBattle();if(d.StoryActive)d.FinishStory();d.SetState(new TalesTactics.SkillDetailsState(d,d.Session.Active.Data.UltimateSkill));UnityEngine.Canvas.ForceUpdateCanvases();var texts=d.Hud.transform.Find(\"Commands\").GetComponentsInChildren<TMPro.TMP_Text>();foreach(var t in texts)t.ForceMeshUpdate();return new{skill=d.Session.Active.Data.UltimateSkill.DisplayName,overflow=texts.Where(t=>t.isTextOverflowing).Select(t=>t.text).ToArray(),disabledConfirm=!d.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name==\"목표 선택\").interactable};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "skill": "사후폭쇄진 / 獅吼爆砕陣",
+        "overflow": [],
+        "disabledConfirm": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

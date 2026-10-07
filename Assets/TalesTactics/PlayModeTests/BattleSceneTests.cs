@@ -21,6 +21,9 @@ namespace TalesTactics.PlayModeTests
             testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
             director.ConfigureStorage(testStorage);
             director.TrainingMode=true; // Never grant campaign EXP or write a save in these tests.
+            // Awake may have restored the user's roster before switching to isolated storage.
+            director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,3});
+            director.Hud.ShowDeployment();
         }
         [UnityTearDown] public IEnumerator Cleanup()
         {

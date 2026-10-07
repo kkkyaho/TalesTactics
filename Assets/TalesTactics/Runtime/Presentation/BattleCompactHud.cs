@@ -16,74 +16,100 @@ namespace TalesTactics
         void UpdateBattleLayout()
         {
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-76),new Vector2(-12,-12));
-            Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(356,186));
-            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(368,12),new Vector2(-12,126));
+            Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,164));
+            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
             if(SkillPanel)
-                Place(commands,new Vector2(1,0),Vector2.one,new Vector2(-420,198),new Vector2(-12,-88));
+            {
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-624,12),new Vector2(-12,SkillCardHeight));
+                Place(footer,Vector2.zero,new Vector2(0,0),new Vector2(12,176),new Vector2(344,286));
+            }
             else if(battle.State is TargetSelectionState)
             {
                 Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-246,12),new Vector2(-12,186));
-                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(368,12),new Vector2(-258,186));
+                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-258,150));
             }
             else if(battle.State is MoveSelectionState)
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-300,138),new Vector2(-12,438));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-300,12),new Vector2(-12,312));
             else
                 Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
-            if(CompactLayout)
-            {
-                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,198),new Vector2(-12,battle.State is TargetSelectionState?372:312));
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(SkillPanel?-420:-246,battle.State is TargetSelectionState?384:324),new Vector2(-12,SkillPanel?904:700));
-            }
-            if(battle.State is CommandState&&!CompactLayout)PlaceCommandBesideUnit();
+            if(battle.State is CommandState)PlaceCommandBesideUnit();
+            if(battle.State is TargetSelectionState&&battle.Target.HasValue&&!battle.TutorialActive)PlaceTargetPreview();
+            // Messages stay available in contextual states; ordinary command selection needs only the objective.
+            bool showMessage=battle.TutorialActive||battle.State is TargetSelectionState||battle.State is ActionExecutionState||battle.State is BattleEndState||battle.Message.StartsWith("Tile ");
+            footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
+            footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
+            var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
+            group.alpha=showMessage?1:0;group.blocksRaycasts=showMessage;
+            footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=showMessage;
+        }
+        void PlaceTargetPreview()
+        {
+            PlaceBesideUnits(footer,battle.Target.Value,420,138);
         }
         Rect BattleViewport(float scale)
         {
-            float bottom=(CompactLayout?(SkillPanel?916:battle.State is TargetSelectionState?772:712):198)*scale;
-            float right=(!CompactLayout&&SkillPanel?432:12)*scale;
+            float bottom=(SkillPanel?SkillCardHeight+12:198)*scale;
             return new Rect(12*scale/Screen.width,bottom/Screen.height,
-                Mathf.Max(1,Screen.width-12*scale-right)/Screen.width,
+                Mathf.Max(1,Screen.width-24*scale)/Screen.width,
                 Mathf.Max(1,Screen.height-bottom-88*scale)/Screen.height);
         }
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            var p=battle.Board.BattleCamera.WorldToScreenPoint(battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight));
+            PlaceBesideUnits(commands,unit.Position,224,270);
+        }
+        void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
+        {
+            var camera=battle.Board.BattleCamera;
             float scale=GetComponent<Canvas>().scaleFactor,w=Screen.width/scale,h=Screen.height/scale;
-            float x=p.x/scale<w*.5f?p.x/scale-288:p.x/scale+54,y=Mathf.Clamp(p.y/scale+180,574,h-88);
-            if(x+234>w-12)x=p.x/scale-288;
-            x=Mathf.Clamp(x,12,Mathf.Max(12,w-246));
-            Place(commands,Vector2.zero,Vector2.zero,new Vector2(x,y-376),new Vector2(x+234,y));
+            var projected=camera.WorldToScreenPoint(battle.Session.Grid[position].WorldPosition(battle.Catalog.Rules.TileHeight));
+            var p=new Vector2(projected.x/scale,projected.y/scale);
+            var candidates=new[]{new Vector2(p.x-width-60,p.y-40),new Vector2(p.x+60,p.y-40),new Vector2(p.x-width*.5f,p.y+145),new Vector2(p.x-width*.5f,p.y-height-24)};
+            var best=Vector2.zero;float bestScore=float.PositiveInfinity;
+            foreach(var candidate in candidates)
+            {
+                var low=new Vector2(Mathf.Clamp(candidate.x,12,w-width-12),Mathf.Clamp(candidate.y,198,h-height-88));
+                var rect=new Rect(low,new Vector2(width,height));float score=Vector2.SqrMagnitude(rect.center-p)*.000001f;
+                foreach(var unit in battle.Session.Units.Where(u=>u.Alive))
+                {
+                    var screen=camera.WorldToScreenPoint(battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight));
+                    var body=new Rect(screen.x/scale-34,screen.y/scale-10,68,130);
+                    if(rect.Overlaps(body))score+=unit.Position==position?1000:10;
+                }
+                if(score<bestScore){bestScore=score;best=low;}
+            }
+            Place(window,Vector2.zero,Vector2.zero,best,best+new Vector2(width,height));
         }
         void ArrangeCommandMenu()
         {
-            int row=0;
-            foreach(Transform child in commands)
+            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Wait / 방향 선택","Guard / 가드","Undo Move / 이동 취소","Restart"};
+            string[] labels={"이동","공격","기술","대기","방어","이동 취소","출전 화면"};
+            string[] icons={"move","attack","skill","wait","guard","undo","exit"};
+            for(int i=0;i<names.Length;i++)
             {
-                if(!child.gameObject.activeSelf||child.GetComponent<UnityEngine.UI.Button>()==null)continue;
-                var r=(RectTransform)child;r.anchoredPosition=new Vector2(0,-(48+row++*44));
-                var text=child.GetComponentInChildren<TMPro.TMP_Text>();
-                if(child.name=="Move / 이동")text.text="이동";
-                else if(child.name=="Attack / 공격")text.text="공격";
-                else if(child.name=="Skill / 스킬")text.text="기술";
-                else if(child.name=="Guard / 가드")text.text="방어";
-                else if(child.name=="Undo Move / 이동 취소")text.text="이동 취소";
-                else if(child.name=="Wait / 방향 선택")text.text="대기 · 방향";
-                else if(child.name=="Restart")text.text="출전 화면";
+                var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
+                var r=(RectTransform)child;
+                float x=i<4?12+(i%2)*102:12+(i-4)*68;
+                float y=i<4?44+(i/2)*80:208;
+                r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(x,-y);r.sizeDelta=new Vector2(i<4?98:64,i<4?74:50);
+                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=i<4?16:12;
+                Place(text.rectTransform,Vector2.zero,Vector2.right,new Vector2(2,3),new Vector2(-2,25));
+                AddTacticalIcon(child,icons[i],i<4?32:20, i<4?new Vector2(0,-8):new Vector2(0,-3),child.GetComponent<UnityEngine.UI.Button>().interactable?new Color(1,.81f,.43f):Color.gray);
             }
         }
         void DrawUnitSummary(UnitRuntime u)
         {
             var portrait=new GameObject("Portrait",typeof(RectTransform),typeof(UnityEngine.UI.Image));portrait.transform.SetParent(left,false);
-            var pr=portrait.GetComponent<RectTransform>();Place(pr,Vector2.zero,Vector2.zero,new Vector2(10,32),new Vector2(80,156));
+            var pr=portrait.GetComponent<RectTransform>();Place(pr,Vector2.zero,Vector2.zero,new Vector2(8,22),new Vector2(78,142));
             var img=portrait.GetComponent<UnityEngine.UI.Image>();img.sprite=u.Data.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=false;
             var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,10,28,18);title.rectTransform.offsetMin=new Vector2(86,title.rectTransform.offsetMin.y);
-            SummaryBar("HP",u.CurrentHP,u.Stats.HP,48,new Color(.25f,.78f,.49f));
-            SummaryBar("MP",u.CurrentMP,u.Stats.MP,78,new Color(.25f,.57f,.95f));
-            SummaryBar("SP",u.SpecialGauge,100,108,new Color(.93f,.69f,.28f));
-            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",143,24,14);
+            SummaryBar("HP",u.CurrentHP,u.Stats.HP,42,new Color(.25f,.78f,.49f));
+            SummaryBar("MP",u.CurrentMP,u.Stats.MP,68,new Color(.25f,.57f,.95f));
+            SummaryBar("SP",u.SpecialGauge,100,94,new Color(.93f,.69f,.28f));
+            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",122,24,12);
             status.rectTransform.offsetMax=new Vector2(-90,status.rectTransform.offsetMax.y);
-            Button(left,"능력",139,()=>ShowUnitDetails(u),true,28);
-            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,28);button.anchoredPosition=new Vector2(-10,-139);
+            Button(left,"능력",118,()=>ShowUnitDetails(u),true,28);
+            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,28);button.anchoredPosition=new Vector2(-10,-118);
         }
         void SummaryBar(string title,int value,int maximum,float y,Color color)
         {

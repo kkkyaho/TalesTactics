@@ -26,6 +26,7 @@ namespace TalesTactics.PlayModeTests
                 foreach(var skill in skills.Where(s=>s!=null))
                 {
                     director.SetState(new SkillDetailsState(director,skill));yield return null;
+                    Click("기술 상세");yield return null;
                     Canvas.ForceUpdateCanvases();
                     var description=director.Hud.GetComponentsInChildren<TMP_Text>().Single(t=>t.text==director.Session.Resolver.Describe(unit,skill));
                     description.ForceMeshUpdate();
