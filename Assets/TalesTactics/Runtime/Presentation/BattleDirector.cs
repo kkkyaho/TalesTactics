@@ -58,6 +58,7 @@ namespace TalesTactics
             var keyboard=Keyboard.current;
             if(keyboard!=null)
             {
+                if(TacticalKeyboard(keyboard))return;
                 if((keyboard.enterKey.wasPressedThisFrame||keyboard.numpadEnterKey.wasPressedThisFrame)&&State is TargetSelectionState){Confirm();return;}
                 if(keyboard.tabKey.wasPressedThisFrame)CycleTarget(keyboard.shiftKey.isPressed?-1:1);
                 if(keyboard.qKey.wasPressedThisFrame)Board.RotateCamera(-90);
@@ -76,8 +77,7 @@ namespace TalesTactics
             }
             if(Board.Pick(mouse.position.ReadValue(),out var p))
             {
-                if(State is MoveSelectionState)Board.ShowPath(Session.Grid.Path(Session.Active,p));
-                if(State is TargetSelectionState&&mouse.delta.ReadValue().sqrMagnitude>0&&Target!=p&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any())SelectTarget(p);
+                if(mouse.delta.ReadValue().sqrMagnitude>0){KeyboardTile=null;PreviewTile(p);}
 
             }
         }
@@ -94,12 +94,13 @@ namespace TalesTactics
             if(State is TargetSelectionState&&picked&&TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any()){SelectTarget(p);Confirm();return;}
             if(State is CommandState)
             {
+                if(picked&&Session.Units.Any(u=>u.Alive&&u.Position==p)){State.Tile(p);return;}
                 if(Session.Active.CanUndoMove&&!TutorialActive){Undo();return;}
                 if(picked)State.Tile(p);return;
             }
             State?.Cancel();
         }
-        public void SetState(BattleState state){State=state;Target=null;state.Enter();Board.RefreshFocus();}
+        public void SetState(BattleState state){State=state;Target=null;Forecast=null;KeyboardTile=null;state.Enter();Board.RefreshFocus();}
         public void BeginBattle()
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
@@ -110,11 +111,12 @@ namespace TalesTactics
                 var progress=Campaign.Get(u.Data.Id);
                 if(!TrainingMode){u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
                 new EquipmentLoadout(u.Data,progress,Catalog.Equipment,Campaign).Apply(u);
+                if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else u.Trait=progress.Trait;
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
+        public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved&&TutorialAllows(TutorialStep.Movement))SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
         public void SkillCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
@@ -134,7 +136,7 @@ namespace TalesTactics
             if(!TutorialTargetAllowed(p))return;
             var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
             if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Target=null;Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
-            Target=p;Message=string.Join("\n",targets.Select(t=>t.Data.DisplayName+": "+Session.Resolver.Preview(u,SelectedSkill,t)));Board.ShowArea(p,SelectedSkill.Area);Board.RefreshFocus();Hud.Refresh();
+            Target=p;Forecast=BattleForecast.Create(Session,u,SelectedSkill,p,IsFollowup(SelectedSkill));Message=Forecast.Cost+"\n"+string.Join("\n",Forecast.Rows.Select(r=>r.Text));Board.ShowArea(p,SelectedSkill.Area);Board.RefreshFocus();Hud.Refresh();
         }
         public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}
         public void ChooseFacing(Facing f){if(!(State is FacingSelectionState)||!TutorialAllows(TutorialStep.Waiting))return;Session.Active.Facing=f;RefreshViews();if(!TutorialEndTurn())SetState(new TurnEndState(this));}
@@ -177,7 +179,7 @@ namespace TalesTactics
         {
             float speed=1<<Mathf.Clamp(Preferences?.EnemySpeedMode??0,0,2);bool brief=Preferences?.SkipEnemyAnimations??false;
             SetState(new ActionExecutionState(this));yield return new WaitForSeconds(brief?.08f:.4f/speed);
-            var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);
+            var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);EnemyTactics.Commit(u,plan);
             if(plan.Destination!=u.Position){var path=Session.Grid.Path(u,plan.Destination);if(Session.Move(plan.Destination)){if(brief)Board.Sync();else yield return Board.AnimateMove(u,path,speed);}}
             if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null))
             {
@@ -189,10 +191,11 @@ namespace TalesTactics
                 Message=u.Data.DisplayName+" · "+plan.Skill.DisplayName+"\n"+text;Hud.Refresh();yield return new WaitForSeconds(brief?.2f:BoardView.Recovery(plan.Skill)/speed);
                 if(plan.Skill.IsUltimate)Audio.EndTheme();
             }
-            else if(plan.Guard&&!u.Acted){u.Acted=true;u.AddStatus(StatusKind.Guard,2);Message=u.Data.DisplayName+" : 가드";}
+            else if(plan.Guard&&!u.Acted){u.Acted=true;u.AddStatus(StatusKind.Guard,2);Message=u.Data.DisplayName+" : "+(u.IntentPhase==1?EnemyTactics.Describe(u):"가드 · 인접 보호");}
+            else Message=u.Data.DisplayName+" : "+(u.IntentPhase==2?"휴식 · 받는 피해 +25%":"대기");
             RefreshViews();SetState(Session.Result==BattleResult.Ongoing?(BattleState)new TurnEndState(this):new BattleEndState(this));
         }
-        public void RefreshViews(){Board.Sync();}
+        public void RefreshViews(){Board.Sync();RebuildThreats();}
         public void CompleteBattle()
         {
             if(completed||Session==null||Session.Result==BattleResult.Ongoing)return;

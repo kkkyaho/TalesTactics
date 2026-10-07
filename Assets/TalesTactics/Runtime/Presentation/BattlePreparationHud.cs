@@ -50,6 +50,7 @@ namespace TalesTactics
                 card.anchorMin=new Vector2((i%2)*.5f,1);card.anchorMax=new Vector2((i%2+1)*.5f,1);card.sizeDelta=new Vector2(-18,100);
                 if(i==selectedCharacter)card.GetComponent<UnityEngine.UI.Image>().color=new Color(.2f,.28f,.38f);
                 var label=card.GetComponentInChildren<TMPro.TMP_Text>();label.text=c.DisplayName+"\nLv"+(battle.TrainingMode?25:p.Level)+" · "+c.Job+(deployment?"\n"+(battle.Deployment.Contains(i)?"출전 중":"대기 중"):"");
+                label.text=c.DisplayName+"\nLv"+(battle.TrainingMode?25:p.Level)+" · "+TacticalDevelopment.Role(c)+(deployment?"\n"+(battle.Deployment.Contains(i)?"출전 중":"대기 중")+(p.Level<CampaignStages.Get(battle.SelectedStage).EntryLevel?" · 합류 훈련 가능":""):"");
                 label.fontSize=16;label.alignment=TMPro.TextAlignmentOptions.MidlineLeft;label.rectTransform.offsetMin=new Vector2(80,label.rectTransform.offsetMin.y);label.rectTransform.offsetMax=new Vector2(-8,label.rectTransform.offsetMax.y);
                 Portrait(card,c,new Vector2(10,-94),new Vector2(72,-6));
             }
@@ -59,12 +60,14 @@ namespace TalesTactics
             if(battle.Session!=null)return;BeginPreparation("출전 준비");
             selectedCharacter=Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1);
             CharacterCards(i=>{selectedCharacter=i;RenderDeployment();},true);
+            Button(center,"균형 6인 추천 편성",10,()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,30);
+            var recommend=(RectTransform)center.GetChild(center.childCount-1);recommend.anchorMin=new Vector2(.53f,1);recommend.GetComponentInChildren<TMPro.TMP_Text>().fontSize=15;
             Label(left,"임무 선택 · "+(chapterPage+1)+" / "+((CampaignStages.Count+2)/3),12,34,20);
             for(int i=chapterPage*3;i<Mathf.Min(CampaignStages.Count,(chapterPage+1)*3);i++)
             {int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(left,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),60+(i%3)*72,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked,60);}
             Button(left,"이전 장 목록",282,()=>ShowChapterPage(chapterPage-1),chapterPage>0,34);HalfButton(left,0);
             Button(left,"다음 장 목록",282,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count,34);HalfButton(left,1);
-            Label(left,CampaignStages.Title(battle.SelectedStage)+"\n목표 · "+(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):"모든 적 격파")+"\n권장 편성 · 6명\n"+(battle.TrainingMode?"훈련 모드 · 저장 보상 없음":"캠페인 · 저장된 성장 사용"),338,100,18);
+            var mission=Label(left,(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):CampaignMissions.Description(battle.SelectedStage))+"\n권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 6인 · 적 Lv"+CampaignStages.EnemyLevel(battle.SelectedStage),338,100,17);mission.enableAutoSizing=true;mission.fontSizeMin=14;mission.fontSizeMax=17;
             Button(left,"임무 · 적 정보",444,ShowMission);
             Button(left,"전투 전 이야기",494,()=>battle.ReplayStory(false));
             Button(left,"전투 후 이야기",542,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));

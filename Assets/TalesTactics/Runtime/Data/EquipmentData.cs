@@ -8,6 +8,7 @@ namespace TalesTactics
         public EquipmentSlot Slot;
         public WeaponType Weapon;
         public Stats Bonus;
+        public EquipmentEffect Effect;
         public int BuyPrice;
         public string RequiredStoryFlag;
     }

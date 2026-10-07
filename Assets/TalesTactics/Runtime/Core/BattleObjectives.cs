@@ -28,6 +28,7 @@ namespace TalesTactics
         public readonly int Required;
         public SurviveTurns(int required){if(required<1)throw new ArgumentOutOfRangeException(nameof(required));Required=required;}
         public void OnTurnEnded(UnitRuntime unit){if(unit!=null&&unit.Team==Team.Player&&unit.Alive)Completed++;}
+        public void Restore(int completed){if(completed<0||completed>=Required)throw new ArgumentOutOfRangeException(nameof(completed));Completed=completed;}
         public BattleResult Evaluate(IReadOnlyList<UnitRuntime> units)=>!units.Any(u=>u.Team==Team.Player&&u.Alive)?BattleResult.Defeat:
             Completed>=Required?BattleResult.Victory:BattleResult.Ongoing;
     }

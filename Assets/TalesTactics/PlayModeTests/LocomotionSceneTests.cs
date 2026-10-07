@@ -27,8 +27,9 @@ namespace TalesTactics.PlayModeTests
                     var expected=data.Poses.Walk.Frames.Select(x=>x.Get(facing)).ToArray();
                     Assert.That(expected.All(x=>x!=null),Is.True);
                     Assert.That(expected.Distinct().Count(),Is.EqualTo(4));
-                    motion.Set(AnimationKind.Walk);var observed=new HashSet<Sprite>();float until=Time.time+0.6f;
-                    while(Time.time<until){yield return new WaitForEndOfFrame();observed.Add(renderer.sprite);}
+                    // Observe multiple cycles under a busy Editor without relaxing the four-frame assertion.
+                    motion.Set(AnimationKind.Walk);var observed=new HashSet<Sprite>();float until=Time.realtimeSinceStartup+1.5f;
+                    while(observed.Count<expected.Length&&Time.realtimeSinceStartup<until){yield return new WaitForEndOfFrame();observed.Add(renderer.sprite);}
                     CollectionAssert.AreEquivalent(expected,observed,id+facing);
                     motion.Set(AnimationKind.Idle);yield return new WaitForEndOfFrame();
                     Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));

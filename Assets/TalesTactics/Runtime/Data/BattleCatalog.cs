@@ -10,5 +10,6 @@ namespace TalesTactics
         public BattleRules Rules;
         public AudioLibrary Audio;
         public EquipmentData[] Equipment;
+        public SkillData[] TacticalEnemySkills = new SkillData[0];
     }
 }

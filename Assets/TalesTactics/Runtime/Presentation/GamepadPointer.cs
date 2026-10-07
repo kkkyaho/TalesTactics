@@ -70,7 +70,7 @@ namespace TalesTactics
         {
             var keyboard=Keyboard.current;
             if(keyboard!=null&&keyboard.anyKey.wasPressedThisFrame)Activate(false);
-            bool menu=battle.Session==null||battle.StoryActive||battle.Hud.InputModalOpen||battle.State is BattleEndState;
+            bool menu=battle.Session==null||battle.StoryActive||battle.Hud.InputModalOpen||battle.State is BattleEndState||battle.State is ActionSelectionState||battle.State is CommandState;
             if(menu&&keyboard!=null&&keyboard.tabKey.wasPressedThisFrame)
             {
                 var events=EventSystem.current;
@@ -114,8 +114,7 @@ namespace TalesTactics
                 if(pad.rightShoulder.wasPressedThisFrame)battle.Board.RotateCamera(90);
                 if(!battle.TimingActive&&pad.rightStickButton.wasPressedThisFrame)battle.Board.ResetCamera();
                 if(Mathf.Abs(right.y)>.1f)battle.Board.ZoomCamera(Mathf.Exp(-right.y*Time.unscaledDeltaTime));
-                if(target==null&&battle.State is MoveSelectionState&&battle.Board.Pick(position,out var tile))
-                    battle.Board.ShowPath(battle.Session.Grid.Path(battle.Session.Active,tile));
+                if(target==null&&battle.Board.Pick(position,out var tile))battle.PreviewTile(tile);
             }
             if(pad.buttonSouth.wasPressedThisFrame)Submit();
             else if(pad.buttonEast.wasPressedThisFrame)Cancel();

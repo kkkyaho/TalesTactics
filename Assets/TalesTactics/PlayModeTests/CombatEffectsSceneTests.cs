@@ -43,7 +43,9 @@ namespace TalesTactics.PlayModeTests
                     CombatFeedback.Strike,target,Vector3.zero,Vector3.one,Color.cyan,true);
                 Assert.That(g.GetComponentsInChildren<LineRenderer>().Count(x=>x.positionCount>0),Is.GreaterThanOrEqualTo(3));
             }
-            yield return new WaitForSeconds(0.75f);
+            // Destroy is deferred to the frame boundary; allow the busy Editor to render it.
+            float expiryDeadline=Time.realtimeSinceStartup+1.5f;
+            while(Object.FindObjectsByType<CombatEffect>().Length>0&&Time.realtimeSinceStartup<expiryDeadline)yield return new WaitForEndOfFrame();
             Assert.That(Object.FindObjectsByType<CombatEffect>(FindObjectsSortMode.None),Is.Empty);
         }
         [UnityTest] public IEnumerator LethalAreaEffectsRetainAllRecipientsAfterResolution()

@@ -24,8 +24,8 @@ namespace TalesTactics
             missionOverlay.gameObject.SetActive(true);missionOverlay.SetAsLastSibling();SetMainInteraction(false);Clear(missionWindow);
             var s=battle.Session;bool training=s!=null?s.CampaignStage<0:battle.TrainingMode;int stage=s?.CampaignStage??(training?-1:battle.SelectedStage);
             Label(missionWindow,"임무 · "+(training?"훈련 전투":CampaignStages.Title(stage)),16,44,25);
-            string victory=s!=null?MissionBriefing.Victory(s):training?TrainingMission():"모든 적 격파";
-            string defeat=s!=null?MissionBriefing.Defeat(s):training&&battle.TrainingObjective==ObjectiveKind.Escort?"아군 전원 또는 첫 출전 아군 전투불능":"아군 전원 전투불능";
+            string victory=s!=null?MissionBriefing.Victory(s):training?TrainingMission():CampaignMissions.Description(stage);
+            string defeat=s!=null?MissionBriefing.Defeat(s):(training&&battle.TrainingObjective==ObjectiveKind.Escort||!training&&CampaignMissions.Kind(stage)==ObjectiveKind.Escort)?"아군 전원 전투불능 또는 첫 출전 아군 전투불능":"아군 전원 전투불능";
             Label(missionWindow,"승리  ·  "+victory,72,36,20);Label(missionWindow,"패배  ·  "+defeat,112,36,20);
             Label(missionWindow,s!=null?"진행  ·  "+MissionBriefing.Progress(s):"출전 전 정보 · 전투 중에도 같은 메뉴에서 확인할 수 있습니다.",152,36,18);
             Label(missionWindow,MissionBriefing.Terrain(stage),194,38,18);
@@ -35,7 +35,7 @@ namespace TalesTactics
                 var data=enemies[i];var unit=s?.Units.Where(u=>u.Team==Team.Enemy).ElementAt(i);var skill=data.BasicAttack;
                 string status=unit==null?"":unit.Alive?" · HP "+unit.CurrentHP+" / "+unit.Stats.HP:" · 격파";
                 Label(missionWindow,data.DisplayName+"  ["+(training?"훈련":EnemyRoles.Name(data))+"]"+status+"  · "+skill.DisplayName+" (기본 사거리 "+skill.MinRange+"–"+skill.Range+")",242+i*76,32,18);
-                Label(missionWindow,training?"훈련 규칙에 따라 행동합니다. 높이·시야·상태에 따라 실제 공격 가능 범위가 달라집니다.":EnemyRoles.Advice(data),274+i*76,32,16);
+                Label(missionWindow,training?"훈련 규칙에 따라 행동합니다. 높이·시야·상태에 따라 실제 공격 가능 범위가 달라집니다.":unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):EnemyRoles.Advice(data),274+i*76,32,16);
             }
             Button(missionWindow,"임무 정보 닫기",574,()=>CloseMission(),true,44);
         }

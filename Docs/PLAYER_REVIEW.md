@@ -27,6 +27,7 @@ unity command build_status --project-path C:/dev/TalesTactics --caller plugin --
 - 4~6차: 각 프로세스에서 다음 장 목록을 거쳐4~6장 선택·정상 전투·전후 이야기·보상 저장. 최종 Lv9/EXP0,1990G(가죽 갑옷 구매 차감), 수호의 메달2개/단련 갑옷1개를 확인.
 - 7차: 저장 파일 재로드와 완료 UI, 민트 1명으로 대기하여 정상 적 공격으로 패배, 저장 불변 및 재출전 HP 회복 확인.
 - 직접 HP를 줄이거나 완료 플래그·성장치를 주입하지 않는다. 기본 공격 전술은 기존 `EnemyPlanner`를 재사용하고 아군의 명령은 UI submit 이벤트 및 타일 선택 상태를 거친다.
+- 시스템·UI 확장 이후 캠페인은 장별 보스/도착/생존/호위 목표를 사용한다. 전멸 외 목표에서 검수용 아군은 목표를 고려하는 UtilityPlanner를 사용하며 선택된 고유 기술도 실제 자원을 소비해 실행한다. 적의 기본 설정은 SPD+역할 AI다. 보상/성장 기대값과 격리 저장 검사는 유지한다.
 - 검수는 4배 시간 배율에서 실행되며, 단계당 300초/플레이어 200턴 제한과 외부 프로세스 330초 제한을 둔다.
 - `CampaignFile`에 새 GUID 경로를 주고 `BattleDirector.PersistCampaign`에 연결한다. 실제 `campaign.json`과 `.bak`는 실행 전후 SHA256으로 불변을 확인한다.
 - 검수 슬롯은 `persistentDataPath/Reviews/<GUID>/campaign.json`에 보존한다. 결과 JSON은 `Docs/PlayerReviews`에 복사한다.

@@ -85,7 +85,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();ClearTiming();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
+        public void ResetBoard(){StopAllCoroutines();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
@@ -185,7 +185,7 @@ namespace TalesTactics
             border.startWidth=border.endWidth=width;border.startColor=border.endColor=color;
             SetColor(border,color);border.enabled=true;
         }
-        public void ShowPath(List<Vector2Int> path){if(battle.TutorialActive&&path.Count>0&&path[path.Count-1]!=BattleDirector.TutorialDestination)path=new List<Vector2Int>();Marker(ref destinationMarker,"Movement destination",path.Count>1?path[path.Count-1]:(Vector2Int?)null,Color.cyan,.42f);line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
+        public void ShowPath(List<Vector2Int> path){if(battle.TutorialActive&&path.Count>0&&path[path.Count-1]!=BattleDirector.TutorialDestination)path=new List<Vector2Int>();Marker(ref destinationMarker,"Movement destination",path.Count>1?path[path.Count-1]:(Vector2Int?)null,path.Count>1&&battle.DangerAt(path[path.Count-1])>0?new Color(1,.3f,.1f):Color.cyan,.42f);line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
         static void SetColor(Renderer r,Color c){var properties=new MaterialPropertyBlock();properties.SetColor("_BaseColor",c);properties.SetColor("_Color",c);r.SetPropertyBlock(properties);}
         static Sprite CreatePlaceholder()
         {

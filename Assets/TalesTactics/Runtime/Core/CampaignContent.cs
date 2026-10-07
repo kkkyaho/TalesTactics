@@ -15,8 +15,8 @@ namespace TalesTactics
         public static string Location(int stage) => stage >= 3 ? ExpansionLocation(stage) : stage == 0 ? "유적 외곽 · 갈라진 물길" : stage == 1 ? "심층 제단 · 수호자의 계단" : "바람 협곡 · 끊어진 연락로";
         public static string Briefing(int stage) => stage >= 3 ? ExpansionBriefing(stage) : stage == 0
             ? "물길의 돌다리와 북쪽 우회로로 진입하세요.\n목표: 모든 적 격파. 보상: 120G / 생명의 부적."
-            : stage == 1 ? "계단을 따라 중앙 고지로 진입하세요.\n목표: 모든 적 격파. 보상: 180G / 철검."
-            : "두 돌다리로 물길을 건너 동쪽 능선을 확보하세요.\n목표: 모든 적 격파. 적 Lv4 / 최초 240G·EXP300 / 강화 갑옷.";
+            : stage == 1 ? "계단을 따라 중앙 고지로 진입하세요.\n목표: 첫 수호자 격파. 보상: 180G / 철검."
+            : "두 돌다리로 물길을 건너 동쪽 능선을 확보하세요.\n목표: 봉화 (11,8)에 아군 도착. 적 Lv4 / 최초 240G·EXP300 / 강화 갑옷.";
 
         public static GridMap Map(int stage)
         {

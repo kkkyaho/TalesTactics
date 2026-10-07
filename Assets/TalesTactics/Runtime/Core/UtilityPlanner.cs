@@ -6,14 +6,14 @@ namespace TalesTactics
     // Deterministic one-action lookahead. Uses the resolver for gates, geometry and damage.
     public sealed class UtilityPlanner
     {
-        public EnemyPlan Plan(BattleSession battle,UnitRuntime unit)
+        public EnemyPlan Plan(BattleSession battle,UnitRuntime unit,bool roleSkillsOnly=false)
         {
             var result=new EnemyPlan{Destination=unit.Position,Guard=!unit.Acted};
             if(!unit.Alive||unit.Has(StatusKind.Stun)||unit.Has(StatusKind.Sleep))return result;
             var origin=unit.Position;var facing=unit.Facing;
             var destinations=unit.Moved?new[]{origin}:battle.Grid.Reachable(unit,out _).Keys.OrderBy(p=>p.x).ThenBy(p=>p.y).ToArray();
             var opponents=battle.Units.Where(u=>u.Team!=unit.Team&&u.Alive).ToArray();
-            var skills=new[]{unit.Data.BasicAttack}.Concat(unit.Data.Skills).Concat(unit.TacticalSkills).Concat(new[]{unit.Data.UltimateSkill})
+            var skills=new[]{unit.Data.BasicAttack}.Concat(roleSkillsOnly?new SkillData[0]:unit.Data.Skills).Concat(unit.TacticalSkills).Concat(roleSkillsOnly?new SkillData[0]:new[]{unit.Data.UltimateSkill})
                 .Where(s=>s!=null&&battle.Resolver.CanUse(unit,s)==null).Distinct().ToArray();
             float best=float.NegativeInfinity;
             try
@@ -38,7 +38,7 @@ namespace TalesTactics
                         foreach(var effect in skill.Effects)
                         foreach(var target in effect.AffectCaster?new[]{unit}:targets)
                             value+=Value(battle,unit,target,skill,effect);
-                        value-=skill.MPCost*0.4f+battle.Resolver.HPCost(unit,skill)*0.7f+skill.GaugeCost*0.1f;
+                        value-=battle.Resolver.MPCost(unit,skill)*0.4f+battle.Resolver.HPCost(unit,skill)*0.7f+skill.GaugeCost*0.1f;
                         if(value<=0)continue;
                         float score=movement+value+targets.Max(t=>EnemyRoles.TargetScore(battle,unit,t));
                         if(score>best){best=score;result=new EnemyPlan{Destination=position,Target=targets[0],Skill=skill,Aim=aim};}
@@ -59,7 +59,7 @@ namespace TalesTactics
                 if(ally)value=-value*2;
             }
             else if(effect.Kind==EffectKind.Heal&&target.Alive&&ally)
-                value=Math.Min(target.Stats.HP-target.CurrentHP,Math.Max(0,Mathf.RoundToInt(actor.Stats.MAG*effect.Power+effect.Flat)))*1.5f;
+                value=Math.Min(target.Stats.HP-target.CurrentHP,battle.Resolver.Healing(actor,effect))*1.5f;
             else if(effect.Kind==EffectKind.Revive&&!target.Alive&&ally&&battle.Grid[target.Position].Occupant==null)value=target.Stats.HP*effect.Power+65;
             else if(effect.Kind==EffectKind.Cleanse&&ally)value=target.Statuses.Count(s=>s.Kind==StatusKind.Stun||s.Kind==StatusKind.Sleep||s.Kind==StatusKind.Root||s.Kind==StatusKind.Cage)*25;
             else if(effect.Kind==EffectKind.AutoRevive&&ally&&target.Alive&&!target.Has(StatusKind.AutoRevive))value=25;

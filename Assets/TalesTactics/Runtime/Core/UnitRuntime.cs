@@ -18,12 +18,20 @@ namespace TalesTactics
         public readonly Dictionary<string,int> Cooldowns=new Dictionary<string,int>();
         public readonly EquipmentData[] Equipment=new EquipmentData[3];
         public SkillData[] TacticalSkills=new SkillData[0];
+        public TacticalTrait Trait;
+        public int CampaignMastery;
+        public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed;
+        public bool TacticalEnemy;
+        public int TurnsStarted,IntentTurn,IntentPhase;
+        public string IntentSkill;
+        public Vector2Int IntentAim;
         public bool Alive=>CurrentHP>0;
         public Stats Stats
         {
             get
             {
                 var s=Data.StatsAt(Level,Promoted); foreach(var e in Equipment)if(e!=null)s+=e.Bonus;
+                s=TacticalDevelopment.ApplyStats(s,Trait);
                 if(Has(StatusKind.ConsumeClaw)){s.STR=Mathf.RoundToInt(s.STR*Rules.ClawStrength);s.SPD=Mathf.RoundToInt(s.SPD*Rules.ClawSpeed);}
                 if(Has(StatusKind.Song)){s.STR=Mathf.RoundToInt(s.STR*Rules.SongMultiplier);s.MAG=Mathf.RoundToInt(s.MAG*Rules.SongMultiplier);}
                 if(Has(StatusKind.Cage)){s.SPD=Mathf.Max(1,Mathf.RoundToInt(s.SPD*Rules.CageSpeedMultiplier));s.MDF=Mathf.RoundToInt(s.MDF*Rules.CageMagicDefenseMultiplier);}
@@ -35,10 +43,14 @@ namespace TalesTactics
         public bool Has(StatusKind kind)=>Statuses.Exists(s=>s.Kind==kind&&s.Turns>0);
         public void AddStatus(StatusKind kind,int turns)
         {var s=Statuses.Find(x=>x.Kind==kind);if(s==null)Statuses.Add(new RuntimeStatus{Kind=kind,Turns=turns});else{s.Turns=Mathf.Max(s.Turns,turns);s.Fresh=false;}}
-        public bool Unlocked(SkillData s)=>s!=null&&Level>=s.UnlockLevel;
+        public bool Unlocked(SkillData s)=>s!=null&&(Level>=s.UnlockLevel||s.IsUltimate&&UltimateTrial&&!UltimateTrialUsed||!s.IsUltimate&&CampaignMastery>0&&s.UnlockLevel<=(CampaignMastery==1?7:CampaignMastery==2?13:19));
         public void BeginTurn()
         {
             Moved=Acted=CanUndoMove=FlamingChain=false;
+            ProtectionUsed=false;
+            TurnsStarted++;
+            if(IntentPhase==1&&(Has(StatusKind.Stun)||Has(StatusKind.Sleep))){IntentPhase=0;IntentSkill=null;}
+            if(IntentPhase==2&&TurnsStarted>=IntentTurn+3){IntentPhase=0;IntentSkill=null;}
             Statuses.RemoveAll(s=>s.Kind==StatusKind.Guard);
             foreach(var key in new List<string>(Cooldowns.Keys))if(--Cooldowns[key]<=0)Cooldowns.Remove(key);
         }

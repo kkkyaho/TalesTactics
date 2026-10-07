@@ -28,6 +28,8 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Board.BattleCamera.pixelRect.Contains(new Vector2(screen.x,screen.y)),Is.True);
             }
             foreach(var enemy in director.Session.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,director.Session.Grid);
+            Assert.That(director.Session.Result,Is.EqualTo(BattleResult.Ongoing),"Beacon mission requires arrival even after eliminating enemies");
+            director.Session.Grid.Place(director.Session.Units[0],director.Session.Destination);
             director.SetState(new TurnStartState(director));yield return null;
             Assert.That(writes,Is.EqualTo(1));Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter3"));
             Assert.That(party.All(c=>director.Campaign.Get(c.Id).Level==4),Is.True);

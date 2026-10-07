@@ -25,11 +25,11 @@ namespace TalesTactics
         {
             switch(Role(data))
             {
-                case EnemyRole.Assault:return "부상당한 아군을 노립니다. 후방을 지키고 먼저 회복하세요.";
+                case EnemyRole.Assault:return "돌진 준비 위치에서 예고한 칸을 공격합니다. 표식 밖으로 피한 뒤 빈틈을 공략하세요.";
                 case EnemyRole.Ranged:return "거리를 벌려 사격합니다. 엄폐를 이용하고 근접 압박하세요.";
-                case EnemyRole.Caster:return "거리를 유지하며 마법 공격. 마법 방어를 높이고 근접 압박하세요.";
-                case EnemyRole.Boss:return "직선·범위 기술을 사용합니다. 일렬 밀집을 피하세요. 부하도 격파해야 합니다.";
-                default:return "가까운 아군을 압박합니다. 전방에서 받아내고 측후면을 공략하세요.";
+                case EnemyRole.Caster:return "부상당한 동료를 회복하고 범위 마법을 예고합니다. 시전 전에 흩어지거나 행동 불가로 저지하세요.";
+                case EnemyRole.Boss:return "예고 → 확정 위치 공격 → 휴식. 예고 범위 밖으로 이동하고 받는 피해가 25% 늘어난 빈틈에 집중하세요.";
+                default:return "격턴으로 동료 옆에서 방어합니다. 인접 동료 피해를 1회 30% 줄이므로 먼저 보호를 소모시키세요.";
             }
         }
         // Role preferences apply only to campaign enemies; training and player lookahead retain their rules.

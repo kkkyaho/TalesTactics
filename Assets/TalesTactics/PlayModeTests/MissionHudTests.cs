@@ -16,7 +16,7 @@ namespace TalesTactics.PlayModeTests
                 director.SelectedStage=stage;director.Hud.ShowMission();yield return null;var window=director.Hud.transform.Find("MissionOverlay/MissionWindow");
                 foreach(var label in window.GetComponentsInChildren<TMPro.TMP_Text>()){label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.text);}
                 string text=string.Join("\n",window.GetComponentsInChildren<TMPro.TMP_Text>().Select(t=>t.text));
-                Assert.That(text,Does.Contain("승리  ·  모든 적 격파"));Assert.That(text,Does.Contain("패배  ·  아군 전원 전투불능"));
+                Assert.That(text,Does.Contain("승리  ·  "+CampaignMissions.Description(stage)));Assert.That(text,Does.Contain("패배  ·  아군 전원 전투불능"));
                 foreach(var i in Enumerable.Range(0,4))Assert.That(text,Does.Contain(CampaignEnemies.Resolve(director.Catalog,stage,i).DisplayName));
                 Assert.That(director.Hud.transform.Find("Commands").GetComponentsInChildren<UnityEngine.UI.Button>().All(b=>!b.IsInteractable()),Is.True);
                 director.Hud.CloseMission();Assert.That(director.Session,Is.Null);

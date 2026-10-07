@@ -16,7 +16,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){if(left!=null)UpdateLayout();}
+        void LateUpdate(){if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -101,7 +101,7 @@ namespace TalesTactics
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
-            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;t.textWrappingMode=TextWrappingModes.Normal;return t;
+            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
         }
         void Button(Transform parent,string value,float y,Action click,bool enabled=true,float height=38)
         {
@@ -156,6 +156,7 @@ namespace TalesTactics
                 ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
             },reason==null);
             Button(commands,"캐릭터 목록으로",428,ShowGrowthRoster);
+            DrawDevelopment(character);
             Label(footer,notice??"저장된 성장과 장비 기준의 능력치입니다. 훈련 레벨은 적용하지 않습니다.\n캠페인 1장 → 2장 승리로 스토리 조건을 충족합니다.",14,88,17);
         }        public void Refresh()
         {
@@ -164,6 +165,7 @@ namespace TalesTactics
             UpdateLayout();
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
             DrawTacticalHeader();
+            DrawTacticalTools();
             message=Label(footer,battle.TutorialActive&&!(battle.State is TargetSelectionState&&battle.Target.HasValue)?battle.TutorialInstruction:battle.Message,10,78,17);
             message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
@@ -181,18 +183,13 @@ namespace TalesTactics
             else if(SkillPanel)DrawSkillCards(u);
             else if(battle.State is TargetSelectionState)
             {
-                var skillName=Label(commands,battle.SelectedSkill.DisplayName+" · MP "+battle.SelectedSkill.MPCost,6,28,15);skillName.enableAutoSizing=true;skillName.fontSizeMin=11;skillName.fontSizeMax=15;
-                var lines=battle.Message.Split('\n');
-                string preview=battle.Target.HasValue?string.Join("\n",lines.Take(2))+(lines.Length>2?$"\n외 {lines.Length-2}명":""):"대상 클릭으로 사용 · Tab 전환";
-                float previewHeight=battle.Target.HasValue&&lines.Length>1?64:40;targetContextHeight=36+previewHeight+32;
-                var detail=Label(commands,preview,36,previewHeight,14);detail.enableAutoSizing=true;detail.fontSizeMin=10;detail.fontSizeMax=14;
-                Label(commands,"클릭 사용 · Tab 전환 · Enter 사용",36+previewHeight,26,12);
+                DrawTargetForecast();
             }
             else if(battle.State is FacingSelectionState)DrawFacingArrows();
-            else if(battle.State is MoveSelectionState){Label(commands,"이동할 칸 선택",8,26,16);Button(commands,"취소",42,()=>battle.State.Cancel(),true,26);}
+            else if(battle.State is MoveSelectionState){Label(commands,"이동할 칸 선택",8,26,16);moveRisk=Label(commands,"방향키 또는 마우스로 위치 선택",38,44,13);Button(commands,"취소",86,()=>battle.State.Cancel(),true,26);}
             else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,"타이밍 입력 (Space)",280,battle.TimingInput);}
         }
         public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":"Space / 버튼 입력")}";}
-        public void Inspect(Vector2Int p){var t=battle.Session.Grid[p];var u=battle.Session.Units.FirstOrDefault(x=>x.Position==p&&x.Alive);battle.Message=$"Tile {p} / 높이 {t.Height} / {t.Terrain} / 이동비용 {t.MovementCost}"+(u!=null?$"\n{u.Data.DisplayName} HP {u.CurrentHP}/{u.Stats.HP}":"");Refresh();}
+        public void Inspect(Vector2Int p){var t=battle.Session.Grid[p];var u=battle.Session.Units.FirstOrDefault(x=>x.Position==p&&x.Alive);battle.InspectUnit(u);battle.Message=$"Tile {p} / 높이 {t.Height} / {t.Terrain} / 이동비용 {t.MovementCost}"+(u!=null?$"\n{u.Data.DisplayName} HP {u.CurrentHP}/{u.Stats.HP} · "+StatusText.Describe(u)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):""):"");Refresh();}
     }
 }

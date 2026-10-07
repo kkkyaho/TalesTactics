@@ -30,7 +30,7 @@ namespace TalesTactics
                 Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-192,150));
             }
             else if(battle.State is MoveSelectionState)
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-192,12),new Vector2(-12,90));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-290,12),new Vector2(-12,134));
             else
                 Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
             bool facing=battle.State is FacingSelectionState;
@@ -147,7 +147,7 @@ namespace TalesTactics
             Clear(unitDetails);unitDetails.gameObject.SetActive(true);unitDetails.SetAsLastSibling();SetMainInteraction(false);
             Label(unitDetails,u.Data.DisplayName+" · Lv"+u.Level,16,36,24);
             Label(unitDetails,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" · "+(u.Team==Team.Player?"아군":"적군"),58,32,18);
-            Label(unitDetails,$"HP {u.CurrentHP} / {u.Stats.HP}    MP {u.CurrentMP} / {u.Stats.MP}\n\nSTR {u.Stats.STR}    MAG {u.Stats.MAG}\nDEF {u.Stats.DEF}    MDF {u.Stats.MDF}\nSPD {u.Stats.SPD}    MOV {u.Stats.MOV}    JMP {u.Stats.JMP}\n\n상태: "+(u.Statuses.Count==0?"정상":string.Join(" / ",u.Statuses.Select(s=>s.Kind+" "+s.Turns))),108,265,20);
+            var info=Label(unitDetails,$"HP {u.CurrentHP} / {u.Stats.HP}    MP {u.CurrentMP} / {u.Stats.MP}\nSTR {u.Stats.STR}    MAG {u.Stats.MAG}\nDEF {u.Stats.DEF}    MDF {u.Stats.MDF}\nSPD {u.Stats.SPD}    MOV {u.Stats.MOV}    JMP {u.Stats.JMP}\n방향: {u.Facing}\n상태: "+StatusText.Describe(u)+"\n특성: "+TacticalDevelopment.TraitName(u.Trait)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):"\n"+TacticalDevelopment.TraitDescription(u.Trait)),108,290,19);info.enableAutoSizing=true;info.fontSizeMin=15;info.fontSizeMax=19;
             Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
         }
         public bool CloseUnitDetails()

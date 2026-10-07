@@ -26,11 +26,19 @@ namespace TalesTactics
             Button(systemWindow,"저장 / 이어하기",62,()=>ShowSystemMenu(0));SystemTab(0);
             Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
             Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
-            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else DrawFlowPreferences();
+            Button(systemWindow,"글자 / 조작",62,()=>{settingsDraft=null;ShowSystemMenu(3);});SystemTab(3);
+            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else DrawAccessibility();
             Button(systemWindow,"메뉴 닫기",592,()=>CloseSystemMenu(),true,40);
         }
         void SystemTab(int index)
-        {var r=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);r.anchorMin=new Vector2(index/3f,1);r.anchorMax=new Vector2((index+1)/3f,1);}
+        {var r=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);r.anchorMin=new Vector2(index/4f,1);r.anchorMax=new Vector2((index+1)/4f,1);}
+        void DrawAccessibility()
+        {
+            if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
+            Button(systemWindow,"글자 최대 크기: "+Mathf.RoundToInt(d.TextScale*100)+"%",126,()=>{d.TextScale=d.TextScale<1.1f?1.15f:d.TextScale<1.2f?1.3f:1;ShowSystemMenu(3);},true,48);
+            Label(systemWindow,"문장은 공간에 맞춰 기본 크기까지 조절합니다.\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc: 취소 / Z: 이동 취소\nV: 위험 표시 / Q·E: 카메라 회전\n◇ 가능 공격 / × 확정 예고 / 삼각형: 방향\nSPD + 역할 AI 기본 / CT·Utility 선택 가능",196,310,20);
+            Button(systemWindow,"글자 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(3);},true,44);
+        }
         void DrawFlowPreferences()
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;

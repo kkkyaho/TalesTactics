@@ -223,3 +223,13 @@ BattleDirector.HandleBattleClick은 마우스와 GamepadPointer.Submit의 전장
 ## 대상 클릭 즉시 발동
 
 HandleBattleClick은 유효한 대상에 SelectTarget 후 Confirm을 즉시 호출한다. Update는 마우스 이동 시 유효 대상의 미리보기만 갱신한다. Tab/Shift+Tab은 기존 CycleTarget을 유지하며 Enter/숫자패드 Enter로 확정한다. 행동 상태가 즉시 ActionExecutionState로 바뀌므로 반복 클릭/확인은 중복 사용하지 않는다. 대상 컨텍스트는 실행 버튼 대신 짧은 조작 안내와 미리보기만 표시한다.
+
+## 시스템·전술 UI 확장
+
+BattleProjection은 GridMap·유닛·상태·쿨다운·전술 필드의 독립 복제본이다. BattleForecast는 복제본의 실제 SkillResolver를 forecast 모드로 실행해 자원/HP/상태/이동/보호 사용 변화를 비교한다. 확률 효과는 실행하거나 난수를 소비하지 않고 별도 확률 설명으로 보여 준다. ThreatMap도 복제본에서 다음 턴 이동·유효 적대 기술 범위를 계산하며 확정 AI 선택과 구분한다. 준비된 공격은 고정 IntentAim만 표시한다.
+
+EnemyTactics.Plan은 순수 조회이고 Commit이 예고 상태를 변경한다. Prepare → 고정 위치 발동 → 휴식은 TurnsStarted/IntentTurn/IntentPhase로 구분하며 BeginTurn에서 기절·수면 취소와 휴식 해제를 처리한다. 캠페인의 역할 기술 4개는 선택적 Catalog 필드라 기존 테스트·훈련 카탈로그에도 호환된다. Utility 옵션은 역할 기술 외의 고유 기술까지 고려한다.
+
+CampaignMissions가 장별 목표를 정하고 TacticalDevelopment가 특성·합류 훈련·기술 숙련·궁극기 체험을 관리한다. 특성의 능력치 계산은 UnitRuntime과 EquipmentLoadout이 공유하며 비용·회복·보호는 SkillResolver에 모은다. 저장 실패 시 변경을 되돌린다. BattleCheckpoint V2는 전술 필드·생존 경과·기존 임무 여부를 보존하고 V1 중단 기록은 기존 전멸 목표로 복원한다.
+
+BattleTacticalControls/Hud와 BoardThreatView는 기존 작은 컨텍스트 창, 직접 클릭 발동, 공통 모달 입력 차단을 확장한다. 위험·예고·선택/행동자 표시는 별도 도형으로 구분하고, 전체 예측은 페이지 모달이다. AccessibleText는 작성된 최소 크기를 유지하며 PlayerPreferences.TextScale에 따라 최대 크기를 늘리고 제한 공간에서 자동 축소한다. 신규 에셋은 TacticalContent.Add가 없는 항목만 추가하며 DemoContent.Create를 재실행하지 않는다.

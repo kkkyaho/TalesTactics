@@ -19,6 +19,7 @@ namespace TalesTactics
         }
         void UpdateSelectionMarkers()
         {
+            TacticalMarkers();
             var u=battle.Session.Active;
             Marker(ref activeMarker,"Active unit",u!=null&&u.Alive?u.Position:(Vector2Int?)null,Color.white,.48f);
             Marker(ref targetMarker,"Selected target",battle.Target,new Color(1,.82f,.12f),.37f);
@@ -31,6 +32,8 @@ namespace TalesTactics
                 marker.sharedMaterial=HighlightMaterial;marker.loop=true;marker.positionCount=4;marker.startWidth=marker.endWidth=.07f;marker.startColor=marker.endColor=color;SetColor(marker,color);
             }
             marker.enabled=position.HasValue;if(!position.HasValue)return;
+            marker.positionCount=4;
+            marker.startColor=marker.endColor=color;SetColor(marker,color);
             var p=battle.Session.Grid[position.Value].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.08f;
             marker.SetPositions(new[]{p+new Vector3(-radius,0,-radius),p+new Vector3(radius,0,-radius),p+new Vector3(radius,0,radius),p+new Vector3(-radius,0,radius)});
         }

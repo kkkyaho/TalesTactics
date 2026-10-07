@@ -10,7 +10,7 @@ namespace TalesTactics
         {
             var chapter=CampaignStages.Get(stage);
             string route=stage==3?"기둥 사이 회랑을 지나 북쪽 관측단으로 올라가세요.":stage==4?"남북의 교량으로 두 수로를 건너세요. 물길에서는 이동 비용이 늘어납니다.":"양쪽 통로로 중앙 단상에 접근하세요. 기둥 뒤에서는 사격 시야를 확인하세요.";
-            return route+"\n목표: 모든 적 격파. 적 Lv"+chapter.EnemyLevel+" / 최초 "+chapter.FirstGold+"G·EXP"+chapter.FirstEXP+" / "+chapter.EquipmentName+".";
+            return route+"\n목표: "+CampaignMissions.Description(stage)+". 적 Lv"+chapter.EnemyLevel+" / 최초 "+chapter.FirstGold+"G·EXP"+chapter.FirstEXP+" / "+chapter.EquipmentName+".";
         }
         static GridMap ExpansionMap(int stage)
         {

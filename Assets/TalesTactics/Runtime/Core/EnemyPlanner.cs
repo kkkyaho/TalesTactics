@@ -2,12 +2,13 @@ using System.Linq;
 using UnityEngine;
 namespace TalesTactics
 {
-    public sealed class EnemyPlan { public Vector2Int Destination; public UnitRuntime Target; public SkillData Skill; public Vector2Int? Aim; public bool Guard; }
+    public sealed class EnemyPlan { public Vector2Int Destination; public UnitRuntime Target; public SkillData Skill; public Vector2Int? Aim; public bool Guard; public SkillData PrepareSkill;public Vector2Int PrepareAim; }
     public sealed class EnemyPlanner
     {
         public EnemyPlan Plan(BattleSession battle,UnitRuntime u)
         {
-            if(battle.UseUtilityAI||u.Data.Id=="dhaos")return new UtilityPlanner().Plan(battle,u);
+            if(u.TacticalEnemy)return EnemyTactics.Plan(battle,u);
+            if(battle.UseUtilityAI||u.Data.Id=="dhaos"||u.Team==Team.Player&&battle.Objective!=ObjectiveKind.Eliminate)return new UtilityPlanner().Plan(battle,u);
             var enemies=battle.Units.Where(t=>t.Team!=u.Team&&t.Alive).ToArray();
             var plan=new EnemyPlan{Destination=u.Position};if(enemies.Length==0)return plan;
             float best=float.NegativeInfinity;var origin=u.Position;

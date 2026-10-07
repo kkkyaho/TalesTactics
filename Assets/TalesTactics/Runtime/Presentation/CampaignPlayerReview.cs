@@ -324,7 +324,7 @@ namespace TalesTactics
                 }
                 if (attack && plan.Target != null)
                 {
-                    if(report.tactical)battle.SelectSkill(plan.Skill);else Click("Attack / 공격");
+                    if(plan.Skill!=unit.Data.BasicAttack)battle.SelectSkill(plan.Skill);else Click("Attack / 공격");
                     battle.State.Tile(plan.Aim??plan.Target.Position);
                     Check(battle.Target.HasValue, "Attack preview selected a valid target");
                     battle.Confirm();

@@ -22,6 +22,7 @@ namespace TalesTactics
         }
         void RestorePreparation()
         {
+            Deployment.Clear();Deployment.AddRange(TacticalDevelopment.Recommended(Catalog));
             SelectedStage=Mathf.Clamp(Campaign.SelectedStage,0,CampaignStages.Count-1);
             if(!CampaignStages.Unlocked(Campaign,SelectedStage))SelectedStage=0;
             if(Campaign.Deployment!=null&&Campaign.Deployment.Length>0&&Campaign.Deployment.Length<=Catalog.Rules.MaxDeployment&&Campaign.Deployment.Distinct().Count()==Campaign.Deployment.Length&&Campaign.Deployment.All(i=>i>=0&&i<Catalog.Characters.Length)){Deployment.Clear();Deployment.AddRange(Campaign.Deployment);}
@@ -46,7 +47,7 @@ namespace TalesTactics
             if(Session!=null||StoryActive)return false;
             var draft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(Preferences));draft.Slot=slot;
             if(!SavePreferences(draft,false))return false;
-            Campaign=Profiles.Load(slot);Campaign.AutoTiming=Preferences.AutoTiming;SaveNotice=Profiles.Store.Notice;Deployment.Clear();Deployment.AddRange(new[]{0,1,3});RestorePreparation();Hud.ShowDeployment();return true;
+            Campaign=Profiles.Load(slot);Campaign.AutoTiming=Preferences.AutoTiming;SaveNotice=Profiles.Store.Notice;RestorePreparation();Hud.ShowDeployment();return true;
         }
         public bool SuspendBattle()
         {

@@ -16,7 +16,7 @@ namespace TalesTactics
             if(s==null)return "No skill";
             if(!u.Alive||(!followup&&u.Acted))return "Action already used";
             if(!u.Unlocked(s))return "Level requirement";
-            if(u.CurrentMP<s.MPCost)return "Not enough MP";
+            if(u.CurrentMP<MPCost(u,s))return "Not enough MP";
             if(u.CurrentHP<=HPCost(u,s))return "Not enough HP";
             if(u.SpecialGauge<s.GaugeCost)return "Not enough gauge";
             if(u.Cooldowns.ContainsKey(s.Id))return "Cooldown";
@@ -28,6 +28,9 @@ namespace TalesTactics
             return null;
         }
         public int HPCost(UnitRuntime u,SkillData s)=>s.HPCost+Mathf.CeilToInt(u.Stats.HP*s.HPPercentCost);
+        public int MPCost(UnitRuntime u,SkillData s)=>Mathf.Max(0,Mathf.CeilToInt(s.MPCost*(u.Trait==TacticalTrait.Focus?.8f:1f)*(u.Equipment.Any(e=>e!=null&&e.Effect==EquipmentEffect.EfficientCasting)?.85f:1f)));
+        public int Healing(UnitRuntime u,SkillEffect e)=>Mathf.Max(0,Mathf.RoundToInt((u.Stats.MAG*e.Power+e.Flat)*(u.Trait==TacticalTrait.Healer?1.25f:1f)*(u.Equipment.Any(item=>item!=null&&item.Effect==EquipmentEffect.Restorative)?1.2f:1f)));
+        public UnitRuntime Protector(UnitRuntime target)=>units.FirstOrDefault(u=>u!=target&&u.Team==target.Team&&u.Alive&&!u.ProtectionUsed&&u.Has(StatusKind.Guard)&&!u.Has(StatusKind.Stun)&&!u.Has(StatusKind.Sleep)&&u.Trait==TacticalTrait.Protector&&GridMap.Distance(u.Position,target.Position)==1);
         public bool ValidTarget(UnitRuntime u,SkillData s,UnitRuntime t)
         {
             if(t==null)return false;
@@ -68,6 +71,8 @@ namespace TalesTactics
                 }
                 value*=affinity;
             }
+            if(Protector(t)!=null)value*=.7f;
+            if(t.IntentPhase==2)value*=1.25f;
             return Mathf.Max(1,Mathf.RoundToInt(value));
         }
         public string Preview(UnitRuntime u,SkillData s,UnitRuntime t)
@@ -77,7 +82,7 @@ namespace TalesTactics
             {
                 var recipient=e.AffectCaster?u:t;
                 string effect=e.Kind==EffectKind.Damage?"피해 "+DamagePreview(u,recipient,e,s):
-                    e.Kind==EffectKind.Heal?"회복량 "+Mathf.RoundToInt(u.Stats.MAG*e.Power+e.Flat):EffectDescription(e);
+                    e.Kind==EffectKind.Heal?"실제 회복 "+Mathf.Min(recipient.Stats.HP-recipient.CurrentHP,Healing(u,e)):EffectDescription(e);
                 if(e.Kind==EffectKind.Damage||e.Kind==EffectKind.Heal)effect+=$" ({Mathf.RoundToInt(e.Chance*100)}%)";
                 if(e.Kind==EffectKind.Damage)effect+=" · "+ElementalRules.Name(s.Element)+" ×"+ElementalRules.Multiplier(recipient.Data,s.Element).ToString("0.##");
                 messages.Add((e.AffectCaster?"시전자: ":"")+effect);
@@ -88,7 +93,7 @@ namespace TalesTactics
         {
             string target=s.Target==TargetType.Self?"자신":s.Target==TargetType.Ally?"아군":s.Target==TargetType.FallenAlly?"전투불능 아군":"적";
             string areaText=s.Shape==SkillAreaShape.Diamond?"범위 반경 "+s.Area:"방향 선택 · 사거리 끝까지";
-            string details=$"{s.DisplayName}\nMP {s.MPCost} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · {areaText}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
+            string details=$"{s.DisplayName}\nMP {MPCost(u,s)} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · {areaText}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
             details+="\n형태 "+(s.Shape==SkillAreaShape.Line?"직선 관통":s.Shape==SkillAreaShape.Cone?"부채꼴":"마름모")+" · 높이 차 "+(s.MaxHeightDifference<0?"무제한":s.MaxHeightDifference.ToString())+(s.RequiresLineOfSight?" · 시야 필요":" · 시야 무시");
             details+="\n속성 "+ElementalRules.Name(s.Element)+(s.UsesHeightDamage?" · 물리 고저차 보정":"")+(s.HeightRangeLimit>0?" · 높이 사거리 ±"+s.HeightRangeLimit:"");
             if(s.Cooldown>0)details+=$"\n재사용 대기 {s.Cooldown}턴";
@@ -135,13 +140,15 @@ namespace TalesTactics
                 default:return reason;
             }
         }
-        public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false)
+        public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false,bool forecast=false)
         {
             message=CanUse(u,s,followup);if(message!=null)return false;
             var targets=Targets(u,s,p).ToArray();
-            if(!InRange(u,s,p)||targets.Length==0){message="Invalid target";return false;}
+            bool committed=u.TacticalEnemy&&u.IntentPhase==2&&u.IntentSkill==s.Id&&u.IntentAim==p;
+            if(!InRange(u,s,p)||targets.Length==0&&!committed){message="Invalid target";return false;}
             if(s.Target==TargetType.FallenAlly&&targets.All(t=>grid[t.Position].Occupant!=null)){message="Revival tile is occupied";return false;}
-            u.CurrentMP-=s.MPCost;u.CurrentHP-=HPCost(u,s);u.SpecialGauge-=s.GaugeCost;
+            u.CurrentMP-=MPCost(u,s);u.CurrentHP-=HPCost(u,s);u.SpecialGauge-=s.GaugeCost;
+            if(s.IsUltimate&&u.UltimateTrial&&u.Level<s.UnlockLevel)u.UltimateTrialUsed=true;
             if(s.Cooldown>0)u.Cooldowns[s.Id]=s.Cooldown+1;
             u.Acted=true;u.CanUndoMove=false;
             bool attack=s.Effects.Any(e=>e.Kind==EffectKind.Damage);
@@ -150,14 +157,15 @@ namespace TalesTactics
                 var recipients=e.AffectCaster?new[]{u}:targets;
                 foreach(var t in recipients)
                 {
-                    if(random.NextDouble()>e.Chance)continue;
+                    if(forecast?e.Chance<1:random.NextDouble()>e.Chance)continue;
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
                         int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
+                        var protector=Protector(t);if(damage>0&&protector!=null)protector.ProtectionUsed=true;
                         if(t.Has(StatusKind.Guard)&&DirectionMultiplier(u,t)!=rules.RearMultiplier)t.GuardIgnition=true;
                         t.Damage(damage,grid);u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*e.Drain));
                     }
-                    else if(e.Kind==EffectKind.Heal&&t.Alive)t.CurrentHP=Mathf.Min(t.Stats.HP,t.CurrentHP+Mathf.RoundToInt(u.Stats.MAG*e.Power+e.Flat));
+                    else if(e.Kind==EffectKind.Heal&&t.Alive)t.CurrentHP=Mathf.Min(t.Stats.HP,t.CurrentHP+Healing(u,e));
                     else if(e.Kind==EffectKind.Revive&&!t.Alive&&grid[t.Position].Occupant==null){t.CurrentHP=Mathf.Max(1,Mathf.RoundToInt(t.Stats.HP*e.Power));grid.Place(t,t.Position);}
                     else if(e.Kind==EffectKind.Cleanse)t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Stun||x.Kind==StatusKind.Sleep||x.Kind==StatusKind.Root||x.Kind==StatusKind.Cage);
                     else if(e.Kind==EffectKind.ConsumeClaw){t.AddStatus(StatusKind.ConsumeClaw,rules.ClawDuration);t.Statuses.Find(x=>x.Kind==StatusKind.ConsumeClaw).Fresh=true;t.ClawAttacks=0;}

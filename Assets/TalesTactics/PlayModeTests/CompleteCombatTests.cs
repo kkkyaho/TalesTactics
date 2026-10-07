@@ -65,9 +65,11 @@ namespace TalesTactics.PlayModeTests
                 var ai=new EnemyPlanner();int turns=0;
                 while(session.Result==BattleResult.Ongoing&&turns++<400)
                 {
-                    session.Advance();var u=session.Active;var plan=ai.Plan(session,u);
+                    session.Advance();var u=session.Active;var plan=ai.Plan(session,u);EnemyTactics.Commit(u,plan);
                     if(plan.Destination!=u.Position)session.Move(plan.Destination);
-                    if(plan.Target!=null)session.Resolver.Execute(u,plan.Skill,plan.Target.Position,out _);
+                    if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null))session.Resolver.Execute(u,plan.Skill,plan.Aim??plan.Target.Position,out _);
+                    else if(plan.Guard)u.AddStatus(StatusKind.Guard,2);
+                    session.EndTurn();
                 }
                 report.Add($"{stage+1},{string.Join("-",party)},{level},{session.Result},{turns},{session.Units.Count(u=>u.Team==Team.Player&&u.Alive)},{session.Units.Where(u=>u.Team==Team.Player).Sum(u=>u.CurrentHP)}");
                 Assert.That(session.Result!=BattleResult.Ongoing,Is.True,"Battle stuck on stage "+stage);
