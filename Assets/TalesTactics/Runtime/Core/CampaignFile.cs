@@ -23,7 +23,7 @@ namespace TalesTactics
             if(header.Version==2&&(header.Gold<0||header.Inventory==null))throw new InvalidDataException("Missing economy fields");
             var save=JsonUtility.FromJson<CampaignSave>(json);
             if(save==null)throw new InvalidDataException("Empty campaign");
-            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>3)throw new FutureVersion();
+            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>4)throw new FutureVersion();
             if(!save.HasSuspendedBattle)save.SuspendedBattle=null; // JsonUtility recreates inline null classes.
             Normalize(save);return save;
         }
@@ -40,7 +40,7 @@ namespace TalesTactics
                 if(c.Equipment==null)c.Equipment=new string[3];
                 else if(c.Equipment.Length!=3)Array.Resize(ref c.Equipment,3);
                 if(c.UnlockedSkills==null)c.UnlockedSkills=new List<string>();
-                if(!Enum.IsDefined(typeof(TacticalTrait),c.Trait))throw new InvalidDataException("Unknown tactical trait");
+                if(!Enum.IsDefined(typeof(GrowthPath),c.Growth)||!Enum.IsDefined(typeof(TacticalTrait),c.Trait))throw new InvalidDataException("Unknown tactical trait");
             }
             save.StoryProgress.RemoveAll(string.IsNullOrWhiteSpace);
             if(save.Version==1)CampaignInventory.MigrateVersion1(save);

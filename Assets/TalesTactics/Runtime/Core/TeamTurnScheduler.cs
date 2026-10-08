@@ -13,6 +13,7 @@ namespace TalesTactics
         public int Round {get;private set;}
         public bool CanSelect(UnitRuntime unit)=>unit!=null&&unit.Alive&&unit.Team==Phase&&pending.Contains(unit);
         public bool Begin(UnitRuntime unit)=>begun.Add(unit);
+        public bool HasBegun(UnitRuntime unit)=>begun.Contains(unit);
         public void Complete(UnitRuntime unit){pending.Remove(unit);}
         public UnitRuntime Next(IReadOnlyList<UnitRuntime> units)
         {

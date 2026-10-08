@@ -35,8 +35,8 @@ namespace TalesTactics.PlayModeTests
             director.Session.Active=unit;unit.BeginTurn();
             foreach(var tile in director.Session.Grid.Tiles.Values)tile.Walkable=tile.Coordinate.y==1&&tile.Coordinate.x>=1&&tile.Coordinate.x<=3;
             director.SetState(new CommandState(director));yield return null;
-            var panel=(RectTransform)director.Hud.transform.Find("Commands");Assert.That(panel.rect.width,Is.EqualTo(104));Assert.That(panel.rect.height,Is.EqualTo(142));
-            Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().Length,Is.EqualTo(5));
+            var panel=(RectTransform)director.Hud.transform.Find("Commands");Assert.That(panel.rect.width,Is.EqualTo(104));Assert.That(panel.rect.height,Is.EqualTo(168));
+            Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().Length,Is.EqualTo(6));
             var origin=unit.Position;var occupied=ally.Position;var destination=new Vector2Int(3,1);
             Assert.That(director.Session.Move(occupied),Is.False);Assert.That(unit.Moved,Is.False);
             Assert.That(director.Session.Grid.Path(unit,destination),Does.Contain(occupied));

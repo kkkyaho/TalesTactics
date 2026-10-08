@@ -42,7 +42,7 @@ namespace TalesTactics.PlayModeTests
                     Assert.That(director.Board.BattleCamera.pixelRect.Contains(new Vector2(p.x,p.y)),Is.True);
                 }
                 foreach(var enemy in director.Session.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,director.Session.Grid);
-                if(director.Session.Victory is SurviveTurns survival){Assert.That(director.Session.Result,Is.EqualTo(BattleResult.Ongoing));for(int n=0;n<12;n++)survival.OnTurnEnded(director.Session.Units[0]);}
+                if(director.Session.Victory is SurviveTurns survival){Assert.That(director.Session.Result,Is.EqualTo(BattleResult.Ongoing));for(int n=0;n<survival.Required;n++){if(survival.EnemyPhases)survival.OnEnemyPhaseEnded();else survival.OnTurnEnded(director.Session.Units[0]);}}
                 if(director.Session.Objective==ObjectiveKind.Escort){Assert.That(director.Session.Result,Is.EqualTo(BattleResult.Ongoing));director.Session.Grid.Place(director.Session.ObjectiveUnit,director.Session.Destination);}
                 director.SetState(new TurnStartState(director));yield return null;
                 Assert.That(director.CanReadEnding,Is.True);director.ReadEnding();yield return null;

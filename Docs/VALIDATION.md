@@ -624,3 +624,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 게임 코드/콘텐츠 변경 없이 기존 실제 Unity Play97/97·최종 Edit133/133·관련 Play4/4와 Windows 일반 빌드 증거를 사용했다. 배포 도구13/13(3.783초),ZIP 내부 및 Windows PowerShell5.1 압축 해제본 검사를 통과했다. 압축 해제 실행본12초 숨김 시작 유지·로그 오류/예외0건,실행 뒤 파일 검사도 통과했다.
 - 사용자 저장3개를 별도 로컬 폴더에 백업/검증했고 실행 전후 원본 SHA256은 불변이다. 저장·개인 음원·개발 검수 코드는 업로드하지 않았다. 게시 후 인증 없는 ZIP/체크섬 전체 다운로드 HTTP200·크기·SHA256 및 태그 소스 일치를 확인했다.
 - 신규 중단 기록V3와 구V1/V2 읽기,preview.2 복귀 시 업데이트 전 백업 필요를 ZIP/릴리즈 노트에 명시했다. 일반 Windows 화면/물리 입력·다른PC/DPI·새 규칙의 사람6장 완주 밸런스는 미검증으로 유지한다. [Preview3 검증 기록](Distribution/Preview3/README.md) 참조.
+
+## 2026-10-08 전술 시스템·UI 개선 (`codex/tactical-system-polish`)
+
+- Unity 6000.6.0f1 실제 EditMode **142/142** 통과(0.74초), PlayMode 전체 **100/100** 통과(196.89초). 마지막 장비 적용의 성장 정보 전달 보완 뒤 EditMode 전체 및 관련 Growth PlayMode **3/3**(3.84초) 재검증. API 참조 컴파일 Runtime/Editor/Tests/PlayModeTests 통과.
+- 새 검사: 편성 크기와 무관한 적 페이즈 생존, 일괄 종료의 중복 상태 처리 방지, 연계 행동 표시, V4/기존 중단 규칙 복원, 민첩 상한·마법 제외, 협공 예측/실행 일치, 성장 저장 실패 복구, 프리셋 수량 및 원자적 적용.
+- 편성·빈 프리셋·성장 방향·턴 종료·전체 기술 조회를 1024×768 / 1280×800 / 1366×768 / 1920×1080 / 2560×1080, 글자100%/130% **50조합** 검수. 넘침/화면 밖 버튼 0. Game View 캡처로 작은 화면·성장 선택·전체 기술 목록·프리셋 실제 렌더링 확인. 물리 마우스를 사용한 Windows 수동 완주를 의미하지 않는다.
+- 새 자유 턴/민첩/협공과 권장6인으로 자동 캠페인 6장 모두 종료. 2장·6장 첫 아군 페이즈 보스 격파가 관찰되어 후속 난이도 과제로 기록. 실제 플레이어의 여러 편성 완주·체감 난이도는 미검증.
+- 상세 근거: [TacticalPolish](TacticalPolish/README.md), `editmode.json`, `playmode.json`, `growth-regression.json`, `aspect-matrix.json`, `campaign-scenarios.json`.
+- 6인 저장 프리셋 추가10조합도 넘침/화면 밖 버튼0. `preset-filled-matrix.json`; 긴 이름을 축약하고 자동 글자 맞춤을 적용했다.
+- Windows `Builds/WindowsTacticalPolish/TalesTactics.exe` 빌드 성공(28.817초, 오류0/경고10). 경고는 Pipeline 런타임 설정 미사용, 기존 DEVELOPMENT_BUILD 지시문/비직렬화 필드 분석, 디버그 셰이더 스트립 및 TMP 지시문이다. 숨김 실행12초 생존·로그 오류0, 사용자 캠페인/백업3파일 해시 불변. 근거: `windows-build.json`, `windows-startup.json`, `user-save-check.json`.

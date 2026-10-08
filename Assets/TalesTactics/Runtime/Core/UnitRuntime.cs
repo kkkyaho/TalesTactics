@@ -19,6 +19,7 @@ namespace TalesTactics
         public readonly EquipmentData[] Equipment=new EquipmentData[3];
         public SkillData[] TacticalSkills=new SkillData[0];
         public TacticalTrait Trait;
+        public GrowthPath Growth;
         public int CampaignMastery;
         public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed;
         public bool TacticalEnemy;
@@ -31,7 +32,7 @@ namespace TalesTactics
             get
             {
                 var s=Data.StatsAt(Level,Promoted); foreach(var e in Equipment)if(e!=null)s+=e.Bonus;
-                s=TacticalDevelopment.ApplyStats(s,Trait);
+                s=GrowthPaths.Apply(TacticalDevelopment.ApplyStats(s,Trait),Growth);
                 if(Has(StatusKind.ConsumeClaw)){s.STR=Mathf.RoundToInt(s.STR*Rules.ClawStrength);s.SPD=Mathf.RoundToInt(s.SPD*Rules.ClawSpeed);}
                 if(Has(StatusKind.Song)){s.STR=Mathf.RoundToInt(s.STR*Rules.SongMultiplier);s.MAG=Mathf.RoundToInt(s.MAG*Rules.SongMultiplier);}
                 if(Has(StatusKind.Cage)){s.SPD=Mathf.Max(1,Mathf.RoundToInt(s.SPD*Rules.CageSpeedMultiplier));s.MDF=Mathf.RoundToInt(s.MDF*Rules.CageMagicDefenseMultiplier);}

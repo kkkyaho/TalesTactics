@@ -121,13 +121,13 @@ namespace TalesTactics.PlayModeTests
             try
             {
                 skill.MPCost=3;skill.Presentation=new SkillPresentation{Pattern=SkillVisualPattern.Burst,Pulses=3,Windup=0.3f,Recovery=0.4f};
-                int hp=enemy.CurrentHP,mp=caster.CurrentMP;
+                int hp=enemy.CurrentHP,mp=caster.CurrentMP;int damage=director.Session.Resolver.DamagePreview(caster,enemy,skill.Effects[0],skill);
                 director.StartCoroutine(director.Execute(skill,enemy.Position));
                 yield return new WaitForSeconds(0.1f);
                 Assert.That(enemy.CurrentHP,Is.EqualTo(hp));Assert.That(caster.CurrentMP,Is.EqualTo(mp));
                 Assert.That(GameObject.Find("Skill preparation"),Is.Not.Null);
                 yield return new WaitForSeconds(0.75f);
-                Assert.That(enemy.CurrentHP,Is.EqualTo(hp-17));Assert.That(caster.CurrentMP,Is.EqualTo(mp-3));
+                Assert.That(enemy.CurrentHP,Is.EqualTo(hp-damage));Assert.That(caster.CurrentMP,Is.EqualTo(mp-3));
                 Assert.That(GameObject.Find("Skill preparation"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);
                 director.Board.BeginSkill(caster,skill,enemy.Position);director.Restart();yield return null;yield return null;
                 Assert.That(GameObject.Find("Skill preparation"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);

@@ -48,7 +48,7 @@ namespace TalesTactics
                 case ObjectiveKind.Boss:return "첫 번째 적 보스 격파";
                 case ObjectiveKind.Reach:return "아군 1명 목표 (8,8) 도착";
                 case ObjectiveKind.Escort:return "첫 출전 아군을 목표 (8,8)까지 호위";
-                case ObjectiveKind.Survive:return "아군 턴 종료 12회 생존";
+                case ObjectiveKind.Survive:return battle.UseCT||battle.UseFixedSpeedOrder?"아군 턴 종료 12회 생존":"적군 턴 4회 생존";
                 default:return "모든 적 격파";
             }
         }

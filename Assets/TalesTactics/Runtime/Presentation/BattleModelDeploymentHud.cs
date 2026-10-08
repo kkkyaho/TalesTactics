@@ -115,9 +115,10 @@ namespace TalesTactics
                 FormationButton(paging,"다음 캐릭터","다음",new Vector2(.7f,0),Vector2.one,()=>{formationPage++;RenderDeployment();},formationPage+1<pages);
             }
             DrawFormationDetails();
-            FormationText(footer,"모델 선택: 정보 보기   ·   출전 표시: 편성 변경",new Vector2(0,.48f),new Vector2(.46f,1),17);
+            FormationText(footer,"모델 선택: 정보 보기   ·   출전 표시: 편성 변경",new Vector2(0,.48f),new Vector2(.32f,1),17);
             string notice=string.IsNullOrEmpty(battle.SaveNotice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignMissions.Description(battle.SelectedStage)):battle.SaveNotice;
-            FormationText(footer,notice,Vector2.zero,new Vector2(.46f,.48f),16).color=new Color(.7f,.77f,.83f);
+            FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16).color=new Color(.7f,.77f,.83f);
+            FormationButton(footer,"편성 프리셋","프리셋",new Vector2(.32f,.16f),new Vector2(.46f,.84f),()=>ShowPresets(),true,20);
             FormationButton(footer,"전체 해제","전체 해제",new Vector2(.46f,.16f),new Vector2(.60f,.84f),()=>{battle.Deployment.Clear();RenderDeployment();},battle.Deployment.Count>0,21);
             FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,21);
             var start=FormationButton(footer,"전투 시작","출전 확정",new Vector2(.76f,.12f),new Vector2(1,.88f),battle.RequestBattle,battle.Deployment.Count>0,28);

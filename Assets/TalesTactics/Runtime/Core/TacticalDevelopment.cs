@@ -50,7 +50,7 @@ namespace TalesTactics
         public static string MasteryDescription=>"1장 완료: Lv7 이하 일반 기술 / 2장: Lv13 이하 / 4장: Lv19 이하\n6장 출전: 궁극기 체험 1회 (자원·연계 조건 적용). 승급은 Lv20 유지";
         public static void Apply(UnitRuntime unit,CampaignSave save,int stage)
         {
-            unit.Trait=save.Get(unit.Data.Id).Trait;
+            unit.Trait=save.Get(unit.Data.Id).Trait;unit.Growth=save.Get(unit.Data.Id).Growth;
             unit.CampaignMastery=Mastery(save);
             unit.UltimateTrial=stage==5;
             if(unit.UltimateTrial)unit.SpecialGauge=100;

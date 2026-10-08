@@ -11,7 +11,7 @@ namespace TalesTactics
             {
                 case 1:return "유적의 첫 수호자 격파 · 남은 적은 격파하지 않아도 승리";
                 case 2:return "봉화 (11,8)에 아군 1명 도착";
-                case 3:return "관측 기록 복원 · 아군 턴 종료 12회 생존";
+                case 3:return "관측 기록 복원 · 자유 턴: 적군 턴 4회 생존 / SPD·CT: 아군 12회";
                 case 4:return "선두 출전 아군을 수문 (12,8)까지 호위 · 해당 아군 전투불능 시 패배";
                 case 5:return "다오스 격파 · 예고 → 공격 → 빈틈 순환에 대응";
                 default:return "모든 적 격파";

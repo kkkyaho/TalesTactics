@@ -8,6 +8,7 @@ namespace TalesTactics
     {
         public string Id; public int Level=1, EXP; public bool Promoted;
         public TacticalTrait Trait;
+        public GrowthPath Growth;
         public string[] Equipment=new string[3];public List<string> UnlockedSkills=new List<string>();
         public void AddExperience(int amount){EXP+=Mathf.Max(0,amount);while(Level<50&&EXP>=Level*100){EXP-=Level*100;Level++;}if(Level==50)EXP=0;}
         public bool TryPromote(CharacterData data,List<string> flags){if(Promoted||Level<data.PromotionLevel||!flags.Contains(data.PromotionStoryFlag))return false;Promoted=true;return true;}
@@ -20,6 +21,7 @@ namespace TalesTactics
         public string SavedAt;
         public int SelectedStage;
         public int[] Deployment;
+        public FormationPreset[] Presets=new FormationPreset[3];
         public int Gold=CampaignInventory.StartingGold;
         public List<OwnedEquipment> Inventory=CampaignInventory.StartingItems();
         public List<string> StoryProgress=new List<string>();public List<CharacterProgress> Characters=new List<CharacterProgress>();

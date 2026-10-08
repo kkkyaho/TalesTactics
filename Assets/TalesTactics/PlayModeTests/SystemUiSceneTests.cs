@@ -63,7 +63,7 @@ namespace TalesTactics.PlayModeTests
                 director.SelectedStage=stage;director.BeginBattle();yield return null;director.StopAllCoroutines();var b=director.Session;
                 Assert.That(b.Objective,Is.EqualTo(CampaignMissions.Kind(stage)));
                 if(b.Objective==ObjectiveKind.Reach||b.Objective==ObjectiveKind.Escort)b.Grid.Place(b.ObjectiveUnit??b.Units[0],b.Destination);
-                else if(b.Victory is SurviveTurns survival)for(int i=0;i<12;i++)survival.OnTurnEnded(b.Units[0]);
+                else if(b.Victory is SurviveTurns survival)for(int i=0;i<survival.Required;i++){if(survival.EnemyPhases)survival.OnEnemyPhaseEnded();else survival.OnTurnEnded(b.Units[0]);}
                 else if(b.Objective==ObjectiveKind.Boss)b.ObjectiveUnit.Damage(99999,b.Grid);
                 else foreach(var enemy in b.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,b.Grid);
                 director.SetState(new BattleEndState(director));yield return null;Assert.That(director.RewardPending,Is.False);

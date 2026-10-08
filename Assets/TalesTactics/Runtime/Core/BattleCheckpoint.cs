@@ -7,9 +7,9 @@ namespace TalesTactics
 {
     [Serializable] public sealed class BattleCheckpoint
     {
-        public int Version=3,Stage,Active,Round,SurvivalTurns;
+        public int Version=4,Stage,Active,Round,SurvivalTurns;
         public bool LegacyMission;
-        public bool CT,Utility,TeamTurns;
+        public bool CT,Utility,TeamTurns,PhaseSurvival,TacticalCombat;
         public int[] Deployment,Order,Begun;
         public long[] Charges;
         public UnityEngine.Random.State RandomState;
@@ -18,7 +18,7 @@ namespace TalesTactics
         {
             if(session.CampaignStage<0||session.Result!=BattleResult.Ongoing||session.Active?.Team!=Team.Player)throw new InvalidOperationException("Only an ongoing campaign player command can be suspended");
             var save=new BattleCheckpoint{Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
-                LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
+                TacticalCombat=session.TacticalCombat,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
             if(session.Scheduler is SpeedTurnScheduler speed){save.Order=speed.Capture(session.Units);save.Round=speed.Round;}
             else if(session.Scheduler is TeamTurnScheduler team){save.TeamTurns=true;save.Order=team.CapturePending(session.Units);save.Begun=team.CaptureBegun(session.Units);save.Round=team.Round;}
             else if(session.Scheduler is CTTurnScheduler ct)save.Charges=ct.Capture(session.Units);else throw new InvalidOperationException("Unsupported scheduler");
@@ -27,8 +27,8 @@ namespace TalesTactics
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if(Version<1||Version>3||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
-            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns);
+            if(Version<1||Version>4||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
+            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)Units[i].Apply(session.Units[i],session.Grid,catalog);
@@ -47,7 +47,7 @@ namespace TalesTactics
     {
         public string Id;public int Level,HP,MP,Gauge,Claw;
         public bool Promoted,Moved,Acted,Undo,Flaming,Ignition;
-        public TacticalTrait Trait;
+        public TacticalTrait Trait;public GrowthPath Growth;
         public int Mastery,TurnsStarted,IntentTurn,IntentPhase;
         public bool Trial,TrialUsed,ProtectionUsed,TacticalEnemy;
         public string IntentSkill;public Vector2Int IntentAim;
@@ -58,7 +58,7 @@ namespace TalesTactics
         {
             Id=u.Data.Id;Level=u.Level;HP=u.CurrentHP;MP=u.CurrentMP;Gauge=u.SpecialGauge;Claw=u.ClawAttacks;Promoted=u.Promoted;
             Moved=u.Moved;Acted=u.Acted;Undo=u.CanUndoMove;Flaming=u.FlamingChain;Ignition=u.GuardIgnition;
-            Trait=u.Trait;Mastery=u.CampaignMastery;Trial=u.UltimateTrial;TrialUsed=u.UltimateTrialUsed;ProtectionUsed=u.ProtectionUsed;
+            Growth=u.Growth;Trait=u.Trait;Mastery=u.CampaignMastery;Trial=u.UltimateTrial;TrialUsed=u.UltimateTrialUsed;ProtectionUsed=u.ProtectionUsed;
             TacticalEnemy=u.TacticalEnemy;TurnsStarted=u.TurnsStarted;IntentTurn=u.IntentTurn;IntentPhase=u.IntentPhase;IntentSkill=u.IntentSkill;IntentAim=u.IntentAim;
             Position=u.Position;Origin=u.MoveOrigin;Facing=u.Facing;OriginalFacing=u.OriginalFacing;
             Equipment=u.Equipment.Select(e=>e==null?null:e.Id).ToArray();CooldownIds=u.Cooldowns.Keys.ToArray();CooldownTurns=CooldownIds.Select(k=>u.Cooldowns[k]).ToArray();
@@ -67,8 +67,8 @@ namespace TalesTactics
         public void Apply(UnitRuntime u,GridMap grid,BattleCatalog catalog)
         {
             if(Id!=u.Data.Id||Level<1||Level>50||Equipment==null||Equipment.Length!=3||Statuses==null||CooldownIds==null||CooldownTurns==null||CooldownIds.Length!=CooldownTurns.Length||CooldownIds.Distinct().Count()!=CooldownIds.Length||!Enum.IsDefined(typeof(Facing),Facing)||!Enum.IsDefined(typeof(Facing),OriginalFacing))throw new InvalidDataException("Invalid unit data");
-            if(!Enum.IsDefined(typeof(TacticalTrait),Trait)||Mastery<0||Mastery>3||TurnsStarted<0||IntentTurn<0||IntentTurn>TurnsStarted||IntentPhase<0||IntentPhase>2)throw new InvalidDataException("Invalid tactics");
-            u.Level=Level;u.Promoted=Promoted;u.Trait=Trait;u.CampaignMastery=Mastery;u.UltimateTrial=Trial;u.UltimateTrialUsed=TrialUsed;u.ProtectionUsed=ProtectionUsed;
+            if(!Enum.IsDefined(typeof(GrowthPath),Growth)||!Enum.IsDefined(typeof(TacticalTrait),Trait)||Mastery<0||Mastery>3||TurnsStarted<0||IntentTurn<0||IntentTurn>TurnsStarted||IntentPhase<0||IntentPhase>2)throw new InvalidDataException("Invalid tactics");
+            u.Level=Level;u.Promoted=Promoted;u.Growth=Growth;u.Trait=Trait;u.CampaignMastery=Mastery;u.UltimateTrial=Trial;u.UltimateTrialUsed=TrialUsed;u.ProtectionUsed=ProtectionUsed;
             u.TacticalEnemy=TacticalEnemy;u.TurnsStarted=TurnsStarted;u.IntentTurn=IntentTurn;u.IntentPhase=IntentPhase;u.IntentSkill=IntentSkill;u.IntentAim=IntentAim;
             if(IntentPhase>0&&(grid[IntentAim]==null||EnemyTactics.Intent(u)==null))throw new InvalidDataException("Invalid telegraph");
             for(int i=0;i<3;i++){u.Equipment[i]=string.IsNullOrEmpty(Equipment[i])?null:catalog.Equipment.FirstOrDefault(e=>e.Id==Equipment[i]);if(!string.IsNullOrEmpty(Equipment[i])&&u.Equipment[i]==null)throw new InvalidDataException("Unknown equipment");}

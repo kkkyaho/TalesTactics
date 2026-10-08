@@ -149,6 +149,7 @@ namespace TalesTactics
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);
                 Button(commands,"Skill / 스킬",147,battle.SkillCommand,!u.Acted||u.FlamingChain);Button(commands,"Guard / 가드",193,battle.Guard,!u.Acted);
                 if(u.CanUndoMove)Button(commands,"Undo Move / 이동 취소",239,battle.Undo);Button(commands,"Wait / 방향 선택",285,battle.WaitCommand);
+                if(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler)Button(commands,"아군 턴 종료",331,ShowEndPhaseConfirmation);
                 ArrangeCommandMenu();ApplyTutorialCommands();
             }
             else if(SkillPanel)DrawSkillCards(u);

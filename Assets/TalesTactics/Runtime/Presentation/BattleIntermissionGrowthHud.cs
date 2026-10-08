@@ -45,7 +45,7 @@ namespace TalesTactics
                 if(battle.TrainingMode||!battle.CanSave)return;bool saved=TacticalDevelopment.CatchUp(battle.Campaign,c,battle.SelectedStage,battle.PersistCampaign);
                 ShowGrowth(c,saved?"합류 훈련을 저장했습니다.":"훈련을 저장하지 못했습니다. 기존 성장을 유지합니다.");
             },progress.Level<target&&CampaignStages.Unlocked(battle.Campaign,battle.SelectedStage)&&!battle.TrainingMode&&battle.CanSave);
-            FormationButton(promotion,"캐릭터 목록으로","선택 초기화",new Vector2(.025f,0),new Vector2(.50f,.065f),()=>ShowGrowth(c));
+            FormationButton(promotion,"성장 방향 선택","성장 방향 선택",new Vector2(.025f,0),new Vector2(.50f,.065f),()=>ShowGrowthPath(c));
             FormationButton(promotion,"기술 숙련 안내","기술 숙련 안내",new Vector2(.50f,0),new Vector2(.975f,.065f),()=>ShowMastery(c));
             FormationText(commands,"전술 특성",new Vector2(.025f,.92f),new Vector2(.60f,1),25).color=formationGold;
             FormationText(commands,"한 번에 하나 적용",new Vector2(.60f,.92f),new Vector2(.98f,1),16);

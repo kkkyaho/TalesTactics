@@ -105,13 +105,13 @@ namespace TalesTactics
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder);
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);
                 if(!TrainingMode){u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
                 new EquipmentLoadout(u.Data,progress,Catalog.Equipment,Campaign).Apply(u);
-                if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else u.Trait=progress.Trait;
+                if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else{u.Trait=progress.Trait;u.Growth=progress.Growth;}
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));

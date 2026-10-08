@@ -59,7 +59,7 @@ namespace TalesTactics
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,104,12+26*(unit.CanUndoMove?6:5));
+            PlaceBesideUnits(commands,unit.Position,104,12+26*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
@@ -88,14 +88,15 @@ namespace TalesTactics
         }
         void ArrangeCommandMenu()
         {
-            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소"};
-            string[] labels={"이동","공격","기술","방어","대기","이동 취소"};
+            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
+            string[] labels={"이동","공격","기술","방어","대기","이동 취소","턴 종료"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
                 r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
-                r.anchoredPosition=new Vector2(4,-6-i*26);r.sizeDelta=new Vector2(96,26);
+                int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
+                r.anchoredPosition=new Vector2(4,-6-row*26);r.sizeDelta=new Vector2(96,26);
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;

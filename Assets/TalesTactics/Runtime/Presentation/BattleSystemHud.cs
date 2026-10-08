@@ -36,7 +36,7 @@ namespace TalesTactics
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
             Button(systemWindow,"글자 최대 크기: "+Mathf.RoundToInt(d.TextScale*100)+"%",126,()=>{d.TextScale=d.TextScale<1.1f?1.15f:d.TextScale<1.2f?1.3f:1;ShowSystemMenu(3);},true,48);
-            Label(systemWindow,"문장은 공간에 맞춰 기본 크기까지 조절합니다.\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc: 취소 / Z: 이동 취소\nV: 위험 표시 / Q·E: 카메라 회전\n◇ 가능 공격 / × 확정 예고 / 삼각형: 방향\nSPD + 역할 AI 기본 / CT·Utility 선택 가능",196,310,20);
+            Label(systemWindow,"문장은 공간에 맞춰 기본 크기까지 조절합니다.\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc: 취소 / Z: 이동 취소\nV: 위험 표시 / Q·E: 카메라 회전\n◇ 가능 공격 / × 확정 예고 / 삼각형: 방향\n아군 자유 선택 + 역할 AI 기본 / SPD·CT 선택 가능",196,310,20);
             Button(systemWindow,"글자 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(3);},true,44);
         }
         void DrawFlowPreferences()
@@ -84,7 +84,7 @@ namespace TalesTactics
             PreferenceRow("효과음",d.Effects,248,()=>{d.Effects=Mathf.Max(0,d.Effects-.1f);ShowSystemMenu(1);},()=>{d.Effects=Mathf.Min(1,d.Effects+.1f);ShowSystemMenu(1);});
             Button(systemWindow,"패드 커서 속도: "+d.CursorSpeed.ToString("0.0")+"배",292,()=>{d.CursorSpeed=d.CursorSpeed>=2?.5f:d.CursorSpeed+.25f;ShowSystemMenu(1);});
             Button(systemWindow,d.AutoTiming?"파라 타이밍: 자동 입력":"파라 타이밍: 수동 입력",336,()=>{d.AutoTiming=!d.AutoTiming;ShowSystemMenu(1);});
-            Button(systemWindow,d.CT?"다음 전투 턴 순서: CT":"다음 전투 턴 순서: SPD",380,()=>{d.CT=!d.CT;ShowSystemMenu(1);});
+            Button(systemWindow,"다음 전투 턴 순서: "+(d.CT?"CT":d.FixedSpeedOrder?"SPD":"아군 자유 선택"),380,()=>{if(d.CT){d.CT=false;d.FixedSpeedOrder=false;}else if(d.FixedSpeedOrder){d.FixedSpeedOrder=false;d.CT=true;}else d.FixedSpeedOrder=true;ShowSystemMenu(1);});
             Button(systemWindow,d.Utility?"다음 전투 AI: Utility":"다음 전투 AI: 기본",424,()=>{d.Utility=!d.Utility;ShowSystemMenu(1);});
             Button(systemWindow,"설정 적용 · 저장",476,()=>{battle.SavePreferences(d);ShowSystemMenu(1);},true,44);
             Label(systemWindow,"닫으면 미적용 변경은 취소됩니다. 해상도는 Windows 플레이어에 적용됩니다.\n"+battle.SaveNotice,532,50,16);

@@ -10,10 +10,11 @@ namespace TalesTactics
         readonly EquipmentData[] catalog;
         readonly CampaignSave campaign;
         readonly TacticalTrait trait;
+        readonly GrowthPath growth;
         readonly EquipmentData[] slots=new EquipmentData[3];
         public EquipmentLoadout(CharacterData character,CharacterProgress progress,EquipmentData[] equipment,CampaignSave campaign=null)
         {
-            Character=character;catalog=equipment??Array.Empty<EquipmentData>();this.campaign=campaign;trait=progress?.Trait??TacticalTrait.Balanced;
+            Character=character;catalog=equipment??Array.Empty<EquipmentData>();this.campaign=campaign;trait=progress?.Trait??TacticalTrait.Balanced;growth=progress?.Growth??GrowthPath.Unselected;
             for(int i=0;i<slots.Length;i++)
             {
                 string id=progress?.Equipment!=null&&i<progress.Equipment.Length?progress.Equipment[i]:null;
@@ -36,9 +37,9 @@ namespace TalesTactics
         }
         public string[] ExportIDs()=>slots.Select(e=>e!=null?e.Id:null).ToArray();
         public Stats Preview(int level,bool promoted)
-        {var stats=Character.StatsAt(level,promoted);foreach(var item in slots)if(item!=null)stats+=item.Bonus;return TacticalDevelopment.ApplyStats(stats,trait);}
+        {var stats=Character.StatsAt(level,promoted);foreach(var item in slots)if(item!=null)stats+=item.Bonus;return GrowthPaths.Apply(TacticalDevelopment.ApplyStats(stats,trait),growth);}
         public void Apply(UnitRuntime unit)
-        {for(int i=0;i<slots.Length;i++)unit.Equipment[i]=slots[i];}
+        {unit.Growth=growth;for(int i=0;i<slots.Length;i++)unit.Equipment[i]=slots[i];}
         public bool CanCommit(CampaignSave save)=>slots.Where(e=>e!=null).GroupBy(e=>e.Id)
             .All(g=>g.Count()<=CampaignInventory.Available(save,g.Key,Character.Id));
         public bool TrySave(CampaignSave save,Func<CampaignSave,bool> persist)

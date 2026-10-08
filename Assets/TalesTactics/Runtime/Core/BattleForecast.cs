@@ -17,7 +17,7 @@ namespace TalesTactics
             {
                 var u=new UnitRuntime(source.Data,source.Team,source.Rules,source.Level){CurrentHP=source.CurrentHP,CurrentMP=source.CurrentMP,SpecialGauge=source.SpecialGauge,
                     Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
-                    Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
+                    Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Growth=source.Growth,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
                     UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,TacticalSkills=source.TacticalSkills,
                     TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
                 for(int i=0;i<3;i++)u.Equipment[i]=source.Equipment[i];
@@ -25,7 +25,7 @@ namespace TalesTactics
                 foreach(var c in source.Cooldowns)u.Cooldowns.Add(c.Key,c.Value);
                 Copies.Add(source,u);if(u.Alive)Grid[u.Position].Occupant=u;
             }
-            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules);
+            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat);
         }
     }
     public sealed class ForecastRow
@@ -53,6 +53,7 @@ namespace TalesTactics
                 if(!targets.Contains(original)&&original!=actor&&after.ProtectionUsed==original.ProtectionUsed)continue;
                 if(original==actor&&!targets.Contains(actor)&&after.CurrentHP==original.CurrentHP&&after.Statuses.Count==original.Statuses.Count)continue;
                 var effects=new List<string>();
+                if(targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.Magic)&&battle.TacticalCombat)effects.Add(battle.Resolver.TacticalModifiers(actor,original));
                 foreach(var e in skill.Effects.Where(e=>(e.AffectCaster?original==actor:targets.Contains(original))))
                 {
                     if(e.Chance<1)effects.Add(SkillSummary.Effect(e)+$" {e.Chance:P0}");

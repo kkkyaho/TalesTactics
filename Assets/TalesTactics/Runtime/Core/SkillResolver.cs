@@ -10,7 +10,8 @@ namespace TalesTactics
         readonly IReadOnlyList<UnitRuntime> units;
         readonly BattleRules rules;
         readonly System.Random random;
-        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17){this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
+        public readonly bool TacticalCombat;
+        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17,bool tacticalCombat=false){TacticalCombat=tacticalCombat;this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
         public string CanUse(UnitRuntime u,SkillData s,bool followup=false)
         {
             if(s==null)return "No skill";
@@ -47,12 +48,21 @@ namespace TalesTactics
             var f=FacingVector(defender.Facing);int dot=d.x*f.x+d.y*f.y;
             return dot>0?rules.FrontMultiplier:dot<0?rules.RearMultiplier:rules.SideMultiplier;
         }
+        public float AgilityMultiplier(UnitRuntime attacker,UnitRuntime defender)=>1+Mathf.Clamp((attacker.Stats.SPD-defender.Stats.SPD)*.005f,-.15f,.15f);
+        public bool HasPincer(UnitRuntime attacker,UnitRuntime target)
+        {
+            if(!TacticalCombat||GridMap.Distance(attacker.Position,target.Position)!=1)return false;
+            var opposite=target.Position+(target.Position-attacker.Position);
+            return units.Any(ally=>ally!=attacker&&ally.Team==attacker.Team&&ally.Alive&&ally.Position==opposite&&!ally.Has(StatusKind.Stun)&&!ally.Has(StatusKind.Sleep));
+        }
+        public string TacticalModifiers(UnitRuntime attacker,UnitRuntime target)=>!TacticalCombat?"":"민첩 보정 "+((AgilityMultiplier(attacker,target)-1)*100).ToString("+0.#;-0.#;0")+"%"+(HasPincer(attacker,target)?" · 협공 +10%":"");
         public int DamagePreview(UnitRuntime u,UnitRuntime t,SkillEffect e,SkillData skill=null)
         {
             var a=u.Stats;var b=t.Stats;
             float defense=e.IgnoreDefense?0:(e.Magic?b.MDF:b.DEF)*rules.DefenseFactor;
             float value=(e.Magic?a.MAG:a.STR)*e.Power+e.Flat-defense;
             value*=DirectionMultiplier(u,t);
+            if(TacticalCombat&&!e.Magic){value*=AgilityMultiplier(u,t);if(HasPincer(u,t))value*=1.1f;}
             if(u.GuardIgnition&&u.Data.Id=="kisara")value*=rules.IgnitionMultiplier;
             if(t.Has(StatusKind.Guard))
             {
