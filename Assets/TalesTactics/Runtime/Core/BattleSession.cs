@@ -10,6 +10,7 @@ namespace TalesTactics
         public readonly int CampaignStage;
         public readonly bool LegacyCampaign;
         public readonly bool TacticalCombat;
+        public readonly bool BossEncounters;
         public readonly List<UnitRuntime> Units=new List<UnitRuntime>();
         public readonly BattleRules Rules;
         public readonly SkillResolver Resolver;
@@ -27,9 +28,10 @@ namespace TalesTactics
             Objective==ObjectiveKind.Survive?SurvivalDescription:"모든 적 격파";
         string SurvivalDescription {get{var goal=(SurviveTurns)Victory;return (goal.EnemyPhases?"적군 턴 생존 ":"아군 턴 종료 ")+goal.Completed+" / "+goal.Required;}}
         public BattleResult Result=>Victory.Evaluate(Units);
-        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false)
+        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false)
         {
             if(campaignStage>=0&&!legacyCampaign){objective=CampaignMissions.Kind(campaignStage);Destination=CampaignMissions.Destination(campaignStage);}
+            BossEncounters=bossEncounters&&teamTurns&&!useCT&&!legacyCampaign&&(campaignStage==1||campaignStage==5);
             TacticalCombat=tacticalCombat;CampaignStage=campaignStage;LegacyCampaign=legacyCampaign;Objective=objective;UseUtilityAI=utilityAI;if(useCT)Scheduler=new CTTurnScheduler();else if(teamTurns)Scheduler=new TeamTurnScheduler();
             Rules=catalog.Rules;Grid=campaignStage<0?GridMap.TestStage():CampaignContent.Map(campaignStage);int i=0;
             foreach(int index in deployment)
@@ -43,6 +45,14 @@ namespace TalesTactics
                 enemy.TacticalSkills=catalog.Characters.SelectMany(c=>c.Skills).Where(s=>s!=null&&(s.Id=="mint.0"||s.Id=="jade.0")).ToArray();
             if(campaignStage>=0&&!legacyCampaign)EnemyTactics.Configure(this,catalog);
             if(objective==ObjectiveKind.Boss){ObjectiveUnit=Units.FirstOrDefault(u=>u.Team==Team.Enemy&&u.Data.Id=="dhaos")??Units.First(u=>u.Team==Team.Enemy);if(campaignStage<0)ObjectiveUnit.Level=Math.Min(50,ObjectiveUnit.Level+5);ObjectiveUnit.CurrentHP=ObjectiveUnit.Stats.HP;ObjectiveUnit.CurrentMP=ObjectiveUnit.Stats.MP;Victory=new DefeatBoss(ObjectiveUnit);}
+            if(BossEncounters)
+            {
+                ObjectiveUnit.BossWard=true;ObjectiveUnit.Trait=TacticalTrait.Balanced;
+                var enemies=Units.Where(u=>u.Team==Team.Enemy).ToArray();
+                foreach(var enemy in enemies)Grid[enemy.Position].Occupant=null;
+                var positions=campaignStage==1?new[]{new Vector2Int(6,9),new Vector2Int(4,6),new Vector2Int(7,6),new Vector2Int(6,7)}:new[]{new Vector2Int(6,12),new Vector2Int(2,9),new Vector2Int(10,9),new Vector2Int(6,9)};
+                for(int n=0;n<enemies.Length;n++)Grid.Place(enemies[n],positions[n]);
+            }
             if(objective==ObjectiveKind.Reach)Victory=new ReachDestination(Destination);
             if(objective==ObjectiveKind.Escort){ObjectiveUnit=Units.First(u=>u.Team==Team.Player);Victory=new ReachDestination(Destination,ObjectiveUnit);}
             if(objective==ObjectiveKind.Survive)Victory=new SurviveTurns(phaseSurvival&&teamTurns&&!useCT?4:12,phaseSurvival&&teamTurns&&!useCT);

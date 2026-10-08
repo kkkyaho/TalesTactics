@@ -19,7 +19,7 @@ namespace TalesTactics
                     Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
                     Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Growth=source.Growth,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
                     UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,TacticalSkills=source.TacticalSkills,
-                    TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
+                    BossWard=source.BossWard,TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
                 for(int i=0;i<3;i++)u.Equipment[i]=source.Equipment[i];
                 foreach(var s in source.Statuses)u.Statuses.Add(new RuntimeStatus{Kind=s.Kind,Turns=s.Turns,Fresh=s.Fresh});
                 foreach(var c in source.Cooldowns)u.Cooldowns.Add(c.Key,c.Value);
@@ -50,9 +50,10 @@ namespace TalesTactics
             foreach(var original in battle.Units)
             {
                 var after=projection.Copies[original];
-                if(!targets.Contains(original)&&original!=actor&&after.ProtectionUsed==original.ProtectionUsed)continue;
+                if(!targets.Contains(original)&&original!=actor&&after.ProtectionUsed==original.ProtectionUsed&&battle.Resolver.BossWardPercent(original)==projection.Resolver.BossWardPercent(after))continue;
                 if(original==actor&&!targets.Contains(actor)&&after.CurrentHP==original.CurrentHP&&after.Statuses.Count==original.Statuses.Count)continue;
                 var effects=new List<string>();
+                if(original.BossWard)effects.Add("호위 방벽 "+battle.Resolver.BossWardPercent(original)+"% → "+projection.Resolver.BossWardPercent(after)+"%");
                 if(targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.Magic)&&battle.TacticalCombat)effects.Add(battle.Resolver.TacticalModifiers(actor,original));
                 foreach(var e in skill.Effects.Where(e=>(e.AffectCaster?original==actor:targets.Contains(original))))
                 {

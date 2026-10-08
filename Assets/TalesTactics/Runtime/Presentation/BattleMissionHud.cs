@@ -35,7 +35,7 @@ namespace TalesTactics
                 var data=enemies[i];var unit=s?.Units.Where(u=>u.Team==Team.Enemy).ElementAt(i);var skill=data.BasicAttack;
                 string status=unit==null?"":unit.Alive?" · HP "+unit.CurrentHP+" / "+unit.Stats.HP:" · 격파";
                 Label(missionWindow,data.DisplayName+"  ["+(training?"훈련":EnemyRoles.Name(data))+"]"+status+"  · "+skill.DisplayName+" (기본 사거리 "+skill.MinRange+"–"+skill.Range+")",242+i*76,32,18);
-                Label(missionWindow,training?"훈련 규칙에 따라 행동합니다. 높이·시야·상태에 따라 실제 공격 가능 범위가 달라집니다.":unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):EnemyRoles.Advice(data),274+i*76,32,16);
+                Label(missionWindow,training?"훈련 규칙에 따라 행동합니다. 높이·시야·상태에 따라 실제 공격 가능 범위가 달라집니다.":unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):unit!=null&&unit.BossWard?"호위 1명당 피해 -25% (최대 75%) · 호위 격파로 해제 · 공격 예고 뒤 위치를 피하세요.":EnemyRoles.Advice(data),274+i*76,32,16);
             }
             Button(missionWindow,"임무 정보 닫기",574,()=>CloseMission(),true,44);
         }

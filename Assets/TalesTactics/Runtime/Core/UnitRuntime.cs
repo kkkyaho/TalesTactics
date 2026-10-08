@@ -22,7 +22,7 @@ namespace TalesTactics
         public GrowthPath Growth;
         public int CampaignMastery;
         public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed;
-        public bool TacticalEnemy;
+        public bool TacticalEnemy,BossWard;
         public int TurnsStarted,IntentTurn,IntentPhase;
         public string IntentSkill;
         public Vector2Int IntentAim;

@@ -29,7 +29,7 @@ namespace TalesTactics
             var u=battle.Session.Active;var s=battle.SelectedSkill;var f=battle.Forecast;
             var name=Label(commands,s.DisplayName+" · MP "+battle.Session.Resolver.MPCost(u,s),6,26,15);name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
             Label(commands,"사거리 "+s.MinRange+"–"+s.Range+" · "+SkillSummary.Describe(s),34,26,13);
-            string text=f==null?"대상 위에 커서를 올리면 결과 예측\n대상 클릭으로 즉시 사용":string.Join("\n",f.Rows.Take(2).Select(r=>r.Text.Split('\n')[0]));
+            string text=f==null?"대상 위에 커서를 올리면 결과 예측\n대상 클릭으로 즉시 사용":string.Join("\n",f.Rows.Take(2).Select(r=>r.Text.Split('\n')[0]+(r.Unit.BossWard?" · 방벽 "+battle.Session.Resolver.BossWardPercent(r.Unit)+"%":"")));
             var preview=Label(commands,text,64,48,14);preview.enableAutoSizing=true;preview.fontSizeMin=11;preview.fontSizeMax=14;
             targetContextHeight=180;
             if(f!=null)Button(commands,"전체 예측 · "+f.Rows.Count+"명 / 비용",118,()=>ShowForecast(0),true,28);

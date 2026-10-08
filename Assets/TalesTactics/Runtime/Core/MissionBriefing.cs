@@ -12,7 +12,7 @@ namespace TalesTactics
             int alive=session.Units.Count(u=>u.Team==Team.Enemy&&u.Alive),total=session.Units.Count(u=>u.Team==Team.Enemy);
             if(session.Objective==ObjectiveKind.Survive)return session.ObjectiveDescription;
             if(session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)return session.ObjectiveDescription;
-            if(session.Objective==ObjectiveKind.Boss)return "보스 HP "+session.ObjectiveUnit.CurrentHP+" / "+session.ObjectiveUnit.Stats.HP;
+            if(session.Objective==ObjectiveKind.Boss)return "보스 HP "+session.ObjectiveUnit.CurrentHP+" / "+session.ObjectiveUnit.Stats.HP+(session.BossEncounters?" · 방벽 "+session.Resolver.BossWardPercent(session.ObjectiveUnit)+"%":"");
             return "적 잔존 "+alive+" / "+total;
         }
         public static string Terrain(int stage)

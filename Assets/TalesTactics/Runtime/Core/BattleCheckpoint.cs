@@ -7,9 +7,9 @@ namespace TalesTactics
 {
     [Serializable] public sealed class BattleCheckpoint
     {
-        public int Version=4,Stage,Active,Round,SurvivalTurns;
+        public int Version=5,Stage,Active,Round,SurvivalTurns;
         public bool LegacyMission;
-        public bool CT,Utility,TeamTurns,PhaseSurvival,TacticalCombat;
+        public bool CT,Utility,TeamTurns,PhaseSurvival,TacticalCombat,BossEncounters;
         public int[] Deployment,Order,Begun;
         public long[] Charges;
         public UnityEngine.Random.State RandomState;
@@ -18,7 +18,7 @@ namespace TalesTactics
         {
             if(session.CampaignStage<0||session.Result!=BattleResult.Ongoing||session.Active?.Team!=Team.Player)throw new InvalidOperationException("Only an ongoing campaign player command can be suspended");
             var save=new BattleCheckpoint{Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
-                TacticalCombat=session.TacticalCombat,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
+                BossEncounters=session.BossEncounters,TacticalCombat=session.TacticalCombat,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
             if(session.Scheduler is SpeedTurnScheduler speed){save.Order=speed.Capture(session.Units);save.Round=speed.Round;}
             else if(session.Scheduler is TeamTurnScheduler team){save.TeamTurns=true;save.Order=team.CapturePending(session.Units);save.Begun=team.CaptureBegun(session.Units);save.Round=team.Round;}
             else if(session.Scheduler is CTTurnScheduler ct)save.Charges=ct.Capture(session.Units);else throw new InvalidOperationException("Unsupported scheduler");
@@ -27,8 +27,8 @@ namespace TalesTactics
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if(Version<1||Version>4||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
-            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat);
+            if(Version<1||Version>5||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
+            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat,bossEncounters:Version>=5&&BossEncounters);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)Units[i].Apply(session.Units[i],session.Grid,catalog);

@@ -56,6 +56,7 @@ namespace TalesTactics
             return units.Any(ally=>ally!=attacker&&ally.Team==attacker.Team&&ally.Alive&&ally.Position==opposite&&!ally.Has(StatusKind.Stun)&&!ally.Has(StatusKind.Sleep));
         }
         public string TacticalModifiers(UnitRuntime attacker,UnitRuntime target)=>!TacticalCombat?"":"민첩 보정 "+((AgilityMultiplier(attacker,target)-1)*100).ToString("+0.#;-0.#;0")+"%"+(HasPincer(attacker,target)?" · 협공 +10%":"");
+        public int BossWardPercent(UnitRuntime target)=>target.BossWard?Mathf.Min(75,units.Count(u=>u!=target&&u.Alive&&u.Team==target.Team)*25):0;
         public int DamagePreview(UnitRuntime u,UnitRuntime t,SkillEffect e,SkillData skill=null)
         {
             var a=u.Stats;var b=t.Stats;
@@ -83,6 +84,7 @@ namespace TalesTactics
             }
             if(Protector(t)!=null)value*=.7f;
             if(t.IntentPhase==2)value*=1.25f;
+            value*=1-BossWardPercent(t)/100f;
             return Mathf.Max(1,Mathf.RoundToInt(value));
         }
         public string Preview(UnitRuntime u,SkillData s,UnitRuntime t)

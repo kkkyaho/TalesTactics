@@ -634,3 +634,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 상세 근거: [TacticalPolish](TacticalPolish/README.md), `editmode.json`, `playmode.json`, `growth-regression.json`, `aspect-matrix.json`, `campaign-scenarios.json`.
 - 6인 저장 프리셋 추가10조합도 넘침/화면 밖 버튼0. `preset-filled-matrix.json`; 긴 이름을 축약하고 자동 글자 맞춤을 적용했다.
 - Windows `Builds/WindowsTacticalPolish/TalesTactics.exe` 빌드 성공(28.817초, 오류0/경고10). 경고는 Pipeline 런타임 설정 미사용, 기존 DEVELOPMENT_BUILD 지시문/비직렬화 필드 분석, 디버그 셰이더 스트립 및 TMP 지시문이다. 숨김 실행12초 생존·로그 오류0, 사용자 캠페인/백업3파일 해시 불변. 근거: `windows-build.json`, `windows-startup.json`, `user-save-check.json`.
+
+## 2026-10-08 보스전 선제 격파 대응 (`codex/boss-encounter-balance`)
+
+- 2장·6장 신규 자유 턴 전투에 호위 방벽(생존 호위당25%,최대75%), 후방·분산 배치, 2장 보스 예고 주기, 임무/예측 안내를 추가했다. V5 중단 저장은 새 규칙을 보존하고 V1–V4는 이전 규칙/위치를 유지한다.
+- 실제 Unity EditMode149/149(최종0.76초), 전체 PlayMode101/101(196.83초). 최종 임무창 예고 우선 표시 보완 후 해당 PlayMode1/1(1.57초) 추가 통과. API 참조 컴파일4개 어셈블리 통과.
+- 추천/공격/지원 3편성×2장×기존/새 규칙12경우 자동 비교. 기존6경우는 첫 아군 페이즈 승리, 조정6경우는 보스 자기 턴1~2회 이후 승리. 모두 아군6명 생존. 인간 난이도 검수나 모든 빌드의 선제 격파 불가능성을 보장하지 않는다.
+- 임무2장/6장·전체 예측의 5해상도×글자100/130%30조합에서 넘침0/화면 밖 버튼0. 실제 Game View PNG 직접 확인. 물리 입력 및 일반 Windows 창의 수동 완주는 별도다.
+- Windows `Builds/WindowsBossBalance/TalesTactics.exe` 빌드25.154초, 오류0/경고10. 기존 Pipeline 런타임 설정, DEVELOPMENT_BUILD/비직렬화 필드 분석, 셰이더 경고다. [구현·검증 기록](BossBalance/README.md) 참조.
+- 숨김 Windows 시작12초 유지·로그 오류0, 사용자 저장3파일 해시 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구. 공개 릴리즈와 main 반영은 이번 범위 밖이다.

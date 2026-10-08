@@ -105,7 +105,7 @@ namespace TalesTactics
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true);
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true,bossEncounters:true);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);

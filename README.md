@@ -8,7 +8,9 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 개발 기준 브랜치는 **`develop`**입니다. 모든 개발 작업과 새 작업 브랜치 생성은 `develop`을 기준으로 하며, 별도 작업 브랜치도 완료 후 `develop`으로 통합합니다. **`main`은 릴리즈 상태 보관용 마스터/아카이브**로 사용하고, 릴리즈·머지 요청이 있을 때만 갱신합니다.
 
-기본 전투를 **아군 턴 자유 선택**으로 변경했습니다. 명령 대기 중 맵의 아군·상단 캐릭터·PgUp/PgDn으로 미완료 아군을 선택하고, 모두 대기/방어를 마치면 적군 턴이 시작됩니다. 이동·행동 기록과 중단 저장을 보존하며 기존 SPD/CT도 선택할 수 있습니다. 실제 EditMode133/133·PlayMode97/97·최종 관련4/4와 화면10조합, Windows 빌드/시작 검사를 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsFreeTurns/TalesTactics.exe`이며 폴더 전체가 필요합니다. [조작과 검증](Docs/FreeTurns/README.md). 이번 변경은 공개 preview.3에 포함됩니다.
+개발판에서는 **2장·6장 보스전**에 호위 방벽과 분산 배치, 피해 예측·임무 안내를 추가했습니다. 3편성 자동 비교에서 첫 아군 페이즈 격파 문제를 줄였으며, 실제 EditMode149/149·전체 PlayMode101/101·최종 관련1/1, 화면30조합, Windows 빌드/시작 검사를 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsBossBalance/TalesTactics.exe`입니다(폴더 전체 필요). [규칙·저장 호환·검증 한계](Docs/BossBalance/README.md). 공개 preview.3에는 아직 포함되지 않습니다.
+
+기본 전투를 **아군 턴 자유 선택**으로 변경했습니다. 명령 대기 중 맵의 아군·상단 캐릭터·PgUp/PgDn으로 미완료 아군을 선택하고, 모두 대기/방어를 마치면 적군 턴이 시작됩니다. 이동·행동 기록과 중단 저장을 보존하며 기존 SPD/CT도 선택할 수 있습니다. 실제 EditMode133/133·PlayMode97/97·최종 관련4/4와 화면10조합, Windows 빌드/시작 검사를 통과했습니다. 해당 릴리즈 검증 실행본은 `Builds/WindowsFreeTurns/TalesTactics.exe`이며 폴더 전체가 필요합니다. [조작과 검증](Docs/FreeTurns/README.md). 이번 변경은 공개 preview.3에 포함됩니다.
 
 장비 관리·장비 상점·성장/승급도 승인된 시안의 **남색·청록·황동 인터미션 UI**로 개편했습니다. 장비 그림과 교체 전후9개 능력치,3×2 상점 카드와 거래 후 잔액,승급 조건과 선택 후 확정하는 전술 특성을 제공합니다. 구매 직후 장착 대상 선택도 초상화 UI로 연결했습니다. [실제 화면·검증·아트 기록](Docs/Intermission/README.md). 인터미션 개편 당시 실행 파일은 `Builds/WindowsIntermission/TalesTactics.exe`이며 폴더 전체가 필요합니다. Unity EditMode125/125·PlayMode93/93, 최종 관련3/3,5해상도×글자2단계×4화면40조합을 통과했습니다. 이번 변경은 공개 preview.3에 포함됩니다.
 

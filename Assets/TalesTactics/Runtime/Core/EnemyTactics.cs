@@ -11,7 +11,7 @@ namespace TalesTactics
             {
                 u.TacticalEnemy=true;
                 if(EnemyRoles.Role(u.Data)==EnemyRole.Frontline)u.Trait=TacticalTrait.Protector;
-                var role=EnemyRoles.Role(u.Data);
+                var role=u.BossWard?EnemyRole.Boss:EnemyRoles.Role(u.Data);
                 u.TacticalSkills=(catalog.TacticalEnemySkills??new SkillData[0]).Where(s=>s!=null&&
                     (role==EnemyRole.Caster&&(s.Id=="tactic.heal"||s.Id=="tactic.burst")||role==EnemyRole.Boss&&s.Id=="tactic.nova"||role==EnemyRole.Assault&&s.Id=="tactic.charge")).ToArray();
             }
@@ -21,13 +21,14 @@ namespace TalesTactics
         {
             if(u.IntentPhase==1)return "예고: "+(Intent(u)?.DisplayName??"공격")+" → "+u.IntentAim+" · 다음 자기 턴 발동";
             if(u.IntentPhase==2)return "빈틈 · 받는 피해 +25% · 다음 자기 턴 휴식";
+            if(u.BossWard)return "호위 방벽 · 호위 1명당 피해 -25% (최대 75%)";
             if(u.Trait==TacticalTrait.Protector)return "방어 시 인접 동료 보호 1회";
             return EnemyRoles.Name(u.Data);
         }
         public static EnemyPlan Plan(BattleSession battle,UnitRuntime u)
         {
             if(!u.Alive||u.Has(StatusKind.Stun)||u.Has(StatusKind.Sleep))return new EnemyPlan{Destination=u.Position};
-            var role=EnemyRoles.Role(u.Data);
+            var role=u.BossWard?EnemyRole.Boss:EnemyRoles.Role(u.Data);
             if(u.IntentPhase==1)
             {
                 if(u.TurnsStarted<=u.IntentTurn)return new EnemyPlan{Destination=u.Position,Guard=true};
