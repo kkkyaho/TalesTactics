@@ -20,7 +20,19 @@ namespace TalesTactics
         public bool CanPrepareNext=>Session?.Result==BattleResult.Victory&&!battleTraining&&!RewardPending&&pendingReward?.Applied==true&&battleStage+1<CampaignStages.Count;
         public string ResultStage=>battleTraining?"훈련 전투":CampaignStages.Title(battleStage);
         public void PrepareNextBattle(){if(!CanPrepareNext)return;int next=battleStage+1;Restart();SelectedStage=next;Hud.ShowChapterPage(next/3);}
-        public void RetryBattle(){if(RewardPending||!(State is BattleEndState))return;Restart();BeginBattle();}
+        public bool CanRetryOpening=>Session?.Opening!=null&&!RewardPending&&!TutorialActive&&!StoryActive&&!TimingActive&&
+            (IsPlayerCommand&&Session.Result==BattleResult.Ongoing||State is BattleEndState&&Session.Result==BattleResult.Defeat);
+        public bool RetryOpening()
+        {
+            if(!CanRetryOpening)return false;
+            BattleSession restored;
+            try{restored=Session.Opening.Restore(Catalog);}catch(System.Exception){SaveNotice="전투 시작 기록을 복원할 수 없습니다. 현재 전투를 유지했습니다.";return false;}
+            int stage=battleStage;Restart();Session=restored;battleStage=stage;battleTraining=restored.CampaignStage<0;TrainingMode=battleTraining;SelectedStage=stage;
+            completed=false;pendingReward=null;TrainingObjective=restored.Objective;Deployment.Clear();Deployment.AddRange(restored.Opening.Deployment);
+            UnityEngine.Random.state=restored.Opening.RandomState;Board.Build(Session);Audio.PlayBattle(!battleTraining&&CampaignStages.Get(stage).BossMusic);
+            Message="출전 당시 편성·장비·규칙으로 재도전합니다.";SetState(new TurnStartState(this));return true;
+        }
+        public void RetryBattle(){if(RewardPending||!(State is BattleEndState))return;if(Session.Result==BattleResult.Defeat){RetryOpening();return;}Restart();BeginBattle();}
         void BeginResultSummary()
         {
             ResultGrowth=new string[0];ResultRewards="획득 보상 없음 · 저장된 성장과 장비는 유지됩니다.";

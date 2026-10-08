@@ -23,7 +23,7 @@ namespace TalesTactics
             if(header.Version==2&&(header.Gold<0||header.Inventory==null))throw new InvalidDataException("Missing economy fields");
             var save=JsonUtility.FromJson<CampaignSave>(json);
             if(save==null)throw new InvalidDataException("Empty campaign");
-            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>5)throw new FutureVersion();
+            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>6)throw new FutureVersion();
             if(!save.HasSuspendedBattle)save.SuspendedBattle=null; // JsonUtility recreates inline null classes.
             Normalize(save);return save;
         }

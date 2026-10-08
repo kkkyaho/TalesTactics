@@ -114,6 +114,7 @@ namespace TalesTactics
                 if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else{u.Trait=progress.Trait;u.Growth=progress.Growth;}
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
+            Session.Opening=BattleOpening.Capture(Session,Catalog);
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
         public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}

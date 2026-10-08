@@ -27,7 +27,7 @@ namespace TalesTactics
             Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
             Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
             Button(systemWindow,"글자 / 조작",62,()=>{settingsDraft=null;ShowSystemMenu(3);});SystemTab(3);
-            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else DrawAccessibility();
+            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else if(page==4)DrawRetryConfirmation();else DrawAccessibility();
             Button(systemWindow,"메뉴 닫기",592,()=>CloseSystemMenu(),true,40);
         }
         void SystemTab(int index)
@@ -70,9 +70,18 @@ namespace TalesTactics
             {
                 Label(systemWindow,"전투 메뉴\n\n아군의 명령 대기 중에 중단 저장할 수 있습니다.\n위치·HP/MP·상태·행동 여부·턴 순서를 함께 저장합니다.\n훈련과 입문 연습은 중단 저장하지 않습니다.\n\n이어하기는 중단 기록을 소비합니다. 다시 종료할 때는\n중단 저장을 사용하세요. 게임을 바로 종료하면 현재 전투는 사라집니다.",126,260,20);
                 Button(systemWindow,"전투 중단 · 저장 후 준비로",414,()=>{if(!battle.SuspendBattle())ShowSystemMenu();},battle.CanSuspend&&battle.CanSave,48);
-                Button(systemWindow,"저장 없이 출전 준비로",480,()=>{battle.Restart();},!battle.RewardPending,40);
+                Button(systemWindow,"시작 상태로 재도전",472,()=>ShowSystemMenu(4),battle.CanRetryOpening,36);HalfButton(systemWindow,0);
+                Button(systemWindow,"저장 없이 출전 준비로",472,()=>{battle.Restart();},!battle.RewardPending,36);HalfButton(systemWindow,1);
+                if(battle.Session.Opening==null)Label(systemWindow,"이 중단 기록에는 출전 당시 정보가 없어 재도전할 수 없습니다.",514,26,15);
             }
             Label(systemWindow,battle.SaveNotice,548,40,16);
+        }
+        void DrawRetryConfirmation()
+        {
+            Label(systemWindow,"전투를 처음부터 다시 시작할까요?",132,56,24);
+            Label(systemWindow,"현재 전투의 이동·공격·HP/MP 변화를 버립니다.\n출전 당시 편성·장비·레벨·턴 규칙으로 돌아갑니다.\n\n저장된 성장·골드·장비는 변경하지 않습니다.",210,200,20);
+            Button(systemWindow,"재도전 확정",430,()=>{if(!battle.RetryOpening())ShowSystemMenu();},battle.CanRetryOpening,48);
+            Button(systemWindow,"현재 전투 계속",492,()=>ShowSystemMenu(),true,40);
         }
         void DrawPreferences()
         {

@@ -40,7 +40,8 @@ namespace TalesTactics
             {
                 ResultButton("출전 화면 / Restart",0,3,battle.Restart,"출전 준비로");
                 if(battle.CanReadEnding)ResultButton("전투 후 이야기",1,3,battle.ReadEnding);
-                else ResultButton("다시 도전",1,3,battle.RetryBattle);
+                else if(win)ResultButton("다시 도전",1,3,battle.RetryBattle);
+                else if(battle.CanRetryOpening)ResultButton("다시 도전",1,3,()=>ShowSystemMenu(4));
                 if(battle.CanPrepareNext)ResultButton("다음 장 출전 준비",2,3,battle.PrepareNextBattle);
                 else if(win&&!battle.ResultTraining)ResultButton("다시 도전",2,3,battle.RetryBattle);
             }

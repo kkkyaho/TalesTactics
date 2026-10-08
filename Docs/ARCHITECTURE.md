@@ -265,3 +265,9 @@ BattleIntermissionGrowthHud는 실제 저장 성장과 승급 조건을 표시�
 `BattleSession.BossEncounters`는 새 자유 턴 2장·6장 캠페인에만 활성화되는 규칙이다. 초기 적 위치를 후방·분산 배치로 바꾸고 목표 유닛에 `BossWard`를 부여한다. `SkillResolver.BossWardPercent`는 같은 편의 생존 유닛 수로 감소율을 계산한다. `BattleProjection`도 이 플래그를 복제하여 호위가 범위 공격 중 쓰러지는 경우까지 동일 순서로 예측한다. 목표 밖 보스라도 방벽이 바뀌면 ForecastRow에 포함한다.
 
 V5 중단 기록의 `BossEncounters`로 규칙 적용을 결정하고 위치·HP·예고는 기존 CheckpointUnit에서 복원한다. 구 V1–V4는 새 규칙을 강제로 끈다. 호위 방벽 수치는 별도 저장하지 않고 생존 상태에서 파생한다. [범위와 자동 전투 비교](BossBalance/README.md).
+
+## 전투 시작 상태 재도전
+
+`BattleOpening`은 첫 `TurnStartState` 진입 전의 유닛 기록과 생성 옵션을 보관한다. 진행 중 상태를 저장하는 `BattleCheckpoint`와 구분하여 스케줄러·목표 카운터를 처음부터 생성한다. 새 세션을 완전히 검증한 뒤 `BattleDirector.RetryOpening`이 현재 세션을 교체한다. 저장된 캠페인 성장/보상에는 쓰지 않는다.
+
+V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다. inline null을 재생성하는 JsonUtility 특성 때문에 별도 플래그를 사용한다. 시작 기록의 장·편성과 중단 기록이 다르거나 검증에 실패하면 중단 저장을 소비하지 않는다. V1–V5의 진행 복원은 유지하고 시작 재도전만 제공하지 않는다. [조작·호환성](BattleRetry/README.md).

@@ -17,6 +17,7 @@ namespace TalesTactics
         public ITurnScheduler Scheduler=new SpeedTurnScheduler();
         public IVictoryCondition Victory=new EliminateEnemies();
         public UnitRuntime Active;
+        public BattleOpening Opening;
         public readonly bool UseUtilityAI;
         public readonly ObjectiveKind Objective;
         public readonly Vector2Int Destination=new Vector2Int(8,8);

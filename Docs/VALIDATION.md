@@ -643,3 +643,11 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 임무2장/6장·전체 예측의 5해상도×글자100/130%30조합에서 넘침0/화면 밖 버튼0. 실제 Game View PNG 직접 확인. 물리 입력 및 일반 Windows 창의 수동 완주는 별도다.
 - Windows `Builds/WindowsBossBalance/TalesTactics.exe` 빌드25.154초, 오류0/경고10. 기존 Pipeline 런타임 설정, DEVELOPMENT_BUILD/비직렬화 필드 분석, 셰이더 경고다. [구현·검증 기록](BossBalance/README.md) 참조.
 - 숨김 Windows 시작12초 유지·로그 오류0, 사용자 저장3파일 해시 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구. 공개 릴리즈와 main 반영은 이번 범위 밖이다.
+
+## 2026-10-08 전투 시작 상태 재도전 (`codex/battle-start-retry`)
+
+- 출전 직전 편성·장비·레벨·배치·전투 규칙을 별도 보관하고, 아군 명령 대기/패배 화면에서 확인 후 재도전한다. 복원 검증 실패·취소는 현재 세션을 유지한다. 저장된 성장·골드·장비는 변경하지 않는다. 훈련 승리 후 기존 새 전투도 유지한다.
+- 실제 Unity EditMode154/154(0.89초), 전체 PlayMode104/104(203.63초). 최종 훈련 승리 버튼 보완 및 신규 테스트 추가 후 관련 PlayMode8/8(9.11초). API 참조 컴파일4개 어셈블리 통과.
+- V6 중단 저장/재실행 이어하기 후 시작 상태 복원, V1–V5 재도전 비활성화, 자유 턴/SPD/CT 복원 검증. 이전 실행본은 V6 중단 기록을 읽지 못한다.
+- 전투 메뉴·확인창·구형 기록 안내의5해상도×글자100/130%30조합에서 넘침0/화면 밖 버튼0. 작은 화면 실제 PNG 직접 확인. 검사에는 격리 임시 저장을 사용했다.
+- Windows `Builds/WindowsBattleRetry/TalesTactics.exe` 빌드26.274초,오류0/기존 경고10. 숨김 시작12초 유지·로그 오류0·사용자 저장3파일 해시 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구. 실제 물리 입력/다른PC/사람의6장 완주 난이도는 이번 검증에 포함하지 않는다. [상세 증거](BattleRetry/README.md).

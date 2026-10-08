@@ -7,8 +7,10 @@ namespace TalesTactics
 {
     [Serializable] public sealed class BattleCheckpoint
     {
-        public int Version=5,Stage,Active,Round,SurvivalTurns;
+        public int Version=6,Stage,Active,Round,SurvivalTurns;
         public bool LegacyMission;
+        public bool HasOpening;
+        public BattleOpening Opening;
         public bool CT,Utility,TeamTurns,PhaseSurvival,TacticalCombat,BossEncounters;
         public int[] Deployment,Order,Begun;
         public long[] Charges;
@@ -17,7 +19,7 @@ namespace TalesTactics
         public static BattleCheckpoint Capture(BattleSession session,int[] deployment)
         {
             if(session.CampaignStage<0||session.Result!=BattleResult.Ongoing||session.Active?.Team!=Team.Player)throw new InvalidOperationException("Only an ongoing campaign player command can be suspended");
-            var save=new BattleCheckpoint{Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
+            var save=new BattleCheckpoint{Opening=session.Opening,HasOpening=session.Opening!=null,Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
                 BossEncounters=session.BossEncounters,TacticalCombat=session.TacticalCombat,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
             if(session.Scheduler is SpeedTurnScheduler speed){save.Order=speed.Capture(session.Units);save.Round=speed.Round;}
             else if(session.Scheduler is TeamTurnScheduler team){save.TeamTurns=true;save.Order=team.CapturePending(session.Units);save.Begun=team.CaptureBegun(session.Units);save.Round=team.Round;}
@@ -27,7 +29,7 @@ namespace TalesTactics
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if(Version<1||Version>5||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
+            if(Version<1||Version>6||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
             var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat,bossEncounters:Version>=5&&BossEncounters);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
@@ -39,6 +41,11 @@ namespace TalesTactics
             if(CT){if(Charges==null||Charges.Length!=Units.Count||Charges.Any(v=>v<0||v>100000))throw new InvalidDataException("Invalid CT");((CTTurnScheduler)session.Scheduler).Restore(session.Units,Charges);}
             else if(TeamTurns)((TeamTurnScheduler)session.Scheduler).Restore(session.Units,Order,Begun,Round,session.Active);
             else{if(Order==null||Order.Any(i=>i<0||i>=Units.Count)||Order.Distinct().Count()!=Order.Length||Round<1)throw new InvalidDataException("Invalid turn queue");((SpeedTurnScheduler)session.Scheduler).Restore(session.Units,Order,Round);}
+            if(Version>=6&&HasOpening)
+            {
+                if(Opening==null||Opening.Stage!=Stage||Opening.Deployment==null||!Opening.Deployment.SequenceEqual(Deployment))throw new InvalidDataException("Opening does not match checkpoint");
+                Opening.Restore(catalog);session.Opening=Opening;
+            }
             // Caller restores RNG only after the whole checkpoint has been validated.
             return session;
         }
