@@ -2,15 +2,15 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**[최신 Windows 다운로드 — 0.1.0-preview.2](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.2)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 시스템·UI 개선과 저장 백업/무결성 검사 도구를 포함합니다. [배포 검증과 남은 확인 사항](Docs/Distribution/Preview2/README.md).
+**[최신 Windows 다운로드 — 0.1.0-preview.3](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.3)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 캐릭터 편성·인터미션 UI와 아군 자유 선택 턴, 저장 백업/무결성 검사 도구를 포함합니다. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview3/README.md).
 
 ## 현재 상태
 
-기본 전투를 **아군 턴 자유 선택**으로 변경했습니다. 명령 대기 중 맵의 아군·상단 캐릭터·PgUp/PgDn으로 미완료 아군을 선택하고, 모두 대기/방어를 마치면 적군 턴이 시작됩니다. 이동·행동 기록과 중단 저장을 보존하며 기존 SPD/CT도 선택할 수 있습니다. 실제 EditMode133/133·PlayMode97/97·최종 관련4/4와 화면10조합, Windows 빌드/시작 검사를 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsFreeTurns/TalesTactics.exe`이며 폴더 전체가 필요합니다. [조작과 검증](Docs/FreeTurns/README.md). 공개 preview.2에는 아직 포함되지 않습니다.
+기본 전투를 **아군 턴 자유 선택**으로 변경했습니다. 명령 대기 중 맵의 아군·상단 캐릭터·PgUp/PgDn으로 미완료 아군을 선택하고, 모두 대기/방어를 마치면 적군 턴이 시작됩니다. 이동·행동 기록과 중단 저장을 보존하며 기존 SPD/CT도 선택할 수 있습니다. 실제 EditMode133/133·PlayMode97/97·최종 관련4/4와 화면10조합, Windows 빌드/시작 검사를 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsFreeTurns/TalesTactics.exe`이며 폴더 전체가 필요합니다. [조작과 검증](Docs/FreeTurns/README.md). 이번 변경은 공개 preview.3에 포함됩니다.
 
-장비 관리·장비 상점·성장/승급도 승인된 시안의 **남색·청록·황동 인터미션 UI**로 개편했습니다. 장비 그림과 교체 전후9개 능력치,3×2 상점 카드와 거래 후 잔액,승급 조건과 선택 후 확정하는 전술 특성을 제공합니다. 구매 직후 장착 대상 선택도 초상화 UI로 연결했습니다. [실제 화면·검증·아트 기록](Docs/Intermission/README.md). 인터미션 개편 당시 실행 파일은 `Builds/WindowsIntermission/TalesTactics.exe`이며 폴더 전체가 필요합니다. Unity EditMode125/125·PlayMode93/93, 최종 관련3/3,5해상도×글자2단계×4화면40조합을 통과했습니다. 공개 preview.2 다운로드에는 이번 변경이 아직 포함되지 않습니다.
+장비 관리·장비 상점·성장/승급도 승인된 시안의 **남색·청록·황동 인터미션 UI**로 개편했습니다. 장비 그림과 교체 전후9개 능력치,3×2 상점 카드와 거래 후 잔액,승급 조건과 선택 후 확정하는 전술 특성을 제공합니다. 구매 직후 장착 대상 선택도 초상화 UI로 연결했습니다. [실제 화면·검증·아트 기록](Docs/Intermission/README.md). 인터미션 개편 당시 실행 파일은 `Builds/WindowsIntermission/TalesTactics.exe`이며 폴더 전체가 필요합니다. Unity EditMode125/125·PlayMode93/93, 최종 관련3/3,5해상도×글자2단계×4화면40조합을 통과했습니다. 이번 변경은 공개 preview.3에 포함됩니다.
 
-출전 준비는 승인된 2안의 **5×2 전신 모델 선택·오른쪽 초상화/능력/장비·남색/청록 편성 UI**로 개편했습니다. 모델 조회와 출전 선택을 분리하고 병과 필터·정렬·전체 해제·추천 편성을 제공합니다. [실제 화면과 검증](Docs/ModelFormation/README.md). 편성 화면 개편 당시 실행 파일은 `Builds/WindowsModelFormation/TalesTactics.exe`이며 폴더 전체가 필요합니다. 실제 Unity PlayMode90/90과 최종 배치 보정 후 관련3/3, 5해상도×글자100/130% 검수를 통과했습니다. 공개 preview.2 다운로드는 이전 릴리즈입니다.
+출전 준비는 승인된 2안의 **5×2 전신 모델 선택·오른쪽 초상화/능력/장비·남색/청록 편성 UI**로 개편했습니다. 모델 조회와 출전 선택을 분리하고 병과 필터·정렬·전체 해제·추천 편성을 제공합니다. [실제 화면과 검증](Docs/ModelFormation/README.md). 편성 화면 개편 당시 실행 파일은 `Builds/WindowsModelFormation/TalesTactics.exe`이며 폴더 전체가 필요합니다. 실제 Unity PlayMode90/90과 최종 배치 보정 후 관련3/3, 5해상도×글자100/130% 검수를 통과했습니다. 공개 preview.3에서 이용할 수 있습니다.
 
 6장 캠페인과 전투·성장·장비·저장 시스템을 구현했습니다. **실제 Unity EditMode 125개·PlayMode 87개를 통과했습니다.** 기존 영웅 10명 모두를 특징을 유지한 3등신 고밀도 픽셀 아트로 교체하고, 방향별 보행 4프레임·궁극기 전용 준비/발동 동작을 연결했습니다. 일반 적 9종과 최종 보스 다오스, 16종 전장 재질·16종 장식·6장별 원경을 적용했습니다. 실제 화면과 상세 범위는 [픽셀 아트 개편](Docs/PixelCampaign/README.md)을 참고하세요. 기존 89개 기술 연출과 오리지널 음악 14곡은 유지합니다. 전체 게임 완성본이나 전문가의 원작 작화 승인을 뜻하지 않으며, 최신 빌드·실행 검증과 한계는 Docs/VALIDATION.md를 따릅니다.
 
@@ -51,11 +51,11 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 `Launch.ps1`은 설치된 에디터에서 프로젝트를 여는 선택적 편의 스크립트입니다. 테스트 Scene은 기존 사용자 작업을 자동으로 덮어쓰지 않습니다. 생성 이후 수치 변경은 Content의 asset을 편집하세요. 생성기 코드는 초기 데이터의 출처이며 기획 원본은 Docs/GAME_DESIGN.md입니다.
 
-최신 시스템·UI Windows 실행 파일: `Builds/WindowsSystemUi/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
+최신 로컬 Windows 실행 파일: `Builds/WindowsFreeTurns/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
 
 ## 조작
 
-최신 로컬 배포 ZIP은 `Builds/Releases/TalesTactics-0.1.0-preview.2-windows-x64.zip`입니다. 새 폴더에 풀어 실행하며 무결성 검사·저장 백업 도구와 업데이트/복귀 안내가 포함됩니다. 제작 명령과 검증 범위는 [배포·업데이트 안내](Docs/Distribution/README.md)를 참고하세요.
+최신 로컬 배포 ZIP은 `Builds/Releases/TalesTactics-0.1.0-preview.3-windows-x64.zip`입니다. 새 폴더에 풀어 실행하며 무결성 검사·저장 백업 도구와 업데이트/복귀 안내가 포함됩니다. 제작 명령과 검증 범위는 [배포·업데이트 안내](Docs/Distribution/README.md)를 참고하세요.
 
 게임패드: 왼쪽 스틱으로 화면 커서 이동, 방향키로 메뉴 순환, A/× 선택·타이밍 입력, B/○ 취소, LB/RB 카메라 회전, 오른쪽 스틱 확대/축소, R3 초기화. 마우스와 자동 전환됩니다. 상세 조작·폰트 출처·검증 범위는 [입력·배포 안내](Docs/INPUT_DISTRIBUTION.md)를 참고하세요.
 

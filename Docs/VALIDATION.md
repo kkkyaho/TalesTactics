@@ -617,3 +617,10 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Game View5해상도(1024×768/1280×800/1366×768/1920×1080/2560×1080)×글자100/130%10조합에서6인 버튼/미완료5인 선택을 확인했다. 활성 버튼 화면 이탈0·문구 넘침0·상단 버튼 겹침0이며 프레임3306→13648 진행을 기록했다.1024/1920 실제 스크린샷을 직접 확인했다. 격리 임시 저장 루트에서 검사했다.
 - Windows 일반 빌드 **10.415초·오류0·기존 경고4** 성공. **Builds/WindowsFreeTurns/TalesTactics.exe**와 폴더 전체가 최신 로컬 실행본이다. 12초 숨김 시작에서 프로세스 유지·로그 오류/예외0건. 최종 빌드에는 Pipeline 플레이어 설정1건·디버그 셰이더 제거2건·TMP 셰이더 지시문1건의 기존 경고가 남는다. 사용자 저장3개 SHA256 전후 불변,추가 슬롯/설정 없음,Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구와 임시 캡처/폰트/CSV 변경 정리를 확인했다.
 - 시각 증거는 Editor Game View이며 Windows 일반 플레이어는 시작 로그 검사다. 물리 패드/다른PC/DPI/새 규칙으로 사람이6장 완주한 밸런스는 미검증이다. 공개 Release에는 올리지 않았다. 상세 조작·실제 화면·증거는 [FreeTurns/README.md](FreeTurns/README.md)를 따른다.
+
+## 2026-10-08 — 0.1.0-preview.3 공개 배포
+
+- 전신 모델 편성·인터미션 메뉴·아군 자유 선택 턴을 검증된 WindowsFreeTurns 일반 빌드로 패키징하여 공개 prerelease v0.1.0-preview.3에 ZIP/체크섬을 게시했다. 소스/태그b8833b98ebc179ae5cecd0bfa55703fff431217b,ZIP205,827,544바이트·202파일+manifest,SHA256 c63ecc4bb60f22468a916a5f3e1dd81d1db23120d59ed43796c6b9e5daf5b45a. 이전 릴리즈는 유지한다.
+- 게임 코드/콘텐츠 변경 없이 기존 실제 Unity Play97/97·최종 Edit133/133·관련 Play4/4와 Windows 일반 빌드 증거를 사용했다. 배포 도구13/13(3.783초),ZIP 내부 및 Windows PowerShell5.1 압축 해제본 검사를 통과했다. 압축 해제 실행본12초 숨김 시작 유지·로그 오류/예외0건,실행 뒤 파일 검사도 통과했다.
+- 사용자 저장3개를 별도 로컬 폴더에 백업/검증했고 실행 전후 원본 SHA256은 불변이다. 저장·개인 음원·개발 검수 코드는 업로드하지 않았다. 게시 후 인증 없는 ZIP/체크섬 전체 다운로드 HTTP200·크기·SHA256 및 태그 소스 일치를 확인했다.
+- 신규 중단 기록V3와 구V1/V2 읽기,preview.2 복귀 시 업데이트 전 백업 필요를 ZIP/릴리즈 노트에 명시했다. 일반 Windows 화면/물리 입력·다른PC/DPI·새 규칙의 사람6장 완주 밸런스는 미검증으로 유지한다. [Preview3 검증 기록](Distribution/Preview3/README.md) 참조.
