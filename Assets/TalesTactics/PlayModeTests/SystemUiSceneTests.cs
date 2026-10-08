@@ -23,7 +23,7 @@ namespace TalesTactics.PlayModeTests
             Click("균형 6인 추천 편성");director.Campaign.StoryProgress.AddRange(new[]{"chapter1","chapter2"});director.SelectedStage=2;
             Click("선택 캐릭터 성장");yield return null;Click("합류 훈련 · Lv3");yield return null;
             var c=director.Catalog.Characters[0];Assert.That(director.Campaign.Get(c.Id).Level,Is.EqualTo(3));
-            Click("전술 특성 · 균형");yield return null;Click("기동 · 저장");yield return null;
+            Click("특성 선택: 기동");yield return null;Click("특성 적용 · 저장");yield return null;
             Assert.That(new CampaignFile(director.Profiles.PathFor(0)).Load().Get(c.Id).Trait,Is.EqualTo(TacticalTrait.Swift));
         }
         [UnityTest] public IEnumerator ForecastDetailsListsAllRecipientsAndKeepsStateUntouched()

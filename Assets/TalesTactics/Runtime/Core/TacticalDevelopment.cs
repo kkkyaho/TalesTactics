@@ -58,9 +58,10 @@ namespace TalesTactics
         public static bool SaveTrait(CampaignSave save,CharacterData character,TacticalTrait trait,Func<CampaignSave,bool> persist)
         {
             if(!Enum.IsDefined(typeof(TacticalTrait),trait)||persist==null)return false;
+            var existing=save.Characters.Find(p=>p.Id==character.Id);
             var progress=save.Get(character.Id);var previous=progress.Trait;progress.Trait=trait;
             try{if(persist(save))return true;}catch(Exception){}
-            progress.Trait=previous;return false;
+            progress.Trait=previous;if(existing==null)save.Characters.Remove(progress);return false;
         }
         // Existing levels/EXP are never reduced. Training is offered only for unlocked chapters.
         public static bool CatchUp(CampaignSave save,CharacterData character,int stage,Func<CampaignSave,bool> persist)

@@ -239,3 +239,11 @@ EnemyTactics.Plan은 순수 조회이고 Commit이 예고 상태를 변경한다
 CampaignMissions가 장별 목표를 정하고 TacticalDevelopment가 특성·합류 훈련·기술 숙련·궁극기 체험을 관리한다. 특성의 능력치 계산은 UnitRuntime과 EquipmentLoadout이 공유하며 비용·회복·보호는 SkillResolver에 모은다. 저장 실패 시 변경을 되돌린다. BattleCheckpoint V2는 전술 필드·생존 경과·기존 임무 여부를 보존하고 V1 중단 기록은 기존 전멸 목표로 복원한다.
 
 BattleTacticalControls/Hud와 BoardThreatView는 기존 작은 컨텍스트 창, 직접 클릭 발동, 공통 모달 입력 차단을 확장한다. 위험·예고·선택/행동자 표시는 별도 도형으로 구분하고, 전체 예측은 페이지 모달이다. AccessibleText는 작성된 최소 크기를 유지하며 PlayerPreferences.TextScale에 따라 최대 크기를 늘리고 제한 공간에서 자동 축소한다. 신규 에셋은 TacticalContent.Add가 없는 항목만 추가하며 DemoContent.Create를 재실행하지 않는다.
+
+## 인터미션 공통 UI
+
+BattleIntermissionHud는 기존 준비 화면 패널과 FormationText/Button을 재사용하며 공통 상단 이동, ID 기반 초상/장비 그림, 캐릭터 목록,9개 능력치 비교와 하단 확정 버튼을 제공한다. Clear(header)는 인터미션 상태/색상도 초기화해 전투·임무·기존 모달로 복귀할 수 있다. 이미지 비율 조정은 배치 컨테이너 안의 별도 자식에만 적용하며, 초상 목록의 제목/이름에는 고정 높이를 확보한다.
+
+BattleIntermissionEquipmentHud는 EquipmentLoadout 초안과 저장된 장비를 따로 읽는다. 캐릭터/메뉴 전환 시 초안을 버리고 적용 시 기존 수량 검사와 TrySave를 사용한다. BattleIntermissionMarketHud는 카탈로그를6개씩 표시하며 기존 구매/매각 차단·트랜잭션을 그대로 호출한다. 거래 후 필터/페이지/선택을 유지하고 마지막 미장착 수량을 매각한 경우 상세를 남겨 거래 불가 사유를 보여 준다.
+
+BattleIntermissionGrowthHud는 실제 저장 성장과 승급 조건을 표시한다. 특성 선택은 nullable 인수로 전달하는 UI 초안이고 적용 버튼에서만 SaveTrait를 호출한다. SaveTrait 실패 시 기존 특성을 복구하며 이번 호출에서 추가한 새 성장 기록도 제거한다. 기술 숙련은 기존 UnitDetails 모달의 입력 차단/닫기를 재사용한다. 단순 조회에는 Campaign.Get 대신 FormationProgress를 사용하므로 없는 성장 기록을 생성하지 않는다.

@@ -101,8 +101,8 @@ namespace TalesTactics
         {
             if(parent==header)
             {
-                if(modelDeploymentLayout)foreach(var p in new[]{header,left,center,commands,footer})if(p!=null)p.GetComponent<UnityEngine.UI.Image>().color=panel;
-                HideResult();preparationLayout=false;modelDeploymentLayout=false;if(center!=null)center.gameObject.SetActive(false);
+                if(modelDeploymentLayout||intermissionLayout)foreach(var p in new[]{header,left,center,commands,footer})if(p!=null)p.GetComponent<UnityEngine.UI.Image>().color=panel;
+                HideResult();preparationLayout=false;modelDeploymentLayout=false;intermissionLayout=false;if(center!=null)center.gameObject.SetActive(false);
             }
             foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}
         }
@@ -127,46 +127,9 @@ namespace TalesTactics
         void ShowEquipmentRoster(){RenderEquipmentRoster();}
         void ShowEquipment(CharacterData character,EquipmentLoadout draft=null,string notice=null)
         {RenderEquipment(character,draft,notice);}
-        void ShowGrowthRoster()
-        {
-            Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     성장 · 승급",12,45,25);
-            Label(left,"캐릭터 선택",12,35,20);
-            foreach(var character in battle.Catalog.Characters)
-            {var selected=character;Button(left,character.DisplayName,50+Array.IndexOf(battle.Catalog.Characters,character)*39,()=>ShowGrowth(selected),true,34);}
-            Label(commands,"성장을 확인할 캐릭터를\n선택하세요.",24,100,20);
-            Button(commands,"출전 준비로",150,ShowDeployment);
-            Label(footer,"캐릭터마다 고정 직업에서 한 번만 승급합니다.\n저장된 레벨과 스토리 조건을 모두 충족해야 합니다.",14,88,17);
-        }
-        void ShowGrowth(CharacterData character,string notice=null)
-        {
-            if(battle.Session!=null)return;
-            var progress=battle.Campaign.Get(character.Id);
-            var gear=new EquipmentLoadout(character,progress,battle.Catalog.Equipment,battle.Campaign);
-            var before=gear.Preview(progress.Level,progress.Promoted);var after=gear.Preview(progress.Level,true);
-            Clear(header);Clear(left);Clear(commands);Clear(footer);
-            Label(header,"TALES / TACTICS     ·     성장 · 승급",12,45,25);
-            Label(left,character.DisplayName,12,65,23);
-            string exp=progress.Level>=50?"EXP MAX":$"EXP {progress.EXP} / {progress.Level*100}";
-            Label(left,$"Lv{progress.Level} · {exp}\n현재 → 승급 후\n\nHP {before.HP} → {after.HP}\nMP {before.MP} → {after.MP}\nSTR {before.STR} → {after.STR}\nMAG {before.MAG} → {after.MAG}\nDEF {before.DEF} → {after.DEF}\nMDF {before.MDF} → {after.MDF}\nSPD {before.SPD} → {after.SPD}\nMOV {before.MOV} → {after.MOV}\nJMP {before.JMP} → {after.JMP}",85,370,18);
-            Label(commands,character.Job+"\n→ "+character.PromotionJob,12,95,19);
-            bool story=battle.Campaign.StoryProgress.Contains(character.PromotionStoryFlag);
-            string storyName=character.PromotionStoryFlag=="chapter2"?"2장 완료":character.PromotionStoryFlag;
-            Label(commands,$"레벨 조건: Lv{character.PromotionLevel}\n{(progress.Level>=character.PromotionLevel?"충족":"미충족")} (현재 Lv{progress.Level})\n\n스토리 조건: {storyName}\n{(story?"충족":"미충족")}",115,170,17);
-            string reason=CampaignPromotion.Unavailable(progress,character,battle.Campaign.StoryProgress);
-            if(battle.TrainingMode)reason="훈련 모드에서는 승급할 수 없습니다.";
-            else if(!battle.CanSave)reason="저장 보호 상태에서는 승급할 수 없습니다.";
-            Label(commands,reason??"승급할 수 있습니다.",290,70,17);
-            Button(commands,progress.Promoted?"승급 완료":"승급 · 저장",380,()=>
-            {
-                if(battle.TrainingMode||!battle.CanSave)return;
-                bool saved=CampaignPromotion.TrySave(battle.Campaign,character,battle.PersistCampaign);
-                ShowGrowth(character,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
-            },reason==null);
-            Button(commands,"캐릭터 목록으로",428,ShowGrowthRoster);
-            DrawDevelopment(character);
-            Label(footer,notice??"저장된 성장과 장비 기준의 능력치입니다. 훈련 레벨은 적용하지 않습니다.\n캠페인 1장 → 2장 승리로 스토리 조건을 충족합니다.",14,88,17);
-        }        public void Refresh()
+        void ShowGrowthRoster() => ShowGrowth(IntermissionCharacter());
+        void ShowGrowth(CharacterData character,string notice=null) => RenderIntermissionGrowth(character,notice);
+        public void Refresh()
         {
             if(battle.Session==null)return;
             CloseUnitDetails();

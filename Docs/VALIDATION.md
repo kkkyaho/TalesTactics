@@ -599,3 +599,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **30.078초/오류0/경고10** 성공. 기존 Pipeline·개발 전처리기·직렬화·셰이더/TMP 경고가 남는다. 새 실행 파일12초 숨김 시작에서 프로세스 정상 유지·로그 오류/예외0건. ModelFormation/windows-build.json, startup-check.json, windows-startup.log, build-hashes.json.
 - 사용자 저장3개 SHA256은 전후 불변이며 추가 슬롯/설정 파일을 생성하지 않았다. 검수는 별도 임시 저장 경로를 사용했고 Play 종료,Full HD,runInBackground=false,Scene dirty=false를 복구했다. 캡처 에셋·동적 폰트 캐시·자동 검사 CSV 임시 변경을 정리했다.
 - **최신 실행 파일: Builds/WindowsModelFormation/TalesTactics.exe**. 폴더 전체가 필요하다. 시각 증거는 Editor Game View이고 Windows 일반 플레이어는 시작 로그 검사다. 실물 패드·다른PC/DPI·사람의6장 완주/최종 작화 감수는 미검증으로 유지한다. 새 공개 Release 업로드는 포함하지 않는다. 상세 조작/증거는 [ModelFormation/README.md](ModelFormation/README.md).
+
+## 2026-10-08 — 인터미션 메뉴 개편
+
+- 승인 시안의 장비 관리·상점·성장/승급 및 구매 후 장착 대상 화면을 같은 남색·청록·황동 uGUI로 적용했다. ID 기반 장비 아이콘 아틀라스,공통 메뉴/초상,장비9개 수치 비교,6개 상품 카드/페이지,수량·거래 후 잔액,실제 승급 직업·조건·비교,특성 선택 후 적용/저장을 연결했다. 기존 Content/Scene/저장 형식과 거래·승급 규칙을 유지한다. 단순 조회는 성장 기록을 만들지 않으며,특성 저장 실패 시 이번에 추가한 새 기록도 되돌린다.
+- 실제 Unity 전체 PlayMode **93/93(188.74초)**,EditMode **125/125(0.71초)** 통과. UI 최종 배치 수정 뒤 인터미션 관련 **3/3(3.75초)** 재통과. 새 테스트는 실제 포인터/Submit 장비 초안·취소·저장 실패·재시도,없는 성장 기록 조회 불변/특성 초안·적용·실패 복원,상점2페이지 거래 유지 및 모달 차단을 포함한다. 기존 특성 테스트는 선택→적용 경로로 갱신했다. 최종4개 어셈블리의 Unity 실제 API DLL 컴파일도 통과했다. ManagedChecks는 이번 변경에서 실행하지 않았다. Intermission/playmode-results.json,editmode-results.json,final-intermission-tests.json,api-check.log.
+- Game View **5해상도×글자100/130%×장비/상점/성장/장착 대상 =40조합**에서 활성 버튼 경계 이탈0건·활성 문구 넘침0건. 1024×768/1280×800/1366×768/1920×1080/2560×1080을 포함하며 프레임6040→82516 진행을 기록했다. 대표3해상도 PNG를 직접 확인했다. 첫 검수에서 발견한 이미지 FitInParent 컨테이너 이탈,초상 이름표와 승급 비교표/호위 설명 높이를 수정한 뒤 최종40조합을 재검증했다. 별도 임시 저장 루트·메모리 콜백을 사용하며 검수용 Lv19/골드1280은 사용자 데이터가 아니다.
+- Windows 일반 빌드 **25.210초/오류0/경고10** 성공. 기존 Pipeline·개발 전처리기·직렬화·셰이더/TMP 경고가 남는다. 최신 실행 파일은 **Builds/WindowsIntermission/TalesTactics.exe**이며 폴더 전체가 필요하다. Intermission/windows-build.json.
+- 실제 화면은 Editor Game View 검수다. Windows 일반 플레이어의 물리 입력/화면,실물 게임패드·다른PC/DPI·사람의6장 완주/장기 밸런스는 이번 범위에 포함하지 않는다. 공개 Release 업로드는 포함하지 않는다. 상세 조작·스크린샷·아트 제작 프롬프트는 [Intermission/README.md](Intermission/README.md)를 따른다.
+- 새 실행 파일12초 숨김 시작에서 프로세스 유지·로그 오류/예외0건을 확인했다(Intermission/startup-check.json,windows-startup.log,build-hashes.json). 사용자 저장3개 SHA256은 전후 불변이며 추가 슬롯/설정을 생성하지 않았다(user-save-check.json). 검사에서 실행한 플레이어만 종료하고 Play/Full HD/runInBackground=false/Scene dirty=false를 복구했다. 캡처 임시 에셋·동적 폰트 캐시·자동 검사 CSV는 정리했다.

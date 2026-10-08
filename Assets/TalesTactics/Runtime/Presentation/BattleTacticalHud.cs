@@ -46,30 +46,6 @@ namespace TalesTactics
             Button(unitDetails,"다음 대상",364,()=>ShowForecast(page+1),(page+1)*3<forecast.Rows.Count,32);HalfButton(unitDetails,1);
             Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
         }
-        void DrawDevelopment(CharacterData c)
-        {
-            Button(commands,"전술 특성 · "+TacticalDevelopment.TraitName(battle.Campaign.Get(c.Id).Trait),476,()=>ShowTraits(c),true,38);
-            bool behind=battle.Campaign.Get(c.Id).Level<CampaignStages.Get(battle.SelectedStage).EntryLevel;
-            Button(commands,"합류 훈련 · Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel,524,()=>
-            {
-                bool saved=TacticalDevelopment.CatchUp(battle.Campaign,c,battle.SelectedStage,battle.PersistCampaign);
-                ShowGrowth(c,saved?"합류 훈련을 저장했습니다.":"훈련을 저장하지 못했습니다. 기존 성장을 유지합니다.");
-            },behind&&!battle.TrainingMode&&battle.CanSave,38);
-            Label(left,TacticalDevelopment.MasteryDescription,478,100,17);
-        }
-        void ShowTraits(CharacterData c)
-        {
-            BeginPreparation(c.DisplayName+" · 전술 특성");
-            Label(left,"특성은 한 가지만 적용됩니다.\n변경은 준비 화면에서 무료이며\n저장 후 다음 전투에 적용됩니다.\n\n보호는 방어 중 인접한 동료에게\n자기 턴마다 한 번 적용됩니다.\n여러 보호자는 중첩되지 않습니다.",18,280,19);
-            foreach(TacticalTrait trait in System.Enum.GetValues(typeof(TacticalTrait)))
-            {
-                var selected=trait;bool current=battle.Campaign.Get(c.Id).Trait==trait;
-                Button(center,(current?"● ":"")+TacticalDevelopment.TraitName(trait)+" · 저장",20+(int)trait*110,()=>
-                {TacticalDevelopment.SaveTrait(battle.Campaign,c,selected,battle.PersistCampaign);ShowTraits(c);},battle.CanSave&&!battle.TrainingMode,38);
-                Label(center,TacticalDevelopment.TraitDescription(trait),64+(int)trait*110,52,17);
-            }
-            Button(commands,"성장으로",20,()=>ShowGrowth(c));Button(commands,"출전 준비로",76,ShowDeployment);
-            Label(footer,battle.SaveNotice,14,70,18);
-        }
+        void ShowTraits(CharacterData c) => ShowGrowth(c);
     }
 }
