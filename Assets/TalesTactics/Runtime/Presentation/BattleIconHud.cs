@@ -25,18 +25,28 @@ namespace TalesTactics
             var progress=Label(header,battle.TutorialActive?"이동 · 공격 · 회복 · 대기":MissionBriefing.Progress(battle.Session),36,22,14);
             progress.rectTransform.anchorMax=new Vector2(0,1);progress.rectTransform.sizeDelta=new Vector2(310,22);progress.rectTransform.anchoredPosition=new Vector2(170,-36);
             int i=0;
-            var orderNow=battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
+            var team=battle.Session.Scheduler as TeamTurnScheduler;
+            var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
+            if(team!=null)
+            {
+                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명 · PgUp/PgDn 선택":$"적군 턴 {team.Round}",1,20,12);
+                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-190,-21),new Vector2(150,-1));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
+            }
             foreach(var unit in orderNow)
             {
-                var g=new GameObject("NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
-                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-120+i*48,-56),new Vector2(-80+i*48,-6));
+                var g=new GameObject(team!=null?"아군 선택: "+unit.Data.Id:"NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
+                float x=team!=null?-20-orderNow.Length*24+i*48:-120+i*48;
+                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-62),new Vector2(x+40,team!=null?-22:-6));
                 var img=g.GetComponent<UnityEngine.UI.Image>();img.sprite=unit.Data.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=true;
-                var portraitButton=g.AddComponent<UnityEngine.UI.Button>();portraitButton.interactable=battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState);portraitButton.onClick.AddListener(()=>{battle.InspectUnit(unit);ShowUnitDetails(unit);});
+                if(team!=null&&!team.CanSelect(unit))img.color=new Color(.4f,.4f,.4f,.7f);
+                var portraitButton=g.AddComponent<UnityEngine.UI.Button>();portraitButton.interactable=team!=null?battle.CanSelectPlayerUnit(unit):battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState);
+                portraitButton.onClick.AddListener(()=>{if(team!=null)battle.SelectPlayerUnit(unit);else{battle.InspectUnit(unit);ShowUnitDetails(unit);}});
                 var hover=g.AddComponent<UnityEngine.EventSystems.EventTrigger>();
                 foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select,UnityEngine.EventSystems.EventTriggerType.PointerExit,UnityEngine.EventSystems.EventTriggerType.Deselect})
                 {var kind=type;var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>battle.HoveredUnit=kind==UnityEngine.EventSystems.EventTriggerType.PointerEnter||kind==UnityEngine.EventSystems.EventTriggerType.Select?unit:null);hover.triggers.Add(entry);}
-                int previous=System.Array.IndexOf(lastOrder,unit),rank=i;var order=Label(g.transform,(++i).ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),32,22,12);order.alignment=TextAlignmentOptions.BottomRight;order.rectTransform.sizeDelta=new Vector2(-2,22);order.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
-                var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=unit.Team==Team.Player?new Color(.3f,.75f,1):new Color(1,.35f,.3f);border.effectDistance=new Vector2(1,-1);
+                int previous=System.Array.IndexOf(lastOrder,unit),rank=i++;string state=!unit.Alive?"전투불능":team!=null&&team.Phase==Team.Enemy?"완료":unit==battle.Session.Active?"선택":team!=null&&team.CanSelect(unit)?"가능":"완료";
+                var order=Label(g.transform,team!=null?state:i.ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),team!=null?22:32,18,10);order.alignment=TextAlignmentOptions.BottomRight;order.rectTransform.sizeDelta=new Vector2(-2,18);order.textWrappingMode=TMPro.TextWrappingModes.NoWrap;order.enableAutoSizing=true;order.fontSizeMin=8;order.fontSizeMax=10;
+                var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=team!=null&&unit==battle.Session.Active?new Color(1,.8f,.35f):unit.Team==Team.Player?new Color(.3f,.75f,1):new Color(1,.35f,.3f);border.effectDistance=new Vector2(1,-1);
             }
             lastOrder=orderNow;
         }

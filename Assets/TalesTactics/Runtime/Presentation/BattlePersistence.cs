@@ -79,12 +79,12 @@ namespace TalesTactics
         }
         public void SaveBattleOptions()
         {
-            var draft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(Preferences));draft.CT=UseCT;draft.Utility=UseUtilityAI;draft.AutoTiming=Campaign.AutoTiming;
-            if(!SavePreferences(draft,false)){UseCT=Preferences.CT;UseUtilityAI=Preferences.Utility;Campaign.AutoTiming=Preferences.AutoTiming;}
+            var draft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(Preferences));draft.CT=UseCT;draft.FixedSpeedOrder=UseFixedSpeedOrder;draft.Utility=UseUtilityAI;draft.AutoTiming=Campaign.AutoTiming;
+            if(!SavePreferences(draft,false)){UseCT=Preferences.CT;UseFixedSpeedOrder=Preferences.FixedSpeedOrder;UseUtilityAI=Preferences.Utility;Campaign.AutoTiming=Preferences.AutoTiming;}
         }
         void ApplyPreferences(bool display)
         {
-            UseCT=Preferences.CT;UseUtilityAI=Preferences.Utility;
+            UseCT=Preferences.CT;UseFixedSpeedOrder=Preferences.FixedSpeedOrder;UseUtilityAI=Preferences.Utility;
             Audio.SetVolumes(Preferences.Music,Preferences.Effects);
             if(display&&!Application.isEditor)Screen.SetResolution(Preferences.Width,Preferences.Height,Preferences.Fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);
         }

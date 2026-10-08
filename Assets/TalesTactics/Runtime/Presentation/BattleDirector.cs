@@ -19,7 +19,7 @@ namespace TalesTactics
         public readonly List<int> Deployment=new List<int>{0,1,3};
         public CampaignSave Campaign;
         public bool TrainingMode, TimingActive, TimingSuccess;
-        public bool UseCT, UseUtilityAI;
+        public bool UseCT, UseUtilityAI, UseFixedSpeedOrder;
         public ObjectiveKind TrainingObjective;
         public float TimingProgress;
         public string Message="출전 인원을 선택하세요 (1–6명).";
@@ -105,7 +105,7 @@ namespace TalesTactics
         {
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
-            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate);
+            Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);

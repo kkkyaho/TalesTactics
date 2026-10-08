@@ -7,10 +7,10 @@ namespace TalesTactics
 {
     [Serializable] public sealed class BattleCheckpoint
     {
-        public int Version=2,Stage,Active,Round,SurvivalTurns;
+        public int Version=3,Stage,Active,Round,SurvivalTurns;
         public bool LegacyMission;
-        public bool CT,Utility;
-        public int[] Deployment,Order;
+        public bool CT,Utility,TeamTurns;
+        public int[] Deployment,Order,Begun;
         public long[] Charges;
         public UnityEngine.Random.State RandomState;
         public List<CheckpointUnit> Units=new List<CheckpointUnit>();
@@ -20,14 +20,15 @@ namespace TalesTactics
             var save=new BattleCheckpoint{Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
                 LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
             if(session.Scheduler is SpeedTurnScheduler speed){save.Order=speed.Capture(session.Units);save.Round=speed.Round;}
+            else if(session.Scheduler is TeamTurnScheduler team){save.TeamTurns=true;save.Order=team.CapturePending(session.Units);save.Begun=team.CaptureBegun(session.Units);save.Round=team.Round;}
             else if(session.Scheduler is CTTurnScheduler ct)save.Charges=ct.Capture(session.Units);else throw new InvalidOperationException("Unsupported scheduler");
             foreach(var u in session.Units)save.Units.Add(new CheckpointUnit(u));
             return save;
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if(Version<1||Version>2||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
-            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission);
+            if(Version<1||Version>3||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
+            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)Units[i].Apply(session.Units[i],session.Grid,catalog);
@@ -36,6 +37,7 @@ namespace TalesTactics
             session.Active=session.Units[Active];
             if(!session.Active.Alive||session.Active.Team!=Team.Player||session.Result!=BattleResult.Ongoing)throw new InvalidDataException("Invalid active turn");
             if(CT){if(Charges==null||Charges.Length!=Units.Count||Charges.Any(v=>v<0||v>100000))throw new InvalidDataException("Invalid CT");((CTTurnScheduler)session.Scheduler).Restore(session.Units,Charges);}
+            else if(TeamTurns)((TeamTurnScheduler)session.Scheduler).Restore(session.Units,Order,Begun,Round,session.Active);
             else{if(Order==null||Order.Any(i=>i<0||i>=Units.Count)||Order.Distinct().Count()!=Order.Length||Round<1)throw new InvalidDataException("Invalid turn queue");((SpeedTurnScheduler)session.Scheduler).Restore(session.Units,Order,Round);}
             // Caller restores RNG only after the whole checkpoint has been validated.
             return session;

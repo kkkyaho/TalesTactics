@@ -6,7 +6,7 @@ namespace TalesTactics
     [Serializable] public sealed class PlayerPreferences
     {
         public int Version=1,Slot,Width=1280,Height=800;
-        public bool Fullscreen,CT,Utility,AutoTiming;
+        public bool Fullscreen,CT,Utility,AutoTiming,FixedSpeedOrder;
         public float Music=.28f,Effects=.45f,CursorSpeed=1;
         public int EnemySpeedMode; // 0=1x, 1=2x, 2=4x; absent in older settings means normal.
         public bool SkipEnemyAnimations;

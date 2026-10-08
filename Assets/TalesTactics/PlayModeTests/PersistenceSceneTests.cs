@@ -8,11 +8,11 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator SuspendResumePreservesSPDAndCTTurnsActionsAndRandomState()
+        [UnityTest] public IEnumerator SuspendResumePreservesTeamSPDAndCTTurnsActionsAndRandomState()
         {
-            foreach(bool ct in new[]{false,true})
+            foreach(int mode in new[]{0,1,2})
             {
-                director.TrainingMode=false;director.UseCT=ct;director.BeginBattle();yield return null;
+                director.TrainingMode=false;director.UseCT=mode==2;director.UseFixedSpeedOrder=mode==1;director.BeginBattle();yield return null;
                 var session=director.Session;var active=session.Active;
                 var destination=session.Grid.Reachable(active,out _).Keys.First(p=>p!=active.Position);
                 Assert.That(session.Move(destination),Is.True);active.AddStatus(StatusKind.Song,3);active.Cooldowns["test"]=2;active.SpecialGauge=45;active.GuardIgnition=true;

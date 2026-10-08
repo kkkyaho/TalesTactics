@@ -16,6 +16,22 @@ namespace TalesTactics
         public int DangerAt(Vector2Int p)=>Threats.Count(e=>e.Key.Alive&&e.Value.Contains(p));
         public void RebuildThreats(){if(Session==null)return;Threats=ThreatMap.Calculate(Session);Board.DrawThreats();}
         public void InspectUnit(UnitRuntime u){InspectedUnit=u;Board.DrawThreats();}
+        public bool CanSelectPlayerUnit(UnitRuntime unit)=>IsPlayerCommand&&!TutorialActive&&!Hud.InputModalOpen&&!StoryActive&&!TimingActive&&Session.Result==BattleResult.Ongoing&&Session.CanSelect(unit);
+        public bool SelectPlayerUnit(UnitRuntime unit)
+        {
+            if(!CanSelectPlayerUnit(unit)||!Session.Select(unit))return false;
+            InspectedUnit=HoveredUnit=null;SelectedSkill=null;Message=unit.Data.DisplayName+" 선택 · 이동·행동 기록은 유지됩니다.";
+            RefreshViews();
+            if(unit.Has(StatusKind.Stun)||unit.Has(StatusKind.Sleep)){SetState(new ActionExecutionState(this));StartCoroutine(SkipTurn());}
+            else SetState(new CommandState(this));
+            Board.FocusCurrent();return true;
+        }
+        public void CyclePlayerUnit(int direction)
+        {
+            if(!IsPlayerCommand)return;
+            var units=Session.Units.Where(CanSelectPlayerUnit).ToArray();if(units.Length<2)return;
+            int index=System.Array.IndexOf(units,Session.Active);SelectPlayerUnit(units[(index+direction+units.Length)%units.Length]);
+        }
         public void PreviewTile(Vector2Int p)
         {
             if(Session?.Active==null||Hud.InputModalOpen||Session.Active.Team!=Team.Player)return;
@@ -36,6 +52,8 @@ namespace TalesTactics
             if(k.vKey.wasPressedThisFrame){CycleThreat();return true;}
             if(IsPlayerCommand)
             {
+                if(k.pageDownKey.wasPressedThisFrame){CyclePlayerUnit(1);return true;}
+                if(k.pageUpKey.wasPressedThisFrame){CyclePlayerUnit(-1);return true;}
                 if(k.mKey.wasPressedThisFrame){MoveCommand();return true;}
                 if(k.aKey.wasPressedThisFrame){AttackCommand();return true;}
                 if(k.sKey.wasPressedThisFrame){SkillCommand();return true;}

@@ -608,3 +608,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **25.210초/오류0/경고10** 성공. 기존 Pipeline·개발 전처리기·직렬화·셰이더/TMP 경고가 남는다. 최신 실행 파일은 **Builds/WindowsIntermission/TalesTactics.exe**이며 폴더 전체가 필요하다. Intermission/windows-build.json.
 - 실제 화면은 Editor Game View 검수다. Windows 일반 플레이어의 물리 입력/화면,실물 게임패드·다른PC/DPI·사람의6장 완주/장기 밸런스는 이번 범위에 포함하지 않는다. 공개 Release 업로드는 포함하지 않는다. 상세 조작·스크린샷·아트 제작 프롬프트는 [Intermission/README.md](Intermission/README.md)를 따른다.
 - 새 실행 파일12초 숨김 시작에서 프로세스 유지·로그 오류/예외0건을 확인했다(Intermission/startup-check.json,windows-startup.log,build-hashes.json). 사용자 저장3개 SHA256은 전후 불변이며 추가 슬롯/설정을 생성하지 않았다(user-save-check.json). 검사에서 실행한 플레이어만 종료하고 Play/Full HD/runInBackground=false/Scene dirty=false를 복구했다. 캡처 임시 에셋·동적 폰트 캐시·자동 검사 CSV는 정리했다.
+
+## 2026-10-08 — 아군 턴 자유 선택
+
+- 기본 게임 규칙을 아군 전체→적군 전체로 변경했다. 명령 대기 중 맵 클릭·상단 최대6인·PgUp/PgDn으로 미완료 아군을 선택하며 이동/행동/취소/쿨다운/상태/연계를 보존한다. 대기·방어 방향 확정 후 완료되고 전원 완료 시 적군 페이즈로 넘어간다. 타깃·연출·모달·방향 선택·입문 연습의 진행 보호를 유지했다. 기존 생존 목표의 아군 개별 종료 횟수 의미도 유지한다.
+- BattleCheckpoint V3는 미완료·시작/처리된 유닛과 라운드를 저장한다. 기존 V1/V2 SPD/CT 중단 기록도 이어가며, 설정에서 SPD/CT를 다시 선택할 수 있다. 부활한 완료 유닛과 페이즈 시작 당시 전투불능 유닛은 추가 행동하지 않는다.
+- 실제 Unity 전체 PlayMode **97/97(192.82초)** 통과. 최종 부활/중단 경계 보완 뒤 EditMode **133/133(0.98초)** 및 관련 PlayMode **4/4(5.55초)** 재통과. 자유 선택 후 행동 초기화 방지, 이동 취소, 기절, 적군 전체 행동, 선택 차단, 저장/재실행,3종 스케줄러 이어하기를 검증했다. 첫 EditMode131/132 실패는 테스트용 쿨다운ID가 기본공격ID와 같아 공격을 막은 준비 오류였고 별도ID로 수정했다. 실제 Unity API DLL로4개 어셈블리 컴파일 통과. ManagedChecks는 재실행하지 않았다.
+- Game View5해상도(1024×768/1280×800/1366×768/1920×1080/2560×1080)×글자100/130%10조합에서6인 버튼/미완료5인 선택을 확인했다. 활성 버튼 화면 이탈0·문구 넘침0·상단 버튼 겹침0이며 프레임3306→13648 진행을 기록했다.1024/1920 실제 스크린샷을 직접 확인했다. 격리 임시 저장 루트에서 검사했다.
+- Windows 일반 빌드 **10.415초·오류0·기존 경고4** 성공. **Builds/WindowsFreeTurns/TalesTactics.exe**와 폴더 전체가 최신 로컬 실행본이다. 12초 숨김 시작에서 프로세스 유지·로그 오류/예외0건. 최종 빌드에는 Pipeline 플레이어 설정1건·디버그 셰이더 제거2건·TMP 셰이더 지시문1건의 기존 경고가 남는다. 사용자 저장3개 SHA256 전후 불변,추가 슬롯/설정 없음,Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구와 임시 캡처/폰트/CSV 변경 정리를 확인했다.
+- 시각 증거는 Editor Game View이며 Windows 일반 플레이어는 시작 로그 검사다. 물리 패드/다른PC/DPI/새 규칙으로 사람이6장 완주한 밸런스는 미검증이다. 공개 Release에는 올리지 않았다. 상세 조작·실제 화면·증거는 [FreeTurns/README.md](FreeTurns/README.md)를 따른다.

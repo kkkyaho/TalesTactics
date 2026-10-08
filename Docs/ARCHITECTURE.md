@@ -247,3 +247,11 @@ BattleIntermissionHud는 기존 준비 화면 패널과 FormationText/Button을 
 BattleIntermissionEquipmentHud는 EquipmentLoadout 초안과 저장된 장비를 따로 읽는다. 캐릭터/메뉴 전환 시 초안을 버리고 적용 시 기존 수량 검사와 TrySave를 사용한다. BattleIntermissionMarketHud는 카탈로그를6개씩 표시하며 기존 구매/매각 차단·트랜잭션을 그대로 호출한다. 거래 후 필터/페이지/선택을 유지하고 마지막 미장착 수량을 매각한 경우 상세를 남겨 거래 불가 사유를 보여 준다.
 
 BattleIntermissionGrowthHud는 실제 저장 성장과 승급 조건을 표시한다. 특성 선택은 nullable 인수로 전달하는 UI 초안이고 적용 버튼에서만 SaveTrait를 호출한다. SaveTrait 실패 시 기존 특성을 복구하며 이번 호출에서 추가한 새 성장 기록도 제거한다. 기술 숙련은 기존 UnitDetails 모달의 입력 차단/닫기를 재사용한다. 단순 조회에는 Campaign.Get 대신 FormationProgress를 사용하므로 없는 성장 기록을 생성하지 않는다.
+
+## 아군 자유 선택 턴
+
+실제 게임의 기본값은 `TeamTurnScheduler`다. 아군 페이즈에서 살아 있는 미완료 아군을 선택하고, 전원 종료 후 적군이 속도순으로 한 번씩 행동한다. `BattleSession.Select`는 행동을 소비하지 않고 `BeginActive`는 페이즈당 각 유닛의 첫 선택에만 `BeginTurn`을 호출한다. 이동·행동·이동 취소·쿨다운·연계·상태·적 예고의 턴 카운터는 선택 전환으로 초기화되지 않는다. `EndTurn`만 해당 유닛을 대기 목록에서 제거하고 생존 목표를 진행한다. 생존 목표의 기존 ‘아군 개별 턴 종료 횟수’ 의미는 유지한다.
+
+`BattleDirector.SelectPlayerUnit`은 명령 대기·아군 페이즈·전투 진행 중에만 허용한다. 맵 클릭, 상단 최대6명 버튼, PgUp/PgDn이 이 경로를 공유한다. 타깃 선택·연출·방향 확정·모달·튜토리얼 도중에는 바꾸지 않는다. 기절/수면 유닛은 선택 후 기존 행동 불가 턴을 한 번 소비한다. 이미 종료한 유닛의 부활은 추가 행동을 주지 않는다.
+
+설정의 `FixedSpeedOrder`와 기존 `CT`로 SPD/CT도 선택할 수 있다. 기본 설정은 둘 다 false이며, 코어의 기존 `BattleSession` 호출은 명시적으로 `teamTurns:true`를 넘긴 경우에만 새 규칙을 사용한다. 튜토리얼의 안내 순서 스케줄러는 유지한다. `BattleCheckpoint` V3는 미완료 인덱스·시작/처리된 인덱스·라운드를 저장하고, 이어하기에서 `BeginTurn`을 다시 호출하지 않는다. V1/V2 중단 전투는 저장 당시 SPD/CT로 복구한다. 캠페인 외부 저장 버전은2를 유지한다.

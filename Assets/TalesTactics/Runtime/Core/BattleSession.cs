@@ -25,10 +25,10 @@ namespace TalesTactics
             Objective==ObjectiveKind.Boss?"보스: "+ObjectiveUnit.Data.DisplayName+" (첫 번째 적)":
             Objective==ObjectiveKind.Survive?"아군 턴 종료 "+((SurviveTurns)Victory).Completed+" / 12회 생존":"모든 적 격파";
         public BattleResult Result=>Victory.Evaluate(Units);
-        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false)
+        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false)
         {
             if(campaignStage>=0&&!legacyCampaign){objective=CampaignMissions.Kind(campaignStage);Destination=CampaignMissions.Destination(campaignStage);}
-            CampaignStage=campaignStage;LegacyCampaign=legacyCampaign;Objective=objective;UseUtilityAI=utilityAI;if(useCT)Scheduler=new CTTurnScheduler();
+            CampaignStage=campaignStage;LegacyCampaign=legacyCampaign;Objective=objective;UseUtilityAI=utilityAI;if(useCT)Scheduler=new CTTurnScheduler();else if(teamTurns)Scheduler=new TeamTurnScheduler();
             Rules=catalog.Rules;Grid=campaignStage<0?GridMap.TestStage():CampaignContent.Map(campaignStage);int i=0;
             foreach(int index in deployment)
             {
@@ -45,8 +45,11 @@ namespace TalesTactics
             if(objective==ObjectiveKind.Escort){ObjectiveUnit=Units.First(u=>u.Team==Team.Player);Victory=new ReachDestination(Destination,ObjectiveUnit);}
             if(objective==ObjectiveKind.Survive)Victory=new SurviveTurns(12);
         }
-        public void Advance(){Active=Scheduler.Next(Units);turnEnded=false;Active?.BeginTurn();}
-        public void EndTurn(){if(turnEnded||Active==null)return;Active.EndTurn();turnEnded=true;if(Victory is SurviveTurns survive)survive.OnTurnEnded(Active);}
+        void BeginActive(){turnEnded=false;if(Active!=null&&(!(Scheduler is TeamTurnScheduler team)||team.Begin(Active)))Active.BeginTurn();}
+        public void Advance(){Active=Scheduler.Next(Units);BeginActive();}
+        public bool CanSelect(UnitRuntime unit)=>!turnEnded&&Active?.Team==Team.Player&&Scheduler is TeamTurnScheduler team&&team.Phase==Team.Player&&unit?.Team==Team.Player&&team.CanSelect(unit);
+        public bool Select(UnitRuntime unit){if(!CanSelect(unit))return false;Active=unit;BeginActive();return true;}
+        public void EndTurn(){if(turnEnded||Active==null)return;Active.EndTurn();turnEnded=true;if(Scheduler is TeamTurnScheduler team)team.Complete(Active);if(Victory is SurviveTurns survive)survive.OnTurnEnded(Active);}
         public bool Move(Vector2Int p)
         {
             var u=Active;if(u==null||u.Moved||!u.Alive||Grid.Path(u,p).Count<2)return false;

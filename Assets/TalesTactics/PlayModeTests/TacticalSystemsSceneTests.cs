@@ -20,7 +20,7 @@ namespace TalesTactics.PlayModeTests
         [UnityTest] public IEnumerator TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave()
         {
             int writes=0;director.Campaign=new CampaignSave();director.PersistCampaign=_=>{writes++;return true;};
-            director.Hud.ShowDeployment();Click("전투 규칙 설정");Click("턴 순서: SPD 라운드");Click("적 AI: 기본");
+            director.Hud.ShowDeployment();Click("전투 규칙 설정");Click("턴 순서: 아군 자유 선택");Click("턴 순서: SPD 라운드");Click("적 AI: 기본");
             Click("훈련 목표: 모든 적 격파");Click("출전 준비로");Click("전투 시작");yield return null;
             Assert.That(director.Session.Scheduler,Is.TypeOf<CTTurnScheduler>());Assert.That(director.Session.UseUtilityAI,Is.True);
             Assert.That(director.Session.Objective,Is.EqualTo(ObjectiveKind.Boss));

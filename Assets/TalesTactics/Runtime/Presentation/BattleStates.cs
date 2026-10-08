@@ -20,7 +20,7 @@ namespace TalesTactics
     {
         public CommandState(BattleDirector b):base(b){}
         public override void Enter(){B.Board.ClearHighlights();base.Enter();if(B.Session.Active.Team==Team.Enemy)B.StartCoroutine(B.EnemyTurn());}
-        public override void Tile(Vector2Int p){B.Hud.Inspect(p);}
+        public override void Tile(Vector2Int p){if(!B.SelectPlayerUnit(B.Session.Grid[p]?.Occupant))B.Hud.Inspect(p);}
     }
     public sealed class MoveSelectionState:BattleState
     {
