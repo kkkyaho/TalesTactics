@@ -582,3 +582,11 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 새 개발 플레이어7회 독립 실행 모두 통과: **1~6장 승리22/9/19/12/26/4플레이어턴**, 재실행 정상 패배2턴·재출전/저장 복원/중복 보상 보호. PlayerReviews/d1ec10ec56e940158c198e2a33b66327-summary.json 및 각 장 보고서. 기본 SPD+역할 적 AI, 기존4배 시간 배율이며 비전멸 임무의 검수용 아군은 목표를 고려하는 기술 선택을 사용한다. 사람의 전투 시간·난이도 판단이 아니다. 숨김 캡처는 시각 증거로 사용하지 않았고 로그7개 예외/오류0건(player-log-check.json).
 - 사용자 campaign.json/.bak/.v1.bak의 SHA256은 작업 전후 불변이며 설정·슬롯2/3 파일을 생성하지 않았다(SystemUi/user-save-check.json). 검사 캡처 에셋은 Temp로 옮기고 동적 폰트 캐시·TimeManager 직렬화 변경을 복원했다. Editor Play 종료, Full HD, runInBackground=false, Scene dirty=false를 확인했다(editor-restored.json). 작업에서 실행한 일반 플레이어만 종료했다.
 - **최신 실행 파일: Builds/WindowsSystemUi/TalesTactics.exe**. 폴더 전체가 필요하다. Computer Use의 일반 Windows 창 캡처는 검은 화면이며 창 활성화도 복구 재시도에서 실패했다. 따라서 이번 시각 검수는 Editor Game View 범위이고 일반 플레이어의 물리 입력/화면 검수는 성공으로 표시하지 않는다. 물리 게임패드·사람의6장 완주/장기 밸런스도 미검증이다. 새 공개 Release 업로드는 이번 변경에 포함하지 않는다.
+
+## 2026-10-08 — 0.1.0-preview.2 공개 배포
+
+- 사용자의 일괄 배포 요청으로 검증된 WindowsSystemUi 일반 빌드를 공개 GitHub prerelease **[v0.1.0-preview.2](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.2)**에 게시했다. 게임 소스/태그5696f6e, 기존preview.1은 유지한다. ZIP199,339,510바이트·202개 파일+manifest, SHA256 `b34addd6fd52238d3dcde21c4fb6f1cd506b9dbd85ea994fafcb254bf0746fa7`. ZIP과 체크섬2개 첨부, draft=false/prerelease=true. 개인 음원·사용자 저장·개발 검수 코드는 포함하지 않는다.
+- 게임 코드·콘텐츠는 변경하지 않았고 기존 실제 Unity125/87 및 Windows6장·재실행 검증을 사용했다. 배포 도구 **13/13(4.406초)** 재통과. 기존 EXE/Runtime DLL 해시·빌드 보고서 파일 목록과 크기를 대조하고 ZIP 내부 해시 및 Windows PowerShell5.1 압축 해제본202개 파일 검사를 통과했다. 기존 보고서 형식 변환은 동일 값을 감싼 것이며 새 빌드로 계산하지 않는다.
+- 압축 해제 실행 파일109초 유지·로그 오류/예외0건. 일부 사용하지 않는 URP 후처리 셰이더 제거 경고는 남는다. Computer Use 캡처/창 활성화 복구 실패로 일반 Windows 화면/물리 입력 검수는 완료로 계산하지 않았다. 검사에서 실행한 프로세스만 종료하고 실행 뒤에도 배포 파일 무결성을 재확인했다.
+- 사용자 저장3개를 Builds/SaveBackups의 새 폴더에 백업하여 무결성을 확인하고 실행 전후 원본 SHA256 불변을 확인했다. 저장 내용은 Git/Release에 올리지 않았다. 게시 후 **인증 없이 ZIP 전체·체크섬을 다운로드하여 HTTP200·크기·SHA256 일치**, 공개 태그의 소스 커밋 일치를 확인했다.
+- 세부 증거와 재현 범위는 [Distribution/Preview2/README.md](Distribution/Preview2/README.md). 사람의 난이도·실물 패드·다른 PC/DPI/전체화면·최종 작화/청음은 미검증으로 유지한다. 설치 프로그램·서명·온라인 업데이트·스토어 등록은 별도다. 공개 테스트 배포 완료가 미검증 항목의 완료를 뜻하지 않는다.

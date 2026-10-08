@@ -1,5 +1,7 @@
 # 10번 — 로컬 배포·업데이트 체계
 
+최신 공개 배포는 **[0.1.0-preview.2](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.2)**다. 시스템·UI 개선을 담은 WindowsSystemUi 일반 빌드이며 새 ZIP/체크섬을 게시했다. [최신 패키지·검증 기록](Preview2/README.md)을 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
+
 검증된 WindowsAccessibility 일반 빌드를 `TalesTactics-0.1.0-preview.1-windows-x64.zip`으로 패키징했다. 배포 ZIP은 **Builds/Releases**에 있으며199,546,142바이트(약190.3MiB), 파일202개와 manifest를 포함한다. ZIP/실행 파일/저장 백업은 Git에 올리지 않는다. Git에는 도구·사용 안내·검증 기록만 포함한다.
 
 SHA256: `10e792b1f683da7ece10d6d7f69267fbc3aba487cad56e2e737591575e739a11`
