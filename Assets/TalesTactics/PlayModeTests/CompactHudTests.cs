@@ -35,7 +35,8 @@ namespace TalesTactics.PlayModeTests
             director.State.Cancel();yield return null;
             Assert.That(unit.CurrentHP,Is.EqualTo(hp));Assert.That(unit.CurrentMP,Is.EqualTo(mp));
             director.Restart();yield return null;
-            Assert.That(summary.rect.height,Is.GreaterThan(400));
+            Assert.That(((RectTransform)director.Hud.transform.Find("PreparationContent")).rect.height,Is.GreaterThan(400));
+            Assert.That(director.Hud.transform.Find("PreparationContent/FormationModels").gameObject.activeInHierarchy,Is.True);
         }
     }
 }

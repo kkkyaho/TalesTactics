@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 전신 모델 편성 화면
+
+BattleModelDeploymentHud는 기존 BattleHud의 준비 렌더러를 확장한다. 모델 조회와 출전 토글은 별도 버튼이며 기존 Deployment 인덱스를 사용한다. 필터/정렬은 표시 인덱스 배열만 바꾸고 카탈로그·편성을 재정렬하지 않는다. 최대 인원은 Catalog.Rules.MaxDeployment로 검사한다. 임무 목록은 별도 준비 화면으로 옮겼으며 장비·성장·상점·모달·출전은 기존 경로로 연결한다.
+
+FormationProgress는 없는 성장 기록을 임시 기본값으로 읽는다. 따라서 준비 화면 조회가 CampaignSave.Characters를 늘리지 않는다. 상세 능력치는 EquipmentLoadout.Preview와 같은 장비·특성을 적용한다. 새 초상화 아틀라스는 캐릭터 ID로 UV를 선택하며 기존 CharacterData.Portrait/전투 스프라이트를 덮어쓰지 않는다. FormationRing은 uGUI 메시로 그리는 고리이고 색상 외에도 출전 문구와 현재 선택 화살표로 상태를 구분한다. 배치·검수 기록은 [ModelFormation](ModelFormation/README.md)을 따른다.
+
 ## 로컬 배포와 업데이트
 
 Tools/PackageRelease.py는 검증된 일반 Windows 빌드와 이전 빌드 보고서/실행 파일·Runtime DLL 해시를 확인하고 전체 배포 파일 해시를 manifest에 기록한다. 게임 소스 변경 상태에서는 패키징하지 않는다. 실행 파일의 제품 버전과 별도로 배포 ZIP 버전을 관리하며 같은 번호를 덮어쓰지 않는다. Unity 백업/심볼/로그와 사용자 저장을 배포에서 제외하고 기존 게임 폴더를 변경하지 않는다.

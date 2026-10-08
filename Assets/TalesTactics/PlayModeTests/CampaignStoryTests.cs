@@ -17,6 +17,7 @@ namespace TalesTactics.PlayModeTests
             CampaignStages.TryReward(director.Campaign,1,party,_=>true);
             int writes=0;director.PersistCampaign=_=>{writes++;return true;};director.RewardRoll=()=>9999;
             director.Hud.ShowDeployment();yield return null;
+            Click("임무 선택");yield return null;
             Click("● "+CampaignStages.Title(2));yield return null;
             director.RequestBattle();yield return null;Assert.That(director.StoryActive,Is.True);
             director.FinishStory();yield return null;

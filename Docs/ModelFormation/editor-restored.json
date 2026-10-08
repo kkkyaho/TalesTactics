@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var a=typeof(UnityEditor.Editor).Assembly;var t=a.GetType(\"UnityEditor.GameViewSizes\");var instance=t.GetProperty(\"instance\",System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.FlattenHierarchy).GetValue(null);var g=t.GetProperty(\"currentGroup\").GetValue(instance);var texts=(string[])g.GetType().GetMethod(\"GetDisplayTexts\").Invoke(g,null);var v=a.GetType(\"UnityEditor.GameView\");v.GetProperty(\"selectedSizeIndex\",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.NonPublic).SetValue(UnityEditor.EditorWindow.GetWindow(v),3);int builtin=(int)g.GetType().GetMethod(\"GetBuiltinCount\").Invoke(g,null);for(int i=texts.Length-1;i>=builtin;i--)if(texts[i].StartsWith(\"Formation review \"))g.GetType().GetMethod(\"RemoveCustomSize\").Invoke(g,new object[]{i-builtin});return new {playing=UnityEditor.EditorApplication.isPlaying,background=UnityEngine.Application.runInBackground,dirty=UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "background": false,
+        "dirty": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

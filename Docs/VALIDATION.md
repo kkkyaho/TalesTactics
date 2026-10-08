@@ -590,3 +590,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 압축 해제 실행 파일109초 유지·로그 오류/예외0건. 일부 사용하지 않는 URP 후처리 셰이더 제거 경고는 남는다. Computer Use 캡처/창 활성화 복구 실패로 일반 Windows 화면/물리 입력 검수는 완료로 계산하지 않았다. 검사에서 실행한 프로세스만 종료하고 실행 뒤에도 배포 파일 무결성을 재확인했다.
 - 사용자 저장3개를 Builds/SaveBackups의 새 폴더에 백업하여 무결성을 확인하고 실행 전후 원본 SHA256 불변을 확인했다. 저장 내용은 Git/Release에 올리지 않았다. 게시 후 **인증 없이 ZIP 전체·체크섬을 다운로드하여 HTTP200·크기·SHA256 일치**, 공개 태그의 소스 커밋 일치를 확인했다.
 - 세부 증거와 재현 범위는 [Distribution/Preview2/README.md](Distribution/Preview2/README.md). 사람의 난이도·실물 패드·다른 PC/DPI/전체화면·최종 작화/청음은 미검증으로 유지한다. 설치 프로그램·서명·온라인 업데이트·스토어 등록은 별도다. 공개 테스트 배포 완료가 미검증 항목의 완료를 뜻하지 않는다.
+
+## 2026-10-08 — 전신 모델 출전 편성
+
+- 승인된2안의 5×2 전신 모델 선택과 남색·황동·청록 색상,10인 초상화 아틀라스·유적 배경을 적용했다. 모델 조회/출전 토글, 금색 현재 선택/청록 출전 표시, 병과 필터·정렬·빈 목록·추천/해제·장비 슬롯·능력 모달·성장·임무 선택을 기존 시스템에 연결했다. 캐릭터 Content/Scene/전투 규칙/저장 형식은 유지한다. 조회 시 없는 성장 기록을 생성하지 않는다.
+- 실제 Unity 전체 PlayMode **90/90(184.15초)**, 최종 레이아웃 보정 후 관련 **3/3(4.04초)** 통과. 첫88/90에서 발견한 구 준비 패널 높이 기대와 조회 시 성장 기록 추가를 수정했고, 빈 저장 조회 불변 단언을 추가했다. 실제 포인터 Raycast/Submit,6인 제한,정렬 뒤 초상화 ID 일치,장비·특성 수치,모달 차단,기존 관리/출전을 확인했다. ModelFormation/playmode-results.json 및 final-formation-tests.json. EditMode125는 직전 통과 기록이며 이번에는 재실행하지 않았다. ManagedChecks도 실행하지 않았다.
+- Runtime/Editor/EditMode/PlayMode의 실제 Unity API DLL 컴파일 통과. 최종 Game View1024×768/1280×800/1366×768/1920×1080/2560×1080과 글자100/130%의10조합에서 각40개 활성 버튼 화면 이탈0건·활성 문구 넘침0건. 초기1280×800의 이름/레벨 높이는 고정 하단 영역으로 수정했다. 프레임2293→18539 진행 및 대표3해상도 PNG를 직접 확인했다. ModelFormation/aspect-matrix.json, api-check.log와 PNG.
+- Windows 일반 빌드 **30.078초/오류0/경고10** 성공. 기존 Pipeline·개발 전처리기·직렬화·셰이더/TMP 경고가 남는다. 새 실행 파일12초 숨김 시작에서 프로세스 정상 유지·로그 오류/예외0건. ModelFormation/windows-build.json, startup-check.json, windows-startup.log, build-hashes.json.
+- 사용자 저장3개 SHA256은 전후 불변이며 추가 슬롯/설정 파일을 생성하지 않았다. 검수는 별도 임시 저장 경로를 사용했고 Play 종료,Full HD,runInBackground=false,Scene dirty=false를 복구했다. 캡처 에셋·동적 폰트 캐시·자동 검사 CSV 임시 변경을 정리했다.
+- **최신 실행 파일: Builds/WindowsModelFormation/TalesTactics.exe**. 폴더 전체가 필요하다. 시각 증거는 Editor Game View이고 Windows 일반 플레이어는 시작 로그 검사다. 실물 패드·다른PC/DPI·사람의6장 완주/최종 작화 감수는 미검증으로 유지한다. 새 공개 Release 업로드는 포함하지 않는다. 상세 조작/증거는 [ModelFormation/README.md](ModelFormation/README.md).

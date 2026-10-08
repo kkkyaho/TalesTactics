@@ -21,6 +21,7 @@ namespace TalesTactics.PlayModeTests
             for(int stage=3;stage<6;stage++)
             {
                 director.Hud.ShowDeployment();yield return null;
+                Click("임무 선택");yield return null;director.Hud.ShowChapterPage(1);yield return null;
                 Click(CampaignStages.Title(stage));yield return null;
                 foreach(var button in Object.FindObjectsByType<UnityEngine.UI.Button>())
                 {
@@ -53,7 +54,7 @@ namespace TalesTactics.PlayModeTests
                 }
                 director.Restart();yield return null;
             }
-            Click("이전 장 목록");yield return null;Assert.That(director.Hud.ChapterPage,Is.Zero);
+            Click("임무 선택");yield return null;Click("이전 장 목록");yield return null;Assert.That(director.Hud.ChapterPage,Is.Zero);
             Assert.That(director.SelectedStage,Is.EqualTo(5)); // Browsing never silently changes selected battle.
         }
 

@@ -10,7 +10,7 @@ namespace TalesTactics
         BattleDirector battle;
         int chapterPage;
         public int ChapterPage=>chapterPage;
-        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,0,(CampaignStages.Count-1)/3);ShowDeployment();}
+        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,0,(CampaignStages.Count-1)/3);ShowDeploymentMissions();}
         RectTransform canvas,left,commands,header,footer;
         TMP_Text message,timing;
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
@@ -97,7 +97,15 @@ namespace TalesTactics
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
         {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.61f,0.46f,0.25f,0.9f);border.effectDistance=new Vector2(1,-1);return r;}
-        void Clear(Transform parent){if(parent==header){HideResult();preparationLayout=false;if(center!=null)center.gameObject.SetActive(false);}foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
+        void Clear(Transform parent)
+        {
+            if(parent==header)
+            {
+                if(modelDeploymentLayout)foreach(var p in new[]{header,left,center,commands,footer})if(p!=null)p.GetComponent<UnityEngine.UI.Image>().color=panel;
+                HideResult();preparationLayout=false;modelDeploymentLayout=false;if(center!=null)center.gameObject.SetActive(false);
+            }
+            foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}
+        }
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);

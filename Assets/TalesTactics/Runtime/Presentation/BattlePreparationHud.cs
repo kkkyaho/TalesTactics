@@ -12,6 +12,7 @@ namespace TalesTactics
         int equipmentPage;
         void PreparationLayout()
         {
+            if(modelDeploymentLayout){ModelDeploymentLayout();return;}
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-82),new Vector2(-12,-12));
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(12,12),new Vector2(-12,114));
             if(preparationLayout)
@@ -55,37 +56,7 @@ namespace TalesTactics
                 Portrait(card,c,new Vector2(10,-94),new Vector2(72,-6));
             }
         }
-        void RenderDeployment()
-        {
-            if(battle.Session!=null)return;BeginPreparation("출전 준비");
-            selectedCharacter=Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1);
-            CharacterCards(i=>{selectedCharacter=i;RenderDeployment();},true);
-            Button(center,"균형 6인 추천 편성",10,()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,30);
-            var recommend=(RectTransform)center.GetChild(center.childCount-1);recommend.anchorMin=new Vector2(.53f,1);recommend.GetComponentInChildren<TMPro.TMP_Text>().fontSize=15;
-            Label(left,"임무 선택 · "+(chapterPage+1)+" / "+((CampaignStages.Count+2)/3),12,34,20);
-            for(int i=chapterPage*3;i<Mathf.Min(CampaignStages.Count,(chapterPage+1)*3);i++)
-            {int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);Button(left,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),60+(i%3)*72,()=>{battle.SelectedStage=stage;ShowDeployment();},unlocked,60);}
-            Button(left,"이전 장 목록",282,()=>ShowChapterPage(chapterPage-1),chapterPage>0,34);HalfButton(left,0);
-            Button(left,"다음 장 목록",282,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count,34);HalfButton(left,1);
-            var mission=Label(left,(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):CampaignMissions.Description(battle.SelectedStage))+"\n권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 6인 · 적 Lv"+CampaignStages.EnemyLevel(battle.SelectedStage),338,100,17);mission.enableAutoSizing=true;mission.fontSizeMin=14;mission.fontSizeMax=17;
-            Button(left,"임무 · 적 정보",444,ShowMission);
-            Button(left,"전투 전 이야기",494,()=>battle.ReplayStory(false));
-            Button(left,"전투 후 이야기",542,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));
-            var c=battle.Catalog.Characters[selectedCharacter];var progress=battle.Campaign.Get(c.Id);
-            Label(commands,c.DisplayName,12,40,23);Portrait(commands,c,new Vector2(22,-192),new Vector2(112,-58));
-            var info=Label(commands,"Lv"+(battle.TrainingMode?25:progress.Level)+"\n"+c.Job+"\n"+c.Weapon,66,120,18);info.rectTransform.offsetMin=new Vector2(130,info.rectTransform.offsetMin.y);
-            var stats=new EquipmentLoadout(c,progress,battle.Catalog.Equipment,battle.Campaign).Preview(battle.TrainingMode?25:progress.Level,progress.Promoted&&!battle.TrainingMode);
-            Label(commands,$"HP {stats.HP}   MP {stats.MP}\nSTR {stats.STR}   MAG {stats.MAG}\nSPD {stats.SPD}   MOV {stats.MOV}",205,90,18);
-            bool chosen=battle.Deployment.Contains(selectedCharacter);
-            Button(commands,chosen?"편성에서 제외":"출전 편성에 추가",310,()=>{if(chosen)battle.Deployment.Remove(selectedCharacter);else battle.Deployment.Add(selectedCharacter);ShowDeployment();},chosen||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment);
-            Button(commands,"선택 캐릭터 장비",358,()=>ShowEquipment(c));
-            Button(commands,"선택 캐릭터 성장",406,()=>ShowGrowth(c));
-            Button(commands,"장비 관리",454,ShowEquipmentRoster);Button(commands,"장비 상점",502,()=>ShowShop());
-            Button(commands,"성장 · 승급",550,ShowGrowthRoster);
-            var notice=Label(footer,string.IsNullOrEmpty(battle.SaveNotice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage)):battle.SaveNotice,10,76,16);notice.rectTransform.offsetMax=new Vector2(-520,notice.rectTransform.offsetMax.y);
-            Button(footer,"전투 규칙 설정",20,ShowBattleOptions,true,58);var options=(RectTransform)footer.GetChild(footer.childCount-1);options.anchorMin=options.anchorMax=Vector2.one;options.pivot=new Vector2(1,1);options.sizeDelta=new Vector2(210,58);options.anchoredPosition=new Vector2(-290,-20);options.GetComponentInChildren<TMPro.TMP_Text>().text="훈련 · 전투 설정";
-            Button(footer,"전투 시작",20,battle.RequestBattle,battle.Deployment.Count>0,58);var start=(RectTransform)footer.GetChild(footer.childCount-1);start.anchorMin=start.anchorMax=Vector2.one;start.pivot=new Vector2(1,1);start.sizeDelta=new Vector2(258,58);start.anchoredPosition=new Vector2(-12,-20);
-        }
+        void RenderDeployment() => RenderModelDeployment();
         void RenderEquipmentRoster()
         {
             BeginPreparation("장비 관리");CharacterCards(i=>{selectedCharacter=i;ShowEquipment(battle.Catalog.Characters[i]);},false);
