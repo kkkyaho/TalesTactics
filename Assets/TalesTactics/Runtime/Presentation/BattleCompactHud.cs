@@ -16,6 +16,7 @@ namespace TalesTactics
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
+            commands.gameObject.SetActive(!MissionOpen&&!(UnitDetailsOpen&&battle.State is TargetSelectionState));
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-76),new Vector2(-12,-12));
             Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,164));
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
@@ -40,7 +41,7 @@ namespace TalesTactics
             if(facing)UpdateFacingArrows();
             if(battle.State is CommandState)PlaceCommandBesideUnit();
             if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,300,SkillCardHeight);
-            if(battle.State is TargetSelectionState)PlaceBesideUnits(commands,battle.Session.Active.Position,300,targetContextHeight);
+            if(battle.State is TargetSelectionState)Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,targetContextHeight+12));
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
             bool showMessage=battle.TutorialActive||battle.State is ActionExecutionState||battle.State is BattleEndState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;

@@ -12,7 +12,7 @@ namespace TalesTactics
             if(tacticalToolbar==null)tacticalToolbar=Panel("Threat controls",new Vector2(0,1),new Vector2(0,1),new Vector2(12,-122),new Vector2(332,-84));
             tacticalToolbar.gameObject.SetActive(true);Clear(tacticalToolbar);
             Button(tacticalToolbar,battle.ThreatLabel+" · V",3,battle.CycleThreat,true,32);HalfButton(tacticalToolbar,0);
-            Button(tacticalToolbar,"◇ 가능 / × 예고",3,()=>ShowTacticalHelp(),true,32);HalfButton(tacticalToolbar,1);
+            Button(tacticalToolbar,"전술 도움말",3,()=>ShowTacticalHelp(),true,32);HalfButton(tacticalToolbar,1);
             foreach(var text in tacticalToolbar.GetComponentsInChildren<TMP_Text>())text.fontSize=13;
         }
         void ShowTacticalHelp()
@@ -24,16 +24,46 @@ namespace TalesTactics
         }
         public void ShowMoveRisk(Vector2Int p,int enemies)
         {if(moveRisk!=null)moveRisk.text="도착 "+p+" · "+(enemies>0?"◇ 적 "+enemies+"명 공격 가능":"현재 위험 범위 밖");}
+        BattleForecast shownForecast;
+        int forecastRowIndex;
         void DrawTargetForecast()
         {
-            var u=battle.Session.Active;var s=battle.SelectedSkill;var f=battle.Forecast;
-            var name=Label(commands,s.DisplayName+" · MP "+battle.Session.Resolver.MPCost(u,s),6,26,15);name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
-            Label(commands,"사거리 "+s.MinRange+"–"+s.Range+" · "+SkillSummary.Describe(s),34,26,13);
-            string text=f==null?"대상 위에 커서를 올리면 결과 예측\n대상 클릭으로 즉시 사용":string.Join("\n",f.Rows.Take(2).Select(r=>r.Text.Split('\n')[0]+(r.Unit.BossWard?" · 방벽 "+battle.Session.Resolver.BossWardPercent(r.Unit)+"%":"")));
-            var preview=Label(commands,text,64,48,14);preview.enableAutoSizing=true;preview.fontSizeMin=11;preview.fontSizeMax=14;
-            targetContextHeight=180;
-            if(f!=null)Button(commands,"전체 예측 · "+f.Rows.Count+"명 / 비용",118,()=>ShowForecast(0),true,28);
-            Label(commands,"클릭/Enter 사용 · Tab 전환 · Esc 취소",152,26,12);
+            commands.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.065f,.11f,1);
+            var u=battle.Session.Active;var skill=battle.SelectedSkill;var f=battle.Forecast;
+            if(shownForecast!=f){shownForecast=f;forecastRowIndex=0;}
+            var name=Label(commands,skill.DisplayName,10,34,21);name.rectTransform.offsetMax=new Vector2(-66,name.rectTransform.offsetMax.y);
+            Button(commands,"예측 취소",8,()=>battle.State.Cancel(),true,36);var back=(RectTransform)commands.GetChild(commands.childCount-1);back.anchorMin=new Vector2(1,1);back.sizeDelta=new Vector2(44,36);back.anchoredPosition=new Vector2(-28,-8);back.GetComponentInChildren<TMP_Text>().text="×";
+            var costs=new System.Collections.Generic.List<string>();int mp=battle.Session.Resolver.MPCost(u,skill),hp=battle.Session.Resolver.HPCost(u,skill);
+            if(mp>0)costs.Add("MP "+mp);if(hp>0)costs.Add("HP "+hp);if(skill.GaugeCost>0)costs.Add("SP "+skill.GaugeCost);
+            if(f==null||f.Rows.Count==0)
+            {
+                Label(commands,f==null?"대상을 선택하세요":f.Note,64,60,19);Label(commands,"사거리 "+skill.MinRange+"–"+skill.Range,128,32,18);
+                Label(commands,string.Join(" · ",costs),178,42,18);targetContextHeight=240;return;
+            }
+            var targets=battle.Target.HasValue?battle.Session.Resolver.Targets(u,skill,battle.Target.Value).ToArray():new UnitRuntime[0];
+            var rows=f.Rows.OrderByDescending(r=>targets.Contains(r.Unit)).ThenBy(r=>r.Unit.Team==u.Team).ToArray();
+            forecastRowIndex=Mathf.Clamp(forecastRowIndex,0,rows.Length-1);var row=rows[forecastRowIndex];
+            InfoPortrait(commands,row.Unit.Data,14,58,88,108);
+            var enemy=Label(commands,row.Unit.Data.DisplayName,56,34,19);enemy.rectTransform.offsetMin=new Vector2(116,enemy.rectTransform.offsetMin.y);
+            string caption=row.AfterHP>row.BeforeHP?"예상 회복":row.DirectDamage?"예상 피해":"효과 변화";
+            var kind=Label(commands,caption,96,28,16);kind.rectTransform.offsetMin=new Vector2(116,kind.rectTransform.offsetMin.y);
+            var amount=Label(commands,row.Immune?"면역":row.AfterHP==row.BeforeHP&&!row.DirectDamage?"—":Mathf.Abs(row.BeforeHP-row.AfterHP).ToString(),112,86,46);amount.rectTransform.offsetMin=new Vector2(116,amount.rectTransform.offsetMin.y);amount.color=row.AfterHP>row.BeforeHP?new Color(.35f,.9f,.7f):new Color(1,.43f,.4f);
+            Label(commands,"HP "+row.BeforeHP+" → "+row.AfterHP+(row.AfterHP==0?" · 전투불능":""),194,30,18);ForecastHealthBar(commands,row,230);
+            var notices=new System.Collections.Generic.List<string>();
+            if(row.Unit.BossWard)notices.Add("방벽 "+row.BeforeWard+"%"+(row.BeforeWard!=row.AfterWard?" → "+row.AfterWard+"%":""));
+            if(!string.IsNullOrEmpty(row.ImportantEffects))notices.Add(row.ImportantEffects);
+            float lower=258;
+            if(notices.Count>0){float height=string.IsNullOrEmpty(row.ImportantEffects)?34:72;var alerts=Label(commands,string.Join(" · ",notices),lower,height,16);alerts.enableAutoSizing=true;alerts.fontSizeMin=14;alerts.fontSizeMax=16;lower+=height+8;}
+            if(costs.Count>0){Label(commands,string.Join(" · ",costs),lower,30,17);lower+=38;}
+            if(rows.Length>1)
+            {
+                Button(commands,"예측 이전 대상",lower,()=>{forecastRowIndex=(forecastRowIndex+rows.Length-1)%rows.Length;battle.Hud.Refresh();},true,34);HalfButton(commands,0);
+                Button(commands,"예측 다음 대상",lower,()=>{forecastRowIndex=(forecastRowIndex+1)%rows.Length;battle.Hud.Refresh();},true,34);HalfButton(commands,1);
+                var buttons=commands.GetComponentsInChildren<UnityEngine.UI.Button>();buttons[buttons.Length-2].GetComponentInChildren<TMP_Text>().text="‹  대상 "+(forecastRowIndex+1)+" / "+rows.Length;buttons[buttons.Length-1].GetComponentInChildren<TMP_Text>().text="다음 대상  ›";lower+=42;
+            }
+            float detailsY=lower;
+            Button(commands,"전체 예측 · "+rows.Length+"명 / 비용",detailsY,()=>ShowForecast(0),true,36);commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="상세 보기  ›";
+            targetContextHeight=detailsY+50;
         }
         void ShowForecast(int page)
         {

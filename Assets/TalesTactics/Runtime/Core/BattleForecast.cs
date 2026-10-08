@@ -32,7 +32,9 @@ namespace TalesTactics
     {
         public UnitRuntime Unit;
         public int BeforeHP,AfterHP;
-        public string Effects;
+        public string Effects,ImportantEffects;
+        public int BeforeWard,AfterWard;
+        public bool DirectDamage,Immune;
         public string Text=>Unit.Data.DisplayName+": HP "+BeforeHP+" → "+AfterHP+(AfterHP==0?" · 격파/전투불능":"")+(string.IsNullOrEmpty(Effects)?"":"\n"+Effects);
     }
     public sealed class BattleForecast
@@ -55,6 +57,7 @@ namespace TalesTactics
                 var effects=new List<string>();
                 if(original.BossWard)effects.Add("호위 방벽 "+battle.Resolver.BossWardPercent(original)+"% → "+projection.Resolver.BossWardPercent(after)+"%");
                 if(targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.Magic)&&battle.TacticalCombat)effects.Add(battle.Resolver.TacticalModifiers(actor,original));
+                int mechanical=effects.Count;
                 foreach(var e in skill.Effects.Where(e=>(e.AffectCaster?original==actor:targets.Contains(original))))
                 {
                     if(e.Chance<1)effects.Add(SkillSummary.Effect(e)+$" {e.Chance:P0}");
@@ -63,7 +66,9 @@ namespace TalesTactics
                 foreach(var status in original.Statuses.Where(s=>!after.Has(s.Kind)))effects.Add(StatusText.Name(status.Kind)+" 해제");
                 if(after.Position!=original.Position)effects.Add("위치 "+after.Position);
                 if(after.ProtectionUsed&&!original.ProtectionUsed)effects.Add("인접 보호 1회 사용");
-                result.Rows.Add(new ForecastRow{Unit=original,BeforeHP=original.CurrentHP,AfterHP=after.CurrentHP,Effects=string.Join(" · ",effects)});
+                result.Rows.Add(new ForecastRow{Unit=original,BeforeHP=original.CurrentHP,AfterHP=after.CurrentHP,Effects=string.Join(" · ",effects),ImportantEffects=string.Join(" · ",effects.Skip(mechanical)),BeforeWard=battle.Resolver.BossWardPercent(original),AfterWard=projection.Resolver.BossWardPercent(after),
+                    DirectDamage=skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&(e.AffectCaster?original==actor:targets.Contains(original))),
+                    Immune=targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage)&&ElementalRules.Multiplier(original.Data,skill.Element)<=0});
             }
             return result;
         }

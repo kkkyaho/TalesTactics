@@ -31,7 +31,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(commands.rect.width,Is.EqualTo(300).Within(.01f));
             director.State.Cancel();yield return null;
             director.AttackCommand();yield return null;
-            Assert.That(commands.rect.height,Is.LessThanOrEqualTo(180));
+            Assert.That(commands.rect.height,Is.LessThanOrEqualTo(240));
             director.State.Cancel();yield return null;
             Assert.That(unit.CurrentHP,Is.EqualTo(hp));Assert.That(unit.CurrentMP,Is.EqualTo(mp));
             director.Restart();yield return null;

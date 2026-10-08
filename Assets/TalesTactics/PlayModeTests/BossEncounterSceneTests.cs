@@ -14,7 +14,9 @@ namespace TalesTactics.PlayModeTests
             var b=director.Session;Assert.That(b.BossEncounters,Is.True);Assert.That(b.Resolver.BossWardPercent(b.ObjectiveUnit),Is.EqualTo(75));
             director.Hud.ShowMission();yield return null;
             Assert.That(director.Hud.MissionOpen,Is.True);
-            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("방벽 75%")),Is.True);
+            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text=="75%"),Is.True);
+            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("호위 1명당")),Is.False);
+            Click("임무 상세 보기");yield return null;
             Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("호위 1명당")),Is.True);
             b.ObjectiveUnit.IntentPhase=1;b.ObjectiveUnit.IntentSkill=b.ObjectiveUnit.Data.BasicAttack.Id;b.ObjectiveUnit.IntentAim=b.Active.Position;
             director.Hud.ShowMission();yield return null;

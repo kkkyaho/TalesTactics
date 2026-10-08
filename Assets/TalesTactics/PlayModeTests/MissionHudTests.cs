@@ -16,8 +16,16 @@ namespace TalesTactics.PlayModeTests
                 director.SelectedStage=stage;director.Hud.ShowMission();yield return null;var window=director.Hud.transform.Find("MissionOverlay/MissionWindow");
                 foreach(var label in window.GetComponentsInChildren<TMPro.TMP_Text>()){label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.text);}
                 string text=string.Join("\n",window.GetComponentsInChildren<TMPro.TMP_Text>().Select(t=>t.text));
-                Assert.That(text,Does.Contain("승리  ·  "+CampaignMissions.Description(stage)));Assert.That(text,Does.Contain("패배  ·  아군 전원 전투불능"));
-                foreach(var i in Enumerable.Range(0,4))Assert.That(text,Does.Contain(CampaignEnemies.Resolve(director.Catalog,stage,i).DisplayName));
+                Assert.That(text,Does.Contain("승리"));Assert.That(text,Does.Contain("패배"));
+                Assert.That(text,Does.Contain(CampaignMissions.Kind(stage)==ObjectiveKind.Escort?"호위 대상 전투불능":"아군 전원 전투불능"));
+                Click("임무 상세 보기");yield return null;
+                Assert.That(window.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains(CampaignMissions.Description(stage))),Is.True);
+                Click("적 정보");yield return null;
+                foreach(var i in Enumerable.Range(0,4))
+                {
+                    Click("적 선택: "+i);yield return null;
+                    Assert.That(window.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text==CampaignEnemies.Resolve(director.Catalog,stage,i).DisplayName),Is.True);
+                }
                 Assert.That(director.Hud.transform.Find("Commands").GetComponentsInChildren<UnityEngine.UI.Button>().All(b=>!b.IsInteractable()),Is.True);
                 director.Hud.CloseMission();Assert.That(director.Session,Is.Null);
             }

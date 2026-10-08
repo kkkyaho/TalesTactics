@@ -43,12 +43,12 @@ namespace TalesTactics.PlayModeTests
                 var targets=director.AvailableTargets();yield return KeyboardPress(keyboard,Key.Tab);Assert.That(director.Target,Is.EqualTo(targets[0]));
                 yield return KeyboardPress(keyboard,Key.LeftShift,Key.Tab);Assert.That(director.Target,Is.EqualTo(targets.Last()));
                 Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="실행"),Is.False);
-                var panel=(RectTransform)director.Hud.transform.Find("Commands");var actor=TileScreen(u.Position);
-                Assert.That(Vector2.Distance(panel.TransformPoint(panel.rect.center),actor),Is.LessThan(Screen.width*.5f));
+                var panel=(RectTransform)director.Hud.transform.Find("Commands");
+                Assert.That(panel.anchorMin,Is.EqualTo(new Vector2(1,0)));
                 for(int i=0;i<4;i++)
                 {
                     var old=panel.position;director.Board.RotateCamera(90);yield return null;
-                    Assert.That(Vector3.Distance(old,panel.position),Is.GreaterThan(1));
+                    Assert.That(Vector3.Distance(old,panel.position),Is.LessThan(.01f),"Forecast stays in a fixed corner during camera rotation.");
                     var corners=new Vector3[4];panel.GetWorldCorners(corners);Assert.That(corners.All(c=>c.x>=0&&c.x<=Screen.width&&c.y>=0&&c.y<=Screen.height),Is.True);
                 }
                 director.HandleBattleClick(OutsideContext);Assert.That(director.State,Is.TypeOf<ActionSelectionState>());Assert.That(director.Target,Is.Null);

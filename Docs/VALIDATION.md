@@ -651,3 +651,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - V6 중단 저장/재실행 이어하기 후 시작 상태 복원, V1–V5 재도전 비활성화, 자유 턴/SPD/CT 복원 검증. 이전 실행본은 V6 중단 기록을 읽지 못한다.
 - 전투 메뉴·확인창·구형 기록 안내의5해상도×글자100/130%30조합에서 넘침0/화면 밖 버튼0. 작은 화면 실제 PNG 직접 확인. 검사에는 격리 임시 저장을 사용했다.
 - Windows `Builds/WindowsBattleRetry/TalesTactics.exe` 빌드26.274초,오류0/기존 경고10. 숨김 시작12초 유지·로그 오류0·사용자 저장3파일 해시 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구. 실제 물리 입력/다른PC/사람의6장 완주 난이도는 이번 검증에 포함하지 않는다. [상세 증거](BattleRetry/README.md).
+
+## 2026-10-08 임무·전투 예측 간결화 (`codex/compact-battle-information`)
+
+- 임무를 오른쪽 목표/적 정보 탭으로 바꾸고 승리·패배·진행/방벽 중심으로 요약했다. 적별 상세와 지형·전체 조건은 펼쳐 본다. 예측은 큰 피해/회복 수치, 대상 그림, HP 증감 막대, 필수 상태·확률·면역·전투불능과 실제 비용을 기본 카드에 남긴다. 범위 대상 조회와 전체 계산 상세를 유지하며 중복 HUD 문구와 모달 뒤 명령 카드를 숨긴다. 기존 맵·캐릭터·전투 계산·저장 형식은 유지한다.
+- 실제 Unity 6000.6.0f1 EditMode **156/156**(0.81초), 최종 전체 PlayMode **106/106**(200.76초) 통과. 실제 Unity API DLL을 참조한 Runtime/Editor/EditMode/PlayMode 4개 어셈블리 컴파일도 통과했다. ManagedChecks는 이번에 재실행하지 않았다.
+- 새 검사는 예측 대상 순환·HP 막대 비율·상태 확률·상세창 닫기 후 복귀·조준/자원 불변, 속성 면역 및 회복 메타데이터를 확인한다. 기존 임무 6장/튜토리얼/키보드 대상 선택 검사는 새 UI에서도 실제 표시값과 전투 동작을 확인하도록 갱신했다.
+- 첫 EditMode 실행은 문화권에 따른 `50 %` 공백 비교로1건 실패해 숫자 의미 비교로 보완했다. 첫 전체 PlayMode는102/106으로, 출전 전 긴 목표 문구 넘침1건과 기존 카드 높이/유닛 옆 위치/문장 형태를 고정한 검사3건이 실패했다. 짧은 장별 목표·선택형 상세로 수정하고 최종106/106 통과했다. `playmode-initial.json`을 함께 보관한다.
+- 1024×768/1280×800/1366×768/1920×1080/2560×1080, 글자100/130%, 6화면의 **60조합**에서 TMP 넘침0·화면 밖 버튼0. 작은 화면과 Full HD 실제 Game View PNG를 직접 확인했다. 초기 숫자 높이 부족과 모달 뒤 명령 메뉴 겹침을 수정한 후 재검수했다. 출전 전 장별 요약의 최종 보완은 전체 PlayMode의6장 임무 검사에서 확인했다.
+- Windows `Builds/WindowsCompactInformation/TalesTactics.exe` 일반 빌드 **20.080초, 오류0/기존 경고7** 성공. 경고는 Pipeline 런타임 설정 미사용, DEVELOPMENT_BUILD 지시문 및 비직렬화 필드 분석이다. 숨김 시작12초 유지·로그 오류0·사용자 저장3파일 SHA256 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구와 검수용 캡처·폰트·CSV 정리를 완료했다.
+- 시각 검증은 Editor Game View, Windows 실행 검증은 시작 로그 범위다. 물리 입력·다른PC/DPI·사람의6장 완주 난이도는 이번 검증에 포함하지 않는다. 공개 Release/main 반영 없이 develop으로 통합한다. [실제 화면과 근거](CompactInformation/README.md).

@@ -21,16 +21,14 @@ namespace TalesTactics
         }
         void DrawTacticalHeader()
         {
-            var title=Label(header,battle.TutorialActive?"입문 연습":battle.Session.ObjectiveDescription,6,30,18);
-            title.rectTransform.anchorMax=new Vector2(0,1);title.rectTransform.sizeDelta=new Vector2(310,30);title.rectTransform.anchoredPosition=new Vector2(170,-6);title.enableAutoSizing=true;title.fontSizeMin=11;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
-            var progress=Label(header,battle.TutorialActive?"이동 · 공격 · 회복 · 대기":MissionBriefing.Progress(battle.Session),36,22,14);
-            progress.rectTransform.anchorMax=new Vector2(0,1);progress.rectTransform.sizeDelta=new Vector2(310,22);progress.rectTransform.anchoredPosition=new Vector2(170,-36);
+            var title=Label(header,battle.TutorialActive?"입문 연습":BriefVictory(battle.Session,battle.Session.CampaignStage,battle.TrainingMode),16,34,18);
+            title.rectTransform.anchorMax=new Vector2(0,1);title.rectTransform.sizeDelta=new Vector2(310,30);title.rectTransform.anchoredPosition=new Vector2(170,-16);title.enableAutoSizing=true;title.fontSizeMin=11;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
             int i=0;
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
             if(team!=null)
             {
-                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명 · PgUp/PgDn 선택":$"적군 턴 {team.Round}",1,20,12);
+                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,20,12);
                 phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-190,-21),new Vector2(150,-1));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
             }
             foreach(var unit in orderNow)
