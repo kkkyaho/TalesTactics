@@ -8,7 +8,9 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 개발 기준 브랜치는 **`develop`**입니다. 모든 개발 작업과 새 작업 브랜치 생성은 `develop`을 기준으로 하며, 별도 작업 브랜치도 완료 후 `develop`으로 통합합니다. **`main`은 릴리즈 상태 보관용 마스터/아카이브**로 사용하고, 릴리즈·머지 요청이 있을 때만 갱신합니다.
 
-개발판의 **임무·전투 예측 UI를 간결하게 정리**했습니다. 목표/적 정보 탭과 선택형 상세, 큰 피해·회복 수치와 HP 막대, 범위 대상 순환을 제공하며 기존 전장과 캐릭터를 유지합니다. 실제 Unity EditMode156/156·PlayMode106/106, 60개 화면 조합의 배치 검수를 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsCompactInformation/TalesTactics.exe`입니다(폴더 전체 필요). [실제 적용 화면과 검증 기록](Docs/CompactInformation/README.md).
+개발판에 **난이도 3단계와 선택형 점령·증원**을 추가하고 프로젝트 컴파일 경고를 정리했습니다. 저장·설정 → 전투 진행에서 선택하며 기본 규칙은 그대로입니다. 3장 거점 유지와 3·5장 적 증원을 지원하고, 이어하기·재도전은 출전 당시 옵션을 보존합니다. 실제 Unity EditMode165/165·PlayMode108/108·최종 임무 UI1/1 및 화면50조합을 통과했습니다. 최신 로컬 실행본은 `Builds/WindowsMissionOptions/TalesTactics.exe`입니다(폴더 전체 필요). 일반·개발 Windows 빌드와 저장/이어하기 검수를 통과했으며 빌드에는 외부 패키지 안내3건이 남습니다. [조작·저장 호환·실제 화면](Docs/WarningCleanup/README.md).
+
+개발판의 **임무·전투 예측 UI를 간결하게 정리**했습니다. 목표/적 정보 탭과 선택형 상세, 큰 피해·회복 수치와 HP 막대, 범위 대상 순환을 제공하며 기존 전장과 캐릭터를 유지합니다. 실제 Unity EditMode156/156·PlayMode106/106, 60개 화면 조합의 배치 검수를 통과했습니다. 간결화 당시 실행본은 `Builds/WindowsCompactInformation/TalesTactics.exe`입니다(폴더 전체 필요). [실제 적용 화면과 검증 기록](Docs/CompactInformation/README.md).
 
 개발판에 **출전 당시 상태 재도전**을 추가했습니다. 전투 메뉴/패배 화면에서 확인 후 최초 편성·장비·레벨·턴 규칙으로 돌아가며, V6 중단 저장과 이어하기에서도 보존됩니다. EditMode154/154·전체 PlayMode104/104·최종 관련8/8, 화면30조합, Windows 빌드/시작 검사를 통과했습니다. 해당 개선 실행본은 `Builds/WindowsBattleRetry/TalesTactics.exe`입니다(폴더 전체 필요). [조작·저장 호환·검증 기록](Docs/BattleRetry/README.md).
 

@@ -11,7 +11,7 @@ namespace TalesTactics.PlayModeTests
         {
             director.BeginBattle();yield return null;
             var caster=director.Session.Active;
-            var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(m=>m.transform.parent.name==caster.Data.DisplayName);
+            var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.transform.parent.name==caster.Data.DisplayName);
             director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.5f);
             Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f));
             director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.12f);
@@ -46,7 +46,7 @@ namespace TalesTactics.PlayModeTests
             // Destroy is deferred to the frame boundary; allow the busy Editor to render it.
             float expiryDeadline=Time.realtimeSinceStartup+1.5f;
             while(Object.FindObjectsByType<CombatEffect>().Length>0&&Time.realtimeSinceStartup<expiryDeadline)yield return new WaitForEndOfFrame();
-            Assert.That(Object.FindObjectsByType<CombatEffect>(FindObjectsSortMode.None),Is.Empty);
+            Assert.That(Object.FindObjectsByType<CombatEffect>(),Is.Empty);
         }
         [UnityTest] public IEnumerator LethalAreaEffectsRetainAllRecipientsAfterResolution()
         {
@@ -61,11 +61,11 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(recipients.Length,Is.EqualTo(4));
                 Assert.That(director.Session.Resolver.Execute(caster,skill,aim,out var error),Is.True,error);
                 director.Board.PresentImpact(caster,skill,aim,before,recipients);yield return null;
-                var effects=Object.FindObjectsByType<CombatEffect>(FindObjectsSortMode.None);
+                var effects=Object.FindObjectsByType<CombatEffect>();
                 Assert.That(effects.Select(e=>e.Recipient),Is.EquivalentTo(recipients));
                 Assert.That(effects.All(e=>e.Feedback==CombatFeedback.Strike&&!e.Recipient.Alive),Is.True);
                 director.Restart();yield return null;yield return null;
-                Assert.That(Object.FindObjectsByType<CombatEffect>(FindObjectsSortMode.None),Is.Empty);
+                Assert.That(Object.FindObjectsByType<CombatEffect>(),Is.Empty);
             }
             finally{Object.Destroy(skill);}
         }
@@ -95,10 +95,10 @@ namespace TalesTactics.PlayModeTests
                 director.Board.SetAnimation(caster,AnimationKind.Ultimate);
                 Assert.That(director.Session.Resolver.Execute(caster,attack,enemy.Position,out error),Is.True,error);
                 director.Board.PresentImpact(caster,attack,enemy.Position,before,new[]{enemy});yield return null;
-                Assert.That(Object.FindObjectsByType<CombatEffect>(FindObjectsSortMode.None).Any(e=>e.Recipient==caster),Is.False);
-                var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(m=>m.transform.parent.name==caster.Data.DisplayName);
+                Assert.That(Object.FindObjectsByType<CombatEffect>().Any(e=>e.Recipient==caster),Is.False);
+                var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.transform.parent.name==caster.Data.DisplayName);
                 Assert.That(motion.Action,Is.EqualTo(AnimationKind.Ultimate));
-                Assert.That(Object.FindObjectsByType<TMPro.TextMeshPro>(FindObjectsSortMode.None).Any(t=>t.text=="HP -10"),Is.True);
+                Assert.That(Object.FindObjectsByType<TMPro.TextMeshPro>().Any(t=>t.text=="HP -10"),Is.True);
             }
             finally{Object.Destroy(heal);Object.Destroy(revive);Object.Destroy(attack);}
         }

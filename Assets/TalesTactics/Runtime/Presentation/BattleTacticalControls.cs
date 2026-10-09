@@ -7,7 +7,7 @@ namespace TalesTactics
     public sealed partial class BattleDirector
     {
         public BattleForecast Forecast {get;private set;}
-        public UnitRuntime InspectedUnit,HoveredUnit;
+        [System.NonSerialized] public UnitRuntime InspectedUnit,HoveredUnit;
         public Vector2Int? KeyboardTile {get;private set;}
         public int ThreatMode {get;private set;} // 0=off, 1=selected enemy, 2=all enemies
         public Dictionary<UnitRuntime,HashSet<Vector2Int>> Threats {get;private set;}=new Dictionary<UnitRuntime,HashSet<Vector2Int>>();

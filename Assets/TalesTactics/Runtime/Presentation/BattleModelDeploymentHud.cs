@@ -116,8 +116,8 @@ namespace TalesTactics
             }
             DrawFormationDetails();
             FormationText(footer,"모델 선택: 정보 보기   ·   출전 표시: 편성 변경",new Vector2(0,.48f),new Vector2(.32f,1),17);
-            string notice=string.IsNullOrEmpty(battle.SaveNotice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignMissions.Description(battle.SelectedStage)):battle.SaveNotice;
-            FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16).color=new Color(.7f,.77f,.83f);
+            string notice=PreparationNotice;
+            var missionNotice=FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16);missionNotice.name="PreparationMissionNotice";missionNotice.color=new Color(.7f,.77f,.83f);
             FormationButton(footer,"편성 프리셋","프리셋",new Vector2(.32f,.16f),new Vector2(.46f,.84f),()=>ShowPresets(),true,20);
             FormationButton(footer,"전체 해제","전체 해제",new Vector2(.46f,.16f),new Vector2(.60f,.84f),()=>{battle.Deployment.Clear();RenderDeployment();},battle.Deployment.Count>0,21);
             FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,21);
@@ -195,6 +195,17 @@ namespace TalesTactics
             FormationText(r,title+"   "+value+" / "+value,new Vector2(0,.28f),Vector2.one,19);
             var bar=FormationRect(r,"Fill",Vector2.zero,new Vector2(1,.19f));var img=bar.gameObject.AddComponent<UnityEngine.UI.Image>();img.color=color;img.raycastTarget=false;
         }
+        string PreparationNotice=>string.IsNullOrEmpty(battle.SaveNotice)?(battle.TrainingMode?"훈련 · 저장 보상 없음":BriefVictory(null,battle.SelectedStage,false)):battle.SaveNotice;
+        string PreparationMissionText=>(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):PreparationVictory(battle.SelectedStage))+"\n\n권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 6인 · 적 Lv"+(battle.TrainingMode?25:DifficultyRules.EnemyLevel(CampaignStages.EnemyLevel(battle.SelectedStage),battle.Preferences.Difficulty))+"\n\n"+CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage);
+        void RefreshPreparationMissionText()
+        {
+            if(battle.Session!=null)return;
+            foreach(var text in GetComponentsInChildren<TMP_Text>())
+            {
+                if(text.name=="PreparationMissionNotice")text.text=PreparationNotice;
+                if(text.name=="PreparationMissionDescription")text.text=PreparationMissionText;
+            }
+        }
         void ShowDeploymentMissions()
         {
             if(battle.Session!=null)return;BeginPreparation("임무 선택");
@@ -207,7 +218,7 @@ namespace TalesTactics
             Button(left,"이전 장 목록",332,()=>ShowChapterPage(chapterPage-1),chapterPage>0,40);HalfButton(left,0);
             Button(left,"다음 장 목록",332,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count,40);HalfButton(left,1);
             Label(center,CampaignStages.Title(battle.SelectedStage),20,50,26);
-            Label(center,(battle.TrainingMode?ObjectiveNames.Name(battle.TrainingObjective):CampaignMissions.Description(battle.SelectedStage))+"\n\n권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 6인 · 적 Lv"+CampaignStages.EnemyLevel(battle.SelectedStage)+"\n\n"+CampaignEconomy.Preview(battle.Campaign,battle.SelectedStage),95,270,20);
+            Label(center,PreparationMissionText,95,270,20).name="PreparationMissionDescription";
             Button(commands,"임무 · 적 정보",22,ShowMission);
             Button(commands,"전투 전 이야기",80,()=>battle.ReplayStory(false));
             Button(commands,"전투 후 이야기",138,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));

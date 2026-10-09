@@ -1,5 +1,17 @@
 # 아키텍처
 
+## 난이도와 임무 변형
+
+PlayerPreferences의 Difficulty(표준=0/여유/도전)와 MissionEvents(기본 꺼짐)는 다음 출전에만 반영한다. DifficultyRules는 캠페인 적의 시작 레벨에 −2/0/+2를 적용하고1–50 범위를 유지한다. 아군 성장·골드·EXP·장비 보상은 변경하지 않는다. 훈련은 기존 레벨과 규칙을 유지한다.
+
+MissionOptions는 BattleSession의 선택형 임무 상태를 관리한다. 자유 선택 턴의3장은 거점에 아군이 있는 상태로 아군 페이즈를2회 연속 끝내면 승리하며, 비어 있는 페이즈 종료에는 진행을 초기화한다.3·5장은3번째 아군 페이즈 시작에2명 증원한다. 지정 적 출발점에 가까운 비점유 이동 가능 칸을 결정적으로 선택하고, 둘 다 배치할 공간이 없으면 보류한다. 증원은 그 다음 적군 페이즈부터 행동한다. BoardView.Sync는 새 유닛의 시각 오브젝트만 추가해 카메라와 기존 맵을 유지한다.
+
+BattleCheckpoint V7에 난이도·변형 여부·증원 발생·점령 진행을 보관한다. 기존 V1–V6은 표준/변형 없음으로 복원한다. BattleOpening V2는 출전 당시 옵션을 보관하고 재도전 시 점령·증원을 초기 상태로 되돌린다. V1 시작 기록도 계속 읽는다. 설정과 임무를 조회하는 동작은 게임 저장을 바꾸지 않는다.
+
+## 컴파일 경고 관리
+
+객체 검색은 정렬 인자가 없는 FindObjectsByType API를 사용한다. 개발 검수 도구는 UNITY_EDITOR 또는 DEBUG에서만 컴파일하며 일반 배포의 검수 코드 제외를 빌드 산출물로 확인한다. Target/InspectedUnit/HoveredUnit은 전투 중 임시 참조이므로 NonSerialized로 명시한다. 영구 저장은 기존 CampaignFile/BattleCheckpoint가 맡는다. Pipeline 패키지의 플레이어 기능 비활성화 안내는 프로젝트 코드 경고와 별도로 기록하며, 경고 제거 목적으로 원격 제어를 켜거나 패키지 캐시를 수정하지 않는다.
+
 ## 간결한 임무·전투 예측
 
 BattleMissionHud는 오른쪽 드로어에서 목표/적 정보 탭을 전환한다. 기본 목표는 승리·패배·진행 상황 또는 호위 방벽만 표시하고 지형과 세부 규칙은 펼쳐 본다. 적 초상화 선택은 조회 상태만 바꾸며 실제 전투 선택·턴·자원을 변경하지 않는다. 전투 예고가 있으면 일반 방벽 설명보다 우선 표시한다.
@@ -277,3 +289,5 @@ V5 중단 기록의 `BossEncounters`로 규칙 적용을 결정하고 위치·HP
 `BattleOpening`은 첫 `TurnStartState` 진입 전의 유닛 기록과 생성 옵션을 보관한다. 진행 중 상태를 저장하는 `BattleCheckpoint`와 구분하여 스케줄러·목표 카운터를 처음부터 생성한다. 새 세션을 완전히 검증한 뒤 `BattleDirector.RetryOpening`이 현재 세션을 교체한다. 저장된 캠페인 성장/보상에는 쓰지 않는다.
 
 V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다. inline null을 재생성하는 JsonUtility 특성 때문에 별도 플래그를 사용한다. 시작 기록의 장·편성과 중단 기록이 다르거나 검증에 실패하면 중단 저장을 소비하지 않는다. V1–V5의 진행 복원은 유지하고 시작 재도전만 제공하지 않는다. [조작·호환성](BattleRetry/README.md).
+
+- TMP Essentials의 Mobile/SpaceWarp 셰이더 디버그 지시문은 Unity 6000.6의 enable_debug_symbols로 갱신했다. Essentials 재임포트로 덮어쓸 경우 이 호환 수정도 보존한다. URP 자동 디버그 리소스와 Pipeline 패키지 캐시는 변경하지 않는다.

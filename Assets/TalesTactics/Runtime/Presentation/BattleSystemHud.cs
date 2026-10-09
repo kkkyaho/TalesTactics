@@ -42,16 +42,18 @@ namespace TalesTactics
         void DrawFlowPreferences()
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
-            Label(systemWindow,"적 행동 연출",124,38,24);
-            Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",182,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,48);
-            Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",250,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,48);
-            Label(systemWindow,"속도는 적의 이동·준비·복귀 대기에만 적용됩니다.\n간략 모드도 피해·회복·비용·상태 판정을 그대로 실행합니다.\n적 기술명과 처리 결과는 하단 메시지에 남습니다.\n\n아군 연출과 파라 타이밍 입력 시간은 바뀌지 않습니다.\n기술 대상 선택을 취소하면 기술 정보로 돌아가며,\n목록은 캐릭터마다 마지막으로 본 기술을 기억합니다.",324,190,19);
+            Button(systemWindow,"다음 전투 난이도: "+DifficultyRules.Name(d.Difficulty),124,()=>{d.Difficulty=(BattleDifficulty)(((int)d.Difficulty+1)%3);ShowSystemMenu(2);},true,42);
+            Button(systemWindow,d.MissionEvents?"임무 변형: 켜짐":"임무 변형: 꺼짐",178,()=>{d.MissionEvents=!d.MissionEvents;ShowSystemMenu(2);},true,42);
+            Label(systemWindow,"여유: 적 Lv−2 / 표준: 기존 / 도전: 적 Lv+2 · 보상 동일\n변형: 3장 점령, 3·5장 증원 · 자유 선택 턴에만 적용\n진행 중인 전투와 재도전은 출전 당시 설정을 유지합니다.",230,100,18);
+            Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",340,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,42);
+            Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",394,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,42);
+            Label(systemWindow,"연출 속도는 적에게만 적용 · 전투 판정과 아군 타이밍 유지",456,54,18);
             Button(systemWindow,"전투 진행 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(2);},true,44);
             Label(systemWindow,battle.SaveNotice,574,20,14);
         }
         public bool CloseSystemMenu()
         {
-            if(!SystemMenuOpen)return false;systemOverlay.gameObject.SetActive(false);settingsDraft=null;SetMainInteraction(!UnitDetailsOpen&&!HelpOpen);return true;
+            if(!SystemMenuOpen)return false;systemOverlay.gameObject.SetActive(false);settingsDraft=null;RefreshPreparationMissionText();SetMainInteraction(!UnitDetailsOpen&&!HelpOpen);return true;
         }
         void DrawSaveMenu()
         {

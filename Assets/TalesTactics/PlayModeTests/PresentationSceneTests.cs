@@ -16,7 +16,7 @@ namespace TalesTactics.PlayModeTests
             }
             director.BeginBattle();yield return null;
             var unit=director.Session.Units.First();
-            var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(x=>x.transform.parent.name==unit.Data.DisplayName);
+            var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.transform.parent.name==unit.Data.DisplayName);
             foreach(AnimationKind action in System.Enum.GetValues(typeof(AnimationKind)))
             {director.Board.SetAnimation(unit,action);yield return null;Assert.That(motion.Action,Is.EqualTo(action));}
             director.Board.SetAnimation(unit,AnimationKind.Idle);

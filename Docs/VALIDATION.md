@@ -661,3 +661,18 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 1024×768/1280×800/1366×768/1920×1080/2560×1080, 글자100/130%, 6화면의 **60조합**에서 TMP 넘침0·화면 밖 버튼0. 작은 화면과 Full HD 실제 Game View PNG를 직접 확인했다. 초기 숫자 높이 부족과 모달 뒤 명령 메뉴 겹침을 수정한 후 재검수했다. 출전 전 장별 요약의 최종 보완은 전체 PlayMode의6장 임무 검사에서 확인했다.
 - Windows `Builds/WindowsCompactInformation/TalesTactics.exe` 일반 빌드 **20.080초, 오류0/기존 경고7** 성공. 경고는 Pipeline 런타임 설정 미사용, DEVELOPMENT_BUILD 지시문 및 비직렬화 필드 분석이다. 숨김 시작12초 유지·로그 오류0·사용자 저장3파일 SHA256 불변. Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구와 검수용 캡처·폰트·CSV 정리를 완료했다.
 - 시각 검증은 Editor Game View, Windows 실행 검증은 시작 로그 범위다. 물리 입력·다른PC/DPI·사람의6장 완주 난이도는 이번 검증에 포함하지 않는다. 공개 Release/main 반영 없이 develop으로 통합한다. [실제 화면과 근거](CompactInformation/README.md).
+
+
+## 2026-10-09 경고 정리·난이도·임무 옵션 (`codex/warning-cleanup-followups`)
+
+- 프로젝트의 CS0618 객체 검색 API, UAC0009 개발 검수 전처리기, UAC1001 임시 전투 상태 필드를 수정했다. 실제 재컴파일 오류0/경고0을 확인했다(`WarningCleanup/console-after-compile.json`). 빌드에서 확인한 TMP Mobile/SpaceWarp 셰이더의 구형 지시문3곳도 현재 지시문으로 바꿨다. 기존 콘솔 이력은 `console-before.json`에 남겼다.
+- 전투 진행 설정에 표준/여유/도전(적 시작Lv0/−2/+2,1–50 제한)과 기본 꺼짐의 임무 변형을 추가했다. 자유 선택 턴의3장 점령은 아군 전체 페이즈 종료2회 연속 유지,3·5장 증원은3번째 아군 페이즈 시작에 적2명 등장이다. 같은 칸 중복/기존 점유 덮어쓰기를 막고 등장 후 아군에게 대응 기회를 준다. 보상과 아군 성장은 유지한다.
+- 설정 초안 취소/저장, 실제 임무 선택·상세 조건·적 레벨·증원 예고·6명 적 조회와 동적 모델 생성을 연결했다. V7 중단 저장과 V2 시작 기록에 출전 당시 옵션·점령 진행·증원 여부를 보존한다. V1–V6 중단/V1 시작 기록은 이전 규칙으로 읽는다. 이전 실행본으로 V7 중단 기록을 읽을 수 없으므로 되돌릴 때는 업데이트 전 백업이 필요하다.
+- 실제 Unity EditMode **165/165(1.11초)**, 전체 PlayMode **108/108(204.33초)** 통과. 임무 선택 설명이 기본 목표/레벨을 보여 주던 문제를 보완한 뒤 관련 UI **1/1(2.04초)** 재통과했다. 테스트는 난이도 적용/재도전,2회 점령/빈 거점 초기화,증원 중복/점유/다음 적 페이즈 행동,체크포인트 JSON 왕복/구형 호환,설정 저장/취소와 실제 모델·적 목록을 검증한다. 실제 Unity API DLL 참조4개 어셈블리 컴파일도 통과했다. ManagedChecks는 재실행하지 않았다.
+- 설정/출전 전 임무 상세/임무 선택/점령 진행/증원 적 상세를 **5해상도×글자100/130%=50조합** 검수했다.1024×768,1280×800,1366×768,1920×1080,2560×1080에서 TMP 넘침0·활성 버튼 화면 이탈0이다. 대표 작은 화면/Full HD PNG를 직접 확인했다. 검수 스크립트가 이전 모달을 열어 둔 상태로 임무 선택 버튼을 직접 호출한 문제를 수정하고, 해당10행을 재검수 결과로 교체했다. 50개 고유 조합이며60개로 합산하지 않는다.
+- 개발 Windows 플레이어에서 독립 프로세스4회(SPD/CT 각각 저장→이어하기)를 실행해 통과했다. `WarningCleanup/persistence`는 격리된 합성 검수 데이터다. 셰이더 지시문만 수정한 최종 개발 빌드와 검수 당시 Runtime DLL SHA256이 같음을 확인했다. 개발 빌드에는3개 검수 타입이 있고 일반 빌드에는 없는지 `Tools/CheckReviewBuild.ps1`로 검사한다.
+- 시각 증거는 Editor Game View, Windows 자동 검수는 저장/이어하기 및 시작 검사다. 사람의6장 완주 난이도·실물 패드·다른PC/DPI·최종 작화/청음은 별도다. 반격·지원 공격·전체 행동 되감기는 별도 설계할 다음 묶음으로 남긴다. 공개 릴리즈나 main 갱신 없이 develop에 통합한다. [규칙·화면·근거](WarningCleanup/README.md).
+
+- 최종 개발 Windows 빌드 **32.939초**, 일반 빌드 **21.754초**, 각각 오류0/경고3으로 성공했다. 경고는 Pipeline RuntimePipelineConfig 미사용1건, URP 내부 DebugOccluder/DebugOcclusionTest 제외2건이며 프로젝트 C# 및 TMP 구형 지시문 경고는 해소됐다. 수정 전 빌드4건과 수정 후3건의 보고서를 모두 보관한다. TMP 셰이더2개 지원 여부와 ShaderUtil 메시지0도 확인했다(`shader-check.json`).
+- 일반 빌드에 검수3타입/Unity.Pipeline 런타임 서버 DLL이 없고 개발 빌드에 검수3타입이 있음을 확인했다. `Builds/WindowsMissionOptions/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류/예외0을 확인했다. 사용자 저장3파일 SHA256과 파일 목록은 전후 불변이다. 일반/개발 어셈블리 해시,시작 결과,저장 불변 근거는 `normal-code-check.json`, `development-code-check.json`, `windows-startup.json`, `user-save-check.json`에 있다.
+- 기존 로그를 근거로 보관한 뒤 콘솔을 비우고 최종 상태 오류0/경고0을 확인했다(`console-final.json`). 이는 빌드 안내3건이 없어졌다는 뜻이 아니다. Play 종료,Full HD,runInBackground=false,Scene dirty=false를 복구하고 검수용 Assets/Docs·동적 폰트 캐시·자동 검사 CSV 변경을 정리했다.

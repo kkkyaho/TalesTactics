@@ -47,7 +47,7 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Session.Units.Count(x=>x.Team==Team.Player),Is.EqualTo(5));
                 foreach(var unit in director.Session.Units.Where(x=>x.Team==Team.Player))
                 {
-                    var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(x=>x.transform.parent.name==unit.Data.DisplayName);
+                    var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.transform.parent.name==unit.Data.DisplayName);
                     var renderer=motion.GetComponent<SpriteRenderer>();
                     var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
                     unit.CurrentHP=0;director.Board.Sync();yield return new WaitForEndOfFrame();

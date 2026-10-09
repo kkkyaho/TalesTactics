@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 namespace TalesTactics
 {
-    public sealed class BattleSession
+    public sealed partial class BattleSession
     {
         public readonly GridMap Grid;
         public readonly int CampaignStage;
@@ -23,14 +23,17 @@ namespace TalesTactics
         public readonly Vector2Int Destination=new Vector2Int(8,8);
         public UnitRuntime ObjectiveUnit {get;private set;}
         bool turnEnded;
-        public string ObjectiveDescription=>Objective==ObjectiveKind.Reach?"아군 1명 목표 "+Destination+" 도착":
+        public string ObjectiveDescription=>CaptureMission?"거점 점령 "+CaptureProgress+" / 2 · 아군 턴 종료 시 유지":Objective==ObjectiveKind.Reach?"아군 1명 목표 "+Destination+" 도착":
             Objective==ObjectiveKind.Escort?ObjectiveUnit.Data.DisplayName+" 호위 → "+Destination+", 전투불능 시 패배":
             Objective==ObjectiveKind.Boss?"보스: "+ObjectiveUnit.Data.DisplayName+" (첫 번째 적)":
             Objective==ObjectiveKind.Survive?SurvivalDescription:"모든 적 격파";
         string SurvivalDescription {get{var goal=(SurviveTurns)Victory;return (goal.EnemyPhases?"적군 턴 생존 ":"아군 턴 종료 ")+goal.Completed+" / "+goal.Required;}}
         public BattleResult Result=>Victory.Evaluate(Units);
-        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false)
+        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false,BattleDifficulty difficulty=BattleDifficulty.Standard,bool missionEvents=false)
         {
+            if(!Enum.IsDefined(typeof(BattleDifficulty),difficulty))throw new ArgumentOutOfRangeException(nameof(difficulty));
+            this.catalog=catalog;Difficulty=campaignStage<0?BattleDifficulty.Standard:difficulty;MissionEvents=missionEvents&&campaignStage>=0&&!legacyCampaign&&teamTurns&&!useCT;
+            if(campaignStage>=0)enemyLevel=DifficultyRules.EnemyLevel(enemyLevel??level,Difficulty);
             if(campaignStage>=0&&!legacyCampaign){objective=CampaignMissions.Kind(campaignStage);Destination=CampaignMissions.Destination(campaignStage);}
             BossEncounters=bossEncounters&&teamTurns&&!useCT&&!legacyCampaign&&(campaignStage==1||campaignStage==5);
             TacticalCombat=tacticalCombat;CampaignStage=campaignStage;LegacyCampaign=legacyCampaign;Objective=objective;UseUtilityAI=utilityAI;if(useCT)Scheduler=new CTTurnScheduler();else if(teamTurns)Scheduler=new TeamTurnScheduler();
@@ -55,11 +58,12 @@ namespace TalesTactics
                 for(int n=0;n<enemies.Length;n++)Grid.Place(enemies[n],positions[n]);
             }
             if(objective==ObjectiveKind.Reach)Victory=new ReachDestination(Destination);
+            if(CaptureMission)Victory=new CaptureDestination(this);
             if(objective==ObjectiveKind.Escort){ObjectiveUnit=Units.First(u=>u.Team==Team.Player);Victory=new ReachDestination(Destination,ObjectiveUnit);}
             if(objective==ObjectiveKind.Survive)Victory=new SurviveTurns(phaseSurvival&&teamTurns&&!useCT?4:12,phaseSurvival&&teamTurns&&!useCT);
         }
         void BeginActive(){turnEnded=false;if(Active!=null&&(!(Scheduler is TeamTurnScheduler team)||team.Begin(Active)))Active.BeginTurn();}
-        public void Advance(){Active=Scheduler.Next(Units);BeginActive();}
+        public void Advance(){Active=Scheduler.Next(Units);AdvanceMissionEvents();BeginActive();}
         public bool CanSelect(UnitRuntime unit)=>!turnEnded&&Active?.Team==Team.Player&&Scheduler is TeamTurnScheduler team&&team.Phase==Team.Player&&unit?.Team==Team.Player&&team.CanSelect(unit);
         public bool Select(UnitRuntime unit){if(!CanSelect(unit))return false;Active=unit;BeginActive();return true;}
         public void EndTurn()
@@ -68,6 +72,7 @@ namespace TalesTactics
             if(Scheduler is TeamTurnScheduler team)
             {
                 team.Complete(Active);
+                CompleteMissionPhase(team);
                 if(Victory is SurviveTurns goal&&goal.EnemyPhases&&team.Preview(Units).Count==0&&
                     (team.Phase==Team.Enemy||!Units.Any(u=>u.Alive&&u.Team==Team.Enemy)))goal.OnEnemyPhaseEnded();
             }

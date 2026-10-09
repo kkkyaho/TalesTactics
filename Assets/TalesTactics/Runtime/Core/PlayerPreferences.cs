@@ -10,9 +10,12 @@ namespace TalesTactics
         public float Music=.28f,Effects=.45f,CursorSpeed=1;
         public int EnemySpeedMode; // 0=1x, 1=2x, 2=4x; absent in older settings means normal.
         public bool SkipEnemyAnimations;
+        public BattleDifficulty Difficulty;
+        public bool MissionEvents;
         public float TextScale=1;
         public void Validate()
         {
+            if(!Enum.IsDefined(typeof(BattleDifficulty),Difficulty))throw new InvalidDataException("Unsupported difficulty");
             if(EnemySpeedMode<0||EnemySpeedMode>2)throw new InvalidDataException("Unsupported enemy speed");
             if(float.IsNaN(TextScale)||TextScale<1||TextScale>1.3f)throw new InvalidDataException("Unsupported text size");
             if(Version!=1||Slot<0||Slot>2||Width<640||Width>7680||Height<480||Height>4320||float.IsNaN(Music)||float.IsNaN(Effects)||float.IsNaN(CursorSpeed)||Music<0||Music>1||Effects<0||Effects>1||CursorSpeed<.5f||CursorSpeed>2)throw new InvalidDataException("Unsupported settings");

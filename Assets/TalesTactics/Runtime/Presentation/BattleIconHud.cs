@@ -21,7 +21,8 @@ namespace TalesTactics
         }
         void DrawTacticalHeader()
         {
-            var title=Label(header,battle.TutorialActive?"입문 연습":BriefVictory(battle.Session,battle.Session.CampaignStage,battle.TrainingMode),16,34,18);
+            bool arriving=battle.Session.ReinforcementsArrived&&battle.Session.Scheduler is TeamTurnScheduler eventTurn&&eventTurn.Round==3&&eventTurn.Phase==Team.Player;
+            var title=Label(header,battle.TutorialActive?"입문 연습":arriving?"적 증원 2명 도착":BriefVictory(battle.Session,battle.Session.CampaignStage,battle.TrainingMode),16,34,18);
             title.rectTransform.anchorMax=new Vector2(0,1);title.rectTransform.sizeDelta=new Vector2(310,30);title.rectTransform.anchoredPosition=new Vector2(170,-16);title.enableAutoSizing=true;title.fontSizeMin=11;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
             int i=0;
             var team=battle.Session.Scheduler as TeamTurnScheduler;

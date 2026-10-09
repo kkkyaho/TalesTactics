@@ -48,7 +48,7 @@ namespace TalesTactics.PlayModeTests
         {
             director.BeginBattle();yield return null;
             var unit=director.Session.Units.First();
-            var motion=Object.FindObjectsByType<CharacterMotion>(FindObjectsSortMode.None).Single(x=>x.transform.parent.name==unit.Data.DisplayName);
+            var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.transform.parent.name==unit.Data.DisplayName);
             var renderer=motion.GetComponent<SpriteRenderer>();
             var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
             director.Board.SetAnimation(unit,AnimationKind.Attack);yield return new WaitForEndOfFrame();

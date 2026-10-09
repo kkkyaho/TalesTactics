@@ -7,14 +7,15 @@ namespace TalesTactics
     {
         public static void Configure(BattleSession battle,BattleCatalog catalog)
         {
-            foreach(var u in battle.Units.Where(u=>u.Team==Team.Enemy))
-            {
+            foreach(var u in battle.Units.Where(u=>u.Team==Team.Enemy))ConfigureUnit(u,catalog);
+        }
+        public static void ConfigureUnit(UnitRuntime u,BattleCatalog catalog)
+        {
                 u.TacticalEnemy=true;
                 if(EnemyRoles.Role(u.Data)==EnemyRole.Frontline)u.Trait=TacticalTrait.Protector;
                 var role=u.BossWard?EnemyRole.Boss:EnemyRoles.Role(u.Data);
                 u.TacticalSkills=(catalog.TacticalEnemySkills??new SkillData[0]).Where(s=>s!=null&&
                     (role==EnemyRole.Caster&&(s.Id=="tactic.heal"||s.Id=="tactic.burst")||role==EnemyRole.Boss&&s.Id=="tactic.nova"||role==EnemyRole.Assault&&s.Id=="tactic.charge")).ToArray();
-            }
         }
         public static SkillData Intent(UnitRuntime u)=>new[]{u.Data.BasicAttack}.Concat(u.Data.Skills).Concat(u.TacticalSkills).Concat(new[]{u.Data.UltimateSkill}).FirstOrDefault(s=>s!=null&&s.Id==u.IntentSkill);
         public static string Describe(UnitRuntime u)

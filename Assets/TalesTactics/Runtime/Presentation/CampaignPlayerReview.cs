@@ -1,4 +1,4 @@
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEBUG
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -96,7 +96,7 @@ namespace TalesTactics
         }
 
         Button FindButton(Func<Button, bool> predicate) =>
-            UnityEngine.Object.FindObjectsByType<Button>(FindObjectsSortMode.None).Single(predicate);
+            UnityEngine.Object.FindObjectsByType<Button>().Single(predicate);
 
         void Click(string name)
         {

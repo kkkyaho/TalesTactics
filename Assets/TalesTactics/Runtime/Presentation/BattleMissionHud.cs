@@ -16,15 +16,18 @@ namespace TalesTactics
         int missionTab,missionEnemy;
         bool missionDetails;
         public void ShowMission(){missionTab=0;missionDetails=false;RenderMission();}
+        bool PreparationEvents(int stage,bool training)=>!training&&battle.Preferences.MissionEvents&&!battle.UseCT&&!battle.UseFixedSpeedOrder&&(stage==2||stage==4);
+        string PreparationVictory(int stage)=>PreparationEvents(stage,false)&&stage==2?"거점 "+CampaignMissions.Destination(stage)+"에서 아군 턴 종료 2회 연속 유지":CampaignMissions.Description(stage);
         string BriefVictory(BattleSession s,int stage,bool training)
         {
+            if(s?.CaptureMission==true)return "거점 점령 "+s.CaptureProgress+" / 2";
             if(s==null)
             {
                 if(training)return TrainingMission();
                 switch(CampaignMissions.Kind(stage))
                 {
                     case ObjectiveKind.Boss:return CampaignEnemies.Resolve(battle.Catalog,stage,0).DisplayName+" 격파";
-                    case ObjectiveKind.Reach:return "봉화에 아군 1명 도착";
+                    case ObjectiveKind.Reach:return battle.Preferences.MissionEvents&&!battle.UseCT&&!battle.UseFixedSpeedOrder?"거점 2턴 점령":"봉화에 아군 1명 도착";
                     case ObjectiveKind.Escort:return "선두 출전 아군 호위";
                     case ObjectiveKind.Survive:return battle.UseCT||battle.UseFixedSpeedOrder?"아군 턴 종료 12회 생존":"적군 턴 4회 생존";
                     default:return "모든 적 격파";
@@ -63,7 +66,7 @@ namespace TalesTactics
                 Label(defeat,escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능",36,42,18);
                 if(missionDetails)
                 {
-                    var detail=Label(missionWindow,(s!=null?MissionBriefing.Victory(s):training?TrainingMission():CampaignMissions.Description(stage))+"\n\n"+MissionBriefing.Terrain(stage)+(s?.BossEncounters==true?"\n호위 1명당 피해 -25% (최대 75%)":""),342,174,18);
+                    var detail=Label(missionWindow,(s!=null?MissionBriefing.Victory(s):training?TrainingMission():PreparationVictory(stage))+"\n\n"+MissionBriefing.Terrain(stage)+(s?.BossEncounters==true?"\n호위 1명당 피해 -25% (최대 75%)":""),342,174,18);
                 }
                 else if(s?.BossEncounters==true)
                 {
@@ -72,7 +75,7 @@ namespace TalesTactics
                     for(int i=0;i<escorts.Length;i++){var portrait=InfoPortrait(ward,escorts[i].Data,20+i*132,58,60,60);if(!escorts[i].Alive)portrait.color=new Color(.4f,.4f,.4f,.5f);}
                     Label(ward,s.ObjectiveUnit.IntentPhase>0?EnemyTactics.Describe(s.ObjectiveUnit):"호위 격파 시 약화",126,48,15);
                 }
-                else Label(missionWindow,s!=null?MissionBriefing.Progress(s):"출전 후 진행 상황 표시",356,138,20);
+                else Label(missionWindow,s!=null?MissionBriefing.Progress(s)+(s.ReinforcementMission?"\n"+s.EventSummary:""):PreparationEvents(stage,training)?"3턴 시작 · 적 증원 2명":"출전 후 진행 상황 표시",356,138,20);
                 Button(missionWindow,missionDetails?"요약 보기":"임무 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);
             }
             else
@@ -84,7 +87,7 @@ namespace TalesTactics
                     int index=i;Button(missionWindow,"적 선택: "+i,128,()=>{missionEnemy=index;missionDetails=false;RenderMission();},true,94);
                     var row=(RectTransform)missionWindow.GetChild(missionWindow.childCount-1);row.anchorMin=new Vector2(i/(float)enemies.Length,1);row.anchorMax=new Vector2((i+1)/(float)enemies.Length,1);row.sizeDelta=new Vector2(-12,94);
                     var label=row.GetComponentInChildren<TMPro.TMP_Text>();label.text=EnemyRoles.Name(enemies[i]);label.rectTransform.anchoredPosition=new Vector2(0,-67);label.rectTransform.sizeDelta=new Vector2(-4,24);label.fontSize=13;
-                    InfoPortrait(row,enemies[i],16,5,58,58);TintInfoTab(missionWindow,i==missionEnemy);
+                    InfoPortrait(row,enemies[i],enemies.Length>4?8:16,5,enemies.Length>4?46:58,58);TintInfoTab(missionWindow,i==missionEnemy);
                 }
                 var data=enemies[missionEnemy];var unit=s?.Units.Where(u=>u.Team==Team.Enemy).ElementAt(missionEnemy);
                 Label(missionWindow,data.DisplayName,246,40,24);
