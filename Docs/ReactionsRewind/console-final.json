@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var a=typeof(UnityEditor.Editor).Assembly;\nvar logs=a.GetType(\"UnityEditor.LogEntries\");var counts=new object[]{0,0,0};\nlogs.GetMethod(\"GetCountsByType\",System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public).Invoke(null,counts);\nvar v=a.GetType(\"UnityEditor.GameView\");\nreturn new{playing=UnityEditor.EditorApplication.isPlaying,runInBackground=UnityEditor.PlayerSettings.runInBackground,sceneDirty=UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty,gameViewSize=v.GetProperty(\"selectedSizeIndex\",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.NonPublic).GetValue(UnityEditor.EditorWindow.GetWindow(v)),errors=counts[0],warnings=counts[1],logs=counts[2]};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "runInBackground": false,
+        "sceneDirty": false,
+        "gameViewSize": 3,
+        "errors": 0,
+        "warnings": 0,
+        "logs": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

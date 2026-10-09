@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 반응 공격과 행동 기록
+
+BattleReactions는 SkillResolver의 선택형 단일 대상 추가 피해를 처리한다. 본 공격 뒤 인접 지원50%, 살아 있는 대상 반격75% 순이며 순환 반응은 없다. CounterUsed/SupportUsed는 UnitRuntime.BeginTurn에서 초기화하고 CheckpointUnit과 BattleProjection이 보존한다. 기본 꺼짐의 PlayerPreferences.Reactions는 새 전투에 전달한다. UI 예측과 실행이 같은 ResolveReactions를 사용하고 PrimaryHealth 및 ReactionStrike의 HP 스냅샷으로 연출 숫자를 중복 없이 표시한다.
+
+BattleRewind는 캠페인 아군 명령 직전 체크포인트를 최근12개까지 보관한다. 이동/이동 취소/기술/방어/대기/일괄 턴 종료를 기록하고 최대3회 복구한다. 다음 적 페이즈와 증원까지 복원할 수 있다. BattleDirector는 연출·적 턴·승리 뒤 입력을 막고 복원 검증 뒤에만 Session을 교체한다. 패배 뒤에는 보상이 없으므로 복원이 가능하다.
+
+BattleCheckpoint V8은 반응 규칙·소모 플래그·난수 소비 수·되감기 횟수·RewindFrame 목록을, BattleOpening V3은 출전 당시 반응 규칙을 보존한다. 각 RewindFrame은 History가 비어 있는 체크포인트 JSON 문자열이므로 Unity 직렬화 깊이 제한을 피한다. HasOpening=false일 때 Unity가 생성하는 빈 인라인 Opening 객체는 무시한다. 목록/프레임 크기·중첩·캠페인/편성/규칙 일치를 검증한다. V1–V7 중단/V1–V2 시작 기록은 기존 반응 비활성 규칙으로 읽는다. 실제 전투 RNG는 기존 System.Random 알고리즘과 시드를 유지하며 소비 횟수를 복원하고, 예측은 별도 그래프에서 확률 효과를 제외해 실전 난수를 소비하지 않는다.
+
 ## 난이도와 임무 변형
 
 PlayerPreferences의 Difficulty(표준=0/여유/도전)와 MissionEvents(기본 꺼짐)는 다음 출전에만 반영한다. DifficultyRules는 캠페인 적의 시작 레벨에 −2/0/+2를 적용하고1–50 범위를 유지한다. 아군 성장·골드·EXP·장비 보상은 변경하지 않는다. 훈련은 기존 레벨과 규칙을 유지한다.

@@ -29,7 +29,7 @@ namespace TalesTactics
             Objective==ObjectiveKind.Survive?SurvivalDescription:"모든 적 격파";
         string SurvivalDescription {get{var goal=(SurviveTurns)Victory;return (goal.EnemyPhases?"적군 턴 생존 ":"아군 턴 종료 ")+goal.Completed+" / "+goal.Required;}}
         public BattleResult Result=>Victory.Evaluate(Units);
-        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false,BattleDifficulty difficulty=BattleDifficulty.Standard,bool missionEvents=false)
+        public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false,BattleDifficulty difficulty=BattleDifficulty.Standard,bool missionEvents=false,bool reactions=false)
         {
             if(!Enum.IsDefined(typeof(BattleDifficulty),difficulty))throw new ArgumentOutOfRangeException(nameof(difficulty));
             this.catalog=catalog;Difficulty=campaignStage<0?BattleDifficulty.Standard:difficulty;MissionEvents=missionEvents&&campaignStage>=0&&!legacyCampaign&&teamTurns&&!useCT;
@@ -44,7 +44,7 @@ namespace TalesTactics
                 var u=new UnitRuntime(catalog.Characters[index],Team.Player,Rules,level);Units.Add(u);Grid.Place(u,campaignStage<0?new Vector2Int(1+i%2,1+i/2):CampaignContent.PlayerSpawn(campaignStage,i));i++;
             }
             for(i=0;i<4;i++){var u=new UnitRuntime(CampaignEnemies.Resolve(catalog,campaignStage,i),Team.Enemy,Rules,enemyLevel??level);u.Facing=Facing.Front;Units.Add(u);Grid.Place(u,campaignStage<0?new Vector2Int(7+i%2,5+i/2):CampaignContent.EnemySpawn(campaignStage,i));}
-            Resolver=new SkillResolver(Grid,Units,Rules,tacticalCombat:tacticalCombat);
+            Resolver=new SkillResolver(Grid,Units,Rules,tacticalCombat:tacticalCombat,reactions:reactions);
             if(utilityAI&&campaignStage<0)foreach(var enemy in Units.Where(u=>u.Team==Team.Enemy))
                 enemy.TacticalSkills=catalog.Characters.SelectMany(c=>c.Skills).Where(s=>s!=null&&(s.Id=="mint.0"||s.Id=="jade.0")).ToArray();
             if(campaignStage>=0&&!legacyCampaign)EnemyTactics.Configure(this,catalog);

@@ -676,3 +676,17 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 최종 개발 Windows 빌드 **32.939초**, 일반 빌드 **21.754초**, 각각 오류0/경고3으로 성공했다. 경고는 Pipeline RuntimePipelineConfig 미사용1건, URP 내부 DebugOccluder/DebugOcclusionTest 제외2건이며 프로젝트 C# 및 TMP 구형 지시문 경고는 해소됐다. 수정 전 빌드4건과 수정 후3건의 보고서를 모두 보관한다. TMP 셰이더2개 지원 여부와 ShaderUtil 메시지0도 확인했다(`shader-check.json`).
 - 일반 빌드에 검수3타입/Unity.Pipeline 런타임 서버 DLL이 없고 개발 빌드에 검수3타입이 있음을 확인했다. `Builds/WindowsMissionOptions/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류/예외0을 확인했다. 사용자 저장3파일 SHA256과 파일 목록은 전후 불변이다. 일반/개발 어셈블리 해시,시작 결과,저장 불변 근거는 `normal-code-check.json`, `development-code-check.json`, `windows-startup.json`, `user-save-check.json`에 있다.
 - 기존 로그를 근거로 보관한 뒤 콘솔을 비우고 최종 상태 오류0/경고0을 확인했다(`console-final.json`). 이는 빌드 안내3건이 없어졌다는 뜻이 아니다. Play 종료,Full HD,runInBackground=false,Scene dirty=false를 복구하고 검수용 Assets/Docs·동적 폰트 캐시·자동 검사 CSV 변경을 정리했다.
+
+## 2026-10-09 반격·지원 공격·행동 되감기 (`codex/reactions-and-rewind`)
+
+- 다음 출전에 적용하는 기본 꺼짐의 반격/지원 옵션을 추가했다. 단일 확정 피해 공격 뒤 지원50%→생존 대상 반격75%, 자기 턴 시작까지 각각1회다. 공격자 또는 대상에 인접하고 기본 공격 사거리/시야 조건을 만족하는 첫 같은 팀 유닛이 지원한다. 범위 공격·행동 불가·사거리 밖·전투불능을 제외하며 정상 행동/자원/연계와 추가 반응을 소비·생성하지 않는다. 실제 판정과 예측이 같은 계산을 사용하고 본 공격/지원/반격의 HP 표시·연출을 나눴다.
+- 캠페인에서 최근12개 행동을 기록하고 전투당3회 되감는다. 이동/이동 취소/기술/방어/대기/아군 턴 종료 전 상태와 이후 적 행동, 턴 큐, 점령·증원, 반응 소모, 확률 진행을 함께 복구한다. 명령 대기·패배에서 확인 후 실행하고 적 행동·연출·튜토리얼·훈련·승리 확정 뒤에는 차단한다. 저장된 성장/골드/장비는 변경하지 않는다.
+- 중단 기록 V8/시작 기록 V3. V1–V7 중단/V1–V2 시작 기록은 읽으며 기존 반응 비활성 규칙을 유지한다. V8에는 되감기 횟수·프레임과 전투 RNG 소비 수가 포함된다. 이전 실행본은 V8을 읽을 수 없으므로 되돌릴 때는 업데이트 전 백업이 필요하다. 중첩 기록·과도한 개수/크기·잘못된 상태/규칙을 거부하고 검증 실패 시 현재 전투를 유지한다.
+- 실제 Unity EditMode **174/174(0.86초)**, 전체 PlayMode **110/110(210.20초)** 통과. 최종 능력창 횟수/반격으로 현재 아군 KO 후 다음 아군 전환 및 하단 메시지 요약 보완 뒤 관련 PlayMode **1/1(5.35초)** 통과. 실제 API DLL 참조4개 어셈블리 컴파일 통과. 별도 API 컴파일러의 기존 JSON Header.Inventory CS0649는 Unity 콘솔 진단과 구분한다. ManagedChecks는 실행하지 않았다.
+- 최초 EditMode168/174에서 Unity JSON이 null 인라인 Opening을 빈 객체로 복원하는 문제를 발견해 HasOpening을 기준으로 읽도록 수정했다. 테스트 배치를 실제 맵의 장애물 칸에 둔 준비 오류도 정상 칸으로 수정했다. 추가 장면 검사의300프레임 대기가 높은 FPS에서 연출 종료보다 먼저 끝나 실제15초 제한으로 보완했다. 최초 결과도 함께 보관한다.
+- 최초 작은 화면 검사에서 숨겨진 하단 메시지에 전체 예측 문장이 중복되어 길어지는 점을 찾아, 상세 값은 예측 카드/상세창에 유지하고 Message는 비용과 반응 요약만 남겼다. 사람의 체감 밸런스·실물 패드·다른PC/DPI 검수는 별도이며 기존 AI의 장기 반응 교환 최적화는 포함하지 않는다.
+- 설정·전투 예측·메뉴·되감기 확인·패배·능력창의5해상도×글자100/130% **60개 고유 조합**에서 TMP 넘침0·화면 밖 활성 버튼0이다. 작은 화면/Full HD 실제 Game View PNG를 직접 확인했다. 능력창 뒤 명령 메뉴와 반응 횟수 중복 문구를 보완한 뒤 해당30행을 교체 재검수했으며90개로 합산하지 않는다.
+- 최종 개발 Windows 빌드 **32.543초**, 일반 빌드 **35.809초**, 각각 오류0/경고3으로 성공했다. Pipeline RuntimePipelineConfig 미사용1건과 URP 내부 DebugOccluder/DebugOcclusionTest 제외2건이며 프로젝트 코드/TMP 구형 지시문 경고는 없다. 보고서는 `ReactionsRewind/development-build.json`, `windows-build.json`에 보존했다.
+- 개발 플레이어4회 독립 실행(SPD/CT 각각 저장→이어하기)을 통과했다. `ReactionsRewind/persistence/`는 격리된 합성 데이터다. 실제 반응/되감기 기록을 포함한 중단 복원은 PlayMode에서 확인했다. 개발용 검수3타입은 개발 빌드에만 포함되고, 일반 빌드에는 검수 타입과 Unity.Pipeline 서버 DLL이 없다.
+- `Builds/WindowsReactionsRewind/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류/예외0을 확인했다. 사용자 저장3파일의 목록/SHA256 불변, 최종 Unity 콘솔 오류0/경고0, Play 종료/Full HD/runInBackground=false/Scene dirty=false를 확인했다. 검수용 Assets/Docs·폰트 캐시·자동 검사 CSV 변경을 정리했다. 빌드 안내3건이 없어졌다는 뜻은 아니다.
+- 시각 검증은 Editor Game View, 독립 Windows 검증은 저장/이어하기와 시작 범위다. 공개 릴리즈나 main 갱신 없이 develop으로 통합한다. [규칙·화면·근거](ReactionsRewind/README.md).

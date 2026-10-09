@@ -27,7 +27,7 @@ namespace TalesTactics
             Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
             Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
             Button(systemWindow,"글자 / 조작",62,()=>{settingsDraft=null;ShowSystemMenu(3);});SystemTab(3);
-            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else if(page==4)DrawRetryConfirmation();else DrawAccessibility();
+            if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else if(page==4)DrawRetryConfirmation();else if(page==5)DrawRewindConfirmation();else DrawAccessibility();
             Button(systemWindow,"메뉴 닫기",592,()=>CloseSystemMenu(),true,40);
         }
         void SystemTab(int index)
@@ -44,10 +44,11 @@ namespace TalesTactics
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
             Button(systemWindow,"다음 전투 난이도: "+DifficultyRules.Name(d.Difficulty),124,()=>{d.Difficulty=(BattleDifficulty)(((int)d.Difficulty+1)%3);ShowSystemMenu(2);},true,42);
             Button(systemWindow,d.MissionEvents?"임무 변형: 켜짐":"임무 변형: 꺼짐",178,()=>{d.MissionEvents=!d.MissionEvents;ShowSystemMenu(2);},true,42);
-            Label(systemWindow,"여유: 적 Lv−2 / 표준: 기존 / 도전: 적 Lv+2 · 보상 동일\n변형: 3장 점령, 3·5장 증원 · 자유 선택 턴에만 적용\n진행 중인 전투와 재도전은 출전 당시 설정을 유지합니다.",230,100,18);
+            Button(systemWindow,d.Reactions?"반격 · 지원: 켜짐":"반격 · 지원: 꺼짐",232,()=>{d.Reactions=!d.Reactions;ShowSystemMenu(2);},true,42);
+            Label(systemWindow,"난이도: 적 Lv ±2 · 보상 동일 / 변형: 3장 점령, 3·5장 증원\n반격 75% · 인접 지원 50% · 각자 자기 턴까지 1회",280,54,16);
             Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",340,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,42);
             Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",394,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,42);
-            Label(systemWindow,"연출 속도는 적에게만 적용 · 전투 판정과 아군 타이밍 유지",456,54,18);
+            Label(systemWindow,"규칙은 다음 출전에 적용 · 현재 전투/재도전은 기존 설정 유지",456,54,18);
             Button(systemWindow,"전투 진행 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(2);},true,44);
             Label(systemWindow,battle.SaveNotice,574,20,14);
         }
@@ -74,7 +75,7 @@ namespace TalesTactics
                 Button(systemWindow,"전투 중단 · 저장 후 준비로",414,()=>{if(!battle.SuspendBattle())ShowSystemMenu();},battle.CanSuspend&&battle.CanSave,48);
                 Button(systemWindow,"시작 상태로 재도전",472,()=>ShowSystemMenu(4),battle.CanRetryOpening,36);HalfButton(systemWindow,0);
                 Button(systemWindow,"저장 없이 출전 준비로",472,()=>{battle.Restart();},!battle.RewardPending,36);HalfButton(systemWindow,1);
-                if(battle.Session.Opening==null)Label(systemWindow,"이 중단 기록에는 출전 당시 정보가 없어 재도전할 수 없습니다.",514,26,15);
+                Button(systemWindow,"행동 되감기 · "+battle.Session.RewindsLeft+" / 3",514,()=>ShowSystemMenu(5),battle.CanRewind,30);
             }
             Label(systemWindow,battle.SaveNotice,548,40,16);
         }

@@ -19,7 +19,7 @@ namespace TalesTactics
         {
             ShowUnitDetails(battle.Session.Active);if(!UnitDetailsOpen)return;Clear(unitDetails);
             Label(unitDetails,"전술 표시와 조작",16,36,23);
-            Label(unitDetails,"◇ 이동 후 공격 가능 · 현재 MP/배치 기준\n× 예고 위치 · 적이 다음 자기 턴에 공격\n사각형: 행동 / 마름모: 선택 / 삼각형: 방향\n청색 테두리: 턴 순서와 연결된 유닛\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n공격 후 새로 한 이동은 취소할 수 있습니다.",66,320,17);
+            Label(unitDetails,"◇ 이동 후 공격 가능 · 현재 MP/배치 기준\n× 예고 위치 · 적이 다음 자기 턴에 공격\n사각형: 행동 / 마름모: 선택 / 삼각형: 방향\n청색 테두리: 턴 순서와 연결된 유닛\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n메뉴 F5: 행동 되감기 · 전투당 3회\n반격/지원: 능력창에서 남은 횟수 확인",66,320,17);
             Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
         }
         public void ShowMoveRisk(Vector2Int p,int enemies)
@@ -50,10 +50,11 @@ namespace TalesTactics
             var amount=Label(commands,row.Immune?"면역":row.AfterHP==row.BeforeHP&&!row.DirectDamage?"—":Mathf.Abs(row.BeforeHP-row.AfterHP).ToString(),112,86,46);amount.rectTransform.offsetMin=new Vector2(116,amount.rectTransform.offsetMin.y);amount.color=row.AfterHP>row.BeforeHP?new Color(.35f,.9f,.7f):new Color(1,.43f,.4f);
             Label(commands,"HP "+row.BeforeHP+" → "+row.AfterHP+(row.AfterHP==0?" · 전투불능":""),194,30,18);ForecastHealthBar(commands,row,230);
             var notices=new System.Collections.Generic.List<string>();
+            if(!string.IsNullOrEmpty(f.Reactions))notices.Add(f.Reactions);
             if(row.Unit.BossWard)notices.Add("방벽 "+row.BeforeWard+"%"+(row.BeforeWard!=row.AfterWard?" → "+row.AfterWard+"%":""));
             if(!string.IsNullOrEmpty(row.ImportantEffects))notices.Add(row.ImportantEffects);
             float lower=258;
-            if(notices.Count>0){float height=string.IsNullOrEmpty(row.ImportantEffects)?34:72;var alerts=Label(commands,string.Join(" · ",notices),lower,height,16);alerts.enableAutoSizing=true;alerts.fontSizeMin=14;alerts.fontSizeMax=16;lower+=height+8;}
+            if(notices.Count>0){float height=notices.Count>1||!string.IsNullOrEmpty(row.ImportantEffects)?72:34;var alerts=Label(commands,string.Join(" · ",notices),lower,height,16);alerts.enableAutoSizing=true;alerts.fontSizeMin=14;alerts.fontSizeMax=16;lower+=height+8;}
             if(costs.Count>0){Label(commands,string.Join(" · ",costs),lower,30,17);lower+=38;}
             if(rows.Length>1)
             {

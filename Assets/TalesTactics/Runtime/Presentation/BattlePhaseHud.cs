@@ -14,7 +14,7 @@ namespace TalesTactics
             Button(unitDetails,"아군 턴 종료 확정",400,()=>
             {
                 CloseUnitDetails();
-                if(battle.IsPlayerCommand&&battle.Session.EndPlayerPhase())battle.SetState(new TurnStartState(battle));
+                battle.EndPlayerPhaseWithHistory();
             });
         }
     }

@@ -60,11 +60,11 @@ namespace TalesTactics
             if(timingWindow!=null)Destroy(timingWindow.gameObject);timingWindow=null;
             if(timingMotion!=null)timingMotion.EndSpin();timingMotion=null;
         }
-        public void PresentImpact(UnitRuntime caster,SkillData skill,Vector2Int aim,Dictionary<UnitRuntime,int> before,UnitRuntime[] recipients=null)
+        public void PresentImpact(UnitRuntime caster,SkillData skill,Vector2Int aim,Dictionary<UnitRuntime,int> before,UnitRuntime[] recipients=null,Dictionary<UnitRuntime,int> after=null,bool costs=true)
         {
             if(root==null)return;
             var affected=new HashSet<UnitRuntime>(recipients??battle.Session.Resolver.Targets(caster,skill,aim));
-            int cost=battle.Session.Resolver.HPCost(caster,skill);
+            int cost=costs?battle.Session.Resolver.HPCost(caster,skill):0;
             var style=CombatEffect.Resolve(caster.Data,skill);
             bool healing=false,damage=false;
             // Knockback/revival may have changed cells during resolution.
@@ -72,7 +72,8 @@ namespace TalesTactics
             foreach(var pair in before)
             {
                 var unit=pair.Key;
-                int delta=unit.CurrentHP-pair.Value+(unit==caster?cost:0);
+                int hp=after!=null&&after.TryGetValue(unit,out var value)?value:unit.CurrentHP;
+                int delta=hp-pair.Value+(unit==caster?cost:0);
                 if(delta==0&&!affected.Contains(unit))continue;
                 healing|=delta>0;damage|=delta<0;
                 var feedback=delta>0?(pair.Value==0?CombatFeedback.Revive:CombatFeedback.Heal):
@@ -85,7 +86,7 @@ namespace TalesTactics
                 if(delta!=0)
                 {
                     // Self costs/drain must not interrupt the caster's attack or ultimate.
-                    if(unit!=caster)SetAnimation(unit,unit.Alive?(delta<0?AnimationKind.Damage:AnimationKind.Cast):AnimationKind.Dead);
+                    if(unit!=caster)SetAnimation(unit,hp>0?(delta<0?AnimationKind.Damage:AnimationKind.Cast):AnimationKind.Dead);
                     StartCoroutine(Number(unit,delta));
                 }
             }

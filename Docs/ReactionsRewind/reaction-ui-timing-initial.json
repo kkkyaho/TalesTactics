@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 3.19,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ReactionsOptionsPredictionExecutionAndRewindStayInSync",
+      "Status": "Failed",
+      "Duration": 3.1260688,
+      "Message": "  Expected: instance of <TalesTactics.CommandState>\r\n  But was:  <TalesTactics.ActionExecutionState>\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<ReactionsOptionsPredictionExecutionAndRewindStayInSync>d__95.MoveNext () [0x003bb] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\ReactionsRewindSceneTests.cs:39\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    }
+  ]
+}

@@ -4,14 +4,18 @@ using System.Linq;
 using UnityEngine;
 namespace TalesTactics
 {
-    public sealed class SkillResolver
+    public sealed partial class SkillResolver
     {
         readonly GridMap grid;
         readonly IReadOnlyList<UnitRuntime> units;
         readonly BattleRules rules;
-        readonly System.Random random;
+        System.Random random;
+        readonly int seed;
+        public int RandomDraws {get;private set;}
+        double NextRoll(){RandomDraws++;return random.NextDouble();}
+        public void RestoreRandom(int draws){if(draws<0||draws>1000000)throw new System.IO.InvalidDataException("Invalid combat RNG");random=new System.Random(seed);RandomDraws=0;for(int i=0;i<draws;i++)NextRoll();}
         public readonly bool TacticalCombat;
-        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17,bool tacticalCombat=false){TacticalCombat=tacticalCombat;this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
+        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17,bool tacticalCombat=false,bool reactions=false){ReactionsEnabled=reactions;this.seed=seed;TacticalCombat=tacticalCombat;this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
         public string CanUse(UnitRuntime u,SkillData s,bool followup=false)
         {
             if(s==null)return "No skill";
@@ -154,7 +158,7 @@ namespace TalesTactics
         }
         public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false,bool forecast=false)
         {
-            message=CanUse(u,s,followup);if(message!=null)return false;
+            LastReactions.Clear();PrimaryHealth=null;message=CanUse(u,s,followup);if(message!=null)return false;
             var targets=Targets(u,s,p).ToArray();
             bool committed=u.TacticalEnemy&&u.IntentPhase==2&&u.IntentSkill==s.Id&&u.IntentAim==p;
             if(!InRange(u,s,p)||targets.Length==0&&!committed){message="Invalid target";return false;}
@@ -169,7 +173,7 @@ namespace TalesTactics
                 var recipients=e.AffectCaster?new[]{u}:targets;
                 foreach(var t in recipients)
                 {
-                    if(forecast?e.Chance<1:random.NextDouble()>e.Chance)continue;
+                    if(forecast?e.Chance<1:NextRoll()>e.Chance)continue;
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
                         int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
@@ -191,7 +195,9 @@ namespace TalesTactics
             if(attack){u.SpecialGauge=Mathf.Clamp(u.SpecialGauge+rules.GaugePerAttack,0,100);if(u.Has(StatusKind.ConsumeClaw))u.ClawAttacks++;}
             if(u.Data.Id=="kisara"&&attack)u.GuardIgnition=false;
             u.FlamingChain=s.StartsFlamingChain;
-            message=u.Data.DisplayName+" : "+s.DisplayName;
+            PrimaryHealth=ReactionsEnabled?units.ToDictionary(x=>x,x=>x.CurrentHP):null;
+            ResolveReactions(u,s,targets,forecast);
+            message=u.Data.DisplayName+" : "+s.DisplayName+(LastReactions.Count>0?"\n"+string.Join(" · ",LastReactions.Select(x=>x.Text)):"");
             return true;
         }
         void Displace(UnitRuntime u,Vector2Int center,int distance,bool away)

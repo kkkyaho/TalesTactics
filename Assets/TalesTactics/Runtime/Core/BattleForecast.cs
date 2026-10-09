@@ -18,14 +18,14 @@ namespace TalesTactics
                 var u=new UnitRuntime(source.Data,source.Team,source.Rules,source.Level){CurrentHP=source.CurrentHP,CurrentMP=source.CurrentMP,SpecialGauge=source.SpecialGauge,
                     Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
                     Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Growth=source.Growth,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
-                    UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,TacticalSkills=source.TacticalSkills,
+                    UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,CounterUsed=source.CounterUsed,SupportUsed=source.SupportUsed,TacticalSkills=source.TacticalSkills,
                     BossWard=source.BossWard,TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
                 for(int i=0;i<3;i++)u.Equipment[i]=source.Equipment[i];
                 foreach(var s in source.Statuses)u.Statuses.Add(new RuntimeStatus{Kind=s.Kind,Turns=s.Turns,Fresh=s.Fresh});
                 foreach(var c in source.Cooldowns)u.Cooldowns.Add(c.Key,c.Value);
                 Copies.Add(source,u);if(u.Alive)Grid[u.Position].Occupant=u;
             }
-            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat);
+            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat,reactions:battle.Resolver.ReactionsEnabled);
         }
     }
     public sealed class ForecastRow
@@ -40,23 +40,27 @@ namespace TalesTactics
     public sealed class BattleForecast
     {
         public readonly List<ForecastRow> Rows=new List<ForecastRow>();
-        public string Cost,Note;
+        public string Cost,Note,Reactions;
         public static BattleForecast Create(BattleSession battle,UnitRuntime actor,SkillData skill,Vector2Int aim,bool followup=false)
         {
             var result=new BattleForecast();var projection=new BattleProjection(battle);var u=projection.Copies[actor];
             result.Cost=$"MP {u.CurrentMP} → {u.CurrentMP-projection.Resolver.MPCost(u,skill)} · HP 비용 {projection.Resolver.HPCost(u,skill)} · SP 비용 {skill.GaugeCost}";
             var targets=battle.Resolver.Targets(actor,skill,aim).ToArray();
+            if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);
             if(!projection.Resolver.Execute(u,skill,aim,out var reason,followup,true)){result.Note=SkillResolver.ExplainUnavailable(reason);return result;}
-            bool chance=skill.Effects.Any(e=>e.Chance<1);
+            result.Reactions=string.Join(" · ",projection.Resolver.LastReactions.Select(x=>x.Kind+" "+x.Damage));
+            bool chance=skill.Effects.Any(e=>e.Chance<1)||projection.Resolver.LastReactions.Any(r=>r.Skill.Effects.Any(e=>e.Chance<1));
             result.Note=chance?"확률 효과 제외 가정 · 실제 결과는 달라질 수 있음":"확정 피해·회복 · 현재 배치 기준";
             foreach(var original in battle.Units)
             {
                 var after=projection.Copies[original];
-                if(!targets.Contains(original)&&original!=actor&&after.ProtectionUsed==original.ProtectionUsed&&battle.Resolver.BossWardPercent(original)==projection.Resolver.BossWardPercent(after))continue;
+                if(!targets.Contains(original)&&original!=actor&&after.CurrentHP==original.CurrentHP&&after.CounterUsed==original.CounterUsed&&after.SupportUsed==original.SupportUsed&&after.ProtectionUsed==original.ProtectionUsed&&battle.Resolver.BossWardPercent(original)==projection.Resolver.BossWardPercent(after))continue;
                 if(original==actor&&!targets.Contains(actor)&&after.CurrentHP==original.CurrentHP&&after.Statuses.Count==original.Statuses.Count)continue;
                 var effects=new List<string>();
                 if(original.BossWard)effects.Add("호위 방벽 "+battle.Resolver.BossWardPercent(original)+"% → "+projection.Resolver.BossWardPercent(after)+"%");
                 if(targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.Magic)&&battle.TacticalCombat)effects.Add(battle.Resolver.TacticalModifiers(actor,original));
+                if(after.CounterUsed&&!original.CounterUsed)effects.Add("반격 1회 사용");
+                if(after.SupportUsed&&!original.SupportUsed)effects.Add("지원 1회 사용");
                 int mechanical=effects.Count;
                 foreach(var e in skill.Effects.Where(e=>(e.AffectCaster?original==actor:targets.Contains(original))))
                 {
@@ -67,7 +71,7 @@ namespace TalesTactics
                 if(after.Position!=original.Position)effects.Add("위치 "+after.Position);
                 if(after.ProtectionUsed&&!original.ProtectionUsed)effects.Add("인접 보호 1회 사용");
                 result.Rows.Add(new ForecastRow{Unit=original,BeforeHP=original.CurrentHP,AfterHP=after.CurrentHP,Effects=string.Join(" · ",effects),ImportantEffects=string.Join(" · ",effects.Skip(mechanical)),BeforeWard=battle.Resolver.BossWardPercent(original),AfterWard=projection.Resolver.BossWardPercent(after),
-                    DirectDamage=skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&(e.AffectCaster?original==actor:targets.Contains(original))),
+                    DirectDamage=projection.Resolver.LastReactions.Any(r=>r.Target==after)||skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&(e.AffectCaster?original==actor:targets.Contains(original))),
                     Immune=targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage)&&ElementalRules.Multiplier(original.Data,skill.Element)<=0});
             }
             return result;

@@ -21,7 +21,7 @@ namespace TalesTactics
         public TacticalTrait Trait;
         public GrowthPath Growth;
         public int CampaignMastery;
-        public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed;
+        public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed,CounterUsed,SupportUsed;
         public bool TacticalEnemy,BossWard;
         public int TurnsStarted,IntentTurn,IntentPhase;
         public string IntentSkill;
@@ -48,7 +48,7 @@ namespace TalesTactics
         public void BeginTurn()
         {
             Moved=Acted=CanUndoMove=FlamingChain=false;
-            ProtectionUsed=false;
+            ProtectionUsed=CounterUsed=SupportUsed=false;
             TurnsStarted++;
             if(IntentPhase==1&&(Has(StatusKind.Stun)||Has(StatusKind.Sleep))){IntentPhase=0;IntentSkill=null;}
             if(IntentPhase==2&&TurnsStarted>=IntentTurn+3){IntentPhase=0;IntentSkill=null;}
