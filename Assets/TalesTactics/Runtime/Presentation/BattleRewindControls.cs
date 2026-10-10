@@ -38,10 +38,11 @@ namespace TalesTactics
     {
         void DrawRewindConfirmation()
         {
-            Label(systemWindow,"직전 행동을 되돌릴까요?",132,56,24);
-            Label(systemWindow,battle.RewindLabel+" 이전으로 복원\nHP·MP·상태·위치·턴 순서·확률 판정 복원\n그 뒤에 진행된 적 행동도 함께 되돌립니다.\n\n남은 횟수 "+(battle.Session?.RewindsLeft??0)+" / 3 · 최근 12개 행동\n캠페인 전투에서만 사용 · 승리 확정 뒤 사용 불가",210,200,20);
-            Button(systemWindow,"되감기 확정",430,()=>{if(!battle.RewindAction())ShowSystemMenu();},battle.CanRewind,48);
-            Button(systemWindow,"현재 전투 계속",492,()=>ShowSystemMenu(),true,40);
+            Label(systemWindow,"행동을 되돌릴까요?",24,48,24);
+            Label(systemWindow,battle.RewindLabel+" 전으로",82,44,20);
+            Label(systemWindow,"남은 횟수  "+(battle.Session?.RewindsLeft??0)+" / 3",136,30,18);
+            Button(systemWindow,"현재 전투 계속",192,()=>ShowSystemMenu(),true,48);HalfButton(systemWindow,0);CaptionLastButton(systemWindow,"취소");
+            Button(systemWindow,"되감기 확정",192,()=>{if(!battle.RewindAction())ShowSystemMenu();},battle.CanRewind,48);HalfButton(systemWindow,1);CaptionLastButton(systemWindow,"되돌리기");
         }
     }
 }

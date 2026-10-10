@@ -8,6 +8,8 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 개발 기준 브랜치는 **`develop`**입니다. 모든 개발 작업과 새 작업 브랜치 생성은 `develop`을 기준으로 하며, 별도 작업 브랜치도 완료 후 `develop`으로 통합합니다. **`main`은 릴리즈 상태 보관용 마스터/아카이브**로 사용하고, 릴리즈·머지 요청이 있을 때만 갱신합니다.
 
+되돌리기·재도전·턴 종료를 **짧은 질문과 버튼 두 개의 작은 확인창**으로 정리했습니다. 전투 메뉴와 설정의 장문 설명은 선택형 도움말로 옮겼습니다. PlayMode110/110·최종 관련2/2·화면54조합과 Windows 빌드/시작 검사를 통과했습니다. 최신 개발 실행본은 `Builds/WindowsConciseDialogs/TalesTactics.exe`입니다(폴더 전체 필요). [실제 화면과 검증](Docs/ConciseDialogs/README.md).
+
 개발판에 **반격·지원 공격과 행동 되감기**를 추가했습니다. 반격/지원은 저장·설정 → 전투 진행에서 켠 뒤 출전하며, 기본값은 꺼짐입니다. 캠페인에서는 메뉴 F5 또는 패배 화면에서 최근 행동을 전투당3회 되돌릴 수 있습니다. 중단/이어하기에 사용 횟수·기록·확률 진행을 보존합니다. 실제 EditMode174/174·PlayMode110/110·최종 관련1/1과 화면60조합, Windows 빌드·저장/이어하기를 통과했습니다. 실행본은 `Builds/WindowsReactionsRewind/TalesTactics.exe`입니다(폴더 전체 필요). [규칙과 검증](Docs/ReactionsRewind/README.md).
 
 개발판에 **난이도 3단계와 선택형 점령·증원**을 추가하고 프로젝트 컴파일 경고를 정리했습니다. 저장·설정 → 전투 진행에서 선택하며 기본 규칙은 그대로입니다. 3장 거점 유지와 3·5장 적 증원을 지원하고, 이어하기·재도전은 출전 당시 옵션을 보존합니다. 실제 Unity EditMode165/165·PlayMode108/108·최종 임무 UI1/1 및 화면50조합을 통과했습니다. 난이도/임무 옵션 추가 당시 실행본은 `Builds/WindowsMissionOptions/TalesTactics.exe`입니다(폴더 전체 필요). 일반·개발 Windows 빌드와 저장/이어하기 검수를 통과했으며 빌드에는 외부 패키지 안내3건이 남습니다. [조작·저장 호환·실제 화면](Docs/WarningCleanup/README.md).

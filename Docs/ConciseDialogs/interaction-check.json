@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();\nd.Hud.CloseSystemMenu();d.Hud.CloseUnitDetails();d.Restart();d.Preferences.Reactions=false;d.BeginBattle();if(d.StoryActive)d.FinishStory();d.StopAllCoroutines();\nSystem.Action<string> click=name=>d.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name==name).onClick.Invoke();\nSystem.Action<bool,string> require=(ok,message)=>{if(!ok)throw new System.Exception(message);};\nvar session=d.Session;session.RecordAction(\"공격\");var original=UnityEngine.JsonUtility.ToJson(d.Campaign);int hp=session.Active.CurrentHP;\nd.Hud.ShowSystemMenu(2);click(\"반격 · 지원: 꺼짐\");click(\"전투 규칙 자세히\");click(\"설명 돌아가기\");\nrequire(d.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name==\"반격 · 지원: 켜짐\"),\"Guide lost settings draft\");\nrequire(!d.Preferences.Reactions,\"Viewing guide applied draft\");d.Hud.CloseSystemMenu();d.Hud.ShowSystemMenu(2);\nrequire(d.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name==\"반격 · 지원: 꺼짐\"),\"Cancel did not discard draft\");\nd.Hud.ShowSystemMenu(5);var window=(UnityEngine.RectTransform)d.Hud.transform.Find(\"SystemOverlay/SystemWindow\");\nrequire(window.rect.height==270&&window.GetComponentsInChildren<UnityEngine.UI.Button>().Length==2,\"Confirmation must be compact with two buttons\");\nint rewindCharacters=string.Join(\"\",window.GetComponentsInChildren<TMPro.TMP_Text>().Select(t=>t.text)).Length;\nclick(\"현재 전투 계속\");require(window.rect.height==460,\"Menu size not restored\");d.Hud.CloseSystemMenu();\nd.Hud.ShowEndPhaseConfirmation();var unit=(UnityEngine.RectTransform)d.Hud.transform.Find(\"UnitDetails\");\nrequire(unit.rect.height==270,\"Turn end not compact\");click(\"계속 행동\");d.Hud.ShowUnitDetails(session.Active);\nrequire(unit.rect.height==480,\"Unit details size not restored\");d.Hud.CloseUnitDetails();\nrequire(d.Session==session&&session.Active.CurrentHP==hp&&session.RewindsUsed==0&&UnityEngine.JsonUtility.ToJson(d.Campaign)==original,\"Read/cancel changed battle or campaign\");\nreturn new{passed=true,settingsDraftPreserved=true,settingsCancelDiscards=true,confirmationButtons=2,confirmationHeight=270,menuHeight=460,unitDetailsHeight=480,rewindCharacters,cancelPreservesBattle=true};\r\n"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "passed": true,
+        "settingsDraftPreserved": true,
+        "settingsCancelDiscards": true,
+        "confirmationButtons": 2,
+        "confirmationHeight": 270,
+        "menuHeight": 460,
+        "unitDetailsHeight": 480,
+        "rewindCharacters": 34,
+        "cancelPreservesBattle": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

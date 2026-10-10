@@ -16,7 +16,7 @@ namespace TalesTactics
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
-            commands.gameObject.SetActive(!MissionOpen&&!UnitDetailsOpen);
+            commands.gameObject.SetActive(!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen);
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-76),new Vector2(-12,-12));
             Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,164));
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
@@ -146,7 +146,7 @@ namespace TalesTactics
         {
             if(HelpOpen||SystemMenuOpen||MissionOpen)return;
             if(unitDetails==null)unitDetails=Panel("UnitDetails",new Vector2(.5f,.5f),new Vector2(.5f,.5f),new Vector2(-230,-240),new Vector2(230,240));
-            Clear(unitDetails);unitDetails.gameObject.SetActive(true);unitDetails.SetAsLastSibling();SetMainInteraction(false);
+            unitDetails.sizeDelta=new Vector2(460,480);Clear(unitDetails);unitDetails.gameObject.SetActive(true);unitDetails.SetAsLastSibling();SetMainInteraction(false);
             Label(unitDetails,u.Data.DisplayName+" · Lv"+u.Level,16,36,24);
             Label(unitDetails,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" · "+(u.Team==Team.Player?"아군":"적군"),58,32,18);
             var info=Label(unitDetails,$"HP {u.CurrentHP} / {u.Stats.HP}    MP {u.CurrentMP} / {u.Stats.MP}\nSTR {u.Stats.STR}    MAG {u.Stats.MAG}\nDEF {u.Stats.DEF}    MDF {u.Stats.MDF}\nSPD {u.Stats.SPD}    MOV {u.Stats.MOV}    JMP {u.Stats.JMP}\n방향: {u.Facing}\n상태: "+StatusText.Describe(u)+(battle.Session?.Resolver.ReactionsEnabled==true?"\n반격 "+(u.CounterUsed?0:1)+" · 지원 "+(u.SupportUsed?0:1)+" (자기 턴에 회복)":"")+"\n특성: "+TacticalDevelopment.TraitName(u.Trait)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):"\n"+TacticalDevelopment.TraitDescription(u.Trait)),108,290,19);info.enableAutoSizing=true;info.fontSizeMin=15;info.fontSizeMax=19;

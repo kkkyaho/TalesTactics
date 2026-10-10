@@ -1,5 +1,9 @@
 # 아키텍처
 
+## 확인창과 메뉴 문구
+
+되돌리기·재도전·아군 턴 종료 확인은 560×270 기준의 작은 창과 취소/실행 버튼으로 표시한다. 기본 화면에는 실행 대상·남은 횟수·진행 포기처럼 결정에 필요한 정보만 남긴다. BattleSystemHud의 저장 도움말(page6)과 전투 규칙(page7)에 자세한 규칙을 분리하며, 규칙 조회 후 돌아가도 설정 초안을 유지한다. 기존 버튼 오브젝트 이름/클릭 연결은 유지하고 CaptionLastButton으로 표시 문구만 줄인다. 시스템/능력창은 다른 화면을 열 때 크기를 다시 설정해 작은 확인창 크기가 상세창으로 전파되지 않도록 한다.
+
 ## 반응 공격과 행동 기록
 
 BattleReactions는 SkillResolver의 선택형 단일 대상 추가 피해를 처리한다. 본 공격 뒤 인접 지원50%, 살아 있는 대상 반격75% 순이며 순환 반응은 없다. CounterUsed/SupportUsed는 UnitRuntime.BeginTurn에서 초기화하고 CheckpointUnit과 BattleProjection이 보존한다. 기본 꺼짐의 PlayerPreferences.Reactions는 새 전투에 전달한다. UI 예측과 실행이 같은 ResolveReactions를 사용하고 PrimaryHealth 및 ReactionStrike의 HP 스냅샷으로 연출 숫자를 중복 없이 표시한다.

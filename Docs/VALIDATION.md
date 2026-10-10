@@ -690,3 +690,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 개발 플레이어4회 독립 실행(SPD/CT 각각 저장→이어하기)을 통과했다. `ReactionsRewind/persistence/`는 격리된 합성 데이터다. 실제 반응/되감기 기록을 포함한 중단 복원은 PlayMode에서 확인했다. 개발용 검수3타입은 개발 빌드에만 포함되고, 일반 빌드에는 검수 타입과 Unity.Pipeline 서버 DLL이 없다.
 - `Builds/WindowsReactionsRewind/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류/예외0을 확인했다. 사용자 저장3파일의 목록/SHA256 불변, 최종 Unity 콘솔 오류0/경고0, Play 종료/Full HD/runInBackground=false/Scene dirty=false를 확인했다. 검수용 Assets/Docs·폰트 캐시·자동 검사 CSV 변경을 정리했다. 빌드 안내3건이 없어졌다는 뜻은 아니다.
 - 시각 검증은 Editor Game View, 독립 Windows 검증은 저장/이어하기와 시작 범위다. 공개 릴리즈나 main 갱신 없이 develop으로 통합한다. [규칙·화면·근거](ReactionsRewind/README.md).
+
+## 2026-10-10 확인창·메뉴 문구 간결화 (`develop`)
+
+- 되돌리기·재도전·아군 턴 종료를560×270 기준의 짧은 확인창으로 줄이고 취소/실행 두 버튼만 표시한다. 되돌릴 행동과 남은 횟수, 현재 전투 진행 포기, 미완료 아군 인원 등 결정에 필요한 정보는 유지한다. 전투 메뉴는640×460으로 줄이고 장문의 저장/복원 설명을 선택형 도움말로 옮겼다. 설정의 규칙 수치도 규칙 보기로 분리하고 패배 화면의 반복 안내를 제거했다.
+- 실제 Unity 전체 PlayMode **110/110(207.39초)** 통과. 작은 화면 캡처에서 모달 뒤 명령 목록이 시선을 분산시키는 점을 확인해 시스템 메뉴/도움말 중 숨기고, 관련 PlayMode **2/2(6.00초)**를 추가 통과했다. 실제 API DLL 참조4개 어셈블리 컴파일도 통과했다. 별도 API 컴파일러의 기존 JSON Header.Inventory CS0649는 Unity 콘솔 진단과 구분한다. 전투 규칙/저장 형식은 변경하지 않았고 EditMode와 ManagedChecks는 이번에 재실행하지 않았다.
+- 설정·전투 메뉴·되돌리기·재도전·턴 종료·저장 도움말·전투 규칙·조작·패배9화면을1024×768/1920×1080/2560×1080, 글자100/130%로 검사했다. **54개 고유 조합** 모두 TMP 넘침0·화면 밖 활성 버튼0이다. 작은 화면과 Full HD 실제 PNG를 직접 확인했다. 초기 명령 메뉴가 보이는 검수 행은 별도로 보존하고 최종 결과에 합산하지 않았다.
+- 실제 UI 호출로 규칙 보기 왕복 시 초안 유지, 미적용 닫기 시 취소, 확인창의2버튼/높이270, 메뉴 높이460 및 능력창 높이480 복구를 확인했다. 확인창 취소 후 세션·HP·되돌리기 횟수·캠페인이 그대로임을 확인했다(`ConciseDialogs/interaction-check.json`).
+- Windows 일반 빌드 **25.848초, 오류0/경고1** 성공. 이번 보고서의 경고는 Pipeline 런타임 설정 미사용 안내이며, 이전 URP 내부 셰이더 안내가 재출력되지 않은 것을 별도 수정으로 표현하지 않는다. `Builds/WindowsConciseDialogs/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류0을 확인했다. 일반 빌드에 검수3타입/Pipeline 서버 DLL이 없고 사용자 저장3파일 목록/SHA256이 불변이다.
+- 최종 콘솔 오류0/경고0, Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구, 캡처용 Assets/Docs·동적 폰트·자동 검수 CSV 변경 정리를 완료했다. 시각 증거는 Editor Game View 범위이며 다른PC/DPI·실물 입력장치 검수는 별도다. develop에 커밋·푸시하며 공개 릴리즈/main은 갱신하지 않는다. [실제 화면과 검증](ConciseDialogs/README.md).

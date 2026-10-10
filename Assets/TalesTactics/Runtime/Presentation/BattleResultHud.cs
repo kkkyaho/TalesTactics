@@ -25,7 +25,7 @@ namespace TalesTactics
                 Label(resultPanel,"출전 캐릭터 성장",218,36,20);
                 for(int i=0;i<battle.ResultGrowth.Length;i++)Label(resultPanel,battle.ResultGrowth[i],260+i*36,34,18);
             }
-            else Label(resultPanel,battle.RewardPending?"저장이 완료되면 실제 성장 결과를 표시합니다.":win?"출전 준비에서 편성과 장비를 확인할 수 있습니다.":"편성·장비·회복 역할을 조정한 뒤 다시 도전하세요.\n이번 전투의 패배로 저장된 성장이나 장비를 잃지 않습니다.",230,100,20);
+            else if(battle.RewardPending)Label(resultPanel,"저장을 다시 시도하세요.",230,48,20);
             if(battle.RewardPending)
             {
                 ResultButton("보상 저장 재시도",0,2,battle.SaveBattleReward);
@@ -42,7 +42,7 @@ namespace TalesTactics
                 if(battle.CanReadEnding)ResultButton("전투 후 이야기",1,3,battle.ReadEnding);
                 else if(win)ResultButton("다시 도전",1,3,battle.RetryBattle);
                 else if(battle.CanRetryOpening)ResultButton("다시 도전",1,3,()=>ShowSystemMenu(4));
-                if(!win&&battle.CanRewind)ResultButton("행동 되감기",2,3,()=>ShowSystemMenu(5));
+                if(!win&&battle.CanRewind)ResultButton("행동 되감기",2,3,()=>ShowSystemMenu(5),"되돌리기");
                 else if(battle.CanPrepareNext)ResultButton("다음 장 출전 준비",2,3,battle.PrepareNextBattle);
                 else if(win&&!battle.ResultTraining)ResultButton("다시 도전",2,3,battle.RetryBattle);
             }
