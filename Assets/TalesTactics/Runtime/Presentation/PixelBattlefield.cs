@@ -2,141 +2,194 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TalesTactics
 {
-    // Visuals only: no colliders, occupancy, terrain costs or combat RNG are changed.
+    // Presentation only: GridMap heights, movement and combat RNG are never modified.
     public sealed class PixelBattlefield : MonoBehaviour
     {
+        const string Art="TalesTactics/TerrainArt/";
+        static readonly string[] Backgrounds={"Ruins","Sanctum","Canyon","Observatory","Sluice","Relay"};
+        static readonly Vector2Int[] Directions={Vector2Int.left,Vector2Int.right,Vector2Int.up,Vector2Int.down};
         readonly List<Material> owned=new List<Material>();
-        readonly List<Renderer> water=new List<Renderer>();
-        readonly List<float> waterHeight=new List<float>();
+        readonly List<Mesh> meshes=new List<Mesh>();
+        readonly List<Sprite> sprites=new List<Sprite>();
         readonly List<Transform> billboards=new List<Transform>();
-        readonly Dictionary<string,Sprite> props=new Dictionary<string,Sprite>();
-        Camera view;
-        Material spriteMaterial;
-        Transform backdrop;
-        Material[] surfaces;
-        Material stone,bronze,moss;
-        int stage;
-        public void Initialize(int chapter,Material source,Material sprites,Camera camera)
+        readonly TerrainGeometry[] geometry=new TerrainGeometry[16];
+        readonly Material[] surfaces=new Material[16];
+        readonly List<Vector4> shadowCasters=new List<Vector4>();
+        Texture2D architecture;Sprite[] architectureSprites;
+        Material floorMaterial;
+        Camera view;Material spriteMaterial;Transform backdrop;Texture2D foliage;Sprite[] foliageSprites;
+        int stage,wall;float bottom,backgroundAspect;
+        public int DecorationMeshCount=>meshes.Count;
+        public int Chapter=>stage;
+        public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
-            stage=chapter;view=camera;spriteMaterial=sprites;
-            foreach(var s in Resources.LoadAll<Sprite>("TalesTactics/PixelProps"))props[s.name]=s;
-            var atlas=Resources.Load<Texture2D>("TalesTactics/PixelTerrain");
-            surfaces=new Material[16];
+            stage=Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-4.5f:-3.1f;
+            view=camera;spriteMaterial=spriteSource;
+            var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
             {
-                var m=new Material(source);owned.Add(m);m.color=Color.white;
-                if(atlas!=null){m.mainTexture=atlas;m.mainTextureScale=Vector2.one*0.249f;m.mainTextureOffset=new Vector2(i%4*0.25f+0.0005f,(3-i/4)*0.25f+0.0005f);}
-                surfaces[i]=m;
+                var m=shader!=null?new Material(shader):new Material(source);m.name="Architectural terrain "+i;owned.Add(m);
+                m.SetTexture("_MainTex",atlas);m.SetVector("_AtlasRect",new Vector4(i%4*.25f+.0025f,(3-i/4)*.25f+.0025f,.245f,.245f));
+                m.SetColor("_BaseColor",Color.white);
+                m.SetColor("_KeyColor",stage==2?new Color(1.08f,.98f,.85f):stage==3?new Color(.92f,.99f,1.10f):stage==5?new Color(1.08f,1.02f,.97f):new Color(1.02f,1.01f,.94f));
+                m.SetColor("_FillColor",stage==2?new Color(.92f,.78f,.70f):new Color(.76f,.86f,.95f));
+                if(i==8||i==9)m.SetFloat("_Water",1);surfaces[i]=m;geometry[i]=new TerrainGeometry();
             }
-            stone=surfaces[4];bronze=surfaces[10];moss=surfaces[2];
-            var distant=Resources.Load<Texture2D>("TalesTactics/PixelBackdrops");
+            surfaces[6].SetTexture("_MainTex",Resources.Load<Texture2D>(Art+"Cliff"));
+            surfaces[6].SetVector("_AtlasRect",new Vector4(0,0,1,1));surfaces[6].SetFloat("_WorldCliff",1);
+            foliage=Resources.Load<Texture2D>(Art+"Foliage");foliageSprites=new Sprite[16];
+            architecture=Resources.Load<Texture2D>(Art+"Architecture");architectureSprites=new Sprite[16];
+            floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
+            floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloor")));
+            floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
+            var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)
             {
-                int panel=Mathf.Clamp(stage,0,5);var m=new Material(source);owned.Add(m);
-                m.mainTexture=distant;m.color=Color.white;
-                m.mainTextureScale=new Vector2(.498f,.3313f);
-                m.mainTextureOffset=new Vector2(panel%2*.5f+.001f,(2-panel/2)/3f+.001f);
-                backdrop=Piece("Distant chapter scenery",Vector3.zero,Vector3.one,m,PrimitiveType.Quad).transform;
+                var m=new Material(source);m.name="Chapter panorama "+stage;owned.Add(m);m.mainTexture=distant;m.color=new Color(.64f,.70f,.76f,1);
+                backdrop=new GameObject("Chapter panorama").transform;backdrop.SetParent(transform,false);
+                var quad=new TerrainGeometry();quad.Quad(new Vector3(-.5f,-.5f,0),new Vector3(-.5f,.5f,0),new Vector3(.5f,.5f,0),new Vector3(.5f,-.5f,0));
+                meshes.Add(quad.Flush(backdrop,"Panorama surface",m));backgroundAspect=(float)distant.width/distant.height;
             }
-        }
-        void Prop(int index,Vector3 position,float height)
-        {
-            string key="PixelProps_"+(index/4)+"_"+(index%4);
-            if(!props.TryGetValue(key,out var sprite))return;
-            var g=new GameObject("Authored scenery "+index);g.transform.SetParent(transform,false);
-            g.transform.localPosition=position;g.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);
-            var renderer=g.AddComponent<SpriteRenderer>();renderer.sharedMaterial=spriteMaterial;renderer.sprite=sprite;
-            g.transform.rotation=view.transform.rotation;billboards.Add(g.transform);
         }
         public Material Surface(GridTile tile)
         {
             if(tile.Terrain==TerrainType.Water)return surfaces[8];
-            if(!tile.Walkable)return surfaces[4];
-            int variation=(tile.Coordinate.x*17+tile.Coordinate.y*31)%3;
-            int x=tile.Coordinate.x,z=tile.Coordinate.y;
-            bool weathered=(x==0||z==0||x==4&&z%3==0)&&stage<=1;
-            return surfaces[stage==2?5:stage==3?12+variation%2:stage==4?7:stage==5?15:weathered?2:variation%2];
+            return floorMaterial;
         }
-        public Color Tint(GridTile tile)
-        {
-            float v=0.9f+((tile.Coordinate.x*13+tile.Coordinate.y*7)%5)*0.02f;
-            return new Color(v,v,v,1);
-        }
-        GameObject Piece(string name,Vector3 position,Vector3 scale,Material material,PrimitiveType shape=PrimitiveType.Cube)
-        {
-            var g=GameObject.CreatePrimitive(shape);g.name=name;g.transform.SetParent(transform,false);
-            g.transform.localPosition=position;g.transform.localScale=scale;
-            Destroy(g.GetComponent<Collider>());var r=g.GetComponent<Renderer>();r.sharedMaterial=material;
-            r.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;return g;
-        }
+        public Color Tint(GridTile tile){float v=.94f+((tile.Coordinate.x*13+tile.Coordinate.y*7)%5)*.013f;return new Color(v,v,v,1);}
         public void Decorate(GridTile tile,GridMap map,float step)
         {
-            var p=tile.WorldPosition(step);int x=tile.Coordinate.x,z=tile.Coordinate.y;
-            // Foundation extends below the unchanged walkable surface.
-            Piece("Masonry foundation",new Vector3(x,-0.48f+tile.Height*step/2,z),new Vector3(0.99f,0.5f+tile.Height*step,0.99f),stone);
-            if(tile.Terrain==TerrainType.Water)
+            Vector3 p=tile.WorldPosition(step);int x=tile.Coordinate.x,z=tile.Coordinate.y;bool wet=tile.Terrain==TerrainType.Water;
+            foreach(var d in Directions)
             {
-                var foam=Piece("Water shimmer",p+new Vector3(0,0.018f,0),new Vector3(0.88f,0.015f,0.13f),surfaces[9]);
-                water.Add(foam.GetComponent<Renderer>());
-                waterHeight.Add(foam.transform.localPosition.y);
+                var n=map[tile.Coordinate+d];var outward=new Vector3(d.x,0,d.y);var across=new Vector3(d.y,0,-d.x);
+                if(n==null)
+                {
+                    var edge=p+outward*.50f;
+                    if(wet){Waterfall(edge,outward,1,p.y-bottom);continue;}
+                    geometry[wall].Box(edge+Vector3.down*.17f,new Vector3(d.x==0?1.015f:.20f,.34f,d.y==0?1.015f:.20f));
+                    var support=edge+Vector3.up*(bottom-p.y)*.5f;
+                    geometry[wall].Box(support-outward*.15f,new Vector3(d.x==0?1.01f:.24f,p.y-bottom,d.y==0?1.01f:.24f),.76f);
+                    geometry[wall].Box(edge-Vector3.up*.28f,new Vector3(d.x==0?.95f:.28f,.25f,d.y==0?.95f:.28f));
+                    geometry[stage==2?5:wall].Box(edge+Vector3.up*.075f,new Vector3(d.x==0?.99f:.16f,.15f,d.y==0?.99f:.16f));
+                    if((x+z)%2==0){geometry[wall].Box(edge+Vector3.up*.17f,Vector3.one*.24f);Foliage(stage==2?6:0,edge+outward*.27f-Vector3.up*.95f,1.05f);}
+                    if((x+z)%4==1)DressedProp(stage>=3?11:3,edge-outward*.02f,.74f,false);
+                    if((x+z)%3==1)Foliage(stage==2?4:2,edge+outward*.06f,.32f);
+                    if(stage==2)geometry[6].Rock(edge+outward*.25f+Vector3.up*(bottom-p.y-.5f),1.15f,p.y-bottom+.4f,x*31+z*17);
+                }
+                else if(n.Terrain==TerrainType.Water&&!wet)
+                {
+                    var edge=p+outward*.47f;
+                    geometry[wall].Box(edge-Vector3.up*.15f,new Vector3(d.x==0?.99f:.12f,.4f,d.y==0?.99f:.12f));
+                    if((x+z)%3==0)Foliage(stage==2?4:10,edge-Vector3.up*.08f,.3f);
+                }
+                else if(n.Height<tile.Height&&!wet)
+                {
+                    float rise=(tile.Height-n.Height)*step;
+                    for(int k=0;k<2;k++)
+                    {
+                        float stairHeight=rise*(2-k)/3f;
+                        var center=p+outward*(.55f+k*.12f)-Vector3.up*(rise-stairHeight*.5f);
+                        geometry[wall].Box(center,new Vector3(d.x==0?.99f:.13f,stairHeight,d.y==0?.99f:.13f));
+                    }
+                }
             }
             if(!tile.Walkable)
             {
-                int v=(x+z)%3;
-                int index=stage==2?(v==0?5:4):stage==3?(v==0?12:8):stage==4?(v==0?11:9):stage==5?10:stage==1?(v==0?6:0):(v==0?7:1);
-                Prop(index,p+Vector3.up*0.02f,stage==2?1.05f:1.42f);
+                int prop=stage==2?4:stage==3?9:stage==4?13:stage==5?14:(x+z)%2;
+                DressedProp(prop,p,stage==4?1.13f:1.55f,true);
             }
-            // Low edge ornaments never obscure units on valid movement tiles.
-            var dirs=new[]{Vector2Int.left,Vector2Int.right,Vector2Int.up,Vector2Int.down};
-            foreach(var d in dirs)
+        }
+        public void Complete(GridMap map,float step)
+        {
+            int maxX=0,maxZ=0;foreach(var t in map.Tiles.Values){maxX=Mathf.Max(maxX,t.Coordinate.x);maxZ=Mathf.Max(maxZ,t.Coordinate.y);}
+            floorMaterial.SetVector("_FloorExtent",new Vector4(maxX+1,maxZ+1,0,0));
+            if(stage!=2)BoundaryVaults(map,step,maxX,maxZ);
+            float northHeight=map[new Vector2Int(maxX/2,maxZ)].Height*step;
+            if(stage==3||stage==5)
             {
-                var n=tile.Coordinate+d;
-                if(map.Tiles.ContainsKey(n))continue;
-                var edge=p+new Vector3(d.x*0.44f,0.055f,d.y*0.44f);
-                Piece("Edge coping",edge,new Vector3(d.x==0?0.95f:0.10f,0.1f,d.y==0?0.95f:0.10f),stone);
-                if((x+z)%3==0&&stage!=5)
-                    Piece("Trailing moss",edge+Vector3.down*0.2f,new Vector3(d.x==0?0.36f:0.08f,0.4f,d.y==0?0.36f:0.08f),moss);
-                if((x+z)%5==0)
+                var center=new Vector3(maxX*.5f,northHeight,maxZ+1.1f);
+                geometry[wall].Box(center+Vector3.down*.38f,new Vector3(3.2f,.75f,1.2f));DressedProp(stage==3?8:14,center,2.6f,true);
+                for(int side=-1;side<=1;side+=2){var foot=center+Vector3.right*side*2.9f;Buttress(foot,.9f);DressedProp(10,foot,2.4f,true);}
+            }
+            if(stage==4)
+            {
+                float h=map[new Vector2Int(maxX,maxZ/2)].Height*step;
+                for(int z=2;z<maxZ;z+=5){var c=new Vector3(maxX+.92f,h,z);geometry[wall].Box(c-Vector3.up*.27f,new Vector3(1,.55f,1.8f));DressedProp(12,c,2.25f,true);}
+            }
+            if(stage==2)
+            {
+                var beacon=new Vector3(maxX+.8f,map[new Vector2Int(maxX,maxZ-1)].Height*step,maxZ-1);
+                geometry[5].Box(beacon-Vector3.up*.2f,new Vector3(1.4f,.4f,1.4f));DressedProp(6,beacon,1.75f,true);
+            }
+            if(stage<=1)for(int side=0;side<2;side++){var p=new Vector3(side==0?-.65f:maxX+.65f,northHeight,maxZ+.25f);Buttress(p,.92f);DressedProp(1,p,2.25f,true);}
+            var shadows=new Vector4[24];for(int i=0;i<Mathf.Min(shadowCasters.Count,24);i++)shadows[i]=shadowCasters[i];
+            foreach(var m in surfaces){m.SetVectorArray("_TerrainShadows",shadows);m.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));}
+            floorMaterial.SetVectorArray("_TerrainShadows",shadows);floorMaterial.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));
+            for(int i=0;i<16;i++){var mesh=geometry[i].Flush(transform,"Architecture batch "+i,surfaces[i]);if(mesh!=null)meshes.Add(mesh);}
+        }
+        void BoundaryVaults(GridMap map,float step,int maxX,int maxZ)
+        {
+            var facade=new TerrainGeometry();var material=new Material(surfaces[wall]);owned.Add(material);
+            material.name="Carved stone facade";material.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+"WallFacade"));
+            material.SetVector("_AtlasRect",new Vector4(0,0,1,1));
+            material.SetColor("_BaseColor",stage>=3?new Color(.73f,.82f,.94f):Color.white);
+            foreach(var tile in map.Tiles.Values)
+            {
+                if(tile.Terrain==TerrainType.Water)continue;
+                foreach(var d in Directions)
                 {
-                    Prop(stage==5?10:2,edge,0.48f);
+                    if(map[tile.Coordinate+d]!=null)continue;
+                    var outward=new Vector3(d.x,0,d.y);var across=Vector3.Cross(outward,Vector3.up);
+                    var edge=tile.WorldPosition(step)+outward*.525f;
+                    var left=edge-across*.5f;var right=edge+across*.5f;
+                    float length=d.x==0?maxX+1:maxZ+1;float k=d.x==0?tile.Coordinate.x:tile.Coordinate.y;float sign=d.x==0?across.x:across.z;
+                    float u0=Mathf.Clamp((k+.5f-sign*.5f)/length,.001f,.999f),u1=Mathf.Clamp((k+.5f+sign*.5f)/length,.001f,.999f);
+                    facade.Panel(new Vector3(left.x,bottom,left.z),left-Vector3.up*.3f,right-Vector3.up*.3f,new Vector3(right.x,bottom,right.z),u0,u1);
                 }
-                else if((x+z)%3==1)Prop(stage==4?11:stage==2?4:stage==5?1:3,edge,0.3f);
             }
-            if(stage==5&&x==6&&z==6)
-            {Ring(p+Vector3.up*0.025f,1.35f,bronze,true);Ring(p+Vector3.up*0.029f,0.85f,surfaces[11],true);}
-            if(stage==4&&(x==5||x==8)&&(z==2||z==7))
-                for(int k=0;k<3;k++)Piece("Bridge brass rivet",p+new Vector3(-0.32f+k*0.32f,0.02f,0.37f),new Vector3(0.04f,0.02f,0.04f),bronze);
+            var mesh=facade.Flush(transform,"Architecture facade",material);if(mesh!=null)meshes.Add(mesh);
         }
-        void Ring(Vector3 center,float radius,Material material,bool horizontal)
+        void Buttress(Vector3 top,float width)
         {
-            for(int i=0;i<16;i++)
-            {
-                float a=i*Mathf.PI/8;
-                var offset=horizontal?new Vector3(Mathf.Cos(a),0,Mathf.Sin(a)):new Vector3(Mathf.Cos(a),Mathf.Sin(a),0);
-                var g=Piece("Brass ring",center+offset*radius,horizontal?new Vector3(radius*0.4f,0.035f,0.04f):new Vector3(radius*0.4f,0.04f,0.04f),material);
-                g.transform.localRotation=horizontal?Quaternion.Euler(0,-i*22.5f+90,0):Quaternion.Euler(0,0,i*22.5f+90);
-            }
+            float height=top.y-bottom;
+            geometry[wall].Box(top-Vector3.up*height*.5f,new Vector3(width,height,width));
+            geometry[wall].Box(top-Vector3.up*.1f,new Vector3(width+.15f,.2f,width+.15f));
+            Foliage(0,top+Vector3.back*width*.6f-Vector3.up*1.15f,1.2f);
         }
-        void Update()
+        void Waterfall(Vector3 edge,Vector3 outward,float width,float height)
         {
-            // Small surface motion, independent from gameplay and deterministic RNG.
-            if(surfaces==null)return;
-            for(int i=0;i<water.Count;i++)
+            var across=Vector3.Cross(outward,Vector3.up)*width*.48f;var top=edge+outward*.035f-Vector3.up*.04f;
+            geometry[9].Quad(top-across-Vector3.up*height,top-across,top+across,top+across-Vector3.up*height);Foliage(12,edge-Vector3.up*height+outward*.10f,.8f);
+        }
+        Transform Foliage(int index,Vector3 position,float height)
+        {
+            if(foliage==null)return null;
+            if(foliageSprites[index]==null){float w=foliage.width/4f,h=foliage.height/4f;var sprite=Sprite.Create(foliage,new Rect(index%4*w,(3-index/4)*h,w,h),new Vector2(.5f,0),100,0,SpriteMeshType.FullRect);sprite.name="Terrain accent "+index;sprites.Add(sprite);foliageSprites[index]=sprite;}
+            var art=foliageSprites[index];var go=new GameObject("Terrain accent "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);go.transform.localPosition=position;go.transform.localScale=Vector3.one*(height/art.bounds.size.y);
+            var sr=go.GetComponent<SpriteRenderer>();sr.sprite=art;sr.sharedMaterial=spriteMaterial;sr.color=index==13?new Color(1,1,.88f,1):index==15?new Color(.72f,.92f,1,1):new Color(.85f,.88f,.80f,1);
+            billboards.Add(go.transform);if(view!=null)go.transform.rotation=view.transform.rotation;return go.transform;
+        }
+        void DressedProp(int index,Vector3 position,float height,bool shadow)
+        {
+            if(architecture==null)return;
+            if(architectureSprites[index]==null)
             {
-                var t=water[i].transform;var p=t.localPosition;
-                p.y=waterHeight[i]+Mathf.Sin(Time.time*2+i)*0.008f;t.localPosition=p;
+                float w=architecture.width/4f,h=architecture.height/4f;
+                var art=Sprite.Create(architecture,new Rect(index%4*w,(3-index/4)*h,w,h),new Vector2(.5f,.06f),100,0,SpriteMeshType.FullRect);
+                art.name="Architectural detail "+index;sprites.Add(art);architectureSprites[index]=art;
             }
+            var sprite=architectureSprites[index];var go=new GameObject("Architectural detail "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);
+            go.transform.localPosition=position+Vector3.up*.015f;go.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);
+            var renderer=go.GetComponent<SpriteRenderer>();renderer.sharedMaterial=spriteMaterial;renderer.sprite=sprite;
+            billboards.Add(go.transform);go.transform.rotation=view.transform.rotation;
+            if(shadow)shadowCasters.Add(new Vector4(position.x,position.z,height,position.y));
         }
         void LateUpdate()
         {
-            if(view==null)return;
-            foreach(var t in billboards)t.rotation=view.transform.rotation;
-            if(backdrop!=null)
-            {
-                backdrop.SetPositionAndRotation(view.transform.position+view.transform.forward*Mathf.Min(80,view.farClipPlane-1),view.transform.rotation);
-                backdrop.localScale=new Vector3(view.orthographicSize*2*view.aspect,view.orthographicSize*2,1);
-            }
+            if(view==null)return;foreach(var t in billboards)t.rotation=view.transform.rotation;
+            if(backdrop!=null){backdrop.SetPositionAndRotation(view.transform.position+view.transform.forward*Mathf.Min(80,view.farClipPlane-1),view.transform.rotation);float h=view.orthographicSize*2*Mathf.Max(1,view.aspect/backgroundAspect);backdrop.localScale=new Vector3(h*backgroundAspect,h,1);}
         }
-        void OnDestroy(){foreach(var m in owned)if(m!=null)Destroy(m);}
+        void OnDestroy(){foreach(var m in owned)if(m!=null)Destroy(m);foreach(var m in meshes)if(m!=null)Destroy(m);foreach(var s in sprites)if(s!=null)Destroy(s);}
     }
 }

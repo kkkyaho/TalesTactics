@@ -89,13 +89,14 @@ namespace TalesTactics
             foreach(var t in session.Grid.Tiles.Values)
             {
                 var g=GameObject.CreatePrimitive(PrimitiveType.Cube);g.name="Tile "+t.Coordinate;g.transform.SetParent(root,false);
-                float height=0.25f+t.Height*session.Rules.TileHeight;g.transform.position=new Vector3(t.Coordinate.x,height/2-0.25f,t.Coordinate.y);g.transform.localScale=new Vector3(0.96f,height,0.96f);
+                float height=0.25f+t.Height*session.Rules.TileHeight;g.transform.position=new Vector3(t.Coordinate.x,height/2-0.25f,t.Coordinate.y);g.transform.localScale=new Vector3(0.998f,height,0.998f);
                 g.AddComponent<TileView>().Coordinate=t.Coordinate;var renderer=g.GetComponent<Renderer>();renderer.sharedMaterial=scenery.Surface(t);
                 Color color=scenery.Tint(t);
                 if((session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)&&t.Coordinate==session.Destination)color=new Color(1,0.75f,0.12f);
                 tiles[t.Coordinate]=renderer;colors[t.Coordinate]=color;SetColor(renderer,color);
                 scenery.Decorate(t,session.Grid,session.Rules.TileHeight);
             }
+            scenery.Complete(session.Grid,session.Rules.TileHeight);
             if(placeholder==null)placeholder=CreatePlaceholder();
             var overlay=new GameObject("Unit Health Overlay",typeof(RectTransform),typeof(Canvas));overlay.transform.SetParent(root,false);
             healthCanvas=overlay.GetComponent<Canvas>();healthCanvas.renderMode=RenderMode.ScreenSpaceOverlay;healthCanvas.sortingOrder=-1;

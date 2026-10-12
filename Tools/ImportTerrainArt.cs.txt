@@ -1,0 +1,14 @@
+UnityEditor.AssetDatabase.Refresh();
+var paths=UnityEditor.AssetDatabase.FindAssets("t:Texture2D",new[]{"Assets/TalesTactics/Resources/TalesTactics/TerrainArt"}).Select(UnityEditor.AssetDatabase.GUIDToAssetPath).ToArray();
+foreach(var path in paths){
+ var i=(UnityEditor.TextureImporter)UnityEditor.AssetImporter.GetAtPath(path);
+ i.textureType=UnityEditor.TextureImporterType.Default;
+ i.npotScale=UnityEditor.TextureImporterNPOTScale.None;i.maxTextureSize=4096;
+ i.textureCompression=UnityEditor.TextureImporterCompression.Uncompressed;
+ i.filterMode=UnityEngine.FilterMode.Trilinear;i.anisoLevel=8;
+ i.mipmapEnabled=path.EndsWith("Surfaces.png")||path.EndsWith("Foliage.png")||path.EndsWith("Architecture.png")||path.EndsWith("Floor.png")||path.EndsWith("WallFacade.png")||path.EndsWith("Cliff.png");
+ i.alphaIsTransparency=path.EndsWith("Foliage.png")||path.EndsWith("Architecture.png");i.wrapMode=UnityEngine.TextureWrapMode.Clamp;
+ i.SaveAndReimport();
+}
+UnityEditor.AssetDatabase.SaveAssets();
+return paths.Select(p=>new{path=p,size=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(p).width+"x"+UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(p).height}).ToArray();

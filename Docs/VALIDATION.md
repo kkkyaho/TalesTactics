@@ -767,3 +767,13 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - ZIP205,831,290바이트/202파일+manifest, SHA256 `b21ccd8bdea3c53fbb91d7e24b38eadd98f88f9e17f65585fd95cb149d3b5df1`. 검증된 빌드의 파일 목록·EXE/Runtime DLL 해시를 대조하고 ZIP 내부 해시/압축 해제 무결성 검사를 통과했다. 개발 검수 타입·사용자 저장·로그·개인 음원을 제외한다.
 - GitHub 공개 prerelease로 ZIP/체크섬을 게시했다. 두 첨부의 서버 SHA256과 로컬 일치, 비인증 릴리즈 조회·ZIP HEAD200·체크섬 GET200과 내용 일치 확인. 원격 ZIP 전체 재다운로드와 압축 해제 실행본의 독립 플레이 검사는 수행하지 않았다. 기존 Pipeline/URP 안내3건·다른PC/실물장치/DPI·장기 밸런스 검수 한계는 유지한다.
 - 상세 기록은 `Distribution/Preview4/README.md` 및 같은 폴더의 package/manifest/검사/공개 릴리즈 JSON을 따른다. README 최신 다운로드를 preview.4로 갱신했다. 일반 개발은 develop, main은 사용자 요청 릴리즈 아카이브로 계속 운영한다.
+
+## 2026-10-13 — 전장 지형 아트 (`develop`)
+
+- 승인된 유적·협곡·관측소·수문 시안의 방향을 기존6장 전장에 연결했다. 원본 생성 PNG15종, 연속 석판 바닥, 조각 외벽, 입체 절벽·계단·낙수, 장별 원경/기둥/천문기구/수문 장식, 방향 명암과 접지 음영을 적용했다. 캐릭터·HP·이동/위험/방향 UI 및 맵 좌표·높이·장애물·적 수·전투/저장 규칙은 보존한다.
+- 실제 Unity API 참조 Runtime/Editor/EditMode/PlayMode4개 컴파일 통과. 신규 PlayMode2/2 후 초기 전체120/121에서 기존 장식 오브젝트 이름 검사1건이 실패했다. 새 이름으로 갱신해 해당1개를 통과했고, 마지막 재질·메시 수정 이후 **최종 전체121/121(221.8초)**을 다시 통과했다. 신규 검사는6장 지형/이동 비용, 네 방향 모든 이동 가능 타일 선택, 게임 RNG 불변과 재시작 시 소유 메시·재질·스프라이트 해제를 다룬다. 초기 실패와 재검사 기록을 TerrainArt에 보존한다. 코어 변경이 없어 EditMode/ManagedChecks는 이번에 반복하지 않았으며 과거202/202와 구분한다.
+- 실제 프레임 진행 후6장×1024×768/1920×1080/2560×1080×카메라4방향 **72개 고유 조합**에서 타일 선택 불일치·화면 밖 활성 버튼/HP바·TMP 넘침0. 작은 창 글자130%, 나머지100%. 최종 협곡 재질 변경 뒤3장12조합을 재검사해 다른 장60조합과 합쳤으며 중복 합산하지 않는다. 최종 Game View10장을 직접 확인했다. 단순 외벽 아치와 반복 암벽을 보강하고 암벽 윗면의 투영 늘어짐을 수정했다.
+- 지형 셰이더 Editor 진단0, Windows 빌드 패킹 목록에서 새 PNG15종·셰이더 포함 확인. 일반 Windows **33.222초**, 개발 검수 Windows **38.191초**, 각각 오류0/기존 패키지 안내3건으로 성공. 안내는 Pipeline 런타임 미설정과 URP 내부 DebugOccluder/DebugOcclusionTest stripping이다. 일반 빌드에서 개발 검수 타입 제외 및 Runtime DLL SHA256 확인. 일반 실행본은 `Builds/WindowsTerrainArt/TalesTactics.exe`.
+- 개발 실행 파일을 별도 GUID 저장 경로로 실행하여1장26턴·26이동·22공격, 입문 연습·상점·장비·승리와 저장 흐름을 자동 검사했다. **12.24초/정상 종료0/오류 로그0**. 최종 화면/Windows 검수 구간 사용자 저장·백업·설정 해시 불변. 기존 사용자 게임 PID66720은 종료하지 않았다. 시각 증거는 Editor Game View이며 숨겨진 Windows 창의 캡처를 시각 검수로 주장하지 않는다.
+- Play 종료, Scene dirty=false, Full HD Game View, 빠른 Play 원래 옵션, runInBackground=false 및 development=false 복원. 테스트 CSV·동적 폰트·에디터 설정의 검수 부수 변경을 복원했다. Assets 캡처 복사본은 `Logs/TerrainArtCaptureCache`로 이동했다. 상세 화면/아트/명령/증거는 `TerrainArt/README.md`를 따른다.
+- 시안의 자유로운 배치 전체를 복사하거나 미적 동등성을 자동 테스트로 증명한 것은 아니다. 외벽 아치와 원경은 회화 텍스처, 기둥/기구는2.5D 스프라이트, 구조·절벽은 실제 메시다. 기존 정사각형 전투 격자를 유지한다. 다른PC/DPI·장기 GPU 성능·일반 빌드 독립 수동 플레이는 별도 범위다. 이번 요청은 develop 적용이며 main/공개 릴리즈는 변경하지 않는다.

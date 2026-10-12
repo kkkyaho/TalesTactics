@@ -80,7 +80,7 @@ namespace TalesTactics.PlayModeTests
                 var enemies=director.Session.Units.Where(u=>u.Team==Team.Enemy).ToArray();
                 for(int slot=0;slot<4;slot++)Assert.That(enemies[slot].Data.Id,Is.EqualTo(CampaignEnemies.Id(stage,slot)));
                 var scenery=Object.FindAnyObjectByType<PixelBattlefield>();Assert.That(scenery,Is.Not.Null);
-                Assert.That(scenery.GetComponentsInChildren<SpriteRenderer>().Count(r=>r.name.StartsWith("Authored scenery")),Is.GreaterThan(0));
+                Assert.That(scenery.GetComponentsInChildren<SpriteRenderer>().Count(r=>r.name.StartsWith("Architectural detail")),Is.GreaterThan(0));
                 Assert.That(scenery.GetComponentsInChildren<Collider>().All(c=>c.GetComponent<TileView>()!=null),Is.True,"Only gameplay tiles may intercept picking");
                 for(int rotation=0;rotation<4;rotation++)
                 {
