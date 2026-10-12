@@ -31,19 +31,19 @@ namespace TalesTactics
                 Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-192,150));
             }
             else if(battle.State is MoveSelectionState)
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-290,12),new Vector2(-12,134));
+                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-290,12),new Vector2(-12,148));
             else
                 Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
             bool facing=battle.State is FacingSelectionState;
             commands.GetComponent<UnityEngine.UI.Image>().enabled=!facing;
             commands.GetComponent<UnityEngine.UI.Image>().raycastTarget=!facing;
             commands.GetComponent<UnityEngine.UI.Outline>().enabled=!facing;
-            if(facing)UpdateFacingArrows();
+            if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
             if(battle.State is CommandState)PlaceCommandBesideUnit();
             if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,300,SkillCardHeight);
             if(battle.State is TargetSelectionState)Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,targetContextHeight+12));
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
-            bool showMessage=battle.TutorialActive||battle.State is ActionExecutionState||battle.State is BattleEndState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
+            bool showMessage=facing||battle.TutorialActive||battle.State is ActionExecutionState||battle.State is BattleEndState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
             footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
@@ -90,7 +90,7 @@ namespace TalesTactics
         void ArrangeCommandMenu()
         {
             string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
-            string[] labels={"이동","공격","기술","방어","대기","이동 취소","턴 종료"};
+            string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","턴 종료"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;

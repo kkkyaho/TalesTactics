@@ -6,6 +6,21 @@ namespace TalesTactics
 {
     public sealed partial class BattleDirector
     {
+        public Facing PendingFacing {get;private set;}
+        public void BeginFacingPreview(){PendingFacing=Session.Active.Facing;}
+        public void PreviewFacing(Facing facing){if(State is FacingSelectionState)PendingFacing=facing;}
+        public Facing ScreenFacing(Vector2 screenDirection)
+        {
+            var camera=Board.BattleCamera;var origin=camera.WorldToScreenPoint(Vector3.zero);
+            Facing best=Facing.Front;float score=float.NegativeInfinity;
+            foreach(Facing f in System.Enum.GetValues(typeof(Facing)))
+            {
+                var v=SkillResolver.FacingVector(f);var p=camera.WorldToScreenPoint(new Vector3(v.x,0,v.y))-origin;
+                float dot=Vector2.Dot(new Vector2(p.x,p.y).normalized,screenDirection);
+                if(dot>score){score=dot;best=f;}
+            }
+            return best;
+        }
         public BattleForecast Forecast {get;private set;}
         [System.NonSerialized] public UnitRuntime InspectedUnit,HoveredUnit;
         public Vector2Int? KeyboardTile {get;private set;}
@@ -63,10 +78,11 @@ namespace TalesTactics
             }
             if(State is FacingSelectionState)
             {
-                if(k.upArrowKey.wasPressedThisFrame){ChooseFacing(Facing.Back);return true;}
-                if(k.downArrowKey.wasPressedThisFrame){ChooseFacing(Facing.Front);return true;}
-                if(k.leftArrowKey.wasPressedThisFrame){ChooseFacing(Facing.Left);return true;}
-                if(k.rightArrowKey.wasPressedThisFrame){ChooseFacing(Facing.Right);return true;}
+                if(k.upArrowKey.wasPressedThisFrame){PreviewFacing(ScreenFacing(Vector2.up));return true;}
+                if(k.downArrowKey.wasPressedThisFrame){PreviewFacing(ScreenFacing(Vector2.down));return true;}
+                if(k.leftArrowKey.wasPressedThisFrame){PreviewFacing(ScreenFacing(Vector2.left));return true;}
+                if(k.rightArrowKey.wasPressedThisFrame){PreviewFacing(ScreenFacing(Vector2.right));return true;}
+                if(k.enterKey.wasPressedThisFrame||k.numpadEnterKey.wasPressedThisFrame){ChooseFacing(PendingFacing);return true;}
             }
             if(!(State is MoveSelectionState)&&!(State is TargetSelectionState))return false;
             var step=k.upArrowKey.wasPressedThisFrame?Vector2Int.up:k.downArrowKey.wasPressedThisFrame?Vector2Int.down:k.leftArrowKey.wasPressedThisFrame?Vector2Int.left:k.rightArrowKey.wasPressedThisFrame?Vector2Int.right:Vector2Int.zero;

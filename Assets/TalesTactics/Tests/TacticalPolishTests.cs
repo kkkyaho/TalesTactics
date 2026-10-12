@@ -30,7 +30,7 @@ namespace TalesTactics.Tests
         [Test] public void NewRoundActionStateIgnoresPreviousRoundFlags()
         {
             var b=new BattleSession(FreeTurnCatalog(),new[]{0,1,2},teamTurns:true);b.Advance();b.Units[2].Moved=b.Units[2].Acted=true;
-            Assert.That(b.ActionState(b.Units[2]),Is.EqualTo("이동·행동"));b.Select(b.Units[2]);b.Active.Moved=true;Assert.That(b.ActionState(b.Active),Is.EqualTo("행동"));b.Active.Moved=false;b.Active.Acted=true;b.Active.FlamingChain=true;Assert.That(b.ActionState(b.Active),Is.EqualTo("이동·행동"));
+            Assert.That(b.ActionState(b.Units[2]),Is.EqualTo("이동·행동"));b.Select(b.Units[2]);b.Active.Moved=true;Assert.That(b.ActionState(b.Active),Is.EqualTo("행동"));b.Active.Moved=false;b.Active.Acted=true;b.Active.FlamingChain=true;Assert.That(b.ActionState(b.Active),Is.EqualTo("이동"),"A chain flag without a usable follow-up is not an action");
         }
         [Test] public void TacticalCheckpointRetainsNewRulesAndLegacyCheckpointsKeepOldRules()
         {

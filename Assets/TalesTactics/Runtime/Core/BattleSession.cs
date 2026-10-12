@@ -94,7 +94,7 @@ namespace TalesTactics
             if(!(Scheduler is TeamTurnScheduler team))return unit==Active?"선택":"대기";
             if(team.Phase!=Team.Player||!team.CanSelect(unit))return "완료";
             if(!team.HasBegun(unit))return "이동·행동";
-            bool action=!unit.Acted||unit.FlamingChain;
+            bool action=!unit.Acted||unit.FlamingChain&&unit.Data.Skills.Any(s=>s!=null&&s.Gate==SkillGate.FlamingEdge&&Resolver.CanUse(unit,s,true)==null);
             return !unit.Moved&&action?"이동·행동":!unit.Moved?"이동":action?"행동":"대기 가능";
         }
         public bool EndPlayerPhase()

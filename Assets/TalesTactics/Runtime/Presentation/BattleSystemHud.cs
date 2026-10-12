@@ -106,7 +106,7 @@ namespace TalesTactics
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));
             var d=settingsDraft;
-            Button(systemWindow,"해상도: "+d.Width+" × "+d.Height,116,()=>{if(d.Width==1280){d.Width=1366;d.Height=768;}else if(d.Width==1366){d.Width=1920;d.Height=1080;}else{d.Width=1280;d.Height=800;}ShowSystemMenu(1);});
+            Button(systemWindow,"해상도: "+d.Width+" × "+d.Height,116,()=>{d.WindowMaximized=false;if(d.Width==1280){d.Width=1366;d.Height=768;}else if(d.Width==1366){d.Width=1920;d.Height=1080;}else{d.Width=1280;d.Height=800;}ShowSystemMenu(1);});
             Button(systemWindow,d.Fullscreen?"화면: 전체 화면":"화면: 창 모드",160,()=>{d.Fullscreen=!d.Fullscreen;ShowSystemMenu(1);});
             PreferenceRow("음악",d.Music,204,()=>{d.Music=Mathf.Max(0,d.Music-.1f);ShowSystemMenu(1);},()=>{d.Music=Mathf.Min(1,d.Music+.1f);ShowSystemMenu(1);});
             PreferenceRow("효과음",d.Effects,248,()=>{d.Effects=Mathf.Max(0,d.Effects-.1f);ShowSystemMenu(1);},()=>{d.Effects=Mathf.Min(1,d.Effects+.1f);ShowSystemMenu(1);});

@@ -6,7 +6,6 @@ namespace TalesTactics
     public sealed partial class BoardView
     {
         readonly Dictionary<Vector2Int,LineRenderer> threatMarks=new Dictionary<Vector2Int,LineRenderer>();
-        readonly Dictionary<UnitRuntime,LineRenderer> actionMarks=new Dictionary<UnitRuntime,LineRenderer>();
         LineRenderer inspectMarker,hoverMarker,keyboardMarker,facingMarker;
         public void DrawThreats()
         {
@@ -35,14 +34,13 @@ namespace TalesTactics
             if(battle.Session.Scheduler is TeamTurnScheduler team)
             foreach(var ally in battle.Session.Units.Where(a=>a.Team==Team.Player))
             {
-                actionMarks.TryGetValue(ally,out var mark);
                 bool ready=team.Phase==Team.Player&&team.CanSelect(ally);
-                var color=!ready?Color.gray:!team.HasBegun(ally)||!ally.Acted?new Color(.25f,.85f,.7f):new Color(.4f,.65f,1);
-                Marker(ref mark,"Action availability "+ally.Data.Id,ally.Alive?ally.Position:(Vector2Int?)null,color,.28f);
-                mark.loop=false;mark.positionCount=ready?3:2;
-                var at=battle.Session.Grid[ally.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.14f;
-                mark.SetPositions(ready?new[]{at+Vector3.left*.22f,at+Vector3.forward*.2f,at+Vector3.right*.22f}:new[]{at+Vector3.left*.22f,at+Vector3.right*.22f});
-                actionMarks[ally]=mark;
+                if(units.TryGetValue(ally,out var visual))
+                {
+                    var ring=visual.Find("Faction Ring").GetComponent<LineRenderer>();
+                    var color=ready?new Color(.25f,.75f,.72f):new Color(.26f,.31f,.35f);
+                    ring.startColor=ring.endColor=color;SetColor(ring,color);
+                }
             }
             Marker(ref inspectMarker,"Inspected unit",battle.InspectedUnit?.Alive==true?battle.InspectedUnit.Position:(Vector2Int?)null,new Color(1,.8f,.1f),.42f);
             if(battle.InspectedUnit?.Alive==true)
@@ -53,14 +51,16 @@ namespace TalesTactics
             Marker(ref hoverMarker,"Turn order focus",battle.HoveredUnit?.Alive==true?battle.HoveredUnit.Position:(Vector2Int?)null,Color.cyan,.55f);
             Marker(ref keyboardMarker,"Keyboard tile cursor",battle.KeyboardTile,Color.cyan,.32f);
             var u=battle.InspectedUnit?.Alive==true?battle.InspectedUnit:battle.Session.Active;
-            Marker(ref facingMarker,"Facing indicator",u?.Alive==true?u.Position:(Vector2Int?)null,Color.white,.2f);
-            if(u?.Alive==true)
+            bool facingVisible=u?.Alive==true&&!(battle.State is FacingSelectionState);
+            Marker(ref facingMarker,"Facing indicator",facingVisible?u.Position:(Vector2Int?)null,new Color(.75f,.63f,.39f),.2f);
+            if(facingVisible)
             {
                 var origin=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.17f;
                 var d=SkillResolver.FacingVector(u.Facing);var forward=new Vector3(d.x,0,d.y);var right=new Vector3(-d.y,0,d.x);
-                facingMarker.positionCount=3;facingMarker.SetPositions(new[]{origin+forward*.58f,origin+forward*.25f+right*.16f,origin+forward*.25f-right*.16f});
+                facingMarker.loop=false;facingMarker.positionCount=3;facingMarker.startWidth=facingMarker.endWidth=.018f;
+                facingMarker.SetPositions(new[]{origin+forward*.3f+right*.075f,origin+forward*.41f,origin+forward*.3f-right*.075f});
             }
         }
-        void ResetTacticalMarkers(){actionMarks.Clear();threatMarks.Clear();inspectMarker=hoverMarker=keyboardMarker=facingMarker=null;}
+        void ResetTacticalMarkers(){threatMarks.Clear();inspectMarker=hoverMarker=keyboardMarker=facingMarker=null;}
     }
 }

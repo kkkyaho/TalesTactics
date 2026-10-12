@@ -726,3 +726,14 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - Windows 일반 빌드 **23.444초, 오류0/경고3** 성공(`windows-build.json`). 기존 Pipeline 런타임 미설정 및 URP 내부 디버그 셰이더 stripping 안내이며 이번 코드 컴파일 경고가 아니다. 전체 빌드 보고서는 로컬 `Logs/EncounterBalanceBuildFull.json`, 요약만 저장소에 보관한다.
 - `Builds/WindowsEncounterBalance/TalesTactics.exe`를 12초 숨김 실행하여 프로세스 유지·오류/예외 로그0, Pipeline.dll 미포함을 확인했다(`windows-startup.json`). 사용자 campaign/백업3개의 SHA256은 화면 검수 전과 최종 테스트·빌드·실행 후 동일하다(`user-save-check.json`). 이번에는 별도 프로세스 간 중단 전투 검수는 재실행하지 않았고 실제 파일 기반 PlayMode 복원 및 EditMode 직렬화 검증을 사용했다.
 - 최종 Play 종료, runInBackground=false, Full HD, Scene dirty=false, 에디터 컴파일 실패 없음, 현재 콘솔 오류0/빌드 안내 경고3을 확인했다. Pipeline 누적 이력의 이전 테스트 실패/진단 수와 현재 콘솔 상태를 구분한다. 테스트 생성 CSV·동적 폰트 변경을 복원했고 캡처의 Assets 복사본은 `Logs/EncounterBalanceCaptureCache`로 옮겼다. develop에 반영하며 공개 릴리즈/main은 변경하지 않는다.
+
+## 2026-10-12 — 캐릭터 크기·전투 표시·창 조절 (`develop`)
+
+- 편성/장비/전투의 영웅 몸체 크기, HP 손실 가독성, 얇은 이동 경로/도착 모델, 작은 방향 미리보기와 알펜 연계 버튼 조건을 적용했다. 전투 규칙·맵·경험치·아트 원본은 유지한다. 증거는 `BattleVisualPolish/`.
+- 실제 Unity EditMode **202/202(0.55초)**, 전체 PlayMode **116/116(219.2초)** 통과. 최초 EditMode의 구 연계 플래그 기대값 1개와 PlayMode의 부모 계층/이전 HP 오브젝트 기대값 6개를 새 구조에 맞게 갱신했다. 새 회귀 3개는 알펜 저레벨/자원 부족/정상 연계/다음 턴, HP 트랙·피해 잔상·사망, 이동 유령/방향 미리보기 취소를 확인한다.
+- 마지막 이동 취소 버튼 높이와 기존 흰색 방향 삼각형 정리 뒤 관련 실제 PlayMode **1/1(2.56초)** 추가 통과했다(`playmode-final-ui.json`). 전체116개는 해당 마지막 표시 조정 전 결과다. Runtime/Editor/EditMode/PlayMode API 참조 컴파일 경고/오류0. ManagedChecks는 실행하지 않았다.
+- Game View 1024×768/1920×1080/2560×1080 × 글자100/130% × 편성/장비/HP/이동/방향 **30개 고유 조합**에서 TMP 넘침·화면 밖 활성 버튼/HP바0건. 처음 이동 화면 6조합의 취소 글자 넘침을 수정했다. 마지막 이동/방향12조합을 재검사하고 변경 없는18조합과 합쳤으며 중복 합산하지 않았다. 실제 PNG10장을 보관한다.
+- 일반 Windows 빌드 **28.842초**, 개발 검수 빌드 **26.144초**, 각각 성공/오류0/경고3. 경고는 기존 Pipeline 런타임 미설정 및 URP 내부 디버그 셰이더 stripping 안내로 이번 코드 컴파일 경고와 구분한다. 일반 실행본은 `Builds/WindowsBattleVisualPolish/TalesTactics.exe`다.
+- 네이티브 창 검수는 Computer Use의 실제 제목 표시줄/테두리를 조작한 개발 빌드로 수행했다. 1280×800에서 최대화/복원, 가로·세로 테두리 드래그로1100×720, 종료 후 새 프로세스에서 같은 크기 복원을 확인했다. 별도 GUID 저장 경로를 사용했으며 기존 사용자의 실행 중인 게임은 종료하지 않았다. 상세 상태와 최대화 재실행 결과는 `window-review.json`, 사용자 원본 파일 비교는 `user-save-check.json`.
+- 일반 배포 빌드의 네이티브 창 직접 검수와 여러 모니터/DPI 조합은 이번 검수 범위에 포함하지 않는다. 새 아트가 들어오면 몸체 비율을 다시 확인해야 한다. 공개 릴리즈/main 반영은 이번 요청 범위가 아니다.
+- 최대화 상태 재실행도 확인했으며, 다시 복원하면 이전1100×720로 돌아왔다. 총3개 검수 프로세스의 오류/예외 로그0건. 사용자 campaign/백업/설정5개 SHA256 불변. 마지막 Play 종료·runInBackground=false·Scene dirty=false·컴파일 실패 없음 및 Full HD Game View를 확인했다. 테스트 생성 CSV와 동적 폰트 변경을 복원하고 Assets의 캡처 복사본은 `Logs/BattleVisualPolishCaptureCache`에 보관했다.

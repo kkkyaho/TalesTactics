@@ -321,3 +321,12 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 - 체크포인트 v10/출전 기록 v5가 확장 구성 여부를 보존한다. 구 v9/v4 이하는 확장 구성을 끈 채 복원하고, 되감기/재도전에서도 이를 유지한다. 캠페인 v3과 행동 경험치 공식은 동일하다.
 - 임무 적 목록은 4명씩 페이지를 나누며 새로 열면 첫 페이지부터 시작한다. 준비 단계에서는 증원 예정 적까지 표시하고, 전투에서는 실제 등장한 적만 표시한다.
 - 자동 성장 비교와 한계는 `EncounterBalance/README.md`에 기록한다. 느린 전열의 성장 격차가 완전히 해소된 것은 아니다.
+
+## 캐릭터·전투 표시와 Windows 창 (2026-10-12)
+
+- `CharacterVisualSizing`은 기존 전면 스프라이트의 몸체 비율(제이드 .82, 민트 .96, 나머지 1)과 1.22 월드 높이를 공유한다. `CharacterModelImage`는 무기까지 포함한 폭에 맞춰 몸체를 축소하지 않고 발 기준으로 그린다. 전투는 `Body Scale` 부모를 두어 자식 `CharacterMotion`의 애니메이션 스케일을 보존한다. 몬스터 크기는 유지한다.
+- `UnitHealthDisplay`/`HealthBarGraphic`은 전장 카메라 위치를 Overlay Canvas에 투영하여 최대 HP 트랙·잔여 HP·손실 잔상을 그린다. 선택/호버에만 숫자를 보여주고 HUD보다 아래에서 렌더링한다. 사망/스토리/모달에는 숨긴다.
+- `BoardMovementPreview`는 이동 영역 외곽, 가는 경로와 화살촉, 목적지 유령 모델을 관리한다. 상태 취소와 보드 재생성 시 함께 정리한다. `PendingFacing`은 실제 방향과 분리하며 `FacingPointer` 호버/방향키는 미리보기, 클릭/Enter는 확정이다.
+- `CanOpenSkills`와 행동 상태는 `SkillResolver.CanUse`의 실제 연계 가능 조건을 사용한다. 일반 행동 이후 연계 플래그만 남은 상태에서 빈 기술 탭이 열리지 않는다.
+- `WindowDisplayController`는 크기 변경 안정화 후 `SavePreferences(..., false)`로 창 크기를 기록한다. Windows `IsZoomed`/`IsIconic`을 사용해 최대화/최소화를 구분하고 `WindowMaximized`와 복원용 Width/Height를 따로 보관한다. PlayerSettings의 resizableWindow를 켰다. 기존 v1 설정은 새 bool 필드가 false로 복원된다. 해상도 프리셋을 적용하면 최대화 기억을 해제한다.
+- 개발 전용 `ManualPlayerReview`는 격리 설정을 디스플레이에도 적용하여 재실행 검수가 사용자 설정을 건드리지 않게 한다. 일반 배포 빌드에서는 컴파일되지 않는다. 상세 증거는 `BattleVisualPolish/README.md`.

@@ -17,6 +17,7 @@ namespace TalesTactics
         bool timingSpin;
         float spinProgress;
         public AnimationKind Action=>action;
+        public UnitRuntime Owner=>unit;
         public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera)
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)

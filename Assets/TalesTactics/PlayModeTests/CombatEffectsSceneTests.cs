@@ -11,7 +11,7 @@ namespace TalesTactics.PlayModeTests
         {
             director.BeginBattle();yield return null;
             var caster=director.Session.Active;
-            var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.transform.parent.name==caster.Data.DisplayName);
+            var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
             director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.5f);
             Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f));
             director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.12f);
@@ -96,7 +96,7 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Session.Resolver.Execute(caster,attack,enemy.Position,out error),Is.True,error);
                 director.Board.PresentImpact(caster,attack,enemy.Position,before,new[]{enemy});yield return null;
                 Assert.That(Object.FindObjectsByType<CombatEffect>().Any(e=>e.Recipient==caster),Is.False);
-                var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.transform.parent.name==caster.Data.DisplayName);
+                var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
                 Assert.That(motion.Action,Is.EqualTo(AnimationKind.Ultimate));
                 Assert.That(Object.FindObjectsByType<TMPro.TextMeshPro>().Any(t=>t.text=="HP -10"),Is.True);
             }

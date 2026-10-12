@@ -18,7 +18,7 @@ namespace TalesTactics
             FormationText(profile,(promoted?c.PromotionJob:c.Job)+" · Lv "+level,new Vector2(.02f,.86f),new Vector2(.98f,.92f),18);
             IntermissionPortrait(profile,c,new Vector2(.025f,.50f),new Vector2(.63f,.85f));
             var model=FormationRect(profile,"EquipmentModel",new Vector2(.60f,.51f),new Vector2(.97f,.83f));
-            var sprite=model.gameObject.AddComponent<UnityEngine.UI.Image>();sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
+            var sprite=model.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
             foreach(EquipmentSlot slot in Enum.GetValues(typeof(EquipmentSlot)))
             {
                 var chosen=slot;var item=current.Get(slot);float x=(int)slot/3f;

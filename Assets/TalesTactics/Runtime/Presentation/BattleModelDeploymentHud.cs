@@ -133,13 +133,13 @@ namespace TalesTactics
             ring.offsetMin=new Vector2(0,74);ring.offsetMax=new Vector2(0,94);
             var ellipse=ring.gameObject.AddComponent<FormationRing>();ellipse.color=selected?formationGold:deployed?formationTeal:new Color(.38f,.43f,.49f,.45f);ellipse.raycastTarget=false;
             var model=FormationButton(cell,(deployed?"● ":"○ ")+c.DisplayName,"",Vector2.zero,Vector2.one,()=>{selectedCharacter=index;RenderDeployment();});
-            model.offsetMin=new Vector2(8,78);model.offsetMax=new Vector2(-8,-20);
+            model.offsetMin=new Vector2(8,78);model.offsetMax=new Vector2(-8,18);
             model.GetComponent<UnityEngine.UI.Image>().color=Color.white;model.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             var button=model.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.normalColor=Color.clear;
             colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);button.colors=colors;
             var body=FormationRect(model,"BattleModel",Vector2.zero,Vector2.one);
             body.pivot=new Vector2(.5f,0);Place(body,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
-            var sprite=body.gameObject.AddComponent<UnityEngine.UI.Image>();sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
+            var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
             FormationIcon(cell,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.21f,.94f),formationGold);
             if(selected)FormationText(cell,"▼",new Vector2(.32f,.89f),new Vector2(.68f,1),23,TextAlignmentOptions.Center).color=formationGold;
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);

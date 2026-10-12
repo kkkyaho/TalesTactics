@@ -25,7 +25,7 @@ namespace TalesTactics
     public sealed class MoveSelectionState:BattleState
     {
         public MoveSelectionState(BattleDirector b):base(b){}
-        public override void Enter(){B.Board.ShowRange(B.TutorialActive?(System.Collections.Generic.IEnumerable<Vector2Int>)new[]{BattleDirector.TutorialDestination}:B.Session.Grid.Reachable(B.Session.Active,out _).Keys,new Color(0.15f,0.65f,1));base.Enter();}
+        public override void Enter(){B.Board.ShowMovementRange(B.TutorialActive?(System.Collections.Generic.IEnumerable<Vector2Int>)new[]{BattleDirector.TutorialDestination}:B.Session.Grid.Reachable(B.Session.Active,out _).Keys);base.Enter();}
         public override void Tile(Vector2Int p){B.StartCoroutine(B.MoveUnit(p));}
     }
     public sealed class ActionSelectionState:BattleState {public ActionSelectionState(BattleDirector b):base(b){}public override void Enter(){B.Board.ClearHighlights();base.Enter();} }
@@ -45,7 +45,11 @@ namespace TalesTactics
         public override void Cancel(){B.CancelTarget();}
     }
     public sealed class ActionExecutionState:BattleState {public ActionExecutionState(BattleDirector b):base(b){}public override void Cancel(){} }
-    public sealed class FacingSelectionState:BattleState {public FacingSelectionState(BattleDirector b):base(b){} }
+    public sealed class FacingSelectionState:BattleState
+    {
+        public FacingSelectionState(BattleDirector b):base(b){}
+        public override void Enter(){B.BeginFacingPreview();B.Board.ClearHighlights();base.Enter();}
+    }
     public sealed class TurnEndState:BattleState
     {
         public TurnEndState(BattleDirector b):base(b){}

@@ -15,7 +15,9 @@ namespace TalesTactics
                 var q=new Vector2(Mathf.Cos(b)*r.width*.5f,Mathf.Sin(b)*r.height*.5f);
                 int start=mesh.currentVertCount;
                 mesh.AddVert(r.center+p,color,Vector2.zero);mesh.AddVert(r.center+q,color,Vector2.zero);
-                mesh.AddVert(r.center+q*.86f,color,Vector2.zero);mesh.AddVert(r.center+p*.86f,color,Vector2.zero);
+                var inner=new Vector2(Mathf.Max(0,r.width*.5f-1.5f),Mathf.Max(0,r.height*.5f-1.5f));
+                mesh.AddVert(r.center+new Vector2(Mathf.Cos(b)*inner.x,Mathf.Sin(b)*inner.y),color,Vector2.zero);
+                mesh.AddVert(r.center+new Vector2(Mathf.Cos(a)*inner.x,Mathf.Sin(a)*inner.y),color,Vector2.zero);
                 mesh.AddTriangle(start,start+1,start+2);mesh.AddTriangle(start,start+2,start+3);
             }
         }

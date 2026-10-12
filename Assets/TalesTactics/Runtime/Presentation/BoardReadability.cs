@@ -21,7 +21,7 @@ namespace TalesTactics
         {
             TacticalMarkers();
             var u=battle.Session.Active;
-            Marker(ref activeMarker,"Active unit",u!=null&&u.Alive?u.Position:(Vector2Int?)null,Color.white,.48f);
+            Marker(ref activeMarker,"Active unit",u!=null&&u.Alive&&!(battle.State is FacingSelectionState)?u.Position:(Vector2Int?)null,new Color(.82f,.69f,.41f),.45f);
             Marker(ref targetMarker,"Selected target",battle.Target,new Color(1,.82f,.12f),.37f);
         }
         void Marker(ref LineRenderer marker,string name,Vector2Int? position,Color color,float radius)
@@ -29,7 +29,7 @@ namespace TalesTactics
             if(marker==null)
             {
                 var g=new GameObject(name);g.transform.SetParent(root,false);marker=g.AddComponent<LineRenderer>();
-                marker.sharedMaterial=HighlightMaterial;marker.loop=true;marker.positionCount=4;marker.startWidth=marker.endWidth=.07f;marker.startColor=marker.endColor=color;SetColor(marker,color);
+                marker.sharedMaterial=HighlightMaterial;marker.loop=true;marker.positionCount=4;marker.startWidth=marker.endWidth=.026f;marker.startColor=marker.endColor=color;SetColor(marker,color);
             }
             marker.enabled=position.HasValue;if(!position.HasValue)return;
             marker.positionCount=4;

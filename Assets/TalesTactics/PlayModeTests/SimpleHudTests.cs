@@ -19,7 +19,7 @@ namespace TalesTactics.PlayModeTests
                     var panel=(RectTransform)director.Hud.transform.Find("Commands");Assert.That(panel.GetComponent<UnityEngine.UI.Image>().enabled,Is.False);
                     var button=panel.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name==facing.ToString());
                     var rect=(RectTransform)button.transform;Assert.That(rect.rect.width,Is.EqualTo(40));
-                    var icon=button.GetComponentInChildren<TacticalIcon>();Assert.That(icon.rectTransform.rect.width,Is.EqualTo(20));
+                    var icon=button.GetComponentInChildren<TacticalIcon>();Assert.That(icon.rectTransform.rect.width,Is.EqualTo(26));
                     var view=CharacterMotion.ViewFacing(facing,director.Board.BattleCamera.transform.rotation);
                     var p=rect.anchoredPosition;
                     Assert.That(view==Facing.Front?p.y<0:view==Facing.Back?p.y>0:view==Facing.Left?p.x<0:p.x>0,Is.True);

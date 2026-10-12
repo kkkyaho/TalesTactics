@@ -15,7 +15,7 @@ namespace TalesTactics
         readonly Dictionary<UnitRuntime,SpriteRenderer> sprites=new Dictionary<UnitRuntime,SpriteRenderer>();
         readonly Dictionary<UnitRuntime,Animator> animators=new Dictionary<UnitRuntime,Animator>();
         readonly Dictionary<UnitRuntime,CharacterMotion> motions=new Dictionary<UnitRuntime,CharacterMotion>();
-        readonly Dictionary<UnitRuntime,Transform> bars=new Dictionary<UnitRuntime,Transform>();
+        Canvas healthCanvas;
         BattleDirector battle;Transform root;LineRenderer line;Sprite placeholder;
         Rect lastViewport;
         Bounds battlefieldBounds;
@@ -43,11 +43,7 @@ namespace TalesTactics
             if(root==null||battle.Session==null)return;
             FitBattlefield();
             UpdateSelectionMarkers();
-            foreach(var pair in bars)
-            {
-                pair.Value.position=units[pair.Key].position+BattleCamera.transform.up*1.43f;
-                pair.Value.rotation=BattleCamera.transform.rotation;
-            }
+            UpdateMovementPreview();
         }
         void FitBattlefield(bool force=false)
         {
@@ -85,7 +81,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();bars.Clear();}
+        public void ResetBoard(){StopAllCoroutines();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();healthCanvas=null;ResetMovementPreview();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);
@@ -101,8 +97,10 @@ namespace TalesTactics
                 scenery.Decorate(t,session.Grid,session.Rules.TileHeight);
             }
             if(placeholder==null)placeholder=CreatePlaceholder();
+            var overlay=new GameObject("Unit Health Overlay",typeof(RectTransform),typeof(Canvas));overlay.transform.SetParent(root,false);
+            healthCanvas=overlay.GetComponent<Canvas>();healthCanvas.renderMode=RenderMode.ScreenSpaceOverlay;healthCanvas.sortingOrder=-1;
             foreach(var u in session.Units)CreateUnitVisual(u);
-            var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.07f;line.startColor=line.endColor=Color.cyan;SetColor(line,Color.cyan);
+            var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.035f;line.numCornerVertices=3;line.numCapVertices=3;line.startColor=line.endColor=PathColor;SetColor(line,PathColor);
             battlefieldBounds=new Bounds();bool first=true;
             foreach(var tile in session.Grid.Tiles.Values)
             {
@@ -116,12 +114,13 @@ namespace TalesTactics
         void CreateUnitVisual(UnitRuntime u)
         {
                 var g=new GameObject(u.Data.DisplayName);g.transform.SetParent(root,false);units[u]=g.transform;
-                var visual=new GameObject("Directional Sprite");visual.transform.SetParent(g.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
+                var visual=new GameObject("Directional Sprite");var sizeRoot=new GameObject("Body Scale");sizeRoot.transform.SetParent(g.transform,false);sizeRoot.transform.localScale=Vector3.one*CharacterVisualSizing.Scale(u.Data);visual.transform.SetParent(sizeRoot.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
                 var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=SpriteMaterial;sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
                 else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera);motions[u]=motion;}
-                var bar=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(bar.GetComponent<Collider>());bar.name="HP";bar.transform.SetParent(g.transform,false);bar.transform.localPosition=Vector3.up*1.3f;bar.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(bar.GetComponent<Renderer>(),u==battle.Session.ObjectiveUnit?new Color(1,0.75f,0.12f):u.Team==Team.Player?Color.cyan:new Color(1,0.3f,0.25f));bars[u]=bar.transform;
-                var marker=GameObject.CreatePrimitive(PrimitiveType.Cube);Destroy(marker.GetComponent<Collider>());marker.name="Facing";marker.transform.SetParent(g.transform,false);marker.transform.localScale=new Vector3(0.14f,0.04f,0.25f);marker.GetComponent<Renderer>().sharedMaterial=TileMaterial;SetColor(marker.GetComponent<Renderer>(),Color.white);
+                var hp=new GameObject("HP "+u.Data.Id,typeof(RectTransform));hp.transform.SetParent(healthCanvas.transform,false);
+                hp.AddComponent<UnitHealthDisplay>().Initialize(battle,u,g.transform);
+                CreateFootRing(g.transform,u);
         }
         public bool Pick(Vector2 screen,out Vector2Int p)
         {
@@ -137,8 +136,7 @@ namespace TalesTactics
                 var tr=units[u];tr.position=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
                 var sr=sprites[u];var art=u.Data.Sprites.Get(u.Facing);sr.sprite=art!=null?art:placeholder;sr.color=u.Alive?(art!=null?Color.white:u.Data.PlaceholderColor):new Color(0.3f,0.3f,0.3f,0.35f);
                 sr.transform.rotation=BattleCamera.transform.rotation;sr.transform.localScale=u.Alive?Vector3.one:new Vector3(1,0.3f,1);
-                bars[u].localScale=new Vector3(0.7f*Mathf.Max(0.01f,(float)u.CurrentHP/u.Stats.HP),0.055f,0.06f);bars[u].gameObject.SetActive(u.Alive);
-                var f=SkillResolver.FacingVector(u.Facing);var marker=tr.Find("Facing");marker.localPosition=new Vector3(f.x*0.38f,0.04f,f.y*0.38f);marker.localRotation=Quaternion.Euler(0,f.x!=0?90:0,0);marker.gameObject.SetActive(u.Alive);
+                tr.Find("Faction Ring").gameObject.SetActive(u.Alive);
                 SetAnimation(u,u.Alive?u.Has(StatusKind.Guard)?AnimationKind.Guard:AnimationKind.Idle:AnimationKind.Dead);
             }
         }
@@ -168,8 +166,8 @@ namespace TalesTactics
                 units[u].position=to;
             }
         }
-        public void ClearHighlights(){foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);foreach(var border in rangeBorders.Values)border.enabled=false;if(line!=null)line.positionCount=0;if(destinationMarker!=null)destinationMarker.enabled=false;}
-        public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r)){SetColor(r,Color.Lerp(colors[p],color,0.65f));ShowBorder(p,Color.Lerp(color,Color.white,0.3f));}}
+        public void ClearHighlights(){foreach(var edge in movementEdges)if(edge!=null)edge.enabled=false;foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);foreach(var border in rangeBorders.Values)border.enabled=false;if(line!=null)line.positionCount=0;if(destinationMarker!=null)destinationMarker.enabled=false;ClearMovementPreview();}
+        public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r)){SetColor(r,Color.Lerp(colors[p],color,0.22f));ShowBorder(p,Color.Lerp(color,Color.white,0.15f),.018f);}}
         public void ShowSkillRange(UnitRuntime u,SkillData skill){var points=new List<Vector2Int>();foreach(var p in tiles.Keys)if(battle.Session.Resolver.InRange(u,skill,p))points.Add(p);ShowRange(points,new Color(0.8f,0.25f,0.2f));}
         public void ShowArea(Vector2Int center,int radius){ShowSkillRange(battle.Session.Active,battle.SelectedSkill);foreach(var p in battle.Session.Resolver.AreaTiles(battle.Session.Active,battle.SelectedSkill,center)){SetColor(tiles[p],new Color(1,0.7f,0.25f));ShowBorder(p,new Color(1,0.85f,0.25f),0.065f);}}
         void ShowBorder(Vector2Int p,Color color,float width=0.035f)
@@ -187,7 +185,11 @@ namespace TalesTactics
             border.startWidth=border.endWidth=width;border.startColor=border.endColor=color;
             SetColor(border,color);border.enabled=true;
         }
-        public void ShowPath(List<Vector2Int> path){if(battle.TutorialActive&&path.Count>0&&path[path.Count-1]!=BattleDirector.TutorialDestination)path=new List<Vector2Int>();Marker(ref destinationMarker,"Movement destination",path.Count>1?path[path.Count-1]:(Vector2Int?)null,path.Count>1&&battle.DangerAt(path[path.Count-1])>0?new Color(1,.3f,.1f):Color.cyan,.42f);line.positionCount=path.Count;for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*0.1f);}
+        public void ShowPath(List<Vector2Int> path)
+        {
+            if(battle.TutorialActive&&path.Count>0&&path[path.Count-1]!=BattleDirector.TutorialDestination)path=new List<Vector2Int>();
+            DrawMovementPreview(path);
+        }
         static void SetColor(Renderer r,Color c){var properties=new MaterialPropertyBlock();properties.SetColor("_BaseColor",c);properties.SetColor("_Color",c);r.SetPropertyBlock(properties);}
         static Sprite CreatePlaceholder()
         {

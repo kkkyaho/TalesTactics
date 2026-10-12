@@ -86,7 +86,7 @@ namespace TalesTactics
         {
             UseCT=Preferences.CT;UseFixedSpeedOrder=Preferences.FixedSpeedOrder;UseUtilityAI=Preferences.Utility;
             Audio.SetVolumes(Preferences.Music,Preferences.Effects);
-            if(display&&!Application.isEditor)Screen.SetResolution(Preferences.Width,Preferences.Height,Preferences.Fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);
+            if(display&&!Application.isEditor){Screen.SetResolution(Preferences.Width,Preferences.Height,Preferences.Fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);GetComponent<WindowDisplayController>()?.DisplayApplied();}
         }
     }
 }

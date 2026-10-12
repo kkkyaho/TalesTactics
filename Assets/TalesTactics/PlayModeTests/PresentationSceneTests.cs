@@ -16,7 +16,7 @@ namespace TalesTactics.PlayModeTests
             }
             director.BeginBattle();yield return null;
             var unit=director.Session.Units.First();
-            var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.transform.parent.name==unit.Data.DisplayName);
+            var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.Owner==unit);
             foreach(AnimationKind action in System.Enum.GetValues(typeof(AnimationKind)))
             {director.Board.SetAnimation(unit,action);yield return null;Assert.That(motion.Action,Is.EqualTo(action));}
             director.Board.SetAnimation(unit,AnimationKind.Idle);
@@ -25,9 +25,9 @@ namespace TalesTactics.PlayModeTests
                 unit.Facing=facing;director.Board.Sync();director.Board.RotateCamera(90);yield return null;
                 var expected=CharacterMotion.ViewFacing(facing,director.Board.BattleCamera.transform.rotation);
                 Assert.That(motion.GetComponent<SpriteRenderer>().sprite,Is.EqualTo(unit.Data.Sprites.Get(expected)));
-                var bar=motion.transform.parent.Find("HP");
+                var bar=Object.FindObjectsByType<UnitHealthDisplay>().Single(h=>h.name=="HP "+unit.Data.Id).transform;
                 var screenHead=director.Board.BattleCamera.WorldToScreenPoint(motion.transform.position+director.Board.BattleCamera.transform.up*1.3f);
-                var screenBar=director.Board.BattleCamera.WorldToScreenPoint(bar.position);
+                var screenBar=bar.position;
                 Assert.That(screenBar.y,Is.GreaterThan(screenHead.y),"HP bar must stay above the billboard head after camera rotation.");
             }
         }

@@ -31,11 +31,13 @@ namespace TalesTactics
         public System.Func<int> RewardRoll=()=>UnityEngine.Random.Range(0,10000);
         public System.Func<CampaignSave,bool> PersistCampaign=CampaignStorage.Save;
         public bool IsPlayerCommand=>Session!=null&&Session.Active!=null&&Session.Active.Team==Team.Player&&State is CommandState;
+        public UnitRuntime HealthHoveredUnit {get;private set;}
         void Start()
         {
             if(Hud==null||Board==null||Audio==null)
             {Debug.LogError("TalesTactics: BattleDirector requires HUD, Board and Audio references.");enabled=false;return;}
             ConfigureStorage(Application.persistentDataPath,true);Hud.Initialize(this);
+            gameObject.AddComponent<WindowDisplayController>().Initialize(this);
             if(!CatalogValidation.TryValidate(Catalog,out var error))
             {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}
             Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
@@ -45,6 +47,7 @@ namespace TalesTactics
         }
         void Update()
         {
+            HealthHoveredUnit=null;
             if(StoryActive)return;
             if(Keyboard.current!=null&&Keyboard.current.f5Key.wasPressedThisFrame){Hud.ShowSystemMenu();return;}
             if(Keyboard.current!=null&&Keyboard.current.f1Key.wasPressedThisFrame){if(!Hud.CloseHelp())Hud.ShowHelp();return;}
@@ -77,6 +80,7 @@ namespace TalesTactics
             }
             if(Board.Pick(mouse.position.ReadValue(),out var p))
             {
+                HealthHoveredUnit=Session.Grid[p]?.Occupant;
                 if(mouse.delta.ReadValue().sqrMagnitude>0){KeyboardTile=null;PreviewTile(p);}
 
             }
@@ -120,7 +124,8 @@ namespace TalesTactics
         public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved&&TutorialAllows(TutorialStep.Movement))SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
-        public void SkillCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
+        public bool CanOpenSkills=>Session?.Active!=null&&(!Session.Active.Acted||Session.Active.Data.Skills.Any(s=>s!=null&&IsFollowup(s)&&Session.Resolver.CanUse(Session.Active,s,true)==null));
+        public void SkillCommand(){if(IsPlayerCommand&&CanOpenSkills&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
         public void WaitCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Waiting)){guardRecorded=false;SetState(new FacingSelectionState(this));}}
         public void Undo(){if(!TutorialActive&&IsPlayerCommand&&Session.Active.CanUndoMove){RecordAction("이동 취소");if(Session.UndoMove()){RefreshViews();Hud.Refresh();}}}
         public void Guard(){if(!TutorialActive&&IsPlayerCommand&&!Session.Active.Acted){RecordAction("방어");guardRecorded=true;Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);SetState(new FacingSelectionState(this));}}
