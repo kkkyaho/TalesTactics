@@ -1,6 +1,6 @@
 # 10번 — 로컬 배포·업데이트 체계
 
-최신 공개 배포는 **[0.1.0-preview.3](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.3)**다. 편성·인터미션 UI와 아군 자유 선택 턴을 담은 WindowsFreeTurns 일반 빌드이며 새 ZIP/체크섬을 게시했다. [최신 패키지·검증 기록과 V3 중단 저장 호환 안내](Preview3/README.md)를 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
+최신 공개 배포는 **[0.1.0-preview.4](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.4)**다. 행동 경험치·교전 구성·전투 시스템·전장 UI·창 조절 개선을 담은 WindowsGroundFacing 일반 빌드이며 ZIP/체크섬을 게시했다. [최신 패키지·검증 기록과 캠페인V3/중단 전투V10 호환 안내](Preview4/README.md)를 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
 
 검증된 WindowsAccessibility 일반 빌드를 `TalesTactics-0.1.0-preview.1-windows-x64.zip`으로 패키징했다. 배포 ZIP은 **Builds/Releases**에 있으며199,546,142바이트(약190.3MiB), 파일202개와 manifest를 포함한다. ZIP/실행 파일/저장 백업은 Git에 올리지 않는다. Git에는 도구·사용 안내·검증 기록만 포함한다.
 

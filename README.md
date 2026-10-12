@@ -2,7 +2,7 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**[최신 Windows 다운로드 — 0.1.0-preview.3](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.3)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 캐릭터 편성·인터미션 UI와 아군 자유 선택 턴, 저장 백업/무결성 검사 도구를 포함합니다. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview3/README.md).
+**[최신 Windows 다운로드 — 0.1.0-preview.4](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.4)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 행동 경험치·교전 구성·되감기·재도전·전장 UI·창 크기 조절 개선을 포함합니다. 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview4/README.md).
 
 ## 현재 상태
 

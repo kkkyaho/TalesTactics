@@ -759,3 +759,11 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 실제 프레임 진행 확인 후1024×768(글자130%)·1920×1080(글자100%)×카메라0/90/180/270도 **8조합**을 검사했다. 화살표4개, 화면 밖 방향 버튼0, 각 방향 버튼 중앙의 실제 레이캐스트 불일치0이며 최종 색상의 Game View PNG8장을 저장했다(`camera-matrix.json`). 비선택색이 밝게 보이는 첫 캡처 후 회녹색의 밝기와 알파를 낮추고 다시 촬영했다.
 - 일반 Windows 빌드 **36.280초, 오류0/기존 안내3건**, 개발 검수 타입 제외 확인(`windows-build.json`, `windows-assembly.json`). 실행본은 `Builds/WindowsGroundFacing/TalesTactics.exe`. Pipeline 런타임 미설정 및 URP DebugOccluder/DebugOcclusionTest stripping 안내다. 이번 변경의 독립 Windows 프로세스 플레이 검사는 실행하지 않았고, 시각 증거는 Editor Game View다. 모든 지형/카메라 확대율/물리 모니터/DPI의 사람 검수는 별도다.
 - Play 종료·Scene dirty=false·Full HD와 원래 빠른 Play 옵션/runInBackground=false를 복원했다. 테스트 생성 CSV/동적 폰트/에디터 설정 변경을 복원하고 Assets 캡처 복사본은 `Logs/GroundFacingCaptureCache`에 보관했다. 기존 사용자 게임은 종료하지 않았으며 main/공개 릴리즈도 변경하지 않는다.
+
+## 2026-10-13 — 공개 릴리즈0.1.0-preview.4
+
+- 사용자 요청으로 preview.3 이후 develop 변경 전체를 릴리즈했다. 태그/패키지 sourceCommit은 `e1ec7bb57bab6b55235ab94ac6e3758b6670da57`이며, 게임 Assets/Packages/ProjectSettings가 기존 검증 커밋1be4bd3과 동일함을 확인했다. 기존 전체 PlayMode119/119·직전 EditMode202/202·Windows 빌드36.280초/오류0의 증거를 사용했고 Unity 테스트/빌드는 반복하지 않았다.
+- 배포 manifest를 캠페인V1~V3 읽기/V3 쓰기·중단 전투V1~V10 읽기/V10 쓰기로 맞추고 백업 도구에 `.v2.bak`를 포함했다. 배포 도구14/14 통과. 임시 저장 테스트만 모의 프로세스 목록을 쓰며 실행 중 사용자 게임은 그대로 유지했다. 실제 백업의 실행 중 거부 보호와 원본 불변도 검사한다. 첫 테스트 래퍼의 인자 전달 오류를 고친 뒤 전체14개를 재실행했다.
+- ZIP205,831,290바이트/202파일+manifest, SHA256 `b21ccd8bdea3c53fbb91d7e24b38eadd98f88f9e17f65585fd95cb149d3b5df1`. 검증된 빌드의 파일 목록·EXE/Runtime DLL 해시를 대조하고 ZIP 내부 해시/압축 해제 무결성 검사를 통과했다. 개발 검수 타입·사용자 저장·로그·개인 음원을 제외한다.
+- GitHub 공개 prerelease로 ZIP/체크섬을 게시했다. 두 첨부의 서버 SHA256과 로컬 일치, 비인증 릴리즈 조회·ZIP HEAD200·체크섬 GET200과 내용 일치 확인. 원격 ZIP 전체 재다운로드와 압축 해제 실행본의 독립 플레이 검사는 수행하지 않았다. 기존 Pipeline/URP 안내3건·다른PC/실물장치/DPI·장기 밸런스 검수 한계는 유지한다.
+- 상세 기록은 `Distribution/Preview4/README.md` 및 같은 폴더의 package/manifest/검사/공개 릴리즈 JSON을 따른다. README 최신 다운로드를 preview.4로 갱신했다. 일반 개발은 develop, main은 사용자 요청 릴리즈 아카이브로 계속 운영한다.
