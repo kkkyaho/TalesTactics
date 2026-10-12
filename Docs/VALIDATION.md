@@ -750,3 +750,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 개발 Windows 독립 프로세스의 격리 저장 경로에서 입문 연습/구매/장착/1장 승리 저장/재출전 검사를 **11.73초,26턴·이동26·공격22회**로 통과했다(`windows-review.json`).4배속 자동 기능 검수다. 최초 실행은 이전 인터미션 화면에서 잠긴 장 버튼을 찾던 검수 도구 경로로 실패했다(`windows-review-initial.json`). 현재 ‘임무 선택’ 화면을 먼저 열도록 개발 검수 코드2줄을 보완하고 개발 빌드·API 컴파일을 다시 실행했다. 해당 검수 전용 수정 후 전체 PlayMode는 반복하지 않았다. 일반 빌드는 검수 타입을 포함하지 않는다.
 - Windows 숨김 실행의 승리 캡처는 검게 나와 시각 검수 증거로 사용하지 않았다. 실제 시각 증거는 Editor Game View12장이다. 플레이어 오류/예외0이며 기존 사용하지 않는 URP 후처리 셰이더 경고는 남는다. 모든 디스플레이/DPI에서의 사람 검수는 별도다.
 - 최종 Play 종료, Scene dirty=false, runInBackground=false, Full HD, 빠른 Play 옵션 원복, 컴파일 실패 없음/콘솔 오류0을 확인했다. 테스트 CSV/동적 폰트 변경은 복원하고 Assets 캡처 복사본은 `Logs/GroundedMarkersCaptureCache`에 보관했다. 현재 사용자의 게임을 종료하지 않았으며 검수는 별도 프로세스/저장 경로로 수행했다. main/공개 릴리즈는 변경하지 않는다.
+
+## 2026-10-13 — 지면 방향 선택 (`develop`)
+
+- 첨부한 전술 RPG 레퍼런스에 맞춰 대기/방어의 작은 화면 꺾쇠와 선 미리보기를 지면4방향의 넓은 화살표로 교체했다. 캐릭터 뒤에 평면 메쉬를 그리고 기본 회녹색/선택 황동색으로 구분한다. Canvas에는 지면 투영을 따라가는 투명 클릭 영역만 둔다. 호버/방향키 미리보기·클릭/Enter 확정·Esc 취소와 실제 방향 확정 시점은 유지한다.
+- 최종 실제 Unity 전체 PlayMode **119/119(219.91초)** 통과(`GroundFacing/playmode.json`). 카메라4방향×방향4개의 클릭16조합, 미리보기와 실제 방향 분리, 회전 후 방향키/Enter/Esc, 도움말 모달/취소 후 숨김을 포함한다. 첫 전체117/118과 후속4/5는 새 테스트가 방향 선택 중 열 수 없는 시스템 메뉴를 사용하고, 취소 뒤 LateUpdate보다 먼저 판정해서 실패했다. 실제 도움말 경로와 렌더링 완료 시점으로 고친 뒤 전체119개를 다시 실행했다. 실패 기록도 보존한다.
+- 최종 Unity API 참조 Runtime/Editor/EditMode/PlayMode4개 어셈블리 컴파일 통과(`api-compile.txt`). 코어 규칙 변경이 없으므로 EditMode/ManagedChecks는 다시 실행하지 않았다.
+- 실제 프레임 진행 확인 후1024×768(글자130%)·1920×1080(글자100%)×카메라0/90/180/270도 **8조합**을 검사했다. 화살표4개, 화면 밖 방향 버튼0, 각 방향 버튼 중앙의 실제 레이캐스트 불일치0이며 최종 색상의 Game View PNG8장을 저장했다(`camera-matrix.json`). 비선택색이 밝게 보이는 첫 캡처 후 회녹색의 밝기와 알파를 낮추고 다시 촬영했다.
+- 일반 Windows 빌드 **36.280초, 오류0/기존 안내3건**, 개발 검수 타입 제외 확인(`windows-build.json`, `windows-assembly.json`). 실행본은 `Builds/WindowsGroundFacing/TalesTactics.exe`. Pipeline 런타임 미설정 및 URP DebugOccluder/DebugOcclusionTest stripping 안내다. 이번 변경의 독립 Windows 프로세스 플레이 검사는 실행하지 않았고, 시각 증거는 Editor Game View다. 모든 지형/카메라 확대율/물리 모니터/DPI의 사람 검수는 별도다.
+- Play 종료·Scene dirty=false·Full HD와 원래 빠른 Play 옵션/runInBackground=false를 복원했다. 테스트 생성 CSV/동적 폰트/에디터 설정 변경을 복원하고 Assets 캡처 복사본은 `Logs/GroundFacingCaptureCache`에 보관했다. 기존 사용자 게임은 종료하지 않았으며 main/공개 릴리즈도 변경하지 않는다.

@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "duration": 8.46,
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GroundFacingArrowsMatchCameraAndAcceptPointerClicks",
+      "Status": "Passed",
+      "Duration": 2.6967179,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation",
+      "Status": "Passed",
+      "Duration": 1.3743335,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MovementGhostAndFacingPreviewClearWithoutChangingUnit",
+      "Status": "Failed",
+      "Duration": 0.9765454,
+      "Message": "  Expected: True\r\n  But was:  False\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<MovementGhostAndFacingPreviewClearWithoutChangingUnit>d__26.MoveNext () [0x003ba] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\BattleVisualPolishTests.cs:60\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TimingSpinCyclesFourViewsWithoutChangingCombatFacing",
+      "Status": "Passed",
+      "Duration": 0.896041,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving",
+      "Status": "Passed",
+      "Duration": 2.4839366,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

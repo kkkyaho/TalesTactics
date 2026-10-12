@@ -6,7 +6,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 ## 현재 상태
 
-최신 개발 실행본: **`Builds/WindowsGroundedMarkers/TalesTactics.exe`** (폴더 전체 필요). 발밑·위험 표시 개선의 실제 PlayMode118/118, 화면36조합, Windows 빌드와 개발 실행본1장 기능 검사를 통과했습니다.
+최신 개발 실행본: **`Builds/WindowsGroundFacing/TalesTactics.exe`** (폴더 전체 필요). 첨부 레퍼런스 방식의 지면4방향 화살표를 적용했습니다. 실제 PlayMode119/119, 카메라·화면8조합과 Windows 빌드를 통과했습니다. [방향 선택의 실제 화면·검증](Docs/GroundFacing/README.md).
 
 개발판의 **발밑 표시와 적 위험 범위를 자연스럽게 정리**했습니다. 진영 링은 작은 접지 그림자로, 선택/대상은 얇은 모서리 표시로 바꿨습니다. 위험 범위는 내부 사각형 없는 옅은 면과 외곽선이며, 확정된 공격 예고는 황색으로 유지합니다. 대기 완료 캐릭터는 채도가 낮아지고 다음 아군 턴에 복원됩니다. [실제 화면과 검증](Docs/GroundedMarkers/README.md).
 

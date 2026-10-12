@@ -23,6 +23,15 @@ namespace TalesTactics
             for(int i=0;i<4;i++)colors.Add(color);
             triangles.Add(n);triangles.Add(n+1);triangles.Add(n+2);triangles.Add(n);triangles.Add(n+2);triangles.Add(n+3);
         }
+        public void Arrow(Vector3 direction,Color color)
+        {
+            Clear();var side=Vector3.Cross(Vector3.up,direction);
+            Quad(direction*.42f-side*.13f,direction*.42f+side*.13f,direction*.76f+side*.13f,direction*.76f-side*.13f,color);
+            int n=vertices.Count;
+            vertices.Add(direction*.76f-side*.32f);vertices.Add(direction*.76f+side*.32f);vertices.Add(direction*1.18f);
+            for(int i=0;i<3;i++){colors.Add(color);triangles.Add(n+i);}
+            Apply();
+        }
         public void Line(Vector3 a,Vector3 b,float width,Color color)
         {var side=Vector3.Cross(Vector3.up,(b-a).normalized)*width*.5f;Quad(a-side,a+side,b+side,b-side,color);}
         public void Tile(Vector3 center,float radius,Color color)

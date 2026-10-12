@@ -5,11 +5,13 @@ namespace TalesTactics
     public sealed partial class BoardView
     {
         static readonly Color PathColor=new Color(.36f,.88f,.86f);
-        LineRenderer pathArrow,facingWedge;
+        LineRenderer pathArrow;
+        readonly Dictionary<Facing,GroundOverlay> facingArrows=new Dictionary<Facing,GroundOverlay>();
+        Facing? drawnFacing;
         SpriteRenderer destinationGhost;
         readonly List<LineRenderer> movementEdges=new List<LineRenderer>();
         Vector2Int? previewDestination;
-        void ResetMovementPreview(){pathArrow=null;facingWedge=null;destinationGhost=null;previewDestination=null;movementEdges.Clear();}
+        void ResetMovementPreview(){pathArrow=null;facingArrows.Clear();drawnFacing=null;destinationGhost=null;previewDestination=null;movementEdges.Clear();}
         public void ShowMovementRange(IEnumerable<Vector2Int> points)
         {
             var set=new HashSet<Vector2Int>(points);ShowRange(set,new Color(.15f,.55f,.62f));
@@ -61,15 +63,24 @@ namespace TalesTactics
         }
         void UpdateMovementPreview()
         {
-            bool facing=battle.State is FacingSelectionState&&!battle.Hud.InputModalOpen;
+            bool facing=battle.State is FacingSelectionState&&!battle.Hud.InputModalOpen&&!battle.StoryActive&&battle.Session.Active!=null;
             if(facing)
             {
-                if(facingWedge==null)facingWedge=ThinLine("Facing preview",root,new Color(.67f,.57f,.36f),.018f);
                 var origin=battle.Session.Grid[battle.Session.Active.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.03f;
-                var v=SkillResolver.FacingVector(battle.PendingFacing);var dir=new Vector3(v.x,0,v.y);var side=Vector3.Cross(Vector3.up,dir)*.3f;
-                facingWedge.positionCount=3;facingWedge.SetPositions(new[]{origin+dir*.85f+side,origin+dir*.35f,origin+dir*.85f-side});
+                foreach(Facing direction in System.Enum.GetValues(typeof(Facing)))
+                {
+                    if(!facingArrows.TryGetValue(direction,out var arrow))
+                    {arrow=Overlay("Ground facing "+direction,root,-1);facingArrows[direction]=arrow;}
+                    arrow.transform.position=origin;
+                    if(drawnFacing!=battle.PendingFacing)
+                    {
+                        var v=SkillResolver.FacingVector(direction);
+                        arrow.Arrow(new Vector3(v.x,0,v.y),direction==battle.PendingFacing?new Color(.72f,.53f,.24f,.9f):new Color(.30f,.34f,.29f,.50f));
+                    }
+                }
+                drawnFacing=battle.PendingFacing;
             }
-            if(facingWedge!=null)facingWedge.enabled=facing;
+            foreach(var arrow in facingArrows.Values)arrow.enabled=facing;
             if(!previewDestination.HasValue||destinationGhost==null)return;
             var unit=battle.Session.Active;
             destinationGhost.sprite=unit.Data.Sprites.Get(CharacterMotion.ViewFacing(unit.Facing,BattleCamera.transform.rotation));

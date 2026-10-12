@@ -337,3 +337,9 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 - `BoardThreatView.Region`은 위험 셀의 합집합을 한 메쉬로 만들고 같은 높이의 내부 경계를 생략한다. 확정 예고는 별도 황색 영역이며 위험 표시 꺼짐과 독립적이다. 죽은 적을 제외하고 재도전/보드 교체 시 영역을 정리한다.
 - `UnitTone.shader`는 Resources로 일반 빌드에 포함된다. 캐릭터 텍스처의 채도/밝기만 MaterialPropertyBlock으로 제어해 CharacterMotion의 피격/시전 tint를 보존한다. TeamTurnScheduler의 실제 미완료 목록을 사용하므로 이동/행동 여부 플래그만으로 완료 처리하지 않으며, 다음 아군 페이즈에서 색을 복원한다. MaterialPropertyBlock은 Unity 객체 생성이 허용되는 실행 시점에 초기화한다.
 - 기존 전투 데이터/저장 버전 변경은 없다. 실제 캡처와 검증은 `GroundedMarkers/README.md`.
+
+## 지면 방향 선택 (2026-10-13)
+
+- `GroundOverlay.Arrow`는 사각 몸통과 삼각 화살촉으로 채워진 평면 화살표를 만든다. `BoardMovementPreview`는 방향 선택 상태에서 네 방향 메쉬를 캐릭터 뒤에 표시하고, `PendingFacing`이 바뀔 때만 선택색을 갱신한다. 모달/스토리/상태 종료 때 숨기며 보드 리셋 때 캐시를 함께 정리한다.
+- `BattleFacingHud`에는 투명한 버튼만 남긴다. 카메라로 화살표의 지면 범위를 투영해 위치·크기를 맞추므로 화면 비율이나 회전이 바뀌어도 시각 표시와 클릭 위치가 분리되지 않는다. 최소 클릭 크기는 Canvas 좌표32×24이다. 별도의 화면 방향 꺾쇠와 선형 미리보기는 제거했다.
+- `FacingPointer`·방향키의 미리보기, 클릭/Enter 확정, Esc 취소는 기존 경로를 유지한다. 실제 전투 방향은 확정할 때만 변경한다. 검증과 실제 화면은 `GroundFacing/README.md`.

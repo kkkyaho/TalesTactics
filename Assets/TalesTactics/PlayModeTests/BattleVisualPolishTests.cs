@@ -50,9 +50,14 @@ namespace TalesTactics.PlayModeTests
             director.State.Cancel();yield return null;
             Assert.That(director.Board.GetComponentsInChildren<SpriteRenderer>().Single(s=>s.name=="Destination ghost").enabled,Is.False);
             director.WaitCommand();director.PreviewFacing(Facing.Left);yield return null;
-            Assert.That(u.Facing,Is.EqualTo(facing));director.State.Cancel();yield return null;
+            Assert.That(u.Facing,Is.EqualTo(facing));
+            var arrows=director.Board.GetComponentsInChildren<GroundOverlay>().Where(a=>a.name.StartsWith("Ground facing ")).ToArray();
+            Assert.That(arrows.Length,Is.EqualTo(4));
+            director.Hud.ShowHelp();yield return new WaitForEndOfFrame();Assert.That(director.Hud.InputModalOpen,Is.True);Assert.That(arrows.All(a=>!a.enabled),Is.True);
+            director.Hud.CloseHelp();yield return new WaitForEndOfFrame();Assert.That(arrows.All(a=>a.enabled),Is.True);
+            director.State.Cancel();yield return new WaitForEndOfFrame();
             Assert.That(u.Facing,Is.EqualTo(facing));Assert.That(director.Session.Active,Is.SameAs(u));
-            Assert.That(director.Board.GetComponentsInChildren<LineRenderer>().Single(l=>l.name=="Facing preview").enabled,Is.False);
+            Assert.That(arrows.All(a=>!a.enabled),Is.True);
         }
     }
 }

@@ -7,7 +7,30 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator ThinFacingArrowsMatchCameraAndAcceptPointerClicks()
+        [UnityTest] public IEnumerator GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation()
+        {
+            var keyboard=UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Keyboard>();
+            try
+            {
+                director.BeginBattle();yield return null;var unit=director.Session.Active;
+                for(int rotation=0;rotation<4;rotation++)
+                {
+                    director.Board.RotateCamera(90);director.StopAllCoroutines();director.Session.Active=unit;
+                    var original=unit.Facing;director.SetState(new FacingSelectionState(director));yield return null;
+                    yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.RightArrow);
+                    var pending=director.PendingFacing;
+                    Assert.That(pending,Is.EqualTo(director.ScreenFacing(Vector2.right)));Assert.That(unit.Facing,Is.EqualTo(original));
+                    yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.Escape);
+                    Assert.That(director.State,Is.TypeOf<CommandState>());Assert.That(unit.Facing,Is.EqualTo(original));
+                    director.WaitCommand();yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.RightArrow);
+                    yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.Enter);
+                    Assert.That(unit.Facing,Is.EqualTo(pending));Assert.That(director.State,Is.Not.TypeOf<FacingSelectionState>());
+                }
+                director.StopAllCoroutines();
+            }
+            finally {UnityEngine.InputSystem.InputSystem.RemoveDevice(keyboard);}
+        }
+        [UnityTest] public IEnumerator GroundFacingArrowsMatchCameraAndAcceptPointerClicks()
         {
             director.BeginBattle();yield return null;var unit=director.Session.Active;
             for(int rotation=0;rotation<4;rotation++)
@@ -18,12 +41,25 @@ namespace TalesTactics.PlayModeTests
                     director.StopAllCoroutines();director.Session.Active=unit;director.SetState(new FacingSelectionState(director));yield return null;
                     var panel=(RectTransform)director.Hud.transform.Find("Commands");Assert.That(panel.GetComponent<UnityEngine.UI.Image>().enabled,Is.False);
                     var button=panel.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name==facing.ToString());
-                    var rect=(RectTransform)button.transform;Assert.That(rect.rect.width,Is.EqualTo(40));
-                    var icon=button.GetComponentInChildren<TacticalIcon>();Assert.That(icon.rectTransform.rect.width,Is.EqualTo(26));
+                    var rect=(RectTransform)button.transform;Assert.That(rect.rect.width,Is.GreaterThanOrEqualTo(32));
+                    Assert.That(button.GetComponentInChildren<TacticalIcon>(),Is.Null,"No floating screen-space chevron");
+                    var arrow=director.Board.GetComponentsInChildren<GroundOverlay>().Single(a=>a.name=="Ground facing "+facing);
+                    Assert.That(arrow.enabled,Is.True);
+                    var mesh=arrow.GetComponent<MeshFilter>().sharedMesh;
+                    Assert.That(mesh.vertices.All(v=>Mathf.Abs(v.y)<.001f),Is.True,"Arrow lies on the ground plane");
+                    var bounds=RectTransformUtility.WorldToScreenPoint(null,rect.position);
+                    var direction=SkillResolver.FacingVector(facing);
+                    var expected=director.Board.BattleCamera.WorldToScreenPoint(arrow.transform.position+new Vector3(direction.x,0,direction.y)*.8f);
+                    Assert.That(Vector2.Distance(bounds,new Vector2(expected.x,expected.y)),Is.LessThan(2),"Hit area must follow the ground arrow after camera rotation");
                     var view=CharacterMotion.ViewFacing(facing,director.Board.BattleCamera.transform.rotation);
                     var p=rect.anchoredPosition;
                     Assert.That(view==Facing.Front?p.y<0:view==Facing.Back?p.y>0:view==Facing.Left?p.x<0:p.x>0,Is.True);
-                    PointAt(director.GetComponent<GamepadPointer>(),button.name);director.GetComponent<GamepadPointer>().Submit();
+                    var original=unit.Facing;
+                    PointAt(director.GetComponent<GamepadPointer>(),button.name);
+                    UnityEngine.EventSystems.ExecuteEvents.Execute(button.gameObject,new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current),UnityEngine.EventSystems.ExecuteEvents.pointerEnterHandler);
+                    yield return null;
+                    Assert.That(director.PendingFacing,Is.EqualTo(facing));Assert.That(unit.Facing,Is.EqualTo(original));
+                    director.GetComponent<GamepadPointer>().Submit();
                     Assert.That(unit.Facing,Is.EqualTo(facing));Assert.That(director.State,Is.Not.TypeOf<FacingSelectionState>());
                 }
             }

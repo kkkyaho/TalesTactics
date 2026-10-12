@@ -11,12 +11,8 @@ namespace TalesTactics
                 var facing=f;
                 var g=new GameObject(f.ToString(),typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.Button));g.transform.SetParent(commands,false);
                 var hit=g.GetComponent<UnityEngine.UI.Image>();hit.color=Color.clear;hit.raycastTarget=true;
-                AddTacticalIcon(g.transform,"chevron",26,new Vector2(0,-10),Color.white);
-                var icon=g.GetComponentInChildren<TacticalIcon>();
-                icon.rectTransform.anchorMin=icon.rectTransform.anchorMax=icon.rectTransform.pivot=new Vector2(.5f,.5f);icon.rectTransform.anchoredPosition=Vector2.zero;
-                var outline=icon.gameObject.AddComponent<UnityEngine.UI.Outline>();outline.effectColor=new Color(0,0,0,.9f);outline.effectDistance=new Vector2(1,-1);
-                var button=g.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=icon;
-                var colors=button.colors;colors.normalColor=new Color(.92f,.94f,1);colors.highlightedColor=new Color(1,.78f,.3f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(1,.6f,.15f);button.colors=colors;
+                // Only the hit area is in the Canvas. The visible arrow follows the ground beneath sprites.
+                var button=g.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=hit;button.transition=UnityEngine.UI.Selectable.Transition.None;
                 button.onClick.AddListener(()=>battle.ChooseFacing(facing));
                 var hover=g.AddComponent<FacingPointer>();hover.Battle=battle;hover.Direction=facing;
             }
@@ -28,25 +24,24 @@ namespace TalesTactics
         {
             var unit=battle.Session.Active;var camera=battle.Board.BattleCamera;if(unit==null||camera==null)return;
             float scale=GetComponent<Canvas>().scaleFactor;
-            var world=battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
+            var world=battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.03f;
             var foot=camera.WorldToScreenPoint(world);
             var center=new Vector2(foot.x/scale,foot.y/scale);
-            float radius=Mathf.Clamp(camera.WorldToScreenPoint(world+camera.transform.right*.85f).x-foot.x,44*scale,70*scale)/scale;
-            var half=new Vector2(radius+20,radius+20);
-            center.x=Mathf.Clamp(center.x,half.x+12,Screen.width/scale-half.x-12);
-            center.y=Mathf.Clamp(center.y,half.y+12,Screen.height/scale-half.y-88);
+            var half=new Vector2(120,120);
             Place(commands,Vector2.zero,Vector2.zero,center-half,center+half);
             foreach(Transform child in commands)
             {
                 if(!child.gameObject.activeSelf||!Enum.TryParse<Facing>(child.name,out var facing))continue;
                 var direction=SkillResolver.FacingVector(facing);
-                var projected=camera.WorldToScreenPoint(world+new Vector3(direction.x,0,direction.y))-foot;
-                var offset=new Vector2(projected.x,projected.y).normalized*radius;
-                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(40,40);r.anchoredPosition=offset;
-                var icon=child.GetComponentInChildren<TacticalIcon>();
-                icon.rectTransform.localEulerAngles=new Vector3(0,0,Mathf.Atan2(offset.y,offset.x)*Mathf.Rad2Deg);
-                var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
-                colors.normalColor=battle.PendingFacing==facing?new Color(.94f,.78f,.43f):new Color(.25f,.75f,.74f);button.colors=colors;
+                var dir=new Vector3(direction.x,0,direction.y);var side=Vector3.Cross(Vector3.up,dir);
+                var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);var max=-min;
+                foreach(float distance in new[]{.42f,1.18f})foreach(float width in new[]{-.32f,.32f})
+                {
+                    var p=camera.WorldToScreenPoint(world+dir*distance+side*width)-foot;
+                    var point=new Vector2(p.x,p.y)/scale;min=Vector2.Min(min,point);max=Vector2.Max(max,point);
+                }
+                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);
+                r.sizeDelta=Vector2.Max(max-min,new Vector2(32,24));r.anchoredPosition=(min+max)*.5f;
             }
         }
     }
