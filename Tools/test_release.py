@@ -1,5 +1,6 @@
 """Distribution tool tests; these are not Unity tests."""
 import json
+import re
 import subprocess
 import tempfile
 import unittest
@@ -37,9 +38,18 @@ class DistributionTests(unittest.TestCase):
         with patch.object(release.subprocess, 'check_output', side_effect=['a'*40, '']):
             return release.package(self.build, self.evidence, version, self.root/'out', self.notes)
 
-    def ps(self, script, *args, success=True):
+    def ps(self, script, *args, success=True, player_running=False):
+        target = release.ROOT/'Tools/Distribution'/script
+        if script == 'Backup-Saves.ps1':
+            # Isolate synthetic save tests from any game the user is currently playing.
+            wrapper = self.root/'backup-fixture.ps1'
+            result = '[pscustomobject]@{Name="TalesTactics"}' if player_running else '$null'
+            wrapper.write_text('param([string]$SaveDirectory,[string]$BackupDirectory)\n'
+                               'function Get-Process { [CmdletBinding()] param([string]$Name) '+result+' }\n'
+                               "& '"+str(target).replace("'", "''")+"' @PSBoundParameters\n")
+            target = wrapper
         proc = subprocess.run(['powershell.exe', '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File',
-                               str(release.ROOT/'Tools/Distribution'/script), *map(str, args)],
+                               str(target), *map(str, args)],
                               capture_output=True, text=True, errors='replace')
         self.assertEqual(proc.returncode == 0, success, proc.stdout+proc.stderr)
         return proc.stdout.strip()
@@ -65,6 +75,11 @@ class DistributionTests(unittest.TestCase):
         with zipfile.ZipFile(result['archive']) as z:
             z.extractall(self.root/'installed')
             self.assertNotIn('symbols.pdb', z.namelist())
+            manifest = json.loads(z.read('manifest.json'))
+            for field, filename in [('saveWriteVersion', 'CampaignSave.cs'), ('checkpointWriteVersion', 'BattleCheckpoint.cs')]:
+                code = (release.ROOT/'Assets/TalesTactics/Runtime/Core'/filename).read_text(encoding='utf-8-sig')
+                current = int(re.search(r'public int Version=(\d+)', code).group(1))
+                self.assertEqual(manifest[field], current, 'Release metadata must match the game save format')
         self.ps('Verify-Package.ps1', '-Directory', self.root/'installed')
 
     def test_changed_archive_fails_hash(self):
@@ -149,7 +164,7 @@ class DistributionTests(unittest.TestCase):
     def test_backup_preserves_all_slots_settings_and_history_without_touching_source(self):
         saves = self.root/'saves'
         saves.mkdir()
-        names = ['campaign.json', 'campaign.json.bak', 'campaign.json.v1.bak',
+        names = ['campaign.json', 'campaign.json.bak', 'campaign.json.v1.bak', 'campaign.json.v2.bak',
                  'campaign-slot2.json', 'campaign-slot3.json', 'settings.json',
                  'settings.json.bak', 'campaign.json.corrupt-aabb']
         for name in names:
@@ -172,6 +187,15 @@ class DistributionTests(unittest.TestCase):
         saves.mkdir()
         self.ps('Backup-Saves.ps1', '-SaveDirectory', saves, '-BackupDirectory', saves/'nested', success=False)
         self.ps('Backup-Saves.ps1', '-SaveDirectory', saves, '-BackupDirectory', self.root/'backups', success=False)
+
+    def test_backup_rejects_running_player_without_creating_backup(self):
+        saves = self.root/'saves'
+        saves.mkdir()
+        (saves/'campaign.json').write_text('unchanged')
+        self.ps('Backup-Saves.ps1', '-SaveDirectory', saves, '-BackupDirectory', self.root/'backups',
+                success=False, player_running=True)
+        self.assertFalse((self.root/'backups').exists())
+        self.assertEqual((saves/'campaign.json').read_text(), 'unchanged')
 
     def test_installed_missing_extra_and_escaping_manifest_fail(self):
         result = self.pack()

@@ -14,7 +14,7 @@ $target=[IO.Path]::GetFullPath($BackupDirectory)
 if($target.TrimEnd('\','/') -ieq $source.TrimEnd('\','/') -or $target.StartsWith($source.TrimEnd('\','/')+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Backup destination must be outside the save directory.'}
 if(!(Test-Path -LiteralPath $source -PathType Container)){throw 'No save directory exists yet.'}
 if(((Get-Item -LiteralPath $source).Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Linked save directory is not supported.'}
-$pattern='^(campaign(?:-slot[23])?\.json|settings\.json)(\.bak|\.v1\.bak|\.corrupt-[a-fA-F0-9]+)?$'
+$pattern='^(campaign(?:-slot[23])?\.json|settings\.json)(\.bak|\.v[12]\.bak|\.corrupt-[a-fA-F0-9]+)?$'
 $files=@(Get-ChildItem -LiteralPath $source -Force -File | Where-Object Name -match $pattern | Sort-Object Name)
 if(!$files.Count){throw 'No save/settings files to back up.'}
 $destination=Join-Path $target ((Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N'))

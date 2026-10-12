@@ -136,7 +136,8 @@ def package(build, evidence, version, output, notes):
     manifest = {'schema': 1, 'kind': 'release', 'version': version,
                 'sourceCommit': source, 'unity': '6000.6.0f1', 'playerVersion': '0.1.0',
                 'platform': 'windows-x64', 'createdUtc': datetime.now(timezone.utc).isoformat(),
-                'saveReadVersions': [1, 2], 'saveWriteVersion': 2, 'settingsVersion': 1,
+                'saveReadVersions': [1, 2, 3], 'saveWriteVersion': 3, 'settingsVersion': 1,
+                'checkpointReadVersions': list(range(1, 11)), 'checkpointWriteVersion': 10,
                 'buildEvidenceSha256': digest(evidence/'windows-build.json'),
                 'excluded': excluded, 'files': []}
     # Stage and validate before publishing either final output name.
