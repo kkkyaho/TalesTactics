@@ -15,9 +15,9 @@ namespace TalesTactics.Tests
             string path=SaveTestPath(),json=JsonUtility.ToJson(legacy);
             File.WriteAllText(path,json);
             var store=new CampaignFile(path);var loaded=store.Load();
-            Assert.That(loaded.Version,Is.EqualTo(2));Assert.That(loaded.Gold,Is.EqualTo(300));
+            Assert.That(loaded.Version,Is.EqualTo(3));Assert.That(loaded.Gold,Is.EqualTo(300));
             Assert.That(CampaignInventory.Owned(loaded,"sword"),Is.EqualTo(2));
-            Assert.That(loaded.Get("a").Level,Is.EqualTo(12));Assert.That(loaded.Get("a").EXP,Is.EqualTo(30));
+            Assert.That(loaded.Get("a").Level,Is.EqualTo(12));Assert.That(loaded.Get("a").EXP,Is.EqualTo(2));
             Assert.That(File.ReadAllText(path),Is.EqualTo(json),"Loading must not rewrite the original.");
             Assert.That(store.Save(loaded),Is.True);Assert.That(File.ReadAllText(path+".v1.bak"),Is.EqualTo(json));
             loaded.Gold=45;Assert.That(store.Save(loaded),Is.True);

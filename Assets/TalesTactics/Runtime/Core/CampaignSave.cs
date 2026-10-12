@@ -10,12 +10,12 @@ namespace TalesTactics
         public TacticalTrait Trait;
         public GrowthPath Growth;
         public string[] Equipment=new string[3];public List<string> UnlockedSkills=new List<string>();
-        public void AddExperience(int amount){EXP+=Mathf.Max(0,amount);while(Level<50&&EXP>=Level*100){EXP-=Level*100;Level++;}if(Level==50)EXP=0;}
+        public void AddExperience(int amount)=>ExperienceRules.Advance(ref Level,ref EXP,amount);
         public bool TryPromote(CharacterData data,List<string> flags){if(Promoted||Level<data.PromotionLevel||!flags.Contains(data.PromotionStoryFlag))return false;Promoted=true;return true;}
     }
     [Serializable] public class CampaignSave
     {
-        public int Version=2;public bool AutoTiming;
+        public int Version=3;public bool AutoTiming;
         public BattleCheckpoint SuspendedBattle;
         public bool HasSuspendedBattle;
         public string SavedAt;

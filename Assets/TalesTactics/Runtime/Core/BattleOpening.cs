@@ -8,11 +8,11 @@ namespace TalesTactics
     // Immutable-by-convention pre-turn snapshot. Contains no campaign rewards or scheduler progress.
     [Serializable] public sealed class BattleOpening
     {
-        public int Version=3,Stage;
+        public int Version=4,Stage;
         public int[] Deployment;
         public ObjectiveKind Objective;
         public BattleDifficulty Difficulty;
-        public bool MissionEvents,Reactions;
+        public bool MissionEvents,Reactions,ActionExperience;
         public bool CT,TeamTurns,Utility,Legacy,PhaseSurvival,TacticalCombat,BossEncounters;
         public UnityEngine.Random.State RandomState;
         public List<CheckpointUnit> Units=new List<CheckpointUnit>();
@@ -23,13 +23,13 @@ namespace TalesTactics
                 Deployment=session.Units.Where(u=>u.Team==Team.Player).Select(u=>Array.IndexOf(catalog.Characters,u.Data)).ToArray(),
                 CT=session.Scheduler is CTTurnScheduler,TeamTurns=session.Scheduler is TeamTurnScheduler,Utility=session.UseUtilityAI,
                 Legacy=session.LegacyCampaign,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,
-                Reactions=session.Resolver.ReactionsEnabled,Difficulty=session.Difficulty,MissionEvents=session.MissionEvents,TacticalCombat=session.TacticalCombat,BossEncounters=session.BossEncounters,RandomState=UnityEngine.Random.state,
+                ActionExperience=session.Resolver.ActionExperienceEnabled,Reactions=session.Resolver.ReactionsEnabled,Difficulty=session.Difficulty,MissionEvents=session.MissionEvents,TacticalCombat=session.TacticalCombat,BossEncounters=session.BossEncounters,RandomState=UnityEngine.Random.state,
                 Units=session.Units.Select(u=>new CheckpointUnit(u)).ToList()};
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if((Version<1||Version>3)||Stage< -1||Stage>=CampaignStages.Count||CT&&TeamTurns||!Enum.IsDefined(typeof(ObjectiveKind),Objective)||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Invalid battle opening");
-            var session=new BattleSession(catalog,Deployment,campaignStage:Stage,useCT:CT,utilityAI:Utility,objective:Objective,legacyCampaign:Legacy,teamTurns:TeamTurns,phaseSurvival:PhaseSurvival,tacticalCombat:TacticalCombat,bossEncounters:BossEncounters,difficulty:Version>=2?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=2&&MissionEvents,reactions:Version>=3&&Reactions);
+            if((Version<1||Version>4)||Stage< -1||Stage>=CampaignStages.Count||CT&&TeamTurns||!Enum.IsDefined(typeof(ObjectiveKind),Objective)||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Invalid battle opening");
+            var session=new BattleSession(catalog,Deployment,campaignStage:Stage,useCT:CT,utilityAI:Utility,objective:Objective,legacyCampaign:Legacy,teamTurns:TeamTurns,phaseSurvival:PhaseSurvival,tacticalCombat:TacticalCombat,bossEncounters:BossEncounters,difficulty:Version>=2?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=2&&MissionEvents,reactions:Version>=3&&Reactions,actionExperience:Version>=4&&ActionExperience);
             if(Units==null||Units.Count!=session.Units.Count)throw new InvalidDataException("Invalid opening roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)

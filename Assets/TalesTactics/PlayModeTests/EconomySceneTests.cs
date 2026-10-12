@@ -29,7 +29,7 @@ namespace TalesTactics.PlayModeTests
                 director.Restart();director.BeginBattle();yield return null;
                 foreach(var enemy in director.Session.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,director.Session.Grid);
                 director.SetState(new TurnStartState(director));yield return null;
-                Assert.That(rolls,Is.EqualTo(2));Assert.That(director.Message,Does.Contain("반복 EXP +60"));
+                Assert.That(rolls,Is.EqualTo(2));Assert.That(director.Message,Does.Contain("반복 EXP +10"));
                 Assert.That(director.Message,Does.Contain("추가: 없음"));var loaded=file.Load();Assert.That(loaded.Gold,Is.EqualTo(480));
                 Assert.That(CampaignInventory.Owned(loaded,"vital-charm"),Is.EqualTo(2));Assert.That(CampaignInventory.Owned(loaded,"leather-armor"),Is.EqualTo(1));
             }

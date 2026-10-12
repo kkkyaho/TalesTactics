@@ -699,3 +699,16 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 실제 UI 호출로 규칙 보기 왕복 시 초안 유지, 미적용 닫기 시 취소, 확인창의2버튼/높이270, 메뉴 높이460 및 능력창 높이480 복구를 확인했다. 확인창 취소 후 세션·HP·되돌리기 횟수·캠페인이 그대로임을 확인했다(`ConciseDialogs/interaction-check.json`).
 - Windows 일반 빌드 **25.848초, 오류0/경고1** 성공. 이번 보고서의 경고는 Pipeline 런타임 설정 미사용 안내이며, 이전 URP 내부 셰이더 안내가 재출력되지 않은 것을 별도 수정으로 표현하지 않는다. `Builds/WindowsConciseDialogs/TalesTactics.exe`를12초 숨김 실행해 프로세스 유지·로그 오류0을 확인했다. 일반 빌드에 검수3타입/Pipeline 서버 DLL이 없고 사용자 저장3파일 목록/SHA256이 불변이다.
 - 최종 콘솔 오류0/경고0, Play 종료/Full HD/runInBackground=false/Scene dirty=false 복구, 캡처용 Assets/Docs·동적 폰트·자동 검수 CSV 변경 정리를 완료했다. 시각 증거는 Editor Game View 범위이며 다른PC/DPI·실물 입력장치 검수는 별도다. develop에 커밋·푸시하며 공개 릴리즈/main은 갱신하지 않는다. [실제 화면과 검증](ConciseDialogs/README.md).
+
+## 2026-10-12 — 행동 경험치
+
+- 공격·지원·처치의 실제 효과에 따른 개인별 경험치, 레벨 차이/범위/다단/반응 행동 보정, 고정100 성장과 전투 중 레벨업을 연결했다. 승리 저장 트랜잭션·중단/되감기/재도전과 기존 저장 진행률 변환을 함께 적용했다. 수치는 `ActionExperience/README.md`.
+- Unity6000.6.0f1 실제 EditMode **190/190** 통과(`ActionExperience/editmode.json`). 실제 PlayMode 최초 **107/111**에서 구보상 기대값3개와 도움말 넘침1개를 발견했다. 기대값을 새 규칙으로 갱신하고 도움말을 줄인 뒤 **111/111**, 209.65초 통과(`playmode.json`; 최초 실패는 `playmode-initial.json` 보존).
+- 최초 화면 검사에서 EXP 표시가 명령 메뉴 뒤에 가려진 것을 확인했다. 지도 중앙 방향으로 표시 위치를 옮기고 어두운 배경을 추가했다. 이후 실제 관련 PlayMode **1/1**, 2.23초 통과(`playmode-final-feedback.json`). Runtime/Editor/EditMode/PlayMode의 실제 Unity API 참조 컴파일4개도 경고 없이 통과(`api-compile.txt`). ManagedChecks를 Unity 테스트로 표현하지 않는다.
+- Game View의 1024×768 / 1920×1080 / 2560×1080, 글자100%/130%, 성장·EXP·결과·도움말 **24조합**, 텍스트 넘침/화면 밖 버튼0건(`aspect-matrix.json`). 캡처8장을 보관하며 EXP 표시, 결과, 성장, 도움말의 실제 화면을 확인했다. EXP 캡처만 임시 시간 정지했으며 검수 종료 후 Play Mode 종료, Full HD 선택과 runInBackground=false를 확인했다.
+- 추천6명으로 실제 에셋·합법적 AI 행동을 사용하는 연속6장 시뮬레이션을 합류 훈련 유무2경로에서 실행하여 **12전투 모두 승리**했다. 훈련 미사용 종료 레벨4/5/2/8/5/8, 사용 시7/7/7/8/7/8. 캐릭터별 행동/지원 횟수·획득량은 `progression.json`. 지원자도 성장하나 행동 횟수가 적은 전열은 뒤처지는 한계가 관찰됐다. 한 AI/편성의 결과이며 사람의 난이도·장기 성장 균형 검증은 아니다.
+- Windows 개발 빌드 성공 **40.720초/오류0/경고3**(`development-build.json`). 일반 빌드는 Editor의 Build Successful/Result: Success 로그와 생성 산출물로 성공을 확인했다(`windows-build-log.txt`, `windows-build.json`). 일반 실행본 **12초 생존·오류 로그0**, 개발 검수 타입0개 및 Pipeline.dll 미포함, 런타임 해시를 확인했다(`windows-startup.json`, `windows-assembly.json`). 일반 빌드 후 Pipeline의 완료 상태 갱신/메인 스레드 조회가 멈추어 상태 보고의 한계를 별도 기록한다.
+- 빌드 경고는 기존 Pipeline 런타임 미설정1건과 URP 디버그 셰이더 stripping2건이다. 프로젝트 코드의 컴파일 경고와 구분하며, 설정을 억지로 바꿔 숨기지 않았다.
+- 개발 플레이어 **서로 다른 프로세스4회**로 기본 아군 턴(기존 스크립트 모드명 spd)/CT 각각 저장→이어하기를 검수했다. EXP95에서 임시16획득으로 Lv2/EXP11/BattleEXP16을 저장해 재실행 후 동일함을 확인했고, 되감기와 재도전의 Lv1/EXP95/BattleEXP0 복원 및 다음20턴 순서를 검사했다(`persistence/summary.json`과 expected.json). 사용자 저장·설정 불변, 실제 사용자 campaign/백업3개 SHA256 불변(`user-save-check.json`). 격리 저장 경로만 사용했다.
+- 첫 스크립트 갱신 중 Editor 도메인 갱신이 멈춰 재시작했다. Scene Backup은 Keep Backups로 보존했고, 검수 캡처의 Assets 복사본과 함께 Logs/ActionExperienceEditorBackup 폴더에 옮겼다. 테스트 생성 CSV와 동적 폰트의 변경은 복원했다. 이후 발견한 Windows 네트워크 권한창은 자동 조작하지 않았다.
+- 새 캠페인 저장은v3, 체크포인트v9, 출전기록v4다. 구버전 중단 전투는 당시 규칙으로 이어가며 새 출전부터 행동 경험치를 사용한다. 온라인 릴리즈/main 반영은 이번 요청 범위가 아니다.

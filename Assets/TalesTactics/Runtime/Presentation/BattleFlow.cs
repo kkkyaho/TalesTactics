@@ -46,11 +46,11 @@ namespace TalesTactics
         {
             if(!saved){ResultRewards="보상 저장 실패 · 경험치·골드·장비가 아직 적용되지 않았습니다.\n재시도해도 같은 추첨 결과를 사용합니다.";ResultGrowth=new string[0];return;}
             var items=Campaign.Inventory.Where(e=>e.Count>(resultInventory.TryGetValue(e.Id,out var count)?count:0)).Select(e=>(Catalog.Equipment.FirstOrDefault(x=>x.Id==e.Id)?.DisplayName??e.Id)+" +"+(e.Count-(resultInventory.TryGetValue(e.Id,out var count)?count:0)));
-            ResultRewards="각 출전 캐릭터 EXP +"+pendingReward.Experience+" · 골드 +"+(Campaign.Gold-resultGold)+" G (소지 "+Campaign.Gold+" G)\n획득 장비: "+(items.Any()?string.Join(" · ",items):"없음 · 보유 상한 확인");
+            ResultRewards="임무 EXP +"+pendingReward.Experience+" · 골드 +"+(Campaign.Gold-resultGold)+" G (소지 "+Campaign.Gold+" G)\n획득 장비: "+(items.Any()?string.Join(" · ",items):"없음 · 보유 상한 확인");
             ResultGrowth=Session.Units.Where(u=>u.Team==Team.Player).Select(u=>
             {
                 var p=Campaign.Get(u.Data.Id);int unlocked=u.Data.Skills.Count(s=>s.UnlockLevel>resultLevels[p.Id]&&s.UnlockLevel<=p.Level);
-                return u.Data.DisplayName+"    Lv"+resultLevels[p.Id]+" → "+p.Level+"    EXP "+resultEXP[p.Id]+" → "+p.EXP+(p.Level>=50?" (최고 레벨)":" / "+p.Level*100)+(unlocked>0?"    새 기술 "+unlocked+"개":"");
+                return u.Data.DisplayName+"    Lv"+(resultLevels[p.Id]==p.Level?p.Level.ToString():resultLevels[p.Id]+" → "+p.Level)+"    EXP +"+((p.Level-resultLevels[p.Id])*100+p.EXP-resultEXP[p.Id])+(p.Level>=50?" · MAX":"")+(unlocked>0?"    새 기술 "+unlocked+"개":"");
             }).ToArray();
         }
     }

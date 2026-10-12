@@ -9,7 +9,7 @@ namespace TalesTactics.Tests
         [Test] public void SixChapterProgressionPersistsAndFailedExpansionRewardsAreAtomic()
         {
             var file=new CampaignFile(SaveTestPath());var save=new CampaignSave();var party=new[]{data};
-            int[] levels={2,3,4,5,7,9},exp={20,0,0,200,0,0},gold={420,600,840,1160,1580,2140};
+            int[] levels={1,1,1,2,2,2},exp={30,60,90,20,50,80},gold={420,600,840,1160,1580,2140};
             for(int stage=0;stage<6;stage++)
             {
                 Assert.That(CampaignStages.Unlocked(save,stage),Is.True);
@@ -23,11 +23,11 @@ namespace TalesTactics.Tests
                 Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.False);
                 save=file.Load();Assert.That(save.Get(data.Id).Level,Is.EqualTo(levels[stage]));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(exp[stage]));Assert.That(save.Gold,Is.EqualTo(gold[stage]));
             }
-            Assert.That(save.Version,Is.EqualTo(2));Assert.That(CampaignInventory.Owned(save,"guardian-medal"),Is.EqualTo(2));
+            Assert.That(save.Version,Is.EqualTo(3));Assert.That(CampaignInventory.Owned(save,"guardian-medal"),Is.EqualTo(2));
             Assert.That(CampaignInventory.Owned(save,"tempered-armor"),Is.EqualTo(1));
             Assert.That(CampaignStages.Unlocked(save,6),Is.False);
             Assert.That(CampaignStages.TryReward(save,5,party,file.Save),Is.True);
-            save=file.Load();Assert.That(save.Gold,Is.EqualTo(2420));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(750));
+            save=file.Load();Assert.That(save.Gold,Is.EqualTo(2420));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(90));
             Assert.That(save.StoryProgress.Count,Is.EqualTo(6));
         }
         [Test] public void ThirdChapterContinuesExistingSaveAndRollsBackFailedReward()
@@ -38,20 +38,20 @@ namespace TalesTactics.Tests
             Assert.That(CampaignStages.Unlocked(save,2),Is.False);
             CampaignStages.TryReward(save,1,party,_=>true);
             var file=new CampaignFile(SaveTestPath());Assert.That(file.Save(save),Is.True);
-            save=file.Load();Assert.That(save.Version,Is.EqualTo(2));
+            save=file.Load();Assert.That(save.Version,Is.EqualTo(3));
             Assert.That(CampaignStages.Unlocked(save,2),Is.True);
             var reward=CampaignEconomy.Prepare(save,2,2500);
             Assert.That(CampaignStages.TryReward(save,reward,party,_=>false),Is.False);
-            Assert.That(save.Get(data.Id).Level,Is.EqualTo(3));Assert.That(save.Gold,Is.EqualTo(600));
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(1));Assert.That(save.Gold,Is.EqualTo(600));
             Assert.That(save.StoryProgress.Count,Is.EqualTo(2));
             Assert.That(CampaignInventory.Owned(save,"reinforced-armor"),Is.Zero);
             Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.True);
             Assert.That(CampaignStages.TryReward(save,reward,party,file.Save),Is.False);
-            save=file.Load();Assert.That(save.Get(data.Id).Level,Is.EqualTo(4));Assert.That(save.Get(data.Id).EXP,Is.Zero);
+            save=file.Load();Assert.That(save.Get(data.Id).Level,Is.EqualTo(1));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(90));
             Assert.That(save.Gold,Is.EqualTo(840));Assert.That(save.StoryProgress.Count,Is.EqualTo(3));
             Assert.That(CampaignInventory.Owned(save,"reinforced-armor"),Is.EqualTo(2));
             Assert.That(CampaignStages.TryReward(save,2,party,file.Save),Is.True);
-            save=file.Load();Assert.That(save.Get(data.Id).EXP,Is.EqualTo(150));Assert.That(save.Gold,Is.EqualTo(960));
+            save=file.Load();Assert.That(save.Get(data.Id).EXP,Is.Zero);Assert.That(save.Gold,Is.EqualTo(960));
             Assert.That(save.StoryProgress.Count,Is.EqualTo(3));Assert.That(CampaignStages.Unlocked(save,3),Is.True);
         }
         [Test] public void DropBucketsExhaustivelyMatchPublishedProbabilities()
@@ -83,11 +83,11 @@ namespace TalesTactics.Tests
         {
             var save=new CampaignSave();var party=new[]{data,data};
             Assert.That(CampaignStages.TryReward(save,0,party,_=>true),Is.True);
-            Assert.That(save.Get(data.Id).Level,Is.EqualTo(2));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(20));
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(1));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(30));
             Assert.That(CampaignStages.TryReward(save,1,party,_=>true),Is.True);
-            Assert.That(save.Get(data.Id).Level,Is.EqualTo(3));Assert.That(save.Get(data.Id).EXP,Is.Zero);
-            var repeated=CampaignEconomy.Prepare(save,1,9999);Assert.That(repeated.Gold,Is.EqualTo(90));Assert.That(repeated.Experience,Is.EqualTo(90));
-            CampaignStages.TryReward(save,repeated,party,_=>true);Assert.That(save.Gold,Is.EqualTo(690));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(90));
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(1));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(60));
+            var repeated=CampaignEconomy.Prepare(save,1,9999);Assert.That(repeated.Gold,Is.EqualTo(90));Assert.That(repeated.Experience,Is.EqualTo(10));
+            CampaignStages.TryReward(save,repeated,party,_=>true);Assert.That(save.Gold,Is.EqualTo(690));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(70));
             save.Get(data.Id).Level=50;CampaignStages.TryReward(save,1,party,_=>true);Assert.That(save.Get(data.Id).EXP,Is.Zero);
         }
         [Test] public void FullBonusInventorySkipsOnlyThatItemAndRollbackPreservesReferences()

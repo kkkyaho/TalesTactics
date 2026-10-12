@@ -16,7 +16,7 @@ namespace TalesTactics
             foreach(var source in battle.Units)
             {
                 var u=new UnitRuntime(source.Data,source.Team,source.Rules,source.Level){CurrentHP=source.CurrentHP,CurrentMP=source.CurrentMP,SpecialGauge=source.SpecialGauge,
-                    Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
+                    EXP=source.EXP,BattleEXP=source.BattleEXP,ExperienceBoss=source.ExperienceBoss,Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
                     Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Growth=source.Growth,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
                     UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,CounterUsed=source.CounterUsed,SupportUsed=source.SupportUsed,TacticalSkills=source.TacticalSkills,
                     BossWard=source.BossWard,TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
@@ -25,7 +25,7 @@ namespace TalesTactics
                 foreach(var c in source.Cooldowns)u.Cooldowns.Add(c.Key,c.Value);
                 Copies.Add(source,u);if(u.Alive)Grid[u.Position].Occupant=u;
             }
-            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat,reactions:battle.Resolver.ReactionsEnabled);
+            Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat,reactions:battle.Resolver.ReactionsEnabled,actionExperience:battle.Resolver.ActionExperienceEnabled);
         }
     }
     public sealed class ForecastRow

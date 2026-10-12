@@ -303,3 +303,12 @@ V5 중단 기록의 `BossEncounters`로 규칙 적용을 결정하고 위치·HP
 V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다. inline null을 재생성하는 JsonUtility 특성 때문에 별도 플래그를 사용한다. 시작 기록의 장·편성과 중단 기록이 다르거나 검증에 실패하면 중단 저장을 소비하지 않는다. V1–V5의 진행 복원은 유지하고 시작 재도전만 제공하지 않는다. [조작·호환성](BattleRetry/README.md).
 
 - TMP Essentials의 Mobile/SpaceWarp 셰이더 디버그 지시문은 Unity 6000.6의 enable_debug_symbols로 갱신했다. Essentials 재임포트로 덮어쓸 경우 이 호환 수정도 보존한다. URP 자동 디버그 리소스와 Pipeline 패키지 캐시는 변경하지 않는다.
+
+## 행동 경험치 (2026-10-12)
+
+- `ActionExperience`는 한 행동의 실제 피해/회복/상태 변화를 대상별로 합산한다. 다단/범위/레벨 차이/반응 행동 배율을 적용한 후 `SkillResolver`가 본 행동과 모든 지원·반격이 끝난 시점에 지급한다. 전투 예측은 동일 규칙의 복제 세션을 사용한다.
+- `UnitRuntime.EXP`는 현재 레벨 내 경험치, `BattleEXP`는 캠페인에 아직 저장하지 않은 전투 획득량이다. `ExperienceRules`는 고정 100 기준 성장과 상한을 공유한다. 레벨업 시 생존자의 HP와 MP에는 최대치 증가분만 더한다.
+- 승리 시 `CampaignStages.TryReward`가 캐릭터별 `BattleEXP`와 최초 30/반복 10을 기존 원자적 저장 경로에서 확정한다. 실패·중복 보상 방지는 기존 트랜잭션을 유지한다.
+- Campaign v3은 v1/v2의 `EXP / (Level * 100)` 비율을 100 기준으로 한 번 변환한다. 구버전 파일의 첫 저장에 버전별 원본 백업을 남긴다. 체크포인트 v9·출전 기록 v4는 행동 경험치 사용 여부와 레벨/EXP/BattleEXP를 보존한다. 그 이전 기록은 행동 경험치를 비활성화해 복원한다.
+- `BoardView.PresentExperience`는 짧은 월드 텍스트를 표시한다. 성장 화면은 100 기준 막대, 결과 화면은 실제 총 획득량과 변경된 경우의 레벨 화살표만 표시한다. 새 확인창은 추가하지 않는다.
+- 수치/호환성/검수 재현 방법: `Docs/ActionExperience/README.md`.

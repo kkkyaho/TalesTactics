@@ -19,10 +19,10 @@ namespace TalesTactics
             FormationText(profile,c.DisplayName,new Vector2(.51f,.81f),new Vector2(.99f,.92f),23);
             FormationText(profile,progress.Promoted?c.PromotionJob:c.Job,new Vector2(.51f,.72f),new Vector2(.99f,.81f),18).color=formationGold;
             FormationText(profile,"Lv "+progress.Level,new Vector2(.51f,.61f),new Vector2(.99f,.72f),32);
-            FormationText(profile,progress.Level>=50?"EXP MAX":"EXP  "+progress.EXP.ToString("N0")+" / "+(progress.Level*100).ToString("N0"),new Vector2(.025f,.54f),new Vector2(.975f,.60f),18);
+            FormationText(profile,progress.Level>=50?"EXP MAX":"EXP  "+progress.EXP.ToString("N0")+" / "+(ExperienceRules.PerLevel).ToString("N0"),new Vector2(.025f,.54f),new Vector2(.975f,.60f),18);
             var track=IntermissionPanel(profile,"ExperienceTrack",new Vector2(.025f,.505f),new Vector2(.975f,.54f));
-            var fill=FormationRect(track,"ExperienceFill",Vector2.zero,new Vector2(progress.Level>=50?1:Mathf.Clamp01(progress.EXP/(progress.Level*100f)),1));var fillImage=fill.gameObject.AddComponent<UnityEngine.UI.Image>();fillImage.color=formationGold;fillImage.raycastTarget=false;
-            FormationText(profile,progress.Level>=50?"최대 레벨 달성":"다음 레벨까지 "+Mathf.Max(0,progress.Level*100-progress.EXP),new Vector2(.025f,.445f),new Vector2(.975f,.505f),17);
+            var fill=FormationRect(track,"ExperienceFill",Vector2.zero,new Vector2(progress.Level>=50?1:Mathf.Clamp01(progress.EXP/(100f)),1));var fillImage=fill.gameObject.AddComponent<UnityEngine.UI.Image>();fillImage.color=formationGold;fillImage.raycastTarget=false;
+            FormationText(profile,progress.Level>=50?"최대 레벨 달성":"다음 레벨까지 "+Mathf.Max(0,ExperienceRules.PerLevel-progress.EXP),new Vector2(.025f,.445f),new Vector2(.975f,.505f),17);
             FormationText(profile,"HP "+before.HP+"    MP "+before.MP+"\n공격 "+before.STR+"    방어 "+before.DEF+"\n마력 "+before.MAG+"    마방 "+before.MDF+"\n민첩 "+before.SPD+"    이동 "+before.MOV+"    도약 "+before.JMP,new Vector2(.025f,.29f),new Vector2(.975f,.445f),18);
             IntermissionRoster(FormationRect(profile,"CharacterRoster",Vector2.zero,new Vector2(1,.29f)),c,character=>ShowGrowth(character));
             FormationText(promotion,"승급",new Vector2(.025f,.92f),new Vector2(.975f,1),24).color=formationGold;

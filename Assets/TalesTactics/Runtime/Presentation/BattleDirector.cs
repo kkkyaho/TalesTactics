@@ -109,7 +109,7 @@ namespace TalesTactics
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
             {
                 var progress=Campaign.Get(u.Data.Id);
-                if(!TrainingMode){u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
+                if(!TrainingMode){u.EXP=progress.EXP;u.Level=Mathf.Clamp(progress.Level,1,50);u.Promoted=progress.Promoted;}
                 new EquipmentLoadout(u.Data,progress,Catalog.Equipment,Campaign).Apply(u);
                 if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else{u.Trait=progress.Trait;u.Growth=progress.Growth;}
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
@@ -170,7 +170,7 @@ namespace TalesTactics
             bool executed=Session.Resolver.Execute(u,s,p,out var message,followup);
             if(!executed)u.Facing=old;else{Board.ReleaseSkill(u);Board.PresentImpact(u,s,p,before,recipients,Session.Resolver.PrimaryHealth);}
             Message=message;yield return new WaitForSeconds(BoardView.Recovery(s));
-            if(executed)yield return PresentReactions();
+            if(executed){yield return PresentReactions();Board.PresentExperience(Session.Resolver.LastExperience);}
             if(s.IsUltimate)Audio.EndTheme();
             TutorialExecuted(s,executed);
             RefreshViews();SetState(Session.Result!=BattleResult.Ongoing?(BattleState)new BattleEndState(this):!u.Alive?new TurnEndState(this):new CommandState(this));
@@ -192,6 +192,7 @@ namespace TalesTactics
                 if(Session.Resolver.Execute(u,plan.Skill,aim,out var text)&&!brief){Board.ReleaseSkill(u);Board.PresentImpact(u,plan.Skill,aim,before,recipients,Session.Resolver.PrimaryHealth);}
                 Message=u.Data.DisplayName+" · "+plan.Skill.DisplayName+"\n"+text;Hud.Refresh();yield return new WaitForSeconds(brief?.2f:BoardView.Recovery(plan.Skill)/speed);
                 if(!brief)yield return PresentReactions(speed);
+                Board.PresentExperience(Session.Resolver.LastExperience);
                 if(plan.Skill.IsUltimate)Audio.EndTheme();
             }
             else if(plan.Guard&&!u.Acted){u.Acted=true;u.AddStatus(StatusKind.Guard,2);Message=u.Data.DisplayName+" : "+(u.IntentPhase==1?EnemyTactics.Describe(u):"가드 · 인접 보호");}
@@ -219,7 +220,7 @@ namespace TalesTactics
             string lootText=ItemText(CampaignStages.EquipmentReward(battleStage))+" · 추가: "+(pendingReward.BonusEquipment==null?"없음":ItemText(pendingReward.BonusEquipment));
             int goldGranted=System.Math.Min(pendingReward.Gold,CampaignInventory.MaxGold-Campaign.Gold);
             bool saved;
-            try{saved=CampaignStages.TryReward(Campaign,pendingReward,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign);}
+            try{saved=CampaignStages.TryReward(Campaign,pendingReward,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign,Session.Units.Where(u=>u.Team==Team.Player).ToDictionary(u=>u.Data.Id,u=>u.BattleEXP));}
             catch(System.Exception){saved=false;}
             RewardPending=!saved;UpdateResultSummary(saved);
             Message=saved?CampaignStages.Title(battleStage)+" 완료 · "+(pendingReward.Repeat?"반복":"최초")+" EXP +"+pendingReward.Experience+" / "+goldGranted+"G 저장"+(goldGranted<pendingReward.Gold?" (골드 상한 적용)":"")+"\n장비: "+lootText:"저장 실패 — 보상 미적용. 추첨 결과는 유지됩니다. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";

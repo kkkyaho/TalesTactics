@@ -12,15 +12,15 @@ namespace TalesTactics
             public readonly int EnemyLevel, EntryLevel, FirstEXP, RepeatEXP, FirstGold, RepeatGold;
             public readonly bool BossMusic;
             public Chapter(string title,int enemy,int entry,int exp,int gold,string equipment,string equipmentName,bool boss=false)
-            {Title=title;EnemyLevel=enemy;EntryLevel=entry;FirstEXP=exp;RepeatEXP=exp/2;FirstGold=gold;RepeatGold=gold/2;Equipment=equipment;EquipmentName=equipmentName;BossMusic=boss;}
+            {Title=title;EnemyLevel=enemy;EntryLevel=entry;FirstEXP=exp;RepeatEXP=10;FirstGold=gold;RepeatGold=gold/2;Equipment=equipment;EquipmentName=equipmentName;BossMusic=boss;}
         }
         static readonly Chapter[] chapters={
-            new Chapter("1장 · 유적의 경계",1,1,120,120,"vital-charm","생명의 부적"),
-            new Chapter("2장 · 유적의 수호자",3,2,180,180,"iron-sword","철검",true),
-            new Chapter("3장 · 협곡의 봉화",4,3,300,240,"reinforced-armor","강화 갑옷"),
-            new Chapter("4장 · 별을 읽는 탑",5,4,600,320,"guardian-medal","수호의 메달"),
-            new Chapter("5장 · 잠긴 수문",6,5,900,420,"tempered-armor","단련 갑옷"),
-            new Chapter("6장 · 새벽의 중계핵",8,7,1500,560,"guardian-medal","수호의 메달",true)
+            new Chapter("1장 · 유적의 경계",1,1,30,120,"vital-charm","생명의 부적"),
+            new Chapter("2장 · 유적의 수호자",3,2,30,180,"iron-sword","철검",true),
+            new Chapter("3장 · 협곡의 봉화",4,3,30,240,"reinforced-armor","강화 갑옷"),
+            new Chapter("4장 · 별을 읽는 탑",5,4,30,320,"guardian-medal","수호의 메달"),
+            new Chapter("5장 · 잠긴 수문",6,5,30,420,"tempered-armor","단련 갑옷"),
+            new Chapter("6장 · 새벽의 중계핵",8,7,30,560,"guardian-medal","수호의 메달",true)
         };
         public static int Count=>chapters.Length;
         public static Chapter Get(int stage)=>stage>=0&&stage<Count?chapters[stage]:throw new ArgumentOutOfRangeException(nameof(stage));
@@ -32,7 +32,7 @@ namespace TalesTactics
         public static bool Unlocked(CampaignSave save,int stage)=>stage>=0&&stage<Count&&(stage==0||save.StoryProgress.Contains(Id(stage-1)));
         public static bool TryReward(CampaignSave save,int stage,CharacterData[] party,Func<CampaignSave,bool> persist)
             =>!Unlocked(save,stage)?false:TryReward(save,CampaignEconomy.Prepare(save,stage,9999),party,persist);
-        public static bool TryReward(CampaignSave save,CampaignReward reward,CharacterData[] party,Func<CampaignSave,bool> persist)
+        public static bool TryReward(CampaignSave save,CampaignReward reward,CharacterData[] party,Func<CampaignSave,bool> persist,System.Collections.Generic.IReadOnlyDictionary<string,int> actionExperience=null)
         {
             if(reward==null||reward.Applied||!Unlocked(save,reward.Stage)||persist==null)return false;
             int stage=reward.Stage;
@@ -47,7 +47,7 @@ namespace TalesTactics
             try
             {
                 foreach(var character in party.Distinct())
-                {var p=save.Get(character.Id);p.AddExperience(reward.Experience);p.UnlockedSkills=character.Skills.Where(s=>s.UnlockLevel<=p.Level).Select(s=>s.Id).ToList();}
+                {var p=save.Get(character.Id);p.AddExperience(reward.Experience+(actionExperience!=null&&actionExperience.TryGetValue(character.Id,out int earned)?earned:0));p.UnlockedSkills=character.Skills.Where(s=>s.UnlockLevel<=p.Level).Select(s=>s.Id).ToList();}
                 save.Gold=(int)Math.Min(CampaignInventory.MaxGold,(long)save.Gold+reward.Gold);
                 foreach(var rewardId in new[]{EquipmentReward(stage),reward.BonusEquipment}.Where(id=>id!=null))
                 {

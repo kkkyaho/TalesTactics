@@ -45,7 +45,7 @@ namespace TalesTactics.PlayModeTests
             director.BeginBattle();yield return null;foreach(var enemy in director.Session.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,director.Session.Grid);
             director.SetState(new BattleEndState(director));yield return null;
             Assert.That(director.RewardPending,Is.True);Assert.That(director.ResultRewards,Does.Contain("미적용").Or.Contain("아직 적용"));Assert.That(director.ResultGrowth,Is.Empty);
-            Click("보상 저장 재시도");yield return null;Assert.That(director.RewardPending,Is.False);Assert.That(director.ResultRewards,Does.Contain("골드 +120"));Assert.That(director.ResultGrowth.Length,Is.EqualTo(6));Assert.That(director.ResultGrowth.All(s=>s.Contains("Lv1 → 2")),Is.True);
+            Click("보상 저장 재시도");yield return null;Assert.That(director.RewardPending,Is.False);Assert.That(director.ResultRewards,Does.Contain("골드 +120"));Assert.That(director.ResultGrowth.Length,Is.EqualTo(6));Assert.That(director.ResultGrowth.All(s=>s.Contains("Lv1")&&s.Contains("EXP +30")),Is.True);
             var panel=(RectTransform)director.Hud.transform.Find("BattleResults");
             foreach(var text in panel.GetComponentsInChildren<TMPro.TMP_Text>()){text.ForceMeshUpdate();Assert.That(text.isTextOverflowing,Is.False,text.text);}
             director.Hud.ShowSystemMenu();yield return null;Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().All(b=>!b.IsInteractable()),Is.True);director.Hud.CloseSystemMenu();

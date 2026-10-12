@@ -14,8 +14,10 @@ namespace TalesTactics
         public int RandomDraws {get;private set;}
         double NextRoll(){RandomDraws++;return random.NextDouble();}
         public void RestoreRandom(int draws){if(draws<0||draws>1000000)throw new System.IO.InvalidDataException("Invalid combat RNG");random=new System.Random(seed);RandomDraws=0;for(int i=0;i<draws;i++)NextRoll();}
+        public readonly bool ActionExperienceEnabled;
+        public readonly List<ExperienceGain> LastExperience=new List<ExperienceGain>();
         public readonly bool TacticalCombat;
-        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17,bool tacticalCombat=false,bool reactions=false){ReactionsEnabled=reactions;this.seed=seed;TacticalCombat=tacticalCombat;this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
+        public SkillResolver(GridMap grid,IReadOnlyList<UnitRuntime> units,BattleRules rules,int seed=17,bool tacticalCombat=false,bool reactions=false,bool actionExperience=false){ActionExperienceEnabled=actionExperience;ReactionsEnabled=reactions;this.seed=seed;TacticalCombat=tacticalCombat;this.grid=grid;this.units=units;this.rules=rules;random=new System.Random(seed);}
         public string CanUse(UnitRuntime u,SkillData s,bool followup=false)
         {
             if(s==null)return "No skill";
@@ -158,11 +160,12 @@ namespace TalesTactics
         }
         public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false,bool forecast=false)
         {
-            LastReactions.Clear();PrimaryHealth=null;message=CanUse(u,s,followup);if(message!=null)return false;
+            LastExperience.Clear();LastReactions.Clear();PrimaryHealth=null;message=CanUse(u,s,followup);if(message!=null)return false;
             var targets=Targets(u,s,p).ToArray();
             bool committed=u.TacticalEnemy&&u.IntentPhase==2&&u.IntentSkill==s.Id&&u.IntentAim==p;
             if(!InRange(u,s,p)||targets.Length==0&&!committed){message="Invalid target";return false;}
             if(s.Target==TargetType.FallenAlly&&targets.All(t=>grid[t.Position].Occupant!=null)){message="Revival tile is occupied";return false;}
+            var experience=ActionExperienceEnabled?new ActionExperience(u,s):null;
             u.CurrentMP-=MPCost(u,s);u.CurrentHP-=HPCost(u,s);u.SpecialGauge-=s.GaugeCost;
             if(s.IsUltimate&&u.UltimateTrial&&u.Level<s.UnlockLevel)u.UltimateTrialUsed=true;
             if(s.Cooldown>0)u.Cooldowns[s.Id]=s.Cooldown+1;
@@ -174,12 +177,14 @@ namespace TalesTactics
                 foreach(var t in recipients)
                 {
                     if(forecast?e.Chance<1:NextRoll()>e.Chance)continue;
+                    int previousHP=t.CurrentHP,previousStatuses=t.Statuses.Count,previousGauge=t.SpecialGauge;var previousPosition=t.Position;
+                    var status=e.Kind==EffectKind.AutoRevive?StatusKind.AutoRevive:e.Kind==EffectKind.ConsumeClaw?StatusKind.ConsumeClaw:e.Status;bool hadStatus=t.Has(status);
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
                         int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
                         var protector=Protector(t);if(damage>0&&protector!=null)protector.ProtectionUsed=true;
                         if(t.Has(StatusKind.Guard)&&DirectionMultiplier(u,t)!=rules.RearMultiplier)t.GuardIgnition=true;
-                        t.Damage(damage,grid);u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*e.Drain));
+                        t.Damage(damage,grid);experience?.Damage(t,actual,!t.Alive);u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*e.Drain));
                     }
                     else if(e.Kind==EffectKind.Heal&&t.Alive)t.CurrentHP=Mathf.Min(t.Stats.HP,t.CurrentHP+Healing(u,e));
                     else if(e.Kind==EffectKind.Revive&&!t.Alive&&grid[t.Position].Occupant==null){t.CurrentHP=Mathf.Max(1,Mathf.RoundToInt(t.Stats.HP*e.Power));grid.Place(t,t.Position);}
@@ -190,13 +195,21 @@ namespace TalesTactics
                     else if(e.Kind==EffectKind.Gauge)t.SpecialGauge=Mathf.Clamp(t.SpecialGauge+e.Flat,0,100);
                     else if((e.Kind==EffectKind.Pull||e.Kind==EffectKind.Push)&&t.Alive)Displace(t,e.Kind==EffectKind.Pull?p:u.Position,e.Distance,e.Kind==EffectKind.Push);
                     else if(e.Kind==EffectKind.Move&&t.Alive)Displace(t,p,e.Distance,false);
+                    experience?.Effect(t,e,previousHP,previousStatuses,hadStatus,previousGauge,previousPosition);
                 }
             }
             if(attack){u.SpecialGauge=Mathf.Clamp(u.SpecialGauge+rules.GaugePerAttack,0,100);if(u.Has(StatusKind.ConsumeClaw))u.ClawAttacks++;}
             if(u.Data.Id=="kisara"&&attack)u.GuardIgnition=false;
             u.FlamingChain=s.StartsFlamingChain;
-            PrimaryHealth=ReactionsEnabled?units.ToDictionary(x=>x,x=>x.CurrentHP):null;
+            PrimaryHealth=ReactionsEnabled||ActionExperienceEnabled?units.ToDictionary(x=>x,x=>x.CurrentHP):null;
+            int mainExperience=experience?.Total()??0;
             ResolveReactions(u,s,targets,forecast);
+            if(ActionExperienceEnabled)
+            {
+                var gains=new Dictionary<UnitRuntime,int>();if(mainExperience>0)gains[u]=mainExperience;
+                foreach(var r in LastReactions){if(!gains.ContainsKey(r.Actor))gains[r.Actor]=0;gains[r.Actor]+=r.Experience;}
+                foreach(var pair in gains){var gain=ActionExperience.Grant(pair.Key,pair.Value);if(gain!=null)LastExperience.Add(gain);}
+            }
             message=u.Data.DisplayName+" : "+s.DisplayName+(LastReactions.Count>0?"\n"+string.Join(" · ",LastReactions.Select(x=>x.Text)):"");
             return true;
         }

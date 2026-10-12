@@ -35,9 +35,12 @@ namespace TalesTactics
             {
                 var settings=new PlayerPreferences{Music=.4f,Effects=.2f,CursorSpeed=1.5f,AutoTiming=true,CT=ct,Width=1366,Height=768};Check(battle.SavePreferences(settings),"Settings write");
                 Check(battle.SelectProfile(1),"Switch to slot2");battle.Campaign.Gold=123;Check(battle.SavePreparation(),"Save slot2");Check(battle.SelectProfile(0)&&battle.Campaign.Gold==300,"Slots isolated");
+                foreach(int index in battle.Deployment)battle.Campaign.Get(battle.Catalog.Characters[index].Id).EXP=95;
                 battle.TrainingMode=false;battle.BeginBattle();var session=battle.Session;
                 var p=session.Grid.Reachable(session.Active,out _).Keys.First(x=>x!=session.Active.Position);Check(session.Move(p),"Move before checkpoint");
                 session.Active.AddStatus(StatusKind.Song,3);session.Active.SpecialGauge=40;
+                session.RecordAction("경험치 검수");ActionExperience.Grant(session.Active,16);
+                Check(session.Active.Level==2&&session.Active.EXP==11&&session.Active.BattleEXP==16,"Fixture contains uncommitted level-up");
                 var state=BattleCheckpoint.Capture(session,battle.Deployment.ToArray());File.WriteAllText(Path.Combine(root,"expected.json"),JsonUtility.ToJson(state));
                 Check(battle.SuspendBattle()&&battle.Session==null,"Suspend succeeds");
             }
@@ -48,6 +51,9 @@ namespace TalesTactics
                 Check(battle.ResumeBattle(),"Resume succeeds");Check(JsonUtility.ToJson(BattleCheckpoint.Capture(battle.Session,battle.Deployment.ToArray()))==expected,"All combat state preserved");
                 Check(new CampaignFile(battle.Profiles.PathFor(0)).Load().SuspendedBattle==null,"Checkpoint consumed on disk");
                 var reference=JsonUtility.FromJson<BattleCheckpoint>(expected).Restore(battle.Catalog);
+                Check(reference.Active.Level==2&&reference.Active.EXP==11&&reference.Active.BattleEXP==16,"Action experience survives process restart");
+                var rewound=reference.RewindLast(out _);Check(rewound.Active.Level==1&&rewound.Active.EXP==95&&rewound.Active.BattleEXP==0,"Restored rewind removes experience and level-up");
+                var opening=reference.Opening.Restore(battle.Catalog);Check(opening.Units.Where(u=>u.Team==Team.Player).All(u=>u.Level==1&&u.EXP==95&&u.BattleEXP==0),"Retry restores original growth after restart");
                 for(int i=0;i<20;i++){reference.EndTurn();reference.Advance();battle.Session.EndTurn();battle.Session.Advance();Check(reference.Units.IndexOf(reference.Active)==battle.Session.Units.IndexOf(battle.Session.Active),"Next20 turns preserve scheduler");}
                 battle.Restart();Check(battle.SelectProfile(1)&&battle.Campaign.Gold==123,"Other slot survives process restart");
             }

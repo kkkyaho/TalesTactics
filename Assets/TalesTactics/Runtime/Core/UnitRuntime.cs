@@ -9,6 +9,8 @@ namespace TalesTactics
         public readonly CharacterData Data;
         public readonly Team Team;
         public readonly BattleRules Rules;
+        public int EXP,BattleEXP;
+        public bool ExperienceBoss;
         public int Level, CurrentHP, CurrentMP, SpecialGauge, ClawAttacks;
         public bool Promoted, Moved, Acted, CanUndoMove, FlamingChain, GuardIgnition;
         public Vector2Int Position, MoveOrigin;

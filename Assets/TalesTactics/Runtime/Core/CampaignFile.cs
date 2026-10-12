@@ -7,7 +7,7 @@ namespace TalesTactics
     // One storage instance owns one path, so tests never touch the player's campaign.
     public sealed class CampaignFile
     {
-        [Serializable] sealed class Header { public int Version=0,Gold=-1; public List<OwnedEquipment> Inventory; }
+        [Serializable] sealed class Header { public int Version=0,Gold=-1; public List<OwnedEquipment> Inventory=null; }
         sealed class FutureVersion : Exception { }
         readonly string path;
         bool loaded, recovered;
@@ -18,25 +18,25 @@ namespace TalesTactics
         {
             string json=File.ReadAllText(file);
             var header=JsonUtility.FromJson<Header>(json);
-            if(header!=null&&header.Version>2)throw new FutureVersion();
-            if(header==null||(header.Version!=1&&header.Version!=2))throw new InvalidDataException("Missing or unsupported save version");
-            if(header.Version==2&&(header.Gold<0||header.Inventory==null))throw new InvalidDataException("Missing economy fields");
+            if(header!=null&&header.Version>3)throw new FutureVersion();
+            if(header==null||header.Version<1||header.Version>3)throw new InvalidDataException("Missing or unsupported save version");
+            if(header.Version>=2&&(header.Gold<0||header.Inventory==null))throw new InvalidDataException("Missing economy fields");
             var save=JsonUtility.FromJson<CampaignSave>(json);
             if(save==null)throw new InvalidDataException("Empty campaign");
-            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>8)throw new FutureVersion();
+            if(save.SuspendedBattle!=null&&save.SuspendedBattle.Version>9)throw new FutureVersion();
             if(!save.HasSuspendedBattle)save.SuspendedBattle=null; // JsonUtility recreates inline null classes.
             Normalize(save);return save;
         }
         public static void Normalize(CampaignSave save)
         {
-            if(save.Version!=1&&save.Version!=2)throw new InvalidDataException("Unsupported save version");
+            if(save.Version<1||save.Version>3)throw new InvalidDataException("Unsupported save version");
             if(save.Characters==null)save.Characters=new List<CharacterProgress>();
             if(save.StoryProgress==null)save.StoryProgress=new List<string>();
             var ids=new HashSet<string>();
             foreach(var c in save.Characters)
             {
                 if(c==null||string.IsNullOrWhiteSpace(c.Id)||!ids.Add(c.Id))throw new InvalidDataException("Invalid or duplicate character ID");
-                c.Level=Mathf.Clamp(c.Level,1,50);c.EXP=Mathf.Max(0,c.EXP);c.AddExperience(0);
+                c.Level=Mathf.Clamp(c.Level,1,50);c.EXP=Mathf.Max(0,c.EXP);
                 if(c.Equipment==null)c.Equipment=new string[3];
                 else if(c.Equipment.Length!=3)Array.Resize(ref c.Equipment,3);
                 if(c.UnlockedSkills==null)c.UnlockedSkills=new List<string>();
@@ -45,6 +45,16 @@ namespace TalesTactics
             save.StoryProgress.RemoveAll(string.IsNullOrWhiteSpace);
             if(save.Version==1)CampaignInventory.MigrateVersion1(save);
             CampaignInventory.Validate(save);
+            foreach(var c in save.Characters)
+            {
+                if(save.Version<3)
+                {
+                    while(c.Level<50&&c.EXP>=c.Level*100){c.EXP-=c.Level*100;c.Level++;}
+                    c.EXP=c.Level>=50?0:c.EXP/c.Level;
+                }
+                c.AddExperience(0);
+            }
+            save.Version=3;
         }
         public CampaignSave Load()
         {
@@ -76,10 +86,10 @@ namespace TalesTactics
                 // Preserve the unreadable primary without replacing the known-good backup.
                 if(recovered&&File.Exists(path))File.Copy(path,path+".corrupt-"+Guid.NewGuid().ToString("N"));
                 string previousPath=recovered?path+".bak":path;
-                if(File.Exists(previousPath)&&!File.Exists(path+".v1.bak"))
+                if(File.Exists(previousPath))
                 {
                     var oldHeader=JsonUtility.FromJson<Header>(File.ReadAllText(previousPath));
-                    if(oldHeader!=null&&oldHeader.Version==1)File.Copy(previousPath,path+".v1.bak");
+                    if(oldHeader!=null&&oldHeader.Version>=1&&oldHeader.Version<3&&!File.Exists(path+".v"+oldHeader.Version+".bak"))File.Copy(previousPath,path+".v"+oldHeader.Version+".bak");
                 }
                 save.HasSuspendedBattle=save.SuspendedBattle!=null;
                 File.WriteAllText(path+".tmp",JsonUtility.ToJson(save,true));

@@ -19,7 +19,7 @@ namespace TalesTactics.Tests
         [Test] public void LegacyCampaignLoadsAndFutureCheckpointCannotBeOverwritten()
         {
             var path=Path.Combine(root,"campaign.json");File.WriteAllText(path,"{\"Version\":1,\"Characters\":[],\"StoryProgress\":[]}");
-            var store=new CampaignFile(path);Assert.That(store.Load().Version,Is.EqualTo(2));Assert.That(store.Save(new CampaignSave()),Is.True);Assert.That(File.Exists(path+".v1.bak"),Is.True);
+            var store=new CampaignFile(path);Assert.That(store.Load().Version,Is.EqualTo(3));Assert.That(store.Save(new CampaignSave()),Is.True);Assert.That(File.Exists(path+".v1.bak"),Is.True);
             var future=JsonUtility.ToJson(new CampaignSave{SuspendedBattle=new BattleCheckpoint{Version=99}});File.WriteAllText(path,future);
             store=new CampaignFile(path);store.Load();Assert.That(store.CanSave,Is.False);Assert.That(store.Save(new CampaignSave()),Is.False);Assert.That(File.ReadAllText(path),Is.EqualTo(future));
         }

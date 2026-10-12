@@ -8,7 +8,7 @@ namespace TalesTactics
         public UnitRuntime Actor,Target;
         public SkillData Skill;
         public string Kind;
-        public int Damage,BeforeHP,AfterHP;
+        public int Damage,BeforeHP,AfterHP,Experience;
         public string Text=>Kind+" · "+Actor.Data.DisplayName+" → "+Target.Data.DisplayName+" "+Damage;
     }
     public sealed partial class SkillResolver
@@ -36,17 +36,17 @@ namespace TalesTactics
         }
         void ReactionHit(UnitRuntime actor,UnitRuntime target,float power,string kind,bool forecast)
         {
-            var skill=actor.Data.BasicAttack;int damage=0,before=target.CurrentHP;
+            var skill=actor.Data.BasicAttack;var experience=ActionExperienceEnabled?new ActionExperience(actor,skill):null;int damage=0,before=target.CurrentHP;
             foreach(var effect in skill.Effects.Where(e=>e.Kind==EffectKind.Damage&&!e.AffectCaster))
             {
                 if(!target.Alive|| (forecast?effect.Chance<1:NextRoll()>effect.Chance))continue;
                 int hit=DamagePreview(actor,target,effect,skill);hit=hit==0?0:Mathf.Max(1,Mathf.RoundToInt(hit*power));
                 var protector=Protector(target);if(hit>0&&protector!=null)protector.ProtectionUsed=true;
                 if(target.Has(StatusKind.Guard)&&DirectionMultiplier(actor,target)!=rules.RearMultiplier)target.GuardIgnition=true;
-                damage+=Mathf.Min(hit,target.CurrentHP);target.Damage(hit,grid);
+                int actual=Mathf.Min(hit,target.CurrentHP);damage+=actual;target.Damage(hit,grid);experience?.Damage(target,actual,!target.Alive);
             }
             // Reactions never spend the normal action, MP, cooldowns, chains or gauge; they cannot chain reactions.
-            LastReactions.Add(new ReactionStrike{Actor=actor,Target=target,Skill=skill,Kind=kind,Damage=damage,BeforeHP=before,AfterHP=target.CurrentHP});
+            LastReactions.Add(new ReactionStrike{Actor=actor,Target=target,Skill=skill,Kind=kind,Experience=experience?.Total(.5f)??0,Damage=damage,BeforeHP=before,AfterHP=target.CurrentHP});
         }
     }
 }

@@ -76,9 +76,9 @@ namespace TalesTactics.PlayModeTests
             var progress=director.Campaign.Get(party[0].Id);progress.Equipment[(int)EquipmentSlot.Accessory]=medal.Id;progress.Equipment[(int)EquipmentSlot.Armor]=armor.Id;
             Assert.That(file.Save(director.Campaign),Is.True);director.Campaign=file.Load();director.SelectedStage=5;director.BeginBattle();yield return null;
             var unit=director.Session.Units.Single(u=>u.Data.Id==party[0].Id);
-            Assert.That(unit.Stats.HP,Is.EqualTo(party[0].StatsAt(7).HP+120));
-            Assert.That(unit.Stats.DEF,Is.EqualTo(party[0].StatsAt(7).DEF+10));
-            Assert.That(unit.Stats.MDF,Is.EqualTo(party[0].StatsAt(7).MDF+8));
+            Assert.That(unit.Stats.HP,Is.EqualTo(party[0].StatsAt(2).HP+120));
+            Assert.That(unit.Stats.DEF,Is.EqualTo(party[0].StatsAt(2).DEF+10));
+            Assert.That(unit.Stats.MDF,Is.EqualTo(party[0].StatsAt(2).MDF+8));
         }
     }
 }

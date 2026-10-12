@@ -28,7 +28,7 @@ namespace TalesTactics.Tests
             Assert.That(save.StoryProgress,Does.Contain("chapter2"));
             Assert.That(CampaignStages.TryReward(save,1,new[]{data},_=>true),Is.True);
             Assert.That(save.StoryProgress.Count,Is.EqualTo(2));
-            Assert.That(save.Get(data.Id).Level,Is.EqualTo(3));
+            Assert.That(save.Get(data.Id).Level,Is.EqualTo(1));
             var file=new CampaignFile(SaveTestPath());Assert.That(file.Save(save),Is.True);
             Assert.That(file.Load().StoryProgress,Does.Contain("chapter2"));
         }
@@ -39,7 +39,7 @@ namespace TalesTactics.Tests
             Assert.That(p.Level,Is.EqualTo(1));Assert.That(p.EXP,Is.Zero);Assert.That(p.UnlockedSkills,Is.SameAs(skills));
             Assert.That(save.StoryProgress,Is.Empty);
             Assert.That(CampaignStages.TryReward(save,0,new[]{data},_=>true),Is.True);
-            Assert.That(p.Level,Is.EqualTo(2));Assert.That(p.EXP,Is.EqualTo(20));
+            Assert.That(p.Level,Is.EqualTo(1));Assert.That(p.EXP,Is.EqualTo(30));
         }
         [Test] public void OccupiedTileCannotBeTraversed(){var reachable=grid.Reachable(player,out _);Assert.That(reachable.ContainsKey(enemy.Position),Is.False);}
         [Test] public void WaterCostsTwoMovement(){grid.Place(player,new Vector2Int(3,0));var costs=grid.Reachable(player,out _);Assert.That(costs[new Vector2Int(4,0)],Is.EqualTo(2));}

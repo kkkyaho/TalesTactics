@@ -293,10 +293,10 @@ namespace TalesTactics
         {
             var loaded=new CampaignFile(savePath).Load();
             Check(loaded.StoryProgress.Count==chapters&&Enumerable.Range(0,chapters).All(i=>loaded.StoryProgress.Contains(CampaignStages.Id(i))),"Disk contains exactly expected chapter flags");
-            int[] levels={2,3,4,5,7,9},exp={20,0,0,200,0,0},gold={120,180,240,320,420,560};
-            Check(party.All(i=>{var p=loaded.Get(battle.Catalog.Characters[i].Id);return p.Level==levels[chapters-1]&&p.EXP==exp[chapters-1];}),"Disk contains exact party levels and EXP");
+            int[] gold={120,180,240,320,420,560};
+            Check(party.All(i=>{var p=loaded.Get(battle.Catalog.Characters[i].Id);var expected=battle.Campaign.Get(p.Id);return p.Level==expected.Level&&p.EXP==expected.EXP&&p.EXP>=0&&p.EXP<100;}),"Disk contains exact party levels and EXP");
             Check(!loaded.Characters.Any(c=>c.Promoted),"No premature promotion");
-            Check(loaded.Version==2,"Reload uses schema version 2");
+            Check(loaded.Version==3,"Reload uses schema version 3");
             Check(loaded.Gold==150+gold.Take(chapters).Sum(),"Disk contains exact purchase and victory gold");
             Check(CampaignInventory.Owned(loaded,"vital-charm")==1,"First chapter charm persists");
             Check(CampaignInventory.Owned(loaded,"iron-sword")== (chapters>=2?1:0),"Second chapter sword persists");

@@ -93,6 +93,28 @@ namespace TalesTactics
             if(cost>0)StartCoroutine(Number(caster,-cost,true));
             battle.Audio.PlayEffect(damage?"hit":healing?"heal":"cast");
         }
+        public void PresentExperience(IEnumerable<ExperienceGain> gains)
+        {
+            foreach(var gain in gains)
+                if(root!=null&&units.ContainsKey(gain.Unit))StartCoroutine(ExperienceNumber(gain));
+        }
+        IEnumerator ExperienceNumber(ExperienceGain gain)
+        {
+            var g=new GameObject("Experience feedback");g.transform.SetParent(root,false);
+            var label=g.AddComponent<TextMeshPro>();label.font=battle.Hud.Font;
+            label.text="EXP +"+gain.Amount+(gain.BeforeLevel!=gain.Unit.Level?"\nLv UP "+gain.BeforeLevel+" → "+gain.Unit.Level:"");
+            label.fontSize=3.8f;label.alignment=TextAlignmentOptions.Center;label.color=new Color(1,.86f,.4f);
+            label.sortingOrder=32;label.rectTransform.sizeDelta=new Vector2(4.2f,1.2f);
+            var backing=GameObject.CreatePrimitive(PrimitiveType.Quad);backing.name="Experience backing";Destroy(backing.GetComponent<Collider>());backing.transform.SetParent(g.transform,false);
+            backing.transform.localPosition=new Vector3(0,0,.02f);backing.transform.localScale=new Vector3(3.6f,gain.BeforeLevel!=gain.Unit.Level?1.05f:.6f,1);
+            var background=backing.GetComponent<Renderer>();background.sharedMaterial=SpriteMaterial;background.sortingOrder=31;
+            var origin=units[gain.Unit].position;
+            // The command menu sits above the active unit. Place feedback beside it, toward the map centre.
+            float side=BattleCamera.WorldToViewportPoint(origin).x<.5f?1:-1;
+            for(float t=0;t<1.3f;t+=Time.deltaTime)
+            {if(g==null||BattleCamera==null)yield break;g.transform.position=origin+BattleCamera.transform.up*(1.0f+t*.25f)+BattleCamera.transform.right*(2.6f*side);g.transform.rotation=BattleCamera.transform.rotation;label.alpha=1-Mathf.InverseLerp(.9f,1.3f,t);SetColor(background,new Color(.025f,.035f,.06f,.9f*label.alpha));yield return null;}
+            if(g!=null)Destroy(g);
+        }
         IEnumerator Number(UnitRuntime unit,int delta,bool cost=false)
         {
             var g=new GameObject("HP feedback");g.transform.SetParent(root,false);

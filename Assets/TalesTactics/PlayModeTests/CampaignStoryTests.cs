@@ -33,7 +33,7 @@ namespace TalesTactics.PlayModeTests
             director.Session.Grid.Place(director.Session.Units[0],director.Session.Destination);
             director.SetState(new TurnStartState(director));yield return null;
             Assert.That(writes,Is.EqualTo(1));Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter3"));
-            Assert.That(party.All(c=>director.Campaign.Get(c.Id).Level==4),Is.True);
+            Assert.That(party.All(c=>director.Campaign.Get(c.Id).Level==1&&director.Campaign.Get(c.Id).EXP==90),Is.True);
             Click("전투 후 이야기");yield return null;Assert.That(director.StoryActive,Is.True);
             director.FinishStory();director.Restart();yield return null;
             director.ReplayStory(true);yield return null;Assert.That(director.StoryActive,Is.True);
