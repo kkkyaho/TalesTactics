@@ -36,11 +36,9 @@ namespace TalesTactics
             l.startColor=l.endColor=color;l.numCornerVertices=2;l.numCapVertices=2;
             l.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;l.receiveShadows=false;SetColor(l,color);return l;
         }
-        void CreateFootRing(Transform parent,UnitRuntime unit)
+        void CreateContactShadow(Transform parent)
         {
-            var ring=ThinLine("Faction Ring",parent,unit.Team==Team.Player?new Color(.2f,.64f,.64f):new Color(.67f,.3f,.28f),.018f,false);
-            ring.loop=false;ring.positionCount=21;
-            for(int i=0;i<21;i++){float a=(30+i*15)*Mathf.Deg2Rad;ring.SetPosition(i,new Vector3(Mathf.Cos(a)*.3f,.025f,Mathf.Sin(a)*.3f));}
+            var shadow=Overlay("Contact shadow",parent,-3);shadow.transform.localPosition=Vector3.up*.018f;shadow.Shadow();
         }
         void DrawMovementPreview(List<Vector2Int> path)
         {

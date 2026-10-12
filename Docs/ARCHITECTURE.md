@@ -330,3 +330,10 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 - `CanOpenSkills`와 행동 상태는 `SkillResolver.CanUse`의 실제 연계 가능 조건을 사용한다. 일반 행동 이후 연계 플래그만 남은 상태에서 빈 기술 탭이 열리지 않는다.
 - `WindowDisplayController`는 크기 변경 안정화 후 `SavePreferences(..., false)`로 창 크기를 기록한다. Windows `IsZoomed`/`IsIconic`을 사용해 최대화/최소화를 구분하고 `WindowMaximized`와 복원용 Width/Height를 따로 보관한다. PlayerSettings의 resizableWindow를 켰다. 기존 v1 설정은 새 bool 필드가 false로 복원된다. 해상도 프리셋을 적용하면 최대화 기억을 해제한다.
 - 개발 전용 `ManualPlayerReview`는 격리 설정을 디스플레이에도 적용하여 재실행 검수가 사용자 설정을 건드리지 않게 한다. 일반 배포 빌드에서는 컴파일되지 않는다. 상세 증거는 `BattleVisualPolish/README.md`.
+
+## 지면 선택·위험 영역 (2026-10-12)
+
+- `GroundOverlay`는 알파가 있는 지면 메쉬를 그린다. 선택 커서는 작은 모서리8선분과 옅은 내부 면, 접지 그림자는 중심에서 가장자리로 알파가 사라지는 부채꼴이다. 렌더러는 콜라이더/그림자 투사 없이 캐릭터 뒤에 정렬하며 소유 메쉬는 종료 시 해제한다.
+- `BoardThreatView.Region`은 위험 셀의 합집합을 한 메쉬로 만들고 같은 높이의 내부 경계를 생략한다. 확정 예고는 별도 황색 영역이며 위험 표시 꺼짐과 독립적이다. 죽은 적을 제외하고 재도전/보드 교체 시 영역을 정리한다.
+- `UnitTone.shader`는 Resources로 일반 빌드에 포함된다. 캐릭터 텍스처의 채도/밝기만 MaterialPropertyBlock으로 제어해 CharacterMotion의 피격/시전 tint를 보존한다. TeamTurnScheduler의 실제 미완료 목록을 사용하므로 이동/행동 여부 플래그만으로 완료 처리하지 않으며, 다음 아군 페이즈에서 색을 복원한다. MaterialPropertyBlock은 Unity 객체 생성이 허용되는 실행 시점에 초기화한다.
+- 기존 전투 데이터/저장 버전 변경은 없다. 실제 캡처와 검증은 `GroundedMarkers/README.md`.

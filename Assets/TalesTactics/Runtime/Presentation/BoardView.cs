@@ -115,12 +115,12 @@ namespace TalesTactics
         {
                 var g=new GameObject(u.Data.DisplayName);g.transform.SetParent(root,false);units[u]=g.transform;
                 var visual=new GameObject("Directional Sprite");var sizeRoot=new GameObject("Body Scale");sizeRoot.transform.SetParent(g.transform,false);sizeRoot.transform.localScale=Vector3.one*CharacterVisualSizing.Scale(u.Data);visual.transform.SetParent(sizeRoot.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
-                var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=SpriteMaterial;sprites[u]=sr;
+                var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=UnitToneMaterial;sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
                 else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera);motions[u]=motion;}
                 var hp=new GameObject("HP "+u.Data.Id,typeof(RectTransform));hp.transform.SetParent(healthCanvas.transform,false);
                 hp.AddComponent<UnitHealthDisplay>().Initialize(battle,u,g.transform);
-                CreateFootRing(g.transform,u);
+                CreateContactShadow(g.transform);
         }
         public bool Pick(Vector2 screen,out Vector2Int p)
         {
@@ -136,7 +136,7 @@ namespace TalesTactics
                 var tr=units[u];tr.position=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
                 var sr=sprites[u];var art=u.Data.Sprites.Get(u.Facing);sr.sprite=art!=null?art:placeholder;sr.color=u.Alive?(art!=null?Color.white:u.Data.PlaceholderColor):new Color(0.3f,0.3f,0.3f,0.35f);
                 sr.transform.rotation=BattleCamera.transform.rotation;sr.transform.localScale=u.Alive?Vector3.one:new Vector3(1,0.3f,1);
-                tr.Find("Faction Ring").gameObject.SetActive(u.Alive);
+                tr.Find("Contact shadow").gameObject.SetActive(u.Alive);
                 SetAnimation(u,u.Alive?u.Has(StatusKind.Guard)?AnimationKind.Guard:AnimationKind.Idle:AnimationKind.Dead);
             }
         }

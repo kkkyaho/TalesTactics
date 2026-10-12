@@ -737,3 +737,16 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 네이티브 창 검수는 Computer Use의 실제 제목 표시줄/테두리를 조작한 개발 빌드로 수행했다. 1280×800에서 최대화/복원, 가로·세로 테두리 드래그로1100×720, 종료 후 새 프로세스에서 같은 크기 복원을 확인했다. 별도 GUID 저장 경로를 사용했으며 기존 사용자의 실행 중인 게임은 종료하지 않았다. 상세 상태와 최대화 재실행 결과는 `window-review.json`, 사용자 원본 파일 비교는 `user-save-check.json`.
 - 일반 배포 빌드의 네이티브 창 직접 검수와 여러 모니터/DPI 조합은 이번 검수 범위에 포함하지 않는다. 새 아트가 들어오면 몸체 비율을 다시 확인해야 한다. 공개 릴리즈/main 반영은 이번 요청 범위가 아니다.
 - 최대화 상태 재실행도 확인했으며, 다시 복원하면 이전1100×720로 돌아왔다. 총3개 검수 프로세스의 오류/예외 로그0건. 사용자 campaign/백업/설정5개 SHA256 불변. 마지막 Play 종료·runInBackground=false·Scene dirty=false·컴파일 실패 없음 및 Full HD Game View를 확인했다. 테스트 생성 CSV와 동적 폰트 변경을 복원하고 Assets의 캡처 복사본은 `Logs/BattleVisualPolishCaptureCache`에 보관했다.
+
+## 2026-10-13 — 발밑·위험 범위 표시 (`develop`)
+
+- 진영 링과 상시 방향 표식을 제거하고 접지 그림자·작은 선택 모서리를 적용했다. 위험 범위는 투명도90%의 붉은 면과 합집합 외곽선으로 연결하고, 확정된 공격 예고는 황색으로 독립 표시한다. 대기 완료 채도38%/밝기84%와 다음 아군 페이즈 복원을 연결했다. 데이터·저장·전투 규칙은 유지한다.
+- 신규 실제 PlayMode **2/2(4.06초)** 통과. 인접 영역의 내부 경계 제거, 단차의 경계 보존, 위험 꺼짐에서도 확정 예고 유지, 사망/재도전 시 정리, 선택 모서리/그림자 생성, 턴 완료/다음 페이즈 채도 복원, 모달 숨김과 카메라 회전을 검증한다(`GroundedMarkers/playmode-targeted.json`). 초기 MaterialPropertyBlock 필드 초기화가 Unity 로딩 스레드 제한에 걸려 실행 시점으로 옮겼다. 오류가 남은 상태의 검수는 통과로 계산하지 않았다.
+- 실제 Unity API 참조 Runtime/Editor/EditMode/PlayMode4개 어셈블리 컴파일 오류/경고0(`api-compile.txt`). 새 UnitTone 셰이더의 Editor 컴파일 진단0, 실제 GPU 렌더링에서 정상 컬러와 완료 채도를 확인했다. 코어 규칙 변경이 없어 EditMode와 ManagedChecks는 이번에 재실행하지 않았다.
+- 1024×768/1920×1080/2560×1080 × 글자100/130% × 일반/위험/확정 예고/완료/이동/방향6화면 **36조합**, TMP 넘침/화면 밖 활성 버튼·HP바0건(`aspect-matrix.json`). 와이드 화면에서는90도 카메라 회전을 적용했다. 작은 화면과Full HD PNG12장을 보관하고 일반/위험/완료/확정 예고 실제 렌더링을 직접 확인했다. `wait_for`로 프레임 진행을 확인한 뒤 캡처했다.
+- 전체 PlayMode 시도 중 빠른 Play 진입(도메인/씬 재로드 생략) 상태에서 테스트0개 완료가 반환되었다. 목록에는118개가 있음을 확인하고 검증 중 도메인 재로드를 켜서 다시 실행했다.0개 결과는 검증 통과로 계산하지 않는다. 최종 결과와 빌드는 아래에 추가 기록한다.
+- 최종 실제 전체 PlayMode **118/118(219.27초)** 통과(`playmode.json`). 첫 전체116/118에서 목적지의 이전 LineRenderer를 찾던 테스트1곳과 새 런타임 머티리얼이 재도전 후 남는1곳을 발견했다(`playmode-initial.json`). 새 GroundOverlay를 검사하도록 갱신하고 ResetBoard에서 머티리얼을 해제한 뒤 전체118개를 재실행했다. 마지막 수정 후 API 참조 컴파일도4개 어셈블리 모두 통과했다. 편집기의 빠른 Play 진입 옵션과 runInBackground=false를 복원했다.
+- Windows 일반 빌드 **32.992초**, 최종 개발 빌드 **23.310초** 성공, 각각 오류0/기존 빌드 안내3건(Pipeline 런타임 미설정 및 URP DebugOccluder/DebugOcclusionTest stripping). 일반 빌드 보고서에 UnitTone 셰이더 포함을 확인했고 개발 검수 타입은 제외됐다(`windows-build.json`, `development-build.json`, `windows-assembly.json`). 일반 실행본은 `Builds/WindowsGroundedMarkers/TalesTactics.exe`.
+- 개발 Windows 독립 프로세스의 격리 저장 경로에서 입문 연습/구매/장착/1장 승리 저장/재출전 검사를 **11.73초,26턴·이동26·공격22회**로 통과했다(`windows-review.json`).4배속 자동 기능 검수다. 최초 실행은 이전 인터미션 화면에서 잠긴 장 버튼을 찾던 검수 도구 경로로 실패했다(`windows-review-initial.json`). 현재 ‘임무 선택’ 화면을 먼저 열도록 개발 검수 코드2줄을 보완하고 개발 빌드·API 컴파일을 다시 실행했다. 해당 검수 전용 수정 후 전체 PlayMode는 반복하지 않았다. 일반 빌드는 검수 타입을 포함하지 않는다.
+- Windows 숨김 실행의 승리 캡처는 검게 나와 시각 검수 증거로 사용하지 않았다. 실제 시각 증거는 Editor Game View12장이다. 플레이어 오류/예외0이며 기존 사용하지 않는 URP 후처리 셰이더 경고는 남는다. 모든 디스플레이/DPI에서의 사람 검수는 별도다.
+- 최종 Play 종료, Scene dirty=false, runInBackground=false, Full HD, 빠른 Play 옵션 원복, 컴파일 실패 없음/콘솔 오류0을 확인했다. 테스트 CSV/동적 폰트 변경은 복원하고 Assets 캡처 복사본은 `Logs/GroundedMarkersCaptureCache`에 보관했다. 현재 사용자의 게임을 종료하지 않았으며 검수는 별도 프로세스/저장 경로로 수행했다. main/공개 릴리즈는 변경하지 않는다.

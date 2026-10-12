@@ -217,7 +217,9 @@ namespace TalesTactics
                 if (stage == 0)
                 {
                     Check(!CampaignStages.Unlocked(battle.Campaign, 1), "New campaign has chapter 2 locked");
+                    Click("임무 선택");yield return null;
                     Check(!FindButton(b => b.name.Contains(CampaignStages.Title(1))).interactable, "Locked chapter button is disabled");
+                    Click("출전 준비로");yield return null;
                 }
                 else
                 {

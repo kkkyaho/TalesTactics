@@ -50,7 +50,7 @@ namespace TalesTactics.PlayModeTests
                 }
                 var destination=director.Session.Grid.Reachable(active,out _).Keys.First(t=>t!=active.Position);
                 director.Board.ShowPath(director.Session.Grid.Path(active,destination));yield return null;
-                var marker=director.Board.GetComponentsInChildren<LineRenderer>().Single(x=>x.name=="Movement destination");
+                var marker=director.Board.GetComponentsInChildren<GroundOverlay>().Single(x=>x.name=="Movement destination");
                 Assert.That(marker.enabled,Is.True);director.Board.ClearHighlights();Assert.That(marker.enabled,Is.False);
                 director.Restart();yield return null;
             }

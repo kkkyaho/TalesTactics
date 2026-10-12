@@ -42,7 +42,7 @@ namespace TalesTactics.PlayModeTests
         {
             director.BeginBattle();yield return null;director.StopAllCoroutines();var b=director.Session;var u=b.Active;
             var foe=b.Units.First(x=>x.Team==Team.Enemy);director.InspectUnit(foe);director.CycleThreat();yield return null;
-            Assert.That(Object.FindObjectsByType<LineRenderer>().Any(x=>x.enabled&&x.name.StartsWith("Threat ")),Is.True);
+            Assert.That(Object.FindObjectsByType<GroundOverlay>().Any(x=>x.enabled&&x.name=="Threat region"&&x.QuadCount>0),Is.True);
             var keyboard=InputSystem.AddDevice<Keyboard>();
             try
             {

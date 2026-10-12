@@ -1,66 +1,69 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 namespace TalesTactics
 {
     public sealed partial class BoardView
     {
-        readonly Dictionary<Vector2Int,LineRenderer> threatMarks=new Dictionary<Vector2Int,LineRenderer>();
-        LineRenderer inspectMarker,hoverMarker,keyboardMarker,facingMarker;
+        GroundOverlay threatArea,intentArea,inspectMarker,hoverMarker,keyboardMarker;
+        Material unitToneMaterial;
+        MaterialPropertyBlock toneProperties;
+        static readonly Vector2Int[] edgeDirections={Vector2Int.up,Vector2Int.right,Vector2Int.down,Vector2Int.left};
+        Material UnitToneMaterial=>unitToneMaterial!=null?unitToneMaterial:unitToneMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone")){name="Runtime unit tone"};
+        GroundOverlay Overlay(string name,Transform parent,int order=-2)
+        {var g=new GameObject(name);g.transform.SetParent(parent,false);var overlay=g.AddComponent<GroundOverlay>();overlay.Initialize(UnitToneMaterial,order);return overlay;}
         public void DrawThreats()
         {
             if(root==null||battle.Session==null)return;
-            foreach(var m in threatMarks.Values)if(m!=null)m.enabled=false;
             var cells=new HashSet<Vector2Int>();var committed=new HashSet<Vector2Int>();
             foreach(var pair in battle.Threats)
             {
+                if(!pair.Key.Alive)continue;
                 if(pair.Key.IntentPhase==1)committed.UnionWith(pair.Value);
                 if(battle.ThreatMode==2||battle.ThreatMode==1&&pair.Key==battle.InspectedUnit)cells.UnionWith(pair.Value);
             }
-            cells.UnionWith(committed);
+            cells.ExceptWith(committed);
+            Region(ref threatArea,"Threat region",cells,new Color(.69f,.29f,.23f,.10f),new Color(.77f,.38f,.3f,.62f));
+            // Committed attacks stay visible with threat display off, without a cross on every tile.
+            Region(ref intentArea,"Committed attack region",committed,new Color(.85f,.46f,.19f,.18f),new Color(.98f,.64f,.3f,.86f));
+        }
+        void Region(ref GroundOverlay overlay,string name,HashSet<Vector2Int> cells,Color fill,Color outline)
+        {
+            if(overlay==null)overlay=Overlay(name,root,-4);
+            overlay.Clear();overlay.enabled=cells.Count>0;
             foreach(var p in cells)
             {
-                if(!threatMarks.TryGetValue(p,out var line)||line==null)
-                {var g=new GameObject("Threat "+p);g.transform.SetParent(root,false);line=g.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;threatMarks[p]=line;}
-                bool fixedAttack=committed.Contains(p);var at=battle.Session.Grid[p].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.13f;
-                line.enabled=true;line.loop=!fixedAttack;line.positionCount=fixedAttack?5:4;line.startWidth=line.endWidth=fixedAttack?.06f:.035f;
-                var c=fixedAttack?new Color(1,.2f,.8f):new Color(1,.35f,.18f);line.startColor=line.endColor=c;SetColor(line,c);
-                line.SetPositions(fixedAttack?new[]{at+new Vector3(-.34f,0,-.34f),at+new Vector3(.34f,0,.34f),at,at+new Vector3(-.34f,0,.34f),at+new Vector3(.34f,0,-.34f)}:
-                    new[]{at+Vector3.forward*.3f,at+Vector3.right*.3f,at+Vector3.back*.3f,at+Vector3.left*.3f});
+                var tile=battle.Session.Grid[p];if(tile==null)continue;
+                var at=tile.WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.012f;
+                overlay.Tile(at,.5f,fill);
+                foreach(var d in edgeDirections)
+                {
+                    var neighbor=battle.Session.Grid[p+d];
+                    if(cells.Contains(p+d)&&neighbor!=null&&neighbor.Height==tile.Height)continue;
+                    var normal=new Vector3(d.x,0,d.y);var along=new Vector3(-d.y,0,d.x)*.5f;
+                    overlay.Line(at+normal*.49f-along,at+normal*.49f+along,.016f,outline);
+                }
             }
+            overlay.Apply();
         }
         void TacticalMarkers()
         {
-            if(battle.Session.Scheduler is TeamTurnScheduler team)
-            foreach(var ally in battle.Session.Units.Where(a=>a.Team==Team.Player))
+            if(toneProperties==null)toneProperties=new MaterialPropertyBlock();
+            var team=battle.Session.Scheduler as TeamTurnScheduler;
+            foreach(var pair in sprites)
             {
-                bool ready=team.Phase==Team.Player&&team.CanSelect(ally);
-                if(units.TryGetValue(ally,out var visual))
-                {
-                    var ring=visual.Find("Faction Ring").GetComponent<LineRenderer>();
-                    var color=ready?new Color(.25f,.75f,.72f):new Color(.26f,.31f,.35f);
-                    ring.startColor=ring.endColor=color;SetColor(ring,color);
-                }
+                var unit=pair.Key;
+                bool done=unit.Alive&&unit.Team==Team.Player&&team!=null&&(team.Phase!=Team.Player||!team.CanSelect(unit));
+                pair.Value.GetPropertyBlock(toneProperties);
+                toneProperties.SetFloat("_Saturation",done?.38f:1);toneProperties.SetFloat("_Brightness",done?.84f:1);
+                pair.Value.SetPropertyBlock(toneProperties);
             }
-            Marker(ref inspectMarker,"Inspected unit",battle.InspectedUnit?.Alive==true?battle.InspectedUnit.Position:(Vector2Int?)null,new Color(1,.8f,.1f),.42f);
-            if(battle.InspectedUnit?.Alive==true)
-            {
-                var p=battle.Session.Grid[battle.InspectedUnit.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.1f;
-                inspectMarker.SetPositions(new[]{p+Vector3.forward*.52f,p+Vector3.right*.52f,p+Vector3.back*.52f,p+Vector3.left*.52f});
-            }
-            Marker(ref hoverMarker,"Turn order focus",battle.HoveredUnit?.Alive==true?battle.HoveredUnit.Position:(Vector2Int?)null,Color.cyan,.55f);
-            Marker(ref keyboardMarker,"Keyboard tile cursor",battle.KeyboardTile,Color.cyan,.32f);
-            var u=battle.InspectedUnit?.Alive==true?battle.InspectedUnit:battle.Session.Active;
-            bool facingVisible=u?.Alive==true&&!(battle.State is FacingSelectionState);
-            Marker(ref facingMarker,"Facing indicator",facingVisible?u.Position:(Vector2Int?)null,new Color(.75f,.63f,.39f),.2f);
-            if(facingVisible)
-            {
-                var origin=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.17f;
-                var d=SkillResolver.FacingVector(u.Facing);var forward=new Vector3(d.x,0,d.y);var right=new Vector3(-d.y,0,d.x);
-                facingMarker.loop=false;facingMarker.positionCount=3;facingMarker.startWidth=facingMarker.endWidth=.018f;
-                facingMarker.SetPositions(new[]{origin+forward*.3f+right*.075f,origin+forward*.41f,origin+forward*.3f-right*.075f});
-            }
+            bool visible=!battle.StoryActive&&!battle.Hud.InputModalOpen;
+            var inspected=battle.InspectedUnit;var hovered=battle.HoveredUnit;
+            Marker(ref inspectMarker,"Inspected unit",visible&&inspected?.Alive==true&&inspected!=battle.Session.Active&&inspected.Position!=battle.Target?inspected.Position:(Vector2Int?)null,new Color(.79f,.67f,.43f,.7f),.43f);
+            Marker(ref hoverMarker,"Turn order focus",visible&&hovered?.Alive==true&&hovered!=battle.Session.Active&&hovered!=inspected?hovered.Position:(Vector2Int?)null,new Color(.39f,.69f,.72f,.6f),.43f);
+            Marker(ref keyboardMarker,"Keyboard tile cursor",visible&&battle.KeyboardTile!=battle.Target&&battle.KeyboardTile!=battle.Session.Active?.Position?battle.KeyboardTile:null,new Color(.39f,.69f,.72f,.6f),.43f);
         }
-        void ResetTacticalMarkers(){threatMarks.Clear();inspectMarker=hoverMarker=keyboardMarker=facingMarker=null;}
+        void ResetTacticalMarkers(){threatArea=intentArea=inspectMarker=hoverMarker=keyboardMarker=null;if(unitToneMaterial!=null)Destroy(unitToneMaterial);unitToneMaterial=null;}
+        void OnDestroy(){if(unitToneMaterial!=null)Destroy(unitToneMaterial);}
     }
 }

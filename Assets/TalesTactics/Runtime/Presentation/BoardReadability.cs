@@ -4,7 +4,7 @@ namespace TalesTactics
     public sealed partial class BoardView
     {
         bool focusAction;
-        LineRenderer activeMarker,targetMarker,destinationMarker;
+        GroundOverlay activeMarker,targetMarker,destinationMarker;
         public void FocusCurrent()
         {if(root==null||battle.TimingActive)return;focusAction=true;zoom=1;FitBattlefield(true);}
         public void RefreshFocus(){if(focusAction&&root!=null)FitBattlefield(true);}
@@ -21,21 +21,16 @@ namespace TalesTactics
         {
             TacticalMarkers();
             var u=battle.Session.Active;
-            Marker(ref activeMarker,"Active unit",u!=null&&u.Alive&&!(battle.State is FacingSelectionState)?u.Position:(Vector2Int?)null,new Color(.82f,.69f,.41f),.45f);
-            Marker(ref targetMarker,"Selected target",battle.Target,new Color(1,.82f,.12f),.37f);
+            bool visible=!battle.StoryActive&&!battle.Hud.InputModalOpen;
+            Marker(ref activeMarker,"Active unit",visible&&u!=null&&u.Alive&&!(battle.State is FacingSelectionState)?u.Position:(Vector2Int?)null,new Color(.35f,.78f,.78f,.86f),.43f);
+            Marker(ref targetMarker,"Selected target",visible?battle.Target:null,new Color(.86f,.69f,.37f,.8f),.43f);
         }
-        void Marker(ref LineRenderer marker,string name,Vector2Int? position,Color color,float radius)
+        void Marker(ref GroundOverlay marker,string name,Vector2Int? position,Color color,float radius)
         {
-            if(marker==null)
-            {
-                var g=new GameObject(name);g.transform.SetParent(root,false);marker=g.AddComponent<LineRenderer>();
-                marker.sharedMaterial=HighlightMaterial;marker.loop=true;marker.positionCount=4;marker.startWidth=marker.endWidth=.026f;marker.startColor=marker.endColor=color;SetColor(marker,color);
-            }
+            if(marker==null)marker=Overlay(name,root);
             marker.enabled=position.HasValue;if(!position.HasValue)return;
-            marker.positionCount=4;
-            marker.startColor=marker.endColor=color;SetColor(marker,color);
-            var p=battle.Session.Grid[position.Value].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.08f;
-            marker.SetPositions(new[]{p+new Vector3(-radius,0,-radius),p+new Vector3(radius,0,-radius),p+new Vector3(radius,0,radius),p+new Vector3(-radius,0,radius)});
+            marker.Corners(radius,color);
+            marker.transform.position=battle.Session.Grid[position.Value].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.022f;
         }
     }
 }
