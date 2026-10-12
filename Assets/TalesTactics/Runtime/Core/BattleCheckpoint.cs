@@ -7,9 +7,9 @@ namespace TalesTactics
 {
     [Serializable] public sealed class BattleCheckpoint
     {
-        public int Version=9,Stage,Active,Round,SurvivalTurns;
+        public int Version=10,Stage,Active,Round,SurvivalTurns;
         public bool LegacyMission;
-        public bool Reactions,ActionExperience;
+        public bool Reactions,ActionExperience,ExpandedEncounters;
         public int CombatRandomDraws,RewindsUsed;
         public RewindFrame[] History;
         public BattleDifficulty Difficulty;
@@ -25,7 +25,7 @@ namespace TalesTactics
         public static BattleCheckpoint Capture(BattleSession session,int[] deployment,bool includeHistory=true)
         {
             if(session.CampaignStage<0||session.Result!=BattleResult.Ongoing||session.Active?.Team!=Team.Player)throw new InvalidOperationException("Only an ongoing campaign player command can be suspended");
-            var save=new BattleCheckpoint{ActionExperience=session.Resolver.ActionExperienceEnabled,Reactions=session.Resolver.ReactionsEnabled,CombatRandomDraws=session.Resolver.RandomDraws,RewindsUsed=session.RewindsUsed,History=includeHistory?session.History.ToArray():null,Opening=session.Opening,HasOpening=session.Opening!=null,Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
+            var save=new BattleCheckpoint{ExpandedEncounters=session.ExpandedEncounters,ActionExperience=session.Resolver.ActionExperienceEnabled,Reactions=session.Resolver.ReactionsEnabled,CombatRandomDraws=session.Resolver.RandomDraws,RewindsUsed=session.RewindsUsed,History=includeHistory?session.History.ToArray():null,Opening=session.Opening,HasOpening=session.Opening!=null,Stage=session.CampaignStage,Deployment=deployment.ToArray(),Active=session.Units.IndexOf(session.Active),CT=session.Scheduler is CTTurnScheduler,Utility=session.UseUtilityAI,RandomState=UnityEngine.Random.state,
                 Difficulty=session.Difficulty,MissionEvents=session.MissionEvents,ReinforcementsArrived=session.ReinforcementsArrived,CaptureProgress=session.CaptureProgress,BossEncounters=session.BossEncounters,TacticalCombat=session.TacticalCombat,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,LegacyMission=session.LegacyCampaign,SurvivalTurns=(session.Victory as SurviveTurns)?.Completed??0};
             if(session.Scheduler is SpeedTurnScheduler speed){save.Order=speed.Capture(session.Units);save.Round=speed.Round;}
             else if(session.Scheduler is TeamTurnScheduler team){save.TeamTurns=true;save.Order=team.CapturePending(session.Units);save.Begun=team.CaptureBegun(session.Units);save.Round=team.Round;}
@@ -35,8 +35,8 @@ namespace TalesTactics
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if(Version<1||Version>9||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
-            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat,bossEncounters:Version>=5&&BossEncounters,difficulty:Version>=7?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=7&&MissionEvents,reactions:Version>=8&&Reactions,actionExperience:Version>=9&&ActionExperience);
+            if(Version<1||Version>10||TeamTurns&&(Version<3||CT)||Stage<0||Stage>=CampaignStages.Count||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Unsupported checkpoint");
+            var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat,bossEncounters:Version>=5&&BossEncounters,difficulty:Version>=7?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=7&&MissionEvents,reactions:Version>=8&&Reactions,actionExperience:Version>=9&&ActionExperience,expandedEncounters:Version>=10&&ExpandedEncounters);
             if(Version>=7)session.RestoreMissionEvents(ReinforcementsArrived,CaptureProgress);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
@@ -51,7 +51,7 @@ namespace TalesTactics
             if(Version>=6&&HasOpening)
             {
                 if(Opening==null||Opening.Stage!=Stage||Opening.Deployment==null||!Opening.Deployment.SequenceEqual(Deployment))throw new InvalidDataException("Opening does not match checkpoint");
-                Opening.Restore(catalog);session.Opening=Opening;
+                if(Opening.Restore(catalog).ExpandedEncounters!=session.ExpandedEncounters)throw new InvalidDataException("Opening encounter mismatch");session.Opening=Opening;
             }
             if(Version>=8)
             {
@@ -61,7 +61,7 @@ namespace TalesTactics
                 foreach(var frame in History??new RewindFrame[0])
                 {
                     var snapshot=BattleSession.ReadFrame(frame);
-                    if(snapshot.Stage!=Stage||!snapshot.Deployment.SequenceEqual(Deployment)||snapshot.Reactions!=Reactions||(snapshot.Version>=9&&snapshot.ActionExperience)!=(Version>=9&&ActionExperience)||snapshot.CT!=CT||snapshot.TeamTurns!=TeamTurns||snapshot.MissionEvents!=MissionEvents||snapshot.Difficulty!=Difficulty)throw new InvalidDataException("History does not match battle");
+                    if(snapshot.Stage!=Stage||(snapshot.Version>=10&&snapshot.ExpandedEncounters)!=(Version>=10&&ExpandedEncounters)||!snapshot.Deployment.SequenceEqual(Deployment)||snapshot.Reactions!=Reactions||(snapshot.Version>=9&&snapshot.ActionExperience)!=(Version>=9&&ActionExperience)||snapshot.CT!=CT||snapshot.TeamTurns!=TeamTurns||snapshot.MissionEvents!=MissionEvents||snapshot.Difficulty!=Difficulty)throw new InvalidDataException("History does not match battle");
                     snapshot.Restore(catalog);session.History.Add(frame);
                 }
             }

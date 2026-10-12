@@ -1,6 +1,8 @@
+param([switch]$ExpandedEncounters,[string]$OutputDirectory="Docs/ActionExperience",[bool]$Reactions=$true)
 # Engine simulation using real content, legal AI actions and isolated campaign files.
 $ErrorActionPreference='Stop'
 $rows=@()
+New-Item -ItemType Directory -Force $OutputDirectory | Out-Null
 foreach($catchUp in @($false,$true)){
 foreach($stage in 0..5){
 $code=@'
@@ -10,7 +12,7 @@ var save=stage==0?new TalesTactics.CampaignSave():UnityEngine.JsonUtility.FromJs
 var party=TalesTactics.TacticalDevelopment.Recommended(catalog);
 var trained=new System.Collections.Generic.List<string>();
 if(catchUp)foreach(int index in party)if(TalesTactics.TacticalDevelopment.CatchUp(save,catalog.Characters[index],stage,_=>true))trained.Add(catalog.Characters[index].Id);
-var b=new TalesTactics.BattleSession(catalog,party,1,TalesTactics.CampaignStages.EnemyLevel(stage),stage,utilityAI:true,teamTurns:true,phaseSurvival:true,tacticalCombat:true,bossEncounters:true,reactions:true);
+var b=new TalesTactics.BattleSession(catalog,party,1,TalesTactics.CampaignStages.EnemyLevel(stage),stage,utilityAI:true,teamTurns:true,phaseSurvival:true,tacticalCombat:true,bossEncounters:true,reactions:REACTIONS,expandedEncounters:EXPANDED);
 var players=b.Units.Where(u=>u.Team==TalesTactics.Team.Player).ToArray();
 foreach(var u in players){var p=save.Get(u.Data.Id);u.Level=p.Level;u.EXP=p.EXP;TalesTactics.TacticalDevelopment.Apply(u,save,stage);u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;}
 var before=players.ToDictionary(u=>u.Data.Id,u=>u.Level);var actions=players.ToDictionary(u=>u.Data.Id,u=>0);var support=players.ToDictionary(u=>u.Data.Id,u=>0);
@@ -31,12 +33,12 @@ while(b.Result==TalesTactics.BattleResult.Ongoing&&turns++<400){
 bool won=b.Result==TalesTactics.BattleResult.Victory;
 if(won){var reward=TalesTactics.CampaignEconomy.Prepare(save,stage,9999);if(!TalesTactics.CampaignStages.TryReward(save,reward,players.Select(u=>u.Data).ToArray(),_=>true,players.ToDictionary(u=>u.Data.Id,u=>u.BattleEXP)))throw new System.Exception("Reward failed");}
 System.IO.File.WriteAllText(path,UnityEngine.JsonUtility.ToJson(save));
-return new {stage=stage+1,catchUp,trained,result=b.Result.ToString(),turns,units=players.Select(u=>new {id=u.Data.Id,beforeLevel=before[u.Data.Id],battleLevel=u.Level,actionEXP=u.BattleEXP,actions=actions[u.Data.Id],supportActions=support[u.Data.Id],savedLevel=save.Get(u.Data.Id).Level,savedEXP=save.Get(u.Data.Id).EXP,alive=u.Alive}).ToArray()};
+return new {stage=stage+1,catchUp,trained,expanded=b.ExpandedEncounters,reactions=b.Resolver.ReactionsEnabled,enemies=b.Units.Count(u=>u.Team==TalesTactics.Team.Enemy),reinforcements=b.ReinforcementsArrived,result=b.Result.ToString(),turns,units=players.Select(u=>new {id=u.Data.Id,beforeLevel=before[u.Data.Id],battleLevel=u.Level,actionEXP=u.BattleEXP,actions=actions[u.Data.Id],supportActions=support[u.Data.Id],savedLevel=save.Get(u.Data.Id).Level,savedEXP=save.Get(u.Data.Id).EXP,alive=u.Alive}).ToArray()};
 '@
-$response=unity command eval --caller plugin --skill unity-cli --format json -- $code.Replace('STAGE',"$stage").Replace('CATCHUP',$catchUp.ToString().ToLowerInvariant())|ConvertFrom-Json
+$response=unity command eval --caller plugin --skill unity-cli --format json -- $code.Replace('STAGE',"$stage").Replace('CATCHUP',$catchUp.ToString().ToLowerInvariant()).Replace('EXPANDED',$ExpandedEncounters.IsPresent.ToString().ToLowerInvariant()).Replace('REACTIONS',$Reactions.ToString().ToLowerInvariant())|ConvertFrom-Json
 if(!$response.success -or !$response.data.result.success){throw ($response|ConvertTo-Json -Depth 8)}
 $row=$response.data.result.result;$rows+=$row
-$rows|ConvertTo-Json -Depth 8|Set-Content Docs/ActionExperience/progression.json -Encoding utf8
+$rows|ConvertTo-Json -Depth 8|Set-Content (Join-Path $OutputDirectory "progression.json") -Encoding utf8
 Write-Output "stage=$($row.stage) catchUp=$catchUp result=$($row.result) turns=$($row.turns)"
 if($row.result -ne 'Victory'){break}
 }

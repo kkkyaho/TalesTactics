@@ -24,7 +24,7 @@ namespace TalesTactics
         public bool ReinforcementsArrived {get;private set;}
         public int CaptureProgress {get;private set;}
         public bool CaptureMission=>MissionEvents&&CampaignStage==2;
-        public bool ReinforcementMission=>MissionEvents&&(CampaignStage==2||CampaignStage==4);
+        public bool ReinforcementMission=>(MissionEvents||ExpandedEncounters&&Scheduler is TeamTurnScheduler)&&(CampaignStage==2||CampaignStage==4);
         public string EventSummary=>!ReinforcementMission?"":ReinforcementsArrived?"증원 2명 도착":"3턴 시작 · 적 증원 2명";
         void AdvanceMissionEvents()
         {
@@ -39,14 +39,20 @@ namespace TalesTactics
         bool SpawnReinforcements()
         {
             if(!ReinforcementMission||ReinforcementsArrived)return false;
-            var origin=CampaignContent.EnemySpawn(CampaignStage,3);
-            var positions=Grid.Tiles.Values.Where(t=>t.Walkable&&t.Occupant==null&&t.Coordinate!=Destination)
-                .OrderBy(t=>GridMap.Distance(t.Coordinate,origin)).ThenBy(t=>t.Coordinate.y).ThenBy(t=>t.Coordinate.x).Take(2).ToArray();
-            if(positions.Length<2)return false;
+            int first=ExpandedEncounters?CampaignEncounters.Initial(CampaignStage,true):2;
+            var positions=new System.Collections.Generic.List<GridTile>();
+            for(int i=0;i<2;i++)
+            {
+                var origin=ExpandedEncounters?CampaignEncounters.Position(CampaignStage,first+i):CampaignContent.EnemySpawn(CampaignStage,3);
+                var tile=Grid.Tiles.Values.Where(t=>t.Walkable&&t.Occupant==null&&t.Coordinate!=Destination&&!positions.Contains(t))
+                    .OrderBy(t=>GridMap.Distance(t.Coordinate,origin)).ThenBy(t=>t.Coordinate.y).ThenBy(t=>t.Coordinate.x).FirstOrDefault();
+                if(tile==null)return false;
+                positions.Add(tile);
+            }
             int level=Units.First(u=>u.Team==Team.Enemy).Level;
             for(int i=0;i<2;i++)
             {
-                var u=new UnitRuntime(CampaignEnemies.Resolve(catalog,CampaignStage,i+2),Team.Enemy,Rules,level);Units.Add(u);Grid.Place(u,positions[i].Coordinate);EnemyTactics.ConfigureUnit(u,catalog);
+                var u=new UnitRuntime(ExpandedEncounters?CampaignEncounters.Enemy(catalog,CampaignStage,first+i):CampaignEnemies.Resolve(catalog,CampaignStage,i+2),Team.Enemy,Rules,level);Units.Add(u);Grid.Place(u,positions[i].Coordinate);EnemyTactics.ConfigureUnit(u,catalog);
             }
             ReinforcementsArrived=true;return true;
         }

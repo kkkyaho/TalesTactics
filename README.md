@@ -8,7 +8,9 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 개발 기준 브랜치는 **`develop`**입니다. 모든 개발 작업과 새 작업 브랜치 생성은 `develop`을 기준으로 하며, 별도 작업 브랜치도 완료 후 `develop`으로 통합합니다. **`main`은 릴리즈 상태 보관용 마스터/아카이브**로 사용하고, 릴리즈·머지 요청이 있을 때만 갱신합니다.
 
-개발판에 **행동 경험치**를 적용했습니다. 공격·유효 회복/지원·처치로 개별 경험치를 얻고, 레벨 차이·다단/범위·반격/지원 공격을 보정합니다. 100 EXP마다 전투 중 레벨업하며 승리 시 확정, 중단 저장·되감기·재도전과 기존 저장 진행률 변환을 지원합니다. EditMode190/190·PlayMode111/111·최종 표시1/1, 화면24조합, Windows 빌드·프로세스 재실행4회 검수를 통과했습니다. 최신 개발 실행본은 `Builds/WindowsActionExperience/TalesTactics.exe`입니다(폴더 전체 필요). [규칙·실제 화면·검증 한계](Docs/ActionExperience/README.md).
+개발판의 교전 구성을 행동 경험치에 맞춰 조정했습니다. **맵 크기를 유지하고 장별 적 수를 6/7/8/8/10/10명으로 늘렸으며**, 자유 턴 3·5장은 3턴 시작에 2명이 한 번 증원됩니다. 적 정보는 4명씩 넘겨 보고, 기존 중단·재도전은 이전 적 구성을 유지합니다. 추천 편성 자동 비교에서 평균 획득량이 전투당 80.7→108.5 EXP로 늘었으나 느린 전열의 성장 격차는 남습니다. 실제 EditMode202/202·PlayMode113/113·화면30조합과 Windows 빌드/시작 검사를 통과했습니다. 최신 개발 실행본은 `Builds/WindowsEncounterBalance/TalesTactics.exe`입니다(폴더 전체 필요). [구성·성장 비교·실제 화면](Docs/EncounterBalance/README.md).
+
+개발판에 **행동 경험치**를 적용했습니다. 공격·유효 회복/지원·처치로 개별 경험치를 얻고, 레벨 차이·다단/범위·반격/지원 공격을 보정합니다. 100 EXP마다 전투 중 레벨업하며 승리 시 확정, 중단 저장·되감기·재도전과 기존 저장 진행률 변환을 지원합니다. EditMode190/190·PlayMode111/111·최종 표시1/1, 화면24조합, Windows 빌드·프로세스 재실행4회 검수를 통과했습니다. 행동 경험치 적용 당시 실행본은 `Builds/WindowsActionExperience/TalesTactics.exe`입니다(폴더 전체 필요). [규칙·실제 화면·검증 한계](Docs/ActionExperience/README.md).
 
 되돌리기·재도전·턴 종료를 **짧은 질문과 버튼 두 개의 작은 확인창**으로 정리했습니다. 전투 메뉴와 설정의 장문 설명은 선택형 도움말로 옮겼습니다. PlayMode110/110·최종 관련2/2·화면54조합과 Windows 빌드/시작 검사를 통과했습니다. 해당 단계 실행본은 `Builds/WindowsConciseDialogs/TalesTactics.exe`입니다(폴더 전체 필요). [실제 화면과 검증](Docs/ConciseDialogs/README.md).
 
@@ -67,7 +69,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 `Launch.ps1`은 설치된 에디터에서 프로젝트를 여는 선택적 편의 스크립트입니다. 테스트 Scene은 기존 사용자 작업을 자동으로 덮어쓰지 않습니다. 생성 이후 수치 변경은 Content의 asset을 편집하세요. 생성기 코드는 초기 데이터의 출처이며 기획 원본은 Docs/GAME_DESIGN.md입니다.
 
-최신 로컬 Windows 실행 파일: `Builds/WindowsCompactInformation/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
+최신 로컬 Windows 실행 파일: `Builds/WindowsEncounterBalance/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
 
 ## 조작
 

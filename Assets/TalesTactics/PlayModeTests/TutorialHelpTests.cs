@@ -80,7 +80,7 @@ namespace TalesTactics.PlayModeTests
             director.GetComponent<GamepadPointer>().Cancel();yield return null;Click("메뉴 · 저장/설정");yield return null;Click("저장 없이 출전 준비로");yield return null;
             director.BeginBattle();yield return null;
             Assert.That(director.TutorialActive,Is.False);Assert.That(director.Session.CampaignStage,Is.Zero);
-            Assert.That(director.Session.Victory,Is.TypeOf<EliminateEnemies>());Assert.That(director.Session.Units.Count,Is.EqualTo(7));
+            Assert.That(director.Session.Victory,Is.TypeOf<EliminateEnemies>());Assert.That(director.Session.Units.Count,Is.EqualTo(9));
             Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Wait / 방향 선택").IsInteractable(),Is.True);
         }
     }

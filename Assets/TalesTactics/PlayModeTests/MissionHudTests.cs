@@ -43,7 +43,7 @@ namespace TalesTactics.PlayModeTests
             director.Hud.ShowSystemMenu();Assert.That(director.Hud.MissionOpen,Is.False);Assert.That(director.Hud.SystemMenuOpen,Is.True);director.Hud.CloseSystemMenu();
             director.Session.Units.Last().Damage(99999,director.Session.Grid);director.Hud.Refresh();director.Hud.ShowMission();yield return null;
             var text=string.Join("\n",director.Hud.transform.Find("MissionOverlay/MissionWindow").GetComponentsInChildren<TMPro.TMP_Text>().Select(t=>t.text));
-            Assert.That(text,Does.Contain("적 잔존 3 / 4"));Assert.That(text,Does.Contain("격파"));director.Restart();Assert.That(director.Hud.MissionOpen,Is.False);Assert.That(director.Hud.InputModalOpen,Is.False);
+            Assert.That(text,Does.Contain("적 잔존 5 / 6"));Assert.That(text,Does.Contain("격파"));director.Restart();Assert.That(director.Hud.MissionOpen,Is.False);Assert.That(director.Hud.InputModalOpen,Is.False);
         }
     }
 }

@@ -15,8 +15,9 @@ namespace TalesTactics
         }
         int missionTab,missionEnemy;
         bool missionDetails;
-        public void ShowMission(){missionTab=0;missionDetails=false;RenderMission();}
+        public void ShowMission(){missionTab=0;missionEnemy=0;missionDetails=false;RenderMission();}
         bool PreparationEvents(int stage,bool training)=>!training&&battle.Preferences.MissionEvents&&!battle.UseCT&&!battle.UseFixedSpeedOrder&&(stage==2||stage==4);
+        bool PreparationWave(int stage,bool training)=>!training&&CampaignEncounters.HasWave(stage,!battle.UseCT&&!battle.UseFixedSpeedOrder);
         string PreparationVictory(int stage)=>PreparationEvents(stage,false)&&stage==2?"거점 "+CampaignMissions.Destination(stage)+"에서 아군 턴 종료 2회 연속 유지":CampaignMissions.Description(stage);
         string BriefVictory(BattleSession s,int stage,bool training)
         {
@@ -72,26 +73,33 @@ namespace TalesTactics
                 {
                     var ward=InfoBlock(missionWindow,"WardCard",340,176);Label(ward,"호위 방벽",12,32,20);var value=Label(ward,s.Resolver.BossWardPercent(s.ObjectiveUnit)+"%",4,64,30);value.alignment=TMPro.TextAlignmentOptions.TopRight;value.color=new Color(.35f,.8f,.77f);
                     var escorts=s.Units.Where(u=>u.Team==Team.Enemy&&u!=s.ObjectiveUnit).ToArray();
-                    for(int i=0;i<escorts.Length;i++){var portrait=InfoPortrait(ward,escorts[i].Data,20+i*132,58,60,60);if(!escorts[i].Alive)portrait.color=new Color(.4f,.4f,.4f,.5f);}
+                    float spacing=Mathf.Min(132,396f/Mathf.Max(1,escorts.Length)),size=Mathf.Min(60,spacing-4);
+                    for(int i=0;i<escorts.Length;i++){var portrait=InfoPortrait(ward,escorts[i].Data,12+i*spacing,58,size,60);if(!escorts[i].Alive)portrait.color=new Color(.4f,.4f,.4f,.5f);}
                     Label(ward,s.ObjectiveUnit.IntentPhase>0?EnemyTactics.Describe(s.ObjectiveUnit):"호위 격파 시 약화",126,48,15);
                 }
-                else Label(missionWindow,s!=null?MissionBriefing.Progress(s)+(s.ReinforcementMission?"\n"+s.EventSummary:""):PreparationEvents(stage,training)?"3턴 시작 · 적 증원 2명":"출전 후 진행 상황 표시",356,138,20);
+                else Label(missionWindow,s!=null?MissionBriefing.Progress(s)+(s.ReinforcementMission?"\n"+s.EventSummary:""):PreparationWave(stage,training)?"3턴 시작 · 적 증원 2명":"출전 후 진행 상황 표시",356,138,20);
                 Button(missionWindow,missionDetails?"요약 보기":"임무 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);
             }
             else
             {
-                var enemies=s!=null?s.Units.Where(u=>u.Team==Team.Enemy).Select(u=>u.Data).ToArray():Enumerable.Range(0,4).Select(i=>CampaignEnemies.Resolve(battle.Catalog,stage,i)).ToArray();
+                var enemies=s!=null?s.Units.Where(u=>u.Team==Team.Enemy).Select(u=>u.Data).ToArray():training?Enumerable.Range(0,4).Select(i=>battle.Catalog.Enemy).ToArray():Enumerable.Range(0,CampaignEncounters.Total(stage)).Select(i=>CampaignEncounters.Enemy(battle.Catalog,stage,i)).ToArray();
                 missionEnemy=Mathf.Clamp(missionEnemy,0,enemies.Length-1);
-                for(int i=0;i<enemies.Length;i++)
+                int first=missionEnemy/4*4;
+                for(int i=first;i<Mathf.Min(first+4,enemies.Length);i++)
                 {
                     int index=i;Button(missionWindow,"적 선택: "+i,128,()=>{missionEnemy=index;missionDetails=false;RenderMission();},true,94);
-                    var row=(RectTransform)missionWindow.GetChild(missionWindow.childCount-1);row.anchorMin=new Vector2(i/(float)enemies.Length,1);row.anchorMax=new Vector2((i+1)/(float)enemies.Length,1);row.sizeDelta=new Vector2(-12,94);
+                    var row=(RectTransform)missionWindow.GetChild(missionWindow.childCount-1);row.anchorMin=new Vector2((i-first)/4f,1);row.anchorMax=new Vector2((i-first+1)/4f,1);row.sizeDelta=new Vector2(-12,94);
                     var label=row.GetComponentInChildren<TMPro.TMP_Text>();label.text=EnemyRoles.Name(enemies[i]);label.rectTransform.anchoredPosition=new Vector2(0,-67);label.rectTransform.sizeDelta=new Vector2(-4,24);label.fontSize=13;
-                    InfoPortrait(row,enemies[i],enemies.Length>4?8:16,5,enemies.Length>4?46:58,58);TintInfoTab(missionWindow,i==missionEnemy);
+                    InfoPortrait(row,enemies[i],16,5,58,58);TintInfoTab(missionWindow,i==missionEnemy);
+                }
+                if(enemies.Length>4)
+                {
+                    Button(missionWindow,"이전 적",228,()=>{missionEnemy=Mathf.Max(0,first-4);RenderMission();},first>0,28);HalfButton(missionWindow,0);
+                    Button(missionWindow,"다음 적",228,()=>{missionEnemy=first+4;RenderMission();},first+4<enemies.Length,28);HalfButton(missionWindow,1);
                 }
                 var data=enemies[missionEnemy];var unit=s?.Units.Where(u=>u.Team==Team.Enemy).ElementAt(missionEnemy);
-                Label(missionWindow,data.DisplayName,246,40,24);
-                Label(missionWindow,unit==null?EnemyRoles.Name(data):unit.Alive?"HP "+unit.CurrentHP+" / "+unit.Stats.HP:"격파",290,36,20);
+                Label(missionWindow,data.DisplayName,264,36,24);
+                Label(missionWindow,unit==null?(!training&&PreparationWave(stage,false)&&missionEnemy>=CampaignEncounters.Initial(stage,true)?"증원 · ":"")+EnemyRoles.Name(data):unit.Alive?"HP "+unit.CurrentHP+" / "+unit.Stats.HP:"격파",306,32,20);
                 string state=unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):unit?.BossWard==true?"호위 방벽 "+s.Resolver.BossWardPercent(unit)+"%":EnemyRoles.Name(data);
                 Label(missionWindow,state,340,78,18);
                 if(missionDetails)Label(missionWindow,data.BasicAttack.DisplayName+" · 사거리 "+data.BasicAttack.MinRange+"–"+data.BasicAttack.Range+"\n"+(unit?.BossWard==true?"호위 1명당 피해 -25% (최대 75%)":EnemyRoles.Advice(data)),428,98,16);

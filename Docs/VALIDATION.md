@@ -712,3 +712,17 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 개발 플레이어 **서로 다른 프로세스4회**로 기본 아군 턴(기존 스크립트 모드명 spd)/CT 각각 저장→이어하기를 검수했다. EXP95에서 임시16획득으로 Lv2/EXP11/BattleEXP16을 저장해 재실행 후 동일함을 확인했고, 되감기와 재도전의 Lv1/EXP95/BattleEXP0 복원 및 다음20턴 순서를 검사했다(`persistence/summary.json`과 expected.json). 사용자 저장·설정 불변, 실제 사용자 campaign/백업3개 SHA256 불변(`user-save-check.json`). 격리 저장 경로만 사용했다.
 - 첫 스크립트 갱신 중 Editor 도메인 갱신이 멈춰 재시작했다. Scene Backup은 Keep Backups로 보존했고, 검수 캡처의 Assets 복사본과 함께 Logs/ActionExperienceEditorBackup 폴더에 옮겼다. 테스트 생성 CSV와 동적 폰트의 변경은 복원했다. 이후 발견한 Windows 네트워크 권한창은 자동 조작하지 않았다.
 - 새 캠페인 저장은v3, 체크포인트v9, 출전기록v4다. 구버전 중단 전투는 당시 규칙으로 이어가며 새 출전부터 행동 경험치를 사용한다. 온라인 릴리즈/main 반영은 이번 요청 범위가 아니다.
+
+
+## 2026-10-12 — 교전 구성과 성장 기회 (`develop`)
+
+- 기존 맵/경험치 공식/승리 조건을 유지하고 신규 캠페인의 적 수를 6/7/8/8/10/10명으로 조정했다. 자유 턴 3·5장은 3턴 시작에 2명 단발 증원, SPD/CT는 전체 초기 배치다. 임무 옵션과 증원을 중복 생성하지 않는다. 적 정보는 4명씩 조회하며 구 중단 기록은 기존 구성을 보존한다.
+- Unity6000.6.0f1 실제 EditMode **202/202**, 0.58초 통과(`EncounterBalance/editmode.json`). 새 구성의 위치/연결성, 세 턴 모드의 인원, 증원 1회/다음 적 페이즈 참여, 중단·되감기·재도전 및 구 v9/v4 기록 호환과 잘못 섞인 기록 거부를 포함한다.
+- 실제 전체 PlayMode 최초 **110/113**, 207.70초에서 구 적 수 기대값 2곳과 정보창 재진입 시 이전 페이지 유지 문제를 발견했다. 새 인원으로 기대값을 갱신하고 첫 페이지 초기화를 수정한 뒤 **113/113**, 212.12초 통과(`playmode-initial.json`, `playmode.json`). 신규 출전 적용, 마지막 적 조회, 기본 증원·중단 파일 복원·재도전까지 실제 UI/게임 오브젝트에서 확인했다.
+- Runtime/Editor/EditMode/PlayMode 4개 어셈블리의 실제 Unity API 참조 컴파일을 경고 없이 통과했다(`api-compile.txt`). 이번에 ManagedChecks는 실행하지 않았으며 Unity 테스트와 혼동하지 않는다.
+- 실제 에셋의 추천 6명 연속 캠페인: 합류 훈련 유무 × 반격·지원 유무 × 6장 **24전투 모두 승리**. 같은 반격·지원 켬 경로에서 1장 공격·기술 실행 7→13회, 6장 전체 51→73회, 캐릭터당 전투 평균 EXP(최초 보상 포함) 80.7→108.5. 훈련 미사용 종료 레벨 4/5/2/8/5/8→7/7/4/9/7/8. 키사라의 성장 격차는 남고 지원 실행은 7→4회로 오히려 줄었다. 성장 총량 개선을 지원 역할 균형 완성으로 표현하지 않는다. 단일 추천 편성/AI이며 사람이 여러 편성으로 완주한 난도 증거가 아니다(`comparison.json`, `progression.json`, `default-options/progression.json`).
+- Game View 1024×768/1920×1080/2560×1080 × 글자 100/130% × 첫 전장/보스 임무/적 마지막 페이지/증원/규칙 5화면 **30조합**, 텍스트 넘침·화면 밖 버튼 0건(`aspect-matrix.json`). 실제 캡처 10개를 보존하고 작은 화면의 전장·보스 호위·적 마지막 페이지·규칙과 Full HD 증원을 직접 확인했다. 별도 호위 초상화 9개 경계 검사도 0건이다(`portrait-bounds.json`). 플레이 프레임 증가를 확인하고 검수했으며 실제 Windows 플레이어 화면 검수와는 구분한다.
+
+- Windows 일반 빌드 **23.444초, 오류0/경고3** 성공(`windows-build.json`). 기존 Pipeline 런타임 미설정 및 URP 내부 디버그 셰이더 stripping 안내이며 이번 코드 컴파일 경고가 아니다. 전체 빌드 보고서는 로컬 `Logs/EncounterBalanceBuildFull.json`, 요약만 저장소에 보관한다.
+- `Builds/WindowsEncounterBalance/TalesTactics.exe`를 12초 숨김 실행하여 프로세스 유지·오류/예외 로그0, Pipeline.dll 미포함을 확인했다(`windows-startup.json`). 사용자 campaign/백업3개의 SHA256은 화면 검수 전과 최종 테스트·빌드·실행 후 동일하다(`user-save-check.json`). 이번에는 별도 프로세스 간 중단 전투 검수는 재실행하지 않았고 실제 파일 기반 PlayMode 복원 및 EditMode 직렬화 검증을 사용했다.
+- 최종 Play 종료, runInBackground=false, Full HD, Scene dirty=false, 에디터 컴파일 실패 없음, 현재 콘솔 오류0/빌드 안내 경고3을 확인했다. Pipeline 누적 이력의 이전 테스트 실패/진단 수와 현재 콘솔 상태를 구분한다. 테스트 생성 CSV·동적 폰트 변경을 복원했고 캡처의 Assets 복사본은 `Logs/EncounterBalanceCaptureCache`로 옮겼다. develop에 반영하며 공개 릴리즈/main은 변경하지 않는다.

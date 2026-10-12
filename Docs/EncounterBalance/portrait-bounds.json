@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>();d.Hud.CloseSystemMenu();d.Hud.ShowMission();UnityEngine.Canvas.ForceUpdateCanvases();\nvar r=(UnityEngine.RectTransform)d.Hud.transform.Find(\"MissionOverlay/MissionWindow\");var edges=new UnityEngine.Vector3[4];r.GetWorldCorners(edges);\nvar icons=r.GetComponentsInChildren<UnityEngine.UI.Image>().Where(i=>i.name==\"InfoPortrait\").ToArray();\nreturn new {icons=icons.Length,outside=icons.Count(i=>{var p=new UnityEngine.Vector3[4];i.rectTransform.GetWorldCorners(p);return p.Any(v=>v.x<edges[0].x||v.x>edges[2].x||v.y<edges[0].y||v.y>edges[2].y);})};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "icons": 9,
+        "outside": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

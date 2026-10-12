@@ -28,7 +28,7 @@ namespace TalesTactics.PlayModeTests
             var b=director.Session;for(int i=0;i<100&&((TeamTurnScheduler)b.Scheduler).Round<3;i++){b.EndTurn();b.Advance();}
             director.RefreshViews();director.Hud.Refresh();yield return null;Assert.That(b.ReinforcementsArrived,Is.True);
             foreach(var u in b.Units.Skip(b.Units.Count-2))Assert.That(Object.FindObjectsByType<CharacterMotion>().Any(m=>m.transform.parent.name==u.Data.DisplayName),Is.True);
-            director.Hud.ShowMission();Click("적 정보");yield return null;Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Count(x=>x.name.StartsWith("적 선택: ")),Is.EqualTo(6));director.Hud.CloseMission();
+            director.Hud.ShowMission();Click("적 정보");yield return null;Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Count(x=>x.name.StartsWith("적 선택: ")),Is.EqualTo(4));Click("다음 적");yield return null;Click("적 선택: 7");director.Hud.CloseMission();
             Assert.That(director.SuspendBattle(),Is.True);Assert.That(director.ResumeBattle(),Is.True);yield return null;Assert.That(director.Session.Units.Count,Is.EqualTo(b.Units.Count));Assert.That(director.Session.ReinforcementsArrived,Is.True);
         }
     }
