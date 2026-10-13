@@ -1,5 +1,7 @@
 # 전투 표현 개선 적용
 
+후속 승인으로 방향 아이콘의 사각 배경을 제거하고 베이지색 입체 화살표로 바꿨다. 방향 표시의 최신 화면과 실행본은 [FacingIcons](../FacingIcons/README.md)를 따른다. 아래는 전투 표현 최초 적용 기록이다.
+
 사용자가 승인한 1·2·3·4번을 적용했다. 5번 초상화 대화는 개발안 상태다. 실행 파일은 `Builds/CombatPresentationWindows/TalesTactics.exe`이며 폴더 전체가 필요하다.
 
 ## 피해와 경험치

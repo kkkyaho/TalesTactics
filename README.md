@@ -1,5 +1,7 @@
 # TalesTactics — 개발 시작 안내
 
+**방향 아이콘 시안 적용**: 사각 배경을 제거하고 베이지색의 짧고 두꺼운 입체 화살표로 변경했습니다. 머리 위 위치와 조작을 유지합니다. 최신 실행본은 `Builds/FacingIconsWindows/TalesTactics.exe`입니다. [적용 범위·검증](Docs/FacingIcons/README.md).
+
 **전투 표현 개선 적용**: 작은 피해 숫자·초상화 EXP 게이지, 머리 위 방향 화살표, 실제 화염/속성 효과와 강화된 물리 공격 모션을 적용했습니다. 기존6장 플레이 제거와 새 메인20화·개인30단계를 유지합니다. 최신 실행본은 `Builds/CombatPresentationWindows/TalesTactics.exe`입니다. [적용 범위·실제 화면·검증](Docs/CombatPresentation/README.md). 5번 초상화 대화는 [개발안](Docs/PresentationProposal/proposal.html)에 남아 있습니다.
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.

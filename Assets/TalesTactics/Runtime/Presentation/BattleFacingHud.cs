@@ -10,7 +10,7 @@ namespace TalesTactics
             {
                 var facing=f;
                 var g=new GameObject(f.ToString(),typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.Button));g.transform.SetParent(commands,false);
-                var hit=g.GetComponent<UnityEngine.UI.Image>();hit.color=new Color(.04f,.08f,.12f,.6f);hit.raycastTarget=true;
+                var hit=g.GetComponent<UnityEngine.UI.Image>();hit.color=Color.clear;hit.raycastTarget=true;hit.canvasRenderer.cullTransparentMesh=false;
                 var button=g.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=hit;button.transition=UnityEngine.UI.Selectable.Transition.None;
                 button.onClick.AddListener(()=>battle.ChooseFacing(facing));
                 var hover=g.AddComponent<FacingPointer>();hover.Battle=battle;hover.Direction=facing;
@@ -39,21 +39,36 @@ namespace TalesTactics
                 var direction=new Vector2(point.x,point.y).normalized;
                 var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(38,38)*zoom;r.anchoredPosition=direction*44*zoom;
                 var arrow=child.GetComponentInChildren<FacingArrowGraphic>();arrow.rectTransform.sizeDelta=new Vector2(22,22)*zoom;
-                arrow.rectTransform.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg-90);
+                arrow.SetDirection(direction);
                 bool selected=facing==battle.PendingFacing;
-                arrow.color=selected?new Color(1,.82f,.48f):new Color(.81f,.9f,.92f);
-                child.GetComponent<UnityEngine.UI.Image>().color=selected?new Color(.25f,.22f,.15f,.92f):new Color(.025f,.045f,.07f,.78f);
+                arrow.color=selected?new Color32(247,207,132,255):new Color32(232,207,162,255);
             }
         }
     }
     public sealed class FacingArrowGraphic:UnityEngine.UI.MaskableGraphic
     {
+        Vector2 direction=Vector2.up;
+        static readonly Vector2[] Shape={new Vector2(0,1),new Vector2(-1,-.08f),new Vector2(-.46f,-.08f),new Vector2(-.46f,-.85f),new Vector2(.46f,-.85f),new Vector2(.46f,-.08f),new Vector2(1,-.08f)};
+        public void SetDirection(Vector2 value)
+        {if((direction-value).sqrMagnitude<.0001f)return;direction=value;SetVerticesDirty();}
         protected override void OnPopulateMesh(UnityEngine.UI.VertexHelper vh)
         {
             vh.Clear();var r=rectTransform.rect;
-            Vector2[] p={new Vector2(0,1),new Vector2(-1,0),new Vector2(-.38f,0),new Vector2(-.38f,-1),new Vector2(.38f,-1),new Vector2(.38f,0),new Vector2(1,0)};
-            foreach(var v in p)vh.AddVert(new Vector3(r.center.x+v.x*r.width*.5f,r.center.y+v.y*r.height*.5f),color,Vector2.zero);
-            vh.AddTriangle(0,1,6);vh.AddTriangle(2,3,4);vh.AddTriangle(2,4,5);
+            var rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg-90);
+            var points=new Vector3[Shape.Length];
+            for(int i=0;i<Shape.Length;i++)points[i]=(Vector3)r.center+rotation*new Vector3(Shape[i].x*r.width*.5f,Shape[i].y*r.height*.5f);
+            // The short side face follows screen-down, not arrow rotation; it is thickness, not a cast shadow.
+            var depth=Vector3.down*(r.height*.11f);
+            var side=new Color(color.r*.72f,color.g*.70f,color.b*.66f,color.a);
+            for(int i=0;i<points.Length;i++)
+            {
+                int j=(i+1)%points.Length,n=vh.currentVertCount;
+                vh.AddVert(points[i],side,Vector2.zero);vh.AddVert(points[i]+depth,side,Vector2.zero);
+                vh.AddVert(points[j]+depth,side,Vector2.zero);vh.AddVert(points[j],side,Vector2.zero);
+                vh.AddTriangle(n,n+1,n+2);vh.AddTriangle(n,n+2,n+3);
+            }
+            int top=vh.currentVertCount;foreach(var p in points)vh.AddVert(p,color,Vector2.zero);
+            vh.AddTriangle(top,top+1,top+6);vh.AddTriangle(top+2,top+3,top+4);vh.AddTriangle(top+2,top+4,top+5);
         }
     }
 }

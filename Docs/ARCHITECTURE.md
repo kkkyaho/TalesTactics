@@ -2,6 +2,8 @@
 
 ## 전투 표시 계층
 
+`FacingArrowGraphic`은 베이지색 화살표 윗면과 화면 아래쪽으로 돌출된 얇은 측면을 UI 메시로 그린다. 방향은 메시 좌표에서 회전하여 측면 방향을 일정하게 유지한다. 버튼 Image는 완전 투명이며 `cullTransparentMesh=false`와 raycast를 유지한다. 사각 배경 없이 기존 클릭 영역을 보존한다.
+
 `ActionExperience.Grant`는 변경 전후 레벨/EXP 스냅샷을 반환한다. `CombatFeedbackHud`가 순서대로 초상화 EXP 게이지를 재생하고 HP 숫자를 화면 Canvas에 표시한다. 모달에서는 숨기고 전장 재설정 시 큐를 비운다. 피해 표시 중 상세 HP 글자는 잠시 숨기며 막대는 유지한다.
 
 `BattleFacingHud`는 `BoardView.HeadWorld`를 화면 좌표로 투영해 작은 4방향 UI를 그린다. 기존 지면 화살표는 제거했으며 실제 선택/취소 상태 경로를 유지한다. `ImpactPool`은 전장별 최대16개의 동적 메시 효과를 재사용하고 `Impact.shader`가 생성된 화염/연기 아틀라스와 속성/무기 도형을 렌더링한다. 효과는 전투 난수를 소비하지 않는다. `PlayerPreferences.ReducedEffects`는 표시량만 줄인다. `CombatMotionProfile`과 `CharacterMotion`은 기존 방향별 프레임의 전진·반동·기울기를 강화한다. [상세와 검증](CombatPresentation/README.md).
