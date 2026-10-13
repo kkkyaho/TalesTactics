@@ -111,7 +111,7 @@ namespace TalesTactics
             }
             if(action==AnimationKind.Damage)
             {
-                float recoil=Mathf.Sin(Mathf.Clamp01(t/.3f)*Mathf.PI)*.075f*damageStrength;
+                float recoil=(1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.07f)/.30f)))*.12f*damageStrength;
                 offset=damageDirection*recoil+Vector3.up*.04f;
                 angle=-sign*recoil*32;
                 color=Color.Lerp(Color.white*1.6f,color,Mathf.Clamp01(t/.08f));

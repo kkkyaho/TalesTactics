@@ -1,0 +1,73 @@
+{
+  "editmode": {
+    "total": "333",
+    "passed": "333",
+    "failed": "0",
+    "duration": "9.0285995",
+    "start-time": "2026-10-13 13:21:48Z",
+    "end-time": "2026-10-13 13:21:57Z",
+    "sha256": "e58cc97a42ae6cb0d7896e3926d743bb8243044f6d2a8e36caff8f3c83da1cee"
+  },
+  "playmode": {
+    "total": "135",
+    "passed": "135",
+    "failed": "0",
+    "duration": "303.8479766",
+    "start-time": "2026-10-13 13:32:38Z",
+    "end-time": "2026-10-13 13:37:42Z",
+    "sha256": "37d4fa7b7c37c721574f2867722f51f0c1b821f9381d88494becc260eb4eb5c7"
+  },
+  "unity": "6000.6.0f1",
+  "apiCompilation": [
+    "PASS TalesTactics.Runtime API compilation",
+    "PASS TalesTactics.Editor API compilation",
+    "PASS TalesTactics.Tests API compilation",
+    "PASS TalesTactics.PlayModeTests API compilation"
+  ],
+  "intermediateBatchMode": {
+    "passed": 110,
+    "failed": 25,
+    "eofUnsupported": 15,
+    "supersededBy": "playmode-combat-final-graphical.xml"
+  },
+  "windows": {
+    "CombatPresentationWindows": {
+      "report": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:01:10.5396980",
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "runtimeSHA256": "cb8b1b5ee04ca713e6358d84e6cb27752c517c0c5d428fcfa1214678ca3d27d4",
+      "reviewHelperIncluded": false
+    },
+    "CombatPresentationReview": {
+      "report": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:01:12.7006350",
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "runtimeSHA256": "a5c6b61ff9ff953c514caea05801c2a8456814c8f8847771dd3facb6e9d1c1c5",
+      "reviewHelperIncluded": true
+    }
+  },
+  "review": {
+    "id": "59b8ee91508049db81878811458a9dc7",
+    "captures": 58,
+    "errors": 0,
+    "width": 1280,
+    "height": 720,
+    "fixture": true,
+    "method": "Windows engine screenshots from isolated presentation fixtures; no physical input playthrough"
+  },
+  "artSHA256": "7f46e961a819389c6930709e5a55ee05e85864fc6296703404148723fab1ef1f",
+  "scope": {
+    "implemented": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "proposalOnly": [
+      5
+    ]
+  },
+  "saveCheck": {
+    "Files": 6,
+    "Changed": 0,
+    "Scope": "Before and after final review run"
+  }
+}

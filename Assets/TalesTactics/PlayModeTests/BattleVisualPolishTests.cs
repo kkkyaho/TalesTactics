@@ -51,13 +51,13 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Board.GetComponentsInChildren<SpriteRenderer>().Single(s=>s.name=="Destination ghost").enabled,Is.False);
             director.WaitCommand();director.PreviewFacing(Facing.Left);yield return null;
             Assert.That(u.Facing,Is.EqualTo(facing));
-            var arrows=director.Board.GetComponentsInChildren<GroundOverlay>().Where(a=>a.name.StartsWith("Ground facing ")).ToArray();
+            var arrows=director.Hud.GetComponentsInChildren<FacingArrowGraphic>().ToArray();
             Assert.That(arrows.Length,Is.EqualTo(4));
-            director.Hud.ShowHelp();yield return new WaitForEndOfFrame();Assert.That(director.Hud.InputModalOpen,Is.True);Assert.That(arrows.All(a=>!a.enabled),Is.True);
-            director.Hud.CloseHelp();yield return new WaitForEndOfFrame();Assert.That(arrows.All(a=>a.enabled),Is.True);
+            director.Hud.ShowHelp();yield return new WaitForEndOfFrame();Assert.That(director.Hud.InputModalOpen,Is.True);Assert.That(arrows.All(a=>a==null||!a.gameObject.activeInHierarchy),Is.True);
+            director.Hud.CloseHelp();yield return new WaitForEndOfFrame();Assert.That(arrows.All(a=>a!=null&&a.gameObject.activeInHierarchy),Is.True);
             director.State.Cancel();yield return new WaitForEndOfFrame();
             Assert.That(u.Facing,Is.EqualTo(facing));Assert.That(director.Session.Active,Is.SameAs(u));
-            Assert.That(arrows.All(a=>!a.enabled),Is.True);
+            Assert.That(arrows.All(a=>a==null||!a.gameObject.activeInHierarchy),Is.True);
         }
     }
 }

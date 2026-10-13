@@ -98,7 +98,7 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(Object.FindObjectsByType<CombatEffect>().Any(e=>e.Recipient==caster),Is.False);
                 var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
                 Assert.That(motion.Action,Is.EqualTo(AnimationKind.Ultimate));
-                Assert.That(Object.FindObjectsByType<TMPro.TextMeshPro>().Any(t=>t.text=="HP -10"),Is.True);
+                Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.text=="HP -10"),Is.True);
             }
             finally{Object.Destroy(heal);Object.Destroy(revive);Object.Destroy(attack);}
         }

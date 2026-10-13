@@ -81,7 +81,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();healthCanvas=null;ResetMovementPreview();}
+        public void ResetBoard(){StopAllCoroutines();if(battle?.Hud!=null)battle.Hud.ClearCombatFeedback();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();healthCanvas=null;ResetMovementPreview();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);

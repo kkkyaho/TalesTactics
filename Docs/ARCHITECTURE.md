@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 전투 표시 계층
+
+`ActionExperience.Grant`는 변경 전후 레벨/EXP 스냅샷을 반환한다. `CombatFeedbackHud`가 순서대로 초상화 EXP 게이지를 재생하고 HP 숫자를 화면 Canvas에 표시한다. 모달에서는 숨기고 전장 재설정 시 큐를 비운다. 피해 표시 중 상세 HP 글자는 잠시 숨기며 막대는 유지한다.
+
+`BattleFacingHud`는 `BoardView.HeadWorld`를 화면 좌표로 투영해 작은 4방향 UI를 그린다. 기존 지면 화살표는 제거했으며 실제 선택/취소 상태 경로를 유지한다. `ImpactPool`은 전장별 최대16개의 동적 메시 효과를 재사용하고 `Impact.shader`가 생성된 화염/연기 아틀라스와 속성/무기 도형을 렌더링한다. 효과는 전투 난수를 소비하지 않는다. `PlayerPreferences.ReducedEffects`는 표시량만 줄인다. `CombatMotionProfile`과 `CharacterMotion`은 기존 방향별 프레임의 전진·반동·기울기를 강화한다. [상세와 검증](CombatPresentation/README.md).
+
+`CombatPresentationReview`는 검수 define/Editor에서만 컴파일하며 GUID 전용 저장 경로와 엔진 캡처를 사용한다. 일반 실행본에는 포함하지 않는다.
+
 현재 활성 캠페인은 메인20화/개인30단계다. BattleDirector.CanPlayCampaignStage가 출전·대사·중단 재개의 구 캠페인 진입을 막고, RestorePreparation은 구 장 선택을 새 메인1화로 바꾼다. 저장된 장 인덱스·성장·장비·기존 완료 이력 및 호환 코어는 유지한다. 레거시 PlayMode 검사는 복제된 비활성 확장 카탈로그로 분리한다. [범위](PresentationProposal/README.md).
 
 ## 경계를 잇는 의지 확장

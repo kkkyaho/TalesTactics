@@ -20,13 +20,16 @@ namespace TalesTactics
         float age,contactHold;
         public const float Lifetime=0.6f;
         public void Initialize(Material material,Camera camera,CombatVisualStyle style,CombatFeedback feedback,
-            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null)
+            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null,Element element=Element.None,bool reduced=false)
         {
             Style=style;Feedback=feedback;Recipient=recipient;Ultimate=ultimate;
             Pattern=presentation?.Pattern??SkillVisualPattern.Automatic;
             pulses=Mathf.Clamp(presentation?.Pulses??1,1,6);size=SafeSize(presentation?.Size??1);
             view=camera;origin=from;target=to;tint=color;
             contactHold=feedback==CombatFeedback.Strike?CombatMotionProfile.For(style,ultimate).Hold:0;
+            var parent=transform.parent!=null?transform.parent:transform;
+            var pool=parent.GetComponent<ImpactPool>()??parent.gameObject.AddComponent<ImpactPool>();
+            pool.Play(camera,from,to,element,style,feedback,size,ultimate,reduced);
             for(int i=0;i<lines.Length;i++)
             {
                 var child=new GameObject("Stroke "+i);child.transform.SetParent(transform,false);

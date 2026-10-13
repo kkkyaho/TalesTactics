@@ -1,6 +1,6 @@
 # TalesTactics — 개발 시작 안내
 
-**전투·대화 표현 개선안**: [피해/EXP·방향·효과·초상화 대화 시안](Docs/PresentationProposal/proposal.html)을 먼저 검토합니다. 현재 플레이에서는 기존6장을 제거하고 새 메인20화·개인30단계를 유지합니다. 기존 저장의 성장·장비는 보존합니다. 실제 Unity333/333·132/132와 새 Windows 빌드 통과. [적용 범위·검증](Docs/PresentationProposal/README.md).
+**전투 표현 개선 적용**: 작은 피해 숫자·초상화 EXP 게이지, 머리 위 방향 화살표, 실제 화염/속성 효과와 강화된 물리 공격 모션을 적용했습니다. 기존6장 플레이 제거와 새 메인20화·개인30단계를 유지합니다. 최신 실행본은 `Builds/CombatPresentationWindows/TalesTactics.exe`입니다. [적용 범위·실제 화면·검증](Docs/CombatPresentation/README.md). 5번 초상화 대화는 [개발안](Docs/PresentationProposal/proposal.html)에 남아 있습니다.
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 

@@ -114,6 +114,8 @@ namespace TalesTactics
             Button(systemWindow,d.AutoTiming?"파라 타이밍: 자동 입력":"파라 타이밍: 수동 입력",336,()=>{d.AutoTiming=!d.AutoTiming;ShowSystemMenu(1);});
             Button(systemWindow,"다음 전투 턴 순서: "+(d.CT?"CT":d.FixedSpeedOrder?"SPD":"아군 자유 선택"),380,()=>{if(d.CT){d.CT=false;d.FixedSpeedOrder=false;}else if(d.FixedSpeedOrder){d.FixedSpeedOrder=false;d.CT=true;}else d.FixedSpeedOrder=true;ShowSystemMenu(1);});
             Button(systemWindow,d.Utility?"다음 전투 AI: Utility":"다음 전투 AI: 기본",424,()=>{d.Utility=!d.Utility;ShowSystemMenu(1);});
+            HalfButton(systemWindow,0);CaptionLastButton(systemWindow,d.Utility?"AI: Utility":"AI: 기본");
+            Button(systemWindow,d.ReducedEffects?"효과: 부드럽게":"효과: 풍부하게",424,()=>{d.ReducedEffects=!d.ReducedEffects;ShowSystemMenu(1);});HalfButton(systemWindow,1);
             Button(systemWindow,"설정 적용 · 저장",476,()=>{battle.SavePreferences(d);ShowSystemMenu(1);},true,44);
             Label(systemWindow,"적용하지 않고 닫으면 취소됩니다.\n"+battle.SaveNotice,532,50,16);
         }

@@ -13,7 +13,7 @@ namespace TalesTactics
     }
     public sealed class ExperienceGain
     {
-        public UnitRuntime Unit;public int Amount,BeforeLevel;
+        public UnitRuntime Unit;public int Amount,BeforeLevel,BeforeEXP,AfterLevel,AfterEXP;
     }
     // One ledger per complete action. Effects and hits aggregate per recipient, then reactions finish before growth.
     public sealed class ActionExperience
@@ -60,13 +60,13 @@ namespace TalesTactics
         }
         public static ExperienceGain Grant(UnitRuntime unit,int amount)
         {
-            int level=unit.Level;var stats=unit.Stats;
+            int level=unit.Level,exp=unit.EXP;var stats=unit.Stats;
             if(unit.Level>=50||amount<=0)return null;
             // Record only usable EXP so reaching the cap cannot accumulate phantom rewards.
             amount=Math.Min(amount,(50-unit.Level)*100-unit.EXP);
             unit.BattleEXP+=amount;ExperienceRules.Advance(ref unit.Level,ref unit.EXP,amount);
             if(unit.Level!=level){if(unit.Alive)unit.CurrentHP+=unit.Stats.HP-stats.HP;unit.CurrentMP+=unit.Stats.MP-stats.MP;}
-            return new ExperienceGain{Unit=unit,Amount=amount,BeforeLevel=level};
+            return new ExperienceGain{Unit=unit,Amount=amount,BeforeLevel=level,BeforeEXP=exp,AfterLevel=unit.Level,AfterEXP=unit.EXP};
         }
     }
 }

@@ -37,7 +37,7 @@ namespace TalesTactics.PlayModeTests
             var unit=director.Session.Units.First();var before=director.Board.CaptureHealth();unit.CurrentHP-=10;
             director.Board.PresentImpact(unit,unit.Data.BasicAttack,unit.Position,before);yield return null;
             Assert.That(GameObject.Find("HP feedback"),Is.Not.Null);
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1f);
             Assert.That(GameObject.Find("HP feedback"),Is.Null);Assert.That(GameObject.Find("Impact burst"),Is.Null);
             director.Board.ShowTimingSpin(unit,0.5f);
             director.Board.PresentImpact(unit,unit.Data.BasicAttack,unit.Position,before);
@@ -83,17 +83,16 @@ namespace TalesTactics.PlayModeTests
             int health=unit.CurrentHP;
             director.Board.PresentImpact(unit,unit.Data.BasicAttack,unit.Position,before);
             var feedback=GameObject.Find("HP feedback");Assert.That(feedback,Is.Not.Null);
-            var label=feedback.GetComponent<TMPro.TextMeshPro>();
-            var backing=feedback.transform.Find("Feedback backing");Assert.That(backing,Is.Not.Null);
-            Assert.That(backing.GetComponent<Renderer>().sortingOrder,Is.LessThan(label.sortingOrder));
+            var label=feedback.GetComponent<TMPro.TMP_Text>();
+            Assert.That(label.fontSize,Is.EqualTo(26));Assert.That(feedback.transform.Find("Feedback backing"),Is.Null);
             yield return new WaitForSeconds(.2f);
             Assert.That(label.alpha,Is.EqualTo(1).Within(.001f));Assert.That(unit.CurrentHP,Is.EqualTo(health));
+            var healthBar=Object.FindObjectsByType<UnitHealthDisplay>().Single(h=>h.name=="HP "+unit.Data.Id);
+            Assert.That(healthBar.Bar.enabled,Is.True);Assert.That(healthBar.Detailed,Is.False,"HP detail must leave room for the damage number.");
             director.Board.RotateCamera(90);yield return null;
             var camera=director.Board.BattleCamera;
-            var basePosition=director.Session.Grid[unit.Position].WorldPosition(director.Catalog.Rules.TileHeight);
-            var offset=feedback.transform.position-basePosition;
-            Assert.That(Vector3.Dot(offset,camera.transform.right),Is.EqualTo(0).Within(.01f));
-            Assert.That(Vector3.Dot(offset,camera.transform.up),Is.GreaterThan(1.7f));
+            var head=camera.WorldToScreenPoint(director.Board.HeadWorld(unit));
+            Assert.That(feedback.transform.position.y,Is.GreaterThan(head.y));
             director.Restart();yield return null;yield return null;
             Assert.That(GameObject.Find("HP feedback"),Is.Null);Assert.That(GameObject.Find("Feedback backing"),Is.Null);
         }

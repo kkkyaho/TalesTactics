@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "asset": "../../Assets/TalesTactics/Resources/TalesTactics/CombatFire.png",
+  "prompt": "Production game VFX sprite atlas on TRUE TRANSPARENT alpha background, no checkerboard baked in. Exactly 4 columns by 4 rows, sixteen equally sized square cells, full canvas 1024x1024, each cell 256x256, absolutely no lines, labels, text, borders, floor, characters or shadows. Every effect remains entirely inside its own cell with at least 20 pixels transparent padding, centered horizontally with base at y=210 within cell. First 12 cells in row-major reading order are TWELVE consecutive animation frames of one orange fantasy fire burst: frames1-3 small bright yellow ignition curls expanding, frames4-7 vigorous broad bright flame plume with white yellow core, orange separated curling tongues, pronounced flame silhouette, frames8-10 tapering wisps and rising embers, frames11-12 small dying embers. Keep visual fire anchored to same base across frames, never a fireball or ring. Last row four cells are four consecutive frames of a grey warm smoke puff expanding and dissipating, translucent irregular smoke shapes on transparent background. Detailed hand-painted pixel-art 2.5D tactical RPG effect with crisp readable edges, stepped textured contours and soft luminous interiors, restrained bloom, ample transparent negative space. No cut-off particles, no opaque cell background. The result will be cropped exactly into 16 cells by an engine shader, so precise regular 4x4 alignment is essential.",
+  "alpha": "RGBA, range 0-255; 64.7% fully transparent",
+  "layout": "4x4 equal UV cells: fire 0-11; smoke 12-15",
+  "sourcePixels": [
+    1254,
+    1254
+  ]
+}

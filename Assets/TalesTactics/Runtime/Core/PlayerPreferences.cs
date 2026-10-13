@@ -10,6 +10,7 @@ namespace TalesTactics
         public float Music=.28f,Effects=.45f,CursorSpeed=1;
         public int EnemySpeedMode; // 0=1x, 1=2x, 2=4x; absent in older settings means normal.
         public bool SkipEnemyAnimations;
+        public bool ReducedEffects;
         public BattleDifficulty Difficulty;
         public bool MissionEvents,Reactions;
         public float TextScale=1;

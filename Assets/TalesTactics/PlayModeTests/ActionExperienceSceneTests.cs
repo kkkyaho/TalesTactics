@@ -19,7 +19,8 @@ namespace TalesTactics.PlayModeTests
             director.RefreshViews();director.AttackCommand();director.SelectTarget(target.Position);director.Confirm();
             for(float deadline=Time.realtimeSinceStartup+15;director.State is ActionExecutionState&&Time.realtimeSinceStartup<deadline;)yield return null;
             Assert.That(a.Level,Is.EqualTo(2));Assert.That(a.BattleEXP,Is.GreaterThan(0));
-            Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.gameObject.name=="Experience feedback"&&t.text.Contains("EXP +")&&t.text.Contains("Lv UP 1 → 2")),Is.True);
+            yield return new WaitForSeconds(.25f);Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.gameObject.name=="Experience gain"&&t.text.Contains("EXP +")),Is.True);
+            Assert.That(Object.FindObjectsByType<TMPro.TMP_Text>().Any(t=>t.name=="Experience caption"&&t.text.Contains("1 → 2")),Is.True);
             Assert.That(director.Campaign.Get(id).Level,Is.EqualTo(1));Assert.That(director.Campaign.Get(id).EXP,Is.EqualTo(99));
             Assert.That(director.RewindAction(),Is.True);yield return null;
             a=director.Session.Units.First(u=>u.Data.Id==id&&u.Team==Team.Player);Assert.That(a.Level,Is.EqualTo(1));Assert.That(a.EXP,Is.EqualTo(99));Assert.That(a.BattleEXP,Is.Zero);
