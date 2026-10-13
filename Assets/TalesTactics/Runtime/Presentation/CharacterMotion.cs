@@ -105,9 +105,11 @@ namespace TalesTactics
                 var world=new Vector3(direction.x,0,direction.y);
                 float prep=Mathf.Clamp01(t/Mathf.Max(.01f,windup));
                 float release=Mathf.Clamp01((Time.time-releasedAt-hold)/Mathf.Max(.01f,recovery-hold));
-                float travel=released?Mathf.Lerp(profile.Advance,-profile.Recoil,Mathf.SmoothStep(0,1,release*1.65f))*(1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.65f,1,release))):-profile.Recoil*Mathf.Sin(prep*Mathf.PI*.5f);
+                float drive=Mathf.SmoothStep(0,1,Mathf.InverseLerp(.58f,1,prep));
+                float follow=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.25f,1,release));
+                float travel=released?profile.Advance*follow+profile.Recoil*.3f*Mathf.Sin(release*Mathf.PI):Mathf.Lerp(-profile.Recoil*Mathf.Sin(prep*Mathf.PI*.5f),profile.Advance,drive);
                 offset=world*travel+Vector3.up*(.04f+profile.Lift*(released?Mathf.Sin(release*Mathf.PI):prep*.2f));
-                angle=-sign*profile.Tilt*(released?1-Mathf.SmoothStep(0,1,release):-.4f*prep);scaleY=1;
+                angle=-sign*profile.Tilt*(released?follow:Mathf.Lerp(-.65f*prep,1,drive));scaleY=1-(released?0:.025f*Mathf.Sin(prep*Mathf.PI));
             }
             if(action==AnimationKind.Damage)
             {

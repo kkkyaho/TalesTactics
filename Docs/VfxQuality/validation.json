@@ -1,0 +1,115 @@
+{
+  "unity": "6000.6.0f1",
+  "date": "2026-10-14",
+  "playmode": {
+    "file": "playmode-vfx-quality-verified.xml",
+    "total": "137",
+    "passed": "137",
+    "failed": "0",
+    "duration": "328.6093196",
+    "startTime": "2026-10-13 15:06:08Z",
+    "endTime": "2026-10-13 15:11:36Z",
+    "sha256": "61843905F7B60E4DED0842B0452DD0E3E7B7F79D2965200DEE7EC692CD54C730"
+  },
+  "reviewId": "e2a224d1b6ea4f15b843587f32501502",
+  "review": {
+    "errors": 0,
+    "fps": 30,
+    "width": 1280,
+    "height": 720,
+    "actualSkillExecution": true,
+    "fixturePlacement": true,
+    "runs": [
+      {
+        "name": "fire-wide",
+        "skill": "jade.6",
+        "beforeHP": 632,
+        "afterHP": 300,
+        "frames": 75
+      },
+      {
+        "name": "fire-focus",
+        "skill": "jade.6",
+        "beforeHP": 632,
+        "afterHP": 300,
+        "frames": 75
+      },
+      {
+        "name": "sword-wide",
+        "skill": "cless.attack",
+        "beforeHP": 632,
+        "afterHP": 535,
+        "frames": 75
+      },
+      {
+        "name": "sword-focus",
+        "skill": "cless.attack",
+        "beforeHP": 632,
+        "afterHP": 535,
+        "frames": 75
+      }
+    ]
+  },
+  "apiCompilation": [
+    "PASS TalesTactics.Runtime API compilation",
+    "PASS TalesTactics.Editor API compilation",
+    "PASS TalesTactics.Tests API compilation",
+    "PASS TalesTactics.PlayModeTests API compilation"
+  ],
+  "windows": {
+    "VfxQualityWindows": {
+      "report": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:02:19.2491355",
+      "exeSHA256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
+      "runtimeSHA256": "CE7534264893398A9AAE078E7C10295A29867C9C4245DBA6EF6450536D739015",
+      "reviewHelperIncluded": false
+    },
+    "VfxQualityReview": {
+      "report": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:02:10.2357682",
+      "exeSHA256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
+      "runtimeSHA256": "53CBDAD7250E47A6F56E5D610AC9482528D93571B5E5DD11CA13B860958D1220",
+      "reviewHelperIncluded": true
+    }
+  },
+  "artifacts": {
+    "fire-focus-contact.png": {
+      "bytes": 1687410,
+      "sha256": "0B485C02C93A43F1288E414277F9C4377FA1FB5EF6C2A12C87F89D3C12CC219E"
+    },
+    "fire-focus.mp4": {
+      "bytes": 926213,
+      "sha256": "2D36D1269E3743911584B436C30625E7460043EDDC90F9ABE6941579A1A4A76E"
+    },
+    "fire-wide.mp4": {
+      "bytes": 432518,
+      "sha256": "AEF9A79CB20FAA3B20AE69C546DF6526D4C7C36AD56E042B9488E85CA11119DA"
+    },
+    "sword-focus-contact.png": {
+      "bytes": 1710788,
+      "sha256": "5B29E9D31362F95AF15C7778285D0F2C118AB04C03AC2963A79C2DE1F9B3C1FC"
+    },
+    "sword-focus.mp4": {
+      "bytes": 795721,
+      "sha256": "5E45E6D4B8BA111272172E6E02D6391CF21D1D7BA864A7CC470FA2771D15DB16"
+    },
+    "sword-wide.mp4": {
+      "bytes": 395007,
+      "sha256": "E1FA0D902D09D7DAB8823CB34064709DCF0365653AE9057343B526B368CD4B9D"
+    }
+  },
+  "intermediate": {
+    "firstCapture": "Invalid catalog index; fixed by character ID",
+    "secondCapture": "Non-finite sweep endpoint; clamped sin before fractional power and added regression",
+    "playmode": {
+      "file": "playmode-vfx-quality-final.xml",
+      "passed": 136,
+      "failed": 1,
+      "reason": "Frame-count wait expired before longer action recovery; now bounded by real time with command-state assertion"
+    }
+  },
+  "limits": [
+    "Fixed-step engine captures from real BattleDirector.Execute with fixture positions/level; not manual campaign play or a performance benchmark",
+    "Existing directional poses retained; no pixel-identical concept reconstruction",
+    "EditMode suite not rerun for this presentation-only change; earlier results are not reported as current tests",
+    "Four representative fire/sword clips; not manual review of every skill"
+  ]
+}

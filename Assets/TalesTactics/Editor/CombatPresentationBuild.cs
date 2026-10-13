@@ -14,6 +14,8 @@ namespace TalesTactics.Editor
         public static void Review()=>Build("CombatPresentationReview",true);
         public static void FacingIconsRelease()=>Build("FacingIconsWindows",false);
         public static void FacingIconsReview()=>Build("FacingIconsReview",true);
+        public static void VfxQualityRelease()=>Build("VfxQualityWindows",false);
+        public static void VfxQualityReview()=>Build("VfxQualityReview",true);
         static void Build(string name,bool review)
         {
             Configure();System.IO.Directory.CreateDirectory("Builds/"+name);

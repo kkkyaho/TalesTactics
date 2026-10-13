@@ -2,6 +2,8 @@
 
 ## 전투 표시 계층
 
+`ImpactChoreography`는 기존 `ImpactParticles` 풀에 준비/접촉 연출을 추가한다. 준비 효과는 움직이는 `CharacterMotion` 위치를 따르며, 불꽃 흐름·다중 화염·연기와 공격자 중심의 세 겹 검격 리본을 그린다. 준비 단계는 피해를 처리하지 않는다. `BoardActionPresentation`의 준비/복귀 시간과 `CharacterMotion`의 가속/접촉 정지/복귀를 함께 사용한다. `VfxQualityReview`는 별도 검수 빌드에서 실제 기술 실행을 촬영하며 일반 빌드에서는 제외한다. [범위와 근거](VfxQuality/README.md).
+
 `FacingArrowGraphic`은 베이지색 화살표 윗면과 화면 아래쪽으로 돌출된 얇은 측면을 UI 메시로 그린다. 방향은 메시 좌표에서 회전하여 측면 방향을 일정하게 유지한다. 버튼 Image는 완전 투명이며 `cullTransparentMesh=false`와 raycast를 유지한다. 사각 배경 없이 기존 클릭 영역을 보존한다.
 
 `ActionExperience.Grant`는 변경 전후 레벨/EXP 스냅샷을 반환한다. `CombatFeedbackHud`가 순서대로 초상화 EXP 게이지를 재생하고 HP 숫자를 화면 Canvas에 표시한다. 모달에서는 숨기고 전장 재설정 시 큐를 비운다. 피해 표시 중 상세 HP 글자는 잠시 숨기며 막대는 유지한다.

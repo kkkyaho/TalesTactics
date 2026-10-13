@@ -10,6 +10,10 @@ namespace TalesTactics
         Material solid,atlas;
         public int ActiveCount{get{int n=0;foreach(var p in instances)if(p.gameObject.activeSelf)n++;return n;}}
         public void Play(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,CombatFeedback feedback,float size,bool ultimate,bool reduced)
+        {Acquire().Play(camera,from,to,element,style,feedback,size,ultimate,reduced);}
+        public void Prepare(Camera camera,Transform caster,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration)
+        {Acquire().Prepare(camera,caster,to,element,style,size,ultimate,reduced,duration);}
+        ImpactParticles Acquire()
         {
             if(solid==null)
             {
@@ -21,11 +25,11 @@ namespace TalesTactics
             if(chosen==null&&instances.Count<Capacity)
             {var g=new GameObject("Elemental impact");g.transform.SetParent(transform,false);chosen=g.AddComponent<ImpactParticles>();chosen.Initialize(solid,atlas);instances.Add(chosen);}
             if(chosen==null){chosen=instances[0];foreach(var p in instances)if(p.Age>chosen.Age)chosen=p;}
-            chosen.Play(camera,from,to,element,style,feedback,size,ultimate,reduced);
+            return chosen;
         }
         void OnDestroy(){if(solid!=null)Destroy(solid);if(atlas!=null)Destroy(atlas);}
     }
-    public sealed class ImpactParticles:MonoBehaviour
+    public sealed partial class ImpactParticles:MonoBehaviour
     {
         sealed class Geometry
         {
@@ -44,8 +48,8 @@ namespace TalesTactics
         void Create(Geometry geometry,Material material,string name)
         {var g=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer));g.transform.SetParent(transform,false);geometry.Mesh=new Mesh{name=name};geometry.Mesh.MarkDynamic();g.GetComponent<MeshFilter>().sharedMesh=geometry.Mesh;var r=g.GetComponent<MeshRenderer>();r.sharedMaterial=material;r.sortingOrder=23;}
         public void Play(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,CombatFeedback hit,float scale,bool ultimate,bool low)
-        {view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.7f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;gameObject.SetActive(true);Draw();}
-        void Update(){age+=Time.deltaTime;if(view==null||age>=Duration){gameObject.SetActive(false);return;}Draw();}
+        {view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.7f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;preparing=false;casterAnchor=null;gameObject.SetActive(true);Draw();}
+        void Update(){age+=Time.deltaTime;if(view==null||age>=(preparing?prepareDuration:Duration)){gameObject.SetActive(false);return;}Draw();}
         Vector3 Plane(float x,float y)=>view.transform.right*x*size+view.transform.up*y*size;
         static Color Alpha(Color c,float a){c.a=a;return c;}
         void Quad(Geometry mesh,Vector3 center,Vector3 right,Vector3 up,Color tint,int cell=-1)
@@ -80,6 +84,7 @@ namespace TalesTactics
         void Draw()
         {
             solid.Clear();atlas.Clear();float t=age/Duration,fade=(1-t)*(reduced?.65f:1);int count=reduced?7:16;
+            if(preparing){DrawPreparation();solid.Upload();atlas.Upload();return;}
             if(feedback!=CombatFeedback.Strike)
             {
                 var color=feedback==CombatFeedback.Heal?new Color(.35f,1,.65f):new Color(1,.89f,.58f);
@@ -90,11 +95,7 @@ namespace TalesTactics
             {
                 if(element==Element.Fire)
                 {
-                    int frame=Mathf.Min(11,(int)(t*12));
-                    Quad(atlas,Plane(0,.12f),Plane(.85f,0),Plane(0,.9f),new Color(1,1,1,reduced?.72f:1),frame);
-                    if(!reduced)Quad(atlas,Plane(-.22f,-.1f),Plane(.45f,0),Plane(0,.58f),new Color(1,.8f,.5f,.6f),Mathf.Min(11,frame+2));
-                    Smoke(t);
-                    for(int i=0;i<count;i++){float a=i*2.39996f,r=.1f+t*(.3f+(i%3)*.18f);Disc(Mathf.Cos(a)*r,Mathf.Sin(a)*r+t*.7f,.018f+(i%3)*.007f,new Color(1,.43f,.07f,fade));}
+                    FireImpact(t);
                 }
                 else if(element==Element.Ice||element==Element.Earth)
                 {
@@ -121,7 +122,8 @@ namespace TalesTactics
                     for(int i=0;i<8;i++){float a=i*Mathf.PI*.25f;Ribbon(Plane(Mathf.Cos(a)*.08f,Mathf.Sin(a)*.08f),Plane(Mathf.Cos(a)*(.4f+t*.5f),Mathf.Sin(a)*(.4f+t*.5f)),.025f,new Color(1,.88f,.55f,fade));}
                     Disc(0,0,.24f,new Color(1,.98f,.75f,fade));
                 }
-                if(element==Element.None||style==CombatVisualStyle.FlameSword||style==CombatVisualStyle.Claw||style==CombatVisualStyle.Sword||style==CombatVisualStyle.Martial||style==CombatVisualStyle.Shield||style==CombatVisualStyle.Spear)Physical(t,fade);
+                bool physical=element==Element.None||style==CombatVisualStyle.FlameSword||style==CombatVisualStyle.Claw||style==CombatVisualStyle.Sword||style==CombatVisualStyle.Martial||style==CombatVisualStyle.Shield||style==CombatVisualStyle.Spear;
+                if(physical&&(element!=Element.Fire||HasWeaponSweep(style)))Physical(t,fade);
             }
             solid.Upload();atlas.Upload();
         }
@@ -130,15 +132,14 @@ namespace TalesTactics
             float contact=Mathf.Clamp01((t-.075f)/.55f);var white=new Color(.91f,.96f,1,fade);
             if(style==CombatVisualStyle.Sword||style==CombatVisualStyle.FlameSword||style==CombatVisualStyle.Claw)
             {
-                float direction=Vector3.Dot(from,view.transform.right)>0?-1:1;
-                for(int i=0;i<(style==CombatVisualStyle.Claw?3:1);i++)Arc(.64f+i*.1f,-140+contact*120*direction,150*direction,.10f,white,(i-1)*.1f);
+                WeaponSweep(Mathf.Lerp(.68f,1,Mathf.Clamp01(t/.38f)),Mathf.Pow(1-Mathf.Clamp01(t/.65f),1.4f));
             }
             else if(style==CombatVisualStyle.Spear||style==CombatVisualStyle.Rifle||style==CombatVisualStyle.Bow)
             {var start=Vector3.Lerp(from,Vector3.zero,Mathf.Clamp01(t*5));Ribbon(start,Vector3.zero,style==CombatVisualStyle.Spear?.07f:.025f,white);}
             else Arc(.14f+contact*.7f,0,360,style==CombatVisualStyle.Shield?.09f:.06f,white,-.08f);
-            if(t<.32f)Disc(0,0,.35f,new Color(1,.91f,.65f,(1-t/.32f)*(reduced?.4f:.9f)));
-            for(int i=0;i<(reduced?4:9);i++){float a=i*2.39996f,r=t*.95f;Ribbon(Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),Plane(Mathf.Cos(a)*(r+.1f),Mathf.Sin(a)*(r+.1f)),.013f,new Color(1,.69f,.33f,fade));}
-            Smoke(t,reduced?1:2);
+            if(t<.25f){Disc(0,0,.72f,new Color(1,.68f,.19f,(1-t/.25f)*(reduced?.25f:.72f)));Disc(0,0,.25f,new Color(1,1,.87f,1-t/.25f));}
+            for(int i=0;i<(reduced?5:16);i++){float a=i*2.39996f,r=t*2;Ribbon(Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),Plane(Mathf.Cos(a)*(r+.22f),Mathf.Sin(a)*(r+.22f)),.022f,new Color(1,.79f,.39f,fade));}
+            GroundDust(t);
         }
         void OnDestroy(){if(solid.Mesh!=null)Destroy(solid.Mesh);if(atlas.Mesh!=null)Destroy(atlas.Mesh);}
     }

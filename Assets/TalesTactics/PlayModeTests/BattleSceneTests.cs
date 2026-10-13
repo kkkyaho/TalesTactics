@@ -183,7 +183,9 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Session.Grid.Place(enemy,neighbor.Coordinate),Is.True);director.RefreshViews();
             int hp=enemy.CurrentHP;Click("Attack / 공격");director.State.Tile(enemy.Position);
             Assert.That(director.Target.HasValue,Is.True);Assert.That(enemy.CurrentHP,Is.EqualTo(hp),"Preview must not deal damage.");
-            director.Confirm();for(int i=0;i<240&&director.State is ActionExecutionState;i++)yield return null;
+            director.Confirm();float deadline=Time.realtimeSinceStartup+BoardView.Windup(u.Data.BasicAttack)+BoardView.Recovery(u.Data.BasicAttack)+2;
+            while(director.State is ActionExecutionState&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.That(director.State,Is.InstanceOf<CommandState>(),"Action must finish before the next command is clicked.");
             Assert.That(enemy.CurrentHP,Is.LessThan(hp));Assert.That(u.Acted,Is.True);
             Click("Wait / 방향 선택");Click("Back");yield return null;
             Assert.That(u.Facing,Is.EqualTo(Facing.Back));Assert.That(director.Session.Active,Is.Not.SameAs(u));
