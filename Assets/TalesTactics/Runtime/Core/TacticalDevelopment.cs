@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TalesTactics
 {
     public enum TacticalTrait { Balanced, Swift, Protector, Focus, Healer }
-    public enum EquipmentEffect { None, EfficientCasting, Restorative }
+    public enum EquipmentEffect { None, EfficientCasting, Restorative, EternalEdge, MercifulRod, UnboundBlade, ResoluteFists, HarmonicHorn, FonicPiercer, RoyalMercy, FlamingOath, ThornRelease, UnbrokenShield }
 
     public static class TacticalDevelopment
     {

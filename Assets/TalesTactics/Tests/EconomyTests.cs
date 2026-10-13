@@ -13,7 +13,7 @@ namespace TalesTactics.Tests
             for(int stage=0;stage<6;stage++)
             {
                 Assert.That(CampaignStages.Unlocked(save,stage),Is.True);
-                Assert.That(CampaignStages.Unlocked(save,stage+1),Is.False);
+                if(stage<CampaignStages.LegacyCount-1)Assert.That(CampaignStages.Unlocked(save,stage+1),Is.False);
                 var reward=CampaignEconomy.Prepare(save,stage,9999);
                 int beforeGold=save.Gold,beforeLevel=save.Get(data.Id).Level,beforeEXP=save.Get(data.Id).EXP;
                 Assert.That(CampaignStages.TryReward(save,reward,party,_=>false),Is.False);
@@ -25,7 +25,7 @@ namespace TalesTactics.Tests
             }
             Assert.That(save.Version,Is.EqualTo(3));Assert.That(CampaignInventory.Owned(save,"guardian-medal"),Is.EqualTo(2));
             Assert.That(CampaignInventory.Owned(save,"tempered-armor"),Is.EqualTo(1));
-            Assert.That(CampaignStages.Unlocked(save,6),Is.False);
+            Assert.That(CampaignStages.HasNext(5),Is.False);Assert.That(CampaignStages.Unlocked(save,6),Is.True);
             Assert.That(CampaignStages.TryReward(save,5,party,file.Save),Is.True);
             save=file.Load();Assert.That(save.Gold,Is.EqualTo(2420));Assert.That(save.Get(data.Id).EXP,Is.EqualTo(90));
             Assert.That(save.StoryProgress.Count,Is.EqualTo(6));
@@ -56,7 +56,7 @@ namespace TalesTactics.Tests
         }
         [Test] public void DropBucketsExhaustivelyMatchPublishedProbabilities()
         {
-            for(int stage=0;stage<CampaignStages.Count;stage++)
+            for(int stage=0;stage<PersonalScenarios.FirstStage;stage++)
             {
                 var rolls=Enumerable.Range(0,10000).Select(i=>CampaignEconomy.Drop(stage,i)).ToArray();
                 Assert.That(rolls.Count(id=>id=="bronze-sword"),Is.EqualTo(2500));

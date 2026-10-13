@@ -15,6 +15,12 @@ namespace TalesTactics
         };
         public static string Id(int stage,int slot)
         {
+            if(stage>=CampaignStages.LegacyCount)
+            {
+                if(slot<0||slot>=4||stage>=CampaignStages.Count)throw new ArgumentOutOfRangeException();
+                string boss=PersonalScenarios.Contains(stage)?PersonalScenarios.Tier(stage)==2?PersonalScenarios.Arc(stage).TrialBoss:"executor":CrossoverCampaign.Episode(stage).Boss;
+                return slot==0?(boss=="guardian"?"golem":boss):new[]{"sentinel","mage","archer"}[slot-1];
+            }
             if(stage<0||stage>=formations.Length)throw new ArgumentOutOfRangeException(nameof(stage));
             if(slot<0||slot>=4)throw new ArgumentOutOfRangeException(nameof(slot));
             return formations[stage][slot];

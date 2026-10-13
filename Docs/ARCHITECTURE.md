@@ -1,5 +1,17 @@
 # 아키텍처
 
+## 경계를 잇는 의지 확장
+
+`CampaignStages`는 기존 인덱스0–5를 보존하고 `CrossoverCampaign` 메인6–25, `PersonalScenarios` 개인26–55를 라우팅한다. 메인 시작/순차 합류와 개인 해금은 별도 완료 플래그를 사용한다. `CampaignPromotion.StorySatisfied`는 기존2장 또는 새6화 완료를 공통 승급 조건으로 확인한다.
+
+`CrossoverSkillRules`의60기술 정의와 실제 Content를 비교 검사한다. `CrossoverBossTactics`는 고정 예고/빈틈/단계/소환/장치 복구를, `CrossoverTerrain`은 지속 위험과 지연 붕괴를, `CrossoverFronts`는 서·동 부대의 예약/전환을 처리한다. 예약 유닛은 `CanTakeTurn`과 대상 선정에서 제외되며 HP는 유지한다. `BossTimeStop`의 저항은 실제 수행한 행동에 따라 감소한다.
+
+`CrossoverBattleState`가 구조 신호·선택·기록 범위·시련·위험·파괴 장치 순서를 보관한다. `CrossoverTrials`와 `SignatureWeaponRules`가 고유 조건/소유자 제한/효과를 정의한다. 중단V11·시작V6·되돌리기 복사본은 이 상태를 함께 검증하며 옛 중단 전투의 당시 규칙을 유지한다. 캠페인 보상은 완료/선택 플래그와 함께 저장 실패 시 롤백한다.
+
+`BattlePersonalScenarios`, `BoardCrossoverView`, `CrossoverCivilianView`는 이야기/목표/구조된 비전투 행렬을 표현한다. 카탈로그의 `CrossoverVariants`는 기존 다오스/골렘을 바꾸지 않는 확장용 복사본과 인간형 히아데스이고, `Civilians`는 네 종류의 방향 스프라이트다. 생산 아트1708rect의 출처와 선택 규칙은 `Tools/MeasureCrossoverArt.py`, 연결은 `CrossoverArtImporter`에 있다. 공개된 카탈로그에는 생성/설치 도구를 무조건 재실행하지 않는다.
+
+`CrossoverBalanceAudit`는 실제 명령의 독립 전투 시뮬레이션이다. `CrossoverPlayerReview`는 별도 저장/연출 fixture이며 수동 플레이나 밸런스 검사가 아니다. 최종 근거와 한계는 [CrossoverStatus](CrossoverStatus/README.md)를 따른다.
+
 ## 그래픽·UI/UX 표현 계층
 
 `HudButtonAccent`는 주 행동/탭/보조 버튼의 배경·테두리와 비입력 밑줄을 관리한다. 포커스는 금색, 선택과 마우스 호버는 청록색으로 표시하며 실제 Button 콜백·입력 모달 차단 경로를 유지한다. 상단 아군 초상은 기존 팀 턴 선택 API를 사용하고 이동/행동 아이콘 또는 완료 체크를 보여 준다.

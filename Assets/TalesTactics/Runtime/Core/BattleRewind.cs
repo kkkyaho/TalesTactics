@@ -31,7 +31,7 @@ namespace TalesTactics
         {
             if(frame==null||string.IsNullOrEmpty(frame.Label)||frame.Label.Length>80||string.IsNullOrEmpty(frame.Json)||frame.Json.Length>1000000)throw new InvalidDataException("Invalid rewind frame");
             var checkpoint=JsonUtility.FromJson<BattleCheckpoint>(frame.Json);
-            if(checkpoint==null||(checkpoint.Version<8||checkpoint.Version>10)||checkpoint.HasOpening||checkpoint.History?.Length>0)throw new InvalidDataException("Nested rewind history");
+            if(checkpoint==null||(checkpoint.Version<8||checkpoint.Version>11)||checkpoint.HasOpening||checkpoint.History?.Length>0)throw new InvalidDataException("Nested rewind history");
             return checkpoint;
         }
     }

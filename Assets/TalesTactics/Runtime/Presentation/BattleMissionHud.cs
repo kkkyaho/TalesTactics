@@ -21,6 +21,7 @@ namespace TalesTactics
         string PreparationVictory(int stage)=>PreparationEvents(stage,false)&&stage==2?"거점 "+CampaignMissions.Destination(stage)+"에서 아군 턴 종료 2회 연속 유지":CampaignMissions.Description(stage);
         string BriefVictory(BattleSession s,int stage,bool training)
         {
+            if(!training&&stage>=CampaignStages.LegacyCount)return s?.Crossover?.Description??CampaignMissions.Description(stage);
             if(s?.CaptureMission==true)return "거점 점령 "+s.CaptureProgress+" / 2";
             if(s==null)
             {
@@ -61,10 +62,10 @@ namespace TalesTactics
             Button(missionWindow,"적 정보",66,()=>{missionTab=1;missionDetails=false;RenderMission();},true,40);HalfButton(missionWindow,1);TintInfoTab(missionWindow,missionTab==1);
             if(missionTab==0)
             {
-                var victory=InfoBlock(missionWindow,"VictoryCard",126,100);Label(victory,"승리",10,24,15).color=new Color(.85f,.7f,.4f);Label(victory,BriefVictory(s,stage,training),40,54,24);
+                var victory=InfoBlock(missionWindow,"VictoryCard",126,100);Label(victory,"승리",10,24,15).color=new Color(.85f,.7f,.4f);var victoryText=Label(victory,BriefVictory(s,stage,training),40,54,24);victoryText.enableAutoSizing=true;victoryText.fontSizeMin=14;victoryText.fontSizeMax=24;
                 var defeat=InfoBlock(missionWindow,"DefeatCard",238,84);Label(defeat,"패배",8,24,15).color=new Color(1,.45f,.42f);
                 bool escort=s!=null?s.Objective==ObjectiveKind.Escort:!training&&CampaignMissions.Kind(stage)==ObjectiveKind.Escort;
-                Label(defeat,escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능",36,42,18);
+                Label(defeat,s?.Crossover!=null?s.Crossover.DefeatDescription:!training&&stage==16?"진행 중인 전선의 아군 전원 전투불능":!training&&stage==21?"선두 출전 아군 전투불능 또는 아군 전멸":escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능",36,42,18);
                 if(missionDetails)
                 {
                     var detail=Label(missionWindow,(s!=null?MissionBriefing.Victory(s):training?TrainingMission():PreparationVictory(stage))+"\n\n"+MissionBriefing.Terrain(stage)+(s?.BossEncounters==true?"\n호위 1명당 피해 -25% (최대 75%)":""),342,174,18);

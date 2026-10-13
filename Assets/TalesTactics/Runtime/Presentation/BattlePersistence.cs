@@ -26,6 +26,9 @@ namespace TalesTactics
             SelectedStage=Mathf.Clamp(Campaign.SelectedStage,0,CampaignStages.Count-1);
             if(!CampaignStages.Unlocked(Campaign,SelectedStage))SelectedStage=0;
             if(Campaign.Deployment!=null&&Campaign.Deployment.Length>0&&Campaign.Deployment.Length<=Catalog.Rules.MaxDeployment&&Campaign.Deployment.Distinct().Count()==Campaign.Deployment.Length&&Campaign.Deployment.All(i=>i>=0&&i<Catalog.Characters.Length)){Deployment.Clear();Deployment.AddRange(Campaign.Deployment);}
+            if(Catalog.CrossoverReady&&Campaign.StoryProgress.Count==0&&Campaign.SuspendedBattle==null&&string.IsNullOrEmpty(Campaign.SavedAt))SelectedStage=CrossoverCampaign.FirstStage;
+            if(!Catalog.CrossoverReady&&SelectedStage>=CampaignStages.LegacyCount)SelectedStage=0;
+            NormalizeDeployment();
         }
         bool SaveProgress(CampaignSave save)=>WriteProgress(save,false);
         bool WriteProgress(CampaignSave save,bool preserveCheckpoint)

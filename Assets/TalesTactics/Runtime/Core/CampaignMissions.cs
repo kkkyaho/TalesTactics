@@ -3,10 +3,12 @@ namespace TalesTactics
 {
     public static class CampaignMissions
     {
-        public static ObjectiveKind Kind(int stage)=>stage==1||stage==5?ObjectiveKind.Boss:stage==2?ObjectiveKind.Reach:stage==3?ObjectiveKind.Survive:stage==4?ObjectiveKind.Escort:ObjectiveKind.Eliminate;
-        public static Vector2Int Destination(int stage)=>stage==2?new Vector2Int(11,8):stage==4?new Vector2Int(12,8):new Vector2Int(8,8);
+        public static ObjectiveKind Kind(int stage)=>stage>=CampaignStages.LegacyCount?ObjectiveKind.Crossover:stage==1||stage==5?ObjectiveKind.Boss:stage==2?ObjectiveKind.Reach:stage==3?ObjectiveKind.Survive:stage==4?ObjectiveKind.Escort:ObjectiveKind.Eliminate;
+        public static Vector2Int Destination(int stage)=>stage>=CampaignStages.LegacyCount?CrossoverBattle.Exit:stage==2?new Vector2Int(11,8):stage==4?new Vector2Int(12,8):new Vector2Int(8,8);
         public static string Description(int stage)
         {
+            if(CrossoverCampaign.IsMain(stage))return CrossoverCampaign.Episode(stage).Briefing;
+            if(PersonalScenarios.Contains(stage))return PersonalScenarios.Arc(stage).Conflicts[PersonalScenarios.Tier(stage)];
             switch(stage)
             {
                 case 1:return "유적의 첫 수호자 격파 · 남은 적은 격파하지 않아도 승리";

@@ -5,6 +5,7 @@ namespace TalesTactics
     public class CharacterData : ScriptableObject
     {
         public string Id, DisplayName, Job, SourceTitle, PassiveSkill, AudioTheme;
+        public bool CrossoverEarlyForm;
         public Sprite Portrait;
         public DirectionalSprites Sprites = new DirectionalSprites();
         public CharacterPoses Poses = new CharacterPoses();

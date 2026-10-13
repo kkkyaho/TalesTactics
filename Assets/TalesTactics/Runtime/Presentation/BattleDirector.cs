@@ -108,6 +108,8 @@ namespace TalesTactics
         public void SetState(BattleState state){State=state;Target=null;Forecast=null;KeyboardTile=null;state.Enter();Board.RefreshFocus();}
         public void BeginBattle()
         {
+            if(!TrainingMode&&SelectedStage>=CampaignStages.LegacyCount&&!Catalog.CrossoverReady)return;
+            NormalizeDeployment();
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
             Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true,bossEncounters:true,difficulty:Preferences.Difficulty,missionEvents:Preferences.MissionEvents,reactions:Preferences.Reactions,expandedEncounters:true);
@@ -119,6 +121,7 @@ namespace TalesTactics
                 if(!TrainingMode)TacticalDevelopment.Apply(u,Campaign,SelectedStage);else{u.Trait=progress.Trait;u.Growth=progress.Growth;}
                 u.CurrentHP=u.Stats.HP;u.CurrentMP=u.Stats.MP;
             }
+            if(Session.Crossover!=null)Session.Crossover.State.Choice=personalChoice;
             Session.Opening=BattleOpening.Capture(Session,Catalog);
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
@@ -187,7 +190,7 @@ namespace TalesTactics
         {
             float speed=1<<Mathf.Clamp(Preferences?.EnemySpeedMode??0,0,2);bool brief=Preferences?.SkipEnemyAnimations??false;
             SetState(new ActionExecutionState(this));yield return new WaitForSeconds(brief?.08f:.4f/speed);
-            var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);EnemyTactics.Commit(u,plan);
+            var u=Session.Active;var plan=new EnemyPlanner().Plan(Session,u);EnemyTactics.Commit(u,plan,Session);
             if(plan.Destination!=u.Position){var path=Session.Grid.Path(u,plan.Destination);if(Session.Move(plan.Destination)){if(brief)Board.Sync();else yield return Board.AnimateMove(u,path,speed);}}
             if(plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null))
             {
@@ -213,13 +216,14 @@ namespace TalesTactics
             if(Session.Result!=BattleResult.Victory)return;
             Audio.Play("victory");
             if(battleTraining){Message+="\n훈련: 경험치·골드·장비·장 완료 기록은 저장하지 않습니다.";return;}
-            pendingReward=CampaignEconomy.Prepare(Campaign,battleStage,RewardRoll());RewardPending=true;SaveBattleReward();
+            pendingReward=CampaignEconomy.Prepare(Campaign,battleStage,RewardRoll(),Session.Crossover?.State.Choice??-1);RewardPending=true;SaveBattleReward();
         }
         public void SaveBattleReward()
         {
             if(!RewardPending||pendingReward==null)return;
             string ItemText(string id)
             {
+                if(string.IsNullOrEmpty(id))return "추가 장비 없음";
                 var item=Catalog.Equipment.FirstOrDefault(e=>e!=null&&e.Id==id);string name=item!=null?item.DisplayName:id;
                 return name+(CampaignInventory.Owned(Campaign,id)>=CampaignInventory.MaxQuantity?" 미지급 (보유 상한 99개)":" +1");
             }

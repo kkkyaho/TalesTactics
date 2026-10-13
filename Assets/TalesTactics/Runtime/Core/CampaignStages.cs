@@ -22,20 +22,23 @@ namespace TalesTactics
             new Chapter("5장 · 잠긴 수문",6,5,30,420,"tempered-armor","단련 갑옷"),
             new Chapter("6장 · 새벽의 중계핵",8,7,30,560,"guardian-medal","수호의 메달",true)
         };
-        public static int Count=>chapters.Length;
-        public static Chapter Get(int stage)=>stage>=0&&stage<Count?chapters[stage]:throw new ArgumentOutOfRangeException(nameof(stage));
+        public const int LegacyCount=6;
+        public static int Count=>PersonalScenarios.FirstStage+PersonalScenarios.Count;
+        public static Chapter Get(int stage)=>CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Chapter(stage):PersonalScenarios.Contains(stage)?PersonalScenarios.Chapter(stage):stage>=0&&stage<LegacyCount?chapters[stage]:throw new ArgumentOutOfRangeException(nameof(stage));
         public static int GoldReward(int stage)=>CampaignEconomy.Gold(stage,false);
         public static string EquipmentReward(int stage)=>Get(stage).Equipment;
         public static int EnemyLevel(int stage)=>Get(stage).EnemyLevel;
-        public static string Id(int stage)=>"chapter"+(stage+1);
+        public static string Id(int stage)=>CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Flag(CrossoverCampaign.Episode(stage).Number):PersonalScenarios.Contains(stage)?PersonalScenarios.Flag(stage):"chapter"+(stage+1);
         public static string Title(int stage)=>Get(stage).Title;
-        public static bool Unlocked(CampaignSave save,int stage)=>stage>=0&&stage<Count&&(stage==0||save.StoryProgress.Contains(Id(stage-1)));
+        public static bool Unlocked(CampaignSave save,int stage)=>PersonalScenarios.Contains(stage)?PersonalScenarios.Unlocked(save,stage):stage>=0&&stage<Count&&(stage==0||stage==CrossoverCampaign.FirstStage||save.StoryProgress.Contains(Id(stage-1)));
+        public static bool HasNext(int stage)=>stage>=0&&stage<LegacyCount-1||CrossoverCampaign.IsMain(stage)&&stage<CrossoverCampaign.LastStage;
         public static bool TryReward(CampaignSave save,int stage,CharacterData[] party,Func<CampaignSave,bool> persist)
             =>!Unlocked(save,stage)?false:TryReward(save,CampaignEconomy.Prepare(save,stage,9999),party,persist);
         public static bool TryReward(CampaignSave save,CampaignReward reward,CharacterData[] party,Func<CampaignSave,bool> persist,System.Collections.Generic.IReadOnlyDictionary<string,int> actionExperience=null)
         {
             if(reward==null||reward.Applied||!Unlocked(save,reward.Stage)||persist==null)return false;
             int stage=reward.Stage;
+            if(PersonalScenarios.Contains(stage)&&save.StoryProgress.Contains(Id(stage)))return false;
             if(save.StoryProgress.Contains(Id(stage))!=reward.Repeat)return false;
             var originalInventory=save.Inventory.ToArray();var counts=originalInventory.Select(e=>e.Count).ToArray();
             int originalGold=save.Gold;
@@ -44,6 +47,7 @@ namespace TalesTactics
             var levels=progress.Select(c=>c.Level).ToArray();var exp=progress.Select(c=>c.EXP).ToArray();
             var skills=progress.Select(c=>c.UnlockedSkills).ToArray();
             bool added=!save.StoryProgress.Contains(Id(stage)),saved=false;
+            bool addedRoute=added&&!string.IsNullOrEmpty(reward.RouteFlag)&&!save.StoryProgress.Contains(reward.RouteFlag);
             try
             {
                 foreach(var character in party.Distinct())
@@ -56,6 +60,7 @@ namespace TalesTactics
                     if(entry.Count<CampaignInventory.MaxQuantity)entry.Count++;
                 }
                 if(added)save.StoryProgress.Add(Id(stage));
+                if(addedRoute)save.StoryProgress.Add(reward.RouteFlag);
                 saved=persist(save);if(saved)reward.Applied=true;return saved;
             }
             finally
@@ -67,6 +72,7 @@ namespace TalesTactics
                     save.Inventory.Clear();save.Inventory.AddRange(originalInventory);
                     save.Gold=originalGold;save.Characters.Clear();save.Characters.AddRange(originalCharacters);
                     if(added)save.StoryProgress.Remove(Id(stage));
+                    if(addedRoute)save.StoryProgress.Remove(reward.RouteFlag);
                 }
             }
         }

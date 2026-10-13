@@ -25,19 +25,27 @@ namespace TalesTactics
         public int CampaignMastery;
         public bool UltimateTrial,UltimateTrialUsed,ProtectionUsed,CounterUsed,SupportUsed;
         public bool TacticalEnemy,BossWard;
+        public bool BossTimeRules,TurnBeganIncapacitated;
+        public int TimeStopResistance;
+        public bool CrossoverCombat,CrossoverBoss,Summoned,BossPhaseLock,CrossoverReserve;
+        public int BossPhase,PatternStep;
+        public int MoveObjectiveNodes;
         public int TurnsStarted,IntentTurn,IntentPhase;
         public string IntentSkill;
         public Vector2Int IntentAim;
         public bool Alive=>CurrentHP>0;
+        public bool CanTakeTurn=>Alive&&!CrossoverReserve&&Data.Id!="boundary-device";
         public Stats Stats
         {
             get
             {
                 var s=Data.StatsAt(Level,Promoted); foreach(var e in Equipment)if(e!=null)s+=e.Bonus;
+                if(CrossoverBoss&&(Data.Id=="dhaos"||Data.Id=="golem"))s.HP=Mathf.RoundToInt(s.HP*(Data.Id=="dhaos"?2.5f:2f));
                 s=GrowthPaths.Apply(TacticalDevelopment.ApplyStats(s,Trait),Growth);
                 if(Has(StatusKind.ConsumeClaw)){s.STR=Mathf.RoundToInt(s.STR*Rules.ClawStrength);s.SPD=Mathf.RoundToInt(s.SPD*Rules.ClawSpeed);}
                 if(Has(StatusKind.Song)){s.STR=Mathf.RoundToInt(s.STR*Rules.SongMultiplier);s.MAG=Mathf.RoundToInt(s.MAG*Rules.SongMultiplier);}
                 if(Has(StatusKind.Cage)){s.SPD=Mathf.Max(1,Mathf.RoundToInt(s.SPD*Rules.CageSpeedMultiplier));s.MDF=Mathf.RoundToInt(s.MDF*Rules.CageMagicDefenseMultiplier);}
+                if(Has(StatusKind.Slow))s.MOV=Mathf.Max(1,s.MOV-2);
                 return s;
             }
         }
@@ -52,6 +60,7 @@ namespace TalesTactics
             Moved=Acted=CanUndoMove=FlamingChain=false;
             ProtectionUsed=CounterUsed=SupportUsed=false;
             TurnsStarted++;
+            TurnBeganIncapacitated=Has(StatusKind.Stun)||Has(StatusKind.Sleep);
             if(IntentPhase==1&&(Has(StatusKind.Stun)||Has(StatusKind.Sleep))){IntentPhase=0;IntentSkill=null;}
             if(IntentPhase==2&&TurnsStarted>=IntentTurn+3){IntentPhase=0;IntentSkill=null;}
             Statuses.RemoveAll(s=>s.Kind==StatusKind.Guard);
@@ -59,15 +68,19 @@ namespace TalesTactics
         }
         public void EndTurn()
         {
+            if(BossPhaseLock&&!TurnBeganIncapacitated&&!Has(StatusKind.Stun)&&!Has(StatusKind.Sleep)&&Acted)BossPhaseLock=false;
+            if(TimeStopResistance>0&&!TurnBeganIncapacitated&&!Has(StatusKind.Stun)&&!Has(StatusKind.Sleep)&&(Acted||Moved))TimeStopResistance--;
             foreach(var s in Statuses){if(s.Fresh)s.Fresh=false;else s.Turns--;}
             Statuses.RemoveAll(s=>s.Turns<=0);
             if(!Has(StatusKind.ConsumeClaw))ClawAttacks=0;
         }
         public void Damage(int amount,GridMap grid)
         {
+            amount=CrossoverBossTactics.ClampDamage(this,amount);
             CurrentHP=Mathf.Max(0,CurrentHP-Mathf.Max(0,amount));Statuses.RemoveAll(s=>s.Kind==StatusKind.Sleep);
             if(!Alive&&Has(StatusKind.AutoRevive)){Statuses.RemoveAll(s=>s.Kind==StatusKind.AutoRevive);CurrentHP=Mathf.Max(1,Mathf.RoundToInt(Stats.HP*Rules.AutoReviveHealth));}
             if(!Alive){Statuses.Clear();if(grid[Position]?.Occupant==this)grid[Position].Occupant=null;}
+            if(amount>0)CrossoverBossTactics.AfterDamage(this);
         }
     }
 }

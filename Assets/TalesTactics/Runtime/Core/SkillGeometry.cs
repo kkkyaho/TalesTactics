@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TalesTactics
 {
-    public enum SkillAreaShape { Diamond, Line, Cone }
+    public enum SkillAreaShape { Diamond, Line, Cone, Cross, Diagonal, Lanes, Scatter }
 
     public static class SkillGeometry
     {
@@ -14,13 +14,14 @@ namespace TalesTactics
             int bonus=grid[from]==null||grid[to]==null?0:Mathf.Clamp(grid[from].Height-grid[to].Height,-limit,limit);
             return Math.Max(skill.MinRange,skill.Range+bonus);
         }
-        public static bool CanAim(GridMap grid, Vector2Int from, SkillData skill, Vector2Int aim)
+        public static bool CanAim(GridMap grid, Vector2Int from, SkillData skill, Vector2Int aim,SkillAreaShape? shapeOverride=null)
         {
             if (skill == null || grid[from] == null || grid[aim] == null) return false;
             int distance = GridMap.Distance(from, aim);
             if (distance < skill.MinRange || distance > EffectiveRange(grid,from,aim,skill)) return false;
             var delta = aim - from;
-            if (skill.Shape != SkillAreaShape.Diamond && (distance == 0 || delta.x != 0 && delta.y != 0)) return false;
+            var shape=shapeOverride??skill.Shape;
+            if ((shape == SkillAreaShape.Line || shape == SkillAreaShape.Cone) && (distance == 0 || delta.x != 0 && delta.y != 0)) return false;
             return VisibleHeight(grid, from, aim, skill);
         }
 
@@ -30,22 +31,27 @@ namespace TalesTactics
             return !skill.RequiresLineOfSight || HasLineOfSight(grid, from, to);
         }
 
-        public static IEnumerable<Vector2Int> Area(GridMap grid, Vector2Int from, SkillData skill, Vector2Int aim)
+        public static IEnumerable<Vector2Int> Area(GridMap grid, Vector2Int from, SkillData skill, Vector2Int aim,SkillAreaShape? shapeOverride=null,int? areaOverride=null)
         {
-            if (!CanAim(grid, from, skill, aim)) yield break;
+            if (!CanAim(grid, from, skill, aim,shapeOverride)) yield break;
+            var shape=shapeOverride??skill.Shape;int radius=areaOverride??skill.Area;
             var delta = aim - from;
             int dx = Math.Sign(delta.x), dz = Math.Sign(delta.y);
             foreach (var p in grid.Tiles.Keys)
             {
                 bool inside;
-                if (skill.Shape == SkillAreaShape.Diamond) inside = GridMap.Distance(p, aim) <= skill.Area;
+                if (shape == SkillAreaShape.Diamond) inside = GridMap.Distance(p, aim) <= radius;
+                else if (shape == SkillAreaShape.Cross) inside = (p.x==aim.x||p.y==aim.y)&&GridMap.Distance(p,aim)<=radius;
+                else if (shape == SkillAreaShape.Diagonal) inside = Math.Abs(p.x-aim.x)==Math.Abs(p.y-aim.y)&&Math.Abs(p.x-aim.x)<=radius;
+                else if (shape == SkillAreaShape.Lanes) inside = Math.Abs(p.x-aim.x)%2==0&&GridMap.Distance(p,aim)<=radius;
+                else if (shape == SkillAreaShape.Scatter) inside = GridMap.Distance(p,aim)<=radius&&(p==aim||(p.x+2*p.y)%3==0);
                 else
                 {
                     var relative = p - from;
                     int forward = relative.x * dx + relative.y * dz;
                     int side = Math.Abs(relative.x * dz - relative.y * dx);
                     inside = forward > 0 && forward + side >= skill.MinRange && forward + side <= EffectiveRange(grid,from,p,skill) &&
-                        (skill.Shape == SkillAreaShape.Line ? side == 0 : side < forward);
+                        (shape == SkillAreaShape.Line ? side == 0 : side < forward);
                 }
                 if (inside && VisibleHeight(grid, from, p, skill)) yield return p;
             }

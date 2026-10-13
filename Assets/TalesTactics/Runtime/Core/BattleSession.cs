@@ -23,8 +23,9 @@ namespace TalesTactics
         public readonly ObjectiveKind Objective;
         public readonly Vector2Int Destination=new Vector2Int(8,8);
         public UnitRuntime ObjectiveUnit {get;private set;}
+        public CrossoverBattle Crossover {get;private set;}
         bool turnEnded;
-        public string ObjectiveDescription=>CaptureMission?"거점 점령 "+CaptureProgress+" / 2 · 아군 턴 종료 시 유지":Objective==ObjectiveKind.Reach?"아군 1명 목표 "+Destination+" 도착":
+        public string ObjectiveDescription=>Crossover!=null?Crossover.Description:CaptureMission?"거점 점령 "+CaptureProgress+" / 2 · 아군 턴 종료 시 유지":Objective==ObjectiveKind.Reach?"아군 1명 목표 "+Destination+" 도착":
             Objective==ObjectiveKind.Escort?ObjectiveUnit.Data.DisplayName+" 호위 → "+Destination+", 전투불능 시 패배":
             Objective==ObjectiveKind.Boss?"보스: "+ObjectiveUnit.Data.DisplayName+" (첫 번째 적)":
             Objective==ObjectiveKind.Survive?SurvivalDescription:"모든 적 격파";
@@ -33,7 +34,8 @@ namespace TalesTactics
         public BattleSession(BattleCatalog catalog,IEnumerable<int> deployment,int level=1,int? enemyLevel=null,int campaignStage=-1,bool useCT=false,bool utilityAI=false,ObjectiveKind objective=ObjectiveKind.Eliminate,bool legacyCampaign=false,bool teamTurns=false,bool phaseSurvival=false,bool tacticalCombat=false,bool bossEncounters=false,BattleDifficulty difficulty=BattleDifficulty.Standard,bool missionEvents=false,bool reactions=false,bool actionExperience=true,bool expandedEncounters=false)
         {
             if(!Enum.IsDefined(typeof(BattleDifficulty),difficulty))throw new ArgumentOutOfRangeException(nameof(difficulty));
-            ExpandedEncounters=expandedEncounters&&campaignStage>=0&&!legacyCampaign;
+            if(campaignStage<0&&objective==ObjectiveKind.Crossover)objective=ObjectiveKind.Eliminate;
+            ExpandedEncounters=(expandedEncounters||campaignStage>=CampaignStages.LegacyCount)&&campaignStage>=0&&!legacyCampaign;
             this.catalog=catalog;Difficulty=campaignStage<0?BattleDifficulty.Standard:difficulty;MissionEvents=missionEvents&&campaignStage>=0&&!legacyCampaign&&teamTurns&&!useCT;
             if(campaignStage>=0)enemyLevel=DifficultyRules.EnemyLevel(enemyLevel??level,Difficulty);
             if(campaignStage>=0&&!legacyCampaign){objective=CampaignMissions.Kind(campaignStage);Destination=CampaignMissions.Destination(campaignStage);}
@@ -55,7 +57,7 @@ namespace TalesTactics
             Resolver=new SkillResolver(Grid,Units,Rules,tacticalCombat:tacticalCombat,reactions:reactions,actionExperience:actionExperience&&campaignStage>=0);
             if(utilityAI&&campaignStage<0)foreach(var enemy in Units.Where(u=>u.Team==Team.Enemy))
                 enemy.TacticalSkills=catalog.Characters.SelectMany(c=>c.Skills).Where(s=>s!=null&&(s.Id=="mint.0"||s.Id=="jade.0")).ToArray();
-            if(campaignStage>=0&&!legacyCampaign)EnemyTactics.Configure(this,catalog);
+            if(campaignStage>=0&&!legacyCampaign){EnemyTactics.Configure(this,catalog);foreach(var enemy in Units.Where(u=>u.Team==Team.Enemy))enemy.BossTimeRules=true;}
             if(objective==ObjectiveKind.Boss){ObjectiveUnit=Units.FirstOrDefault(u=>u.Team==Team.Enemy&&u.Data.Id=="dhaos")??Units.First(u=>u.Team==Team.Enemy);if(campaignStage<0)ObjectiveUnit.Level=Math.Min(50,ObjectiveUnit.Level+5);ObjectiveUnit.CurrentHP=ObjectiveUnit.Stats.HP;ObjectiveUnit.CurrentMP=ObjectiveUnit.Stats.MP;Victory=new DefeatBoss(ObjectiveUnit);}
             if(objective==ObjectiveKind.Boss)ObjectiveUnit.ExperienceBoss=true;
             if(BossEncounters)
@@ -70,6 +72,7 @@ namespace TalesTactics
             if(CaptureMission)Victory=new CaptureDestination(this);
             if(objective==ObjectiveKind.Escort){ObjectiveUnit=Units.First(u=>u.Team==Team.Player);Victory=new ReachDestination(Destination,ObjectiveUnit);}
             if(objective==ObjectiveKind.Survive)Victory=new SurviveTurns(phaseSurvival&&teamTurns&&!useCT?4:12,phaseSurvival&&teamTurns&&!useCT);
+            if(objective==ObjectiveKind.Crossover){Crossover=new CrossoverBattle(this);Victory=Crossover;ObjectiveUnit=Crossover.Boss;Resolver.StateChanged=Crossover.Update;Resolver.SkillResolved=Crossover.OnResolved;Resolver.CrossoverState=Crossover.State;}
         }
         void BeginActive(){turnEnded=false;if(Active!=null&&(!(Scheduler is TeamTurnScheduler team)||team.Begin(Active)))Active.BeginTurn();}
         public void Advance(){Active=Scheduler.Next(Units);AdvanceMissionEvents();BeginActive();}
@@ -86,6 +89,7 @@ namespace TalesTactics
                     (team.Phase==Team.Enemy||!Units.Any(u=>u.Alive&&u.Team==Team.Enemy)))goal.OnEnemyPhaseEnded();
             }
             if(Victory is SurviveTurns survive)survive.OnTurnEnded(Active);
+            Crossover?.OnTurnEnded(Active);
         }
         public int RemainingAllies=>Scheduler is TeamTurnScheduler team&&team.Phase==Team.Player?Units.Count(team.CanSelect):0;
         public string ActionState(UnitRuntime unit)
@@ -109,13 +113,15 @@ namespace TalesTactics
         }
         public bool Move(Vector2Int p)
         {
-            var u=Active;if(u==null||u.Moved||!u.Alive||Grid.Path(u,p).Count<2)return false;
+            var u=Active;if(u==null||u.Moved||!u.CanTakeTurn)return false;var path=Grid.Path(u,p);if(path.Count<2)return false;
             u.MoveOrigin=u.Position;u.OriginalFacing=u.Facing;u.Facing=SkillResolver.Toward(u.Position,p);
-            if(!Grid.Place(u,p))return false;u.Moved=true;u.CanUndoMove=true;return true;
+            u.MoveObjectiveNodes=Crossover?.State.Nodes??0;
+            if(!Grid.Place(u,p))return false;u.Moved=true;u.CanUndoMove=true;Crossover?.OnMoved(u,path);return true;
         }
         public bool UndoMove()
         {
             var u=Active;if(u==null||!u.CanUndoMove||!Grid.Place(u,u.MoveOrigin))return false;
+            if(Crossover!=null)Crossover.State.Nodes=u.MoveObjectiveNodes;
             u.Moved=false;u.CanUndoMove=false;u.Facing=u.OriginalFacing;return true;
         }
     }

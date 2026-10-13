@@ -40,7 +40,7 @@ namespace TalesTactics.Tests
                 foreach (bool after in new[] { false, true })
                 {
                     var lines = CampaignContent.Story(stage, after);
-                    Assert.That(lines.Length >= 4, Is.True);
+                    Assert.That(lines.Length >= (PersonalScenarios.Contains(stage)?2:CrossoverCampaign.IsMain(stage)?3:4), Is.True,"Stage "+stage);
                     Assert.That(lines.All(l => !string.IsNullOrWhiteSpace(l.Speaker) && !string.IsNullOrWhiteSpace(l.Text)), Is.True);
                 }
         }

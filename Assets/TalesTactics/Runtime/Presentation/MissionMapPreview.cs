@@ -5,8 +5,8 @@ namespace TalesTactics
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class MissionMapPreview:UnityEngine.UI.MaskableGraphic
     {
-        GridMap map;Vector2Int? goal;
-        public void Initialize(int stage){map=CampaignContent.Map(stage);var kind=CampaignMissions.Kind(stage);goal=kind==ObjectiveKind.Reach||kind==ObjectiveKind.Escort?CampaignMissions.Destination(stage):(Vector2Int?)null;raycastTarget=false;SetVerticesDirty();}
+        GridMap map;Vector2Int? goal;bool signals,contract;
+        public void Initialize(int stage){map=CampaignContent.Map(stage);var kind=CampaignMissions.Kind(stage);goal=CrossoverBattle.HasExit(stage)?CrossoverBattle.Exit:kind==ObjectiveKind.Reach||kind==ObjectiveKind.Escort?CampaignMissions.Destination(stage):(Vector2Int?)null;signals=CrossoverBattle.HasSignals(stage);contract=PersonalScenarios.Contains(stage)&&PersonalScenarios.Tier(stage)==2&&PersonalScenarios.Arc(stage).Owner=="cless";raycastTarget=false;SetVerticesDirty();}
         protected override void OnPopulateMesh(UnityEngine.UI.VertexHelper vh)
         {
             vh.Clear();if(map==null)return;var r=rectTransform.rect;
@@ -17,6 +17,8 @@ namespace TalesTactics
             {
                 var p=origin+(Vector2)t.Coordinate*size;Color tint=!t.Walkable?new Color(.20f,.26f,.31f):t.Terrain==TerrainType.Water?new Color(.12f,.39f,.49f):Color.Lerp(new Color(.30f,.41f,.46f),new Color(.51f,.60f,.61f),t.Height*.22f);
                 if(t.Coordinate==goal)tint=new Color(.94f,.73f,.29f);
+                if(signals&&CrossoverBattle.Nodes.Contains(t.Coordinate))tint=new Color(.2f,.9f,.7f);
+                if(contract&&t.Coordinate==CrossoverBattle.ContractSeal)tint=new Color(.8f,.7f,1);
                 Quad(vh,new Rect(p+Vector2.one*.65f,Vector2.one*(size-1.3f)),tint);
             }
         }

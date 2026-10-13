@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 namespace TalesTactics
 {
-    public enum ObjectiveKind { Eliminate, Boss, Reach, Escort, Survive }
+    public enum ObjectiveKind { Eliminate, Boss, Reach, Escort, Survive, Crossover }
     public sealed class DefeatBoss : IVictoryCondition
     {
         readonly UnitRuntime boss;
@@ -36,7 +36,7 @@ namespace TalesTactics
     }
     public static class ObjectiveNames
     {
-        public static string Name(ObjectiveKind kind)=>kind==ObjectiveKind.Boss?"보스 격파":kind==ObjectiveKind.Reach?"목표 도착":
+        public static string Name(ObjectiveKind kind)=>kind==ObjectiveKind.Crossover?"시나리오 목표":kind==ObjectiveKind.Boss?"보스 격파":kind==ObjectiveKind.Reach?"목표 도착":
             kind==ObjectiveKind.Escort?"호위":kind==ObjectiveKind.Survive?"생존":"모든 적 격파";
     }
 }

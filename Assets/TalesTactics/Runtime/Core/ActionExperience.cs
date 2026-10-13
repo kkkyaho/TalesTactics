@@ -25,10 +25,10 @@ namespace TalesTactics
         Credit For(UnitRuntime target)
         {if(!targets.TryGetValue(target,out var c)){c=new Credit{MaxHP=target.Stats.HP,Level=target.Level};targets.Add(target,c);}return c;}
         public void Damage(UnitRuntime target,int actual,bool killed)
-        {if(actor.Team!=Team.Player||target.Team==actor.Team||actual<=0)return;var c=For(target);c.Damage+=actual;c.Killed|=killed;}
+        {if(actor.Team!=Team.Player||target.Team==actor.Team||target.Summoned||actual<=0)return;var c=For(target);c.Damage+=actual;c.Killed|=killed;}
         public void Effect(UnitRuntime target,SkillEffect effect,int hp,int statuses,bool hadStatus,int gauge,Vector2Int position)
         {
-            if(actor.Team!=Team.Player)return;float credit=0;
+            if(actor.Team!=Team.Player||target.Summoned)return;float credit=0;
             var status=effect.Kind==EffectKind.AutoRevive?StatusKind.AutoRevive:effect.Kind==EffectKind.ConsumeClaw?StatusKind.ConsumeClaw:effect.Status;
             bool addedStatus=!hadStatus&&target.Has(status);
             if(target.Team==actor.Team)

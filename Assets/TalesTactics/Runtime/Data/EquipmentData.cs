@@ -5,6 +5,7 @@ namespace TalesTactics
     public class EquipmentData : ScriptableObject
     {
         public string Id, DisplayName;
+        public string ExclusiveCharacterId, SourceNote;
         public EquipmentSlot Slot;
         public WeaponType Weapon;
         public Stats Bonus;

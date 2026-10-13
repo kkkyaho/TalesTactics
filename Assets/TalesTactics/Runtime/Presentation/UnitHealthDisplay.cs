@@ -60,7 +60,7 @@ namespace TalesTactics
             var cam=battle.Board.BattleCamera;
             float height=unit.Data.Sprites?.Front!=null?unit.Data.Sprites.Front.bounds.size.y*CharacterVisualSizing.Scale(unit.Data):1.3f;
             var screen=cam.WorldToScreenPoint(visual.position+cam.transform.up*(height+.18f));
-            bool visible=unit.Alive&&screen.z>0&&!battle.StoryActive&&!battle.Hud.InputModalOpen;
+            bool visible=unit.Alive&&!unit.CrossoverReserve&&screen.z>0&&!battle.StoryActive&&!battle.Hud.InputModalOpen;
             bar.enabled=visible;label.enabled=visible&&(battle.Session.Active==unit||battle.HoveredUnit==unit||battle.HealthHoveredUnit==unit);
             float scale=Mathf.Clamp(Screen.height/1080f,.8f,1.5f);
             rect.sizeDelta=new Vector2(70*scale,10*scale);rect.anchoredPosition=new Vector2(Mathf.Clamp(screen.x,36*scale,Screen.width-36*scale),Mathf.Clamp(screen.y,8,Screen.height-24*scale));

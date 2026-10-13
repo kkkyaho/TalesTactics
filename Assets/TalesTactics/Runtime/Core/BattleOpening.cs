@@ -8,7 +8,7 @@ namespace TalesTactics
     // Immutable-by-convention pre-turn snapshot. Contains no campaign rewards or scheduler progress.
     [Serializable] public sealed class BattleOpening
     {
-        public int Version=5,Stage;
+        public int Version=6,Stage;
         public int[] Deployment;
         public ObjectiveKind Objective;
         public BattleDifficulty Difficulty;
@@ -16,10 +16,11 @@ namespace TalesTactics
         public bool CT,TeamTurns,Utility,Legacy,PhaseSurvival,TacticalCombat,BossEncounters;
         public UnityEngine.Random.State RandomState;
         public List<CheckpointUnit> Units=new List<CheckpointUnit>();
+        public CrossoverBattleState Crossover;
         public static BattleOpening Capture(BattleSession session,BattleCatalog catalog)
         {
             if(session.Active!=null||session.Units.Any(u=>u.TurnsStarted!=0))throw new InvalidOperationException("Opening must precede the first turn");
-            return new BattleOpening{ExpandedEncounters=session.ExpandedEncounters,Stage=session.CampaignStage,Objective=session.Objective,
+            return new BattleOpening{Crossover=session.Crossover?.State.Copy(),ExpandedEncounters=session.ExpandedEncounters,Stage=session.CampaignStage,Objective=session.Objective,
                 Deployment=session.Units.Where(u=>u.Team==Team.Player).Select(u=>Array.IndexOf(catalog.Characters,u.Data)).ToArray(),
                 CT=session.Scheduler is CTTurnScheduler,TeamTurns=session.Scheduler is TeamTurnScheduler,Utility=session.UseUtilityAI,
                 Legacy=session.LegacyCampaign,PhaseSurvival=(session.Victory as SurviveTurns)?.EnemyPhases??false,
@@ -28,16 +29,18 @@ namespace TalesTactics
         }
         public BattleSession Restore(BattleCatalog catalog)
         {
-            if((Version<1||Version>5)||Stage< -1||Stage>=CampaignStages.Count||CT&&TeamTurns||!Enum.IsDefined(typeof(ObjectiveKind),Objective)||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Invalid battle opening");
+            if((Version<1||Version>6)||Stage< -1||Stage>=CampaignStages.Count||CT&&TeamTurns||!Enum.IsDefined(typeof(ObjectiveKind),Objective)||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Invalid battle opening");
             var session=new BattleSession(catalog,Deployment,campaignStage:Stage,useCT:CT,utilityAI:Utility,objective:Objective,legacyCampaign:Legacy,teamTurns:TeamTurns,phaseSurvival:PhaseSurvival,tacticalCombat:TacticalCombat,bossEncounters:BossEncounters,difficulty:Version>=2?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=2&&MissionEvents,reactions:Version>=3&&Reactions,actionExperience:Version>=4&&ActionExperience,expandedEncounters:Version>=5&&ExpandedEncounters);
             if(Units==null||Units.Count!=session.Units.Count)throw new InvalidDataException("Invalid opening roster");
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)
             {
                 var saved=Units[i];
-                if(saved==null||saved.HP<=0||saved.Moved||saved.Acted||saved.Undo||saved.TurnsStarted!=0||saved.IntentPhase!=0)throw new InvalidDataException("Opening contains turn progress");
+                if(saved==null||saved.HP<=0&&session.Crossover==null||saved.Moved||saved.Acted||saved.Undo||saved.TurnsStarted!=0||saved.IntentPhase!=0)throw new InvalidDataException("Opening contains turn progress");
                 saved.Apply(session.Units[i],session.Grid,catalog);
+                if(Version<6){session.Units[i].BossTimeRules=false;session.Units[i].TimeStopResistance=0;}
             }
+            if(session.Crossover!=null){if(Version<6)throw new InvalidDataException("Crossover opening requires version 6");session.Crossover.Restore(Crossover);}
             if(session.Result!=BattleResult.Ongoing)throw new InvalidDataException("Opening is already completed");
             session.Opening=this;return session;
         }

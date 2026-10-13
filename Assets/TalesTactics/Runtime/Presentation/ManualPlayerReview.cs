@@ -1,4 +1,4 @@
-#if UNITY_EDITOR || DEBUG
+#if UNITY_EDITOR || DEBUG || TALESTACTICS_REVIEW
 using System;
 using System.Collections;
 using System.Collections.Generic;

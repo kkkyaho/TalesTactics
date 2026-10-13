@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efff7ab8a5b9054a9857f5a4e92f745, type: 3}
+  m_Name: boundary-device
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterData
+  Id: boundary-device
+  DisplayName: "\uACBD\uACC4 \uC7A5\uCE58"
+  Job: "\uD30C\uAD34 \uAC00\uB2A5\uD55C \uC5F0\uACB0 \uD575"
+  SourceTitle: 
+  PassiveSkill: 
+  AudioTheme: 
+  CrossoverEarlyForm: 0
+  Portrait: {fileID: 1326824445, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+  Sprites:
+    Front: {fileID: 1326824445, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+    Back: {fileID: 1698888103, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+    Left: {fileID: 1281255359, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+    Right: {fileID: 1536135158, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+  Poses:
+    Walk:
+      Frames: []
+      FramesPerSecond: 8
+      ReleaseFrame: 1
+    Dead:
+      Frames:
+      - Front: {fileID: 2139492011, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+        Back: {fileID: -554244105, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+        Left: {fileID: -1930217284, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+        Right: {fileID: -1642919195, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      FramesPerSecond: 8
+      ReleaseFrame: 1
+    Skill:
+      Frames: []
+      FramesPerSecond: 8
+      ReleaseFrame: 1
+    Ultimate:
+      Frames: []
+      FramesPerSecond: 8
+      ReleaseFrame: 1
+    AttackMotion:
+      Frames: []
+      FramesPerSecond: 8
+      ReleaseFrame: 1
+    Attack:
+      Front: {fileID: 0}
+      Back: {fileID: 0}
+      Left: {fileID: 0}
+      Right: {fileID: 0}
+    Cast:
+      Front: {fileID: 1132018919, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Back: {fileID: -1465262306, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Left: {fileID: 219756957, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Right: {fileID: -523549790, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+    Guard:
+      Front: {fileID: 1326824445, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Back: {fileID: 1698888103, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Left: {fileID: 1281255359, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Right: {fileID: 1536135158, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+    Damage:
+      Front: {fileID: 1132018919, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Back: {fileID: -1465262306, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Left: {fileID: 219756957, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+      Right: {fileID: -523549790, guid: 14f8e82cedcf085488c28b924dc10665, type: 3}
+  Animator: {fileID: 0}
+  Affinities: []
+  Weapon: 0
+  VisualStyle: 0
+  BaseStats:
+    HP: 180
+    MP: 1
+    STR: 0
+    MAG: 0
+    DEF: 12
+    MDF: 12
+    SPD: 1
+    MOV: 0
+    JMP: 0
+  GrowthStats:
+    HP: 6
+    MP: 0
+    STR: 0
+    MAG: 0
+    DEF: 1
+    MDF: 1
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionBonus:
+    HP: 0
+    MP: 0
+    STR: 0
+    MAG: 0
+    DEF: 0
+    MDF: 0
+    SPD: 0
+    MOV: 0
+    JMP: 0
+  PromotionLevel: 20
+  PromotionStoryFlag: chapter2
+  PromotionJob: 
+  BasicAttack: {fileID: 11400000, guid: 4d9c5d43104e26d4996aac8e6bc6ec44, type: 2}
+  UltimateSkill: {fileID: 0}
+  Skills: []
+  PlaceholderColor: {r: 0, g: 1, b: 1, a: 1}

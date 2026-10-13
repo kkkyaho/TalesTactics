@@ -11,13 +11,15 @@ namespace TalesTactics.PlayModeTests
         [UnityTest] public IEnumerator EntireRosterUsesAuthoredAttackPhasesAndCanBeInterrupted()
         {
             var camera=director.Board.BattleCamera;
-            foreach(var data in director.Catalog.Characters.Concat(director.Catalog.Enemies))
+            foreach(var data in director.Catalog.Characters.Concat(director.Catalog.Enemies).Concat(director.Catalog.CrossoverVariants??new CharacterData[0]))
             {
+                if(data.Id=="boundary-device")continue; // Static destructible prop has its own damaged/dead presentation.
                 var clip=data.Poses.AttackMotion;
                 bool premium=CharacterVisualSizing.IsHero(data);
-                Assert.That(clip.Frames.Length,Is.EqualTo(premium?10:4),data.Id);
+                bool crossover=data.Skills.Any(s=>s.Id.StartsWith("boss."+data.Id+"."));
+                Assert.That(clip.Frames.Length,Is.EqualTo(premium?10:crossover?5:4),data.Id);
                 Assert.That(data.Poses.Skill.Frames.Length,Is.EqualTo(premium?14:5),data.Id);
-                Assert.That(data.Poses.Ultimate.Frames.Length,premium?Is.InRange(20,22):Is.EqualTo(4),data.Id);
+                Assert.That(data.Poses.Ultimate.Frames.Length,premium?Is.InRange(20,22):Is.EqualTo(crossover?7:4),data.Id);
                 foreach(Facing direction in System.Enum.GetValues(typeof(Facing)))
                 {
                     Assert.That(clip.Frames.Select(f=>f.Get(direction)).Distinct().Count(),Is.EqualTo(clip.Frames.Length),data.Id);

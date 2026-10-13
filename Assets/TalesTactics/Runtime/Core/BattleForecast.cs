@@ -19,13 +19,17 @@ namespace TalesTactics
                     EXP=source.EXP,BattleEXP=source.BattleEXP,ExperienceBoss=source.ExperienceBoss,Promoted=source.Promoted,Moved=source.Moved,Acted=source.Acted,CanUndoMove=source.CanUndoMove,FlamingChain=source.FlamingChain,GuardIgnition=source.GuardIgnition,ClawAttacks=source.ClawAttacks,
                     Position=source.Position,Facing=source.Facing,MoveOrigin=source.MoveOrigin,OriginalFacing=source.OriginalFacing,Growth=source.Growth,Trait=source.Trait,CampaignMastery=source.CampaignMastery,
                     UltimateTrial=source.UltimateTrial,UltimateTrialUsed=source.UltimateTrialUsed,ProtectionUsed=source.ProtectionUsed,CounterUsed=source.CounterUsed,SupportUsed=source.SupportUsed,TacticalSkills=source.TacticalSkills,
+                    BossTimeRules=source.BossTimeRules,TimeStopResistance=source.TimeStopResistance,TurnBeganIncapacitated=source.TurnBeganIncapacitated,
+                    CrossoverCombat=source.CrossoverCombat,CrossoverBoss=source.CrossoverBoss,Summoned=source.Summoned,BossPhase=source.BossPhase,PatternStep=source.PatternStep,BossPhaseLock=source.BossPhaseLock,CrossoverReserve=source.CrossoverReserve,
+                    MoveObjectiveNodes=source.MoveObjectiveNodes,
                     BossWard=source.BossWard,TacticalEnemy=source.TacticalEnemy,TurnsStarted=source.TurnsStarted,IntentTurn=source.IntentTurn,IntentPhase=source.IntentPhase,IntentSkill=source.IntentSkill,IntentAim=source.IntentAim};
                 for(int i=0;i<3;i++)u.Equipment[i]=source.Equipment[i];
                 foreach(var s in source.Statuses)u.Statuses.Add(new RuntimeStatus{Kind=s.Kind,Turns=s.Turns,Fresh=s.Fresh});
                 foreach(var c in source.Cooldowns)u.Cooldowns.Add(c.Key,c.Value);
-                Copies.Add(source,u);if(u.Alive)Grid[u.Position].Occupant=u;
+                Copies.Add(source,u);if(u.Alive&&!u.CrossoverReserve)Grid[u.Position].Occupant=u;
             }
             Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat,reactions:battle.Resolver.ReactionsEnabled,actionExperience:battle.Resolver.ActionExperienceEnabled);
+            Resolver.CrossoverState=battle.Crossover?.State.Copy();
         }
     }
     public sealed class ForecastRow
@@ -62,6 +66,8 @@ namespace TalesTactics
                 if(after.CounterUsed&&!original.CounterUsed)effects.Add("반격 1회 사용");
                 if(after.SupportUsed&&!original.SupportUsed)effects.Add("지원 1회 사용");
                 int mechanical=effects.Count;
+                if(skill.Id=="mint.ultimate"&&targets.Contains(original)&&BossTimeStop.Applies(original))
+                    effects.Add(original.TimeStopResistance>0?"재정지 저항 · 효과 없음":"준비 공격 취소 · 재정지 저항 2회 행동");
                 foreach(var e in skill.Effects.Where(e=>(e.AffectCaster?original==actor:targets.Contains(original))))
                 {
                     if(e.Chance<1)effects.Add(SkillSummary.Effect(e)+$" {e.Chance:P0}");
@@ -82,14 +88,14 @@ namespace TalesTactics
         public static Dictionary<UnitRuntime,HashSet<Vector2Int>> Calculate(BattleSession battle)
         {
             var result=new Dictionary<UnitRuntime,HashSet<Vector2Int>>();var copy=new BattleProjection(battle);
-            foreach(var original in battle.Units.Where(u=>u.Team==Team.Enemy&&u.Alive))
+            foreach(var original in battle.Units.Where(u=>u.Team==Team.Enemy&&u.CanTakeTurn))
             {
                 var cells=new HashSet<Vector2Int>();result.Add(original,cells);var u=copy.Copies[original];
                 if(u.Has(StatusKind.Stun)||u.Has(StatusKind.Sleep))continue;
                 if(u.IntentPhase==1){var intent=EnemyTactics.Intent(u);if(intent!=null)cells.UnionWith(copy.Resolver.AreaTiles(u,intent,u.IntentAim));continue;}
                 if(u.IntentPhase==2)continue;
                 u.BeginTurn();var start=u.Position;
-                var skills=new[]{u.Data.BasicAttack}.Concat(u.Data.Skills).Concat(u.TacticalSkills).Concat(new[]{u.Data.UltimateSkill})
+                var skills=new[]{u.Data.BasicAttack}.Concat(u.Data.Skills.Where(s=>s!=null&&(u.CrossoverBoss||!s.Id.StartsWith("boss.",System.StringComparison.Ordinal)))).Concat(u.TacticalSkills).Concat(new[]{u.Data.UltimateSkill})
                     .Where(s=>s!=null&&s.Target==TargetType.Enemy&&copy.Resolver.CanUse(u,s)==null).Distinct().ToArray();
                 var positions=copy.Grid.Reachable(u,out _).Keys.ToArray();
                 foreach(var position in positions)
@@ -108,7 +114,7 @@ namespace TalesTactics
     {
         public static string Name(StatusKind kind)
         {
-            switch(kind){case StatusKind.Guard:return "방어";case StatusKind.Stun:return "기절";case StatusKind.Sleep:return "수면";case StatusKind.Root:return "속박";case StatusKind.Cage:return "케이지";case StatusKind.ConsumeClaw:return "클로";case StatusKind.AutoRevive:return "자동 부활";case StatusKind.Song:return "성가";default:return kind.ToString();}
+            switch(kind){case StatusKind.Slow:return "이동 감소";case StatusKind.Guard:return "방어";case StatusKind.Stun:return "기절";case StatusKind.Sleep:return "수면";case StatusKind.Root:return "속박";case StatusKind.Cage:return "케이지";case StatusKind.ConsumeClaw:return "클로";case StatusKind.AutoRevive:return "자동 부활";case StatusKind.Song:return "성가";default:return kind.ToString();}
         }
         public static string Describe(UnitRuntime u)=>u.Statuses.Count==0?"정상":string.Join(" · ",u.Statuses.Select(s=>Name(s.Kind)+(s.Kind==StatusKind.Guard?" (다음 자기 턴까지)":" "+s.Turns+"턴")));
     }

@@ -11,7 +11,7 @@ namespace TalesTactics
     public enum Element { None, Fire, Water, Wind, Earth, Light, Dark, Lightning, Ice }
     public enum TargetType { Enemy, Ally, Self, FallenAlly }
     public enum EffectKind { Damage, Heal, Buff, Debuff, Push, Pull, Revive, Status, Move, Cleanse, AutoRevive, ConsumeClaw, Gauge }
-    public enum StatusKind { None, Stun, Sleep, Root, Song, Cage, Guard, AutoRevive, ConsumeClaw }
+    public enum StatusKind { None, Stun, Sleep, Root, Song, Cage, Guard, AutoRevive, ConsumeClaw, Slow }
     public enum SkillGate { None, Claw, Nightmare, ClawFinisher, FlamingEdge, GuardIgnition, FarahTiming }
     public enum EquipmentSlot { Weapon, Armor, Accessory }
 

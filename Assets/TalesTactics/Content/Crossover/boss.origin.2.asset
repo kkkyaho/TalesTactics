@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a8a88be9c9fba42a87e723b0bad3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.SkillData
+  BossMechanic: 22
+  SourceNote: "\uCC3D\uC791 \uAE30\uC220\uBA85 \xB7 \uC804\uC220 \uD6A8\uACFC\uB294 \uBCF8\uC791 \uC7AC\uC124\uACC4: \uB124 \uBC29\uD5A5 \uBB38\uC591\uC744 \uC21C\uC11C\uB300\uB85C \uD65C\uC131\uD654. \uBC29\uD328\xB7\uD68C\uBCF5\xB7\uACF5\uACA9\uC744 \uC870\uD569\uD574 \uD1B5\uACFC."
+  Id: boss.origin.2
+  DisplayName: "\uC0AC\uBC29\uC758 \uACC4\uC57D"
+  MPCost: 0
+  HPCost: 0
+  MinRange: 1
+  Range: 5
+  Area: 2
+  UnlockLevel: 1
+  Cooldown: 0
+  GaugeCost: 0
+  HPPercentCost: 0
+  Shape: 4
+  MaxHeightDifference: -1
+  RequiresLineOfSight: 0
+  UsesHeightDamage: 0
+  HeightRangeLimit: 0
+  Element: 0
+  Target: 0
+  Animation: 3
+  VisualStyle: 0
+  Presentation:
+    Pattern: 5
+    Pulses: 1
+    Windup: 0.5
+    Recovery: 0.65
+    Size: 1
+  Gate: 0
+  IsUltimate: 0
+  StartsFlamingChain: 0
+  IsLionHowl: 0
+  Effects:
+  - Kind: 0
+    Status: 0
+    Magic: 1
+    IgnoreDefense: 0
+    AffectCaster: 0
+    Power: 1.1
+    Chance: 1
+    Drain: 0
+    Flat: 0
+    Duration: 2
+    Distance: 1
+  - Kind: 4
+    Status: 0
+    Magic: 0
+    IgnoreDefense: 0
+    AffectCaster: 0
+    Power: 1
+    Chance: 1
+    Drain: 0
+    Flat: 0
+    Duration: 2
+    Distance: 1

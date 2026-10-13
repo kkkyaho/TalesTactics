@@ -12,6 +12,10 @@ namespace TalesTactics
         System.Random random;
         readonly int seed;
         public int RandomDraws {get;private set;}
+        public Action StateChanged;
+        public Action<UnitRuntime,SkillData,Vector2Int> SkillResolved;
+        public CrossoverBattleState CrossoverState;
+        public int LastHealing,LastDrain,LastInterruptions,LastKisaraGuardedDamage;
         double NextRoll(){RandomDraws++;return random.NextDouble();}
         public void RestoreRandom(int draws){if(draws<0||draws>1000000)throw new System.IO.InvalidDataException("Invalid combat RNG");random=new System.Random(seed);RandomDraws=0;for(int i=0;i<draws;i++)NextRoll();}
         public readonly bool ActionExperienceEnabled;
@@ -21,12 +25,13 @@ namespace TalesTactics
         public string CanUse(UnitRuntime u,SkillData s,bool followup=false)
         {
             if(s==null)return "No skill";
-            if(!u.Alive||(!followup&&u.Acted))return "Action already used";
+            if(!u.CanTakeTurn||(!followup&&u.Acted))return "Action already used";
             if(!u.Unlocked(s))return "Level requirement";
             if(u.CurrentMP<MPCost(u,s))return "Not enough MP";
             if(u.CurrentHP<=HPCost(u,s))return "Not enough HP";
             if(u.SpecialGauge<s.GaugeCost)return "Not enough gauge";
             if(u.Cooldowns.ContainsKey(s.Id))return "Cooldown";
+            if(u.CrossoverBoss&&u.IntentPhase==2&&s.BossMechanic==BossMechanic.CloneNova&&!units.Any(t=>t.Team==u.Team&&t.Summoned&&t.Alive))return "분신 연결 해제 · 준비 공격 취소";
             if((s.Gate==SkillGate.Claw||s.Gate==SkillGate.Nightmare||s.Gate==SkillGate.ClawFinisher)&&!u.Has(StatusKind.ConsumeClaw))return "Consume Claw required";
             if((s.Gate==SkillGate.Nightmare||s.Gate==SkillGate.ClawFinisher)&&u.ClawAttacks<1)return "Use another claw attack first";
             if(s.Gate==SkillGate.GuardIgnition&&!u.GuardIgnition)return "Guard Ignition required";
@@ -34,20 +39,23 @@ namespace TalesTactics
             if(s.Gate==SkillGate.FarahTiming&&!followup)return "Chain from Lion Howl timing";
             return null;
         }
-        public int HPCost(UnitRuntime u,SkillData s)=>s.HPCost+Mathf.CeilToInt(u.Stats.HP*s.HPPercentCost);
-        public int MPCost(UnitRuntime u,SkillData s)=>Mathf.Max(0,Mathf.CeilToInt(s.MPCost*(u.Trait==TacticalTrait.Focus?.8f:1f)*(u.Equipment.Any(e=>e!=null&&e.Effect==EquipmentEffect.EfficientCasting)?.85f:1f)));
+        public int HPCost(UnitRuntime u,SkillData s)=>Mathf.CeilToInt((s.HPCost+Mathf.CeilToInt(u.Stats.HP*s.HPPercentCost))*(SignatureWeaponRules.Has(u,EquipmentEffect.FlamingOath)?.7f:1f));
+        public int MPCost(UnitRuntime u,SkillData s)=>Mathf.Max(0,Mathf.CeilToInt(s.MPCost*(u.Trait==TacticalTrait.Focus?.8f:1f)*(u.Equipment.Any(e=>e!=null&&e.Effect==EquipmentEffect.EfficientCasting)?.85f:1f)*(SignatureWeaponRules.Has(u,EquipmentEffect.MercifulRod)&&s.Effects.Any(e=>e.Kind==EffectKind.Heal||e.Kind==EffectKind.Revive)?.75f:1f)));
         public int Healing(UnitRuntime u,SkillEffect e)=>Mathf.Max(0,Mathf.RoundToInt((u.Stats.MAG*e.Power+e.Flat)*(u.Trait==TacticalTrait.Healer?1.25f:1f)*(u.Equipment.Any(item=>item!=null&&item.Effect==EquipmentEffect.Restorative)?1.2f:1f)));
-        public UnitRuntime Protector(UnitRuntime target)=>units.FirstOrDefault(u=>u!=target&&u.Team==target.Team&&u.Alive&&!u.ProtectionUsed&&u.Has(StatusKind.Guard)&&!u.Has(StatusKind.Stun)&&!u.Has(StatusKind.Sleep)&&u.Trait==TacticalTrait.Protector&&GridMap.Distance(u.Position,target.Position)==1);
+        public UnitRuntime Protector(UnitRuntime target)=>units.FirstOrDefault(u=>u!=target&&u.Team==target.Team&&u.Alive&&!u.CrossoverReserve&&!u.ProtectionUsed&&u.Has(StatusKind.Guard)&&!u.Has(StatusKind.Stun)&&!u.Has(StatusKind.Sleep)&&u.Trait==TacticalTrait.Protector&&GridMap.Distance(u.Position,target.Position)==1);
         public bool ValidTarget(UnitRuntime u,SkillData s,UnitRuntime t)
         {
-            if(t==null)return false;
+            if(t==null||t.CrossoverReserve)return false;
             return s.Target==TargetType.Self?t==u&&t.Alive:s.Target==TargetType.FallenAlly?t.Team==u.Team&&!t.Alive:s.Target==TargetType.Ally?t.Team==u.Team&&t.Alive:t.Team!=u.Team&&t.Alive;
         }
         public bool InRange(UnitRuntime u,SkillData s,Vector2Int p)
-        {return SkillGeometry.CanAim(grid,u.Position,s,p);}
-        public IEnumerable<Vector2Int> AreaTiles(UnitRuntime u,SkillData s,Vector2Int p)=>SkillGeometry.Area(grid,u.Position,s,p);
+        {return SkillGeometry.CanAim(grid,u.Position,s,p,s.BossMechanic==BossMechanic.Replay&&CrossoverState!=null?(SkillAreaShape?)(u.IntentPhase>0?CrossoverState.ReplayShape:CrossoverState.LastShape):null);}
+        public IEnumerable<Vector2Int> AreaTiles(UnitRuntime u,SkillData s,Vector2Int p)=>SkillGeometry.Area(grid,u.Position,s,p,s.BossMechanic==BossMechanic.Replay&&CrossoverState!=null?(SkillAreaShape?)(u.IntentPhase>0?CrossoverState.ReplayShape:CrossoverState.LastShape):null,s.BossMechanic==BossMechanic.Replay&&CrossoverState!=null?(int?)(u.IntentPhase>0?CrossoverState.ReplayArea:CrossoverState.LastArea):null);
         public IEnumerable<UnitRuntime> Targets(UnitRuntime u,SkillData s,Vector2Int p)
-        {var area=new HashSet<Vector2Int>(AreaTiles(u,s,p));return units.Where(t=>ValidTarget(u,s,t)&&area.Contains(t.Position));}
+        {var area=new HashSet<Vector2Int>(AreaTiles(u,s,p));return units.Where(t=>ValidTarget(u,s,t)&&area.Contains(t.Position)&&
+            (s.BossMechanic!=BossMechanic.HighWater||grid[t.Position].Height==0)&&
+            (s.BossMechanic!=BossMechanic.FinalStop||CrossoverState==null||CrossoverState.Nodes!=7)&&
+            (s.BossMechanic!=BossMechanic.Sanctuary||!CrossoverBattle.Nodes.Where((n,i)=>CrossoverState!=null&&(CrossoverState.Nodes&(1<<i))!=0).Any(n=>GridMap.Distance(n,t.Position)<=1)));}
         public float DirectionMultiplier(UnitRuntime attacker,UnitRuntime defender)
         {
             var d=attacker.Position-defender.Position;
@@ -67,6 +75,7 @@ namespace TalesTactics
         {
             var a=u.Stats;var b=t.Stats;
             float defense=e.IgnoreDefense?0:(e.Magic?b.MDF:b.DEF)*rules.DefenseFactor;
+            if(e.Magic&&SignatureWeaponRules.Has(u,EquipmentEffect.FonicPiercer))defense*=.8f;
             float value=(e.Magic?a.MAG:a.STR)*e.Power+e.Flat-defense;
             value*=DirectionMultiplier(u,t);
             if(TacticalCombat&&!e.Magic){value*=AgilityMultiplier(u,t);if(HasPincer(u,t))value*=1.1f;}
@@ -90,8 +99,11 @@ namespace TalesTactics
             }
             if(Protector(t)!=null)value*=.7f;
             if(t.IntentPhase==2)value*=1.25f;
+            if(t.IntentPhase==1&&SignatureWeaponRules.Has(u,EquipmentEffect.EternalEdge))value*=1.15f;
+            if(t.Has(StatusKind.Guard)&&SignatureWeaponRules.Has(t,EquipmentEffect.UnbrokenShield))value*=.85f;
             value*=1-BossWardPercent(t)/100f;
-            return Mathf.Max(1,Mathf.RoundToInt(value));
+            if(skill?.BossMechanic==BossMechanic.MarkedStrike&&u.IntentPhase>0&&t.Position!=u.IntentAim)value*=.5f;
+            return CrossoverBossTactics.ClampDamage(t,Mathf.Max(1,Mathf.RoundToInt(value)));
         }
         public string Preview(UnitRuntime u,SkillData s,UnitRuntime t)
         {
@@ -110,14 +122,18 @@ namespace TalesTactics
         public string Describe(UnitRuntime u,SkillData s)
         {
             string target=s.Target==TargetType.Self?"자신":s.Target==TargetType.Ally?"아군":s.Target==TargetType.FallenAlly?"전투불능 아군":"적";
-            string areaText=s.Shape==SkillAreaShape.Diamond?"범위 반경 "+s.Area:"방향 선택 · 사거리 끝까지";
+            var shape=s.Shape;int area=s.Area;
+            if(s.BossMechanic==BossMechanic.Replay&&CrossoverState!=null){shape=(SkillAreaShape)(u.IntentPhase>0?CrossoverState.ReplayShape:CrossoverState.LastShape);area=u.IntentPhase>0?CrossoverState.ReplayArea:CrossoverState.LastArea;}
+            string areaText=shape==SkillAreaShape.Line||shape==SkillAreaShape.Cone?"방향 선택 · 사거리 끝까지":"범위 반경 "+area;
             string details=$"{s.DisplayName}\nMP {MPCost(u,s)} · HP {HPCost(u,s)} · 게이지 {s.GaugeCost}\n사거리 {s.MinRange}–{s.Range} · {areaText}\n대상 {target} · 해금 Lv{s.UnlockLevel}";
-            details+="\n형태 "+(s.Shape==SkillAreaShape.Line?"직선 관통":s.Shape==SkillAreaShape.Cone?"부채꼴":"마름모")+" · 높이 차 "+(s.MaxHeightDifference<0?"무제한":s.MaxHeightDifference.ToString())+(s.RequiresLineOfSight?" · 시야 필요":" · 시야 무시");
+            details+="\n형태 "+CrossoverSkillText.Shape(shape)+" · 높이 차 "+(s.MaxHeightDifference<0?"무제한":s.MaxHeightDifference.ToString())+(s.RequiresLineOfSight?" · 시야 필요":" · 시야 무시");
             details+="\n속성 "+ElementalRules.Name(s.Element)+(s.UsesHeightDamage?" · 물리 고저차 보정":"")+(s.HeightRangeLimit>0?" · 높이 사거리 ±"+s.HeightRangeLimit:"");
             if(s.Cooldown>0)details+=$"\n재사용 대기 {s.Cooldown}턴";
             foreach(var effect in s.Effects)details+="\n"+(effect.AffectCaster?"시전자: ":"")+EffectDescription(effect);
             if(s.StartsFlamingChain)details+="\n검술 후 Flaming Edge 연계 가능";
             if(s.IsLionHowl)details+="\n조건 충족 시 타이밍 궁극기 연계";
+            if(s.Id!=null&&s.Id.StartsWith("boss.")&&u.CrossoverBoss)details+="\n예고 후 다음 자기 턴 발동 · 발동 뒤 빈틈";
+            string mechanic=CrossoverSkillText.Mechanic(s.BossMechanic);if(mechanic.Length>0)details+="\n"+mechanic;
             return details;
         }
         static string EffectDescription(SkillEffect e)
@@ -128,7 +144,7 @@ namespace TalesTactics
                 case EffectKind.Damage:text=$"{(e.Magic?"마법":"물리")} 피해 ×{e.Power:0.##}"+(e.Flat!=0?$" +{e.Flat}":"")+(e.IgnoreDefense?" · 방어 무시":"")+(e.Drain>0?$" · 흡혈 {e.Drain:P0}":"");break;
                 case EffectKind.Heal:text=$"회복 MAG ×{e.Power:0.##} +{e.Flat}";break;
                 case EffectKind.Revive:text=$"부활 HP {e.Power:P0} (타일이 비어 있어야 함)";break;
-                case EffectKind.Cleanse:text="기절/수면/속박/케이지 해제";break;
+                case EffectKind.Cleanse:text="기절/수면/속박/케이지/이동 감소 해제";break;
                 case EffectKind.ConsumeClaw:text=$"컨슘 클로 활성화";break;
                 case EffectKind.AutoRevive:text=$"자동 부활 {e.Duration}턴";break;
                 case EffectKind.Gauge:text=$"게이지 {e.Flat:+0;-0;0}";break;
@@ -160,6 +176,7 @@ namespace TalesTactics
         }
         public bool Execute(UnitRuntime u,SkillData s,Vector2Int p,out string message,bool followup=false,bool forecast=false)
         {
+            LastHealing=LastDrain=LastInterruptions=LastKisaraGuardedDamage=0;
             LastExperience.Clear();LastReactions.Clear();PrimaryHealth=null;message=CanUse(u,s,followup);if(message!=null)return false;
             var targets=Targets(u,s,p).ToArray();
             bool committed=u.TacticalEnemy&&u.IntentPhase==2&&u.IntentSkill==s.Id&&u.IntentAim==p;
@@ -171,6 +188,7 @@ namespace TalesTactics
             if(s.Cooldown>0)u.Cooldowns[s.Id]=s.Cooldown+1;
             u.Acted=true;u.CanUndoMove=false;
             bool attack=s.Effects.Any(e=>e.Kind==EffectKind.Damage);
+            bool signatureRecovery=false;
             foreach(var e in s.Effects)
             {
                 var recipients=e.AffectCaster?new[]{u}:targets;
@@ -178,27 +196,36 @@ namespace TalesTactics
                 {
                     if(forecast?e.Chance<1:NextRoll()>e.Chance)continue;
                     int previousHP=t.CurrentHP,previousStatuses=t.Statuses.Count,previousGauge=t.SpecialGauge;var previousPosition=t.Position;
+                    bool wasPreparing=t.IntentPhase==1;
                     var status=e.Kind==EffectKind.AutoRevive?StatusKind.AutoRevive:e.Kind==EffectKind.ConsumeClaw?StatusKind.ConsumeClaw:e.Status;bool hadStatus=t.Has(status);
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
                         int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
                         var protector=Protector(t);if(damage>0&&protector!=null)protector.ProtectionUsed=true;
                         if(t.Has(StatusKind.Guard)&&DirectionMultiplier(u,t)!=rules.RearMultiplier)t.GuardIgnition=true;
-                        t.Damage(damage,grid);experience?.Damage(t,actual,!t.Alive);u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*e.Drain));
+                        t.Damage(damage,grid);experience?.Damage(t,actual,!t.Alive);int priorCasterHP=u.CurrentHP;u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*(e.Drain+(SignatureWeaponRules.Has(u,EquipmentEffect.UnboundBlade)?.1f:0))));LastDrain+=u.CurrentHP-priorCasterHP;
+                        if(t.Alive&&t.Data.Id=="kisara"&&t.Has(StatusKind.Guard))LastKisaraGuardedDamage+=actual;
+                        CrossoverState?.RecordDevice(t,units);
                     }
                     else if(e.Kind==EffectKind.Heal&&t.Alive)t.CurrentHP=Mathf.Min(t.Stats.HP,t.CurrentHP+Healing(u,e));
                     else if(e.Kind==EffectKind.Revive&&!t.Alive&&grid[t.Position].Occupant==null){t.CurrentHP=Mathf.Max(1,Mathf.RoundToInt(t.Stats.HP*e.Power));grid.Place(t,t.Position);}
-                    else if(e.Kind==EffectKind.Cleanse)t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Stun||x.Kind==StatusKind.Sleep||x.Kind==StatusKind.Root||x.Kind==StatusKind.Cage);
+                    else if(e.Kind==EffectKind.Cleanse)t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Stun||x.Kind==StatusKind.Sleep||x.Kind==StatusKind.Root||x.Kind==StatusKind.Cage||x.Kind==StatusKind.Slow);
                     else if(e.Kind==EffectKind.ConsumeClaw){t.AddStatus(StatusKind.ConsumeClaw,rules.ClawDuration);t.Statuses.Find(x=>x.Kind==StatusKind.ConsumeClaw).Fresh=true;t.ClawAttacks=0;}
                     else if(e.Kind==EffectKind.AutoRevive&&t.Alive)t.AddStatus(StatusKind.AutoRevive,e.Duration);
-                    else if((e.Kind==EffectKind.Status||e.Kind==EffectKind.Buff||e.Kind==EffectKind.Debuff)&&t.Alive)t.AddStatus(e.Status,e.Duration);
+                    else if((e.Kind==EffectKind.Status||e.Kind==EffectKind.Buff||e.Kind==EffectKind.Debuff)&&t.Alive)
+                    {if(!BossTimeStop.Apply(t,s,e))t.AddStatus(e.Status,e.Duration+(e.Status==StatusKind.Song&&SignatureWeaponRules.Has(u,EquipmentEffect.HarmonicHorn)?1:0));
+                        if(t.CrossoverBoss&&e.Status==StatusKind.Cage&&t.IntentPhase==1){t.IntentPhase=0;t.IntentSkill=null;}}
                     else if(e.Kind==EffectKind.Gauge)t.SpecialGauge=Mathf.Clamp(t.SpecialGauge+e.Flat,0,100);
                     else if((e.Kind==EffectKind.Pull||e.Kind==EffectKind.Push)&&t.Alive)Displace(t,e.Kind==EffectKind.Pull?p:u.Position,e.Distance,e.Kind==EffectKind.Push);
                     else if(e.Kind==EffectKind.Move&&t.Alive)Displace(t,p,e.Distance,false);
+                    if((e.Kind==EffectKind.Heal||e.Kind==EffectKind.Revive)&&t.CurrentHP>previousHP)
+                    {LastHealing+=t.CurrentHP-previousHP;signatureRecovery=true;if(SignatureWeaponRules.Has(u,EquipmentEffect.RoyalMercy))t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Root);}
+                    if(wasPreparing&&(t.IntentPhase!=1||t.Has(StatusKind.Stun)||t.Has(StatusKind.Sleep)))LastInterruptions++;
                     experience?.Effect(t,e,previousHP,previousStatuses,hadStatus,previousGauge,previousPosition);
                 }
             }
-            if(attack){u.SpecialGauge=Mathf.Clamp(u.SpecialGauge+rules.GaugePerAttack,0,100);if(u.Has(StatusKind.ConsumeClaw))u.ClawAttacks++;}
+            if(attack){if(CrossoverState==null||!CrossoverState.Hazards.Any(h=>h.Kind==BossMechanic.GaugeSeal&&h.Position==u.Position))u.SpecialGauge=Mathf.Clamp(u.SpecialGauge+rules.GaugePerAttack+(SignatureWeaponRules.Has(u,EquipmentEffect.ResoluteFists)?5:0),0,100);if(u.Has(StatusKind.ConsumeClaw))u.ClawAttacks++;}
+            if(signatureRecovery&&SignatureWeaponRules.Has(u,EquipmentEffect.ThornRelease))u.SpecialGauge=Mathf.Min(100,u.SpecialGauge+10);
             if(u.Data.Id=="kisara"&&attack)u.GuardIgnition=false;
             u.FlamingChain=s.StartsFlamingChain;
             PrimaryHealth=ReactionsEnabled||ActionExperienceEnabled?units.ToDictionary(x=>x,x=>x.CurrentHP):null;
@@ -211,6 +238,7 @@ namespace TalesTactics
                 foreach(var pair in gains){var gain=ActionExperience.Grant(pair.Key,pair.Value);if(gain!=null)LastExperience.Add(gain);}
             }
             message=u.Data.DisplayName+" : "+s.DisplayName+(LastReactions.Count>0?"\n"+string.Join(" · ",LastReactions.Select(x=>x.Text)):"");
+            CrossoverBossTactics.Resolve(u,s,p,grid,units,CrossoverState);SkillResolved?.Invoke(u,s,p);StateChanged?.Invoke();
             return true;
         }
         void Displace(UnitRuntime u,Vector2Int center,int distance,bool away)

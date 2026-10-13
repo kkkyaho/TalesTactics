@@ -11,7 +11,7 @@ namespace TalesTactics
         public GrowthPath Growth;
         public string[] Equipment=new string[3];public List<string> UnlockedSkills=new List<string>();
         public void AddExperience(int amount)=>ExperienceRules.Advance(ref Level,ref EXP,amount);
-        public bool TryPromote(CharacterData data,List<string> flags){if(Promoted||Level<data.PromotionLevel||!flags.Contains(data.PromotionStoryFlag))return false;Promoted=true;return true;}
+        public bool TryPromote(CharacterData data,List<string> flags){if(Promoted||Level<data.PromotionLevel||!CampaignPromotion.StorySatisfied(data,flags))return false;Promoted=true;return true;}
     }
     [Serializable] public class CampaignSave
     {

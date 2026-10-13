@@ -108,6 +108,7 @@ namespace TalesTactics
             healthCanvas=overlay.GetComponent<Canvas>();healthCanvas.renderMode=RenderMode.ScreenSpaceOverlay;healthCanvas.sortingOrder=-1;
             overlay.AddComponent<UnitHealthLayout>();
             foreach(var u in session.Units)CreateUnitVisual(u);
+            if(session.Crossover!=null)CrossoverCivilianView.Create(battle,root);
             var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.035f;line.numCornerVertices=3;line.numCapVertices=3;line.startColor=line.endColor=PathColor;SetColor(line,PathColor);
             battlefieldBounds=new Bounds();bool first=true;
             foreach(var tile in session.Grid.Tiles.Values)
@@ -142,6 +143,7 @@ namespace TalesTactics
             {
                 if(!units.ContainsKey(u))CreateUnitVisual(u);
                 var tr=units[u];tr.position=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
+                tr.gameObject.SetActive(!u.CrossoverReserve);
                 var sr=sprites[u];var art=u.Data.Sprites.Get(u.Facing);sr.sprite=art!=null?art:placeholder;sr.color=u.Alive?(art!=null?Color.white:u.Data.PlaceholderColor):new Color(0.3f,0.3f,0.3f,0.35f);
                 sr.transform.rotation=BattleCamera.transform.rotation;sr.transform.localScale=u.Alive?Vector3.one:new Vector3(1,0.3f,1);
                 tr.Find("Contact shadow").gameObject.SetActive(u.Alive);

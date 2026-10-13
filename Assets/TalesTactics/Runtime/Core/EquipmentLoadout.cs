@@ -22,7 +22,9 @@ namespace TalesTactics
             }
         }
         public EquipmentData Get(EquipmentSlot slot)=>slots[(int)slot];
-        public EquipmentData[] Options(EquipmentSlot slot)=>catalog.Where(e=>e!=null&&!string.IsNullOrEmpty(e.Id)&&e.Slot==slot&&(slot!=EquipmentSlot.Weapon||e.Weapon==Character.Weapon)&&
+        public static bool CanEquip(CharacterData character,EquipmentData item,EquipmentSlot slot)=>character!=null&&item!=null&&item.Slot==slot&&
+            (slot!=EquipmentSlot.Weapon||item.Weapon==character.Weapon)&&(string.IsNullOrEmpty(item.ExclusiveCharacterId)||item.ExclusiveCharacterId==character.Id);
+        public EquipmentData[] Options(EquipmentSlot slot)=>catalog.Where(e=>e!=null&&!string.IsNullOrEmpty(e.Id)&&CanEquip(Character,e,slot)&&
             (campaign==null||CampaignInventory.Available(campaign,e.Id,Character.Id)>0)).ToArray();
         public bool Equip(EquipmentSlot slot,EquipmentData item)
         {

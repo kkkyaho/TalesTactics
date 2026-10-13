@@ -10,7 +10,9 @@ namespace TalesTactics
         BattleDirector battle;
         int chapterPage;
         public int ChapterPage=>chapterPage;
-        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,0,(CampaignStages.Count-1)/3);ShowDeploymentMissions();}
+        int MissionListFirst=>battle.Catalog.CrossoverReady&&battle.SelectedStage>=CampaignStages.LegacyCount?CrossoverCampaign.FirstStage:0;
+        int MissionListEnd=>MissionListFirst==0?CampaignStages.LegacyCount:CrossoverCampaign.LastStage+1;
+        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,MissionListFirst/3,(MissionListEnd-1)/3);ShowDeploymentMissions();}
         RectTransform canvas,left,commands,header,footer;
         TMP_Text message,timing;
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();

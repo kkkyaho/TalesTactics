@@ -56,8 +56,10 @@ namespace TalesTactics.PlayModeTests
         }
         [UnityTest] public IEnumerator PixelRosterAndSceneryPreserveSixChapterInteraction()
         {
-            Assert.That(director.Catalog.Enemies.Length,Is.EqualTo(10));
-            foreach(var character in director.Catalog.Characters.Concat(director.Catalog.Enemies))
+            var legacyIds=Enumerable.Range(0,CampaignStages.LegacyCount).SelectMany(s=>Enumerable.Range(0,4).Select(slot=>CampaignEnemies.Id(s,slot))).Distinct().ToArray();
+            var legacyEnemies=director.Catalog.Enemies.Where(c=>legacyIds.Contains(c.Id)).ToArray();
+            Assert.That(legacyEnemies.Length,Is.EqualTo(10));
+            foreach(var character in director.Catalog.Characters.Concat(legacyEnemies))
             {
                 foreach(Facing facing in System.Enum.GetValues(typeof(Facing)))
                 {

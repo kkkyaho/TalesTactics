@@ -68,6 +68,7 @@ namespace TalesTactics
         }
         void ToggleFormation(int index)
         {
+            if(!battle.CanDeploy(index))return;
             if(battle.Session!=null||InputModalOpen)return;
             if(battle.Deployment.Contains(index))battle.Deployment.Remove(index);
             else if(battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment)battle.Deployment.Add(index);
@@ -120,7 +121,7 @@ namespace TalesTactics
             var missionNotice=FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16);missionNotice.name="PreparationMissionNotice";missionNotice.color=new Color(.7f,.77f,.83f);
             FormationButton(footer,"편성 프리셋","프리셋",new Vector2(.32f,.16f),new Vector2(.46f,.84f),()=>ShowPresets(),true,20);
             FormationButton(footer,"전체 해제","전체 해제",new Vector2(.46f,.16f),new Vector2(.60f,.84f),()=>{battle.Deployment.Clear();RenderDeployment();},battle.Deployment.Count>0,21);
-            FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,21);
+            FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));battle.NormalizeDeployment();RenderDeployment();},true,21);
             var start=FormationButton(footer,"전투 시작","출전 확정",new Vector2(.76f,.12f),new Vector2(1,.88f),battle.RequestBattle,battle.Deployment.Count>0,28);
             StyleButton(start,HudRole.Primary);
             foreach(var b in toolbar.GetComponentsInChildren<UnityEngine.UI.Button>())StyleButton(b.transform,HudRole.Quiet);
@@ -147,7 +148,7 @@ namespace TalesTactics
             if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
             if(selected)FormationText(cell,"▼",new Vector2(.32f,.89f),new Vector2(.68f,1),23,TextAlignmentOptions.Center).color=formationGold;
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
-            var toggle=FormationButton(caption,"편성 변경: "+c.Id,deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment,17);
+            var toggle=FormationButton(caption,"편성 변경: "+c.Id,!battle.CanDeploy(index)?"합류 예정":deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),battle.CanDeploy(index)&&(deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment),17);
             toggle.GetComponent<UnityEngine.UI.Image>().color=deployed?new Color(.025f,.24f,.29f):new Color(.06f,.09f,.14f,1);
             toggle.GetComponentInChildren<TMP_Text>().color=deployed?formationTeal:new Color(.66f,.72f,.8f);
             FormationText(caption,"Lv "+FormationLevel(index),new Vector2(0,.32f),new Vector2(1,.62f),18,TextAlignmentOptions.Center).color=formationGold;
@@ -213,20 +214,25 @@ namespace TalesTactics
         void ShowDeploymentMissions()
         {
             if(battle.Session!=null)return;BeginPreparation("임무 선택");
-            Label(left,"장 목록 · "+(chapterPage+1)+" / "+((CampaignStages.Count+2)/3),12,36,22);
-            for(int i=chapterPage*3;i<Math.Min(CampaignStages.Count,(chapterPage+1)*3);i++)
+            Label(left,(MissionListFirst==0?"이전 여정":"경계를 잇는 의지")+" · "+(chapterPage-MissionListFirst/3+1)+" / "+((MissionListEnd-MissionListFirst+2)/3),12,42,20);
+            for(int i=chapterPage*3;i<Math.Min(MissionListEnd,(chapterPage+1)*3);i++)
             {
                 int stage=i;bool unlocked=CampaignStages.Unlocked(battle.Campaign,i);
-                Button(left,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),66+(i%3)*82,()=>{battle.SelectedStage=stage;ShowDeploymentMissions();},unlocked,66);
+                Button(left,(battle.SelectedStage==i?"● ":"")+CampaignStages.Title(i)+(battle.Campaign.StoryProgress.Contains(CampaignStages.Id(i))?" (완료)":unlocked?"":" (잠김)"),66+(i%3)*82,()=>{battle.SelectedStage=stage;battle.NormalizeDeployment();ShowDeploymentMissions();},unlocked,66);
             }
-            Button(left,"이전 장 목록",332,()=>ShowChapterPage(chapterPage-1),chapterPage>0,40);HalfButton(left,0);
-            Button(left,"다음 장 목록",332,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<CampaignStages.Count,40);HalfButton(left,1);
+            Button(left,"이전 장 목록",332,()=>ShowChapterPage(chapterPage-1),chapterPage>MissionListFirst/3,40);HalfButton(left,0);
+            Button(left,"다음 장 목록",332,()=>ShowChapterPage(chapterPage+1),(chapterPage+1)*3<MissionListEnd,40);HalfButton(left,1);
             Label(center,CampaignStages.Title(battle.SelectedStage),20,50,26);
             Label(center,PreparationMissionText,95,270,20).name="PreparationMissionDescription";
             Button(commands,"임무 · 적 정보",22,ShowMission);
             Button(commands,"전투 전 이야기",80,()=>battle.ReplayStory(false));
             Button(commands,"전투 후 이야기",138,()=>battle.ReplayStory(true),battle.Campaign.StoryProgress.Contains(CampaignStages.Id(battle.SelectedStage)));
             Button(commands,"출전 준비로",224,ShowDeployment,true,54);
+            if(battle.Catalog.CrossoverReady)
+            {
+                Button(commands,"동료의 이야기 · 30",294,ShowPersonalScenarios,true,44);
+                Button(commands,MissionListFirst==0?"20화 메인 시나리오":"이전 6장 다시 보기",350,()=>{battle.SelectedStage=MissionListFirst==0?CrossoverCampaign.FirstStage:0;battle.NormalizeDeployment();ShowChapterPage(battle.SelectedStage/3);},true,44);
+            }
             Label(footer,"임무를 선택한 뒤 출전 준비로 돌아가 편성을 확정하세요.",20,60,20);
         }
     }

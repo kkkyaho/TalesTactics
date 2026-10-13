@@ -12,8 +12,8 @@ namespace TalesTactics
             if(!unit.Alive||unit.Has(StatusKind.Stun)||unit.Has(StatusKind.Sleep))return result;
             var origin=unit.Position;var facing=unit.Facing;
             var destinations=unit.Moved?new[]{origin}:battle.Grid.Reachable(unit,out _).Keys.OrderBy(p=>p.x).ThenBy(p=>p.y).ToArray();
-            var opponents=battle.Units.Where(u=>u.Team!=unit.Team&&u.Alive).ToArray();
-            var skills=new[]{unit.Data.BasicAttack}.Concat(roleSkillsOnly?new SkillData[0]:unit.Data.Skills).Concat(unit.TacticalSkills).Concat(roleSkillsOnly?new SkillData[0]:new[]{unit.Data.UltimateSkill})
+            var opponents=battle.Units.Where(u=>u.Team!=unit.Team&&u.Alive&&!u.CrossoverReserve).ToArray();
+            var skills=new[]{unit.Data.BasicAttack}.Concat(roleSkillsOnly?new SkillData[0]:unit.Data.Skills.Where(s=>s!=null&&(unit.CrossoverBoss||!s.Id.StartsWith("boss.",StringComparison.Ordinal)))).Concat(unit.TacticalSkills).Concat(roleSkillsOnly?new SkillData[0]:new[]{unit.Data.UltimateSkill})
                 .Where(s=>s!=null&&battle.Resolver.CanUse(unit,s)==null).Distinct().ToArray();
             float best=float.NegativeInfinity;
             try
@@ -61,11 +61,11 @@ namespace TalesTactics
             else if(effect.Kind==EffectKind.Heal&&target.Alive&&ally)
                 value=Math.Min(target.Stats.HP-target.CurrentHP,battle.Resolver.Healing(actor,effect))*1.5f;
             else if(effect.Kind==EffectKind.Revive&&!target.Alive&&ally&&battle.Grid[target.Position].Occupant==null)value=target.Stats.HP*effect.Power+65;
-            else if(effect.Kind==EffectKind.Cleanse&&ally)value=target.Statuses.Count(s=>s.Kind==StatusKind.Stun||s.Kind==StatusKind.Sleep||s.Kind==StatusKind.Root||s.Kind==StatusKind.Cage)*25;
+            else if(effect.Kind==EffectKind.Cleanse&&ally)value=target.Statuses.Count(s=>s.Kind==StatusKind.Stun||s.Kind==StatusKind.Sleep||s.Kind==StatusKind.Root||s.Kind==StatusKind.Cage||s.Kind==StatusKind.Slow)*25;
             else if(effect.Kind==EffectKind.AutoRevive&&ally&&target.Alive&&!target.Has(StatusKind.AutoRevive))value=25;
             else if((effect.Kind==EffectKind.Status||effect.Kind==EffectKind.Debuff||effect.Kind==EffectKind.Buff)&&target.Alive&&!target.Has(effect.Status))
             {
-                bool harmful=effect.Status==StatusKind.Stun||effect.Status==StatusKind.Sleep||effect.Status==StatusKind.Root||effect.Status==StatusKind.Cage;
+                bool harmful=effect.Status==StatusKind.Stun||effect.Status==StatusKind.Sleep||effect.Status==StatusKind.Root||effect.Status==StatusKind.Cage||effect.Status==StatusKind.Slow;
                 if(harmful!=ally)value=harmful?30:18;
             }
             else if(effect.Kind==EffectKind.ConsumeClaw&&ally&&!target.Has(StatusKind.ConsumeClaw))value=22;

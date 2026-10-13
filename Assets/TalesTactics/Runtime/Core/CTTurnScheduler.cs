@@ -13,8 +13,8 @@ namespace TalesTactics
         public UnitRuntime Next(IReadOnlyList<UnitRuntime> units)=>Next(units,charge);
         static UnitRuntime Next(IReadOnlyList<UnitRuntime> units,Dictionary<UnitRuntime,long> state)
         {
-            foreach(var dead in state.Keys.Where(u=>!u.Alive||!units.Contains(u)).ToArray())state.Remove(dead);
-            var living=units.Where(u=>u.Alive).ToArray();if(living.Length==0)return null;
+            foreach(var dead in state.Keys.Where(u=>!u.CanTakeTurn||!units.Contains(u)).ToArray())state.Remove(dead);
+            var living=units.Where(u=>u.CanTakeTurn).ToArray();if(living.Length==0)return null;
             foreach(var u in living)if(!state.ContainsKey(u))state[u]=0;
             long ticks=living.Min(u=>Math.Max(0,(Threshold-state[u]+Math.Max(1,u.Stats.SPD)-1)/Math.Max(1,u.Stats.SPD)));
             foreach(var u in living)state[u]+=ticks*Math.Max(1,u.Stats.SPD);

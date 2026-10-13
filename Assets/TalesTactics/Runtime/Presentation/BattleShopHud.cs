@@ -23,6 +23,8 @@ namespace TalesTactics
             for(int i=0;i<names.Length;i++)if(values[i]!=0)lines.Add(names[i]+" "+(values[i]>0?"+":"")+values[i]);
             if(item.Effect==EquipmentEffect.EfficientCasting)lines.Add("MP 비용 -15% (올림)");
             if(item.Effect==EquipmentEffect.Restorative)lines.Add("회복량 +20%");
+            string signature=SignatureWeaponRules.Describe(item.Effect);if(signature.Length>0)lines.Add(signature);
+            if(!string.IsNullOrEmpty(item.ExclusiveCharacterId))lines.Add(PersonalScenarios.OwnerName(item.ExclusiveCharacterId)+" 전용 · 시련 보상");
             return lines.Count==0?"능력치 보너스 없음":string.Join("\n",lines);
         }
     }

@@ -28,8 +28,8 @@ namespace TalesTactics
             FormationText(promotion,"승급",new Vector2(.025f,.92f),new Vector2(.975f,1),24).color=formationGold;
             FormationIcon(promotion,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.19f,.91f),formationGold);
             FormationText(promotion,c.Job+"  →  "+c.PromotionJob,new Vector2(.20f,.81f),new Vector2(.98f,.92f),21);
-            bool story=battle.Campaign.StoryProgress.Contains(c.PromotionStoryFlag);bool level=progress.Level>=c.PromotionLevel;
-            FormationText(promotion,(level?"충족":"미충족")+" · Lv "+c.PromotionLevel+" 달성 (현재 Lv "+progress.Level+")\n"+(story?"충족":"미충족")+" · "+(c.PromotionStoryFlag=="chapter2"?"제2장 완료":c.PromotionStoryFlag),new Vector2(.025f,.72f),new Vector2(.975f,.81f),18);
+            bool story=CampaignPromotion.StorySatisfied(c,battle.Campaign.StoryProgress);bool level=progress.Level>=c.PromotionLevel;
+            FormationText(promotion,(level?"충족":"미충족")+" · Lv "+c.PromotionLevel+" 달성 (현재 Lv "+progress.Level+")\n"+(story?"충족":"미충족")+" · "+(c.PromotionStoryFlag=="chapter2"?(battle.Catalog.CrossoverReady?"메인 6화 또는 기존 2장 완료":"제2장 완료"):c.PromotionStoryFlag),new Vector2(.025f,.72f),new Vector2(.975f,.81f),18);
             IntermissionStats(promotion,before,after,new Vector2(.025f,.20f),new Vector2(.975f,.72f));
             string reason=CampaignPromotion.Unavailable(progress,c,battle.Campaign.StoryProgress);
             if(battle.TrainingMode)reason="훈련 모드에서는 승급할 수 없습니다.";else if(!battle.CanSave)reason="저장 보호 상태에서는 승급할 수 없습니다.";

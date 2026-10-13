@@ -23,7 +23,7 @@ namespace TalesTactics
         public int Chapter=>stage;
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
-            stage=Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-2.5f:-1.9f;
+            stage=chapter>=CampaignStages.LegacyCount?CrossoverCampaign.TerrainTheme(chapter):Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-2.5f:-1.9f;
             view=camera;spriteMaterial=spriteSource;
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)

@@ -47,6 +47,7 @@ namespace TalesTactics
         }
         void TacticalMarkers()
         {
+            CrossoverMarkers();
             if(toneProperties==null)toneProperties=new MaterialPropertyBlock();
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             foreach(var pair in sprites)
@@ -65,7 +66,7 @@ namespace TalesTactics
             Marker(ref hoverMarker,"Turn order focus",visible&&hovered?.Alive==true&&hovered!=battle.Session.Active&&hovered!=inspected?hovered.Position:(Vector2Int?)null,new Color(.39f,.69f,.72f,.6f),.43f);
             Marker(ref keyboardMarker,"Keyboard tile cursor",visible&&battle.KeyboardTile!=battle.Target&&battle.KeyboardTile!=battle.Session.Active?.Position?battle.KeyboardTile:null,new Color(.39f,.69f,.72f,.6f),.43f);
         }
-        void ResetTacticalMarkers(){threatArea=intentArea=inspectMarker=hoverMarker=keyboardMarker=null;if(unitToneMaterial!=null)Destroy(unitToneMaterial);unitToneMaterial=null;}
+        void ResetTacticalMarkers(){ResetCrossoverMarkers();threatArea=intentArea=inspectMarker=hoverMarker=keyboardMarker=null;if(unitToneMaterial!=null)Destroy(unitToneMaterial);unitToneMaterial=null;}
         void OnDestroy(){if(unitToneMaterial!=null)Destroy(unitToneMaterial);}
     }
 }

@@ -19,6 +19,8 @@ namespace TalesTactics
         }
         public static SkillData Intent(UnitRuntime u)=>new[]{u.Data.BasicAttack}.Concat(u.Data.Skills).Concat(u.TacticalSkills).Concat(new[]{u.Data.UltimateSkill}).FirstOrDefault(s=>s!=null&&s.Id==u.IntentSkill);
         public static string Describe(UnitRuntime u)
+            =>u.CrossoverBoss?CrossoverBossTactics.Description(u):DescribeIntent(u)+(BossTimeStop.Applies(u)?"\n"+BossTimeStop.Describe(u):"");
+        static string DescribeIntent(UnitRuntime u)
         {
             if(u.IntentPhase==1)return "예고: "+(Intent(u)?.DisplayName??"공격")+" → "+u.IntentAim+" · 다음 자기 턴 발동";
             if(u.IntentPhase==2)return "빈틈 · 받는 피해 +25% · 다음 자기 턴 휴식";
@@ -28,7 +30,9 @@ namespace TalesTactics
         }
         public static EnemyPlan Plan(BattleSession battle,UnitRuntime u)
         {
+            if(u.CrossoverBoss||u.Data.Id=="boundary-device")return CrossoverBossTactics.Plan(battle,u);
             if(!u.Alive||u.Has(StatusKind.Stun)||u.Has(StatusKind.Sleep))return new EnemyPlan{Destination=u.Position};
+            if(u.Summoned)return new UtilityPlanner().Plan(battle,u,true);
             var role=u.BossWard?EnemyRole.Boss:EnemyRoles.Role(u.Data);
             if(u.IntentPhase==1)
             {
@@ -56,10 +60,10 @@ namespace TalesTactics
             }
             return plan;
         }
-        public static void Commit(UnitRuntime u,EnemyPlan plan)
+        public static void Commit(UnitRuntime u,EnemyPlan plan,BattleSession battle=null)
         {
             if(!u.TacticalEnemy||!u.Alive||u.Has(StatusKind.Stun)||u.Has(StatusKind.Sleep))return;
-            if(plan.PrepareSkill!=null){u.IntentSkill=plan.PrepareSkill.Id;u.IntentAim=plan.PrepareAim;u.IntentTurn=u.TurnsStarted;u.IntentPhase=1;}
+            if(plan.PrepareSkill!=null){u.IntentSkill=plan.PrepareSkill.Id;u.IntentAim=plan.PrepareAim;u.IntentTurn=u.TurnsStarted;u.IntentPhase=1;if(u.CrossoverBoss)u.PatternStep++;CrossoverBossTactics.Prepare(battle,u,plan);}
             else if(u.IntentPhase==1&&u.TurnsStarted>u.IntentTurn&&plan.Skill!=null)u.IntentPhase=2;
         }
     }

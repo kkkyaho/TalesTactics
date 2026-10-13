@@ -58,7 +58,7 @@ namespace TalesTactics.PlayModeTests
         [UnityTest] public IEnumerator EveryCampaignObjectiveRewardsAndUnlocksNextChapter()
         {
             director.TrainingMode=false;director.Campaign=new CampaignSave();director.RewardRoll=()=>9999;
-            for(int stage=0;stage<CampaignStages.Count;stage++)
+            for(int stage=0;stage<CampaignStages.LegacyCount;stage++)
             {
                 director.SelectedStage=stage;director.BeginBattle();yield return null;director.StopAllCoroutines();var b=director.Session;
                 Assert.That(b.Objective,Is.EqualTo(CampaignMissions.Kind(stage)));

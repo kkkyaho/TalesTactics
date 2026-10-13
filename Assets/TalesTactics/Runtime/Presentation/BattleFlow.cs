@@ -17,7 +17,7 @@ namespace TalesTactics
         public string ResultRewards {get;private set;}="";
         public string[] ResultGrowth {get;private set;}=new string[0];
         public bool ResultTraining=>battleTraining;
-        public bool CanPrepareNext=>Session?.Result==BattleResult.Victory&&!battleTraining&&!RewardPending&&pendingReward?.Applied==true&&battleStage+1<CampaignStages.Count;
+        public bool CanPrepareNext=>Session?.Result==BattleResult.Victory&&!battleTraining&&!RewardPending&&pendingReward?.Applied==true&&CampaignStages.HasNext(battleStage);
         public string ResultStage=>battleTraining?"훈련 전투":CampaignStages.Title(battleStage);
         public void PrepareNextBattle(){if(!CanPrepareNext)return;int next=battleStage+1;Restart();SelectedStage=next;Hud.ShowChapterPage(next/3);}
         public bool CanRetryOpening=>Session?.Opening!=null&&!RewardPending&&!TutorialActive&&!StoryActive&&!TimingActive&&

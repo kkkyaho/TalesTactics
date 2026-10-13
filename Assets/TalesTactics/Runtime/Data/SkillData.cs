@@ -4,6 +4,8 @@ namespace TalesTactics
     [CreateAssetMenu(menuName="Tales Tactics/Skill")]
     public class SkillData : ScriptableObject
     {
+        public BossMechanic BossMechanic;
+        public string SourceNote;
         public string Id, DisplayName;
         public int MPCost, HPCost, MinRange=1, Range=1, Area, UnlockLevel=1, Cooldown, GaugeCost;
         [Range(0,1)] public float HPPercentCost;
