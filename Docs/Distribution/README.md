@@ -1,6 +1,6 @@
 # 10번 — 로컬 배포·업데이트 체계
 
-최신 공개 배포는 **[0.1.0-preview.5](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.5)**다. 전장 아트·영웅 모션·상태창·그래픽/UI·준비 화면 개선을 포함한 WindowsPreview5 일반 빌드다. [최신 패키지·검증 기록과 저장 호환 안내](Preview5/README.md)를 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
+최신 공개 배포는 **[0.1.0-preview.6](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.6)**다. 새 캠페인·구6장 제거·피해/EXP·방향 표시와 화염/검격 개선을 포함한 WindowsPreview6 일반 빌드다. [최신 패키지·검증 기록과 저장 호환 안내](Preview6/README.md)를 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
 
 검증된 WindowsAccessibility 일반 빌드를 `TalesTactics-0.1.0-preview.1-windows-x64.zip`으로 패키징했다. 배포 ZIP은 **Builds/Releases**에 있으며199,546,142바이트(약190.3MiB), 파일202개와 manifest를 포함한다. ZIP/실행 파일/저장 백업은 Git에 올리지 않는다. Git에는 도구·사용 안내·검증 기록만 포함한다.
 

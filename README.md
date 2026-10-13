@@ -8,14 +8,14 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**경계를 잇는 의지 확장 개발판**: 새 메인20화·개인 이야기30단계·전용 무기10종·고유 보스20종/실제60기술·4방향 모델과 모션을 추가했습니다. 기존 저장의 성장·장비를 유지합니다. 기존6장 플레이는 후속 요청으로 제거했습니다. 실제 Unity EditMode333/333·PlayMode132/132를 통과했으며 최종 Windows 직접 입력 검수는 미완료입니다. [범위·조작·검증](Docs/CrossoverStatus/README.md). 사용자 요청에 따라 현재 구현을 develop과 main에 반영하는 소스 스냅샷이며 공개 preview.5 패키지는 이번 변경을 포함하지 않습니다.
+**경계를 잇는 의지 확장 개발판**: 새 메인20화·개인 이야기30단계·전용 무기10종·고유 보스20종/실제60기술·4방향 모델과 모션을 추가했습니다. 기존 저장의 성장·장비를 유지합니다. 기존6장 플레이는 후속 요청으로 제거했습니다. 실제 Unity EditMode333/333·PlayMode132/132를 통과했으며 최종 Windows 직접 입력 검수는 미완료입니다. [범위·조작·검증](Docs/CrossoverStatus/README.md). 후속 전투 표현 개선과 함께 공개 preview.6에 포함됩니다.
 
-**develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). preview.5에 포함됩니다.
-**[최신 Windows 다운로드 — 0.1.0-preview.5](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.5)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 전장 아트·영웅 모션·상태창·그래픽/UI·준비 화면 개선을 포함합니다. 저장 형식은 preview.4와 같으며 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview5/README.md).
+**이전 그래픽 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). preview.5에 포함됩니다.
+**[최신 Windows 다운로드 — 0.1.0-preview.6](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.6)**: 새 메인20화·개인30단계, 구6장 제거, 피해/EXP·방향 표시와 화염/검격 개선을 포함합니다. 실행용 ZIP을 새 폴더에 모두 풀어 실행하세요. 중단 전투 V11이며 구6장 이어하기는 지원하지 않습니다. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview6/README.md).
 
 ## 현재 상태
 
-확장 구현과 최신 검증은 위의 [CrossoverStatus](Docs/CrossoverStatus/README.md)를 따릅니다. 아래 실행본·검수 기록은 각 개선 시점의 이력입니다.
+최신 공개 실행본과 배포 검증은 [Preview6](Docs/Distribution/Preview6/README.md), 스킬 표현과 실제 영상은 [VfxQuality](Docs/VfxQuality/README.md)를 따릅니다. 아래 실행본·검수 기록은 각 개선 시점의 이력입니다.
 
 이전 개발 실행본: **`Builds/WindowsVisualUx/TalesTactics.exe`** (폴더 전체 필요). 실제 Unity EditMode202/202·최종 PlayMode126/126, 상태창360/준비 화면60/전장 회전72/기술 메뉴126페이지 검수를 통과했습니다. Windows 일반·개발 빌드 오류0, 독립 실행의1장26턴·22공격·승리/저장과 사용자 저장 불변을 확인했습니다. [그래픽·UI/UX 개선과 검증](Docs/VisualUx/README.md). 공개 preview.5에 포함됩니다.
 
