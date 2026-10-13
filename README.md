@@ -2,6 +2,8 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
+**보스 확장 기획안(게임 미적용)**: 고유20종(주요6·중간12·시련2)의 모델 시안6장, 스킬60항목, 공략 특징과20화 배치를 [보스 콘셉트 카탈로그](Docs/BossConcepts/proposal.html)에 정리했습니다. 기존 출시판은6화이며 신규 콘텐츠 구현 완료를 뜻하지 않습니다.
+
 **develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). preview.5에 포함됩니다.
 **[최신 Windows 다운로드 — 0.1.0-preview.5](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.5)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 전장 아트·영웅 모션·상태창·그래픽/UI·준비 화면 개선을 포함합니다. 저장 형식은 preview.4와 같으며 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview5/README.md).
 

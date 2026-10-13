@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "scope": "offline design catalog only; not Unity tests",
+  "bossCount": 20,
+  "rankCounts": {
+    "주요 보스": 6,
+    "중간보스": 12,
+    "시련 보스": 2
+  },
+  "skillCount": 60,
+  "mainChapters": 20,
+  "checks": [
+    "unique identities",
+    "rank totals",
+    "three named skills per boss",
+    "all non-trial bosses scheduled",
+    "bidirectional chapter references",
+    "PNG signatures, dimensions and SHA256",
+    "HTML generated from roster"
+  ],
+  "images": [
+    {
+      "path": "concept-phantasia.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "fdb046ed1a269231804783dbad63de14ab7dc7864b8f56266bd734547b250c6f"
+    },
+    {
+      "path": "concept-eternia.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "b8fa2b949f1db1ef9af236cb74c65defdd4d2069247a2701e099c9144508b4b2"
+    },
+    {
+      "path": "concept-abyss.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2cf6c408400abeb8ab1b32c45de3afe640f026cd1d9b0a532fb78ded613a9ece"
+    },
+    {
+      "path": "concept-berseria.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "90fab3015f5a2262e914e9811290294cc81021eac09e58e34ee0650cd5f24f55"
+    },
+    {
+      "path": "concept-arise.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ab755427000c5cd0180bf23731e280a65f8c9011c30a06bbc0aeb70f6091779e"
+    },
+    {
+      "path": "concept-originals.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6a826834bc95d9d789f46dfd23300bd12402ae3ea0d7da87bd5dd2ea9936f0fd"
+    }
+  ],
+  "limitations": [
+    "기존 다오스와 Rock Golem 수호자 기반부터 확장하고, 비에조·오스카·히아데스를 초반 검증 대상으로 제작.",
+    "본 문서는 콘텐츠 확정 전 제안이다. 수치 밸런스·전투 AI·신규 상태/장치·동작/히트박스는 미구현·미검증.",
+    "추가 캐릭터가 늘어도 메인 시나리오는 20화 유지. 11화 분리전, 9화 탈출전, 14화 재전으로 변화 부여.",
+    "원작의 시대·사망 이후 연속성을 피하기 위해 각 세계의 결전 이전 서로 다른 시점에서 경계로 불려온다는 기존 전제를 유지."
+  ],
+  "visualReview": "Six concept sheets visually inspected; fan interpretation, not production sprites. Final 3-head proportions, accessory consistency and four-direction turnarounds remain production work."
+}

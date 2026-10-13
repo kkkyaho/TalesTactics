@@ -1,0 +1,214 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TalesTactics · 보스 20종 확장안</title><style>
+:root{color-scheme:dark;--bg:#0b1420;--panel:#142330;--line:#32424c;--ink:#edf1f3;--muted:#b4c2cd;--gold:#e6bd7a;--teal:#8edbd0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 "Segoe UI","Malgun Gothic",sans-serif}
+main{max-width:1440px;margin:auto;padding:44px 32px 80px}a{color:var(--teal);text-underline-offset:4px}
+header{padding:20px 0 34px;border-bottom:1px solid var(--line)}h1{font-size:42px;line-height:1.25;margin:16px 0}h2{font-size:27px;margin:50px 0 20px}h3{font-size:25px;margin:9px 0 0}
+p{margin:10px 0}.kicker,.eyebrow{font-size:13px;color:var(--gold);letter-spacing:1px}.eyebrow span{color:var(--muted)}
+.intro{max-width:880px;color:var(--muted)}.notice{border-left:3px solid var(--gold);padding:12px 18px;background:#192733;margin-top:24px}
+.stats{display:flex;gap:36px;flex-wrap:wrap;margin:25px 0}.stats strong{font-size:32px;color:var(--gold);margin-right:8px}
+nav{display:flex;gap:20px;flex-wrap:wrap}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+figure img{display:block;width:100%;height:auto}figcaption{padding:14px 18px}figcaption span{display:block;font-size:13px;color:var(--muted)}
+.legend{color:var(--muted);max-width:980px}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+input,select{background:#162836;color:var(--ink);border:1px solid #566a78;border-radius:6px;padding:12px 14px;font:inherit;max-width:100%}
+input{min-width:240px;flex:1}label{display:flex;align-items:center;gap:10px}.controls label:first-child{flex:1}
+#count{color:var(--gold);margin:10px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.boss{padding:27px;background:var(--panel);border:1px solid var(--line);border-radius:10px;min-width:0}
+.boss:target{outline:2px solid var(--gold);outline-offset:4px}.english{color:var(--muted);font-size:13px}
+.when{font-size:13px;color:var(--teal)}.model{font-size:14px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.skills{padding:0;list-style:none}.skills li{margin:17px 0}.skills li div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.skills p{font-size:14px;color:var(--muted);margin:3px 0}
+.tag{font-size:11px;padding:0 7px;border-radius:3px;background:#223d48;color:var(--teal)}.tag.new{background:#433921;color:var(--gold)}
+.counter{font-size:14px;background:#20333d;padding:12px;border-radius:5px}details{font-size:13px;color:var(--muted);margin-top:18px}summary{cursor:pointer;color:var(--teal)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:8px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--gold);background:var(--panel)}td:first-child{color:var(--gold)}td:nth-child(2){min-width:185px}td:nth-child(3){min-width:150px}
+.rules{max-width:1000px}.rules li{margin:14px 0;color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:24px;margin-top:50px;font-size:13px;color:var(--muted)}
+[hidden]{display:none!important}:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+@media(max-width:760px){main{padding:24px 16px 50px}h1{font-size:31px}.gallery,.cards{grid-template-columns:1fr}.boss{padding:21px}.controls{flex-direction:column}.controls label{justify-content:space-between}input{min-width:0;width:100%}.stats{gap:20px}.stats strong{font-size:27px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white;color:black}.controls,nav{display:none}.boss,figure{break-inside:avoid}a,.counter,.model,.legend,.intro,.rules li{color:black}main{padding:0}}
+</style></head><body><main>
+<header><div class="kicker">TALES TACTICS / CHARACTER & ENCOUNTER DESIGN / 2026.10.13</div>
+<h1>경계를 잇는 의지<br>보스 20종 확장안</h1>
+<p class="intro">다섯 작품의 적과 라이벌이 각자의 목적을 갖고 충돌합니다. 거대한 적을 피하는 전투부터 검술 대결, 분신 격파, 시전 방해, 동료 구출, 정령의 계약까지 — 외형과 공략 경험을 함께 설계했습니다.</p>
+<div class="stats"><div><strong>6</strong>주요 보스</div><div><strong>12</strong>중간보스</div><div><strong>2</strong>시련 보스</div><div><strong>20</strong>메인 시나리오</div></div>
+<nav aria-label="목차"><a href="#models">모델 시안 6장</a><a href="#bosses">캐릭터·스킬</a><a href="#flow">20화 배치</a><a href="#rules">공통 전투 규칙</a></nav>
+<p class="notice"><b>기획 제안 · 게임 미적용</b><br>고유 20종: 주요 6 / 중간 12 / 시련 2. 5작품의 인물 15명 + 창작 3종 + 정령 시련 2명. 재전·변신·분신은 중복 집계하지 않는다. 현재 출시판은 6화 캠페인이며, 이 문서의 20화·신규 보스·기술 효과는 구현 완료를 뜻하지 않습니다.</p></header>
+<section id="models"><h2>모델 시안</h2><p class="legend">AI 생성 2.5D 픽셀 모델 콘셉트 보드 6장. 정면·후면·공격 방향 탐색용이며 완성 3D 모델, 투명 스프라이트 또는 게임 적용 화면이 아니다. 최종 제작에서는 기존 아군과 같은 약 3등신·발 위치·광원·4방향을 맞춘다. 시안의 무기 끝·손잡이·소품과 자세 사이 차이는 생산용 모델 단계에서 교정한다. 이미지를 선택하면 원본 크기로 볼 수 있습니다.</p>
+<div class="gallery"><figure id="art-phantasia"><a href="concept-phantasia.png"><img src="concept-phantasia.png" width="1536" height="1024" alt="판타지아 모델 시안: 다오스 · 데미텔 · 자미르 · 오리진"></a><figcaption><strong>판타지아</strong><span>다오스 · 데미텔 · 자미르 · 오리진</span></figcaption></figure><figure id="art-eternia"><a href="concept-eternia.png"><img src="concept-eternia.png" width="1536" height="1024" alt="이터니아 모델 시안: 시젤 · 히아데스 · 라시우스(라스) · 맥스웰"></a><figcaption><strong>이터니아</strong><span>시젤 · 히아데스 · 라시우스(라스) · 맥스웰</span></figcaption></figure><figure id="art-abyss"><a href="concept-abyss.png"><img src="concept-abyss.png" width="1536" height="1024" alt="어비스 모델 시안: 반 그란츠 · 애쉬 · 리그렛"></a><figcaption><strong>어비스</strong><span>반 그란츠 · 애쉬 · 리그렛</span></figcaption></figure><figure id="art-berseria"><a href="concept-berseria.png"><img src="concept-berseria.png" width="1536" height="1024" alt="베르세리아 모델 시안: 아르토리우스 · 시구레 란게츠 · 오스카 드라고니아"></a><figcaption><strong>베르세리아</strong><span>아르토리우스 · 시구레 란게츠 · 오스카 드라고니아</span></figcaption></figure><figure id="art-arise"><a href="concept-arise.png"><img src="concept-arise.png" width="1536" height="1024" alt="어라이즈 모델 시안: 볼란 이그니세리 · 비에조 · 가나벨트"></a><figcaption><strong>어라이즈</strong><span>볼란 이그니세리 · 비에조 · 가나벨트</span></figcaption></figure><figure id="art-originals"><a href="concept-originals.png"><img src="concept-originals.png" width="1536" height="1024" alt="창작 보스 모델 시안: 기록자 오르도 · 경계의 집행관 · 심층 수호자"></a><figcaption><strong>창작 보스</strong><span>기록자 오르도 · 경계의 집행관 · 심층 수호자</span></figcaption></figure></div></section>
+<section id="bosses"><h2>캐릭터 · 사용 스킬 · 공략 특징</h2><p class="legend">원작 외형·기술명은 Aselia Wiki의 해당 작품/형태 항목을 대조한 2차 자료 기반. 모든 사거리·범위·턴·상태·공략 조건은 본작용 제안이며 원작 수치가 아니다. 한국어 번역은 작업용으로 영어를 병기한다.</p>
+<div class="controls"><label for="search">검색<input id="search" type="search" placeholder="이름 · 작품 · 연관 아군"></label>
+<label for="rank">등급<select id="rank"><option value="">전체</option><option>주요 보스</option><option>중간보스</option><option>시련 보스</option></select></label>
+<label for="group">작품<select id="group"><option value="">전체</option><option value="phantasia">판타지아</option><option value="eternia">이터니아</option><option value="abyss">어비스</option><option value="berseria">베르세리아</option><option value="arise">어라이즈</option><option value="originals">창작 보스</option></select></label></div>
+<p id="count" role="status" aria-live="polite"></p><p id="empty" hidden>검색 조건에 맞는 캐릭터가 없습니다.</p><div class="cards"><article class="boss" id="dhaos" data-rank="주요 보스" data-group="phantasia" data-search="다오스 dhaos 고향을 구할 힘을 확보하려는 독립 세력. 14화에서 조건부 공조. 크레스·민트 판타지아">
+<div class="eyebrow">판타지아 <span> / 주요 보스</span></div>
+<h3>다오스</h3><div class="english">Dhaos</div>
+<p class="when">10화 · 14화 · 크레스·민트</p><p>고향을 구할 힘을 확보하려는 독립 세력. 14화에서 조건부 공조.</p>
+<p class="model"><b>모델 방향</b> 긴 금발·검은 전신복·청록 안감과 주황 망토. 무기 대신 팔찌와 손바닥 광선. <a href="#art-phantasia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Dhaos Laser</strong><span class="tag original">원작명</span></div><p>직선 6칸 관통. 다음 적 행동의 공격선을 표시한다.</p></li><li><div><strong>Dhaos Blast</strong><span class="tag original">원작명</span></div><p>주변 2칸 충격파와 1칸 밀치기.</p></li><li><div><strong>Tetra Assault</strong><span class="tag original">원작명</span></div><p>인접 단일 대상 4연타. 방어 중인 대상에게는 연타 효율 감소.</p></li></ul>
+<p class="counter"><b>공략</b> 일렬 배치를 피하고, 광선 준비 중 측후면으로 접근한다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>HP 50%에서 광선과 근접 기술을 교대. 14화 재전은 별도 캐릭터로 세지 않는다.</p><p>이름은 현재 구현되어 있지만 이 스킬 구성·시안·20화 배치는 새 제안.</p><p><a href="https://aselia.fandom.com/wiki/Dhaos" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="demitel" data-rank="중간보스" data-group="phantasia" data-search="데미텔 demitel 귀환 장치를 악용해 마력을 빼돌리는 소환술사. 민트·제이드 판타지아">
+<div class="eyebrow">판타지아 <span> / 중간보스</span></div>
+<h3>데미텔</h3><div class="english">Demitel</div>
+<p class="when">6화 · 민트·제이드</p><p>귀환 장치를 악용해 마력을 빼돌리는 소환술사.</p>
+<p class="model"><b>모델 방향</b> PS판 기반: 청록 머리와 붉은 앞머리·검은 로브·금속 어깨 장식·손목 채찍. <a href="#art-phantasia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Hell Gem</strong><span class="tag original">원작명</span></div><p>전방 2칸 타격, 뒤에 선 유닛까지 견제.</p></li><li><div><strong>Summon Demon</strong><span class="tag original">원작명</span></div><p>예고된 소환진에서 악마 2기 소환. 동시 유지 최대 2기.</p></li><li><div><strong>마력 착취</strong><span class="tag new">창작명</span></div><p>표식 대상의 MP 일부 흡수. 시전 전에 거리 4칸 밖으로 벗어나면 해제.</p></li></ul>
+<p class="counter"><b>공략</b> 소환진 점령 또는 침묵으로 증원을 끊는다. 소환 몬스터는 경험치 반복 파밍 방지.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>본체 HP를 줄이면 소환 유지 능력이 떨어지는 구조.</p><p>외형은 PS판, 원작 이름은 영어 표기를 기준으로 기록.</p><p><a href="https://aselia.fandom.com/wiki/Demitel" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="jahmir" data-rank="중간보스" data-group="phantasia" data-search="자미르 jahmir 분리된 부대의 지형과 이동 경로를 교란하는 비행 마족. 나탈리아·시온 판타지아">
+<div class="eyebrow">판타지아 <span> / 중간보스</span></div>
+<h3>자미르</h3><div class="english">Jahmir</div>
+<p class="when">11화 · 나탈리아·시온</p><p>분리된 부대의 지형과 이동 경로를 교란하는 비행 마족.</p>
+<p class="model"><b>모델 방향</b> 분홍 머리·굽은 뿔·검은 박쥐 날개·삼각형 꼬리·분홍 의상. <a href="#art-phantasia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Tractor Beam</strong><span class="tag original">원작명</span></div><p>원형 1칸의 적을 띄워 이동력 감소. 행동 불가와는 구분.</p></li><li><div><strong>Grave</strong><span class="tag original">원작명</span></div><p>지정 지점의 흙기둥 범위 공격.</p></li><li><div><strong>Summon Demon</strong><span class="tag original">원작명</span></div><p>측면 소환진 1곳에서 증원 1기. 소환진 파괴 가능.</p></li></ul>
+<p class="counter"><b>공략</b> 나탈리아·시온의 원거리 공격으로 비행 적을 압박하고 교량을 확보한다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>비행은 낮은 장애물 통과만 허용. 공격 불가능한 맵 밖에 머물지 않는다.</p><p>기술 풀은 GBA판 기준. 부유·이동 감소 효과는 전술판 재설계.</p><p><a href="https://aselia.fandom.com/wiki/Jahmir" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="shizel" data-rank="주요 보스" data-group="eternia" data-search="시젤 shizel 상실의 환영으로 영웅들을 붙잡는 어둠의 오로라 사용자. 파라·민트·티아 이터니아">
+<div class="eyebrow">이터니아 <span> / 주요 보스</span></div>
+<h3>시젤</h3><div class="english">Shizel</div>
+<p class="when">18화 · 파라·민트·티아</p><p>상실의 환영으로 영웅들을 붙잡는 어둠의 오로라 사용자.</p>
+<p class="model"><b>모델 방향</b> 어두운 보라 드레스·두 개의 붉은 원뿔형 머리 장식·베일·이마 보석. <a href="#art-eternia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Fear Flare</strong><span class="tag original">원작명</span></div><p>암흑 화염 지대 생성. 안전한 이동 경로를 남긴다.</p></li><li><div><strong>Summon Demon</strong><span class="tag original">원작명</span></div><p>환영을 지키는 악마 2기 소환, 유지 상한 2기.</p></li><li><div><strong>Eternal Finality</strong><span class="tag original">원작명</span></div><p>큰 범위 오의. 예고 중 빛의 장치를 점령하면 보호 구역 생성.</p></li></ul>
+<p class="counter"><b>공략</b> 환영에 묶인 동료를 해방하면서 보호 구역을 확보한다. 특정 미등장 캐릭터를 요구하지 않는다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>후반에 네레이드의 그림자가 배경에 드러나지만 독립 보스로 집계하지 않는다.</p><p>Eternia 이름 Eternal Finality를 사용. Vesperia의 Eternal Fatality 표기와 구분.</p><p><a href="https://aselia.fandom.com/wiki/Shizel" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="hyades" data-rank="중간보스" data-group="eternia" data-search="히아데스 hyades 초반의 추격자. 후반에는 변이된 몸으로 피난 행렬을 습격. 파라·키사라 이터니아">
+<div class="eyebrow">이터니아 <span> / 중간보스</span></div>
+<h3>히아데스</h3><div class="english">Hyades</div>
+<p class="when">3화 · 16화 · 파라·키사라</p><p>초반의 추격자. 후반에는 변이된 몸으로 피난 행렬을 습격.</p>
+<p class="model"><b>모델 방향</b> 후반 변이형 시안: 금속성 몸체·굵은 팔·입의 광선·청록/보라의 비인간 실루엣. <a href="#art-eternia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Spark Wave</strong><span class="tag original">원작명</span></div><p>초반형의 짧은 범위 전격. 시전 방해 학습용.</p></li><li><div><strong>Earth Shaker</strong><span class="tag original">원작명</span></div><p>후반형의 지면 충격. 다음 턴 붕괴할 타일을 표시.</p></li><li><div><strong>Thunder Blade</strong><span class="tag original">원작명</span></div><p>후반형의 지정 지점 낙뢰. 피난민 진행로를 압박.</p></li></ul>
+<p class="counter"><b>공략</b> 방패 역할과 피난민 유도 역할을 나눈다. 낙뢰 예고를 민간인 동선 밖으로 유도.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>3화 인간형과 16화 변이형은 같은 인물. 시안은 변이형의 해석이며 정확한 원작 모델 복원은 아님.</p><p>각 기술은 서로 다른 원작 형태에서 가져왔으며 초반형에 후반 기술을 섞지 않는다.</p><p><a href="https://aselia.fandom.com/wiki/Hyades" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="rassius" data-rank="중간보스" data-group="eternia" data-search="라시우스(라스) rassius luine 왕국의 명령과 민간인 보호 사이에서 갈등하는 대립 상대. 설득 후 협력. 파라·나탈리아 이터니아">
+<div class="eyebrow">이터니아 <span> / 중간보스</span></div>
+<h3>라시우스(라스)</h3><div class="english">Rassius Luine</div>
+<p class="when">7화 · 파라·나탈리아</p><p>왕국의 명령과 민간인 보호 사이에서 갈등하는 대립 상대. 설득 후 협력.</p>
+<p class="model"><b>모델 방향</b> 긴 금발·깃털과 꽃이 달린 넓은 모자·짧은 망토·세검. 차분한 귀족 검객. <a href="#art-eternia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Dragon Swarm</strong><span class="tag original">원작명</span></div><p>전방을 이동하며 연속 베기. 통과할 경로를 미리 표시.</p></li><li><div><strong>Dragon Flash</strong><span class="tag original">원작명</span></div><p>직선 돌진 후 시작 위치로 복귀하는 검격.</p></li><li><div><strong>기사의 약속</strong><span class="tag new">창작명</span></div><p>민간인 인접 타일에는 광역기를 사용하지 않는 행동 규칙.</p></li></ul>
+<p class="counter"><b>공략</b> 민간인을 먼저 구조하면 대립 의지가 약해진다. 처치 대신 HP 30% 이하와 구조 목표 달성으로 종료.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>Aurora Wall은 후속 협력 연출용 1회 보호막 후보이며 반복 전투 기술로 쓰지 않는다.</p><p>악역으로 취급하지 않는다. 의상 배색은 콘셉트 해석.</p><p><a href="https://aselia.fandom.com/wiki/Rassius_Luine" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="van" data-rank="주요 보스" data-group="abyss" data-search="반 그란츠 van grants 붕괴한 세계를 복제로 대체하려는 세력. 오르도의 보존 논리와도 충돌. 티아·제이드 어비스">
+<div class="eyebrow">어비스 <span> / 주요 보스</span></div>
+<h3>반 그란츠</h3><div class="english">Van Grants</div>
+<p class="when">12화 · 티아·제이드</p><p>붕괴한 세계를 복제로 대체하려는 세력. 오르도의 보존 논리와도 충돌.</p>
+<p class="model"><b>모델 방향</b> 갈색으로 묶은 긴 머리·수염·크림색 지휘관 복장·묵직한 직검. <a href="#art-abyss">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Radiant Dragon</strong><span class="tag original">원작명</span></div><p>전방 부채꼴 검기. 밀집 대형을 벌린다.</p></li><li><div><strong>Imperial Slaughter</strong><span class="tag original">원작명</span></div><p>지정 전열 대상에게 강한 연속 검격. 표식 대상은 방어·엄호로 대응.</p></li><li><div><strong>복제의 성역</strong><span class="tag new">창작명</span></div><p>기억 복제체 2기를 생성. 제어 장치를 끄면 복제체도 약화.</p></li></ul>
+<p class="counter"><b>공략</b> 본체만 때리지 말고 복제 장치를 먼저 해제한다. 티아·제이드가 사건의 의미를 풀어낸다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>본 전투는 지휘관 형태. 최종 형태의 Ancient Requiem을 기본형에 섞지 않는다.</p><p>복제 장치와 수치 효과는 본작 창작 설계.</p><p><a href="https://aselia.fandom.com/wiki/Van_Grants" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="asch" data-rank="중간보스" data-group="abyss" data-search="애쉬 asch 일행을 복제체로 의심해 충돌하는 검객. 진실 확인 후 독자적으로 협력. 나탈리아·티아 어비스">
+<div class="eyebrow">어비스 <span> / 중간보스</span></div>
+<h3>애쉬</h3><div class="english">Asch</div>
+<p class="when">4화 · 나탈리아·티아</p><p>일행을 복제체로 의심해 충돌하는 검객. 진실 확인 후 독자적으로 협력.</p>
+<p class="model"><b>모델 방향</b> 긴 붉은 머리·검은 끝부분·검정/빨강 갑옷·오른손 검. <a href="#art-abyss">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Rending Saber</strong><span class="tag original">원작명</span></div><p>예고 후 단일 대상 오의. 4화에서는 제약된 연출형 사용.</p></li><li><div><strong>검술 연격</strong><span class="tag new">창작명</span></div><p>인접 대상 2연타. 정면 방어에 약하다.</p></li><li><div><strong>간파의 자세</strong><span class="tag new">창작명</span></div><p>자신의 다음 행동 전까지 첫 정면 근접 공격에만 반격. 반격 표식 표시.</p></li></ul>
+<p class="counter"><b>공략</b> 반격 자세에는 측면 공격 또는 원거리 견제. 나탈리아의 대화와 관측소 확보가 종료 조건.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>죽이는 전투가 아닌 오해 해소전. 이후 등장도 별도 보스 수에 포함하지 않음.</p><p>원작의 오의 반격 특성은 초보 구간에 맞게 사전 표시되는 제한 반격으로 재설계.</p><p><a href="https://aselia.fandom.com/wiki/Asch" target="_blank" rel="noopener noreferrer">원작 참고 1</a> · <a href="https://aselia.fandom.com/wiki/Rending_Saber" target="_blank" rel="noopener noreferrer">원작 참고 2</a></p></details>
+</article><article class="boss" id="legretta" data-rank="중간보스" data-group="abyss" data-search="리그렛 legretta 갈라진 부대의 연결을 차단하는 지휘관. 티아와 신념 대립. 티아·키사라 어비스">
+<div class="eyebrow">어비스 <span> / 중간보스</span></div>
+<h3>리그렛</h3><div class="english">Legretta</div>
+<p class="when">11화 · 티아·키사라</p><p>갈라진 부대의 연결을 차단하는 지휘관. 티아와 신념 대립.</p>
+<p class="model"><b>모델 방향</b> 긴 금발 포니테일·검은 군복·흐르는 붉은 천·쌍권총. <a href="#art-abyss">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Rage Laser</strong><span class="tag original">원작명</span></div><p>엄폐물을 기준으로 사선을 계산하는 직선 관통 광선.</p></li><li><div><strong>Holy Lance</strong><span class="tag original">원작명</span></div><p>표시된 타일의 빛 기둥. 이동으로 회피 가능.</p></li><li><div><strong>Prism Ballet</strong><span class="tag original">원작명</span></div><p>여러 사선을 순차 표시하는 광역 오의. 안전 통로를 남긴다.</p></li></ul>
+<p class="counter"><b>공략</b> 엄폐와 측면 진입이 핵심. 같은 자리에 머무르면 사격 압박이 커진다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>11화 다른 전선의 자미르와 대비되는 지상 사격 보스.</p><p>엄폐·사선 판정은 신규 구현이 필요한 전술판 기능.</p><p><a href="https://aselia.fandom.com/wiki/Legretta" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="artorius" data-rank="주요 보스" data-group="berseria" data-search="아르토리우스 artorius collbrande 감정을 없애는 질서를 구원으로 믿는 자. 오르도와 목적 일부가 겹치는 독립 세력. 벨벳·민트·티아 베르세리아">
+<div class="eyebrow">베르세리아 <span> / 주요 보스</span></div>
+<h3>아르토리우스</h3><div class="english">Artorius Collbrande</div>
+<p class="when">9화 · 19화 · 벨벳·민트·티아</p><p>감정을 없애는 질서를 구원으로 믿는 자. 오르도와 목적 일부가 겹치는 독립 세력.</p>
+<p class="model"><b>모델 방향</b> 은발 포니테일·흰색/금색 외투·파란 안감. 오른팔을 감추고 왼손에 성검. <a href="#art-berseria">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Ascension</strong><span class="tag original">원작명</span></div><p>지정 범위에 검기·빛 공격. 중앙 안전지대 고정 대신 위치 순환.</p></li><li><div><strong>Savage Wolf Fury</strong><span class="tag original">원작명</span></div><p>표식 전열을 향한 연속 검격 오의.</p></li><li><div><strong>감정 봉인진</strong><span class="tag new">창작명</span></div><p>범위 안 아군의 궁극기 게이지 획득을 억제. 봉인주 파괴로 해제.</p></li></ul>
+<p class="counter"><b>공략</b> 벨벳의 돌파와 민트·티아의 지원을 함께 써서 봉인주를 해제한다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>9화는 봉인주 파괴·탈출, 19화는 최종 결전. 기본 인간형을 우선 제작하고 신의화는 별도 후속 후보.</p><p>모든 궁극기를 강제로 금지하지 않으며 축적 억제 수치는 추후 검증.</p><p><a href="https://aselia.fandom.com/wiki/Artorius_Collbrande" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="shigure" data-rank="중간보스" data-group="berseria" data-search="시구레 란게츠 shigure rangetsu 세계 구원의 명분보다 일행이 선택을 지킬 힘을 가졌는지 시험하는 검객. 벨벳·크레스 베르세리아">
+<div class="eyebrow">베르세리아 <span> / 중간보스</span></div>
+<h3>시구레 란게츠</h3><div class="english">Shigure Rangetsu</div>
+<p class="when">13화 · 벨벳·크레스</p><p>세계 구원의 명분보다 일행이 선택을 지킬 힘을 가졌는지 시험하는 검객.</p>
+<p class="model"><b>모델 방향</b> 긴 검은 머리·드러난 상체·흰 어깨옷·베이지 바지·한 자루의 거대한 Stormhowl. <a href="#art-berseria">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Rangetsu Eagle</strong><span class="tag original">원작명</span></div><p>예고된 대각선의 강한 연속 참격 오의.</p></li><li><div><strong>발도 반격</strong><span class="tag new">창작명</span></div><p>다음 공격 1회에 반격 준비. 원거리 견제 또는 방어로 소모 가능.</p></li><li><div><strong>일도 양단</strong><span class="tag new">창작명</span></div><p>좁고 긴 직선 강공격. 사용 후 자신의 방어가 1행동 동안 감소.</p></li></ul>
+<p class="counter"><b>공략</b> 반격을 유도하고 큰 공격 뒤의 빈틈에 집중한다. 마법형 검사와 확실히 구분.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>승패를 인정하면 전투 종료. 로쿠로가 현재 아군 명단에 없으므로 그의 원작 결말을 대체하지 않음.</p><p>새 반격 기술 이름은 원작 정식 기술명으로 소개하지 않는다.</p><p><a href="https://aselia.fandom.com/wiki/Shigure_Rangetsu" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="oscar" data-rank="중간보스" data-group="berseria" data-search="오스카 드라고니아 oscar dragonia 벨벳을 추격하며 등장하는 성료 기사. 키사라가 보호해야 할 대상을 묻는 전투. 벨벳·키사라 베르세리아">
+<div class="eyebrow">베르세리아 <span> / 중간보스</span></div>
+<h3>오스카 드라고니아</h3><div class="english">Oscar Dragonia</div>
+<p class="when">5화 · 벨벳·키사라</p><p>벨벳을 추격하며 등장하는 성료 기사. 키사라가 보호해야 할 대상을 묻는 전투.</p>
+<p class="model"><b>모델 방향</b> 금발·한쪽 눈 붕대·흰색/금색 기사복·파란 망토 안감·끝이 평평한 Zero Diabolos. <a href="#art-berseria">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Heavenly Torrent</strong><span class="tag original">원작명</span></div><p>전방 좁은 범위를 휩쓰는 검격.</p></li><li><div><strong>성료 기사의 지휘</strong><span class="tag new">창작명</span></div><p>주변 호위의 방어 증가. 지휘 깃발을 파괴하면 해제.</p></li><li><div><strong>돌격 명령</strong><span class="tag new">창작명</span></div><p>호위 1기와 다음 차례 협동 돌진. 양쪽 목표를 미리 표시.</p></li></ul>
+<p class="counter"><b>공략</b> 오스카와 호위를 떨어뜨려 지휘 보너스를 줄인다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>5화는 기본형. Cloudburst·Sylphid Blaze는 신의화 전용이라 기본형 기술 목록에서 제외.</p><p>검끝과 시구레의 무기 손을 시안 수정본에서 교정했다. 세부 무기 형상·비율은 생산용 모델 단계에서 원작 자료와 재대조한다.</p><p><a href="https://aselia.fandom.com/wiki/Oscar_Dragonia" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="vholran" data-rank="주요 보스" data-group="arise" data-search="볼란 이그니세리 vholran igniseri 연결된 세계를 새로운 지배 영역으로 삼으려는 군주. 알펜의 해방 의지와 대립. 알펜·시온·키사라 어라이즈">
+<div class="eyebrow">어라이즈 <span> / 주요 보스</span></div>
+<h3>볼란 이그니세리</h3><div class="english">Vholran Igniseri</div>
+<p class="when">17화 · 알펜·시온·키사라</p><p>연결된 세계를 새로운 지배 영역으로 삼으려는 군주. 알펜의 해방 의지와 대립.</p>
+<p class="model"><b>모델 방향</b> 흰 끝의 검은 머리·검은 가죽/벨트·남색 깃털 칼라·긴 도. <a href="#art-arise">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Tidal Wave</strong><span class="tag original">원작명</span></div><p>파도 예고선을 따라 넓은 물 공격. 높은 타일로 회피.</p></li><li><div><strong>Lex Talionis</strong><span class="tag original">원작명</span></div><p>군주 형태의 집중 검격 오의. 표식 대상과 주변 피해를 분리.</p></li><li><div><strong>빙결 추격</strong><span class="tag new">창작명</span></div><p>이전 차례에 서 있던 타일을 얼린다. 같은 위치 유지에 불리.</p></li></ul>
+<p class="counter"><b>공략</b> 높낮이를 활용하고 매 차례 진형을 조금씩 옮긴다. 이동 불가를 연속 적용하지 않는다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>우선 군주 형태로 설계. Sovereign 형태의 Finis Aeternam은 추후 페이즈 확장 후보.</p><p>한국어 표기는 작업용이며 영문 이름을 병기해 식별.</p><p><a href="https://aselia.fandom.com/wiki/Vholran_Igniseri" target="_blank" rel="noopener noreferrer">원작 참고 1</a> · <a href="https://aselia.fandom.com/wiki/ToA_-_Vholran_Igniseri%3A_Artes" target="_blank" rel="noopener noreferrer">원작 참고 2</a></p></details>
+</article><article class="boss" id="balseph" data-rank="중간보스" data-group="arise" data-search="비에조 balseph 초반 감옥과 자원 채굴장을 지배하는 폭군. 알펜·시온 어라이즈">
+<div class="eyebrow">어라이즈 <span> / 중간보스</span></div>
+<h3>비에조</h3><div class="english">Balseph</div>
+<p class="when">2화 · 알펜·시온</p><p>초반 감옥과 자원 채굴장을 지배하는 폭군.</p>
+<p class="model"><b>모델 방향</b> 대머리 거구·드러난 상체·붉은 털장식·검은 중갑·거대한 불꽃 도끼. <a href="#art-arise">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Pyroclasm</strong><span class="tag original">원작명</span></div><p>강한 바닥 폭발 오의. 초반에는 넓은 회피 시간을 제공.</p></li><li><div><strong>폭군의 내려찍기</strong><span class="tag new">창작명</span></div><p>정면 3칸 직선 강타. 등 뒤에 긴 후딜 노출.</p></li><li><div><strong>불타는 균열</strong><span class="tag new">창작명</span></div><p>도끼가 찍힌 타일에 1턴 화염 지형 생성.</p></li></ul>
+<p class="counter"><b>공략</b> 정면 공격 예고를 피하고 측후면을 공략하는 첫 거대 보스.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>주술사가 아닌 물리형 거구. 도끼의 화염 효과와 직접 마법 시전을 구분.</p><p>English Balseph / Japanese Biezo. 번역 혼동 방지를 위해 영문 병기.</p><p><a href="https://aselia.fandom.com/wiki/Balseph" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="ganabelt" data-rank="중간보스" data-group="arise" data-search="가나벨트 ganabelt valkyris 구원 시설의 책임자를 가장해 에너지를 모으는 지배자. 제이드·시온 어라이즈">
+<div class="eyebrow">어라이즈 <span> / 중간보스</span></div>
+<h3>가나벨트</h3><div class="english">Ganabelt Valkyris</div>
+<p class="when">8화 · 제이드·시온</p><p>구원 시설의 책임자를 가장해 에너지를 모으는 지배자.</p>
+<p class="model"><b>모델 방향</b> 비대칭 은발·흑백의 긴 외투·금색 어깨장식·파란 술·세검. <a href="#art-arise">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Mine Barrage</strong><span class="tag original">원작명</span></div><p>진입 시 폭발하는 빛 지뢰 설치. 설치 위치와 지속시간 공개.</p></li><li><div><strong>Rage Laser</strong><span class="tag original">원작명</span></div><p>직선 관통 광선으로 통로 압박.</p></li><li><div><strong>Indignation</strong><span class="tag original">원작명</span></div><p>분신 3기를 동반해 긴 시전. 제한 시간 내 분신을 없애면 취소.</p></li></ul>
+<p class="counter"><b>공략</b> 분신 목표를 분담하고 큰 시전부터 끊는다. 시온의 사격·제이드의 범위기가 활용됨.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>중간보스 중 후반급 난도. 분신은 새 고유 보스로 세지 않는다.</p><p>원작 빛 속성을 유지하는 방향. 본작 속성표와의 매핑은 구현 단계에서 확정.</p><p><a href="https://aselia.fandom.com/wiki/Ganabelt_Valkyris" target="_blank" rel="noopener noreferrer">원작 참고 1</a> · <a href="https://aselia.fandom.com/wiki/ToA_-_Ganabelt_Valkyris%3A_Artes" target="_blank" rel="noopener noreferrer">원작 참고 2</a> · <a href="https://aselia.fandom.com/wiki/Indignation" target="_blank" rel="noopener noreferrer">원작 참고 3</a></p></details>
+</article><article class="boss" id="ordo" data-rank="주요 보스" data-group="originals" data-search="기록자 오르도 ordo 모든 세계를 보존하려고 미래의 가능성을 정지시키려는 최종 적. 아군 10명 전체 창작 보스">
+<div class="eyebrow">창작 보스 <span> / 주요 보스</span></div>
+<h3>기록자 오르도</h3><div class="english">Ordo</div>
+<p class="when">20화 · 아군 10명 전체</p><p>모든 세계를 보존하려고 미래의 가능성을 정지시키려는 최종 적.</p>
+<p class="model"><b>모델 방향</b> 은백색 머리·기하학 반가면·상아색 기록관 외투·부유하는 책·다섯 기억 조각. <a href="#art-originals">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>기록 재생</strong><span class="tag new">창작명</span></div><p>직전 아군 기술 1개의 대상 패턴을 복제. 원기술의 위력은 복사하지 않고 보스용 고정 계수.</p></li><li><div><strong>인과의 봉합</strong><span class="tag new">창작명</span></div><p>마지막으로 파괴된 경계 장치 1개를 복구하려 한다. 채널링 중 차단 가능.</p></li><li><div><strong>영원한 정지</strong><span class="tag new">창작명</span></div><p>여러 구역을 순서대로 봉인. 귀환 장치를 연결하면 정지 구역 해제.</p></li></ul>
+<p class="counter"><b>공략</b> 파티의 공격 패턴을 다양하게 쓰고 각 세계의 귀환 장치를 병행 가동한다.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>1단계 관찰·2단계 기록 왜곡·3단계 귀환 저지. 한 인물의 3단계이며 보스 수는 1.</p><p>완전 창작. 신규 반사/복제/장치 기능 필요. 민트의 정지와 서로 무한 봉쇄되지 않도록 설계.</p><p>본 프로젝트 창작 설정</p></details>
+</article><article class="boss" id="executor" data-rank="중간보스" data-group="originals" data-search="경계의 집행관 boundary executor 오르도의 기록고를 지키는 자율 수호병. 키사라·나탈리아·크레스 창작 보스">
+<div class="eyebrow">창작 보스 <span> / 중간보스</span></div>
+<h3>경계의 집행관</h3><div class="english">Boundary Executor</div>
+<p class="when">15화 · 키사라·나탈리아·크레스</p><p>오르도의 기록고를 지키는 자율 수호병.</p>
+<p class="model"><b>모델 방향</b> 세로 눈구멍의 폐쇄 투구·검은 갑옷과 상아색 판금·비대칭 어깨·긴 분할날 창. <a href="#art-originals">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>경계 절단</strong><span class="tag new">창작명</span></div><p>직선 공격 후 1턴 통과 불가 선 생성. 우회로를 반드시 유지.</p></li><li><div><strong>처형 표식</strong><span class="tag new">창작명</span></div><p>후열 1명에게 다음 턴 돌진 예고. 엄호로 피해 분담 가능.</p></li><li><div><strong>방위 고정</strong><span class="tag new">창작명</span></div><p>정면 피해 감소 대신 회전 불가. 측후면 공격으로 파훼.</p></li></ul>
+<p class="counter"><b>공략</b> 방향을 유도하고 포위한다. 단순 방어력 수치보다 위치 선택을 시험.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>HP 절반 이후 경계선 2개 교차. 안전 공간 최소 크기 검증 필요.</p><p>완전 창작. 경계선으로 플레이어를 영구 가두지 않는다.</p><p>본 프로젝트 창작 설정</p></details>
+</article><article class="boss" id="guardian" data-rank="중간보스" data-group="originals" data-search="심층 수호자 deep guardian 세계가 겹쳐진 유적에서 깨어난 첫 수호자. 후속 서브 임무에서는 강화 개체. 크레스·민트 창작 보스">
+<div class="eyebrow">창작 보스 <span> / 중간보스</span></div>
+<h3>심층 수호자</h3><div class="english">Deep Guardian</div>
+<p class="when">1화 · 크레스·민트</p><p>세계가 겹쳐진 유적에서 깨어난 첫 수호자. 후속 서브 임무에서는 강화 개체.</p>
+<p class="model"><b>모델 방향</b> 거대한 석재 몸체·청록색 가슴 핵·분리된 어깨 고리·비대칭 돌주먹. <a href="#art-originals">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>지각 강타</strong><span class="tag new">창작명</span></div><p>십자형 충격파. 첫 보스의 공격 범위 예고 학습.</p></li><li><div><strong>핵 재충전</strong><span class="tag new">창작명</span></div><p>1턴 동안 회복 준비. 노출된 핵을 공격하면 취소.</p></li><li><div><strong>유적 붕괴</strong><span class="tag new">창작명</span></div><p>외곽 타일 일부가 다음 턴 붕괴. 탈출 가능한 안전길 유지.</p></li></ul>
+<p class="counter"><b>공략</b> 강타 후 드러나는 핵을 노린다. 1화에서는 붕괴 패턴을 제외해 난도 제한.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>기존 Rock Golem 수호자 자산을 확장하는 방향. 명칭·모델·패턴 변경은 미구현.</p><p>기존 2화 유적 수호자 개념의 확장안이며 기존 구현에 신규 1종을 더했다고 집계하지 않는다.</p><p>본 프로젝트 창작 설정</p></details>
+</article><article class="boss" id="origin" data-rank="시련 보스" data-group="phantasia" data-search="오리진 origin 힘보다 책임을 묻는 정령왕. 악역이 아닌 계약 시련. 크레스·민트 판타지아">
+<div class="eyebrow">판타지아 <span> / 시련 보스</span></div>
+<h3>오리진</h3><div class="english">Origin</div>
+<p class="when">14~16화 사이 크레스 전용 무기 서브 3 · 크레스·민트</p><p>힘보다 책임을 묻는 정령왕. 악역이 아닌 계약 시련.</p>
+<p class="model"><b>모델 방향</b> 판타지아형: 짧은 금발·붉은 눈·네 팔·앞의 두 검과 뒤의 두 창·맨발. <a href="#art-phantasia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Collapse</strong><span class="tag original">원작명</span></div><p>무기 끝에서 번개가 교차하는 범위 공격.</p></li><li><div><strong>Barrier</strong><span class="tag original">원작명</span></div><p>한 차례 받는 피해 감소. 강화 유지 중에는 장치 목표를 수행.</p></li><li><div><strong>사방의 계약</strong><span class="tag new">창작명</span></div><p>네 방향 문양을 순서대로 활성화. 방패·회복·공격을 조합해 통과.</p></li></ul>
+<p class="counter"><b>공략</b> 타격만 반복하지 않고 네 문양의 조건을 달성하면 계약 성립.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>시련 보상으로 크레스의 이터널 소드 획득. 메인 귀환 성공 조건과 분리.</p><p>Barrier 등 판본 차이가 있는 기술은 판타지아 버전별 풀을 참고한 선택. Xillia 2의 오리진과 혼합하지 않음.</p><p><a href="https://aselia.fandom.com/wiki/Origin" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article><article class="boss" id="maxwell" data-rank="시련 보스" data-group="eternia" data-search="맥스웰 maxwell 속성과 위치 운용을 시험하는 대정령. 파라·제이드 이터니아">
+<div class="eyebrow">이터니아 <span> / 시련 보스</span></div>
+<h3>맥스웰</h3><div class="english">Maxwell</div>
+<p class="when">14~16화 사이 파라 전용 무기 서브 3 · 파라·제이드</p><p>속성과 위치 운용을 시험하는 대정령.</p>
+<p class="model"><b>모델 방향</b> 흰 수염의 부유하는 노현자·지팡이·원소 구체. 의상은 본작 콘셉트 해석. <a href="#art-eternia">시안 보기 ↗</a></p>
+<ul class="skills"><li><div><strong>Meteor Swarm</strong><span class="tag original">원작명</span></div><p>다음 턴 여러 타일에 운석 낙하. 낙하 순서 공개.</p></li><li><div><strong>Tractor Beam</strong><span class="tag original">원작명</span></div><p>오래 머문 타일을 띄우는 추적 공격. 이동으로 회피.</p></li><li><div><strong>Cyclone</strong><span class="tag original">원작명</span></div><p>회오리 범위 피해와 위치 이동. 낙사 즉사 대신 안전 타일로 밀림.</p></li></ul>
+<p class="counter"><b>공략</b> 같은 자리에서 버티지 않고 속성·이동·회복을 조합. 파라가 정령을 받아들이는 이야기.</p>
+<details><summary>페이즈·원작 구분·참고 자료</summary><p>파라 전용 무기 시련에 배치하는 것은 본작 창작 연결. 원작의 해당 무기 드롭 사실을 뜻하지 않음.</p><p>Eternia의 정령이며 Milla Maxwell이 아님.</p><p><a href="https://aselia.fandom.com/wiki/Maxwell" target="_blank" rel="noopener noreferrer">원작 참고 1</a></p></details>
+</article></div></section>
+<section id="flow"><h2>20화 메인 플로우</h2><p class="legend">1~5화 합류 → 6~10화 구원의 대가 → 11~16화 진실과 선택 → 17~20화 반격과 귀환. 오리진·맥스웰은 14~16화 사이 선택 시련입니다.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">화</th><th scope="col">시나리오</th><th scope="col">보스</th><th scope="col">진행·승리 조건</th></tr></thead><tbody><tr><td>01</td><td>하늘이 갈라진 날</td><td><a href="#guardian">심층 수호자</a></td><td>크레스·민트가 피난민 구조. 강타와 핵 노출만 학습.</td></tr><tr><td>02</td><td>불꽃과 가시</td><td><a href="#balseph">비에조</a></td><td>감옥 돌파, 알펜·시온 합류.</td></tr><tr><td>03</td><td>두 하늘 아래의 마을</td><td><a href="#hyades">히아데스</a></td><td>초반형 추격에서 마을 보호, 파라 합류.</td></tr><tr><td>04</td><td>예언에 없는 사람들</td><td><a href="#asch">애쉬</a></td><td>오해를 해소하고 관측소 확보. 티아·제이드·나탈리아 합류.</td></tr><tr><td>05</td><td>포식자와 방패</td><td><a href="#oscar">오스카 드라고니아</a></td><td>추격전이 구출전으로 전환. 벨벳·키사라 합류.</td></tr><tr><td>06</td><td>귀환의 대가</td><td><a href="#demitel">데미텔</a></td><td>소환진과 마력 착취 장치 정지. 서브 1차 개방.</td></tr><tr><td>07</td><td>국경 없는 왕국</td><td><a href="#rassius">라시우스(라스)</a></td><td>민간인 구조·설득으로 대립 종료.</td></tr><tr><td>08</td><td>구원의 계산식</td><td><a href="#ganabelt">가나벨트</a></td><td>구원 시설의 진실을 밝히고 분신 시전 저지.</td></tr><tr><td>09</td><td>목소리를 잃은 성역</td><td><a href="#artorius">아르토리우스</a></td><td>첫 대면. 봉인주 파괴와 주민 탈출이 승리 조건.</td></tr><tr><td>10</td><td>우리의 적, 그들의 구원자</td><td><a href="#dhaos">다오스</a></td><td>경계핵 충돌. 오르도가 통로를 봉쇄하며 국면 전환.</td></tr><tr><td>11</td><td>갈라진 전선</td><td><a href="#jahmir">자미르</a> / <a href="#legretta">리그렛</a></td><td>두 부대의 전투를 순차 진행하고 합류. 한 전장에 보스 2명을 강제 배치하지 않음.</td></tr><tr><td>12</td><td>만들어진 낙원</td><td><a href="#van">반 그란츠</a></td><td>복제 장치 정지와 반의 패배. 원본 세계의 존속 선택.</td></tr><tr><td>13</td><td>누구의 세계를 먼저 구할 것인가</td><td><a href="#shigure">시구레 란게츠</a></td><td>구출 순서 선택, 선택을 지킬 힘의 결투. 순서만 달라지고 구출 불가 분기 없음.</td></tr><tr><td>14</td><td>적과 맺는 약속</td><td><a href="#dhaos">다오스</a></td><td>재전 뒤 증거를 제시하고 조건부 공조. 전용 무기 최종 시련 개방.</td></tr><tr><td>15</td><td>기록되지 않은 미래</td><td><a href="#executor">경계의 집행관</a></td><td>기록고 돌파와 오르도의 목적 공개.</td></tr><tr><td>16</td><td>돌아갈 곳이 있는 사람들</td><td><a href="#hyades">히아데스</a></td><td>변이형을 막으며 마지막 피난 행렬 호위. 무기 서브 최종 정리 구간.</td></tr><tr><td>17</td><td>다섯 세계의 반격</td><td><a href="#vholran">볼란 이그니세리</a></td><td>귀환 거점 확보와 지배 세력 돌파.</td></tr><tr><td>18</td><td>잃어버린 사람들의 목소리</td><td><a href="#shizel">시젤</a></td><td>환영에서 동료 해방, 보호 구역을 연결해 오의 돌파.</td></tr><tr><td>19</td><td>영원을 멈추는 전투</td><td><a href="#artorius">아르토리우스</a></td><td>최종 결전과 봉인망 차단. 희생 강요 없이 오르도에게 이르는 길 확보.</td></tr><tr><td>20</td><td>각자의 하늘, 같은 약속</td><td><a href="#ordo">기록자 오르도</a></td><td>3단계 최종전. 귀환 장치 연결과 각자의 세계로 돌아가는 결말.</td></tr></tbody></table></div></section>
+<section id="rules"><h2>보스전 공통 규칙</h2><ul class="rules"><li>모든 강력한 공격은 다음 아군 판단 시점 전에 범위·대상·발동 시점을 표시한다. 색상 외에 선·문양·아이콘으로도 구분한다.</li><li>부위 파괴, 장치 파괴, 분산, 엄호 등 각 보스에 적어도 하나의 능동적 공략 수단을 제공한다.</li><li>중간보스는 핵심 패턴 1~2개, 주요 보스는 패턴 2~3개와 최대 2단계, 최종 오르도만 3단계로 제한한다.</li><li>신규 제안: 중간보스에는 민트 타임스톱의 기존 2회 행동 정지를 유지. 주요 보스에는 1회 행동 정지와 준비 중인 공격 취소를 주고, 이후 보스가 실제 2회 행동할 때까지 정지 재적용 저항을 표시한다. 현재 출시판에는 이 저항 규칙이 없다.</li><li>정지 해제 뒤 새 강공격은 반드시 다시 예고한다. 상태 면역·반격·보호막 지속시간을 적 정보에서 확인할 수 있어야 한다.</li><li>전용 무기 시련은 14~16화 사이 선택 진행. 17화 전에 10명 모두 준비할 기회를 주며, 무기 미획득으로 메인 진행을 막지 않는다.</li><li>애쉬·라시우스·시구레는 대립/결투의 종료 조건을 갖고 정령은 계약 시련이다. 모두를 살해해야 진행하는 구조를 피한다.</li></ul><h2>제작 범위와 후속 과제</h2><ul class="rules"><li>기존 다오스와 Rock Golem 수호자 기반부터 확장하고, 비에조·오스카·히아데스를 초반 검증 대상으로 제작.</li><li>본 문서는 콘텐츠 확정 전 제안이다. 수치 밸런스·전투 AI·신규 상태/장치·동작/히트박스는 미구현·미검증.</li><li>추가 캐릭터가 늘어도 메인 시나리오는 20화 유지. 11화 분리전, 9화 탈출전, 14화 재전으로 변화 부여.</li><li>원작의 시대·사망 이후 연속성을 피하기 위해 각 세계의 결전 이전 서로 다른 시점에서 경계로 불려온다는 기존 전제를 유지.</li></ul></section>
+<footer>AI 이미지 생성: 내장 imagegen · 상세 프롬프트와 채택 파일: <a href="generation.json">generation.json</a> · 기획 데이터: <a href="roster.json">roster.json</a><br>검증: <a href="validation.json">자료 무결성</a> · <a href="browser-review.json">문서 화면·필터 검사</a>. 이 검사는 Unity 테스트가 아닙니다.</footer>
+</main><script>
+const search=document.querySelector('#search'),rank=document.querySelector('#rank'),group=document.querySelector('#group');
+function filter(){let count=0;const q=search.value.toLowerCase().trim();document.querySelectorAll('.boss').forEach(card=>{const visible=(!q||card.dataset.search.includes(q))&&(!rank.value||card.dataset.rank===rank.value)&&(!group.value||card.dataset.group===group.value);card.hidden=!visible;if(visible)count++;});document.querySelector('#count').textContent=count+' / 20종 표시';document.querySelector('#empty').hidden=count!==0;}
+[search,rank,group].forEach(el=>el.addEventListener('input',filter));
+function revealHash(){const el=document.getElementById(location.hash.slice(1));if(el&&el.classList.contains('boss')){search.value='';rank.value='';group.value='';filter();el.scrollIntoView();}}
+window.addEventListener('hashchange',revealHash);filter();revealHash();
+</script></body></html>
