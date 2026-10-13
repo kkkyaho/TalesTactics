@@ -15,12 +15,14 @@ namespace TalesTactics
         {
             ModelDeploymentLayout();
             Place(center,Vector2.zero,new Vector2(.66f,1),new Vector2(12,126),new Vector2(-6,-142));
+            if(focusedEquipmentLayout)Place(center,Vector2.zero,Vector2.one,new Vector2(12,126),new Vector2(-12,-142));
         }
         void BeginIntermission(string title,int tab)
         {
             BeginPreparation(title);intermissionLayout=true;IntermissionLayout();
             foreach(var p in new[]{header,left,center,commands,footer})p.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.055f,.11f,1);
-            var heading=header.GetComponentInChildren<TMP_Text>();heading.text=title;
+            var heading=header.GetComponentInChildren<TMP_Text>();heading.text="";
+            FormationButton(header,"거점으로","‹ 거점 · "+title,Vector2.zero,new Vector2(.23f,1),ShowIntermissionHub,true,20);
             Place(heading.rectTransform,Vector2.zero,new Vector2(.23f,1),new Vector2(18,4),new Vector2(-6,-4));
             FormationText(header,battle.TrainingMode?"훈련 · 저장 보상 없음":CampaignStages.Title(battle.SelectedStage),new Vector2(.23f,0),new Vector2(.50f,1),20,TextAlignmentOptions.Center);
             FormationText(header,battle.Campaign.Gold.ToString("N0")+" G",new Vector2(.50f,0),new Vector2(.70f,1),23,TextAlignmentOptions.Center).color=formationGold;
@@ -103,7 +105,7 @@ namespace TalesTactics
         void IntermissionPrimary(string name,string label,Action action,bool enabled)
         {
             var b=FormationButton(footer,name,label,new Vector2(.75f,.14f),new Vector2(.99f,.86f),action,enabled,23);
-            StyleButton(b,HudRole.Primary);
+            IntermissionGoldButton(b);
         }
     }
 }

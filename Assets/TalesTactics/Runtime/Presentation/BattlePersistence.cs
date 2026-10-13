@@ -52,7 +52,7 @@ namespace TalesTactics
             if(Session!=null||StoryActive)return false;
             var draft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(Preferences));draft.Slot=slot;
             if(!SavePreferences(draft,false))return false;
-            Campaign=Profiles.Load(slot);Campaign.AutoTiming=Preferences.AutoTiming;SaveNotice=Profiles.Store.Notice;RestorePreparation();Hud.ShowDeployment();return true;
+            Campaign=Profiles.Load(slot);Campaign.AutoTiming=Preferences.AutoTiming;SaveNotice=Profiles.Store.Notice;RestorePreparation();Hud.ShowIntermissionHub();return true;
         }
         public bool SuspendBattle()
         {
@@ -60,7 +60,7 @@ namespace TalesTactics
             var old=Campaign.SuspendedBattle;
             Campaign.SuspendedBattle=BattleCheckpoint.Capture(Session,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>Array.IndexOf(Catalog.Characters,u.Data)).ToArray());
             if(!WriteProgress(Campaign,true)){Campaign.SuspendedBattle=old;return false;}
-            Restart();SaveNotice="전투 중단 저장 완료 · 이어하기로 같은 턴을 재개합니다.";Hud.ShowDeployment();return true;
+            Restart();SaveNotice="전투 중단 저장 완료 · 이어하기로 같은 턴을 재개합니다.";Hud.ShowIntermissionHub();return true;
         }
         public bool ResumeBattle()
         {

@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-14",
+  "unity": "6000.6.0f1",
+  "baseCommit": "4bca884bfe21768e8d7f6b09c8f2a9e8f4a64816",
+  "validationProject": "D:/TalesTacticsCrossover/IntermissionUxValidation",
+  "sourcesMatched": true,
+  "editmode": {
+    "file": "editmode-intermission-ux.xml",
+    "total": 333,
+    "passed": 333,
+    "failed": 0,
+    "durationSeconds": 10.9514545,
+    "startTime": "2026-10-13 19:52:58Z",
+    "endTime": "2026-10-13 19:53:09Z",
+    "sha256": "82C2F2143D40687D13F60B2CAB8ABE507A96CFE8FB8F55C6ACAF9768AA2CDB62"
+  },
+  "playmode": {
+    "file": "playmode-intermission-ux-final.xml",
+    "total": 141,
+    "passed": 141,
+    "failed": 0,
+    "durationSeconds": 299.4822781,
+    "startTime": "2026-10-13 20:05:20Z",
+    "endTime": "2026-10-13 20:10:19Z",
+    "sha256": "5321CB4D9D947DE5A38371F816AECE01AB2DEB0E25B9D9BD57EF54257F42A4B6"
+  },
+  "initialPlaymode": {
+    "file": "playmode-intermission-ux.xml",
+    "total": 140,
+    "passed": 128,
+    "failed": 12,
+    "durationSeconds": 285.2411144,
+    "startTime": "2026-10-13 19:58:26Z",
+    "endTime": "2026-10-13 20:03:11Z",
+    "sha256": "38036F7FCBBCDCB2F573876C7EC3BECB5ABF742E30A84C70F3E0F2206DA3E450"
+  },
+  "apiCompilation": [
+    "Runtime",
+    "Editor",
+    "EditMode",
+    "PlayMode"
+  ],
+  "reviewId": "c50b15a2f8954286835b1ea3e180b926",
+  "review": {
+    "rows": 70,
+    "issues": 0,
+    "storyLines": 394,
+    "errors": 0,
+    "reportSHA256": "0959D9C682DD0FC640440D5BD6D496F5672451A835AB89460578BD1B681C35A8",
+    "isolatedSave": true,
+    "manualInputReview": false
+  },
+  "builds": [
+    {
+      "summary": [
+        "Succeeded",
+        "Errors 0",
+        "Warnings 3",
+        "Duration 00:01:33.8984220"
+      ],
+      "kind": "review",
+      "path": "Builds/IntermissionUxReview/TalesTactics.exe",
+      "runtimeSHA256": "02CAF518FEEEF027BB2F067D186F6A744EB882FBFB65727647760F0578533446"
+    },
+    {
+      "kind": "normal",
+      "exeSHA256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
+      "summary": [
+        "Succeeded",
+        "Errors 0",
+        "Warnings 1",
+        "Duration 00:00:49.9770579"
+      ],
+      "intermissionReviewTypeExcluded": true,
+      "path": "Builds/IntermissionUxWindows/TalesTactics.exe",
+      "runtimeSHA256": "C40AF856D8A24A822BDD321FB48BECCE3F0BC22081AC2E92396A6F97E699E518"
+    }
+  ],
+  "startup": {
+    "aliveAfterSeconds": 12,
+    "pid": 6712,
+    "responding": true,
+    "player": "Builds/IntermissionUxWindows/TalesTactics.exe",
+    "errorLines": 0,
+    "unchangedUserSaveFiles": 6,
+    "userSaveFilesChanged": 0
+  },
+  "rawLogsRoot": "D:/TalesTacticsCrossover/d3d2/Logs",
+  "notes": [
+    "Initial review layout overflow was corrected before final 70-row review.",
+    "Auto timing across real focus changes and physical gamepad/manual campaign play were not manually tested.",
+    "Normal startup was stopped after 12 seconds; pre-existing user Editor/player were left running."
+  ]
+}

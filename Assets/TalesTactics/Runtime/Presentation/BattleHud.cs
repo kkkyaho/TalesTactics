@@ -18,7 +18,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -105,6 +105,7 @@ namespace TalesTactics
             {
                 if(modelDeploymentLayout||intermissionLayout)foreach(var p in new[]{header,left,center,commands,footer})if(p!=null)p.GetComponent<UnityEngine.UI.Image>().color=panel;
                 HideResult();preparationLayout=false;modelDeploymentLayout=false;intermissionLayout=false;if(center!=null)center.gameObject.SetActive(false);
+                hubLayout=false;focusedEquipmentLayout=false;left.gameObject.SetActive(true);commands.gameObject.SetActive(true);
             }
             foreach(Transform child in parent){child.gameObject.SetActive(false);Destroy(child.gameObject);}
         }

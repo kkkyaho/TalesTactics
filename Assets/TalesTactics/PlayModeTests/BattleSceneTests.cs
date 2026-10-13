@@ -146,7 +146,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Campaign.Get(character.Id).Equipment[0],Is.Null);
             Click("돌아가기 (미적용 취소)");yield return null;Click(character.DisplayName);yield return null;
             Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: 없음"),Is.True);
-            Click("돌아가기 (미적용 취소)");yield return null;Click("출전 준비로");yield return null;
+            Click("출전 준비로");yield return null;Assert.That(director.Hud.IntermissionHubOpen,Is.True);
             director.Campaign.Get(character.Id).Equipment[0]=sword.Id;
             director.Deployment.Clear();director.Deployment.Add(System.Array.IndexOf(director.Catalog.Characters,character));
             Click("전투 시작");yield return null;

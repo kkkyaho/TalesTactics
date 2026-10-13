@@ -42,7 +42,7 @@ namespace TalesTactics
             {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}
             Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
             if(Deployment.Count==0)Deployment.Add(0);
-            Board.Initialize(this);Hud.ShowDeployment();
+            Board.Initialize(this);Hud.ShowIntermissionHub();
             gameObject.AddComponent<GamepadPointer>().Initialize(this);
         }
         void Update()
@@ -125,7 +125,7 @@ namespace TalesTactics
             Session.Opening=BattleOpening.Capture(Session,Catalog);
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="청색 타일은 이동, 적색 타일은 스킬 사거리입니다.";SetState(new TurnStartState(this));
         }
-        public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowDeployment();}
+        public void Restart(){Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowIntermissionHub();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved&&TutorialAllows(TutorialStep.Movement))SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
         public bool CanOpenSkills=>Session?.Active!=null&&(!Session.Active.Acted||Session.Active.Data.Skills.Any(s=>s!=null&&IsFollowup(s)&&Session.Resolver.CanUse(Session.Active,s,true)==null));

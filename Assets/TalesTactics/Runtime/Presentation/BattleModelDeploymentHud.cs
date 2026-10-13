@@ -80,7 +80,8 @@ namespace TalesTactics
             BeginPreparation("출전 편성");modelDeploymentLayout=true;ModelDeploymentLayout();
             foreach(var p in new[]{header,left,center,commands,footer})p.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.055f,.11f,1);
             selectedCharacter=Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1);
-            var heading=header.GetComponentInChildren<TMP_Text>();heading.text="출전 편성";
+            var heading=header.GetComponentInChildren<TMP_Text>();heading.text="";
+            FormationButton(header,"거점으로","‹ 거점 · 편성",Vector2.zero,new Vector2(.19f,1),ShowIntermissionHub,true,20);
             Place(heading.rectTransform,new Vector2(0,0),new Vector2(.19f,1),new Vector2(18,4),new Vector2(-6,-4));
             FormationText(header,battle.TrainingMode?"훈련 · Lv25":CampaignStages.Title(battle.SelectedStage),new Vector2(.19f,0),new Vector2(.49f,1),22,TextAlignmentOptions.Center);
             FormationText(header,battle.Campaign.Gold.ToString("N0")+" G",new Vector2(.49f,0),new Vector2(.70f,1),22,TextAlignmentOptions.Center).color=formationGold;

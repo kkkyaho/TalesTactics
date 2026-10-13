@@ -8,6 +8,8 @@ namespace TalesTactics
     {
         public bool StoryActive { get; private set; }
         public int StoryIndex { get; private set; }
+        public int StoryStage { get; private set; }
+        public StoryLine[] ReadStoryHistory() => storyLines == null ? Array.Empty<StoryLine>() : storyLines.Take(StoryIndex + 1).ToArray();
         StoryLine[] storyLines;
         Action storyFinished;
         public bool CanReadEnding => Session != null && !battleTraining && !RewardPending && Session.Result == BattleResult.Victory;
@@ -24,7 +26,7 @@ namespace TalesTactics
         {
             if (StoryActive || Session != null || !CanPlayCampaignStage(SelectedStage) || !CampaignStages.Unlocked(Campaign, SelectedStage) ||
                 after && !Campaign.StoryProgress.Contains(CampaignStages.Id(SelectedStage))) return;
-            OpenStory(SelectedStage, after, Hud.ShowDeployment);
+            OpenStory(SelectedStage, after, Hud.ShowIntermissionHub);
         }
         public void ReadEnding()
         {
@@ -39,7 +41,7 @@ namespace TalesTactics
                 string prefix=CampaignStages.Id(stage)+".route.";bool left=Campaign.StoryProgress.Contains(prefix+"left"),right=Campaign.StoryProgress.Contains(prefix+"right");
                 if(left||right){int choice=left?0:1;storyLines=storyLines.Concat(new[]{new StoryLine("선택의 기록",PersonalScenarios.RouteName(stage,choice)+"을 먼저 연결했다. 동료들이 그 길을 지키는 동안 "+PersonalScenarios.RouteName(stage,1-choice)+"까지 이어 모두의 귀환로를 확보했다.")}).ToArray();}
             }
-            StoryIndex = 0; StoryActive = true; Audio.Play("story");
+            StoryIndex = 0; StoryStage = stage; StoryActive = true; Audio.Play("story");
             Hud.ShowStoryLine(storyLines[StoryIndex], StoryIndex + 1, storyLines.Length);
         }
         public void AdvanceStory()
@@ -60,23 +62,4 @@ namespace TalesTactics
         }
     }
 
-    public sealed partial class BattleHud
-    {
-        RectTransform storyPanel;
-        public void ShowStoryLine(StoryLine line, int number, int count)
-        {
-            if (storyPanel == null)
-                storyPanel = Panel("CampaignStory", Vector2.zero, Vector2.one, new Vector2(20, 20), new Vector2(-20, -20));
-            storyPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0.045f, 0.07f, 0.1f, 1f);
-            storyPanel.gameObject.SetActive(true); storyPanel.SetAsLastSibling(); Clear(storyPanel);
-            Label(storyPanel, "TALES / TACTICS · 이야기", 25, 45, 25);
-            Label(storyPanel, line.Speaker, 100, 65, 24);
-            var body = Label(storyPanel, line.Text, 180, 260, 22);
-            body.enableAutoSizing = true; body.fontSizeMin = 16; body.fontSizeMax = 22;
-            Label(storyPanel, number + " / " + count, 450, 35, 17);
-            Button(storyPanel, number == count ? "이야기 마치기" : "다음 대사", 505, battle.AdvanceStory, true, 48);
-            Button(storyPanel, "이야기 건너뛰기", 565, battle.FinishStory);
-        }
-        public void HideStory() { if (storyPanel != null) storyPanel.gameObject.SetActive(false); }
-    }
 }

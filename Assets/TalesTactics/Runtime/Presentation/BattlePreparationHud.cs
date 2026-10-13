@@ -12,6 +12,7 @@ namespace TalesTactics
         int equipmentPage;
         void PreparationLayout()
         {
+            if(hubLayout){HubLayout();return;}
             if(intermissionLayout){IntermissionLayout();return;}
             if(modelDeploymentLayout){ModelDeploymentLayout();return;}
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-82),new Vector2(-12,-12));

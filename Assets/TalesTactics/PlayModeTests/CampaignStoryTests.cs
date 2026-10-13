@@ -47,6 +47,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.StoryActive, Is.True); Assert.That(director.Session, Is.Null);
             Click("다음 대사"); yield return null; Assert.That(director.StoryIndex, Is.EqualTo(1));
             Click("이야기 건너뛰기"); yield return null;
+            Assert.That(director.StoryActive, Is.True); Click("이야기 건너뛰기 확인"); yield return null;
             Assert.That(director.StoryActive, Is.False); Assert.That(director.Session.Grid.Tiles.Count, Is.EqualTo(99));
             foreach (var enemy in director.Session.Units.Where(u => u.Team == Team.Enemy)) enemy.Damage(99999, director.Session.Grid);
             director.SetState(new TurnStartState(director)); yield return null;

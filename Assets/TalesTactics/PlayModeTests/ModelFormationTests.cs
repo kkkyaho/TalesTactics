@@ -74,7 +74,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(rendered.Single(t=>t.name=="StatusValueSTR").text,Is.EqualTo(s.STR.ToString()));
             director.GetComponent<GamepadPointer>().Cancel();yield return null;Assert.That(director.Hud.UnitDetailsOpen,Is.False);
             Click("장비 슬롯: Armor");yield return null;
-            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("방어구 · 보유한 호환 장비")),Is.True);
+            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text=="방어구 선택"),Is.True);
             Click("출전 준비로");yield return null;Assert.That(director.Deployment,Is.EqualTo(party));
             Click("임무 선택");yield return null;Click("출전 준비로");yield return null;
             Click("전투 시작");yield return null;

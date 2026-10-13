@@ -1,10 +1,12 @@
 # TalesTactics — 개발 시작 안내
 
+**인터미션·초상화 대화 개선**: 임무와 출전 멤버 중심의 거점, 큰 초상화 옆 대화, 기록/자동 진행/건너뛰기 확인, 변경 수치를 우선 표시하는 장비 정비를 적용했습니다. [실제 화면·실행본·검증](Docs/IntermissionUx/README.md).
+
 **스킬 연출 품질 개선**: 시안의 화염 흐름·적을 감싸는 불꽃·연기와 넓은 검격 궤적, 준비/타격/후속 동작을 강화했습니다. 최신 검증·실제 전투 영상·실행본은 [VfxQuality](Docs/VfxQuality/README.md)를 따릅니다. 아래 실행본은 각 작업 시점의 이력입니다.
 
 **방향 아이콘 시안 적용**: 사각 배경을 제거하고 베이지색의 짧고 두꺼운 입체 화살표로 변경했습니다. 머리 위 위치와 조작을 유지합니다. 최신 실행본은 `Builds/FacingIconsWindows/TalesTactics.exe`입니다. [적용 범위·검증](Docs/FacingIcons/README.md).
 
-**전투 표현 개선 적용**: 작은 피해 숫자·초상화 EXP 게이지, 머리 위 방향 화살표, 실제 화염/속성 효과와 강화된 물리 공격 모션을 적용했습니다. 기존6장 플레이 제거와 새 메인20화·개인30단계를 유지합니다. 최신 실행본은 `Builds/CombatPresentationWindows/TalesTactics.exe`입니다. [적용 범위·실제 화면·검증](Docs/CombatPresentation/README.md). 5번 초상화 대화는 [개발안](Docs/PresentationProposal/proposal.html)에 남아 있습니다.
+**전투 표현 개선 적용**: 작은 피해 숫자·초상화 EXP 게이지, 머리 위 방향 화살표, 실제 화염/속성 효과와 강화된 물리 공격 모션을 적용했습니다. 기존6장 플레이 제거와 새 메인20화·개인30단계를 유지합니다. 당시 실행본은 `Builds/CombatPresentationWindows/TalesTactics.exe`입니다. [적용 범위·실제 화면·검증](Docs/CombatPresentation/README.md). 5번 초상화 대화는 후속 [인터미션 개선](Docs/IntermissionUx/README.md)에서 적용했습니다.
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 

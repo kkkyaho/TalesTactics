@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 인터미션과 초상화 대화
+
+`BattleIntermissionHub`는 기존 준비 패널을 거점으로 사용하며 `ShowDeployment`는 상세 편성 화면을 유지한다. 시작·재시작·슬롯 전환 시 거점으로 복귀한다. `BattleIntermissionEquipmentHud`는 기존 `EquipmentLoadout` 초안/저장 경로를 사용하면서 변경 수치를 우선 표시하고 전체 비교는 기존 모달 계층으로 연다.
+
+`CampaignStory`는 대사의 진행·완료 콜백을 보존하고 읽은 대사의 복사본과 현재 이야기의 장을 제공한다. `BattleStoryHud`가 영웅 초상화, 자동 진행, 읽은 대화 기록과 건너뛰기 확인을 맡는다. 대화 중 준비 메뉴를 CanvasGroup으로 차단하고 확인창에서는 대화 조작도 차단한다. 자동 진행은 비활성 창에서 정지하고 기록/확인/종료 시 해제된다. 검수 코드 `IntermissionUxReview`는 일반 빌드에 포함하지 않는다.
+
 ## 전투 표시 계층
 
 `ImpactChoreography`는 기존 `ImpactParticles` 풀에 준비/접촉 연출을 추가한다. 준비 효과는 움직이는 `CharacterMotion` 위치를 따르며, 불꽃 흐름·다중 화염·연기와 공격자 중심의 세 겹 검격 리본을 그린다. 준비 단계는 피해를 처리하지 않는다. `BoardActionPresentation`의 준비/복귀 시간과 `CharacterMotion`의 가속/접촉 정지/복귀를 함께 사용한다. `VfxQualityReview`는 별도 검수 빌드에서 실제 기술 실행을 촬영하며 일반 빌드에서는 제외한다. [범위와 근거](VfxQuality/README.md).
