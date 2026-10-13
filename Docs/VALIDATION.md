@@ -1,5 +1,9 @@
 # 검증 기록 — 2026-09-22
 
+## 2026-10-13 — 기존6장 제거·표현 개선 개발안
+
+실제 EditMode333/333·전체 그래픽 PlayMode132/132 및 API 참조4개 컴파일 통과. 구 장 출전/대사/중단 재개 차단·저장 성장/골드/이력 보존·새 메인 진입을 확인했다. Windows 일반 빌드 오류0/기존 경고3, 78.587975초. 실행본은 Builds/CurrentCampaignWindows/TalesTactics.exe이며 물리 입력 검수는 이번에 수행하지 않았다. 1·2·3·5번은 게임 미적용 개발안/시안으로, Edge headless의3개 폭×4탭12조합과 상호작용·이미지 로드·가로 넘침0·JS오류0을 확인했다. 상세 근거는 [PresentationProposal](PresentationProposal/README.md).
+
 ## 2026-10-13 — 경계를 잇는 의지 확장
 
 실제 Unity6000.6.0f1 EditMode333/333 (`editmode-enabled.xml`), 활성화 후 전체 그래픽 Editor PlayMode132/132 (`playmode-enabled.xml`) 통과. 메인20화/개인30단계 씬과 보상, 실제60기술 에셋,40전투의 세 턴 방식 저장/되돌리기/재도전, 고유 시련과 전용 무기, 민간인 표시, 신규/기존 슬롯 시작을 포함한다. 원본 로그는 `D:/TalesTacticsCrossover/d3d2/Logs`, 정리된 결과는 [CrossoverStatus](CrossoverStatus/README.md)에 있다.

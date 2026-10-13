@@ -7,12 +7,30 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator FreshProfilesStartAtCrossoverWhileExistingPreparationStaysIntact()
+        [UnityTest] public IEnumerator RetiredCampaignCannotStartReplayOrResumeAndOldProgressIsPreserved()
         {
-            Assert.That(director.Catalog.CrossoverReady,Is.True);
+            director.Catalog.CrossoverReady=true;
             director.ConfigureStorage(testStorage);Assert.That(director.SelectedStage,Is.EqualTo(CrossoverCampaign.FirstStage));
-            director.TrainingMode=false;director.SelectedStage=0;Assert.That(director.SavePreparation(),Is.True);
-            director.ConfigureStorage(testStorage);Assert.That(director.SelectedStage,Is.Zero);yield return null;
+            director.TrainingMode=false;director.SelectedStage=0;
+            director.Campaign.Gold=1234;director.Campaign.Get("cless").Level=12;director.Campaign.StoryProgress.Add("chapter2");
+            director.Campaign.SuspendedBattle=new BattleCheckpoint{Stage=0};
+            string before=JsonUtility.ToJson(director.Campaign);
+            for(int stage=0;stage<6;stage++)
+            {
+                director.SelectedStage=stage;director.RequestBattle();director.ReplayStory(false);director.BeginBattle();
+                Assert.That(director.StoryActive,Is.False);Assert.That(director.Session,Is.Null);
+            }
+            Assert.That(director.CanResumeCampaign,Is.False);Assert.That(director.ResumeBattle(),Is.False);
+            Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(before));
+            director.Campaign.SuspendedBattle=null;director.SelectedStage=0;Assert.That(director.SavePreparation(),Is.True);
+            director.ConfigureStorage(testStorage);Assert.That(director.SelectedStage,Is.EqualTo(CrossoverCampaign.FirstStage));
+            Assert.That(director.Campaign.Gold,Is.EqualTo(1234));Assert.That(director.Campaign.Get("cless").Level,Is.EqualTo(12));
+            Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter2"));
+            director.Hud.ShowChapterPage(0);yield return null;
+            Assert.That(director.Hud.ChapterPage,Is.EqualTo(CrossoverCampaign.FirstStage/3));
+            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("이전 6장 다시 보기")||t.text.Contains("유적의 경계")),Is.False);
+            director.RequestBattle();Assert.That(director.StoryActive,Is.True);director.FinishStory();yield return null;
+            Assert.That(director.Session.CampaignStage,Is.EqualTo(CrossoverCampaign.FirstStage));
         }
         [UnityTest] public IEnumerator RescueGroupsDisappearAtSafetyAndEvacueesFollowTheirEscort()
         {

@@ -231,7 +231,6 @@ namespace TalesTactics
             if(battle.Catalog.CrossoverReady)
             {
                 Button(commands,"동료의 이야기 · 30",294,ShowPersonalScenarios,true,44);
-                Button(commands,MissionListFirst==0?"20화 메인 시나리오":"이전 6장 다시 보기",350,()=>{battle.SelectedStage=MissionListFirst==0?CrossoverCampaign.FirstStage:0;battle.NormalizeDeployment();ShowChapterPage(battle.SelectedStage/3);},true,44);
             }
             Label(footer,"임무를 선택한 뒤 출전 준비로 돌아가 편성을 확정하세요.",20,60,20);
         }

@@ -10,6 +10,7 @@ namespace TalesTactics.PlayModeTests
     public partial class BattleSceneTests
     {
         BattleDirector director;
+        BattleCatalog legacyFixtureCatalog;
         string testStorage;
         [UnitySetUp] public IEnumerator LoadBattle()
         {
@@ -19,6 +20,8 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director,Is.Not.Null);
             director.Audio.PersonalMusicEnabled=false; // Keep regression tests independent of local user music.
             Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
+            // Old scenes remain explicit compatibility fixtures, never the production campaign menu.
+            legacyFixtureCatalog=Object.Instantiate(director.Catalog);legacyFixtureCatalog.CrossoverReady=false;director.Catalog=legacyFixtureCatalog;
             testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
             director.ConfigureStorage(testStorage);
             director.SelectedStage=0; // Existing shared fixtures exercise the original campaign explicitly.
@@ -32,6 +35,7 @@ namespace TalesTactics.PlayModeTests
             var battle=SceneManager.GetSceneByName("TestBattle");
             var empty=SceneManager.CreateScene("Test cleanup");SceneManager.SetActiveScene(empty);
             if(battle.isLoaded)yield return SceneManager.UnloadSceneAsync(battle);
+            if(legacyFixtureCatalog!=null)Object.Destroy(legacyFixtureCatalog);
             if(System.IO.Directory.Exists(testStorage))System.IO.Directory.Delete(testStorage,true);
             LogAssert.NoUnexpectedReceived();
         }

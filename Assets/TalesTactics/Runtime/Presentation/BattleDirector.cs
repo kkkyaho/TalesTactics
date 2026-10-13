@@ -108,7 +108,7 @@ namespace TalesTactics
         public void SetState(BattleState state){State=state;Target=null;Forecast=null;KeyboardTile=null;state.Enter();Board.RefreshFocus();}
         public void BeginBattle()
         {
-            if(!TrainingMode&&SelectedStage>=CampaignStages.LegacyCount&&!Catalog.CrossoverReady)return;
+            if(!TrainingMode&&!CanPlayCampaignStage(SelectedStage))return;
             NormalizeDeployment();
             if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;

@@ -16,13 +16,13 @@ namespace TalesTactics
         {
             if (StoryActive || Session != null || Deployment.Count == 0 || !TrainingMode && !CampaignStages.Unlocked(Campaign, SelectedStage)) return;
             if (TrainingMode) { BeginBattle(); return; }
-            if(SelectedStage>=CampaignStages.LegacyCount&&!Catalog.CrossoverReady)return;
+            if(!CanPlayCampaignStage(SelectedStage))return;
             if(PersonalScenarios.Contains(SelectedStage)&&Campaign.StoryProgress.Contains(PersonalScenarios.Flag(SelectedStage))){ReplayStory(true);return;}
             NormalizeDeployment();OpenStory(SelectedStage, false, BeginScenarioAfterStory);
         }
         public void ReplayStory(bool after)
         {
-            if (StoryActive || Session != null || !CampaignStages.Unlocked(Campaign, SelectedStage) ||
+            if (StoryActive || Session != null || !CanPlayCampaignStage(SelectedStage) || !CampaignStages.Unlocked(Campaign, SelectedStage) ||
                 after && !Campaign.StoryProgress.Contains(CampaignStages.Id(SelectedStage))) return;
             OpenStory(SelectedStage, after, Hud.ShowDeployment);
         }

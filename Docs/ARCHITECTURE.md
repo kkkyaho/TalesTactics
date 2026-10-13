@@ -1,5 +1,7 @@
 # 아키텍처
 
+현재 활성 캠페인은 메인20화/개인30단계다. BattleDirector.CanPlayCampaignStage가 출전·대사·중단 재개의 구 캠페인 진입을 막고, RestorePreparation은 구 장 선택을 새 메인1화로 바꾼다. 저장된 장 인덱스·성장·장비·기존 완료 이력 및 호환 코어는 유지한다. 레거시 PlayMode 검사는 복제된 비활성 확장 카탈로그로 분리한다. [범위](PresentationProposal/README.md).
+
 ## 경계를 잇는 의지 확장
 
 `CampaignStages`는 기존 인덱스0–5를 보존하고 `CrossoverCampaign` 메인6–25, `PersonalScenarios` 개인26–55를 라우팅한다. 메인 시작/순차 합류와 개인 해금은 별도 완료 플래그를 사용한다. `CampaignPromotion.StorySatisfied`는 기존2장 또는 새6화 완료를 공통 승급 조건으로 확인한다.

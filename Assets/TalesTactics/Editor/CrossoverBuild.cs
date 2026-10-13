@@ -8,6 +8,7 @@ namespace TalesTactics.Editor
     {
         public static void Development()=>Build("CrossoverDevelopment",BuildOptions.Development);
         public static void Release()=>Build("CrossoverWindows",BuildOptions.None);
+        public static void CurrentCampaign()=>Build("CurrentCampaignWindows",BuildOptions.None);
         // Same normal-player rendering/runtime; only isolated review fixtures are included.
         public static void VisualReview()=>Build("CrossoverReview",BuildOptions.None,new[]{"TALESTACTICS_REVIEW"});
         static void Build(string name,BuildOptions options,string[] defines=null)

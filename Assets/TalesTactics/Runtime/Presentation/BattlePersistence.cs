@@ -11,6 +11,9 @@ namespace TalesTactics
         PreferenceFile preferenceFile;
         public string SaveNotice {get;private set;}="";
         public bool CanSave=>Profiles==null||Profiles.Store.CanSave;
+        // Historical stage IDs remain readable for save compatibility, but are not playable in the current campaign.
+        public bool CanPlayCampaignStage(int stage)=>stage>=0&&stage<CampaignStages.Count&&(Catalog.CrossoverReady?stage>=CrossoverCampaign.FirstStage:stage<CampaignStages.LegacyCount);
+        public bool CanResumeCampaign=>Campaign.SuspendedBattle!=null&&CanPlayCampaignStage(Campaign.SuspendedBattle.Stage);
         public bool CanSuspend=>IsPlayerCommand&&!battleTraining&&!TutorialActive&&!StoryActive&&!TimingActive&&!RewardPending&&Session.Result==BattleResult.Ongoing;
         public void ConfigureStorage(string root,bool applyDisplay=false)
         {
@@ -24,10 +27,9 @@ namespace TalesTactics
         {
             Deployment.Clear();Deployment.AddRange(TacticalDevelopment.Recommended(Catalog));
             SelectedStage=Mathf.Clamp(Campaign.SelectedStage,0,CampaignStages.Count-1);
-            if(!CampaignStages.Unlocked(Campaign,SelectedStage))SelectedStage=0;
+            if(!CanPlayCampaignStage(SelectedStage)||!CampaignStages.Unlocked(Campaign,SelectedStage))SelectedStage=Catalog.CrossoverReady?CrossoverCampaign.FirstStage:0;
             if(Campaign.Deployment!=null&&Campaign.Deployment.Length>0&&Campaign.Deployment.Length<=Catalog.Rules.MaxDeployment&&Campaign.Deployment.Distinct().Count()==Campaign.Deployment.Length&&Campaign.Deployment.All(i=>i>=0&&i<Catalog.Characters.Length)){Deployment.Clear();Deployment.AddRange(Campaign.Deployment);}
-            if(Catalog.CrossoverReady&&Campaign.StoryProgress.Count==0&&Campaign.SuspendedBattle==null&&string.IsNullOrEmpty(Campaign.SavedAt))SelectedStage=CrossoverCampaign.FirstStage;
-            if(!Catalog.CrossoverReady&&SelectedStage>=CampaignStages.LegacyCount)SelectedStage=0;
+            if(Catalog.CrossoverReady&&Campaign.SuspendedBattle!=null&&!CanResumeCampaign)SaveNotice="기존 6장 캠페인은 종료되었습니다. 성장·장비를 유지하며 새 메인 1화부터 진행할 수 있습니다.";
             NormalizeDeployment();
         }
         bool SaveProgress(CampaignSave save)=>WriteProgress(save,false);
@@ -63,6 +65,7 @@ namespace TalesTactics
         public bool ResumeBattle()
         {
             if(Session!=null||StoryActive||Campaign.SuspendedBattle==null)return false;
+            if(!CanResumeCampaign){SaveNotice="종료된 기존 캠페인의 중단 전투입니다. 성장·장비와 원본 저장은 유지했습니다.";return false;}
             try
             {
                 var checkpoint=Campaign.SuspendedBattle;var restored=checkpoint.Restore(Catalog);

@@ -74,7 +74,7 @@ namespace TalesTactics
                     Label(systemWindow,battle.Profiles.Describe(slot),156+i*105,48,16);
                 }
                 Button(systemWindow,"현재 슬롯 저장",442,()=>{battle.SavePreparation();ShowSystemMenu();},battle.CanSave);HalfButton(systemWindow,0);
-                Button(systemWindow,"중단 전투 이어하기",442,()=>{if(!battle.ResumeBattle())ShowSystemMenu();},battle.Campaign.SuspendedBattle!=null&&battle.CanSave);HalfButton(systemWindow,1);
+                Button(systemWindow,"중단 전투 이어하기",442,()=>{if(!battle.ResumeBattle())ShowSystemMenu();},battle.CanResumeCampaign&&battle.CanSave);HalfButton(systemWindow,1);
                 Button(systemWindow,"저장 도움말",494,()=>ShowSystemMenu(6),true,32);
             }
             else

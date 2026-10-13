@@ -1,8 +1,10 @@
 # TalesTactics — 개발 시작 안내
 
+**전투·대화 표현 개선안**: [피해/EXP·방향·효과·초상화 대화 시안](Docs/PresentationProposal/proposal.html)을 먼저 검토합니다. 현재 플레이에서는 기존6장을 제거하고 새 메인20화·개인30단계를 유지합니다. 기존 저장의 성장·장비는 보존합니다. 실제 Unity333/333·132/132와 새 Windows 빌드 통과. [적용 범위·검증](Docs/PresentationProposal/README.md).
+
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**경계를 잇는 의지 확장 개발판**: 새 메인20화·개인 이야기30단계·전용 무기10종·고유 보스20종/실제60기술·4방향 모델과 모션을 추가했습니다. 기존6장과 저장은 유지합니다. 실제 Unity EditMode333/333·PlayMode132/132를 통과했으며 최종 Windows 직접 입력 검수는 미완료입니다. [범위·조작·검증](Docs/CrossoverStatus/README.md). 사용자 요청에 따라 현재 구현을 develop과 main에 반영하는 소스 스냅샷이며 공개 preview.5 패키지는 이번 변경을 포함하지 않습니다.
+**경계를 잇는 의지 확장 개발판**: 새 메인20화·개인 이야기30단계·전용 무기10종·고유 보스20종/실제60기술·4방향 모델과 모션을 추가했습니다. 기존 저장의 성장·장비를 유지합니다. 기존6장 플레이는 후속 요청으로 제거했습니다. 실제 Unity EditMode333/333·PlayMode132/132를 통과했으며 최종 Windows 직접 입력 검수는 미완료입니다. [범위·조작·검증](Docs/CrossoverStatus/README.md). 사용자 요청에 따라 현재 구현을 develop과 main에 반영하는 소스 스냅샷이며 공개 preview.5 패키지는 이번 변경을 포함하지 않습니다.
 
 **develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). preview.5에 포함됩니다.
 **[최신 Windows 다운로드 — 0.1.0-preview.5](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.5)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 전장 아트·영웅 모션·상태창·그래픽/UI·준비 화면 개선을 포함합니다. 저장 형식은 preview.4와 같으며 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview5/README.md).
@@ -54,7 +56,7 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 - 새 아트의 Windows 1~6장 대표 화면과 마우스 이동·취소·공격 미리보기·카메라 검수를 완료했습니다. [실행 화면과 검수 범위](Docs/PixelWindowsReview/README.md)를 참고하세요.
 - 6장에서 기본 공격·마신검·회복·다오스 블래스트와 재출전을 직접 확인했습니다. [대표 전투 연출 검수](Docs/PixelCombatReview/README.md)에 실제 발동 화면과 확인 범위를 기록했습니다.
 
-기존 캠페인은 **6장까지** 플레이할 수 있습니다. 유적 → 협곡 → 관측소 → 수문 → 중계핵의 첫 여정을 완결했습니다. 장 목록을3개씩 넘겨 순차 해금한 장을 선택합니다. 수호의 메달·단련 갑옷과 최초/반복 보상, 기존V2 저장 연계를 지원합니다. 기존 장 구성은 [CAMPAIGN.md](Docs/CAMPAIGN.md), 새20화·개인30단계는 [CrossoverStatus](Docs/CrossoverStatus/README.md)를 참고하세요.
+기존 **6장 캠페인은 현재 플레이에서 제거했습니다.** 아래는 그 캠페인의 구현 이력입니다. 유적 → 협곡 → 관측소 → 수문 → 중계핵의 첫 여정을 완결했습니다. 장 목록을3개씩 넘겨 순차 해금한 장을 선택합니다. 수호의 메달·단련 갑옷과 최초/반복 보상, 기존V2 저장 연계를 지원합니다. 기존 장 구성은 [CAMPAIGN.md](Docs/CAMPAIGN.md), 새20화·개인30단계는 [CrossoverStatus](Docs/CrossoverStatus/README.md)를 참고하세요.
 
 20종 전체에 중간 동작320개를 추가하고 기본 공격4·일반 기술5·궁극기4프레임을 연결했습니다. [중간 동작 및 외형 검수](Docs/AnimationPolish/README.md)에서 4방향 실제 렌더링을 확인할 수 있습니다.
 

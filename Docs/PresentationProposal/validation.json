@@ -1,0 +1,43 @@
+{
+  "scope": "Legacy campaign retirement implemented; presentation items 1/2/3/5 are proposals only",
+  "apiAssembliesPassed": 4,
+  "unity": "6000.6.0f1",
+  "browser": {
+    "errors": 0,
+    "file": "browser-validation.json",
+    "viewportWidths": [
+      1440,
+      1024,
+      390
+    ],
+    "panels": 12
+  },
+  "tests": [
+    {
+      "file": "D:/TalesTacticsCrossover/d3d2/Logs/editmode-retired-campaign.xml",
+      "total": 333,
+      "passed": 333,
+      "failed": 0,
+      "duration": 9.0736964,
+      "sha256": "76C897731C042EF1D89CB5B723E7D9806EB1ACC677E0384F42D636FEE93C657C",
+      "mode": "editmode"
+    },
+    {
+      "file": "D:/TalesTacticsCrossover/d3d2/Logs/playmode-retired-campaign.xml",
+      "total": 132,
+      "passed": 132,
+      "failed": 0,
+      "duration": 321.0806639,
+      "sha256": "C10CC16CD91FC1CD98AF9596E8605A48ACCFBA020707D1247DF0AB3E7BC64210",
+      "mode": "playmode"
+    }
+  ],
+  "windows": {
+    "exeSha256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
+    "runtimeSha256": "B9629F1CFB2FB5176EDF4097E524B2BAA982F7A933D746C1DD7E2AB06CB250C9",
+    "path": "Builds/CurrentCampaignWindows",
+    "manualInputChecked": false,
+    "reviewHelperPresent": false,
+    "result": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:01:18.5879750\nSize 949940200"
+  }
+}

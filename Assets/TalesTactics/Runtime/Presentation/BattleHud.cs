@@ -10,7 +10,7 @@ namespace TalesTactics
         BattleDirector battle;
         int chapterPage;
         public int ChapterPage=>chapterPage;
-        int MissionListFirst=>battle.Catalog.CrossoverReady&&battle.SelectedStage>=CampaignStages.LegacyCount?CrossoverCampaign.FirstStage:0;
+        int MissionListFirst=>battle.Catalog.CrossoverReady?CrossoverCampaign.FirstStage:0;
         int MissionListEnd=>MissionListFirst==0?CampaignStages.LegacyCount:CrossoverCampaign.LastStage+1;
         public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,MissionListFirst/3,(MissionListEnd-1)/3);ShowDeploymentMissions();}
         RectTransform canvas,left,commands,header,footer;
