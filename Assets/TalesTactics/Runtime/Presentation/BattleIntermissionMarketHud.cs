@@ -49,20 +49,20 @@ namespace TalesTactics
                 FormationText(commands,SlotName(item.Slot)+"\n"+ReadableBonus(item),new Vector2(.48f,.64f),new Vector2(.98f,.82f),19).color=formationGold;
                 var stock=IntermissionPanel(commands,"Stock",new Vector2(.025f,.56f),new Vector2(.975f,.65f));
                 FormationText(stock,"보유 "+CampaignInventory.Owned(battle.Campaign,item.Id)+"  /  장착 중 "+CampaignInventory.Equipped(battle.Campaign,item.Id)+"  /  미장착 "+CampaignInventory.Available(battle.Campaign,item.Id),Vector2.zero,Vector2.one,17,TextAlignmentOptions.Center);
-                FormationText(commands,selling?"매각 정보":"구매 정보",new Vector2(.04f,.48f),new Vector2(.96f,.56f),22).color=formationGold;
-                FormationText(commands,"거래 수량                     1개\n"+(selling?"매각가":"가격")+"                     "+price.ToString("N0")+" G\n현재 골드             "+battle.Campaign.Gold.ToString("N0")+" G",new Vector2(.04f,.31f),new Vector2(.96f,.48f),19);
+                if(!selling)DrawPurchasePreview(item,current);
+                else FormationText(commands,"미장착 장비 1개 매각",new Vector2(.04f,.36f),new Vector2(.96f,.56f),20);
                 long balance=selling?(long)battle.Campaign.Gold+price:(long)battle.Campaign.Gold-price;
                 FormationText(commands,"거래 후    "+(balance<0?"골드 부족":balance.ToString("N0")+" G"),new Vector2(.04f,.23f),new Vector2(.96f,.31f),24).color=balance<0?new Color(1,.63f,.56f):formationTeal;
                 string reason=selling?SaleBlocked(item):ShopUnavailable(item);
                 FormationText(commands,reason??"1개 거래 · 즉시 저장됩니다.",new Vector2(.04f,.12f),new Vector2(.96f,.23f),17);
                 FormationButton(commands,selling?"보유 장비 목록으로":"상품 목록으로","선택 해제",new Vector2(.025f,.015f),new Vector2(.40f,.11f),()=>RenderMarket(selling,current));
                 if(!selling)FormationButton(commands,"구매 장비 장착","구매 장비 장착",new Vector2(.40f,.015f),new Vector2(.975f,.11f),()=>ShowPurchaseRecipients(item,current),CampaignInventory.Available(battle.Campaign,item.Id)>0);
-                IntermissionPrimary(selling?"1개 매각 · 저장":"구매 · 저장",selling?"1개 매각 · 저장":"1개 구매 · 저장",()=>
+                IntermissionPrimary(selling?"1개 매각 · 저장":"구매 · 저장",price.ToString("N0")+" G · "+(selling?"매각 · 저장":"구매 · 저장"),()=>
                 {
                     string blocked=selling?SaleBlocked(item):ShopUnavailable(item);
                     if(blocked!=null){RenderMarket(selling,current,item,blocked);return;}
                     bool saved=selling?CampaignInventory.TrySell(battle.Campaign,item,battle.PersistCampaign):CampaignInventory.TryBuy(battle.Campaign,item,battle.PersistCampaign);
-                    RenderMarket(selling,current,item,saved?item.DisplayName+(selling?" 1개를 매각했습니다.":" 1개를 구매했습니다."):"저장 실패. 소지금과 장비 수량을 유지했습니다.");
+                    RenderMarket(selling,current,item,saved?item.DisplayName+(selling?" 1개 매각 완료":" 1개 구매 완료 · 장착할 캐릭터를 선택하세요")+" · 잔액 "+battle.Campaign.Gold.ToString("N0")+" G":"저장 실패. 소지금과 장비 수량을 유지했습니다.");
                 },reason==null);
             }
             if(selected==null)IntermissionPrimary("거래 대기","장비를 선택하세요",()=>{},false);

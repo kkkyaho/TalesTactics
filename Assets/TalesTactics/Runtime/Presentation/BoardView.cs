@@ -97,9 +97,16 @@ namespace TalesTactics
                 scenery.Decorate(t,session.Grid,session.Rules.TileHeight);
             }
             scenery.Complete(session.Grid,session.Rules.TileHeight);
+            if(session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)
+            {
+                var goal=Overlay("Objective beacon",root,0);goal.Corners(.46f,new Color(1,.79f,.32f,.95f));
+                goal.transform.position=session.Grid[session.Destination].WorldPosition(session.Rules.TileHeight)+Vector3.up*.045f;
+                var pole=ThinLine("Objective pennant",goal.transform,new Color(1,.79f,.32f,.85f),.035f,false);pole.positionCount=4;pole.SetPositions(new[]{new Vector3(.43f,0,.43f),new Vector3(.43f,.55f,.43f),new Vector3(.17f,.44f,.43f),new Vector3(.43f,.35f,.43f)});
+            }
             if(placeholder==null)placeholder=CreatePlaceholder();
             var overlay=new GameObject("Unit Health Overlay",typeof(RectTransform),typeof(Canvas));overlay.transform.SetParent(root,false);
             healthCanvas=overlay.GetComponent<Canvas>();healthCanvas.renderMode=RenderMode.ScreenSpaceOverlay;healthCanvas.sortingOrder=-1;
+            overlay.AddComponent<UnitHealthLayout>();
             foreach(var u in session.Units)CreateUnitVisual(u);
             var path=new GameObject("Movement Path");path.transform.SetParent(root,false);line=path.AddComponent<LineRenderer>();line.sharedMaterial=HighlightMaterial;line.startWidth=line.endWidth=0.035f;line.numCornerVertices=3;line.numCapVertices=3;line.startColor=line.endColor=PathColor;SetColor(line,PathColor);
             battlefieldBounds=new Bounds();bool first=true;

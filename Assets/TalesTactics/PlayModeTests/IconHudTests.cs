@@ -21,7 +21,7 @@ namespace TalesTactics.PlayModeTests
                 foreach(var card in cards)
                 {
                     found.Add(card.name.Split(new[]{" · MP"},System.StringSplitOptions.None)[0]);
-                    Assert.That(card.IsInteractable(),Is.True);Assert.That(((RectTransform)card.transform).rect.height,Is.EqualTo(28));
+                    Assert.That(card.IsInteractable(),Is.True);Assert.That(((RectTransform)card.transform).rect.height,Is.EqualTo(40));
                 }
                 var next=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().SingleOrDefault(b=>b.name=="다음 기술 페이지");
                 if(next==null||!next.IsInteractable())break;

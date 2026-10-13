@@ -122,7 +122,9 @@ namespace TalesTactics
             FormationButton(footer,"전체 해제","전체 해제",new Vector2(.46f,.16f),new Vector2(.60f,.84f),()=>{battle.Deployment.Clear();RenderDeployment();},battle.Deployment.Count>0,21);
             FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));RenderDeployment();},true,21);
             var start=FormationButton(footer,"전투 시작","출전 확정",new Vector2(.76f,.12f),new Vector2(1,.88f),battle.RequestBattle,battle.Deployment.Count>0,28);
-            start.GetComponent<UnityEngine.UI.Image>().color=new Color(.04f,.29f,.42f);
+            StyleButton(start,HudRole.Primary);
+            foreach(var b in toolbar.GetComponentsInChildren<UnityEngine.UI.Button>())StyleButton(b.transform,HudRole.Quiet);
+            foreach(var b in left.GetComponentsInChildren<UnityEngine.UI.Button>())StyleButton(b.transform,HudRole.Tab);
         }
         void DrawFormationModel(RectTransform grid,int index,int slot)
         {
@@ -136,11 +138,13 @@ namespace TalesTactics
             model.offsetMin=new Vector2(8,78);model.offsetMax=new Vector2(-8,18);
             model.GetComponent<UnityEngine.UI.Image>().color=Color.white;model.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             var button=model.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.normalColor=Color.clear;
-            colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);button.colors=colors;
+            colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);colors.disabledColor=Color.clear;button.colors=colors;
             var body=FormationRect(model,"BattleModel",Vector2.zero,Vector2.one);
             body.pivot=new Vector2(.5f,0);Place(body,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
             var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
             FormationIcon(cell,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.21f,.94f),formationGold);
+            if(deployed)FormationIcon(cell,"check",new Vector2(.80f,.83f),new Vector2(.95f,.94f),formationTeal);
+            if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
             if(selected)FormationText(cell,"▼",new Vector2(.32f,.89f),new Vector2(.68f,1),23,TextAlignmentOptions.Center).color=formationGold;
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
             var toggle=FormationButton(caption,"편성 변경: "+c.Id,deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment,17);

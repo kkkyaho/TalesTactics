@@ -11,6 +11,7 @@ Shader "TalesTactics/Architectural Terrain"
         _Unlit("Unlit",Float)=0
         _WorldFloor("Continuous floor",Float)=0
         _WorldCliff("Continuous cliff",Float)=0
+        _DetailContrast("Detail contrast",Range(0,1))=1
         _FloorExtent("Floor extent",Vector)=(12,12,0,0)
     }
     SubShader
@@ -26,7 +27,7 @@ Shader "TalesTactics/Architectural Terrain"
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
             CBUFFER_START(UnityPerMaterial)
             float4 _AtlasRect, _BaseColor, _KeyColor, _FillColor;
-            float _Water, _Unlit,_WorldFloor,_WorldCliff;float4 _FloorExtent;
+            float _Water, _Unlit,_WorldFloor,_WorldCliff,_DetailContrast;float4 _FloorExtent;
             float4 _TerrainShadows[24];int _ShadowCount;
             CBUFFER_END
             struct Attributes {float4 positionOS:POSITION; float3 normalOS:NORMAL; float2 uv:TEXCOORD0; float4 color:COLOR;};
@@ -55,6 +56,7 @@ Shader "TalesTactics/Architectural Terrain"
                     c*=.83+.12*sin(i.world.x*2.7+i.world.z*1.4+_Time.y*.8);
                 }
                 half key=saturate(dot(normalize(i.normalWS),normalize(float3(-.45,.85,-.35))));
+                c=lerp(half3(.43,.44,.43),c,_DetailContrast);
                 half3 illumination=lerp(_FillColor.rgb*.65,_KeyColor.rgb*1.06,key);
                 illumination=lerp(illumination,1,_Unlit);
                 // Architectural depth is shaded independently of the unlit character art.

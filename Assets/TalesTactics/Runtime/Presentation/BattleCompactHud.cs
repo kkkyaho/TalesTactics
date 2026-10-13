@@ -60,7 +60,7 @@ namespace TalesTactics
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,104,12+26*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
+            PlaceBesideUnits(commands,unit.Position,120,24+26*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
@@ -90,14 +90,15 @@ namespace TalesTactics
         void ArrangeCommandMenu()
         {
             string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
-            string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","턴 종료"};
+            string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","아군 턴 종료"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
                 r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
                 int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
-                r.anchoredPosition=new Vector2(4,-6-row*26);r.sizeDelta=new Vector2(96,26);
+                r.anchoredPosition=new Vector2(4,-6-row*26-(i==6?12:0));r.sizeDelta=new Vector2(112,26);
+                if(i==6){var separator=FormationRect(commands,"PhaseSeparator",new Vector2(0,1),new Vector2(1,1));separator.offsetMin=new Vector2(10,-row*26-5);separator.offsetMax=new Vector2(-10,-row*26-4);var line=separator.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=new Color(.3f,.4f,.5f,.5f);line.raycastTarget=false;}
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;

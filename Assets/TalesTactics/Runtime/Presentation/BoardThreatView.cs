@@ -55,6 +55,8 @@ namespace TalesTactics
                 bool done=unit.Alive&&unit.Team==Team.Player&&team!=null&&(team.Phase!=Team.Player||!team.CanSelect(unit));
                 pair.Value.GetPropertyBlock(toneProperties);
                 toneProperties.SetFloat("_Saturation",done?.38f:1);toneProperties.SetFloat("_Brightness",done?.84f:1);
+                int chapter=battle.Session.CampaignStage;
+                toneProperties.SetColor("_EnvironmentTint",chapter==2?new Color(1,.97f,.91f):chapter>=3?new Color(.94f,.98f,1):new Color(.97f,1,.96f));
                 pair.Value.SetPropertyBlock(toneProperties);
             }
             bool visible=!battle.StoryActive&&!battle.Hud.InputModalOpen;

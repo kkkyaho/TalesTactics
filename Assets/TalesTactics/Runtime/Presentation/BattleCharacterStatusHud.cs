@@ -43,7 +43,7 @@ namespace TalesTactics
         {
             if(!CharacterStatusOpen)return;
             float scale=Mathf.Clamp(battle.Preferences.TextScale,.8f,1.5f);
-            unitDetails.sizeDelta=new Vector2(Mathf.Min(900*scale,canvas.rect.width-32),Mathf.Min(660*scale,canvas.rect.height-32));
+            unitDetails.sizeDelta=new Vector2(Mathf.Min(900*scale,canvas.rect.width-32),Mathf.Min(720*scale,canvas.rect.height-32));
         }
         public void HandleStatusKeyboard()
         {
@@ -94,7 +94,7 @@ namespace TalesTactics
             FormationText(unitDetails,"Lv "+u.Level+" · "+(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" · "+(u.Team==Team.Player?"아군":"적군"),new Vector2(.15f,.84f),new Vector2(.86f,.9f),18).color=formationGold;
             FormationButton(unitDetails,"닫기","닫기",new Vector2(.87f,.9f),new Vector2(.99f,.98f),()=>CloseUnitDetails());
             string[] tabs={"능력","기술","장비"};
-            for(int i=0;i<3;i++){int tab=i;var r=FormationButton(unitDetails,"상태 "+tabs[i],tabs[i],new Vector2(.02f+i*.32f,.765f),new Vector2(.34f+i*.32f,.835f),()=>{statusTab=tab;statusPage=0;RenderCharacterStatus();},true,20);if(tab==statusTab)r.GetComponent<Image>().color=new Color(.04f,.3f,.35f);}
+            for(int i=0;i<3;i++){int tab=i;var r=FormationButton(unitDetails,"상태 "+tabs[i],tabs[i],new Vector2(.02f+i*.32f,.765f),new Vector2(.34f+i*.32f,.835f),()=>{statusTab=tab;statusPage=0;RenderCharacterStatus();},true,20);StyleButton(r,HudRole.Tab,tab==statusTab);}
             var model=StatusSurface(unitDetails,"StatusModel",new Vector2(.02f,.15f),new Vector2(.32f,.75f));
             string context=u.Team==Team.Enemy?"전술 · "+EnemyTactics.Describe(u):"특성 · "+TacticalDevelopment.TraitName(u.Trait)+"\n"+TacticalDevelopment.TraitDescription(u.Trait);
             FormationText(model,context,new Vector2(.06f,.7f),new Vector2(.94f,.97f),16).color=formationGold;
@@ -139,18 +139,22 @@ namespace TalesTactics
         void DrawStatusSkills(RectTransform parent,UnitRuntime u)
         {
             var skills=new[]{u.Data.BasicAttack}.Concat(u.Data.Skills??new SkillData[0]).Concat(u.TacticalSkills??new SkillData[0]).Concat(new[]{u.Data.UltimateSkill}).Where(s=>s!=null).Distinct().ToArray();
-            int pages=Math.Max(1,(skills.Length+3)/4);statusPage=Mathf.Clamp(statusPage,0,pages-1);
-            for(int i=0;i<4&&statusPage*4+i<skills.Length;i++)
+            int pageSize=battle.Preferences.TextScale>1.1f?4:5;
+            int pages=Math.Max(1,(skills.Length+pageSize-1)/pageSize);statusPage=Mathf.Clamp(statusPage,0,pages-1);
+            for(int i=0;i<pageSize&&statusPage*pageSize+i<skills.Length;i++)
             {
-                var s=skills[statusPage*4+i];float top=1-i*.215f;
-                var row=StatusSurface(parent,"StatusSkill"+i,new Vector2(0,top-.205f),new Vector2(1,top));
-                FormationIcon(row,s.IsUltimate?"skill":FormationWeaponIcon(u.Data),new Vector2(.01f,.2f),new Vector2(.09f,.8f),formationGold);
-                FormationText(row,s.DisplayName+(u.Unlocked(s)?"":" · Lv"+s.UnlockLevel+" 해금"),new Vector2(.1f,.5f),new Vector2(.99f,1),20).color=u.Unlocked(s)?formationTeal:Color.gray;
+                var s=skills[statusPage*pageSize+i];float stride=.86f/pageSize,top=1-i*stride;
+                var row=StatusSurface(parent,"StatusSkill"+i,new Vector2(0,top-stride+.01f),new Vector2(1,top));row.offsetMin=new Vector2(4,2);row.offsetMax=new Vector2(-4,-2);
+                FormationIcon(row,SkillVisualLanguage.Icon(s),new Vector2(.01f,.2f),new Vector2(.09f,.8f),SkillVisualLanguage.Tint(s));
+                StatusSkillLine(row,s.DisplayName+(u.Unlocked(s)?"":" · Lv"+s.UnlockLevel+" 해금"),.64f,1,18).color=u.Unlocked(s)?formationTeal:Color.gray;
                 string cost="MP "+s.MPCost+(s.HPCost>0?" · HP "+s.HPCost:"")+(s.HPPercentCost>0?" · HP "+s.HPPercentCost.ToString("P0"):"")+(s.GaugeCost>0?" · SP "+s.GaugeCost:"");
-                FormationText(row,cost+" · "+SkillSummary.Describe(s),new Vector2(.1f,.04f),new Vector2(.99f,.51f),16);
+                StatusSkillLine(row,cost+" · "+SkillVisualLanguage.Range(s),.32f,.64f,14);
+                StatusSkillLine(row,SkillSummary.Describe(s),0,.32f,14);
             }
             StatusPages(parent,pages);
         }
+        TMP_Text StatusSkillLine(RectTransform row,string text,float bottom,float top,int size)
+        {var label=FormationText(row,text,new Vector2(.1f,bottom),new Vector2(.99f,top),size);label.rectTransform.offsetMin=new Vector2(6,0);label.rectTransform.offsetMax=new Vector2(-6,0);return label;}
         void DrawStatusEquipment(RectTransform parent,UnitRuntime u)
         {
             string[] slots={"무기","방어구","장신구"};

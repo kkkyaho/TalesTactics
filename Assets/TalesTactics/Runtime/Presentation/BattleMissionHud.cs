@@ -77,6 +77,12 @@ namespace TalesTactics
                     for(int i=0;i<escorts.Length;i++){var portrait=InfoPortrait(ward,escorts[i].Data,12+i*spacing,58,size,60);if(!escorts[i].Alive)portrait.color=new Color(.4f,.4f,.4f,.5f);}
                     Label(ward,s.ObjectiveUnit.IntentPhase>0?EnemyTactics.Describe(s.ObjectiveUnit):"호위 격파 시 약화",126,48,15);
                 }
+                else if(s==null&&!training)
+                {
+                    var preview=FormationRect(missionWindow,"MissionMapPreview",new Vector2(0,1),new Vector2(0,1));preview.offsetMin=new Vector2(20,-515);preview.offsetMax=new Vector2(230,-337);preview.gameObject.AddComponent<MissionMapPreview>().Initialize(stage);
+                    string roles=string.Join(" · ",Enumerable.Range(0,CampaignEncounters.Initial(stage,!battle.UseCT&&!battle.UseFixedSpeedOrder)).Select(i=>EnemyRoles.Name(CampaignEncounters.Enemy(battle.Catalog,stage,i))).Distinct());
+                    var info=Label(missionWindow,"전장 미리보기\n"+(CampaignMissions.Kind(stage)==ObjectiveKind.Reach||CampaignMissions.Kind(stage)==ObjectiveKind.Escort?"금색: 도착 목표\n":"")+"\n"+roles+(PreparationWave(stage,false)?"\n3턴 · 적 증원 2명":""),340,176,16);info.rectTransform.offsetMin=new Vector2(244,info.rectTransform.offsetMin.y);
+                }
                 else Label(missionWindow,s!=null?MissionBriefing.Progress(s)+(s.ReinforcementMission?"\n"+s.EventSummary:""):PreparationWave(stage,training)?"3턴 시작 · 적 증원 2명":"출전 후 진행 상황 표시",356,138,20);
                 Button(missionWindow,missionDetails?"요약 보기":"임무 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);
             }

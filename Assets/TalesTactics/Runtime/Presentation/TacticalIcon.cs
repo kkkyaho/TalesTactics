@@ -11,6 +11,11 @@ namespace TalesTactics
             mesh.Clear();
             switch(Kind)
             {
+                case "check": Line(mesh,.17f,.5f,.4f,.25f,.12f);Line(mesh,.4f,.25f,.86f,.8f,.12f);break;
+                case "cone": Poly(mesh,new[]{new Vector2(.5f,.12f),new Vector2(.12f,.85f),new Vector2(.88f,.85f)});break;
+                case "single": Line(mesh,.25f,.25f,.75f,.25f);Line(mesh,.75f,.25f,.75f,.75f);Line(mesh,.75f,.75f,.25f,.75f);Line(mesh,.25f,.75f,.25f,.25f);break;
+                case "line": for(int n=0;n<3;n++){float y=.15f+n*.27f;Poly(mesh,new[]{new Vector2(.36f,y),new Vector2(.64f,y),new Vector2(.64f,y+.2f),new Vector2(.36f,y+.2f)});}break;
+                case "area": for(int x=0;x<3;x++)for(int y=0;y<3;y++)if(x==1||y==1){float a=.12f+x*.27f,b=.12f+y*.27f;Poly(mesh,new[]{new Vector2(a,b),new Vector2(a+.22f,b),new Vector2(a+.22f,b+.22f),new Vector2(a,b+.22f)});}break;
                 case "chevron": Line(mesh,.3f,.2f,.65f,.5f,.095f);Line(mesh,.65f,.5f,.3f,.8f,.095f);break;
                 case "move": Line(mesh,.25f,.3f,.65f,.3f);Line(mesh,.65f,.3f,.65f,.65f);Line(mesh,.45f,.5f,.65f,.7f);Line(mesh,.65f,.7f,.85f,.5f);break;
                 case "accessory": Line(mesh,.3f,.7f,.4f,.9f,.04f);Line(mesh,.4f,.9f,.6f,.9f,.04f);Line(mesh,.6f,.9f,.7f,.7f,.04f);Poly(mesh,new[]{new Vector2(.5f,.12f),new Vector2(.2f,.5f),new Vector2(.33f,.7f),new Vector2(.67f,.7f),new Vector2(.8f,.5f)});break;

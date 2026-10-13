@@ -19,7 +19,7 @@ namespace TalesTactics
         {
             PrepareUnitModal(battle.Session.Active);if(!UnitDetailsOpen)return;Clear(unitDetails);
             Label(unitDetails,"전술 표시와 조작",16,36,23);
-            Label(unitDetails,"◇ 이동 후 공격 가능 · 현재 MP/배치 기준\n× 예고 위치 · 적이 다음 자기 턴에 공격\n사각형: 행동 / 마름모: 선택 / 삼각형: 방향\n청색 테두리: 턴 순서와 연결된 유닛\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n메뉴 F5: 행동 되감기 · 전투당 3회\n반격/지원: 능력창에서 남은 횟수 확인",66,320,17);
+            Label(unitDetails,"◇ 이동 후 공격 가능 · 현재 MP/배치 기준\n× 예고 위치 · 적이 다음 자기 턴에 공격\n상단 초상: 이동/공격 아이콘 · 체크: 완료\n청록 테두리: 현재 선택한 아군\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n메뉴 F5: 행동 되감기 · 전투당 3회\n반격/지원: 능력창에서 남은 횟수 확인",66,320,17);
             Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
         }
         public void ShowMoveRisk(Vector2Int p,int enemies)

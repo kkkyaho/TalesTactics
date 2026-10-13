@@ -36,17 +36,25 @@ namespace TalesTactics
             {
                 var g=new GameObject(team!=null?"아군 선택: "+unit.Data.Id:"NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
                 float x=team!=null?-20-orderNow.Length*24+i*48:-120+i*48;
-                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-62),new Vector2(x+40,team!=null?-22:-6));
-                var img=g.GetComponent<UnityEngine.UI.Image>();img.sprite=unit.Data.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=true;
-                if(team!=null&&!team.CanSelect(unit))img.color=new Color(.4f,.4f,.4f,.7f);
+                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-62),new Vector2(x+42,team!=null?-20:-6));
+                var img=g.GetComponent<UnityEngine.UI.Image>();img.color=unit==battle.Session.Active?new Color(.08f,.35f,.39f):new Color(.07f,.11f,.17f);img.raycastTarget=true;
+                var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.27f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
+                if(team!=null&&!team.CanSelect(unit))foreach(var graphic in art.GetComponentsInChildren<UnityEngine.UI.Graphic>())graphic.color=new Color(.43f,.48f,.53f,.8f);
                 var portraitButton=g.AddComponent<UnityEngine.UI.Button>();portraitButton.interactable=team!=null?battle.CanSelectPlayerUnit(unit):battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState);
                 portraitButton.onClick.AddListener(()=>{if(team!=null)battle.SelectPlayerUnit(unit);else{battle.InspectUnit(unit);ShowUnitDetails(unit);}});
                 var hover=g.AddComponent<UnityEngine.EventSystems.EventTrigger>();
                 foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select,UnityEngine.EventSystems.EventTriggerType.PointerExit,UnityEngine.EventSystems.EventTriggerType.Deselect})
                 {var kind=type;var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>battle.HoveredUnit=kind==UnityEngine.EventSystems.EventTriggerType.PointerEnter||kind==UnityEngine.EventSystems.EventTriggerType.Select?unit:null);hover.triggers.Add(entry);}
-                int previous=System.Array.IndexOf(lastOrder,unit),rank=i++;string state=battle.Session.ActionState(unit);
-                var order=Label(g.transform,team!=null?state:i.ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),team!=null?22:32,18,10);order.alignment=TextAlignmentOptions.BottomRight;order.rectTransform.sizeDelta=new Vector2(-2,18);order.textWrappingMode=TMPro.TextWrappingModes.NoWrap;order.enableAutoSizing=true;order.fontSizeMin=8;order.fontSizeMax=10;
-                var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=team!=null&&unit==battle.Session.Active?new Color(1,.8f,.35f):unit.Team==Team.Player?new Color(.3f,.75f,1):new Color(1,.35f,.3f);border.effectDistance=new Vector2(1,-1);
+                int previous=System.Array.IndexOf(lastOrder,unit),rank=i++;
+                var state=FormationRect(g.transform,"ActionAvailability",new Vector2(.06f,.02f),new Vector2(.94f,.27f));
+                if(team!=null)
+                {
+                    if(!unit.Alive)FormationText(state,"KO",Vector2.zero,Vector2.one,10,TextAlignmentOptions.Center);
+                    else if(!team.CanSelect(unit))FormationIcon(state,"check",new Vector2(.32f,0),new Vector2(.68f,1),new Color(.6f,.7f,.73f));
+                    else {FormationIcon(state,"move",new Vector2(.08f,0),new Vector2(.42f,1),unit.Moved?new Color(.23f,.29f,.34f):formationTeal);FormationIcon(state,"attack",new Vector2(.58f,0),new Vector2(.92f,1),unit.Acted?new Color(.23f,.29f,.34f):formationGold);}
+                }
+                else FormationText(state,i.ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),Vector2.zero,Vector2.one,10,TextAlignmentOptions.Center);
+                var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=unit==battle.Session.Active?formationTeal:new Color(.22f,.31f,.39f);border.effectDistance=new Vector2(1,-1);
             }
             lastOrder=orderNow;
         }
@@ -57,9 +65,9 @@ namespace TalesTactics
             for(int i=0;i<names.Length;i++)
             {
                 var child=header.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
-                var r=(RectTransform)child;r.sizeDelta=new Vector2(40,40);r.anchoredPosition=new Vector2(-8-(8-i)*44,-12);
-                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=i==0||i==2||i==3||i==4||i==6?24:13;
-                text.rectTransform.sizeDelta=new Vector2(-2,36);
+                var r=(RectTransform)child;r.sizeDelta=new Vector2(36,32);r.anchoredPosition=new Vector2(-8-(8-i)*39,-17);
+                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=i==0||i==2||i==3||i==4||i==6?20:13;
+                text.rectTransform.sizeDelta=new Vector2(-2,29);StyleButton(child,HudRole.Quiet);
             }
         }
         void DrawSkillCards(UnitRuntime unit)
@@ -71,7 +79,7 @@ namespace TalesTactics
             var legacy=(battle.State as SkillDetailsState)?.Skill;
             shownSkill=legacy??(page.Contains(battle.LastSkill)?battle.LastSkill:page.FirstOrDefault());
             int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>4;
-            float infoY=38+rows*30,buttonsY=infoY+(shownSkill!=null?28:0)+(pages?28:0);
+            float infoY=38+rows*42,buttonsY=infoY+(shownSkill!=null?28:0)+(pages?28:0);
             SkillCardHeight=buttonsY+(shownSkill!=null?44:8);
             Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",7,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,26);
             var filter=(RectTransform)commands.GetChild(commands.childCount-1);filter.anchorMax=new Vector2(.72f,1);CompactSkillButton(filter);
@@ -85,14 +93,16 @@ namespace TalesTactics
                 int i=System.Array.IndexOf(page,skill);
                 int mpCost=battle.Session.Resolver.MPCost(unit,skill);
                 bool usable=battle.Session.Resolver.CanUse(unit,skill,battle.IsFollowup(skill))==null;
-                Button(commands,skill.DisplayName+" · MP"+mpCost,38+i*30,()=>{if(usable)battle.SelectSkill(skill);else ShowSkillInformation(unit,skill);},true,28);
+                Button(commands,skill.DisplayName+" · MP"+mpCost,38+i*42,()=>{if(usable)battle.SelectSkill(skill);else ShowSkillInformation(unit,skill);},true,40);
                 var r=(RectTransform)commands.GetChild(commands.childCount-1);
                 var button=r.GetComponent<UnityEngine.UI.Button>();r.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 r.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var colors=button.colors;colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=colors.selectedColor=new Color(.14f,.3f,.45f);colors.pressedColor=new Color(.25f,.42f,.56f);button.colors=colors;
                 var name=r.GetComponentInChildren<TMP_Text>();name.text=(usable?"":"◇ ")+skill.DisplayName;if(!usable)name.color=new Color(.65f,.69f,.75f);name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
-                Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,0),new Vector2(-62,0));
-                var cost=Label(r,mpCost+" MP",0,28,13);cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,0),new Vector2(-6,0));
+                Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(32,13),new Vector2(-66,0));
+                FormationIcon(r,SkillVisualLanguage.Icon(skill),new Vector2(.015f,.24f),new Vector2(.10f,.84f),SkillVisualLanguage.Tint(skill));
+                var range=Label(r,SkillVisualLanguage.Range(skill),0,16,11);Place(range.rectTransform,Vector2.zero,new Vector2(1,0),new Vector2(32,0),new Vector2(-6,16));
+                var cost=Label(r,mpCost+" MP",0,23,13);cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,14),new Vector2(-6,0));
                 var trigger=r.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
                 foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select})
                 {var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>inspect(skill));trigger.triggers.Add(entry);}

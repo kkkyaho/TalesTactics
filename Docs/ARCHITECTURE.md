@@ -1,5 +1,16 @@
 # 아키텍처
 
+## 그래픽·UI/UX 표현 계층
+
+`HudButtonAccent`는 주 행동/탭/보조 버튼의 배경·테두리와 비입력 밑줄을 관리한다. 포커스는 금색, 선택과 마우스 호버는 청록색으로 표시하며 실제 Button 콜백·입력 모달 차단 경로를 유지한다. 상단 아군 초상은 기존 팀 턴 선택 API를 사용하고 이동/행동 아이콘 또는 완료 체크를 보여 준다.
+
+`UnitHealthLayout`는 각 `UnitHealthDisplay.LateUpdate`가 산출한 화면 좌표를 받은 뒤 선택/호버 우선순위로 겹침을 검사하여 Y 위치를 보정한다. 상세 이름/수치 영역을 포함한 크기를 사용하며 모델 위치·피격 판정에는 관여하지 않는다. `SkillVisualLanguage`는 기술 데이터에서 모양·속성·사거리 표시를 공통 계산한다.
+
+`MissionMapPreview`는 실제 캠페인 맵을 별도로 생성하여 CanvasRenderer 메시로 그린다. 도착/호위 목표는 금색이며 플레이 중 GridMap이나 난수를 변경하지 않는다. `BattlePurchasePreview`는 저장 객체를 생성·수정하는 CampaignSave.Get 대신 기존 진척 또는 임시 기본값을 읽고, 재고를 연결하지 않은 EquipmentLoadout 초안으로 구매 예정 장비의 능력치를 비교한다. 실제 거래와 저장은 기존 CampaignInventory 경로를 사용한다.
+
+`Panorama.shader`는 원경의 대비·채도·대기색을 조정하며, 바닥 대비는 Terrain.shader의 `_DetailContrast`, 캐릭터 환경색은 UnitTone.shader의 `_EnvironmentTint` 속성으로 분리한다. 기존 접지 그림자와 모션 클립을 유지한다. 이번 변경은 저장 스키마·전투 규칙·Content 재생성을 포함하지 않는다. [실제 화면과 검증](VisualUx/README.md).
+
+
 ## 전장 지형 아트
 
 `BoardView`는 기존 타일 좌표·높이·충돌체를 만들고 `PixelBattlefield.Complete`에서 장식 메시를 마무리한다. 연속 바닥은 월드 XZ 좌표로 장별 텍스처를 샘플링하며 물 타일에는 별도의 흐름 재질을 사용한다. `TerrainGeometry`는 외벽 구조·계단·낙수·협곡 바위를 재질별로 합친다. 외벽의 조각 아치는 연속 UV로 연결된 회화 텍스처이며 기둥과 천문기구 등은 카메라를 향하는 2.5D 스프라이트다. 장식에는 Collider가 없다.

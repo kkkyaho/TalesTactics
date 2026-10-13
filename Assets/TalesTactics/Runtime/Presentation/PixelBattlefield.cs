@@ -23,7 +23,7 @@ namespace TalesTactics
         public int Chapter=>stage;
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
-            stage=Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-4.5f:-3.1f;
+            stage=Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-2.5f:-1.9f;
             view=camera;spriteMaterial=spriteSource;
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
@@ -42,10 +42,13 @@ namespace TalesTactics
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
             floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloor")));
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
+            floorMaterial.SetFloat("_DetailContrast",.76f);
             var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)
             {
-                var m=new Material(source);m.name="Chapter panorama "+stage;owned.Add(m);m.mainTexture=distant;m.color=new Color(.64f,.70f,.76f,1);
+                var panoramaShader=Resources.Load<Shader>(Art+"Panorama");
+                var m=panoramaShader!=null?new Material(panoramaShader):new Material(source);m.name="Chapter panorama "+stage;owned.Add(m);m.mainTexture=distant;
+                m.SetColor("_Atmosphere",stage==2?new Color(.25f,.22f,.22f):new Color(.13f,.21f,.27f));
                 backdrop=new GameObject("Chapter panorama").transform;backdrop.SetParent(transform,false);
                 var quad=new TerrainGeometry();quad.Quad(new Vector3(-.5f,-.5f,0),new Vector3(-.5f,.5f,0),new Vector3(.5f,.5f,0),new Vector3(.5f,-.5f,0));
                 meshes.Add(quad.Flush(backdrop,"Panorama surface",m));backgroundAspect=(float)distant.width/distant.height;
@@ -123,6 +126,19 @@ namespace TalesTactics
                 geometry[5].Box(beacon-Vector3.up*.2f,new Vector3(1.4f,.4f,1.4f));DressedProp(6,beacon,1.75f,true);
             }
             if(stage<=1)for(int side=0;side<2;side++){var p=new Vector3(side==0?-.65f:maxX+.65f,northHeight,maxZ+.25f);Buttress(p,.92f);DressedProp(1,p,2.25f,true);}
+            // Exterior silhouettes never add colliders or alter playable coordinates.
+            if(stage==2)
+            {
+                for(int i=0;i<4;i++)geometry[6].Rock(new Vector3(-.9f-i*.3f,bottom-.2f,maxZ*.35f+i*.48f),1.2f-i*.12f,1.7f+i*.22f,61+i);
+                var bridge=new Vector3(maxX*.5f,northHeight-.2f,maxZ+1.35f);
+                geometry[5].Box(bridge,new Vector3(1.25f,.3f,2.1f));
+                for(int i=0;i<3;i++)geometry[5].Box(bridge+new Vector3(.62f,-.06f,i*.6f-.6f),new Vector3(.16f,.55f,.24f));
+            }
+            else if(stage<=1)
+            {
+                for(int i=0;i<4;i++)geometry[wall].Box(new Vector3(maxX*.3f,northHeight-.18f-i*.2f,maxZ+.65f+i*.3f),new Vector3(1.7f,.24f,.36f));
+                for(int i=0;i<3;i++)geometry[wall].Box(new Vector3(-.85f,northHeight-.18f-i*.2f,maxZ*.4f+i*.55f),new Vector3(.65f,.35f,.45f));
+            }
             var shadows=new Vector4[24];for(int i=0;i<Mathf.Min(shadowCasters.Count,24);i++)shadows[i]=shadowCasters[i];
             foreach(var m in surfaces){m.SetVectorArray("_TerrainShadows",shadows);m.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));}
             floorMaterial.SetVectorArray("_TerrainShadows",shadows);floorMaterial.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));

@@ -36,8 +36,7 @@ namespace TalesTactics
         }
         void IntermissionSelection(RectTransform r,bool selected)
         {
-            r.GetComponent<UnityEngine.UI.Image>().color=selected?new Color(.035f,.23f,.31f):new Color(.065f,.105f,.17f);
-            var outline=r.GetComponent<UnityEngine.UI.Outline>();if(outline!=null)outline.effectColor=selected?formationGold:new Color(.40f,.34f,.23f);
+            StyleButton(r,HudRole.Tab,selected);
         }
         RectTransform IntermissionPanel(Transform parent,string name,Vector2 min,Vector2 max)
         {
@@ -104,7 +103,7 @@ namespace TalesTactics
         void IntermissionPrimary(string name,string label,Action action,bool enabled)
         {
             var b=FormationButton(footer,name,label,new Vector2(.75f,.14f),new Vector2(.99f,.86f),action,enabled,23);
-            b.GetComponent<UnityEngine.UI.Image>().color=new Color(.04f,.29f,.42f);
+            StyleButton(b,HudRole.Primary);
         }
     }
 }

@@ -2,12 +2,12 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**develop 최신 개선**: 영웅10명 모션 프레임 확장과 능력·기술·장비 상태창을 적용했습니다. [실제 화면·검증](Docs/MotionStatus/README.md). 기존 공개 릴리즈와 구분됩니다.
+**develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). 기존 공개 릴리즈와 구분됩니다.
 **[최신 Windows 다운로드 — 0.1.0-preview.4](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.4)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 행동 경험치·교전 구성·되감기·재도전·전장 UI·창 크기 조절 개선을 포함합니다. 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview4/README.md).
 
 ## 현재 상태
 
-최신 개발 실행본: **`Builds/WindowsTerrainArt/TalesTactics.exe`** (폴더 전체 필요). 유적·협곡·관측소·수문 시안을 바탕으로6장 전장의 연속 바닥, 조각 외벽, 절벽·계단, 장별 원경·건축 장식과 수면을 개선했습니다. 실제 PlayMode121/121·화면/카메라72개 고유 조합·Windows 일반 빌드(오류0)를 통과했습니다. [실제 적용 화면·검증](Docs/TerrainArt/README.md). 공개 preview.4 이후의 develop 변경입니다.
+최신 개발 실행본: **`Builds/WindowsVisualUx/TalesTactics.exe`** (폴더 전체 필요). 실제 Unity EditMode202/202·최종 PlayMode126/126, 상태창360/준비 화면60/전장 회전72/기술 메뉴126페이지 검수를 통과했습니다. Windows 일반·개발 빌드 오류0, 독립 실행의1장26턴·22공격·승리/저장과 사용자 저장 불변을 확인했습니다. [그래픽·UI/UX 개선과 검증](Docs/VisualUx/README.md). 공개 preview.4 이후의 develop 변경입니다.
 
 지면 방향 선택 적용 당시 실행본: **`Builds/WindowsGroundFacing/TalesTactics.exe`** (폴더 전체 필요). 첨부 레퍼런스 방식의 지면4방향 화살표를 적용했습니다. 실제 PlayMode119/119, 카메라·화면8조합과 Windows 빌드를 통과했습니다. [방향 선택의 실제 화면·검증](Docs/GroundFacing/README.md).
 

@@ -96,7 +96,7 @@ namespace TalesTactics
             Label(footer,detail,12,94,17);
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
-        {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.61f,0.46f,0.25f,0.9f);border.effectDistance=new Vector2(1,-1);return r;}
+        {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(.25f,.32f,.40f,.8f);border.effectDistance=new Vector2(1,-1);return r;}
         void Clear(Transform parent)
         {
             if(parent==header)
@@ -114,8 +114,10 @@ namespace TalesTactics
         void Button(Transform parent,string value,float y,Action click,bool enabled=true,float height=38)
         {
             var g=new GameObject(value,typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.Button));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-24,height);
-            g.GetComponent<UnityEngine.UI.Image>().color=new Color(0.10f,0.16f,0.24f);var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.46f,0.36f,0.22f,0.8f);border.effectDistance=new Vector2(1,-1);var button=g.GetComponent<UnityEngine.UI.Button>();button.interactable=enabled;button.onClick.AddListener(()=>click());var label=Label(g.transform,value,3,height-3,16);label.alignment=TextAlignmentOptions.Center;if(!enabled)label.color=Color.gray;
+            g.GetComponent<UnityEngine.UI.Image>().color=new Color(0.10f,0.16f,0.24f);var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.46f,0.36f,0.22f,0.8f);border.effectDistance=new Vector2(1,-1);var button=g.GetComponent<UnityEngine.UI.Button>();button.interactable=enabled;button.onClick.AddListener(()=>click());var label=Label(g.transform,value,3,height-3,16);label.alignment=TextAlignmentOptions.Center;if(!enabled)label.color=new Color(.55f,.62f,.7f);StyleButton(r);
         }
+        void StyleButton(Transform transform,HudRole role=HudRole.Secondary,bool selected=false)
+        {var accent=transform.GetComponent<HudButtonAccent>();if(accent==null)accent=transform.gameObject.AddComponent<HudButtonAccent>();accent.Configure(role,selected);}
         void CameraButton(string text,int column,int count,float y,Action click,bool enabled=true)
         {
             Button(left,text,y,click,enabled,32);

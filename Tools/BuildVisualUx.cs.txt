@@ -1,0 +1,20 @@
+if(UnityEditor.EditorApplication.isPlaying||UnityEditor.BuildPipeline.isBuildingPlayer)throw new System.Exception("Exit Play / prior build first");
+if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty)throw new System.Exception("Save scene before building");
+UnityEditor.AssetDatabase.SaveAssets();
+System.IO.File.WriteAllText("Docs/VisualUx/build-progress.json","{\"status\":\"queued\"}");
+System.Action build=()=>{
+ bool before=UnityEditor.EditorUserBuildSettings.development;
+ try{
+  foreach(bool development in new[]{false,true}){
+   UnityEditor.EditorUserBuildSettings.development=development;
+   var output="Builds/"+(development?"WindowsVisualUxReview":"WindowsVisualUx")+"/TalesTactics.exe";
+   var report=UnityEditor.BuildPipeline.BuildPlayer(new UnityEditor.BuildPlayerOptions{scenes=new[]{"Assets/TalesTactics/Scenes/TestBattle.unity"},locationPathName=output,target=UnityEditor.BuildTarget.StandaloneWindows64,options=UnityEditor.BuildOptions.DetailedBuildReport|(development?UnityEditor.BuildOptions.Development:UnityEditor.BuildOptions.None)});
+   var data=new{status="completed",result=report.summary.result.ToString(),buildTimeMs=report.summary.totalTime.TotalMilliseconds,totalSizeBytes=report.summary.totalSize,totalWarnings=report.summary.totalWarnings,totalErrors=report.summary.totalErrors,outputPath=report.summary.outputPath,warnings=report.steps.SelectMany(s=>s.messages).Where(m=>m.type==UnityEngine.LogType.Warning).Select(m=>m.content).ToArray(),motionAtlases=report.packedAssets.SelectMany(p=>p.contents).Select(p=>p.sourceAssetPath).Where(p=>p.Contains("/MotionPremium/")).Distinct().OrderBy(p=>p).ToArray()};
+   System.IO.File.WriteAllText("Docs/VisualUx/"+(development?"development-build":"windows-build")+".json",Newtonsoft.Json.JsonConvert.SerializeObject(data,Newtonsoft.Json.Formatting.Indented));
+   if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)throw new System.Exception("Build failed: "+output);
+  }
+  System.IO.File.WriteAllText("Docs/VisualUx/build-progress.json","{\"status\":\"completed\"}");
+ }catch(System.Exception e){System.IO.File.WriteAllText("Docs/VisualUx/build-progress.json",Newtonsoft.Json.JsonConvert.SerializeObject(new{status="failed",error=e.ToString()}));}
+ finally{UnityEditor.EditorUserBuildSettings.development=before;}
+};
+build();return System.IO.File.ReadAllText("Docs/VisualUx/build-progress.json");
