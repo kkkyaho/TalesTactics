@@ -87,6 +87,8 @@ namespace TalesTactics
                 {
                     // Self costs/drain must not interrupt the caster's attack or ultimate.
                     if(unit!=caster)SetAnimation(unit,hp>0?(delta<0?AnimationKind.Damage:AnimationKind.Cast):AnimationKind.Dead);
+                    if(unit!=caster&&delta<0&&motions.TryGetValue(unit,out var hitMotion))
+                        hitMotion.Impact((units[unit].position-units[caster].position).normalized,skill.IsUltimate||style==CombatVisualStyle.Shield);
                     StartCoroutine(Number(unit,delta));
                 }
             }

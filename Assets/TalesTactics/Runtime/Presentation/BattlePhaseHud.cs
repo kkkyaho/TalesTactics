@@ -6,7 +6,7 @@ namespace TalesTactics
         public void ShowEndPhaseConfirmation()
         {
             if(!battle.IsPlayerCommand||battle.TutorialActive||InputModalOpen||!(battle.Session.Scheduler is TeamTurnScheduler))return;
-            ShowUnitDetails(battle.Session.Active);Clear(unitDetails);
+            PrepareUnitModal(battle.Session.Active);Clear(unitDetails);
             unitDetails.sizeDelta=new Vector2(560,270);
             Label(unitDetails,"아군 턴을 종료할까요?",20,52,24);
             var explanation=Label(unitDetails,"미완료 아군 "+battle.Session.RemainingAllies+"명 · 남은 행동을 포기합니다.",92,60,19);

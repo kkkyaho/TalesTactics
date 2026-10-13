@@ -6,7 +6,7 @@ namespace TalesTactics
         void ShowPresets(string notice=null)
         {
             if(battle.Session!=null)return;
-            ShowUnitDetails(new UnitRuntime(battle.Catalog.Characters[0],Team.Player,battle.Catalog.Rules));Clear(unitDetails);
+            PrepareUnitModal(new UnitRuntime(battle.Catalog.Characters[0],Team.Player,battle.Catalog.Rules));Clear(unitDetails);
             Label(unitDetails,"편성 · 장비 프리셋",16,36,24);
             Label(unitDetails,notice??"출전 순서와 전체 캐릭터의 장비를 보관합니다.\n불러오면 현재 편성과 장비를 교체하고 저장합니다.",60,64,17);
             for(int i=0;i<3;i++)

@@ -2,6 +2,7 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
+**develop 최신 개선**: 영웅10명 모션 프레임 확장과 능력·기술·장비 상태창을 적용했습니다. [실제 화면·검증](Docs/MotionStatus/README.md). 기존 공개 릴리즈와 구분됩니다.
 **[최신 Windows 다운로드 — 0.1.0-preview.4](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.4)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 행동 경험치·교전 구성·되감기·재도전·전장 UI·창 크기 조절 개선을 포함합니다. 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview4/README.md).
 
 ## 현재 상태

@@ -15,7 +15,7 @@ namespace TalesTactics.PlayModeTests
             foreach(var id in LocomotionRoster)
             {
                 var data=director.Catalog.Characters.Single(x=>x.Id==id);
-                Assert.That(data.Poses.Walk.Frames.Length,Is.EqualTo(4));
+                Assert.That(data.Poses.Walk.Frames.Length,Is.EqualTo(8));
                 Assert.That(data.Poses.Dead.Frames.Length,Is.EqualTo(3));
                 var unit=new UnitRuntime(data,Team.Player,director.Catalog.Rules);
                 var go=new GameObject("Walk cycle check");go.transform.SetParent(director.transform);
@@ -26,8 +26,8 @@ namespace TalesTactics.PlayModeTests
                     var facing=CharacterMotion.ViewFacing(unit.Facing,camera.transform.rotation);
                     var expected=data.Poses.Walk.Frames.Select(x=>x.Get(facing)).ToArray();
                     Assert.That(expected.All(x=>x!=null),Is.True);
-                    Assert.That(expected.Distinct().Count(),Is.EqualTo(4));
-                    // Observe multiple cycles under a busy Editor without relaxing the four-frame assertion.
+                    Assert.That(expected.Distinct().Count(),Is.EqualTo(8));
+                    // Observe multiple cycles under a busy Editor without relaxing the eight-frame assertion.
                     motion.Set(AnimationKind.Walk);var observed=new HashSet<Sprite>();float until=Time.realtimeSinceStartup+1.5f;
                     while(observed.Count<expected.Length&&Time.realtimeSinceStartup<until){yield return new WaitForEndOfFrame();observed.Add(renderer.sprite);}
                     CollectionAssert.AreEquivalent(expected,observed,id+facing);

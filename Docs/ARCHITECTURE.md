@@ -349,3 +349,12 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 - `GroundOverlay.Arrow`는 사각 몸통과 삼각 화살촉으로 채워진 평면 화살표를 만든다. `BoardMovementPreview`는 방향 선택 상태에서 네 방향 메쉬를 캐릭터 뒤에 표시하고, `PendingFacing`이 바뀔 때만 선택색을 갱신한다. 모달/스토리/상태 종료 때 숨기며 보드 리셋 때 캐시를 함께 정리한다.
 - `BattleFacingHud`에는 투명한 버튼만 남긴다. 카메라로 화살표의 지면 범위를 투영해 위치·크기를 맞추므로 화면 비율이나 회전이 바뀌어도 시각 표시와 클릭 위치가 분리되지 않는다. 최소 클릭 크기는 Canvas 좌표32×24이다. 별도의 화면 방향 꺾쇠와 선형 미리보기는 제거했다.
 - `FacingPointer`·방향키의 미리보기, 클릭/Enter 확정, Esc 취소는 기존 경로를 유지한다. 실제 전투 방향은 확정할 때만 변경한다. 검증과 실제 화면은 `GroundFacing/README.md`.
+
+## 캐릭터 모션과 상태창 (2026-10-13)
+
+- `MotionPremiumImporter`는10명 원화의 Sprite Editor Data Provider 이름/영역/발 피벗/외곽선과 참조를 한 번 연결한다. 이미 확장된 클립이면 중단하며 Content 초기화는 호출하지 않는다. 방향별760장의 알파 측정은 `Tools/MeasureMotionPremium.py`와 CSV를 따른다.
+- `DirectionalSpriteClip`의 준비/접촉 이후 구간을 이용해 보행8·공격10·일반 기술14·궁극기20~22프레임을 재생한다. 캐릭터별 기술 클립은 공유하며 전투 판정은 기존 ReleaseSkill/Resolver 시점에 유지한다.
+- `CombatMotionProfile`은 무기별 전진/반동/도약/기울기/접촉 유지시간을 정의한다. `CharacterMotion`은 실제 facing 방향의 변위와 피격 방향 반동을 적용하고, `CombatEffect`는 접촉 그림을 짧게 유지한다. 글로벌 timeScale과 저장 데이터는 변경하지 않는다.
+- `BattleCharacterStatusHud`는 상태창 전용 대상/탭/페이지/조회 방향을 관리한다. 동일 진영의 실제 유닛 또는 준비 단계의 장비 적용 미리보기를 조회하며 BattleSession.Active와 실제 facing을 수정하지 않는다. 능력/기술/장비·상태 효과·특성/적 전술을 보여준다.
+- 기존 보조 팝업은 `PrepareUnitModal`을 사용한다. `ShowUnitDetails`는 큰 상태창과 입력 차단 배경을 열고, `CloseUnitDetails`는 모두 숨긴다. Q/E 입력은 이 모달이 열렸을 때만 처리한다.
+- 아트 출처, 시안/실제 화면 및 검증은 `MotionStatus/README.md`를 따른다.

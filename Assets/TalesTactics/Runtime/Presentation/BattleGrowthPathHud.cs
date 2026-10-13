@@ -5,7 +5,7 @@ namespace TalesTactics
     {
         void ShowGrowthPath(CharacterData character)
         {
-            var p=FormationProgress(character);ShowUnitDetails(new UnitRuntime(character,Team.Player,battle.Catalog.Rules,p.Level));Clear(unitDetails);
+            var p=FormationProgress(character);PrepareUnitModal(new UnitRuntime(character,Team.Player,battle.Catalog.Rules,p.Level));Clear(unitDetails);
             Label(unitDetails,"성장 방향 · "+character.DisplayName,16,40,24);
             Label(unitDetails,"Lv10부터 선택 · 준비 중 무료 변경\n기존 직업·기술·전술 특성을 유지합니다.\n현재: "+GrowthPaths.Name(p.Growth)+"\n"+GrowthPaths.Description(p.Growth),70,112,18);
             foreach(GrowthPath path in Enum.GetValues(typeof(GrowthPath)))

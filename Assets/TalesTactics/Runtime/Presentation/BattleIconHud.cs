@@ -112,7 +112,7 @@ namespace TalesTactics
         {var label=button.GetComponentInChildren<TMP_Text>();label.enableAutoSizing=true;label.fontSizeMin=11;label.fontSizeMax=14;Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(4,0),new Vector2(-4,0));}
         void ShowSkillInformation(UnitRuntime unit,SkillData skill)
         {
-            ShowUnitDetails(unit);if(!UnitDetailsOpen)return;Clear(unitDetails);
+            PrepareUnitModal(unit);if(!UnitDetailsOpen)return;Clear(unitDetails);
             Label(unitDetails,"기술 상세",16,36,24);
             var detail=Label(unitDetails,battle.Session.Resolver.Describe(unit,skill),64,326,17);
             detail.enableAutoSizing=true;detail.fontSizeMin=14;detail.fontSizeMax=17;

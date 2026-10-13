@@ -45,7 +45,13 @@ namespace TalesTactics.PlayModeTests
             Assert.That(oldActor.Alive,Is.False);Assert.That(director.Session.Active,Is.Not.SameAs(oldActor));Assert.That(director.CanRewind,Is.True);
             Assert.That(director.RewindAction(),Is.True);yield return null;Assert.That(director.Session.Active.Alive,Is.True);
             director.Hud.ShowUnitDetails(director.Session.Active);yield return null;
-            Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("반격 1 · 지원 1")),Is.True);
+            bool foundReaction=false;
+            for(int page=0;page<8&&!foundReaction;page++)
+            {
+                foundReaction=director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("반격 1 · 지원 1"));
+                if(!foundReaction){Click("상태 효과 다음");yield return null;}
+            }
+            Assert.That(foundReaction,Is.True,"Actual reaction availability must remain accessible in the state card");
             Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(x=>x.name=="이동"),Is.False);
         }
     }

@@ -14,12 +14,13 @@ namespace TalesTactics.PlayModeTests
             foreach(var data in director.Catalog.Characters.Concat(director.Catalog.Enemies))
             {
                 var clip=data.Poses.AttackMotion;
-                Assert.That(clip.Frames.Length,Is.EqualTo(4),data.Id);
-                Assert.That(data.Poses.Skill.Frames.Length,Is.EqualTo(5),data.Id);
-                Assert.That(data.Poses.Ultimate.Frames.Length,Is.EqualTo(4),data.Id);
+                bool premium=CharacterVisualSizing.IsHero(data);
+                Assert.That(clip.Frames.Length,Is.EqualTo(premium?10:4),data.Id);
+                Assert.That(data.Poses.Skill.Frames.Length,Is.EqualTo(premium?14:5),data.Id);
+                Assert.That(data.Poses.Ultimate.Frames.Length,premium?Is.InRange(20,22):Is.EqualTo(4),data.Id);
                 foreach(Facing direction in System.Enum.GetValues(typeof(Facing)))
                 {
-                    Assert.That(clip.Frames.Select(f=>f.Get(direction)).Distinct().Count(),Is.EqualTo(4),data.Id);
+                    Assert.That(clip.Frames.Select(f=>f.Get(direction)).Distinct().Count(),Is.EqualTo(clip.Frames.Length),data.Id);
                     Assert.That(clip.Frames.All(f=>f.Get(direction)!=null),Is.True,data.Id);
                 }
                 var go=new GameObject("Animation phase review");go.transform.SetParent(director.transform);
@@ -34,14 +35,14 @@ namespace TalesTactics.PlayModeTests
                     camera.transform.rotation=Quaternion.Euler(45,rotation*90,0);
                     yield return new WaitForEndOfFrame();
                     var facing=CharacterMotion.ViewFacing(owner.Facing,camera.transform.rotation);
-                    Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)));
+                    Assert.That(clip.Frames.Take(clip.ReleaseFrame).Select(f=>f.Get(facing)),Does.Contain(renderer.sprite));
                 }
                 yield return new WaitForSeconds(.25f);yield return new WaitForEndOfFrame();
                 var view=CharacterMotion.ViewFacing(owner.Facing,camera.transform.rotation);
-                Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(view)),"Must hold anticipation until release");
+                Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame-1].Get(view)),"Must hold anticipation until release");
                 motion.ReleaseSkill();var observed=new HashSet<Sprite>();float until=Time.time+.65f;
                 while(Time.time<until){yield return new WaitForEndOfFrame();observed.Add(renderer.sprite);}
-                foreach(var frame in clip.Frames.Skip(1))Assert.That(observed.Contains(frame.Get(view)),Is.True,data.Id);
+                foreach(var frame in clip.Frames.Skip(clip.ReleaseFrame))Assert.That(observed.Contains(frame.Get(view)),Is.True,data.Id);
                 Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(view)));
                 motion.BeginSkill(skill,.2f,.6f);motion.ReleaseSkill();motion.Set(AnimationKind.Dead);
                 yield return new WaitForEndOfFrame();

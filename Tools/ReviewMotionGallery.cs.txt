@@ -1,0 +1,23 @@
+// Temporary Play Mode contact sheet. Substitute REVIEW_FACING. Stop Play to discard.
+var battle=UnityEngine.Object.FindAnyObjectByType<TalesTactics.BattleDirector>(UnityEngine.FindObjectsInactive.Include);
+if(battle==null)throw new System.Exception("Enter Play Mode first");
+var previous=UnityEngine.GameObject.Find("Premium motion gallery");
+if(previous!=null)UnityEngine.Object.DestroyImmediate(previous);
+foreach(var obj in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())obj.SetActive(false);
+var root=new UnityEngine.GameObject("Premium motion gallery");
+var camera=root.AddComponent<UnityEngine.Camera>();camera.orthographic=true;camera.orthographicSize=8f;
+camera.transform.position=new UnityEngine.Vector3(0,0,-10);camera.backgroundColor=new UnityEngine.Color(.09f,.12f,.16f);camera.clearFlags=UnityEngine.CameraClearFlags.SolidColor;
+var facing=TalesTactics.Facing.REVIEW_FACING;var roster=battle.Catalog.Characters;
+var labels=new[]{"Idle","Coil","Charge","Contact","Follow","Recover"};
+for(int column=0;column<roster.Length;column++){
+ var data=roster[column];float x=(column-4.5f)*2.4f;
+ var clip=data.Poses.AttackMotion;var frames=new[]{data.Sprites,clip.Frames[0],clip.Frames[4],clip.Frames[5],clip.Frames[7],clip.Frames[9]};
+ var heading=new UnityEngine.GameObject("Heading");heading.transform.SetParent(root.transform);var title=heading.AddComponent<TMPro.TextMeshPro>();title.font=battle.Hud.Font;title.text=data.DisplayName+"\n"+facing;title.fontSize=2.2f;title.alignment=TMPro.TextAlignmentOptions.Center;title.rectTransform.sizeDelta=new UnityEngine.Vector2(2.3f,.8f);heading.transform.position=new UnityEngine.Vector3(x,6.5f,0);
+ for(int row=0;row<frames.Length;row++){
+  var go=new UnityEngine.GameObject(data.Id+" "+labels[row]);go.transform.SetParent(root.transform);go.transform.position=new UnityEngine.Vector3(x,4.1f-row*1.9f,0);go.transform.localScale=UnityEngine.Vector3.one*TalesTactics.CharacterVisualSizing.Scale(data);
+  var renderer=go.AddComponent<UnityEngine.SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;renderer.sprite=frames[row].Get(facing);
+  if(column!=0)continue;
+  var label=new UnityEngine.GameObject(labels[row]);label.transform.SetParent(root.transform);var text=label.AddComponent<TMPro.TextMeshPro>();text.font=battle.Hud.Font;text.text=labels[row];text.fontSize=2.1f;text.alignment=TMPro.TextAlignmentOptions.Center;text.rectTransform.sizeDelta=new UnityEngine.Vector2(1.6f,.6f);label.transform.position=new UnityEngine.Vector3(-12.1f,4.8f-row*1.9f,0);
+ }
+}
+return "10 heroes x six phases; same body scale as board";

@@ -12,9 +12,9 @@ namespace TalesTactics
             foreach(var strike in Session.Resolver.LastReactions)
             {
                 Message=strike.Text;Hud.Refresh();Board.BeginSkill(strike.Actor,strike.Skill,strike.Target.Position,speed);
-                yield return new WaitForSeconds(.18f/speed);Board.ReleaseSkill(strike.Actor);
+                yield return new WaitForSeconds(BoardView.Windup(strike.Skill)/speed);Board.ReleaseSkill(strike.Actor);
                 Board.PresentImpact(strike.Actor,strike.Skill,strike.Target.Position,new Dictionary<UnitRuntime,int>{{strike.Target,strike.BeforeHP}},new[]{strike.Target},new Dictionary<UnitRuntime,int>{{strike.Target,strike.AfterHP}},false);
-                yield return new WaitForSeconds(.22f/speed);
+                yield return new WaitForSeconds(BoardView.Recovery(strike.Skill)/speed);
             }
         }
         public bool CanRewind=>Session!=null&&Session.CampaignStage>=0&&Session.History.Count>0&&Session.RewindsLeft>0&&!RewardPending&&!TutorialActive&&!StoryActive&&!TimingActive&&

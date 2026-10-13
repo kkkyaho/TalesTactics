@@ -17,7 +17,7 @@ namespace TalesTactics
         Camera view;
         Vector3 origin,target;
         Color tint;
-        float age;
+        float age,contactHold;
         public const float Lifetime=0.6f;
         public void Initialize(Material material,Camera camera,CombatVisualStyle style,CombatFeedback feedback,
             UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null)
@@ -26,6 +26,7 @@ namespace TalesTactics
             Pattern=presentation?.Pattern??SkillVisualPattern.Automatic;
             pulses=Mathf.Clamp(presentation?.Pulses??1,1,6);size=SafeSize(presentation?.Size??1);
             view=camera;origin=from;target=to;tint=color;
+            contactHold=feedback==CombatFeedback.Strike?CombatMotionProfile.For(style,ultimate).Hold:0;
             for(int i=0;i<lines.Length;i++)
             {
                 var child=new GameObject("Stroke "+i);child.transform.SetParent(transform,false);
@@ -39,7 +40,7 @@ namespace TalesTactics
         {
             age+=Time.deltaTime;
             if(age>=Lifetime){Destroy(gameObject);return;}
-            Draw(age/Lifetime);
+            Draw(Mathf.Max(0,age-contactHold)/Mathf.Max(.01f,Lifetime-contactHold));
         }
         Vector3 Plane(float x,float y)=>target+view.transform.right*x+view.transform.up*y;
         void Stroke(int index,params Vector3[] points)

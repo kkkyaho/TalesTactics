@@ -108,9 +108,9 @@ namespace TalesTactics
         }
         void DrawUnitSummary(UnitRuntime u)
         {
-            var portrait=new GameObject("Portrait",typeof(RectTransform),typeof(UnityEngine.UI.Image));portrait.transform.SetParent(left,false);
-            var pr=portrait.GetComponent<RectTransform>();Place(pr,Vector2.zero,Vector2.zero,new Vector2(8,22),new Vector2(78,142));
-            var img=portrait.GetComponent<UnityEngine.UI.Image>();img.sprite=u.Data.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=false;
+            var portrait=FormationRect(left,"Portrait",Vector2.zero,Vector2.zero);
+            portrait.offsetMin=new Vector2(8,48);portrait.offsetMax=new Vector2(82,132);StatusPortrait(portrait,u.Data);
+
             var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,10,28,18);title.rectTransform.offsetMin=new Vector2(86,title.rectTransform.offsetMin.y);
             SummaryBar("HP",u.CurrentHP,u.Stats.HP,42,new Color(.25f,.78f,.49f));
             SummaryBar("MP",u.CurrentMP,u.Stats.MP,68,new Color(.25f,.57f,.95f));
@@ -142,10 +142,11 @@ namespace TalesTactics
                 if(names[i]=="초기화")label.text="전체 보기";
             }
         }
-        public void ShowUnitDetails(UnitRuntime u)
+        void PrepareUnitModal(UnitRuntime u)
         {
             if(HelpOpen||SystemMenuOpen||MissionOpen)return;
             if(unitDetails==null)unitDetails=Panel("UnitDetails",new Vector2(.5f,.5f),new Vector2(.5f,.5f),new Vector2(-230,-240),new Vector2(230,240));
+            statusUnit=null;if(statusBackdrop!=null)statusBackdrop.gameObject.SetActive(false);
             unitDetails.sizeDelta=new Vector2(460,480);Clear(unitDetails);unitDetails.gameObject.SetActive(true);unitDetails.SetAsLastSibling();SetMainInteraction(false);
             Label(unitDetails,u.Data.DisplayName+" · Lv"+u.Level,16,36,24);
             Label(unitDetails,(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" · "+(u.Team==Team.Player?"아군":"적군"),58,32,18);
@@ -154,6 +155,7 @@ namespace TalesTactics
         }
         public bool CloseUnitDetails()
         {
+            statusUnit=null;if(statusBackdrop!=null)statusBackdrop.gameObject.SetActive(false);
             bool open=UnitDetailsOpen;if(unitDetails!=null)unitDetails.gameObject.SetActive(false);
             SetMainInteraction(true);return open;
         }

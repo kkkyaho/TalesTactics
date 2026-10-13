@@ -69,7 +69,9 @@ namespace TalesTactics.PlayModeTests
             var before=director.Deployment.ToArray();FormationControl("편성 변경: "+c.Id).onClick.Invoke();
             Assert.That(director.Deployment,Is.EqualTo(before),"Modal blocks roster changes even through direct callbacks");
             var s=new EquipmentLoadout(c,p,director.Catalog.Equipment,director.Campaign).Preview(7,false);
-            Assert.That(director.Hud.transform.Find("UnitDetails").GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("MOV "+s.MOV)&&t.text.Contains("STR "+s.STR)),Is.True);
+            var rendered=director.Hud.transform.Find("UnitDetails").GetComponentsInChildren<TMPro.TMP_Text>();
+            Assert.That(rendered.Single(t=>t.name=="StatusValueMOV").text,Is.EqualTo(s.MOV.ToString()));
+            Assert.That(rendered.Single(t=>t.name=="StatusValueSTR").text,Is.EqualTo(s.STR.ToString()));
             director.GetComponent<GamepadPointer>().Cancel();yield return null;Assert.That(director.Hud.UnitDetailsOpen,Is.False);
             Click("장비 슬롯: Armor");yield return null;
             Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("방어구 · 보유한 호환 장비")),Is.True);

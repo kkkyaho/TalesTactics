@@ -71,7 +71,7 @@ namespace TalesTactics
         void ShowMastery(CharacterData c)
         {
             var p=FormationProgress(c);var u=new UnitRuntime(c,Team.Player,battle.Catalog.Rules,p.Level){Promoted=p.Promoted,Trait=p.Trait};
-            new EquipmentLoadout(c,p,battle.Catalog.Equipment,battle.Campaign).Apply(u);ShowUnitDetails(u);Clear(unitDetails);
+            new EquipmentLoadout(c,p,battle.Catalog.Equipment,battle.Campaign).Apply(u);PrepareUnitModal(u);Clear(unitDetails);
             FormationText(unitDetails,"캠페인 기술 숙련",new Vector2(.05f,.80f),new Vector2(.95f,.95f),28).color=formationGold;
             FormationText(unitDetails,TacticalDevelopment.MasteryDescription,new Vector2(.05f,.30f),new Vector2(.95f,.77f),23);
             FormationButton(unitDetails,"숙련 안내 닫기","닫기",new Vector2(.65f,.07f),new Vector2(.95f,.22f),()=>CloseUnitDetails());

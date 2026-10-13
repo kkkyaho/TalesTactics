@@ -14,6 +14,10 @@ namespace TalesTactics
         bool presenting, released;
         float windup=0.18f,recovery=0.3f,releasedAt;
         bool specialUltimate;
+        CombatMotionProfile profile;
+        float hold, damageStrength=1;
+        Vector3 damageDirection;
+        public bool Presenting=>presenting;
         bool timingSpin;
         float spinProgress;
         public AnimationKind Action=>action;
@@ -31,8 +35,12 @@ namespace TalesTactics
         {
             Set(skill.Animation);started=Time.time;presenting=true;
             specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;
+            profile=CombatMotionProfile.For(CombatEffect.Resolve(unit.Data,skill),specialUltimate);
+            hold=Mathf.Min(profile.Hold,recovery*.18f);
         }
         public void ReleaseSkill(){released=true;releasedAt=Time.time;}
+        public void Impact(Vector3 direction,bool heavy)
+        {damageDirection=direction;damageStrength=heavy?1.4f:1;}
         public void Spin(float progress){timingSpin=true;spinProgress=Mathf.Clamp01(progress);}
         public void EndSpin(){timingSpin=false;Set(AnimationKind.Idle);}
         public void WalkFacing(Facing value){facing=value;}
@@ -65,7 +73,8 @@ namespace TalesTactics
             {
                 var clip=specialUltimate?unit.Data.Poses?.Ultimate:
                     action==AnimationKind.Attack?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
-                frame=clip?.SamplePhase(view,released?Time.time-releasedAt:t,released?recovery:windup,released);
+                float phaseTime=released?Mathf.Max(0,Time.time-releasedAt-hold):t;
+                frame=clip?.SamplePhase(view,phaseTime,released?Mathf.Max(.01f,recovery-hold):windup,released);
                 if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
             }
             var pose=unit.Data.Poses?.Get(action,view);
@@ -89,7 +98,25 @@ namespace TalesTactics
                 case AnimationKind.Ultimate:bob=0.12f+Mathf.Sin(t*6)*0.025f;scaleY=1.05f;color=Color.Lerp(Color.white,new Color(1,0.85f,0.5f),0.25f);break;
             }
             if(timingSpin){x=0;angle=0;bob=Mathf.Sin(spinProgress*Mathf.PI)*0.06f;}
-            transform.localPosition=new Vector3(x,0.04f+bob,0);
+            Vector3 offset=new Vector3(x,0.04f+bob,0);
+            if(presenting&&!timingSpin)
+            {
+                var direction=SkillResolver.FacingVector(facing);
+                var world=new Vector3(direction.x,0,direction.y);
+                float prep=Mathf.Clamp01(t/Mathf.Max(.01f,windup));
+                float release=Mathf.Clamp01((Time.time-releasedAt-hold)/Mathf.Max(.01f,recovery-hold));
+                float travel=released?Mathf.Lerp(profile.Advance,-profile.Recoil,Mathf.SmoothStep(0,1,release*1.65f))*(1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.65f,1,release))):-profile.Recoil*Mathf.Sin(prep*Mathf.PI*.5f);
+                offset=world*travel+Vector3.up*(.04f+profile.Lift*(released?Mathf.Sin(release*Mathf.PI):prep*.2f));
+                angle=-sign*profile.Tilt*(released?1-Mathf.SmoothStep(0,1,release):-.4f*prep);scaleY=1;
+            }
+            if(action==AnimationKind.Damage)
+            {
+                float recoil=Mathf.Sin(Mathf.Clamp01(t/.3f)*Mathf.PI)*.075f*damageStrength;
+                offset=damageDirection*recoil+Vector3.up*.04f;
+                angle=-sign*recoil*32;
+                color=Color.Lerp(Color.white*1.6f,color,Mathf.Clamp01(t/.08f));
+            }
+            transform.localPosition=offset;
             transform.rotation=cameraView.transform.rotation*Quaternion.Euler(0,0,angle);
             transform.localScale=new Vector3(1,scaleY,1);sprite.color=color;
         }

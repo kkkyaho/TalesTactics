@@ -53,6 +53,7 @@ namespace TalesTactics
             if(Keyboard.current!=null&&Keyboard.current.f1Key.wasPressedThisFrame){if(!Hud.CloseHelp())Hud.ShowHelp();return;}
             if(Hud.InputModalOpen)
             {
+                Hud.HandleStatusKeyboard();
                 if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame){if(!Hud.CloseMission()&&!Hud.CloseSystemMenu()&&!Hud.CloseHelp())Hud.CloseUnitDetails();}
                 return;
             }

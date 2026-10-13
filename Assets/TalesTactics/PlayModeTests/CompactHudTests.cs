@@ -17,7 +17,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Hud.BattlefieldViewport.width,Is.GreaterThan(.9f));
             Click("능력");yield return null;
             Assert.That(director.Hud.UnitDetailsOpen,Is.True);
-            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.IsInteractable()).Select(b=>b.name),Is.EquivalentTo(new[]{"닫기"}));
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.IsInteractable()).All(b=>b.transform.IsChildOf(director.Hud.transform.Find("UnitDetails"))),Is.True,"Only the status modal may accept input");
             director.GetComponent<GamepadPointer>().Cancel();yield return null;
             Assert.That(director.Hud.UnitDetailsOpen,Is.False);Assert.That(director.State,Is.SameAs(state));
             var commands=(RectTransform)director.Hud.transform.Find("Commands");
