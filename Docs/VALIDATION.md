@@ -799,3 +799,12 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - 최신 실행본은 **Builds/WindowsVisualUx/TalesTactics.exe**(폴더 전체 필요). 사용자가 실행 중이던 WindowsTerrainArt 프로세스를 유지했다. Play 종료, 원래 TestBattle 씬/dirty=false, Full HD와 빠른 Play 옵션, runInBackground=false를 복원했다. 임시 해상도31개를 정리하고 Assets 캡처 사본은 Logs에 보존했으며 동적 폰트/테스트 CSV/설정 부수 변경은 복원했다.
 - Unity 시작 시 C드라이브 여유 부족 팝업을 해결하기 위해 이전 생성 빌드12개를 D:/TalesTacticsBuildArchive로 옮기고 기존 Builds 경로에 junction을 유지했다. 파일별 상대 경로/크기를 비교했으며 현재 실행본을 삭제하지 않았다. 저장소 Content 재생성이나 새 공개 Release 업로드는 없다.
 - 다른PC/DPI·물리 패드·전6장 사람 손 완주·장시간 성능·최종 상용 출시 판정은 별도다. 결과/실패 이력/실제 화면/재현 도구는 [VisualUx/README.md](VisualUx/README.md).
+
+## 2026-10-13 — 공개 릴리즈0.1.0-preview.5
+
+- 사용자 요청으로 preview.4 이후의 전장 지형 아트·영웅 모션/상태창·그래픽/UI/UX 개선 전체를 공개 prerelease로 배포했다. 태그/패키지 sourceCommit은 `e41c4cbecafc7877b97e5a307b617dd9b61b6244`이며 Assets/Packages/ProjectSettings는 전체 검증한 `c10b3e1`과 동일하다. 해당 실제 Unity EditMode202/202·PlayMode126/126 및 화면360/60/72조합·기술126페이지 결과를 사용했으며 게임 테스트를 이번에 반복하지 않았다.
+- 완전한 파일 목록을 포함한 릴리즈 BuildReport를 위해 일반 Windows 빌드를 새로 생성했다. `Builds/WindowsPreview5/TalesTactics.exe`, **24.685초, 오류0/기존 경고3건**, 파일199개. 실행 파일/Runtime DLL 해시가 직전 VisualUx 검증본과 같고 개발 검수 타입3종이 제외됐다. 경고는 Pipeline 런타임 미설정 및 URP 디버그 셰이더2종 stripping이다. 빌드에서 생긴 동적 폰트 줄바꿈 변경을 복원했고 최종 씬 dirty=false·Play=false·development=false를 확인했다.
+- 배포 도구 **14/14**, ZIP 내부 파일별 해시 및 압축 해제202파일 무결성 통과. ZIP296,965,927바이트, SHA256 `4c90a3cc5dc0d6a18179f54a15c874729a2c0a2ff61deff7ac7423b1f47b5762`. 개인 저장·로그·개인 음원은 포함하지 않는다. 캠페인V3/중단 전투V10/설정V1은 preview.4와 동일하다.
+- 압축 해제 일반 실행본12초 시작 유지·로그 오류/예외0, 실행 후 패키지 무결성 재검사 통과. 사용자 저장/백업/설정6개 SHA256 불변 및 기존 게임 프로세스 유지. 숨김 시작 확인이며 수동 플레이/실제 화면 검수는 아니다.
+- GitHub ZIP/체크섬 첨부의 서버 SHA256과 로컬 일치, 비인증 릴리즈 조회·ZIP HEAD200·체크섬 GET200/내용 일치를 확인했다. 원격 ZIP 전체 재다운로드는 수행하지 않았다. 최초 draft 생성은 준비 커밋을 원격에 올리기 전이라422로 거부됐으며 develop 푸시 후 정상 생성했다. 중복 릴리즈는 없다.
+- 상세 증거는 `Distribution/Preview5`에 보관했다. 사용자 요청에 따라 main을 릴리즈 아카이브로 갱신하며 기본 개발 브랜치는 develop을 유지한다. 다른PC/DPI·물리 게임패드·전6장 수동 완주·장시간 성능·최종 상용 출시 판정의 한계는 유지한다.

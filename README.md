@@ -2,12 +2,12 @@
 
 Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입니다.
 
-**develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). 기존 공개 릴리즈와 구분됩니다.
-**[최신 Windows 다운로드 — 0.1.0-preview.4](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.4)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 행동 경험치·교전 구성·되감기·재도전·전장 UI·창 크기 조절 개선을 포함합니다. 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview4/README.md).
+**develop 최신 개선**: 전장 대비·외벽/장식, 공통 UI 강조, 아군 초상/행동 표시, HP바 겹침, 기술 아이콘, 임무 미니맵과 구매 전 장비 비교를 일괄 개선했습니다. [실제 화면·검증](Docs/VisualUx/README.md). preview.5에 포함됩니다.
+**[최신 Windows 다운로드 — 0.1.0-preview.5](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.5)**: Assets의 실행용 ZIP을 새 폴더에 전체 압축 해제하세요. 전장 아트·영웅 모션·상태창·그래픽/UI·준비 화면 개선을 포함합니다. 저장 형식은 preview.4와 같으며 업데이트 전 저장을 백업하세요. [배포 검증과 저장 호환 안내](Docs/Distribution/Preview5/README.md).
 
 ## 현재 상태
 
-최신 개발 실행본: **`Builds/WindowsVisualUx/TalesTactics.exe`** (폴더 전체 필요). 실제 Unity EditMode202/202·최종 PlayMode126/126, 상태창360/준비 화면60/전장 회전72/기술 메뉴126페이지 검수를 통과했습니다. Windows 일반·개발 빌드 오류0, 독립 실행의1장26턴·22공격·승리/저장과 사용자 저장 불변을 확인했습니다. [그래픽·UI/UX 개선과 검증](Docs/VisualUx/README.md). 공개 preview.4 이후의 develop 변경입니다.
+최신 개발 실행본: **`Builds/WindowsVisualUx/TalesTactics.exe`** (폴더 전체 필요). 실제 Unity EditMode202/202·최종 PlayMode126/126, 상태창360/준비 화면60/전장 회전72/기술 메뉴126페이지 검수를 통과했습니다. Windows 일반·개발 빌드 오류0, 독립 실행의1장26턴·22공격·승리/저장과 사용자 저장 불변을 확인했습니다. [그래픽·UI/UX 개선과 검증](Docs/VisualUx/README.md). 공개 preview.5에 포함됩니다.
 
 지면 방향 선택 적용 당시 실행본: **`Builds/WindowsGroundFacing/TalesTactics.exe`** (폴더 전체 필요). 첨부 레퍼런스 방식의 지면4방향 화살표를 적용했습니다. 실제 PlayMode119/119, 카메라·화면8조합과 Windows 빌드를 통과했습니다. [방향 선택의 실제 화면·검증](Docs/GroundFacing/README.md).
 
@@ -78,11 +78,11 @@ Unity 6000.6.0f1 / Windows / URP 17.6.0 기반 2.5D Tactical RPG 프로젝트입
 
 `Launch.ps1`은 설치된 에디터에서 프로젝트를 여는 선택적 편의 스크립트입니다. 테스트 Scene은 기존 사용자 작업을 자동으로 덮어쓰지 않습니다. 생성 이후 수치 변경은 Content의 asset을 편집하세요. 생성기 코드는 초기 데이터의 출처이며 기획 원본은 Docs/GAME_DESIGN.md입니다.
 
-최신 로컬 Windows 실행 파일: `Builds/WindowsEncounterBalance/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
+최신 로컬 릴리즈 실행 파일: `Builds/WindowsPreview5/TalesTactics.exe`. 같은 폴더의 데이터와 DLL이 함께 필요합니다. Builds 폴더는 Git에서 제외됩니다. 빌드·실행 결과와 확인 한계는 [검증 기록](Docs/VALIDATION.md)을 참고하세요.
 
 ## 조작
 
-최신 로컬 배포 ZIP은 `Builds/Releases/TalesTactics-0.1.0-preview.3-windows-x64.zip`입니다. 새 폴더에 풀어 실행하며 무결성 검사·저장 백업 도구와 업데이트/복귀 안내가 포함됩니다. 제작 명령과 검증 범위는 [배포·업데이트 안내](Docs/Distribution/README.md)를 참고하세요.
+최신 로컬 배포 ZIP은 `Builds/Releases/TalesTactics-0.1.0-preview.5-windows-x64.zip`입니다. 새 폴더에 풀어 실행하며 무결성 검사·저장 백업 도구와 업데이트/복귀 안내가 포함됩니다. 제작 명령과 검증 범위는 [배포·업데이트 안내](Docs/Distribution/README.md)를 참고하세요.
 
 게임패드: 왼쪽 스틱으로 화면 커서 이동, 방향키로 메뉴 순환, A/× 선택·타이밍 입력, B/○ 취소, LB/RB 카메라 회전, 오른쪽 스틱 확대/축소, R3 초기화. 마우스와 자동 전환됩니다. 상세 조작·폰트 출처·검증 범위는 [입력·배포 안내](Docs/INPUT_DISTRIBUTION.md)를 참고하세요.
 
