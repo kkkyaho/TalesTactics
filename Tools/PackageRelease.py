@@ -109,7 +109,8 @@ def package(build, evidence, version, output, notes):
         if recorded != [digest(build/name)]:
             raise ValueError(f'Build differs from verified evidence: {name}')
     runtime = (build/'TalesTactics_Data/Managed/TalesTactics.Runtime.dll').read_bytes()
-    if any(name in runtime for name in (b'CampaignPlayerReview', b'ManualPlayerReview', b'PersistencePlayerReview')):
+    if any(name in runtime for name in (b'CampaignPlayerReview', b'ManualPlayerReview', b'PersistencePlayerReview',
+                                       b'CrossoverPlayerReview', b'CombatPresentationReview', b'VfxQualityReview')):
         raise ValueError('Development review code must not ship')
     output.mkdir(parents=True, exist_ok=True)
     archive = output/f'TalesTactics-{version}-windows-x64.zip'
@@ -137,7 +138,7 @@ def package(build, evidence, version, output, notes):
                 'sourceCommit': source, 'unity': '6000.6.0f1', 'playerVersion': '0.1.0',
                 'platform': 'windows-x64', 'createdUtc': datetime.now(timezone.utc).isoformat(),
                 'saveReadVersions': [1, 2, 3], 'saveWriteVersion': 3, 'settingsVersion': 1,
-                'checkpointReadVersions': list(range(1, 11)), 'checkpointWriteVersion': 10,
+                'checkpointReadVersions': list(range(1, 12)), 'checkpointWriteVersion': 11,
                 'buildEvidenceSha256': digest(evidence/'windows-build.json'),
                 'excluded': excluded, 'files': []}
     # Stage and validate before publishing either final output name.

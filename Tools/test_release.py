@@ -142,17 +142,20 @@ class DistributionTests(unittest.TestCase):
 
     def test_development_review_assembly_rejected(self):
         dll = self.build/'TalesTactics_Data/Managed/TalesTactics.Runtime.dll'
-        dll.write_bytes(b'CampaignPlayerReview')
-        hashes = release.read_json(self.evidence/'build-hashes.json')
-        hashes[1]['Hash'] = release.digest(dll)
-        (self.evidence/'build-hashes.json').write_text(json.dumps(hashes))
-        report = json.loads(release.read_json(self.evidence/'windows-build.json')['data']['result'])
-        for f in report['files']:
-            if Path(f['path']) == dll:
-                f['sizeBytes'] = dll.stat().st_size
-        (self.evidence/'windows-build.json').write_text(json.dumps({'data': {'result': json.dumps(report)}}))
-        with self.assertRaisesRegex(ValueError, 'Development'):
-            self.pack()
+        for name in (b'CampaignPlayerReview', b'ManualPlayerReview', b'PersistencePlayerReview',
+                     b'CrossoverPlayerReview', b'CombatPresentationReview', b'VfxQualityReview'):
+            with self.subTest(helper=name):
+                dll.write_bytes(name)
+                hashes = release.read_json(self.evidence/'build-hashes.json')
+                hashes[1]['Hash'] = release.digest(dll)
+                (self.evidence/'build-hashes.json').write_text(json.dumps(hashes))
+                report = json.loads(release.read_json(self.evidence/'windows-build.json')['data']['result'])
+                for f in report['files']:
+                    if Path(f['path']) == dll:
+                        f['sizeBytes'] = dll.stat().st_size
+                (self.evidence/'windows-build.json').write_text(json.dumps({'data': {'result': json.dumps(report)}}))
+                with self.assertRaisesRegex(ValueError, 'Development'):
+                    self.pack()
 
     def test_build_report_detects_missing_nonmandatory_runtime_dependency(self):
         report = json.loads(release.read_json(self.evidence/'windows-build.json')['data']['result'])
