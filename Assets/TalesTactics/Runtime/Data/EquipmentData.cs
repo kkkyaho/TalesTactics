@@ -6,6 +6,8 @@ namespace TalesTactics
     {
         public string Id, DisplayName;
         public string ExclusiveCharacterId, SourceNote;
+        public Sprite Icon;
+        public EquipmentAppearance Appearance;
         public EquipmentSlot Slot;
         public WeaponType Weapon;
         public Stats Bonus;

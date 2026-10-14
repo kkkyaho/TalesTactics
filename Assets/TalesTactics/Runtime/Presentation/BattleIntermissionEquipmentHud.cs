@@ -33,7 +33,9 @@ namespace TalesTactics
             }
             var profile=IntermissionPanel(center,"EquipmentCharacter",new Vector2(.01f,.015f),new Vector2(.30f,.82f));
             var inventory=FormationRect(center,"EquipmentInventory",new Vector2(.33f,.015f),new Vector2(.98f,.82f));
-            IntermissionPortrait(profile,c,new Vector2(.025f,.43f),new Vector2(.975f,.99f));
+            var model=FormationRect(profile,"EquippedModelPreview",new Vector2(.025f,.46f),new Vector2(.975f,.99f),5);
+            var modelImage=model.gameObject.AddComponent<CharacterModelImage>();modelImage.Character=c;
+            modelImage.sprite=EquipmentAppearance.Resolve(c,current.Get(EquipmentSlot.Weapon),c.Sprites?.Front);modelImage.raycastTarget=false;
             FormationText(profile,c.DisplayName,new Vector2(.035f,.34f),new Vector2(.965f,.44f),27).color=formationGold;
             FormationText(profile,(promoted?c.PromotionJob:c.Job)+" · Lv "+level,new Vector2(.035f,.27f),new Vector2(.965f,.34f),18);
             foreach(EquipmentSlot slot in Enum.GetValues(typeof(EquipmentSlot)))

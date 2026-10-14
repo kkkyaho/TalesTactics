@@ -23,17 +23,16 @@ namespace TalesTactics
         {
             if(sprite==null||Character==null){base.OnPopulateMesh(mesh);return;}
             mesh.Clear();var rect=GetPixelAdjustedRect();
-            float bodyPixels=sprite.rect.height*CharacterVisualSizing.BodyFraction(Character);
+            var original=Character.Sprites?.Front??sprite;
+            float bodyWorld=original.rect.height/original.pixelsPerUnit*CharacterVisualSizing.BodyFraction(Character);
             float bodyHeight=Mathf.Min(rect.height*.8f,rect.width/1.2f);
-            float scale=bodyHeight/bodyPixels;
-            float width=sprite.rect.width*scale,height=sprite.rect.height*scale;
-            float left=rect.center.x-sprite.pivot.x*scale,bottom=rect.yMin;
-            var uv=DataUtility.GetOuterUV(sprite);
-            mesh.AddVert(new Vector3(left,bottom),color,new Vector2(uv.x,uv.y));
-            mesh.AddVert(new Vector3(left,bottom+height),color,new Vector2(uv.x,uv.w));
-            mesh.AddVert(new Vector3(left+width,bottom+height),color,new Vector2(uv.z,uv.w));
-            mesh.AddVert(new Vector3(left+width,bottom),color,new Vector2(uv.z,uv.y));
-            mesh.AddTriangle(0,1,2);mesh.AddTriangle(2,3,0);
+            float scale=bodyHeight/bodyWorld;
+            // Use the imported silhouette mesh, retaining transparent gaps around bows and spears.
+            // Body scale uses the original art so a longer signature weapon cannot shrink the hero.
+            var vertices=sprite.vertices;var uv=sprite.uv;var triangles=sprite.triangles;
+            float bottom=rect.yMin+sprite.pivot.y/sprite.pixelsPerUnit*scale;
+            for(int i=0;i<vertices.Length;i++)mesh.AddVert(new Vector3(rect.center.x+vertices[i].x*scale,bottom+vertices[i].y*scale),color,uv[i]);
+            for(int i=0;i<triangles.Length;i+=3)mesh.AddTriangle(triangles[i],triangles[i+1],triangles[i+2]);
         }
     }
 }

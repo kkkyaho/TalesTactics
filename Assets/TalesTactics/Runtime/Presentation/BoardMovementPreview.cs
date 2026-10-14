@@ -63,7 +63,7 @@ namespace TalesTactics
         {
             if(!previewDestination.HasValue||destinationGhost==null)return;
             var unit=battle.Session.Active;
-            destinationGhost.sprite=unit.Data.Sprites.Get(CharacterMotion.ViewFacing(unit.Facing,BattleCamera.transform.rotation));
+            destinationGhost.sprite=EquipmentAppearance.Resolve(unit,unit.Data.Sprites.Get(CharacterMotion.ViewFacing(unit.Facing,BattleCamera.transform.rotation)));
             destinationGhost.transform.SetPositionAndRotation(battle.Session.Grid[previewDestination.Value].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.04f,BattleCamera.transform.rotation);
             destinationGhost.transform.localScale=Vector3.one*CharacterVisualSizing.Scale(unit.Data);
         }

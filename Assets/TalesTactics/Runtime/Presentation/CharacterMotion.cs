@@ -81,7 +81,7 @@ namespace TalesTactics
             if((action==AnimationKind.Attack||action==AnimationKind.Skill)&&(t<0.08f||t>=0.34f))pose=null;
             if(timingSpin)pose=unit.Data.Poses?.Skill?.Sample(view,0,false)??unit.Data.Poses?.Attack?.Get(view);
             if(action==AnimationKind.Damage&&t>=0.28f)pose=null;
-            var art=frame!=null?frame:pose!=null?pose:unit.Data.Sprites?.Get(view);if(art!=null)sprite.sprite=art;
+            var art=EquipmentAppearance.Resolve(unit,frame!=null?frame:pose!=null?pose:unit.Data.Sprites?.Get(view));if(art!=null)sprite.sprite=art;
             float sign=view==Facing.Left?-1:1;
             var color=art!=null?Color.white:unit.Data.PlaceholderColor;
             switch(action)

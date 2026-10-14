@@ -1,0 +1,55 @@
+{
+  "mode": "built-in image_gen",
+  "status": "proposal only; not applied to game",
+  "prompts": {
+    "promptA": "Create a polished 1536x1024 landscape Korean tactical RPG weapon icon concept sheet. Use case stylized-concept. A dark ink navy flat background with restrained thin separators, FOUR equally spaced cells in one horizontal row, large faithfully recreated weapon in each cell. Heading \"전용무기 아이콘 시안 · 01\", subtitle \"판타지아 / 이터니아 / 베르세리아\". Refined cel-painted game item icons with clear metal shading and crisp silhouettes; no glow/effects, invented decoration, rarity frames, shadows, characters or screenshot UI.\nEach reference shows a specific real game weapon to redraw very faithfully, not loosely reimagine.\nImage 1: upper-left item picture is Farah's God Weapon in Tales of the Rays. Compact pair of BROWN fingered gloves, smooth SILVER knuckle plates, gold trim, broad yellow cylindrical cuffs. No spikes/gems/oversize gauntlets.\nImage 2: upper-left item picture is Velvet's Unnamed Blade in Tales of the Rays. Simple narrow pale silver slightly greenish straight MECHANICAL WRIST BLADE, segmented central shaft, small faceted sharp triangular point, rounded gray attachment at bottom. NOT a curved sword, not a claw, no elaborate guard.\nImage 3: authentic tiny Phantasia Eternal Sword sprite. Thin straight pale icy blue-silver blade, gold STAR crossguard with tiny blue detail, slim pale grip/gold pommel. Faithful proportions and no ornate redesign, no Symphonia variant.\nImage 4: authentic tiny Phantasia BC Rod sprite. Slim silver-gray straight shaft with a SMALL blue angular crystal tip and tiny gold fitting. Preserve small crystal to shaft proportions. No huge floating gem or wing shapes.\nCell order LEFT to RIGHT: Eternal Sword (Image3), BC Rod (Image4), God Weapon (Image1), Unnamed Blade (Image2). Objects centered and complete, slender weapons diagonal bottom-left to top-right, consistent refined shading. Put clean Korean labels below each:\n\"크레스 · 이터널 소드\" / small \"판타지아 아이콘 참고\"\n\"민트 · BC 로드\" / small \"판타지아 아이콘 참고\"\n\"파라 · 갓 웨폰\" / small \"더 레이즈판 참고\"\n\"벨벳 · 무명의 칼날\" / small \"더 레이즈판 참고\"\nFooter small \"적용 전 시안 · 원작 형태와 색상 우선\". No other labels. This board must accurately preserve reference weapon identity and details.",
+    "promptB": "Create a polished 1536x1024 landscape Korean tactical RPG equipment icon concept sheet. Use case stylized-concept. Dark flat ink navy background (#0c1120), restrained ivory text, fine dividers. Heading \"전용무기 아이콘 시안 · 02\", subtitle \"테일즈 오브 어라이즈\". THREE equal spacious vertical cells side by side, only weapon illustrations with names below, no characters or screenshot UI. Closely copy weapons shown in the three actual game screenshots with restrained cel-painted rendering. No invented motifs, no excessive glow.\nImage1 Alphen: ONLY recreate sword held diagonally across chest, Nebilim. Elongated narrow pointed BLOOD-RED inner blade, black angular branching/cage metal edges, asymmetrical complex dark thornlike hilt. Do NOT draw orange flaming sword on his back. It must not be on fire. Position whole sword diagonal bottom-left to top-right, faithful proportions.\nImage2 Shionne: ONLY recreate large long BLACK AND RED rifle Damonisch Core. Long black barrel with narrow longitudinal silver ribs and silver circular bands/collars. Red lattice insets on receiver and muzzle section, broad circular silver-rimmed dark muzzle, red thorn/claw underneath near muzzle. Rear grip/stock as pictured. NO butterfly wings, character or costume. Maintain actual proportions, diagonal pointing upper-right.\nImage3 Kisara: ONLY recreate tall black shield Os Rex, silver outer rim curling into long asymmetrical sharp upward horns, purple wing/feather motif across face, pale ivory central long pointed motif, small intricate gold geometry at top. Very long tall tapered shield silhouette, near-vertical slight tilt. No mace, no character, no gold generic kite shield.\nExact Korean labels under LEFT to RIGHT:\n\"알펜 · 네빌림\"\n\"시온 · 데모니시 코어\"\n\"키사라 · 오스 렉스\"\nSmall line under every label \"원작 장비 화면 참고\". Footer \"적용 전 시안 · 원작 형태와 색상 우선\". Large clear objects, no circles behind them, no drop shadows or huge effects, no arbitrary ornamental additions. Fidelity to references is more important than extra styling."
+  },
+  "sheets": [
+    "exec-3928c0c4-7e3b-4f9c-9f45-e4c6bf85ba07.png",
+    "exec-ee5037f0-66e1-44f7-801b-964e82b2e9d7.png"
+  ],
+  "sources": [
+    {
+      "weapons": [
+        "eternal-sword",
+        "bc-rod"
+      ],
+      "url": "https://www.kaoticsilence.com/talesphantasia/topweapons.html",
+      "note": "Small Phantasia sprites; enlarged details are generative reconstruction."
+    },
+    {
+      "weapons": [
+        "god-weapon"
+      ],
+      "url": "https://gamerch.com/torays/855673",
+      "note": "The Rays depiction used; original Eternia screenshot not visually verified."
+    },
+    {
+      "weapons": [
+        "unnamed-blade"
+      ],
+      "url": "https://gamerch.com/torays/411426",
+      "note": "The Rays depiction used; original Berseria depiction not visually verified."
+    },
+    {
+      "weapons": [
+        "nebilim",
+        "damonisch-core",
+        "os-rex"
+      ],
+      "url": "https://game8.jp/toarise/402806",
+      "note": "Actual Arise character equipment screenshots inspected; occluded parts reconstructed."
+    }
+  ],
+  "pending": [
+    "unicorn-horn",
+    "blood-pain",
+    "holy-quelqatl"
+  ],
+  "limitations": [
+    "Concept sheets are faithful redraw attempts, not extracted original assets or exact reproductions.",
+    "Abyss weapon image source pages were inaccessible; no invented images substituted.",
+    "No runtime/code/game asset changes."
+  ]
+}

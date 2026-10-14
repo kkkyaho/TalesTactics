@@ -144,7 +144,7 @@ namespace TalesTactics
                 if(!units.ContainsKey(u))CreateUnitVisual(u);
                 var tr=units[u];tr.position=battle.Session.Grid[u.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
                 tr.gameObject.SetActive(!u.CrossoverReserve);
-                var sr=sprites[u];var art=u.Data.Sprites.Get(u.Facing);sr.sprite=art!=null?art:placeholder;sr.color=u.Alive?(art!=null?Color.white:u.Data.PlaceholderColor):new Color(0.3f,0.3f,0.3f,0.35f);
+                var sr=sprites[u];var art=EquipmentAppearance.Resolve(u,u.Data.Sprites.Get(u.Facing));sr.sprite=art!=null?art:placeholder;sr.color=u.Alive?(art!=null?Color.white:u.Data.PlaceholderColor):new Color(0.3f,0.3f,0.3f,0.35f);
                 sr.transform.rotation=BattleCamera.transform.rotation;sr.transform.localScale=u.Alive?Vector3.one:new Vector3(1,0.3f,1);
                 tr.Find("Contact shadow").gameObject.SetActive(u.Alive);
                 SetAnimation(u,u.Alive?u.Has(StatusKind.Guard)?AnimationKind.Guard:AnimationKind.Idle:AnimationKind.Dead);

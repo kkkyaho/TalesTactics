@@ -143,7 +143,8 @@ namespace TalesTactics
             colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);colors.disabledColor=Color.clear;button.colors=colors;
             var body=FormationRect(model,"BattleModel",Vector2.zero,Vector2.one);
             body.pivot=new Vector2(.5f,0);Place(body,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
-            var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=c.Sprites?.Front;sprite.preserveAspect=true;sprite.raycastTarget=false;
+            var gear=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
+            var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=EquipmentAppearance.Resolve(c,gear.Get(EquipmentSlot.Weapon),c.Sprites?.Front);sprite.preserveAspect=true;sprite.raycastTarget=false;
             FormationIcon(cell,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.21f,.94f),formationGold);
             if(deployed)FormationIcon(cell,"check",new Vector2(.80f,.83f),new Vector2(.95f,.94f),formationTeal);
             if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
@@ -182,7 +183,8 @@ namespace TalesTactics
             {
                 var slot=(EquipmentSlot)i;var item=gear.Get(slot);
                 var button=FormationButton(commands,"장비 슬롯: "+slot,"",new Vector2(.025f+i*.32f,.18f),new Vector2(.345f+i*.32f,.345f),()=>{selectedEquipmentSlot=slot;equipmentPage=0;ShowEquipment(c);});
-                FormationIcon(button,i==0?FormationWeaponIcon(c):i==1?"guard":"move",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
+                if(item?.Icon!=null)EquipmentArt(button,item,new Vector2(.24f,.40f),new Vector2(.76f,.96f));
+                else FormationIcon(button,i==0?FormationWeaponIcon(c):i==1?"guard":"move",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
                 FormationText(button,item==null?SlotName(slot)+" · 없음":item.DisplayName,new Vector2(0,0),new Vector2(1,.40f),16,TextAlignmentOptions.Center);
             }
             FormationText(commands,"특성 · "+TacticalDevelopment.TraitName(progress.Trait),new Vector2(.03f,.11f),new Vector2(.65f,.17f),19).color=formationTeal;

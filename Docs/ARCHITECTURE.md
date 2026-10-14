@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 전용무기 이미지와 장착 외형
+
+`EquipmentData.Icon`은 장비 정비·편성 슬롯·상태창의 고유 이미지를 제공한다. `EquipmentAppearance`는 소유자/무기 ID 및 장착 호환성을 확인한 뒤 원본 Sprite를 전용무기 Sprite로 교체한다. 기존 프레임 순서·모션 시간·카메라 방향·스킬 준비/타격 구간은 그대로 사용한다. `CharacterMotion`, 전장 초기 표시, 이동 도착 미리보기, 편성 모델, 상태창의 회전 모델과 장비 초안 미리보기가 같은 해석 경로를 사용한다. 해제/일반 장비/잘못된 소유자/미등록 프레임은 원래 외형으로 돌아간다.
+
+기존 캐릭터 그림에는 무기가 포함되어 있어 전용무기가 반영된 전체 프레임51장/1,404개를 별도 제작했다. 원본 그림·클립은 수정하지 않는다. `Tools/MeasureSignatureArt.py`는 투명 PNG를 읽기만 하고 연결된 그림 영역·기존 발 기준점/PPU를 측정한다. `SignatureWeaponImporter`는 Sprite Editor Data Provider로 프레임과 외곽선, 아이콘10개, 장비 연결을 명시적으로 가져온다. `.meta` 수동 수정이나 `DemoContent.Create` 실행은 필요 없다. 다시 가져올 때 기존 Sprite ID를 유지한다.
+
+별도 외형 저장값은 없다. 현재 `EquipmentLoadout`과 기존 장비 ID 저장을 사용하므로 초안 취소·저장 실패·재접속·중단 전투에서 장비가 외형을 결정한다. `CharacterModelImage`는 스프라이트 외곽선 메시를 그리며 무기가 길어져도 원본 몸체 크기를 기준으로 표시한다. `SignatureWeaponReview`는 일반 빌드에 제외되는 격리 저장/화면 검수 도구다.
+
 ## 인터미션과 초상화 대화
 
 `BattleIntermissionHub`는 기존 준비 패널을 거점으로 사용하며 `ShowDeployment`는 상세 편성 화면을 유지한다. 시작·재시작·슬롯 전환 시 거점으로 복귀한다. `BattleIntermissionEquipmentHud`는 기존 `EquipmentLoadout` 초안/저장 경로를 사용하면서 변경 수치를 우선 표시하고 전체 비교는 기존 모달 계층으로 연다.

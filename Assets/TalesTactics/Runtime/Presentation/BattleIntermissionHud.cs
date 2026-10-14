@@ -59,6 +59,12 @@ namespace TalesTactics
         void EquipmentArt(Transform parent,EquipmentData item,Vector2 min,Vector2 max)
         {
             if(item==null){FormationText(parent,"없음",min,max,18,TextAlignmentOptions.Center).color=new Color(.45f,.52f,.61f);return;}
+            if(item.Icon!=null)
+            {
+                var art=FormationRect(parent,"EquipmentArt-"+item.Id,min,max,4);
+                var icon=art.gameObject.AddComponent<UnityEngine.UI.Image>();icon.sprite=item.Icon;icon.preserveAspect=true;icon.useSpriteMesh=true;icon.raycastTarget=false;
+                return;
+            }
             int cell=item==null?-1:item.Id=="healer-badge"?5:Array.IndexOf(equipmentArtIds,item.Id);var atlas=Resources.Load<Texture2D>("TalesTactics/EquipmentIcons");
             if(cell>=0&&atlas!=null)
             {

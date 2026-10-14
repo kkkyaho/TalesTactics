@@ -99,7 +99,7 @@ namespace TalesTactics
             string context=u.Team==Team.Enemy?"전술 · "+EnemyTactics.Describe(u):"특성 · "+TacticalDevelopment.TraitName(u.Trait)+"\n"+TacticalDevelopment.TraitDescription(u.Trait);
             FormationText(model,context,new Vector2(.06f,.7f),new Vector2(.94f,.97f),16).color=formationGold;
             var art=FormationRect(model,"Body",new Vector2(.12f,.2f),new Vector2(.88f,.7f));
-            var body=art.gameObject.AddComponent<CharacterModelImage>();body.Character=u.Data;body.sprite=u.Data.Sprites.Get((Facing)statusFacing);body.preserveAspect=true;body.raycastTarget=false;
+            var body=art.gameObject.AddComponent<CharacterModelImage>();body.Character=u.Data;body.sprite=EquipmentAppearance.Resolve(u,u.Data.Sprites.Get((Facing)statusFacing));body.preserveAspect=true;body.raycastTarget=false;
             FormationButton(model,"모델 회전","모델 회전",new Vector2(.15f,.07f),new Vector2(.85f,.18f),()=>{statusFacing=(statusFacing+1)%4;RenderCharacterStatus();},true,16);
             var content=FormationRect(unitDetails,"StatusContent",new Vector2(.34f,.15f),new Vector2(.98f,.75f));
             if(statusTab==0)DrawStatusAbilities(content,u);
@@ -162,7 +162,8 @@ namespace TalesTactics
             {
                 var item=u.Equipment[i];float top=1-i*.26f;
                 var row=StatusSurface(parent,"StatusEquipment"+i,new Vector2(0,top-.245f),new Vector2(1,top));
-                FormationIcon(row,i==0?FormationWeaponIcon(u.Data):i==1?"guard":"accessory",new Vector2(.02f,.25f),new Vector2(.14f,.75f),formationGold);
+                if(item?.Icon!=null)EquipmentArt(row,item,new Vector2(.01f,.06f),new Vector2(.16f,.94f));
+                else FormationIcon(row,i==0?FormationWeaponIcon(u.Data):i==1?"guard":"accessory",new Vector2(.02f,.25f),new Vector2(.14f,.75f),formationGold);
                 FormationText(row,slots[i]+" · "+(item==null?"미장착":item.DisplayName),new Vector2(.17f,.52f),new Vector2(.98f,.96f),20).color=formationTeal;
                 FormationText(row,item==null?"장비 효과 없음":EquipmentBonuses(item),new Vector2(.17f,.04f),new Vector2(.98f,.53f),16);
             }
