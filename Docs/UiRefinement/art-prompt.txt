@@ -1,0 +1,9 @@
+Tool: built-in image_gen.imagegen
+Selected output: exec-01eb4c0e-dd9f-4f12-bab3-be1fd0d6a072.png
+Project asset: Assets/TalesTactics/Resources/TalesTactics/Ornate/MenuIcons.png
+Output verified RGBA with transparent background pixels; no external source artwork downloaded.
+
+Final prompt:
+Production sprite sheet for fantasy tactical RPG game menu, exactly 3 columns x 2 rows, 1536x1024. All background pixels MUST be uniform pure BLACK #000000, no haze, no gradients, no glow, no shadows on background. SIX SMALL isolated illustrations each centered in its own 512x512 cell occupying maximum 70% cell width and height, lots of pure black empty space. Top left ornate open ivory storybook, silver sword upright, blue rift intertwined; top middle three anime-style fantasy adventurers busts and banner; top right silver sword with teal gold-trimmed shield; bottom left recognizable medieval market stall with teal cloth awning and potions goods; bottom middle ivory book with gold tree growing from it; bottom right simple readable engraved SILVER X with elegant tips. Same ornate fantasy painterly style. Make all object interiors opaque and visibly colored, edges crisp, no black internal shading (use dark navy). Uniform pitch-black backdrop essential for runtime additive composition. No text. No borders. No checkerboards. Nothing may cross cell boundaries.
+
+The tool returned real alpha despite the final prompt's black-background request. The game uses the original RGBA atlas directly with standard UI alpha blending, no additive shader or background replacement.

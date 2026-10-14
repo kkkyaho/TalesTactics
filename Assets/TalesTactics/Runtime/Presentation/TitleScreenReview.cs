@@ -62,8 +62,8 @@ namespace TalesTactics
                 yield return Inspect("title","TitleScreen",size,scale);
                 Click("타이틀 불러오기");yield return Settle();yield return Inspect("load","TitleScreen/TitleSlotsOverlay/TitleSlotsWindow",size,scale);
                 battle.Hud.CancelTitle();Click("타이틀 새 게임");yield return Settle();yield return Inspect("new","TitleScreen/TitleSlotsOverlay/TitleSlotsWindow",size,scale);
-                Click("타이틀 새 게임 확인");yield return Settle();yield return Inspect("new-confirm","TitleScreen/TitleConfirm",size,scale);
-                battle.Hud.CancelTitle();Click("타이틀 슬롯 1");yield return Settle();Click("타이틀 새 게임 확인");yield return Settle();yield return Inspect("overwrite","TitleScreen/TitleConfirm",size,scale);
+                Click("타이틀 슬롯 3");yield return Settle();yield return Inspect("new-confirm","TitleScreen/TitleConfirm",size,scale);
+                battle.Hud.CancelTitle();Click("타이틀 슬롯 1");yield return Settle();yield return Inspect("overwrite","TitleScreen/TitleConfirm",size,scale);
                 battle.Hud.CancelTitle();battle.Hud.CancelTitle();
             }
             foreach(var file in original)if(File.ReadAllText(file.Key)!=file.Value)errors.Add("Title browsing changed "+Path.GetFileName(file.Key));

@@ -57,8 +57,7 @@ namespace TalesTactics
             }
             Label(center,"개방: "+string.Join(" / ",Enumerable.Range(0,3).Select(t=>PersonalScenarios.RequiredEpisode(PersonalScenarios.FirstStage+chosen*3+t)+"화 완료"))+"\n무기 미획득으로 메인이나 귀환이 막히지 않습니다.",340,100,19);
             Label(commands,selected.WeaponName,20,90,22);Label(commands,SignatureWeaponRules.Describe(selected.Effect),115,150,20);
-            Button(commands,"메인 임무로",305,()=>{battle.SelectedStage=CrossoverCampaign.FirstStage;ShowChapterPage(2);},true,48);
-            Button(commands,"출전 준비로",365,ShowDeployment,true,48);
+            Button(commands,"메인 임무로",305,ShowIntermissionHub,true,48);
             Label(footer,string.IsNullOrEmpty(battle.SaveNotice)?"1 개인 이야기 → 2 구조 순서 선택 → 3 전용 무기 시련 · 완료 보상은 한 번만 지급됩니다.":battle.SaveNotice,20,75,19);
         }
         public void ShowScenarioChoice()

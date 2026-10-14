@@ -74,6 +74,11 @@ namespace TalesTactics
                     var arc=PersonalScenarios.Arc(battle.CampaignStage);
                     return PersonalScenarios.Tier(battle.CampaignStage)==1?"선택한 길부터 구조 신호 연결 ("+NodeCount+"/3) 후 출구 도착":TrialDescription;
                 }
+                return MainDescription(episode,Boss.Data.DisplayName,State.Segment);
+            }
+        }
+        public static string MainDescription(int episode,string bossName,int segment=0)
+        {
                 switch(episode)
                 {
                     case 3:return "마을 보호 · 구조 신호 3개 연결 후 출구 도착";
@@ -81,16 +86,15 @@ namespace TalesTactics
                     case 7:return "민간인 구조 신호 3개 연결 · 라시우스와 대립 종료";
                     case 8:return "분신 연결 장치 파괴 후 가나벨트 저지";
                     case 9:return "봉인주 3개 파괴 · 구조 신호 3개 연결 · 출구 탈출 (아르토리우스 격파 불필요)";
-                    case 11:return State.Segment==0?"서쪽 전선: 자미르 저지 → 동쪽 전선 합류":"동쪽 전선: 리그렛 저지 · 두 부대 합류";
+                    case 11:return segment==0?"서쪽 전선: 자미르 저지 → 동쪽 전선 합류":"동쪽 전선: 리그렛 저지 · 두 부대 합류";
                     case 12:return "복제 장치 정지 후 반 격파";
                     case 13:return "두 피난로의 신호 연결 후 시구레와 결투";
                     case 16:return "마지막 피난 행렬 호위 · 선두 아군 생존 · 구조 신호와 출구 연결";
                     case 18:return "환영 신호 3개 해방 후 시젤 격파";
                     case 19:return "봉인망 파괴 후 아르토리우스 격파";
                     case 20:return "귀환 신호 3개 연결 · 봉쇄 장치 파괴 · 오르도 3단계 결전";
-                    default:return Boss.Data.DisplayName+" 저지 · 예고 공격의 범위를 벗어나거나 준비를 취소";
+                    default:return bossName+" 저지 · 예고 공격의 범위를 벗어나거나 준비를 취소";
                 }
-            }
         }
         public int NodeCount=>Enumerable.Range(0,3).Count(i=>(State.Nodes&(1<<i))!=0);
         public string DefeatDescription=>episode==11?"진행 중인 전선의 아군 전원 전투불능":episode==16?"선두 출전 아군 전투불능 또는 아군 전멸":"아군 전원 전투불능";

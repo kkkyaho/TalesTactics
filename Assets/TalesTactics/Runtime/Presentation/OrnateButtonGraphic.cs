@@ -11,8 +11,8 @@ namespace TalesTactics
         {
             vh.Clear();var r=rectTransform.rect;
             Color gold=new Color(.87f,.71f,.39f,Disabled?.3f:.95f),silver=new Color(.48f,.62f,.66f,Disabled?.2f:.75f);
-            if(!FrameOnly)Fill(vh,r,Selected?new Color(.83f,.58f,.12f,Disabled?.3f:1):new Color(.018f,.045f,.08f,.96f));
-            Rim(vh,r,Selected?gold:silver,1.1f,6);
+            if(!FrameOnly)Fill(vh,r,Selected?new Color(.075f,.23f,.27f,Disabled?.3f:1):new Color(.018f,.045f,.08f,.96f));
+            Rim(vh,r,Selected?new Color(.53f,.76f,.76f):silver,1.1f,6);
             var inside=new Rect(r.x+3,r.y+3,r.width-6,r.height-6);Rim(vh,inside,Selected?new Color(1,.9f,.56f):new Color(.66f,.58f,.4f,.58f),.65f,4);
             // Recessed bottom edge and sunlit top edge, with corner braces.
             Line(vh,new Vector2(r.x+8,r.yMax-2),new Vector2(r.xMax-8,r.yMax-2),.8f,new Color(1,.91f,.69f,Selected?.95f:.4f));

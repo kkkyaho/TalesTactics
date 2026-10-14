@@ -27,7 +27,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Campaign.Gold,Is.EqualTo(1234));Assert.That(director.Campaign.Get("cless").Level,Is.EqualTo(12));
             Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter2"));
             director.Hud.ShowChapterPage(0);yield return null;
-            Assert.That(director.Hud.ChapterPage,Is.EqualTo(CrossoverCampaign.FirstStage/3));
+            Assert.That(director.Hud.IntermissionHubOpen,Is.True);Assert.That(director.SelectedStage,Is.EqualTo(CrossoverCampaign.FirstStage));
             Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("이전 6장 다시 보기")||t.text.Contains("유적의 경계")),Is.False);
             director.RequestBattle();Assert.That(director.StoryActive,Is.True);director.FinishStory();yield return null;
             Assert.That(director.Session.CampaignStage,Is.EqualTo(CrossoverCampaign.FirstStage));
@@ -116,7 +116,7 @@ namespace TalesTactics.PlayModeTests
                         SatisfyObjectiveFixture();yield return null;director.Restart();
                     }
                     Assert.That(director.Campaign.StoryProgress,Has.Member(PersonalScenarios.Flag(stage)));
-                    string saved=JsonUtility.ToJson(director.Campaign);director.RequestBattle();Assert.That(director.StoryActive,Is.True);Assert.That(director.Session,Is.Null);
+                    string saved=JsonUtility.ToJson(director.Campaign);director.SelectedStage=stage;director.RequestBattle();Assert.That(director.StoryActive,Is.True);Assert.That(director.Session,Is.Null);
                     director.FinishStory();Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(saved));yield return null;
                 }
                 foreach(var arc in PersonalScenarios.Arcs)Assert.That(CampaignInventory.Owned(director.Campaign,arc.WeaponId),Is.EqualTo(1));

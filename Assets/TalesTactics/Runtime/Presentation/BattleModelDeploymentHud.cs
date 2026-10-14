@@ -41,7 +41,7 @@ namespace TalesTactics
             Place(r,min,max,new Vector2(6,4),new Vector2(-6,-4));
             var button=r.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.disabledColor=new Color(.5f,.55f,.65f,1);button.colors=colors;
             var t=r.GetComponentInChildren<TMP_Text>();t.text=text;t.fontSize=size;t.enableAutoSizing=true;t.fontSizeMin=14;t.fontSizeMax=size;
-            Place(t.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,2),new Vector2(-8,-2));return r;
+            Place(t.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,2),new Vector2(-8,-2));if(name.Contains("닫기")&&!string.IsNullOrEmpty(text)){t.text="";MenuArt(r,5,new Vector2(.32f,.16f),new Vector2(.68f,.84f));}return r;
         }
         void FormationIcon(Transform parent,string kind,Vector2 min,Vector2 max,Color color)
         {
@@ -85,7 +85,7 @@ namespace TalesTactics
             Place(heading.rectTransform,new Vector2(0,0),new Vector2(.19f,1),new Vector2(18,4),new Vector2(-6,-4));
             FormationText(header,battle.TrainingMode?"훈련 · Lv25":CampaignStages.Title(battle.SelectedStage),new Vector2(.19f,0),new Vector2(.49f,1),22,TextAlignmentOptions.Center);
             FormationText(header,battle.Campaign.Gold.ToString("N0")+" G",new Vector2(.49f,0),new Vector2(.70f,1),22,TextAlignmentOptions.Center).color=formationGold;
-            FormationButton(left,"임무 선택","임무 선택 · 권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel,new Vector2(0,0),new Vector2(.25f,1),()=>ShowChapterPage(battle.SelectedStage/3));
+            FormationButton(left,"출전 준비","출전 준비 · 권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel,new Vector2(0,0),new Vector2(.25f,1),ShowIntermissionHub);
             FormationButton(left,"임무 · 적 정보","임무 · 적 정보",new Vector2(.25f,0),new Vector2(.40f,1),ShowMission);
             FormationButton(left,"장비 관리","장비 관리",new Vector2(.40f,0),new Vector2(.54f,1),ShowEquipmentRoster);
             FormationButton(left,"장비 상점","장비 상점",new Vector2(.54f,0),new Vector2(.68f,1),()=>ShowShop());
@@ -148,7 +148,6 @@ namespace TalesTactics
             FormationIcon(cell,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.21f,.94f),formationGold);
             if(deployed)FormationIcon(cell,"check",new Vector2(.80f,.83f),new Vector2(.95f,.94f),formationTeal);
             if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
-            if(selected)FormationText(cell,"▼",new Vector2(.32f,.89f),new Vector2(.68f,1),23,TextAlignmentOptions.Center).color=formationGold;
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
             var toggle=FormationButton(caption,"편성 변경: "+c.Id,!battle.CanDeploy(index)?"합류 예정":deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),battle.CanDeploy(index)&&(deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment),17);
             toggle.GetComponent<UnityEngine.UI.Image>().color=deployed?new Color(.025f,.24f,.29f):new Color(.06f,.09f,.14f,1);

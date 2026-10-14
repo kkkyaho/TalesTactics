@@ -20,7 +20,7 @@ namespace TalesTactics.PlayModeTests
                 yield return KeyboardPress(keyboard,Key.Enter);Assert.That(director.Hud.transform.Find("TitleScreen/TitleSlotsOverlay").gameObject.activeSelf,Is.True);
                 yield return KeyboardPress(keyboard,Key.Escape);Assert.That(director.Hud.transform.Find("TitleScreen/TitleSlotsOverlay").gameObject.activeSelf,Is.False);
                 var pointer=director.GetComponent<GamepadPointer>();PointAt(pointer,"타이틀 새 게임");yield return PadPress(pad,GamepadButton.South);
-                PointAt(pointer,"타이틀 새 게임 확인");yield return PadPress(pad,GamepadButton.South);
+                PointAt(pointer,"타이틀 슬롯 1");yield return PadPress(pad,GamepadButton.South);
                 Assert.That(director.Hud.transform.Find("TitleScreen/TitleConfirm").gameObject.activeSelf,Is.True);
                 Assert.That(Directory.Exists(testStorage),Is.False,"Opening confirmation must not start a game");
                 yield return PadPress(pad,GamepadButton.East);Assert.That(director.Hud.transform.Find("TitleScreen/TitleConfirm").gameObject.activeSelf,Is.False);
@@ -33,7 +33,7 @@ namespace TalesTactics.PlayModeTests
         {
             TitleSetup();for(int i=0;i<3;i++)Assert.That(new CampaignFile(director.Profiles.PathFor(i)).Save(new CampaignSave{Gold=500+i}),Is.True);
             File.WriteAllText(Path.Combine(testStorage,"settings.json"),"protected");director.ConfigureStorage(testStorage);director.Hud.ShowTitle();director.Hud.ShowTitleSlots(true);yield return null;
-            Click("타이틀 새 게임 확인");yield return null;Click("타이틀 새 게임 확정");yield return null;
+            Click("타이틀 슬롯 1");yield return null;Click("타이틀 새 게임 확정");yield return null;
             Assert.That(director.Hud.TitleOpen,Is.False);Assert.That(director.Profiles.Slot,Is.EqualTo(0));Assert.That(director.Campaign.Gold,Is.EqualTo(300));
             Assert.That(new CampaignFile(director.Profiles.PathFor(0)+".bak").Load().Gold,Is.EqualTo(500));
             Assert.That(new CampaignFile(director.Profiles.PathFor(1)).Load().Gold,Is.EqualTo(501));Assert.That(new CampaignFile(director.Profiles.PathFor(2)).Load().Gold,Is.EqualTo(502));
@@ -55,7 +55,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.IsInteractable()).All(b=>b.transform.IsChildOf(director.Hud.transform.Find("TitleScreen/TitleSlotsOverlay/TitleSlotsWindow"))),Is.True);
             Assert.That(director.ReadTitleSlots().Count(s=>s.Exists),Is.EqualTo(1));
             director.GetComponent<GamepadPointer>().Cancel();yield return null;Click("타이틀 새 게임");yield return null;
-            Click("타이틀 슬롯 1");yield return null;Click("타이틀 새 게임 확인");yield return null;
+            Click("타이틀 슬롯 1");yield return null;
             Assert.That(EventSystem.current.currentSelectedGameObject.name,Is.EqualTo("타이틀 새 게임 취소"));
             director.GetComponent<GamepadPointer>().Cancel();yield return null;director.GetComponent<GamepadPointer>().Cancel();yield return null;
             Assert.That(director.Campaign,Is.SameAs(campaign));Assert.That(File.ReadAllText(path),Is.EqualTo(before));Assert.That(Directory.GetFiles(testStorage).Length,Is.EqualTo(1));
@@ -63,7 +63,7 @@ namespace TalesTactics.PlayModeTests
         [UnityTest] public IEnumerator TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings()
         {
             TitleSetup();var path=director.Profiles.PathFor(0);Assert.That(new CampaignFile(path).Save(new CampaignSave{Gold=901}),Is.True);string before=File.ReadAllText(path);
-            director.Preferences.Music=.12f;director.Hud.ShowTitleSlots(true);yield return null;Click("타이틀 새 게임 확인");yield return null;Click("타이틀 새 게임 확정");yield return null;
+            director.Preferences.Music=.12f;director.Hud.ShowTitleSlots(true);yield return null;Click("타이틀 슬롯 2");yield return null;Click("타이틀 새 게임 확정");yield return null;
             Assert.That(director.Profiles.Slot,Is.EqualTo(1));Assert.That(director.Hud.TitleOpen,Is.False);Assert.That(director.Hud.IntermissionHubOpen,Is.True);
             Assert.That(director.Campaign.Gold,Is.EqualTo(300));Assert.That(director.SelectedStage,Is.EqualTo(CrossoverCampaign.FirstStage));
             Assert.That(director.Deployment.Select(i=>director.Catalog.Characters[i].Id),Is.EquivalentTo(new[]{"cless","mint"}));Assert.That(director.Preferences.Music,Is.EqualTo(.12f));Assert.That(File.ReadAllText(path),Is.EqualTo(before));

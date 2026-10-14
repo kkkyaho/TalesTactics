@@ -93,7 +93,7 @@ namespace TalesTactics
             StatusPortrait(FormationRect(unitDetails,"StatusPortrait",new Vector2(.02f,.84f),new Vector2(.14f,.98f)),u.Data);
             FormationText(unitDetails,u.Data.DisplayName,new Vector2(.15f,.9f),new Vector2(.86f,.98f),29);
             FormationText(unitDetails,"Lv "+u.Level+" · "+(u.Promoted?u.Data.PromotionJob:u.Data.Job)+" · "+(u.Team==Team.Player?"아군":"적군"),new Vector2(.15f,.84f),new Vector2(.86f,.9f),18).color=formationGold;
-            FormationButton(unitDetails,"닫기","닫기",new Vector2(.87f,.9f),new Vector2(.99f,.98f),()=>CloseUnitDetails());
+            CloseIcon(unitDetails,"닫기",()=>CloseUnitDetails());
             string[] tabs={"능력","기술","장비"};
             for(int i=0;i<3;i++){int tab=i;var r=FormationButton(unitDetails,"상태 "+tabs[i],tabs[i],new Vector2(.02f+i*.32f,.765f),new Vector2(.34f+i*.32f,.835f),()=>{statusTab=tab;statusPage=0;RenderCharacterStatus();},true,20);StyleButton(r,HudRole.Tab,tab==statusTab);}
             var model=StatusSurface(unitDetails,"StatusModel",new Vector2(.02f,.15f),new Vector2(.32f,.75f));

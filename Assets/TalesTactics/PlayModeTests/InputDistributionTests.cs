@@ -42,7 +42,7 @@ namespace TalesTactics.PlayModeTests
                 yield return KeyboardPress(keyboard,Key.Tab);
                 Assert.That(pointer.Active,Is.False);Assert.That(EventSystem.current.sendNavigationEvents,Is.True);
                 Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(buttons[0].gameObject));
-                Assert.That(buttons[0].GetComponent<Outline>().effectDistance.x,Is.EqualTo(3));
+                Assert.That(buttons[0].GetComponent<Outline>().effectDistance.x,Is.EqualTo(2));
                 yield return KeyboardPress(keyboard,Key.LeftShift,Key.Tab);
                 Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(buttons[buttons.Length-1].gameObject));
                 int submissions=0;buttons[buttons.Length-1].onClick.AddListener(()=>submissions++);

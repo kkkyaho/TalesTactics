@@ -110,7 +110,7 @@ namespace TalesTactics
         {
             var window=BeginStoryDialog("이야기를 건너뛸까요?");
             Place(window,new Vector2(.25f,.29f),new Vector2(.75f,.71f),Vector2.zero,Vector2.zero);
-            FormationIcon(window,"crest",new Vector2(.47f,.94f),new Vector2(.53f,1.08f),formationGold);
+            MenuArt(window,0,new Vector2(.44f,.88f),new Vector2(.56f,1.04f));
             var heading=window.GetComponentInChildren<TMP_Text>();heading.alignment=TextAlignmentOptions.Center;Place(heading.rectTransform,new Vector2(.07f,.69f),new Vector2(.93f,.90f),Vector2.zero,Vector2.zero);
             FormationText(window,"대화는 거점에서 다시 볼 수 있습니다.",new Vector2(.08f,.36f),new Vector2(.92f,.63f),22,TextAlignmentOptions.Center);
             var cancel=FormationButton(window,"이야기 계속 읽기","계속 읽기",new Vector2(.10f,.12f),new Vector2(.48f,.28f),()=>CloseStoryDialog(),true,21);

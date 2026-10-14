@@ -886,3 +886,11 @@ CLI는 codexsandboxonline 계정에서 Pipeline 연결 파일을 읽지 못한�
 - `Docs/BossConcepts/build_catalog.py`: 고유ID/등급 합계/3기술씩/20화 양방향 참조/시련 제외18종 배치/PNG6장 크기·SHA256 검사 통과. 오프라인 HTML은 roster.json에서 생성했다.
 - `verify_catalog.cjs`: 실제 Edge headless의1440×1000·1024×768·390×844에서20카드/60기술/20화/이미지6장 로드, 문서 가로 넘침0, 등급·작품·검색·빈 결과·앵커 이동 시 필터 해제·상세 펼치기 통과. JavaScript 오류0. 데스크톱 개요와 모바일 카드 캡처를 직접 확인했다. 증거는 해당 폴더의 validation.json·browser-review.json·review PNG6장이다.
 - **문서 검증이며 Unity 테스트가 아니다.** Assets·Content·런타임·저장·출시 빌드를 변경하지 않아 Unity/ManagedChecks/Windows 빌드를 재실행하지 않았다. 신규20화·보스AI·효과·주요 보스의 타임스톱 저항은 미구현·미검증 제안이다. 현재 릴리즈는6화 캠페인을 유지한다.
+
+## 2026-10-14 — 사용자 테스트 피드백 UI 개편
+
+- 타이틀 엠블럼·정비 일러스트 아이콘, X 닫기, 공통 청록 선택 색상, 슬롯 클릭 후 확인, 프레임 여백과 하단 알림 분리를 적용했다. 출전 준비에서 현재 임무 목표·적 정보·실제 전장 미리보기·멤버를 보여주고 첫 미완료 메인으로 자동 진행한다. 개인 이야기와 후일담 조회는 유지한다.
+- 실제 Unity EditMode353/353(3.24초), 전체 PlayMode157/157(335.11초), API 참조 컴파일4개 통과. 초기149/157의 기존 UI 경로 기대값을 갱신해 전체 재검증했고, 이후 미리보기 영역/선택 화살표 표시 수정은 최종 화면 검수와 EditMode로 확인했다.
+- Editor Game View285조합 및 Windows 검수 실행본285조합에서 TMP 넘침·화면 밖 배치·형제 텍스트/버튼 겹침·레이캐스트·모달 배경 입력·미리보기 영역 검사0건, 수집 게임 오류0건. 5해상도×3글자 크기×19화면이다. 초기 미리보기 확대/화살표 겹침 실패 보고서와 최종 실제 캡처를 함께 보존했다.
+- 일반 Windows 빌드36.32초/오류0/경고1, 검수 빌드55.19초/오류0/경고3. 일반 DLL의 검수 타입 제외 확인. 일반 실행29초 유지/로그 오류0, 검증 구간 사용자 저장·설정 SHA256 불변. 기존 Pipeline/URP 안내 및 Editor Search 초기화 예외는 별도 기록했다.
+- 실행본 `D:/TalesTacticsHelpGuide/Builds/UiRefinementWindows/TalesTactics.exe`. main과 공개 릴리즈는 변경하지 않는다. 물리 패드·다른PC/DPI·전체 시나리오 수동 완주는 별도다. 상세 증거와 실제 Windows 화면은 [UiRefinement/README.md](UiRefinement/README.md).

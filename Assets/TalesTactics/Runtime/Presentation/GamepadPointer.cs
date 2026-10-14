@@ -36,10 +36,10 @@ namespace TalesTactics
             var marker=new GameObject("Cursor",typeof(RectTransform),typeof(Image));marker.transform.SetParent(root.transform,false);
             cursor=marker.GetComponent<RectTransform>();cursor.sizeDelta=new Vector2(15,15);
             cursor.anchorMin=cursor.anchorMax=Vector2.zero;
-            var image=marker.GetComponent<Image>();image.color=new Color(1,.85f,.15f,.9f);image.raycastTarget=false;
+            var image=marker.GetComponent<Image>();image.color=new Color(.60f,.83f,.83f,.9f);image.raycastTarget=false;
             var label=new GameObject("Controls",typeof(RectTransform),typeof(TextMeshProUGUI));label.transform.SetParent(root.transform,false);
             hint=label.GetComponent<TextMeshProUGUI>();hint.font=battle.Hud.Font;hint.fontSize=16;hint.raycastTarget=false;
-            hint.alignment=TextAlignmentOptions.Bottom;hint.color=Color.yellow;
+            hint.alignment=TextAlignmentOptions.Bottom;hint.color=new Color(.75f,.88f,.88f);
             var rect=hint.rectTransform;rect.anchorMin=new Vector2(0,0);rect.anchorMax=new Vector2(1,0);rect.pivot=new Vector2(.5f,0);rect.sizeDelta=new Vector2(0,24);
             hint.text="왼쪽 스틱: 커서 · 방향키: 메뉴 순환 · A/×: 선택 · B/○: 취소 · LB/RB: 회전 · LT/RT: 대상 · 오른쪽 스틱: 확대 · R3: 초기화";
             overlay.enabled=false;
@@ -87,7 +87,7 @@ namespace TalesTactics
             var outline=!active&&selected!=null&&selected.activeInHierarchy?selected.GetComponent<UnityEngine.UI.Outline>():null;
             if(outline==keyboardOutline)return;
             ClearKeyboardFocus();keyboardOutline=outline;
-            if(outline!=null){previousOutlineColor=outline.effectColor;previousOutlineDistance=outline.effectDistance;outline.effectColor=new Color(1,.85f,.2f);outline.effectDistance=new Vector2(3,-3);}
+            if(outline!=null){previousOutlineColor=outline.effectColor;previousOutlineDistance=outline.effectDistance;outline.effectColor=new Color(.53f,.76f,.76f);outline.effectDistance=new Vector2(2,-2);}
         }
         void Update()
         {

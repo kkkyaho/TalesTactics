@@ -36,11 +36,11 @@ namespace TalesTactics
         void Refresh()
         {
             if(cue==null)return;bool enabled=button!=null&&button.IsInteractable();bool active=enabled&&(hover||focus||selected||Role==HudRole.Primary);
-            cue.enabled=enabled&&(focus||selected);cue.color=new Color(1,.88f,.53f);
+            cue.enabled=enabled&&(focus||selected);cue.color=new Color(.64f,.84f,.83f);
             if(trim!=null)trim.State(active,!enabled);
-            if(label!=null)label.color=!enabled?new Color(.5f,.55f,.6f):active?new Color(.08f,.065f,.03f):new Color(.92f,.95f,.98f);
+            if(label!=null)label.color=!enabled?new Color(.5f,.55f,.6f):new Color(.92f,.95f,.98f);
             if(iconChildren!=transform.childCount){icons=GetComponentsInChildren<TacticalIcon>();iconChildren=transform.childCount;}
-            if(icons!=null)foreach(var icon in icons)icon.color=!enabled?new Color(.4f,.43f,.47f):active?new Color(.12f,.09f,.035f):new Color(.86f,.72f,.43f);
+            if(icons!=null)foreach(var icon in icons)icon.color=!enabled?new Color(.4f,.43f,.47f):new Color(.80f,.79f,.66f);
         }
         void LateUpdate(){Refresh();}
         public void OnPointerEnter(PointerEventData e){hover=true;Refresh();}

@@ -29,7 +29,7 @@ namespace TalesTactics
         public static string EquipmentReward(int stage)=>Get(stage).Equipment;
         public static int EnemyLevel(int stage)=>Get(stage).EnemyLevel;
         public static string Id(int stage)=>CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Flag(CrossoverCampaign.Episode(stage).Number):PersonalScenarios.Contains(stage)?PersonalScenarios.Flag(stage):"chapter"+(stage+1);
-        public static string Title(int stage)=>Get(stage).Title;
+        public static string Title(int stage)=>Get(stage).Title.Replace("화 · ","화 ");
         public static bool Unlocked(CampaignSave save,int stage)=>PersonalScenarios.Contains(stage)?PersonalScenarios.Unlocked(save,stage):stage>=0&&stage<Count&&(stage==0||stage==CrossoverCampaign.FirstStage||save.StoryProgress.Contains(Id(stage-1)));
         public static bool HasNext(int stage)=>stage>=0&&stage<LegacyCount-1||CrossoverCampaign.IsMain(stage)&&stage<CrossoverCampaign.LastStage;
         public static bool TryReward(CampaignSave save,int stage,CharacterData[] party,Func<CampaignSave,bool> persist)

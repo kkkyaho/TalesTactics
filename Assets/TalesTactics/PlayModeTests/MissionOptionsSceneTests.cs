@@ -12,7 +12,7 @@ namespace TalesTactics.PlayModeTests
             director.Hud.ShowSystemMenu(2);yield return null;Click("다음 전투 난이도: 표준");Click("임무 변형: 꺼짐");director.Hud.CloseSystemMenu();
             Assert.That(director.Preferences.Difficulty,Is.EqualTo(BattleDifficulty.Standard));Assert.That(director.Preferences.MissionEvents,Is.False);
             director.Hud.ShowSystemMenu(2);Click("다음 전투 난이도: 표준");Click("다음 전투 난이도: 여유");Click("임무 변형: 꺼짐");Click("전투 진행 설정 저장");director.Hud.CloseSystemMenu();
-            director.TrainingMode=false;director.SelectedStage=2;director.Campaign.StoryProgress.AddRange(new[]{"chapter1","chapter2"});Click("임무 선택");yield return null;
+            director.TrainingMode=false;director.SelectedStage=2;director.Campaign.StoryProgress.AddRange(new[]{"chapter1","chapter2"});director.Hud.ShowChapterPage(director.SelectedStage/3);yield return null;
             var description=director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Single(t=>t.name=="PreparationMissionDescription").text;
             Assert.That(description,Does.Contain("적 Lv"+DifficultyRules.EnemyLevel(CampaignStages.EnemyLevel(2),BattleDifficulty.Veteran)));Assert.That(description,Does.Contain("2회 연속 유지"));
             director.Hud.ShowMission();yield return null;

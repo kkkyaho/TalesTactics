@@ -12,7 +12,7 @@ namespace TalesTactics
         public int ChapterPage=>chapterPage;
         int MissionListFirst=>battle.Catalog.CrossoverReady?CrossoverCampaign.FirstStage:0;
         int MissionListEnd=>MissionListFirst==0?CampaignStages.LegacyCount:CrossoverCampaign.LastStage+1;
-        public void ShowChapterPage(int page){chapterPage=Mathf.Clamp(page,MissionListFirst/3,(MissionListEnd-1)/3);ShowDeploymentMissions();}
+        public void ShowChapterPage(int page){if(battle.Catalog.CrossoverReady){ShowIntermissionHub();return;}chapterPage=Mathf.Clamp(page,MissionListFirst/3,(MissionListEnd-1)/3);ShowDeploymentMissions();}
         RectTransform canvas,left,commands,header,footer;
         TMP_Text message,timing;
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
@@ -112,7 +112,7 @@ namespace TalesTactics
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
-            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
+            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;if(parent.GetComponent<OrnatePanel>()!=null)t.margin=new Vector4(12,0,12,0);t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
         }
         void Button(Transform parent,string value,float y,Action click,bool enabled=true,float height=38)
         {

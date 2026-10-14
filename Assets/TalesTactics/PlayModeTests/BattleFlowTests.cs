@@ -51,7 +51,7 @@ namespace TalesTactics.PlayModeTests
             director.Hud.ShowSystemMenu();yield return null;Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().All(b=>!b.IsInteractable()),Is.True);director.Hud.CloseSystemMenu();
             director.CompleteBattle();director.SaveBattleReward();Assert.That(writes,Is.EqualTo(2));Click("다음 장 출전 준비");yield return null;
             Assert.That(director.Session,Is.Null);Assert.That(director.SelectedStage,Is.EqualTo(1));Assert.That(director.Campaign.Gold,Is.EqualTo(420));
-            Assert.That(director.Hud.transform.Find("Commands").gameObject.activeSelf,Is.True);
+            Assert.That(director.Hud.IntermissionHubOpen,Is.True);
         }
     }
 }

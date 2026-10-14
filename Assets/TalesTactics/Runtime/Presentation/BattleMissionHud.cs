@@ -21,7 +21,7 @@ namespace TalesTactics
         string PreparationVictory(int stage)=>PreparationEvents(stage,false)&&stage==2?"거점 "+CampaignMissions.Destination(stage)+"에서 아군 턴 종료 2회 연속 유지":CampaignMissions.Description(stage);
         string BriefVictory(BattleSession s,int stage,bool training)
         {
-            if(!training&&stage>=CampaignStages.LegacyCount)return s?.Crossover?.Description??CampaignMissions.Description(stage);
+            if(!training&&stage>=CampaignStages.LegacyCount)return s?.Crossover?.Description??(CrossoverCampaign.IsMain(stage)?CrossoverBattle.MainDescription(CrossoverCampaign.Episode(stage).Number,CampaignEncounters.Enemy(battle.Catalog,stage,0).DisplayName):CampaignMissions.Description(stage));
             if(s?.CaptureMission==true)return "거점 점령 "+s.CaptureProgress+" / 2";
             if(s==null)
             {
@@ -57,7 +57,7 @@ namespace TalesTactics
             missionOverlay.gameObject.SetActive(true);missionOverlay.SetAsLastSibling();SetMainInteraction(false);Clear(missionWindow);
             var s=battle.Session;bool training=s!=null?s.CampaignStage<0:battle.TrainingMode;int stage=s?.CampaignStage??(training?-1:battle.SelectedStage);
             var title=Label(missionWindow,training?"훈련 임무":CampaignStages.Title(stage),16,36,22);title.rectTransform.offsetMax=new Vector2(-62,title.rectTransform.offsetMax.y);
-            Button(missionWindow,"임무 정보 닫기",12,()=>CloseMission(),true,38);var close=(RectTransform)missionWindow.GetChild(missionWindow.childCount-1);close.anchorMin=new Vector2(1,1);close.sizeDelta=new Vector2(44,38);close.anchoredPosition=new Vector2(-30,-12);close.GetComponentInChildren<TMPro.TMP_Text>().text="×";
+            CloseIcon(missionWindow,"임무 정보 닫기",()=>CloseMission());
             Button(missionWindow,"목표",66,()=>{missionTab=0;missionDetails=false;RenderMission();},true,40);HalfButton(missionWindow,0);TintInfoTab(missionWindow,missionTab==0);
             Button(missionWindow,"적 정보",66,()=>{missionTab=1;missionDetails=false;RenderMission();},true,40);HalfButton(missionWindow,1);TintInfoTab(missionWindow,missionTab==1);
             if(missionTab==0)

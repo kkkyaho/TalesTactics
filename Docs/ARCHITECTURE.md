@@ -1,5 +1,12 @@
 # 아키텍처
 
+## 인터미션 동선 단순화
+
+`BattleHubLayout`은 목표/적 정보, 실제 전장 미리보기, 편성 초상, 정비 메뉴, 이야기 시작을 거점에 통합한다. `BattleMainProgress.SelectCurrentMain`은 첫 미완료 메인 임무를 선택한다. 같은 임무에서 거점을 다시 그릴 때 빈 편성은 그대로 유지하며, 개인 이야기 복귀 등 임무가 바뀔 때만 편성을 정규화한다. 중단 전투 로드·저장 형식은 변경하지 않는다. `ReplayMainEnding`은 SelectedStage를 바꾸거나 보상을 지급하지 않고 지난 완료 임무의 후일담만 연다.
+
+타이틀의 새 게임 슬롯 클릭은 확인창을 열고 확정에서만 저장한다. `BattleMenuArt`는 투명 아틀라스에서 대표 엠블럼·정비4종·X 아이콘을 표시한다. 버튼·키보드/패드 포커스는 청록색 계열로 통일한다. `MenuPreviews`는 `MenuPreviewBake`로 실제 전장을 촬영한 사전 미리보기이며 실시간 전황은 아니다. `CrossoverBattle.MainDescription`은 출전 전후 승리 조건 표현을 공유한다.
+
+
 ## 공통 프레임과 전장 식생
 
 `OrnatePanel`은 가져온9-slice Sprite로 공통 창의 금속 테두리를 표시한다. `OrnateButtonGraphic`은 버튼·초상화·게이지에 크기 독립적인 이중 프레임을 그리며 입력을 받지 않는다. `HudButtonAccent`가 포커스/선택/비활성 상태를 연결한다. 상태창은 큰 캐릭터 배경과 얇은 능력치 행을 사용하며 기존 데이터·탭·페이지와 입력 경로를 유지한다.
