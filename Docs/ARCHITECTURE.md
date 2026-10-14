@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 현재 플레이 가이드
+
+`BattleHelpHud`는 기존 0–7번 페이지와 조작 안내 바로가기를 유지하면서 캠페인·대화·장비·저장 안내를 추가한 12개 주제를 제공한다. `BattleSystemHud`의 임무 변형 설명과 `BattleIntermissionGrowthHud`의 확장 캠페인 성장 안내도 현재 규칙을 따른다. 게임 규칙·저장 형식·콘텐츠 에셋은 변경하지 않는다.
+
+`HelpGuideReview`는 Editor/검수 define에서만 포함하며 15개 안내 화면의 해상도·글자 크기·폰트·잘림·버튼 접근·배경 입력 차단과 캠페인 불변을 검사한다. Windows 검수는 GUID 저장 경로를 격리하며, 고정 Game View 검수는 `HelpGuideBuild.EditorReview`로 시작한다. 일반 실행본에는 검수 타입이 없다. [검증 근거와 한계](HelpGuide/README.md).
+
 ## 전용무기 이미지와 장착 외형
 
 `EquipmentData.Icon`은 장비 정비·편성 슬롯·상태창의 고유 이미지를 제공한다. `EquipmentAppearance`는 소유자/무기 ID 및 장착 호환성을 확인한 뒤 원본 Sprite를 전용무기 Sprite로 교체한다. 기존 프레임 순서·모션 시간·카메라 방향·스킬 준비/타격 구간은 그대로 사용한다. `CharacterMotion`, 전장 초기 표시, 이동 도착 미리보기, 편성 모델, 상태창의 회전 모델과 장비 초안 미리보기가 같은 해석 경로를 사용한다. 해제/일반 장비/잘못된 소유자/미등록 프레임은 원래 외형으로 돌아간다.

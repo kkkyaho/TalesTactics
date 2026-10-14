@@ -73,7 +73,7 @@ namespace TalesTactics
             var p=FormationProgress(c);var u=new UnitRuntime(c,Team.Player,battle.Catalog.Rules,p.Level){Promoted=p.Promoted,Trait=p.Trait};
             new EquipmentLoadout(c,p,battle.Catalog.Equipment,battle.Campaign).Apply(u);PrepareUnitModal(u);Clear(unitDetails);
             FormationText(unitDetails,"캠페인 기술 숙련",new Vector2(.05f,.80f),new Vector2(.95f,.95f),28).color=formationGold;
-            FormationText(unitDetails,TacticalDevelopment.MasteryDescription,new Vector2(.05f,.30f),new Vector2(.95f,.77f),23);
+            FormationText(unitDetails,battle.Catalog.CrossoverReady?"일반 기술은 캐릭터의 해금 레벨에 따라 사용할 수 있습니다. 전체 조회에서 조건을 확인하세요.\n\n합류 훈련은 선택한 임무의 권장 진입 레벨까지 올리고 저장합니다. 승급은 캐릭터의 레벨 조건과 메인 6화 완료가 필요합니다.\n\n이전 저장의 기술 숙련·승급 충족 기록은 유지됩니다. 현재 메인 6화에는 옛 6장의 궁극기 체험이 적용되지 않습니다.":TacticalDevelopment.MasteryDescription,new Vector2(.05f,.30f),new Vector2(.95f,.77f),23);
             FormationButton(unitDetails,"숙련 안내 닫기","닫기",new Vector2(.65f,.07f),new Vector2(.95f,.22f),()=>CloseUnitDetails());
         }
     }

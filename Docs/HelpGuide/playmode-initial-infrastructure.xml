@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.2986192">
+  <test-suite type="TestSuite" id="1152" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.298619" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1298" name="TalesTactics.PlayModeTests.dll" fullname="C:/Users/USER-PC/.codex/worktrees/d3d2/TalesTactics/Library/ScriptAssemblies/TalesTactics.PlayModeTests.dll" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.290264" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="72424" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1299" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.287642" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1300" name="PlayModeTests" fullname="TalesTactics.PlayModeTests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.285432" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1153" name="BattleSceneTests" fullname="TalesTactics.PlayModeTests.BattleSceneTests" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:21Z" duration="64.282104" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1292" name="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" methodname="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="273263385" result="Failed" start-time="2026-10-14 02:29:16Z" end-time="2026-10-14 02:30:14Z" duration="57.624359" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Error] Failed to handle /api/exec request: Main thread operation timed out after 5000ms'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[Unity.Pipeline.BasePipelineServer/<HandleExecRequest>d__115:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2071)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)
+Unity.Pipeline.BasePipelineServer/<ExecuteGated>d__105:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:1403)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)
+Unity.Pipeline.BasePipelineServer/<>c__DisplayClass115_0/<<HandleExecRequest>b__0>d:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2032)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<object>:SetException (System.Exception)
+Unity.Pipeline.BasePipelineServer/<ExecuteCommandByName>d__133:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2478)
+System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<object>:SetException (System.Exception)
+Unity.Pipeline.BasePipelineServer/<ExecuteCommand>d__134:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2517)
+System.Threading._ThreadPoolWaitCallback:PerformWaitCallback ()
+
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1293" name="TutorialExitRestoresCampaignAndNormalBattleRules" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialExitRestoresCampaignAndNormalBattleRules" methodname="TutorialExitRestoresCampaignAndNormalBattleRules" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1837266050" result="Passed" start-time="2026-10-14 02:30:14Z" end-time="2026-10-14 02:30:17Z" duration="3.008375" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1291" name="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" methodname="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1874319157" result="Passed" start-time="2026-10-14 02:30:17Z" end-time="2026-10-14 02:30:21Z" duration="3.600284" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

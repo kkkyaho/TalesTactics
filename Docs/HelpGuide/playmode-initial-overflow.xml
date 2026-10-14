@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.2772084">
+  <test-suite type="TestSuite" id="1152" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.277208" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1298" name="TalesTactics.PlayModeTests.dll" fullname="C:/Users/USER-PC/.codex/worktrees/d3d2/TalesTactics/Library/ScriptAssemblies/TalesTactics.PlayModeTests.dll" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.267666" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="73392" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1299" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.264983" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1300" name="PlayModeTests" fullname="TalesTactics.PlayModeTests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.262787" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1153" name="BattleSceneTests" fullname="TalesTactics.PlayModeTests.BattleSceneTests" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:43Z" duration="20.259645" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1292" name="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" methodname="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1532439380" result="Failed" start-time="2026-10-14 02:31:22Z" end-time="2026-10-14 02:31:37Z" duration="15.022986" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  마우스: 버튼·타일 클릭 / 우클릭: 취소
+전장 위 휠: 확대·축소
+
+M 이동 / A 공격 / S 기술 / G 방어 / W 대기
+Z 이동 취소 / V 위험 범위
+방향키: 타일 선택 / Enter: 선택·사용
+PgUp/PgDn: 자유 턴의 미완료 아군 선택
+Tab/Shift+Tab: 대상·메뉴 선택 순환
+Q/E: 카메라 회전 / Home: 전체 보기
+F1: 도움말 / F5: 메뉴 / Esc: 취소
+Space: 파라 타이밍·대화의 다음 진행
+
+패드: 왼쪽 스틱 커서 / 방향키 메뉴 순환
+A/× 선택·타이밍 / B/○ 취소
+LB/RB 회전 / LT/RT 대상 순환
+오른쪽 스틱 확대·축소 / R3 전체 보기
+
+저장 · 설정 → ‘조작’에서 글자 최대 크기, ‘설정’에서 화면·음량·자동 타이밍을 바꿉니다.
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<HelpPagesFitBlockUnderlyingMenusAndRestoreSelection>d__158.MoveNext () [0x001f3] in C:\Users\USER-PC\.codex\worktrees\d3d2\TalesTactics\Assets\TalesTactics\PlayModeTests\TutorialHelpTests.cs:66
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1293" name="TutorialExitRestoresCampaignAndNormalBattleRules" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialExitRestoresCampaignAndNormalBattleRules" methodname="TutorialExitRestoresCampaignAndNormalBattleRules" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="598942754" result="Passed" start-time="2026-10-14 02:31:37Z" end-time="2026-10-14 02:31:39Z" duration="1.783978" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1291" name="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" methodname="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="865978045" result="Passed" start-time="2026-10-14 02:31:39Z" end-time="2026-10-14 02:31:43Z" duration="3.411765" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

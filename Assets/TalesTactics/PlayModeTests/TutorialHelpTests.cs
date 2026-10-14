@@ -52,9 +52,15 @@ namespace TalesTactics.PlayModeTests
         }
         [UnityTest] public IEnumerator HelpPagesFitBlockUnderlyingMenusAndRestoreSelection()
         {
-            for(int page=0;page<8;page++)
+            director.Catalog.CrossoverReady=true;
+            var saved=JsonUtility.ToJson(director.Campaign);
+            director.Hud.ShowHelp();yield return null;
+            var topics=director.Hud.transform.Find("HelpOverlay/HelpWindow").GetComponentsInChildren<UnityEngine.UI.Button>()
+                .Where(b=>b.name.StartsWith("도움말: ")).Select(b=>b.name).ToArray();
+            foreach(float scale in new[]{1f,1.3f})
+            foreach(string topic in topics)
             {
-                director.Hud.ShowHelp(page);yield return null;
+                director.Preferences.TextScale=scale;Click(topic);yield return null;yield return null;
                 var panel=(RectTransform)director.Hud.transform.Find("HelpOverlay/HelpWindow");
                 foreach(var text in panel.GetComponentsInChildren<TMPro.TMP_Text>())
                 {text.ForceMeshUpdate();Assert.That(text.isTextOverflowing,Is.False,text.text);Assert.That(text.font.HasCharacters(text.text,out uint[] missing,true,true),Is.True,text.text);}
@@ -63,7 +69,11 @@ namespace TalesTactics.PlayModeTests
                 var corners=new Vector3[4];panel.GetWorldCorners(corners);
                 Assert.That(corners.All(p=>p.x>=0&&p.x<=Screen.width&&p.y>=0&&p.y<=Screen.height),Is.True);
             }
+            Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(saved),"Help browsing must not change the save");
             director.GetComponent<GamepadPointer>().Cancel();yield return null;Assert.That(director.Hud.HelpOpen,Is.False);
+            director.Hud.ShowSystemMenu(3);yield return null;Click("전체 조작 보기");yield return null;
+            Assert.That(director.Hud.transform.Find("HelpOverlay/HelpWindow").GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text=="플레이 가이드 · 조작 안내"),Is.True);
+            director.Hud.CloseHelp();director.Preferences.TextScale=1;director.Catalog.CrossoverReady=false;
             director.BeginBattle();yield return null;director.AttackCommand();yield return null;
             var state=director.State;var active=director.Session.Active;var position=active.Position;int hp=active.CurrentHP,mp=active.CurrentMP;
             director.Hud.ShowHelp(3);yield return null;director.CycleTarget(1);
