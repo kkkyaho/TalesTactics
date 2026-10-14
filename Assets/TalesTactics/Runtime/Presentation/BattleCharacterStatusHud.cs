@@ -16,6 +16,7 @@ namespace TalesTactics
         public void ShowUnitDetails(UnitRuntime unit)
         {
             if(unit==null||HelpOpen||SystemMenuOpen||MissionOpen)return;
+            if(battle.Session==null&&unit.Team==Team.Player&&!battle.IsJoined(unit.Data))return;
             PrepareUnitModal(unit);
             statusUnit=unit;statusTab=statusPage=statusFacing=0;
             if(statusBackdrop==null)
@@ -62,7 +63,7 @@ namespace TalesTactics
             }
             else
             {
-                var roster=battle.Catalog.Characters;int i=Array.IndexOf(roster,statusUnit.Data);if(i<0)return;
+                var roster=JoinedCharacters();int i=Array.IndexOf(roster,statusUnit.Data);if(i<0)return;
                 var data=roster[(i+direction+roster.Length)%roster.Length];var p=FormationProgress(data);
                 var unit=new UnitRuntime(data,Team.Player,battle.Catalog.Rules,battle.TrainingMode?25:p.Level){Promoted=p.Promoted,Trait=p.Trait,Growth=p.Growth};
                 new EquipmentLoadout(data,p,battle.Catalog.Equipment,battle.Campaign).Apply(unit);
@@ -135,14 +136,14 @@ namespace TalesTactics
             if(battle.Session?.Resolver.ReactionsEnabled==true)states.Add("반격 "+(u.CounterUsed?0:1)+" · 지원 "+(u.SupportUsed?0:1));
             int pages=Math.Max(1,(states.Count+1)/2);statusPage=Mathf.Clamp(statusPage,0,pages-1);
             var card=StatusSurface(parent,"StatusEffects",Vector2.zero,new Vector2(1,.265f));
-            FormationText(card,"상태 효과",new Vector2(.04f,.60f),new Vector2(.65f,.88f),18).color=formationTeal;
-            FormationText(card,string.Join("\n",states.Skip(statusPage*2).Take(2)),new Vector2(.04f,.10f),new Vector2(.81f,.63f),17);
+            FormationText(card,"상태 효과",new Vector2(.02f,.64f),new Vector2(.80f,1),18).color=formationTeal;
+            FormationText(card,string.Join("\n",states.Skip(statusPage*2).Take(2)),new Vector2(.02f,0),new Vector2(.84f,.64f),17);
             FormationButton(card,"상태 효과 다음",(statusPage+1)+"/"+pages+" ›",new Vector2(.83f,.12f),new Vector2(.97f,.63f),()=>{statusPage=(statusPage+1)%pages;RenderCharacterStatus();},pages>1,14);
         }
         void DrawStatusSkills(RectTransform parent,UnitRuntime u)
         {
             var skills=new[]{u.Data.BasicAttack}.Concat(u.Data.Skills??new SkillData[0]).Concat(u.TacticalSkills??new SkillData[0]).Concat(new[]{u.Data.UltimateSkill}).Where(s=>s!=null).Distinct().ToArray();
-            int pageSize=4;
+            int pageSize=3;
             int pages=Math.Max(1,(skills.Length+pageSize-1)/pageSize);statusPage=Mathf.Clamp(statusPage,0,pages-1);
             for(int i=0;i<pageSize&&statusPage*pageSize+i<skills.Length;i++)
             {

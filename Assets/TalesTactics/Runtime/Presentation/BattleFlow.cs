@@ -14,12 +14,17 @@ namespace TalesTactics
         }
         Dictionary<string,int> resultLevels,resultEXP,resultInventory;
         int resultGold;
+        public sealed class GrowthResult { public CharacterData Character;public int BeforeLevel,AfterLevel,Experience,CurrentEXP; }
+        public sealed class ItemResult { public EquipmentData Item;public int Count; }
+        public GrowthResult[] GrowthResults {get;private set;}=new GrowthResult[0];
+        public ItemResult[] ItemResults {get;private set;}=new ItemResult[0];
+        public int GoldResult {get;private set;}
         public string ResultRewards {get;private set;}="";
         public string[] ResultGrowth {get;private set;}=new string[0];
         public bool ResultTraining=>battleTraining;
         public bool CanPrepareNext=>Session?.Result==BattleResult.Victory&&!battleTraining&&!RewardPending&&pendingReward?.Applied==true&&CampaignStages.HasNext(battleStage);
         public string ResultStage=>battleTraining?"훈련 전투":CampaignStages.Title(battleStage);
-        public void PrepareNextBattle(){if(!CanPrepareNext)return;int next=battleStage+1;Restart();SelectedStage=next;Hud.ShowIntermissionHub();}
+        public void PrepareNextBattle(){if(CanPrepareNext)ReadEnding();}
         public bool CanRetryOpening=>Session?.Opening!=null&&!RewardPending&&!TutorialActive&&!StoryActive&&!TimingActive&&
             (IsPlayerCommand&&Session.Result==BattleResult.Ongoing||State is BattleEndState&&Session.Result==BattleResult.Defeat);
         public bool RetryOpening()
@@ -35,6 +40,7 @@ namespace TalesTactics
         public void RetryBattle(){if(RewardPending||!(State is BattleEndState))return;if(Session.Result==BattleResult.Defeat){RetryOpening();return;}Restart();BeginBattle();}
         void BeginResultSummary()
         {
+            GrowthResults=new GrowthResult[0];ItemResults=new ItemResult[0];GoldResult=0;
             ResultGrowth=new string[0];ResultRewards="획득 보상 없음 · 저장된 성장과 장비는 유지됩니다.";
             if(battleTraining){ResultRewards="훈련 · 경험치·골드·장비·장 완료 보상은 저장하지 않습니다.";return;}
             if(Session.Result!=BattleResult.Victory)return;
@@ -45,6 +51,9 @@ namespace TalesTactics
         void UpdateResultSummary(bool saved)
         {
             if(!saved){ResultRewards="보상 저장 실패 · 경험치·골드·장비가 아직 적용되지 않았습니다.\n재시도해도 같은 추첨 결과를 사용합니다.";ResultGrowth=new string[0];return;}
+            GoldResult=Campaign.Gold-resultGold;
+            ItemResults=Campaign.Inventory.Where(e=>e.Count>(resultInventory.TryGetValue(e.Id,out int n)?n:0)).Select(e=>new ItemResult{Item=Catalog.Equipment.FirstOrDefault(x=>x.Id==e.Id),Count=e.Count-(resultInventory.TryGetValue(e.Id,out int n)?n:0)}).Where(e=>e.Item!=null).ToArray();
+            GrowthResults=Session.Units.Where(u=>u.Team==Team.Player).Select(u=>{var p=Campaign.Get(u.Data.Id);return new GrowthResult{Character=u.Data,BeforeLevel=resultLevels[p.Id],AfterLevel=p.Level,CurrentEXP=p.EXP,Experience=(p.Level-resultLevels[p.Id])*100+p.EXP-resultEXP[p.Id]};}).ToArray();
             var items=Campaign.Inventory.Where(e=>e.Count>(resultInventory.TryGetValue(e.Id,out var count)?count:0)).Select(e=>(Catalog.Equipment.FirstOrDefault(x=>x.Id==e.Id)?.DisplayName??e.Id)+" +"+(e.Count-(resultInventory.TryGetValue(e.Id,out var count)?count:0)));
             ResultRewards="임무 EXP +"+pendingReward.Experience+" · 골드 +"+(Campaign.Gold-resultGold)+" G (소지 "+Campaign.Gold+" G)\n획득 장비: "+(items.Any()?string.Join(" · ",items):"없음 · 보유 상한 확인");
             ResultGrowth=Session.Units.Where(u=>u.Team==Team.Player).Select(u=>

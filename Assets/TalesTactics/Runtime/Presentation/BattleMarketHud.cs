@@ -11,7 +11,7 @@ namespace TalesTactics
             BeginIntermission("장착할 캐릭터 선택",1);
             FormationText(center,"장착 가능한 캐릭터",new UnityEngine.Vector2(.02f,.89f),new UnityEngine.Vector2(.98f,.99f),25).color=formationGold;
             int row=0;
-            foreach(var c in battle.Catalog.Characters)
+            foreach(var c in JoinedCharacters())
             {
                 var draft=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
                 if(!draft.Options(item.Slot).Contains(item))continue;

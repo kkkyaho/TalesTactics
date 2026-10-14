@@ -18,14 +18,14 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.StoryIndex,Is.EqualTo(1),"One Space press advances exactly one line");
                 yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.Enter);
                 Assert.That(director.StoryIndex,Is.EqualTo(2));
-                Click("이야기 건너뛰기");yield return null;
+                Click("대화 기록");yield return null;
                 yield return KeyboardPress(keyboard,UnityEngine.InputSystem.Key.Escape);
                 Assert.That(director.Hud.StoryDialogOpen,Is.False);Assert.That(director.StoryActive,Is.True);Assert.That(director.StoryIndex,Is.EqualTo(2));
                 director.FinishStory();
             }
             finally {UnityEngine.InputSystem.InputSystem.RemoveDevice(keyboard);}
         }
-        [UnityTest] public IEnumerator PortraitStoryHistoryAndSkipAreModalAndDoNotWriteProgress()
+        [UnityTest] public IEnumerator PortraitStoryHistoryIsModalAndReadOnlyReplayHasNoSkip()
         {
             director.TrainingMode=false;director.SelectedStage=0;int writes=0;director.PersistCampaign=_=>{writes++;return true;};
             string before=JsonUtility.ToJson(director.Campaign);director.ReplayStory(false);yield return null;
@@ -41,9 +41,9 @@ namespace TalesTactics.PlayModeTests
             Assert.That(FormationControl("다음 대사").IsInteractable(),Is.False);
             int index=director.StoryIndex;Assert.That(director.ReadStoryHistory().Length,Is.EqualTo(index+1));
             Click("대화 기록 닫기");yield return null;Assert.That(director.StoryIndex,Is.EqualTo(index));
-            Click("이야기 건너뛰기");yield return null;Click("이야기 계속 읽기");yield return null;
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name.Contains("건너뛰기")),Is.False);
             Assert.That(director.StoryActive,Is.True);Assert.That(director.StoryIndex,Is.EqualTo(index));
-            Click("이야기 건너뛰기");yield return null;Click("이야기 건너뛰기 확인");yield return null;
+            while(director.StoryActive){director.AdvanceStory();yield return null;}
             Assert.That(director.StoryActive,Is.False);Assert.That(director.Hud.IntermissionHubOpen,Is.True);Assert.That(director.Session,Is.Null);
             Assert.That(writes,Is.Zero);Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(before));
         }

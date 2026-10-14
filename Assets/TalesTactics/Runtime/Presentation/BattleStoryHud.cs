@@ -43,7 +43,7 @@ namespace TalesTactics
             var portrait = StoryPortrait(line.Speaker);
             float textLeft = portrait != null ? .27f : .035f;
             if (portrait != null) IntermissionPortrait(box,portrait,new Vector2(.01f,.02f),new Vector2(.25f,.98f));
-            var nameplate=IntermissionPanel(box,"SpeakerNameplate",new Vector2(textLeft,.79f),new Vector2(Mathf.Min(textLeft+.25f,.96f),1.02f));
+            var nameplate=IntermissionPanel(box,"SpeakerNameplate",new Vector2(textLeft,.79f),new Vector2(Mathf.Min(textLeft+.25f,.96f),.98f));
             FormationText(nameplate,line.Speaker,new Vector2(.055f,.08f),new Vector2(.945f,.92f),24).color=formationTeal;
             var body = FormationText(box,line.Text,new Vector2(textLeft,.23f),new Vector2(.96f,.77f),29,TextAlignmentOptions.TopLeft);
             body.name="DialogueBody"; body.fontSizeMin=22;
@@ -54,10 +54,16 @@ namespace TalesTactics
             FormationButton(storyControls,"대화 기록","대화 기록",new Vector2(.50f,.015f),new Vector2(.65f,.085f),()=>{storyHistoryPage=Math.Max(0,(battle.ReadStoryHistory().Length-1)/2);ShowStoryHistory();});
             var auto=FormationButton(storyControls,"대화 자동 진행",storyAutomatic?"자동 ON":"자동 OFF",new Vector2(.65f,.015f),new Vector2(.80f,.085f),ToggleStoryAuto);
             storyAutoLabel=auto.GetComponentInChildren<TMP_Text>();
-            FormationButton(storyControls,"이야기 건너뛰기","건너뛰기  »",new Vector2(.80f,.015f),new Vector2(.96f,.085f),ConfirmStorySkip);
             foreach(var button in storyControls.GetComponentsInChildren<UnityEngine.UI.Button>())StyleButton(button.transform,HudRole.Quiet);
             storyNextTime=Time.unscaledTime+Mathf.Max(4.5f,line.Text.Length*.075f);
             EventSystem.current?.SetSelectedGameObject(next.gameObject);
+        }
+        public void ShowStorySaveFailure()
+        {
+            storyAutomatic=false;
+            if(storyAutoLabel!=null)storyAutoLabel.text="자동 OFF";
+            var old=storyControls.Find("StorySaveNotice");if(old!=null){old.gameObject.SetActive(false);Destroy(old.gameObject);}
+            var notice=FormationText(storyControls,"진행 저장 실패 · 다음을 눌러 다시 시도하세요.",new Vector2(.04f,.48f),new Vector2(.96f,.56f),20);notice.name="StorySaveNotice";notice.color=new Color(1,.65f,.55f);
         }
         void ToggleStoryAuto()
         {
@@ -105,17 +111,6 @@ namespace TalesTactics
             storyOverlay.gameObject.SetActive(false);var group=storyControls.GetComponent<CanvasGroup>();group.interactable=true;group.blocksRaycasts=true;
             var next=storyControls.GetComponentsInChildren<UnityEngine.UI.Button>().FirstOrDefault(b=>b.name=="다음 대사"||b.name=="이야기 마치기");
             EventSystem.current?.SetSelectedGameObject(next?.gameObject);return true;
-        }
-        void ConfirmStorySkip()
-        {
-            var window=BeginStoryDialog("이야기를 건너뛸까요?");
-            Place(window,new Vector2(.25f,.29f),new Vector2(.75f,.71f),Vector2.zero,Vector2.zero);
-            MenuArt(window,0,new Vector2(.44f,.88f),new Vector2(.56f,1.04f));
-            var heading=window.GetComponentInChildren<TMP_Text>();heading.alignment=TextAlignmentOptions.Center;Place(heading.rectTransform,new Vector2(.07f,.69f),new Vector2(.93f,.90f),Vector2.zero,Vector2.zero);
-            FormationText(window,"대화는 거점에서 다시 볼 수 있습니다.",new Vector2(.08f,.36f),new Vector2(.92f,.63f),22,TextAlignmentOptions.Center);
-            var cancel=FormationButton(window,"이야기 계속 읽기","계속 읽기",new Vector2(.10f,.12f),new Vector2(.48f,.28f),()=>CloseStoryDialog(),true,21);
-            FormationButton(window,"이야기 건너뛰기 확인","건너뛰기",new Vector2(.52f,.12f),new Vector2(.90f,.28f),battle.FinishStory,true,21);
-            EventSystem.current?.SetSelectedGameObject(cancel.gameObject);
         }
         void ShowStoryHistory()
         {

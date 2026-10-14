@@ -16,6 +16,7 @@ namespace TalesTactics
 
         public void RequestBattle()
         {
+            if(Campaign.HasPendingAfterStory){ResumePendingEnding();return;}
             if (StoryActive || Session != null || Deployment.Count == 0 || !TrainingMode && !CampaignStages.Unlocked(Campaign, SelectedStage)) return;
             if (TrainingMode) { BeginBattle(); return; }
             if(!CanPlayCampaignStage(SelectedStage))return;
@@ -31,7 +32,7 @@ namespace TalesTactics
         public void ReadEnding()
         {
             if (StoryActive || !CanReadEnding) return;
-            OpenStory(battleStage, true, Hud.Refresh);
+            if(!ResumePendingEnding())OpenStory(battleStage,true,()=>{Restart();});
         }
         void OpenStory(int stage, bool after, Action finished)
         {
@@ -47,7 +48,14 @@ namespace TalesTactics
         public void AdvanceStory()
         {
             if (!StoryActive) return;
-            if (++StoryIndex >= storyLines.Length) { FinishStory(); return; }
+            if(StoryIndex+1>=storyLines.Length){FinishStory();return;}
+            if(Campaign.HasPendingAfterStory&&Campaign.PendingAfterStoryStage==StoryStage)
+            {
+                int previous=Campaign.PendingAfterStoryLine;Campaign.PendingAfterStoryLine=StoryIndex+1;
+                bool saved=false;try{saved=PersistCampaign(Campaign);}catch(Exception){}
+                if(!saved){Campaign.PendingAfterStoryLine=previous;Hud.ShowStorySaveFailure();return;}
+            }
+            StoryIndex++;
             Hud.ShowStoryLine(storyLines[StoryIndex], StoryIndex + 1, storyLines.Length);
         }
         public void FinishStory()

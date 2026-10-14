@@ -26,7 +26,7 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(rolls,Is.EqualTo(1));Assert.That(writes,Is.EqualTo(3));Assert.That(director.RewardPending,Is.False);
                 Assert.That(director.Message,Does.Contain("가죽 갑옷 +1"));Assert.That(CampaignInventory.Owned(file.Load(),"leather-armor"),Is.EqualTo(1));
                 director.SaveBattleReward();Assert.That(writes,Is.EqualTo(3));
-                director.Restart();director.BeginBattle();yield return null;
+                director.Restart();while(director.StoryActive)director.AdvanceStory();director.SelectedStage=0;director.BeginBattle();yield return null;
                 foreach(var enemy in director.Session.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,director.Session.Grid);
                 director.SetState(new TurnStartState(director));yield return null;
                 Assert.That(rolls,Is.EqualTo(2));Assert.That(director.Message,Does.Contain("반복 EXP +10"));

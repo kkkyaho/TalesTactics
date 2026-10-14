@@ -62,8 +62,8 @@ namespace TalesTactics
             Button(missionWindow,"적 정보",66,()=>{missionTab=1;missionDetails=false;RenderMission();},true,40);HalfButton(missionWindow,1);TintInfoTab(missionWindow,missionTab==1);
             if(missionTab==0)
             {
-                var victory=InfoBlock(missionWindow,"VictoryCard",126,100);Label(victory,"승리",10,24,15).color=new Color(.85f,.7f,.4f);var victoryText=Label(victory,BriefVictory(s,stage,training),40,54,24);victoryText.enableAutoSizing=true;victoryText.fontSizeMin=14;victoryText.fontSizeMax=24;
-                var defeat=InfoBlock(missionWindow,"DefeatCard",238,84);Label(defeat,"패배",8,24,15).color=new Color(1,.45f,.42f);
+                var victory=InfoBlock(missionWindow,"VictoryCard",126,100);Label(victory,"승리",4,32,15).color=new Color(.85f,.7f,.4f);var victoryText=Label(victory,BriefVictory(s,stage,training),40,54,24);victoryText.enableAutoSizing=true;victoryText.fontSizeMin=14;victoryText.fontSizeMax=24;
+                var defeat=InfoBlock(missionWindow,"DefeatCard",238,84);Label(defeat,"패배",2,30,15).color=new Color(1,.45f,.42f);
                 bool escort=s!=null?s.Objective==ObjectiveKind.Escort:!training&&CampaignMissions.Kind(stage)==ObjectiveKind.Escort;
                 Label(defeat,s?.Crossover!=null?s.Crossover.DefeatDescription:!training&&stage==16?"진행 중인 전선의 아군 전원 전투불능":!training&&stage==21?"선두 출전 아군 전투불능 또는 아군 전멸":escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능",36,42,18);
                 if(missionDetails)
@@ -96,8 +96,8 @@ namespace TalesTactics
                 {
                     int index=i;Button(missionWindow,"적 선택: "+i,128,()=>{missionEnemy=index;missionDetails=false;RenderMission();},true,94);
                     var row=(RectTransform)missionWindow.GetChild(missionWindow.childCount-1);row.anchorMin=new Vector2((i-first)/4f,1);row.anchorMax=new Vector2((i-first+1)/4f,1);row.sizeDelta=new Vector2(-12,94);
-                    var label=row.GetComponentInChildren<TMPro.TMP_Text>();label.text=EnemyRoles.Name(enemies[i]);label.rectTransform.anchoredPosition=new Vector2(0,-67);label.rectTransform.sizeDelta=new Vector2(-4,24);label.fontSize=13;
-                    InfoPortrait(row,enemies[i],16,5,58,58);TintInfoTab(missionWindow,i==missionEnemy);
+                    var label=row.GetComponentInChildren<TMPro.TMP_Text>();label.text=EnemyRoles.Name(enemies[i]);Place(label.rectTransform,Vector2.zero,new Vector2(1,.32f),new Vector2(2,1),new Vector2(-2,-1));label.fontSizeMin=13;label.fontSizeMax=15;
+                    InfoPortrait(row,enemies[i],16,5,58,50);TintInfoTab(missionWindow,i==missionEnemy);
                 }
                 if(enemies.Length>4)
                 {
@@ -107,7 +107,7 @@ namespace TalesTactics
                 var data=enemies[missionEnemy];var unit=s?.Units.Where(u=>u.Team==Team.Enemy).ElementAt(missionEnemy);
                 Label(missionWindow,data.DisplayName,264,36,24);
                 Label(missionWindow,unit==null?(!training&&PreparationWave(stage,false)&&missionEnemy>=CampaignEncounters.Initial(stage,true)?"증원 · ":"")+EnemyRoles.Name(data):unit.Alive?"HP "+unit.CurrentHP+" / "+unit.Stats.HP:"격파",306,32,20);
-                string state=unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):unit?.BossWard==true?"호위 방벽 "+s.Resolver.BossWardPercent(unit)+"%":EnemyRoles.Name(data);
+                string state=unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):unit?.BossWard==true?"호위 방벽 "+s.Resolver.BossWardPercent(unit)+"%":EnemyRoles.Advice(data);
                 Label(missionWindow,state,340,78,18);
                 if(missionDetails)Label(missionWindow,data.BasicAttack.DisplayName+" · 사거리 "+data.BasicAttack.MinRange+"–"+data.BasicAttack.Range+"\n"+(unit?.BossWard==true?"호위 1명당 피해 -25% (최대 75%)":EnemyRoles.Advice(data)),428,98,16);
                 Button(missionWindow,missionDetails?"적 요약 보기":"적 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);

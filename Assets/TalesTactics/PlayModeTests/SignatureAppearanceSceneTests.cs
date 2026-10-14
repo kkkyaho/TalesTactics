@@ -62,6 +62,8 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Campaign.Get(c.Id).Equipment[0],Is.Null);director.PersistCampaign=_=>true;Click("적용 · 저장");yield return null;
                 Assert.That(director.Campaign.Get(c.Id).Equipment[0],Is.EqualTo(item.Id));
                 director.Hud.ShowDeployment();yield return null;
+                while(!director.Hud.GetComponentsInChildren<CharacterModelImage>().Any(i=>i.Character==c))
+                {var next=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().FirstOrDefault(b=>b.name=="다음 캐릭터"&&b.IsInteractable())??director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="이전 캐릭터"&&b.IsInteractable());next.onClick.Invoke();yield return null;}
                 Assert.That(director.Hud.GetComponentsInChildren<CharacterModelImage>().Single(i=>i.Character==c).sprite,Is.SameAs(equipped));
                 var detail=new UnitRuntime(c,Team.Player,director.Catalog.Rules);new EquipmentLoadout(c,director.Campaign.Get(c.Id),director.Catalog.Equipment,director.Campaign).Apply(detail);
                 director.Hud.ShowUnitDetails(detail);yield return null;

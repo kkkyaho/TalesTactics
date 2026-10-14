@@ -74,22 +74,26 @@ namespace TalesTactics
             }
             else FormationIcon(parent,item==null?"wait":item.Slot==EquipmentSlot.Weapon?"attack":item.Slot==EquipmentSlot.Armor?"guard":"move",min,max,item==null?new Color(.35f,.43f,.52f):formationGold);
         }
-        CharacterData IntermissionCharacter()=>battle.Catalog.Characters[Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1)];
+        CharacterData[] JoinedCharacters()=>battle.Catalog.Characters.Where(battle.IsJoined).ToArray();
+        CharacterData IntermissionCharacter()
+        {
+            var c=battle.Catalog.Characters[Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1)];
+            if(!battle.IsJoined(c))c=JoinedCharacters().First();selectedCharacter=Array.IndexOf(battle.Catalog.Characters,c);return c;
+        }
         void IntermissionRoster(Transform parent,CharacterData selected,Action<CharacterData> choose)
         {
-            var chars=battle.Catalog.Characters;int pages=Math.Max(1,(chars.Length+9)/10);intermissionRosterPage=Mathf.Clamp(intermissionRosterPage,0,pages-1);
+            var chars=JoinedCharacters();int pages=Math.Max(1,(chars.Length+5)/6);intermissionRosterPage=Mathf.Clamp(intermissionRosterPage,0,pages-1);
             var title=FormationText(parent,"캐릭터 선택",new Vector2(0,1),Vector2.one,18);title.color=formationGold;title.rectTransform.offsetMin=new Vector2(6,-34);title.rectTransform.offsetMax=new Vector2(-6,0);
             var grid=FormationRect(parent,"RosterGrid",Vector2.zero,Vector2.one);grid.offsetMax=new Vector2(0,-36);
-            float bottom=pages>1?.17f:0;
-            for(int i=0;i<Math.Min(10,chars.Length-intermissionRosterPage*10);i++)
+            float bottom=pages>1?.22f:0;
+            for(int i=0;i<Math.Min(6,chars.Length-intermissionRosterPage*6);i++)
             {
-                int index=intermissionRosterPage*10+i;var c=chars[index];float row=(1-bottom)/2;
-                var b=FormationButton(grid,c.DisplayName,"",new Vector2(i%5*.2f,bottom+(1-i/5)*row),new Vector2((i%5+1)*.2f,bottom+(2-i/5)*row),()=>{selectedCharacter=index;choose(c);});
+                var c=chars[intermissionRosterPage*6+i];int index=Array.IndexOf(battle.Catalog.Characters,c);float row=(1-bottom)/2;
+                var b=FormationButton(grid,c.DisplayName,"",new Vector2(i%3/3f,bottom+(1-i/3)*row),new Vector2((i%3+1)/3f,bottom+(2-i/3)*row),()=>{selectedCharacter=index;choose(c);});
                 IntermissionSelection(b,c==selected);
-                var artBounds=FormationRect(b,"PortraitBounds",Vector2.zero,Vector2.one);artBounds.offsetMin=new Vector2(0,32);
+                var artBounds=FormationRect(b,"PortraitBounds",new Vector2(.02f,.04f),new Vector2(.36f,.96f));
                 IntermissionPortrait(artBounds,c,Vector2.zero,Vector2.one);
-                var caption=FormationText(b,c.DisplayName.Split(' ')[0],Vector2.zero,new Vector2(1,0),16,TextAlignmentOptions.Center);caption.fontSizeMin=14;
-                caption.rectTransform.offsetMin=new Vector2(2,0);caption.rectTransform.offsetMax=new Vector2(-2,32);
+                FormationText(b,c.DisplayName.Split(' ')[0],new Vector2(.35f,.04f),new Vector2(.99f,.96f),13,TextAlignmentOptions.Center);
             }
             if(pages>1)
             {
@@ -101,11 +105,11 @@ namespace TalesTactics
         void IntermissionStats(Transform parent,Stats before,Stats after,Vector2 min,Vector2 max)
         {
             var table=IntermissionPanel(parent,"StatComparison",min,max);
-            FormationText(table,"능력치         현재  →  변경 후",new Vector2(.015f,.9f),new Vector2(.985f,1),17).color=formationTeal;
+            FormationText(table,"능력치  ·  현재 → 변경 후",new Vector2(.015f,.85f),new Vector2(.985f,1),17).color=formationTeal;
             string[] names={"HP","MP","공격","마력","방어","마방","민첩","이동","도약"};
             int[] a={before.HP,before.MP,before.STR,before.MAG,before.DEF,before.MDF,before.SPD,before.MOV,before.JMP};
             int[] b={after.HP,after.MP,after.STR,after.MAG,after.DEF,after.MDF,after.SPD,after.MOV,after.JMP};
-            for(int i=0;i<names.Length;i++)FormationText(table,StatChange(names[i],a[i],b[i]),new Vector2(.02f,.89f-(i+1)*.096f),new Vector2(.98f,.89f-i*.096f),18);
+            for(int i=0;i<names.Length;i++){float x=i%2*.50f,top=.84f-i/2*.165f;FormationText(table,StatChange(names[i],a[i],b[i]),new Vector2(x,top-.16f),new Vector2(x+.50f,top),17);}
         }
         void IntermissionNotice(string text)=>FormationText(footer,text,new Vector2(.01f,.08f),new Vector2(.53f,.92f),17).color=formationGold;
         void IntermissionPrimary(string name,string label,Action action,bool enabled)

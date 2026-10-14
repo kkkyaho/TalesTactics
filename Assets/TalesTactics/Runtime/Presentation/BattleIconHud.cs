@@ -23,20 +23,20 @@ namespace TalesTactics
         {
             bool arriving=battle.Session.ReinforcementsArrived&&battle.Session.Scheduler is TeamTurnScheduler eventTurn&&eventTurn.Round==3&&eventTurn.Phase==Team.Player;
             var title=Label(header,battle.TutorialActive?"입문 연습":arriving?"적 증원 2명 도착":BriefVictory(battle.Session,battle.Session.CampaignStage,battle.TrainingMode),16,34,18);
-            title.rectTransform.anchorMax=new Vector2(0,1);title.rectTransform.sizeDelta=new Vector2(310,30);title.rectTransform.anchoredPosition=new Vector2(170,-16);title.enableAutoSizing=true;title.fontSizeMin=11;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
+            Place(title.rectTransform,new Vector2(0,.15f),new Vector2(.31f,.85f),Vector2.zero,Vector2.zero);title.enableAutoSizing=true;title.fontSizeMin=11;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.Normal;
             int i=0;
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
             if(team!=null)
             {
                 var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,20,12);
-                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-190,-28),new Vector2(150,-8));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
+                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-180,-26),new Vector2(180,-2));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
             }
             foreach(var unit in orderNow)
             {
                 var g=new GameObject(team!=null?"아군 선택: "+unit.Data.Id:"NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
-                float x=team!=null?-20-orderNow.Length*24+i*48:-120+i*48;
-                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-70),new Vector2(x+42,team!=null?-28:-14));
+                float x=-orderNow.Length*26+i*52;
+                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-88),new Vector2(x+46,-30));
                 var img=g.GetComponent<UnityEngine.UI.Image>();img.color=unit==battle.Session.Active?new Color(.08f,.35f,.39f):new Color(.07f,.11f,.17f);img.raycastTarget=true;
                 var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.27f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
                 if(team!=null&&!team.CanSelect(unit))foreach(var graphic in art.GetComponentsInChildren<UnityEngine.UI.Graphic>())graphic.color=new Color(.43f,.48f,.53f,.8f);
@@ -60,14 +60,14 @@ namespace TalesTactics
         }
         void CompactHeaderEntries()
         {
-            string[] names={"좌회전","초기화","우회전","확대 +","축소 −","현재 유닛","도움말","메뉴 · 저장/설정","임무 · 적 정보"};
-            string[] labels={"‹","전체","›","+","−","초점","?","설정","임무"};
+            string[] names={"메뉴 · 저장/설정","임무 · 적 정보"};
+            string[] labels={"설정","임무"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=header.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
-                var r=(RectTransform)child;r.sizeDelta=new Vector2(36,32);r.anchoredPosition=new Vector2(-8-(8-i)*39,-17);
-                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=i==0||i==2||i==3||i==4||i==6?20:13;
-                text.rectTransform.sizeDelta=new Vector2(-2,29);StyleButton(child,HudRole.Quiet);
+                var r=(RectTransform)child;r.sizeDelta=new Vector2(72,40);r.anchoredPosition=new Vector2(-12-(1-i)*82,-24);
+                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=16;
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(4,1),new Vector2(-4,-1));StyleButton(child,HudRole.Quiet);
             }
         }
         void DrawSkillCards(UnitRuntime unit)
@@ -83,7 +83,7 @@ namespace TalesTactics
             SkillCardHeight=buttonsY+(shownSkill!=null?44:8);
             Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",7,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,26);
             var filter=(RectTransform)commands.GetChild(commands.childCount-1);filter.anchorMax=new Vector2(.72f,1);CompactSkillButton(filter);
-            var mp=Label(commands,"MP "+unit.CurrentMP,7,24,14);mp.alignment=TextAlignmentOptions.TopRight;
+            var mp=Label(commands,"MP "+unit.CurrentMP,7,26,14);mp.alignment=TextAlignmentOptions.MidlineRight;mp.rectTransform.anchorMin=new Vector2(.74f,1);
             var brief=Label(commands,"",infoY,26,13);brief.enableAutoSizing=true;brief.fontSizeMin=11;brief.fontSizeMax=13;
             System.Action<SkillData> inspect=skill=>{shownSkill=skill;brief.text=skill==null?"":$"거리 {skill.MinRange}–{skill.Range} · "+SkillSummary.Describe(skill);};
             inspect(shownSkill);

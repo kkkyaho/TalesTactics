@@ -112,7 +112,7 @@ namespace TalesTactics
         {
             if(!TrainingMode&&!CanPlayCampaignStage(SelectedStage))return;
             NormalizeDeployment();
-            if(Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
+            if(StoryActive||Campaign.HasPendingAfterStory||Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
             Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true,bossEncounters:true,difficulty:Preferences.Difficulty,missionEvents:Preferences.MissionEvents,reactions:Preferences.Reactions,expandedEncounters:true);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))
@@ -232,7 +232,7 @@ namespace TalesTactics
             string lootText=ItemText(CampaignStages.EquipmentReward(battleStage))+" · 추가: "+(pendingReward.BonusEquipment==null?"없음":ItemText(pendingReward.BonusEquipment));
             int goldGranted=System.Math.Min(pendingReward.Gold,CampaignInventory.MaxGold-Campaign.Gold);
             bool saved;
-            try{saved=CampaignStages.TryReward(Campaign,pendingReward,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),PersistCampaign,Session.Units.Where(u=>u.Team==Team.Player).ToDictionary(u=>u.Data.Id,u=>u.BattleEXP));}
+            try{saved=CampaignStages.TryReward(Campaign,pendingReward,Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data).ToArray(),SaveRewardAndEnding,Session.Units.Where(u=>u.Team==Team.Player).ToDictionary(u=>u.Data.Id,u=>u.BattleEXP));}
             catch(System.Exception){saved=false;}
             RewardPending=!saved;UpdateResultSummary(saved);
             Message=saved?CampaignStages.Title(battleStage)+" 완료 · "+(pendingReward.Repeat?"반복":"최초")+" EXP +"+pendingReward.Experience+" / "+goldGranted+"G 저장"+(goldGranted<pendingReward.Gold?" (골드 상한 적용)":"")+"\n장비: "+lootText:"저장 실패 — 보상 미적용. 추첨 결과는 유지됩니다. 재시도하거나 출전 화면으로 돌아가 포기할 수 있습니다.";

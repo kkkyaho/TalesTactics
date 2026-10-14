@@ -1,0 +1,520 @@
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 6232)
+VBCSCompiler prewarm took 5.32 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/respin/6000.6.0f1-fa21a270ab12' branch; Version is '6000.6.0f1 (f7f8ed4d1e24) revision 16251117'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Channel LicenseClient-USER-PC doesn't exist
+OS: 'Windows 11  (10.0.22631) Professional' Language: 'ko' Physical Memory: 16243 MB
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-14T15:59:06Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 12572)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Unity.exe
+-projectPath
+D:/TalesTacticsHelpGuide
+-executeMethod
+TalesTactics.Editor.UiSafeLayoutBuild.EditorReview
+-logFile
+D:/TalesTacticsHelpGuide/Logs/UiSafeLayout-EditorReview-final.log
+Successfully changed project path to: D:/TalesTacticsHelpGuide
+D:/TalesTacticsHelpGuide
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [14428]  Target information:
+
+Player connection [14428]  * "[IP] 218.153.144.137 [Port] 55504 [Flags] 2 [Guid] 3498012239 [EditorId] 3498012239 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-0EM2FOI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [14428] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [14428] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-14684" after 0.2 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-USER-PC" at "2026-10-14T15:59:06.6255955Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 12572, path: "C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              f43fe59bc60f42afa369ebc10ace814c
+  Correlation Id:          d292925e40416bc08a8a6bc21d94d057
+  External correlation Id: 2183674970435174266
+  Machine Id:              1bOhh36HJJJyQ17lA0veMN2aXYQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-USER-PC" (connect: 0.37s, validation: 0.16s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-USER-PC-notifications" at "2026-10-14T15:59:06.8165187Z"
+[Licensing::Module] Connected to LicensingClient (PId: 12572, launch time: 0.00, total connection time: 0.56s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 14569797470799-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.60s
+[Licensing::Module] Licensing is initialized (took 0.28s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = D:/TalesTacticsHelpGuide[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Unity Data Store running and initialised
+Initialize engine version: 6000.6.0f1 (f7f8ed4d1e24)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/TalesTacticsHelpGuide/Assets
+GfxDevice: creating device client; kGfxThreadingModeThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 (ID=0x2504)
+    Vendor:   NVIDIA
+    VRAM:     12115 MB
+    Driver:   32.0.16.1692
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56684
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001443 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.635 seconds
+Domain Reload Profiling: 1094ms
+	BeginReloadAssembly (125ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (4ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (261ms)
+		LoadAssemblies (104ms)
+		TypeCache.Refresh (175ms)
+			TypeCache.ScanAssembly (164ms)
+		AnalyzeDomain (0ms)
+	FinalizeReload (636ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (88ms)
+			ProcessInitializeOnLoadAttributes (120ms)
+			ProcessInitializeOnLoadMethodAttributes (230ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 41 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.pipeline@0.7.0-exp.1 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.pipeline@ab05e9cd7f74)
+    com.unity.visualscripting@1.9.11 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.nuget.mono-cecil@1.11.6 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.5 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.2d.sprite@947350d67f82)
+    com.unity.render-pipelines.universal@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.universal@8457e85b8184)
+    com.unity.test-framework@1.8.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.test-framework@7a3849e09bd0)
+    com.unity.timeline@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.timeline@281d5f7e7d7d)
+    com.unity.ugui@2.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ugui@23caec89ae27)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.audio@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.physics2d@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.core@2d66c71e606e)
+    com.unity.shadergraph@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.shadergraph@ef6135652377)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.screencapture@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.ai@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.test-framework.performance@0a60b857a52e)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/TalesTacticsHelpGuide
+ExitCode: 0 Duration: 2s201ms
+[ 815/1056  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1032/1056  1s] Csc Library/Bee/artifacts/1900b0aE.dag/TalesTactics.Runtime.dll (+2 others)
+[1038/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/TalesTactics.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/TalesTactics.Tests.dll, with 146 defines and 302 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1039/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 148 defines and 341 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1040/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 385 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1042/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/TalesTactics.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/TalesTactics.Editor.dll, with 146 defines and 324 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1048/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/TalesTactics.Runtime.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/TalesTactics.Runtime.dll, with 148 defines and 292 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1049/1056  0s] CopyFiles Library/ScriptAssemblies/TalesTactics.Runtime.pdb
+[1050/1056  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/TalesTactics.PlayModeTests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/TalesTactics.PlayModeTests.dll, with 148 defines and 273 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running Unity.Pipeline.CodeGen.CodeReloadInPlaceILPostProcessor
+[1055/1056  0s] CopyFiles Library/ScriptAssemblies/TalesTactics.Runtime.dll
+*** Tundra build success (2.17 seconds), 10 items updated, 1056 evaluated
+AssetDatabase: script compilation time: 2.775413s
+Begin MonoManager ReloadAssembly
+Total cache size 266988812
+Total cache size after purge 266988812, took 00:00:00.2963975
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Start HTTP server: port:7800
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.919 seconds
+Domain Reload Profiling: 2982ms
+	BeginReloadAssembly (234ms)
+		DisableScriptedObjects (29ms)
+		CreateAndSetChildDomain (48ms)
+	RebuildCommonClasses (8ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (75ms)
+	LoadAllAssembliesAndSetupDomain (731ms)
+		LoadAssemblies (402ms)
+		TypeCache.Refresh (228ms)
+			TypeCache.ScanAssembly (213ms)
+		AnalyzeDomain (72ms)
+			BuildScriptInfoCaches (64ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (1920ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (660ms)
+			ProcessInitializeOnLoadMethodAttributes (100ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (3ms)
+		AwakeInstancesAfterBackupRestoration (27ms)
+Starting new worker id: 0 with log in D:/TalesTacticsHelpGuide/Logs/AssetImportWorkerHW0.log
+Importing 'GUID: 0696ce6e98b767040ae5c37ba2fcd2ab - Path: Assets/TalesTactics/Resources/TalesTactics/Ornate/Trees.png' with importer (TextureImporter)
+Imported 'GUID: 0696ce6e98b767040ae5c37ba2fcd2ab' -> (Import Result ID: '1bdc5aa517e5e89c89e7fe3080b0e99d') in 0.139 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e325655fa4ea6c04bd518fd10c6e4616 DependenciesID=c633a98092625628d7836c1c1b39609c StaticDependenciesID=b12f295d1aaa08be35ed16822116df5b 
+Importing 'GUID: ab1f647a8ca8b7f4ab6675526f4844e4 - Path: Assets/TalesTactics/Resources/TalesTactics/Ornate/Panel.png' with importer (TextureImporter)
+Imported 'GUID: ab1f647a8ca8b7f4ab6675526f4844e4' -> (Import Result ID: 'dab1a1bc0296d1d7c81f324abe120791') in 0.116 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d89743c234387de26e9e3b761c7e8736 DependenciesID=f6709b6f1dc8e5b2101899442af0703b StaticDependenciesID=0466e84ae88c33af960b910964376cda 
+Importing 'GUID: aee6a49d7b4ac7d458b20bf23e517cf0 - Path: Assets/TalesTactics/Resources/TalesTactics/Ornate/Ground.png' with importer (TextureImporter)
+Imported 'GUID: aee6a49d7b4ac7d458b20bf23e517cf0' -> (Import Result ID: 'cd92ceea710347bd988632a14d2075d1') in 0.089 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d9b9eeb11d00546b209891bde4f5274c DependenciesID=15928836ee9dc31753ce1f00c2d3b7a1 StaticDependenciesID=4bc3783c7d58e9cb88a6c7ab71636c62 
+Importing 'GUID: 18dc0cd2c080841dea60987a38ce93fa - Path: Assets/Settings/UniversalRenderPipelineGlobalSettings.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 18dc0cd2c080841dea60987a38ce93fa' -> (Import Result ID: '394226bd7eae6756c4b12150cc7c11e4') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=ac92a3253360087966dd104547753906 DependenciesID=5951a330ba954e633c028c3f851641c9 StaticDependenciesID=cc9864dd58f8969ed80d0e7fbe90775b 
+Importing 'GUID: 4b83569d67af61e458304325a23e5dfd - Path: Assets/Settings/PC_RPAsset.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 4b83569d67af61e458304325a23e5dfd' -> (Import Result ID: '691b7522789b205c20bcaa4b5f584c7a') in 0.000 seconds [static dependencies only]. Details - ImportResultOutputID=eae66dc0e7a749d738136f6c7279b2f0 DependenciesID=2ed9d4dabdf91a1eebc65f60e58efcc2 StaticDependenciesID=a5825b2e27c68c975b3e25dfba0772c3 
+Importing 'GUID: 0f5801139f4ee8a42948ff0e4354d141 - Path: Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 0f5801139f4ee8a42948ff0e4354d141' -> (Import Result ID: 'd397e861daf3fb821c29d48a8bbd5a2e') in 0.144 seconds [static dependencies only]. Details - ImportResultOutputID=a9cdabc67c2d136dc54f3e23ef9df07a DependenciesID=fa14105d1ce93225278f803418154068 StaticDependenciesID=6dcc1d43bd145d3c18b32b617cecfc4c 
+
+Asset Pipeline Refresh (id=2d714927369ebba4885ff1190c351d2d): Total: 7.237 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=6 (actual=6, local cache=0, cache server=0)
+		Asset DB Process Time: managed=10 ms, native=2808 ms
+		Asset DB Callback time: managed=435 ms, native=18 ms
+		Scripting: domain reloads=1, domain reload time=1126 ms, compile time=2777 ms, other=60 ms
+		Project Asset Count: scripts=1411, non-scripts=2889
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 15.389ms
+	ApplyChangesToAssetFolders: 0.531ms
+	Scan: 83.343ms
+	Collect global state as custom dependencies: 15.553ms
+	OnSourceAssetsModified: 0.535ms
+	CategorizeScriptCompilationAssets: 40.039ms
+	ProcessAssetsWithTransientArtifactChanges: 82.504ms
+	CategorizeAssets: 48.667ms
+	CompileScripts: 2777.325ms
+	ImportOutOfDateAssets: 2426.773ms (1926.447ms without children)
+		ImportManagerImport: 492.648ms (1.414ms without children)
+			UpdateCategorizedAssets: 0.066ms
+		UnloadImportedAssets: 0.529ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.516ms
+		ImportSchedulerStart: 6.595ms
+	PostProcessAllAssets: 436.258ms
+		XRBuildSystem.XRAssetImported 0.532ms
+		MonoPostProcessAllAssets: 434.892ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 188.144ms
+			AssetPostprocessor.OnPostprocessAllAssets 156.497ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 30.045ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 13.727ms
+			SyncVS.PostprocessSyncProject 7.744ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 5.814ms
+			AssetChangedListener.OnPostprocessAllAssets 5.671ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.779ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.527ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.463ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 1.288ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.113ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 0.884ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.822ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.681ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.675ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.652ms
+			AssetEvents.OnPostprocessAllAssets 0.544ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.537ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.510ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.436ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.421ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.318ms
+			PostProcessor.OnPostprocessAllAssets 0.306ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.289ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.279ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.196ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.179ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.165ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.153ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.151ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.142ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.130ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.112ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.073ms
+	PostAssetChangesProfiler: 2.965ms
+	UnloadStreamsBegin: 1.901ms
+	PersistCurrentRevisions: 0.195ms
+	GenerateScriptTypeHashes: 1.158ms
+	GenerateScriptTypeSerializationHashes: 2.263ms
+	Untracked: 1286.236ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Scanning for USB devices : 2.170ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-TalesTactics
+Worker ready: AssetImportWorkerHW0 0
+Unloading 469 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1158.006 ms
+	Integration:            15.600 ms
+	Integration of assets:  19.268 ms
+	Thread Wait Time:       -0.029 ms
+	Total Operation Time:   1192.844 ms
+Unloading 7070 unused Assets / (10.5 MB). Loaded Objects now: 13263.
+Memory consumption went from 0.51 GB to 509.5 MB.
+Total: 9.676100 ms (FindLiveObjects: 0.748500 ms CreateObjectMapping: 0.427200 ms MarkObjects: 5.159400 ms  DeleteObjects: 3.006300 ms)
+
+[LAYOUT] About to load UserSettings\Layouts\default-6000.dwlt, keepMainWindow=False
+[LAYOUT] About to save layout D:\TalesTacticsHelpGuide\UserSettings\Layouts\default-6000.dwlt
+[LAYOUT] About to save layout C:/Users/USER-PC/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
+[MODES] ModeService[default].InitializeCurrentMode
+[MODES] ModeService[default].RaiseModeChanged(default, default)
+Opening scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.837 ms
+	Integration:            11.578 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.012 ms
+	Total Operation Time:   12.429 ms
+Unloading 2 unused Assets / (111.3 KB). Loaded Objects now: 13431.
+Memory consumption went from 0.56 GB to 0.56 GB.
+Total: 11.170700 ms (FindLiveObjects: 0.877200 ms CreateObjectMapping: 0.443800 ms MarkObjects: 9.477700 ms  DeleteObjects: 0.041800 ms)
+
+<RI> Initializing input.
+Using Windows.Gaming.Input
+[Project] Loading completed in 12.472 seconds
+	Project init time: 				9.996 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.496 seconds
+		Asset Database init time: 		0.161 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			1.134 seconds
+		Unity extensions init time: 	0.016 seconds
+		Asset Database refresh time: 	7.238 seconds
+	Scene opening time: 			2.377 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1791993558709,"processId":14684,"projectLoad":12.4723697,"projectInit":9.9957467,"templateInit":0.0,"packageManagerInit":0.4958806,"assetDatabaseInit":0.1612018,"globalIlluminationInit":0.0025313000000000002,"assembliesLoad":1.133749,"unityExtensionsInit":0.0161511,"assetDatabaseRefresh":7.2375256,"sceneOpening":2.3772882}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1791993558709,"processId":14684,"editorVersion":"6000.6.0f1 (f7f8ed4d1e24)","branch":"6000.6/respin/6000.6.0f1-fa21a270ab12","buildType":"Release","platform":"Windows"}
+GPU Resident Drawer created.
+GPU Resident Drawer disposed.
+Entering Playmode with Reload Domain disabled.
+If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+Entering Playmode with Reload Scene disabled. If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+GPU Resident Drawer created.
+Created GICache directory at C:/Users/USER-PC/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.010s, timestamps: [15.583 - 15.593]
+Start Indexing on Editor startup
+ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+  at System.Collections.Generic.List`1[T].get_Item (System.Int32 index) [0x00009] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 
+  at UnityEditor.Search.SearchDatabase+<EnumerateAll>d__78.MoveNext () [0x00089] in <f03e16b4b58248838607cefa048bd30a>:0 
+  at System.Linq.Enumerable.TryGetFirst[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Boolean& found) [0x00045] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at System.Linq.Enumerable.First[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x00000] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at UnityEditor.Search.SearchDatabase.GetDefaultSearchDatabase () [0x00005] in <f03e16b4b58248838607cefa048bd30a>:0 
+  at UnityEditor.Search.SearchInit.IndexationOnStartup () [0x0000a] in <f03e16b4b58248838607cefa048bd30a>:0 
+  at UnityEditor.EditorApplication.Internal_CallDelayFunctions () [0x00029] in <2194b77af8ea43e69caba13ba778a69a>:0 
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+TrimDiskCacheJob: Current cache size 0mb
+GPU Resident Drawer disposed.
+Unloading 59 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            2.017 ms
+	Integration:            19.541 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.008 ms
+	Total Operation Time:   21.566 ms
+Unloading 25 unused Assets / (101.1 MB). Loaded Objects now: 14228.
+Memory consumption went from 0.92 GB to 0.82 GB.
+Total: 12.041200 ms (FindLiveObjects: 0.639700 ms CreateObjectMapping: 0.260300 ms MarkObjects: 10.511300 ms  DeleteObjects: 0.273300 ms)
+
+GPU Resident Drawer created.
+MonoPathRemapper: Attempts to remap: 23548; Successful remaps: 4
+Serialized file version minimum: 23, current 23
+[LAYOUT] About to save layout D:\TalesTacticsHelpGuide\UserSettings\Layouts\default-6000.dwlt
+[LAYOUT] About to save layout C:/Users/USER-PC/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
+Pipeline Server stopped
+Clearing [KoreanFallback] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@23caec89ae27/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+TalesTactics.Editor.UiSafeLayoutBuild:ReviewState (UnityEditor.PlayModeStateChange) (at Assets/TalesTactics/Editor/UiSafeLayoutBuild.cs:23)
+UnityEditor.EditorApplication:Internal_PlayModeStateChanged (UnityEditor.PlayModeStateChange)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@23caec89ae27/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '8151b601d05d3e12de314c2aa1f82962') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=2a108b3da874f726c62fbe5f12be4a8a DependenciesID=6180c49ef29638684367d2893c04e070 StaticDependenciesID=5b19720d9149525484b40148944c8e26 
+Importing 'GUID: 0f5801139f4ee8a42948ff0e4354d141 - Path: Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 0f5801139f4ee8a42948ff0e4354d141' -> (Import Result ID: '776aa911fc890e9b9bafbeff1c0e4a32') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=a9cdabc67c2d136dc54f3e23ef9df07a DependenciesID=cf91dd0d53b7ee5710ee4eaa7ee386ab StaticDependenciesID=b917c9f28d465583705609ffa775fb02 
+Asset Pipeline Refresh (id=b2058b21b849b3744b41cbddd5cc74e7): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+GPU Resident Drawer disposed.
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-USER-PC-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-USER-PC channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1791993609842,"processId":14684,"allocatedMemory":18183472,"memoryLabels":[{"Default":208361},{"Permanent":15516},{"NewDelete":69653},{"Thread":4107000},{"Manager":2337127},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":840767},{"Material":24},{"GfxDevice":55968},{"Animation":952},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":21088},{"Input":45280},{"JobScheduler":256},{"TextLib":22420},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1365224},{"BaseObject":140240},{"Resource":1208},{"Renderer":9584},{"Transform":4685},{"File":7389},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":609443},{"StaticString":3808},{"Utility":2674312},{"Curl":48},{"PoolAlloc":2840},{"AI":80},{"TypeTree":17165},{"ScriptManager":12640},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":17664},{"WebRequest":552},{"VR":49650},{"SceneManager":608},{"Video":208},{"LazyScriptCache":32},{"NativeArray":540},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":592},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":365},{"EditorUtility":121737},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4955406},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":32546},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":213},{"ProfilerEditor":9778},{"CoreBusinessMetrics":3604},{"Windowing":456},{"Licensing":1264},{"AssetReference":32},{"IPCStream":32}]}

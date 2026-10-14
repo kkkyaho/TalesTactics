@@ -59,7 +59,7 @@ namespace TalesTactics.PlayModeTests
             Click("보상 저장 재시도");yield return null;
             Assert.That(director.RewardPending,Is.False);Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter1"));
             director.CompleteBattle();director.SaveBattleReward();Assert.That(writes,Is.EqualTo(2));
-            director.Restart();yield return null;director.SelectedStage=1;director.BeginBattle();yield return null;
+            director.Restart();yield return null;while(director.StoryActive)director.AdvanceStory();director.SelectedStage=1;director.BeginBattle();yield return null;
             Assert.That(director.Session.Units.First(u=>u.Team==Team.Enemy).Level,Is.EqualTo(3));
             foreach(var u in director.Session.Units.Where(u=>u.Team==Team.Enemy))u.Damage(99999,director.Session.Grid);
             director.SetState(new TurnStartState(director));yield return null;
@@ -104,7 +104,7 @@ namespace TalesTactics.PlayModeTests
             var active=director.Session.Active;var position=active.Position;
             for(int i=0;i<4;i++)
             {
-                Click("우회전");
+                director.Board.RotateCamera(90);
                 foreach(var tile in director.Session.Grid.Tiles.Values)
                 {
                     var p=camera.WorldToScreenPoint(tile.WorldPosition(director.Catalog.Rules.TileHeight));
@@ -112,9 +112,9 @@ namespace TalesTactics.PlayModeTests
                 }
             }
             Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(0.01f));
-            Click("확대 +");Assert.That(camera.orthographicSize,Is.LessThan(size));
+            director.Board.ZoomCamera(.9f);Assert.That(camera.orthographicSize,Is.LessThan(size));
             Assert.That(director.Board.Pick(new Vector2(-10,-10),out _),Is.False);
-            Click("초기화");
+            director.Board.ResetCamera();
             Assert.That(camera.orthographicSize,Is.EqualTo(size).Within(0.01f));
             Assert.That(active.Position,Is.EqualTo(position));Assert.That(active.Moved,Is.False);
             Assert.That(director.State,Is.InstanceOf<CommandState>());

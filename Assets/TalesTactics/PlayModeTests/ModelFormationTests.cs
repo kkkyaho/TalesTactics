@@ -19,13 +19,14 @@ namespace TalesTactics.PlayModeTests
         {
             director.Deployment.Clear();director.Deployment.AddRange(TacticalDevelopment.Recommended(director.Catalog));director.Hud.ShowDeployment();yield return null;
             var party=director.Deployment.ToArray();int index=System.Array.FindIndex(director.Catalog.Characters,c=>c.Id=="velvet");var c=director.Catalog.Characters[index];
+            Click("다음 캐릭터");yield return null;
             PointAndSubmit("○ "+c.DisplayName);yield return null;
             Assert.That(director.Deployment,Is.EqualTo(party));
             Assert.That(FormationControl("출전 편성에 추가").interactable,Is.False);
             Assert.That(FormationControl("편성 변경: velvet").interactable,Is.False);
-            PointAndSubmit("편성 변경: cless");yield return null;
+            Click("이전 캐릭터");yield return null;PointAndSubmit("편성 변경: cless");yield return null;
             Assert.That(director.Deployment.Count,Is.EqualTo(party.Length-1));
-            PointAndSubmit("편성 변경: velvet");yield return null;
+            Click("다음 캐릭터");yield return null;PointAndSubmit("편성 변경: velvet");yield return null;
             Assert.That(director.Deployment.Contains(index),Is.True);Assert.That(director.Deployment.Count,Is.EqualTo(director.Catalog.Rules.MaxDeployment));
             Assert.That(director.Deployment.Distinct().Count(),Is.EqualTo(director.Deployment.Count));
             Click("전체 해제");yield return null;

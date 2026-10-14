@@ -6,6 +6,12 @@ namespace TalesTactics
     public sealed partial class BattleDirector
     {
         int personalChoice;
+        public bool IsJoined(CharacterData character)
+        {
+            if(!Catalog.CrossoverReady)return true;
+            int episode=1;while(episode<20&&Campaign.StoryProgress.Contains(CrossoverCampaign.Flag(episode)))episode++;
+            return CrossoverCampaign.Joined(character.Id,episode);
+        }
         public bool CanDeploy(int index)=>index>=0&&index<Catalog.Characters.Length&&(TrainingMode||!CrossoverCampaign.IsMain(SelectedStage)||CrossoverCampaign.Joined(Catalog.Characters[index].Id,CrossoverCampaign.Episode(SelectedStage).Number));
         public void NormalizeDeployment()
         {
@@ -22,9 +28,9 @@ namespace TalesTactics
             if(PersonalScenarios.Contains(SelectedStage)&&PersonalScenarios.Tier(SelectedStage)==0)
             {
                 bool saved=false;
-                try{saved=CampaignStages.TryReward(Campaign,CampaignEconomy.Prepare(Campaign,SelectedStage,9999),new[]{Catalog.Characters.First(c=>c.Id==PersonalScenarios.Arc(SelectedStage).Owner)},PersistCampaign);}catch(Exception){ }
+                try{saved=CampaignStages.TryReward(Campaign,CampaignEconomy.Prepare(Campaign,SelectedStage,9999),new[]{Catalog.Characters.First(c=>c.Id==PersonalScenarios.Arc(SelectedStage).Owner)},save=>SaveRewardAndEnding(save,SelectedStage));}catch(Exception){ }
                 SaveNotice=saved?"동료의 이야기를 기록했습니다.":"이야기 저장 실패 · 기록과 보상은 적용되지 않았습니다. 다시 시도하세요.";
-                if(saved)OpenStory(SelectedStage,true,Hud.ShowPersonalScenarios);else Hud.ShowPersonalScenarios();
+                if(saved)ResumePendingEnding();else Hud.ShowPersonalScenarios();
                 return;
             }
             bool choice=PersonalScenarios.Contains(SelectedStage)&&PersonalScenarios.Tier(SelectedStage)==1||CrossoverCampaign.IsMain(SelectedStage)&&CrossoverCampaign.Episode(SelectedStage).Number==13;
@@ -40,15 +46,18 @@ namespace TalesTactics
         public void ShowPersonalScenarios()
         {
             if(battle.Session!=null)return;BeginPreparation("동료의 이야기");
-            Label(left,"동료 · "+(personalPage+1)+" / 4",12,36,22);
-            for(int n=personalPage*3;n<Math.Min(10,personalPage*3+3);n++)
+            var visible=Enumerable.Range(0,PersonalScenarios.Arcs.Length).Where(i=>battle.Catalog.Characters.Any(c=>c.Id==PersonalScenarios.Arcs[i].Owner&&battle.IsJoined(c))).ToArray();
+            int pages=Math.Max(1,(visible.Length+2)/3);personalPage=Mathf.Clamp(personalPage,0,pages-1);
+            Label(left,"동료 · "+(personalPage+1)+" / "+pages,12,36,22);
+            for(int n=personalPage*3;n<Math.Min(visible.Length,personalPage*3+3);n++)
             {
-                int arcIndex=n;var arc=PersonalScenarios.Arcs[n];
+                int arcIndex=visible[n];var arc=PersonalScenarios.Arcs[arcIndex];
                 Button(left,arc.Name,66+n%3*82,()=>{selectedCharacter=Array.FindIndex(battle.Catalog.Characters,c=>c.Id==arc.Owner);battle.SelectedStage=PersonalScenarios.FirstStage+arcIndex*3;ShowPersonalScenarios();},true,66);
             }
-            Button(left,"이전 동료",332,()=>{personalPage--;battle.SelectedStage=PersonalScenarios.FirstStage+personalPage*9;ShowPersonalScenarios();},personalPage>0,40);HalfButton(left,0);
-            Button(left,"다음 동료",332,()=>{personalPage++;battle.SelectedStage=PersonalScenarios.FirstStage+personalPage*9;ShowPersonalScenarios();},personalPage<3,40);HalfButton(left,1);
+            Button(left,"이전 동료",332,()=>{personalPage--;battle.SelectedStage=PersonalScenarios.FirstStage+visible[personalPage*3]*3;ShowPersonalScenarios();},personalPage>0,40);HalfButton(left,0);
+            Button(left,"다음 동료",332,()=>{personalPage++;battle.SelectedStage=PersonalScenarios.FirstStage+visible[personalPage*3]*3;ShowPersonalScenarios();},personalPage+1<pages,40);HalfButton(left,1);
             int chosen=PersonalScenarios.Contains(battle.SelectedStage)?(battle.SelectedStage-PersonalScenarios.FirstStage)/3:personalPage*3;
+            if(!visible.Contains(chosen))chosen=visible[personalPage*3];
             var selected=PersonalScenarios.Arcs[chosen];Label(center,selected.Name+" · 세 개의 이야기",20,48,24);
             for(int tier=0;tier<3;tier++)
             {

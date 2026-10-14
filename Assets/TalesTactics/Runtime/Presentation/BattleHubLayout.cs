@@ -16,6 +16,7 @@ namespace TalesTactics
         public void ShowIntermissionHub()
         {
             if(battle.Session!=null||battle.StoryActive)return;
+            if(battle.ResumePendingEnding())return;
             if(!battle.TrainingMode&&battle.Catalog.CrossoverReady)battle.SelectCurrentMain();
             BeginPreparation("출전 준비");hubLayout=true;left.gameObject.SetActive(false);commands.gameObject.SetActive(false);HubLayout();
             StoryBackdrop(center);
@@ -61,8 +62,7 @@ namespace TalesTactics
                 FormationText(card,c.DisplayName.Split(' ')[0]+" Lv."+FormationLevel(index),new Vector2(.02f,.025f),new Vector2(.98f,.24f),16,TextAlignmentOptions.Center);
             }
             if(members.Length==0)FormationText(party,"출전할 동료를 편성하세요.",new Vector2(.04f,.4f),new Vector2(.96f,.7f),22,TextAlignmentOptions.Center);
-            FormationButton(party,"이야기 다시 보기","이야기 다시 보기",new Vector2(.04f,.12f),new Vector2(.51f,.23f),ShowHubStories,!battle.TrainingMode,17);
-            FormationButton(party,"동료의 이야기 · 30","동료의 이야기",new Vector2(.51f,.12f),new Vector2(.96f,.23f),ShowPersonalScenarios,!battle.TrainingMode,17);
+            FormationButton(party,"동료의 이야기 · 30","동료의 이야기",new Vector2(.04f,.12f),new Vector2(.96f,.23f),ShowPersonalScenarios,!battle.TrainingMode,17);
             FormationText(party,"동료를 선택하면 장비를 정비합니다.",new Vector2(.04f,.035f),new Vector2(.96f,.105f),15).color=new Color(.7f,.77f,.85f);
             string[] names={"출전 편성","장비 관리","장비 상점","성장 · 승급"};string[] labels={"편성","장비","상점","성장"};
             Action[] actions={ShowDeployment,ShowEquipmentRoster,()=>ShowShop(),ShowGrowthRoster};
@@ -74,18 +74,8 @@ namespace TalesTactics
             }
             bool finished=!battle.TrainingMode&&battle.Catalog.CrossoverReady&&battle.Campaign.StoryProgress.Contains(CrossoverCampaign.Flag(20));
             var start=FormationButton(footer,"전투 시작",battle.TrainingMode?"훈련 시작":finished?"메인 이야기 완료":"이야기 시작",new Vector2(.74f,.37f),new Vector2(.97f,.86f),battle.RequestBattle,battle.Deployment.Count>0&&!finished,22);IntermissionGoldButton(start);
-            FormationText(footer,battle.SaveNotice??"",new Vector2(.025f,.055f),new Vector2(.975f,.28f),15).color=new Color(.72f,.79f,.82f);
+            FormationText(footer,battle.SaveNotice??"",new Vector2(.025f,.015f),new Vector2(.975f,.30f),15).color=new Color(.72f,.79f,.82f);
         }
         string PreparationDefeat()=>!battle.TrainingMode&&battle.SelectedStage==16?"진행 중인 전선의 아군 전원 전투불능":!battle.TrainingMode&&battle.SelectedStage==21?"선두 출전 아군 전투불능 또는 아군 전멸":!battle.TrainingMode&&CampaignMissions.Kind(battle.SelectedStage)==ObjectiveKind.Escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능";
-        void ShowHubStories()
-        {
-            PrepareUnitModal(new UnitRuntime(IntermissionCharacter(),Team.Player,battle.Catalog.Rules));Clear(unitDetails);
-            FormationText(unitDetails,"이야기 다시 보기",new Vector2(.06f,.82f),new Vector2(.84f,.94f),25);
-            CloseIcon(unitDetails,"이야기 목록 닫기",()=>CloseUnitDetails());
-            FormationButton(unitDetails,"전투 전 이야기","현재 임무의 전투 전 이야기",new Vector2(.06f,.60f),new Vector2(.94f,.75f),()=>{CloseUnitDetails();battle.ReplayStory(false);});
-            int completed=Enumerable.Range(CrossoverCampaign.FirstStage,20).Where(s=>battle.Campaign.StoryProgress.Contains(CampaignStages.Id(s))).DefaultIfEmpty(-1).Max();
-            FormationButton(unitDetails,"전투 후 이야기","지난 임무의 전투 후 이야기",new Vector2(.06f,.40f),new Vector2(.94f,.55f),()=>{CloseUnitDetails();battle.ReplayMainEnding(completed);},completed>=0);
-            FormationText(unitDetails,"다시 보기는 진행 상태와 보상을 변경하지 않습니다.",new Vector2(.06f,.16f),new Vector2(.94f,.33f),18);
-        }
     }
 }

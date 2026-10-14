@@ -22,7 +22,7 @@ namespace TalesTactics.PlayModeTests
             {
                 director.Hud.ShowDeployment();yield return null;
                 director.Hud.ShowChapterPage(director.SelectedStage/3);yield return null;director.Hud.ShowChapterPage(1);yield return null;
-                Click(CampaignStages.Title(stage));yield return null;
+                Click((director.SelectedStage==stage?"● ":"")+CampaignStages.Title(stage));yield return null;
                 foreach(var button in Object.FindObjectsByType<UnityEngine.UI.Button>())
                 {
                     var corners=new Vector3[4];((RectTransform)button.transform).GetWorldCorners(corners);

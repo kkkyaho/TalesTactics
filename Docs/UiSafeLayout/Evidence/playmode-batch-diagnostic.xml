@@ -1,0 +1,1585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="160" result="Failed(Child)" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.8978529">
+  <test-suite type="TestSuite" id="1168" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="160" result="Failed" site="Child" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.897853" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1330" name="TalesTactics.PlayModeTests.dll" fullname="D:/TalesTacticsHelpGuide/Library/ScriptAssemblies/TalesTactics.PlayModeTests.dll" runstate="Runnable" testcasecount="160" result="Failed" site="Child" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.890477" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24484" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1331" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="160" result="Failed" site="Child" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.888761" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1332" name="PlayModeTests" fullname="TalesTactics.PlayModeTests" runstate="Runnable" testcasecount="160" result="Failed" site="Child" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.884301" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1169" name="BattleSceneTests" fullname="TalesTactics.PlayModeTests.BattleSceneTests" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" testcasecount="160" result="Failed" site="Child" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:25:20Z" duration="194.877216" total="160" passed="121" failed="39" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1170" name="ActionExperienceFeedbackRewindAndVictoryCommitUseSameProgress" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ActionExperienceFeedbackRewindAndVictoryCommitUseSameProgress" methodname="ActionExperienceFeedbackRewindAndVictoryCommitUseSameProgress" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1323482521" result="Passed" start-time="2026-10-14 15:22:05Z" end-time="2026-10-14 15:22:10Z" duration="4.829380" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="AllCatalogSkillsExecuteWithMatchingPreviewAndFiniteCosts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AllCatalogSkillsExecuteWithMatchingPreviewAndFiniteCosts" methodname="AllCatalogSkillsExecuteWithMatchingPreviewAndFiniteCosts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="864519519" result="Passed" start-time="2026-10-14 15:22:10Z" end-time="2026-10-14 15:22:11Z" duration="0.789870" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1198" name="AllCharacterPosesRenderInFourCameraDirections" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections" methodname="AllCharacterPosesRenderInFourCameraDirections" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1105707339" result="Failed" start-time="2026-10-14 15:22:11Z" end-time="2026-10-14 15:22:11Z" duration="0.844335" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1205" name="AllElementsRenderPooledGeometryWithoutChangingCombatOrRandom" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AllElementsRenderPooledGeometryWithoutChangingCombatOrRandom" methodname="AllElementsRenderPooledGeometryWithoutChangingCombatOrRandom" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1952409997" result="Passed" start-time="2026-10-14 15:22:11Z" end-time="2026-10-14 15:22:13Z" duration="2.026047" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1287" name="AllSkillDetailPanelsFitAndKeepBattleValues" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AllSkillDetailPanelsFitAndKeepBattleValues" methodname="AllSkillDetailPanelsFitAndKeepBattleValues" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1570452394" result="Passed" start-time="2026-10-14 15:22:13Z" end-time="2026-10-14 15:22:16Z" duration="2.816974" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1189" name="AlphenOnlyOffersAffordableUnlockedFollowupAfterSwordArte" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AlphenOnlyOffersAffordableUnlockedFollowupAfterSwordArte" methodname="AlphenOnlyOffersAffordableUnlockedFollowupAfterSwordArte" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="453651651" result="Passed" start-time="2026-10-14 15:22:16Z" end-time="2026-10-14 15:22:17Z" duration="0.906526" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1307" name="ArchitecturalTerrainPreservesSixMapsAndRotatedPicking" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ArchitecturalTerrainPreservesSixMapsAndRotatedPicking" methodname="ArchitecturalTerrainPreservesSixMapsAndRotatedPicking" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="394473246" result="Failed" start-time="2026-10-14 15:22:17Z" end-time="2026-10-14 15:22:18Z" duration="0.796456" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1308" name="ArchitecturalTerrainReleasesOwnedMeshesMaterialsAndSpritesOnRestart" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ArchitecturalTerrainReleasesOwnedMeshesMaterialsAndSpritesOnRestart" methodname="ArchitecturalTerrainReleasesOwnedMeshesMaterialsAndSpritesOnRestart" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="935911297" result="Passed" start-time="2026-10-14 15:22:18Z" end-time="2026-10-14 15:22:19Z" duration="0.809741" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1305" name="ArrivalMovementEndsBattleAndEscortDeathFails" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ArrivalMovementEndsBattleAndEscortDeathFails" methodname="ArrivalMovementEndsBattleAndEscortDeathFails" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="300016774" result="Passed" start-time="2026-10-14 15:22:19Z" end-time="2026-10-14 15:22:20Z" duration="1.016625" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1270" name="ArtDirectionsMotionAndCameraRotationRemainConnected" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ArtDirectionsMotionAndCameraRotationRemainConnected" methodname="ArtDirectionsMotionAndCameraRotationRemainConnected" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="292791758" result="Failed" start-time="2026-10-14 15:22:20Z" end-time="2026-10-14 15:22:21Z" duration="0.849363" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  HP bar must stay above the billboard head after camera rotation.
+  Expected: greater than 179.864075f
+  But was:  163.880249f
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<ArtDirectionsMotionAndCameraRotationRemainConnected>d__117.MoveNext () [0x003ce] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\PresentationSceneTests.cs:31
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1199" name="AttackRecoversGuardPersistsAndMissingPoseFallsBack" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AttackRecoversGuardPersistsAndMissingPoseFallsBack" methodname="AttackRecoversGuardPersistsAndMissingPoseFallsBack" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1521287332" result="Failed" start-time="2026-10-14 15:22:21Z" end-time="2026-10-14 15:22:22Z" duration="0.851563" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1238" name="BundledFontCoversCatalogWithoutOperatingSystemFonts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.BundledFontCoversCatalogWithoutOperatingSystemFonts" methodname="BundledFontCoversCatalogWithoutOperatingSystemFonts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1731327347" result="Passed" start-time="2026-10-14 15:22:22Z" end-time="2026-10-14 15:22:22Z" duration="0.767715" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1182" name="CameraRotationZoomAndResetPreserveBattle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CameraRotationZoomAndResetPreserveBattle" methodname="CameraRotationZoomAndResetPreserveBattle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1096231304" result="Failed" label="Error" start-time="2026-10-14 15:22:22Z" end-time="2026-10-14 15:22:23Z" duration="0.925138" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests.Click (System.String name) [0x0000d] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\BattleSceneTests.cs:45 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<CameraRotationZoomAndResetPreserveBattle>d__18.MoveNext () [0x000ac] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\BattleSceneTests.cs:107 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1210" name="CampaignBalanceScenariosFinishAndReportCasualties" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CampaignBalanceScenariosFinishAndReportCasualties" methodname="CampaignBalanceScenariosFinishAndReportCasualties" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="501710547" result="Passed" start-time="2026-10-14 15:22:23Z" end-time="2026-10-14 15:22:26Z" duration="3.030733" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1192" name="CampaignBossWardAppearsInMissionAndSurvivesCheckpoint" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CampaignBossWardAppearsInMissionAndSurvivesCheckpoint" methodname="CampaignBossWardAppearsInMissionAndSurvivesCheckpoint" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="126622738" result="Passed" start-time="2026-10-14 15:22:26Z" end-time="2026-10-14 15:22:27Z" duration="0.898329" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1179" name="CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards" methodname="CampaignVictoryUnlocksNextStageAndRetriesWithoutDuplicateRewards" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="648492393" result="Passed" start-time="2026-10-14 15:22:27Z" end-time="2026-10-14 15:22:28Z" duration="0.953289" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1291" name="CatalogProfilesRenderDistinctFinalesWithoutChangingHealth" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CatalogProfilesRenderDistinctFinalesWithoutChangingHealth" methodname="CatalogProfilesRenderDistinctFinalesWithoutChangingHealth" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2055746542" result="Passed" start-time="2026-10-14 15:22:28Z" end-time="2026-10-14 15:22:30Z" duration="1.545834" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1197" name="ChapterShopShowsLockedDetailsThenUnlocksAfterReward" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ChapterShopShowsLockedDetailsThenUnlocksAfterReward" methodname="ChapterShopShowsLockedDetailsThenUnlocksAfterReward" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1943081588" result="Passed" start-time="2026-10-14 15:22:30Z" end-time="2026-10-14 15:22:31Z" duration="0.979506" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1247" name="CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle" methodname="CollapseHoldsLastFrameAcrossSyncAndRevivalRestoresIdle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1598452796" result="Failed" start-time="2026-10-14 15:22:31Z" end-time="2026-10-14 15:22:31Z" duration="0.817501" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1208" name="CompactForecastCyclesRecipientsAndDetailsWithoutSpendingResources" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CompactForecastCyclesRecipientsAndDetailsWithoutSpendingResources" methodname="CompactForecastCyclesRecipientsAndDetailsWithoutSpendingResources" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1455893176" result="Passed" start-time="2026-10-14 15:22:31Z" end-time="2026-10-14 15:22:32Z" duration="0.918284" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1232" name="CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" methodname="CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="604907814" result="Failed" start-time="2026-10-14 15:22:32Z" end-time="2026-10-14 15:22:33Z" duration="0.845161" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 300 +/- 0.00999999978f
+  But was:  380.0f
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts>d__73.MoveNext () [0x00155] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\IconHudTests.cs:20
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1207" name="CompactUnitSummaryAndDetailsPreserveBattleAndInput" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CompactUnitSummaryAndDetailsPreserveBattleAndInput" methodname="CompactUnitSummaryAndDetailsPreserveBattleAndInput" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1383266044" result="Failed" start-time="2026-10-14 15:22:33Z" end-time="2026-10-14 15:22:34Z" duration="0.851635" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 300 +/- 0.00999999978f
+  But was:  380.0f
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<CompactUnitSummaryAndDetailsPreserveBattleAndInput>d__44.MoveNext () [0x0034e] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\CompactHudTests.cs:31
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1200" name="ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame" methodname="ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1709692261" result="Passed" start-time="2026-10-14 15:22:34Z" end-time="2026-10-14 15:22:36Z" duration="1.556224" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1214" name="ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting" methodname="ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2077818581" result="Failed" start-time="2026-10-14 15:22:36Z" end-time="2026-10-14 15:22:37Z" duration="0.964417" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: <TalesTactics.TargetSelectionState>
+  But was:  <TalesTactics.ActionSelectionState>
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting>d__54.MoveNext () [0x00258] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ContextHudTests.cs:92
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1211" name="ContextOutsideClickCancelsOneStepAndUndoesOnlyUncommittedMove" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ContextOutsideClickCancelsOneStepAndUndoesOnlyUncommittedMove" methodname="ContextOutsideClickCancelsOneStepAndUndoesOnlyUncommittedMove" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1485070011" result="Passed" start-time="2026-10-14 15:22:37Z" end-time="2026-10-14 15:22:38Z" duration="1.060687" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1212" name="ContextTargetClickAndTabWorkWithoutNavigationWindow" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ContextTargetClickAndTabWorkWithoutNavigationWindow" methodname="ContextTargetClickAndTabWorkWithoutNavigationWindow" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="274293787" result="Failed" start-time="2026-10-14 15:22:38Z" end-time="2026-10-14 15:22:39Z" duration="0.854726" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: (7, 5)
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<ContextTargetClickAndTabWorkWithoutNavigationWindow>d__52.MoveNext () [0x00192] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ContextHudTests.cs:43
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1261" name="CorruptCheckpointAndFailedSuspendDoNotLoseCurrentBattle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CorruptCheckpointAndFailedSuspendDoNotLoseCurrentBattle" methodname="CorruptCheckpointAndFailedSuspendDoNotLoseCurrentBattle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="754338884" result="Passed" start-time="2026-10-14 15:22:39Z" end-time="2026-10-14 15:22:39Z" duration="0.882673" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\013e948879cd42558396b73eeb6dcc94\campaign.json.tmp' is denied.
+]]></output>
+            </test-case>
+            <test-case id="1219" name="CrossoverBoardSignalsAndSplitFrontsSurviveRetry" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CrossoverBoardSignalsAndSplitFrontsSurviveRetry" methodname="CrossoverBoardSignalsAndSplitFrontsSurviveRetry" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2055623380" result="Passed" start-time="2026-10-14 15:22:39Z" end-time="2026-10-14 15:22:41Z" duration="1.147514" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1306" name="CTUtilityScenariosReachEveryObjectiveWithoutForcedDamage" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CTUtilityScenariosReachEveryObjectiveWithoutForcedDamage" methodname="CTUtilityScenariosReachEveryObjectiveWithoutForcedDamage" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1179462889" result="Passed" start-time="2026-10-14 15:22:41Z" end-time="2026-10-14 15:22:43Z" duration="2.282996" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1178" name="DefeatRetryAndCorruptOpeningDoNotLoseCurrentBattle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.DefeatRetryAndCorruptOpeningDoNotLoseCurrentBattle" methodname="DefeatRetryAndCorruptOpeningDoNotLoseCurrentBattle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="409951370" result="Passed" start-time="2026-10-14 15:22:43Z" end-time="2026-10-14 15:22:44Z" duration="0.886928" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1188" name="DefeatShowsRestartCommand" fullname="TalesTactics.PlayModeTests.BattleSceneTests.DefeatShowsRestartCommand" methodname="DefeatShowsRestartCommand" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2039946392" result="Passed" start-time="2026-10-14 15:22:44Z" end-time="2026-10-14 15:22:45Z" duration="0.818213" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1180" name="DeploymentButtonStartsWiredScene" fullname="TalesTactics.PlayModeTests.BattleSceneTests.DeploymentButtonStartsWiredScene" methodname="DeploymentButtonStartsWiredScene" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1057513901" result="Passed" start-time="2026-10-14 15:22:45Z" end-time="2026-10-14 15:22:45Z" duration="0.846465" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1233" name="DirectSkillSelectionClearsOldTargetAndExecutesOnce" fullname="TalesTactics.PlayModeTests.BattleSceneTests.DirectSkillSelectionClearsOldTargetAndExecutesOnce" methodname="DirectSkillSelectionClearsOldTargetAndExecutesOnce" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="614881888" result="Passed" start-time="2026-10-14 15:22:45Z" end-time="2026-10-14 15:22:47Z" duration="1.917961" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1273" name="EffectOverlapIsBoundedAndMuteAndStopResetPlayback" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EffectOverlapIsBoundedAndMuteAndStopResetPlayback" methodname="EffectOverlapIsBoundedAndMuteAndStopResetPlayback" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="347466321" result="Passed" start-time="2026-10-14 15:22:47Z" end-time="2026-10-14 15:22:49Z" duration="1.828104" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1272" name="EffectsAudioDoesNotReplaceMusicSource" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EffectsAudioDoesNotReplaceMusicSource" methodname="EffectsAudioDoesNotReplaceMusicSource" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1638545489" result="Passed" start-time="2026-10-14 15:22:49Z" end-time="2026-10-14 15:22:50Z" duration="0.734206" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1271" name="EffectsExpireAndRestartCleansPresentation" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EffectsExpireAndRestartCleansPresentation" methodname="EffectsExpireAndRestartCleansPresentation" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1753298761" result="Passed" start-time="2026-10-14 15:22:50Z" end-time="2026-10-14 15:22:52Z" duration="1.790480" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1322" name="EmptySlotClickRequiresConfirmationAndCancelDoesNotCreateSave" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EmptySlotClickRequiresConfirmationAndCancelDoesNotCreateSave" methodname="EmptySlotClickRequiresConfirmationAndCancelDoesNotCreateSave" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="477148767" result="Passed" start-time="2026-10-14 15:22:52Z" end-time="2026-10-14 15:22:52Z" duration="0.781929" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1323" name="EndingResumesFromSavedLineAndFailedCompletionCannotAdvanceOrRewardTwice" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EndingResumesFromSavedLineAndFailedCompletionCannotAdvanceOrRewardTwice" methodname="EndingResumesFromSavedLineAndFailedCompletionCannotAdvanceOrRewardTwice" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1102444970" result="Passed" start-time="2026-10-14 15:22:52Z" end-time="2026-10-14 15:22:53Z" duration="0.949238" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1173" name="EnemySpeedAndBriefModePreserveCostsDamageRngAndTurnOrder" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EnemySpeedAndBriefModePreserveCostsDamageRngAndTurnOrder" methodname="EnemySpeedAndBriefModePreserveCostsDamageRngAndTurnOrder" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1265004263" result="Passed" start-time="2026-10-14 15:22:53Z" end-time="2026-10-14 15:22:58Z" duration="4.221797" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1171" name="EntireRosterUsesAuthoredAttackPhasesAndCanBeInterrupted" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EntireRosterUsesAuthoredAttackPhasesAndCanBeInterrupted" methodname="EntireRosterUsesAuthoredAttackPhasesAndCanBeInterrupted" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="26244177" result="Failed" start-time="2026-10-14 15:22:58Z" end-time="2026-10-14 15:22:58Z" duration="0.720200" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1184" name="EquipmentDraftCancelAndTrainingBattleUseSavedLoadout" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EquipmentDraftCancelAndTrainingBattleUseSavedLoadout" methodname="EquipmentDraftCancelAndTrainingBattleUseSavedLoadout" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="100140378" result="Passed" start-time="2026-10-14 15:22:58Z" end-time="2026-10-14 15:22:59Z" duration="0.937811" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1299" name="EveryCampaignObjectiveRewardsAndUnlocksNextChapter" fullname="TalesTactics.PlayModeTests.BattleSceneTests.EveryCampaignObjectiveRewardsAndUnlocksNextChapter" methodname="EveryCampaignObjectiveRewardsAndUnlocksNextChapter" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="983571266" result="Failed" label="Error" start-time="2026-10-14 15:22:59Z" end-time="2026-10-14 15:23:00Z" duration="0.845223" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at TalesTactics.PlayModeTests.BattleSceneTests+<EveryCampaignObjectiveRewardsAndUnlocksNextChapter>d__148.MoveNext () [0x000c9] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\SystemUiSceneTests.cs:64 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1222" name="ExpandedEnemyPagesReachLastEnemyAndPreserveBattle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ExpandedEnemyPagesReachLastEnemyAndPreserveBattle" methodname="ExpandedEnemyPagesReachLastEnemyAndPreserveBattle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1315112976" result="Passed" start-time="2026-10-14 15:23:00Z" end-time="2026-10-14 15:23:01Z" duration="1.059956" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1223" name="ExpandedWavesApplyWithoutOptionalCaptureAndRetryStartsFresh" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ExpandedWavesApplyWithoutOptionalCaptureAndRetryStartsFresh" methodname="ExpandedWavesApplyWithoutOptionalCaptureAndRetryStartsFresh" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1607311106" result="Passed" start-time="2026-10-14 15:23:01Z" end-time="2026-10-14 15:23:02Z" duration="1.104977" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1225" name="ExpansionEquipmentUnlocksPurchasesAndPersistsStats" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ExpansionEquipmentUnlocksPurchasesAndPersistsStats" methodname="ExpansionEquipmentUnlocksPurchasesAndPersistsStats" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1460570581" result="Passed" start-time="2026-10-14 15:23:02Z" end-time="2026-10-14 15:23:03Z" duration="0.989544" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1224" name="ExpansionPagesUnlockAndAllStoriesAndMapsFit" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ExpansionPagesUnlockAndAllStoriesAndMapsFit" methodname="ExpansionPagesUnlockAndAllStoriesAndMapsFit" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1353773062" result="Failed" label="Error" start-time="2026-10-14 15:23:03Z" end-time="2026-10-14 15:23:04Z" duration="1.079509" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests.Click (System.String name) [0x0000d] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\BattleSceneTests.cs:45 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<ExpansionPagesUnlockAndAllStoriesAndMapsFit>d__65.MoveNext () [0x0027f] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ExpansionCampaignTests.cs:25 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1327" name="FirePreparationCannotApplyDamageAndRestartClearsItsPool" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FirePreparationCannotApplyDamageAndRestartClearsItsPool" methodname="FirePreparationCannotApplyDamageAndRestartClearsItsPool" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1165649906" result="Passed" start-time="2026-10-14 15:23:04Z" end-time="2026-10-14 15:23:07Z" duration="2.471463" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1268" name="FocusOverviewAndDestinationSurviveAllChapterRestarts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FocusOverviewAndDestinationSurviveAllChapterRestarts" methodname="FocusOverviewAndDestinationSurviveAllChapterRestarts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1372291230" result="Passed" start-time="2026-10-14 15:23:07Z" end-time="2026-10-14 15:23:08Z" duration="1.142364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1297" name="ForecastDetailsListsAllRecipientsAndKeepsStateUntouched" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ForecastDetailsListsAllRecipientsAndKeepsStateUntouched" methodname="ForecastDetailsListsAllRecipientsAndKeepsStateUntouched" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1621142382" result="Passed" start-time="2026-10-14 15:23:08Z" end-time="2026-10-14 15:23:10Z" duration="1.927487" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1267" name="FormationInspectionDoesNotToggleAndPurchaseCanEquipDirectly" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FormationInspectionDoesNotToggleAndPurchaseCanEquipDirectly" methodname="FormationInspectionDoesNotToggleAndPurchaseCanEquipDirectly" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1603788438" result="Passed" start-time="2026-10-14 15:23:10Z" end-time="2026-10-14 15:23:11Z" duration="1.013856" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1325" name="FrameInsetRemainsStableAfterHundredsOfFrames" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FrameInsetRemainsStableAfterHundredsOfFrames" methodname="FrameInsetRemainsStableAfterHundredsOfFrames" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="425541809" result="Passed" start-time="2026-10-14 15:23:11Z" end-time="2026-10-14 15:23:12Z" duration="0.835422" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1226" name="FreeTurnMapAndPortraitSelectionKeepActionsAndBlockFinishedUnits" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FreeTurnMapAndPortraitSelectionKeepActionsAndBlockFinishedUnits" methodname="FreeTurnMapAndPortraitSelectionKeepActionsAndBlockFinishedUnits" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="547465317" result="Passed" start-time="2026-10-14 15:23:12Z" end-time="2026-10-14 15:23:13Z" duration="1.001761" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1227" name="FreeTurnSelectionCannotInterruptTargetsModalsOrEnemyPhase" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FreeTurnSelectionCannotInterruptTargetsModalsOrEnemyPhase" methodname="FreeTurnSelectionCannotInterruptTargetsModalsOrEnemyPhase" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2078374282" result="Passed" start-time="2026-10-14 15:23:13Z" end-time="2026-10-14 15:23:14Z" duration="1.164277" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1228" name="FreeTurnStunnedSelectionSkipsOnlyThatUnitOnce" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FreeTurnStunnedSelectionSkipsOnlyThatUnitOnce" methodname="FreeTurnStunnedSelectionSkipsOnlyThatUnitOnce" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1629918825" result="Passed" start-time="2026-10-14 15:23:14Z" end-time="2026-10-14 15:23:15Z" duration="1.301884" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1229" name="FreeTurnSuspendResumeRetainsMultipleAlliedTurns" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FreeTurnSuspendResumeRetainsMultipleAlliedTurns" methodname="FreeTurnSuspendResumeRetainsMultipleAlliedTurns" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="810166314" result="Passed" start-time="2026-10-14 15:23:15Z" end-time="2026-10-14 15:23:16Z" duration="0.883965" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1249" name="FullLootInventoryDisplaysReasonAndStillSavesVictory" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FullLootInventoryDisplaysReasonAndStillSavesVictory" methodname="FullLootInventoryDisplaysReasonAndStillSavesVictory" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="982542048" result="Passed" start-time="2026-10-14 15:23:16Z" end-time="2026-10-14 15:23:17Z" duration="0.796138" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1234" name="FullScreenSceneryKeepsTilesInHudSafeAreaAcrossRotations" fullname="TalesTactics.PlayModeTests.BattleSceneTests.FullScreenSceneryKeepsTilesInHudSafeAreaAcrossRotations" methodname="FullScreenSceneryKeepsTilesInHudSafeAreaAcrossRotations" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="645521460" result="Passed" start-time="2026-10-14 15:23:17Z" end-time="2026-10-14 15:23:18Z" duration="0.817156" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1236" name="GamepadMenusDoNotDoubleSubmitAndReconnect" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GamepadMenusDoNotDoubleSubmitAndReconnect" methodname="GamepadMenusDoNotDoubleSubmitAndReconnect" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1146759041" result="Passed" start-time="2026-10-14 15:23:18Z" end-time="2026-10-14 15:23:19Z" duration="0.809828" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1237" name="GamepadSelectsTilesCancelsAndHandlesTiming" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GamepadSelectsTilesCancelsAndHandlesTiming" methodname="GamepadSelectsTilesCancelsAndHandlesTiming" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="409643753" result="Passed" start-time="2026-10-14 15:23:19Z" end-time="2026-10-14 15:23:20Z" duration="1.906901" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1231" name="GroundedSelectionAndCompletionToneFollowPhaseAndReset" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GroundedSelectionAndCompletionToneFollowPhaseAndReset" methodname="GroundedSelectionAndCompletionToneFollowPhaseAndReset" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1604812482" result="Failed" start-time="2026-10-14 15:23:20Z" end-time="2026-10-14 15:23:21Z" duration="0.769884" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1230" name="GroundedThreatUnionHidesInternalEdgesAndPreservesCommittedAttacks" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GroundedThreatUnionHidesInternalEdgesAndPreservesCommittedAttacks" methodname="GroundedThreatUnionHidesInternalEdgesAndPreservesCommittedAttacks" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="384305958" result="Passed" start-time="2026-10-14 15:23:21Z" end-time="2026-10-14 15:23:22Z" duration="0.851596" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1284" name="GroundFacingArrowsMatchCameraAndAcceptPointerClicks" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GroundFacingArrowsMatchCameraAndAcceptPointerClicks" methodname="GroundFacingArrowsMatchCameraAndAcceptPointerClicks" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1292732534" result="Passed" start-time="2026-10-14 15:23:22Z" end-time="2026-10-14 15:23:23Z" duration="1.414881" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1283" name="GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation" methodname="GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1737744317" result="Failed" start-time="2026-10-14 15:23:23Z" end-time="2026-10-14 15:23:24Z" duration="0.808339" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: <TalesTactics.CommandState>
+  But was:  <TalesTactics.FacingSelectionState>
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<GroundFacingKeyboardPreviewCancelsAndConfirmsAfterRotation>d__132.MoveNext () [0x001d2] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\SimpleHudTests.cs:24
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1204" name="GrowthFeedbackUsesSnapshotsAndClearsOnRetry" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GrowthFeedbackUsesSnapshotsAndClearsOnRetry" methodname="GrowthFeedbackUsesSnapshotsAndClearsOnRetry" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1060700457" result="Passed" start-time="2026-10-14 15:23:24Z" end-time="2026-10-14 15:23:26Z" duration="2.188652" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1185" name="GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign" fullname="TalesTactics.PlayModeTests.BattleSceneTests.GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign" methodname="GrowthScreenShowsRequirementsAndPromotionAppliesToCampaign" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="705475240" result="Passed" start-time="2026-10-14 15:23:26Z" end-time="2026-10-14 15:23:28Z" duration="1.054428" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1203" name="HealingRevivalAndHealthCostsUseSeparateFeedback" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HealingRevivalAndHealthCostsUseSeparateFeedback" methodname="HealingRevivalAndHealthCostsUseSeparateFeedback" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1823785386" result="Passed" start-time="2026-10-14 15:23:28Z" end-time="2026-10-14 15:23:30Z" duration="2.260798" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1190" name="HealthDisplayKeepsTrackAndDamageTrailAndHidesDeadUnits" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HealthDisplayKeepsTrackAndDamageTrailAndHidesDeadUnits" methodname="HealthDisplayKeepsTrackAndDamageTrailAndHidesDeadUnits" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="372189431" result="Failed" start-time="2026-10-14 15:23:30Z" end-time="2026-10-14 15:23:31Z" duration="0.772905" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1319" name="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" methodname="HelpPagesFitBlockUnderlyingMenusAndRestoreSelection" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1047064878" result="Failed" start-time="2026-10-14 15:23:31Z" end-time="2026-10-14 15:23:31Z" duration="0.903116" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  궁극기는 해금 레벨·MP·SP·고유 조건을 모두 만족해야 합니다. 기술 목록의 ‘사용 가능’을 ‘전체 조회’로 바꾸면 잠긴 기술의 조건도 읽을 수 있습니다.
+
+크레스 알베인 · Lv20 / MP30 / SP100
+민트 아드네이드 · Lv20 / MP30 / SP100
+벨벳 크라우 · Lv20 / MP30 / SP100
+파라 엘스테드 · Lv19 / MP50 / SP0
+티아 그란츠 · Lv20 / MP30 / SP100
+제이드 커티스 · Lv20 / MP30 / SP100
+나탈리아 · Lv20 / MP30 / SP100
+알펜 · Lv20 / MP30 / SP100
+시온 아이메리스 · Lv20 / MP30 / SP100
+키사라 · Lv20 / MP30 / SP100
+
+파라: 모든 일반 기술 해금 후 사자전후에서 연계. 회전 진행률 40 %–75 %에 Space/패드 A를 누르세요. 자동 타이밍은 저장 · 설정의 ‘설정’에서 선택하고 저장합니다.
+그 외 연계 조건은 기술 상세를 따르세요.
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<HelpPagesFitBlockUnderlyingMenusAndRestoreSelection>d__170.MoveNext () [0x001f3] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\TutorialHelpTests.cs:66
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1213" name="HoverPreviewsAndMouseClickCastsWithoutConfirmation" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HoverPreviewsAndMouseClickCastsWithoutConfirmation" methodname="HoverPreviewsAndMouseClickCastsWithoutConfirmation" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2024438778" result="Failed" start-time="2026-10-14 15:23:31Z" end-time="2026-10-14 15:23:32Z" duration="0.900187" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: (2, 2)
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<HoverPreviewsAndMouseClickCastsWithoutConfirmation>d__53.MoveNext () [0x00225] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ContextHudTests.cs:71
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1321" name="HubProgressSelectsFirstUnfinishedAndPersonalReturnPreservesProgress" fullname="TalesTactics.PlayModeTests.BattleSceneTests.HubProgressSelectsFirstUnfinishedAndPersonalReturnPreservesProgress" methodname="HubProgressSelectsFirstUnfinishedAndPersonalReturnPreservesProgress" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1796998052" result="Passed" start-time="2026-10-14 15:23:32Z" end-time="2026-10-14 15:23:33Z" duration="0.834680" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1274" name="ImpactNumbersHoldContrastAndRestartRemovesBacking" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ImpactNumbersHoldContrastAndRestartRemovesBacking" methodname="ImpactNumbersHoldContrastAndRestartRemovesBacking" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1678396139" result="Passed" start-time="2026-10-14 15:23:33Z" end-time="2026-10-14 15:23:34Z" duration="1.045147" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1243" name="IntermissionBrowsingAndTraitDraftDoNotChangeSaveAndFailureRollsBack" fullname="TalesTactics.PlayModeTests.BattleSceneTests.IntermissionBrowsingAndTraitDraftDoNotChangeSaveAndFailureRollsBack" methodname="IntermissionBrowsingAndTraitDraftDoNotChangeSaveAndFailureRollsBack" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="153567371" result="Passed" start-time="2026-10-14 15:23:34Z" end-time="2026-10-14 15:23:35Z" duration="1.113177" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1244" name="IntermissionEquipmentDraftPreviewCancellationFailureAndRetry" fullname="TalesTactics.PlayModeTests.BattleSceneTests.IntermissionEquipmentDraftPreviewCancellationFailureAndRetry" methodname="IntermissionEquipmentDraftPreviewCancellationFailureAndRetry" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="271303434" result="Passed" start-time="2026-10-14 15:23:35Z" end-time="2026-10-14 15:23:36Z" duration="0.912243" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1241" name="IntermissionHubRoutesAndEmptyPartyRemainSafe" fullname="TalesTactics.PlayModeTests.BattleSceneTests.IntermissionHubRoutesAndEmptyPartyRemainSafe" methodname="IntermissionHubRoutesAndEmptyPartyRemainSafe" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1765568080" result="Passed" start-time="2026-10-14 15:23:36Z" end-time="2026-10-14 15:23:37Z" duration="0.829950" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1245" name="IntermissionMarketPaginationAndModalPreserveSelection" fullname="TalesTactics.PlayModeTests.BattleSceneTests.IntermissionMarketPaginationAndModalPreserveSelection" methodname="IntermissionMarketPaginationAndModalPreserveSelection" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="356222070" result="Passed" start-time="2026-10-14 15:23:37Z" end-time="2026-10-14 15:23:38Z" duration="0.928062" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1235" name="KeyboardMenusCycleModalButtonsAndSubmitOnceAfterPad" fullname="TalesTactics.PlayModeTests.BattleSceneTests.KeyboardMenusCycleModalButtonsAndSubmitOnceAfterPad" methodname="KeyboardMenusCycleModalButtonsAndSubmitOnceAfterPad" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="693390316" result="Failed" start-time="2026-10-14 15:23:38Z" end-time="2026-10-14 15:23:39Z" duration="0.795645" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<KeyboardMenusCycleModalButtonsAndSubmitOnceAfterPad>d__79.MoveNext () [0x0015e] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\InputDistributionTests.cs:43
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1298" name="KeyboardTileMovementAndEnemyThreatOverlayWork" fullname="TalesTactics.PlayModeTests.BattleSceneTests.KeyboardTileMovementAndEnemyThreatOverlayWork" methodname="KeyboardTileMovementAndEnemyThreatOverlayWork" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1208567605" result="Failed" start-time="2026-10-14 15:23:39Z" end-time="2026-10-14 15:23:40Z" duration="0.842546" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: <TalesTactics.MoveSelectionState>
+  But was:  <TalesTactics.CommandState>
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<KeyboardTileMovementAndEnemyThreatOverlayWork>d__147.MoveNext () [0x00209] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\SystemUiSceneTests.cs:50
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1295" name="LargeTextControlsFitAndPersist" fullname="TalesTactics.PlayModeTests.BattleSceneTests.LargeTextControlsFitAndPersist" methodname="LargeTextControlsFitAndPersist" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1225519017" result="Passed" start-time="2026-10-14 15:23:40Z" end-time="2026-10-14 15:23:40Z" duration="0.734364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1202" name="LethalAreaEffectsRetainAllRecipientsAfterResolution" fullname="TalesTactics.PlayModeTests.BattleSceneTests.LethalAreaEffectsRetainAllRecipientsAfterResolution" methodname="LethalAreaEffectsRetainAllRecipientsAfterResolution" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="201517152" result="Passed" start-time="2026-10-14 15:23:40Z" end-time="2026-10-14 15:23:41Z" duration="0.801114" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1258" name="LivingTerrainRebuildKeepsRulesRandomAndReleasesCanopies" fullname="TalesTactics.PlayModeTests.BattleSceneTests.LivingTerrainRebuildKeepsRulesRandomAndReleasesCanopies" methodname="LivingTerrainRebuildKeepsRulesRandomAndReleasesCanopies" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="660935921" result="Passed" start-time="2026-10-14 15:23:41Z" end-time="2026-10-14 15:23:42Z" duration="0.809367" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1196" name="LockedEndingAndFailedRewardsDoNotOpenAfterStory" fullname="TalesTactics.PlayModeTests.BattleSceneTests.LockedEndingAndFailedRewardsDoNotOpenAfterStory" methodname="LockedEndingAndFailedRewardsDoNotOpenAfterStory" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1979842662" result="Passed" start-time="2026-10-14 15:23:42Z" end-time="2026-10-14 15:23:43Z" duration="0.850535" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1293" name="LongSkillNameFitsContrastPlateAndRestartClearsIt" fullname="TalesTactics.PlayModeTests.BattleSceneTests.LongSkillNameFitsContrastPlateAndRestartClearsIt" methodname="LongSkillNameFitsContrastPlateAndRestartClearsIt" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2097714833" result="Passed" start-time="2026-10-14 15:23:43Z" end-time="2026-10-14 15:23:44Z" duration="0.800485" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1250" name="MissionBriefingCoversSixChaptersWithoutMutatingProgress" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MissionBriefingCoversSixChaptersWithoutMutatingProgress" methodname="MissionBriefingCoversSixChaptersWithoutMutatingProgress" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1265031856" result="Passed" start-time="2026-10-14 15:23:44Z" end-time="2026-10-14 15:23:45Z" duration="1.100556" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1251" name="MissionModalPreservesBattleAndUpdatesRemainingEnemyCount" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MissionModalPreservesBattleAndUpdatesRemainingEnemyCount" methodname="MissionModalPreservesBattleAndUpdatesRemainingEnemyCount" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="828667180" result="Passed" start-time="2026-10-14 15:23:45Z" end-time="2026-10-14 15:23:46Z" duration="0.896307" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1252" name="MissionOptionsSaveCancelAndNewBattleOnly" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MissionOptionsSaveCancelAndNewBattleOnly" methodname="MissionOptionsSaveCancelAndNewBattleOnly" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1320701317" result="Passed" start-time="2026-10-14 15:23:46Z" end-time="2026-10-14 15:23:47Z" duration="0.959642" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1255" name="ModelFormationFiltersSortAndPortraitFollowCharacterIdentity" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ModelFormationFiltersSortAndPortraitFollowCharacterIdentity" methodname="ModelFormationFiltersSortAndPortraitFollowCharacterIdentity" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="319807289" result="Passed" start-time="2026-10-14 15:23:47Z" end-time="2026-10-14 15:23:48Z" duration="1.048235" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1256" name="ModelFormationGearTraitsAndModalUseRealPreviewAndPreserveParty" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ModelFormationGearTraitsAndModalUseRealPreviewAndPreserveParty" methodname="ModelFormationGearTraitsAndModalUseRealPreviewAndPreserveParty" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1053163422" result="Passed" start-time="2026-10-14 15:23:48Z" end-time="2026-10-14 15:23:49Z" duration="1.022978" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1254" name="ModelFormationPointerInspectionAndToggleAreSeparateAndCapped" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ModelFormationPointerInspectionAndToggleAreSeparateAndCapped" methodname="ModelFormationPointerInspectionAndToggleAreSeparateAndCapped" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1889374649" result="Failed" label="Error" start-time="2026-10-14 15:23:49Z" end-time="2026-10-14 15:23:49Z" duration="0.758174" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests.FormationControl (System.String name) [0x0000d] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ModelFormationTests.cs:12 
+  at TalesTactics.PlayModeTests.BattleSceneTests.PointAndSubmit (System.String name) [0x00000] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ModelFormationTests.cs:15 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<ModelFormationPointerInspectionAndToggleAreSeparateAndCapped>d__101.MoveNext () [0x000f8] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\ModelFormationTests.cs:22 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1181" name="MovementCoroutineAndUndoRestoreOccupancy" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MovementCoroutineAndUndoRestoreOccupancy" methodname="MovementCoroutineAndUndoRestoreOccupancy" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="72164259" result="Passed" start-time="2026-10-14 15:23:49Z" end-time="2026-10-14 15:23:50Z" duration="0.946966" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1191" name="MovementGhostAndFacingPreviewClearWithoutChangingUnit" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MovementGhostAndFacingPreviewClearWithoutChangingUnit" methodname="MovementGhostAndFacingPreviewClearWithoutChangingUnit" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1773994305" result="Failed" start-time="2026-10-14 15:23:50Z" end-time="2026-10-14 15:23:51Z" duration="0.797680" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1294" name="MusicThemeRestoresPositionAndMissingThemePreservesBattle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.MusicThemeRestoresPositionAndMissingThemePreservesBattle" methodname="MusicThemeRestoresPositionAndMissingThemePreservesBattle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1391636160" result="Passed" start-time="2026-10-14 15:23:51Z" end-time="2026-10-14 15:23:52Z" duration="0.804669" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1296" name="NewCampaignRecommendsSixRolesAndSavesDevelopment" fullname="TalesTactics.PlayModeTests.BattleSceneTests.NewCampaignRecommendsSixRolesAndSavesDevelopment" methodname="NewCampaignRecommendsSixRolesAndSavesDevelopment" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="698901790" result="Passed" start-time="2026-10-14 15:23:52Z" end-time="2026-10-14 15:23:53Z" duration="1.031391" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1288" name="OriginalMusicCatalogPlaysEveryRegisteredTrack" fullname="TalesTactics.PlayModeTests.BattleSceneTests.OriginalMusicCatalogPlaysEveryRegisteredTrack" methodname="OriginalMusicCatalogPlaysEveryRegisteredTrack" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1466861947" result="Passed" start-time="2026-10-14 15:23:53Z" end-time="2026-10-14 15:23:56Z" duration="2.833643" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1257" name="OrnateFramesHaveSlicedArtAndDoNotInterceptButtons" fullname="TalesTactics.PlayModeTests.BattleSceneTests.OrnateFramesHaveSlicedArtAndDoNotInterceptButtons" methodname="OrnateFramesHaveSlicedArtAndDoNotInterceptButtons" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1596871696" result="Passed" start-time="2026-10-14 15:23:56Z" end-time="2026-10-14 15:23:57Z" duration="0.730831" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="OverheadFacingSurvivesHeightAndTextScale" fullname="TalesTactics.PlayModeTests.BattleSceneTests.OverheadFacingSurvivesHeightAndTextScale" methodname="OverheadFacingSurvivesHeightAndTextScale" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="496004208" result="Failed" start-time="2026-10-14 15:23:57Z" end-time="2026-10-14 15:23:57Z" duration="0.803394" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1286" name="PiercingSkillPreviewAndExecutionShareSightAndLineArea" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PiercingSkillPreviewAndExecutionShareSightAndLineArea" methodname="PiercingSkillPreviewAndExecutionShareSightAndLineArea" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1253753322" result="Passed" start-time="2026-10-14 15:23:57Z" end-time="2026-10-14 15:23:58Z" duration="0.842314" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1262" name="PixelRangesStayReadableAndReleaseSceneryAcrossRestarts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PixelRangesStayReadableAndReleaseSceneryAcrossRestarts" methodname="PixelRangesStayReadableAndReleaseSceneryAcrossRestarts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="27996393" result="Failed" label="Error" start-time="2026-10-14 15:23:58Z" end-time="2026-10-14 15:23:59Z" duration="0.871268" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests.Click (System.String name) [0x0000d] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\BattleSceneTests.cs:45 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<PixelRangesStayReadableAndReleaseSceneryAcrossRestarts>d__109.MoveNext () [0x005d6] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\PixelCampaignSceneTests.cs:45 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1263" name="PixelRosterAndSceneryPreserveSixChapterInteraction" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PixelRosterAndSceneryPreserveSixChapterInteraction" methodname="PixelRosterAndSceneryPreserveSixChapterInteraction" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="437768274" result="Passed" start-time="2026-10-14 15:23:59Z" end-time="2026-10-14 15:24:00Z" duration="1.292028" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1240" name="PortraitStoryHistoryIsModalAndReadOnlyReplayHasNoSkip" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PortraitStoryHistoryIsModalAndReadOnlyReplayHasNoSkip" methodname="PortraitStoryHistoryIsModalAndReadOnlyReplayHasNoSkip" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="222132777" result="Passed" start-time="2026-10-14 15:24:00Z" end-time="2026-10-14 15:24:01Z" duration="0.821189" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1266" name="PremiumSkillAndUltimateFramesAreUniqueAndNeverReleaseEarly" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PremiumSkillAndUltimateFramesAreUniqueAndNeverReleaseEarly" methodname="PremiumSkillAndUltimateFramesAreUniqueAndNeverReleaseEarly" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="302874292" result="Failed" start-time="2026-10-14 15:24:01Z" end-time="2026-10-14 15:24:02Z" duration="0.840662" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1265" name="PremiumStatusSupportsEveryHeroEnemyAndAllStatePages" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PremiumStatusSupportsEveryHeroEnemyAndAllStatePages" methodname="PremiumStatusSupportsEveryHeroEnemyAndAllStatePages" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="210524723" result="Failed" start-time="2026-10-14 15:24:02Z" end-time="2026-10-14 15:24:03Z" duration="0.936827" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  cless: 공격
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<PremiumStatusSupportsEveryHeroEnemyAndAllStatePages>d__112.MoveNext () [0x00403] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\PremiumMotionStatusTests.cs:68
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1264" name="PremiumStatusTabsAndCyclingNeverChangeBattleOrResources" fullname="TalesTactics.PlayModeTests.BattleSceneTests.PremiumStatusTabsAndCyclingNeverChangeBattleOrResources" methodname="PremiumStatusTabsAndCyclingNeverChangeBattleOrResources" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2073201510" result="Passed" start-time="2026-10-14 15:24:03Z" end-time="2026-10-14 15:24:04Z" duration="0.938431" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1220" name="RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards" fullname="TalesTactics.PlayModeTests.BattleSceneTests.RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards" methodname="RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1080850234" result="Failed" label="Error" start-time="2026-10-14 15:24:04Z" end-time="2026-10-14 15:24:05Z" duration="0.832070" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at TalesTactics.PlayModeTests.BattleSceneTests+<RandomLootKeepsRollAcrossExceptionAndRetryThenPersistsRepeatRewards>d__61.MoveNext () [0x0035a] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\EconomySceneTests.cs:30 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1276" name="ReactionsOptionsPredictionExecutionAndRewindStayInSync" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ReactionsOptionsPredictionExecutionAndRewindStayInSync" methodname="ReactionsOptionsPredictionExecutionAndRewindStayInSync" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="686692434" result="Passed" start-time="2026-10-14 15:24:05Z" end-time="2026-10-14 15:24:12Z" duration="7.055498" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1253" name="ReinforcementViewsAndSavedMissionProgressRestoreWithoutDuplicates" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ReinforcementViewsAndSavedMissionProgressRestoreWithoutDuplicates" methodname="ReinforcementViewsAndSavedMissionProgressRestoreWithoutDuplicates" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="937962939" result="Passed" start-time="2026-10-14 15:24:12Z" end-time="2026-10-14 15:24:13Z" duration="0.928502" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1216" name="RescueGroupsDisappearAtSafetyAndEvacueesFollowTheirEscort" fullname="TalesTactics.PlayModeTests.BattleSceneTests.RescueGroupsDisappearAtSafetyAndEvacueesFollowTheirEscort" methodname="RescueGroupsDisappearAtSafetyAndEvacueesFollowTheirEscort" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="600925929" result="Passed" start-time="2026-10-14 15:24:13Z" end-time="2026-10-14 15:24:18Z" duration="4.914618" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1174" name="ResultsShowCommittedGrowthRetryOnceAndPrepareNextChapter" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ResultsShowCommittedGrowthRetryOnceAndPrepareNextChapter" methodname="ResultsShowCommittedGrowthRetryOnceAndPrepareNextChapter" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1830360894" result="Passed" start-time="2026-10-14 15:24:18Z" end-time="2026-10-14 15:24:19Z" duration="0.898268" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1215" name="RetiredCampaignCannotStartReplayOrResumeAndOldProgressIsPreserved" fullname="TalesTactics.PlayModeTests.BattleSceneTests.RetiredCampaignCannotStartReplayOrResumeAndOldProgressIsPreserved" methodname="RetiredCampaignCannotStartReplayOrResumeAndOldProgressIsPreserved" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="640888586" result="Passed" start-time="2026-10-14 15:24:19Z" end-time="2026-10-14 15:24:19Z" duration="0.828602" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1176" name="RetryConfirmationCancelsThenRestoresOpeningWithoutChangingCampaign" fullname="TalesTactics.PlayModeTests.BattleSceneTests.RetryConfirmationCancelsThenRestoresOpeningWithoutChangingCampaign" methodname="RetryConfirmationCancelsThenRestoresOpeningWithoutChangingCampaign" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="639443128" result="Passed" start-time="2026-10-14 15:24:19Z" end-time="2026-10-14 15:24:20Z" duration="0.830837" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1275" name="RewindMoveConfirmCancelSuspendAndDefeatPreserveCampaign" fullname="TalesTactics.PlayModeTests.BattleSceneTests.RewindMoveConfirmCancelSuspendAndDefeatPreserveCampaign" methodname="RewindMoveConfirmCancelSuspendAndDefeatPreserveCampaign" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1661691220" result="Passed" start-time="2026-10-14 15:24:20Z" end-time="2026-10-14 15:24:21Z" duration="1.110339" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1277" name="SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry" methodname="SaleUiProtectsEquippedCopyRollsBackAndPersistsRetry" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1914763451" result="Passed" start-time="2026-10-14 15:24:21Z" end-time="2026-10-14 15:24:22Z" duration="0.891214" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1279" name="ShopBlocksTrainingAndInsufficientGoldWithoutSaving" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ShopBlocksTrainingAndInsufficientGoldWithoutSaving" methodname="ShopBlocksTrainingAndInsufficientGoldWithoutSaving" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="902421819" result="Passed" start-time="2026-10-14 15:24:22Z" end-time="2026-10-14 15:24:23Z" duration="0.805545" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1278" name="ShopPurchaseRetryEquipAndBattleUseRealIsolatedSave" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ShopPurchaseRetryEquipAndBattleUseRealIsolatedSave" methodname="ShopPurchaseRetryEquipAndBattleUseRealIsolatedSave" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1887763090" result="Passed" start-time="2026-10-14 15:24:23Z" end-time="2026-10-14 15:24:24Z" duration="1.114252" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1281" name="SignatureEquipmentPreviewCancelsSavesReloadsAndUnequipsAllTen" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SignatureEquipmentPreviewCancelsSavesReloadsAndUnequipsAllTen" methodname="SignatureEquipmentPreviewCancelsSavesReloadsAndUnequipsAllTen" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="427690455" result="Failed" label="Error" start-time="2026-10-14 15:24:24Z" end-time="2026-10-14 15:24:27Z" duration="3.124209" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<SignatureEquipmentPreviewCancelsSavesReloadsAndUnequipsAllTen>d__130.MoveNext () [0x00525] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\SignatureAppearanceSceneTests.cs:65 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1282" name="SignatureMovementGhostUsesEquippedWeaponAndRestoresDefault" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SignatureMovementGhostUsesEquippedWeaponAndRestoresDefault" methodname="SignatureMovementGhostUsesEquippedWeaponAndRestoresDefault" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1700710322" result="Failed" start-time="2026-10-14 15:24:27Z" end-time="2026-10-14 15:24:28Z" duration="0.822247" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1280" name="SignatureWeaponsFollowAllActionsDirectionsAndLiveUnequip" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SignatureWeaponsFollowAllActionsDirectionsAndLiveUnequip" methodname="SignatureWeaponsFollowAllActionsDirectionsAndLiveUnequip" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="204802206" result="Failed" start-time="2026-10-14 15:24:28Z" end-time="2026-10-14 15:24:29Z" duration="0.860426" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1172" name="SkillClickSkipsDetailsAndCancelRemembersEachCharacter" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SkillClickSkipsDetailsAndCancelRemembersEachCharacter" methodname="SkillClickSkipsDetailsAndCancelRemembersEachCharacter" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="700036020" result="Passed" start-time="2026-10-14 15:24:29Z" end-time="2026-10-14 15:24:30Z" duration="0.877750" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1292" name="SkillWindupDefersSingleResolutionAndRestartClearsCues" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SkillWindupDefersSingleResolutionAndRestartClearsCues" methodname="SkillWindupDefersSingleResolutionAndRestartClearsCues" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2046098976" result="Passed" start-time="2026-10-14 15:24:30Z" end-time="2026-10-14 15:24:31Z" duration="1.643546" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1260" name="SlotAndSettingsMenusPersistAndBlockBackgroundInput" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SlotAndSettingsMenusPersistAndBlockBackgroundInput" methodname="SlotAndSettingsMenusPersistAndBlockBackgroundInput" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1447777212" result="Passed" start-time="2026-10-14 15:24:31Z" end-time="2026-10-14 15:24:32Z" duration="1.006776" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1290" name="SpecialPosesPrepareReleaseAndRecoverForEntireRoster" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SpecialPosesPrepareReleaseAndRecoverForEntireRoster" methodname="SpecialPosesPrepareReleaseAndRecoverForEntireRoster" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1957437619" result="Failed" start-time="2026-10-14 15:24:32Z" end-time="2026-10-14 15:24:33Z" duration="0.847060" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1242" name="StoryAutoStopsOnRestartAndNarrationDoesNotRetainPortrait" fullname="TalesTactics.PlayModeTests.BattleSceneTests.StoryAutoStopsOnRestartAndNarrationDoesNotRetainPortrait" methodname="StoryAutoStopsOnRestartAndNarrationDoesNotRetainPortrait" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1805442570" result="Passed" start-time="2026-10-14 15:24:33Z" end-time="2026-10-14 15:24:34Z" duration="0.774579" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1195" name="StoryFlowBuildsChapterMapsAndReplaysWithoutRewards" fullname="TalesTactics.PlayModeTests.BattleSceneTests.StoryFlowBuildsChapterMapsAndReplaysWithoutRewards" methodname="StoryFlowBuildsChapterMapsAndReplaysWithoutRewards" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2017243027" result="Passed" start-time="2026-10-14 15:24:34Z" end-time="2026-10-14 15:24:35Z" duration="1.054427" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1239" name="StoryKeyboardAdvancesOnceAndEscapeCancelsOnlyOverlay" fullname="TalesTactics.PlayModeTests.BattleSceneTests.StoryKeyboardAdvancesOnceAndEscapeCancelsOnlyOverlay" methodname="StoryKeyboardAdvancesOnceAndEscapeCancelsOnlyOverlay" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="421472522" result="Failed" start-time="2026-10-14 15:24:35Z" end-time="2026-10-14 15:24:36Z" duration="0.764443" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  One Space press advances exactly one line
+  Expected: 1
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<StoryKeyboardAdvancesOnceAndEscapeCancelsOnlyOverlay>d__83.MoveNext () [0x000b5] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\IntermissionPortraitSceneTests.cs:18
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1177" name="SuspendedOpeningRetriesAfterReloadAndKeepsOriginalLevel" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SuspendedOpeningRetriesAfterReloadAndKeepsOriginalLevel" methodname="SuspendedOpeningRetriesAfterReloadAndKeepsOriginalLevel" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1360169653" result="Passed" start-time="2026-10-14 15:24:36Z" end-time="2026-10-14 15:24:37Z" duration="0.907053" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1259" name="SuspendResumePreservesTeamSPDAndCTTurnsActionsAndRandomState" fullname="TalesTactics.PlayModeTests.BattleSceneTests.SuspendResumePreservesTeamSPDAndCTTurnsActionsAndRandomState" methodname="SuspendResumePreservesTeamSPDAndCTTurnsActionsAndRandomState" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1077632350" result="Passed" start-time="2026-10-14 15:24:37Z" end-time="2026-10-14 15:24:38Z" duration="1.094944" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1304" name="TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave" methodname="TacticalOptionsButtonsConfigureSessionAndTrainingDoesNotSave" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1308158088" result="Passed" start-time="2026-10-14 15:24:38Z" end-time="2026-10-14 15:24:39Z" duration="0.875356" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1301" name="TacticalPolishAllSkillsShowsUnavailableReasonWithoutSpendingAction" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TacticalPolishAllSkillsShowsUnavailableReasonWithoutSpendingAction" methodname="TacticalPolishAllSkillsShowsUnavailableReasonWithoutSpendingAction" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2020964461" result="Passed" start-time="2026-10-14 15:24:39Z" end-time="2026-10-14 15:24:40Z" duration="0.823400" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1300" name="TacticalPolishBulkEndConfirmsAndCancelPreservesActions" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TacticalPolishBulkEndConfirmsAndCancelPreservesActions" methodname="TacticalPolishBulkEndConfirmsAndCancelPreservesActions" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1174650380" result="Passed" start-time="2026-10-14 15:24:40Z" end-time="2026-10-14 15:24:41Z" duration="1.142808" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1302" name="TacticalPolishPresetsAndGrowthPersistThroughUi" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TacticalPolishPresetsAndGrowthPersistThroughUi" methodname="TacticalPolishPresetsAndGrowthPersistThroughUi" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="505311780" result="Passed" start-time="2026-10-14 15:24:41Z" end-time="2026-10-14 15:24:42Z" duration="0.867252" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1269" name="TargetCyclingWrapsWithoutSpendingResourcesAndRespectsDetails" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TargetCyclingWrapsWithoutSpendingResourcesAndRespectsDetails" methodname="TargetCyclingWrapsWithoutSpendingResourcesAndRespectsDetails" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1193015101" result="Passed" start-time="2026-10-14 15:24:42Z" end-time="2026-10-14 15:24:42Z" duration="0.841171" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1186" name="TargetPreviewExecutesAndTurnEnds" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TargetPreviewExecutesAndTurnEnds" methodname="TargetPreviewExecutesAndTurnEnds" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="735134381" result="Passed" start-time="2026-10-14 15:24:42Z" end-time="2026-10-14 15:24:44Z" duration="1.831429" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1201" name="TenCharacterStylesHaveDistinctGeometryAndExpire" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TenCharacterStylesHaveDistinctGeometryAndExpire" methodname="TenCharacterStylesHaveDistinctGeometryAndExpire" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="479092108" result="Failed" start-time="2026-10-14 15:24:44Z" end-time="2026-10-14 15:24:45Z" duration="0.808405" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1194" name="ThirdChapterSelectionStoryMapAndRewardAreConnected" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ThirdChapterSelectionStoryMapAndRewardAreConnected" methodname="ThirdChapterSelectionStoryMapAndRewardAreConnected" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1321430869" result="Passed" start-time="2026-10-14 15:24:45Z" end-time="2026-10-14 15:24:46Z" duration="0.935093" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1218" name="ThirtyPersonalStoriesChoicesTrialsAndWeaponsRemainReplaySafe" fullname="TalesTactics.PlayModeTests.BattleSceneTests.ThirtyPersonalStoriesChoicesTrialsAndWeaponsRemainReplaySafe" methodname="ThirtyPersonalStoriesChoicesTrialsAndWeaponsRemainReplaySafe" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1500654498" result="Passed" start-time="2026-10-14 15:24:46Z" end-time="2026-10-14 15:24:50Z" duration="4.296417" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1193" name="TimeStopCancelsVisibleBossIntentAndRestoresThroughRewind" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TimeStopCancelsVisibleBossIntentAndRestoresThroughRewind" methodname="TimeStopCancelsVisibleBossIntentAndRestoresThroughRewind" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1779674623" result="Passed" start-time="2026-10-14 15:24:50Z" end-time="2026-10-14 15:24:51Z" duration="0.887267" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1289" name="TimingSpinCyclesFourViewsWithoutChangingCombatFacing" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TimingSpinCyclesFourViewsWithoutChangingCombatFacing" methodname="TimingSpinCyclesFourViewsWithoutChangingCombatFacing" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1019975049" result="Failed" start-time="2026-10-14 15:24:51Z" end-time="2026-10-14 15:24:52Z" duration="0.834288" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1310" name="TitleAllSlotsFullAndSettingsProtectionDoNotUndoSuccessfulNewGame" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleAllSlotsFullAndSettingsProtectionDoNotUndoSuccessfulNewGame" methodname="TitleAllSlotsFullAndSettingsProtectionDoNotUndoSuccessfulNewGame" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="429516321" result="Passed" start-time="2026-10-14 15:24:52Z" end-time="2026-10-14 15:24:53Z" duration="0.838908" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1312" name="TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" methodname="TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="987785698" result="Passed" start-time="2026-10-14 15:24:53Z" end-time="2026-10-14 15:24:54Z" duration="0.807324" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1309" name="TitleKeyboardAndVirtualPadSubmitOnceAndCancelOneLevel" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleKeyboardAndVirtualPadSubmitOnceAndCancelOneLevel" methodname="TitleKeyboardAndVirtualPadSubmitOnceAndCancelOneLevel" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1648805588" result="Failed" start-time="2026-10-14 15:24:54Z" end-time="2026-10-14 15:24:54Z" duration="0.742703" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<TitleKeyboardAndVirtualPadSubmitOnceAndCancelOneLevel>d__159.MoveNext () [0x00096] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\TitleSceneTests.cs:20
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1316" name="TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" methodname="TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1812356120" result="Passed" start-time="2026-10-14 15:24:54Z" end-time="2026-10-14 15:24:55Z" duration="0.949593" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1313" name="TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" methodname="TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1824430097" result="Passed" start-time="2026-10-14 15:24:55Z" end-time="2026-10-14 15:24:56Z" duration="0.763590" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1314" name="TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" methodname="TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="23030463" result="Passed" start-time="2026-10-14 15:24:56Z" end-time="2026-10-14 15:24:57Z" duration="0.772427" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\506a1ac9b8234420a13d542bc5bb5164\campaign.json.tmp' is denied.
+]]></output>
+            </test-case>
+            <test-case id="1317" name="TitlePointerStartsAndReturnToTitleSavesPreparation" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitlePointerStartsAndReturnToTitleSavesPreparation" methodname="TitlePointerStartsAndReturnToTitleSavesPreparation" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1109708885" result="Passed" start-time="2026-10-14 15:24:57Z" end-time="2026-10-14 15:24:58Z" duration="0.764601" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1315" name="TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" methodname="TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="782330354" result="Passed" start-time="2026-10-14 15:24:58Z" end-time="2026-10-14 15:24:58Z" duration="0.748095" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1311" name="TitleResumeWriteFailureKeepsSelectedProfileAndCheckpoint" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleResumeWriteFailureKeepsSelectedProfileAndCheckpoint" methodname="TitleResumeWriteFailureKeepsSelectedProfileAndCheckpoint" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1815199257" result="Passed" start-time="2026-10-14 15:24:58Z" end-time="2026-10-14 15:24:59Z" duration="0.868977" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\dd3399b947ac45d1a6b2c42c7b76b839\campaign.json.tmp' is denied.
+]]></output>
+            </test-case>
+            <test-case id="1221" name="TrainingAndDefeatNeverRollRandomRewards" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TrainingAndDefeatNeverRollRandomRewards" methodname="TrainingAndDefeatNeverRollRandomRewards" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1780252364" result="Passed" start-time="2026-10-14 15:24:59Z" end-time="2026-10-14 15:25:00Z" duration="0.872380" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1175" name="TrainingVictoryRetainsNewBattleRetry" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TrainingVictoryRetainsNewBattleRetry" methodname="TrainingVictoryRetainsNewBattleRetry" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1133074497" result="Passed" start-time="2026-10-14 15:25:00Z" end-time="2026-10-14 15:25:01Z" duration="0.841822" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1320" name="TutorialExitRestoresCampaignAndNormalBattleRules" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialExitRestoresCampaignAndNormalBattleRules" methodname="TutorialExitRestoresCampaignAndNormalBattleRules" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="377101512" result="Passed" start-time="2026-10-14 15:25:01Z" end-time="2026-10-14 15:25:02Z" duration="0.866384" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1318" name="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" methodname="TutorialRequiresRealMoveAttackHealAndFacingWithoutSaving" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1588362964" result="Passed" start-time="2026-10-14 15:25:02Z" end-time="2026-10-14 15:25:05Z" duration="3.314490" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1217" name="TwentyEpisodeStoriesScenesAndRewardsProgressThroughIndependentSave" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TwentyEpisodeStoriesScenesAndRewardsProgressThroughIndependentSave" methodname="TwentyEpisodeStoriesScenesAndRewardsProgressThroughIndependentSave" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1364368812" result="Passed" start-time="2026-10-14 15:25:05Z" end-time="2026-10-14 15:25:09Z" duration="3.285368" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1183" name="UnavailableSkillsAreHiddenAndReturnWhenAffordable" fullname="TalesTactics.PlayModeTests.BattleSceneTests.UnavailableSkillsAreHiddenAndReturnWhenAffordable" methodname="UnavailableSkillsAreHiddenAndReturnWhenAffordable" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2105086941" result="Passed" start-time="2026-10-14 15:25:09Z" end-time="2026-10-14 15:25:09Z" duration="0.864192" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1324" name="UnrecruitedCharactersStayHiddenAndJoinedRosterPaginatesSixAtATime" fullname="TalesTactics.PlayModeTests.BattleSceneTests.UnrecruitedCharactersStayHiddenAndJoinedRosterPaginatesSixAtATime" methodname="UnrecruitedCharactersStayHiddenAndJoinedRosterPaginatesSixAtATime" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="493305907" result="Passed" start-time="2026-10-14 15:25:09Z" end-time="2026-10-14 15:25:10Z" duration="0.907042" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1303" name="UtilityEnemyCoroutineUsesHealingThroughNormalResolver" fullname="TalesTactics.PlayModeTests.BattleSceneTests.UtilityEnemyCoroutineUsesHealingThroughNormalResolver" methodname="UtilityEnemyCoroutineUsesHealingThroughNormalResolver" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1262658129" result="Passed" start-time="2026-10-14 15:25:10Z" end-time="2026-10-14 15:25:13Z" duration="2.720413" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1187" name="VictoryAndRestartRecoverKOUnits" fullname="TalesTactics.PlayModeTests.BattleSceneTests.VictoryAndRestartRecoverKOUnits" methodname="VictoryAndRestartRecoverKOUnits" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1111863715" result="Passed" start-time="2026-10-14 15:25:13Z" end-time="2026-10-14 15:25:14Z" duration="0.827111" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1248" name="VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing" fullname="TalesTactics.PlayModeTests.BattleSceneTests.VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing" methodname="VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="984240946" result="Failed" label="Error" start-time="2026-10-14 15:25:14Z" end-time="2026-10-14 15:25:15Z" duration="0.878480" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                <stack-trace><![CDATA[  at TalesTactics.PlayModeTests.BattleSceneTests+<VictoryLootRetriesOnceAndTrainingAndDefeatGrantNothing>d__93.MoveNext () [0x00267] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\LootSceneTests.cs:26 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1329" name="VisualUxHealthBarsRemainSeparatedAcrossCameraRotations" fullname="TalesTactics.PlayModeTests.BattleSceneTests.VisualUxHealthBarsRemainSeparatedAcrossCameraRotations" methodname="VisualUxHealthBarsRemainSeparatedAcrossCameraRotations" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="152717869" result="Failed" start-time="2026-10-14 15:25:15Z" end-time="2026-10-14 15:25:16Z" duration="0.832367" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1328" name="VisualUxPurchaseComparisonAndMissionPreviewNeverMutateCampaign" fullname="TalesTactics.PlayModeTests.BattleSceneTests.VisualUxPurchaseComparisonAndMissionPreviewNeverMutateCampaign" methodname="VisualUxPurchaseComparisonAndMissionPreviewNeverMutateCampaign" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="2071755120" result="Passed" start-time="2026-10-14 15:25:16Z" end-time="2026-10-14 15:25:16Z" duration="0.886826" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1246" name="WalkCyclesAllFramesInEveryViewAndStopsAtIdle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.WalkCyclesAllFramesInEveryViewAndStopsAtIdle" methodname="WalkCyclesAllFramesInEveryViewAndStopsAtIdle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1403773754" result="Failed" start-time="2026-10-14 15:25:16Z" end-time="2026-10-14 15:25:17Z" duration="0.720135" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.
+UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1285" name="WalkingThroughAllyKeepsOccupancyAndAllowsUndoFromSmallMenu" fullname="TalesTactics.PlayModeTests.BattleSceneTests.WalkingThroughAllyKeepsOccupancyAndAllowsUndoFromSmallMenu" methodname="WalkingThroughAllyKeepsOccupancyAndAllowsUndoFromSmallMenu" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1078299464" result="Failed" label="Error" start-time="2026-10-14 15:25:17Z" end-time="2026-10-14 15:25:18Z" duration="1.012988" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.PlayModeTests.BattleSceneTests.Click (System.String name) [0x0000d] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\BattleSceneTests.cs:45 
+  at TalesTactics.PlayModeTests.BattleSceneTests+<WalkingThroughAllyKeepsOccupancyAndAllowsUndoFromSmallMenu>d__134.MoveNext () [0x0048f] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\SimpleHudTests.cs:85 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52 ]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1326" name="WeaponSweepEndpointsStayFiniteDuringPreparationAndImpact" fullname="TalesTactics.PlayModeTests.BattleSceneTests.WeaponSweepEndpointsStayFiniteDuringPreparationAndImpact" methodname="WeaponSweepEndpointsStayFiniteDuringPreparationAndImpact" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1986343857" result="Passed" start-time="2026-10-14 15:25:18Z" end-time="2026-10-14 15:25:20Z" duration="1.699258" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

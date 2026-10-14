@@ -55,7 +55,7 @@ namespace TalesTactics
         int FormationLevel(int index)=>battle.TrainingMode?25:FormationProgress(battle.Catalog.Characters[index]).Level;
         int[] FormationRoster()
         {
-            var indices=Enumerable.Range(0,battle.Catalog.Characters.Length).Where(i=>
+            var indices=Enumerable.Range(0,battle.Catalog.Characters.Length).Where(i=>battle.IsJoined(battle.Catalog.Characters[i])).Where(i=>
             {
                 var id=battle.Catalog.Characters[i].Id;
                 bool ranged=id=="natalia"||id=="shionne",magic=id=="mint"||id=="jade"||id=="tear";
@@ -103,11 +103,11 @@ namespace TalesTactics
             FormationText(toolbar,"출전 부대  <color=#E3C27D>"+battle.Deployment.Count+"</color> / "+battle.Catalog.Rules.MaxDeployment,Vector2.zero,new Vector2(.45f,1),25);
             FormationButton(toolbar,"병과 필터",formationFilters[formationFilter]+" ›",new Vector2(.45f,0),new Vector2(.75f,1),()=>{formationFilter=(formationFilter+1)%formationFilters.Length;formationPage=0;RenderDeployment();});
             FormationButton(toolbar,"편성 정렬",formationSorts[formationSort]+" ›",new Vector2(.75f,0),Vector2.one,()=>{formationSort=(formationSort+1)%formationSorts.Length;RenderDeployment();});
-            var indices=FormationRoster();int pages=Math.Max(1,(indices.Length+9)/10);formationPage=Mathf.Clamp(formationPage,0,pages-1);
+            var indices=FormationRoster();int pages=Math.Max(1,(indices.Length+5)/6);formationPage=Mathf.Clamp(formationPage,0,pages-1);
             var grid=FormationRect(center,"FormationModels",Vector2.zero,Vector2.one);
             grid.offsetMin=new Vector2(12,pages>1?52:14);grid.offsetMax=new Vector2(-12,-70);
-            for(int slot=0;slot<Math.Min(10,indices.Length-formationPage*10);slot++)
-                DrawFormationModel(grid,indices[formationPage*10+slot],slot);
+            for(int slot=0;slot<Math.Min(6,indices.Length-formationPage*6);slot++)
+                DrawFormationModel(grid,indices[formationPage*6+slot],slot);
             if(indices.Length==0)FormationText(grid,"조건에 맞는 캐릭터가 없습니다.\n병과 필터를 변경하세요.",Vector2.zero,Vector2.one,23,TextAlignmentOptions.Center);
             if(pages>1)
             {
@@ -116,7 +116,7 @@ namespace TalesTactics
                 FormationText(paging,(formationPage+1)+" / "+pages,new Vector2(.3f,0),new Vector2(.7f,1),18,TextAlignmentOptions.Center);
                 FormationButton(paging,"다음 캐릭터","다음",new Vector2(.7f,0),Vector2.one,()=>{formationPage++;RenderDeployment();},formationPage+1<pages);
             }
-            DrawFormationDetails();
+            IntermissionCharacter();DrawFormationDetails();
             FormationText(footer,"모델 선택: 정보 보기   ·   출전 표시: 편성 변경",new Vector2(0,.48f),new Vector2(.32f,1),17);
             string notice=PreparationNotice;
             var missionNotice=FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16);missionNotice.name="PreparationMissionNotice";missionNotice.color=new Color(.7f,.77f,.83f);
@@ -131,13 +131,13 @@ namespace TalesTactics
         void DrawFormationModel(RectTransform grid,int index,int slot)
         {
             var c=battle.Catalog.Characters[index];bool deployed=battle.Deployment.Contains(index),selected=index==selectedCharacter;
-            float x=slot%5/5f,y=slot/5*.5f;
-            var cell=FormationRect(grid,"ModelCell-"+c.Id,new Vector2(x,.5f-y),new Vector2(x+.2f,1-y),3);
+            float x=slot%3/3f,y=slot/3*.5f;
+            var cell=FormationRect(grid,"ModelCell-"+c.Id,new Vector2(x,.5f-y),new Vector2(x+1f/3,1-y),3);
             var ring=FormationRect(cell,"DeploymentRing",new Vector2(.08f,0),new Vector2(.92f,0));
             ring.offsetMin=new Vector2(0,74);ring.offsetMax=new Vector2(0,94);
             var ellipse=ring.gameObject.AddComponent<FormationRing>();ellipse.color=selected?formationGold:deployed?formationTeal:new Color(.38f,.43f,.49f,.45f);ellipse.raycastTarget=false;
             var model=FormationButton(cell,(deployed?"● ":"○ ")+c.DisplayName,"",Vector2.zero,Vector2.one,()=>{selectedCharacter=index;RenderDeployment();});
-            model.offsetMin=new Vector2(8,78);model.offsetMax=new Vector2(-8,18);
+            model.offsetMin=new Vector2(8,96);model.offsetMax=new Vector2(-8,-6);
             model.GetComponent<UnityEngine.UI.Image>().color=Color.white;model.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             var button=model.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.normalColor=Color.clear;
             colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);colors.disabledColor=Color.clear;button.colors=colors;

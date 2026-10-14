@@ -43,6 +43,9 @@ namespace TalesTactics
                 if(!Enum.IsDefined(typeof(GrowthPath),c.Growth)||!Enum.IsDefined(typeof(TacticalTrait),c.Trait))throw new InvalidDataException("Unknown tactical trait");
             }
             save.StoryProgress.RemoveAll(string.IsNullOrWhiteSpace);
+            if(!save.HasPendingAfterStory||save.PendingAfterStoryStage<0||save.PendingAfterStoryStage>=CampaignStages.Count||!save.StoryProgress.Contains(CampaignStages.Id(save.PendingAfterStoryStage)))
+            {save.HasPendingAfterStory=false;save.PendingAfterStoryStage=-1;save.PendingAfterStoryLine=0;}
+            save.PendingAfterStoryLine=Mathf.Max(0,save.PendingAfterStoryLine);
             if(save.Version==1)CampaignInventory.MigrateVersion1(save);
             CampaignInventory.Validate(save);
             foreach(var c in save.Characters)

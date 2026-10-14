@@ -97,7 +97,7 @@ namespace TalesTactics
             if(current==null)return;
             float textScale=battle.Preferences?.TextScale??1;float w=Screen.width/scale;
             float factor=Mathf.Min(textScale,(w-24)/340);card.localScale=Vector3.one*factor;
-            card.anchorMin=card.anchorMax=new Vector2(1,0);card.pivot=new Vector2(1,0);card.sizeDelta=new Vector2(340,98);card.anchoredPosition=new Vector2(-14,hud.ExperienceBottom);
+            card.anchorMin=card.anchorMax=new Vector2(.5f,.5f);card.pivot=new Vector2(.5f,.5f);card.sizeDelta=new Vector2(340,98);card.anchoredPosition=Vector2.zero;
             elapsed+=dt;float duration=Mathf.Min(3,1.1f+(current.AfterLevel-current.BeforeLevel)*.22f);
             int total=current.BeforeEXP+Mathf.FloorToInt(current.Amount*Mathf.Clamp01(elapsed/duration));int level=Mathf.Min(50,current.BeforeLevel+total/100),exp=level==50?0:total%100;
             fill.anchorMax=new Vector2(level==50?1:exp/100f,1);valueText.text=level==50?"MAX":exp+" / 100";levelText.text="Lv. "+level;

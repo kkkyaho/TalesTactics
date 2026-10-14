@@ -20,6 +20,8 @@ namespace TalesTactics
         public bool HasSuspendedBattle;
         public string SavedAt;
         public int SelectedStage;
+        public bool HasPendingAfterStory;
+        public int PendingAfterStoryStage=-1,PendingAfterStoryLine;
         public int[] Deployment;
         public FormationPreset[] Presets=new FormationPreset[3];
         public int Gold=CampaignInventory.StartingGold;

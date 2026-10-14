@@ -21,16 +21,16 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Message.Contains("생명의 부적 +1"), Is.True);
             director.SaveBattleReward(); director.CompleteBattle();
             Assert.That(writes, Is.EqualTo(2));
-            director.Restart(); yield return null; director.TrainingMode = true;
+            director.Restart();director.FinishStory();yield return null; director.TrainingMode = true;
             director.BeginBattle(); yield return null;
             foreach (var enemy in director.Session.Units.Where(u => u.Team == Team.Enemy)) enemy.Damage(99999, director.Session.Grid);
             director.SetState(new TurnStartState(director)); yield return null;
-            Assert.That(CampaignInventory.Owned(director.Campaign, id), Is.EqualTo(1)); Assert.That(writes, Is.EqualTo(2));
+            Assert.That(CampaignInventory.Owned(director.Campaign, id), Is.EqualTo(1)); Assert.That(writes, Is.EqualTo(3));
             director.Restart(); yield return null; director.TrainingMode = false;
             director.BeginBattle(); yield return null;
             foreach (var ally in director.Session.Units.Where(u => u.Team == Team.Player)) ally.Damage(99999, director.Session.Grid);
             director.SetState(new TurnStartState(director)); yield return null;
-            Assert.That(CampaignInventory.Owned(director.Campaign, id), Is.EqualTo(1)); Assert.That(writes, Is.EqualTo(2));
+            Assert.That(CampaignInventory.Owned(director.Campaign, id), Is.EqualTo(1)); Assert.That(writes, Is.EqualTo(3));
         }
 
         [UnityTest] public IEnumerator FullLootInventoryDisplaysReasonAndStillSavesVictory()

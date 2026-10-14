@@ -9,6 +9,7 @@ namespace TalesTactics
         TMP_Text moveRisk;
         void DrawTacticalTools()
         {
+            if(battle.State is BattleEndState){if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);return;}
             if(tacticalToolbar==null)tacticalToolbar=Panel("Threat controls",new Vector2(0,1),new Vector2(0,1),new Vector2(12,-134),new Vector2(332,-96));
             tacticalToolbar.gameObject.SetActive(true);Clear(tacticalToolbar);
             Button(tacticalToolbar,battle.ThreatLabel+" · V",3,battle.CycleThreat,true,32);HalfButton(tacticalToolbar,0);

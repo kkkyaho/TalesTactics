@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 6인 편성과 프레임 내부 배치
+
+`OrnatePanel.Apply`가 `FramedContent`를 연결한다. 기존 Canvas와 자식 계층을 유지하면서 작성된 앵커/오프셋을 패널 안쪽 여백에 매핑한다. 부모 패널부터 계산하고 마지막 적용 좌표와 작성 좌표를 따로 보관해 반복 프레임에서 축소가 누적되지 않는다. 배경/프레임 장식은 배치 대상에서 제외한다. 버튼 글자는 버튼 내부에 stretch하고, 좁은 창은 글자를 가리는 대신 카드/행 높이와 페이지 수를 조정한다.
+
+`IsJoined`는 실제 캠페인 완료 기록으로 합류한 동료를 판정한다. 편성·장비·성장·개인 이야기·상태창 순환·상점 장착 대상은 같은 판정을 사용한다. 편성은 3열×2행, 성장/장비 목록은 6명 단위로 페이지를 넘긴다. 전투 결과는 `GrowthResults`와 `ItemResults`의 구조화된 저장 전후 차이를 사용하며 문자열을 해석하지 않는다. 6명 성장은 2열×3행으로 표시한다. `CombatFeedbackHud`의 순차 EXP 알림은 화면 중앙에 배치한다.
+
+`BattleStoryProgress`는 보상 저장과 `HasPendingAfterStory`, `PendingAfterStoryStage`, `PendingAfterStoryLine`을 함께 기록한다. 결과의 계속 → 후일담 → 다음 준비 순서로 이동하며, 후일담 위치/완료 저장 실패 시 현재 이야기를 유지한다. 로드/거점 진입 시 미완료 후일담을 먼저 재개하고 다른 전투 진입은 차단한다. Version3의 기존 파일에는 bool 필드가 없어 false로 처리하므로 완료된 옛 장의 후일담을 새로 강제하지 않는다. 보상 적용은 기존 `TryReward`의 롤백·중복 방지를 그대로 사용한다. 도입 대화는 중단 후 처음부터 읽고, 후일담은 저장된 대사부터 이어 읽는다.
+
 ## 인터미션 동선 단순화
 
 `BattleHubLayout`은 목표/적 정보, 실제 전장 미리보기, 편성 초상, 정비 메뉴, 이야기 시작을 거점에 통합한다. `BattleMainProgress.SelectCurrentMain`은 첫 미완료 메인 임무를 선택한다. 같은 임무에서 거점을 다시 그릴 때 빈 편성은 그대로 유지하며, 개인 이야기 복귀 등 임무가 바뀔 때만 편성을 정규화한다. 중단 전투 로드·저장 형식은 변경하지 않는다. `ReplayMainEnding`은 SelectedStage를 바꾸거나 보상을 지급하지 않고 지난 완료 임무의 후일담만 연다.
@@ -39,7 +47,7 @@
 
 `BattleIntermissionHub`는 기존 준비 패널을 거점으로 사용하며 `ShowDeployment`는 상세 편성 화면을 유지한다. 시작·재시작·슬롯 전환 시 거점으로 복귀한다. `BattleIntermissionEquipmentHud`는 기존 `EquipmentLoadout` 초안/저장 경로를 사용하면서 변경 수치를 우선 표시하고 전체 비교는 기존 모달 계층으로 연다.
 
-`CampaignStory`는 대사의 진행·완료 콜백을 보존하고 읽은 대사의 복사본과 현재 이야기의 장을 제공한다. `BattleStoryHud`가 영웅 초상화, 자동 진행, 읽은 대화 기록과 건너뛰기 확인을 맡는다. 대화 중 준비 메뉴를 CanvasGroup으로 차단하고 확인창에서는 대화 조작도 차단한다. 자동 진행은 비활성 창에서 정지하고 기록/확인/종료 시 해제된다. 검수 코드 `IntermissionUxReview`는 일반 빌드에 포함하지 않는다.
+`CampaignStory`는 대사의 진행·완료 콜백을 보존하고 읽은 대사의 복사본과 현재 이야기의 장을 제공한다. `BattleStoryHud`가 영웅 초상화, 자동 진행, 읽은 대화 기록을 맡는다. 대화 중 준비 메뉴를 CanvasGroup으로 차단하고 확인창에서는 대화 조작도 차단한다. 자동 진행은 비활성 창에서 정지하고 기록/확인/종료 시 해제된다. 검수 코드 `IntermissionUxReview`는 일반 빌드에 포함하지 않는다.
 
 ## 전투 표시 계층
 
@@ -226,7 +234,7 @@ ShopContent.AddSamples는 기존 카탈로그에 가죽 갑옷/생명의 부적�
 
 
 CampaignContent는 1장 11×9 물길/돌다리/우회로, 2장 12×10 계단/제단 맵과 6명 아군·4명 적 출전 좌표, 장별 전후 대사를 제공한다. BattleSession의 선택적 campaignStage는 기본 -1로 기존 테스트 맵/엔진 독립 테스트를 유지하며 캠페인에서만 전용 맵을 선택한다.
-CampaignStory는 전체 화면 uGUI 이야기와 진행/건너뛰기를 담당한다. RequestBattle은 캠페인 도입 후 BeginBattle을 호출하고 훈련은 즉시 시작한다. 승리/보상 저장 성공 이후에만 후일담을 읽을 수 있으며 다시 읽기는 저장을 호출하지 않는다. 대화 중 전장 입력은 차단한다. 대화 위치는 저장하지 않으며 완료된 장의 대사는 언제든 다시 읽는다. 대사는 이 프로젝트용 창작 시나리오다.
+CampaignStory는 전체 화면 uGUI 이야기의 순차 진행을 담당한다. RequestBattle은 캠페인 도입 후 BeginBattle을 호출하고 훈련은 즉시 시작한다. 승리/보상 저장 성공 이후에만 후일담을 읽을 수 있으며 다시 읽기는 저장을 호출하지 않는다. 대화 중 전장 입력은 차단한다. 전투 후 대화 위치는 BattleStoryProgress로 저장하며 완료 후 다음 준비로 진행한다. 대사는 이 프로젝트용 창작 시나리오다.
 BoardView는 전장 부분 viewport 아래에서 전체 화면을 지우는 cullingMask=0 배경 카메라를 생성하여 대사 패널 종료 뒤 화면 가장자리의 잔상을 방지한다.
 
 SkillGeometry는 사거리/영향 타일/시야를 공유 계산한다. Shape=Diamond는 기존 목표 중심 마름모, Line/Cone은 시전자에서 선택한 상하좌우 방향으로 Range까지 뻗는다. Line은 폭0 관통, Cone은 전방거리>측면거리이면서 맨해튼 거리<=Range인 타일이다. 방향형 스킬은 대각선/자기 타일을 조준할 수 없다. MaxHeightDifference=-1은 제한 없음, RequiresLineOfSight=false는 기존 시야 무시 동작이다.

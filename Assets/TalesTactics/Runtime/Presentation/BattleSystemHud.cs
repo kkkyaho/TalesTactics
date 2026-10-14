@@ -26,13 +26,13 @@ namespace TalesTactics
             bool battleMenu=page==0&&battle.Session!=null;
             systemWindow.sizeDelta=confirmation?new Vector2(560,270):battleMenu?new Vector2(640,460):new Vector2(820,650);
             if(confirmation){if(page==4)DrawRetryConfirmation();else DrawRewindConfirmation();return;}
-            Label(systemWindow,"시스템 · 슬롯 "+(battle.Profiles.Slot+1),16,36,24);
+            var heading=Label(systemWindow,"시스템 · 슬롯 "+(battle.Profiles.Slot+1),16,42,24);heading.rectTransform.offsetMax=new Vector2(-80,heading.rectTransform.offsetMax.y);
+            CloseIcon(systemWindow,"메뉴 닫기",()=>CloseSystemMenu());
             Button(systemWindow,"저장 / 이어하기",62,()=>ShowSystemMenu(0));SystemTab(0);
             Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
             Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
             Button(systemWindow,"글자 / 조작",62,()=>{settingsDraft=null;ShowSystemMenu(3);});SystemTab(3);
             if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else if(page==6||page==7)DrawSystemGuide(page);else DrawAccessibility();
-            Button(systemWindow,"메뉴 닫기",battleMenu?402:592,()=>CloseSystemMenu(),true,40);CaptionLastButton(systemWindow,"닫기");
         }
         void SystemTab(int index)
         {var r=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);r.anchorMin=new Vector2(index/4f,1);r.anchorMax=new Vector2((index+1)/4f,1);CaptionLastButton(systemWindow,new[]{"저장","설정","전투","조작"}[index]);}
@@ -58,7 +58,7 @@ namespace TalesTactics
             Label(systemWindow,"전투 규칙은 다음 출전부터 적용",460,32,18);
             Button(systemWindow,"전투 진행 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(2);},true,44);
             CaptionLastButton(systemWindow,"적용");
-            Label(systemWindow,battle.SaveNotice,574,20,14);
+            Label(systemWindow,battle.SaveNotice,574,36,14);
         }
         public bool CloseSystemMenu()
         {

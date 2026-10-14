@@ -18,7 +18,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -112,12 +112,12 @@ namespace TalesTactics
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
-            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;if(parent.GetComponent<OrnatePanel>()!=null)t.margin=new Vector4(12,0,12,0);t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
+            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;t.enableAutoSizing=true;t.fontSizeMin=Mathf.Min(size,14);t.fontSizeMax=size;t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
         }
         void Button(Transform parent,string value,float y,Action click,bool enabled=true,float height=38)
         {
             var g=new GameObject(value,typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.Button));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-24,height);
-            g.GetComponent<UnityEngine.UI.Image>().color=new Color(0.10f,0.16f,0.24f);var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.46f,0.36f,0.22f,0.8f);border.effectDistance=new Vector2(1,-1);var button=g.GetComponent<UnityEngine.UI.Button>();button.interactable=enabled;button.onClick.AddListener(()=>click());var label=Label(g.transform,value,3,height-3,16);label.alignment=TextAlignmentOptions.Center;if(!enabled)label.color=new Color(.55f,.62f,.7f);StyleButton(r);
+            g.GetComponent<UnityEngine.UI.Image>().color=new Color(0.10f,0.16f,0.24f);var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(0.46f,0.36f,0.22f,0.8f);border.effectDistance=new Vector2(1,-1);var button=g.GetComponent<UnityEngine.UI.Button>();button.interactable=enabled;button.onClick.AddListener(()=>click());var label=Label(g.transform,value,3,height-3,16);label.alignment=TextAlignmentOptions.Center;Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,1),new Vector2(-8,-1));if(!enabled)label.color=new Color(.55f,.62f,.7f);StyleButton(r);
         }
         void StyleButton(Transform transform,HudRole role=HudRole.Secondary,bool selected=false)
         {var accent=transform.GetComponent<HudButtonAccent>();if(accent==null)accent=transform.gameObject.AddComponent<HudButtonAccent>();accent.Configure(role,selected);}
@@ -131,9 +131,9 @@ namespace TalesTactics
         public void ShowDeployment(){RenderDeployment();}
         void ShowEquipmentRoster(){RenderEquipmentRoster();}
         void ShowEquipment(CharacterData character,EquipmentLoadout draft=null,string notice=null)
-        {RenderEquipment(character,draft,notice);}
+        {if(battle.IsJoined(character))RenderEquipment(character,draft,notice);}
         void ShowGrowthRoster() => ShowGrowth(IntermissionCharacter());
-        void ShowGrowth(CharacterData character,string notice=null) => RenderIntermissionGrowth(character,notice);
+        void ShowGrowth(CharacterData character,string notice=null) {if(battle.IsJoined(character))RenderIntermissionGrowth(character,notice);}
         public void Refresh()
         {
             if(battle.Session==null)return;
@@ -145,7 +145,7 @@ namespace TalesTactics
             message=Label(footer,battle.TutorialActive&&!(battle.State is TargetSelectionState&&battle.Target.HasValue)?battle.TutorialInstruction:battle.Message,10,78,17);
             message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
-            DrawUnitSummary(u);DrawCameraControls();DrawHelpEntry(false);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();
+            DrawUnitSummary(u);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();
             if(!SkillPanel&&!(battle.State is CommandState)&&!(battle.State is FacingSelectionState)&&!(battle.State is MoveSelectionState)&&!(battle.State is TargetSelectionState))Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){DrawResult();return;}

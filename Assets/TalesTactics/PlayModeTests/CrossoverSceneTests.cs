@@ -89,7 +89,8 @@ namespace TalesTactics.PlayModeTests
                     SatisfyObjectiveFixture();yield return null;
                     Assert.That(director.RewardPending,Is.False);Assert.That(director.Campaign.StoryProgress,Has.Member(CampaignStages.Id(stage)));
                     director.ReadEnding();Assert.That(director.StoryActive,Is.True);director.FinishStory();
-                    if(stage<25){Assert.That(director.CanPrepareNext,Is.True);director.PrepareNextBattle();}else Assert.That(director.CanPrepareNext,Is.False);
+                    Assert.That(director.Session,Is.Null);Assert.That(director.Hud.IntermissionHubOpen,Is.True);
+                    if(stage<25)Assert.That(director.SelectedStage,Is.EqualTo(stage+1));
                     yield return null;
                 }
                 Assert.That(director.Campaign.StoryProgress.Count(s=>s.StartsWith("crossover.chapter")&&!s.Contains(".route.")),Is.EqualTo(20));
@@ -113,7 +114,7 @@ namespace TalesTactics.PlayModeTests
                     {
                         if(tier==1)director.ChooseScenarioRoute((stage/3)%2);
                         yield return null;Assert.That(director.Session.Units.Any(u=>u.Data.Id==owner&&u.Team==Team.Player),Is.True);
-                        SatisfyObjectiveFixture();yield return null;director.Restart();
+                        SatisfyObjectiveFixture();yield return null;director.Restart();while(director.StoryActive)director.AdvanceStory();
                     }
                     Assert.That(director.Campaign.StoryProgress,Has.Member(PersonalScenarios.Flag(stage)));
                     string saved=JsonUtility.ToJson(director.Campaign);director.SelectedStage=stage;director.RequestBattle();Assert.That(director.StoryActive,Is.True);Assert.That(director.Session,Is.Null);

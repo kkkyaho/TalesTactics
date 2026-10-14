@@ -27,7 +27,7 @@ namespace TalesTactics
                 string name=item.DisplayName+(selling?" · 매각 "+CampaignInventory.SellPrice(item)+"G":" · "+item.BuyPrice+"G"+(requirement!=null?" · 잠김":""));
                 var card=FormationButton(center,name,"",new Vector2(x,top-.343f),new Vector2(x+.327f,top),()=>RenderMarket(selling,current,item));IntermissionSelection(card,selected==item);
                 EquipmentArt(card,item,new Vector2(.16f,.30f),new Vector2(.84f,.91f));
-                FormationText(card,"보유 "+CampaignInventory.Owned(battle.Campaign,item.Id),new Vector2(.50f,.86f),new Vector2(.99f,.99f),16,TextAlignmentOptions.MidlineRight).color=formationTeal;
+                FormationText(card,"보유 "+CampaignInventory.Owned(battle.Campaign,item.Id),new Vector2(.50f,.81f),new Vector2(.99f,.99f),16,TextAlignmentOptions.MidlineRight).color=formationTeal;
                 FormationText(card,item.DisplayName,new Vector2(.02f,.15f),new Vector2(.98f,.31f),20,TextAlignmentOptions.Center);
                 FormationText(card,(!selling&&requirement!=null?"잠김 · ":"")+(selling?CampaignInventory.SellPrice(item):item.BuyPrice).ToString("N0")+" G",new Vector2(.02f,0),new Vector2(.98f,.16f),20,TextAlignmentOptions.Center).color=formationGold;
             }

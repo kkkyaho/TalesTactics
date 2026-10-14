@@ -14,13 +14,13 @@ namespace TalesTactics
             center.Find("IntermissionBackdrop").gameObject.SetActive(false);
             var progress=FormationProgress(c);var committed=new EquipmentLoadout(c,progress,battle.Catalog.Equipment,battle.Campaign);
             var current=draft??committed;int level=battle.TrainingMode?25:Mathf.Clamp(progress.Level,1,50);bool promoted=!battle.TrainingMode&&progress.Promoted;
-            var chars=battle.Catalog.Characters;
-            int pages=Math.Max(1,(chars.Length+9)/10);intermissionRosterPage=Mathf.Clamp(intermissionRosterPage,0,pages-1);
+            var chars=JoinedCharacters();
+            int pages=Math.Max(1,(chars.Length+5)/6);intermissionRosterPage=Mathf.Clamp(intermissionRosterPage,0,pages-1);
             var roster=FormationRect(center,"EquipmentRoster",new Vector2(.01f,.84f),new Vector2(.99f,.995f));
-            int first=intermissionRosterPage*10,count=Math.Min(10,chars.Length-first);
+            int first=intermissionRosterPage*6,count=Math.Min(6,chars.Length-first);
             for(int i=0;i<count;i++)
             {
-                int index=first+i;var member=chars[index];float width=1f/(pages>1?12:Math.Max(count,1));
+                var member=chars[first+i];int index=Array.IndexOf(battle.Catalog.Characters,member);float width=1f/(pages>1?8:Math.Max(6,count));
                 var cell=FormationButton(roster,member.DisplayName,"",new Vector2(i*width,0),new Vector2((i+1)*width,1),()=>{selectedCharacter=index;equipmentPage=0;ShowEquipment(member);});
                 IntermissionSelection(cell,member==c);IntermissionPortrait(cell,member,new Vector2(.01f,.38f),new Vector2(.99f,1));
                 var caption=FormationText(cell,member.DisplayName.Split(' ')[0],Vector2.zero,new Vector2(1,0),16,TextAlignmentOptions.Center);
@@ -28,8 +28,8 @@ namespace TalesTactics
             }
             if(pages>1)
             {
-                FormationButton(roster,"이전 캐릭터","‹",new Vector2(10/12f,0),new Vector2(11/12f,1),()=>{intermissionRosterPage--;RenderEquipment(c,current,notice);},intermissionRosterPage>0);
-                FormationButton(roster,"다음 캐릭터","›",new Vector2(11/12f,0),Vector2.one,()=>{intermissionRosterPage++;RenderEquipment(c,current,notice);},intermissionRosterPage+1<pages);
+                FormationButton(roster,"이전 캐릭터","‹",new Vector2(6/8f,0),new Vector2(7/8f,1),()=>{intermissionRosterPage--;RenderEquipment(c,current,notice);},intermissionRosterPage>0);
+                FormationButton(roster,"다음 캐릭터","›",new Vector2(7/8f,0),Vector2.one,()=>{intermissionRosterPage++;RenderEquipment(c,current,notice);},intermissionRosterPage+1<pages);
             }
             var profile=IntermissionPanel(center,"EquipmentCharacter",new Vector2(.01f,.015f),new Vector2(.30f,.82f));
             var inventory=FormationRect(center,"EquipmentInventory",new Vector2(.33f,.015f),new Vector2(.98f,.82f));

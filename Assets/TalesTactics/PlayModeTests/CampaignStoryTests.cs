@@ -34,10 +34,10 @@ namespace TalesTactics.PlayModeTests
             director.SetState(new TurnStartState(director));yield return null;
             Assert.That(writes,Is.EqualTo(1));Assert.That(director.Campaign.StoryProgress,Does.Contain("chapter3"));
             Assert.That(party.All(c=>director.Campaign.Get(c.Id).Level==1&&director.Campaign.Get(c.Id).EXP==90),Is.True);
-            Click("전투 후 이야기");yield return null;Assert.That(director.StoryActive,Is.True);
+            Click("결과 계속");yield return null;Assert.That(director.StoryActive,Is.True);
             director.FinishStory();director.Restart();yield return null;
-            director.ReplayStory(true);yield return null;Assert.That(director.StoryActive,Is.True);
-            director.FinishStory();Assert.That(writes,Is.EqualTo(1));
+            director.SelectedStage=2;director.ReplayStory(true);yield return null;Assert.That(director.StoryActive,Is.True);
+            director.FinishStory();Assert.That(writes,Is.EqualTo(2));
         }
         [UnityTest] public IEnumerator StoryFlowBuildsChapterMapsAndReplaysWithoutRewards()
         {
@@ -46,18 +46,18 @@ namespace TalesTactics.PlayModeTests
             director.RequestBattle(); yield return null;
             Assert.That(director.StoryActive, Is.True); Assert.That(director.Session, Is.Null);
             Click("다음 대사"); yield return null; Assert.That(director.StoryIndex, Is.EqualTo(1));
-            Click("이야기 건너뛰기"); yield return null;
-            Assert.That(director.StoryActive, Is.True); Click("이야기 건너뛰기 확인"); yield return null;
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name.Contains("건너뛰기")),Is.False);
+            while(director.StoryActive){director.AdvanceStory();yield return null;}
             Assert.That(director.StoryActive, Is.False); Assert.That(director.Session.Grid.Tiles.Count, Is.EqualTo(99));
             foreach (var enemy in director.Session.Units.Where(u => u.Team == Team.Enemy)) enemy.Damage(99999, director.Session.Grid);
             director.SetState(new TurnStartState(director)); yield return null;
             Assert.That(writes, Is.EqualTo(1));
-            Click("전투 후 이야기"); yield return null;
+            Click("결과 계속"); yield return null;
             while (director.StoryActive) { director.AdvanceStory(); yield return null; }
-            Assert.That(writes, Is.EqualTo(1)); Assert.That(director.State, Is.InstanceOf<BattleEndState>());
+            Assert.That(writes, Is.GreaterThan(1)); Assert.That(director.Session, Is.Null);int endingWrites=writes;
             director.Restart(); yield return null;
-            director.ReplayStory(true); yield return null; Assert.That(director.StoryActive, Is.True);
-            director.FinishStory(); yield return null; Assert.That(writes, Is.EqualTo(1));
+            director.SelectedStage=0;director.ReplayStory(true); yield return null; Assert.That(director.StoryActive, Is.True);
+            director.FinishStory(); yield return null; Assert.That(writes, Is.EqualTo(endingWrites));
             director.SelectedStage = 1; director.RequestBattle(); yield return null;
             while (director.StoryActive) { director.AdvanceStory(); yield return null; }
             Assert.That(director.Session.Grid.Tiles.Count, Is.EqualTo(120));

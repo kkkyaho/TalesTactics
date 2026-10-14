@@ -16,6 +16,7 @@ namespace TalesTactics
             target.sprite=sprite;target.type=Image.Type.Sliced;target.pixelsPerUnitMultiplier=170/corner;
             target.color=new Color(1,1,1,target.color.a);
             var component=target.GetComponent<OrnatePanel>();if(component==null)component=target.gameObject.AddComponent<OrnatePanel>();component.image=target;component.requestedCorner=corner;
+            if(target.GetComponent<FramedContent>()==null)target.gameObject.AddComponent<FramedContent>();
             var outline=target.GetComponent<Outline>();if(outline!=null)outline.effectColor=Color.clear;
         }
         void LateUpdate()

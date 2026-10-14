@@ -67,7 +67,7 @@ namespace TalesTactics.PlayModeTests
                 else if(b.Objective==ObjectiveKind.Boss)b.ObjectiveUnit.Damage(99999,b.Grid);
                 else foreach(var enemy in b.Units.Where(u=>u.Team==Team.Enemy))enemy.Damage(99999,b.Grid);
                 director.SetState(new BattleEndState(director));yield return null;Assert.That(director.RewardPending,Is.False);
-                Assert.That(director.Campaign.StoryProgress,Does.Contain(CampaignStages.Id(stage)));director.Restart();yield return null;
+                Assert.That(director.Campaign.StoryProgress,Does.Contain(CampaignStages.Id(stage)));director.Restart();while(director.StoryActive)director.AdvanceStory();yield return null;
             }
             Assert.That(new CampaignFile(director.Profiles.PathFor(0)).Load().StoryProgress.Count,Is.EqualTo(6));
         }

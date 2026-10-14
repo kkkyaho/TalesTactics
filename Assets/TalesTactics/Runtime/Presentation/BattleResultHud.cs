@@ -13,19 +13,40 @@ namespace TalesTactics
         }
         void DrawResult()
         {
-            if(resultPanel==null)resultPanel=Panel("BattleResults",Vector2.zero,Vector2.one,new Vector2(12,138),new Vector2(-12,-88));
+            if(resultPanel==null)resultPanel=Panel("BattleResults",Vector2.one*.5f,Vector2.one*.5f,Vector2.zero,Vector2.zero);
+            resultPanel.sizeDelta=new Vector2(Mathf.Min(1040,canvas.rect.width-72),Mathf.Min(battle.GrowthResults.Length>2?760:600,canvas.rect.height-180));
+            resultPanel.anchoredPosition=Vector2.zero;
+            resultPanel.GetComponent<UnityEngine.UI.Image>().color=new Color(.025f,.045f,.08f,1);
             resultPanel.gameObject.SetActive(true);Clear(resultPanel);left.gameObject.SetActive(false);commands.gameObject.SetActive(false);
             bool win=battle.Session.Result==BattleResult.Victory;
-            Label(resultPanel,(win?"승리":"패배")+"  ·  "+battle.ResultStage,12,58,30);
+            FormationText(resultPanel,win?"승리":"패배",new Vector2(.05f,.88f),new Vector2(.95f,.99f),34,TMPro.TextAlignmentOptions.Center);
+            FormationText(resultPanel,battle.ResultStage,new Vector2(.05f,.81f),new Vector2(.95f,.89f),21,TMPro.TextAlignmentOptions.Center);
             string status=battle.RewardPending?"저장 실패 · 보상 미적용":win&&!battle.ResultTraining?"보상 저장 완료":"저장 보상 없음";
-            var notice=Label(resultPanel,status,80,36,20);notice.color=battle.RewardPending?new Color(1,.65f,.4f):new Color(.6f,1,.75f);
-            Label(resultPanel,battle.ResultRewards,126,82,21);
-            if(battle.ResultGrowth.Length>0)
+            var notice=FormationText(resultPanel,status,new Vector2(.05f,.75f),new Vector2(.95f,.82f),18,TMPro.TextAlignmentOptions.Center);notice.color=battle.RewardPending?new Color(1,.65f,.4f):formationTeal;
+            if(battle.GrowthResults.Length>0)
             {
-                Label(resultPanel,"출전 캐릭터 성장",218,36,20);
-                for(int i=0;i<battle.ResultGrowth.Length;i++)Label(resultPanel,battle.ResultGrowth[i],260+i*36,34,18);
+                int rewards=1+battle.ItemResults.Length;
+                for(int i=0;i<rewards;i++)
+                {
+                    float x=.04f+i*.92f/rewards,w=.92f/rewards;
+                    var tile=ResultTile("Reward-"+i,new Vector2(x,.59f),new Vector2(x+w-.01f,.74f));
+                    if(i==0){FormationText(tile,"G",new Vector2(.03f,.1f),new Vector2(.28f,.9f),36,TMPro.TextAlignmentOptions.Center).color=formationGold;FormationText(tile,"골드 +"+battle.GoldResult.ToString("N0"),new Vector2(.3f,.12f),new Vector2(.98f,.88f),21);}
+                    else {var reward=battle.ItemResults[i-1];EquipmentArt(tile,reward.Item,new Vector2(.02f,.08f),new Vector2(.28f,.92f));FormationText(tile,reward.Item.DisplayName+" ×"+reward.Count,new Vector2(.30f,.10f),new Vector2(.98f,.90f),19);}
+                }
+                FormationText(resultPanel,"캐릭터 성장",new Vector2(.04f,.52f),new Vector2(.96f,.59f),20);
+                int rows=Mathf.Max(1,(battle.GrowthResults.Length+1)/2);float height=.36f/rows;
+                for(int i=0;i<battle.GrowthResults.Length;i++)
+                {
+                    var growth=battle.GrowthResults[i];float x=.04f+i%2*.47f,top=.52f-i/2*height;
+                    var row=ResultTile("Growth-"+growth.Character.Id,new Vector2(x,top-height+.008f),new Vector2(x+.45f,top-.008f));
+                    IntermissionPortrait(row,growth.Character,new Vector2(.01f,.04f),new Vector2(.24f,.96f));
+                    FormationText(row,growth.Character.DisplayName.Split(' ')[0],new Vector2(.26f,.58f),new Vector2(.96f,.98f),20);
+                    FormationText(row,"Lv."+growth.BeforeLevel+" → "+growth.AfterLevel+"    EXP +"+growth.Experience,new Vector2(.26f,.20f),new Vector2(.97f,.59f),17);
+                    var track=FormationRect(row,"ResultExperienceTrack",new Vector2(.28f,.12f),new Vector2(.95f,.18f));track.gameObject.AddComponent<UnityEngine.UI.Image>().color=new Color(.13f,.2f,.25f);
+                    var fill=FormationRect(track,"ResultExperienceFill",Vector2.zero,new Vector2(growth.AfterLevel>=50?1:growth.CurrentEXP/100f,1));fill.gameObject.AddComponent<UnityEngine.UI.Image>().color=formationTeal;
+                }
             }
-            else if(battle.RewardPending)Label(resultPanel,"저장을 다시 시도하세요.",230,48,20);
+            else FormationText(resultPanel,battle.ResultRewards,new Vector2(.06f,.32f),new Vector2(.94f,.70f),22,TMPro.TextAlignmentOptions.Center);
             if(battle.RewardPending)
             {
                 ResultButton("보상 저장 재시도",0,2,battle.SaveBattleReward);
@@ -35,6 +56,11 @@ namespace TalesTactics
                     abandoningReward=true;
                     var button=resultPanel.Find("보상 포기 안내");button.GetComponentInChildren<TMPro.TMP_Text>().text="보상 포기 확정 · 준비로";
                 });
+            }
+            else if(win&&!battle.ResultTraining)
+            {
+                FormationText(resultPanel,"전투 후 이야기가 이어집니다.",new Vector2(.04f,.10f),new Vector2(.96f,.16f),16,TMPro.TextAlignmentOptions.Center);
+                var next=FormationButton(resultPanel,"결과 계속","계속",new Vector2(.30f,.015f),new Vector2(.70f,.10f),battle.ReadEnding,true,23);StyleButton(next,HudRole.Primary);
             }
             else
             {
@@ -46,6 +72,10 @@ namespace TalesTactics
                 else if(battle.CanPrepareNext)ResultButton("다음 장 출전 준비",2,3,battle.PrepareNextBattle);
                 else if(win&&!battle.ResultTraining)ResultButton("다시 도전",2,3,battle.RetryBattle);
             }
+        }
+        RectTransform ResultTile(string name,Vector2 min,Vector2 max)
+        {
+            var tile=FormationRect(resultPanel,name,min,max);var image=tile.gameObject.AddComponent<UnityEngine.UI.Image>();image.color=new Color(.025f,.055f,.08f,.96f);image.raycastTarget=false;OrnateButtonGraphic.Create(tile,true);return tile;
         }
         void ResultButton(string name,int index,int count,System.Action action,string display=null)
         {

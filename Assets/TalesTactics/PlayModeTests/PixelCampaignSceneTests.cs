@@ -42,8 +42,8 @@ namespace TalesTactics.PlayModeTests
                 CollectionAssert.AreEquivalent(inRange,Object.FindObjectsByType<LineRenderer>().Where(r=>r.enabled&&r.name.StartsWith("Range border ")).Select(r=>r.GetComponentInParent<TileView>().Coordinate).ToArray());
                 director.Board.ShowArea(inRange.First(),0);yield return null;
                 Assert.That(Object.FindObjectsByType<LineRenderer>().Any(r=>r.enabled&&r.name.StartsWith("Range border ")&&r.startWidth>.06f),Is.True,"Selected area gets a stronger gold border");
-                for(int turn=0;turn<4;turn++){Click("우회전");yield return null;}
-                Click("확대 +");Click("초기화");
+                for(int turn=0;turn<4;turn++){director.Board.RotateCamera(90);yield return null;}
+                director.Board.ZoomCamera(.9f);director.Board.ResetCamera();
                 Assert.That(active.Position,Is.EqualTo(origin));CollectionAssert.AreEqual(hp,director.Session.Units.Select(u=>u.CurrentHP).ToArray());
                 var scenery=Object.FindAnyObjectByType<PixelBattlefield>();
                 var materials=scenery.GetComponentsInChildren<Renderer>().Select(r=>r.sharedMaterial).Where(m=>m!=director.Board.HighlightMaterial&&m!=director.Board.TileMaterial&&m!=director.Board.SpriteMaterial).Distinct().ToArray();

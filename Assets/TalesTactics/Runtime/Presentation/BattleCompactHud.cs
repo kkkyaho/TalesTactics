@@ -16,8 +16,8 @@ namespace TalesTactics
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
-            commands.gameObject.SetActive(!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen);
-            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-88),new Vector2(-12,-12));
+            commands.gameObject.SetActive(!(battle.State is BattleEndState)&&!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen);
+            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-112),new Vector2(-12,-12));
             Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,190));
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
             if(SkillPanel)
@@ -40,10 +40,10 @@ namespace TalesTactics
             commands.GetComponent<UnityEngine.UI.Outline>().enabled=!facing;
             if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
             if(battle.State is CommandState)PlaceCommandBesideUnit();
-            if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,300,SkillCardHeight);
+            if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,380,SkillCardHeight+48);
             if(battle.State is TargetSelectionState)Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,targetContextHeight+12));
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
-            bool showMessage=facing||battle.TutorialActive||battle.State is ActionExecutionState||battle.State is BattleEndState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
+            bool showMessage=facing||battle.TutorialActive||battle.State is ActionExecutionState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
             footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
@@ -55,12 +55,12 @@ namespace TalesTactics
             float bottom=198*scale;
             return new Rect(12*scale/Screen.width,bottom/Screen.height,
                 Mathf.Max(1,Screen.width-24*scale)/Screen.width,
-                Mathf.Max(1,Screen.height-bottom-88*scale)/Screen.height);
+                Mathf.Max(1,Screen.height-bottom-124*scale)/Screen.height);
         }
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,202,64+40*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
+            PlaceBesideUnits(commands,unit.Position,250,94+46*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
@@ -74,7 +74,7 @@ namespace TalesTactics
             var best=Vector2.zero;float bestScore=float.PositiveInfinity;
             foreach(var candidate in candidates)
             {
-                var low=new Vector2(Mathf.Clamp(candidate.x,12,w-width-12),Mathf.Clamp(candidate.y,198,h-height-88));
+                var low=new Vector2(Mathf.Clamp(candidate.x,12,w-width-12),Mathf.Clamp(candidate.y,198,Mathf.Max(198,h-height-124)));
                 var rect=new Rect(low,new Vector2(width,height));float score=Vector2.SqrMagnitude(rect.center-p)*.000001f;
                 if(skillContext&&candidate==candidates[2])score+=1;
                 foreach(var unit in battle.Session.Units.Where(u=>u.Alive))
@@ -98,7 +98,7 @@ namespace TalesTactics
                 var r=(RectTransform)child;
                 r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
                 int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
-                r.anchoredPosition=new Vector2(10,-48-row*40);r.sizeDelta=new Vector2(182,36);
+                r.anchoredPosition=new Vector2(10,-48-row*46);r.sizeDelta=new Vector2(230,42);
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
