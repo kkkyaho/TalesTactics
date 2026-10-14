@@ -164,6 +164,7 @@ namespace TalesTactics
         }
         public void Cancel()
         {
+            if(battle.Hud.CancelTitle())return;
             if(battle.Hud.CloseStoryDialog()||battle.Hud.CloseMission()||battle.Hud.CloseSystemMenu()||battle.Hud.CloseHelp()||battle.Hud.CloseUnitDetails())return;
             if(battle.TimingActive||battle.StoryActive)return;
             if(battle.Session!=null)

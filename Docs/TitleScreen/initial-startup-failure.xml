@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.5925143">
+  <test-suite type="TestSuite" id="1158" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="150" result="Failed" site="Child" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.592514" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1310" name="TalesTactics.PlayModeTests.dll" fullname="D:/TalesTacticsHelpGuide/Library/ScriptAssemblies/TalesTactics.PlayModeTests.dll" runstate="Runnable" testcasecount="150" result="Failed" site="Child" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.578733" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="143560" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1311" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="150" result="Failed" site="Child" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.576043" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1312" name="PlayModeTests" fullname="TalesTactics.PlayModeTests" runstate="Runnable" testcasecount="150" result="Failed" site="Child" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.573242" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1159" name="BattleSceneTests" fullname="TalesTactics.PlayModeTests.BattleSceneTests" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" testcasecount="150" result="Failed" site="Child" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:42Z" duration="50.570015" total="6" passed="0" failed="6" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1297" name="TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" methodname="TitleBrowsingIsReadOnlyAndCancelPreservesAllSlots" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1165792568" result="Failed" start-time="2026-10-14 03:31:52Z" end-time="2026-10-14 03:32:37Z" duration="45.350804" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1301" name="TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" methodname="TitleLoadResumesCheckpointAndRejectsLegacyOrDamagedCheckpoint" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1281132834" result="Failed" start-time="2026-10-14 03:32:37Z" end-time="2026-10-14 03:32:39Z" duration="1.736938" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1298" name="TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" methodname="TitleNewGameUsesEmptySlotAndKeepsOtherSaveAndSettings" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1274412934" result="Failed" start-time="2026-10-14 03:32:39Z" end-time="2026-10-14 03:32:40Z" duration="0.836641" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1299" name="TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" methodname="TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="594547330" result="Failed" start-time="2026-10-14 03:32:40Z" end-time="2026-10-14 03:32:41Z" duration="0.881552" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1302" name="TitlePointerStartsAndReturnToTitleSavesPreparation" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitlePointerStartsAndReturnToTitleSavesPreparation" methodname="TitlePointerStartsAndReturnToTitleSavesPreparation" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="492755303" result="Failed" start-time="2026-10-14 03:32:41Z" end-time="2026-10-14 03:32:42Z" duration="0.903730" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></output>
+            </test-case>
+            <test-case id="1300" name="TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" fullname="TalesTactics.PlayModeTests.BattleSceneTests.TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" methodname="TitleProtectedAndRecoveredSlotsPreserveOriginalFiles" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="604862654" result="Failed" start-time="2026-10-14 03:32:42Z" end-time="2026-10-14 03:32:42Z" duration="0.839419" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingComponentException: There is no 'CanvasGroup' attached to the "TitleContent" game object, but a script is trying to access it.
+You probably need to add a CanvasGroup to the game object "TitleContent". Or your script needs to check if the component is attached before using it.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)
+UnityEngine.CanvasGroup.set_interactable (System.Boolean value) (at <047a04c744654cdf96a0aa22a539b815>:0)
+TalesTactics.BattleHud.TitleInteraction (UnityEngine.RectTransform rect, System.Boolean enabled) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:48)
+TalesTactics.BattleHud.ShowTitle () (at Assets/TalesTactics/Runtime/Presentation/BattleTitleHud.cs:44)
+TalesTactics.BattleDirector.Start () (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:45)
+UnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)
+
+Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

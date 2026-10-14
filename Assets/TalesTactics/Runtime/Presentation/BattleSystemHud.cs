@@ -6,7 +6,7 @@ namespace TalesTactics
         RectTransform systemOverlay,systemWindow;
         PlayerPreferences settingsDraft;
         public bool SystemMenuOpen=>systemOverlay!=null&&systemOverlay.gameObject.activeSelf;
-        public bool CanOpenSystemMenu=>!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||battle.IsPlayerCommand||battle.State is BattleEndState||battle.State is TutorialCompleteState);
+        public bool CanOpenSystemMenu=>!TitleOpen&&!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||battle.IsPlayerCommand||battle.State is BattleEndState||battle.State is TutorialCompleteState);
         void DrawSystemEntry(bool preparation)
         {
             Button(header,"메뉴 · 저장/설정",16,()=>ShowSystemMenu(),CanOpenSystemMenu,32);
@@ -75,7 +75,8 @@ namespace TalesTactics
                 }
                 Button(systemWindow,"현재 슬롯 저장",442,()=>{battle.SavePreparation();ShowSystemMenu();},battle.CanSave);HalfButton(systemWindow,0);
                 Button(systemWindow,"중단 전투 이어하기",442,()=>{if(!battle.ResumeBattle())ShowSystemMenu();},battle.CanResumeCampaign&&battle.CanSave);HalfButton(systemWindow,1);
-                Button(systemWindow,"저장 도움말",494,()=>ShowSystemMenu(6),true,32);
+                Button(systemWindow,"저장 도움말",494,()=>ShowSystemMenu(6),true,32);HalfButton(systemWindow,0);
+                Button(systemWindow,"저장 후 타이틀로",494,battle.ReturnToTitle,battle.CanSave,32);HalfButton(systemWindow,1);
             }
             else
             {

@@ -42,12 +42,14 @@ namespace TalesTactics
             {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}
             Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
             if(Deployment.Count==0)Deployment.Add(0);
-            Board.Initialize(this);Hud.ShowIntermissionHub();
+            Board.Initialize(this);Hud.ShowTitle();
             gameObject.AddComponent<GamepadPointer>().Initialize(this);
         }
         void Update()
         {
             HealthHoveredUnit=null;
+            if(Hud.TitleOpen)
+            {if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame)Hud.CancelTitle();return;}
             if(StoryActive)return;
             if(Keyboard.current!=null&&Keyboard.current.f5Key.wasPressedThisFrame){Hud.ShowSystemMenu();return;}
             if(Keyboard.current!=null&&Keyboard.current.f1Key.wasPressedThisFrame){if(!Hud.CloseHelp())Hud.ShowHelp();return;}

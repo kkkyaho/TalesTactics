@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 타이틀과 저장 진입
+
+`BattleDirector.Start`는 카탈로그 검증 후 `BattleHud.ShowTitle`을 연다. `BattleTitleHud`는 승인한 배경·타이틀·3슬롯 목록·새 게임 확인을 기존 uGUI로 구성한다. 타이틀 중 일반 HUD/단축키를 차단하고 기존 EventSystem과 GamepadPointer의 선택·확인·취소를 사용한다. 준비 화면으로 진입할 때 타이틀을 닫는다.
+
+`BattleTitleFlow.ReadTitleSlots`는 별도 `CampaignFile`로 읽기만 한다. 새 게임은 선택 슬롯 저장 성공 후 현재 캠페인을 교체하며, 이전 정상 저장을 `.bak`으로 유지한다. 불러오기는 보호된 파일을 차단하고 백업 복구·구 캠페인 호환 경로를 유지한다. 중단 재개는 기존 `ResumeBattle`의 체크포인트 검증·소비를 사용하고 실패하면 이전 프로필을 복원한다. 마지막 슬롯 설정 실패는 이미 성공한 캠페인 저장을 실패로 보고하지 않는다.
+
+일반 빌드에는 `TitleScreenReview`가 포함되지 않는다. 검수 도구는 별도 저장 폴더와 실제 엔진 화면을 사용한다. [타이틀 적용과 검증](TitleScreen/README.md).
+
 ## 현재 플레이 가이드
 
 `BattleHelpHud`는 기존 0–7번 페이지와 조작 안내 바로가기를 유지하면서 캠페인·대화·장비·저장 안내를 추가한 12개 주제를 제공한다. `BattleSystemHud`의 임무 변형 설명과 `BattleIntermissionGrowthHud`의 확장 캠페인 성장 안내도 현재 규칙을 따른다. 게임 규칙·저장 형식·콘텐츠 에셋은 변경하지 않는다.

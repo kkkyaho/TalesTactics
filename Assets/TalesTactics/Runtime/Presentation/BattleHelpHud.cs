@@ -7,8 +7,8 @@ namespace TalesTactics
         RectTransform helpOverlay,helpWindow;
         int helpPage;
         public bool HelpOpen=>helpOverlay!=null&&helpOverlay.gameObject.activeSelf;
-        public bool InputModalOpen=>UnitDetailsOpen||HelpOpen||SystemMenuOpen||MissionOpen;
-        public bool CanOpenHelp=>!SystemMenuOpen&&!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||
+        public bool InputModalOpen=>TitleOpen||UnitDetailsOpen||HelpOpen||SystemMenuOpen||MissionOpen;
+        public bool CanOpenHelp=>!TitleOpen&&!SystemMenuOpen&&!battle.StoryActive&&!battle.TimingActive&&(battle.Session==null||
             battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState));
         static readonly string[] helpTitles={"처음 시작","이동 · 공격","회복 · 대기","높이 · 방향","상태이상","궁극기 · 조건","편성 · 성장","조작 안내","캠페인 · 임무","대화 · 기록","장비 · 전용무기","저장 · 재도전"};
         void DrawHelpEntry(bool preparation)
@@ -53,7 +53,7 @@ namespace TalesTactics
             var r=battle.Catalog.Rules;
             switch(page)
             {
-                case 0:return "거점에서 임무를 확인하고 편성·장비·성장을 정비한 뒤 ‘이야기 시작’을 누르세요. 새 메인 1화는 크레스와 민트로 시작하고 동료들이 순서대로 합류합니다.\n\n처음이라면 아래 ‘입문 연습 시작’을 선택하세요.\n1. 크레스를 목표 타일로 이동\n2. 공격 선택 → 적 클릭으로 사용\n3. 민트의 기술로 크레스 회복\n4. 머리 위 화살표로 대기 방향 확정\n\n입문 연습은 Lv1·기본 장비의 별도 전장입니다. 적은 기다리고, 공격 후 연습용 부상을 줍니다. 성장·골드·장비·편성은 저장하지 않습니다.\n\n연습을 마치면 거점으로 돌아가 캠페인을 시작하세요. Lv25 훈련은 편성의 ‘훈련 · 전투 설정’에서 선택합니다.";
+                case 0:return "타이틀에서 새 게임·불러오기로 시작합니다. 거점에서 편성·장비·성장을 정비한 뒤 ‘이야기 시작’을 누르세요. 새 메인 1화는 크레스와 민트로 시작하고 동료들이 순서대로 합류합니다.\n\n처음이라면 아래 ‘입문 연습 시작’을 선택하세요.\n1. 크레스를 목표 타일로 이동\n2. 공격 선택 → 적 클릭으로 사용\n3. 민트의 기술로 크레스 회복\n4. 머리 위 화살표로 대기 방향 확정\n\n입문 연습은 Lv1·기본 장비의 별도 전장입니다. 적은 기다리고, 공격 후 연습용 부상을 줍니다. 성장·골드·장비·편성은 저장하지 않습니다.\n\n연습을 마치면 거점으로 돌아가 캠페인을 시작하세요. Lv25 훈련은 편성의 ‘훈련 · 전투 설정’에서 선택합니다.";
                 case 1:return "기본은 아군 턴 → 적군 턴입니다. 명령 대기 중 맵의 아군·상단 초상화·PgUp/PgDn으로 미완료 아군을 선택합니다. 선택을 바꿔도 이동·행동 기록은 유지됩니다.\n\n이동과 행동은 한 번씩, 순서는 자유입니다.\n이동 → 푸른 타일 클릭. 아군 칸을 통과할 수 있지만 빈 칸에만 도착합니다. 선은 경로, 도착 모델은 이동 후 위치를 보여 줍니다.\n\n이동 뒤 행동하기 전에는 ‘이동 취소’나 Z로 돌아갈 수 있습니다.\n공격·기술 → 대상에 마우스를 올려 예측 확인 → 유효한 대상 클릭으로 즉시 사용합니다.\nTab/Shift+Tab으로 대상을 골랐다면 Enter로 사용합니다. 별도 실행 버튼은 없습니다.\n\nEsc·우클릭·메뉴 밖 빈 곳 클릭은 한 단계 취소합니다. 기술 대상 선택을 취소하면 목록으로 돌아갑니다.";
                 case 2:return "회복: 기술 → 퍼스트 에이드 등 선택 → 아군 클릭. 행동과 MP를 사용하며 HP는 최대치를 넘지 않습니다. 쓰러진 아군은 부활 기술이 필요합니다.\n\n대기: 머리 위 4방향 화살표 중 하나를 고르면 해당 아군의 턴을 마칩니다. 이동·행동이 남아 있어도 대기할 수 있습니다. 선택한 방향은 금색입니다.\n\n방어: 행동을 사용해 받는 피해를 줄이고 방향을 선택합니다. 정면·측면·후면에 따라 효과가 다릅니다.\n\n‘아군 턴 종료’는 확인 후 미완료 아군을 모두 대기시킵니다. 기존 방향을 유지하며 방어 효과는 주지 않습니다.\n\n아군 전원이 마치면 적군 턴이 시작됩니다. 완료한 아군은 채도가 낮아지고 다음 아군 턴에 돌아옵니다. SPD·CT를 선택한 경우에는 표시된 행동 순서를 따르세요.";
                 case 3:return $"MOV는 이동 거리, JMP는 넘을 수 있는 높이 차입니다. 물·일부 잔해는 이동 비용이 더 큽니다.\n\n물리 기술의 높이 보정: 1단계마다 ±{r.HeightDamagePerStep:P0}, 최대 {r.HeightDamageMaxSteps}단계. 활·총 일부 기술은 높이에 따라 사거리도 변합니다. 장애물·시야 제한은 기술 상세를 확인하세요.\n\n공격 방향 배율: 정면 ×{r.FrontMultiplier:0.##} / 측면 ×{r.SideMultiplier:0.##} / 후면 ×{r.RearMultiplier:0.##}.\n방어 중 받는 배율: 정면 ×{r.GuardFront:0.##} / 측면 ×{r.GuardSide:0.##} / 후면 ×{r.GuardRear:0.##}.\n대기·방어 시 머리 위 화살표로 방향을 정합니다.\n\n물리 피해는 민첩 차이당 0.5%, 최대 ±15% 보정됩니다. 적 양옆의 인접 칸에서 포위하면 협공 +10%. 적도 같은 규칙을 쓰며 기절·수면 동료는 협공할 수 없습니다.\n\nV는 적 위험 범위를 켜고 끕니다. 황색 공격 예고와 임무의 지형 위험도 함께 살피세요.";

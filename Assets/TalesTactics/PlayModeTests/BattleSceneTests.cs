@@ -18,6 +18,7 @@ namespace TalesTactics.PlayModeTests
             yield return null;
             director=Object.FindAnyObjectByType<BattleDirector>();
             Assert.That(director,Is.Not.Null);
+            Assert.That(director.Hud.TitleOpen,Is.True,"The production scene must start on the title screen.");
             director.Audio.PersonalMusicEnabled=false; // Keep regression tests independent of local user music.
             Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
             // Old scenes remain explicit compatibility fixtures, never the production campaign menu.

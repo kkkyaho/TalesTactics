@@ -46,6 +46,7 @@ namespace TalesTactics
         {
             Directory.CreateDirectory(directory);Application.runInBackground=true;Application.logMessageReceived+=Log;yield return null;
             battle=UnityEngine.Object.FindAnyObjectByType<BattleDirector>();battle.ConfigureStorage(directory);battle.Audio.PersonalMusicEnabled=false;
+            battle.Hud.ShowIntermissionHub();
             battle.PersistCampaign=_=>throw new InvalidOperationException("Help must not save campaign progress");
             string before=JsonUtility.ToJson(battle.Campaign);
             foreach(var size in new[]{new Vector2Int(1280,720),new Vector2Int(1024,768),new Vector2Int(1920,1080),new Vector2Int(2560,1080),new Vector2Int(1080,1440)})

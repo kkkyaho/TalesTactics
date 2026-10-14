@@ -31,6 +31,7 @@ namespace TalesTactics
         }
         void BeginPreparation(string title)
         {
+            HideTitle();
             CloseUnitDetails();Clear(header);Clear(left);Clear(commands);Clear(footer);
             if(center==null)center=Panel("PreparationContent",new Vector2(.23f,0),new Vector2(.74f,1),new Vector2(6,126),new Vector2(-6,-94));
             Clear(center);preparationLayout=true;center.gameObject.SetActive(true);PreparationLayout();
