@@ -26,7 +26,7 @@ namespace TalesTactics
             FormationText(profile,"HP "+before.HP+"    MP "+before.MP+"\n공격 "+before.STR+"    방어 "+before.DEF+"\n마력 "+before.MAG+"    마방 "+before.MDF+"\n민첩 "+before.SPD+"    이동 "+before.MOV+"    도약 "+before.JMP,new Vector2(.025f,.30f),new Vector2(.975f,.47f),18);
             IntermissionRoster(FormationRect(profile,"CharacterRoster",Vector2.zero,new Vector2(1,.29f)),c,character=>ShowGrowth(character));
             FormationText(promotion,"승급",new Vector2(.025f,.92f),new Vector2(.975f,1),24).color=formationGold;
-            FormationIcon(promotion,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.19f,.91f),formationGold);
+            ClassArt(promotion,c,new Vector2(.04f,.81f),new Vector2(.19f,.91f));
             FormationText(promotion,c.Job+"  →  "+c.PromotionJob,new Vector2(.20f,.81f),new Vector2(.98f,.92f),21);
             bool story=CampaignPromotion.StorySatisfied(c,battle.Campaign.StoryProgress);bool level=progress.Level>=c.PromotionLevel;
             FormationText(promotion,(level?"충족":"미충족")+" · Lv "+c.PromotionLevel+" 달성 (현재 Lv "+progress.Level+")\n"+(story?"충족":"미충족")+" · "+(c.PromotionStoryFlag=="chapter2"?(battle.Catalog.CrossoverReady?"메인 6화 완료":"제2장 완료"):c.PromotionStoryFlag),new Vector2(.025f,.72f),new Vector2(.975f,.81f),18);

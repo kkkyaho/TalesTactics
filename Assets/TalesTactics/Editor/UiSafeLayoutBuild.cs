@@ -7,6 +7,7 @@ namespace TalesTactics.Editor
     public static class UiSafeLayoutBuild
     {
         public static void All(){Build(true);Build(false);}
+        public static void ClassIcons(){Build(true,"ClassIcons");Build(false,"ClassIcons");}
         [InitializeOnLoadMethod] static void RegisterReview()=>EditorApplication.playModeStateChanged+=ReviewState;
         public static void EditorReview()
         {
@@ -22,9 +23,9 @@ namespace TalesTactics.Editor
             if(state==PlayModeStateChange.EnteredEditMode)
             {SessionState.SetBool("TalesTactics.UiSafeLayoutReviewActive",false);EditorApplication.Exit(SessionState.GetInt("TalesTactics.UiSafeLayoutReviewExit",1));}
         }
-        static void Build(bool review)
+        static void Build(bool review,string name="UiSafeLayout")
         {
-            string folder="Builds/UiSafeLayout"+(review?"Review":"Windows");Directory.CreateDirectory(folder);
+            string folder="Builds/"+name+(review?"Review":"Windows");Directory.CreateDirectory(folder);
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/TalesTactics/Scenes/TestBattle.unity"},locationPathName=folder+"/TalesTactics.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.None,extraScriptingDefines=review?new[]{"TALESTACTICS_REVIEW"}:Array.Empty<string>()});
             var s=report.summary;File.WriteAllText(folder+"/build-result.txt",s.result+"\nErrors "+s.totalErrors+"\nWarnings "+s.totalWarnings+"\nDuration "+s.totalTime);
             if(s.result!=BuildResult.Succeeded)throw new Exception("Title screen build: "+s.result);

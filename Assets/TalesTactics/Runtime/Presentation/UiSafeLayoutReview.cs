@@ -142,6 +142,16 @@ namespace TalesTactics
         IEnumerator Inspect(string name,Transform panel,Vector2Int size,float scale)
         {
             var issues=new List<string>();if(Screen.width!=size.x||Screen.height!=size.y)issues.Add("Resolution mismatch");
+            foreach(var art in panel.GetComponentsInChildren<UnityEngine.UI.RawImage>().Where(i=>i.name=="ClassIllustration"))
+            {
+                if(art.texture==null||art.texture.name!="ClassIcons")issues.Add("Missing class artwork: "+art.transform.parent.name);
+                if(art.raycastTarget)issues.Add("Class artwork intercepts input");
+                var rect=art.rectTransform.rect;
+                if(rect.width<16||rect.height<16)issues.Add("Class artwork too small: "+art.transform.parent.name);
+                var corners=new Vector3[4];art.rectTransform.GetWorldCorners(corners);var bounds=(RectTransform)art.transform.parent;
+                var allowed=bounds.rect;allowed.xMin-=.1f;allowed.yMin-=.1f;allowed.xMax+=.1f;allowed.yMax+=.1f;
+                if(corners.Any(p=>!allowed.Contains(bounds.InverseTransformPoint(p))))issues.Add("Class artwork outside its bounds");
+            }
             foreach(var preview in panel.GetComponentsInChildren<UnityEngine.UI.RawImage>().Where(i=>i.name=="MapImage"))
             {
                 var corners=new Vector3[4];preview.rectTransform.GetWorldCorners(corners);var bounds=(RectTransform)preview.transform.parent;

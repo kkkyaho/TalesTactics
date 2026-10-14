@@ -47,10 +47,6 @@ namespace TalesTactics
         {
             var r=FormationRect(parent,"Icon",min,max);var icon=r.gameObject.AddComponent<TacticalIcon>();icon.Kind=kind;icon.color=color;icon.raycastTarget=false;
         }
-        string FormationWeaponIcon(CharacterData c)
-        {
-            switch(c.Id){case "mint":return "heal";case "farah":return "martial";case "jade":return "spear";case "tear":return "song";case "natalia":return "bow";case "shionne":return "rifle";case "kisara":return "guard";default:return "attack";}
-        }
         CharacterProgress FormationProgress(CharacterData c)=>battle.Campaign.Characters.FirstOrDefault(p=>p.Id==c.Id)??new CharacterProgress{Id=c.Id};
         int FormationLevel(int index)=>battle.TrainingMode?25:FormationProgress(battle.Catalog.Characters[index]).Level;
         int[] FormationRoster()
@@ -145,7 +141,7 @@ namespace TalesTactics
             body.pivot=new Vector2(.5f,0);Place(body,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
             var gear=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
             var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=EquipmentAppearance.Resolve(c,gear.Get(EquipmentSlot.Weapon),c.Sprites?.Front);sprite.preserveAspect=true;sprite.raycastTarget=false;
-            FormationIcon(cell,FormationWeaponIcon(c),new Vector2(.04f,.81f),new Vector2(.21f,.94f),formationGold);
+            ClassArt(cell,c,new Vector2(.055f,.71f),new Vector2(.26f,.95f));
             if(deployed)FormationIcon(cell,"check",new Vector2(.80f,.83f),new Vector2(.95f,.94f),formationTeal);
             if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
@@ -183,7 +179,8 @@ namespace TalesTactics
                 var slot=(EquipmentSlot)i;var item=gear.Get(slot);
                 var button=FormationButton(commands,"장비 슬롯: "+slot,"",new Vector2(.025f+i*.32f,.18f),new Vector2(.345f+i*.32f,.345f),()=>{selectedEquipmentSlot=slot;equipmentPage=0;ShowEquipment(c);});
                 if(item?.Icon!=null)EquipmentArt(button,item,new Vector2(.24f,.40f),new Vector2(.76f,.96f));
-                else FormationIcon(button,i==0?FormationWeaponIcon(c):i==1?"guard":"move",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
+                else if(i==0)ClassArt(button,c,new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.65f,.68f,.72f):Color.white);
+                else FormationIcon(button,i==1?"guard":"move",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
                 FormationText(button,item==null?SlotName(slot)+" · 없음":item.DisplayName,new Vector2(0,0),new Vector2(1,.40f),16,TextAlignmentOptions.Center);
             }
             FormationText(commands,"특성 · "+TacticalDevelopment.TraitName(progress.Trait),new Vector2(.03f,.11f),new Vector2(.65f,.17f),19).color=formationTeal;
