@@ -39,11 +39,12 @@ namespace TalesTactics
             var title = FormationText(storyPanel, CampaignStages.Title(battle.StoryStage), new Vector2(.04f,.86f), new Vector2(.96f,.96f), 25);
             title.color = formationGold;
             storyControls = FormationRect(storyPanel,"StoryControls",Vector2.zero,Vector2.one);
-            var box = IntermissionPanel(storyControls,"DialogueBox",new Vector2(.04f,.105f),new Vector2(.96f,.52f));
+            var box = IntermissionPanel(storyControls,"DialogueBox",new Vector2(.04f,.105f),new Vector2(.96f,.46f));
             var portrait = StoryPortrait(line.Speaker);
             float textLeft = portrait != null ? .27f : .035f;
             if (portrait != null) IntermissionPortrait(box,portrait,new Vector2(.01f,.02f),new Vector2(.25f,.98f));
-            FormationText(box,line.Speaker,new Vector2(textLeft,.77f),new Vector2(.96f,.95f),25).color=formationGold;
+            var nameplate=IntermissionPanel(box,"SpeakerNameplate",new Vector2(textLeft,.79f),new Vector2(Mathf.Min(textLeft+.25f,.96f),1.02f));
+            FormationText(nameplate,line.Speaker,new Vector2(.055f,.08f),new Vector2(.945f,.92f),24).color=formationTeal;
             var body = FormationText(box,line.Text,new Vector2(textLeft,.23f),new Vector2(.96f,.77f),29,TextAlignmentOptions.TopLeft);
             body.name="DialogueBody"; body.fontSizeMin=22;
             FormationText(box,number.ToString("D2")+" / "+count.ToString("D2"),new Vector2(textLeft,.04f),new Vector2(textLeft+.16f,.19f),16);
@@ -90,7 +91,7 @@ namespace TalesTactics
             if(storyOverlay==null)
             {
                 storyOverlay=FormationRect(storyPanel,"StoryDialogOverlay",Vector2.zero,Vector2.one);
-                var shade=storyOverlay.gameObject.AddComponent<UnityEngine.UI.Image>();shade.color=new Color(0,0,0,.85f);
+                var shade=storyOverlay.gameObject.AddComponent<UnityEngine.UI.Image>();shade.color=new Color(0,0,0,.70f);
             }
             storyOverlay.gameObject.SetActive(true);storyOverlay.SetAsLastSibling();Clear(storyOverlay);
             var group=storyControls.GetComponent<CanvasGroup>();if(group==null)group=storyControls.gameObject.AddComponent<CanvasGroup>();group.interactable=false;group.blocksRaycasts=false;
@@ -108,7 +109,10 @@ namespace TalesTactics
         void ConfirmStorySkip()
         {
             var window=BeginStoryDialog("이야기를 건너뛸까요?");
-            FormationText(window,"현재 대화를 마치고 다음 단계로 진행합니다.",new Vector2(.05f,.42f),new Vector2(.95f,.75f),24);
+            Place(window,new Vector2(.25f,.29f),new Vector2(.75f,.71f),Vector2.zero,Vector2.zero);
+            FormationIcon(window,"crest",new Vector2(.47f,.94f),new Vector2(.53f,1.08f),formationGold);
+            var heading=window.GetComponentInChildren<TMP_Text>();heading.alignment=TextAlignmentOptions.Center;Place(heading.rectTransform,new Vector2(.07f,.69f),new Vector2(.93f,.90f),Vector2.zero,Vector2.zero);
+            FormationText(window,"대화는 거점에서 다시 볼 수 있습니다.",new Vector2(.08f,.36f),new Vector2(.92f,.63f),22,TextAlignmentOptions.Center);
             var cancel=FormationButton(window,"이야기 계속 읽기","계속 읽기",new Vector2(.10f,.12f),new Vector2(.48f,.28f),()=>CloseStoryDialog(),true,21);
             FormationButton(window,"이야기 건너뛰기 확인","건너뛰기",new Vector2(.52f,.12f),new Vector2(.90f,.28f),battle.FinishStory,true,21);
             EventSystem.current?.SetSelectedGameObject(cancel.gameObject);

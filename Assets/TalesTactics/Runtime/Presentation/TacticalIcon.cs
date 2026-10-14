@@ -11,6 +11,9 @@ namespace TalesTactics
             mesh.Clear();
             switch(Kind)
             {
+                case "crest":
+                    Line(mesh,.5f,.02f,.98f,.5f,.025f);Line(mesh,.98f,.5f,.5f,.98f,.025f);Line(mesh,.5f,.98f,.02f,.5f,.025f);Line(mesh,.02f,.5f,.5f,.02f,.025f);
+                    Poly(mesh,new[]{new Vector2(.5f,.10f),new Vector2(.42f,.39f),new Vector2(.13f,.5f),new Vector2(.42f,.60f),new Vector2(.5f,.9f),new Vector2(.58f,.60f),new Vector2(.87f,.5f),new Vector2(.58f,.39f)});break;
                 case "check": Line(mesh,.17f,.5f,.4f,.25f,.12f);Line(mesh,.4f,.25f,.86f,.8f,.12f);break;
                 case "cone": Poly(mesh,new[]{new Vector2(.5f,.12f),new Vector2(.12f,.85f),new Vector2(.88f,.85f)});break;
                 case "single": Line(mesh,.25f,.25f,.75f,.25f);Line(mesh,.75f,.25f,.75f,.75f);Line(mesh,.75f,.75f,.25f,.75f);Line(mesh,.25f,.75f,.25f,.25f);break;

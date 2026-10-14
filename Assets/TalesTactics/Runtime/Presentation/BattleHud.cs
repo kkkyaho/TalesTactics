@@ -98,7 +98,7 @@ namespace TalesTactics
             Label(footer,detail,12,94,17);
         }
         RectTransform Panel(string name,Vector2 min,Vector2 max,Vector2 offsetMin,Vector2 offsetMax)
-        {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(.25f,.32f,.40f,.8f);border.effectDistance=new Vector2(1,-1);return r;}
+        {var g=new GameObject(name,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(canvas,false);var r=g.GetComponent<RectTransform>();r.anchorMin=min;r.anchorMax=max;r.offsetMin=offsetMin;r.offsetMax=offsetMax;var image=g.GetComponent<UnityEngine.UI.Image>();image.color=panel;image.raycastTarget=true;var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(.25f,.32f,.40f,.8f);border.effectDistance=new Vector2(1,-1);if(!name.Contains("Overlay")&&!name.Contains("Backdrop")&&name!="CampaignStory"&&name!="TitleScreen"&&name!="TitleConfirm")OrnatePanel.Apply(image);return r;}
         void Clear(Transform parent)
         {
             if(parent==header)

@@ -9,7 +9,7 @@ namespace TalesTactics
         TMP_Text moveRisk;
         void DrawTacticalTools()
         {
-            if(tacticalToolbar==null)tacticalToolbar=Panel("Threat controls",new Vector2(0,1),new Vector2(0,1),new Vector2(12,-122),new Vector2(332,-84));
+            if(tacticalToolbar==null)tacticalToolbar=Panel("Threat controls",new Vector2(0,1),new Vector2(0,1),new Vector2(12,-134),new Vector2(332,-96));
             tacticalToolbar.gameObject.SetActive(true);Clear(tacticalToolbar);
             Button(tacticalToolbar,battle.ThreatLabel+" · V",3,battle.CycleThreat,true,32);HalfButton(tacticalToolbar,0);
             Button(tacticalToolbar,"전술 도움말",3,()=>ShowTacticalHelp(),true,32);HalfButton(tacticalToolbar,1);

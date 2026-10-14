@@ -43,7 +43,7 @@ namespace TalesTactics
         RectTransform IntermissionPanel(Transform parent,string name,Vector2 min,Vector2 max)
         {
             var r=FormationRect(parent,name,min,max,6);var img=r.gameObject.AddComponent<UnityEngine.UI.Image>();img.color=new Color(.035f,.065f,.11f,1);img.raycastTarget=false;
-            var border=r.gameObject.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(.5f,.4f,.25f);border.effectDistance=new Vector2(1,-1);return r;
+            var border=r.gameObject.AddComponent<UnityEngine.UI.Outline>();border.effectColor=new Color(.5f,.4f,.25f);border.effectDistance=new Vector2(1,-1);OrnatePanel.Apply(img);return r;
         }
         void IntermissionPortrait(Transform parent,CharacterData c,Vector2 min,Vector2 max)
         {
@@ -52,7 +52,7 @@ namespace TalesTactics
             {
                 var art=FormationRect(r,"PortraitArt",Vector2.zero,Vector2.one);
                 var img=art.gameObject.AddComponent<UnityEngine.UI.RawImage>();img.texture=atlas;img.uvRect=new Rect(cell%5*.2f,cell<5?.5f:0,.2f,.5f);img.raycastTarget=false;
-                var fit=art.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=1;
+                var fit=art.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=1;OrnateButtonGraphic.Create(art,true);
             }
             else {var img=r.gameObject.AddComponent<UnityEngine.UI.Image>();img.sprite=c.Portrait!=null?c.Portrait:c.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=false;}
         }

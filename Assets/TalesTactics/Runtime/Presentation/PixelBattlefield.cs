@@ -3,7 +3,7 @@ using UnityEngine;
 namespace TalesTactics
 {
     // Presentation only: GridMap heights, movement and combat RNG are never modified.
-    public sealed class PixelBattlefield : MonoBehaviour
+    public sealed partial class PixelBattlefield : MonoBehaviour
     {
         const string Art="TalesTactics/TerrainArt/";
         static readonly string[] Backgrounds={"Ruins","Sanctum","Canyon","Observatory","Sluice","Relay"};
@@ -17,14 +17,14 @@ namespace TalesTactics
         readonly List<Vector4> shadowCasters=new List<Vector4>();
         Texture2D architecture;Sprite[] architectureSprites;
         Material floorMaterial;
-        Camera view;Material spriteMaterial;Transform backdrop;Texture2D foliage;Sprite[] foliageSprites;
+        Camera view;Material spriteMaterial;Transform backdrop;Texture2D foliage;
         int stage,wall;float bottom,backgroundAspect;
         public int DecorationMeshCount=>meshes.Count;
         public int Chapter=>stage;
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
             stage=chapter>=CampaignStages.LegacyCount?CrossoverCampaign.TerrainTheme(chapter):Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-2.5f:-1.9f;
-            view=camera;spriteMaterial=spriteSource;
+            view=camera;spriteMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));spriteMaterial.name="Terrain foliage tone";owned.Add(spriteMaterial);
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
             {
@@ -37,12 +37,13 @@ namespace TalesTactics
             }
             surfaces[6].SetTexture("_MainTex",Resources.Load<Texture2D>(Art+"Cliff"));
             surfaces[6].SetVector("_AtlasRect",new Vector4(0,0,1,1));surfaces[6].SetFloat("_WorldCliff",1);
-            foliage=Resources.Load<Texture2D>(Art+"Foliage");foliageSprites=new Sprite[16];
+            foliage=Resources.Load<Texture2D>(Art+"Foliage");
             architecture=Resources.Load<Texture2D>(Art+"Architecture");architectureSprites=new Sprite[16];
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
             floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloor")));
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
-            floorMaterial.SetFloat("_DetailContrast",.76f);
+            floorMaterial.SetFloat("_DetailContrast",.96f);
+            InitializeLivingTerrain();
             var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)
             {
@@ -76,7 +77,7 @@ namespace TalesTactics
                     geometry[wall].Box(edge-Vector3.up*.28f,new Vector3(d.x==0?.95f:.28f,.25f,d.y==0?.95f:.28f));
                     geometry[stage==2?5:wall].Box(edge+Vector3.up*.075f,new Vector3(d.x==0?.99f:.16f,.15f,d.y==0?.99f:.16f));
                     if((x+z)%2==0){geometry[wall].Box(edge+Vector3.up*.17f,Vector3.one*.24f);Foliage(stage==2?6:0,edge+outward*.27f-Vector3.up*.95f,1.05f);}
-                    if((x+z)%4==1)DressedProp(stage>=3?11:3,edge-outward*.02f,.74f,false);
+                    if((x+z)%7==1)DressedProp(stage>=3?11:3,edge-outward*.02f,.74f,false);
                     if((x+z)%3==1)Foliage(stage==2?4:2,edge+outward*.06f,.32f);
                     if(stage==2)geometry[6].Rock(edge+outward*.25f+Vector3.up*(bottom-p.y-.5f),1.15f,p.y-bottom+.4f,x*31+z*17);
                 }
@@ -97,6 +98,7 @@ namespace TalesTactics
                     }
                 }
             }
+            DressLivingTile(tile,map,step);
             if(!tile.Walkable)
             {
                 int prop=stage==2?4:stage==3?9:stage==4?13:stage==5?14:(x+z)%2;
@@ -139,6 +141,7 @@ namespace TalesTactics
                 for(int i=0;i<4;i++)geometry[wall].Box(new Vector3(maxX*.3f,northHeight-.18f-i*.2f,maxZ+.65f+i*.3f),new Vector3(1.7f,.24f,.36f));
                 for(int i=0;i<3;i++)geometry[wall].Box(new Vector3(-.85f,northHeight-.18f-i*.2f,maxZ*.4f+i*.55f),new Vector3(.65f,.35f,.45f));
             }
+            LivingExterior(map,step,maxX,maxZ);
             var shadows=new Vector4[24];for(int i=0;i<Mathf.Min(shadowCasters.Count,24);i++)shadows[i]=shadowCasters[i];
             foreach(var m in surfaces){m.SetVectorArray("_TerrainShadows",shadows);m.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));}
             floorMaterial.SetVectorArray("_TerrainShadows",shadows);floorMaterial.SetInt("_ShadowCount",Mathf.Min(shadowCasters.Count,24));
@@ -178,14 +181,7 @@ namespace TalesTactics
             var across=Vector3.Cross(outward,Vector3.up)*width*.48f;var top=edge+outward*.035f-Vector3.up*.04f;
             geometry[9].Quad(top-across-Vector3.up*height,top-across,top+across,top+across-Vector3.up*height);Foliage(12,edge-Vector3.up*height+outward*.10f,.8f);
         }
-        Transform Foliage(int index,Vector3 position,float height)
-        {
-            if(foliage==null)return null;
-            if(foliageSprites[index]==null){float w=foliage.width/4f,h=foliage.height/4f;var sprite=Sprite.Create(foliage,new Rect(index%4*w,(3-index/4)*h,w,h),new Vector2(.5f,0),100,0,SpriteMeshType.FullRect);sprite.name="Terrain accent "+index;sprites.Add(sprite);foliageSprites[index]=sprite;}
-            var art=foliageSprites[index];var go=new GameObject("Terrain accent "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);go.transform.localPosition=position;go.transform.localScale=Vector3.one*(height/art.bounds.size.y);
-            var sr=go.GetComponent<SpriteRenderer>();sr.sprite=art;sr.sharedMaterial=spriteMaterial;sr.color=index==13?new Color(1,1,.88f,1):index==15?new Color(.72f,.92f,1,1):new Color(.85f,.88f,.80f,1);
-            billboards.Add(go.transform);if(view!=null)go.transform.rotation=view.transform.rotation;return go.transform;
-        }
+        Transform Foliage(int index,Vector3 position,float height)=>FoliageQuad(index,position,height);
         void DressedProp(int index,Vector3 position,float height,bool shadow)
         {
             if(architecture==null)return;
@@ -203,9 +199,9 @@ namespace TalesTactics
         }
         void LateUpdate()
         {
-            if(view==null)return;foreach(var t in billboards)t.rotation=view.transform.rotation;
+            if(view==null)return;foreach(var t in billboards)t.rotation=view.transform.rotation;UpdateLivingCanopy();
             if(backdrop!=null){backdrop.SetPositionAndRotation(view.transform.position+view.transform.forward*Mathf.Min(80,view.farClipPlane-1),view.transform.rotation);float h=view.orthographicSize*2*Mathf.Max(1,view.aspect/backgroundAspect);backdrop.localScale=new Vector3(h*backgroundAspect,h,1);}
         }
-        void OnDestroy(){foreach(var m in owned)if(m!=null)Destroy(m);foreach(var m in meshes)if(m!=null)Destroy(m);foreach(var s in sprites)if(s!=null)Destroy(s);}
+        void OnDestroy(){DisposeDetailQuads();foreach(var m in owned)if(m!=null)Destroy(m);foreach(var m in meshes)if(m!=null)Destroy(m);foreach(var s in sprites)if(s!=null)Destroy(s);}
     }
 }

@@ -35,7 +35,7 @@ namespace TalesTactics
                 var r=FormationRect(parent,"PortraitArt",Vector2.zero,Vector2.one);
                 var image=r.gameObject.AddComponent<RawImage>();image.texture=atlas;image.raycastTarget=false;
                 image.uvRect=new Rect(cell%5*.2f,cell<5?.5f:0,.2f,.5f);
-                var aspect=r.gameObject.AddComponent<AspectRatioFitter>();aspect.aspectMode=AspectRatioFitter.AspectMode.FitInParent;aspect.aspectRatio=1;
+                var aspect=r.gameObject.AddComponent<AspectRatioFitter>();aspect.aspectMode=AspectRatioFitter.AspectMode.FitInParent;aspect.aspectRatio=1;OrnateButtonGraphic.Create(r,true);
             }
             else {var image=parent.gameObject.AddComponent<Image>();image.sprite=data.Portrait!=null?data.Portrait:data.Sprites?.Front;image.preserveAspect=true;image.raycastTarget=false;}
         }
@@ -43,7 +43,7 @@ namespace TalesTactics
         {
             if(!CharacterStatusOpen)return;
             float scale=Mathf.Clamp(battle.Preferences.TextScale,.8f,1.5f);
-            unitDetails.sizeDelta=new Vector2(Mathf.Min(900*scale,canvas.rect.width-32),Mathf.Min(720*scale,canvas.rect.height-32));
+            unitDetails.sizeDelta=new Vector2(Mathf.Min(1080*scale,canvas.rect.width-32),Mathf.Min(720*scale,canvas.rect.height-32));
         }
         public void HandleStatusKeyboard()
         {
@@ -72,7 +72,7 @@ namespace TalesTactics
         }
         RectTransform StatusSurface(Transform parent,string name,Vector2 min,Vector2 max)
         {
-            var r=FormationRect(parent,name,min,max,4);var img=r.gameObject.AddComponent<Image>();img.color=new Color(.06f,.09f,.15f,.95f);img.raycastTarget=false;
+            var r=FormationRect(parent,name,min,max,4);var img=r.gameObject.AddComponent<Image>();img.color=new Color(.06f,.09f,.15f,.95f);img.raycastTarget=false;if(name.StartsWith("StatRow")){r.offsetMin=new Vector2(1,1);r.offsetMax=new Vector2(-1,-1);OrnateButtonGraphic.Create(r);}else if(name=="Track"){r.offsetMin=r.offsetMax=Vector2.zero;}else OrnatePanel.Apply(img,23);
             return r;
         }
         void StatusMeter(Transform parent,string name,int value,int maximum,float y,Color color)
@@ -83,6 +83,7 @@ namespace TalesTactics
             var bg=StatusSurface(r,"Track",new Vector2(.19f,.05f),new Vector2(1,.3f));
             var fill=FormationRect(bg,"Fill",Vector2.zero,new Vector2(Mathf.Clamp01((float)value/Mathf.Max(1,maximum)),1));
             var image=fill.gameObject.AddComponent<Image>();image.color=color;image.raycastTarget=false;
+            OrnateButtonGraphic.Create(bg,true);
         }
         void RenderCharacterStatus()
         {
@@ -96,9 +97,10 @@ namespace TalesTactics
             string[] tabs={"능력","기술","장비"};
             for(int i=0;i<3;i++){int tab=i;var r=FormationButton(unitDetails,"상태 "+tabs[i],tabs[i],new Vector2(.02f+i*.32f,.765f),new Vector2(.34f+i*.32f,.835f),()=>{statusTab=tab;statusPage=0;RenderCharacterStatus();},true,20);StyleButton(r,HudRole.Tab,tab==statusTab);}
             var model=StatusSurface(unitDetails,"StatusModel",new Vector2(.02f,.15f),new Vector2(.32f,.75f));
+            var backdrop=FormationRect(model,"StatusSanctuary",new Vector2(.045f,.04f),new Vector2(.955f,.96f));var scenery=backdrop.gameObject.AddComponent<RawImage>();scenery.texture=Resources.Load<Texture2D>("TalesTactics/FormationBackdrop");scenery.color=new Color(.75f,.83f,1,.8f);scenery.raycastTarget=false;
             string context=u.Team==Team.Enemy?"전술 · "+EnemyTactics.Describe(u):"특성 · "+TacticalDevelopment.TraitName(u.Trait)+"\n"+TacticalDevelopment.TraitDescription(u.Trait);
-            FormationText(model,context,new Vector2(.06f,.7f),new Vector2(.94f,.97f),16).color=formationGold;
-            var art=FormationRect(model,"Body",new Vector2(.12f,.2f),new Vector2(.88f,.7f));
+            FormationText(model,context,new Vector2(.08f,.78f),new Vector2(.92f,.96f),16).color=formationGold;
+            var art=FormationRect(model,"Body",new Vector2(.08f,.2f),new Vector2(.92f,.77f));
             var body=art.gameObject.AddComponent<CharacterModelImage>();body.Character=u.Data;body.sprite=EquipmentAppearance.Resolve(u,u.Data.Sprites.Get((Facing)statusFacing));body.preserveAspect=true;body.raycastTarget=false;
             FormationButton(model,"모델 회전","모델 회전",new Vector2(.15f,.07f),new Vector2(.85f,.18f),()=>{statusFacing=(statusFacing+1)%4;RenderCharacterStatus();},true,16);
             var content=FormationRect(unitDetails,"StatusContent",new Vector2(.34f,.15f),new Vector2(.98f,.75f));
@@ -121,8 +123,9 @@ namespace TalesTactics
             for(int i=0;i<8;i++)
             {
                 float x=i%2*.5f,y=.51f-i/2*.075f;
-                FormationText(parent,names[i],new Vector2(x,y),new Vector2(x+.24f,y+.07f),18);
-                var value=FormationText(parent,values[i],new Vector2(x+.24f,y),new Vector2(x+.49f,y+.07f),20,TextAlignmentOptions.MidlineRight);value.color=formationGold;value.name="StatusValue"+keys[i];
+                var statRow=StatusSurface(parent,"StatRow"+keys[i],new Vector2(x,y),new Vector2(x+.49f,y+.07f));statRow.SetAsFirstSibling();
+                FormationText(parent,names[i],new Vector2(x+.015f,y),new Vector2(x+.24f,y+.07f),18);
+                var value=FormationText(parent,values[i],new Vector2(x+.24f,y),new Vector2(x+.475f,y+.07f),20,TextAlignmentOptions.MidlineRight);value.color=formationGold;value.name="StatusValue"+keys[i];
             }
             // A dedicated paginated state card keeps every effect readable even with all debuffs active.
             var states=u.Statuses.Where(s=>s.Turns>0).Select(s=>StatusText.Name(s.Kind)+" · "+(s.Kind==StatusKind.Guard?"다음 자기 턴까지":s.Turns+"턴")).ToList();
@@ -132,24 +135,24 @@ namespace TalesTactics
             if(battle.Session?.Resolver.ReactionsEnabled==true)states.Add("반격 "+(u.CounterUsed?0:1)+" · 지원 "+(u.SupportUsed?0:1));
             int pages=Math.Max(1,(states.Count+1)/2);statusPage=Mathf.Clamp(statusPage,0,pages-1);
             var card=StatusSurface(parent,"StatusEffects",Vector2.zero,new Vector2(1,.265f));
-            FormationText(card,"상태 효과",new Vector2(.02f,.65f),new Vector2(.65f,1),18).color=formationTeal;
-            FormationText(card,string.Join("\n",states.Skip(statusPage*2).Take(2)),new Vector2(.02f,.03f),new Vector2(.83f,.66f),17);
-            FormationButton(card,"상태 효과 다음",(statusPage+1)+"/"+pages+" ›",new Vector2(.83f,.03f),new Vector2(1,.63f),()=>{statusPage=(statusPage+1)%pages;RenderCharacterStatus();},pages>1,14);
+            FormationText(card,"상태 효과",new Vector2(.04f,.60f),new Vector2(.65f,.88f),18).color=formationTeal;
+            FormationText(card,string.Join("\n",states.Skip(statusPage*2).Take(2)),new Vector2(.04f,.10f),new Vector2(.81f,.63f),17);
+            FormationButton(card,"상태 효과 다음",(statusPage+1)+"/"+pages+" ›",new Vector2(.83f,.12f),new Vector2(.97f,.63f),()=>{statusPage=(statusPage+1)%pages;RenderCharacterStatus();},pages>1,14);
         }
         void DrawStatusSkills(RectTransform parent,UnitRuntime u)
         {
             var skills=new[]{u.Data.BasicAttack}.Concat(u.Data.Skills??new SkillData[0]).Concat(u.TacticalSkills??new SkillData[0]).Concat(new[]{u.Data.UltimateSkill}).Where(s=>s!=null).Distinct().ToArray();
-            int pageSize=battle.Preferences.TextScale>1.1f?4:5;
+            int pageSize=4;
             int pages=Math.Max(1,(skills.Length+pageSize-1)/pageSize);statusPage=Mathf.Clamp(statusPage,0,pages-1);
             for(int i=0;i<pageSize&&statusPage*pageSize+i<skills.Length;i++)
             {
                 var s=skills[statusPage*pageSize+i];float stride=.86f/pageSize,top=1-i*stride;
                 var row=StatusSurface(parent,"StatusSkill"+i,new Vector2(0,top-stride+.01f),new Vector2(1,top));row.offsetMin=new Vector2(4,2);row.offsetMax=new Vector2(-4,-2);
                 FormationIcon(row,SkillVisualLanguage.Icon(s),new Vector2(.01f,.2f),new Vector2(.09f,.8f),SkillVisualLanguage.Tint(s));
-                StatusSkillLine(row,s.DisplayName+(u.Unlocked(s)?"":" · Lv"+s.UnlockLevel+" 해금"),.64f,1,18).color=u.Unlocked(s)?formationTeal:Color.gray;
+                StatusSkillLine(row,s.DisplayName+(u.Unlocked(s)?"":" · Lv"+s.UnlockLevel+" 해금"),.62f,.91f,18).color=u.Unlocked(s)?formationTeal:Color.gray;
                 string cost="MP "+s.MPCost+(s.HPCost>0?" · HP "+s.HPCost:"")+(s.HPPercentCost>0?" · HP "+s.HPPercentCost.ToString("P0"):"")+(s.GaugeCost>0?" · SP "+s.GaugeCost:"");
-                StatusSkillLine(row,cost+" · "+SkillVisualLanguage.Range(s),.32f,.64f,14);
-                StatusSkillLine(row,SkillSummary.Describe(s),0,.32f,14);
+                StatusSkillLine(row,cost+" · "+SkillVisualLanguage.Range(s),.34f,.63f,14);
+                StatusSkillLine(row,SkillSummary.Describe(s),.10f,.37f,14);
             }
             StatusPages(parent,pages);
         }

@@ -9,11 +9,17 @@ namespace TalesTactics
     {
         UnityEngine.UI.Image cue;
         UnityEngine.UI.Button button;
+        OrnateButtonGraphic trim;
+        TMPro.TMP_Text label;
+        TacticalIcon[] icons;
+        int iconChildren=-1;
         bool hover,focus,selected;
         public HudRole Role {get;private set;}
         public void Configure(HudRole role,bool active=false)
         {
             Role=role;selected=active;button=GetComponent<UnityEngine.UI.Button>();
+            label=GetComponentInChildren<TMPro.TMP_Text>();
+            if(trim==null){trim=OrnateButtonGraphic.Create(transform);trim.transform.SetAsFirstSibling();}
             var image=GetComponent<UnityEngine.UI.Image>();
             image.color=role==HudRole.Primary?new Color(.045f,.32f,.37f):active?new Color(.06f,.22f,.28f):role==HudRole.Quiet||role==HudRole.Tab?new Color(.045f,.07f,.11f):new Color(.085f,.12f,.18f);
             var outline=GetComponent<UnityEngine.UI.Outline>();
@@ -27,7 +33,16 @@ namespace TalesTactics
             }
             Refresh();
         }
-        void Refresh(){if(cue==null)return;cue.enabled=button!=null&&button.IsInteractable()&&(hover||focus||selected||Role==HudRole.Primary);cue.color=focus?new Color(.95f,.79f,.43f):new Color(.3f,.82f,.8f);}
+        void Refresh()
+        {
+            if(cue==null)return;bool enabled=button!=null&&button.IsInteractable();bool active=enabled&&(hover||focus||selected||Role==HudRole.Primary);
+            cue.enabled=enabled&&(focus||selected);cue.color=new Color(1,.88f,.53f);
+            if(trim!=null)trim.State(active,!enabled);
+            if(label!=null)label.color=!enabled?new Color(.5f,.55f,.6f):active?new Color(.08f,.065f,.03f):new Color(.92f,.95f,.98f);
+            if(iconChildren!=transform.childCount){icons=GetComponentsInChildren<TacticalIcon>();iconChildren=transform.childCount;}
+            if(icons!=null)foreach(var icon in icons)icon.color=!enabled?new Color(.4f,.43f,.47f):active?new Color(.12f,.09f,.035f):new Color(.86f,.72f,.43f);
+        }
+        void LateUpdate(){Refresh();}
         public void OnPointerEnter(PointerEventData e){hover=true;Refresh();}
         public void OnPointerExit(PointerEventData e){hover=false;Refresh();}
         public void OnSelect(BaseEventData e){focus=true;Refresh();}

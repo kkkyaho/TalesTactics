@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 공통 프레임과 전장 식생
+
+`OrnatePanel`은 가져온9-slice Sprite로 공통 창의 금속 테두리를 표시한다. `OrnateButtonGraphic`은 버튼·초상화·게이지에 크기 독립적인 이중 프레임을 그리며 입력을 받지 않는다. `HudButtonAccent`가 포커스/선택/비활성 상태를 연결한다. 상태창은 큰 캐릭터 배경과 얇은 능력치 행을 사용하며 기존 데이터·탭·페이지와 입력 경로를 유지한다.
+
+`PixelBattlefield`의 `PixelLivingTerrain` 부분 클래스는 논리 GridMap 바깥에 연속 외곽 지형·나무·관목을 더한다. 좌표 해시로 변화를 만들며 Unity Random을 소비하지 않는다. 장식에는 Collider가 없고 전방 나무는 카메라 방향에 따라 숨긴다. `TerrainDetailBillboard`는 식생의 명시적 atlas UV 메시를 공유한다. 생성 메시·머티리얼·Sprite는 전장 파괴 시 해제한다. 공통 Terrain 셰이더에 지면 이끼·미세 명암·나뭇잎 사이 빛·물 반짝임을 추가했다. [실행 화면과 검증](OrnatePresentation/README.md).
+
 ## 타이틀과 저장 진입
 
 `BattleDirector.Start`는 카탈로그 검증 후 `BattleHud.ShowTitle`을 연다. `BattleTitleHud`는 승인한 배경·타이틀·3슬롯 목록·새 게임 확인을 기존 uGUI로 구성한다. 타이틀 중 일반 HUD/단축키를 차단하고 기존 EventSystem과 GamepadPointer의 선택·확인·취소를 사용한다. 준비 화면으로 진입할 때 타이틀을 닫는다.

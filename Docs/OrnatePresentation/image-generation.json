@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-14",
+  "tool": "image_gen.imagegen",
+  "assets": [
+    {
+      "file": "Assets/TalesTactics/Resources/TalesTactics/Ornate/Panel.png",
+      "prompt": "Production game UI asset for Unity 9-sliced Image, one single square panel on transparent background, 1024x1024. Match the attached approved TalesTactics dialogue window EXACTLY in materials and quality: deep ink navy blue subtly brushed and marbled inset body, double fine silver and champagne-gold metal bevels, elaborate but restrained antique gold angular reinforcing brackets in all four corners with tiny engraved dark inlays/rivets, directional metallic highlights and recessed dark shadow along inner frame. Straight uniform horizontal and vertical borders, mirror-symmetric corners. Flat orthographic FRONT VIEW, absolutely no perspective. Panel occupies entire canvas with outer rim 10 pixels inset, all corner details restricted to outermost 100 pixels from each corner so the broad middle of every edge can stretch. Central 80% almost-black navy quiet texture for white text readability; no central emblem, no text, no letters, no buttons, no characters, no decorations in center. The image is the actual reusable frame-and-body asset, not a screenshot, not a presentation. Keep outside corners transparent, body opaque dark navy. Exquisite clean sharp production fantasy JRPG interface metal craftsmanship."
+    },
+    {
+      "file": "Assets/TalesTactics/Resources/TalesTactics/Ornate/Trees.png",
+      "prompt": "Production transparent RGBA sprite atlas for a premium 2.5D fantasy tactical RPG. Square canvas, precisely FOUR equal cells in a 2 by 2 grid, no visible grid lines, generous transparent gutters. Each tree stays wholly within its own cell with 8 percent transparent margins, rooted at horizontal center and 90 percent down in its cell. Top left a mature lush oak with irregular rounded canopy and gnarled trunk; top right tall deep green cedar with tiered branches; bottom left smaller sunlit birch with pale trunk and golden green leaves; bottom right irregular low cluster of three leafy shrubs with wildflowers and mossy small rocks, no big tree. High-angle 35 degree above ground view used in isometric strategy games, elegant detailed hand-painted anime fantasy environment art, crisp defined leaf clusters with fine texture, natural volume with warm sunlight from upper left and cool shadow underneath, rich varied greens, painterly realistic bark, detailed roots and fern growth at foot. No ground plate, no hard shadow blob, actual transparency everywhere outside the plants, no colored background, no text, no UI, no people, no buildings. Top two trees same footprint and similar height, all objects separated and not overlapping cells. Beautiful richly detailed production game art, not simple low-poly, not flat icons."
+    },
+    {
+      "file": "Assets/TalesTactics/Resources/TalesTactics/Ornate/Ground.png",
+      "prompt": "Seamless tileable square ground albedo texture for an actual fantasy tactical RPG terrain shader, strict orthographic top down view. Lush fine green grass and moss, irregular small patches of warm ochre soil, tiny leaf litter and occasional tiny pale pebbles. Rich varied olive, fresh green and moss green tones. Finely hand-painted high-quality JRPG environment texture with natural organic variation, subtle material microtexture, calm consistent density. Flat diffuse lighting only, no directional shadows, no perspective, no horizon, no landscape scene, no large stones, no trees, no bushes, no objects, no text, no border. All edges seamlessly repeat. This will be blended between ancient stone paving and outer forest ground."
+    }
+  ],
+  "notes": [
+    "Panel generated using the approved dialogue-popup concept as reference. Trees and ground are newly generated assets.",
+    "Imported without raster painting or compositing. Tree atlas UV rows are measured 54% / 46%; ground and panel used directly.",
+    "Generated tree output was restored byte-for-byte from the tool image_url after C: disk exhaustion. Ground was regenerated after an empty output file. Assets reside on D: through this worktree's Assets directory junction."
+  ]
+}

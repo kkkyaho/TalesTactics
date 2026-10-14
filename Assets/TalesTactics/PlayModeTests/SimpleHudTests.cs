@@ -67,7 +67,13 @@ namespace TalesTactics.PlayModeTests
             director.Session.Active=unit;unit.BeginTurn();
             foreach(var tile in director.Session.Grid.Tiles.Values)tile.Walkable=tile.Coordinate.y==1&&tile.Coordinate.x>=1&&tile.Coordinate.x<=3;
             director.SetState(new CommandState(director));yield return null;
-            var panel=(RectTransform)director.Hud.transform.Find("Commands");Assert.That(panel.rect.width,Is.EqualTo(120));Assert.That(panel.rect.height,Is.EqualTo(180));
+            var panel=(RectTransform)director.Hud.transform.Find("Commands");var canvas=(RectTransform)director.Hud.transform;
+            Assert.That(panel.rect.width,Is.LessThan(canvas.rect.width*.3f));Assert.That(panel.rect.height,Is.LessThan(canvas.rect.height*.6f));
+            foreach(var button in panel.GetComponentsInChildren<UnityEngine.UI.Button>())
+            {
+                var corners=new Vector3[4];((RectTransform)button.transform).GetWorldCorners(corners);
+                Assert.That(corners.All(p=>panel.rect.Contains(panel.InverseTransformPoint(p))),Is.True,"Command buttons must fit inside the ornate frame");
+            }
             Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().Length,Is.EqualTo(6));
             var origin=unit.Position;var occupied=ally.Position;var destination=new Vector2Int(3,1);
             Assert.That(director.Session.Move(occupied),Is.False);Assert.That(unit.Moved,Is.False);

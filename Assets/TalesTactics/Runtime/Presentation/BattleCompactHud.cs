@@ -17,8 +17,8 @@ namespace TalesTactics
         void UpdateBattleLayout()
         {
             commands.gameObject.SetActive(!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen);
-            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-76),new Vector2(-12,-12));
-            Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,164));
+            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-88),new Vector2(-12,-12));
+            Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,190));
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
             if(SkillPanel)
             {
@@ -60,7 +60,7 @@ namespace TalesTactics
         void PlaceCommandBesideUnit()
         {
             var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,120,24+26*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
+            PlaceBesideUnits(commands,unit.Position,202,64+40*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
@@ -89,6 +89,7 @@ namespace TalesTactics
         }
         void ArrangeCommandMenu()
         {
+            var commandHeading=Label(commands,"유닛 명령",21,24,15);commandHeading.color=formationGold;commandHeading.rectTransform.offsetMin=new Vector2(26,commandHeading.rectTransform.offsetMin.y);
             string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
             string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","아군 턴 종료"};
             for(int i=0;i<names.Length;i++)
@@ -97,14 +98,14 @@ namespace TalesTactics
                 var r=(RectTransform)child;
                 r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
                 int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
-                r.anchoredPosition=new Vector2(4,-6-row*26-(i==6?12:0));r.sizeDelta=new Vector2(112,26);
-                if(i==6){var separator=FormationRect(commands,"PhaseSeparator",new Vector2(0,1),new Vector2(1,1));separator.offsetMin=new Vector2(10,-row*26-5);separator.offsetMax=new Vector2(-10,-row*26-4);var line=separator.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=new Color(.3f,.4f,.5f,.5f);line.raycastTarget=false;}
+                r.anchoredPosition=new Vector2(10,-48-row*40);r.sizeDelta=new Vector2(182,36);
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
                 colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
                 var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
-                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,0),new Vector2(-2,0));
+                FormationIcon(child,new[]{"move","attack","skill","guard","wait","move","wait"}[i],new Vector2(.035f,.18f),new Vector2(.16f,.82f),formationGold);
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(36,0),new Vector2(-8,0));
             }
         }
         void DrawUnitSummary(UnitRuntime u)
@@ -112,14 +113,15 @@ namespace TalesTactics
             var portrait=FormationRect(left,"Portrait",Vector2.zero,Vector2.zero);
             portrait.offsetMin=new Vector2(8,48);portrait.offsetMax=new Vector2(82,132);StatusPortrait(portrait,u.Data);
 
-            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,10,28,18);title.rectTransform.offsetMin=new Vector2(86,title.rectTransform.offsetMin.y);
-            SummaryBar("HP",u.CurrentHP,u.Stats.HP,42,new Color(.25f,.78f,.49f));
-            SummaryBar("MP",u.CurrentMP,u.Stats.MP,68,new Color(.25f,.57f,.95f));
-            SummaryBar("SP",u.SpecialGauge,100,94,new Color(.93f,.69f,.28f));
-            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",122,24,12);
+            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,16,28,18);title.rectTransform.offsetMin=new Vector2(86,title.rectTransform.offsetMin.y);
+            SummaryBar("HP",u.CurrentHP,u.Stats.HP,50,new Color(.25f,.78f,.49f));
+            SummaryBar("MP",u.CurrentMP,u.Stats.MP,78,new Color(.25f,.57f,.95f));
+            SummaryBar("SP",u.SpecialGauge,100,106,new Color(.93f,.69f,.28f));
+            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",134,24,12);
+            status.rectTransform.offsetMin=new Vector2(26,status.rectTransform.offsetMin.y);
             status.rectTransform.offsetMax=new Vector2(-90,status.rectTransform.offsetMax.y);
-            Button(left,"능력",118,()=>ShowUnitDetails(u),true,28);
-            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,28);button.anchoredPosition=new Vector2(-10,-118);
+            Button(left,"능력",138,()=>ShowUnitDetails(u),true,28);
+            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,28);button.anchoredPosition=new Vector2(-10,-138);
         }
         void SummaryBar(string title,int value,int maximum,float y,Color color)
         {

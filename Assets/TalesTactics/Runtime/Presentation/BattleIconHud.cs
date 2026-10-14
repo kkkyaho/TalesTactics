@@ -30,13 +30,13 @@ namespace TalesTactics
             if(team!=null)
             {
                 var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,20,12);
-                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-190,-21),new Vector2(150,-1));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
+                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-190,-28),new Vector2(150,-8));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
             }
             foreach(var unit in orderNow)
             {
                 var g=new GameObject(team!=null?"아군 선택: "+unit.Data.Id:"NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
                 float x=team!=null?-20-orderNow.Length*24+i*48:-120+i*48;
-                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-62),new Vector2(x+42,team!=null?-20:-6));
+                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-70),new Vector2(x+42,team!=null?-28:-14));
                 var img=g.GetComponent<UnityEngine.UI.Image>();img.color=unit==battle.Session.Active?new Color(.08f,.35f,.39f):new Color(.07f,.11f,.17f);img.raycastTarget=true;
                 var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.27f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
                 if(team!=null&&!team.CanSelect(unit))foreach(var graphic in art.GetComponentsInChildren<UnityEngine.UI.Graphic>())graphic.color=new Color(.43f,.48f,.53f,.8f);
