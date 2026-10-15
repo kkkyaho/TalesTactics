@@ -80,30 +80,40 @@ namespace TalesTactics
             var legacy=(battle.State as SkillDetailsState)?.Skill;
             shownSkill=legacy??(page.Contains(battle.LastSkill)?battle.LastSkill:page.FirstOrDefault());
             int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>4;
-            float infoY=38+rows*42,buttonsY=infoY+(shownSkill!=null?28:0)+(pages?28:0);
-            SkillCardHeight=buttonsY+(shownSkill!=null?44:8);
-            Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",7,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,26);
-            var filter=(RectTransform)commands.GetChild(commands.childCount-1);filter.anchorMax=new Vector2(.72f,1);CompactSkillButton(filter);
-            var mp=Label(commands,"MP "+unit.CurrentMP,7,26,14);mp.alignment=TextAlignmentOptions.MidlineRight;mp.rectTransform.anchorMin=new Vector2(.74f,1);
-            var brief=Label(commands,"",infoY,26,13);brief.enableAutoSizing=true;brief.fontSizeMin=11;brief.fontSizeMax=13;
+            bool roomy=NarrowBattleHud;
+            float firstRow=roomy?54:42,rowStep=roomy?66:42,rowHeight=roomy?60:40;
+            float briefHeight=roomy?46:26,pageHeight=roomy?34:26,detailHeight=roomy?38:28;
+            float infoY=firstRow+rows*rowStep,pageY=infoY+(shownSkill!=null?briefHeight+4:0),buttonsY=pageY+(pages?pageHeight+6:0);
+            SkillCardHeight=buttonsY+(shownSkill!=null?detailHeight+16:8);
+            Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",8,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,roomy?36:28);
+            var filter=(RectTransform)commands.GetChild(commands.childCount-1);CompactSkillButton(filter);
+            Place(filter,new Vector2(0,1),Vector2.one,new Vector2(24,-8-(roomy?36:28)),new Vector2(-112,-8));
+            var mp=Label(commands,"MP "+unit.CurrentMP,8,roomy?36:28,roomy?17:14);mp.alignment=TextAlignmentOptions.MidlineRight;
+            Place(mp.rectTransform,Vector2.one,Vector2.one,new Vector2(-100,-8-(roomy?36:28)),new Vector2(-24,-8));
+            var brief=Label(commands,"",infoY,briefHeight,roomy?17:13);brief.enableAutoSizing=true;brief.fontSizeMin=roomy?15:11;brief.fontSizeMax=roomy?17:13;
+            brief.rectTransform.offsetMin=new Vector2(24,brief.rectTransform.offsetMin.y);brief.rectTransform.offsetMax=new Vector2(-24,brief.rectTransform.offsetMax.y);
             System.Action<SkillData> inspect=skill=>{shownSkill=skill;brief.text=skill==null?"":$"거리 {skill.MinRange}–{skill.Range} · "+SkillSummary.Describe(skill);};
             inspect(shownSkill);
-            if(page.Length==0)Label(commands,"사용 가능한 기술 없음",38,30,15);
+            if(page.Length==0)Label(commands,"사용 가능한 기술 없음",firstRow,30,roomy?18:15);
             foreach(var skill in page)
             {
                 int i=System.Array.IndexOf(page,skill);
                 int mpCost=battle.Session.Resolver.MPCost(unit,skill);
                 bool usable=battle.Session.Resolver.CanUse(unit,skill,battle.IsFollowup(skill))==null;
-                Button(commands,skill.DisplayName+" · MP"+mpCost,38+i*42,()=>{if(usable)battle.SelectSkill(skill);else ShowSkillInformation(unit,skill);},true,40);
+                Button(commands,skill.DisplayName+" · MP"+mpCost,firstRow+i*rowStep,()=>{if(usable)battle.SelectSkill(skill);else ShowSkillInformation(unit,skill);},true,rowHeight);
                 var r=(RectTransform)commands.GetChild(commands.childCount-1);
+                r.sizeDelta=new Vector2(-40,rowHeight);
                 var button=r.GetComponent<UnityEngine.UI.Button>();r.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 r.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var colors=button.colors;colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=colors.selectedColor=new Color(.14f,.3f,.45f);colors.pressedColor=new Color(.25f,.42f,.56f);button.colors=colors;
-                var name=r.GetComponentInChildren<TMP_Text>();name.text=skill.DisplayName;if(!usable)name.color=new Color(.65f,.69f,.75f);name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
-                Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(32,13),new Vector2(-66,0));
-                FormationIcon(r,usable?SkillVisualLanguage.Icon(skill):"locked",new Vector2(.015f,.24f),new Vector2(.10f,.84f),SkillVisualLanguage.Tint(skill));
-                var range=Label(r,SkillVisualLanguage.Range(skill),0,16,11);Place(range.rectTransform,Vector2.zero,new Vector2(1,0),new Vector2(32,0),new Vector2(-6,16));
-                var cost=Label(r,mpCost+" MP",0,23,13);cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,14),new Vector2(-6,0));
+                var name=r.GetComponentInChildren<TMP_Text>();name.text=roomy?skill.DisplayName.Split('/')[0].Trim():skill.DisplayName;if(!usable)name.color=new Color(.65f,.69f,.75f);name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=roomy?17:11;name.fontSizeMax=roomy?19:15;
+                float subline=roomy?28:17;
+                Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(44,subline),new Vector2(roomy?-76:-66,-2));
+                FormationIcon(r,usable?SkillVisualLanguage.Icon(skill):"locked",new Vector2(0,.5f),new Vector2(0,.5f),SkillVisualLanguage.Tint(skill));
+                var icon=(RectTransform)r.GetChild(r.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(28,28);icon.anchoredPosition=new Vector2(22,roomy?3:0);
+                var range=Label(r,SkillVisualLanguage.Range(skill),0,subline,roomy?16:11);range.name="Skill range";Place(range.rectTransform,Vector2.zero,new Vector2(1,0),new Vector2(44,roomy?2:0),new Vector2(-8,subline));
+                if(roomy)range.fontSizeMin=16;
+                var cost=Label(r,mpCost+" MP",0,23,roomy?16:13);cost.name="Skill cost";cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,new Vector2(1,0),Vector2.one,new Vector2(roomy?-72:-64,subline),new Vector2(-8,-2));
                 var trigger=r.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
                 foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select})
                 {var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>inspect(skill));trigger.triggers.Add(entry);}
@@ -111,16 +121,16 @@ namespace TalesTactics
             }
             if(pages)
             {
-                Button(commands,"이전 기술 페이지",infoY+28,()=>{skillPage--;battle.SetState(new ActionSelectionState(battle));},skillPage>0,26);HalfButton(commands,0);
-                Button(commands,"다음 기술 페이지",infoY+28,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/4,26);HalfButton(commands,1);
+                Button(commands,"이전 기술 페이지",pageY,()=>{skillPage--;battle.SetState(new ActionSelectionState(battle));},skillPage>0,pageHeight);HalfButton(commands,0);
+                Button(commands,"다음 기술 페이지",pageY,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/4,pageHeight);HalfButton(commands,1);
                 CompactSkillButton(commands.GetChild(commands.childCount-2));CompactSkillButton(commands.GetChild(commands.childCount-1));
                 commands.GetChild(commands.childCount-2).GetComponentInChildren<TMP_Text>().text="‹ 이전";
                 commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="다음 ›";
             }
-            if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,28);}
+            if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,detailHeight);}
         }
         void CompactSkillButton(Transform button)
-        {var label=button.GetComponentInChildren<TMP_Text>();label.enableAutoSizing=true;label.fontSizeMin=11;label.fontSizeMax=14;Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(4,0),new Vector2(-4,0));}
+        {var label=button.GetComponentInChildren<TMP_Text>();label.enableAutoSizing=true;label.fontSizeMin=NarrowBattleHud?16:11;label.fontSizeMax=NarrowBattleHud?18:14;Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,0),new Vector2(-8,0));}
         void ShowSkillInformation(UnitRuntime unit,SkillData skill)
         {
             PrepareUnitModal(unit);if(!UnitDetailsOpen)return;Clear(unitDetails);

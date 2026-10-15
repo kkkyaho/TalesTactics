@@ -12,9 +12,12 @@ namespace TalesTactics
             if(battle.State is BattleEndState){if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);return;}
             if(tacticalToolbar==null)tacticalToolbar=Panel("Threat controls",new Vector2(0,1),new Vector2(0,1),new Vector2(12,-134),new Vector2(332,-96));
             tacticalToolbar.gameObject.SetActive(true);Clear(tacticalToolbar);
+            tacticalToolbar.GetComponent<UnityEngine.UI.Image>().enabled=false;
+            tacticalToolbar.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            tacticalToolbar.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             Button(tacticalToolbar,battle.ThreatLabel+" · V",3,battle.CycleThreat,true,32);HalfButton(tacticalToolbar,0);
             Button(tacticalToolbar,"전술 도움말",3,()=>ShowTacticalHelp(),true,32);HalfButton(tacticalToolbar,1);
-            foreach(var text in tacticalToolbar.GetComponentsInChildren<TMP_Text>())text.fontSize=13;
+            foreach(var text in tacticalToolbar.GetComponentsInChildren<TMP_Text>()){text.fontSize=text.fontSizeMax=14;text.fontSizeMin=12;}
         }
         void ShowTacticalHelp()
         {
@@ -33,7 +36,8 @@ namespace TalesTactics
             var u=battle.Session.Active;var skill=battle.SelectedSkill;var f=battle.Forecast;
             if(shownForecast!=f){shownForecast=f;forecastRowIndex=0;}
             var name=Label(commands,skill.DisplayName,10,34,21);name.rectTransform.offsetMax=new Vector2(-66,name.rectTransform.offsetMax.y);
-            Button(commands,"예측 취소",8,()=>battle.State.Cancel(),true,36);var back=(RectTransform)commands.GetChild(commands.childCount-1);back.anchorMin=new Vector2(1,1);back.sizeDelta=new Vector2(44,36);back.anchoredPosition=new Vector2(-28,-8);back.GetComponentInChildren<TMP_Text>().text="×";
+            var back=CloseIcon(commands,"예측 취소",()=>battle.State.Cancel());
+            back.sizeDelta=new Vector2(44,36);back.anchoredPosition=new Vector2(-16,-8);
             var costs=new System.Collections.Generic.List<string>();int mp=battle.Session.Resolver.MPCost(u,skill),hp=battle.Session.Resolver.HPCost(u,skill);
             if(mp>0)costs.Add("MP "+mp);if(hp>0)costs.Add("HP "+hp);if(skill.GaugeCost>0)costs.Add("SP "+skill.GaugeCost);
             if(f==null||f.Rows.Count==0)
@@ -44,18 +48,19 @@ namespace TalesTactics
             var targets=battle.Target.HasValue?battle.Session.Resolver.Targets(u,skill,battle.Target.Value).ToArray():new UnitRuntime[0];
             var rows=f.Rows.OrderByDescending(r=>targets.Contains(r.Unit)).ThenBy(r=>r.Unit.Team==u.Team).ToArray();
             forecastRowIndex=Mathf.Clamp(forecastRowIndex,0,rows.Length-1);var row=rows[forecastRowIndex];
-            InfoPortrait(commands,row.Unit.Data,14,58,88,108);
-            var enemy=Label(commands,row.Unit.Data.DisplayName,56,34,19);enemy.rectTransform.offsetMin=new Vector2(116,enemy.rectTransform.offsetMin.y);
+            var overview=Label(commands,$"대상 {f.TargetCount}명 · 격파 예상 {f.EnemyKnockouts}명",52,30,18);overview.name="Forecast overview";overview.color=formationTeal;
+            var risk=Label(commands,$"아군 HP 감소 {f.AllyHealthLoss}\n적 반격·지원 {f.HostileReactions}회 · 피해 {f.ReactionDamage}",84,46,16);risk.name="Forecast risk";risk.color=f.AllyHealthLoss>0||f.HostileReactions>0?new Color(.96f,.61f,.52f):new Color(.73f,.81f,.85f);
+            InfoPortrait(commands,row.Unit.Data,24,140,76,86);
+            var enemy=Label(commands,row.Unit.Data.DisplayName,138,32,19);enemy.rectTransform.offsetMin=new Vector2(112,enemy.rectTransform.offsetMin.y);
             string caption=row.AfterHP>row.BeforeHP?"예상 회복":row.DirectDamage?"예상 피해":"효과 변화";
-            var kind=Label(commands,caption,96,28,16);kind.rectTransform.offsetMin=new Vector2(116,kind.rectTransform.offsetMin.y);
-            var amount=Label(commands,row.Immune?"면역":row.AfterHP==row.BeforeHP&&!row.DirectDamage?"—":Mathf.Abs(row.BeforeHP-row.AfterHP).ToString(),112,86,46);amount.rectTransform.offsetMin=new Vector2(116,amount.rectTransform.offsetMin.y);amount.color=row.AfterHP>row.BeforeHP?new Color(.35f,.9f,.7f):new Color(1,.43f,.4f);
-            Label(commands,"HP "+row.BeforeHP+" → "+row.AfterHP+(row.AfterHP==0?" · 전투불능":""),194,30,18);ForecastHealthBar(commands,row,230);
+            var kind=Label(commands,caption,172,24,16);kind.rectTransform.offsetMin=new Vector2(112,kind.rectTransform.offsetMin.y);
+            var amount=Label(commands,row.Immune?"면역":row.AfterHP==row.BeforeHP&&!row.DirectDamage?"—":Mathf.Abs(row.BeforeHP-row.AfterHP).ToString(),194,44,32);amount.rectTransform.offsetMin=new Vector2(112,amount.rectTransform.offsetMin.y);amount.color=row.AfterHP>row.BeforeHP?new Color(.35f,.9f,.7f):new Color(1,.43f,.4f);
+            Label(commands,"HP "+row.BeforeHP+" → "+row.AfterHP+(row.AfterHP==0?" · 전투불능":""),244,30,18);ForecastHealthBar(commands,row,278);
             var notices=new System.Collections.Generic.List<string>();
-            if(!string.IsNullOrEmpty(f.Reactions))notices.Add(f.Reactions);
             if(row.Unit.BossWard)notices.Add("방벽 "+row.BeforeWard+"%"+(row.BeforeWard!=row.AfterWard?" → "+row.AfterWard+"%":""));
             if(!string.IsNullOrEmpty(row.ImportantEffects))notices.Add(row.ImportantEffects);
-            float lower=258;
-            if(notices.Count>0){float height=notices.Count>1||!string.IsNullOrEmpty(row.ImportantEffects)?72:34;var alerts=Label(commands,string.Join(" · ",notices),lower,height,16);alerts.enableAutoSizing=true;alerts.fontSizeMin=14;alerts.fontSizeMax=16;lower+=height+8;}
+            float lower=304;
+            if(notices.Count>0){float height=notices.Count>1||!string.IsNullOrEmpty(row.ImportantEffects)?64:30;var alerts=Label(commands,string.Join(" · ",notices),lower,height,16);alerts.enableAutoSizing=true;alerts.fontSizeMin=14;alerts.fontSizeMax=16;lower+=height+8;}
             if(costs.Count>0){Label(commands,string.Join(" · ",costs),lower,30,17);lower+=38;}
             if(rows.Length>1)
             {
@@ -66,6 +71,8 @@ namespace TalesTactics
             float detailsY=lower;
             Button(commands,"전체 예측 · "+rows.Length+"명 / 비용",detailsY,()=>ShowForecast(0),true,36);commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="상세 보기  ›";
             targetContextHeight=detailsY+50;
+            foreach(var label in commands.GetComponentsInChildren<TMP_Text>().Where(t=>t.transform.parent==commands))
+            {label.rectTransform.offsetMin=new Vector2(Mathf.Max(24,label.rectTransform.offsetMin.x),label.rectTransform.offsetMin.y);label.rectTransform.offsetMax=new Vector2(Mathf.Min(-24,label.rectTransform.offsetMax.x),label.rectTransform.offsetMax.y);}
         }
         void ShowForecast(int page)
         {

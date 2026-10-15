@@ -21,7 +21,7 @@ namespace TalesTactics
             meadow.SetFloat("_WorldCliff",1);meadow.SetFloat("_DetailContrast",.9f);
             floorMaterial.SetTexture("_MeadowTex",grass);floorMaterial.SetFloat("_LivingFloor",Verdant?1:0);
             foreach(var material in surfaces){material.SetFloat("_SurfaceRelief",.25f);material.SetFloat("_Dapple",Verdant?.12f:.025f);}
-            floorMaterial.SetFloat("_SurfaceRelief",.35f);floorMaterial.SetFloat("_Dapple",Verdant?.17f:.035f);
+            floorMaterial.SetFloat("_SurfaceRelief",.22f);floorMaterial.SetFloat("_Dapple",Verdant?.11f:.025f);
         }
         static float DetailNoise(int x,int z,int salt=0)
         {unchecked{uint h=(uint)(x*73856093^z*19349663^salt*83492791);h^=h>>13;h*=1274126177;return (h&65535)/65535f;}}

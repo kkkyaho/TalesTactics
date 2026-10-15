@@ -41,7 +41,7 @@ namespace TalesTactics
             hint=label.GetComponent<TextMeshProUGUI>();hint.font=battle.Hud.Font;hint.fontSize=16;hint.raycastTarget=false;
             hint.alignment=TextAlignmentOptions.Bottom;hint.color=new Color(.75f,.88f,.88f);
             var rect=hint.rectTransform;rect.anchorMin=new Vector2(0,0);rect.anchorMax=new Vector2(1,0);rect.pivot=new Vector2(.5f,0);rect.sizeDelta=new Vector2(0,24);
-            hint.text="왼쪽 스틱: 커서 · 방향키: 메뉴 순환 · A/×: 선택 · B/○: 취소 · LB/RB: 회전 · LT/RT: 대상 · 오른쪽 스틱: 확대 · R3: 초기화";
+            hint.text="왼쪽 스틱: 커서 · 방향키: 방향 선택 · A/×: 선택 · B/○: 취소 · LB/RB: 회전 · LT/RT: 대상 · 오른쪽 스틱: 확대 · R3: 초기화";
             overlay.enabled=false;
         }
         void Activate(bool value)
@@ -80,7 +80,7 @@ namespace TalesTactics
                     int direction=keyboard.shiftKey.isPressed?-1:1;
                     int index=System.Array.FindIndex(buttons,b=>b.gameObject==events.currentSelectedGameObject);
                     index=index<0?(direction>0?0:buttons.Length-1):(index+direction+buttons.Length)%buttons.Length;
-                    events.SetSelectedGameObject(buttons[index].gameObject);
+                    FocusButton(buttons[index]);
                 }
             }
             var selected=EventSystem.current?.currentSelectedGameObject;
@@ -103,8 +103,10 @@ namespace TalesTactics
             if(!active)return;
             MoveTo(position);hint.fontSize=Mathf.Clamp(Screen.width/90f,9,16);
             if(stick.sqrMagnitude>.01f)MoveTo(position+stick*(Screen.height*.85f*(battle.Preferences?.CursorSpeed??1)*Time.unscaledDeltaTime));
-            if(pad.dpad.down.wasPressedThisFrame||pad.dpad.right.wasPressedThisFrame)Cycle(1);
-            if(pad.dpad.up.wasPressedThisFrame||pad.dpad.left.wasPressedThisFrame)Cycle(-1);
+            if(pad.dpad.down.wasPressedThisFrame)Navigate(Vector2.down);
+            else if(pad.dpad.up.wasPressedThisFrame)Navigate(Vector2.up);
+            else if(pad.dpad.right.wasPressedThisFrame)Navigate(Vector2.right);
+            else if(pad.dpad.left.wasPressedThisFrame)Navigate(Vector2.left);
             var target=Hit();Hover(target);
             if(battle.Session!=null&&!battle.StoryActive&&!battle.Hud.InputModalOpen)
             {
@@ -154,13 +156,57 @@ namespace TalesTactics
             if(buttons.Length==0)return;
             int index=System.Array.FindIndex(buttons,b=>hovered!=null&&hovered.transform.IsChildOf(b.transform));
             index=index<0?(direction>0?0:buttons.Length-1):(index+direction+buttons.Length)%buttons.Length;
-            MoveTo(RectTransformUtility.WorldToScreenPoint(null,buttons[index].transform.TransformPoint(((RectTransform)buttons[index].transform).rect.center)));
-            Hover(Hit());
+            FocusButton(buttons[index]);
+        }
+        static Vector2 Center(Button button)=>RectTransformUtility.WorldToScreenPoint(null,button.transform.TransformPoint(((RectTransform)button.transform).rect.center));
+        public static bool ButtonVisible(Button button)
+        {
+            if(button==null||!button.isActiveAndEnabled||!button.IsInteractable())return false;
+            Vector2 p=Center(button);
+            if(p.x<0||p.x>Screen.width||p.y<0||p.y>Screen.height)return false;
+            foreach(var group in button.GetComponentsInParent<CanvasGroup>())if(group.alpha<.01f)return false;
+            foreach(var mask in button.GetComponentsInParent<RectMask2D>())
+                if(mask.isActiveAndEnabled&&!RectTransformUtility.RectangleContainsScreenPoint((RectTransform)mask.transform,p))return false;
+            foreach(var mask in button.GetComponentsInParent<Mask>())
+                if(mask.isActiveAndEnabled&&!RectTransformUtility.RectangleContainsScreenPoint((RectTransform)mask.transform,p))return false;
+            return true;
+        }
+        // Spatial movement follows the rendered grid, not the order in which controls were created.
+        // Offscreen rows of the current roster remain reachable; focusing reveals them before submit.
+        public void Navigate(Vector2 direction)
+        {
+            if(direction.sqrMagnitude<.5f)return;direction.Normalize();
+            var buttons=battle.Hud.GetComponentsInChildren<Button>().Where(b=>b.isActiveAndEnabled&&b.IsInteractable()).ToArray();
+            if(buttons.Length==0)return;
+            var current=Hit()?.GetComponentInParent<Button>();
+            if(current==null||!buttons.Contains(current))current=EventSystem.current?.currentSelectedGameObject?.GetComponent<Button>();
+            if(current!=null&&!buttons.Contains(current))current=null;
+            var scroll=current!=null?current.GetComponentInParent<FormationRosterScroll>():null;
+            Vector2 origin=current!=null?Center(current):position;
+            Button best=null;float bestScore=float.PositiveInfinity;
+            foreach(var candidate in buttons)
+            {
+                if(candidate==current)continue;
+                bool sameScroll=scroll!=null&&candidate.GetComponentInParent<FormationRosterScroll>()==scroll;
+                if(!sameScroll&&!ButtonVisible(candidate))continue;
+                Vector2 delta=Center(candidate)-origin;float forward=Vector2.Dot(delta,direction);
+                if(forward<=1)continue;
+                float cross=Mathf.Abs(delta.x*direction.y-delta.y*direction.x);
+                float score=forward+cross*3+cross*cross/Mathf.Max(1,forward);
+                if(scroll!=null&&!sameScroll)score+=120;
+                if(score<bestScore){best=candidate;bestScore=score;}
+            }
+            if(best==null&&current==null)best=buttons.Where(ButtonVisible).OrderBy(b=>(Center(b)-origin).sqrMagnitude).FirstOrDefault();
+            if(best!=null)FocusButton(best);
         }
         public void FocusButton(Button button)
         {
+            if(button==null)return;
+            button.GetComponentInParent<FormationRosterScroll>()?.EnsureVisible((RectTransform)button.transform);
+            Canvas.ForceUpdateCanvases();
             if(!active){EventSystem.current?.SetSelectedGameObject(button.gameObject);return;}
-            MoveTo(RectTransformUtility.WorldToScreenPoint(null,button.transform.TransformPoint(((RectTransform)button.transform).rect.center)));Hover(Hit());
+            EventSystem.current?.SetSelectedGameObject(button.gameObject);
+            MoveTo(Center(button));Hover(Hit());
         }
         public void Cancel()
         {

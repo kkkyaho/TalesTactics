@@ -49,11 +49,12 @@ namespace TalesTactics
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
             Button(systemWindow,"다음 전투 난이도: "+DifficultyRules.Name(d.Difficulty),124,()=>{d.Difficulty=(BattleDifficulty)(((int)d.Difficulty+1)%3);ShowSystemMenu(2);},true,42);
-            Button(systemWindow,d.MissionEvents?"임무 변형: 켜짐":"임무 변형: 꺼짐",178,()=>{d.MissionEvents=!d.MissionEvents;ShowSystemMenu(2);},true,42);
-            Button(systemWindow,d.Reactions?"반격 · 지원: 켜짐":"반격 · 지원: 꺼짐",232,()=>{d.Reactions=!d.Reactions;ShowSystemMenu(2);},true,42);
-            Button(systemWindow,"전투 규칙 자세히",286,()=>ShowSystemMenu(7),true,32);CaptionLastButton(systemWindow,"규칙 보기  ›");
-            Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",340,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,42);
-            Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",394,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,42);
+            float y=178;
+            if(!battle.Catalog.CrossoverReady){Button(systemWindow,d.MissionEvents?"임무 변형: 켜짐":"임무 변형: 꺼짐",y,()=>{d.MissionEvents=!d.MissionEvents;ShowSystemMenu(2);},true,42);y+=54;}
+            Button(systemWindow,d.Reactions?"반격 · 지원: 켜짐":"반격 · 지원: 꺼짐",y,()=>{d.Reactions=!d.Reactions;ShowSystemMenu(2);},true,42);y+=54;
+            Button(systemWindow,"전투 규칙 자세히",y,()=>ShowSystemMenu(7),true,32);CaptionLastButton(systemWindow,"규칙 보기  ›");y+=54;
+            Button(systemWindow,"적 행동 속도: "+(1<<d.EnemySpeedMode)+"배",y,()=>{d.EnemySpeedMode=(d.EnemySpeedMode+1)%3;ShowSystemMenu(2);},true,42);y+=54;
+            Button(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략 (이동·기술 생략)":"적 연출: 전체",y,()=>{d.SkipEnemyAnimations=!d.SkipEnemyAnimations;ShowSystemMenu(2);},true,42);
             CaptionLastButton(systemWindow,d.SkipEnemyAnimations?"적 연출: 간략":"적 연출: 전체");
             Label(systemWindow,"전투 규칙은 다음 출전부터 적용",460,32,18);
             Button(systemWindow,"전투 진행 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(2);},true,44);
@@ -99,7 +100,7 @@ namespace TalesTactics
         {
             string text=page==6?
                 "저장 · 이어하기\n아군 명령 중 저장 후 나가기를 선택하세요. 이어한 뒤 종료할 때도 다시 저장해야 합니다. 보상·거래·장비·승급은 자동 저장됩니다. 새 전투 보상 저장 시 이전 중단 기록은 지워집니다.\n\n되돌리기\n전투당 3회, 최근 12개 행동 중 직전 행동 전으로 돌아갑니다. 이후 적 행동과 확률 판정도 함께 되돌립니다. 사용 횟수와 기록은 중단 저장에 남습니다. 훈련·연출 중·승리 후에는 사용할 수 없습니다.\n\n재도전\n출전 당시 편성·장비·레벨·규칙으로 다시 시작합니다. 저장된 성장·골드·장비는 유지됩니다.":
-                "난이도\n여유: 적 Lv−2 / 표준: 기존 / 도전: 적 Lv+2. 보상은 같습니다.\n\n임무 변형\n이 옵션은 이전 캠페인용입니다. 현재 메인·개인 임무의 구조·신호·증원은 임무별 규칙으로 진행되며 이 설정으로 바뀌지 않습니다.\n\n반격 · 지원\n단일 공격 뒤 인접 지원 50% → 생존 대상 반격 75%. 각자 자기 턴까지 1회이며 사거리·시야와 행동 불가 상태를 따릅니다.\n\n규칙은 다음 출전부터 적용됩니다. 이어하기·재도전은 출전 당시 규칙을 유지합니다. 적 연출 속도는 판정에 영향을 주지 않습니다.";
+                "난이도\n여유: 적 Lv−2 / 표준: 기존 / 도전: 적 Lv+2. 보상은 같습니다.\n\n"+(battle.Catalog.CrossoverReady?"임무 규칙\n구조·신호·증원은 각 임무의 목표와 적 정보에서 확인합니다.":"임무 변형\n이전 캠페인의 구조·증원 규칙을 전환합니다.")+"\n\n반격 · 지원\n단일 공격 뒤 인접 지원 50% → 생존 대상 반격 75%. 각자 자기 턴까지 1회이며 사거리·시야와 행동 불가 상태를 따릅니다.\n\n규칙은 다음 출전부터 적용됩니다. 이어하기·재도전은 출전 당시 규칙을 유지합니다. 적 연출 속도는 판정에 영향을 주지 않습니다.";
             Label(systemWindow,text,124,392,20);
             Button(systemWindow,"설명 돌아가기",532,()=>ShowSystemMenu(page==6?0:2),true,40);CaptionLastButton(systemWindow,"돌아가기");
         }

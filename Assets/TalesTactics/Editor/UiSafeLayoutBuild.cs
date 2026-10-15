@@ -7,20 +7,24 @@ namespace TalesTactics.Editor
     public static class UiSafeLayoutBuild
     {
         public static void Illustrated(){Build(true,"IllustratedIcons");Build(false,"IllustratedIcons");}
+        public static void CommercialUx(){Build(true,"CommercialUx");Build(false,"CommercialUx");}
         public static void All(){Build(true);Build(false);}
         public static void ClassIcons(){Build(true,"ClassIcons");Build(false,"ClassIcons");}
         [InitializeOnLoadMethod] static void RegisterReview()=>EditorApplication.playModeStateChanged+=ReviewState;
-        public static void EditorReview()
+        public static void CommercialEditorReview()=>StartEditorReview("Logs/CommercialUxEditorReview");
+        public static void EditorReview()=>StartEditorReview("Logs/UiSafeLayoutEditorReview");
+        static void StartEditorReview(string output)
         {
             if(UnityEngine.Application.isBatchMode)throw new InvalidOperationException("Use a graphical Editor for Game View verification");
             UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/TalesTactics/Scenes/TestBattle.unity");
+            SessionState.SetString("TalesTactics.UiSafeLayoutReviewOutput",output);
             SessionState.SetBool("TalesTactics.UiSafeLayoutReviewActive",true);EditorApplication.isPlaying=true;
         }
         static void ReviewState(PlayModeStateChange state)
         {
             if(!SessionState.GetBool("TalesTactics.UiSafeLayoutReviewActive",false))return;
             if(state==PlayModeStateChange.EnteredPlayMode)
-                Type.GetType("TalesTactics.UiSafeLayoutReview, TalesTactics.Runtime",true).GetMethod("BeginEditor").Invoke(null,new object[]{"Logs/UiSafeLayoutEditorReview"});
+                Type.GetType("TalesTactics.UiSafeLayoutReview, TalesTactics.Runtime",true).GetMethod("BeginEditor").Invoke(null,new object[]{SessionState.GetString("TalesTactics.UiSafeLayoutReviewOutput","Logs/UiSafeLayoutEditorReview")});
             if(state==PlayModeStateChange.EnteredEditMode)
             {SessionState.SetBool("TalesTactics.UiSafeLayoutReviewActive",false);EditorApplication.Exit(SessionState.GetInt("TalesTactics.UiSafeLayoutReviewExit",1));}
         }

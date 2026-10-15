@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.8037769">
+  <test-suite type="TestSuite" id="1183" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="175" result="Failed" site="Child" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.803777" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1360" name="TalesTactics.PlayModeTests.dll" fullname="D:/TalesTacticsHelpGuide/Library/ScriptAssemblies/TalesTactics.PlayModeTests.dll" runstate="Runnable" testcasecount="175" result="Failed" site="Child" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.787314" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20060" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1361" name="TalesTactics" fullname="TalesTactics" runstate="Runnable" testcasecount="175" result="Failed" site="Child" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.784498" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1362" name="PlayModeTests" fullname="TalesTactics.PlayModeTests" runstate="Runnable" testcasecount="175" result="Failed" site="Child" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.782349" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1184" name="BattleSceneTests" fullname="TalesTactics.PlayModeTests.BattleSceneTests" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" testcasecount="175" result="Failed" site="Child" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:11Z" duration="8.779221" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1317" name="AllSkillDetailPanelsFitAndKeepBattleValues" fullname="TalesTactics.PlayModeTests.BattleSceneTests.AllSkillDetailPanelsFitAndKeepBattleValues" methodname="AllSkillDetailPanelsFitAndKeepBattleValues" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1644952413" result="Passed" start-time="2026-10-15 03:20:02Z" end-time="2026-10-15 03:20:09Z" duration="6.507582" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1253" name="CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" methodname="CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1610703566" result="Failed" start-time="2026-10-15 03:20:09Z" end-time="2026-10-15 03:20:10Z" duration="1.019629" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  거리 1–3 · 무속성
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at TalesTactics.PlayModeTests.BattleSceneTests+<CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts>d__79.MoveNext () [0x002c3] in D:\TalesTacticsHelpGuide\Assets\TalesTactics\PlayModeTests\IconHudTests.cs:32
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@7a3849e09bd0\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:52
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1228" name="CompactUnitSummaryAndDetailsPreserveBattleAndInput" fullname="TalesTactics.PlayModeTests.BattleSceneTests.CompactUnitSummaryAndDetailsPreserveBattleAndInput" methodname="CompactUnitSummaryAndDetailsPreserveBattleAndInput" classname="TalesTactics.PlayModeTests.BattleSceneTests" runstate="Runnable" seed="1625032311" result="Passed" start-time="2026-10-15 03:20:10Z" end-time="2026-10-15 03:20:11Z" duration="1.230543" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

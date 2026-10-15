@@ -54,13 +54,16 @@ namespace TalesTactics
             var second=new CampaignSave{SelectedStage=CrossoverCampaign.FirstStage+1,SavedAt=DateTime.UtcNow.ToString("o")};second.StoryProgress.Add(CrossoverCampaign.Flag(1));second.Get("cless").Level=4;
             new CampaignFile(battle.Profiles.PathFor(1)).Save(second);
             var original=Directory.GetFiles(battle.Profiles.Root,"campaign*").ToDictionary(p=>p,File.ReadAllText);
-            foreach(var size in new[]{new Vector2Int(1280,720),new Vector2Int(1024,768),new Vector2Int(1920,1080),new Vector2Int(2560,1080),new Vector2Int(1080,1440)})
+            bool currentWindow=!Application.isEditor&&Environment.GetCommandLineArgs().Contains("--review-current-window");
+            var reviewSizes=currentWindow?new[]{new Vector2Int(Screen.width,Screen.height)}:
+                new[]{new Vector2Int(1280,720),new Vector2Int(1024,768),new Vector2Int(1920,1080),new Vector2Int(2560,1080),new Vector2Int(1080,1440)};
+            foreach(var size in reviewSizes)
             foreach(float scale in new[]{1f,1.15f,1.3f})
             {
 #if UNITY_EDITOR
                 SetEditorResolution(size);
 #else
-                Screen.SetResolution(size.x,size.y,FullScreenMode.Windowed);
+                if(!currentWindow)Screen.SetResolution(size.x,size.y,FullScreenMode.Windowed);
 #endif
                 yield return new WaitForSecondsRealtime(.5f);battle.Preferences.TextScale=scale;battle.Hud.ShowTitle();yield return Settle();
                 yield return Inspect("title","TitleScreen",size,scale);
@@ -78,7 +81,19 @@ namespace TalesTactics
                 foreach(var control in new[]{"출전 편성","장비 관리","장비 상점","성장 · 승급","동료의 이야기 · 30"})
                 {
                     Click(control);yield return Settle();yield return Inspect(control,battle.Hud.transform,size,scale);
-                    if(control=="장비 관리"){Click("전체 능력치 보기");yield return Settle();yield return Inspect("equipment-stats",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();}
+                    if(control=="장비 관리")
+                    {
+                        var candidate=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().FirstOrDefault(b=>b.name.StartsWith("장착 후보: ")&&b.IsInteractable());
+                        if(candidate==null)throw new InvalidOperationException("Equipment review fixture needs an owned candidate");
+                        candidate.onClick.Invoke();yield return Settle();yield return Inspect("equipment-draft",battle.Hud.transform,size,scale);
+                        Click("전체 능력치 보기");yield return Settle();yield return Inspect("equipment-stats",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();
+                        Click("돌아가기 (미적용 취소)");yield return Settle();
+                    }
+                    if(control=="장비 상점")
+                    {
+                        var item=battle.Catalog.Equipment.First(e=>e.BuyPrice>0&&CampaignInventory.PurchaseUnlockRequirement(battle.Campaign,e)==null);
+                        Click(item.DisplayName+" · "+item.BuyPrice+"G");yield return Settle();yield return Inspect("purchase-comparison",battle.Hud.transform,size,scale);
+                    }
                     if(control=="성장 · 승급")
                     {
                         Click("성장 방향 선택");yield return Settle();yield return Inspect("growth-path",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();
@@ -97,11 +112,26 @@ namespace TalesTactics
                 for(int episode=1;episode<20;episode++)if(!battle.Campaign.StoryProgress.Contains(CrossoverCampaign.Flag(episode)))battle.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(episode));
                 battle.Deployment.Clear();battle.Deployment.AddRange(new[]{0,1,2,3,4,5});battle.Hud.ShowIntermissionHub();yield return Settle();yield return Inspect("hub-six",battle.Hud.transform,size,scale);
                 Click("출전 편성");yield return Settle();yield return Inspect("formation-six",battle.Hud.transform,size,scale);
-                Click("다음 캐릭터");yield return Settle();yield return Inspect("formation-next",battle.Hud.transform,size,scale);Click("이전 캐릭터");yield return Settle();battle.Hud.ShowIntermissionHub();
+                var roster=battle.Hud.GetComponentsInChildren<UnityEngine.UI.ScrollRect>().Single(s=>s.name=="FormationModels");
+                roster.verticalNormalizedPosition=0;yield return Settle();yield return Inspect("formation-scrolled",battle.Hud.transform,size,scale);
+                roster.verticalNormalizedPosition=1;yield return Settle();battle.Hud.ShowIntermissionHub();
                 Click("장비 관리");yield return Settle();yield return Inspect("equipment-six",battle.Hud.transform,size,scale);Click("다음 캐릭터");yield return Settle();yield return Inspect("equipment-next",battle.Hud.transform,size,scale);battle.Hud.ShowIntermissionHub();
                 Click("성장 · 승급");yield return Settle();yield return Inspect("growth-next",battle.Hud.transform,size,scale);Click("이전 캐릭터");yield return Settle();yield return Inspect("growth-six",battle.Hud.transform,size,scale);battle.Hud.ShowIntermissionHub();
+                // A real four-stat accessory swap exercises denser purchase comparisons.
+                var shopper=battle.Campaign.Get("cless");var previousGear=shopper.Equipment.ToArray();
+                shopper.Equipment[2]="swift-boots";
+                var medal=battle.Catalog.Equipment.First(e=>e.Id=="guardian-medal");
+                if(!string.IsNullOrEmpty(medal.RequiredStoryFlag)&&!battle.Campaign.StoryProgress.Contains(medal.RequiredStoryFlag))battle.Campaign.StoryProgress.Add(medal.RequiredStoryFlag);
+                Click("장비 상점");yield return Settle();Click("장신구");yield return Settle();
+                Click(medal.DisplayName+" · "+medal.BuyPrice+"G");yield return Settle();
+                yield return Inspect("purchase-multiple-stats",battle.Hud.transform,size,scale);
+                shopper.Equipment=previousGear;Click("전체");yield return Settle();battle.Hud.ShowIntermissionHub();yield return Settle();
                 battle.BeginBattle();yield return Settle();yield return Inspect("battle-six",battle.Hud.transform,size,scale);
                 var turn=(TeamTurnScheduler)battle.Session.Scheduler;turn.Complete(battle.Session.Active);battle.Session.Select(turn.Preview(battle.Session.Units).First());battle.SetState(new CommandState(battle));yield return Settle();yield return Inspect("battle-done",battle.Hud.transform,size,scale);
+                var foe=battle.Session.Units.First(u=>u.Team==Team.Enemy&&u.Alive);
+                var adjacent=battle.Session.Grid.Neighbors(battle.Session.Active.Position).First(t=>t.Walkable&&t.Occupant==null);
+                battle.Session.Grid.Place(foe,adjacent.Coordinate);battle.RefreshViews();battle.AttackCommand();battle.PreviewTile(foe.Position);
+                yield return Settle();yield return Inspect("battle-forecast",battle.Hud.transform,size,scale);battle.State.Cancel();
                 for(int rotation=0;rotation<4;rotation++){battle.WaitCommand();yield return Settle();yield return Inspect("facing-"+rotation,battle.Hud.transform,size,scale);battle.State.Cancel();battle.Board.RotateCamera(90);}
                 battle.Session.Active.Level=50;battle.Session.Active.CurrentMP=battle.Session.Active.Stats.MP;
                 battle.SkillCommand();yield return Settle();yield return Inspect("skills",battle.Hud.transform,size,scale);
@@ -141,9 +171,42 @@ namespace TalesTactics
             if(!button.IsInteractable())throw new InvalidOperationException("Not interactable: "+name);button.onClick.Invoke();
         }
         IEnumerator Inspect(string name,string path,Vector2Int size,float scale)=>Inspect(name,battle.Hud.transform.Find(path),size,scale);
+        static UnityEngine.UI.ScrollRect ContentScroll(Transform child)
+        {
+            var scroll=child.GetComponentInParent<UnityEngine.UI.ScrollRect>();
+            return scroll!=null&&scroll.content!=null&&child.IsChildOf(scroll.content)?scroll:null;
+        }
         IEnumerator Inspect(string name,Transform panel,Vector2Int size,float scale)
         {
             var issues=new List<string>();if(Screen.width!=size.x||Screen.height!=size.y)issues.Add("Resolution mismatch");
+            var dock=panel.GetComponentsInChildren<RectTransform>().FirstOrDefault(r=>r.name=="BattleCommandDock");
+            if(dock!=null)
+            {
+                var allowed=dock.rect;allowed.xMin+=8;allowed.xMax-=8;allowed.yMin+=8;allowed.yMax-=8;
+                foreach(var part in panel.GetComponentsInChildren<RectTransform>().Where(r=>r.parent==dock.parent&&(r.name=="Unit"||r.name=="Commands"||r.name=="Threat controls")))
+                {
+                    if(part.name=="Commands"&&battle.State is FacingSelectionState)continue;
+                    foreach(var button in part.GetComponentsInChildren<UnityEngine.UI.Button>())
+                    {
+                        if(button.name.StartsWith("Facing"))continue;
+                        var corners=new Vector3[4];((RectTransform)button.transform).GetWorldCorners(corners);
+                        if(corners.Any(p=>!allowed.Contains(dock.InverseTransformPoint(p))))issues.Add("Button outside battle dock: "+button.name);
+                    }
+                    foreach(var text in part.GetComponentsInChildren<TMP_Text>())
+                    {
+                        text.ForceMeshUpdate();
+                        foreach(var glyph in text.textInfo.characterInfo.Take(text.textInfo.characterCount).Where(g=>g.isVisible))
+                            if(!allowed.Contains(dock.InverseTransformPoint(text.transform.TransformPoint(glyph.bottomLeft)))||!allowed.Contains(dock.InverseTransformPoint(text.transform.TransformPoint(glyph.topRight))))
+                            {issues.Add("Text outside battle dock: "+text.text);break;}
+                    }
+                }
+            }
+            foreach(var scroll in panel.GetComponentsInChildren<UnityEngine.UI.ScrollRect>())
+            {
+                if(scroll.viewport==null||scroll.content==null){issues.Add("Unwired scroll viewport: "+scroll.name);continue;}
+                if(!scroll.viewport.GetComponents<UnityEngine.UI.Mask>().Any(m=>m.isActiveAndEnabled)&&!scroll.viewport.GetComponents<UnityEngine.UI.RectMask2D>().Any(m=>m.isActiveAndEnabled))
+                    issues.Add("Unclipped scroll viewport: "+scroll.name);
+            }
             foreach(var icon in panel.GetComponentsInChildren<TacticalIcon>())
             {
                 if(icon.Region==null||icon.mainTexture==null)issues.Add("Missing illustrated icon: "+icon.Kind);
@@ -171,7 +234,8 @@ namespace TalesTactics
             {
                 text.ForceMeshUpdate();if(text.isTextOverflowing)issues.Add("Overflow: "+text.text+" ["+text.rectTransform.rect.size+" font "+text.fontSize+"]");
                 var frame=text.GetComponentInParent<FramedContent>();
-                if(frame!=null&&frame.GetComponent<UnityEngine.UI.Image>().enabled)
+                var scroll=ContentScroll(text.transform);
+                if(frame!=null&&frame.GetComponent<UnityEngine.UI.Image>().enabled&&(scroll==null||frame.transform.IsChildOf(scroll.content)))
                 {
                     var allowed=frame.ContentRect;allowed.xMin-=2;allowed.yMin-=2;allowed.xMax+=2;allowed.yMax+=2;
                     for(int c=0;c<text.textInfo.characterCount;c++)
@@ -182,7 +246,7 @@ namespace TalesTactics
                     }
                 }
                 var glyphCorners=new Vector3[4];text.rectTransform.GetWorldCorners(glyphCorners);
-                if(glyphCorners.Any(p=>p.x<0||p.y<0||p.x>Screen.width||p.y>Screen.height))issues.Add("Text offscreen: "+text.text);
+                if(scroll==null&&glyphCorners.Any(p=>p.x<0||p.y<0||p.x>Screen.width||p.y>Screen.height))issues.Add("Text offscreen: "+text.text);
                 if(!string.IsNullOrWhiteSpace(text.text))foreach(var sibling in text.transform.parent.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.transform.parent==text.transform.parent&&b.IsInteractable()))
                 {
                     var bc=new Vector3[4];((RectTransform)sibling.transform).GetWorldCorners(bc);
@@ -222,9 +286,11 @@ namespace TalesTactics
             {
                 if(!button.transform.IsChildOf(panel))issues.Add("Background button active: "+button.name);
                 var corners=new Vector3[4];((RectTransform)button.transform).GetWorldCorners(corners);
-                if(corners.Any(p=>p.x < -1||p.y < -1||p.x>Screen.width+1||p.y>Screen.height+1))issues.Add("Offscreen: "+button.name);
+                var scroll=ContentScroll(button.transform);
+                if(scroll==null&&corners.Any(p=>p.x < -1||p.y < -1||p.x>Screen.width+1||p.y>Screen.height+1))issues.Add("Offscreen: "+button.name);
                 var hits=new List<UnityEngine.EventSystems.RaycastResult>();
                 var point=((RectTransform)button.transform).TransformPoint(((RectTransform)button.transform).rect.center);
+                if(scroll!=null&&!RectTransformUtility.RectangleContainsScreenPoint(scroll.viewport,point))continue;
                 UnityEngine.EventSystems.EventSystem.current.RaycastAll(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){position=point},hits);
                 if(hits.Count==0||hits[0].gameObject.GetComponentInParent<UnityEngine.UI.Button>()!=button)issues.Add("Button obstructed: "+button.name);
             }

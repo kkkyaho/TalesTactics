@@ -5,7 +5,12 @@ namespace TalesTactics
     public sealed partial class BattleHud
     {
         RectTransform unitDetails;
+        RectTransform battleDock;
         float targetContextHeight=124;
+        bool NarrowBattleHud=>Screen.width<=1100;
+        float BattleDockWidth=>NarrowBattleHud?364:316;
+        float BattleDockTop=>124;
+        float CommandMenuHeight=>54+46*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(battle.Session.Active?.CanUndoMove==true?7:6):battle.Session.Active?.CanUndoMove==true?6:5);
         public bool UnitDetailsOpen=>unitDetails!=null&&unitDetails.gameObject.activeSelf;
         bool SkillPanel=>battle.State is ActionSelectionState||battle.State is SkillDetailsState;
         string BattleTitle=>battle.State is CommandState?"행동 선택":battle.State is ActionSelectionState?"기술 선택":
@@ -16,32 +21,36 @@ namespace TalesTactics
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
-            commands.gameObject.SetActive(!(battle.State is BattleEndState)&&!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen);
-            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-112),new Vector2(-12,-12));
-            Place(left,Vector2.zero,Vector2.zero,new Vector2(12,12),new Vector2(344,190));
-            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-12,108));
-            if(SkillPanel)
-            {
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-312,12),new Vector2(-12,SkillCardHeight+12));
-                Place(footer,Vector2.zero,new Vector2(0,0),new Vector2(12,176),new Vector2(344,286));
-            }
-            else if(battle.State is TargetSelectionState)
-            {
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-180,12),new Vector2(-12,124));
-                Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(356,12),new Vector2(-192,150));
-            }
-            else if(battle.State is MoveSelectionState)
-                Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-290,12),new Vector2(-12,148));
-            else
-                Place(commands,new Vector2(1,1),Vector2.one,new Vector2(-246,-464),new Vector2(-12,-88));
             bool facing=battle.State is FacingSelectionState;
-            commands.GetComponent<UnityEngine.UI.Image>().enabled=!facing;
-            commands.GetComponent<UnityEngine.UI.Image>().raycastTarget=!facing;
-            commands.GetComponent<UnityEngine.UI.Outline>().enabled=!facing;
+            bool targeting=battle.State is TargetSelectionState;
+            bool open=!(battle.State is BattleEndState)&&!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen&&!battle.StoryActive;
+            bool summaryVisible=!(targeting&&NarrowBattleHud);
+            commands.gameObject.SetActive(open);left.gameObject.SetActive(open&&summaryVisible);
+            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-112),new Vector2(-12,-12));
+            float width=BattleDockWidth,summaryHeight=178,contentTop=BattleDockTop+(summaryVisible?summaryHeight:12);
+            float contentHeight=SkillPanel?SkillCardHeight+24:targeting?targetContextHeight:battle.State is CommandState?CommandMenuHeight:battle.State is MoveSelectionState?148:340;
+            if(facing)contentHeight=0;
+            Place(left,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-summaryHeight),new Vector2(12+width,-BattleDockTop));
+            Place(commands,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-contentTop-contentHeight),new Vector2(12+width,-contentTop));
+            if(battleDock==null)
+            {
+                battleDock=Panel("BattleCommandDock",new Vector2(0,1),new Vector2(0,1),Vector2.zero,Vector2.zero);
+                battleDock.SetAsFirstSibling();
+            }
+            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+54;
+            Place(battleDock,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-dockHeight),new Vector2(12+width,-BattleDockTop));
+            battleDock.gameObject.SetActive(open);
+            // These two retained panels share one backdrop and never drift away from one another.
+            foreach(var part in new[]{left,commands})
+            {
+                part.GetComponent<UnityEngine.UI.Image>().enabled=false;
+                part.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+                part.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+            }
+            if(tacticalToolbar!=null)
+                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+14),new Vector2(width,-BattleDockTop-dockHeight+52));
+            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(width+36,12),new Vector2(-12,108));
             if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
-            if(battle.State is CommandState)PlaceCommandBesideUnit();
-            if(SkillPanel)PlaceBesideUnits(commands,battle.Session.Active.Position,380,SkillCardHeight+48);
-            if(battle.State is TargetSelectionState)Place(commands,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,targetContextHeight+12));
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
             bool showMessage=facing||battle.TutorialActive||battle.State is ActionExecutionState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
@@ -52,9 +61,9 @@ namespace TalesTactics
         }
         Rect BattleViewport(float scale)
         {
-            float bottom=198*scale;
-            return new Rect(12*scale/Screen.width,bottom/Screen.height,
-                Mathf.Max(1,Screen.width-24*scale)/Screen.width,
+            float side=(BattleDockWidth+36)*scale,bottom=20*scale;
+            return new Rect(side/Screen.width,bottom/Screen.height,
+                Mathf.Max(1,Screen.width-side-12*scale)/Screen.width,
                 Mathf.Max(1,Screen.height-bottom-124*scale)/Screen.height);
         }
         void PlaceCommandBesideUnit()
@@ -89,44 +98,45 @@ namespace TalesTactics
         }
         void ArrangeCommandMenu()
         {
-            var commandHeading=Label(commands,"유닛 명령",21,24,15);commandHeading.color=formationGold;commandHeading.rectTransform.offsetMin=new Vector2(26,commandHeading.rectTransform.offsetMin.y);
+            var commandHeading=Label(commands,"유닛 명령",4,24,15);commandHeading.color=formationGold;commandHeading.rectTransform.offsetMin=new Vector2(24,commandHeading.rectTransform.offsetMin.y);
             string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
             string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","아군 턴 종료"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
-                r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);
+                r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(.5f,1);
                 int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
-                r.anchoredPosition=new Vector2(10,-48-row*46);r.sizeDelta=new Vector2(230,42);
+                r.anchoredPosition=new Vector2(0,-34-row*46);r.sizeDelta=new Vector2(-36,42);
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
                 colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
-                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
-                FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo","endturn"}[i],new Vector2(.035f,.18f),new Vector2(.16f,.82f),formationGold);
-                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(36,0),new Vector2(-8,0));
+                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=18;text.fontSizeMin=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
+                FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo","endturn"}[i],new Vector2(0,.5f),new Vector2(0,.5f),formationGold);
+                var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(32,32);icon.anchoredPosition=new Vector2(28,0);
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(56,0),new Vector2(-12,0));
             }
         }
         void DrawUnitSummary(UnitRuntime u)
         {
             var portrait=FormationRect(left,"Portrait",Vector2.zero,Vector2.zero);
-            portrait.offsetMin=new Vector2(8,48);portrait.offsetMax=new Vector2(82,132);StatusPortrait(portrait,u.Data);
+            portrait.offsetMin=new Vector2(24,48);portrait.offsetMax=new Vector2(96,138);StatusPortrait(portrait,u.Data);
 
-            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,16,28,18);title.rectTransform.offsetMin=new Vector2(86,title.rectTransform.offsetMin.y);
+            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,22,26,18);title.rectTransform.offsetMin=new Vector2(108,title.rectTransform.offsetMin.y);title.rectTransform.offsetMax=new Vector2(-24,title.rectTransform.offsetMax.y);
             SummaryBar("HP",u.CurrentHP,u.Stats.HP,50,new Color(.25f,.78f,.49f));
             SummaryBar("MP",u.CurrentMP,u.Stats.MP,78,new Color(.25f,.57f,.95f));
             SummaryBar("SP",u.SpecialGauge,100,106,new Color(.93f,.69f,.28f));
-            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",134,24,12);
+            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",140,24,14);
             status.rectTransform.offsetMin=new Vector2(26,status.rectTransform.offsetMin.y);
             status.rectTransform.offsetMax=new Vector2(-90,status.rectTransform.offsetMax.y);
-            Button(left,"능력",138,()=>ShowUnitDetails(u),true,28);
-            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,28);button.anchoredPosition=new Vector2(-10,-138);
+            Button(left,"능력",138,()=>ShowUnitDetails(u),true,30);
+            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,30);button.anchoredPosition=new Vector2(-24,-138);
         }
         void SummaryBar(string title,int value,int maximum,float y,Color color)
         {
             var bg=new GameObject(title+"Bar",typeof(RectTransform),typeof(UnityEngine.UI.Image));bg.transform.SetParent(left,false);
-            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(88,-y-24),new Vector2(-12,-y));
+            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(108,-y-24),new Vector2(-24,-y));
             bg.GetComponent<UnityEngine.UI.Image>().color=new Color(.07f,.1f,.17f);bg.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
             var fill=new GameObject("Fill",typeof(RectTransform),typeof(UnityEngine.UI.Image));fill.transform.SetParent(bg.transform,false);
             Place(fill.GetComponent<RectTransform>(),Vector2.zero,new Vector2(Mathf.Clamp01((float)value/Mathf.Max(1,maximum)),1),Vector2.zero,Vector2.zero);

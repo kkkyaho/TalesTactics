@@ -18,10 +18,14 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
+            if(battleDock!=null)battleDock.gameObject.SetActive(false);
+            left.GetComponent<UnityEngine.UI.Image>().enabled=true;
+            left.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
+            left.GetComponent<UnityEngine.UI.Outline>().enabled=true;
             footer.GetComponent<UnityEngine.UI.Image>().enabled=true;
             footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
             footer.GetComponent<UnityEngine.UI.Outline>().enabled=true;
@@ -30,6 +34,7 @@ namespace TalesTactics
             commands.GetComponent<UnityEngine.UI.Outline>().enabled=true;
             var footerGroup=footer.GetComponent<CanvasGroup>();if(footerGroup!=null){footerGroup.alpha=1;footerGroup.blocksRaycasts=true;}
             PreparationLayout();
+            RefreshEquipmentResponsiveLayout();
         }
         static void Place(RectTransform r,Vector2 min,Vector2 max,Vector2 low,Vector2 high)
         {r.anchorMin=min;r.anchorMax=max;r.offsetMin=low;r.offsetMax=high;}

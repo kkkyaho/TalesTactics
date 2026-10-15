@@ -8,7 +8,9 @@ namespace TalesTactics
     public sealed partial class BattleHud
     {
         bool modelDeploymentLayout;
-        int formationFilter, formationSort, formationPage;
+        int formationFilter, formationSort;
+        float formationScrollOffset;
+        bool resetFormationScroll;
         readonly Color formationGold = new Color(.83f,.70f,.43f);
         readonly Color formationTeal = new Color(.26f,.83f,.83f);
         static readonly string[] portraitIds = {"cless","mint","farah","jade","tear","natalia","velvet","alphen","shionne","kisara"};
@@ -76,46 +78,42 @@ namespace TalesTactics
             BeginPreparation("출전 편성");modelDeploymentLayout=true;ModelDeploymentLayout();
             foreach(var p in new[]{header,left,center,commands,footer})p.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.055f,.11f,1);
             selectedCharacter=Mathf.Clamp(selectedCharacter,0,battle.Catalog.Characters.Length-1);
+            IntermissionCharacter();
             var heading=header.GetComponentInChildren<TMP_Text>();heading.text="";
             FormationButton(header,"거점으로","‹ 거점 · 편성",Vector2.zero,new Vector2(.19f,1),ShowIntermissionHub,true,20);
             Place(heading.rectTransform,new Vector2(0,0),new Vector2(.19f,1),new Vector2(18,4),new Vector2(-6,-4));
             FormationText(header,battle.TrainingMode?"훈련 · Lv25":CampaignStages.Title(battle.SelectedStage),new Vector2(.19f,0),new Vector2(.49f,1),22,TextAlignmentOptions.Center);
             FormationText(header,battle.Campaign.Gold.ToString("N0")+" G",new Vector2(.49f,0),new Vector2(.70f,1),22,TextAlignmentOptions.Center).color=formationGold;
-            FormationButton(left,"출전 준비","출전 준비 · 권장 Lv"+CampaignStages.Get(battle.SelectedStage).EntryLevel,new Vector2(0,0),new Vector2(.25f,1),ShowIntermissionHub);
+            FormationButton(left,"출전 준비","출전 준비",new Vector2(0,0),new Vector2(.25f,1),ShowIntermissionHub);
             FormationButton(left,"임무 · 적 정보","임무 · 적 정보",new Vector2(.25f,0),new Vector2(.40f,1),ShowMission);
             FormationButton(left,"장비 관리","장비 관리",new Vector2(.40f,0),new Vector2(.54f,1),ShowEquipmentRoster);
             FormationButton(left,"장비 상점","장비 상점",new Vector2(.54f,0),new Vector2(.68f,1),()=>ShowShop());
             FormationButton(left,"성장 · 승급","성장 · 승급",new Vector2(.68f,0),new Vector2(.82f,1),ShowGrowthRoster);
-            FormationButton(left,"전투 규칙 설정","훈련 · 전투 설정",new Vector2(.82f,0),Vector2.one,ShowBattleOptions);
+            FormationButton(left,"전투 규칙 설정","훈련 · 규칙",new Vector2(.82f,0),Vector2.one,ShowBattleOptions);
 
             var backdrop=Resources.Load<Texture2D>("TalesTactics/FormationBackdrop");
             if(backdrop!=null)
             {
                 var bg=FormationRect(center,"FormationBackdrop",Vector2.zero,Vector2.one);
-                var img=bg.gameObject.AddComponent<UnityEngine.UI.RawImage>();img.texture=backdrop;img.color=new Color(.8f,.85f,1,.85f);img.raycastTarget=false;
+                var img=bg.gameObject.AddComponent<UnityEngine.UI.RawImage>();img.texture=backdrop;img.color=new Color(.58f,.66f,.76f,.65f);img.raycastTarget=false;
             }
             var toolbar=FormationRect(center,"FormationToolbar",new Vector2(0,1),Vector2.one);
             toolbar.offsetMin=new Vector2(6,-62);toolbar.offsetMax=new Vector2(-6,-6);
             FormationText(toolbar,"출전 부대  <color=#E3C27D>"+battle.Deployment.Count+"</color> / "+battle.Catalog.Rules.MaxDeployment,Vector2.zero,new Vector2(.45f,1),25);
-            FormationButton(toolbar,"병과 필터",formationFilters[formationFilter]+" ›",new Vector2(.45f,0),new Vector2(.75f,1),()=>{formationFilter=(formationFilter+1)%formationFilters.Length;formationPage=0;RenderDeployment();});
+            FormationButton(toolbar,"병과 필터",formationFilters[formationFilter]+" ›",new Vector2(.45f,0),new Vector2(.75f,1),()=>{formationFilter=(formationFilter+1)%formationFilters.Length;resetFormationScroll=true;RenderDeployment();});
             FormationButton(toolbar,"편성 정렬",formationSorts[formationSort]+" ›",new Vector2(.75f,0),Vector2.one,()=>{formationSort=(formationSort+1)%formationSorts.Length;RenderDeployment();});
-            var indices=FormationRoster();int pages=Math.Max(1,(indices.Length+5)/6);formationPage=Mathf.Clamp(formationPage,0,pages-1);
-            var grid=FormationRect(center,"FormationModels",Vector2.zero,Vector2.one);
-            grid.offsetMin=new Vector2(12,pages>1?52:14);grid.offsetMax=new Vector2(-12,-70);
-            for(int slot=0;slot<Math.Min(6,indices.Length-formationPage*6);slot++)
-                DrawFormationModel(grid,indices[formationPage*6+slot],slot);
-            if(indices.Length==0)FormationText(grid,"조건에 맞는 캐릭터가 없습니다.\n병과 필터를 변경하세요.",Vector2.zero,Vector2.one,23,TextAlignmentOptions.Center);
-            if(pages>1)
-            {
-                var paging=FormationRect(center,"RosterPages",Vector2.zero,new Vector2(1,0));paging.offsetMin=new Vector2(8,6);paging.offsetMax=new Vector2(-8,50);
-                FormationButton(paging,"이전 캐릭터","이전",Vector2.zero,new Vector2(.3f,1),()=>{formationPage--;RenderDeployment();},formationPage>0);
-                FormationText(paging,(formationPage+1)+" / "+pages,new Vector2(.3f,0),new Vector2(.7f,1),18,TextAlignmentOptions.Center);
-                FormationButton(paging,"다음 캐릭터","다음",new Vector2(.7f,0),Vector2.one,()=>{formationPage++;RenderDeployment();},formationPage+1<pages);
-            }
+            var indices=FormationRoster();
+            var scrollArea=FormationRect(center,"FormationModels",Vector2.zero,Vector2.one);
+            scrollArea.offsetMin=new Vector2(12,14);scrollArea.offsetMax=new Vector2(-12,-70);
+            if(resetFormationScroll){formationScrollOffset=0;resetFormationScroll=false;}
+            var rosterScroll=scrollArea.gameObject.AddComponent<FormationRosterScroll>();
+            var grid=rosterScroll.Initialize(formationScrollOffset,value=>formationScrollOffset=value);
+            for(int slot=0;slot<indices.Length;slot++)DrawFormationModel(grid,indices[slot],slot);
+            if(indices.Length==0)FormationText(rosterScroll.Viewport,"조건에 맞는 캐릭터가 없습니다.\n병과 필터를 변경하세요.",Vector2.zero,Vector2.one,23,TextAlignmentOptions.Center);
             IntermissionCharacter();DrawFormationDetails();
-            FormationText(footer,"모델 선택: 정보 보기   ·   출전 표시: 편성 변경",new Vector2(0,.48f),new Vector2(.32f,1),17);
+            FormationText(footer,"카드: 정보 보기 · 출전 버튼: 편성 변경"+(indices.Length>6?"\n휠: 동료 목록 스크롤":""),new Vector2(0,.40f),new Vector2(.32f,1),16);
             string notice=PreparationNotice;
-            var missionNotice=FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.48f),16);missionNotice.name="PreparationMissionNotice";missionNotice.color=new Color(.7f,.77f,.83f);
+            var missionNotice=FormationText(footer,notice,Vector2.zero,new Vector2(.32f,.40f),15);missionNotice.name="PreparationMissionNotice";missionNotice.color=new Color(.7f,.77f,.83f);
             FormationButton(footer,"편성 프리셋","프리셋",new Vector2(.32f,.16f),new Vector2(.46f,.84f),()=>ShowPresets(),true,20);
             FormationButton(footer,"전체 해제","전체 해제",new Vector2(.46f,.16f),new Vector2(.60f,.84f),()=>{battle.Deployment.Clear();RenderDeployment();},battle.Deployment.Count>0,21);
             FormationButton(footer,"균형 6인 추천 편성","추천 편성",new Vector2(.60f,.16f),new Vector2(.75f,.84f),()=>{battle.Deployment.Clear();battle.Deployment.AddRange(TacticalDevelopment.Recommended(battle.Catalog));battle.NormalizeDeployment();RenderDeployment();},true,21);
@@ -127,26 +125,33 @@ namespace TalesTactics
         void DrawFormationModel(RectTransform grid,int index,int slot)
         {
             var c=battle.Catalog.Characters[index];bool deployed=battle.Deployment.Contains(index),selected=index==selectedCharacter;
-            float x=slot%3/3f,y=slot/3*.5f;
-            var cell=FormationRect(grid,"ModelCell-"+c.Id,new Vector2(x,.5f-y),new Vector2(x+1f/3,1-y),3);
+            // GridLayoutGroup owns the cell size; every piece of the card stays inside it.
+            var cell=FormationRect(grid,"ModelCell-"+c.Id,Vector2.zero,Vector2.one);
+            var background=cell.gameObject.AddComponent<UnityEngine.UI.Image>();background.raycastTarget=false;
+            background.color=selected?new Color(.045f,.105f,.14f,.97f):new Color(.018f,.045f,.072f,.95f);
+            var rim=OrnateButtonGraphic.Create(cell,true);rim.State(selected,false);
+            var rimOpacity=rim.gameObject.AddComponent<CanvasGroup>();rimOpacity.alpha=selected?.72f:.48f;rimOpacity.blocksRaycasts=false;
             var model=FormationButton(cell,(deployed?"● ":"○ ")+c.DisplayName,"",Vector2.zero,Vector2.one,()=>{selectedCharacter=index;RenderDeployment();});
-            model.offsetMin=new Vector2(8,96);model.offsetMax=new Vector2(-8,-6);
+            model.gameObject.AddComponent<FormationRosterFocus>();
+            model.offsetMin=new Vector2(6,116);model.offsetMax=new Vector2(-6,-6);
             model.GetComponent<UnityEngine.UI.Image>().color=Color.white;model.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+            var modelTrim=model.GetComponentInChildren<OrnateButtonGraphic>();if(modelTrim!=null)modelTrim.enabled=false;
             var button=model.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.normalColor=Color.clear;
-            colors.highlightedColor=colors.selectedColor=new Color(.2f,.45f,.65f,.16f);colors.pressedColor=new Color(.3f,.65f,.75f,.24f);colors.disabledColor=Color.clear;button.colors=colors;
+            colors.highlightedColor=colors.selectedColor=new Color(.18f,.35f,.4f,.10f);colors.pressedColor=new Color(.25f,.45f,.5f,.18f);colors.disabledColor=Color.clear;button.colors=colors;
             var body=FormationRect(model,"BattleModel",Vector2.zero,Vector2.one);
             body.pivot=new Vector2(.5f,0);Place(body,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
             var gear=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
             var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=EquipmentAppearance.Resolve(c,gear.Get(EquipmentSlot.Weapon),c.Sprites?.Front);sprite.preserveAspect=true;sprite.raycastTarget=false;
-            ClassArt(cell,c,new Vector2(.055f,.71f),new Vector2(.26f,.95f));
-            if(deployed)FormationIcon(cell,"deployed",new Vector2(.78f,.79f),new Vector2(.96f,.97f),Color.white);
-            if(selected)IconSelectionCorners.Add(model);
-            var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
-            var toggle=FormationButton(caption,"편성 변경: "+c.Id,!battle.CanDeploy(index)?"합류 예정":deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),battle.CanDeploy(index)&&(deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment),17);
+            ClassArt(cell,c,new Vector2(.055f,.72f),new Vector2(.24f,.95f));
+            if(deployed)FormationIcon(cell,"deployed",new Vector2(.79f,.78f),new Vector2(.95f,.96f),Color.white);
+            if(selected){var corners=IconSelectionCorners.Add(cell);var opacity=corners.gameObject.AddComponent<CanvasGroup>();opacity.alpha=.55f;opacity.blocksRaycasts=false;}
+            var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMin=new Vector2(8,8);caption.offsetMax=new Vector2(-8,112);
+            FormationText(caption,c.DisplayName.Split(' ')[0],new Vector2(.02f,.55f),new Vector2(.65f,.99f),21,TextAlignmentOptions.MidlineLeft);
+            FormationText(caption,"Lv "+FormationLevel(index),new Vector2(.65f,.55f),new Vector2(.98f,.99f),18,TextAlignmentOptions.MidlineRight).color=formationGold;
+            var toggle=FormationButton(caption,"편성 변경: "+c.Id,deployed?"출전 중":"출전 추가",new Vector2(.035f,0),new Vector2(.965f,.55f),()=>ToggleFormation(index),battle.CanDeploy(index)&&(deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment),17);
+            toggle.gameObject.AddComponent<FormationRosterFocus>();
             toggle.GetComponent<UnityEngine.UI.Image>().color=deployed?new Color(.025f,.24f,.29f):new Color(.06f,.09f,.14f,1);
             toggle.GetComponentInChildren<TMP_Text>().color=deployed?formationTeal:new Color(.66f,.72f,.8f);
-            FormationText(caption,"Lv "+FormationLevel(index),new Vector2(0,.32f),new Vector2(1,.62f),18,TextAlignmentOptions.Center).color=formationGold;
-            FormationText(caption,c.DisplayName.Split(' ')[0],Vector2.zero,new Vector2(1,.34f),21,TextAlignmentOptions.Center);
         }
         void DrawFormationDetails()
         {

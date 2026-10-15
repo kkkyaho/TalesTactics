@@ -17,12 +17,17 @@ namespace TalesTactics.PlayModeTests
             {
                 var cards=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.name.Contains(" · MP")).ToArray();
                 Assert.That(cards.Length,Is.InRange(1,4));
-                Assert.That(((RectTransform)director.Hud.transform.Find("Commands")).rect.width,Is.EqualTo(380).Within(.01f));
+                Assert.That(((RectTransform)director.Hud.transform.Find("Commands")).rect.width,Is.EqualTo(((RectTransform)director.Hud.transform.Find("Unit")).rect.width).Within(.01f));
                 foreach(var card in cards)
                 {
                     found.Add(card.name.Split(new[]{" · MP"},System.StringSplitOptions.None)[0]);
                     Assert.That(card.IsInteractable(),Is.True);
-                    Assert.That(((RectTransform)card.transform).rect.height,Is.InRange(32f,40f));
+                    Assert.That(((RectTransform)card.transform).rect.height,Is.InRange(32f,Screen.width<=1100?60f:40f));
+                    if(Screen.width<=1100)
+                    {
+                        var range=card.transform.Find("Skill range").GetComponent<TMPro.TMP_Text>();
+                        Assert.That(range.fontSizeMin,Is.GreaterThanOrEqualTo(16),"Small-screen range text must reflow into a taller row, not shrink to 11.");
+                    }
                     foreach(var label in card.GetComponentsInChildren<TMPro.TMP_Text>())
                     {label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.text);}
                 }

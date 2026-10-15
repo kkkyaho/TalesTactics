@@ -26,7 +26,7 @@ namespace TalesTactics
                     position.y=Mathf.Clamp(original.y+(attempt%2==0?offset:-offset),12,Screen.height-height-86);
                     candidate.position=new Vector2(position.x-width*.5f,position.y);
                 }
-                rect.anchoredPosition=position;placed.Add(candidate);
+                display.Place(position,original);placed.Add(candidate);
             }
         }
     }

@@ -45,6 +45,9 @@ namespace TalesTactics
     {
         public readonly List<ForecastRow> Rows=new List<ForecastRow>();
         public string Cost,Note,Reactions;
+        // Summaries are derived from the same isolated simulation as the per-unit rows.
+        // AllyHealthLoss excludes an actor's explicit HP cost; reaction damage remains visible separately.
+        public int TargetCount,EnemyKnockouts,AllyHealthLoss,HostileReactions,ReactionDamage;
         public static BattleForecast Create(BattleSession battle,UnitRuntime actor,SkillData skill,Vector2Int aim,bool followup=false)
         {
             var result=new BattleForecast();var projection=new BattleProjection(battle);var u=projection.Copies[actor];
@@ -52,6 +55,9 @@ namespace TalesTactics
             var targets=battle.Resolver.Targets(actor,skill,aim).ToArray();
             if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);
             if(!projection.Resolver.Execute(u,skill,aim,out var reason,followup,true)){result.Note=SkillResolver.ExplainUnavailable(reason);return result;}
+            result.TargetCount=targets.Length;
+            result.HostileReactions=projection.Resolver.LastReactions.Count(r=>r.Target.Team==actor.Team&&r.Actor.Team!=actor.Team);
+            result.ReactionDamage=projection.Resolver.LastReactions.Where(r=>r.Target.Team==actor.Team&&r.Actor.Team!=actor.Team).Sum(r=>r.Damage);
             result.Reactions=string.Join(" · ",projection.Resolver.LastReactions.Select(x=>x.Kind+" "+x.Damage));
             bool chance=skill.Effects.Any(e=>e.Chance<1)||projection.Resolver.LastReactions.Any(r=>r.Skill.Effects.Any(e=>e.Chance<1));
             result.Note=chance?"확률 효과 제외 가정 · 실제 결과는 달라질 수 있음":"확정 피해·회복 · 현재 배치 기준";
@@ -80,6 +86,9 @@ namespace TalesTactics
                     DirectDamage=projection.Resolver.LastReactions.Any(r=>r.Target==after)||skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&(e.AffectCaster?original==actor:targets.Contains(original))),
                     Immune=targets.Contains(original)&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage)&&ElementalRules.Multiplier(original.Data,skill.Element)<=0});
             }
+            result.EnemyKnockouts=result.Rows.Count(r=>r.Unit.Team!=actor.Team&&r.BeforeHP>0&&r.AfterHP==0);
+            int hpCost=battle.Resolver.HPCost(actor,skill);
+            result.AllyHealthLoss=result.Rows.Where(r=>r.Unit.Team==actor.Team).Sum(r=>Mathf.Max(0,r.BeforeHP-r.AfterHP-(r.Unit==actor?hpCost:0)));
             return result;
         }
     }

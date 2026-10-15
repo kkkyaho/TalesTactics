@@ -13,30 +13,42 @@ namespace TalesTactics.PlayModeTests
             var unit=director.Session.Active;int hp=unit.CurrentHP,mp=unit.CurrentMP;var state=director.State;
             var summary=(RectTransform)director.Hud.transform.Find("Unit");
             Assert.That(summary.rect.height,Is.LessThanOrEqualTo(180));
-            Assert.That(summary.rect.width,Is.LessThanOrEqualTo(350));
-            Assert.That(director.Hud.BattlefieldViewport.width,Is.GreaterThan(.9f));
+            Assert.That(summary.rect.width,Is.LessThanOrEqualTo(380));
+            Assert.That(director.Hud.BattlefieldViewport.width,Is.GreaterThan(.65f));
             Click("능력");yield return null;
             Assert.That(director.Hud.UnitDetailsOpen,Is.True);
             Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.IsInteractable()).All(b=>b.transform.IsChildOf(director.Hud.transform.Find("UnitDetails"))),Is.True,"Only the status modal may accept input");
             director.GetComponent<GamepadPointer>().Cancel();yield return null;
             Assert.That(director.Hud.UnitDetailsOpen,Is.False);Assert.That(director.State,Is.SameAs(state));
             var commands=(RectTransform)director.Hud.transform.Find("Commands");
+            Assert.That(commands.position.x,Is.EqualTo(summary.position.x).Within(.01f),"Status and commands share one left dock.");
+            Assert.That(director.Hud.transform.Find("BattleCommandDock").gameObject.activeInHierarchy,Is.True);
             foreach(var button in commands.GetComponentsInChildren<UnityEngine.UI.Button>())
             {
                 var r=(RectTransform)button.transform;
                 Assert.That(commands.rect.Contains(commands.InverseTransformPoint(r.TransformPoint(r.rect.min))),Is.True,button.name);
                 Assert.That(commands.rect.Contains(commands.InverseTransformPoint(r.TransformPoint(r.rect.max))),Is.True,button.name);
+                var icon=button.GetComponentInChildren<TacticalIcon>();var caption=button.GetComponentInChildren<TMPro.TMP_Text>();
+                if(icon!=null)
+                {
+                    var iconRight=r.InverseTransformPoint(icon.rectTransform.TransformPoint(icon.rectTransform.rect.max)).x;
+                    var textLeft=r.InverseTransformPoint(caption.rectTransform.TransformPoint(caption.rectTransform.rect.min)).x;
+                    Assert.That(textLeft-iconRight,Is.GreaterThanOrEqualTo(8),"Command icon and caption need separate horizontal areas: "+button.name);
+                }
             }
             director.SkillCommand();yield return null;
-            Assert.That(commands.rect.width,Is.EqualTo(380).Within(.01f));
+            Assert.That(commands.rect.width,Is.EqualTo(summary.rect.width).Within(.01f));
             director.State.Cancel();yield return null;
             director.AttackCommand();yield return null;
             Assert.That(commands.rect.height,Is.LessThanOrEqualTo(240));
             director.State.Cancel();yield return null;
             Assert.That(unit.CurrentHP,Is.EqualTo(hp));Assert.That(unit.CurrentMP,Is.EqualTo(mp));
             director.Restart();yield return null;
+            Assert.That(director.Hud.transform.Find("BattleCommandDock").gameObject.activeInHierarchy,Is.False);
             Assert.That(((RectTransform)director.Hud.transform.Find("PreparationContent")).rect.height,Is.GreaterThan(400));
             Assert.That(director.Hud.IntermissionHubOpen,Is.True);Click("출전 편성");yield return null;
+            Assert.That(director.Hud.transform.Find("Unit").GetComponent<UnityEngine.UI.Image>().enabled,Is.True,"Preparation restores its ornate navigation frame after the shared battle dock.");
+            Assert.That(director.Hud.transform.Find("Unit").GetComponent<UnityEngine.UI.Image>().raycastTarget,Is.True);
             Assert.That(director.Hud.transform.Find("PreparationContent/FormationModels").gameObject.activeInHierarchy,Is.True);
         }
     }

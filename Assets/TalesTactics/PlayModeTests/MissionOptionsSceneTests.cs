@@ -7,6 +7,15 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        [UnityTest] public IEnumerator CurrentCampaignSettingsHideLegacyVariantWithoutErasingPreference()
+        {
+            director.Catalog.CrossoverReady=true;director.Preferences.MissionEvents=true;
+            director.Hud.ShowSystemMenu(2);yield return null;
+            Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name.StartsWith("임무 변형:")),Is.False);
+            Click("다음 전투 난이도: 표준");Click("전투 진행 설정 저장");director.Hud.CloseSystemMenu();
+            Assert.That(director.Preferences.Difficulty,Is.EqualTo(BattleDifficulty.Relaxed));
+            Assert.That(director.Preferences.MissionEvents,Is.True,"Hiding a legacy option must not rewrite an older user's preference.");
+        }
         [UnityTest] public IEnumerator MissionOptionsSaveCancelAndNewBattleOnly()
         {
             director.Hud.ShowSystemMenu(2);yield return null;Click("다음 전투 난이도: 표준");Click("임무 변형: 꺼짐");director.Hud.CloseSystemMenu();

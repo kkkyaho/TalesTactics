@@ -75,6 +75,36 @@ namespace TalesTactics.PlayModeTests
             }
             finally{if(pad.added)InputSystem.RemoveDevice(pad);}
         }
+        [UnityTest] public IEnumerator GamepadDirectionFollowsGeometryInsteadOfButtonCreationOrder()
+        {
+            var pad=InputSystem.AddDevice<Gamepad>();
+            try
+            {
+                director.Hud.ShowSystemMenu();yield return null;
+                var window=director.Hud.transform.Find("SystemOverlay/SystemWindow");
+                foreach(Transform child in window)child.gameObject.SetActive(false);
+                var probe=new GameObject("Spatial navigation probe",typeof(RectTransform));probe.transform.SetParent(window,false);
+                var area=(RectTransform)probe.transform;area.anchorMin=area.anchorMax=new Vector2(.5f,.5f);area.sizeDelta=new Vector2(360,300);
+                Button Make(string name,Vector2 p,bool enabled=true)
+                {
+                    var go=new GameObject(name,typeof(RectTransform),typeof(Image),typeof(Button));go.transform.SetParent(probe.transform,false);
+                    var rect=(RectTransform)go.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,.5f);rect.sizeDelta=new Vector2(74,40);rect.anchoredPosition=p;
+                    var b=go.GetComponent<Button>();b.interactable=enabled;return b;
+                }
+                // Deliberately different from screen order, including a nearer disabled candidate.
+                var below=Make("Probe below",new Vector2(0,-80));var origin=Make("Probe origin",Vector2.zero);
+                var right=Make("Probe right",new Vector2(110,0));var above=Make("Probe above",new Vector2(0,80));
+                Make("Probe left",new Vector2(-110,0));Make("Probe disabled",new Vector2(55,0),false);
+                yield return null;Canvas.ForceUpdateCanvases();
+                var pointer=director.GetComponent<GamepadPointer>();PointAt(pointer,origin.name);
+                yield return PadPress(pad,GamepadButton.DpadRight);Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(right.gameObject));
+                yield return PadPress(pad,GamepadButton.DpadLeft);Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(origin.gameObject));
+                yield return PadPress(pad,GamepadButton.DpadUp);Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(above.gameObject));
+                yield return PadPress(pad,GamepadButton.DpadDown);Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(origin.gameObject));
+                yield return PadPress(pad,GamepadButton.DpadDown);Assert.That(EventSystem.current.currentSelectedGameObject,Is.SameAs(below.gameObject));
+            }
+            finally{InputSystem.RemoveDevice(pad);}
+        }
         [UnityTest] public IEnumerator GamepadSelectsTilesCancelsAndHandlesTiming()
         {
             var pad=InputSystem.AddDevice<Gamepad>();

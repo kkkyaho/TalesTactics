@@ -23,7 +23,7 @@ namespace TalesTactics
         public int Chapter=>stage;
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
-            stage=chapter>=CampaignStages.LegacyCount?CrossoverCampaign.TerrainTheme(chapter):Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-2.5f:-1.9f;
+            stage=chapter>=CampaignStages.LegacyCount?CrossoverCampaign.TerrainTheme(chapter):Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-1.8f:-1.15f;
             view=camera;spriteMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));spriteMaterial.name="Terrain foliage tone";owned.Add(spriteMaterial);
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
@@ -42,7 +42,7 @@ namespace TalesTactics
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
             floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloor")));
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
-            floorMaterial.SetFloat("_DetailContrast",.96f);
+            floorMaterial.SetFloat("_DetailContrast",.82f);
             InitializeLivingTerrain();
             var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)

@@ -143,7 +143,11 @@ namespace TalesTactics.PlayModeTests
             Click("장비 관리");yield return null;Click(character.DisplayName);yield return null;
             Click("무기: 없음");yield return null;
             Click("장착 후보: "+sword.DisplayName);yield return null;
-            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: "+sword.DisplayName),Is.True);
+            var candidate=director.Hud.GetComponentsInChildren<Transform>().Single(t=>t.name=="DraftEquipment");
+            var committed=director.Hud.GetComponentsInChildren<Transform>().Single(t=>t.name=="CommittedEquipment");
+            Assert.That(candidate.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text==sword.DisplayName),Is.True);
+            Assert.That(committed.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text=="없음"),Is.True);
+            Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: 없음"),Is.True,"The profile lists committed gear while the adjacent card previews the draft.");
             Assert.That(director.Campaign.Get(character.Id).Equipment[0],Is.Null);
             Click("돌아가기 (미적용 취소)");yield return null;Click(character.DisplayName);yield return null;
             Assert.That(Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="무기: 없음"),Is.True);

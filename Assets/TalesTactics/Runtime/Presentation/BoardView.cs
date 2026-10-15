@@ -72,7 +72,10 @@ namespace TalesTactics
         }
         public void Initialize(BattleDirector b)
         {
-            battle=b;initialRotation=BattleCamera.transform.rotation;initialPosition=BattleCamera.transform.position;
+            battle=b;
+            // A higher tactical angle reveals neighboring cells instead of the vertical facade.
+            initialRotation=Quaternion.Euler(57,BattleCamera.transform.eulerAngles.y,0);
+            BattleCamera.transform.rotation=initialRotation;initialPosition=BattleCamera.transform.position;
             BattleCamera.allowMSAA=false;BattleCamera.allowHDR=false;BattleCamera.allowDynamicResolution=false;
             // Clear the screen during setup and transitions before the battlefield is available.
             var background=new GameObject("Screen Background Camera",typeof(Camera));

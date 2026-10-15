@@ -54,7 +54,8 @@ namespace TalesTactics
                 long balance=selling?(long)battle.Campaign.Gold+price:(long)battle.Campaign.Gold-price;
                 FormationText(commands,"거래 후    "+(balance<0?"골드 부족":balance.ToString("N0")+" G"),new Vector2(.04f,.23f),new Vector2(.96f,.31f),24).color=balance<0?new Color(1,.63f,.56f):formationTeal;
                 string reason=selling?SaleBlocked(item):ShopUnavailable(item);
-                FormationText(commands,reason??"1개 거래 · 즉시 저장됩니다.",new Vector2(.04f,.12f),new Vector2(.96f,.23f),17);
+                var recipient=selling?null:PurchasePreviewRecipient(item);
+                FormationText(commands,reason??(recipient==null?"1개 거래 · 즉시 저장됩니다.":"바로 장착 대상 · "+recipient.DisplayName.Split(' ')[0]),new Vector2(.04f,.12f),new Vector2(.96f,.23f),17);
                 FormationButton(commands,selling?"보유 장비 목록으로":"상품 목록으로","선택 해제",new Vector2(.025f,.015f),new Vector2(.40f,.11f),()=>RenderMarket(selling,current));
                 if(!selling)FormationButton(commands,"구매 장비 장착","구매 장비 장착",new Vector2(.40f,.015f),new Vector2(.975f,.11f),()=>ShowPurchaseRecipients(item,current),CampaignInventory.Available(battle.Campaign,item.Id)>0);
                 IntermissionPrimary(selling?"1개 매각 · 저장":"구매 · 저장",price.ToString("N0")+" G · "+(selling?"매각 · 저장":"구매 · 저장"),()=>
@@ -66,8 +67,15 @@ namespace TalesTactics
                 },reason==null);
             }
             if(selected==null)IntermissionPrimary("거래 대기","장비를 선택하세요",()=>{},false);
-            IntermissionNotice(notice??(selling?"장착 중인 장비는 매각할 수 없습니다. 미장착 수량만 판매합니다.":"구매 후 ‘구매 장비 장착’으로 이동하여 장착을 확정하세요."));
-            FormationButton(footer,"출전 준비로","출전 준비로",new Vector2(.55f,.14f),new Vector2(.74f,.86f),ShowDeployment);
+            bool quickEquip=!selling&&selected!=null;
+            string hint=notice??(selling?"장착 중인 장비는 매각할 수 없습니다. 미장착 수량만 판매합니다.":quickEquip?"‘구매·장착’은 비교 중인 동료에게 1개 구매·장착하고 즉시 저장합니다.":"구매할 장비를 선택하세요. 장착 대상과 변경 능력치를 비교할 수 있습니다.");
+            if(quickEquip)
+            {
+                FormationText(footer,hint,new Vector2(.01f,.08f),new Vector2(.39f,.92f),17).color=formationGold;
+                FormationButton(footer,"구매 · 바로 장착","구매·장착",new Vector2(.55f,.14f),new Vector2(.74f,.86f),()=>PurchaseAndEquip(selected,current),ShopUnavailable(selected)==null&&PurchasePreviewRecipient(selected)!=null,20);
+            }
+            else IntermissionNotice(hint);
+            FormationButton(footer,"출전 준비로","출전 준비로",new Vector2(quickEquip?.40f:.55f,.14f),new Vector2(quickEquip?.54f:.74f,.86f),ShowDeployment);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Campaign.HasPendingAfterStory,Is.False);Assert.That(director.SelectedStage,Is.EqualTo(1));
             Assert.That(director.Campaign.Gold,Is.EqualTo(gold));Assert.That(director.Hud.IntermissionHubOpen,Is.True);
         }
-        [UnityTest] public IEnumerator UnrecruitedCharactersStayHiddenAndJoinedRosterPaginatesSixAtATime()
+        [UnityTest] public IEnumerator UnrecruitedCharactersStayHiddenAndJoinedRosterScrollsWithoutChangingParty()
         {
             TitleSetup();director.StartTitleGame(0);yield return null;
             foreach(string menu in new[]{"출전 편성","장비 관리","성장 · 승급"})
@@ -37,9 +37,11 @@ namespace TalesTactics.PlayModeTests
             }
             for(int n=1;n<20;n++)director.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(n));
             director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,2,3,4,5});director.Hud.ShowDeployment();yield return null;
-            Assert.That(director.Hud.GetComponentsInChildren<RectTransform>().Count(r=>r.name.StartsWith("ModelCell-")),Is.EqualTo(6));
-            Click("다음 캐릭터");yield return null;
-            Assert.That(director.Hud.GetComponentsInChildren<RectTransform>().Count(r=>r.name.StartsWith("ModelCell-")),Is.EqualTo(4));
+            Assert.That(director.Hud.GetComponentsInChildren<RectTransform>().Count(r=>r.name.StartsWith("ModelCell-")),Is.EqualTo(10));
+            var roster=director.Hud.GetComponentInChildren<FormationRosterScroll>();yield return new WaitForEndOfFrame();
+            roster.GetComponent<UnityEngine.UI.ScrollRect>().verticalNormalizedPosition=0;yield return null;
+            Assert.That(roster.Offset,Is.GreaterThan(0));
+            Assert.That(director.Hud.GetComponentsInChildren<RectTransform>().Count(r=>r.name.StartsWith("ModelCell-")),Is.EqualTo(10));
             Assert.That(director.Deployment.Count,Is.EqualTo(6));
         }
         [UnityTest] public IEnumerator FrameInsetRemainsStableAfterHundredsOfFrames()
