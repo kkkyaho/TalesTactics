@@ -4,7 +4,7 @@
 
 일반 Unity Windows 릴리즈 빌드59.916471초, 오류0/경고3. Runtime DLL이 앞선 CommercialUx 검증본과 동일하며 검수 코드 제외를 확인했다. 배포 도구14/14, ZIP202파일+manifest 전체 해시, 압축 해제202파일과 실행 후 무결성 검사를 통과했다. 압축 해제 실행본34.55초 시작 유지·오류0, 사용자 저장/설정8파일 이전 검증 해시 일치·기존 게임 유지. 이번 릴리즈 단계에서 전체 Unity 테스트를 반복하지 않았다.
 
-`main` fast-forward 통합 및 `v0.1.0-preview.7` 태그를 준비했다. GitHub 인증/브라우저 제약으로 **Release 게시와 첨부 업로드는 미완료**다. [패키지 경로·해시·검증 근거·게시 상태](Distribution/Preview7/README.md).
+`main` fast-forward 통합 및 `v0.1.0-preview.7` 태그 푸시 후, 사용자 GitHub 기기 인증으로 CLI 로그인을 완료하고 공개 prerelease와 ZIP/체크섬2개 게시를 마쳤다. 첨부 크기·서버 SHA256이 로컬과 일치하며, 인증 없는 API/첨부 HEAD/체크섬 GET200과 체크섬 내용 일치를 확인했다. 원격 ZIP 전체 재다운로드는 하지 않았다. [패키지 경로·해시·검증 근거·게시 상태](Distribution/Preview7/README.md).
 
 ## 2026-10-15 — 편성 스크롤·장비 비교·전장 가독성 적용
 

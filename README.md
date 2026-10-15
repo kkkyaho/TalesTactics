@@ -4,13 +4,11 @@ Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입
 
 ## 다운로드와 현재 버전
 
-[Windows 공개 테스트판 0.1.0-preview.6 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.6) · [배포 검증과 저장 호환](Docs/Distribution/Preview6/README.md)
-
-0.1.0-preview.7은 빌드·패키지 검증과 main 통합을 마쳤으며 GitHub Release 게시는 대기 중입니다. [준비된 패키지·검증·게시 상태](Docs/Distribution/Preview7/README.md).
+[Windows 공개 테스트판 0.1.0-preview.7 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.7) · [배포 검증과 저장 호환](Docs/Distribution/Preview7/README.md)
 
 ZIP을 **새 폴더에 모두 풀고** `TalesTactics.exe`를 실행하세요. 실행 파일과 같은 폴더의 데이터·DLL이 함께 필요합니다. 업데이트 전 저장 백업과 패키지 무결성 검사 방법은 [배포 안내](Docs/Distribution/README.md)를 따릅니다.
 
-공개 preview.6에는 메인 20화·개인 30단계, 피해/EXP·머리 위 방향 표시와 화염·검격 개선이 들어 있습니다. 그 이후 소스에 반영된 **거점·초상화 대화**, **전용무기 아이콘·장착 외형**, **최신 도움말·타이틀 화면**, **금속 프레임·식생과 지형 개선**은 해당 ZIP에 포함되지 않습니다. 아래 플레이 안내는 현재 소스 기준입니다.
+공개 preview.7에는 메인20화·개인30단계와 함께 **거점·초상화 대화**, **전용무기 아이콘·장착 외형**, **최신 도움말·타이틀 화면**, **금속 프레임·식생과 지형 개선**, **편성 세로 스크롤·장비 비교·구매 후 장착·전투 정보 통합**이 포함됩니다. 아래 플레이 안내는 현재 소스 기준입니다.
 
 - [거점·대화·장비 정비 화면과 검증](Docs/IntermissionUx/README.md)
 - [전용무기 이미지·장착 외형과 검증](Docs/SignatureWeapons/README.md)

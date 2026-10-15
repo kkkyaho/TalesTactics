@@ -1,4 +1,6 @@
-# 0.1.0-preview.7 Windows 릴리즈 준비
+# 0.1.0-preview.7 Windows 공개 테스트 배포
+
+[릴리즈와 Windows 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.7)
 
 타이틀·인터미션·공통 일러스트 아이콘·전장 가독성과 편성 세로 스크롤·장비 비교를 포함한다. [변경 내역과 저장 호환](release-notes.md), [게임 검증과 실제 화면](../../CommercialUxProposal/IMPLEMENTATION.md).
 
@@ -19,6 +21,6 @@
 
 ## 게시 상태
 
-`main`에 검증된 develop 변경을 fast-forward 통합하고 `v0.1.0-preview.7` 태그를 생성했다. **GitHub Release 게시·ZIP 첨부 업로드는 미완료**다. GitHub CLI는 로그인되어 있지 않았으며, 인증 확인을 포함한 셸 명령은 자동 승인 검토에서 정책 차단됐다. 별도 브라우저 자동화도 현재 URL을 확인할 수 없어 중단했다. 인증 우회를 하지 않았다.
+`main`에 검증된 develop 변경을 fast-forward 통합하고 `v0.1.0-preview.7` 태그를 생성했다. 사용자가 GitHub 기기 인증을 완료한 뒤 CLI 로그인 성공을 확인했으며, 기존 태그에 ZIP/체크섬2개를 업로드하고 **2026-10-15 05:09:20 UTC에 공개 prerelease로 게시했다**. [게시 결과](published-release.json).
 
-GitHub CLI 로그인 이후 기존 태그를 사용해 `release-notes.md`와 ZIP/체크섬2개를 prerelease로 게시하고 공개 다운로드 해시·크기를 검증해야 한다. 현재 공개 다운로드는 preview.6이며 이 문서로 게시 완료를 주장하지 않는다.
+GitHub에 저장된 첨부2개의 크기와 SHA256이 로컬 파일과 일치한다. 인증 없는 릴리즈 API 조회200, 첨부2개 HEAD200, 체크섬 GET200 및 내용 일치를 확인했다. 원격 ZIP 전체를 다시 내려받지는 않았다. [공개 다운로드 검사](public-check.json). 게시 작업에서는 게임 코드·패키지·태그 대상을 바꾸지 않았다.
