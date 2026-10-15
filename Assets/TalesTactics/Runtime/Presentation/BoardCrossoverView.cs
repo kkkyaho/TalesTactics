@@ -26,7 +26,13 @@ namespace TalesTactics
             var enemies=b.Units.Where(u=>u.Team==Team.Enemy).ToArray();var circles=new HashSet<Vector2Int>();
             for(int i=0;i<enemies.Length;i++)if(enemies[i].Summoned&&!enemies[i].Alive)circles.Add(CrossoverCampaign.EnemySpawn(i));
             Region(ref summonCircles,"Summon circles - occupy to interrupt",circles,new Color(.6f,.3f,.9f,.2f),new Color(.8f,.5f,1,.9f));
+            FieldMarkers("rescue",pending);FieldMarkers("linked",linked);
+            FieldMarkers("portal",b.Crossover.UsesExit?new[]{CrossoverBattle.Exit}:System.Array.Empty<Vector2Int>());
+            FieldMarkers("contract",b.Crossover.UsesContract?new[]{CrossoverBattle.ContractSeal}:System.Array.Empty<Vector2Int>());
+            FieldMarkers("hazard",state.Hazards.Where(h=>h.Kind!=BossMechanic.Collapse||h.Triggered).Select(h=>h.Position));
+            FieldMarkers("collapse",state.Hazards.Where(h=>h.Kind==BossMechanic.Collapse&&!h.Triggered).Select(h=>h.Position));
+            FieldMarkers("summon",circles);
         }
-        void ResetCrossoverMarkers(){rescueNodes=linkedNodes=crossoverExit=contractSeal=hazardTiles=collapseWarnings=summonCircles=null;crossoverMarkerHash=int.MinValue;}
+        void ResetCrossoverMarkers(){fieldMarkers.Clear();bossMarkers.Clear();rescueNodes=linkedNodes=crossoverExit=contractSeal=hazardTiles=collapseWarnings=summonCircles=null;crossoverMarkerHash=int.MinValue;}
     }
 }

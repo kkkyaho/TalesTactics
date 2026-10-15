@@ -5,6 +5,7 @@ namespace TalesTactics
     // Transparent geometry follows the ground without raised bases or internal tile outlines.
     public sealed class GroundOverlay:MonoBehaviour
     {
+        SpriteRenderer[] ornaments;
         Mesh mesh;MeshRenderer surface;float cornerRadius=-1;Color cornerColor;
         readonly List<Vector3> vertices=new List<Vector3>();
         readonly List<Color> colors=new List<Color>();
@@ -23,15 +24,6 @@ namespace TalesTactics
             for(int i=0;i<4;i++)colors.Add(color);
             triangles.Add(n);triangles.Add(n+1);triangles.Add(n+2);triangles.Add(n);triangles.Add(n+2);triangles.Add(n+3);
         }
-        public void Arrow(Vector3 direction,Color color)
-        {
-            Clear();var side=Vector3.Cross(Vector3.up,direction);
-            Quad(direction*.42f-side*.13f,direction*.42f+side*.13f,direction*.76f+side*.13f,direction*.76f-side*.13f,color);
-            int n=vertices.Count;
-            vertices.Add(direction*.76f-side*.32f);vertices.Add(direction*.76f+side*.32f);vertices.Add(direction*1.18f);
-            for(int i=0;i<3;i++){colors.Add(color);triangles.Add(n+i);}
-            Apply();
-        }
         public void Line(Vector3 a,Vector3 b,float width,Color color)
         {var side=Vector3.Cross(Vector3.up,(b-a).normalized)*width*.5f;Quad(a-side,a+side,b+side,b-side,color);}
         public void Tile(Vector3 center,float radius,Color color)
@@ -40,8 +32,12 @@ namespace TalesTactics
         {
             if(cornerRadius==radius&&cornerColor==color)return;cornerRadius=radius;cornerColor=color;
             Clear();var tint=color;tint.a=.045f;Tile(Vector3.zero,radius,tint);
-            foreach(int x in new[]{-1,1})foreach(int z in new[]{-1,1})
-            {var p=new Vector3(x*radius,0,z*radius);Line(p-new Vector3(x*.15f,0,0),p,.018f,color);Line(p,p-new Vector3(0,0,z*.15f),.018f,color);}
+            if(ornaments==null)
+            {
+                ornaments=new SpriteRenderer[4];
+                for(int i=0;i<4;i++){var g=new GameObject("Ground selection ornament");g.transform.SetParent(transform,false);var art=g.AddComponent<SpriteRenderer>();art.sprite=IllustratedIcons.Sprite("selected",i);art.sharedMaterial=surface.sharedMaterial;art.sortingOrder=surface.sortingOrder+1;ornaments[i]=art;}
+            }
+            for(int i=0;i<4;i++){var art=ornaments[i];art.transform.localPosition=new Vector3((i%2==0?-1:1)*(radius-.075f),.002f,(i/2==0?-1:1)*(radius-.075f));art.transform.localRotation=Quaternion.Euler(90,0,0);art.transform.localScale=Vector3.one*.22f;art.color=new Color(1,1,1,color.a);art.enabled=enabled;}
             Apply();
         }
         public void Shadow()
@@ -52,8 +48,8 @@ namespace TalesTactics
             for(int i=1;i<=sides;i++){triangles.Add(0);triangles.Add(i);triangles.Add(i+1);}Apply();
         }
         public void Apply(){mesh.Clear();mesh.SetVertices(vertices);mesh.SetColors(colors);mesh.SetTriangles(triangles,0);mesh.RecalculateBounds();}
-        void OnEnable(){if(surface!=null)surface.enabled=true;}
-        void OnDisable(){if(surface!=null)surface.enabled=false;}
+        void OnEnable(){if(surface!=null)surface.enabled=true;if(ornaments!=null)foreach(var art in ornaments)art.enabled=true;}
+        void OnDisable(){if(surface!=null)surface.enabled=false;if(ornaments!=null)foreach(var art in ornaments)art.enabled=false;}
         void OnDestroy(){if(mesh!=null)Destroy(mesh);}
     }
 }

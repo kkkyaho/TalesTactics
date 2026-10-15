@@ -30,7 +30,7 @@ namespace TalesTactics
                 {
                     float x=.04f+i*.92f/rewards,w=.92f/rewards;
                     var tile=ResultTile("Reward-"+i,new Vector2(x,.59f),new Vector2(x+w-.01f,.74f));
-                    if(i==0){FormationText(tile,"G",new Vector2(.03f,.1f),new Vector2(.28f,.9f),36,TMPro.TextAlignmentOptions.Center).color=formationGold;FormationText(tile,"골드 +"+battle.GoldResult.ToString("N0"),new Vector2(.3f,.12f),new Vector2(.98f,.88f),21);}
+                    if(i==0){FormationIcon(tile,"gold",new Vector2(.03f,.1f),new Vector2(.28f,.9f),Color.white);FormationText(tile,"골드 +"+battle.GoldResult.ToString("N0"),new Vector2(.3f,.12f),new Vector2(.98f,.88f),21);}
                     else {var reward=battle.ItemResults[i-1];EquipmentArt(tile,reward.Item,new Vector2(.02f,.08f),new Vector2(.28f,.92f));FormationText(tile,reward.Item.DisplayName+" ×"+reward.Count,new Vector2(.30f,.10f),new Vector2(.98f,.90f),19);}
                 }
                 FormationText(resultPanel,"캐릭터 성장",new Vector2(.04f,.52f),new Vector2(.96f,.59f),20);

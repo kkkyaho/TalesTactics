@@ -168,7 +168,7 @@ namespace TalesTactics
                 var row=StatusSurface(parent,"StatusEquipment"+i,new Vector2(0,top-.245f),new Vector2(1,top));
                 if(item?.Icon!=null)EquipmentArt(row,item,new Vector2(.01f,.06f),new Vector2(.16f,.94f));
                 else if(i==0)ClassArt(row,u.Data,new Vector2(.02f,.25f),new Vector2(.14f,.75f));
-                else FormationIcon(row,i==1?"guard":"accessory",new Vector2(.02f,.25f),new Vector2(.14f,.75f),formationGold);
+                else FormationIcon(row,i==1?"armor":"accessory",new Vector2(.02f,.25f),new Vector2(.14f,.75f),formationGold);
                 FormationText(row,slots[i]+" · "+(item==null?"미장착":item.DisplayName),new Vector2(.17f,.52f),new Vector2(.98f,.96f),20).color=formationTeal;
                 FormationText(row,item==null?"장비 효과 없음":EquipmentBonuses(item),new Vector2(.17f,.04f),new Vector2(.98f,.53f),16);
             }

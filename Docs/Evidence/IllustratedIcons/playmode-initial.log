@@ -1,0 +1,2536 @@
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 25336)
+VBCSCompiler prewarm took 6.74 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/respin/6000.6.0f1-fa21a270ab12' branch; Version is '6000.6.0f1 (f7f8ed4d1e24) revision 16251117'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Channel LicenseClient-USER-PC doesn't exist
+OS: 'Windows 11  (10.0.22631) Professional' Language: 'ko' Physical Memory: 16243 MB
+BatchMode: 0, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-14T23:56:40Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 7548)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Unity.exe
+-projectPath
+D:/TalesTacticsHelpGuide
+-runTests
+-testPlatform
+PlayMode
+-testResults
+D:/TalesTacticsHelpGuide/Logs/illustrated-playmode.xml
+-logFile
+D:/TalesTacticsHelpGuide/Logs/illustrated-playmode.log
+Successfully changed project path to: D:/TalesTacticsHelpGuide
+D:/TalesTacticsHelpGuide
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [24748]  Target information:
+
+Player connection [24748]  * "[IP] 218.153.144.137 [Port] 55504 [Flags] 2 [Guid] 1517225605 [EditorId] 1517225605 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-0EM2FOI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [24748] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [24748] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-USER-PC" at "2026-10-14T23:56:40.7882914Z"
+[Package Manager] Connected to IPC stream "Upm-21748" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 7548, path: "C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              415de89ea7f64de8826f17d68e80acb2
+  Correlation Id:          14650c44f1966f1751b6a348abd1d18c
+  External correlation Id: 7139608354912730812
+  Machine Id:              1bOhh36HJJJyQ17lA0veMN2aXYQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-USER-PC" (connect: 0.56s, validation: 0.12s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-USER-PC-notifications" at "2026-10-14T23:56:40.9339691Z"
+[Licensing::Module] Connected to LicensingClient (PId: 7548, launch time: 0.01, total connection time: 0.71s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 14569797470799-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Module] Licensing Background thread has ended after 0.75s
+[Licensing::Module] Licensing is initialized (took 0.18s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = D:/TalesTacticsHelpGuide[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Unity Data Store running and initialised
+Initialize engine version: 6000.6.0f1 (f7f8ed4d1e24)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/TalesTacticsHelpGuide/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 (ID=0x2504)
+    Vendor:   NVIDIA
+    VRAM:     12115 MB
+    Driver:   32.0.16.1692
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56748
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001913 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.860 seconds
+Domain Reload Profiling: 1422ms
+	BeginReloadAssembly (132ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (5ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (344ms)
+		LoadAssemblies (128ms)
+		TypeCache.Refresh (227ms)
+			TypeCache.ScanAssembly (214ms)
+		AnalyzeDomain (0ms)
+	FinalizeReload (861ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (112ms)
+			ProcessInitializeOnLoadAttributes (161ms)
+			ProcessInitializeOnLoadMethodAttributes (346ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 41 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.pipeline@0.7.0-exp.1 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.pipeline@ab05e9cd7f74)
+    com.unity.visualscripting@1.9.11 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.nuget.mono-cecil@1.11.6 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.searcher@4.9.5 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.2d.sprite@947350d67f82)
+    com.unity.render-pipelines.universal@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.universal@8457e85b8184)
+    com.unity.test-framework@1.8.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.test-framework@7a3849e09bd0)
+    com.unity.timeline@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.timeline@281d5f7e7d7d)
+    com.unity.ugui@2.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ugui@23caec89ae27)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.audio@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.physics2d@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.core@2d66c71e606e)
+    com.unity.shadergraph@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.shadergraph@ef6135652377)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.screencapture@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.ai@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: D:\TalesTacticsHelpGuide\Library\PackageCache\com.unity.test-framework.performance@0a60b857a52e)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/TalesTacticsHelpGuide
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\DotNetSdk\dotnet.exe "C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+ExitCode: 4 Duration: 0s683ms
+WorkingDir: D:/TalesTacticsHelpGuide
+[ 415/1056  0s] WriteResponseFile Library/Bee/artifacts/rsp/4747638433968585886.rsp
+[ 821/1056  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
+*** Tundra requires additional run (0.65 seconds), 2 items updated, 1056 evaluated
+ExitCode: 0 Duration: 1s474ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: D:/TalesTacticsHelpGuide
+ExitCode: 0 Duration: 0s531ms
+Finished compiling graph: 1060 nodes, 20320 flattened edges (17084 ToBuild, 164 ToUse), maximum node priority 1093
+[ 821/1056  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.51 seconds), 1 items updated, 1056 evaluated
+AssetDatabase: script compilation time: 3.198575s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Start HTTP server: port:7800
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  4.039 seconds
+Domain Reload Profiling: 6464ms
+	BeginReloadAssembly (359ms)
+		DisableScriptedObjects (23ms)
+		CreateAndSetChildDomain (134ms)
+	RebuildCommonClasses (9ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (101ms)
+	LoadAllAssembliesAndSetupDomain (1936ms)
+		LoadAssemblies (1583ms)
+		TypeCache.Refresh (255ms)
+			TypeCache.ScanAssembly (236ms)
+		AnalyzeDomain (75ms)
+			BuildScriptInfoCaches (66ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (4040ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (107ms)
+			ProcessInitializeOnLoadAttributes (663ms)
+			ProcessInitializeOnLoadMethodAttributes (93ms)
+			AfterProcessingInitializeOnLoad (5ms)
+		AwakeInstancesAfterBackupRestoration (30ms)
+Starting new worker id: 0 with log in D:/TalesTacticsHelpGuide/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=c5038fb83fd32254088e5fec5497d819): Total: 11.216 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=5405 ms
+		Asset DB Callback time: managed=42 ms, native=32 ms
+		Scripting: domain reloads=1, domain reload time=2477 ms, compile time=3200 ms, other=56 ms
+		Project Asset Count: scripts=1411, non-scripts=2894
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 33.518ms
+	ApplyChangesToAssetFolders: 0.526ms
+	Scan: 499.209ms
+	Collect global state as custom dependencies: 30.958ms
+	CategorizeScriptCompilationAssets: 320.892ms
+	ProcessAssetsWithTransientArtifactChanges: 103.112ms
+	CategorizeAssets: 46.407ms
+	CompileScripts: 3200.380ms
+	ImportOutOfDateAssets: 4055.032ms (4046.378ms without children)
+		UnloadImportedAssets: 0.503ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.715ms
+		ImportSchedulerStart: 7.401ms
+	PostProcessAllAssets: 42.887ms
+		MonoPostProcessAllAssets: 42.836ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 17.738ms
+			SyncVS.PostprocessSyncProject 9.045ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 2.147ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.423ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.058ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.897ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.772ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.336ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.240ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.231ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.179ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.139ms
+	UnloadStreamsBegin: 2.130ms
+	PersistCurrentRevisions: 0.152ms
+	GenerateScriptTypeHashes: 1.111ms
+	GenerateScriptTypeSerializationHashes: 2.176ms
+	Untracked: 2861.123ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Scanning for USB devices : 1.950ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-TalesTactics
+Worker ready: AssetImportWorkerHW0 0
+Unloading 466 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            5529.511 ms
+	Integration:            22.549 ms
+	Integration of assets:  21.916 ms
+	Thread Wait Time:       -0.924 ms
+	Total Operation Time:   5573.051 ms
+Unloading 7072 unused Assets / (9.5 MB). Loaded Objects now: 13268.
+Memory consumption went from 489.8 MB to 480.3 MB.
+Total: 12.464500 ms (FindLiveObjects: 0.890800 ms CreateObjectMapping: 0.581500 ms MarkObjects: 7.267400 ms  DeleteObjects: 3.377200 ms)
+
+[LAYOUT] About to load UserSettings\Layouts\default-6000.dwlt, keepMainWindow=False
+[MODES] ModeService[default].InitializeCurrentMode
+[MODES] ModeService[default].RaiseModeChanged(default, default)
+<RI> Initializing input.
+Using Windows.Gaming.Input
+[Project] Loading completed in 22.469 seconds
+	Project init time: 				15.345 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.484 seconds
+		Asset Database init time: 		0.296 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			1.467 seconds
+		Unity extensions init time: 	0.031 seconds
+		Asset Database refresh time: 	11.216 seconds
+	Scene opening time: 			6.873 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1792022222673,"processId":21748,"projectLoad":22.469324,"projectInit":15.3446093,"templateInit":0.0,"packageManagerInit":0.4841201,"assetDatabaseInit":0.2960023,"globalIlluminationInit":0.0030832,"assembliesLoad":1.4667858,"unityExtensionsInit":0.0312015,"assetDatabaseRefresh":11.2161176,"sceneOpening":6.8725858}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1792022222674,"processId":21748,"editorVersion":"6000.6.0f1 (f7f8ed4d1e24)","branch":"6000.6/respin/6000.6.0f1-fa21a270ab12","buildType":"Release","platform":"Windows"}
+GPU Resident Drawer created.
+Running tests for ExecutionSettings with details:
+targetPlatform = 
+playerHeartbeatTimeout = 600
+filters[0] = 
+   Filter with settings:
+   testMode = PlayMode
+   targetPlatform = 
+   testNames = null
+   groupNames = null
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+Created GICache directory at C:/Users/USER-PC/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.011s, timestamps: [23.760 - 23.771]
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5161 unused Assets / (47.6 MB). Loaded Objects now: 9073.
+Memory consumption went from 0.63 GB to 0.58 GB.
+Total: 19.373200 ms (FindLiveObjects: 0.699200 ms CreateObjectMapping: 0.308700 ms MarkObjects: 11.524900 ms  DeleteObjects: 6.492600 ms)
+
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '8151b601d05d3e12de314c2aa1f82962') in 0.007 seconds [static dependencies only]. Details - ImportResultOutputID=2a108b3da874f726c62fbe5f12be4a8a DependenciesID=6180c49ef29638684367d2893c04e070 StaticDependenciesID=5b19720d9149525484b40148944c8e26 
+Asset Pipeline Refresh (id=e59f67b66ea6c2e4f965fc6b5e6e27ff): Total: 0.155 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 9d60828b320d3f6428e5b74ece17bfb5 - Path: Assets/InitTestScene0dd151a3-7090-46ff-828f-90a95fb25f18.unity' with importer (DefaultImporter)
+Imported 'GUID: 9d60828b320d3f6428e5b74ece17bfb5' -> (Import Result ID: 'f5f8df62f2d9220d001a980053828467') in 0.008 seconds [static dependencies only]. Details - ImportResultOutputID=cccf01f0805d37ea01ac32ecd981114f DependenciesID=1040e3387e33458611d52d07b192e747 StaticDependenciesID=2acb8f625f9ba8c52839d2dd265cda32 
+Asset Pipeline Refresh (id=cccfe38c20fe4e34fa926c7014535563): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+GPU Resident Drawer disposed.
+Entering Playmode with Reload Domain disabled.
+If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+Entering Playmode with Reload Scene disabled. If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+GPU Resident Drawer created.
+Unloading 464 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.624000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1494.359 ms
+	Integration:            40.515 ms
+	Integration of assets:  143.734 ms
+	Thread Wait Time:       83.582 ms
+	Total Operation Time:   1762.190 ms
+Unloading 174 unused Assets / (3.2 MB). Loaded Objects now: 14719.
+Memory consumption went from 1.74 GB to 1.73 GB.
+Total: 14.651100 ms (FindLiveObjects: 0.732700 ms CreateObjectMapping: 0.292700 ms MarkObjects: 12.267400 ms  DeleteObjects: 1.021900 ms)
+
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.055 ms
+	Integration:            29.190 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       12.622 ms
+	Total Operation Time:   42.870 ms
+Unloading 34 unused Assets / (70.1 MB). Loaded Objects now: 14732.
+Memory consumption went from 1.80 GB to 1.74 GB.
+Total: 14.128700 ms (FindLiveObjects: 0.933800 ms CreateObjectMapping: 0.457300 ms MarkObjects: 12.164200 ms  DeleteObjects: 0.202500 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.970 ms
+	Integration:            25.992 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.203 ms
+	Total Operation Time:   35.166 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14729.
+Memory consumption went from 1.75 GB to 1.73 GB.
+Total: 13.448100 ms (FindLiveObjects: 0.852000 ms CreateObjectMapping: 0.294300 ms MarkObjects: 11.835800 ms  DeleteObjects: 0.097900 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.127300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.800 ms
+	Integration:            21.906 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.226 ms
+	Total Operation Time:   30.934 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14729.
+Memory consumption went from 1.75 GB to 1.73 GB.
+Total: 13.503800 ms (FindLiveObjects: 0.720700 ms CreateObjectMapping: 0.282100 ms MarkObjects: 12.123900 ms  DeleteObjects: 0.068200 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.814 ms
+	Integration:            21.253 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       17.351 ms
+	Total Operation Time:   39.420 ms
+Unloading 21 unused Assets / (70.5 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.73 GB.
+Total: 14.323500 ms (FindLiveObjects: 0.734800 ms CreateObjectMapping: 0.297600 ms MarkObjects: 12.853800 ms  DeleteObjects: 0.121000 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.786 ms
+	Integration:            21.113 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.835 ms
+	Total Operation Time:   28.735 ms
+Unloading 65 unused Assets / (128.7 KB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.80 GB.
+Total: 12.966700 ms (FindLiveObjects: 0.800800 ms CreateObjectMapping: 0.281000 ms MarkObjects: 11.025700 ms  DeleteObjects: 0.544400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.159000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.740 ms
+	Integration:            21.529 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       7.390 ms
+	Total Operation Time:   29.663 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.73 GB.
+Total: 14.166200 ms (FindLiveObjects: 0.698800 ms CreateObjectMapping: 0.281900 ms MarkObjects: 12.297400 ms  DeleteObjects: 0.572400 ms)
+
+Unloading 21 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.781 ms
+	Integration:            21.241 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.412 ms
+	Total Operation Time:   28.435 ms
+Unloading 86 unused Assets / (74.6 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.84 GB to 1.77 GB.
+Total: 12.725800 ms (FindLiveObjects: 0.714400 ms CreateObjectMapping: 0.285400 ms MarkObjects: 11.174000 ms  DeleteObjects: 0.231100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.077 ms
+	Integration:            24.124 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.770 ms
+	Total Operation Time:   32.972 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.73 GB.
+Total: 13.246800 ms (FindLiveObjects: 0.721900 ms CreateObjectMapping: 0.308200 ms MarkObjects: 11.740800 ms  DeleteObjects: 0.127000 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.768 ms
+	Integration:            20.747 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.029 ms
+	Total Operation Time:   28.545 ms
+Unloading 29 unused Assets / (66.6 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.74 GB.
+Total: 12.691900 ms (FindLiveObjects: 0.717100 ms CreateObjectMapping: 0.282400 ms MarkObjects: 11.239700 ms  DeleteObjects: 0.139400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.139900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.801 ms
+	Integration:            20.923 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.837 ms
+	Total Operation Time:   28.564 ms
+Unloading 22 unused Assets / (42.4 KB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.80 GB.
+Total: 12.310600 ms (FindLiveObjects: 0.712700 ms CreateObjectMapping: 0.275400 ms MarkObjects: 10.876900 ms  DeleteObjects: 0.127300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.395 ms
+	Integration:            21.235 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       10.802 ms
+	Total Operation Time:   33.433 ms
+Unloading 22 unused Assets / (33.9 KB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.80 GB.
+Total: 15.082800 ms (FindLiveObjects: 0.748100 ms CreateObjectMapping: 0.316700 ms MarkObjects: 13.510500 ms  DeleteObjects: 0.169900 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.190000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.804 ms
+	Integration:            23.953 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       10.090 ms
+	Total Operation Time:   34.850 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14729.
+Memory consumption went from 1.75 GB to 1.74 GB.
+Total: 14.461500 ms (FindLiveObjects: 0.716300 ms CreateObjectMapping: 0.291400 ms MarkObjects: 12.525200 ms  DeleteObjects: 0.548500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.186200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.798 ms
+	Integration:            27.910 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       9.338 ms
+	Total Operation Time:   38.049 ms
+Unloading 27 unused Assets / (66.6 MB). Loaded Objects now: 14731.
+Memory consumption went from 1.80 GB to 1.74 GB.
+Total: 12.690700 ms (FindLiveObjects: 0.715700 ms CreateObjectMapping: 0.276800 ms MarkObjects: 11.254800 ms  DeleteObjects: 0.133200 ms)
+
+TrimDiskCacheJob: Current cache size 0mb
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.128500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.793 ms
+	Integration:            21.083 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.179 ms
+	Total Operation Time:   29.056 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14729.
+Memory consumption went from 1.75 GB to 1.74 GB.
+Total: 14.555400 ms (FindLiveObjects: 1.131100 ms CreateObjectMapping: 0.313700 ms MarkObjects: 12.701800 ms  DeleteObjects: 0.090700 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.756 ms
+	Integration:            20.612 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.801 ms
+	Total Operation Time:   28.171 ms
+Unloading 23 unused Assets / (66.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.74 GB.
+Total: 12.749000 ms (FindLiveObjects: 0.703500 ms CreateObjectMapping: 0.278400 ms MarkObjects: 11.334400 ms  DeleteObjects: 0.123300 ms)
+
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.780 ms
+	Integration:            21.100 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.833 ms
+	Total Operation Time:   28.715 ms
+Unloading 36 unused Assets / (69.1 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 14.088800 ms (FindLiveObjects: 0.716100 ms CreateObjectMapping: 0.288000 ms MarkObjects: 12.620200 ms  DeleteObjects: 0.149900 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.800 ms
+	Integration:            21.641 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.701 ms
+	Total Operation Time:   30.144 ms
+Unloading 23 unused Assets / (18.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.79 GB.
+Total: 13.099500 ms (FindLiveObjects: 0.690000 ms CreateObjectMapping: 0.277800 ms MarkObjects: 11.676800 ms  DeleteObjects: 0.130400 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.766 ms
+	Integration:            21.592 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.403 ms
+	Total Operation Time:   29.762 ms
+Unloading 25 unused Assets / (23.1 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.79 GB.
+Total: 13.625900 ms (FindLiveObjects: 0.728100 ms CreateObjectMapping: 0.290300 ms MarkObjects: 12.146400 ms  DeleteObjects: 0.132700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.147100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.834 ms
+	Integration:            21.375 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       9.991 ms
+	Total Operation Time:   32.202 ms
+Unloading 33 unused Assets / (33.6 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.78 GB.
+Total: 13.584600 ms (FindLiveObjects: 0.726100 ms CreateObjectMapping: 0.282900 ms MarkObjects: 12.111900 ms  DeleteObjects: 0.136300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.151800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.914 ms
+	Integration:            20.677 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.955 ms
+	Total Operation Time:   28.547 ms
+Unloading 22 unused Assets / (53.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.76 GB.
+Total: 14.108500 ms (FindLiveObjects: 0.713900 ms CreateObjectMapping: 0.309600 ms MarkObjects: 12.633400 ms  DeleteObjects: 0.125600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.165200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.806 ms
+	Integration:            21.059 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.969 ms
+	Total Operation Time:   28.834 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.74 GB.
+Total: 14.783300 ms (FindLiveObjects: 0.748400 ms CreateObjectMapping: 0.273800 ms MarkObjects: 13.316800 ms  DeleteObjects: 0.128100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.141000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.770 ms
+	Integration:            20.978 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.593 ms
+	Total Operation Time:   28.342 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.74 GB.
+Total: 14.289000 ms (FindLiveObjects: 0.701800 ms CreateObjectMapping: 0.284100 ms MarkObjects: 12.844100 ms  DeleteObjects: 0.132900 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.811 ms
+	Integration:            21.553 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.768 ms
+	Total Operation Time:   29.132 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.74 GB.
+Total: 13.791700 ms (FindLiveObjects: 0.712400 ms CreateObjectMapping: 0.280400 ms MarkObjects: 12.349100 ms  DeleteObjects: 0.130600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.821 ms
+	Integration:            21.346 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.046 ms
+	Total Operation Time:   29.215 ms
+Unloading 22 unused Assets / (6.0 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.80 GB.
+Total: 13.893900 ms (FindLiveObjects: 0.698500 ms CreateObjectMapping: 0.292000 ms MarkObjects: 12.463000 ms  DeleteObjects: 0.129700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.782 ms
+	Integration:            21.103 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.899 ms
+	Total Operation Time:   28.785 ms
+Unloading 22 unused Assets / (42.5 KB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.81 GB.
+Total: 14.336500 ms (FindLiveObjects: 0.697300 ms CreateObjectMapping: 0.278800 ms MarkObjects: 12.910300 ms  DeleteObjects: 0.130300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.818 ms
+	Integration:            21.682 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.773 ms
+	Total Operation Time:   29.274 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.74 GB.
+Total: 13.655400 ms (FindLiveObjects: 0.712000 ms CreateObjectMapping: 0.286500 ms MarkObjects: 12.217200 ms  DeleteObjects: 0.128900 ms)
+
+Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\a5150ad5726645b988ffc45c7f33dbad\campaign.json.tmp' is denied.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+TalesTactics.CampaignFile:Save (TalesTactics.CampaignSave) (at Assets/TalesTactics/Runtime/Core/CampaignFile.cs:103)
+TalesTactics.BattleDirector:WriteProgress (TalesTactics.CampaignSave,bool) (at Assets/TalesTactics/Runtime/Presentation/BattlePersistence.cs:41)
+TalesTactics.BattleDirector:SuspendBattle () (at Assets/TalesTactics/Runtime/Presentation/BattlePersistence.cs:62)
+TalesTactics.PlayModeTests.BattleSceneTests/<CorruptCheckpointAndFailedSuspendDoNotLoseCurrentBattle>d__111:MoveNext () (at Assets/TalesTactics/PlayModeTests/PersistenceSceneTests.cs:54)
+UnityEngine.TestTools.TestEnumerator/<Execute>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:52)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerableAndRecordExceptions>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:85)
+UnityEngine.TestTools.EnumerableTestMethodCommand:AdvanceEnumerator (System.Collections.IEnumerator) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:64)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:47)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<ExecuteEnumerable>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:66)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<NUnit.Framework.ITestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<UnityEngine.TestTools.IOuterUnityTestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.RetryCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RetryCommand.cs:37)
+UnityEngine.TestTools.RepeatCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RepeatCommand.cs:36)
+UnityEngine.TestTools.IgnoreTestCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/IgnoreTestCommand.cs:42)
+UnityEngine.TestTools.StrictCheckCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/StrictCheckCommand.cs:29)
+UnityEngine.TestTools.Utils.CoroutineRunner/<WrapEnumeratorForChecks>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:58)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/TalesTactics/Runtime/Core/CampaignFile.cs Line: 103)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.177600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.151 ms
+	Integration:            23.328 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.601 ms
+	Total Operation Time:   33.081 ms
+Unloading 31 unused Assets / (61.8 KB). Loaded Objects now: 14735.
+Memory consumption went from 1.81 GB to 1.81 GB.
+Total: 15.374500 ms (FindLiveObjects: 0.786600 ms CreateObjectMapping: 0.302500 ms MarkObjects: 13.752000 ms  DeleteObjects: 0.156000 ms)
+
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.147000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.751 ms
+	Integration:            24.461 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.371 ms
+	Total Operation Time:   32.585 ms
+Unloading 57 unused Assets / (27.7 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.82 GB to 1.79 GB.
+Total: 15.197700 ms (FindLiveObjects: 0.720500 ms CreateObjectMapping: 0.293300 ms MarkObjects: 13.698000 ms  DeleteObjects: 0.175000 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.751 ms
+	Integration:            20.865 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.989 ms
+	Total Operation Time:   29.606 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14736.
+Memory consumption went from 1.76 GB to 1.75 GB.
+Total: 12.906000 ms (FindLiveObjects: 0.761600 ms CreateObjectMapping: 0.284800 ms MarkObjects: 11.444200 ms  DeleteObjects: 0.092300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.139700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.802 ms
+	Integration:            21.343 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.176 ms
+	Total Operation Time:   29.323 ms
+Unloading 27 unused Assets / (66.5 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.81 GB to 1.75 GB.
+Total: 12.829200 ms (FindLiveObjects: 0.721000 ms CreateObjectMapping: 0.276400 ms MarkObjects: 11.391400 ms  DeleteObjects: 0.129100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.777 ms
+	Integration:            20.842 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.566 ms
+	Total Operation Time:   28.186 ms
+Unloading 24 unused Assets / (33.5 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.81 GB to 1.78 GB.
+Total: 12.591700 ms (FindLiveObjects: 0.706900 ms CreateObjectMapping: 0.280300 ms MarkObjects: 11.128700 ms  DeleteObjects: 0.144800 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.162200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.789 ms
+	Integration:            22.092 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.440 ms
+	Total Operation Time:   30.323 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.81 GB to 1.75 GB.
+Total: 12.856900 ms (FindLiveObjects: 0.709200 ms CreateObjectMapping: 0.280500 ms MarkObjects: 11.428700 ms  DeleteObjects: 0.125300 ms)
+
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.812 ms
+	Integration:            21.000 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.828 ms
+	Total Operation Time:   28.640 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 12.843100 ms (FindLiveObjects: 0.703100 ms CreateObjectMapping: 0.280500 ms MarkObjects: 11.414800 ms  DeleteObjects: 0.131900 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.817 ms
+	Integration:            22.188 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.244 ms
+	Total Operation Time:   30.251 ms
+Unloading 7 unused Assets / (15.0 MB). Loaded Objects now: 14737.
+Memory consumption went from 1.76 GB to 1.75 GB.
+Total: 14.991200 ms (FindLiveObjects: 0.763200 ms CreateObjectMapping: 0.281200 ms MarkObjects: 13.504300 ms  DeleteObjects: 0.114100 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.798 ms
+	Integration:            25.368 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.612 ms
+	Total Operation Time:   32.779 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14737.
+Memory consumption went from 1.76 GB to 1.75 GB.
+Total: 14.657800 ms (FindLiveObjects: 0.725200 ms CreateObjectMapping: 0.298300 ms MarkObjects: 13.201000 ms  DeleteObjects: 0.075700 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.128300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.785 ms
+	Integration:            21.783 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.824 ms
+	Total Operation Time:   29.393 ms
+Unloading 21 unused Assets / (66.0 MB). Loaded Objects now: 14740.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.478300 ms (FindLiveObjects: 0.711800 ms CreateObjectMapping: 0.279800 ms MarkObjects: 11.981000 ms  DeleteObjects: 0.135600 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.125200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.775 ms
+	Integration:            21.274 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.483 ms
+	Total Operation Time:   28.534 ms
+Unloading 7 unused Assets / (15.1 MB). Loaded Objects now: 14737.
+Memory consumption went from 1.76 GB to 1.75 GB.
+Total: 15.271800 ms (FindLiveObjects: 0.730400 ms CreateObjectMapping: 0.285600 ms MarkObjects: 13.838400 ms  DeleteObjects: 0.093100 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.877 ms
+	Integration:            21.390 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.336 ms
+	Total Operation Time:   28.604 ms
+Unloading 23 unused Assets / (46.1 KB). Loaded Objects now: 14739.
+Memory consumption went from 1.82 GB to 1.82 GB.
+Total: 13.168200 ms (FindLiveObjects: 0.706000 ms CreateObjectMapping: 0.277000 ms MarkObjects: 11.751400 ms  DeleteObjects: 0.123000 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.756 ms
+	Integration:            21.155 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.873 ms
+	Total Operation Time:   28.785 ms
+Unloading 46 unused Assets / (66.1 MB). Loaded Objects now: 14740.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.917300 ms (FindLiveObjects: 0.736800 ms CreateObjectMapping: 0.374100 ms MarkObjects: 12.332600 ms  DeleteObjects: 0.160900 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.818 ms
+	Integration:            21.962 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       10.275 ms
+	Total Operation Time:   33.056 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14737.
+Memory consumption went from 1.76 GB to 1.75 GB.
+Total: 13.057800 ms (FindLiveObjects: 0.728900 ms CreateObjectMapping: 0.284700 ms MarkObjects: 11.612300 ms  DeleteObjects: 0.094200 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.170400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.050 ms
+	Integration:            20.437 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.002 ms
+	Total Operation Time:   28.490 ms
+Unloading 19 unused Assets / (70.5 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.562100 ms (FindLiveObjects: 0.716700 ms CreateObjectMapping: 0.283100 ms MarkObjects: 12.128700 ms  DeleteObjects: 0.120200 ms)
+
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.190000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.885 ms
+	Integration:            20.867 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.309 ms
+	Total Operation Time:   28.062 ms
+Unloading 87 unused Assets / (105.1 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.86 GB to 1.76 GB.
+Total: 13.872500 ms (FindLiveObjects: 0.761900 ms CreateObjectMapping: 0.279500 ms MarkObjects: 11.929900 ms  DeleteObjects: 0.559300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.157400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.426 ms
+	Integration:            20.377 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.985 ms
+	Total Operation Time:   29.788 ms
+Unloading 28 unused Assets / (6.1 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.82 GB to 1.81 GB.
+Total: 14.111800 ms (FindLiveObjects: 0.704700 ms CreateObjectMapping: 0.333800 ms MarkObjects: 12.624300 ms  DeleteObjects: 0.135100 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.159100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.774 ms
+	Integration:            25.016 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.933 ms
+	Total Operation Time:   33.725 ms
+Unloading 45 unused Assets / (60.6 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.81 GB to 1.75 GB.
+Total: 13.214600 ms (FindLiveObjects: 0.752800 ms CreateObjectMapping: 0.300400 ms MarkObjects: 11.665200 ms  DeleteObjects: 0.158100 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.771 ms
+	Integration:            20.318 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.966 ms
+	Total Operation Time:   28.056 ms
+Unloading 29 unused Assets / (70.6 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 14.553900 ms (FindLiveObjects: 0.739200 ms CreateObjectMapping: 0.333400 ms MarkObjects: 13.025200 ms  DeleteObjects: 0.136800 ms)
+
+Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.126600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.888 ms
+	Integration:            21.365 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       5.791 ms
+	Total Operation Time:   28.045 ms
+Unloading 54 unused Assets / (85.6 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.83 GB to 1.75 GB.
+Total: 13.491800 ms (FindLiveObjects: 0.913000 ms CreateObjectMapping: 0.324200 ms MarkObjects: 11.771800 ms  DeleteObjects: 0.170200 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.814 ms
+	Integration:            21.493 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.479 ms
+	Total Operation Time:   28.787 ms
+Unloading 23 unused Assets / (66.0 MB). Loaded Objects now: 14740.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.331800 ms (FindLiveObjects: 0.727700 ms CreateObjectMapping: 0.281900 ms MarkObjects: 12.874600 ms  DeleteObjects: 0.128100 ms)
+
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.231600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.776 ms
+	Integration:            20.768 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.414 ms
+	Total Operation Time:   27.960 ms
+Unloading 86 unused Assets / (139.6 KB). Loaded Objects now: 14740.
+Memory consumption went from 1.86 GB to 1.86 GB.
+Total: 13.568200 ms (FindLiveObjects: 0.728400 ms CreateObjectMapping: 0.291900 ms MarkObjects: 11.967500 ms  DeleteObjects: 0.263700 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.153400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.874 ms
+	Integration:            23.932 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.009 ms
+	Total Operation Time:   32.817 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14742.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 15.521900 ms (FindLiveObjects: 0.733200 ms CreateObjectMapping: 0.280200 ms MarkObjects: 14.056700 ms  DeleteObjects: 0.129500 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.175800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.812 ms
+	Integration:            21.624 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.721 ms
+	Total Operation Time:   29.158 ms
+Unloading 8 unused Assets / (19.0 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.77 GB to 1.75 GB.
+Total: 13.257600 ms (FindLiveObjects: 0.706800 ms CreateObjectMapping: 0.286300 ms MarkObjects: 11.822100 ms  DeleteObjects: 0.102800 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.809 ms
+	Integration:            21.495 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.445 ms
+	Total Operation Time:   28.751 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14738.
+Memory consumption went from 1.77 GB to 1.75 GB.
+Total: 13.053300 ms (FindLiveObjects: 0.723300 ms CreateObjectMapping: 0.286700 ms MarkObjects: 11.637200 ms  DeleteObjects: 0.071800 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.140800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.851 ms
+	Integration:            20.642 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.911 ms
+	Total Operation Time:   28.407 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 12.722600 ms (FindLiveObjects: 0.726100 ms CreateObjectMapping: 0.277900 ms MarkObjects: 11.282800 ms  DeleteObjects: 0.121000 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.143000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.777 ms
+	Integration:            21.095 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.191 ms
+	Total Operation Time:   29.064 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 15.200100 ms (FindLiveObjects: 0.723800 ms CreateObjectMapping: 0.291200 ms MarkObjects: 13.741700 ms  DeleteObjects: 0.127200 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.149100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.820 ms
+	Integration:            25.196 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.169 ms
+	Total Operation Time:   34.187 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 14.308400 ms (FindLiveObjects: 1.105000 ms CreateObjectMapping: 0.333900 ms MarkObjects: 12.339500 ms  DeleteObjects: 0.144600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.160400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.967 ms
+	Integration:            20.551 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.314 ms
+	Total Operation Time:   28.834 ms
+Unloading 33 unused Assets / (66.6 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.755400 ms (FindLiveObjects: 0.722800 ms CreateObjectMapping: 0.281900 ms MarkObjects: 12.293600 ms  DeleteObjects: 0.143000 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.154500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.786 ms
+	Integration:            20.619 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.815 ms
+	Total Operation Time:   28.220 ms
+Unloading 24 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.604600 ms (FindLiveObjects: 0.711100 ms CreateObjectMapping: 0.284100 ms MarkObjects: 12.153900 ms  DeleteObjects: 0.133100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.867 ms
+	Integration:            22.183 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.939 ms
+	Total Operation Time:   30.990 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 13.501900 ms (FindLiveObjects: 0.705500 ms CreateObjectMapping: 0.277800 ms MarkObjects: 12.068900 ms  DeleteObjects: 0.129300 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.143600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.825 ms
+	Integration:            21.853 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.111 ms
+	Total Operation Time:   29.791 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.77 GB to 1.75 GB.
+Total: 14.312500 ms (FindLiveObjects: 0.692100 ms CreateObjectMapping: 0.280100 ms MarkObjects: 12.927400 ms  DeleteObjects: 0.092300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.803 ms
+	Integration:            20.593 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.009 ms
+	Total Operation Time:   28.407 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 14.014800 ms (FindLiveObjects: 0.707600 ms CreateObjectMapping: 0.280700 ms MarkObjects: 12.565900 ms  DeleteObjects: 0.119700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.805 ms
+	Integration:            20.986 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       9.212 ms
+	Total Operation Time:   31.005 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.75 GB.
+Total: 12.991500 ms (FindLiveObjects: 0.706400 ms CreateObjectMapping: 0.279600 ms MarkObjects: 11.562900 ms  DeleteObjects: 0.126500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.150000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.760 ms
+	Integration:            20.197 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.178 ms
+	Total Operation Time:   27.137 ms
+Unloading 22 unused Assets / (37.7 KB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.82 GB.
+Total: 14.077800 ms (FindLiveObjects: 0.744900 ms CreateObjectMapping: 0.292400 ms MarkObjects: 12.579800 ms  DeleteObjects: 0.132500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.143800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.789 ms
+	Integration:            21.073 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.234 ms
+	Total Operation Time:   29.098 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.019200 ms (FindLiveObjects: 0.724900 ms CreateObjectMapping: 0.286600 ms MarkObjects: 11.572300 ms  DeleteObjects: 0.127200 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.786 ms
+	Integration:            21.105 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.003 ms
+	Total Operation Time:   28.895 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.270000 ms (FindLiveObjects: 0.704300 ms CreateObjectMapping: 0.280300 ms MarkObjects: 11.842300 ms  DeleteObjects: 0.128300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.127900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.837 ms
+	Integration:            21.571 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.952 ms
+	Total Operation Time:   29.361 ms
+Unloading 21 unused Assets / (62.0 MB). Loaded Objects now: 14742.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.032100 ms (FindLiveObjects: 0.712800 ms CreateObjectMapping: 0.278200 ms MarkObjects: 11.589900 ms  DeleteObjects: 0.132200 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.158700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.814 ms
+	Integration:            20.885 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.875 ms
+	Total Operation Time:   28.576 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.312000 ms (FindLiveObjects: 0.713300 ms CreateObjectMapping: 0.283100 ms MarkObjects: 11.872500 ms  DeleteObjects: 0.124400 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.526 ms
+	Integration:            20.761 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       8.683 ms
+	Total Operation Time:   30.972 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.76 GB.
+Total: 13.354300 ms (FindLiveObjects: 0.716800 ms CreateObjectMapping: 0.282100 ms MarkObjects: 11.870800 ms  DeleteObjects: 0.149600 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.836 ms
+	Integration:            20.912 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.955 ms
+	Total Operation Time:   30.705 ms
+Unloading 24 unused Assets / (26.7 KB). Loaded Objects now: 14742.
+Memory consumption went from 1.82 GB to 1.82 GB.
+Total: 13.593200 ms (FindLiveObjects: 0.722600 ms CreateObjectMapping: 0.301700 ms MarkObjects: 12.114300 ms  DeleteObjects: 0.133400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.827 ms
+	Integration:            21.217 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.118 ms
+	Total Operation Time:   29.163 ms
+Unloading 23 unused Assets / (66.5 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.561200 ms (FindLiveObjects: 0.706900 ms CreateObjectMapping: 0.280300 ms MarkObjects: 12.110300 ms  DeleteObjects: 0.130700 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.824 ms
+	Integration:            21.115 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.304 ms
+	Total Operation Time:   29.244 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.83 GB to 1.76 GB.
+Total: 13.820600 ms (FindLiveObjects: 0.719200 ms CreateObjectMapping: 0.284300 ms MarkObjects: 12.354100 ms  DeleteObjects: 0.141100 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.779 ms
+	Integration:            20.646 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.792 ms
+	Total Operation Time:   28.218 ms
+Unloading 9 unused Assets / (15.2 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 12.987400 ms (FindLiveObjects: 0.725400 ms CreateObjectMapping: 0.281800 ms MarkObjects: 11.548100 ms  DeleteObjects: 0.107500 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.827 ms
+	Integration:            21.290 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.636 ms
+	Total Operation Time:   28.755 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14739.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 13.415000 ms (FindLiveObjects: 0.758100 ms CreateObjectMapping: 0.399300 ms MarkObjects: 11.885600 ms  DeleteObjects: 0.067100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.135900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.777 ms
+	Integration:            20.897 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       14.183 ms
+	Total Operation Time:   35.859 ms
+Unloading 24 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.742100 ms (FindLiveObjects: 0.734500 ms CreateObjectMapping: 0.279000 ms MarkObjects: 12.279900 ms  DeleteObjects: 0.127100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.149100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.794 ms
+	Integration:            21.698 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       9.711 ms
+	Total Operation Time:   32.206 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.380900 ms (FindLiveObjects: 0.698600 ms CreateObjectMapping: 0.280900 ms MarkObjects: 11.958600 ms  DeleteObjects: 0.129900 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.813 ms
+	Integration:            21.100 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.541 ms
+	Total Operation Time:   28.455 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.76 GB.
+Total: 15.331300 ms (FindLiveObjects: 0.703400 ms CreateObjectMapping: 0.282300 ms MarkObjects: 13.897400 ms  DeleteObjects: 0.130200 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.153800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.769 ms
+	Integration:            20.993 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.324 ms
+	Total Operation Time:   28.088 ms
+Unloading 8 unused Assets / (19.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 13.617800 ms (FindLiveObjects: 0.719500 ms CreateObjectMapping: 0.279800 ms MarkObjects: 12.206400 ms  DeleteObjects: 0.095800 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.124500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.789 ms
+	Integration:            20.346 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.277 ms
+	Total Operation Time:   27.413 ms
+Unloading 5 unused Assets / (19.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 13.201400 ms (FindLiveObjects: 0.706100 ms CreateObjectMapping: 0.276700 ms MarkObjects: 11.812200 ms  DeleteObjects: 0.071600 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.807 ms
+	Integration:            21.873 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.728 ms
+	Total Operation Time:   29.410 ms
+Unloading 5 unused Assets / (19.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 14.726700 ms (FindLiveObjects: 0.692200 ms CreateObjectMapping: 0.279100 ms MarkObjects: 13.343600 ms  DeleteObjects: 0.073300 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.128200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.799 ms
+	Integration:            20.636 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.734 ms
+	Total Operation Time:   28.171 ms
+Unloading 5 unused Assets / (19.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 14.065900 ms (FindLiveObjects: 0.698300 ms CreateObjectMapping: 0.280100 ms MarkObjects: 12.704500 ms  DeleteObjects: 0.072000 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.249500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.762 ms
+	Integration:            20.313 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       5.744 ms
+	Total Operation Time:   26.821 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 14.566700 ms (FindLiveObjects: 0.832400 ms CreateObjectMapping: 0.420100 ms MarkObjects: 12.930600 ms  DeleteObjects: 0.068400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.811 ms
+	Integration:            20.914 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.400 ms
+	Total Operation Time:   29.126 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.866100 ms (FindLiveObjects: 0.906400 ms CreateObjectMapping: 0.407200 ms MarkObjects: 13.096100 ms  DeleteObjects: 0.126700 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.808 ms
+	Integration:            21.719 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.099 ms
+	Total Operation Time:   29.627 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 15.738400 ms (FindLiveObjects: 0.725100 ms CreateObjectMapping: 0.294300 ms MarkObjects: 14.243300 ms  DeleteObjects: 0.114900 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.825 ms
+	Integration:            21.463 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.034 ms
+	Total Operation Time:   29.323 ms
+Unloading 24 unused Assets / (66.0 MB). Loaded Objects now: 14744.
+Memory consumption went from 1.83 GB to 1.76 GB.
+Total: 15.112500 ms (FindLiveObjects: 0.839800 ms CreateObjectMapping: 0.408900 ms MarkObjects: 13.391500 ms  DeleteObjects: 0.130700 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.154300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.805 ms
+	Integration:            27.660 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.488 ms
+	Total Operation Time:   34.955 ms
+Unloading 29 unused Assets / (66.6 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.212500 ms (FindLiveObjects: 0.711300 ms CreateObjectMapping: 0.282300 ms MarkObjects: 12.742700 ms  DeleteObjects: 0.153600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.834 ms
+	Integration:            20.637 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.172 ms
+	Total Operation Time:   28.645 ms
+Unloading 31 unused Assets / (66.6 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.035000 ms (FindLiveObjects: 0.701900 ms CreateObjectMapping: 0.279800 ms MarkObjects: 11.589600 ms  DeleteObjects: 0.141700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.800 ms
+	Integration:            21.003 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.756 ms
+	Total Operation Time:   28.561 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.252300 ms (FindLiveObjects: 1.212200 ms CreateObjectMapping: 0.321500 ms MarkObjects: 12.268600 ms  DeleteObjects: 0.130200 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.775 ms
+	Integration:            20.823 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.669 ms
+	Total Operation Time:   28.268 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 13.591700 ms (FindLiveObjects: 1.143400 ms CreateObjectMapping: 0.310600 ms MarkObjects: 11.720700 ms  DeleteObjects: 0.091700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.745 ms
+	Integration:            20.494 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.506 ms
+	Total Operation Time:   27.747 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.572800 ms (FindLiveObjects: 0.713300 ms CreateObjectMapping: 0.386000 ms MarkObjects: 12.032500 ms  DeleteObjects: 0.119900 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.140500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.792 ms
+	Integration:            21.031 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.965 ms
+	Total Operation Time:   28.789 ms
+Unloading 32 unused Assets / (60.6 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.782100 ms (FindLiveObjects: 0.702800 ms CreateObjectMapping: 0.284700 ms MarkObjects: 12.335300 ms  DeleteObjects: 0.145100 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.169700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.767 ms
+	Integration:            20.874 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.739 ms
+	Total Operation Time:   28.381 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 13.967300 ms (FindLiveObjects: 0.709200 ms CreateObjectMapping: 0.278600 ms MarkObjects: 12.500100 ms  DeleteObjects: 0.103100 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.160600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.931 ms
+	Integration:            20.933 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.198 ms
+	Total Operation Time:   29.063 ms
+Unloading 23 unused Assets / (70.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.83 GB to 1.76 GB.
+Total: 13.290300 ms (FindLiveObjects: 0.787600 ms CreateObjectMapping: 0.318700 ms MarkObjects: 11.708100 ms  DeleteObjects: 0.124200 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.778 ms
+	Integration:            20.803 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.859 ms
+	Total Operation Time:   28.442 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 16.196200 ms (FindLiveObjects: 0.693500 ms CreateObjectMapping: 0.281600 ms MarkObjects: 14.770100 ms  DeleteObjects: 0.091700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.797 ms
+	Integration:            20.922 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.538 ms
+	Total Operation Time:   28.259 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.128900 ms (FindLiveObjects: 0.735800 ms CreateObjectMapping: 0.287600 ms MarkObjects: 12.645800 ms  DeleteObjects: 0.121600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.822 ms
+	Integration:            23.881 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       9.900 ms
+	Total Operation Time:   34.605 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 15.157300 ms (FindLiveObjects: 0.738000 ms CreateObjectMapping: 0.297000 ms MarkObjects: 13.657900 ms  DeleteObjects: 0.141200 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.802 ms
+	Integration:            21.890 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       9.755 ms
+	Total Operation Time:   32.449 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 15.665700 ms (FindLiveObjects: 0.721800 ms CreateObjectMapping: 0.289100 ms MarkObjects: 14.251800 ms  DeleteObjects: 0.089600 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.197600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.783 ms
+	Integration:            20.896 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.264 ms
+	Total Operation Time:   28.945 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 14.006400 ms (FindLiveObjects: 1.082000 ms CreateObjectMapping: 0.322500 ms MarkObjects: 12.208500 ms  DeleteObjects: 0.070800 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.817 ms
+	Integration:            21.054 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.437 ms
+	Total Operation Time:   28.309 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 14.394300 ms (FindLiveObjects: 0.927800 ms CreateObjectMapping: 0.277000 ms MarkObjects: 12.790000 ms  DeleteObjects: 0.076500 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.128300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.810 ms
+	Integration:            21.245 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.918 ms
+	Total Operation Time:   29.974 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.77 GB to 1.76 GB.
+Total: 13.909700 ms (FindLiveObjects: 0.715600 ms CreateObjectMapping: 0.279600 ms MarkObjects: 12.529400 ms  DeleteObjects: 0.070400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.155200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.870 ms
+	Integration:            20.237 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       8.868 ms
+	Total Operation Time:   29.976 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 13.732000 ms (FindLiveObjects: 0.720200 ms CreateObjectMapping: 0.402400 ms MarkObjects: 12.168600 ms  DeleteObjects: 0.120800 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.181400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.128 ms
+	Integration:            20.743 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.613 ms
+	Total Operation Time:   29.486 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.82 GB to 1.76 GB.
+Total: 14.542100 ms (FindLiveObjects: 1.111600 ms CreateObjectMapping: 0.323100 ms MarkObjects: 12.649400 ms  DeleteObjects: 0.130000 ms)
+
+Unloading 21 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.781 ms
+	Integration:            20.958 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.511 ms
+	Total Operation Time:   28.251 ms
+Unloading 149 unused Assets / (107.2 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.87 GB to 1.76 GB.
+Total: 14.386100 ms (FindLiveObjects: 0.733300 ms CreateObjectMapping: 0.282500 ms MarkObjects: 12.764100 ms  DeleteObjects: 0.290700 ms)
+
+Unloading 21 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.120100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.804 ms
+	Integration:            21.510 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.334 ms
+	Total Operation Time:   28.649 ms
+Unloading 86 unused Assets / (107.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.87 GB to 1.76 GB.
+Total: 16.345200 ms (FindLiveObjects: 0.974100 ms CreateObjectMapping: 0.452100 ms MarkObjects: 12.888800 ms  DeleteObjects: 1.671000 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.195000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.739 ms
+	Integration:            20.846 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.824 ms
+	Total Operation Time:   28.410 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 15.484800 ms (FindLiveObjects: 0.705600 ms CreateObjectMapping: 0.277000 ms MarkObjects: 13.803100 ms  DeleteObjects: 0.357200 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.835 ms
+	Integration:            21.762 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.572 ms
+	Total Operation Time:   31.170 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14741.
+Memory consumption went from 1.78 GB to 1.76 GB.
+Total: 14.039100 ms (FindLiveObjects: 0.702400 ms CreateObjectMapping: 0.278200 ms MarkObjects: 12.641700 ms  DeleteObjects: 0.071900 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.161200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.846 ms
+	Integration:            20.604 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.032 ms
+	Total Operation Time:   28.484 ms
+Unloading 20 unused Assets / (38.5 KB). Loaded Objects now: 14743.
+Memory consumption went from 1.83 GB to 1.83 GB.
+Total: 14.191200 ms (FindLiveObjects: 0.711200 ms CreateObjectMapping: 0.275300 ms MarkObjects: 12.764900 ms  DeleteObjects: 0.120200 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.199000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.825 ms
+	Integration:            20.847 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.681 ms
+	Total Operation Time:   29.355 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.83 GB to 1.77 GB.
+Total: 16.075500 ms (FindLiveObjects: 0.764700 ms CreateObjectMapping: 0.274600 ms MarkObjects: 14.559000 ms  DeleteObjects: 0.136600 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.837 ms
+	Integration:            21.606 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.113 ms
+	Total Operation Time:   29.558 ms
+Unloading 34 unused Assets / (70.6 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.84 GB to 1.77 GB.
+Total: 14.403300 ms (FindLiveObjects: 0.710000 ms CreateObjectMapping: 0.282700 ms MarkObjects: 12.928800 ms  DeleteObjects: 0.167300 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.143600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.992 ms
+	Integration:            20.301 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.708 ms
+	Total Operation Time:   29.001 ms
+Unloading 44 unused Assets / (84.7 KB). Loaded Objects now: 14744.
+Memory consumption went from 1.84 GB to 1.84 GB.
+Total: 13.525100 ms (FindLiveObjects: 0.710000 ms CreateObjectMapping: 0.281000 ms MarkObjects: 11.990100 ms  DeleteObjects: 0.180300 ms)
+
+Unloading 11 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.138800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.857 ms
+	Integration:            21.116 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.116 ms
+	Total Operation Time:   29.090 ms
+Unloading 36 unused Assets / (27.6 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.83 GB to 1.80 GB.
+Total: 13.557800 ms (FindLiveObjects: 0.703200 ms CreateObjectMapping: 0.286800 ms MarkObjects: 12.095900 ms  DeleteObjects: 0.151800 ms)
+
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.127100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.829 ms
+	Integration:            21.728 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.582 ms
+	Total Operation Time:   29.141 ms
+Unloading 42 unused Assets / (69.2 KB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.84 GB.
+Total: 15.089900 ms (FindLiveObjects: 0.720500 ms CreateObjectMapping: 0.284600 ms MarkObjects: 13.150900 ms  DeleteObjects: 0.563200 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.780 ms
+	Integration:            21.361 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.610 ms
+	Total Operation Time:   28.753 ms
+Unloading 28 unused Assets / (70.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.77 GB.
+Total: 13.790300 ms (FindLiveObjects: 0.736900 ms CreateObjectMapping: 0.287100 ms MarkObjects: 12.306400 ms  DeleteObjects: 0.145300 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.775 ms
+	Integration:            21.284 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.002 ms
+	Total Operation Time:   29.062 ms
+Unloading 27 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.77 GB.
+Total: 14.073100 ms (FindLiveObjects: 0.731200 ms CreateObjectMapping: 0.286100 ms MarkObjects: 12.606400 ms  DeleteObjects: 0.130700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.157200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.825 ms
+	Integration:            27.179 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.287 ms
+	Total Operation Time:   35.292 ms
+Unloading 29 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.77 GB.
+Total: 15.450900 ms (FindLiveObjects: 1.101500 ms CreateObjectMapping: 0.323200 ms MarkObjects: 13.128600 ms  DeleteObjects: 0.551000 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.780 ms
+	Integration:            21.086 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.899 ms
+	Total Operation Time:   28.765 ms
+Unloading 52 unused Assets / (93.9 KB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.84 GB.
+Total: 13.920400 ms (FindLiveObjects: 0.725400 ms CreateObjectMapping: 0.284800 ms MarkObjects: 12.414200 ms  DeleteObjects: 0.169400 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.124500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.887 ms
+	Integration:            21.166 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       5.672 ms
+	Total Operation Time:   27.726 ms
+Unloading 7 unused Assets / (19.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.77 GB.
+Total: 14.499000 ms (FindLiveObjects: 0.728900 ms CreateObjectMapping: 0.280300 ms MarkObjects: 13.081300 ms  DeleteObjects: 0.092400 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.144500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.780 ms
+	Integration:            20.818 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.658 ms
+	Total Operation Time:   28.257 ms
+Unloading 5 unused Assets / (19.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.77 GB.
+Total: 15.907200 ms (FindLiveObjects: 1.150800 ms CreateObjectMapping: 0.319300 ms MarkObjects: 13.897000 ms  DeleteObjects: 0.166500 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.638 ms
+	Integration:            20.522 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.194 ms
+	Total Operation Time:   30.356 ms
+Unloading 23 unused Assets / (70.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.77 GB.
+Total: 14.068000 ms (FindLiveObjects: 0.710100 ms CreateObjectMapping: 0.282900 ms MarkObjects: 12.605700 ms  DeleteObjects: 0.125200 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.789 ms
+	Integration:            20.746 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.619 ms
+	Total Operation Time:   28.155 ms
+Unloading 7 unused Assets / (19.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.77 GB.
+Total: 13.817700 ms (FindLiveObjects: 0.750800 ms CreateObjectMapping: 0.286500 ms MarkObjects: 12.367700 ms  DeleteObjects: 0.091600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.156500 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.758 ms
+	Integration:            20.667 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.619 ms
+	Total Operation Time:   30.046 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.77 GB.
+Total: 15.671400 ms (FindLiveObjects: 0.699800 ms CreateObjectMapping: 0.318500 ms MarkObjects: 14.208100 ms  DeleteObjects: 0.121300 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.811 ms
+	Integration:            21.827 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.994 ms
+	Total Operation Time:   31.633 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.77 GB.
+Total: 14.570100 ms (FindLiveObjects: 0.717400 ms CreateObjectMapping: 0.285700 ms MarkObjects: 13.160900 ms  DeleteObjects: 0.089900 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.751 ms
+	Integration:            21.469 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.922 ms
+	Total Operation Time:   29.143 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.83 GB to 1.77 GB.
+Total: 13.823000 ms (FindLiveObjects: 0.705400 ms CreateObjectMapping: 0.280700 ms MarkObjects: 12.402300 ms  DeleteObjects: 0.116400 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.782 ms
+	Integration:            22.697 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.023 ms
+	Total Operation Time:   30.504 ms
+Unloading 23 unused Assets / (66.0 MB). Loaded Objects now: 14746.
+Memory consumption went from 1.84 GB to 1.77 GB.
+Total: 14.370800 ms (FindLiveObjects: 0.698000 ms CreateObjectMapping: 0.280800 ms MarkObjects: 12.888100 ms  DeleteObjects: 0.135900 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.144000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.779 ms
+	Integration:            21.001 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.665 ms
+	Total Operation Time:   28.445 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.77 GB.
+Total: 14.992300 ms (FindLiveObjects: 0.722400 ms CreateObjectMapping: 0.285800 ms MarkObjects: 13.566700 ms  DeleteObjects: 0.091500 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.797 ms
+	Integration:            22.051 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.652 ms
+	Total Operation Time:   31.502 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.221700 ms (FindLiveObjects: 0.705700 ms CreateObjectMapping: 0.281500 ms MarkObjects: 12.840200 ms  DeleteObjects: 0.067900 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.141600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.821 ms
+	Integration:            23.089 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.697 ms
+	Total Operation Time:   31.609 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.670000 ms (FindLiveObjects: 0.721600 ms CreateObjectMapping: 0.284000 ms MarkObjects: 13.272400 ms  DeleteObjects: 0.071300 ms)
+
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.141200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.834 ms
+	Integration:            21.248 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.732 ms
+	Total Operation Time:   28.815 ms
+Unloading 34 unused Assets / (75.1 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.85 GB to 1.78 GB.
+Total: 13.790100 ms (FindLiveObjects: 0.706900 ms CreateObjectMapping: 0.280100 ms MarkObjects: 12.345200 ms  DeleteObjects: 0.139400 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.142700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.234 ms
+	Integration:            20.945 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.608 ms
+	Total Operation Time:   29.788 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.783000 ms (FindLiveObjects: 0.714100 ms CreateObjectMapping: 0.283700 ms MarkObjects: 13.263900 ms  DeleteObjects: 0.111300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.195400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.142 ms
+	Integration:            30.963 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       13.734 ms
+	Total Operation Time:   45.841 ms
+Unloading 40 unused Assets / (6.1 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.83 GB.
+Total: 14.448800 ms (FindLiveObjects: 0.726200 ms CreateObjectMapping: 0.287100 ms MarkObjects: 12.940400 ms  DeleteObjects: 0.149600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.797 ms
+	Integration:            20.599 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.239 ms
+	Total Operation Time:   27.637 ms
+Unloading 69 unused Assets / (56.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.79 GB.
+Total: 17.548100 ms (FindLiveObjects: 0.841300 ms CreateObjectMapping: 0.409100 ms MarkObjects: 15.706500 ms  DeleteObjects: 0.205100 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.770 ms
+	Integration:            21.706 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.041 ms
+	Total Operation Time:   29.517 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.078800 ms (FindLiveObjects: 0.711100 ms CreateObjectMapping: 0.279600 ms MarkObjects: 12.631300 ms  DeleteObjects: 0.131300 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.171600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.565 ms
+	Integration:            21.414 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.509 ms
+	Total Operation Time:   31.490 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 16.755900 ms (FindLiveObjects: 0.738700 ms CreateObjectMapping: 0.276400 ms MarkObjects: 15.295000 ms  DeleteObjects: 0.127800 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.155700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.905 ms
+	Integration:            26.329 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.092 ms
+	Total Operation Time:   35.328 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.974300 ms (FindLiveObjects: 0.738200 ms CreateObjectMapping: 0.286300 ms MarkObjects: 13.490900 ms  DeleteObjects: 0.130600 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.819 ms
+	Integration:            21.403 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.503 ms
+	Total Operation Time:   28.726 ms
+Unloading 6 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 13.356100 ms (FindLiveObjects: 0.718700 ms CreateObjectMapping: 0.272800 ms MarkObjects: 11.952000 ms  DeleteObjects: 0.092700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.900 ms
+	Integration:            20.973 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.335 ms
+	Total Operation Time:   29.210 ms
+Unloading 20 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 15.838800 ms (FindLiveObjects: 0.697600 ms CreateObjectMapping: 0.289600 ms MarkObjects: 14.413900 ms  DeleteObjects: 0.118300 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.171600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.790 ms
+	Integration:            21.466 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.730 ms
+	Total Operation Time:   28.987 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14747.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.206200 ms (FindLiveObjects: 0.715200 ms CreateObjectMapping: 0.279800 ms MarkObjects: 12.759500 ms  DeleteObjects: 0.124600 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.162100 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.795 ms
+	Integration:            21.395 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       8.922 ms
+	Total Operation Time:   31.113 ms
+Unloading 24 unused Assets / (57.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.79 GB.
+Total: 14.457100 ms (FindLiveObjects: 1.097700 ms CreateObjectMapping: 0.322300 ms MarkObjects: 12.506100 ms  DeleteObjects: 0.184500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.776 ms
+	Integration:            21.434 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.723 ms
+	Total Operation Time:   28.934 ms
+Unloading 24 unused Assets / (64.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 15.936300 ms (FindLiveObjects: 0.714700 ms CreateObjectMapping: 0.285100 ms MarkObjects: 13.719800 ms  DeleteObjects: 0.880000 ms)
+
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.191200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.792 ms
+	Integration:            23.641 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       18.244 ms
+	Total Operation Time:   42.680 ms
+Unloading 300 unused Assets / (107.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.88 GB to 1.78 GB.
+Total: 17.043900 ms (FindLiveObjects: 1.178900 ms CreateObjectMapping: 0.647200 ms MarkObjects: 13.319300 ms  DeleteObjects: 1.517500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.138600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.775 ms
+	Integration:            21.164 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.679 ms
+	Total Operation Time:   28.620 ms
+Unloading 26 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.270900 ms (FindLiveObjects: 0.720000 ms CreateObjectMapping: 0.275400 ms MarkObjects: 12.821100 ms  DeleteObjects: 0.134400 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.801 ms
+	Integration:            21.422 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.201 ms
+	Total Operation Time:   28.425 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 13.847400 ms (FindLiveObjects: 0.733500 ms CreateObjectMapping: 0.283000 ms MarkObjects: 12.355800 ms  DeleteObjects: 0.128300 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.777 ms
+	Integration:            21.066 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.460 ms
+	Total Operation Time:   28.304 ms
+Unloading 7 unused Assets / (15.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 15.393600 ms (FindLiveObjects: 0.722500 ms CreateObjectMapping: 0.279500 ms MarkObjects: 12.761000 ms  DeleteObjects: 1.313300 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.813 ms
+	Integration:            21.341 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.777 ms
+	Total Operation Time:   28.932 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.677200 ms (FindLiveObjects: 0.891700 ms CreateObjectMapping: 0.323800 ms MarkObjects: 13.047100 ms  DeleteObjects: 0.075500 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.784 ms
+	Integration:            20.889 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.715 ms
+	Total Operation Time:   28.389 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 13.831100 ms (FindLiveObjects: 0.718800 ms CreateObjectMapping: 0.282600 ms MarkObjects: 12.452300 ms  DeleteObjects: 0.066200 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.759 ms
+	Integration:            22.420 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.706 ms
+	Total Operation Time:   29.886 ms
+Unloading 36 unused Assets / (66.7 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 13.653600 ms (FindLiveObjects: 0.727500 ms CreateObjectMapping: 0.279300 ms MarkObjects: 12.188400 ms  DeleteObjects: 0.141500 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.727 ms
+	Integration:            20.532 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.505 ms
+	Total Operation Time:   27.765 ms
+Unloading 7 unused Assets / (15.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 13.780100 ms (FindLiveObjects: 0.769800 ms CreateObjectMapping: 0.301400 ms MarkObjects: 12.286200 ms  DeleteObjects: 0.096400 ms)
+
+Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\c33339e2c4834496bd0899500c375fc1\campaign.json.tmp' is denied.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+TalesTactics.CampaignFile:Save (TalesTactics.CampaignSave) (at Assets/TalesTactics/Runtime/Core/CampaignFile.cs:103)
+TalesTactics.BattleDirector:StartTitleGame (int) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleFlow.cs:31)
+TalesTactics.PlayModeTests.BattleSceneTests/<TitleOverwriteBacksUpSelectedSlotAndFailedSaveKeepsTitle>d__167:MoveNext () (at Assets/TalesTactics/PlayModeTests/TitleSceneTests.cs:76)
+UnityEngine.TestTools.TestEnumerator/<Execute>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:52)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerableAndRecordExceptions>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:85)
+UnityEngine.TestTools.EnumerableTestMethodCommand:AdvanceEnumerator (System.Collections.IEnumerator) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:64)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:47)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<ExecuteEnumerable>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:66)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<NUnit.Framework.ITestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<UnityEngine.TestTools.IOuterUnityTestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.RetryCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RetryCommand.cs:37)
+UnityEngine.TestTools.RepeatCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RepeatCommand.cs:36)
+UnityEngine.TestTools.IgnoreTestCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/IgnoreTestCommand.cs:42)
+UnityEngine.TestTools.StrictCheckCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/StrictCheckCommand.cs:29)
+UnityEngine.TestTools.Utils.CoroutineRunner/<WrapEnumeratorForChecks>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:58)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/TalesTactics/Runtime/Core/CampaignFile.cs Line: 103)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.171000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.757 ms
+	Integration:            20.699 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.516 ms
+	Total Operation Time:   27.974 ms
+Unloading 5 unused Assets / (15.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 13.987400 ms (FindLiveObjects: 0.724200 ms CreateObjectMapping: 0.280600 ms MarkObjects: 12.575600 ms  DeleteObjects: 0.071700 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.792 ms
+	Integration:            21.428 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.352 ms
+	Total Operation Time:   28.575 ms
+Unloading 5 unused Assets / (15.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.880800 ms (FindLiveObjects: 0.697600 ms CreateObjectMapping: 0.277800 ms MarkObjects: 13.499600 ms  DeleteObjects: 0.087300 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.788 ms
+	Integration:            20.881 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.848 ms
+	Total Operation Time:   28.519 ms
+Unloading 5 unused Assets / (15.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 14.835900 ms (FindLiveObjects: 0.720000 ms CreateObjectMapping: 0.278400 ms MarkObjects: 13.435600 ms  DeleteObjects: 0.074700 ms)
+
+Campaign save failed: Access to the path 'C:\Users\USER-PC\AppData\Local\Temp\LocalTactics\TalesTactics\PersistenceTests\5802af9977ed4a4ba8a5f25ab5d27ae8\campaign.json.tmp' is denied.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+TalesTactics.CampaignFile:Save (TalesTactics.CampaignSave) (at Assets/TalesTactics/Runtime/Core/CampaignFile.cs:103)
+TalesTactics.BattleDirector:WriteProgress (TalesTactics.CampaignSave,bool) (at Assets/TalesTactics/Runtime/Presentation/BattlePersistence.cs:41)
+TalesTactics.BattleDirector:ResumeBattle () (at Assets/TalesTactics/Runtime/Presentation/BattlePersistence.cs:73)
+TalesTactics.BattleDirector:LoadTitleGame (int,bool) (at Assets/TalesTactics/Runtime/Presentation/BattleTitleFlow.cs:46)
+TalesTactics.PlayModeTests.BattleSceneTests/<TitleResumeWriteFailureKeepsSelectedProfileAndCheckpoint>d__164:MoveNext () (at Assets/TalesTactics/PlayModeTests/TitleSceneTests.cs:47)
+UnityEngine.TestTools.TestEnumerator/<Execute>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:52)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerableAndRecordExceptions>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:85)
+UnityEngine.TestTools.EnumerableTestMethodCommand:AdvanceEnumerator (System.Collections.IEnumerator) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:64)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:47)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<ExecuteEnumerable>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:66)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<NUnit.Framework.ITestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<UnityEngine.TestTools.IOuterUnityTestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:213)
+UnityEngine.TestTools.RetryCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RetryCommand.cs:37)
+UnityEngine.TestTools.RepeatCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/RepeatCommand.cs:36)
+UnityEngine.TestTools.IgnoreTestCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/IgnoreTestCommand.cs:42)
+UnityEngine.TestTools.StrictCheckCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/NUnitExtensions/Commands/StrictCheckCommand.cs:29)
+UnityEngine.TestTools.Utils.CoroutineRunner/<WrapEnumeratorForChecks>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:58)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/TalesTactics/Runtime/Core/CampaignFile.cs Line: 103)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.130700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.822 ms
+	Integration:            21.698 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       5.861 ms
+	Total Operation Time:   28.383 ms
+Unloading 25 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.125900 ms (FindLiveObjects: 0.714100 ms CreateObjectMapping: 0.283300 ms MarkObjects: 12.684000 ms  DeleteObjects: 0.128000 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.146300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.794 ms
+	Integration:            21.317 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.909 ms
+	Total Operation Time:   29.021 ms
+Unloading 31 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.715600 ms (FindLiveObjects: 1.173600 ms CreateObjectMapping: 0.309400 ms MarkObjects: 12.775900 ms  DeleteObjects: 0.137200 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.139300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.753 ms
+	Integration:            21.433 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.996 ms
+	Total Operation Time:   29.184 ms
+Unloading 29 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 16.735200 ms (FindLiveObjects: 0.718600 ms CreateObjectMapping: 0.282400 ms MarkObjects: 15.277600 ms  DeleteObjects: 0.139700 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.136000 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.765 ms
+	Integration:            21.302 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       7.480 ms
+	Total Operation Time:   29.549 ms
+Unloading 27 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.271600 ms (FindLiveObjects: 0.737300 ms CreateObjectMapping: 0.289700 ms MarkObjects: 12.179900 ms  DeleteObjects: 0.721000 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.129800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.799 ms
+	Integration:            21.551 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.459 ms
+	Total Operation Time:   28.810 ms
+Unloading 22 unused Assets / (66.0 MB). Loaded Objects now: 14746.
+Memory consumption went from 1.85 GB to 1.78 GB.
+Total: 15.000700 ms (FindLiveObjects: 0.727300 ms CreateObjectMapping: 0.320400 ms MarkObjects: 13.452200 ms  DeleteObjects: 0.139500 ms)
+
+Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.137700 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.759 ms
+	Integration:            21.361 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.809 ms
+	Total Operation Time:   28.931 ms
+Unloading 336 unused Assets / (113.1 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.89 GB to 1.78 GB.
+Total: 15.770200 ms (FindLiveObjects: 0.756400 ms CreateObjectMapping: 0.291500 ms MarkObjects: 12.532900 ms  DeleteObjects: 1.848500 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.169300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.803 ms
+	Integration:            22.665 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       8.524 ms
+	Total Operation Time:   31.994 ms
+Unloading 22 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.959300 ms (FindLiveObjects: 0.716600 ms CreateObjectMapping: 0.276400 ms MarkObjects: 13.519900 ms  DeleteObjects: 0.126100 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.157900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.756 ms
+	Integration:            21.223 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       6.862 ms
+	Total Operation Time:   28.842 ms
+Unloading 8 unused Assets / (19.1 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 15.670400 ms (FindLiveObjects: 0.721000 ms CreateObjectMapping: 0.286200 ms MarkObjects: 14.234700 ms  DeleteObjects: 0.106000 ms)
+
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.133200 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.814 ms
+	Integration:            21.054 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.256 ms
+	Total Operation Time:   29.126 ms
+Unloading 20 unused Assets / (66.0 MB). Loaded Objects now: 14747.
+Memory consumption went from 1.85 GB to 1.78 GB.
+Total: 14.187000 ms (FindLiveObjects: 0.705800 ms CreateObjectMapping: 0.283500 ms MarkObjects: 12.765400 ms  DeleteObjects: 0.116400 ms)
+
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.134900 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.790 ms
+	Integration:            21.101 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.925 ms
+	Total Operation Time:   28.817 ms
+Unloading 30 unused Assets / (66.6 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 13.808800 ms (FindLiveObjects: 0.698100 ms CreateObjectMapping: 0.276600 ms MarkObjects: 12.338000 ms  DeleteObjects: 0.139100 ms)
+
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.147300 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.953 ms
+	Integration:            20.463 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.544 ms
+	Total Operation Time:   28.961 ms
+Unloading 43 unused Assets / (75.1 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.85 GB to 1.78 GB.
+Total: 14.444500 ms (FindLiveObjects: 0.701600 ms CreateObjectMapping: 0.288000 ms MarkObjects: 12.977200 ms  DeleteObjects: 0.157800 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.165600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.781 ms
+	Integration:            20.974 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       19.483 ms
+	Total Operation Time:   41.239 ms
+Unloading 25 unused Assets / (66.5 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.78 GB.
+Total: 14.159800 ms (FindLiveObjects: 0.726000 ms CreateObjectMapping: 0.277900 ms MarkObjects: 12.653400 ms  DeleteObjects: 0.178600 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.139600 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.767 ms
+	Integration:            21.142 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       6.704 ms
+	Total Operation Time:   28.614 ms
+Unloading 7 unused Assets / (19.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 15.414700 ms (FindLiveObjects: 0.730700 ms CreateObjectMapping: 0.275700 ms MarkObjects: 13.987100 ms  DeleteObjects: 0.095900 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.132800 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.817 ms
+	Integration:            22.117 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       10.952 ms
+	Total Operation Time:   33.888 ms
+Unloading 4 unused Assets / (15.0 MB). Loaded Objects now: 14743.
+Memory consumption went from 1.79 GB to 1.78 GB.
+Total: 13.923500 ms (FindLiveObjects: 0.726900 ms CreateObjectMapping: 0.295800 ms MarkObjects: 12.494500 ms  DeleteObjects: 0.067200 ms)
+
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.131400 ms
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            0.775 ms
+	Integration:            20.800 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       7.016 ms
+	Total Operation Time:   28.592 ms
+Unloading 20 unused Assets / (14.0 MB). Loaded Objects now: 14745.
+Memory consumption went from 1.84 GB to 1.83 GB.
+Total: 14.551500 ms (FindLiveObjects: 0.756300 ms CreateObjectMapping: 0.308200 ms MarkObjects: 13.024900 ms  DeleteObjects: 0.122600 ms)
+
+Saving results to: C:/Users/USER-PC/AppData/LocalLow/LocalTactics/TalesTactics\TestResults.xml
+Saving results to: D:/TalesTacticsHelpGuide/Logs/illustrated-playmode.xml
+GPU Resident Drawer disposed.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.943 ms
+	Integration:            20.570 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   21.523 ms
+Unloading 8 unused Assets / (33.0 MB). Loaded Objects now: 14359.
+Memory consumption went from 1.73 GB to 1.70 GB.
+Total: 16.191900 ms (FindLiveObjects: 0.918800 ms CreateObjectMapping: 0.276300 ms MarkObjects: 14.583100 ms  DeleteObjects: 0.088000 ms)
+
+[Licensing::Client] Successfully resolved entitlement details
+GPU Resident Drawer created.
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/TalesTactics/Scenes/TestBattle.unity'
+	Deserialize:            1.286 ms
+	Integration:            21.277 ms
+	Integration of assets:  0.011 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   22.582 ms
+Unloading 1 unused Assets / (23.4 KB). Loaded Objects now: 14445.
+Memory consumption went from 1.70 GB to 1.70 GB.
+Total: 14.427200 ms (FindLiveObjects: 0.735900 ms CreateObjectMapping: 0.278000 ms MarkObjects: 13.036200 ms  DeleteObjects: 0.036700 ms)
+
+Asset Pipeline Refresh (id=27a3b06581c94564cb98ee057c722ad6): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Test run completed. Exiting with code 2 (Failed). One or more tests failed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 29598; Successful remaps: 1348
+Serialized file version minimum: 22, current 23
+Pipeline Server stopped
+Clearing [KoreanFallback] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@23caec89ae27/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs:83)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.ugui@23caec89ae27/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Importing 'GUID: 00000000000000004000000000000000 - Path: ProjectSettings/ProjectSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000004000000000000000' -> (Import Result ID: 'c2c3f051bb1c817973aa1205c17a6b82') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=054c890a8f4b6dddbea933bc5e4b7df4 DependenciesID=d688710d5946e94ec0a04f4915ed2398 StaticDependenciesID=d9a9716fbd47144c87bc3edb81584aa0 
+Importing 'GUID: 00000000000000009000000000000000 - Path: ProjectSettings/QualitySettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000009000000000000000' -> (Import Result ID: '8151b601d05d3e12de314c2aa1f82962') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=2a108b3da874f726c62fbe5f12be4a8a DependenciesID=6180c49ef29638684367d2893c04e070 StaticDependenciesID=5b19720d9149525484b40148944c8e26 
+Importing 'GUID: 0f5801139f4ee8a42948ff0e4354d141 - Path: Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 0f5801139f4ee8a42948ff0e4354d141' -> (Import Result ID: '6e43eed94703f4953d99eab2b5c3b8d1') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=a9cdabc67c2d136dc54f3e23ef9df07a DependenciesID=d81b4e6d54a9da9cd0a2c159cf69a29b StaticDependenciesID=28628479ae9667274d28c52112dd110a 
+Asset Pipeline Refresh (id=645a1263e7abed44391f23366373591a): Total: 0.203 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+GPU Resident Drawer disposed.
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+[Licensing::IpcConnector] LicenseClient-USER-PC-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-USER-PC channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1792022574549,"processId":21748,"allocatedMemory":18496862,"memoryLabels":[{"Default":196910},{"Permanent":15516},{"NewDelete":70781},{"Thread":2778608},{"Manager":2337063},{"VertexData":1832},{"Geometry":816},{"Texture":24},{"Shader":840767},{"Material":24},{"GfxDevice":57120},{"Animation":952},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":281120},{"Input":45280},{"JobScheduler":256},{"TextLib":19933},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1365224},{"BaseObject":1491776},{"Resource":1208},{"Renderer":5624},{"Transform":4685},{"File":16296},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":905028},{"StaticString":3808},{"Utility":2674306},{"Curl":48},{"PoolAlloc":2840},{"AI":80},{"TypeTree":17165},{"ScriptManager":12640},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":288},{"WebRequest":592},{"VR":49650},{"SceneManager":608},{"Video":208},{"LazyScriptCache":32},{"NativeArray":540},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":464},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":146268},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4955366},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":32546},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":213},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3184},{"Windowing":456},{"Licensing":1264},{"AssetReference":32},{"IPCStream":32}]}

@@ -18,6 +18,7 @@ ZIP을 **새 폴더에 모두 풀고** `TalesTactics.exe`를 실행하세요. �
 - [사용자 피드백 반영: 간소화한 출전 준비·아이콘·선택 색상](Docs/UiRefinement/README.md)
 - [6명 편성·UI 경계·전투 결과·필수 이야기 흐름](Docs/UiSafeLayout/README.md)
 - [8종 직업 아이콘과 실제 적용 화면](Docs/ClassIcons/README.md)
+- [출전·선택·완료 및 공통 일러스트 아이콘](Docs/IconSystemProposal/IMPLEMENTATION.md)
 - [최신 검증 기록과 한계](Docs/VALIDATION.md)
 
 빌드·캐시 폴더는 Git에 포함되지 않습니다. 새 클론이나 워크트리에 `Library`·`Builds` 또는 다른 작업 폴더의 실행본이 있다고 가정하지 마세요. 문서에 기록된 실행본 경로는 **해당 검증 당시 프로젝트 기준**입니다.

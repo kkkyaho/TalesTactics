@@ -72,7 +72,7 @@ namespace TalesTactics
                 img.uvRect=new Rect(cell%3/3f,(2-cell/3)/3f,1/3f,1/3f);img.raycastTarget=false;
                 var fit=r.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=1;
             }
-            else FormationIcon(parent,item==null?"wait":item.Slot==EquipmentSlot.Weapon?"attack":item.Slot==EquipmentSlot.Armor?"guard":"move",min,max,item==null?new Color(.35f,.43f,.52f):formationGold);
+            else FormationIcon(parent,item==null?"empty":item.Slot==EquipmentSlot.Weapon?"attack":item.Slot==EquipmentSlot.Armor?"armor":"accessory",min,max,item==null?new Color(.35f,.43f,.52f):formationGold);
         }
         CharacterData[] JoinedCharacters()=>battle.Catalog.Characters.Where(battle.IsJoined).ToArray();
         CharacterData IntermissionCharacter()

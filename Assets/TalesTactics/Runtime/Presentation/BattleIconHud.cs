@@ -38,7 +38,7 @@ namespace TalesTactics
                 float x=-orderNow.Length*26+i*52;
                 Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-88),new Vector2(x+46,-30));
                 var img=g.GetComponent<UnityEngine.UI.Image>();img.color=unit==battle.Session.Active?new Color(.08f,.35f,.39f):new Color(.07f,.11f,.17f);img.raycastTarget=true;
-                var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.27f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
+                var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.34f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
                 if(team!=null&&!team.CanSelect(unit))foreach(var graphic in art.GetComponentsInChildren<UnityEngine.UI.Graphic>())graphic.color=new Color(.43f,.48f,.53f,.8f);
                 var portraitButton=g.AddComponent<UnityEngine.UI.Button>();portraitButton.interactable=team!=null?battle.CanSelectPlayerUnit(unit):battle.Session.Active?.Team==Team.Player&&!(battle.State is ActionExecutionState);
                 portraitButton.onClick.AddListener(()=>{if(team!=null)battle.SelectPlayerUnit(unit);else{battle.InspectUnit(unit);ShowUnitDetails(unit);}});
@@ -46,14 +46,15 @@ namespace TalesTactics
                 foreach(var type in new[]{UnityEngine.EventSystems.EventTriggerType.PointerEnter,UnityEngine.EventSystems.EventTriggerType.Select,UnityEngine.EventSystems.EventTriggerType.PointerExit,UnityEngine.EventSystems.EventTriggerType.Deselect})
                 {var kind=type;var entry=new UnityEngine.EventSystems.EventTrigger.Entry{eventID=type};entry.callback.AddListener(_=>battle.HoveredUnit=kind==UnityEngine.EventSystems.EventTriggerType.PointerEnter||kind==UnityEngine.EventSystems.EventTriggerType.Select?unit:null);hover.triggers.Add(entry);}
                 int previous=System.Array.IndexOf(lastOrder,unit),rank=i++;
-                var state=FormationRect(g.transform,"ActionAvailability",new Vector2(.06f,.02f),new Vector2(.94f,.27f));
+                var state=FormationRect(g.transform,"ActionAvailability",new Vector2(.06f,.02f),new Vector2(.94f,.33f));
                 if(team!=null)
                 {
                     if(!unit.Alive)FormationText(state,"KO",Vector2.zero,Vector2.one,10,TextAlignmentOptions.Center);
-                    else if(!team.CanSelect(unit))FormationIcon(state,"check",new Vector2(.32f,0),new Vector2(.68f,1),new Color(.6f,.7f,.73f));
-                    else {FormationIcon(state,"move",new Vector2(.08f,0),new Vector2(.42f,1),unit.Moved?new Color(.23f,.29f,.34f):formationTeal);FormationIcon(state,"attack",new Vector2(.58f,0),new Vector2(.92f,1),unit.Acted?new Color(.23f,.29f,.34f):formationGold);}
+                    else if(!team.CanSelect(unit))FormationIcon(state,"done",new Vector2(.24f,0),new Vector2(.76f,1),new Color(.6f,.7f,.73f));
+                    else {FormationIcon(state,"move",new Vector2(.02f,0),new Vector2(.48f,1),unit.Moved?new Color(.23f,.29f,.34f):formationTeal);FormationIcon(state,"attack",new Vector2(.52f,0),new Vector2(.98f,1),unit.Acted?new Color(.23f,.29f,.34f):formationGold);}
                 }
                 else FormationText(state,i.ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),Vector2.zero,Vector2.one,10,TextAlignmentOptions.Center);
+                if(unit==battle.Session.Active)IconSelectionCorners.Add(g.transform);
                 var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=unit==battle.Session.Active?formationTeal:new Color(.22f,.31f,.39f);border.effectDistance=new Vector2(1,-1);
             }
             lastOrder=orderNow;
@@ -98,9 +99,9 @@ namespace TalesTactics
                 var button=r.GetComponent<UnityEngine.UI.Button>();r.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 r.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var colors=button.colors;colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=colors.selectedColor=new Color(.14f,.3f,.45f);colors.pressedColor=new Color(.25f,.42f,.56f);button.colors=colors;
-                var name=r.GetComponentInChildren<TMP_Text>();name.text=(usable?"":"◇ ")+skill.DisplayName;if(!usable)name.color=new Color(.65f,.69f,.75f);name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
+                var name=r.GetComponentInChildren<TMP_Text>();name.text=skill.DisplayName;if(!usable)name.color=new Color(.65f,.69f,.75f);name.alignment=TextAlignmentOptions.MidlineLeft;name.enableAutoSizing=true;name.fontSizeMin=11;name.fontSizeMax=15;
                 Place(name.rectTransform,Vector2.zero,Vector2.one,new Vector2(32,13),new Vector2(-66,0));
-                FormationIcon(r,SkillVisualLanguage.Icon(skill),new Vector2(.015f,.24f),new Vector2(.10f,.84f),SkillVisualLanguage.Tint(skill));
+                FormationIcon(r,usable?SkillVisualLanguage.Icon(skill):"locked",new Vector2(.015f,.24f),new Vector2(.10f,.84f),SkillVisualLanguage.Tint(skill));
                 var range=Label(r,SkillVisualLanguage.Range(skill),0,16,11);Place(range.rectTransform,Vector2.zero,new Vector2(1,0),new Vector2(32,0),new Vector2(-6,16));
                 var cost=Label(r,mpCost+" MP",0,23,13);cost.alignment=TextAlignmentOptions.MidlineRight;Place(cost.rectTransform,Vector2.zero,Vector2.one,new Vector2(6,14),new Vector2(-6,0));
                 var trigger=r.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();

@@ -30,7 +30,7 @@ namespace TalesTactics
         public static string Description(UnitRuntime unit)
         {
             string phase="단계 "+unit.BossPhase+" / "+MaxPhase(unit)+(unit.BossPhaseLock?" · 전환 보호 (다음 실제 행동까지)":"");
-            string intent=unit.IntentPhase==1?"[!] "+(EnemyTactics.Intent(unit)?.DisplayName??"공격")+" → "+unit.IntentAim+" · 다음 자기 행동 발동\n범위 이탈 · 기절/수면으로 준비 취소":unit.IntentPhase==2?"[◇] 핵/빈틈 노출 · 받는 피해 +25%":"[○] 다음 행동에 공격 예고";
+            string intent=unit.IntentPhase==1?"공격 예고 · "+(EnemyTactics.Intent(unit)?.DisplayName??"공격")+" → "+unit.IntentAim+" · 다음 자기 행동 발동\n범위 이탈 · 기절/수면으로 준비 취소":unit.IntentPhase==2?"핵/빈틈 노출 · 받는 피해 +25%":"다음 행동에 공격 예고";
             return phase+"\n"+intent+(BossTimeStop.Applies(unit)?"\n"+BossTimeStop.Describe(unit):"");
         }
         public static EnemyPlan Plan(BattleSession battle,UnitRuntime unit)

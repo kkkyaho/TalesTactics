@@ -48,27 +48,20 @@ namespace TalesTactics
     public sealed class FacingArrowGraphic:UnityEngine.UI.MaskableGraphic
     {
         Vector2 direction=Vector2.up;
-        static readonly Vector2[] Shape={new Vector2(0,1),new Vector2(-1,-.08f),new Vector2(-.46f,-.08f),new Vector2(-.46f,-.85f),new Vector2(.46f,-.85f),new Vector2(.46f,-.08f),new Vector2(1,-.08f)};
+        public override Texture mainTexture=>IllustratedIcons.Get("direction",true).Texture;
         public void SetDirection(Vector2 value)
         {if((direction-value).sqrMagnitude<.0001f)return;direction=value;SetVerticesDirty();}
         protected override void OnPopulateMesh(UnityEngine.UI.VertexHelper vh)
         {
-            vh.Clear();var r=rectTransform.rect;
+            vh.Clear();var r=rectTransform.rect;var region=IllustratedIcons.Get("direction",true);var uv=region.UV;
             var rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg-90);
-            var points=new Vector3[Shape.Length];
-            for(int i=0;i<Shape.Length;i++)points[i]=(Vector3)r.center+rotation*new Vector3(Shape[i].x*r.width*.5f,Shape[i].y*r.height*.5f);
-            // The short side face follows screen-down, not arrow rotation; it is thickness, not a cast shadow.
-            var depth=Vector3.down*(r.height*.11f);
-            var side=new Color(color.r*.72f,color.g*.70f,color.b*.66f,color.a);
-            for(int i=0;i<points.Length;i++)
-            {
-                int j=(i+1)%points.Length,n=vh.currentVertCount;
-                vh.AddVert(points[i],side,Vector2.zero);vh.AddVert(points[i]+depth,side,Vector2.zero);
-                vh.AddVert(points[j]+depth,side,Vector2.zero);vh.AddVert(points[j],side,Vector2.zero);
-                vh.AddTriangle(n,n+1,n+2);vh.AddTriangle(n,n+2,n+3);
-            }
-            int top=vh.currentVertCount;foreach(var p in points)vh.AddVert(p,color,Vector2.zero);
-            vh.AddTriangle(top,top+1,top+6);vh.AddTriangle(top+2,top+3,top+4);vh.AddTriangle(top+2,top+4,top+5);
+            float w=region.width/(float)region.height,h=1;
+            float boundX=Mathf.Abs(direction.y)*w+Mathf.Abs(direction.x)*h,boundY=Mathf.Abs(direction.x)*w+Mathf.Abs(direction.y)*h;
+            float scale=Mathf.Min(r.width/boundX,r.height/boundY)*.5f;
+            float brightness=color.r>.94f?1:.68f;var tint=new Color(brightness,brightness,brightness,color.a);var points=new[]{new Vector2(-w,-h),new Vector2(-w,h),new Vector2(w,h),new Vector2(w,-h)};
+            var uvs=new[]{new Vector2(uv.xMin,uv.yMin),new Vector2(uv.xMin,uv.yMax),new Vector2(uv.xMax,uv.yMax),new Vector2(uv.xMax,uv.yMin)};
+            for(int i=0;i<4;i++)vh.AddVert((Vector3)r.center+rotation*(Vector3)(points[i]*scale),tint,uvs[i]);
+            vh.AddTriangle(0,1,2);vh.AddTriangle(0,2,3);
         }
     }
 }

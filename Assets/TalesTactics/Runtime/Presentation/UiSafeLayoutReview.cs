@@ -101,6 +101,8 @@ namespace TalesTactics
                 Click("장비 관리");yield return Settle();yield return Inspect("equipment-six",battle.Hud.transform,size,scale);Click("다음 캐릭터");yield return Settle();yield return Inspect("equipment-next",battle.Hud.transform,size,scale);battle.Hud.ShowIntermissionHub();
                 Click("성장 · 승급");yield return Settle();yield return Inspect("growth-next",battle.Hud.transform,size,scale);Click("이전 캐릭터");yield return Settle();yield return Inspect("growth-six",battle.Hud.transform,size,scale);battle.Hud.ShowIntermissionHub();
                 battle.BeginBattle();yield return Settle();yield return Inspect("battle-six",battle.Hud.transform,size,scale);
+                var turn=(TeamTurnScheduler)battle.Session.Scheduler;turn.Complete(battle.Session.Active);battle.Session.Select(turn.Preview(battle.Session.Units).First());battle.SetState(new CommandState(battle));yield return Settle();yield return Inspect("battle-done",battle.Hud.transform,size,scale);
+                for(int rotation=0;rotation<4;rotation++){battle.WaitCommand();yield return Settle();yield return Inspect("facing-"+rotation,battle.Hud.transform,size,scale);battle.State.Cancel();battle.Board.RotateCamera(90);}
                 battle.Session.Active.Level=50;battle.Session.Active.CurrentMP=battle.Session.Active.Stats.MP;
                 battle.SkillCommand();yield return Settle();yield return Inspect("skills",battle.Hud.transform,size,scale);
                 var feedback=battle.Hud.CombatFeedback;var active=battle.Session.Active;
@@ -142,6 +144,13 @@ namespace TalesTactics
         IEnumerator Inspect(string name,Transform panel,Vector2Int size,float scale)
         {
             var issues=new List<string>();if(Screen.width!=size.x||Screen.height!=size.y)issues.Add("Resolution mismatch");
+            foreach(var icon in panel.GetComponentsInChildren<TacticalIcon>())
+            {
+                if(icon.Region==null||icon.mainTexture==null)issues.Add("Missing illustrated icon: "+icon.Kind);
+                if(icon.raycastTarget)issues.Add("Decorative icon intercepts input: "+icon.Kind);
+                var bounds=(RectTransform)icon.transform.parent;var corners=new Vector3[4];icon.rectTransform.GetWorldCorners(corners);var allowed=bounds.rect;allowed.xMin-=1;allowed.yMin-=1;allowed.xMax+=1;allowed.yMax+=1;
+                if(corners.Any(p=>!allowed.Contains(bounds.InverseTransformPoint(p))))issues.Add("Illustrated icon outside parent: "+icon.Kind);
+            }
             foreach(var art in panel.GetComponentsInChildren<UnityEngine.UI.RawImage>().Where(i=>i.name=="ClassIllustration"))
             {
                 if(art.texture==null||art.texture.name!="ClassIcons")issues.Add("Missing class artwork: "+art.transform.parent.name);

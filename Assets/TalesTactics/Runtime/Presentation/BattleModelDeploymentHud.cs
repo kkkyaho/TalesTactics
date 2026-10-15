@@ -41,7 +41,7 @@ namespace TalesTactics
             Place(r,min,max,new Vector2(6,4),new Vector2(-6,-4));
             var button=r.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;colors.disabledColor=new Color(.5f,.55f,.65f,1);button.colors=colors;
             var t=r.GetComponentInChildren<TMP_Text>();t.text=text;t.fontSize=size;t.enableAutoSizing=true;t.fontSizeMin=14;t.fontSizeMax=size;
-            Place(t.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,2),new Vector2(-8,-2));if(name.Contains("닫기")&&!string.IsNullOrEmpty(text)){t.text="";MenuArt(r,5,new Vector2(.32f,.16f),new Vector2(.68f,.84f));}return r;
+            Place(t.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,2),new Vector2(-8,-2));if(name.Contains("닫기")&&!string.IsNullOrEmpty(text)){t.text="";FormationIcon(r,"close",new Vector2(.32f,.16f),new Vector2(.68f,.84f),Color.white);}return r;
         }
         void FormationIcon(Transform parent,string kind,Vector2 min,Vector2 max,Color color)
         {
@@ -129,9 +129,6 @@ namespace TalesTactics
             var c=battle.Catalog.Characters[index];bool deployed=battle.Deployment.Contains(index),selected=index==selectedCharacter;
             float x=slot%3/3f,y=slot/3*.5f;
             var cell=FormationRect(grid,"ModelCell-"+c.Id,new Vector2(x,.5f-y),new Vector2(x+1f/3,1-y),3);
-            var ring=FormationRect(cell,"DeploymentRing",new Vector2(.08f,0),new Vector2(.92f,0));
-            ring.offsetMin=new Vector2(0,74);ring.offsetMax=new Vector2(0,94);
-            var ellipse=ring.gameObject.AddComponent<FormationRing>();ellipse.color=selected?formationGold:deployed?formationTeal:new Color(.38f,.43f,.49f,.45f);ellipse.raycastTarget=false;
             var model=FormationButton(cell,(deployed?"● ":"○ ")+c.DisplayName,"",Vector2.zero,Vector2.one,()=>{selectedCharacter=index;RenderDeployment();});
             model.offsetMin=new Vector2(8,96);model.offsetMax=new Vector2(-8,-6);
             model.GetComponent<UnityEngine.UI.Image>().color=Color.white;model.GetComponent<UnityEngine.UI.Outline>().enabled=false;
@@ -142,8 +139,8 @@ namespace TalesTactics
             var gear=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
             var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=EquipmentAppearance.Resolve(c,gear.Get(EquipmentSlot.Weapon),c.Sprites?.Front);sprite.preserveAspect=true;sprite.raycastTarget=false;
             ClassArt(cell,c,new Vector2(.055f,.71f),new Vector2(.26f,.95f));
-            if(deployed)FormationIcon(cell,"check",new Vector2(.80f,.83f),new Vector2(.95f,.94f),formationTeal);
-            if(selected){var edge=FormationRect(cell,"SelectionEdge",new Vector2(.03f,.24f),new Vector2(.045f,.93f));var line=edge.gameObject.AddComponent<UnityEngine.UI.Image>();line.color=formationTeal;line.raycastTarget=false;}
+            if(deployed)FormationIcon(cell,"deployed",new Vector2(.78f,.79f),new Vector2(.96f,.97f),Color.white);
+            if(selected)IconSelectionCorners.Add(model);
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMax=new Vector2(0,88);
             var toggle=FormationButton(caption,"편성 변경: "+c.Id,!battle.CanDeploy(index)?"합류 예정":deployed?"출전 중":"출전 추가",new Vector2(.14f,.59f),new Vector2(.86f,1),()=>ToggleFormation(index),battle.CanDeploy(index)&&(deployed||battle.Deployment.Count<battle.Catalog.Rules.MaxDeployment),17);
             toggle.GetComponent<UnityEngine.UI.Image>().color=deployed?new Color(.025f,.24f,.29f):new Color(.06f,.09f,.14f,1);
@@ -180,7 +177,7 @@ namespace TalesTactics
                 var button=FormationButton(commands,"장비 슬롯: "+slot,"",new Vector2(.025f+i*.32f,.18f),new Vector2(.345f+i*.32f,.345f),()=>{selectedEquipmentSlot=slot;equipmentPage=0;ShowEquipment(c);});
                 if(item?.Icon!=null)EquipmentArt(button,item,new Vector2(.24f,.40f),new Vector2(.76f,.96f));
                 else if(i==0)ClassArt(button,c,new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.65f,.68f,.72f):Color.white);
-                else FormationIcon(button,i==1?"guard":"move",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
+                else FormationIcon(button,i==1?"armor":"accessory",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
                 FormationText(button,item==null?SlotName(slot)+" · 없음":item.DisplayName,new Vector2(0,0),new Vector2(1,.40f),16,TextAlignmentOptions.Center);
             }
             FormationText(commands,"특성 · "+TacticalDevelopment.TraitName(progress.Trait),new Vector2(.03f,.11f),new Vector2(.65f,.17f),19).color=formationTeal;

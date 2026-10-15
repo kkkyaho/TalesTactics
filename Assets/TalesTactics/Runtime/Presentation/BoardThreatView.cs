@@ -47,7 +47,7 @@ namespace TalesTactics
         }
         void TacticalMarkers()
         {
-            CrossoverMarkers();
+            CrossoverMarkers();UpdateBossMarkers();
             if(toneProperties==null)toneProperties=new MaterialPropertyBlock();
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             foreach(var pair in sprites)

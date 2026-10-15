@@ -37,7 +37,7 @@ namespace TalesTactics.PlayModeTests
             yield return new WaitForEndOfFrame();
             Assert.That(director.Board.GetComponentsInChildren<Transform>().Any(t=>t.name=="Faction Ring"||t.name=="Facing indicator"),Is.False);
             var marker=director.Board.GetComponentsInChildren<GroundOverlay>().Single(x=>x.name=="Active unit");
-            Assert.That(marker.enabled,Is.True);Assert.That(marker.QuadCount,Is.EqualTo(9));
+            Assert.That(marker.enabled,Is.True);Assert.That(marker.QuadCount,Is.EqualTo(1));Assert.That(marker.GetComponentsInChildren<SpriteRenderer>().Length,Is.EqualTo(4));
             Assert.That(director.Board.GetComponentsInChildren<GroundOverlay>().Count(x=>x.name=="Contact shadow"),Is.EqualTo(b.Units.Count));
             Assert.That(sprite.sharedMaterial.shader.isSupported,Is.True);
             team.Complete(ally);b.Select(team.Preview(b.Units).First());director.SetState(new CommandState(director));

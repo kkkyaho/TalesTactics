@@ -20,7 +20,7 @@ namespace TalesTactics.PlayModeTests
         {
             Click("전투 시작");yield return null;var u=director.Session.Active;u.CurrentMP=0;director.SkillCommand();yield return null;
             Click("기술 · 사용 가능");yield return null;
-            var buttons=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>();var row=buttons.FirstOrDefault(b=>b.name.Contains(" · MP")&&b.GetComponentInChildren<TMPro.TMP_Text>().text.StartsWith("◇"));
+            var buttons=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>();var row=buttons.FirstOrDefault(b=>b.name.Contains(" · MP")&&b.GetComponentsInChildren<TacticalIcon>().Any(icon=>icon.Kind=="locked"));
             Assert.That(row,Is.Not.Null);Click(row.name);yield return null;
             Assert.That(director.Hud.UnitDetailsOpen,Is.True);Assert.That(director.Hud.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains("부족")||t.text.Contains("조건")||t.text.Contains("레벨")),Is.True);Assert.That(u.Acted,Is.False);
         }

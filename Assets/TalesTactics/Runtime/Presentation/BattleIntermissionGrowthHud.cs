@@ -49,13 +49,14 @@ namespace TalesTactics
             FormationButton(promotion,"기술 숙련 안내","기술 숙련 안내",new Vector2(.50f,0),new Vector2(.975f,.065f),()=>ShowMastery(c));
             FormationText(commands,"전술 특성",new Vector2(.025f,.92f),new Vector2(.60f,1),25).color=formationGold;
             FormationText(commands,"한 번에 하나 적용",new Vector2(.60f,.92f),new Vector2(.98f,1),16);
-            string[] icons={"wait","move","guard","skill","heal"};
+            string[] icons={"balance","swift","protector","focus","heal"};
             foreach(TacticalTrait value in Enum.GetValues(typeof(TacticalTrait)))
             {
                 var option=value;float top=.91f-(int)value*.158f;
                 var card=FormationButton(commands,"특성 선택: "+TacticalDevelopment.TraitName(value),"",new Vector2(.025f,top-.15f),new Vector2(.975f,top),()=>RenderIntermissionGrowth(c,null,option));IntermissionSelection(card,trait==value);
                 FormationIcon(card,icons[(int)value],new Vector2(.03f,.23f),new Vector2(.17f,.77f),trait==value?formationTeal:formationGold);
-                FormationText(card,(trait==value?"● ":"")+TacticalDevelopment.TraitName(value)+(progress.Trait==value?" · 적용 중":""),new Vector2(.20f,.62f),new Vector2(.98f,.99f),20).color=trait==value?formationTeal:formationGold;
+                if(trait==value)IconSelectionCorners.Add(card);
+                FormationText(card,TacticalDevelopment.TraitName(value)+(progress.Trait==value?" · 적용 중":""),new Vector2(.20f,.62f),new Vector2(.98f,.99f),20).color=trait==value?formationTeal:formationGold;
                 string effect=value==TacticalTrait.Protector?"방어 중 인접 아군 피해 -30%\n자기 턴마다 1회 · 이동 -1":TacticalDevelopment.TraitDescription(value).Replace("MOV","이동").Replace("DEF","방어").Replace("STR","공격");
                 FormationText(card,effect,new Vector2(.20f,.02f),new Vector2(.98f,.62f),16);
             }

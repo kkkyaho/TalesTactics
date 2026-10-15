@@ -104,7 +104,7 @@ namespace TalesTactics
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
                 colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
                 var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
-                FormationIcon(child,new[]{"move","attack","skill","guard","wait","move","wait"}[i],new Vector2(.035f,.18f),new Vector2(.16f,.82f),formationGold);
+                FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo","endturn"}[i],new Vector2(.035f,.18f),new Vector2(.16f,.82f),formationGold);
                 Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(36,0),new Vector2(-8,0));
             }
         }

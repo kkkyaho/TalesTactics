@@ -5,7 +5,7 @@ namespace TalesTactics
     public sealed partial class BoardView
     {
         static readonly Color PathColor=new Color(.36f,.88f,.86f);
-        LineRenderer pathArrow;
+        SpriteRenderer pathArrow;
         SpriteRenderer destinationGhost;
         readonly List<LineRenderer> movementEdges=new List<LineRenderer>();
         Vector2Int? previewDestination;
@@ -49,11 +49,10 @@ namespace TalesTactics
             if(!valid)return;
             line.startColor=line.endColor=tint;SetColor(line,tint);
             for(int i=0;i<path.Count;i++)line.SetPosition(i,battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.045f);
-            if(pathArrow==null)pathArrow=ThinLine("Path arrowhead",root,tint,.035f);
-            pathArrow.enabled=true;pathArrow.positionCount=3;SetColor(pathArrow,tint);pathArrow.startColor=pathArrow.endColor=tint;
+            if(pathArrow==null){var g=new GameObject("Path arrowhead");g.transform.SetParent(root,false);pathArrow=g.AddComponent<SpriteRenderer>();pathArrow.sprite=IllustratedIcons.Sprite("compact-direction");pathArrow.sharedMaterial=SpriteMaterial;pathArrow.sortingOrder=6;}
+            pathArrow.enabled=true;pathArrow.color=Color.white;
             var end=line.GetPosition(path.Count-1);var direction=(end-line.GetPosition(path.Count-2)).normalized;
-            var side=Vector3.Cross(Vector3.up,direction)*.12f;
-            pathArrow.SetPositions(new[]{end-direction*.18f+side,end,end-direction*.18f-side});
+            pathArrow.transform.SetPositionAndRotation(end+Vector3.up*.01f,Quaternion.LookRotation(Vector3.up,direction));pathArrow.transform.localScale=Vector3.one*.32f;
             if(destinationGhost==null)
             {var g=new GameObject("Destination ghost");g.transform.SetParent(root,false);destinationGhost=g.AddComponent<SpriteRenderer>();destinationGhost.sharedMaterial=SpriteMaterial;destinationGhost.sortingOrder=5;}
             destinationGhost.enabled=true;destinationGhost.color=new Color(.55f,1,1,.65f);

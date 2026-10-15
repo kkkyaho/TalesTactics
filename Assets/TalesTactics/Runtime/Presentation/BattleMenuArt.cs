@@ -20,7 +20,7 @@ namespace TalesTactics
         {
             var button=FormationButton(parent,name,"",Vector2.one,Vector2.one,close);
             button.pivot=Vector2.one;button.sizeDelta=new Vector2(44,44);button.anchoredPosition=new Vector2(-22,-22);
-            MenuArt(button,5,new Vector2(.15f,.15f),new Vector2(.85f,.85f));return button;
+            FormationIcon(button,"close",new Vector2(.15f,.15f),new Vector2(.85f,.85f),Color.white);return button;
         }
     }
 }

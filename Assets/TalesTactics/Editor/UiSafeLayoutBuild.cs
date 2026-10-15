@@ -6,6 +6,7 @@ namespace TalesTactics.Editor
 {
     public static class UiSafeLayoutBuild
     {
+        public static void Illustrated(){Build(true,"IllustratedIcons");Build(false,"IllustratedIcons");}
         public static void All(){Build(true);Build(false);}
         public static void ClassIcons(){Build(true,"ClassIcons");Build(false,"ClassIcons");}
         [InitializeOnLoadMethod] static void RegisterReview()=>EditorApplication.playModeStateChanged+=ReviewState;

@@ -1,45 +1,26 @@
 using UnityEngine;
 namespace TalesTactics
 {
-    // Resolution-independent HUD pictograms; no dependency on font symbol coverage.
     [RequireComponent(typeof(CanvasRenderer))]
-    public sealed class TacticalIcon : UnityEngine.UI.MaskableGraphic
+    public sealed class TacticalIcon:UnityEngine.UI.MaskableGraphic
     {
-        public string Kind;
+        string kind;public int Corner=-1;
+        public string Kind {get=>kind;set{if(kind==value)return;kind=value;SetAllDirty();}}
+        public IllustratedIcons.Region Region=>IllustratedIcons.Get(kind,Mathf.Min(rectTransform.rect.width,rectTransform.rect.height)<=25);
+        public override Texture mainTexture=>Region?.Texture;
         protected override void OnPopulateMesh(UnityEngine.UI.VertexHelper mesh)
         {
-            mesh.Clear();
-            switch(Kind)
-            {
-                case "crest":
-                    Line(mesh,.5f,.02f,.98f,.5f,.025f);Line(mesh,.98f,.5f,.5f,.98f,.025f);Line(mesh,.5f,.98f,.02f,.5f,.025f);Line(mesh,.02f,.5f,.5f,.02f,.025f);
-                    Poly(mesh,new[]{new Vector2(.5f,.10f),new Vector2(.42f,.39f),new Vector2(.13f,.5f),new Vector2(.42f,.60f),new Vector2(.5f,.9f),new Vector2(.58f,.60f),new Vector2(.87f,.5f),new Vector2(.58f,.39f)});break;
-                case "check": Line(mesh,.17f,.5f,.4f,.25f,.12f);Line(mesh,.4f,.25f,.86f,.8f,.12f);break;
-                case "cone": Poly(mesh,new[]{new Vector2(.5f,.12f),new Vector2(.12f,.85f),new Vector2(.88f,.85f)});break;
-                case "single": Line(mesh,.25f,.25f,.75f,.25f);Line(mesh,.75f,.25f,.75f,.75f);Line(mesh,.75f,.75f,.25f,.75f);Line(mesh,.25f,.75f,.25f,.25f);break;
-                case "line": for(int n=0;n<3;n++){float y=.15f+n*.27f;Poly(mesh,new[]{new Vector2(.36f,y),new Vector2(.64f,y),new Vector2(.64f,y+.2f),new Vector2(.36f,y+.2f)});}break;
-                case "area": for(int x=0;x<3;x++)for(int y=0;y<3;y++)if(x==1||y==1){float a=.12f+x*.27f,b=.12f+y*.27f;Poly(mesh,new[]{new Vector2(a,b),new Vector2(a+.22f,b),new Vector2(a+.22f,b+.22f),new Vector2(a,b+.22f)});}break;
-                case "chevron": Line(mesh,.3f,.2f,.65f,.5f,.095f);Line(mesh,.65f,.5f,.3f,.8f,.095f);break;
-                case "move": Line(mesh,.25f,.3f,.65f,.3f);Line(mesh,.65f,.3f,.65f,.65f);Line(mesh,.45f,.5f,.65f,.7f);Line(mesh,.65f,.7f,.85f,.5f);break;
-                case "accessory": Line(mesh,.3f,.7f,.4f,.9f,.04f);Line(mesh,.4f,.9f,.6f,.9f,.04f);Line(mesh,.6f,.9f,.7f,.7f,.04f);Poly(mesh,new[]{new Vector2(.5f,.12f),new Vector2(.2f,.5f),new Vector2(.33f,.7f),new Vector2(.67f,.7f),new Vector2(.8f,.5f)});break;
-                case "guard": Poly(mesh,new[]{new Vector2(.2f,.8f),new Vector2(.8f,.8f),new Vector2(.75f,.35f),new Vector2(.5f,.15f),new Vector2(.25f,.35f)});break;
-                case "wait": Line(mesh,.25f,.85f,.75f,.85f);Line(mesh,.25f,.15f,.75f,.15f);Line(mesh,.3f,.8f,.7f,.2f);Line(mesh,.7f,.8f,.3f,.2f);break;
-                case "heal": Line(mesh,.5f,.15f,.5f,.85f,.18f);Line(mesh,.15f,.5f,.85f,.5f,.18f);break;
-                case "martial": Poly(mesh,new[]{new Vector2(.25f,.25f),new Vector2(.18f,.52f),new Vector2(.27f,.78f),new Vector2(.72f,.78f),new Vector2(.82f,.62f),new Vector2(.73f,.25f)});Line(mesh,.3f,.15f,.7f,.15f,.1f);break;
-                case "bow": Line(mesh,.35f,.15f,.6f,.35f);Line(mesh,.6f,.35f,.65f,.5f);Line(mesh,.65f,.5f,.6f,.65f);Line(mesh,.6f,.65f,.35f,.85f);Line(mesh,.35f,.15f,.35f,.85f,.035f);Line(mesh,.15f,.5f,.9f,.5f);Line(mesh,.7f,.65f,.9f,.5f);Line(mesh,.7f,.35f,.9f,.5f);break;
-                case "song": Line(mesh,.4f,.25f,.4f,.8f);Line(mesh,.4f,.8f,.8f,.9f);Line(mesh,.8f,.9f,.8f,.35f);Poly(mesh,new[]{new Vector2(.15f,.2f),new Vector2(.4f,.2f),new Vector2(.4f,.4f),new Vector2(.15f,.35f)});Poly(mesh,new[]{new Vector2(.55f,.25f),new Vector2(.8f,.25f),new Vector2(.8f,.45f),new Vector2(.55f,.4f)});break;
-                case "rifle": Line(mesh,.2f,.65f,.9f,.65f,.16f);Line(mesh,.35f,.65f,.25f,.2f,.17f);Line(mesh,.55f,.6f,.55f,.4f);break;
-                case "spear": Line(mesh,.2f,.15f,.7f,.75f);Poly(mesh,new[]{new Vector2(.5f,.72f),new Vector2(.9f,.95f),new Vector2(.75f,.55f)});break;
-                case "skill": Poly(mesh,new[]{new Vector2(.5f,.95f),new Vector2(.3f,.6f),new Vector2(.55f,.55f),new Vector2(.35f,.05f),new Vector2(.8f,.6f),new Vector2(.55f,.65f)});break;
-                case "undo": Line(mesh,.2f,.65f,.7f,.65f);Line(mesh,.7f,.65f,.7f,.25f);Line(mesh,.7f,.25f,.45f,.25f);Line(mesh,.2f,.65f,.4f,.85f);Line(mesh,.2f,.65f,.4f,.45f);break;
-                case "exit": Line(mesh,.2f,.2f,.2f,.8f);Line(mesh,.2f,.8f,.5f,.8f);Line(mesh,.2f,.2f,.5f,.2f);Line(mesh,.4f,.5f,.85f,.5f);Line(mesh,.65f,.7f,.85f,.5f);Line(mesh,.65f,.3f,.85f,.5f);break;
-                default: Poly(mesh,new[]{new Vector2(.35f,.35f),new Vector2(.72f,.86f),new Vector2(.86f,.9f),new Vector2(.85f,.72f),new Vector2(.45f,.3f)});Line(mesh,.2f,.45f,.55f,.2f);Line(mesh,.35f,.32f,.2f,.12f);break;
-            }
+            mesh.Clear();var region=Region;if(region==null)return;
+            var r=GetPixelAdjustedRect();float ratio=region.width/(float)region.height;
+            if(r.width/r.height>ratio){float width=r.height*ratio;r.x+=(r.width-width)*.5f;r.width=width;}else{float height=r.width/ratio;r.y+=(r.height-height)*.5f;r.height=height;}
+            var uv=IllustratedIcons.PartUV(region,Corner);
+            // Legacy monochrome call sites retain disabled contrast without tinting painted art gold.
+            float brightness=Mathf.Max(color.r,color.g,color.b)<.6f?.46f:1;
+            var tint=new Color(brightness,brightness,brightness,color.a);
+            mesh.AddVert(new Vector3(r.xMin,r.yMin),tint,new Vector2(uv.xMin,uv.yMin));mesh.AddVert(new Vector3(r.xMin,r.yMax),tint,new Vector2(uv.xMin,uv.yMax));
+            mesh.AddVert(new Vector3(r.xMax,r.yMax),tint,new Vector2(uv.xMax,uv.yMax));mesh.AddVert(new Vector3(r.xMax,r.yMin),tint,new Vector2(uv.xMax,uv.yMin));
+            mesh.AddTriangle(0,1,2);mesh.AddTriangle(0,2,3);
         }
-        Vector2 Point(Vector2 p){var r=GetPixelAdjustedRect();return new Vector2(r.x+p.x*r.width,r.y+p.y*r.height);}
-        void Poly(UnityEngine.UI.VertexHelper mesh,Vector2[] points)
-        {int start=mesh.currentVertCount;foreach(var p in points)mesh.AddVert(Point(p),color,Vector2.zero);for(int i=1;i<points.Length-1;i++)mesh.AddTriangle(start,start+i,start+i+1);}
-        void Line(UnityEngine.UI.VertexHelper mesh,float x,float y,float endX,float endY,float width=.075f)
-        {var a=new Vector2(x,y);var b=new Vector2(endX,endY);var d=(b-a).normalized;var n=new Vector2(-d.y,d.x)*width*.5f;Poly(mesh,new[]{a-n,a+n,b+n,b-n});}
+        protected override void OnRectTransformDimensionsChange(){base.OnRectTransformDimensionsChange();SetMaterialDirty();}
     }
 }

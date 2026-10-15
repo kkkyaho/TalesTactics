@@ -34,7 +34,7 @@ namespace TalesTactics
             {
                 switch(TrialOwner)
                 {
-                    case "cless":return "오리진 계약 · "+((State.TrialProgress&1)!=0?"공격 ✓":"공격 —")+" / "+((State.TrialProgress&2)!=0?"치유 ✓":"치유 —")+" / "+((State.TrialProgress&4)!=0?"방어 ✓":"방어 —")+" · 서쪽→동쪽→북쪽 신호 · 남쪽 계약 문양 (6,4)";
+                    case "cless":return "오리진 계약 · "+((State.TrialProgress&1)!=0?"공격 완료":"공격 미완료")+" / "+((State.TrialProgress&2)!=0?"치유 완료":"치유 미완료")+" / "+((State.TrialProgress&4)!=0?"방어 완료":"방어 미완료")+" · 서쪽→동쪽→북쪽 신호 · 남쪽 계약 문양 (6,4)";
                     case "mint":return "민트의 치료소 · 유효 치유 "+State.TrialActions+"/3 · 구조 신호 3개 연결 후 귀환 (격파 불필요)";
                     case "farah":return "파라의 원소 시련 · 세 신호를 순회하고 맥스웰 격파";
                     case "tear":return "티아의 선율 · 홀리 송 사용 · 신호 3개 연결 후 수호자 저지";

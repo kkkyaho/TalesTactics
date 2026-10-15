@@ -7,7 +7,7 @@ namespace TalesTactics
     // An independent, non-interactive focus cue also works with pointer-driven gamepads.
     public sealed class HudButtonAccent:MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,ISelectHandler,IDeselectHandler
     {
-        UnityEngine.UI.Image cue;
+        IconSelectionCorners cue;
         UnityEngine.UI.Button button;
         OrnateButtonGraphic trim;
         TMPro.TMP_Text label;
@@ -27,16 +27,14 @@ namespace TalesTactics
             var colors=button.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.2f,1.3f,1.35f);colors.selectedColor=new Color(1.15f,1.25f,1.3f);colors.pressedColor=new Color(.75f,.9f,.93f);colors.disabledColor=new Color(.45f,.48f,.54f);colors.fadeDuration=.08f;button.colors=colors;
             if(cue==null)
             {
-                var g=new GameObject("FocusAccent",typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(transform,false);
-                var r=(RectTransform)g.transform;r.anchorMin=Vector2.zero;r.anchorMax=new Vector2(1,0);r.offsetMin=new Vector2(6,1);r.offsetMax=new Vector2(-6,3);
-                cue=g.GetComponent<UnityEngine.UI.Image>();cue.raycastTarget=false;
+                cue=IconSelectionCorners.Add(transform);
             }
             Refresh();
         }
         void Refresh()
         {
             if(cue==null)return;bool enabled=button!=null&&button.IsInteractable();bool active=enabled&&(hover||focus||selected||Role==HudRole.Primary);
-            cue.enabled=enabled&&(focus||selected);cue.color=new Color(.64f,.84f,.83f);
+            cue.gameObject.SetActive(enabled&&(focus||selected));
             if(trim!=null)trim.State(active,!enabled);
             if(label!=null)label.color=!enabled?new Color(.5f,.55f,.6f):new Color(.92f,.95f,.98f);
             if(iconChildren!=transform.childCount){icons=GetComponentsInChildren<TacticalIcon>();iconChildren=transform.childCount;}
