@@ -15,8 +15,13 @@ namespace TalesTactics.Editor
         [Serializable] sealed class Envelope {public Payload data;}
         public static void Preview6()
         {
-            const string output="Builds/WindowsPreview6/TalesTactics.exe",evidence="Docs/Distribution/Preview6";
-            CombatPresentationBuild.Configure();Directory.CreateDirectory(Path.GetDirectoryName(output));Directory.CreateDirectory(evidence);
+            CombatPresentationBuild.Configure();Build("WindowsPreview6","Preview6");
+        }
+        public static void Preview7()=>Build("WindowsPreview7","Preview7");
+        static void Build(string folder,string version)
+        {
+            string output="Builds/"+folder+"/TalesTactics.exe",evidence="Docs/Distribution/"+version;
+            Directory.CreateDirectory(Path.GetDirectoryName(output));Directory.CreateDirectory(evidence);
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/TalesTactics/Scenes/TestBattle.unity"},locationPathName=output,target=BuildTarget.StandaloneWindows64,options=BuildOptions.None,extraScriptingDefines=Array.Empty<string>()});
             var s=report.summary;
             var record=new ReportRecord{result=s.result.ToString(),platform=s.platform.ToString(),outputPath=Path.GetFullPath(s.outputPath),totalErrors=(int)s.totalErrors,totalWarnings=(int)s.totalWarnings,durationSeconds=s.totalTime.TotalSeconds,
