@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-15",
+  "sourceCommit": "3834a36f91de24c9164d1efcba5a6e45b6e7e177",
+  "sourceReviewId": "262bea8d75804470888d2ab63142ca62",
+  "scope": "Design proposal and comparison HTML only; no game runtime changes, Unity tests or new game build.",
+  "images": [
+    {
+      "file": "concept-battle.png",
+      "bytes": 2917171,
+      "width": 1672,
+      "height": 941,
+      "sha256": "b75f8e7afbd079107dfeca8ea699a9a752b9ff4cc9e89acd13d4116b616e1797",
+      "kind": "generated-concept"
+    },
+    {
+      "file": "concept-equipment.png",
+      "bytes": 1672517,
+      "width": 1672,
+      "height": 941,
+      "sha256": "2c6c788bdc93b0e786b8de100edf4c65271b91d7a64e4a306ba3f1700cb67743",
+      "kind": "generated-concept"
+    },
+    {
+      "file": "concept-formation.png",
+      "bytes": 1915946,
+      "width": 1672,
+      "height": 941,
+      "sha256": "ab3718b4981ae2a1e8e294d004f5479ac3f20e861717f9603b20b0093a7f5923",
+      "kind": "generated-concept"
+    },
+    {
+      "file": "current-battle.png",
+      "bytes": 4129871,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "486b7bf143b7c77f8705790f01b6e226db9672aaa2a77bebd4d7910af4f6ca63",
+      "kind": "actual-capture",
+      "source": "battle-done-1920.png",
+      "sourceBytesMatch": true
+    },
+    {
+      "file": "current-equipment.png",
+      "bytes": 1928601,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "455cf5df3ba14bf137b15732eeeee71db07e78ac23b2d92b762f65bd75071623",
+      "kind": "actual-capture",
+      "source": "장비 관리-1920.png",
+      "sourceBytesMatch": true
+    },
+    {
+      "file": "current-formation.png",
+      "bytes": 2213310,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "032c8ad9b1117e89006306245ba1549f5440fcbe4ca86cc5da0c4c8ab4bd84c0",
+      "kind": "actual-capture",
+      "source": "formation-six-1920.png",
+      "sourceBytesMatch": true
+    }
+  ],
+  "checks": {
+    "imageReferences": 6,
+    "explanationCards": 9,
+    "allCurrentCapturesByteIdentical": true,
+    "allImagesLoadedInBrowser": true,
+    "currentAndConceptModeVisibility": true,
+    "originalSizeDialog": true,
+    "escapeCloseAndFocusRestore": true,
+    "closeButtonAndFocusRestore": true,
+    "browserWarningsAndErrors": 0,
+    "responsivePage": [
+      {
+        "viewport": [
+          2284,
+          1272
+        ],
+        "documentWidth": 2269,
+        "mode": "two-columns"
+      },
+      {
+        "viewport": [
+          1024,
+          768
+        ],
+        "documentWidth": 1009,
+        "comparisonColumns": "961px",
+        "mode": "stacked"
+      }
+    ]
+  },
+  "limits": [
+    "Generated concept renders are not Unity screenshots or map-coordinate-accurate evidence.",
+    "The equipment concept shows a selected bronze sword draft; current screenshot precedes candidate selection.",
+    "1024 game layout is a future specification; only the HTML comparison page was tested at that viewport.",
+    "Camera positions, sprite fidelity, SP/details access and full gameplay behavior require implementation validation."
+  ]
+}
