@@ -65,18 +65,21 @@ namespace TalesTactics.PlayModeTests
                 {
                     camera.transform.rotation=Quaternion.Euler(45,rotation*90,0);
                     var facing=CharacterMotion.ViewFacing(owner.Facing,camera.transform.rotation);
-                    foreach(var skill in new[]{data.Skills[0],data.UltimateSkill})
+                    foreach(var skill in new[]{data.Skills[0],data.UltimateSkill}.Concat(data.Skills.Where(s=>s.Id=="jade.3"||s.Id=="jade.6")).Distinct())
                     {
-                        var clip=skill.IsUltimate?data.Poses.Ultimate:data.Poses.Skill;
+                        // The trio has deliberate weapon/casting poses; other skills retain
+                        // their authored skill/ultimate phases in every camera direction.
+                        bool casting=skill.Id=="jade.3"||skill.Id=="jade.6";
+                        var clip=skill.IsUltimate?data.Poses.Ultimate:skill.Id=="cless.0"?data.Poses.AttackMotion:data.Poses.Skill;
                         float previousScale=Time.timeScale;
                         try
                         {
                             // Inspect phase starts without a slow editor frame advancing past them.
                             Time.timeScale=0;
                             motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[0].Get(facing)),data.Id+facing);
+                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):clip.Frames[0].Get(facing)),skill.Id+facing+" preparation");
                             motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(clip.Frames[clip.ReleaseFrame].Get(facing)),data.Id+facing);
+                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):clip.Frames[clip.ReleaseFrame].Get(facing)),skill.Id+facing+" release");
                             Time.timeScale=previousScale;
                             yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
                             Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));

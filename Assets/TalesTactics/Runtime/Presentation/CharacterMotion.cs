@@ -13,7 +13,7 @@ namespace TalesTactics
         Facing facing;
         bool presenting, released;
         float windup=0.18f,recovery=0.3f,releasedAt;
-        bool specialUltimate;
+        bool specialUltimate;SkillSignature signature;
         CombatMotionProfile profile;
         float hold, damageStrength=1;
         Vector3 damageDirection;
@@ -26,7 +26,7 @@ namespace TalesTactics
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)
         {
-            presenting=false;timingSpin=false;
+            presenting=false;timingSpin=false;signature=SkillSignature.None;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
             facing=unit.Facing;
@@ -34,11 +34,18 @@ namespace TalesTactics
         public void BeginSkill(SkillData skill,float prepare,float recover)
         {
             Set(skill.Animation);started=Time.time;presenting=true;
-            specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;
-            profile=CombatMotionProfile.For(CombatEffect.Resolve(unit.Data,skill),specialUltimate);
+            specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;signature=SkillSignatures.Resolve(skill);
+            profile=SkillSignatures.IsSpell(signature)?new CombatMotionProfile(.015f,.005f,.025f,0,0):
+                signature==SkillSignature.DemonFang?new CombatMotionProfile(.3f,.12f,0,17,.065f):
+                CombatMotionProfile.For(CombatEffect.Resolve(unit.Data,skill),specialUltimate);
             hold=Mathf.Min(profile.Hold,recovery*.18f);
         }
-        public void ReleaseSkill(){released=true;releasedAt=Time.time;}
+        public void ReleaseSkill(float travelDuration=0)
+        {
+            // Keep the signature pose until its projectile and contact sequence have both completed.
+            if(!released&&signature!=SkillSignature.None&&!float.IsNaN(travelDuration)&&!float.IsInfinity(travelDuration))recovery+=Mathf.Max(0,travelDuration);
+            released=true;releasedAt=Time.time;
+        }
         public void Impact(Vector3 direction,bool heavy)
         {damageDirection=direction;damageStrength=heavy?1.4f:1;}
         public void Spin(float progress){timingSpin=true;spinProgress=Mathf.Clamp01(progress);}
@@ -72,9 +79,11 @@ namespace TalesTactics
             if(presenting)
             {
                 var clip=specialUltimate?unit.Data.Poses?.Ultimate:
-                    action==AnimationKind.Attack?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
+                    action==AnimationKind.Attack||signature==SkillSignature.DemonFang?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
                 float phaseTime=released?Mathf.Max(0,Time.time-releasedAt-hold):t;
                 frame=clip?.SamplePhase(view,phaseTime,released?Mathf.Max(.01f,recovery-hold):windup,released);
+                // A casting pose avoids the shared skill clip's spear thrust for Jade's two spells.
+                if(SkillSignatures.IsSpell(signature))frame=unit.Data.Poses?.Cast?.Get(view)??frame;
                 if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
             }
             var pose=unit.Data.Poses?.Get(action,view);

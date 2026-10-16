@@ -89,13 +89,14 @@ namespace TalesTactics
             }
             GroundDust(t);
         }
-        public void Travel(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool isUltimate,bool low,float duration,SkillVisualPattern visualPattern)
+        public void Travel(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool isUltimate,bool low,float duration,SkillVisualPattern visualPattern,SkillSignature signature=SkillSignature.None)
         {
-            Play(camera,origin,target,kind,visual,CombatFeedback.Strike,scale,isUltimate,low,visualPattern);
+            Play(camera,origin,target,kind,visual,CombatFeedback.Strike,scale,isUltimate,low,visualPattern,false,signature);
             travelling=true;travelDuration=Mathf.Max(.01f,duration);Draw();
         }
         void DrawTravel()
         {
+            if(signature!=SkillSignature.None){DrawSignatureTravel(Mathf.Clamp01(age/travelDuration));return;}
             float p=Mathf.Clamp01(age/travelDuration),axis=Mathf.Atan2(Vector3.Dot(-from,view.transform.up),Vector3.Dot(-from,view.transform.right));
             float opacity=reduced?.7f:1;
             if(pattern==SkillVisualPattern.AstralRain||pattern==SkillVisualPattern.Rain)

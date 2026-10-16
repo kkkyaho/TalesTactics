@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-16T15:22:53.6956432Z",
+  "sourceBranch": "develop",
+  "sourceHead": "b8e312ba3781c7bae81cc51434cbf12f669f6861",
+  "method": "Mono.Cecil direct inspection of final player runtime assembly top-level and nested types",
+  "cecilDLL": "C:\\dev\\TalesTactics\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "reviewType": "TalesTactics.OriginalSkillTrioReview",
+  "sourceGuard": "#if UNITY_EDITOR || TALESTACTICS_REVIEW",
+  "expectedRuntimeTypes": [
+    "TalesTactics.SkillSignature",
+    "TalesTactics.SkillSignatures",
+    "TalesTactics.ImpactParticles"
+  ],
+  "expectedSignatureEnumValues": [
+    "DemonFang",
+    "MeteorStorm",
+    "ThunderBlade"
+  ],
+  "existingScript": "Tools/CheckReviewBuild.ps1",
+  "existingScriptLimitation": "The legacy development check expects DEBUG-gated types; this review player uses TALESTACTICS_REVIEW. The requested review type and all nested types are inspected directly.",
+  "passed": true,
+  "builds": [
+    {
+      "name": "OriginalSkillTrioWindows",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\OriginalSkillTrioWindows",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\OriginalSkillTrioWindows\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "C6F933515642BC780876CE4EA386B1DDF630EC7354A67D1CC8D89CA4BA225C6F",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-16T15:21:13.7066267Z",
+      "expectedReviewPresent": false,
+      "reviewPresent": false,
+      "reviewTypeCount": 0,
+      "reviewTypes": [],
+      "signatureRuntimeTypes": [
+        "TalesTactics.SkillSignature",
+        "TalesTactics.SkillSignatures",
+        "TalesTactics.ImpactParticles"
+      ],
+      "signatureEnumValues": [
+        "None",
+        "DemonFang",
+        "MeteorStorm",
+        "ThunderBlade"
+      ],
+      "legacyReviewTypes": [],
+      "passed": true
+    },
+    {
+      "name": "OriginalSkillTrioReview",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\OriginalSkillTrioReview",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\OriginalSkillTrioReview\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "E909A18241C514E2584F1E88188E1B6239896562B8E40BF1520A816F8896FACC",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-16T15:22:07.1075951Z",
+      "expectedReviewPresent": true,
+      "reviewPresent": true,
+      "reviewTypeCount": 12,
+      "reviewTypes": [
+        "TalesTactics.OriginalSkillTrioReview",
+        "TalesTactics.OriginalSkillTrioReview/Row",
+        "TalesTactics.OriginalSkillTrioReview/Report",
+        "TalesTactics.OriginalSkillTrioReview/<>c",
+        "TalesTactics.OriginalSkillTrioReview/<>c__DisplayClass22_0",
+        "TalesTactics.OriginalSkillTrioReview/<>c__DisplayClass23_0",
+        "TalesTactics.OriginalSkillTrioReview/<>c__DisplayClass27_0",
+        "TalesTactics.OriginalSkillTrioReview/<>c__DisplayClass29_0",
+        "TalesTactics.OriginalSkillTrioReview/<Guard>d__21",
+        "TalesTactics.OriginalSkillTrioReview/<Run>d__22",
+        "TalesTactics.OriginalSkillTrioReview/<Sequence>d__23",
+        "TalesTactics.OriginalSkillTrioReview/<Start>d__20"
+      ],
+      "signatureRuntimeTypes": [
+        "TalesTactics.SkillSignature",
+        "TalesTactics.SkillSignatures",
+        "TalesTactics.ImpactParticles"
+      ],
+      "signatureEnumValues": [
+        "None",
+        "DemonFang",
+        "MeteorStorm",
+        "ThunderBlade"
+      ],
+      "legacyReviewTypes": [
+        "TalesTactics.ManualPlayerReview"
+      ],
+      "passed": true
+    }
+  ]
+}

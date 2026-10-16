@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 원작 참고 3기술 연출
+
+`SkillSignatures.Resolve`는 `cless.0`, `jade.6`, `jade.3`만 선택한다. `SkillVfxTiming`과 `BoardActionPresentation`이 준비·이동·접촉 후 회복을 연결하고 기존 해석기가 이동 완료에 한 번 판정한다. `CharacterMotion`은 마신검의 AttackMotion과 두 주문의 방향별 Cast 포즈를 사용한다. Content의 비용/위력/범위와 저장 형식은 변경하지 않는다.
+
+`ImpactSignatures`는 기존 풀과 4개 메시를 재사용하고 전용 2×2 아틀라스용 공유 재질을 추가한다. 일반 기술로 재사용할 때 원래 원화 재질로 돌아간다. 운석 4회(축소 3회)와 번개 후속 방전은 시각 전용이다. 각 지면 효과는 카메라 위쪽 대신 전장 지면 좌표를 기준으로 잡는다. 음향은 기존 BattleAudio 제한 안에서 3계열×2단계로 합성한다. `OriginalSkillTrioReview`는 Editor/TALESTACTICS_REVIEW 전용이며 복제 Resolver·격리 저장·실제 6인 실행을 검사한다. [상세](OriginalSkillTrio/README.md).
+
 ## 편성 스크롤·정비 비교·전장 정보 통합
 
 `FormationRosterScroll`은 기존 Canvas 안에 ScrollRect / Mask Viewport / GridLayoutGroup Content를 만든다. 카드 높이를 확보하고 합류 동료 전체를 3열로 배치한다. 클릭 시 초점을 주는 동작과 출전 변경은 분리하며, 픽셀 오프셋을 화면 재구성 뒤 복원한다. 패드 방향 탐색과 Tab 포커스는 `EnsureVisible`을 통해 선택 카드 전체를 드러낸다.

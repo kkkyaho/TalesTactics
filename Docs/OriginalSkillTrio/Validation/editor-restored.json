@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "UnityEngine.Application.runInBackground=false; return new { runInBackground=UnityEngine.Application.runInBackground, playing=UnityEditor.EditorApplication.isPlaying, sceneDirty=UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty, development=UnityEditor.EditorUserBuildSettings.development };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "runInBackground": false,
+        "playing": false,
+        "sceneDirty": false,
+        "development": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\TalesTacticsHelpGuide"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

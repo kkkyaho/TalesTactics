@@ -65,7 +65,7 @@ namespace TalesTactics
             if(root==null)return;
             var affected=new HashSet<UnitRuntime>(recipients??battle.Session.Resolver.Targets(caster,skill,aim));
             int cost=costs?battle.Session.Resolver.HPCost(caster,skill):0;
-            var style=CombatEffect.Resolve(caster.Data,skill);
+            var style=CombatEffect.Resolve(caster.Data,skill);var signature=SkillSignatures.Resolve(skill);
             bool shared=affected.Count(unit=>units.ContainsKey(unit)&&before.ContainsKey(unit))>1;
             var origin=(motions.TryGetValue(caster,out var sourceMotion)?sourceMotion.transform.position:units[caster].position)+BattleCamera.transform.up*.65f;
             // Knockback/revival may have changed cells during resolution.
@@ -76,12 +76,12 @@ namespace TalesTactics
                 bool strikes=skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.AffectCaster);
                 var feedback=strikes?CombatFeedback.Strike:skill.Effects.Any(e=>e.Kind==EffectKind.Revive)?CombatFeedback.Revive:
                     skill.Effects.Any(e=>e.Kind==EffectKind.Heal)?CombatFeedback.Heal:CombatFeedback.Support;
-                var center=battle.Session.Grid[aim].WorldPosition(battle.Catalog.Rules.TileHeight)+BattleCamera.transform.up*.65f;
+                var center=battle.Session.Grid[aim].WorldPosition(battle.Catalog.Rules.TileHeight)+(signature==SkillSignature.None?BattleCamera.transform.up*.65f:Vector3.up*.08f);
                 // A null recipient marks a visual-only centerpiece. It owns the common mesh and,
                 // for older signatures such as Time Stop/Cage, their one retained pattern layer.
                 var centerpiece=new GameObject("Area VFX centerpiece");centerpiece.transform.SetParent(root,false);
                 centerpiece.AddComponent<CombatEffect>().Initialize(SpriteMaterial,BattleCamera,style,feedback,null,
-                    origin,center,ElementColor(skill.Element),skill.IsUltimate,skill.Presentation,skill.Element,battle.Preferences.ReducedEffects);
+                    origin,center,ElementColor(skill.Element),skill.IsUltimate,skill.Presentation,skill.Element,battle.Preferences.ReducedEffects,false,signature);
             }
             foreach(var pair in before)
             {
@@ -96,7 +96,7 @@ namespace TalesTactics
                     feedback==CombatFeedback.Heal?new Color(0.35f,1,0.6f):ElementColor(skill.Element);
                 var effect=new GameObject("Combat VFX");effect.transform.SetParent(root,false);
                 effect.AddComponent<CombatEffect>().Initialize(SpriteMaterial,BattleCamera,style,feedback,unit,
-                    origin,units[unit].position+BattleCamera.transform.up*0.65f,color,skill.IsUltimate,skill.Presentation,skill.Element,battle.Preferences.ReducedEffects,shared&&affected.Contains(unit));
+                    origin,units[unit].position+(signature==SkillSignature.None||shared?BattleCamera.transform.up*.65f:Vector3.up*.08f),color,skill.IsUltimate,skill.Presentation,skill.Element,battle.Preferences.ReducedEffects,shared&&affected.Contains(unit),signature);
                 if(delta!=0)
                 {
                     // Self costs/drain must not interrupt the caster's attack or ultimate.

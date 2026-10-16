@@ -20,9 +20,9 @@ namespace TalesTactics
         float age,contactHold;bool authored,compact;
         public const float Lifetime=0.6f;
         public void Initialize(Material material,Camera camera,CombatVisualStyle style,CombatFeedback feedback,
-            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null,Element element=Element.None,bool reduced=false,bool compact=false)
+            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null,Element element=Element.None,bool reduced=false,bool compact=false,SkillSignature signature=SkillSignature.None)
         {
-            this.compact=compact;authored=ImpactParticles.HasAuthoredArt(presentation?.Pattern??SkillVisualPattern.Automatic,element,feedback);
+            this.compact=compact;authored=signature!=SkillSignature.None||ImpactParticles.HasAuthoredArt(presentation?.Pattern??SkillVisualPattern.Automatic,element,feedback);
             Style=style;Feedback=feedback;Recipient=recipient;Ultimate=ultimate;
             Pattern=presentation?.Pattern??SkillVisualPattern.Automatic;
             pulses=Mathf.Clamp(presentation?.Pulses??1,1,6);size=SafeSize(presentation?.Size??1);
@@ -30,7 +30,7 @@ namespace TalesTactics
             contactHold=feedback==CombatFeedback.Strike?CombatMotionProfile.For(style,ultimate).Hold:0;
             var parent=transform.parent!=null?transform.parent:transform;
             var pool=parent.GetComponent<ImpactPool>()??parent.gameObject.AddComponent<ImpactPool>();
-            pool.Play(camera,from,to,element,style,feedback,compact?.65f:size,ultimate&&!compact,reduced,Pattern,compact);
+            pool.Play(camera,from,to,element,style,feedback,compact?.65f:size,ultimate&&!compact,reduced,Pattern,compact,signature);
             if(authored||compact)return;
             for(int i=0;i<lines.Length;i++)
             {
