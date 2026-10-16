@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-16T13:40:53.7139812Z",
+  "sourceBranch": "develop",
+  "sourceHead": "13afcbe112fcf5575d6a7a4fd9c19acd0bb09048",
+  "method": "Mono.Cecil direct inspection of final player runtime assembly top-level and nested types",
+  "cecilDLL": "C:\\dev\\TalesTactics\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "reviewType": "TalesTactics.VfxUpgradeReview",
+  "sourceGuard": "#if UNITY_EDITOR || DEVELOPMENT_BUILD || TALESTACTICS_REVIEW",
+  "passed": true,
+  "existingScript": "Tools/CheckReviewBuild.ps1",
+  "existingScriptLimitation": "Its -Development mode expects CampaignPlayerReview and PersistencePlayerReview, which are gated by DEBUG. This review player uses TALESTACTICS_REVIEW without DEBUG, so that legacy expectation is inapplicable. The requested VfxUpgradeReview type and all its nested types are checked directly here.",
+  "builds": [
+    {
+      "name": "VfxUpgradeWindows",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\VfxUpgradeWindows",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\VfxUpgradeWindows\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "599609BBFE6A0E32D040206E310929EBDA21BBECA4B2F0C63AC0043C864216E0",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-16T13:07:32.7707749Z",
+      "expectedVfxReviewPresent": false,
+      "vfxReviewPresent": false,
+      "vfxReviewTypeCount": 0,
+      "vfxReviewTypes": [],
+      "passed": true,
+      "legacyReviewTypes": [],
+      "normalHashUnchangedFromPriorCheck": true,
+      "buildResult": "Succeeded\nErrors 0\nWarnings 4\nDuration 00:01:10.0498067"
+    },
+    {
+      "name": "VfxUpgradeReview",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\VfxUpgradeReview",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\VfxUpgradeReview\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "225CFDF0F2A3C52F6F2779D58950BEFD6EB36DF911DD43EF3E72BC77233ABFAD",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-16T13:38:23.5336534Z",
+      "expectedVfxReviewPresent": true,
+      "vfxReviewPresent": true,
+      "vfxReviewTypeCount": 12,
+      "vfxReviewTypes": [
+        "TalesTactics.VfxUpgradeReview",
+        "TalesTactics.VfxUpgradeReview/<>c",
+        "TalesTactics.VfxUpgradeReview/<>c__DisplayClass22_0",
+        "TalesTactics.VfxUpgradeReview/<>c__DisplayClass23_0",
+        "TalesTactics.VfxUpgradeReview/<>c__DisplayClass26_0",
+        "TalesTactics.VfxUpgradeReview/<>c__DisplayClass28_0",
+        "TalesTactics.VfxUpgradeReview/<Guard>d__21",
+        "TalesTactics.VfxUpgradeReview/<Run>d__22",
+        "TalesTactics.VfxUpgradeReview/<Sequence>d__23",
+        "TalesTactics.VfxUpgradeReview/<Start>d__20",
+        "TalesTactics.VfxUpgradeReview/Report",
+        "TalesTactics.VfxUpgradeReview/Row"
+      ],
+      "passed": true,
+      "legacyReviewTypes": [
+        "TalesTactics.ManualPlayerReview"
+      ],
+      "normalHashUnchangedFromPriorCheck": null,
+      "buildResult": "Succeeded\nErrors 0\nWarnings 3\nDuration 00:00:10.4367553"
+    }
+  ]
+}

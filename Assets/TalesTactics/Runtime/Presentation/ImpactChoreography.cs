@@ -7,9 +7,9 @@ namespace TalesTactics
         bool preparing;float prepareDuration;Transform casterAnchor;
         public bool Preparing=>preparing;
         public static bool HasWeaponSweep(CombatVisualStyle value)=>value==CombatVisualStyle.Sword||value==CombatVisualStyle.FlameSword||value==CombatVisualStyle.Claw;
-        public void Prepare(Camera camera,Transform caster,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool ultimate,bool low,float duration)
+        public void Prepare(Camera camera,Transform caster,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool ultimate,bool low,float duration,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic)
         {
-            Play(camera,caster.position+camera.transform.up*.65f,target,kind,visual,CombatFeedback.Strike,scale,ultimate,low);
+            Play(camera,caster.position+camera.transform.up*.65f,target,kind,visual,CombatFeedback.Strike,scale,ultimate,low,visualPattern);
             preparing=true;casterAnchor=caster;prepareDuration=Mathf.Max(.01f,duration);Draw();
         }
         void DrawPreparation()
@@ -27,7 +27,14 @@ namespace TalesTactics
                     float a=i*2.39996f+p*5,r=.7f*(1-p)+.16f;
                     Glow(from+Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),.035f,new Color(1,.58f,.13f,.85f));
                 }
-                if(p>.5f&&!HasWeaponSweep(style))FireStream(Mathf.InverseLerp(.5f,1,p),1,p*.6f);
+
+            }
+            if(element!=Element.Fire&&!HasWeaponSweep(style))
+            {
+                var color=element==Element.Ice?new Color(.35f,.8f,1):element==Element.Lightning?new Color(.6f,.63f,1):new Color(.35f,1,.69f);
+                int row=element==Element.Ice?1:element==Element.Lightning?2:3;
+                Art(from+Plane(0,-.12f),.45f+p*.25f,.65f+p*.15f,row,p*.18f,Alpha(color,Mathf.Sin(p*Mathf.PI)*.65f));
+                for(int i=0;i<(reduced?3:7);i++){float a=i*2.39996f+p*3,r=.65f*(1-p)+.12f;Glow(from+Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),.035f,Alpha(color,.5f));}
             }
             if(HasWeaponSweep(style)&&p>.58f)WeaponSweep(Mathf.Lerp(.05f,.68f,Mathf.InverseLerp(.58f,1,p)),Mathf.InverseLerp(.58f,.78f,p));
         }
@@ -37,8 +44,8 @@ namespace TalesTactics
             for(int i=0;i<=24;i++)
             {float a=i*Mathf.PI/12;solid.Vertex(center+Plane(Mathf.Cos(a)*radius,Mathf.Sin(a)*radius),Alpha(tint,0),Vector2.zero);if(i>0)solid.Triangle(n,n+i,n+i+1);}
         }
-        void Flame(Vector3 center,float width,float height,int frame,Color tint)
-        {Quad(atlas,center,Plane(width,0),Plane(0,height),tint,Mathf.Clamp(frame,0,11));}
+        void Flame(Vector3 center,float width,float height,float frame,Color tint)
+        {FrameQuad(atlas,center,Plane(width,0),Plane(0,height),tint,frame,0,11);}
         void FireStream(float head,float opacity,float time)
         {
             if(from.sqrMagnitude<.16f)return;
@@ -49,8 +56,8 @@ namespace TalesTactics
                 float p=(i+.5f)/count;if(p>head)continue;
                 var center=Vector3.Lerp(from,Vector3.zero,p)+view.transform.up*(Mathf.Sin(p*17-time*20)*.12f*size);
                 float width=(.32f+p*.32f)*size;
-                int frame=3+(i+(int)(time*18))%5;
-                Quad(atlas,center,side*width,axis*(.54f*size),new Color(1,.95f,.78f,opacity*(reduced?.55f:.8f)),frame);
+                float frame=3+Mathf.Repeat(i+time*18,5);
+                FrameQuad(atlas,center,side*width,axis*(.54f*size),new Color(1,.95f,.78f,opacity*(reduced?.5f:.72f)),frame,0,11);
                 if(i>0&&i%3==0)Ribbon(center-axis*.18f,center+axis*.18f,.045f,new Color(1,.94f,.6f,opacity*.3f));
             }
         }
@@ -66,21 +73,23 @@ namespace TalesTactics
             float strength=reduced?.66f:1;
             GroundGlow(1.35f,new Color(1,.32f,.025f,flameFade*.65f*strength));
             Glow(Plane(0,.15f),1.35f,new Color(1,.26f,.01f,(1-t)*.42f*strength));
-            if(!HasWeaponSweep(style)&&t<.32f)FireStream(1,1-t/.32f,t+.6f);
-            // Large, staggered plumes surround the recipient; different atlas phases prevent a stamped look.
-            int count=reduced?3:7;
+
+            // Back layer is occluded by characters; asymmetric front wisps keep faces visible.
+            int count=reduced?2:4;
             for(int i=0;i<count;i++)
             {
-                float phase=Mathf.Clamp01(t+(i%3)*.07f),spread=(i-(count-1)*.5f)*.22f;
-                float rise=Mathf.Sin(Mathf.Clamp01(t/.8f)*Mathf.PI)*.24f;
-                float h=(i%2==0?1.32f:1.08f)*(1+t*.18f);
-                Flame(Plane(spread,.30f+rise+(i%2)*.12f),.73f,h,Mathf.Min(11,2+(int)(phase*10)),new Color(1,1,1,flameFade*strength));
+                float phase=Mathf.Clamp01(t+(i%3)*.08f),spread=(i-(count-1)*.5f)*.29f;
+                float rise=Mathf.Sin(Mathf.Clamp01(t/.8f)*Mathf.PI)*.22f;
+                float h=(i%2==0?.9f:.75f)*(1+t*.18f);
+                FrameQuad(backAtlas,Plane(spread,.15f+rise),Plane(.48f,0),Plane(0,h),new Color(1,.95f,.86f,flameFade*.78f*strength),2+phase*9,0,11);
             }
+            for(int i=0;i<(reduced?1:2);i++)
+                Flame(Plane((i==0?-.45f:.43f)*(1+t*.35f),-.15f+t*.16f),.39f,.58f,2+Mathf.Clamp01(t+i*.11f)*9,new Color(1,.98f,.9f,flameFade*.72f*strength));
             if(t>.24f)
             {
                 float p=Mathf.InverseLerp(.24f,1,t);
                 for(int i=0;i<(reduced?2:5);i++)
-                {float x=(i-(reduced?.5f:2))*.28f,y=.55f+p*.95f;Quad(atlas,Plane(x,y),Plane(.46f+p*.35f,0),Plane(0,.48f+p*.4f),new Color(.31f,.29f,.28f,Mathf.Sin(p*Mathf.PI)*.72f*strength),12+Mathf.Min(3,(int)(p*4)));}
+                {float x=(i-(reduced?.5f:2))*.28f,y=.55f+p*.95f;FrameQuad(backAtlas,Plane(x,y),Plane(.32f+p*.3f,0),Plane(0,.35f+p*.36f),new Color(.39f,.38f,.4f,Mathf.Sin(p*Mathf.PI)*.4f*strength),12+p*3,12,15);}
             }
             for(int i=0;i<(reduced?12:34);i++)
             {

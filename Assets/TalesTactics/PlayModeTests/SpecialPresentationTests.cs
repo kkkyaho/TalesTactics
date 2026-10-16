@@ -97,20 +97,64 @@ namespace TalesTactics.PlayModeTests
             Assert.That(catalog.All(c=>c.BasicAttack.Presentation.Pattern==SkillVisualPattern.CharacterStyle),Is.True,"Basic attacks retain each character's weapon effects");
             Assert.That(catalog.Select(c=>c.UltimateSkill.Presentation.Pattern).Distinct().Count(),Is.EqualTo(10));
             director.BeginBattle();yield return null;var unit=director.Session.Active;int hp=unit.CurrentHP;
-            var shapes=new HashSet<string>();
-            foreach(var data in catalog)
+            var parents=new List<GameObject>();var contact=new List<string>();
+            try
             {
-                var g=new GameObject("Finale shape test");g.transform.SetParent(director.transform);
-                var effect=g.AddComponent<CombatEffect>();
-                effect.Initialize(director.Board.SpriteMaterial,director.Board.BattleCamera,data.VisualStyle,
-                    CombatFeedback.Strike,unit,Vector3.zero,Vector3.one,Color.cyan,true,data.UltimateSkill.Presentation);
-                var signature=string.Join(";",g.GetComponentsInChildren<LineRenderer>().Select(l=>
-                    l.positionCount+":"+string.Join(",",Enumerable.Range(0,l.positionCount).Select(i=>l.GetPosition(i).ToString("F3")))));
-                Assert.That(shapes.Add(signature),Is.True,data.Id+" needs a distinct finale");
+                // Separate parents make every signature include only this character's owned pool.
+                // Initialize all ten in one frame so animation clock differences cannot fake uniqueness.
+                foreach(var data in catalog)
+                {
+                    var parent=new GameObject("Finale shape container");parent.transform.SetParent(director.transform);parents.Add(parent);
+                    var g=new GameObject("Finale shape test");g.transform.SetParent(parent.transform);
+                    var skill=data.UltimateSkill;var effect=g.AddComponent<CombatEffect>();
+                    effect.Initialize(director.Board.SpriteMaterial,director.Board.BattleCamera,CombatEffect.Resolve(data,skill),
+                        CombatFeedback.Strike,unit,Vector3.zero,Vector3.one,Color.cyan,true,skill.Presentation,skill.Element);
+                    Assert.That(parent.GetComponentsInChildren<ImpactParticles>().Length,Is.EqualTo(1),data.Id);
+                    contact.Add(Signature(parent));
+                }
+                yield return new WaitForSeconds(.1f);
+                var shapes=new HashSet<string>();
+                for(int i=0;i<catalog.Length;i++)
+                {
+                    string later=Signature(parents[i]);
+                    Assert.That(contact[i].Length,Is.GreaterThan(0),catalog[i].Id+" must render at contact");
+                    Assert.That(later.Length,Is.GreaterThan(0),catalog[i].Id+" must render after contact");
+                    Assert.That(shapes.Add(contact[i]+"|after contact|"+later),Is.True,catalog[i].Id+" needs a distinct finale");
+                }
+                Assert.That(shapes.Count,Is.EqualTo(10),"All ten rendered finales must remain distinct");
+                yield return new WaitForSeconds(.75f);
+                Assert.That(Object.FindObjectsByType<CombatEffect>(),Is.Empty);
+                Assert.That(unit.CurrentHP,Is.EqualTo(hp),"Visual pulses cannot apply gameplay damage");
             }
-            yield return new WaitForSeconds(0.75f);
-            Assert.That(Object.FindObjectsByType<CombatEffect>(),Is.Empty);
-            Assert.That(unit.CurrentHP,Is.EqualTo(hp),"Visual pulses cannot apply gameplay damage");
+            finally{foreach(var parent in parents)if(parent!=null)Object.Destroy(parent);}
+
+            string Signature(GameObject parent)
+            {
+                var result=new System.Text.StringBuilder();
+                foreach(var line in parent.GetComponentsInChildren<LineRenderer>().Where(l=>l.enabled&&l.positionCount>0))
+                {
+                    result.Append("line:").Append(line.positionCount).Append(':').Append(line.sharedMaterial.name);
+                    for(int i=0;i<line.positionCount;i++)result.Append(line.GetPosition(i).ToString("F3"));
+                    result.Append(line.startColor.ToString("F3")).Append(line.endColor.ToString("F3"));
+                    result.Append(line.startWidth.ToString("F3")).Append(line.endWidth.ToString("F3"));
+                }
+                foreach(var impact in parent.GetComponentsInChildren<ImpactParticles>())
+                foreach(var filter in impact.GetComponentsInChildren<MeshFilter>())
+                {
+                    var renderer=filter.GetComponent<MeshRenderer>();var mesh=filter.sharedMesh;
+                    if(!renderer.enabled||mesh.vertexCount==0||mesh.colors.All(c=>c.a<=.001f))continue;
+                    var material=renderer.sharedMaterial;
+                    result.Append("mesh:").Append(mesh.vertexCount).Append(':').Append(material.name)
+                        .Append(':').Append(material.mainTexture!=null?material.mainTexture.name:"none");
+                    foreach(var vertex in mesh.vertices)result.Append(filter.transform.TransformPoint(vertex).ToString("F3"));
+                    foreach(var uv in mesh.uv)result.Append(uv.ToString("F3"));
+                    var next=new List<Vector3>();mesh.GetUVs(1,next);
+                    foreach(var uv in next)result.Append(uv.ToString("F3"));
+                    foreach(var color in mesh.colors)result.Append(color.ToString("F3"));
+                    foreach(int index in mesh.triangles)result.Append(index).Append(',');
+                }
+                return result.ToString();
+            }
         }
 
         [UnityTest] public IEnumerator SkillWindupDefersSingleResolutionAndRestartClearsCues()
@@ -125,7 +169,7 @@ namespace TalesTactics.PlayModeTests
                 director.StartCoroutine(director.Execute(skill,enemy.Position));
                 yield return new WaitForSeconds(0.1f);
                 Assert.That(enemy.CurrentHP,Is.EqualTo(hp));Assert.That(caster.CurrentMP,Is.EqualTo(mp));
-                Assert.That(GameObject.Find("Skill preparation"),Is.Not.Null);
+                Assert.That(Object.FindObjectsByType<ImpactParticles>().Any(p=>p.Preparing&&p.GetComponentsInChildren<MeshFilter>().Any(m=>m.sharedMesh.vertexCount>0)),Is.True);
                 yield return new WaitForSeconds(0.75f);
                 Assert.That(enemy.CurrentHP,Is.EqualTo(hp-damage));Assert.That(caster.CurrentMP,Is.EqualTo(mp-3));
                 Assert.That(GameObject.Find("Skill preparation"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);

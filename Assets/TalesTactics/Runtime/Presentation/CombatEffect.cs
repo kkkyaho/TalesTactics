@@ -17,11 +17,12 @@ namespace TalesTactics
         Camera view;
         Vector3 origin,target;
         Color tint;
-        float age,contactHold;
+        float age,contactHold;bool authored,compact;
         public const float Lifetime=0.6f;
         public void Initialize(Material material,Camera camera,CombatVisualStyle style,CombatFeedback feedback,
-            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null,Element element=Element.None,bool reduced=false)
+            UnitRuntime recipient,Vector3 from,Vector3 to,Color color,bool ultimate,SkillPresentation presentation=null,Element element=Element.None,bool reduced=false,bool compact=false)
         {
+            this.compact=compact;authored=ImpactParticles.HasAuthoredArt(presentation?.Pattern??SkillVisualPattern.Automatic,element,feedback);
             Style=style;Feedback=feedback;Recipient=recipient;Ultimate=ultimate;
             Pattern=presentation?.Pattern??SkillVisualPattern.Automatic;
             pulses=Mathf.Clamp(presentation?.Pulses??1,1,6);size=SafeSize(presentation?.Size??1);
@@ -29,7 +30,8 @@ namespace TalesTactics
             contactHold=feedback==CombatFeedback.Strike?CombatMotionProfile.For(style,ultimate).Hold:0;
             var parent=transform.parent!=null?transform.parent:transform;
             var pool=parent.GetComponent<ImpactPool>()??parent.gameObject.AddComponent<ImpactPool>();
-            pool.Play(camera,from,to,element,style,feedback,size,ultimate,reduced);
+            pool.Play(camera,from,to,element,style,feedback,compact?.65f:size,ultimate&&!compact,reduced,Pattern,compact);
+            if(authored||compact)return;
             for(int i=0;i<lines.Length;i++)
             {
                 var child=new GameObject("Stroke "+i);child.transform.SetParent(transform,false);
@@ -56,7 +58,7 @@ namespace TalesTactics
         }
         void Draw(float t)
         {
-            if(view==null)return;
+            if(view==null||authored||compact)return;
             var color=tint;color.a=Mathf.Clamp01((1-t)*1.8f);
             foreach(var line in lines){line.positionCount=0;line.startColor=line.endColor=color;}
             if(Pattern!=SkillVisualPattern.Automatic&&Pattern!=SkillVisualPattern.CharacterStyle&&Feedback!=CombatFeedback.Heal&&Feedback!=CombatFeedback.Revive)
@@ -98,16 +100,12 @@ namespace TalesTactics
                     Stroke(0,target-direction*(0.7f+radius),target+direction*radius);
                     Stroke(1,target+direction*radius-direction*0.2f+side*0.1f,target+direction*radius,target+direction*radius-direction*0.2f-side*0.1f);break;
                 case CombatVisualStyle.Bow:
-                    var arrow=Vector3.Lerp(origin,target,Mathf.Min(1,t*5));
-                    Stroke(0,Vector3.Lerp(origin,target,Mathf.Max(0,t*5-0.25f)),arrow);
-                    var forward=(target-origin).normalized;var wing=Vector3.Cross(view.transform.forward,forward).normalized;
-                    if(t<0.25f)Stroke(2,arrow-forward*0.12f+wing*0.08f,arrow,arrow-forward*0.12f-wing*0.08f);
-                    Arc(1,radius*0.55f,0,360);break;
+                    Arc(0,radius*.55f,0,360);Ray(1,30,.06f,radius);Ray(2,210,.06f,radius);break;
                 case CombatVisualStyle.FlameSword:
                     Arc(0,radius,-140+t*70,230);
                     for(int i=0;i<3;i++){float x=(i-1)*0.22f;Stroke(i+1,Plane(x,-0.25f),Plane(x-0.07f,0.1f+radius*0.3f),Plane(x+0.06f,radius));}break;
                 case CombatVisualStyle.Rifle:
-                    Stroke(0,origin,target);
+                    Arc(0,radius*.4f,0,360);
                     Stroke(1,Plane(-radius,-radius),Plane(radius,radius));Stroke(2,Plane(-radius,radius),Plane(radius,-radius));break;
                 case CombatVisualStyle.Shield:
                     Arc(0,radius,30,360,0,6);Arc(1,radius*0.72f,30,360,0,6);

@@ -62,8 +62,10 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Session.Resolver.Execute(caster,skill,aim,out var error),Is.True,error);
                 director.Board.PresentImpact(caster,skill,aim,before,recipients);yield return null;
                 var effects=Object.FindObjectsByType<CombatEffect>();
-                Assert.That(effects.Select(e=>e.Recipient),Is.EquivalentTo(recipients));
-                Assert.That(effects.All(e=>e.Feedback==CombatFeedback.Strike&&!e.Recipient.Alive),Is.True);
+                Assert.That(effects.Count(e=>e.Recipient==null),Is.EqualTo(1));
+                var contacts=effects.Where(e=>e.Recipient!=null).ToArray();
+                Assert.That(contacts.Select(e=>e.Recipient),Is.EquivalentTo(recipients));
+                Assert.That(contacts.All(e=>e.Feedback==CombatFeedback.Strike&&!e.Recipient.Alive),Is.True);
                 director.Restart();yield return null;yield return null;
                 Assert.That(Object.FindObjectsByType<CombatEffect>(),Is.Empty);
             }

@@ -60,6 +60,7 @@ namespace TalesTactics
         }
         void OnDestroy()
         {
+            ReleaseSkillAudio();
             foreach(var clip in personalClips.Values)if(clip!=null)Destroy(clip);
             personalClips.Clear();
         }

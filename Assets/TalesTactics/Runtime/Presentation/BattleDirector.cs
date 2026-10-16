@@ -176,10 +176,11 @@ namespace TalesTactics
             var old=u.Facing;if(p!=u.Position)u.Facing=SkillResolver.Toward(u.Position,p);
             Board.BeginSkill(u,s,p);
             yield return new WaitForSeconds(BoardView.Windup(s));
+            yield return Board.PlaySkillRelease(u,s,p);
             var before=Board.CaptureHealth();
             var recipients=Session.Resolver.Targets(u,s,p).ToArray();
             bool executed=Session.Resolver.Execute(u,s,p,out var message,followup);
-            if(!executed)u.Facing=old;else{Board.ReleaseSkill(u);Board.PresentImpact(u,s,p,before,recipients,Session.Resolver.PrimaryHealth);}
+            if(!executed)u.Facing=old;else Board.PresentImpact(u,s,p,before,recipients,Session.Resolver.PrimaryHealth);
             Message=message;yield return new WaitForSeconds(BoardView.Recovery(s));
             if(executed){yield return PresentReactions();Board.PresentExperience(Session.Resolver.LastExperience);}
             if(s.IsUltimate)Audio.EndTheme();
@@ -198,9 +199,9 @@ namespace TalesTactics
             {
                 var aim=plan.Aim??plan.Target.Position;
                 if(aim!=u.Position)u.Facing=SkillResolver.Toward(u.Position,aim);
-                if(!brief){Board.BeginSkill(u,plan.Skill,aim,speed);yield return new WaitForSeconds(BoardView.Windup(plan.Skill)/speed);}
+                if(!brief){Board.BeginSkill(u,plan.Skill,aim,speed);yield return new WaitForSeconds(BoardView.Windup(plan.Skill)/speed);yield return Board.PlaySkillRelease(u,plan.Skill,aim,speed);}
                 var before=Board.CaptureHealth();var recipients=Session.Resolver.Targets(u,plan.Skill,aim).ToArray();
-                if(Session.Resolver.Execute(u,plan.Skill,aim,out var text)&&!brief){Board.ReleaseSkill(u);Board.PresentImpact(u,plan.Skill,aim,before,recipients,Session.Resolver.PrimaryHealth);}
+                if(Session.Resolver.Execute(u,plan.Skill,aim,out var text)&&!brief)Board.PresentImpact(u,plan.Skill,aim,before,recipients,Session.Resolver.PrimaryHealth);
                 Message=u.Data.DisplayName+" · "+plan.Skill.DisplayName+"\n"+text;Hud.Refresh();yield return new WaitForSeconds(brief?.2f:BoardView.Recovery(plan.Skill)/speed);
                 if(!brief)yield return PresentReactions(speed);
                 Board.PresentExperience(Session.Resolver.LastExperience);

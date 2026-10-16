@@ -12,7 +12,7 @@ namespace TalesTactics
             foreach(var strike in Session.Resolver.LastReactions)
             {
                 Message=strike.Text;Hud.Refresh();Board.BeginSkill(strike.Actor,strike.Skill,strike.Target.Position,speed);
-                yield return new WaitForSeconds(BoardView.Windup(strike.Skill)/speed);Board.ReleaseSkill(strike.Actor);
+                yield return new WaitForSeconds(BoardView.Windup(strike.Skill)/speed);yield return Board.PlaySkillRelease(strike.Actor,strike.Skill,strike.Target.Position,speed);
                 Board.PresentImpact(strike.Actor,strike.Skill,strike.Target.Position,new Dictionary<UnitRuntime,int>{{strike.Target,strike.BeforeHP}},new[]{strike.Target},new Dictionary<UnitRuntime,int>{{strike.Target,strike.AfterHP}},false);
                 yield return new WaitForSeconds(BoardView.Recovery(strike.Skill)/speed);
             }

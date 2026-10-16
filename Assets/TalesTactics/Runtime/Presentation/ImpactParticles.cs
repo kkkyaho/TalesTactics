@@ -7,49 +7,62 @@ namespace TalesTactics
     {
         public const int Capacity=16;
         readonly List<ImpactParticles> instances=new List<ImpactParticles>();
-        Material solid,atlas;
+        Material solid,atlas,artMaterial;Camera depthCamera;
         public int ActiveCount{get{int n=0;foreach(var p in instances)if(p.gameObject.activeSelf)n++;return n;}}
-        public void Play(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,CombatFeedback feedback,float size,bool ultimate,bool reduced)
-        {Acquire().Play(camera,from,to,element,style,feedback,size,ultimate,reduced);}
-        public void Prepare(Camera camera,Transform caster,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration)
-        {Acquire().Prepare(camera,caster,to,element,style,size,ultimate,reduced,duration);}
-        ImpactParticles Acquire()
+        public void Play(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,CombatFeedback feedback,float size,bool ultimate,bool reduced,SkillVisualPattern pattern=SkillVisualPattern.Automatic,bool compact=false)
+        {Acquire(camera).Play(camera,from,to,element,style,feedback,size,ultimate,reduced,pattern,compact);}
+        public void Prepare(Camera camera,Transform caster,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern=SkillVisualPattern.Automatic)
+        {Acquire(camera).Prepare(camera,caster,to,element,style,size,ultimate,reduced,duration,pattern);}
+        public void Travel(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern)
+        {Acquire(camera).Travel(camera,from,to,element,style,size,ultimate,reduced,duration,pattern);}
+        ImpactParticles Acquire(Camera camera)
         {
             if(solid==null)
             {
                 var shader=Resources.Load<Shader>("TalesTactics/Impact");
                 solid=new Material(shader);solid.SetFloat("_UseTexture",0);
                 atlas=new Material(shader);atlas.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatFire");atlas.SetFloat("_UseTexture",1);
+                artMaterial=new Material(shader);artMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatElements");artMaterial.SetFloat("_UseTexture",1);
+            }
+            if(depthCamera!=camera)
+            {
+                depthCamera=camera;bool depth=(camera.depthTextureMode&DepthTextureMode.Depth)!=0;
+                // Query the configured URP camera once without coupling the rules assembly to URP.
+                foreach(var component in camera.GetComponents<Component>())
+                    if(component!=null&&component.GetType().Name=="UniversalAdditionalCameraData")
+                    {var property=component.GetType().GetProperty("requiresDepthTexture");if(property!=null)depth=(bool)property.GetValue(component);break;}
+                atlas.SetFloat("_SoftParticles",depth?1:0);artMaterial.SetFloat("_SoftParticles",depth?1:0);
             }
             ImpactParticles chosen=null;foreach(var p in instances)if(!p.gameObject.activeSelf){chosen=p;break;}
             if(chosen==null&&instances.Count<Capacity)
-            {var g=new GameObject("Elemental impact");g.transform.SetParent(transform,false);chosen=g.AddComponent<ImpactParticles>();chosen.Initialize(solid,atlas);instances.Add(chosen);}
+            {var g=new GameObject("Elemental impact");g.transform.SetParent(transform,false);chosen=g.AddComponent<ImpactParticles>();chosen.Initialize(solid,atlas,artMaterial);instances.Add(chosen);}
             if(chosen==null){chosen=instances[0];foreach(var p in instances)if(p.Age>chosen.Age)chosen=p;}
             return chosen;
         }
-        void OnDestroy(){if(solid!=null)Destroy(solid);if(atlas!=null)Destroy(atlas);}
+        void OnDestroy(){if(solid!=null)Destroy(solid);if(atlas!=null)Destroy(atlas);if(artMaterial!=null)Destroy(artMaterial);}
     }
     public sealed partial class ImpactParticles:MonoBehaviour
     {
         sealed class Geometry
         {
-            public Mesh Mesh;public readonly List<Vector3> V=new List<Vector3>(512);public readonly List<Color> C=new List<Color>(512);public readonly List<Vector2> U=new List<Vector2>(512);public readonly List<int> I=new List<int>(1024);
-            public void Clear(){V.Clear();C.Clear();U.Clear();I.Clear();}
-            public void Vertex(Vector3 p,Color c,Vector2 uv){V.Add(p);C.Add(c);U.Add(uv);}
+            public Mesh Mesh;public readonly List<Vector3> V=new List<Vector3>(512);public readonly List<Color> C=new List<Color>(512);public readonly List<Vector2> U=new List<Vector2>(512);public readonly List<Vector3> N=new List<Vector3>(512);public readonly List<int> I=new List<int>(1024);
+            public void Clear(){V.Clear();C.Clear();U.Clear();N.Clear();I.Clear();}
+            public void Vertex(Vector3 p,Color c,Vector2 uv){Vertex(p,c,uv,uv,0);}
+            public void Vertex(Vector3 p,Color c,Vector2 uv,Vector2 next,float blend){V.Add(p);C.Add(c);U.Add(uv);N.Add(new Vector3(next.x,next.y,blend));}
             public void Triangle(int a,int b,int c){I.Add(a);I.Add(b);I.Add(c);}
-            public void Upload(){Mesh.Clear();Mesh.SetVertices(V);Mesh.SetColors(C);Mesh.SetUVs(0,U);Mesh.SetTriangles(I,0);Mesh.RecalculateBounds();}
+            public void Upload(){Mesh.Clear();Mesh.SetVertices(V);Mesh.SetColors(C);Mesh.SetUVs(0,U);Mesh.SetUVs(1,N);Mesh.SetTriangles(I,0);Mesh.RecalculateBounds();}
         }
         readonly Geometry solid=new Geometry(),atlas=new Geometry();Camera view;Vector3 from;Element element;CombatVisualStyle style;CombatFeedback feedback;float size,age;bool reduced;
         public float Age=>age;public Element Element=>element;public const float Duration=1.05f;
-        public void Initialize(Material plain,Material texture)
+        public void Initialize(Material plain,Material texture,Material elements=null)
         {
-            Create(solid,plain,"Impact volume");Create(atlas,texture,"Flame and smoke");
+            Create(solid,plain,"Impact volume");Create(atlas,texture,"Flame and smoke");Create(art,elements??texture,"Authored elemental silhouette");Create(backAtlas,texture,"Depth flame and mist",-1);
         }
-        void Create(Geometry geometry,Material material,string name)
-        {var g=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer));g.transform.SetParent(transform,false);geometry.Mesh=new Mesh{name=name};geometry.Mesh.MarkDynamic();g.GetComponent<MeshFilter>().sharedMesh=geometry.Mesh;var r=g.GetComponent<MeshRenderer>();r.sharedMaterial=material;r.sortingOrder=23;}
-        public void Play(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,CombatFeedback hit,float scale,bool ultimate,bool low)
-        {view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.7f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;preparing=false;casterAnchor=null;gameObject.SetActive(true);Draw();}
-        void Update(){age+=Time.deltaTime;if(view==null||age>=(preparing?prepareDuration:Duration)){gameObject.SetActive(false);return;}Draw();}
+        void Create(Geometry geometry,Material material,string name,int order=23)
+        {var g=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer));g.transform.SetParent(transform,false);geometry.Mesh=new Mesh{name=name};geometry.Mesh.MarkDynamic();g.GetComponent<MeshFilter>().sharedMesh=geometry.Mesh;var r=g.GetComponent<MeshRenderer>();r.sharedMaterial=material;r.sortingOrder=order;}
+        public void Play(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,CombatFeedback hit,float scale,bool ultimate,bool low,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic,bool small=false)
+        {pattern=visualPattern;compact=small;this.ultimate=ultimate;travelling=false;view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.35f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;preparing=false;casterAnchor=null;gameObject.SetActive(true);Draw();}
+        void Update(){age+=Time.deltaTime;if(view==null||age>=(preparing?prepareDuration:travelling?travelDuration:Duration)){gameObject.SetActive(false);return;}Draw();}
         Vector3 Plane(float x,float y)=>view.transform.right*x*size+view.transform.up*y*size;
         static Color Alpha(Color c,float a){c.a=a;return c;}
         void Quad(Geometry mesh,Vector3 center,Vector3 right,Vector3 up,Color tint,int cell=-1)
@@ -83,8 +96,11 @@ namespace TalesTactics
         }
         void Draw()
         {
-            solid.Clear();atlas.Clear();float t=age/Duration,fade=(1-t)*(reduced?.65f:1);int count=reduced?7:16;
-            if(preparing){DrawPreparation();solid.Upload();atlas.Upload();return;}
+            solid.Clear();atlas.Clear();art.Clear();backAtlas.Clear();float t=age/Duration,fade=(1-t)*(reduced?.65f:1);int count=reduced?7:16;
+            if(preparing){DrawPreparation();UploadAll();return;}
+            if(travelling){DrawTravel();UploadAll();return;}
+            if(compact){DrawCompact(t);UploadAll();return;}
+            if(HasAuthoredArt(pattern,element,feedback)){DrawAuthored(t);UploadAll();return;}
             if(feedback!=CombatFeedback.Strike)
             {
                 var color=feedback==CombatFeedback.Heal?new Color(.35f,1,.65f):new Color(1,.89f,.58f);
@@ -125,8 +141,9 @@ namespace TalesTactics
                 bool physical=element==Element.None||style==CombatVisualStyle.FlameSword||style==CombatVisualStyle.Claw||style==CombatVisualStyle.Sword||style==CombatVisualStyle.Martial||style==CombatVisualStyle.Shield||style==CombatVisualStyle.Spear;
                 if(physical&&(element!=Element.Fire||HasWeaponSweep(style)))Physical(t,fade);
             }
-            solid.Upload();atlas.Upload();
+            UploadAll();
         }
+        void UploadAll(){solid.Upload();atlas.Upload();art.Upload();backAtlas.Upload();}
         void Physical(float t,float fade)
         {
             float contact=Mathf.Clamp01((t-.075f)/.55f);var white=new Color(.91f,.96f,1,fade);
@@ -134,13 +151,13 @@ namespace TalesTactics
             {
                 WeaponSweep(Mathf.Lerp(.68f,1,Mathf.Clamp01(t/.38f)),Mathf.Pow(1-Mathf.Clamp01(t/.65f),1.4f));
             }
-            else if(style==CombatVisualStyle.Spear||style==CombatVisualStyle.Rifle||style==CombatVisualStyle.Bow)
+            else if(style==CombatVisualStyle.Spear)
             {var start=Vector3.Lerp(from,Vector3.zero,Mathf.Clamp01(t*5));Ribbon(start,Vector3.zero,style==CombatVisualStyle.Spear?.07f:.025f,white);}
             else Arc(.14f+contact*.7f,0,360,style==CombatVisualStyle.Shield?.09f:.06f,white,-.08f);
             if(t<.25f){Disc(0,0,.72f,new Color(1,.68f,.19f,(1-t/.25f)*(reduced?.25f:.72f)));Disc(0,0,.25f,new Color(1,1,.87f,1-t/.25f));}
             for(int i=0;i<(reduced?5:16);i++){float a=i*2.39996f,r=t*2;Ribbon(Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),Plane(Mathf.Cos(a)*(r+.22f),Mathf.Sin(a)*(r+.22f)),.022f,new Color(1,.79f,.39f,fade));}
             GroundDust(t);
         }
-        void OnDestroy(){if(solid.Mesh!=null)Destroy(solid.Mesh);if(atlas.Mesh!=null)Destroy(atlas.Mesh);}
+        void OnDestroy(){if(solid.Mesh!=null)Destroy(solid.Mesh);if(atlas.Mesh!=null)Destroy(atlas.Mesh);if(art.Mesh!=null)Destroy(art.Mesh);if(backAtlas.Mesh!=null)Destroy(backAtlas.Mesh);}
     }
 }

@@ -7,8 +7,11 @@ namespace TalesTactics.Editor
     {
         public static void Configure()
         {
-            var importer=(TextureImporter)AssetImporter.GetAtPath("Assets/TalesTactics/Resources/TalesTactics/CombatFire.png");
-            importer.textureType=TextureImporterType.Default;importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.wrapMode=TextureWrapMode.Clamp;importer.maxTextureSize=2048;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
+            foreach(string name in new[]{"CombatFire","CombatElements"})
+            {
+                var importer=(TextureImporter)AssetImporter.GetAtPath("Assets/TalesTactics/Resources/TalesTactics/"+name+".png");
+                importer.textureType=TextureImporterType.Default;importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.wrapMode=TextureWrapMode.Clamp;importer.npotScale=TextureImporterNPOTScale.None;importer.maxTextureSize=2048;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
+            }
         }
         public static void Release()=>Build("CombatPresentationWindows",false);
         public static void Review()=>Build("CombatPresentationReview",true);
@@ -16,6 +19,8 @@ namespace TalesTactics.Editor
         public static void FacingIconsReview()=>Build("FacingIconsReview",true);
         public static void VfxQualityRelease()=>Build("VfxQualityWindows",false);
         public static void VfxQualityReview()=>Build("VfxQualityReview",true);
+        public static void VfxUpgradeRelease()=>Build("VfxUpgradeWindows",false);
+        public static void VfxUpgradeReview()=>Build("VfxUpgradeReview",true);
         static void Build(string name,bool review)
         {
             Configure();System.IO.Directory.CreateDirectory("Builds/"+name);

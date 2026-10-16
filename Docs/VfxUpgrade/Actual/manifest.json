@@ -1,0 +1,297 @@
+{
+  "createdAt": "2026-10-16T22:01:26.158584+09:00",
+  "baselineRevision": "13afcbe",
+  "afterRevision": "working-copy at capture; final integration revision recorded in repository history",
+  "captureConditions": {
+    "engine": "Unity 6000.6.0f1 graphical Editor",
+    "width": 1920,
+    "height": 1080,
+    "allies": 6,
+    "fixedCaptureFps": 30,
+    "performanceBenchmark": false,
+    "audioCaptured": false,
+    "fixturePlacement": true,
+    "defaultZoom": true,
+    "textScale": "100%",
+    "reactionsDisabled": true
+  },
+  "sourceSelection": "All six before videos use before-visible. All six after videos and seven PNGs use after-final following the ultimate cue readability and ShieldFinale pattern fixes.",
+  "sources": {
+    "before": {
+      "directory": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible",
+      "result": "before-result.json",
+      "resultSha256": "83d9c7acbf5a498191e8f587fd764049cb85b4e9fd62c68a88862a3ec17c4f5f",
+      "runs": 12,
+      "normalRuns": 6,
+      "reducedRuns": 6,
+      "errors": [],
+      "sourceCopiedUnchanged": true
+    },
+    "after": {
+      "directory": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final",
+      "result": "after-result.json",
+      "resultSha256": "562e9aa76574a3f7c63ea56980024ba5a1a22427e0e8c10d426087e633a79ba4",
+      "runs": 12,
+      "normalRuns": 6,
+      "reducedRuns": 6,
+      "errors": [],
+      "sourceCopiedUnchanged": true
+    }
+  },
+  "hpAndCameraMatchAcrossNormalReducedAndBaseline": true,
+  "encoding": {
+    "tool": "D:\\TalesTacticsCrossover\\d3d2\\Temp\\vfx-video-tools\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+    "version": "7.1",
+    "codec": "libx264",
+    "preset": "slow",
+    "crf": 25,
+    "pixelFormat": "yuv420p",
+    "movflags": "+faststart",
+    "audio": false,
+    "resize": false,
+    "crop": false,
+    "frameReorder": false
+  },
+  "representativeFrameRule": "actualContactFrame + 2 (zero-based source filename)",
+  "videos": [
+    {
+      "file": "sword-wave-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/sword-wave-normal/%04d.png",
+      "bytes": 730504,
+      "sha256": "c3faceedf7d21f8b206eb6f39d7c9069328e55b1dc2bb2ab18e747e04bc74076",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 85,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "sword-wave-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/sword-wave-normal/%04d.png",
+      "bytes": 736555,
+      "sha256": "d9d049f33d3d2c09563372deda864146ff99a88173670413154f1d855f79cc1a",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 90,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "meteor-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/meteor-normal/%04d.png",
+      "bytes": 765776,
+      "sha256": "4317fe3754523f7b441395df08f25bd6d6e938cdcc7b9f6ab8e94263e7c75166",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 95,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "meteor-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/meteor-normal/%04d.png",
+      "bytes": 757356,
+      "sha256": "735b232cd222b797dc303867fd09491a851d532b8945354c829458821d7295d1",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 101,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "ice-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/ice-normal/%04d.png",
+      "bytes": 732333,
+      "sha256": "a9a128aafce4d7b0fc665e8b40233c6b64ef25a07ca779ba24923e1f77b712b1",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 85,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "ice-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/ice-normal/%04d.png",
+      "bytes": 737434,
+      "sha256": "20c2df49d4d444487ed417ab1fabff937bb177ec7c2f176814ad5ce889faef11",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 90,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "lightning-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/lightning-normal/%04d.png",
+      "bytes": 735266,
+      "sha256": "090846e5b39ef7601fc356fb526706767fe867f3cc0437429585ed189e40d3e4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 85,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "lightning-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/lightning-normal/%04d.png",
+      "bytes": 732535,
+      "sha256": "ef573b7d9efc09656c4bc243decb0b538511d84d3772fde8bfcf5d17f9b7fd35",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 90,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "heal-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/heal-normal/%04d.png",
+      "bytes": 727737,
+      "sha256": "86b77f71a2528f7a56e69c0b7c26ca1b68c5b9552ed0d22ce0f57b228f5cd1b6",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 85,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "heal-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/heal-normal/%04d.png",
+      "bytes": 723682,
+      "sha256": "f34dd933567c0659c0c095ccd3164374bf7f8fe8797a5b8f9cf3e7d599456943",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 85,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "ultimate-before.mp4",
+      "capture": "before",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/before-visible/ultimate-normal/%04d.png",
+      "bytes": 773797,
+      "sha256": "cb27ba48fc502e5ff055bf112bd283b73911e586a3633f5330c55494735ad58f",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 96,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    },
+    {
+      "file": "ultimate-after.mp4",
+      "capture": "after",
+      "sourceSequence": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/ultimate-normal/%04d.png",
+      "bytes": 774363,
+      "sha256": "c6c7115f88f818ea862a409ce3437353864069827a8a6a4681eae3de3aa3e543",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "decodedFrames": 97,
+      "audioStreams": 0,
+      "decodeExitCode": 0
+    }
+  ],
+  "pngs": [
+    {
+      "file": "sword-wave-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/sword-wave-normal/0020.png",
+      "capture": "after",
+      "frame": 20,
+      "sha256": "7ded6440be4add04c75fc0ecbfa8e5d08f44c13c7d82b8ad3869ad66afa6470d",
+      "unchanged": true
+    },
+    {
+      "file": "meteor-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/meteor-normal/0026.png",
+      "capture": "after",
+      "frame": 26,
+      "sha256": "c83a3eefe2f7d736059ddebfe109556708026d579812b8e97efee2b40c6b82b0",
+      "unchanged": true
+    },
+    {
+      "file": "ice-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/ice-normal/0020.png",
+      "capture": "after",
+      "frame": 20,
+      "sha256": "d3d3062c4bf34a62379e0c427ade6918590995ad3923e00815cc1be76eaf4eb9",
+      "unchanged": true
+    },
+    {
+      "file": "lightning-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/lightning-normal/0020.png",
+      "capture": "after",
+      "frame": 20,
+      "sha256": "12a516e6e19c7c52f51827025fb6d813e97d1fd8708038015b9967e210563793",
+      "unchanged": true
+    },
+    {
+      "file": "heal-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/heal-normal/0015.png",
+      "capture": "after",
+      "frame": 15,
+      "sha256": "2971a96a0f7d44b59d12e75cc791cd661404e60e21978a8023ef51030df47b5e",
+      "unchanged": true
+    },
+    {
+      "file": "ultimate-after-contact.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/ultimate-normal/0022.png",
+      "capture": "after",
+      "frame": 22,
+      "sha256": "59aecdb7e0be7c58db626507120c9f9a2fcfce27103dc0d403674a6ac4ff6183",
+      "unchanged": true
+    },
+    {
+      "file": "ultimate-windup-after.png",
+      "source": "D:/TalesTacticsHelpGuide/Logs/VfxUpgrade/after-final/ultimate-normal/0010.png",
+      "capture": "after",
+      "frame": 10,
+      "sha256": "0adf5b4fa1e99475d41fe0a16886c95f2b63d780673987a5cf2b68df80241f76",
+      "unchanged": true
+    }
+  ],
+  "limitations": [
+    "Fixed timestep capture is not a real-time performance measurement.",
+    "Silent videos do not validate audio quality.",
+    "Six existing skills in an isolated fixture do not constitute all-skill or campaign manual validation.",
+    "The bottom battle message can retain the preceding skill name; screenshots are unaltered.",
+    "During ultimate preparation, the overhead skill label overlaps character name/HP information; the left portrait cue is clear."
+  ],
+  "reviewPage": {
+    "file": "../review.html",
+    "sha256": "a2de1b14ea199ab41e35ee96363cb0dab73a2908803df13e77c544629624e488"
+  },
+  "verificationFiles": [
+    {
+      "file": "media-verification.json",
+      "sha256": "1545af11b3f7a299c0ff211643c2166f299de37d7f0f276dfeae7b63f65cd02f"
+    },
+    {
+      "file": "png-verification.json",
+      "sha256": "c198d4845e8d6849bda51e4f405c2a8da639ca1bfb23088fb7f9d0b6a413260f"
+    },
+    {
+      "file": "page-verification.json",
+      "sha256": "f4616d7338c567ec861ad601f839980c0b78bfae5e43876716751eafd35838a0"
+    }
+  ]
+}

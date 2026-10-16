@@ -69,6 +69,10 @@
 
 ## 전투 표시 계층
 
+`SkillVfxTiming`과 `BoardView.PlaySkillRelease`는 준비 뒤 투사체 이동 구간을 삽입한다. 기존 Resolver를 도착 뒤 한 번 호출하므로 피해·회복 숫자와 접촉 효과가 같은 판정 시점에 시작한다. `ImpactArt`는 검기·얼음·번개·회복 아틀라스와 인접 프레임 보간, 유성 낙하와 잔광을 기존 풀에서 렌더링한다. `Impact.shader`는 지원되는 카메라의 깊이 텍스처로 지면 교차를 완화한다. 범위 공격은 중앙의 큰 패턴 한 번과 실제 대상별 작은 접촉 효과로 나누며 고유 패턴을 유지한다.
+
+`SkillAudioPalette`는 6계열 준비/접촉 효과음을 로컬에서 합성·캐시하고 기존 음소거·볼륨·동시 재생 제한을 따른다. `UltimateSkillCue`는 명령 영역 안에 초상화와 기술명을 잠시 표시하고 입력을 가로채지 않는다. 축소 효과는 미술 식별성을 남기면서 표시량과 음량을 낮춘다. `VfxUpgradeReview`는 Editor/검수 빌드에서만 존재하며 격리 저장·아군6명·실제 기술 경로로 변경 전후 화면과 상태 보존을 기록한다. [구현 범위·실제 비교·검증](VfxUpgrade/README.md).
+
 `ImpactChoreography`는 기존 `ImpactParticles` 풀에 준비/접촉 연출을 추가한다. 준비 효과는 움직이는 `CharacterMotion` 위치를 따르며, 불꽃 흐름·다중 화염·연기와 공격자 중심의 세 겹 검격 리본을 그린다. 준비 단계는 피해를 처리하지 않는다. `BoardActionPresentation`의 준비/복귀 시간과 `CharacterMotion`의 가속/접촉 정지/복귀를 함께 사용한다. `VfxQualityReview`는 별도 검수 빌드에서 실제 기술 실행을 촬영하며 일반 빌드에서는 제외한다. [범위와 근거](VfxQuality/README.md).
 
 `FacingArrowGraphic`은 베이지색 화살표 윗면과 화면 아래쪽으로 돌출된 얇은 측면을 UI 메시로 그린다. 방향은 메시 좌표에서 회전하여 측면 방향을 일정하게 유지한다. 버튼 Image는 완전 투명이며 `cullTransparentMesh=false`와 raycast를 유지한다. 사각 배경 없이 기존 클릭 영역을 보존한다.

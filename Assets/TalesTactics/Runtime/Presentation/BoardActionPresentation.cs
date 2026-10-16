@@ -14,21 +14,19 @@ namespace TalesTactics
             SetAnimation(caster,skill.Animation);
             if(motions.TryGetValue(caster,out var motion))motion.BeginSkill(skill,Windup(skill)/speed,Recovery(skill)/speed);
             var style=CombatEffect.Resolve(caster.Data,skill);
-            if(root!=null&&skill.Effects.Any(e=>e.Kind==EffectKind.Damage&&!e.AffectCaster)&&(skill.Element==Element.Fire||ImpactParticles.HasWeaponSweep(style))&&units.TryGetValue(caster,out var anchor))
+            if(root!=null&&(skill.Animation!=AnimationKind.Attack||skill.IsUltimate||ImpactParticles.HasWeaponSweep(style))&&units.TryGetValue(caster,out var anchor))
             {
                 var pool=root.GetComponent<ImpactPool>()??root.gameObject.AddComponent<ImpactPool>();
-                pool.Prepare(BattleCamera,motion!=null?motion.transform:anchor,battle.Session.Grid[aim].WorldPosition(battle.Catalog.Rules.TileHeight)+BattleCamera.transform.up*.65f,skill.Element,style,skill.Presentation?.Size??1,skill.IsUltimate,battle.Preferences.ReducedEffects,Windup(skill)/speed);
+                pool.Prepare(BattleCamera,motion!=null?motion.transform:anchor,battle.Session.Grid[aim].WorldPosition(battle.Catalog.Rules.TileHeight)+BattleCamera.transform.up*.65f,skill.Element,style,skill.Presentation?.Size??1,skill.IsUltimate,battle.Preferences.ReducedEffects,Windup(skill)/speed,skill.Presentation?.Pattern??SkillVisualPattern.Automatic);
             }
-            battle.Audio.PlayEffect(skill.Animation==AnimationKind.Cast||skill.IsUltimate?"cast":"swing");
-            if(skill.IsUltimate)battle.Audio.BeginTheme(caster.Data.AudioTheme);
+            battle.Audio.PlaySkillCue(skill,style,false,battle.Preferences.ReducedEffects);
+            if(skill.IsUltimate){battle.Audio.BeginTheme(caster.Data.AudioTheme);battle.Hud.ShowUltimateCue(caster.Data,skill,Windup(skill)/speed,battle.Preferences.ReducedEffects);}
             if(root!=null&&skill.Animation!=AnimationKind.Attack)StartCoroutine(PrepareSkill(caster,skill,aim,speed));
         }
         public void ReleaseSkill(UnitRuntime caster)
         {if(motions.TryGetValue(caster,out var motion))motion.ReleaseSkill();}
         IEnumerator PrepareSkill(UnitRuntime caster,SkillData skill,Vector2Int aim,float speed)
         {
-            var ring=EffectLine("Skill preparation",ElementColor(skill.Element),skill.IsUltimate?0.045f:0.025f);
-            ring.positionCount=33;
             var labelObject=new GameObject("Skill name");labelObject.transform.SetParent(root,false);
             var label=labelObject.AddComponent<TextMeshPro>();label.font=battle.Hud.Font;
             label.text=skill.DisplayName;label.fontSize=skill.IsUltimate?3.8f:3.4f;
@@ -47,14 +45,10 @@ namespace TalesTactics
             float duration=Windup(skill)/speed;
             for(float elapsed=0;elapsed<duration;elapsed+=Time.deltaTime)
             {
-                float progress=elapsed/duration,radius=Mathf.Lerp(skill.IsUltimate?0.8f:0.5f,0.18f,progress);
-                var center=units[caster].position+BattleCamera.transform.up*0.65f;
-                for(int i=0;i<33;i++)
-                {float a=i/32f*Mathf.PI*2;ring.SetPosition(i,center+BattleCamera.transform.right*(Mathf.Cos(a)*radius)+BattleCamera.transform.up*(Mathf.Sin(a)*radius));}
                 label.transform.position=units[caster].position+BattleCamera.transform.up*1.85f;
                 label.transform.rotation=BattleCamera.transform.rotation;yield return null;
             }
-            if(ring!=null)Destroy(ring.gameObject);if(labelObject!=null)Destroy(labelObject);
+            if(labelObject!=null)Destroy(labelObject);
         }
     }
 }

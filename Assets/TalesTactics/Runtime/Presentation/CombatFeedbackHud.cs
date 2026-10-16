@@ -15,7 +15,7 @@ namespace TalesTactics
             }
         }
         public float ExperienceBottom=>SkillPanel?SkillCardHeight+28:battle.State is TargetSelectionState?targetContextHeight+28:battle.State is MoveSelectionState?168:18;
-        public void ClearCombatFeedback(){if(combatFeedback!=null)combatFeedback.Clear();}
+        public void ClearCombatFeedback(){if(combatFeedback!=null)combatFeedback.Clear();ClearUltimateCue();}
         public bool HasHealthFeedback(UnitRuntime unit)=>combatFeedback!=null&&combatFeedback.HasNumber(unit);
     }
     // Screen-space presentation only. Snapshot values never read later mutable unit growth.
