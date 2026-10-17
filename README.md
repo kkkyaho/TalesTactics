@@ -22,6 +22,7 @@ ZIP을 **새 폴더에 모두 풀고** `TalesTactics.exe`를 실행하세요. �
 - [편성 스크롤·장비 비교·전장 가독성 적용과 실제 화면](Docs/CommercialUxProposal/IMPLEMENTATION.md)
 - [기술 VFX 개선: 실제 변경 전후 영상과 구현 범위](Docs/VfxUpgrade/README.md)
 - [원작 참고 일반 기술 3종: 마신검·메테오·썬더 블레이드 실제 비교](Docs/OriginalSkillTrio/README.md)
+- [전체 기술 연출 확장: 179개 프로필·실제 전후 20쌍·검증 범위](Docs/SkillRosterVfx/README.md)
 - [최신 검증 기록과 한계](Docs/VALIDATION.md)
 
 빌드·캐시 폴더는 Git에 포함되지 않습니다. 새 클론이나 워크트리에 `Library`·`Builds` 또는 다른 작업 폴더의 실행본이 있다고 가정하지 마세요. 문서에 기록된 실행본 경로는 **해당 검증 당시 프로젝트 기준**입니다.

@@ -7,14 +7,14 @@ namespace TalesTactics
     {
         public const int Capacity=16;
         readonly List<ImpactParticles> instances=new List<ImpactParticles>();
-        Material solid,atlas,artMaterial,signatureMaterial;Camera depthCamera;
+        Material solid,atlas,artMaterial,signatureMaterial,weaponMaterial,spellMaterial;Camera depthCamera;
         public int ActiveCount{get{int n=0;foreach(var p in instances)if(p.gameObject.activeSelf)n++;return n;}}
-        public void Play(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,CombatFeedback feedback,float size,bool ultimate,bool reduced,SkillVisualPattern pattern=SkillVisualPattern.Automatic,bool compact=false,SkillSignature signature=SkillSignature.None)
-        {Acquire(camera).Play(camera,from,to,element,style,feedback,size,ultimate,reduced,pattern,compact,signature);}
-        public void Prepare(Camera camera,Transform caster,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern=SkillVisualPattern.Automatic,SkillSignature signature=SkillSignature.None)
-        {Acquire(camera).Prepare(camera,caster,to,element,style,size,ultimate,reduced,duration,pattern,signature);}
-        public void Travel(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern,SkillSignature signature=SkillSignature.None)
-        {Acquire(camera).Travel(camera,from,to,element,style,size,ultimate,reduced,duration,pattern,signature);}
+        public void Play(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,CombatFeedback feedback,float size,bool ultimate,bool reduced,SkillVisualPattern pattern=SkillVisualPattern.Automatic,bool compact=false,SkillSignature signature=SkillSignature.None,ArteProfile arte=default)
+        {Acquire(camera).Play(camera,from,to,element,style,feedback,size,ultimate,reduced,pattern,compact,signature,arte);}
+        public void Prepare(Camera camera,Transform caster,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern=SkillVisualPattern.Automatic,SkillSignature signature=SkillSignature.None,ArteProfile arte=default)
+        {Acquire(camera).Prepare(camera,caster,to,element,style,size,ultimate,reduced,duration,pattern,signature,arte);}
+        public void Travel(Camera camera,Vector3 from,Vector3 to,Element element,CombatVisualStyle style,float size,bool ultimate,bool reduced,float duration,SkillVisualPattern pattern,SkillSignature signature=SkillSignature.None,ArteProfile arte=default)
+        {Acquire(camera).Travel(camera,from,to,element,style,size,ultimate,reduced,duration,pattern,signature,arte);}
         ImpactParticles Acquire(Camera camera)
         {
             if(solid==null)
@@ -24,6 +24,8 @@ namespace TalesTactics
                 atlas=new Material(shader);atlas.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatFire");atlas.SetFloat("_UseTexture",1);
                 artMaterial=new Material(shader);artMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatElements");artMaterial.SetFloat("_UseTexture",1);
                 signatureMaterial=new Material(shader);signatureMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/OriginalSkillTrio");signatureMaterial.SetFloat("_UseTexture",1);
+                weaponMaterial=new Material(shader);weaponMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/ArteWeapons");weaponMaterial.SetFloat("_UseTexture",1);weaponMaterial.SetFloat("_CellFeather",1);
+                spellMaterial=new Material(shader);spellMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/ArteMagic");spellMaterial.SetFloat("_UseTexture",1);spellMaterial.SetFloat("_CellFeather",1);
             }
             if(depthCamera!=camera)
             {
@@ -32,15 +34,15 @@ namespace TalesTactics
                 foreach(var component in camera.GetComponents<Component>())
                     if(component!=null&&component.GetType().Name=="UniversalAdditionalCameraData")
                     {var property=component.GetType().GetProperty("requiresDepthTexture");if(property!=null)depth=(bool)property.GetValue(component);break;}
-                atlas.SetFloat("_SoftParticles",depth?1:0);artMaterial.SetFloat("_SoftParticles",depth?1:0);signatureMaterial.SetFloat("_SoftParticles",depth?1:0);
+                atlas.SetFloat("_SoftParticles",depth?1:0);artMaterial.SetFloat("_SoftParticles",depth?1:0);signatureMaterial.SetFloat("_SoftParticles",depth?1:0);weaponMaterial.SetFloat("_SoftParticles",depth?1:0);spellMaterial.SetFloat("_SoftParticles",depth?1:0);
             }
             ImpactParticles chosen=null;foreach(var p in instances)if(!p.gameObject.activeSelf){chosen=p;break;}
             if(chosen==null&&instances.Count<Capacity)
-            {var g=new GameObject("Elemental impact");g.transform.SetParent(transform,false);chosen=g.AddComponent<ImpactParticles>();chosen.Initialize(solid,atlas,artMaterial,signatureMaterial);instances.Add(chosen);}
+            {var g=new GameObject("Elemental impact");g.transform.SetParent(transform,false);chosen=g.AddComponent<ImpactParticles>();chosen.Initialize(solid,atlas,artMaterial,signatureMaterial,weaponMaterial,spellMaterial);instances.Add(chosen);}
             if(chosen==null){chosen=instances[0];foreach(var p in instances)if(p.Age>chosen.Age)chosen=p;}
             return chosen;
         }
-        void OnDestroy(){if(solid!=null)Destroy(solid);if(atlas!=null)Destroy(atlas);if(artMaterial!=null)Destroy(artMaterial);if(signatureMaterial!=null)Destroy(signatureMaterial);}
+        void OnDestroy(){if(solid!=null)Destroy(solid);if(atlas!=null)Destroy(atlas);if(artMaterial!=null)Destroy(artMaterial);if(signatureMaterial!=null)Destroy(signatureMaterial);if(weaponMaterial!=null)Destroy(weaponMaterial);if(spellMaterial!=null)Destroy(spellMaterial);}
     }
     public sealed partial class ImpactParticles:MonoBehaviour
     {
@@ -55,14 +57,14 @@ namespace TalesTactics
         }
         readonly Geometry solid=new Geometry(),atlas=new Geometry();Camera view;Vector3 from;Element element;CombatVisualStyle style;CombatFeedback feedback;float size,age;bool reduced;
         public float Age=>age;public Element Element=>element;public const float Duration=1.05f;
-        public void Initialize(Material plain,Material texture,Material elements=null,Material signatures=null)
+        public void Initialize(Material plain,Material texture,Material elements=null,Material signatures=null,Material weapons=null,Material spells=null)
         {
-            Create(solid,plain,"Impact volume");Create(atlas,texture,"Flame and smoke");defaultArt=elements??texture;signatureArt=signatures??defaultArt;artRenderer=Create(art,defaultArt,"Authored elemental silhouette");Create(backAtlas,texture,"Depth flame and mist",-1);
+            Create(solid,plain,"Impact volume");Create(atlas,texture,"Flame and smoke");defaultArt=elements??texture;signatureArt=signatures??defaultArt;artRenderer=Create(art,defaultArt,"Authored elemental silhouette");defaultBack=texture;weaponArt=weapons??defaultArt;spellArt=spells??defaultArt;backRenderer=Create(backAtlas,texture,"Depth flame and mist",-1);
         }
         MeshRenderer Create(Geometry geometry,Material material,string name,int order=23)
         {var g=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer));g.transform.SetParent(transform,false);geometry.Mesh=new Mesh{name=name};geometry.Mesh.MarkDynamic();g.GetComponent<MeshFilter>().sharedMesh=geometry.Mesh;var r=g.GetComponent<MeshRenderer>();r.sharedMaterial=material;r.sortingOrder=order;return r;}
-        public void Play(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,CombatFeedback hit,float scale,bool ultimate,bool low,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic,bool small=false,SkillSignature skillSignature=SkillSignature.None)
-        {signature=skillSignature;artRenderer.sharedMaterial=signature==SkillSignature.None?defaultArt:signatureArt;pattern=visualPattern;compact=small;this.ultimate=ultimate;travelling=false;view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.35f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;preparing=false;casterAnchor=null;gameObject.SetActive(true);Draw();}
+        public void Play(Camera camera,Vector3 origin,Vector3 target,Element kind,CombatVisualStyle visual,CombatFeedback hit,float scale,bool ultimate,bool low,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic,bool small=false,SkillSignature skillSignature=SkillSignature.None,ArteProfile arte=default)
+        {signature=skillSignature;SetArte(arte);pattern=visualPattern;compact=small;this.ultimate=ultimate;travelling=false;view=camera;transform.position=target;from=origin-target;element=kind;style=visual;feedback=hit;size=Mathf.Clamp(scale,.35f,1.6f)*(ultimate?1.3f:1);reduced=low;age=0;preparing=false;casterAnchor=null;gameObject.SetActive(true);Draw();}
         void Update(){age+=Time.deltaTime;if(view==null||age>=(preparing?prepareDuration:travelling?travelDuration:Duration)){gameObject.SetActive(false);return;}Draw();}
         Vector3 Plane(float x,float y)=>view.transform.right*x*size+view.transform.up*y*size;
         static Color Alpha(Color c,float a){c.a=a;return c;}
@@ -101,6 +103,7 @@ namespace TalesTactics
             if(preparing){DrawPreparation();UploadAll();return;}
             if(travelling){DrawTravel();UploadAll();return;}
             if(compact){DrawCompact(t);UploadAll();return;}
+            if(arte.Enabled){DrawArteImpact(t);UploadAll();return;}
             if(signature!=SkillSignature.None&&feedback==CombatFeedback.Strike){DrawSignatureImpact(t);UploadAll();return;}
             if(HasAuthoredArt(pattern,element,feedback)){DrawAuthored(t);UploadAll();return;}
             if(feedback!=CombatFeedback.Strike)

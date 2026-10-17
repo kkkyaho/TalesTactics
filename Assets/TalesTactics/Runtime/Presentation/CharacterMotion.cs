@@ -13,7 +13,7 @@ namespace TalesTactics
         Facing facing;
         bool presenting, released;
         float windup=0.18f,recovery=0.3f,releasedAt;
-        bool specialUltimate;SkillSignature signature;
+        bool specialUltimate;SkillSignature signature;ArteProfile arte;
         CombatMotionProfile profile;
         float hold, damageStrength=1;
         Vector3 damageDirection;
@@ -26,7 +26,7 @@ namespace TalesTactics
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)
         {
-            presenting=false;timingSpin=false;signature=SkillSignature.None;
+            presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
             facing=unit.Facing;
@@ -34,8 +34,8 @@ namespace TalesTactics
         public void BeginSkill(SkillData skill,float prepare,float recover)
         {
             Set(skill.Animation);started=Time.time;presenting=true;
-            specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;signature=SkillSignatures.Resolve(skill);
-            profile=SkillSignatures.IsSpell(signature)?new CombatMotionProfile(.015f,.005f,.025f,0,0):
+            specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;signature=SkillSignatures.Resolve(skill);arte=ArteProfiles.Resolve(skill);
+            profile=arte.Enabled?ArteMotionProfile.For(arte,CombatEffect.Resolve(unit.Data,skill)):SkillSignatures.IsSpell(signature)?new CombatMotionProfile(.015f,.005f,.025f,0,0):
                 signature==SkillSignature.DemonFang?new CombatMotionProfile(.3f,.12f,0,17,.065f):
                 CombatMotionProfile.For(CombatEffect.Resolve(unit.Data,skill),specialUltimate);
             hold=Mathf.Min(profile.Hold,recovery*.18f);
@@ -43,7 +43,7 @@ namespace TalesTactics
         public void ReleaseSkill(float travelDuration=0)
         {
             // Keep the signature pose until its projectile and contact sequence have both completed.
-            if(!released&&signature!=SkillSignature.None&&!float.IsNaN(travelDuration)&&!float.IsInfinity(travelDuration))recovery+=Mathf.Max(0,travelDuration);
+            if(!released&&(signature!=SkillSignature.None||arte.Enabled)&&!float.IsNaN(travelDuration)&&!float.IsInfinity(travelDuration))recovery+=Mathf.Max(0,travelDuration);
             released=true;releasedAt=Time.time;
         }
         public void Impact(Vector3 direction,bool heavy)
@@ -83,7 +83,8 @@ namespace TalesTactics
                 float phaseTime=released?Mathf.Max(0,Time.time-releasedAt-hold):t;
                 frame=clip?.SamplePhase(view,phaseTime,released?Mathf.Max(.01f,recovery-hold):windup,released);
                 // A casting pose avoids the shared skill clip's spear thrust for Jade's two spells.
-                if(SkillSignatures.IsSpell(signature))frame=unit.Data.Poses?.Cast?.Get(view)??frame;
+                if(SkillSignatures.IsSpell(signature)||arte.IsSpell&&!specialUltimate)frame=unit.Data.Poses?.Cast?.Get(view)??frame;
+                if(arte.Enabled&&arte.Motion==ArteMotion.Guard&&!specialUltimate)frame=unit.Data.Poses?.Guard?.Get(view)??frame;
                 if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
             }
             var pose=unit.Data.Poses?.Get(action,view);
@@ -126,6 +127,12 @@ namespace TalesTactics
                 offset=damageDirection*recoil+Vector3.up*.04f;
                 angle=-sign*recoil*32;
                 color=Color.Lerp(Color.white*1.6f,color,Mathf.Clamp01(t/.08f));
+            }
+            if(presenting&&arte.Enabled&&!timingSpin)
+            {
+                float phase=released?Mathf.Clamp01((Time.time-releasedAt)/Mathf.Max(.01f,recovery)):Mathf.Clamp01(t/Mathf.Max(.01f,windup));
+                if(arte.Motion==ArteMotion.Blink)color.a*=released?Mathf.Lerp(.35f,1,Mathf.Clamp01(phase*4)):Mathf.Lerp(1,.35f,phase);
+                if(arte.Motion==ArteMotion.Spin)angle+=sign*Mathf.Sin(phase*Mathf.PI*2)*28;
             }
             transform.localPosition=offset;
             transform.rotation=cameraView.transform.rotation*Quaternion.Euler(0,0,angle);

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TalesTactics 기술 연출 개선의 실제 게임 영상 전후 비교. 캐릭터별 대표 기술 20종을 선택해 확인합니다.">
+<title>기술 연출 · 전후 비교 — TalesTactics</title>
+<style>
+:root{color-scheme:dark;--bg:#09131f;--panel:#101f2e;--edge:#2b3d4b;--ink:#edf2f4;--muted:#a9bbc5;--gold:#d7ba7d;--teal:#99d7cd;--focus:#aee8de}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 90% 0,#16313b55,transparent 45%),var(--bg);color:var(--ink);font:15px/1.65 "Segoe UI","Malgun Gothic",sans-serif}
+button,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:var(--teal);text-underline-offset:4px}:focus-visible{outline:3px solid var(--focus);outline-offset:4px}button:disabled{cursor:not-allowed;opacity:.48}button:disabled:hover{background:inherit}p,h1,h2,h3,li,button,figcaption{word-break:keep-all;overflow-wrap:anywhere}h1,h2,h3,p{margin-top:0}.wrap{width:min(1600px,100%);margin:auto;padding-inline:40px}.masthead{padding-top:46px;padding-bottom:26px}.brand{font-size:.73rem;letter-spacing:.16em;color:var(--gold);margin-bottom:17px}.heading-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px}h1{font-size:clamp(2rem,3.8vw,3.3rem);letter-spacing:-.045em;line-height:1.22;font-weight:600;margin-bottom:17px}.stage{font-size:.75rem;color:var(--gold);white-space:nowrap;border:1px solid #655738;background:#2b271a66;border-radius:50px;padding:5px 11px}.intro{max-width:920px;font-size:1rem;color:var(--muted);margin-bottom:21px}.scope{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--edge);padding-top:18px}.scope span{padding:0 24px;border-left:1px solid var(--edge);color:var(--muted);font-size:.8rem}.scope span:first-child{padding-left:0;border-left:0}.scope strong{color:var(--ink);font-weight:500;font-size:1.05rem;margin-right:5px}.scope .gold{color:var(--gold)}.filter-area{border-block:1px solid var(--edge);background:#0c1926cc;padding-block:17px}.filter-label{font-size:.74rem;color:var(--muted);margin-bottom:9px}.filters{display:flex;flex-wrap:wrap;gap:7px}.filter{border:1px solid var(--edge);color:#b9c8d1;background:transparent;border-radius:6px;padding:6px 12px;font-size:.82rem}.filter:hover{border-color:#52717b;background:#142c39}.filter[aria-pressed="true"]{color:var(--teal);background:#1a363d;border-color:#628b89}.workspace{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;padding-block:29px 38px;align-items:start}.catalog{min-width:0}.catalog-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 11px;font-size:.82rem;color:var(--muted)}.catalog-heading strong{font-weight:500;color:var(--ink)}.skill-list{display:grid;gap:6px;max-height:650px;overflow-y:auto;padding:3px 8px 5px 3px;scrollbar-color:#46606d transparent;scrollbar-width:thin}.skill-option{display:block;text-align:left;width:100%;border:1px solid transparent;border-radius:7px;background:#10213188;color:var(--ink);padding:12px 13px}.skill-option:hover{background:#17303d;border-color:#3c5664}.skill-option[aria-current="true"]{border-color:#789c95;background:linear-gradient(110deg,#1d3a43,#152a36);box-shadow:inset 3px 0 var(--teal)}.skill-top{display:flex;justify-content:space-between;gap:8px;font-size:.71rem;color:var(--muted);margin-bottom:4px}.skill-name{display:block;font-size:.92rem;line-height:1.45}.ultimate{color:var(--gold)}.catalog-note{color:var(--muted);font-size:.76rem;margin:13px 3px 0}.viewer{min-width:0}.viewer-head{display:flex;align-items:start;gap:16px;justify-content:space-between;margin-bottom:13px}.eyebrow{font-size:.76rem;color:var(--teal);margin-bottom:5px}h2{font-size:clamp(1.45rem,2.1vw,2rem);line-height:1.3;font-weight:500;letter-spacing:-.035em;margin-bottom:6px}.id{font-size:.72rem;color:var(--muted);font-family:Consolas,monospace;margin-bottom:0}.normal-badge{font-size:.71rem;border:1px solid var(--edge);padding:5px 9px;color:var(--muted);border-radius:5px;white-space:nowrap;margin-top:4px}.focus{color:var(--muted);font-size:.88rem;min-height:2.9em;margin-bottom:18px;max-width:1000px}.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}figure{margin:0;border:1px solid var(--edge);border-radius:9px;overflow:hidden;background:#0e1b29;min-width:0}.after{border-color:#496c70}figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;font-size:.84rem;border-bottom:1px solid var(--edge)}figcaption small{font-size:.69rem;color:var(--muted)}.after figcaption{color:var(--teal)}.screen{position:relative;background:#050c14;aspect-ratio:16/9}video{width:100%;height:100%;display:block;object-fit:contain;background:#050c14}.media-message{position:absolute;inset:0 0 42px;display:grid;place-content:center;text-align:center;pointer-events:none;padding:22px;background:linear-gradient(150deg,#102333,#08111b);font-size:.8rem;color:var(--muted)}.media-message strong{display:block;font-weight:500;color:var(--ink);margin-bottom:6px}.media-message[hidden]{display:none}.media-foot{padding:8px 13px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;font-size:.69rem;color:var(--muted)}.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}.control{border-radius:6px;border:1px solid #536f72;background:#1a353d;color:var(--ink);padding:8px 13px;font-size:.81rem}.control:hover{background:#25464c}.control.secondary{background:#10212e;border-color:var(--edge)}.control.secondary:hover{background:#1c303e}.speed{display:flex;align-items:center;gap:8px;font-size:.76rem;color:var(--muted);margin-left:auto}.speed select{background:#112331;border:1px solid var(--edge);border-radius:5px;color:var(--ink);padding:5px 7px}.status{margin:11px 0 0;color:var(--muted);font-size:.75rem;min-height:1.7em}.reading{margin-top:23px;padding:18px 20px;background:#101f2ccc;border:1px solid var(--edge);border-radius:8px}.reading-title{font-size:.8rem;color:var(--gold);font-weight:500;margin:0 0 12px}.points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}.points li{font-size:.78rem;color:var(--muted)}.points strong{display:block;font-size:.82rem;color:var(--ink);font-weight:500;margin-bottom:5px}.meaning{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--edge);font-size:.76rem;color:#b7d5d2}.evidence{border-top:1px solid var(--edge);padding-block:27px 35px}.evidence-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:36px}.evidence h2{font-size:1.12rem;margin-bottom:14px}.evidence p{font-size:.82rem;color:var(--muted);margin-bottom:12px}.evidence strong{color:var(--ink);font-weight:500}.checklist{margin:0;border:1px solid var(--edge);border-radius:8px;overflow:hidden}.checkrow{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:11px 14px;border-top:1px solid var(--edge);font-size:.77rem}.checkrow:first-child{border-top:0}.checkrow dt{color:var(--ink)}.checkrow dd{margin:0;color:var(--muted)}.verified{color:var(--teal)}.links{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.8rem;margin-top:18px}footer{border-top:1px solid var(--edge);padding-block:18px 28px;color:var(--muted);font-size:.72rem}.skip{position:absolute;left:15px;top:-100px;z-index:10;padding:9px 13px;background:var(--panel)}.skip:focus{top:12px}noscript{display:block;border:1px solid var(--edge);padding:18px;margin-bottom:15px}
+@media(min-width:1700px){.screen{aspect-ratio:16/9}.skill-list{max-height:700px}}
+@media(max-width:1100px){.wrap{padding-inline:25px}.workspace{grid-template-columns:218px minmax(0,1fr);gap:20px}.pair{grid-template-columns:1fr}.points{gap:14px}.skill-list{max-height:800px}.speed{margin-left:0}.evidence-grid{gap:22px}}
+@media(max-width:720px){.wrap{padding-inline:18px}.masthead{padding-top:30px}.heading-row{display:block}.stage{display:inline-block;margin-bottom:15px}.scope{gap:9px 0}.scope span{padding-inline:13px}.workspace{grid-template-columns:1fr;gap:23px;padding-top:19px}.skill-list{grid-template-columns:repeat(2,minmax(0,1fr));max-height:242px;padding-right:6px}.skill-option{padding:10px}.catalog-note{display:none}.filter{padding:6px 10px}.viewer-head{margin-bottom:12px}.focus{min-height:0}.points{grid-template-columns:1fr;gap:12px}.points li{display:grid;grid-template-columns:70px 1fr;gap:10px}.points strong{margin:0}.evidence-grid{grid-template-columns:1fr;gap:20px}.reading{padding:16px}.normal-badge{font-size:.65rem}.control{padding:8px 11px}.speed{margin-left:auto}.skill-name{font-size:.83rem}}
+@media(max-width:400px){.scope{display:grid;gap:5px}.scope span{border:0;padding:0}.normal-badge{white-space:normal;max-width:80px}.speed{margin-left:0}.controls{gap:6px}figcaption small{font-size:.64rem}.checkrow{grid-template-columns:85px 1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a href="#viewer" class="skip">선택한 기술 비교로 이동</a>
+<header class="wrap masthead">
+  <p class="brand">TALESTACTICS / SKILL PRESENTATION</p>
+  <div class="heading-row"><h1>기술마다 다른 움직임.</h1><span class="stage" id="review-stage">검증 완료 · 대표 20종</span></div>
+  <p class="intro">칼날, 발톱, 사자 투기, 부활의 빛. 캐릭터별 대표 기술을 선택해 준비 동작부터 마지막 잔광까지 변경 전후를 확인하세요.</p>
+  <div class="scope" aria-label="작업과 비교 범위">
+    <span><strong>179</strong>이번 개별 프로필 범위</span>
+    <span><strong>85 + 94</strong>아군 / 적·보스·전술</span>
+    <span><strong class="gold">3</strong>기존 전용 연출 보존</span>
+    <span><strong class="gold">20</strong>대표 기술 영상 비교</span>
+  </div>
+</header>
+<section class="filter-area" aria-label="캐릭터 선택">
+  <div class="wrap"><p class="filter-label">캐릭터로 찾기</p><div class="filters" id="filters"></div></div>
+</section>
+<main class="wrap">
+  <noscript>기술 선택과 전후 동시 재생에는 JavaScript가 필요합니다. <a href="INVENTORY.md">전체 기술 목록</a>과 <a href="REFERENCES.md">참고 기준</a>은 문서로 확인할 수 있습니다.</noscript>
+  <div class="workspace">
+    <aside class="catalog" aria-label="대표 기술 목록">
+      <div class="catalog-heading"><strong>대표 기술</strong><span id="skill-count">20종</span></div>
+      <div class="skill-list" id="skill-list"></div>
+      <p class="catalog-note">목록을 아래로 스크롤해 다른 기술을 선택하세요. 선택한 두 영상만 불러옵니다.</p>
+    </aside>
+    <section class="viewer" id="viewer" aria-labelledby="skill-title" tabindex="-1">
+      <div class="viewer-head"><div><p class="eyebrow" id="skill-owner"></p><h2 id="skill-title"></h2><p class="id" id="skill-id"></p></div><span class="normal-badge">일반 효과 · normal</span></div>
+      <p class="focus" id="skill-focus"></p>
+      <div class="pair">
+        <figure>
+          <figcaption><span>변경 전</span><small>이번 작업 이전 연출</small></figcaption>
+          <div class="screen"><video id="before-video" controls muted playsinline preload="metadata" aria-label="변경 전 실제 게임 영상">이 브라우저는 MP4 영상 재생을 지원하지 않습니다.</video><div class="media-message" id="before-message"><strong>영상 준비 중</strong><span>촬영 파일이 연결되면 여기서 재생합니다.</span></div></div>
+          <div class="media-foot"><span>TalesTactics 실제 실행 캡처</span><a id="before-link" href="#viewer">영상 파일 열기</a></div>
+        </figure>
+        <figure class="after">
+          <figcaption><span>변경 후</span><small>개별 형상·동작 연출</small></figcaption>
+          <div class="screen"><video id="after-video" controls muted playsinline preload="metadata" aria-label="변경 후 실제 게임 영상">이 브라우저는 MP4 영상 재생을 지원하지 않습니다.</video><div class="media-message" id="after-message"><strong>영상 준비 중</strong><span>촬영 파일이 연결되면 여기서 재생합니다.</span></div></div>
+          <div class="media-foot"><span>TalesTactics 실제 실행 캡처</span><a id="after-link" href="#viewer">영상 파일 열기</a></div>
+        </figure>
+      </div>
+      <div class="controls" aria-label="두 영상 함께 제어">
+        <button class="control" id="play" type="button" disabled>함께 재생</button>
+        <button class="control secondary" id="restart" type="button" disabled>처음부터 다시 재생</button>
+        <button class="control secondary" id="pause" type="button" disabled>함께 일시정지</button>
+        <label class="speed" for="speed">속도 <select id="speed"><option value="1">1×</option><option value="0.5">0.5×</option><option value="0.25">0.25×</option></select></label>
+      </div>
+      <p class="status" id="media-status" role="status" aria-live="polite">영상 파일을 확인하고 있습니다.</p>
+      <div class="reading">
+        <h3 class="reading-title">여기를 비교해 보세요</h3>
+        <ul class="points" id="points"></ul>
+        <p class="meaning" id="meaning"></p>
+      </div>
+    </section>
+  </div>
+  <section class="evidence" aria-labelledby="evidence-title">
+    <div class="evidence-grid">
+      <div>
+        <h2 id="evidence-title">실제 화면으로 확인하는 범위</h2>
+        <p><strong>전후 영상 모두 TalesTactics의 실제 게임 실행을 촬영한 자료입니다.</strong> 원작 게임 영상과의 직접 비교가 아닙니다. AI로 새로 생성한 원화와 자체 연출을 사용하며, 원작의 3D 동작·카메라·프레임을 1:1로 재현했다는 의미는 아닙니다.</p>
+        <p>총 182개 기술 중 기존 전용 3종을 보존하고, 나머지 179개 프로필을 다루는 작업입니다. 이 페이지의 대표 20종은 아군 기술입니다. 적·보스 94개 및 전체 실행 검증 결과는 별도 검증 기록에서 확인해야 합니다.</p>
+        <p>동시 재생은 시작점을 맞추는 비교 기능입니다. 버전마다 연출 길이와 접촉 시점은 다를 수 있습니다. 기본 음소거이며 자동 재생하지 않습니다. 영상 재생률은 실제 게임 성능 벤치마크가 아닙니다.</p>
+      </div>
+      <div>
+        <h2>검증 범위와 현재 상태</h2>
+        <dl class="checklist">
+          <div class="checkrow"><dt>영상 비교</dt><dd>대표 20종 · 일반 효과(normal)만 수록</dd></div>
+          <div class="checkrow"><dt>축소 효과</dt><dd>전체 182개 × 일반·축소 렌더를 Unity에서 검증. 별도 reduced 비교 영상은 수록하지 않음.</dd></div>
+          <div class="checkrow"><dt>규칙·화면</dt><dd>아군 6명, 상태·소비량·난수·효과 정리 확인. Windows 격리 검수의 저장·설정 8파일 불변.</dd></div>
+          <div class="checkrow"><dt>검증 결과</dt><dd><span class="verified" id="validation-state">PlayMode 202/202 · Windows 아군 176/176 통과 · 비교 영상 40개 재생 확인</span></dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="links"><a href="REFERENCES.md">원작 자료·관찰 여부·재해석 범위</a><a href="INVENTORY.md">전체 182개 기술 목록</a><a href="../OriginalSkillTrio/review.html">보존한 기존 3종 비교</a><a href="../VALIDATION.md">프로젝트 검증 기록</a></div>
+  </section>
+</main>
+<footer class="wrap">새 원화와 SD 전술 화면용 연출을 비교하는 검수 페이지입니다. 영상 파일을 재생할 수 없는 경우 안내를 표시합니다.</footer>
+<script>
+(() => {
+  'use strict';
+  // Final results supplied after Unity, Windows, and actual browser-media verification.
+  const reviewState = { stage: '검증 완료 · 대표 20종', validation: 'PlayMode 202/202 · Windows 아군 176/176 통과 · 비교 영상 40개 재생 확인' };
+  // IDs and order match SkillRosterVfxReview.Representatives. Only two video elements exist.
+  const skills = [
+    {id:'cless.5',owner:'크레스',name:'차원참',kind:'일반기',focus:'공간을 가르는 교차 검격과 보랏빛 잔광을 비교합니다.',points:['짧은 검 준비와 순간적인 베기 동작','엇갈리는 두 검격과 공간의 잔광','작은 접촉 지점으로 모이며 사라지는 빛'],meaning:'순간적인 연출 동작을 사용하며, 실제 격자 이동을 추가하는 기술이 아닙니다.'},
+    {id:'cless.ultimate',owner:'크레스',name:'명공참상검',kind:'비오의',focus:'여러 방향의 검격이 이어지는 흐름과 마지막 광격의 크기를 비교합니다.',points:['일반기보다 분명하게 모으는 준비','금백색 교차 검격의 연속 전개','밝은 마무리와 잔광의 빠른 정리'],meaning:'연속 검격은 시각적 리듬입니다. 기존 피해 판정을 추가하지 않습니다.'},
+    {id:'mint.6',owner:'민트',name:'리저렉션',kind:'일반기',focus:'부활의 날개빛과 회복 잔광이 쓰러진 아군을 감싸는 모습을 비교합니다.',points:['지팡이를 든 시전과 발밑의 빛','금백색 부활 문양과 날개 실루엣','대상 주변의 치유 잔광'],meaning:'현재 게임에서는 광역 부활 기술입니다. 단순 HP 회복과 구분해서 확인하세요.'},
+    {id:'mint.ultimate',owner:'민트',name:'타임 스톱',kind:'비오의',focus:'추상적인 공통 효과 대신 시간을 나타내는 시계 형상과 보호 문양을 비교합니다.',points:['시전자가 준비하는 축복의 빛','시계 형상과 금백색 장식의 전개','멈춤을 읽히게 하는 마지막 잔상'],meaning:'시간 정지를 표현하는 연출입니다. UI나 영상 재생 자체를 멈추는 기능이 아닙니다.'},
+    {id:'velvet.0',owner:'벨벳',name:'컨슘 클로',kind:'일반기',focus:'시전자에게 집중되는 붉은 발톱과 어두운 응집광을 비교합니다.',points:['몸을 낮추고 힘을 모으는 준비','자신 주위에 나타나는 붉은 발톱 형상','강화 적용 후 빠르게 걷히는 잔광'],meaning:'HP를 소비하는 자기강화입니다. 적에게 피해를 주는 공격과 구분합니다.'},
+    {id:'velvet.ultimate',owner:'벨벳',name:'임펄스 디자이어',original:'Impulse Desire',kind:'비오의',focus:'거친 발톱의 연속 궤적과 어두운 마무리 충격을 비교합니다.',points:['앞으로 파고드는 동작','붉은 발톱이 겹치는 연속 잔상','중앙으로 응집되는 어두운 빛'],meaning:'발톱의 형태와 전개 순서를 살린 SD 전술 화면용 재해석입니다.'},
+    {id:'farah.3',owner:'파라',name:'연아탄',kind:'일반기',focus:'황금빛 격투 잔상과 좁은 타격 지점의 연속 리듬을 비교합니다.',points:['몸을 틀며 이어지는 근접 동작','주먹 형상과 짧고 빠른 찌르기 잔광','연속 충격 뒤의 짧은 마무리'],meaning:'검날이나 마법 폭발이 아닌 격투 기술로 읽히는지 확인하세요.'},
+    {id:'farah.ultimate',owner:'파라',name:'사후폭쇄진',kind:'비오의',focus:'사자 투기와 격투 충격이 이어지는 피니시를 비교합니다.',points:['몸을 띄우는 큰 준비 동작','황금 사자 형상과 연속 격투 충격','마지막 충격 뒤 전장 가시성 회복'],meaning:'사자 형상은 살리고, 주변 아군 6명의 위치를 가리지 않는지가 검수 포인트입니다.'},
+    {id:'tear.3',owner:'티아',name:'홀리 송',kind:'일반기',focus:'성가 문양과 축복의 보호빛으로 지원 기술의 성격을 비교합니다.',points:['차분한 시전과 성가 문양','금백색 노래 형상이 퍼지는 흐름','짧게 남는 축복의 잔광'],meaning:'아군 강화 기술입니다. 체력을 반복 회복하는 효과로 오해되지 않게 구분합니다.'},
+    {id:'tear.5',owner:'티아',name:'리저렉션',kind:'일반기',focus:'부활의 날개빛과 성가 잔광이 결합되는 모습을 비교합니다.',points:['성가 계열의 시전 준비','쓰러진 대상의 부활 문양','금백색 성가빛과 부드러운 정리'],meaning:'현재 게임의 부활 효과를 기준으로 구성합니다. 원작 동명의 기술 역할과 완전히 같다는 뜻은 아닙니다.'},
+    {id:'jade.0',owner:'제이드',name:'스탈라그마이트',kind:'일반기',focus:'대상 아래에서 솟는 암석 실루엣과 지면 중심의 충격을 비교합니다.',points:['발밑 문양으로 모이는 시전','땅에서 솟아나는 거친 암석 형상','짧은 잔류 후 걷히는 돌의 흔적'],meaning:'공중에서 날아오는 마법탄과 다른 지면 발생 위치를 확인하세요.'},
+    {id:'jade.ultimate',owner:'제이드',name:'미스틱 케이지',kind:'비오의',focus:'목표를 가두는 구조물과 보랏빛 응집 효과를 비교합니다.',points:['어두운 힘을 모으는 시전','대상을 둘러싸는 케이지 실루엣','중앙으로 모였다 사라지는 잔광'],meaning:'시온의 바닥 중력장과 달리 대상을 가두는 형상이 식별되어야 합니다.'},
+    {id:'natalia.5',owner:'나탈리아',name:'큐어',kind:'일반기',focus:'치료 문양과 응집된 회복빛으로 강한 치유를 비교합니다.',points:['공격 사격과 구분되는 시전','몸을 감싸는 청록색 치유 문양','밝은 중심과 가라앉는 잔광'],meaning:'살아 있는 대상의 HP 회복 기술입니다. 부활의 날개 형상과 구분합니다.'},
+    {id:'natalia.6',owner:'나탈리아',name:'리바이브',kind:'일반기',focus:'보호막과 작은 부활 문양으로 자동 부활 상태의 적용을 비교합니다.',points:['짧게 힘을 모으는 보호 동작','살아 있는 아군에게 적용되는 보호빛','부활을 암시하는 작은 보조 문양'],meaning:'쓰러진 아군을 즉시 일으키는 기술이 아니라, 이후 쓰러짐에 대비하는 자동 부활 상태입니다.'},
+    {id:'alphen.4',owner:'알펜',name:'봉황천구',kind:'일반기',focus:'화염검의 준비, 펼쳐지는 불새와 상승 궤적을 비교합니다.',points:['몸을 띄우는 화염검 동작','날개가 읽히는 불새 형상','화염 접촉과 짧은 불씨 잔상'],meaning:'일반 구체 폭발과 다른 불새 실루엣과 상승 방향이 핵심입니다.'},
+    {id:'alphen.ultimate',owner:'알펜',name:'스칼렛 아웃버스트',kind:'비오의',focus:'굵은 화염 검격과 불새 잔광이 이어지는 비오의를 비교합니다.',points:['큰 검격을 준비하는 상승 동작','선명한 화염 칼날의 연속 전개','넓은 마무리 후 빠른 잔광 정리'],meaning:'불꽃이 펼쳐질 때도 시전자와 표적 위치가 읽히는지 확인하세요.'},
+    {id:'shionne.5',owner:'시온',name:'그라비타스 필드',kind:'일반기',focus:'총격 준비 뒤에 전개되는 보랏빛 중력장을 비교합니다.',points:['시전 대신 총을 겨누는 준비','어두운 중심핵과 주변의 중력 형상','안으로 모이는 빛과 짧은 잔류'],meaning:'현재 게임의 끌어당김 효과가 있는 기술입니다. 케이지나 부활의 빛과 구분합니다.'},
+    {id:'shionne.6',owner:'시온',name:'레저렉션',kind:'일반기',focus:'쓰러진 대상에 모이는 부활 문양과 밝은 날개빛을 비교합니다.',points:['사격과 구분되는 지원 시전','대상 중심의 부활 실루엣','금백색 광채가 걷히는 마무리'],meaning:'단일 쓰러진 아군의 부활 기술입니다. 민트의 광역 부활과 범위를 구분해서 확인하세요.'},
+    {id:'kisara.3',owner:'키사라',name:'라이온즈 하울',kind:'일반기',focus:'방패 중심의 공격 동작과 정면으로 펼쳐지는 사자 투기를 비교합니다.',points:['발을 디디는 무거운 공격 준비','한 번에 선명하게 펼쳐지는 황금 사자','방패 충격을 강조하는 보조 잔광'],meaning:'파라의 연속 격투 피니시와 다른 방패 중심의 한 번의 강타를 확인하세요.'},
+    {id:'kisara.ultimate',owner:'키사라',name:'플레어 데몰리셔',kind:'비오의',focus:'무거운 방패 동작과 화염의 마무리 충격을 비교합니다.',points:['무게감 있는 도약과 공격 준비','방패 실루엣과 연속 충격의 전개','불꽃 피니시와 전장으로의 복귀'],meaning:'화염 주문이 아니라 방패를 사용하는 근접 비오의로 읽히는지가 핵심입니다.'}
+  ];
+  const $ = id => document.getElementById(id);
+  const videos = [$('before-video'),$('after-video')];
+  const phases = ['before','after'];
+  const play = $('play'), restart = $('restart'), pause = $('pause'), status = $('media-status');
+  let active = null, filter = '전체', operation = 0, mediaGeneration = 0;
+  const available = [false,false], failed = [false,false], handlers = [null,null];
+  $('review-stage').textContent = reviewState.stage;
+  $('validation-state').textContent = reviewState.validation;
+  const owners = ['전체',...new Set(skills.map(skill => skill.owner))];
+  function renderFilters(){
+    $('filters').replaceChildren(...owners.map(owner => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'filter'; button.textContent = owner;
+      button.setAttribute('aria-pressed',String(owner===filter));
+      button.addEventListener('click',() => {
+        filter=owner; renderFilters();
+        const list=skills.filter(skill => owner==='전체'||skill.owner===owner);
+        if(!list.includes(active)) selectSkill(list[0]);
+        else renderList();
+      });
+      return button;
+    }));
+  }
+  function renderList(){
+    const rows=skills.filter(skill => filter==='전체'||skill.owner===filter);
+    $('skill-count').textContent=rows.length+'종';
+    $('skill-list').replaceChildren(...rows.map(skill => {
+      const button=document.createElement('button'); button.type='button'; button.className='skill-option';
+      button.setAttribute('aria-current',String(skill===active)); button.setAttribute('aria-controls','viewer');
+      const top=document.createElement('span'); top.className='skill-top';
+      const owner=document.createElement('span'); owner.textContent=skill.owner;
+      const kind=document.createElement('span'); kind.textContent=skill.kind; if(skill.kind==='비오의')kind.className='ultimate';
+      top.append(owner,kind);
+      const name=document.createElement('span');name.className='skill-name';name.textContent=skill.name;
+      button.append(top,name);button.addEventListener('click',()=>selectSkill(skill));return button;
+    }));
+  }
+  function updateControls(){
+    const ready=available.every(Boolean);
+    play.disabled=restart.disabled=!ready;
+    pause.disabled=!available.some(Boolean);
+  }
+  function mediaStatus(){
+    updateControls();
+    if(failed.some(Boolean)){
+      status.textContent='촬영 파일이 아직 없거나 불러오지 못했습니다. 영상이 연결되면 전후 비교를 재생할 수 있습니다.';
+    }else if(available.every(Boolean)){
+      status.textContent='두 영상 준비 완료 · 기본 음소거. 함께 재생하거나 각 영상의 탐색바로 확인하세요.';
+    }else status.textContent='선택한 기술의 영상 파일을 확인하고 있습니다.';
+  }
+  function selectSkill(skill){
+    ++operation;const generation=++mediaGeneration;
+    videos.forEach(video=>video.pause());active=skill;
+    $('skill-owner').textContent=skill.owner+' / '+skill.kind;
+    $('skill-title').textContent=skill.name;
+    $('skill-id').textContent=skill.id+(skill.original?' · '+skill.original:'');
+    $('skill-focus').textContent=skill.focus;
+    const labels=['준비','주 형상','마무리'];
+    $('points').replaceChildren(...skill.points.map((point,i)=>{
+      const li=document.createElement('li'),strong=document.createElement('strong'),span=document.createElement('span');
+      strong.textContent=labels[i];span.textContent=point;li.append(strong,span);return li;
+    }));
+    $('meaning').textContent=skill.meaning;
+    videos.forEach((video,i)=>{
+      if(handlers[i]){video.removeEventListener('loadedmetadata',handlers[i].loaded);video.removeEventListener('error',handlers[i].error);}
+      available[i]=failed[i]=false;
+      const phase=phases[i],message=$(phase+'-message'),url='media/'+skill.id+'-'+phase+'.mp4';
+      message.hidden=false;message.querySelector('strong').textContent='영상 확인 중';
+      message.querySelector('span').textContent='선택한 기술의 실제 촬영 파일을 불러옵니다.';
+      video.setAttribute('aria-label',skill.owner+' '+skill.name+' '+(i?'변경 후':'변경 전')+' 실제 게임 영상');
+      video.muted=true;video.playbackRate=Number($('speed').value);
+      const loaded=()=>{
+        if(generation!==mediaGeneration)return;
+        available[i]=true;failed[i]=false;message.hidden=true;mediaStatus();
+      };
+      const error=()=>{
+        if(generation!==mediaGeneration)return;
+        available[i]=false;failed[i]=true;message.hidden=false;
+        message.querySelector('strong').textContent='촬영 파일 준비 중';
+        message.querySelector('span').textContent='아직 없거나 재생할 수 없는 파일입니다.';mediaStatus();
+      };
+      handlers[i]={loaded,error};video.addEventListener('loadedmetadata',loaded);video.addEventListener('error',error);
+      // Replacing src releases the previous selection. Other 18 pairs have no media elements.
+      video.src=url;video.load();$(phase+'-link').href=url;
+    });
+    renderList();mediaStatus();
+    try{history.replaceState(null,'','#'+skill.id);}catch{/* Local-file browsers may restrict History. */}
+  }
+  async function playTogether(fromStart){
+    if(!available.every(Boolean))return;
+    const token=++operation;videos.forEach(video=>video.pause());
+    const ended=videos.some(video=>video.ended);
+    if(fromStart||ended)videos.forEach(video=>{video.currentTime=0;});
+    else {
+      const start=Math.min(...videos.map(video=>video.currentTime));
+      videos.forEach(video=>{video.currentTime=start;});
+    }
+    videos.forEach(video=>{video.playbackRate=Number($('speed').value);});
+    status.textContent='두 영상의 시작점을 맞춰 재생하고 있습니다.';
+    const results=await Promise.allSettled(videos.map(video=>video.play()));
+    if(token!==operation)return;
+    if(results.some(result=>result.status==='rejected')){
+      videos.forEach(video=>video.pause());
+      status.textContent='함께 재생하지 못했습니다. 각 영상의 기본 재생 버튼으로 확인해 주세요.';
+    }else status.textContent='함께 재생 중 · 버전마다 연출 길이와 타격 시점은 다를 수 있습니다.';
+  }
+  play.addEventListener('click',()=>playTogether(false));
+  restart.addEventListener('click',()=>playTogether(true));
+  pause.addEventListener('click',()=>{
+    ++operation;videos.forEach(video=>video.pause());
+    status.textContent='두 영상 일시정지 · 개별 탐색바로 원하는 순간을 확인하세요.';
+  });
+  $('speed').addEventListener('change',()=>videos.forEach(video=>{video.playbackRate=Number($('speed').value);}));
+  videos.forEach(video=>video.addEventListener('ended',()=>{
+    if(videos.every(item=>item.ended))status.textContent='재생이 끝났습니다. 처음부터 다시 재생하거나 다른 기술을 선택하세요.';
+  }));
+  window.addEventListener('hashchange',()=>{
+    const skill=skills.find(item=>item.id===location.hash.slice(1));
+    if(!skill||skill===active)return;
+    if(filter!=='전체'&&filter!==skill.owner){filter=skill.owner;renderFilters();}
+    selectSkill(skill);
+  });
+  window.addEventListener('pagehide',()=>{++operation;videos.forEach(video=>video.pause());});
+  renderFilters();
+  selectSkill(skills.find(skill=>skill.id===location.hash.slice(1))||skills[0]);
+})();
+</script>
+</body>
+</html>

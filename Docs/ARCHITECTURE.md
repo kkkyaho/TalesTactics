@@ -1,5 +1,12 @@
 # 아키텍처
 
+## 전체 기술 연출 프로필
+
+`ArteProfiles.Resolve`는 카탈로그의 나머지179개 정확한 ID에 immutable `ArteProfile`을 반환한다. 기존3개 `SkillSignatures`와 unknown ID fallback을 보존한다. `BoardActionPresentation`, `SkillVfxTiming`, `ArteMotionProfile`이 준비·발사·포즈를 연결하고 `ImpactArte`가 새 무기/마법4×4 시트와 기존4개 메시를 사용한다. 풀16개 상한과 판정1회를 유지한다. 큰 동물 형상은 하나로 제한하고 반복은 작은 충격으로 표현한다. 흡혈처럼 원래 대상 밖에서 발생한 긍정HP 변화는 공격 프로필을 받지 않는다.
+
+새24개 합성 음향은 기존 `BattleAudio` 재생 제한 안에서 라우팅한다. `SkillRosterVfxFixture/Review`는 Editor/검수 define 전용이며 실제6인 행동을 독립 Resolver와 비교하고 격리 저장·난수·메시/재질 정리를 검사한다. Content/Core/저장 형식 변경은 없다. [구현·검증](SkillRosterVfx/README.md).
+
+
 ## 원작 참고 3기술 연출
 
 `SkillSignatures.Resolve`는 `cless.0`, `jade.6`, `jade.3`만 선택한다. `SkillVfxTiming`과 `BoardActionPresentation`이 준비·이동·접촉 후 회복을 연결하고 기존 해석기가 이동 완료에 한 번 판정한다. `CharacterMotion`은 마신검의 AttackMotion과 두 주문의 방향별 Cast 포즈를 사용한다. Content의 비용/위력/범위와 저장 형식은 변경하지 않는다.

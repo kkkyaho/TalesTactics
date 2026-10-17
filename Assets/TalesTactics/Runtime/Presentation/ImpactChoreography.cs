@@ -7,9 +7,9 @@ namespace TalesTactics
         bool preparing;float prepareDuration;Transform casterAnchor;
         public bool Preparing=>preparing;
         public static bool HasWeaponSweep(CombatVisualStyle value)=>value==CombatVisualStyle.Sword||value==CombatVisualStyle.FlameSword||value==CombatVisualStyle.Claw;
-        public void Prepare(Camera camera,Transform caster,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool ultimate,bool low,float duration,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic,SkillSignature signature=SkillSignature.None)
+        public void Prepare(Camera camera,Transform caster,Vector3 target,Element kind,CombatVisualStyle visual,float scale,bool ultimate,bool low,float duration,SkillVisualPattern visualPattern=SkillVisualPattern.Automatic,SkillSignature signature=SkillSignature.None,ArteProfile arte=default)
         {
-            Play(camera,caster.position+camera.transform.up*.65f,target,kind,visual,CombatFeedback.Strike,scale,ultimate,low,visualPattern,false,signature);
+            Play(camera,caster.position+camera.transform.up*.65f,target,kind,visual,CombatFeedback.Strike,scale,ultimate,low,visualPattern,false,signature,arte);
             preparing=true;casterAnchor=caster;prepareDuration=Mathf.Max(.01f,duration);Draw();
         }
         void DrawPreparation()
@@ -18,6 +18,7 @@ namespace TalesTactics
             from=casterAnchor.position+view.transform.up*.65f-transform.position;
             float p=Mathf.Clamp01(age/prepareDuration);
             if(signature!=SkillSignature.None){DrawSignaturePreparation(p);return;}
+            if(arte.Enabled){DrawArtePreparation(p);return;}
             if(element==Element.Fire)
             {
                 float radius=.13f+.30f*Mathf.Sin(p*Mathf.PI*.75f);

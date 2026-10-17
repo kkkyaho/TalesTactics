@@ -7,7 +7,7 @@ namespace TalesTactics.Editor
     {
         public static void Configure()
         {
-            foreach(string name in new[]{"CombatFire","CombatElements","OriginalSkillTrio"})
+            foreach(string name in new[]{"CombatFire","CombatElements","OriginalSkillTrio","ArteWeapons","ArteMagic"})
             {
                 var importer=(TextureImporter)AssetImporter.GetAtPath("Assets/TalesTactics/Resources/TalesTactics/"+name+".png");
                 importer.textureType=TextureImporterType.Default;importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.wrapMode=TextureWrapMode.Clamp;importer.npotScale=TextureImporterNPOTScale.None;importer.maxTextureSize=2048;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
@@ -23,6 +23,8 @@ namespace TalesTactics.Editor
         public static void VfxUpgradeReview()=>Build("VfxUpgradeReview",true);
         public static void OriginalSkillTrioRelease()=>Build("OriginalSkillTrioWindows",false);
         public static void OriginalSkillTrioReview()=>Build("OriginalSkillTrioReview",true);
+        public static void SkillRosterVfxRelease()=>Build("SkillRosterVfxWindows",false);
+        public static void SkillRosterVfxReview()=>Build("SkillRosterVfxReview",true);
         static void Build(string name,bool review)
         {
             Configure();System.IO.Directory.CreateDirectory("Builds/"+name);

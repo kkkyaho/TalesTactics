@@ -88,6 +88,7 @@ namespace TalesTactics.PlayModeTests
                     Assert.That(contacts.All(e=>e.GetComponentsInChildren<LineRenderer>().Length==0),Is.True,"Do not duplicate the large signature at every target");
                     var particles=director.Board.GetComponentsInChildren<ImpactParticles>();
                     Assert.That(particles.Count(p=>!p.Compact),Is.EqualTo(1));Assert.That(particles.Count(p=>p.Compact),Is.EqualTo(recipients.Length));
+                    Assert.That(particles.All(p=>p.Arte.Id==skill.Id),Is.True,"Clock/cage overlays must retain the exact-ID profile on both centerpiece and compact contacts");
                     Assert.That(director.Session.Units.Select(u=>u.CurrentHP),Is.EqualTo(health));Assert.That(JsonUtility.ToJson(Random.state),Is.EqualTo(random));
                 }
                 finally{Object.Destroy(skill);director.Restart();}

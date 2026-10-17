@@ -65,11 +65,13 @@ namespace TalesTactics.PlayModeTests
                 {
                     camera.transform.rotation=Quaternion.Euler(45,rotation*90,0);
                     var facing=CharacterMotion.ViewFacing(owner.Facing,camera.transform.rotation);
-                    foreach(var skill in new[]{data.Skills[0],data.UltimateSkill}.Concat(data.Skills.Where(s=>s.Id=="jade.3"||s.Id=="jade.6")).Distinct())
+                    foreach(var skill in new[]{data.Skills[0],data.UltimateSkill}.Concat(data.Skills.Where(s=>s.Id=="jade.3"||s.Id=="jade.6"||s.Id=="natalia.6")).Distinct())
                     {
-                        // The trio has deliberate weapon/casting poses; other skills retain
-                        // their authored skill/ultimate phases in every camera direction.
-                        bool casting=skill.Id=="jade.3"||skill.Id=="jade.6";
+                        // Healing/earth spells use the authored directional casting pose;
+                        // Consume Claw and Revive's protective stance use Guard. Ultimates
+                        // keep their separate authored phase clips in every camera direction.
+                        bool casting=new[]{"mint.0","tear.0","jade.0","jade.3","jade.6"}.Contains(skill.Id);
+                        bool guarding=skill.Id=="velvet.0"||skill.Id=="natalia.6";
                         var clip=skill.IsUltimate?data.Poses.Ultimate:skill.Id=="cless.0"?data.Poses.AttackMotion:data.Poses.Skill;
                         float previousScale=Time.timeScale;
                         try
@@ -77,9 +79,9 @@ namespace TalesTactics.PlayModeTests
                             // Inspect phase starts without a slow editor frame advancing past them.
                             Time.timeScale=0;
                             motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):clip.Frames[0].Get(facing)),skill.Id+facing+" preparation");
+                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):guarding?data.Poses.Guard.Get(facing):clip.Frames[0].Get(facing)),skill.Id+facing+" preparation");
                             motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):clip.Frames[clip.ReleaseFrame].Get(facing)),skill.Id+facing+" release");
+                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):guarding?data.Poses.Guard.Get(facing):clip.Frames[clip.ReleaseFrame].Get(facing)),skill.Id+facing+" release");
                             Time.timeScale=previousScale;
                             yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
                             Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));
@@ -111,7 +113,7 @@ namespace TalesTactics.PlayModeTests
                     var g=new GameObject("Finale shape test");g.transform.SetParent(parent.transform);
                     var skill=data.UltimateSkill;var effect=g.AddComponent<CombatEffect>();
                     effect.Initialize(director.Board.SpriteMaterial,director.Board.BattleCamera,CombatEffect.Resolve(data,skill),
-                        CombatFeedback.Strike,unit,Vector3.zero,Vector3.one,Color.cyan,true,skill.Presentation,skill.Element);
+                        CombatFeedback.Strike,unit,Vector3.zero,Vector3.one,Color.cyan,true,skill.Presentation,skill.Element,false,false,SkillSignatures.Resolve(skill),ArteProfiles.Resolve(skill));
                     Assert.That(parent.GetComponentsInChildren<ImpactParticles>().Length,Is.EqualTo(1),data.Id);
                     contact.Add(Signature(parent));
                 }
