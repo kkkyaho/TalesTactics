@@ -44,6 +44,39 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Hud.GetComponentsInChildren<RectTransform>().Count(r=>r.name.StartsWith("ModelCell-")),Is.EqualTo(10));
             Assert.That(director.Deployment.Count,Is.EqualTo(6));
         }
+        [UnityTest] public IEnumerator BattleDockKeepsCommandsAndTimingWithinInnerFrame()
+        {
+            director.BeginBattle();director.StopAllCoroutines();
+            foreach(float scale in new[]{1f,1.15f,1.3f})
+            foreach(int state in new[]{0,1,2,3})
+            {
+                director.Preferences.TextScale=scale;
+                director.SetState(state==0?(BattleState)new CommandState(director):state==1?new MoveSelectionState(director):new ActionExecutionState(director));
+                if(state==3){director.TimingActive=true;director.TimingProgress=.5f;director.Hud.UpdateTiming();}
+                yield return null;yield return new WaitForEndOfFrame();Canvas.ForceUpdateCanvases();
+                var dock=director.Hud.transform.Find("BattleCommandDock").GetComponent<FramedContent>();
+                var allowed=dock.ContentRect;allowed.xMin-=1;allowed.xMax+=1;allowed.yMin-=1;allowed.yMax+=1;
+                foreach(string partName in new[]{"Unit","Commands","Threat controls"})
+                {
+                    var part=director.Hud.transform.Find(partName);
+                    foreach(var button in part.GetComponentsInChildren<UnityEngine.UI.Button>())
+                    {
+                        var corners=new Vector3[4];((RectTransform)button.transform).GetWorldCorners(corners);
+                        Assert.That(corners.All(c=>allowed.Contains(dock.transform.InverseTransformPoint(c))),Is.True,partName+"/"+button.name+" at "+scale+" state "+state);
+                    }
+                    foreach(var text in part.GetComponentsInChildren<TMPro.TMP_Text>())
+                    {
+                        text.ForceMeshUpdate();Assert.That(text.isTextOverflowing,Is.False,text.text);
+                        foreach(var glyph in text.textInfo.characterInfo.Take(text.textInfo.characterCount).Where(c=>c.isVisible))
+                        {
+                            Assert.That(allowed.Contains(dock.transform.InverseTransformPoint(text.transform.TransformPoint(glyph.bottomLeft))),Is.True,text.text);
+                            Assert.That(allowed.Contains(dock.transform.InverseTransformPoint(text.transform.TransformPoint(glyph.topRight))),Is.True,text.text);
+                        }
+                    }
+                }
+                director.TimingActive=false;
+            }
+        }
         [UnityTest] public IEnumerator FrameInsetRemainsStableAfterHundredsOfFrames()
         {
             director.Hud.ShowIntermissionHub();yield return null;yield return null;

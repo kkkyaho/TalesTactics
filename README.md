@@ -136,3 +136,5 @@ PlayMode의 화면 검수는 그래픽 Editor나 Windows 플레이어에서 수�
 - [오리지널 음악과 출처](Docs/ORIGINAL_MUSIC.md), [입력·한국어 폰트·라이선스](Docs/INPUT_DISTRIBUTION.md).
 
 기획과 과거 구현 기록은 `Docs`에 보존합니다. 이전 6장의 공략·경제 수치·실행본 경로는 해당 당시의 이력이며 현재 캠페인의 안내로 사용하지 않습니다.
+
+최신 UI 경계 점검: [1,065개 Editor·213개 Windows 화면 검사와 실제 캡처](Docs/FinalUiBounds/README.md).

@@ -127,6 +127,12 @@ namespace TalesTactics
                 yield return Inspect("purchase-multiple-stats",battle.Hud.transform,size,scale);
                 shopper.Equipment=previousGear;Click("전체");yield return Settle();battle.Hud.ShowIntermissionHub();yield return Settle();
                 battle.BeginBattle();yield return Settle();yield return Inspect("battle-six",battle.Hud.transform,size,scale);
+                foreach(int page in new[]{0,4,5}){battle.Hud.ShowSystemMenu(page);yield return Settle();yield return Inspect("battle-system-"+page,battle.Hud.transform,size,scale);battle.Hud.CloseSystemMenu();}
+                battle.MoveCommand();yield return Settle();yield return Inspect("move-selection",battle.Hud.transform,size,scale);battle.State.Cancel();
+                battle.SetState(new ActionExecutionState(battle));yield return Settle();yield return Inspect("action-execution",battle.Hud.transform,size,scale);
+                battle.TimingActive=true;battle.TimingProgress=.5f;battle.TimingSuccess=false;battle.Hud.UpdateTiming();yield return Settle();yield return Inspect("timing-input",battle.Hud.transform,size,scale);
+                battle.TimingProgress=1;battle.TimingSuccess=true;battle.Hud.UpdateTiming();yield return Settle();yield return Inspect("timing-success",battle.Hud.transform,size,scale);
+                battle.TimingActive=false;battle.SetState(new CommandState(battle));yield return Settle();
                 var turn=(TeamTurnScheduler)battle.Session.Scheduler;turn.Complete(battle.Session.Active);battle.Session.Select(turn.Preview(battle.Session.Units).First());battle.SetState(new CommandState(battle));yield return Settle();yield return Inspect("battle-done",battle.Hud.transform,size,scale);
                 var foe=battle.Session.Units.First(u=>u.Team==Team.Enemy&&u.Alive);
                 var adjacent=battle.Session.Grid.Neighbors(battle.Session.Active.Position).First(t=>t.Walkable&&t.Occupant==null);
@@ -145,7 +151,7 @@ namespace TalesTactics
                 Click("결과 계속");yield return Settle();yield return Inspect("after-story",battle.Hud.transform,size,scale);
                 Click("대화 기록");yield return Settle();yield return Inspect("story-history",battle.Hud.transform,size,scale);battle.Hud.CloseStoryDialog();
                 battle.Campaign.HasPendingAfterStory=false;battle.Campaign.PendingAfterStoryStage=-1;battle.Restart();yield return Settle();
-                battle.Hud.ShowHelp();yield return Settle();yield return Inspect("help",battle.Hud.transform,size,scale);battle.Hud.CloseHelp();
+                for(int help=0;help<12;help++){battle.Hud.ShowHelp(help);yield return Settle();yield return Inspect("help-"+help,battle.Hud.transform,size,scale);battle.Hud.CloseHelp();}
                 battle.Hud.ShowSystemMenu();yield return Settle();yield return Inspect("settings",battle.Hud.transform,size,scale);battle.Hud.CloseSystemMenu();
             }
             // This review deliberately completes battles in its isolated fixture saves.
@@ -182,7 +188,7 @@ namespace TalesTactics
             var dock=panel.GetComponentsInChildren<RectTransform>().FirstOrDefault(r=>r.name=="BattleCommandDock");
             if(dock!=null)
             {
-                var allowed=dock.rect;allowed.xMin+=8;allowed.xMax-=8;allowed.yMin+=8;allowed.yMax-=8;
+                var allowed=dock.GetComponent<FramedContent>().ContentRect;allowed.xMin-=1;allowed.xMax+=1;allowed.yMin-=1;allowed.yMax+=1;
                 foreach(var part in panel.GetComponentsInChildren<RectTransform>().Where(r=>r.parent==dock.parent&&(r.name=="Unit"||r.name=="Commands"||r.name=="Threat controls")))
                 {
                     if(part.name=="Commands"&&battle.State is FacingSelectionState)continue;
@@ -295,6 +301,7 @@ namespace TalesTactics
                 if(hits.Count==0||hits[0].gameObject.GetComponentInParent<UnityEngine.UI.Button>()!=button)issues.Add("Button obstructed: "+button.name);
             }
             rows.Add(new Row{screen=name,width=Screen.width,height=Screen.height,textScale=scale,issues=issues.ToArray()});
+            File.WriteAllText(Path.Combine(directory,"progress.json"),JsonUtility.ToJson(new Report{rows=rows.ToArray(),errors=errors.ToArray()},true));
             if((size.x==1920&&scale==1)||(size.x==1024&&scale==1.3f))
             {yield return new WaitForEndOfFrame();var texture=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(directory,name+"-"+size.x+".png"),texture.EncodeToPNG());Destroy(texture);}
         }

@@ -37,7 +37,7 @@ namespace TalesTactics
                 battleDock=Panel("BattleCommandDock",new Vector2(0,1),new Vector2(0,1),Vector2.zero,Vector2.zero);
                 battleDock.SetAsFirstSibling();
             }
-            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+54;
+            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+64;
             Place(battleDock,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-dockHeight),new Vector2(12+width,-BattleDockTop));
             battleDock.gameObject.SetActive(open);
             // These two retained panels share one backdrop and never drift away from one another.
@@ -48,7 +48,8 @@ namespace TalesTactics
                 part.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             }
             if(tacticalToolbar!=null)
-                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+14),new Vector2(width,-BattleDockTop-dockHeight+52));
+                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+20),new Vector2(width,-BattleDockTop-dockHeight+58));
+            if(!facing)InsetBattleCommands();
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(width+36,12),new Vector2(-12,108));
             if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
@@ -58,6 +59,19 @@ namespace TalesTactics
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
             group.alpha=showMessage?1:0;group.blocksRaycasts=showMessage;
             footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=showMessage;
+        }
+        // Commands share a backdrop with Unit rather than their own visible frame.
+        // Reserve that backdrop's inner border even for legacy movement/timing labels.
+        void InsetBattleCommands()
+        {
+            float width=commands.rect.width,inset=24;
+            foreach(Transform child in commands)
+            {
+                if(!child.gameObject.activeSelf||FramedContent.IsDecoration(child)||!(child is RectTransform r))continue;
+                float low=r.anchorMin.x*width+r.offsetMin.x,high=r.anchorMax.x*width+r.offsetMax.x;
+                if(low<inset)r.offsetMin=new Vector2(r.offsetMin.x+inset-low,r.offsetMin.y);
+                if(high>width-inset)r.offsetMax=new Vector2(r.offsetMax.x-(high-width+inset),r.offsetMax.y);
+            }
         }
         Rect BattleViewport(float scale)
         {

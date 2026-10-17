@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-17T10:57:23.4660843Z",
+  "sourceBranch": "develop",
+  "sourceHead": "40ad937935e2a6a799b6d60a3ed99425302e9e42",
+  "method": "Mono.Cecil direct inspection of final player runtime assembly top-level and nested types",
+  "cecilDLL": "C:\\dev\\TalesTactics\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "sourceGuard": "#if UNITY_EDITOR || TALESTACTICS_REVIEW",
+  "expectedReviewTypes": [
+    "TalesTactics.UiSafeLayoutReview",
+    "TalesTactics.SkillRosterVfxReview",
+    "TalesTactics.SkillRosterVfxFixture"
+  ],
+  "expectedRuntimeTypes": [
+    "TalesTactics.ArteProfile",
+    "TalesTactics.ArteProfiles",
+    "TalesTactics.ArteMotif",
+    "TalesTactics.ArteMotion",
+    "TalesTactics.SkillSignature",
+    "TalesTactics.SkillSignatures",
+    "TalesTactics.ImpactParticles"
+  ],
+  "expectedSignatureEnumValues": [
+    "DemonFang",
+    "MeteorStorm",
+    "ThunderBlade"
+  ],
+  "builds": [
+    {
+      "name": "FinalUiBoundsWindows",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\FinalUiBoundsWindows",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\FinalUiBoundsWindows\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "6099AE47FAC7D91B2CE006637AD11B071500A6159101001C7AE46BB1004CA229",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-17T10:56:09.6933970Z",
+      "expectedReviewPresent": false,
+      "reviewTypes": [
+        {
+          "type": "TalesTactics.UiSafeLayoutReview",
+          "present": false,
+          "count": 0,
+          "types": [],
+          "passed": true
+        },
+        {
+          "type": "TalesTactics.SkillRosterVfxReview",
+          "present": false,
+          "count": 0,
+          "types": [],
+          "passed": true
+        },
+        {
+          "type": "TalesTactics.SkillRosterVfxFixture",
+          "present": false,
+          "count": 0,
+          "types": [],
+          "passed": true
+        }
+      ],
+      "runtimeTypes": [
+        "TalesTactics.ArteProfile",
+        "TalesTactics.ArteProfiles",
+        "TalesTactics.ArteMotif",
+        "TalesTactics.ArteMotion",
+        "TalesTactics.SkillSignature",
+        "TalesTactics.SkillSignatures",
+        "TalesTactics.ImpactParticles"
+      ],
+      "signatureEnumValues": [
+        "None",
+        "DemonFang",
+        "MeteorStorm",
+        "ThunderBlade"
+      ],
+      "passed": true
+    },
+    {
+      "name": "FinalUiBoundsReview",
+      "playerRoot": "D:\\TalesTacticsHelpGuide\\Builds\\FinalUiBoundsReview",
+      "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\FinalUiBoundsReview\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "runtimeSHA256": "F39E7E69D482B9FED9560C8554AE6B2B8500FCEA25D9AD89A2E5104784CFCE74",
+      "runtimeStableDuringInspection": true,
+      "runtimeLastWriteUtc": "2026-10-17T10:53:25.1379949Z",
+      "expectedReviewPresent": true,
+      "reviewTypes": [
+        {
+          "type": "TalesTactics.UiSafeLayoutReview",
+          "present": true,
+          "count": 18,
+          "types": [
+            "TalesTactics.UiSafeLayoutReview",
+            "TalesTactics.UiSafeLayoutReview/Row",
+            "TalesTactics.UiSafeLayoutReview/Report",
+            "TalesTactics.UiSafeLayoutReview/<>c",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_0",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_1",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_2",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_3",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_4",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_5",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_6",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_7",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_8",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass12_9",
+            "TalesTactics.UiSafeLayoutReview/<>c__DisplayClass9_0",
+            "TalesTactics.UiSafeLayoutReview/<Inspect>d__12",
+            "TalesTactics.UiSafeLayoutReview/<Settle>d__8",
+            "TalesTactics.UiSafeLayoutReview/<Start>d__7"
+          ],
+          "passed": true
+        },
+        {
+          "type": "TalesTactics.SkillRosterVfxReview",
+          "present": true,
+          "count": 13,
+          "types": [
+            "TalesTactics.SkillRosterVfxReview",
+            "TalesTactics.SkillRosterVfxReview/Row",
+            "TalesTactics.SkillRosterVfxReview/Report",
+            "TalesTactics.SkillRosterVfxReview/<>c",
+            "TalesTactics.SkillRosterVfxReview/<>c__DisplayClass21_0",
+            "TalesTactics.SkillRosterVfxReview/<>c__DisplayClass25_0",
+            "TalesTactics.SkillRosterVfxReview/<>c__DisplayClass25_1",
+            "TalesTactics.SkillRosterVfxReview/<>c__DisplayClass25_2",
+            "TalesTactics.SkillRosterVfxReview/<>c__DisplayClass29_0",
+            "TalesTactics.SkillRosterVfxReview/<Guard>d__23",
+            "TalesTactics.SkillRosterVfxReview/<Run>d__25",
+            "TalesTactics.SkillRosterVfxReview/<Sequence>d__26",
+            "TalesTactics.SkillRosterVfxReview/<Start>d__22"
+          ],
+          "passed": true
+        },
+        {
+          "type": "TalesTactics.SkillRosterVfxFixture",
+          "present": true,
+          "count": 12,
+          "types": [
+            "TalesTactics.SkillRosterVfxFixture",
+            "TalesTactics.SkillRosterVfxFixture/Entry",
+            "TalesTactics.SkillRosterVfxFixture/Scenario",
+            "TalesTactics.SkillRosterVfxFixture/Scenario/<>c",
+            "TalesTactics.SkillRosterVfxFixture/Scenario/<>c__DisplayClass29_0",
+            "TalesTactics.SkillRosterVfxFixture/Scenario/<>c__DisplayClass29_1",
+            "TalesTactics.SkillRosterVfxFixture/<>c",
+            "TalesTactics.SkillRosterVfxFixture/<>c__DisplayClass10_0",
+            "TalesTactics.SkillRosterVfxFixture/<>c__DisplayClass10_1",
+            "TalesTactics.SkillRosterVfxFixture/<>c__DisplayClass10_2",
+            "TalesTactics.SkillRosterVfxFixture/<>c__DisplayClass2_0",
+            "TalesTactics.SkillRosterVfxFixture/<>c__DisplayClass5_0"
+          ],
+          "passed": true
+        }
+      ],
+      "runtimeTypes": [
+        "TalesTactics.ArteProfile",
+        "TalesTactics.ArteProfiles",
+        "TalesTactics.ArteMotif",
+        "TalesTactics.ArteMotion",
+        "TalesTactics.SkillSignature",
+        "TalesTactics.SkillSignatures",
+        "TalesTactics.ImpactParticles"
+      ],
+      "signatureEnumValues": [
+        "None",
+        "DemonFang",
+        "MeteorStorm",
+        "ThunderBlade"
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

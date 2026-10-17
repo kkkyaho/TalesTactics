@@ -479,3 +479,7 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 - `BattleCharacterStatusHud`는 상태창 전용 대상/탭/페이지/조회 방향을 관리한다. 동일 진영의 실제 유닛 또는 준비 단계의 장비 적용 미리보기를 조회하며 BattleSession.Active와 실제 facing을 수정하지 않는다. 능력/기술/장비·상태 효과·특성/적 전술을 보여준다.
 - 기존 보조 팝업은 `PrepareUnitModal`을 사용한다. `ShowUnitDetails`는 큰 상태창과 입력 차단 배경을 열고, `CloseUnitDetails`는 모두 숨긴다. Q/E 입력은 이 모달이 열렸을 때만 처리한다.
 - 아트 출처, 시안/실제 화면 및 검증은 `MotionStatus/README.md`를 따른다.
+
+## 전투 공통 창의 내부 여백
+
+`BattleCompactHud.InsetBattleCommands`는 자체 장식 프레임을 숨기고 공통 BattleCommandDock을 사용하는 명령 영역에 좌우 24px을 확보한다. 프레임 장식과 전장 방향 화살표는 제외한다. 하단 도구 영역에는 64px 높이를 예약한다. `UiSafeLayoutReview`는 이 공통 창도 다른 창과 동일한 `FramedContent.ContentRect`로 버튼 모서리·TMP 글자를 검사하며, 71상태와 진행 결과를 기록한다. [검증](FinalUiBounds/README.md).
