@@ -109,7 +109,11 @@ namespace TalesTactics
                 Label(missionWindow,unit==null?(!training&&PreparationWave(stage,false)&&missionEnemy>=CampaignEncounters.Initial(stage,true)?"증원 · ":"")+EnemyRoles.Name(data):unit.Alive?"HP "+unit.CurrentHP+" / "+unit.Stats.HP:"격파",306,32,20);
                 string state=unit!=null&&unit.IntentPhase>0?EnemyTactics.Describe(unit):unit?.BossWard==true?"호위 방벽 "+s.Resolver.BossWardPercent(unit)+"%":EnemyRoles.Advice(data);
                 Label(missionWindow,state,340,78,18);
-                if(missionDetails)Label(missionWindow,data.BasicAttack.DisplayName+" · 사거리 "+data.BasicAttack.MinRange+"–"+data.BasicAttack.Range+"\n"+(unit?.BossWard==true?"호위 1명당 피해 -25% (최대 75%)":EnemyRoles.Advice(data)),428,98,16);
+                if(missionDetails)
+                {
+                    Label(missionWindow,data.BasicAttack.DisplayName+" · 사거리 "+data.BasicAttack.MinRange+"–"+data.BasicAttack.Range,428,38,16);
+                    Button(missionWindow,"임무 적 기술 보기",476,()=>{var inspected=unit??MissionEnemyPreview(data,missionEnemy,stage,training);CloseMission();ShowUnitSkills(inspected);},true,40);
+                }
                 Button(missionWindow,missionDetails?"적 요약 보기":"적 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);
             }
         }

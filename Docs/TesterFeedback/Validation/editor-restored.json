@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "UnityEngine.Application.runInBackground=false; UnityEditor.EditorSettings.enterPlayModeOptionsEnabled=true; UnityEditor.SessionState.SetBool(\"TalesTactics.UiSafeLayoutReviewActive\",false); return new { playing=UnityEditor.EditorApplication.isPlaying, background=UnityEngine.Application.runInBackground, fast=UnityEditor.EditorSettings.enterPlayModeOptionsEnabled, options=UnityEditor.EditorSettings.enterPlayModeOptions.ToString(), dirty=UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().isDirty, compiling=UnityEditor.EditorApplication.isCompiling, failed=UnityEditor.EditorUtility.scriptCompilationFailed };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "background": false,
+        "fast": true,
+        "options": "DisableDomainReload, DisableSceneReload",
+        "dirty": false,
+        "compiling": false,
+        "failed": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\TalesTacticsHelpGuide"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

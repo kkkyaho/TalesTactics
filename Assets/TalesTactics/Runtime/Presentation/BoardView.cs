@@ -25,6 +25,7 @@ namespace TalesTactics
         public void RotateCamera(float degrees)
         {
             if(root==null||battle.TimingActive)return;
+            RemoveAppliedCameraPan();
             BattleCamera.transform.RotateAround(battlefieldBounds.center,Vector3.up,degrees);
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
@@ -33,7 +34,7 @@ namespace TalesTactics
         {if(root==null||battle.Session==null)return;zoom=Mathf.Clamp(zoom*factor,0.55f,1.3f);FitBattlefield(true);}
         public void ResetCamera()
         {
-            focusAction=false;zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
+            ClearCameraPan();focusAction=false;zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
             if(root==null||battle.Session==null)return;
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
@@ -49,6 +50,7 @@ namespace TalesTactics
         {
             var viewport=battle.Hud.BattlefieldViewport;
             if(!force&&viewport==lastViewport)return;
+            RemoveAppliedCameraPan();
             lastViewport=viewport;BattleCamera.rect=new Rect(0,0,1,1);
             var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);
             var max=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
@@ -69,6 +71,7 @@ namespace TalesTactics
             var offset=viewport.center-new Vector2(.5f,.5f);
             BattleCamera.transform.position-=BattleCamera.transform.right*(offset.x*2*BattleCamera.orthographicSize*BattleCamera.aspect)
                 +BattleCamera.transform.up*(offset.y*2*BattleCamera.orthographicSize);
+            ApplyCameraPan();
         }
         public void Initialize(BattleDirector b)
         {
@@ -84,7 +87,7 @@ namespace TalesTactics
             camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=BattleCamera.backgroundColor;
             camera.depth=BattleCamera.depth-1;camera.rect=new Rect(0,0,1,1);
         }
-        public void ResetBoard(){StopAllCoroutines();if(battle?.Hud!=null)battle.Hud.ClearCombatFeedback();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();healthCanvas=null;ResetMovementPreview();}
+        public void ResetBoard(){ClearCameraPan();StopAllCoroutines();if(battle?.Hud!=null)battle.Hud.ClearCombatFeedback();ClearTiming();ResetTacticalMarkers();if(root!=null)Destroy(root.gameObject);root=null;activeMarker=null;targetMarker=null;destinationMarker=null;line=null;tiles.Clear();colors.Clear();rangeBorders.Clear();units.Clear();sprites.Clear();animators.Clear();motions.Clear();healthCanvas=null;ResetMovementPreview();}
         public void Build(BattleSession session)
         {
             ResetBoard();root=new GameObject("Runtime Battlefield").transform;root.SetParent(transform,false);

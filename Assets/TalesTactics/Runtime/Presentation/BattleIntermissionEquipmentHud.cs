@@ -143,17 +143,25 @@ namespace TalesTactics
             {
                 var slot=(EquipmentSlot)i;var tab=FormationButton(parent,"분류: "+SlotName(slot),SlotName(slot),new Vector2(i/3f,.77f),new Vector2((i+1)/3f,.90f),()=>{selectedEquipmentSlot=slot;equipmentPage=0;RenderEquipment(c,draft,null);});IntermissionSelection(tab,slot==selectedEquipmentSlot);
             }
-            var options=draft.Options(selectedEquipmentSlot);int pageSize=compact?3:4;
+            // Show owned compatible items even when another ally is using the last copy.
+            // This presentation list never relaxes EquipmentLoadout's availability checks.
+            var options=(battle.Catalog.Equipment??Array.Empty<EquipmentData>()).Where(item=>item!=null&&EquipmentLoadout.CanEquip(c,item,selectedEquipmentSlot)&&CampaignInventory.Owned(battle.Campaign,item.Id)>0).ToArray();
+            // Three readable lines need taller cards after both parent frames apply their insets.
+            // Keep two rows in wide and compact layouts so resizing cannot shrink a third row below its text height.
+            var usable=draft.Options(selectedEquipmentSlot);const int pageSize=2;
             int pages=Math.Max(1,(options.Length+pageSize-1)/pageSize);equipmentPage=Mathf.Clamp(equipmentPage,0,pages-1);
             var selected=draft.Get(selectedEquipmentSlot);var worn=committed.Get(selectedEquipmentSlot);float rowHeight=.61f/pageSize;
             for(int i=equipmentPage*pageSize;i<Math.Min(options.Length,(equipmentPage+1)*pageSize);i++)
             {
                 var item=options[i];float top=.76f-i%pageSize*rowHeight;
-                var row=FormationButton(parent,"장착 후보: "+item.DisplayName,"",new Vector2(0,top-rowHeight),new Vector2(1,top),()=>{draft.Equip(selectedEquipmentSlot,item);RenderEquipment(c,draft,null);});IntermissionSelection(row,selected==item);
+                bool canChoose=usable.Contains(item);
+                var row=FormationButton(parent,"장착 후보: "+item.DisplayName,"",new Vector2(0,top-rowHeight),new Vector2(1,top),()=>{draft.Equip(selectedEquipmentSlot,item);RenderEquipment(c,draft,null);},canChoose);IntermissionSelection(row,selected==item);
                 EquipmentArt(row,item,new Vector2(.01f,.06f),new Vector2(.20f,.94f));
-                FormationText(row,item.DisplayName,new Vector2(.21f,.48f),new Vector2(.98f,.97f),compact?17:21);
-                string quantity="보유 "+CampaignInventory.Owned(battle.Campaign,item.Id)+" · 사용 가능 "+CampaignInventory.Available(battle.Campaign,item.Id,c.Id);
-                FormationText(row,quantity,new Vector2(.21f,.02f),new Vector2(.98f,.48f),compact?14:16).color=formationTeal;
+                FormationText(row,item.DisplayName,new Vector2(.21f,.65f),new Vector2(.98f,.98f),compact?17:21);
+                var state=FormationText(row,EquipmentInventoryState(c,item,worn,selected),new Vector2(.21f,.29f),new Vector2(.98f,.66f),compact?13:15);
+                state.name="EquipmentWearerState";state.color=item==worn?formationGold:canChoose?formationTeal:new Color(.75f,.78f,.81f);
+                string quantity="보유 "+CampaignInventory.Owned(battle.Campaign,item.Id)+" · 미장착 "+CampaignInventory.Available(battle.Campaign,item.Id);
+                FormationText(row,quantity,new Vector2(.21f,.01f),new Vector2(.98f,.30f),compact?13:15).color=new Color(.75f,.82f,.85f);
             }
             if(options.Length==0)FormationText(parent,"보유한 호환 장비가 없습니다.\n상점에서 구매할 수 있습니다.",new Vector2(.04f,.19f),new Vector2(.96f,.73f),19,TextAlignmentOptions.Center);
             FormationButton(parent,"장비 해제","해제",new Vector2(0,.01f),new Vector2(.28f,.14f),()=>{draft.Equip(selectedEquipmentSlot,null);RenderEquipment(c,draft,null);},true,17);
@@ -163,6 +171,18 @@ namespace TalesTactics
                 FormationText(parent,(equipmentPage+1)+" / "+pages,new Vector2(.53f,.01f),new Vector2(.75f,.14f),15,TextAlignmentOptions.Center);
                 FormationButton(parent,"다음 장비 후보","다음",new Vector2(.75f,.01f),new Vector2(1,.14f),()=>{equipmentPage++;RenderEquipment(c,draft,null);},equipmentPage+1<pages,16);
             }
+        }
+
+        string EquipmentInventoryState(CharacterData current,EquipmentData item,EquipmentData worn,EquipmentData selected)
+        {
+            var states=new List<string>();
+            if(item==worn)states.Add("현재 장착");
+            else if(item==selected)states.Add("선택 초안");
+            var wearers=JoinedCharacters().Where(c=>c!=current&&battle.Campaign.Characters.Any(p=>p.Id==c.Id&&p.Equipment!=null&&p.Equipment.Contains(item.Id)))
+                .Select(c=>c.DisplayName.Split(' ')[0]).ToArray();
+            if(wearers.Length>0)states.Add(wearers[0]+(wearers.Length>1?" 외 "+(wearers.Length-1)+"명":"")+" 착용 중");
+            else if(CampaignInventory.Equipped(battle.Campaign,item.Id,current.Id)>0)states.Add("다른 동료 착용 중");
+            return states.Count>0?string.Join(" · ",states):"장착 가능";
         }
 
         void DrawEquipmentComparison(RectTransform parent,CharacterData c,EquipmentLoadout draft,EquipmentLoadout committed,int level,bool promoted,int changed,bool compact)

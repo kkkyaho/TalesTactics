@@ -28,7 +28,12 @@ namespace TalesTactics.PlayModeTests
             Assert.That(saved.Get(character.Id).Equipment[(int)EquipmentSlot.Armor],Is.EqualTo(item.Id));
             Click(director.Catalog.Characters[1].DisplayName);yield return null;
             Click("방어구: 없음");yield return null;
-            Assert.That(UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>().Any(b=>b.name=="장착 후보: "+item.DisplayName),Is.False,"Equipped inventory cannot be offered twice");
+            var unavailable=UnityEngine.Object.FindObjectsByType<UnityEngine.UI.Button>().Single(b=>b.name=="장착 후보: "+item.DisplayName);
+            Assert.That(unavailable.interactable,Is.False,"Equipped inventory remains visible but cannot be offered twice");
+            Assert.That(unavailable.GetComponentsInChildren<TMPro.TMP_Text>().Any(t=>t.text.Contains(character.DisplayName.Split(' ')[0]+" 착용 중")),Is.True);
+            Assert.That(director.Campaign.Characters.Single(c=>c.Id==character.Id).Equipment[(int)EquipmentSlot.Armor],Is.EqualTo(item.Id));
+            Assert.That(CampaignInventory.Equipped(director.Campaign,item.Id),Is.EqualTo(1));
+            Assert.That(CampaignInventory.Available(director.Campaign,item.Id),Is.Zero);
             Click("출전 준비로");yield return null;Assert.That(director.Hud.IntermissionHubOpen,Is.True);
             director.Campaign=saved;Click("전투 시작");yield return null;
             var unit=director.Session.Units.Single(u=>u.Team==Team.Player&&u.Data.Id==character.Id);

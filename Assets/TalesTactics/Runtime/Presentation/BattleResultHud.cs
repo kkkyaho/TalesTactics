@@ -29,9 +29,17 @@ namespace TalesTactics
                 for(int i=0;i<rewards;i++)
                 {
                     float x=.04f+i*.92f/rewards,w=.92f/rewards;
-                    var tile=ResultTile("Reward-"+i,new Vector2(x,.59f),new Vector2(x+w-.01f,.74f));
+                    var tile=ResultTile("Reward-"+i,new Vector2(x,.59f),new Vector2(x+w-.01f,.74f),i>0);
                     if(i==0){FormationIcon(tile,"gold",new Vector2(.03f,.1f),new Vector2(.28f,.9f),Color.white);FormationText(tile,"골드 +"+battle.GoldResult.ToString("N0"),new Vector2(.3f,.12f),new Vector2(.98f,.88f),21);}
-                    else {var reward=battle.ItemResults[i-1];EquipmentArt(tile,reward.Item,new Vector2(.02f,.08f),new Vector2(.28f,.92f));FormationText(tile,reward.Item.DisplayName+" ×"+reward.Count,new Vector2(.30f,.10f),new Vector2(.98f,.90f),19);}
+                    else
+                    {
+                        var reward=battle.ItemResults[i-1];tile.name="보상 상세: "+reward.Item.Id;
+                        var button=tile.gameObject.AddComponent<UnityEngine.UI.Button>();button.targetGraphic=tile.GetComponent<UnityEngine.UI.Image>();button.targetGraphic.raycastTarget=true;
+                        button.onClick.AddListener(()=>ShowRewardItemDetails(reward,tile));StyleButton(tile);
+                        EquipmentArt(tile,reward.Item,new Vector2(.02f,.08f),new Vector2(.28f,.92f));
+                        FormationText(tile,reward.Item.DisplayName+" ×"+reward.Count,new Vector2(.30f,.30f),new Vector2(.98f,.94f),19);
+                        FormationText(tile,"선택하여 상세 확인",new Vector2(.30f,.03f),new Vector2(.98f,.31f),14).color=formationTeal;
+                    }
                 }
                 FormationText(resultPanel,"캐릭터 성장",new Vector2(.04f,.52f),new Vector2(.96f,.59f),20);
                 int rows=Mathf.Max(1,(battle.GrowthResults.Length+1)/2);float height=.36f/rows;
@@ -73,9 +81,9 @@ namespace TalesTactics
                 else if(win&&!battle.ResultTraining)ResultButton("다시 도전",2,3,battle.RetryBattle);
             }
         }
-        RectTransform ResultTile(string name,Vector2 min,Vector2 max)
+        RectTransform ResultTile(string name,Vector2 min,Vector2 max,bool interactive=false)
         {
-            var tile=FormationRect(resultPanel,name,min,max);var image=tile.gameObject.AddComponent<UnityEngine.UI.Image>();image.color=new Color(.025f,.055f,.08f,.96f);image.raycastTarget=false;OrnateButtonGraphic.Create(tile,true);return tile;
+            var tile=FormationRect(resultPanel,name,min,max);var image=tile.gameObject.AddComponent<UnityEngine.UI.Image>();image.color=new Color(.025f,.055f,.08f,.96f);image.raycastTarget=false;if(!interactive)OrnateButtonGraphic.Create(tile,true);return tile;
         }
         void ResultButton(string name,int index,int count,System.Action action,string display=null)
         {

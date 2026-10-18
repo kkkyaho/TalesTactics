@@ -482,4 +482,14 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 
 ## 전투 공통 창의 내부 여백
 
-`BattleCompactHud.InsetBattleCommands`는 자체 장식 프레임을 숨기고 공통 BattleCommandDock을 사용하는 명령 영역에 좌우 24px을 확보한다. 프레임 장식과 전장 방향 화살표는 제외한다. 하단 도구 영역에는 64px 높이를 예약한다. `UiSafeLayoutReview`는 이 공통 창도 다른 창과 동일한 `FramedContent.ContentRect`로 버튼 모서리·TMP 글자를 검사하며, 71상태와 진행 결과를 기록한다. [검증](FinalUiBounds/README.md).
+`BattleCompactHud.InsetBattleCommands`는 자체 장식 프레임을 숨기고 공통 BattleCommandDock을 사용하는 명령 영역에 좌우 24px을 확보한다. 프레임 장식과 전장 방향 화살표는 제외한다. 하단 도구 영역에는 64px 높이를 예약한다. `UiSafeLayoutReview`는 이 공통 창도 다른 창과 동일한 `FramedContent.ContentRect`로 버튼 모서리·TMP 글자를 검사하며, 현재80상태와 진행 결과를 기록한다. [검증](FinalUiBounds/README.md).
+
+
+## 플레이 테스트 피드백 연결 (2026-10-18)
+
+- `BoardCameraPan`은 카메라의 XZ 오프셋을 보관하고 Fit 이전 적용분을 제거한 뒤 줌·회전·HUD 영역 변경 후 다시 적용한다. 맵 경계로 제한하며 Home/새 전장/초점 변경에서 초기화한다. `BattleDirector.HandleCameraDrag`는 UI/전투 입력과 드래그를 분리한다.
+- `BattlePhaseHud`는 실제 TeamTurnScheduler의 선택 가능한 출전 유닛과 이동/행동/상태이상·연계를 읽어 턴 종료 문구를 만든다. 스케줄러나 전투 완료 조건을 변경하지 않는다.
+- `BattleEnemyInspectionHud`는 명령 대기 클릭의 적 요약과 공통 상태창 기술 탭을 연결한다. 준비 단계는 분리된 BattleSession으로 실전의 보스/전술 기술을 구성하고 미출현 증원에도 난이도 레벨 보정을 적용한다. 활성 전투와 저장 객체는 변경하지 않는다.
+- `BattleRewardDetailsHud`는 결과 아이템의 읽기 전용 모달이다. 결과의 계속 버튼 입력을 차단하며 닫으면 같은 결과로 복귀한다. 장비 목록의 표시 후보와 실제 `EquipmentLoadout.Options/CanCommit` 권한은 분리해 품절 착용품도 설명할 수 있다.
+- `CombatFeedbackHud`는 스냅샷 경험치 큐에서 첫 레벨 상승 시 카드 안의 빛과 `BattleAudio.PlayLevelUpCue`를 알림당 한 번 재생한다. 모달은 큐를 일시 대기시키고 Clear가 표시 자원을 정리한다.
+- 화면 검수는 기존71 + 신규9 = 80상태로 확장했다. 새 장비/스케줄러/카메라 검수 fixture는 원래 상태를 복원한다. 증거·한계는 `TesterFeedback/README.md`를 따른다.

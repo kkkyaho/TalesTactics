@@ -45,9 +45,13 @@ namespace TalesTactics
             Board.Initialize(this);Hud.ShowTitle();
             gameObject.AddComponent<GamepadPointer>().Initialize(this);
         }
+        bool cameraDragHeld;
+        readonly List<RaycastResult> cameraDragHits=new List<RaycastResult>();
         void Update()
         {
             HealthHoveredUnit=null;
+            var dragMouse=Mouse.current;
+            if(HandleCameraDrag(dragMouse!=null?dragMouse.position.ReadValue():Vector2.zero,dragMouse!=null&&dragMouse.middleButton.wasPressedThisFrame,dragMouse!=null&&dragMouse.middleButton.isPressed))return;
             if(Hud.TitleOpen)
             {if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame||Mouse.current!=null&&Mouse.current.rightButton.wasPressedThisFrame)Hud.CancelTitle();return;}
             if(StoryActive)return;
@@ -88,8 +92,35 @@ namespace TalesTactics
 
             }
         }
+        // Only a gesture begun on the map owns battle input; modals and timing release it.
+        public bool HandleCameraDrag(Vector2 screen,bool pressed,bool held)
+        {
+            bool allowed=Session!=null&&State!=null&&!Hud.TitleOpen&&!Hud.InputModalOpen&&!StoryActive&&!TimingActive&&
+                !(State is ActionExecutionState)&&!(State is BattleEndState)&&!(State is TutorialCompleteState);
+            if(!allowed){cameraDragHeld=false;Board?.EndCameraDrag();return false;}
+            bool wasHeld=cameraDragHeld;
+            if(!held){cameraDragHeld=false;Board?.EndCameraDrag();return wasHeld;}
+            var viewport=Hud.BattlefieldViewport;
+            bool inside=viewport.Contains(new Vector2(screen.x/Screen.width,screen.y/Screen.height));
+            if(inside&&EventSystem.current!=null)
+            {
+                cameraDragHits.Clear();EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=screen},cameraDragHits);
+                inside=cameraDragHits.Count==0;
+            }
+            if(pressed)
+            {
+                cameraDragHeld=inside;
+                if(inside)Board.BeginCameraDrag(screen);else Board.EndCameraDrag();
+            }
+            else if(cameraDragHeld&&Board.CameraDragging)
+            {
+                if(inside)Board.DragCamera(screen);else Board.EndCameraDrag();
+            }
+            return cameraDragHeld;
+        }
         public void HandleBattleClick(Vector2 screen)
         {
+            if(cameraDragHeld)return;
             if(Session?.Active==null||Session.Active.Team!=Team.Player||Hud.InputModalOpen||StoryActive||TimingActive||State is ActionExecutionState||State is BattleEndState||State is TutorialCompleteState)return;
             if(EventSystem.current!=null)
             {

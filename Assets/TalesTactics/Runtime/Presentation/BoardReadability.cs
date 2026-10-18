@@ -6,7 +6,7 @@ namespace TalesTactics
         bool focusAction;
         GroundOverlay activeMarker,targetMarker,destinationMarker;
         public void FocusCurrent()
-        {if(root==null||battle.TimingActive)return;focusAction=true;zoom=1;FitBattlefield(true);}
+        {if(root==null||battle.TimingActive)return;ClearCameraPan();focusAction=true;zoom=1;FitBattlefield(true);}
         public void RefreshFocus(){if(focusAction&&root!=null)FitBattlefield(true);}
         void FocusBounds(ref Vector2 min,ref Vector2 max)
         {

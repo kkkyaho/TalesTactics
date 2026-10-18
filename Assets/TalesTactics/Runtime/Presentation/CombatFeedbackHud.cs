@@ -26,7 +26,9 @@ namespace TalesTactics
         readonly List<NumberView> numbers=new List<NumberView>();
         readonly Stack<TMP_Text> freeNumbers=new Stack<TMP_Text>();
         BattleDirector battle;BattleHud hud;RectTransform layer,card,fill;TMP_Text nameText,levelText,amountText,valueText,caption;
-        UnityEngine.UI.RawImage portrait;CanvasGroup group;ExperienceGain current;float elapsed;
+        UnityEngine.UI.RawImage portrait,levelUpLight;UnityEngine.UI.Outline edge;
+        CanvasGroup group;ExperienceGain current;float elapsed,levelUpAge;bool levelUpPresented;
+        public int PresentedLevelUpCount {get;private set;}
         public int PendingCount=>queue.Count+(current==null?0:1);
         public bool HasNumber(UnitRuntime unit){foreach(var n in numbers)if(n.Unit==unit)return true;return false;}
         public void Initialize(BattleDirector owner,BattleHud ui){battle=owner;hud=ui;}
@@ -45,7 +47,10 @@ namespace TalesTactics
             group=layer.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             card=Rect("Experience feedback",layer,Vector2.one,Vector2.one,Vector2.zero,new Vector2(340,98));
             var bg=card.gameObject.AddComponent<UnityEngine.UI.Image>();bg.color=new Color(.045f,.08f,.12f,.96f);bg.raycastTarget=false;
-            var edge=card.gameObject.AddComponent<UnityEngine.UI.Outline>();edge.effectColor=new Color(.49f,.59f,.57f,.8f);edge.effectDistance=new Vector2(1,-1);
+            edge=card.gameObject.AddComponent<UnityEngine.UI.Outline>();edge.effectColor=new Color(.49f,.59f,.57f,.8f);edge.effectDistance=new Vector2(1,-1);
+            // Existing authored ascent wings sit behind the portrait and stay inside the card.
+            levelUpLight=Rect("Experience ascent light",card,Vector2.zero,Vector2.zero,new Vector2(3,11),new Vector2(77,87)).gameObject.AddComponent<UnityEngine.UI.RawImage>();
+            levelUpLight.texture=Resources.Load<Texture2D>("TalesTactics/ArteMagic");levelUpLight.uvRect=new Rect(.25f,.25f,.25f,.25f);levelUpLight.raycastTarget=false;levelUpLight.enabled=false;
             portrait=Rect("Experience portrait",card,Vector2.zero,Vector2.zero,new Vector2(12,22),new Vector2(66,76)).gameObject.AddComponent<UnityEngine.UI.RawImage>();portrait.raycastTarget=false;
             portrait.texture=Resources.Load<Texture2D>("TalesTactics/FormationPortraits");
             nameText=Text("Experience name",card,"",17,new Vector2(80,61),new Vector2(245,87));
@@ -89,7 +94,7 @@ namespace TalesTactics
             }
             if(current==null&&queue.Count>0)
             {
-                current=queue.Dequeue();elapsed=0;card.gameObject.SetActive(true);
+                current=queue.Dequeue();elapsed=0;levelUpAge=1;levelUpPresented=false;card.gameObject.SetActive(true);
                 string[] ids={"cless","mint","farah","jade","tear","natalia","velvet","alphen","shionne","kisara"};int index=System.Array.IndexOf(ids,current.Unit.Data.Id);
                 portrait.enabled=index>=0;portrait.uvRect=new Rect((index%5)*.2f,index<5?.5f:0,.2f,.5f);
                 nameText.text=current.Unit.Data.DisplayName.Split(' ')[0];amountText.text="EXP +"+current.Amount;
@@ -102,9 +107,32 @@ namespace TalesTactics
             int total=current.BeforeEXP+Mathf.FloorToInt(current.Amount*Mathf.Clamp01(elapsed/duration));int level=Mathf.Min(50,current.BeforeLevel+total/100),exp=level==50?0:total%100;
             fill.anchorMax=new Vector2(level==50?1:exp/100f,1);valueText.text=level==50?"MAX":exp+" / 100";levelText.text="Lv. "+level;
             caption.text=level>current.BeforeLevel?"LEVEL UP  ·  "+current.BeforeLevel+" → "+level:"행동 경험치";
+            // One cue per gain, including multi-level gains. Later frames never replay the sound.
+            if(level>current.BeforeLevel&&!levelUpPresented)
+            {
+                levelUpPresented=true;levelUpAge=0;PresentedLevelUpCount++;
+                battle.Audio?.PlayLevelUpCue(battle.Preferences?.ReducedEffects??false);
+            }
+            PresentLevelUp(dt);
             if(elapsed>=duration+.7f){current=null;card.gameObject.SetActive(false);}
         }
+        void PresentLevelUp(float dt)
+        {
+            levelUpAge+=dt;bool reduced=battle.Preferences?.ReducedEffects??false;
+            float pulse=Mathf.SmoothStep(0,1,levelUpAge/.07f)*(1-Mathf.SmoothStep(0,1,levelUpAge/.7f));
+            edge.effectColor=Color.Lerp(new Color(.49f,.59f,.57f,.8f),new Color(.58f,.89f,.83f,1),pulse*(reduced?.4f:1));
+            caption.color=levelUpPresented?new Color(.65f,.88f,.82f):new Color(.91f,.95f,.96f);
+            levelUpLight.enabled=!reduced&&pulse>0;
+            if(levelUpLight.enabled)
+            {
+                levelUpLight.color=new Color(.8f,.95f,.91f,pulse*.85f);
+                levelUpLight.rectTransform.localScale=Vector3.one*(.95f+.1f*Mathf.Clamp01(levelUpAge/.7f));
+            }
+        }
         public void Clear()
-        {queue.Clear();current=null;numbers.Clear();freeNumbers.Clear();if(layer!=null)Destroy(layer.gameObject);layer=null;}
+        {
+            queue.Clear();current=null;numbers.Clear();freeNumbers.Clear();levelUpPresented=false;levelUpAge=1;PresentedLevelUpCount=0;
+            if(layer!=null){layer.gameObject.SetActive(false);Destroy(layer.gameObject);}layer=null;
+        }
     }
 }

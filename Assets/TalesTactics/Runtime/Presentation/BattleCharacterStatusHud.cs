@@ -100,17 +100,18 @@ namespace TalesTactics
             var model=StatusSurface(unitDetails,"StatusModel",new Vector2(.02f,.15f),new Vector2(.32f,.75f));
             var backdrop=FormationRect(model,"StatusSanctuary",new Vector2(.045f,.04f),new Vector2(.955f,.96f));var scenery=backdrop.gameObject.AddComponent<RawImage>();scenery.texture=Resources.Load<Texture2D>("TalesTactics/FormationBackdrop");scenery.color=new Color(.75f,.83f,1,.8f);scenery.raycastTarget=false;
             string context=u.Team==Team.Enemy?"전술 · "+EnemyTactics.Describe(u):"특성 · "+TacticalDevelopment.TraitName(u.Trait)+"\n"+TacticalDevelopment.TraitDescription(u.Trait);
-            FormationText(model,context,new Vector2(.08f,.78f),new Vector2(.92f,.96f),16).color=formationGold;
-            var art=FormationRect(model,"Body",new Vector2(.08f,.2f),new Vector2(.92f,.77f));
+            FormationText(model,context,new Vector2(.08f,u.Team==Team.Enemy?.52f:.78f),new Vector2(.92f,.96f),16).color=formationGold;
+            var art=FormationRect(model,"Body",new Vector2(.08f,.2f),new Vector2(.92f,u.Team==Team.Enemy?.50f:.77f));
             var body=art.gameObject.AddComponent<CharacterModelImage>();body.Character=u.Data;body.sprite=EquipmentAppearance.Resolve(u,u.Data.Sprites.Get((Facing)statusFacing));body.preserveAspect=true;body.raycastTarget=false;
             FormationButton(model,"모델 회전","모델 회전",new Vector2(.15f,.07f),new Vector2(.85f,.18f),()=>{statusFacing=(statusFacing+1)%4;RenderCharacterStatus();},true,16);
             var content=FormationRect(unitDetails,"StatusContent",new Vector2(.34f,.15f),new Vector2(.98f,.75f));
             if(statusTab==0)DrawStatusAbilities(content,u);
             else if(statusTab==1)DrawStatusSkills(content,u);
             else DrawStatusEquipment(content,u);
-            FormationButton(unitDetails,"이전 상태 캐릭터","‹ 이전 · Q",new Vector2(.02f,.025f),new Vector2(.25f,.115f),()=>CycleStatusUnit(-1));
+            bool canCycle=battle.Session!=null?battle.Session.Units.Count(x=>x.Team==u.Team)>1:u.Team==Team.Player&&JoinedCharacters().Length>1;
+            FormationButton(unitDetails,"이전 상태 캐릭터","‹ 이전 · Q",new Vector2(.02f,.025f),new Vector2(.25f,.115f),()=>CycleStatusUnit(-1),canCycle);
             FormationText(unitDetails,"조회 중 · Esc 닫기",new Vector2(.27f,.03f),new Vector2(.70f,.11f),16,TextAlignmentOptions.Center).color=formationGold;
-            FormationButton(unitDetails,"다음 상태 캐릭터","다음 · E ›",new Vector2(.73f,.025f),new Vector2(.98f,.115f),()=>CycleStatusUnit(1));
+            FormationButton(unitDetails,"다음 상태 캐릭터","다음 · E ›",new Vector2(.73f,.025f),new Vector2(.98f,.115f),()=>CycleStatusUnit(1),canCycle);
             // AccessibleText scales glyphs; enlarge the panel without scaling text twice.
         }
         void DrawStatusAbilities(RectTransform parent,UnitRuntime u)

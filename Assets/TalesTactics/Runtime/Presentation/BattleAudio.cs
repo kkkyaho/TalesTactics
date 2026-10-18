@@ -67,6 +67,16 @@ namespace TalesTactics
             {clip=SkillAudioPalette.Create(family,contact);skillCues.Add(key,clip);}
             PlayEffect(key,clip,reduced?.72f:1);
         }
+        public void PlayLevelUpCue(bool reduced=false)
+        {
+            if(EffectsVolume<=0)return;
+            const string key="ui.level-up";
+            var clip=Entry(key)?.Clip;
+            if(clip==null&&!skillCues.TryGetValue(key,out clip))
+            {clip=SkillAudioPalette.Create("arte-holy",true);skillCues.Add(key,clip);}
+            // A quiet local chime through the same SFX volume, limiter and owned-clip lifetime.
+            PlayEffect(key,clip,reduced?.27f:.45f);
+        }
         void PlayEffect(string id,AudioClip clip,float gain)
         {
             if(clip==null||EffectsVolume<=0)return;

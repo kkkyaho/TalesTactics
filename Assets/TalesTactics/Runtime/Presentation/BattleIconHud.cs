@@ -29,7 +29,7 @@ namespace TalesTactics
             var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
             if(team!=null)
             {
-                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 미완료 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,20,12);
+                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 턴 미확정 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,20,12);
                 phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-180,-26),new Vector2(180,-2));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=10;phase.fontSizeMax=12;
             }
             foreach(var unit in orderNow)

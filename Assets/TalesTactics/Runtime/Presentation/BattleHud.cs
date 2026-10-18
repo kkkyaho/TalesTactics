@@ -18,7 +18,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -172,6 +172,6 @@ namespace TalesTactics
             else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,"타이밍 입력 (Space)",280,battle.TimingInput);}
         }
         public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":"Space / 버튼 입력")}";}
-        public void Inspect(Vector2Int p){var t=battle.Session.Grid[p];var u=battle.Session.Units.FirstOrDefault(x=>x.Position==p&&x.Alive);battle.InspectUnit(u);battle.Message=$"Tile {p} / 높이 {t.Height} / {t.Terrain} / 이동비용 {t.MovementCost}"+(u!=null?$"\n{u.Data.DisplayName} HP {u.CurrentHP}/{u.Stats.HP} · "+StatusText.Describe(u)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):""):"");Refresh();}
+        public void Inspect(Vector2Int p){var t=battle.Session.Grid[p];var u=battle.Session.Units.FirstOrDefault(x=>x.Position==p&&x.Alive);battle.InspectUnit(u);battle.Message=$"Tile {p} / 높이 {t.Height} / {t.Terrain} / 이동비용 {t.MovementCost}"+(u!=null?$"\n{u.Data.DisplayName} HP {u.CurrentHP}/{u.Stats.HP} · "+StatusText.Describe(u)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):""):"");Refresh();if(u?.Team==Team.Enemy&&battle.State is CommandState)ShowEnemySummary(u);}
     }
 }

@@ -77,7 +77,8 @@ namespace TalesTactics
                 Click("거점 목표");yield return Settle();
                 battle.Hud.ShowMission();yield return Settle();yield return Inspect("mission",battle.Hud.transform,size,scale);
                 Click("적 정보");yield return Settle();yield return Inspect("enemies",battle.Hud.transform,size,scale);
-                Click("적 상세 보기");yield return Settle();yield return Inspect("enemy-detail",battle.Hud.transform,size,scale);battle.Hud.CloseMission();
+                Click("적 상세 보기");yield return Settle();yield return Inspect("enemy-detail",battle.Hud.transform,size,scale);
+                Click("임무 적 기술 보기");yield return Settle();yield return Inspect("prep-enemy-skills",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();battle.Hud.CloseMission();
                 foreach(var control in new[]{"출전 편성","장비 관리","장비 상점","성장 · 승급","동료의 이야기 · 30"})
                 {
                     Click(control);yield return Settle();yield return Inspect(control,battle.Hud.transform,size,scale);
@@ -88,6 +89,7 @@ namespace TalesTactics
                         candidate.onClick.Invoke();yield return Settle();yield return Inspect("equipment-draft",battle.Hud.transform,size,scale);
                         Click("전체 능력치 보기");yield return Settle();yield return Inspect("equipment-stats",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();
                         Click("돌아가기 (미적용 취소)");yield return Settle();
+                        yield return InspectOtherWearer(size,scale);
                     }
                     if(control=="장비 상점")
                     {
@@ -127,6 +129,11 @@ namespace TalesTactics
                 yield return Inspect("purchase-multiple-stats",battle.Hud.transform,size,scale);
                 shopper.Equipment=previousGear;Click("전체");yield return Settle();battle.Hud.ShowIntermissionHub();yield return Settle();
                 battle.BeginBattle();yield return Settle();yield return Inspect("battle-six",battle.Hud.transform,size,scale);
+                var inspectedEnemy=battle.Session.Units.First(u=>u.Team==Team.Enemy&&u.Alive);
+                battle.Hud.ShowEnemySummary(inspectedEnemy);yield return Settle();yield return Inspect("combat-enemy-summary",battle.Hud.transform,size,scale);
+                Click("적 기술 보기");yield return Settle();yield return Inspect("combat-enemy-skills",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();
+                yield return InspectPhaseReadiness(size,scale);
+                yield return InspectCameraPan(size,scale);
                 foreach(int page in new[]{0,4,5}){battle.Hud.ShowSystemMenu(page);yield return Settle();yield return Inspect("battle-system-"+page,battle.Hud.transform,size,scale);battle.Hud.CloseSystemMenu();}
                 battle.MoveCommand();yield return Settle();yield return Inspect("move-selection",battle.Hud.transform,size,scale);battle.State.Cancel();
                 battle.SetState(new ActionExecutionState(battle));yield return Settle();yield return Inspect("action-execution",battle.Hud.transform,size,scale);
@@ -142,12 +149,24 @@ namespace TalesTactics
                 battle.Session.Active.Level=50;battle.Session.Active.CurrentMP=battle.Session.Active.Stats.MP;
                 battle.SkillCommand();yield return Settle();yield return Inspect("skills",battle.Hud.transform,size,scale);
                 var feedback=battle.Hud.CombatFeedback;var active=battle.Session.Active;
+                int cues=feedback.PresentedLevelUpCount;
+                bool reducedEffects=battle.Preferences.ReducedEffects;battle.Preferences.ReducedEffects=false;
                 feedback.Enqueue(new ExperienceGain{Unit=active,Amount=35,BeforeLevel=2,BeforeEXP=80,AfterLevel=3,AfterEXP=15});yield return Settle();yield return Inspect("experience-center",battle.Hud.transform,size,scale);
-                feedback.Clear();
+                float cueDeadline=Time.realtimeSinceStartup+4;
+                while(feedback.PresentedLevelUpCount==cues&&Time.realtimeSinceStartup<cueDeadline)yield return null;
+                if(feedback.PresentedLevelUpCount!=cues+1)throw new InvalidOperationException("Level-up feedback did not emit exactly one cue");
+                yield return new WaitForSeconds(.12f);yield return Settle();
+                var ascent=battle.Hud.GetComponentsInChildren<UnityEngine.UI.RawImage>().Single(i=>i.name=="Experience ascent light");
+                if(!ascent.enabled||ascent.color.a<=0)throw new InvalidOperationException("Level-up visual fixture missed its active pulse");
+                yield return Inspect("experience-level-up",battle.Hud.transform,size,scale);
+                feedback.Clear();battle.Preferences.ReducedEffects=reducedEffects;
                 foreach(var enemy in battle.Session.Units.Where(u=>u.Team==Team.Enemy).ToArray())for(int n=0;n<3&&enemy.Alive;n++){enemy.Damage(99999,battle.Session.Grid);enemy.BeginTurn();enemy.Acted=true;enemy.EndTurn();}
                 battle.Session.Crossover.State.Nodes=7;battle.Session.Crossover.Update();
                 if(battle.Session.Result!=BattleResult.Victory)throw new InvalidOperationException("Six-member victory fixture did not satisfy its objective");
                 battle.SetState(new BattleEndState(battle));yield return Settle();yield return Inspect("results-six",battle.Hud.transform,size,scale);
+                var reward=battle.ItemResults.FirstOrDefault();if(reward==null)throw new InvalidOperationException("Reward details fixture requires committed item loot");
+                string rewardSave=JsonUtility.ToJson(battle.Campaign);Click("보상 상세: "+reward.Item.Id);yield return Settle();yield return Inspect("reward-item-detail",battle.Hud.transform,size,scale);
+                Click("보상 상세 닫기");yield return Settle();if(JsonUtility.ToJson(battle.Campaign)!=rewardSave)throw new InvalidOperationException("Reward inspection changed the campaign");
                 Click("결과 계속");yield return Settle();yield return Inspect("after-story",battle.Hud.transform,size,scale);
                 Click("대화 기록");yield return Settle();yield return Inspect("story-history",battle.Hud.transform,size,scale);battle.Hud.CloseStoryDialog();
                 battle.Campaign.HasPendingAfterStory=false;battle.Campaign.PendingAfterStoryStage=-1;battle.Restart();yield return Settle();
@@ -170,6 +189,80 @@ namespace TalesTactics
             Application.Quit(exitCode);
 #endif
         }
+        IEnumerator InspectOtherWearer(Vector2Int size,float scale)
+        {
+            // An isolated in-memory copy keeps this fixture out of the real reward and save flow.
+            var original=battle.Campaign;
+            var selectionFields=new[]{"selectedCharacter","selectedEquipmentSlot","equipmentPage","intermissionRosterPage"}.Select(name=>typeof(BattleHud).GetField(name,System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)).ToArray();
+            var selectionValues=selectionFields.Select(field=>field.GetValue(battle.Hud)).ToArray();
+            battle.Campaign=JsonUtility.FromJson<CampaignSave>(JsonUtility.ToJson(original));
+            try
+            {
+                var armor=battle.Catalog.Equipment.First(e=>e.Id=="leather-armor");
+                battle.Campaign.Inventory.RemoveAll(e=>e.Id==armor.Id);battle.Campaign.Inventory.Add(new OwnedEquipment{Id=armor.Id,Count=1});
+                foreach(var member in battle.Campaign.Characters)for(int i=0;i<member.Equipment.Length;i++)if(member.Equipment[i]==armor.Id)member.Equipment[i]=null;
+                battle.Campaign.Get("mint").Equipment[(int)EquipmentSlot.Armor]=armor.Id;
+                string before=JsonUtility.ToJson(battle.Campaign);
+                battle.Hud.ShowIntermissionHub();yield return Settle();Click("거점 캐릭터: cless");yield return Settle();
+                var armorSlot=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name.StartsWith("방어구: "));armorSlot.onClick.Invoke();yield return Settle();
+                var candidate=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="장착 후보: "+armor.DisplayName);
+                if(candidate.interactable||!candidate.GetComponentsInChildren<TMP_Text>().Any(t=>t.text.Contains("민트 착용 중")))throw new InvalidOperationException("Last equipped copy must remain visible with its wearer and disabled");
+                yield return Inspect("equipment-other-wearer",battle.Hud.transform,size,scale);
+                if(JsonUtility.ToJson(battle.Campaign)!=before)throw new InvalidOperationException("Equipment browsing changed ownership");
+            }
+            finally
+            {
+                battle.Campaign=original;for(int i=0;i<selectionFields.Length;i++)selectionFields[i].SetValue(battle.Hud,selectionValues[i]);
+                battle.Hud.ShowIntermissionHub();
+            }
+            yield return Settle();
+        }
+
+        IEnumerator InspectPhaseReadiness(Vector2Int size,float scale)
+        {
+            var units=battle.Session.Units;var team=(TeamTurnScheduler)battle.Session.Scheduler;var active=battle.Session.Active;
+            var pending=team.CapturePending(units);var begun=team.CaptureBegun(units);int round=team.Round;
+            var allies=units.Where(u=>u.Team==Team.Player&&u.Alive).ToArray();
+            var moved=allies.Select(u=>u.Moved).ToArray();var acted=allies.Select(u=>u.Acted).ToArray();var chains=allies.Select(u=>u.FlamingChain).ToArray();
+            try
+            {
+                battle.Hud.ShowEndPhaseConfirmation();yield return Settle();yield return Inspect("end-phase-six-remaining",battle.Hud.transform,size,scale);battle.Hud.CloseUnitDetails();
+                foreach(var unit in allies){team.Begin(unit);unit.Moved=unit.Acted=true;unit.FlamingChain=false;}
+                battle.Hud.ShowEndPhaseConfirmation();yield return Settle();
+                if(!battle.Hud.GetComponentsInChildren<TMP_Text>().Any(t=>t.text.Contains("남은 이동·행동이 없습니다")))throw new InvalidOperationException("Completed actions must show facing confirmation rather than an unfinished-action warning");
+                yield return Inspect("end-phase-six-facing",battle.Hud.transform,size,scale);
+            }
+            finally
+            {
+                battle.Hud.CloseUnitDetails();for(int i=0;i<allies.Length;i++){allies[i].Moved=moved[i];allies[i].Acted=acted[i];allies[i].FlamingChain=chains[i];}
+                team.Restore(units,pending,begun,round,active);battle.RefreshViews();
+            }
+            yield return Settle();
+        }
+
+        IEnumerator InspectCameraPan(Vector2Int size,float scale)
+        {
+            var board=battle.Board;var active=battle.Session.Active;
+            string before=string.Join("|",battle.Session.Units.Select(u=>JsonUtility.ToJson(new CheckpointUnit(u))));int randomDraws=battle.Session.Resolver.RandomDraws;
+            var viewport=battle.Hud.BattlefieldViewport;var from=new Vector2(viewport.center.x*Screen.width,viewport.center.y*Screen.height);
+            var to=from+new Vector2(Mathf.Min(64,viewport.width*Screen.width*.16f),Mathf.Min(32,viewport.height*Screen.height*.12f));
+            try
+            {
+                board.ZoomCamera(.75f);
+                // Exercise the same held-middle-button input gate as the game, to the map limit.
+                for(int i=0;i<80;i++){battle.HandleCameraDrag(from,true,true);battle.HandleCameraDrag(to,false,true);battle.HandleCameraDrag(to,false,false);}
+                yield return Settle();
+                var cells=battle.Session.Grid.Tiles.Keys.ToArray();var offset=board.CameraPanOffset;
+                if(offset.sqrMagnitude<.01f||Mathf.Abs(offset.x)>(cells.Max(p=>p.x)-cells.Min(p=>p.x)+1)*.5f+.01f||Mathf.Abs(offset.z)>(cells.Max(p=>p.y)-cells.Min(p=>p.y)+1)*.5f+.01f)
+                    throw new InvalidOperationException("Camera pan must move and remain bounded by the playable map");
+                yield return Inspect("camera-middle-drag",battle.Hud.transform,size,scale);
+                if(battle.Session.Active!=active||battle.Session.Resolver.RandomDraws!=randomDraws||string.Join("|",battle.Session.Units.Select(u=>JsonUtility.ToJson(new CheckpointUnit(u))))!=before)
+                    throw new InvalidOperationException("Camera dragging changed combat state");
+            }
+            finally{battle.HandleCameraDrag(to,false,false);board.ResetCamera();}
+            yield return Settle();
+        }
+
         IEnumerator Settle(){yield return null;yield return null;Canvas.ForceUpdateCanvases();yield return new WaitForEndOfFrame();}
         void Click(string name)
         {
