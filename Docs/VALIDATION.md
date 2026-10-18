@@ -2,7 +2,7 @@
 
 ## 2026-10-18 — preview.8 릴리즈 패키지
 
-검증된 develop 소스로 Unity6000.6.0f1 일반 Windows 빌드122.411638초, 오류0/경고3. Runtime DLL은 TesterFeedback 검증본과 동일하고 검수 타입 제외를 확인했다. 배포 도구14/14, ZIP202파일+manifest 전체 해시, 압축 해제 및 실행 후202파일 무결성 통과. 압축 해제 실행본30.12초 시작 유지·초기화·응답·오류0, 사용자8파일 불변. 이번 배포 단계에서는 전체 Unity 테스트를 반복하지 않았다. main/태그/공개 게시 결과는 [preview.8 배포 기록](Distribution/Preview8/README.md)에 확정한다.
+검증된 develop 소스로 Unity6000.6.0f1 일반 Windows 빌드122.411638초, 오류0/경고3. Runtime DLL은 TesterFeedback 검증본과 동일하고 검수 타입 제외를 확인했다. 배포 도구14/14, ZIP202파일+manifest 전체 해시, 압축 해제 및 실행 후202파일 무결성 통과. 압축 해제 실행본30.12초 시작 유지·초기화·응답·오류0, 사용자8파일 불변. 이번 배포 단계에서는 전체 Unity 테스트를 반복하지 않았다. main fast-forward 통합과 v0.1.0-preview.8 태그 푸시, 공개 prerelease 및 ZIP/체크섬 게시 완료. 서버 크기/SHA256 일치·익명 API/첨부 HEAD/체크섬 GET200을 확인했다. 원격 ZIP 전체 재다운로드는 하지 않았다. [preview.8 배포 기록](Distribution/Preview8/README.md).
 
 
 ## 2026-10-18 — 플레이 테스트 피드백

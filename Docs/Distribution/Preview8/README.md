@@ -1,6 +1,6 @@
 # 0.1.0-preview.8 Windows 공개 테스트 배포
 
-**빌드·패키지 검증 완료, 공개 게시 준비 중.** [릴리즈 예정 페이지](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8), [변경 내역과 저장 호환](release-notes.md).
+**공개 prerelease 게시 및 다운로드 검증 완료.** [릴리즈와 Windows 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8), [변경 내역과 저장 호환](release-notes.md).
 
 preview.7 이후의 전체 기술 연출 확장, 공통 창 내부 여백·텍스트 배치 보완, 전장 가운데 버튼 드래그, 상태별 턴 종료 안내, 적 기술 조회, 보상 아이템 상세, 장비 착용자·초안·재고 표시, 중앙 레벨업 효과를 포함한다. 메인20화·개인 이야기30단계 및 기존 전투 규칙과 저장 형식은 유지한다.
 
@@ -29,6 +29,8 @@ Editor80상태×5해상도×3글자배율1,200/1,200, 최종 Windows1902×991×3
 - 압축 해제 일반 실행본 **30.12초** 유지, 초기화·응답 확인, 오류0. 숨김 시작 검사이며 사람의 화면/플레이 검수는 아니다.
 - 사용자 저장·백업·설정8파일 SHA256 불변. 검사로 새로 시작한 프로세스만 종료했다.
 - [패키지](package.json), [manifest](package-manifest.json), [압축 해제 검사](extracted-verification.json), [시작 검사](startup.json), [실행 후 검사](post-startup-verification.json).
-- 공개 게시와 첨부 서버 해시·익명 다운로드 검사는 다음 단계에서 기록한다.
+- 검증된 develop을 main에 fast-forward 통합하고 `v0.1.0-preview.8` 태그를 푸시했다. 태그는 manifest의 소스 커밋과 일치한다. 이후 커밋은 배포 검증/게시 문서만 추가한다.
+- **2026-10-18T14:37:35Z**에 공개 prerelease로 게시했다. [게시 결과](published-release.json).
+- GitHub 첨부2개의 크기·서버 SHA256이 로컬 파일과 일치한다. 인증 없는 API200·첨부 HEAD200·체크섬 GET200/내용 일치를 확인했다. 원격 ZIP 전체 재다운로드는 하지 않았다. [공개 검사](public-check.json).
 
 게임 검증과 릴리즈 패키지 검증은 구분한다. 다른 PC/DPI·물리 입력 장치·효과음 실청취·전체 캠페인 수동 완주·장시간 성능은 이번 기록으로 보장하지 않는다.
