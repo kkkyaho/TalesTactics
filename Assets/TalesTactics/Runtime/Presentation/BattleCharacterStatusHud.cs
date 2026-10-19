@@ -112,6 +112,8 @@ namespace TalesTactics
             FormationButton(unitDetails,"이전 상태 캐릭터","‹ 이전 · Q",new Vector2(.02f,.025f),new Vector2(.25f,.115f),()=>CycleStatusUnit(-1),canCycle);
             FormationText(unitDetails,"조회 중 · Esc 닫기",new Vector2(.27f,.03f),new Vector2(.70f,.11f),16,TextAlignmentOptions.Center).color=formationGold;
             FormationButton(unitDetails,"다음 상태 캐릭터","다음 · E ›",new Vector2(.73f,.025f),new Vector2(.98f,.115f),()=>CycleStatusUnit(1),canCycle);
+            // Both the inspection shortcut and the ordinary status tab count only a live enemy skill list.
+            if(statusTab==1&&u.Team==Team.Enemy&&battle.Session!=null&&battle.Session.Units.Contains(u))battle.LearnContextHint(ContextHintKind.EnemySkills);
             // AccessibleText scales glyphs; enlarge the panel without scaling text twice.
         }
         void DrawStatusAbilities(RectTransform parent,UnitRuntime u)

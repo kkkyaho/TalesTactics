@@ -53,12 +53,12 @@ namespace TalesTactics
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(width+36,12),new Vector2(-12,108));
             if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
             // Messages stay available in contextual states; ordinary command selection needs only the objective.
-            bool showMessage=facing||battle.TutorialActive||battle.State is ActionExecutionState||(battle.State is CommandState&&battle.Message.StartsWith("Tile "));
+            bool showMessage=open&&(facing||battle.TutorialActive||battle.HasBattleMessage);
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
             footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
-            group.alpha=showMessage?1:0;group.blocksRaycasts=showMessage;
-            footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=showMessage;
+            group.alpha=showMessage?1:0;group.blocksRaycasts=false;
+            footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
         }
         // Commands share a backdrop with Unit rather than their own visible frame.
         // Reserve that backdrop's inner border even for legacy movement/timing labels.

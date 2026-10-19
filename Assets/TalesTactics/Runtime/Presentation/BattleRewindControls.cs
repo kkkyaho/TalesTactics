@@ -11,7 +11,7 @@ namespace TalesTactics
         {
             foreach(var strike in Session.Resolver.LastReactions)
             {
-                Message=strike.Text;Hud.Refresh();Board.BeginSkill(strike.Actor,strike.Skill,strike.Target.Position,speed);
+                ShowActionFeedback(strike.Text);Hud.Refresh();Board.BeginSkill(strike.Actor,strike.Skill,strike.Target.Position,speed);
                 yield return new WaitForSeconds(BoardView.Windup(strike.Skill)/speed);yield return Board.PlaySkillRelease(strike.Actor,strike.Skill,strike.Target.Position,speed);
                 Board.PresentImpact(strike.Actor,strike.Skill,strike.Target.Position,new Dictionary<UnitRuntime,int>{{strike.Target,strike.BeforeHP}},new[]{strike.Target},new Dictionary<UnitRuntime,int>{{strike.Target,strike.AfterHP}},false);
                 yield return new WaitForSeconds(BoardView.Recovery(strike.Skill)/speed);
@@ -29,7 +29,7 @@ namespace TalesTactics
             Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();Hud.CloseUnitDetails();StopAllCoroutines();ClearTacticalSelection();
             Session=restored;UnityEngine.Random.state=random;completed=false;pendingReward=null;RewardPending=false;guardRecorded=false;
             SelectedSkill=null;Target=null;Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);
-            Message="행동을 되돌렸습니다. 남은 횟수 "+Session.RewindsLeft;SetState(new CommandState(this));return true;
+            SetState(new CommandState(this));ShowActionFeedback("행동을 되돌렸습니다. 남은 횟수 "+Session.RewindsLeft);return true;
         }
         public void EndPlayerPhaseWithHistory()
         {if(!IsPlayerCommand)return;RecordAction("아군 턴 종료");if(Session.EndPlayerPhase())SetState(new TurnStartState(this));}

@@ -37,6 +37,8 @@ namespace TalesTactics.PlayModeTests
             int hp=actor.CurrentHP;director.Confirm();Assert.That(director.RewindAction(),Is.False);
             for(float deadline=Time.realtimeSinceStartup+15;director.State is ActionExecutionState&&Time.realtimeSinceStartup<deadline;)yield return null;
             Assert.That(director.State,Is.InstanceOf<CommandState>());foreach(var pair in expected)Assert.That(pair.Key.CurrentHP,Is.EqualTo(pair.Value));
+            Assert.That(b.Resolver.LastReactions.Count,Is.GreaterThan(0));Assert.That(director.ActionFeedbackVisible,Is.True,"Reaction outcomes must use the same expiring message channel.");
+            yield return new WaitForSecondsRealtime(BattleDirector.ActionFeedbackDuration+.2f);Assert.That(director.Message,Is.Empty);
             Assert.That(director.RewindAction(),Is.True);yield return null;Assert.That(director.Session.Active.CurrentHP,Is.EqualTo(hp));Assert.That(director.Session.Active.Acted,Is.False);
             Assert.That(director.Session.Units.Any(u=>u.CounterUsed||u.SupportUsed),Is.False);
             var next=director.Session;next.Active.CurrentHP=1;var oldActor=next.Active;

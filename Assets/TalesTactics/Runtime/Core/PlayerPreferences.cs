@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 namespace TalesTactics
 {
+    [Flags] public enum ContextHintKind { None=0,MapPan=1,EnemySkills=2,FacingConfirm=4 }
     [Serializable] public sealed class PlayerPreferences
     {
         public int Version=1,Slot,Width=1280,Height=800;
@@ -14,8 +15,11 @@ namespace TalesTactics
         public BattleDifficulty Difficulty;
         public bool MissionEvents,Reactions;
         public float TextScale=1;
+        public const int KnownContextHints=7;
+        public int SeenContextHints; // Global first-use help; absent in older settings means unseen.
         public void Validate()
         {
+            if((SeenContextHints&~KnownContextHints)!=0)throw new InvalidDataException("Unsupported contextual help");
             if(!Enum.IsDefined(typeof(BattleDifficulty),Difficulty))throw new InvalidDataException("Unsupported difficulty");
             if(EnemySpeedMode<0||EnemySpeedMode>2)throw new InvalidDataException("Unsupported enemy speed");
             if(float.IsNaN(TextScale)||TextScale<1||TextScale>1.3f)throw new InvalidDataException("Unsupported text size");

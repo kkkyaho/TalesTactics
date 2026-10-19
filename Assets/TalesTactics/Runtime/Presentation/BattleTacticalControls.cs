@@ -54,7 +54,7 @@ namespace TalesTactics
             if(State is TargetSelectionState&&Target!=p)
             {
                 if(TutorialTargetAllowed(p)&&Session.Resolver.InRange(Session.Active,SelectedSkill,p)&&Session.Resolver.Targets(Session.Active,SelectedSkill,p).Any())SelectTarget(p);
-                else if(KeyboardTile.HasValue&&Target.HasValue){Target=null;Forecast=null;Hud.Refresh();}
+                else if(KeyboardTile.HasValue&&Target.HasValue){Target=null;Forecast=null;Message="";Hud.Refresh();}
             }
         }
         void ClearTacticalSelection()

@@ -20,8 +20,10 @@ namespace TalesTactics
         }
         public void ShowUnitSkills(UnitRuntime unit)
         {
+            if(unit==null||HelpOpen||SystemMenuOpen||MissionOpen)return;
             ShowUnitDetails(unit);if(!CharacterStatusOpen||statusUnit!=unit)return;
             statusTab=1;statusPage=0;RenderCharacterStatus();
+            if(unit.Team==Team.Enemy&&battle.Session!=null&&battle.Session.Units.Contains(unit))battle.LearnContextHint(ContextHintKind.EnemySkills);
         }
         UnitRuntime MissionEnemyPreview(CharacterData data,int index,int stage,bool training)
         {

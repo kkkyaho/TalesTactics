@@ -15,16 +15,37 @@ namespace TalesTactics
             }
         }
         public float ExperienceBottom=>SkillPanel?SkillCardHeight+28:battle.State is TargetSelectionState?targetContextHeight+28:battle.State is MoveSelectionState?168:18;
-        public void ClearCombatFeedback(){if(combatFeedback!=null)combatFeedback.Clear();ClearUltimateCue();}
+        public void ClearCombatFeedback(){if(combatFeedback!=null)combatFeedback.Clear();ClearUltimateCue();ClearBattleSkillCue();battle?.Board?.ClearPresentationFocus();}
         public bool HasHealthFeedback(UnitRuntime unit)=>combatFeedback!=null&&combatFeedback.HasNumber(unit);
+        public void AppendCombatLabelReservations(List<Rect> bounds,bool includeNumbers=true)
+        {
+            if(BattleSkillCueVisible)bounds.Add(BattleSkillCueScreenBounds);
+            if(ContextHintOpen)bounds.Add(ContextHintScreenBounds);
+            // The facing command panel becomes four interactive arrows over the actor.
+            // Keep all passive HP/number labels outside that complete interaction region.
+            if(battle.State is FacingSelectionState&&commands!=null&&commands.gameObject.activeInHierarchy)
+                bounds.Add(CombatLabelPlacement.ScreenRect(commands));
+            var footerGroup=footer!=null?footer.GetComponent<CanvasGroup>():null;
+            if(footer!=null&&footer.gameObject.activeInHierarchy&&footerGroup!=null&&footerGroup.alpha>.01f)
+                bounds.Add(CombatLabelPlacement.ScreenRect(footer));
+            if(combatFeedback==null)return;
+            if(combatFeedback.ExperienceVisible)bounds.Add(combatFeedback.ExperienceScreenBounds);
+            if(includeNumbers)foreach(var rect in combatFeedback.NumberScreenBounds)bounds.Add(rect);
+        }
     }
     // Screen-space presentation only. Snapshot values never read later mutable unit growth.
+    [DefaultExecutionOrder(400)]
     public sealed class CombatFeedbackHud:MonoBehaviour
     {
         sealed class NumberView{public TMP_Text Text;public UnitRuntime Unit;public float Age;public bool Cost;public int Lane;}
         readonly Queue<ExperienceGain> queue=new Queue<ExperienceGain>();
         readonly List<NumberView> numbers=new List<NumberView>();
         readonly Stack<TMP_Text> freeNumbers=new Stack<TMP_Text>();
+        readonly List<Rect> numberBounds=new List<Rect>(),numberObstacles=new List<Rect>();
+        public IReadOnlyList<Rect> NumberScreenBounds=>numberBounds;
+        public int NumberCount=>numbers.Count;
+        public bool ExperienceVisible=>card!=null&&card.gameObject.activeSelf&&group.alpha>.01f;
+        public Rect ExperienceScreenBounds=>ExperienceVisible?CombatLabelPlacement.ScreenRect(card):default;
         BattleDirector battle;BattleHud hud;RectTransform layer,card,fill;TMP_Text nameText,levelText,amountText,valueText,caption;
         UnityEngine.UI.RawImage portrait,levelUpLight;UnityEngine.UI.Outline edge;
         CanvasGroup group;ExperienceGain current;float elapsed,levelUpAge;bool levelUpPresented;
@@ -87,10 +108,7 @@ namespace TalesTactics
             {
                 var n=numbers[i];n.Age+=dt;
                 if(n.Age>=.85f){n.Text.gameObject.SetActive(false);freeNumbers.Push(n.Text);numbers.RemoveAt(i);continue;}
-                var screen=battle.Board.BattleCamera.WorldToScreenPoint(battle.Board.HeadWorld(n.Unit));
-                n.Text.alpha=screen.z<=0?0:1-Mathf.InverseLerp(.55f,.85f,n.Age);
-                n.Text.rectTransform.pivot=new Vector2(.5f,.5f);
-                n.Text.rectTransform.anchoredPosition=new Vector2(Mathf.Clamp(screen.x/scale+(n.Cost?-42:24),90,Screen.width/scale-90),Mathf.Clamp(screen.y/scale+28+n.Age*26+n.Lane*24,24,Screen.height/scale-90));
+
             }
             if(current==null&&queue.Count>0)
             {
@@ -116,6 +134,26 @@ namespace TalesTactics
             PresentLevelUp(dt);
             if(elapsed>=duration+.7f){current=null;card.gameObject.SetActive(false);}
         }
+        void LateUpdate()
+        {
+            numberBounds.Clear();numberObstacles.Clear();
+            if(layer==null||battle.Session==null||hud.InputModalOpen||battle.StoryActive)return;
+            var safe=CombatLabelPlacement.Viewport(hud);float scale=Mathf.Max(.001f,hud.GetComponent<Canvas>().scaleFactor);
+            hud.AppendCombatLabelReservations(numberObstacles,false);
+            // Impact values claim space before HP/name details. Cost and repeated values use separate lanes.
+            for(int i=0;i<numbers.Count;i++)
+            {
+                var n=numbers[i];var screen=battle.Board.BattleCamera.WorldToScreenPoint(battle.Board.HeadWorld(n.Unit));
+                n.Text.alpha=screen.z<=0?0:1-Mathf.InverseLerp(.55f,.85f,n.Age);if(screen.z<=0)continue;
+                float width=Mathf.Clamp(n.Text.GetPreferredValues(n.Text.text).x+12,44,170),height=n.Cost?30:40;
+                var size=new Vector2(width,height)*scale;
+                var origin=new Vector2(screen.x+(n.Cost?-42:24)*scale,screen.y+(28+n.Age*26+n.Lane*30)*scale);
+                var occupied=CombatLabelPlacement.Place(origin,size,safe,numberObstacles,out _);
+                n.Text.rectTransform.pivot=new Vector2(.5f,0);n.Text.rectTransform.sizeDelta=occupied.size/scale;
+                n.Text.rectTransform.anchoredPosition=new Vector2(occupied.center.x/scale,occupied.yMin/scale);
+                numberBounds.Add(occupied);numberObstacles.Add(occupied);
+            }
+        }
         void PresentLevelUp(float dt)
         {
             levelUpAge+=dt;bool reduced=battle.Preferences?.ReducedEffects??false;
@@ -131,7 +169,7 @@ namespace TalesTactics
         }
         public void Clear()
         {
-            queue.Clear();current=null;numbers.Clear();freeNumbers.Clear();levelUpPresented=false;levelUpAge=1;PresentedLevelUpCount=0;
+            queue.Clear();current=null;numbers.Clear();numberBounds.Clear();numberObstacles.Clear();freeNumbers.Clear();levelUpPresented=false;levelUpAge=1;PresentedLevelUpCount=0;
             if(layer!=null){layer.gameObject.SetActive(false);Destroy(layer.gameObject);}layer=null;
         }
     }

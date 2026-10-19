@@ -35,7 +35,7 @@ namespace TalesTactics
             int stage=battleStage;Restart();Session=restored;battleStage=stage;battleTraining=restored.CampaignStage<0;TrainingMode=battleTraining;SelectedStage=stage;
             completed=false;pendingReward=null;TrainingObjective=restored.Objective;Deployment.Clear();Deployment.AddRange(restored.Opening.Deployment);
             UnityEngine.Random.state=restored.Opening.RandomState;Board.Build(Session);Audio.PlayBattle(!battleTraining&&CampaignStages.Get(stage).BossMusic);
-            Message="출전 당시 편성·장비·규칙으로 재도전합니다.";SetState(new TurnStartState(this));return true;
+            SetState(new TurnStartState(this));ShowActionFeedback("출전 당시 편성·장비·규칙으로 재도전합니다.");return true;
         }
         public void RetryBattle(){if(RewardPending||!(State is BattleEndState))return;if(Session.Result==BattleResult.Defeat){RetryOpening();return;}Restart();BeginBattle();}
         void BeginResultSummary()

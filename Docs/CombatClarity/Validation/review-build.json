@@ -1,0 +1,18 @@
+{
+  "result": "Succeeded",
+  "errors": 0,
+  "warnings": 2,
+  "seconds": 16.5351756,
+  "bytes": 1372564760,
+  "output": "D:/TalesTacticsHelpGuide/Builds/CombatClarityReview/TalesTactics.exe",
+  "messages": [
+    {
+      "type": "Warning",
+      "message": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+    },
+    {
+      "type": "Warning",
+      "message": "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+    }
+  ]
+}

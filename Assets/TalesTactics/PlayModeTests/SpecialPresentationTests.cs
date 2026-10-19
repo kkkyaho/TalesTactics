@@ -195,16 +195,15 @@ namespace TalesTactics.PlayModeTests
                 skill.Presentation=new SkillPresentation{Windup=1.5f};
                 director.Board.BeginSkill(caster,skill,caster.Position);
                 yield return null;
-                var label=GameObject.Find("Skill name").GetComponent<TMPro.TextMeshPro>();label.ForceMeshUpdate();
+                var label=GameObject.Find("Battle skill title").GetComponent<TMPro.TMP_Text>();label.ForceMeshUpdate();
                 Assert.That(label.text,Is.EqualTo(skill.DisplayName));Assert.That(label.isTextOverflowing,Is.False);
                 Assert.That(label.textInfo.lineCount,Is.EqualTo(1));Assert.That(label.color.r,Is.GreaterThan(.9f));
-                Assert.That(label.enableAutoSizing,Is.False);
-                var backing=label.transform.Find("Skill name backing");Assert.That(backing,Is.Not.Null);
-                Assert.That(label.preferredWidth,Is.LessThanOrEqualTo(backing.localScale.x));
+                Assert.That(GameObject.Find("BattleSkillCue"),Is.Not.Null);
+                var position=label.rectTransform.position;
                 director.Board.RotateCamera(90);yield return null;
-                Assert.That(Quaternion.Angle(label.transform.rotation,director.Board.BattleCamera.transform.rotation),Is.LessThan(.1f));
+                Assert.That(Vector3.Distance(position,label.rectTransform.position),Is.LessThan(.1f),"The skill name belongs to a fixed HUD band, independent of camera rotation.");
                 director.Restart();yield return null;yield return null;
-                Assert.That(GameObject.Find("Skill name backing"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);
+                Assert.That(GameObject.Find("BattleSkillCue"),Is.Null);Assert.That(GameObject.Find("Skill name"),Is.Null);
             }
             finally {Object.Destroy(skill);}
         }

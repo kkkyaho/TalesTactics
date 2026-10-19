@@ -1,5 +1,14 @@
 # 아키텍처
 
+## 전장 정보 배치와 조작 안내
+
+`BattleSkillCue`는 일반 기술명을 전장 상단의 고정 영역에 표시하고, 궁극기는 기존 초상화 알림을 사용한다. `CombatLabelPlacement`가 화면 픽셀 좌표로 배너·경험치·하단 문구·조작 안내·방향 선택 화살표 영역을 예약한 뒤 피해 숫자를 배치한다. `UnitHealthLayout`은 대상/시전자/호버/현재 행동자의 우선순위에 따라 HP·이름을 이어 배치한다. 혼잡한 비선택 HP바만 압축 또는 일시 숨김하며 기존 연결선을 유지한다. 전투 해석기와 행동 타이밍은 변경하지 않는다.
+
+`BattleActionFeedback`는 일반 `Message`와 만료되는 행동 결과를 구분한다. 기존 직렬화 이름은 `FormerlySerializedAs`로 보존한다. 반격·지원도 같은 3.2초 채널을 사용하고, 다음 명령 진입 시 이전 결과를 지운다. 모달·대화·타이밍 입력 중에는 타이머를 멈추며, 만료 시 기존 TMP 텍스트만 갱신하여 선택 포커스와 버튼을 재생성하지 않는다.
+
+`BattleContextHintHud`는 전장 하단에 입력을 막지 않는 카드 하나를 표시한다. `BoardCameraPan`의 실제 이동, `ShowUnitSkills`와 일반 상태창 기술 탭의 실제 전투 적 조회, 유효한 `ChooseFacing`이 완료를 기록한다. `BattleContextHints`는 전역 `PlayerPreferences.SeenContextHints`를 현재 설정에 합쳐 한 번 저장한다. 보호된 파일과 실패 시에는 메모리에서만 유지하고 캠페인 저장·화면 설정 적용은 호출하지 않는다. 설정 초안 저장에도 이미 배운 비트를 합친다. 기존 설정 버전/캠페인 형식과 선택형 입문 연습은 유지한다. [구현·검증](CombatClarity/README.md).
+
+
 ## 전체 기술 연출 프로필
 
 `ArteProfiles.Resolve`는 카탈로그의 나머지179개 정확한 ID에 immutable `ArteProfile`을 반환한다. 기존3개 `SkillSignatures`와 unknown ID fallback을 보존한다. `BoardActionPresentation`, `SkillVfxTiming`, `ArteMotionProfile`이 준비·발사·포즈를 연결하고 `ImpactArte`가 새 무기/마법4×4 시트와 기존4개 메시를 사용한다. 풀16개 상한과 판정1회를 유지한다. 큰 동물 형상은 하나로 제한하고 반복은 작은 충격으로 표현한다. 흡혈처럼 원래 대상 밖에서 발생한 긍정HP 변화는 공격 프로필을 받지 않는다.

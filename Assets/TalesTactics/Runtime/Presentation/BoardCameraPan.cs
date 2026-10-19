@@ -17,8 +17,9 @@ namespace TalesTactics
             var after=BattleCamera.ScreenPointToRay(screen);
             dragScreen=screen;
             if(!plane.Raycast(before,out float a)||!plane.Raycast(after,out float b))return;
-            cameraPan+=before.GetPoint(a)-after.GetPoint(b);
+            var previous=cameraPan;cameraPan+=before.GetPoint(a)-after.GetPoint(b);
             cameraPan.y=0;FitBattlefield(true);
+            if((cameraPan-previous).sqrMagnitude>.0001f)battle.LearnContextHint(ContextHintKind.MapPan);
         }
         public void EndCameraDrag()=>CameraDragging=false;
         void RemoveAppliedCameraPan()

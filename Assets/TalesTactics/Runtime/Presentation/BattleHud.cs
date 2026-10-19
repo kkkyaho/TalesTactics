@@ -18,7 +18,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){UpdateContextHints();if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -147,7 +147,7 @@ namespace TalesTactics
             Clear(header);Clear(left);Clear(commands);Clear(footer);var u=battle.Session.Active;
             DrawTacticalHeader();
             DrawTacticalTools();
-            message=Label(footer,battle.TutorialActive&&!(battle.State is TargetSelectionState&&battle.Target.HasValue)?battle.TutorialInstruction:battle.Message,10,78,17);
+            message=Label(footer,battle.DisplayBattleMessage,10,78,17);
             message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
             DrawUnitSummary(u);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();

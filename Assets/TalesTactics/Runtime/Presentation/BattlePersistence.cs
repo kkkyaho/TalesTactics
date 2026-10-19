@@ -74,12 +74,13 @@ namespace TalesTactics
                 Session=restored;battleStage=checkpoint.Stage;battleTraining=false;completed=false;RewardPending=false;pendingReward=null;
                 SelectedStage=checkpoint.Stage;TrainingMode=false;
                 Deployment.Clear();Deployment.AddRange(checkpoint.Deployment);UnityEngine.Random.state=checkpoint.RandomState;
-                Hud.CloseSystemMenu();Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);Message="중단한 전투를 이어갑니다. 종료 전 다시 중단 저장하세요.";SetState(new CommandState(this));return true;
+                Hud.CloseSystemMenu();Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);SetState(new CommandState(this));Message="중단한 전투를 이어갑니다. 종료 전 다시 중단 저장하세요.";Hud.UpdateBattleMessageText();return true;
             }
             catch(Exception){SaveNotice="중단 전투가 손상되었거나 호환되지 않습니다. 원본을 유지했습니다.";return false;}
         }
         public bool SavePreferences(PlayerPreferences draft,bool display=true)
         {
+            MergeContextHints(draft);
             if(!preferenceFile.Save(draft)){SaveNotice=preferenceFile.Notice;return false;}
             Preferences=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(draft));Campaign.AutoTiming=draft.AutoTiming;ApplyPreferences(display);SaveNotice="설정을 저장했습니다.";return true;
         }
