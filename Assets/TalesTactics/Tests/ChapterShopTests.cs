@@ -12,7 +12,7 @@ namespace TalesTactics.Tests
             Assert.That(writes, Is.Zero);
             data.Skills = new SkillData[0];
             Assert.That(CampaignStages.TryReward(save, 0, new[] { data }, _ => false), Is.False);
-            Assert.That(CampaignInventory.PurchaseUnavailable(save, item), Is.EqualTo("해금 조건: 1장 완료"));
+            Assert.That(CampaignInventory.PurchaseUnavailable(save, item), Is.EqualTo("해금 조건: 메인 1화 완료"));
             var file = new CampaignFile(SaveTestPath());
             Assert.That(CampaignStages.TryReward(save, 0, new[] { data }, file.Save), Is.True);
             var loaded = file.Load();

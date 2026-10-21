@@ -67,13 +67,16 @@ namespace TalesTactics
         public static bool CatchUp(CampaignSave save,CharacterData character,int stage,Func<CampaignSave,bool> persist)
         {
             if(!CampaignStages.Unlocked(save,stage)||persist==null)return false;
-            var progress=save.Get(character.Id);int target=CampaignStages.Get(stage).EntryLevel;
+            var existing=save.Characters.Find(p=>p.Id==character.Id);
+            var progress=existing??new CharacterProgress{Id=character.Id};int target=CampaignStages.Get(stage).EntryLevel;
             if(progress.Level>=target)return false;
             int oldLevel=progress.Level,oldExp=progress.EXP;var oldSkills=progress.UnlockedSkills;
             progress.Level=target;progress.EXP=0;
             progress.UnlockedSkills=character.Skills.Where(s=>s.UnlockLevel<=target).Select(s=>s.Id).ToList();
+            if(existing==null)save.Characters.Add(progress);
             try{if(persist(save))return true;}catch(Exception){}
-            progress.Level=oldLevel;progress.EXP=oldExp;progress.UnlockedSkills=oldSkills;return false;
+            progress.Level=oldLevel;progress.EXP=oldExp;progress.UnlockedSkills=oldSkills;
+            if(existing==null)save.Characters.Remove(progress);return false;
         }
     }
 }

@@ -1,0 +1,472 @@
+{
+  "source": "develop candidate with campaign growth/shop fixes",
+  "method": "Actual Unity-loaded production catalog and isolated in-memory core rule probes; flags set explicitly for unlock probe, not a campaign playthrough.",
+  "items": [
+    {
+      "id": "bronze-sword",
+      "price": 100,
+      "requiredFlag": "",
+      "afterMain20": null
+    },
+    {
+      "id": "leather-armor",
+      "price": 150,
+      "requiredFlag": "",
+      "afterMain20": null
+    },
+    {
+      "id": "vital-charm",
+      "price": 100,
+      "requiredFlag": "",
+      "afterMain20": null
+    },
+    {
+      "id": "iron-sword",
+      "price": 240,
+      "requiredFlag": "chapter1",
+      "afterMain20": null
+    },
+    {
+      "id": "reinforced-armor",
+      "price": 300,
+      "requiredFlag": "chapter1",
+      "afterMain20": null
+    },
+    {
+      "id": "guardian-medal",
+      "price": 480,
+      "requiredFlag": "chapter4",
+      "afterMain20": null
+    },
+    {
+      "id": "tempered-armor",
+      "price": 650,
+      "requiredFlag": "chapter5",
+      "afterMain20": null
+    },
+    {
+      "id": "swift-boots",
+      "price": 180,
+      "requiredFlag": "chapter1",
+      "afterMain20": null
+    },
+    {
+      "id": "focus-charm",
+      "price": 180,
+      "requiredFlag": "chapter1",
+      "afterMain20": null
+    },
+    {
+      "id": "healer-badge",
+      "price": 180,
+      "requiredFlag": "chapter1",
+      "afterMain20": null
+    }
+  ],
+  "lockedAfterMain20": 0,
+  "catchUpFailureReturnedFalse": true,
+  "catchUpFailurePreservedMemory": true,
+  "catchUpBefore": "{\"Version\":3,\"AutoTiming\":false,\"SuspendedBattle\":{\"Version\":11,\"Stage\":0,\"Active\":0,\"Round\":0,\"SurvivalTurns\":0,\"LegacyMission\":false,\"Reactions\":false,\"ActionExperience\":false,\"ExpandedEncounters\":false,\"CombatRandomDraws\":0,\"RewindsUsed\":0,\"History\":[],\"Difficulty\":0,\"MissionEvents\":false,\"ReinforcementsArrived\":false,\"CaptureProgress\":0,\"HasOpening\":false,\"Opening\":{\"Version\":6,\"Stage\":0,\"Deployment\":[],\"Objective\":0,\"Difficulty\":0,\"MissionEvents\":false,\"Reactions\":false,\"ActionExperience\":false,\"ExpandedEncounters\":false,\"CT\":false,\"TeamTurns\":false,\"Utility\":false,\"Legacy\":false,\"PhaseSurvival\":false,\"TacticalCombat\":false,\"BossEncounters\":false,\"RandomState\":{\"s0\":0,\"s1\":0,\"s2\":0,\"s3\":0},\"Units\":[],\"Crossover\":{\"Nodes\":0,\"Segment\":0,\"Choice\":0,\"Actions\":0,\"Hazards\":[],\"LastShape\":0,\"LastArea\":0,\"LastRange\":4,\"ReplayShape\":0,\"ReplayArea\":0,\"TrialProgress\":0,\"TrialActions\":0,\"BrokenDevices\":[]}},\"Crossover\":{\"Nodes\":0,\"Segment\":0,\"Choice\":0,\"Actions\":0,\"Hazards\":[],\"LastShape\":0,\"LastArea\":0,\"LastRange\":4,\"ReplayShape\":0,\"ReplayArea\":0,\"TrialProgress\":0,\"TrialActions\":0,\"BrokenDevices\":[]},\"CT\":false,\"Utility\":false,\"TeamTurns\":false,\"PhaseSurvival\":false,\"TacticalCombat\":false,\"BossEncounters\":false,\"Deployment\":[],\"Order\":[],\"Begun\":[],\"Charges\":[],\"RandomState\":{\"s0\":0,\"s1\":0,\"s2\":0,\"s3\":0},\"Units\":[]},\"HasSuspendedBattle\":false,\"SavedAt\":\"\",\"SelectedStage\":0,\"HasPendingAfterStory\":false,\"PendingAfterStoryStage\":-1,\"PendingAfterStoryLine\":0,\"Deployment\":[],\"Presets\":[{\"Members\":[],\"Equipment\":[]},{\"Members\":[],\"Equipment\":[]},{\"Members\":[],\"Equipment\":[]}],\"Gold\":300,\"Inventory\":[{\"Id\":\"bronze-sword\",\"Count\":1}],\"StoryProgress\":[\"crossover.chapter4\"],\"Characters\":[]}",
+  "catchUpAfter": "{\"Version\":3,\"AutoTiming\":false,\"SuspendedBattle\":{\"Version\":11,\"Stage\":0,\"Active\":0,\"Round\":0,\"SurvivalTurns\":0,\"LegacyMission\":false,\"Reactions\":false,\"ActionExperience\":false,\"ExpandedEncounters\":false,\"CombatRandomDraws\":0,\"RewindsUsed\":0,\"History\":[],\"Difficulty\":0,\"MissionEvents\":false,\"ReinforcementsArrived\":false,\"CaptureProgress\":0,\"HasOpening\":false,\"Opening\":{\"Version\":6,\"Stage\":0,\"Deployment\":[],\"Objective\":0,\"Difficulty\":0,\"MissionEvents\":false,\"Reactions\":false,\"ActionExperience\":false,\"ExpandedEncounters\":false,\"CT\":false,\"TeamTurns\":false,\"Utility\":false,\"Legacy\":false,\"PhaseSurvival\":false,\"TacticalCombat\":false,\"BossEncounters\":false,\"RandomState\":{\"s0\":0,\"s1\":0,\"s2\":0,\"s3\":0},\"Units\":[],\"Crossover\":{\"Nodes\":0,\"Segment\":0,\"Choice\":0,\"Actions\":0,\"Hazards\":[],\"LastShape\":0,\"LastArea\":0,\"LastRange\":4,\"ReplayShape\":0,\"ReplayArea\":0,\"TrialProgress\":0,\"TrialActions\":0,\"BrokenDevices\":[]}},\"Crossover\":{\"Nodes\":0,\"Segment\":0,\"Choice\":0,\"Actions\":0,\"Hazards\":[],\"LastShape\":0,\"LastArea\":0,\"LastRange\":4,\"ReplayShape\":0,\"ReplayArea\":0,\"TrialProgress\":0,\"TrialActions\":0,\"BrokenDevices\":[]},\"CT\":false,\"Utility\":false,\"TeamTurns\":false,\"PhaseSurvival\":false,\"TacticalCombat\":false,\"BossEncounters\":false,\"Deployment\":[],\"Order\":[],\"Begun\":[],\"Charges\":[],\"RandomState\":{\"s0\":0,\"s1\":0,\"s2\":0,\"s3\":0},\"Units\":[]},\"HasSuspendedBattle\":false,\"SavedAt\":\"\",\"SelectedStage\":0,\"HasPendingAfterStory\":false,\"PendingAfterStoryStage\":-1,\"PendingAfterStoryLine\":0,\"Deployment\":[],\"Presets\":[{\"Members\":[],\"Equipment\":[]},{\"Members\":[],\"Equipment\":[]},{\"Members\":[],\"Equipment\":[]}],\"Gold\":300,\"Inventory\":[{\"Id\":\"bronze-sword\",\"Count\":1}],\"StoryProgress\":[\"crossover.chapter4\"],\"Characters\":[]}",
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "1화 하늘이 갈라진 날",
+      "entryLevel": 1,
+      "enemyLevel": 1,
+      "missionExperience": 35,
+      "gold": 170,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "2화 불꽃과 가시",
+      "entryLevel": 1,
+      "enemyLevel": 3,
+      "missionExperience": 35,
+      "gold": 220,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "alphen",
+        "shionne"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "3화 두 하늘 아래의 마을",
+      "entryLevel": 3,
+      "enemyLevel": 5,
+      "missionExperience": 35,
+      "gold": 270,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "farah",
+        "alphen",
+        "shionne"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "4화 예언에 없는 사람들",
+      "entryLevel": 5,
+      "enemyLevel": 7,
+      "missionExperience": 35,
+      "gold": 320,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "5화 포식자와 방패",
+      "entryLevel": 7,
+      "enemyLevel": 9,
+      "missionExperience": 35,
+      "gold": 370,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "6화 귀환의 대가",
+      "entryLevel": 9,
+      "enemyLevel": 11,
+      "missionExperience": 35,
+      "gold": 420,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "7화 국경 없는 왕국",
+      "entryLevel": 11,
+      "enemyLevel": 13,
+      "missionExperience": 35,
+      "gold": 470,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "8화 구원의 계산식",
+      "entryLevel": 13,
+      "enemyLevel": 15,
+      "missionExperience": 35,
+      "gold": 520,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "9화 목소리를 잃은 성역",
+      "entryLevel": 15,
+      "enemyLevel": 17,
+      "missionExperience": 35,
+      "gold": 570,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "10화 우리의 적, 그들의 구원자",
+      "entryLevel": 17,
+      "enemyLevel": 19,
+      "missionExperience": 35,
+      "gold": 620,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "11화 갈라진 전선",
+      "entryLevel": 19,
+      "enemyLevel": 21,
+      "missionExperience": 35,
+      "gold": 670,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "12화 만들어진 낙원",
+      "entryLevel": 21,
+      "enemyLevel": 23,
+      "missionExperience": 35,
+      "gold": 720,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "13화 누구의 세계를 먼저 구할 것인가",
+      "entryLevel": 23,
+      "enemyLevel": 25,
+      "missionExperience": 35,
+      "gold": 770,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "14화 적과 맺는 약속",
+      "entryLevel": 25,
+      "enemyLevel": 27,
+      "missionExperience": 35,
+      "gold": 820,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "15화 기록되지 않은 미래",
+      "entryLevel": 27,
+      "enemyLevel": 29,
+      "missionExperience": 35,
+      "gold": 870,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "16화 돌아갈 곳이 있는 사람들",
+      "entryLevel": 29,
+      "enemyLevel": 31,
+      "missionExperience": 35,
+      "gold": 920,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "17화 다섯 세계의 반격",
+      "entryLevel": 31,
+      "enemyLevel": 33,
+      "missionExperience": 35,
+      "gold": 970,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "18화 잃어버린 사람들의 목소리",
+      "entryLevel": 33,
+      "enemyLevel": 35,
+      "missionExperience": 35,
+      "gold": 1020,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "19화 영원을 멈추는 전투",
+      "entryLevel": 35,
+      "enemyLevel": 37,
+      "missionExperience": 35,
+      "gold": 1070,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "20화 각자의 하늘, 같은 약속",
+      "entryLevel": 37,
+      "enemyLevel": 39,
+      "missionExperience": 35,
+      "gold": 1120,
+      "guaranteedItem": "guardian-medal",
+      "joined": [
+        "cless",
+        "mint",
+        "velvet",
+        "farah",
+        "tear",
+        "jade",
+        "natalia",
+        "alphen",
+        "shionne",
+        "kisara"
+      ]
+    }
+  ]
+}

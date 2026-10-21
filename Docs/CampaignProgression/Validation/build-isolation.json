@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-21T14:35:05.9264080Z",
+  "sourceBranch": "develop",
+  "sourceHead": "ced65cae8e2760c5eb161129945406781e533f64",
+  "executable": "D:\\TalesTacticsHelpGuide\\Builds\\CampaignProgressionWindows\\TalesTactics.exe",
+  "runtimeDLL": "D:\\TalesTacticsHelpGuide\\Builds\\CampaignProgressionWindows\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+  "runtimeSHA256": "07C96120DD6166FB311430B24E4B113C74CF3AE6FDB08B9DFE743E59975FC234",
+  "cecilDLL": "C:\\dev\\TalesTactics\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "method": "Mono.Cecil reads normal-player TalesTactics assemblies, including nested types. It never loads game code or starts Unity.",
+  "excludedTypeNames": [
+    "UiSafeLayoutReview",
+    "SkillRosterVfxReview",
+    "SkillRosterVfxFixture",
+    "CombatClarityReview",
+    "CampaignProgressionAudit"
+  ],
+  "requiredRuntimeTypes": [
+    "TalesTactics.CampaignInventory",
+    "TalesTactics.TacticalDevelopment",
+    "TalesTactics.CampaignStages",
+    "TalesTactics.CrossoverCampaign",
+    "TalesTactics.ActionExperience",
+    "TalesTactics.BattleSession",
+    "TalesTactics.BattleDirector"
+  ],
+  "missingRuntimeTypes": [],
+  "editorAssemblies": [],
+  "assemblies": [
+    {
+      "name": "TalesTactics.Runtime.dll",
+      "path": "D:\\TalesTacticsHelpGuide\\Builds\\CampaignProgressionWindows\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+      "sha256": "07C96120DD6166FB311430B24E4B113C74CF3AE6FDB08B9DFE743E59975FC234",
+      "hashStable": true,
+      "excludedTypes": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

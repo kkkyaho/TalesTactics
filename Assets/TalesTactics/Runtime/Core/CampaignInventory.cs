@@ -60,8 +60,19 @@ namespace TalesTactics
             if (item == null || string.IsNullOrWhiteSpace(item.RequiredStoryFlag) ||
                 save.StoryProgress.Contains(item.RequiredStoryFlag)) return null;
             string requirement = item.RequiredStoryFlag;
+            // Existing equipment keeps its persisted legacy requirement. The corresponding
+            // main episode also unlocks it, without adding retired chapter flags to saves.
+            for (int stage = 0; stage < CampaignStages.LegacyCount; stage++)
+                if (requirement == CampaignStages.Id(stage) &&
+                    save.StoryProgress.Contains(CrossoverCampaign.Flag(stage + 1))) return null;
             for (int stage = 0; stage < CampaignStages.Count; stage++)
-                if (requirement == CampaignStages.Id(stage)) requirement = (stage + 1) + "장 완료";
+                if (requirement == CampaignStages.Id(stage))
+                {
+                    requirement = CrossoverCampaign.IsMain(stage)
+                        ? "메인 " + CrossoverCampaign.Episode(stage).Number + "화 완료"
+                        : stage < CampaignStages.LegacyCount ? "메인 " + (stage + 1) + "화 완료" : (stage + 1) + "장 완료";
+                    break;
+                }
             return "해금 조건: " + requirement;
         }
 
