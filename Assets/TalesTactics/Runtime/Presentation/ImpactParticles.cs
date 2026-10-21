@@ -24,6 +24,7 @@ namespace TalesTactics
                 atlas=new Material(shader);atlas.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatFire");atlas.SetFloat("_UseTexture",1);
                 artMaterial=new Material(shader);artMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/CombatElements");artMaterial.SetFloat("_UseTexture",1);
                 signatureMaterial=new Material(shader);signatureMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/OriginalSkillTrio");signatureMaterial.SetFloat("_UseTexture",1);
+                signatureMaterial.SetFloat("_AtlasGrid",2);
                 weaponMaterial=new Material(shader);weaponMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/ArteWeapons");weaponMaterial.SetFloat("_UseTexture",1);weaponMaterial.SetFloat("_CellFeather",1);
                 spellMaterial=new Material(shader);spellMaterial.mainTexture=Resources.Load<Texture2D>("TalesTactics/ArteMagic");spellMaterial.SetFloat("_UseTexture",1);spellMaterial.SetFloat("_CellFeather",1);
             }

@@ -1,0 +1,604 @@
+{
+  "owner": "disgaea_art_scope",
+  "scope": [
+    "PixelCampaign",
+    "MotionPremium"
+  ],
+  "expectedSheets": 51,
+  "completedSheets": 51,
+  "portraits": {
+    "path": "Assets/TalesTactics/Resources/TalesTactics/FormationPortraits.png",
+    "size": [
+      1983,
+      793
+    ],
+    "count": 10,
+    "applied": true,
+    "unityVisualReviewed": false
+  },
+  "jobs": [
+    {
+      "category": "PixelCampaign",
+      "name": "cless-hq",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/cless-hq.png",
+      "measurement": "Docs/SdCharacters/cless-hq-measurement.json",
+      "prompt": "Use case: style-transfer. Asset type: production game character sprite atlas. Input image 1 is the EDIT TARGET: the Cless 4-by-4 transparent sprite atlas. Input image 2 is STYLE REFERENCE only: an SD tactical fantasy battle art-direction mockup. Redraw every one of the 16 character figures in image1 into the crisp hand-inked, cel-shaded SD anime style of image2. Character identity stays the same: blond spiky hair, red headband and cape, white steel armor with dark undersuit, silver sword, gold details. Keep exactly four columns and four rows, all 16 distinct poses, row1 idle, row2 attacking, row3 casting with sword raised, row4 guarding with sword vertical. Each row directions MUST remain front, back, facing image-right, facing image-left. Preserve each figure's placement, feet baseline, outer bounds, sword angle and handedness. No mirroring, no swapping directions, no adding/removing poses. Preserve the original square canvas and transparent spacing. Strong expressive eyes, roughly 2.7 heads tall, bold clean dark navy outlines, 3-tone cel shading, large coherent color shapes, no pixel texture, no noisy microdetail, no painterly speckle. Keep full swords/capes/feet inside each original cell, no overlap between cells. Truly TRANSPARENT background with real alpha, zero ground shadows, no checkerboard drawn into the image. No text, no captions, no frames, no ornaments, no UI. This is an animation atlas to import into Unity, not a concept illustration. Preserve layout rigidly while reauthoring the artwork.",
+      "generated": "exec-a82c070d-24ec-4072-a3be-bbe26faa7835.png",
+      "review": "Compared 4x4 original and new atlas: all 16 front/back/right/left idle, sword attack, cast and guard poses remain. Hair, cape, plain silver sword and armor identity preserved; new clean ink/cel art.",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png"
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "cless-motion",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-cless-motion-measurement.json",
+      "prompt": "Use case: style-transfer. Asset type: production Unity sprite atlas. Input1 EDIT TARGET; input2 approved crisp ink and cel-shaded SD Cless reference. Redraw EVERY figure in input1 in input2's clean navy ink contours and deliberate three-tone cel shading, no pixel texture/no painterly noise. Keep blond spiky hair, red headband/cape, white armor/dark undersuit, silver plain sword/gold trim. EXACTLY 4 columns x4 rows =16 figures. Preserve every original per-cell position, order, direction, facing, distinct action pose, foot advance, weapon handedness/angle. Preserve all unique in-between and KO poses. No mirrored or duplicate idle substitution. Four directions in every row: front, back, right, left. Keep canvas aspect square and original spacing. Complete swords/capes/feet inside cells, no touching/overlap. Real transparent alpha, no ground/shadow/checkerboard. No text/UI/frames. This is exact-layout animation atlas, not a composition. Rows1+2 are distinct alternate walking steps. Row3 is knocked-back hurt/recoil. Row4 is the complete lying-on-the-ground defeated/KO poses, KEEP all four genuinely lying down orientations and detached-looking swords.",
+      "generated": "exec-4db35767-e2f5-4556-9e1d-085be44a0da1.png",
+      "review": "Compared all 16 figures: alternating walk steps, four hurt poses and four genuinely lying KO poses remain; silver sword, armor, cloak and four directions match source.",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png"
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "cless-extra",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-cless-extra-measurement.json",
+      "prompt": "Use case: style-transfer. Asset type: production Unity sprite atlas. Input1 EDIT TARGET; input2 approved crisp ink and cel-shaded SD Cless reference. Redraw EVERY figure in input1 in input2's clean navy ink contours and deliberate three-tone cel shading, no pixel texture/no painterly noise. Keep blond spiky hair, red headband/cape, white armor/dark undersuit, silver plain sword/gold trim. EXACTLY 4 columns x4 rows =16 figures. Preserve every original per-cell position, order, direction, facing, distinct action pose, foot advance, weapon handedness/angle. Preserve all unique in-between and KO poses. No mirrored or duplicate idle substitution. Four directions in every row: front, back, right, left. Keep canvas aspect square and original spacing. Complete swords/capes/feet inside cells, no touching/overlap. Real transparent alpha, no ground/shadow/checkerboard. No text/UI/frames. This is exact-layout animation atlas, not a composition. Rows1+2 are distinct transitional walking steps. Row3 is overhead sword charge with both arms raised. Row4 is low wide sword release thrust/slash, preserve exactly original directions and sword angles.",
+      "generated": "exec-2b473e73-0fb6-46e4-a089-6a948b62fbd8.png",
+      "review": "Compared all 16 figures and their original 4x4 positions, directions, sword angles, hand positions and stance; all distinct source motions retained in clean ink/cel art.",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-extra.png"
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "cless-polish",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-cless-polish-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animation sprite atlas. Input1 is the ONLY layout/pose/weapon source to EDIT. Input2 is approved new clean ink/cel SD Cless drawing style only; do not copy input2 poses or grid. Restyle every figure of input1 with bold clean dark navy ink, expressive SD face, 3-tone cel shading, no pixel texture/no noisy detail. Preserve original hair/outfit/weapon identity. Exact original count, cell placement, body tilt, leg step, arms and sword angle, direction and handedness. Never replace in-between movement poses with idle. Keep all original empty gutters and per-figure scale; no overlap/cutoffs. Preserve original canvas ratio. Real alpha transparent background, no shadows/checkerboard. No captions, labels, UI, frames. EXACT4columns x4rows=16 figures. Each row directions front/back/right/left. Row1 overhead sword anticipation; row2 horizontal sword attack followthrough; row3 magical preparation with raised blade; row4 recovery.",
+      "generated": "exec-7a269267-674c-48de-8aa1-c6cbad065bbd.png",
+      "review": "Compared all 16 figures and their original 4x4 positions, directions, sword angles, hand positions and stance; all distinct source motions retained in clean ink/cel art.",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-polish.png"
+    },
+    {
+      "category": "MotionPremium",
+      "name": "cless",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/cless.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-cless-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animation sprite atlas. Input1 is the ONLY layout/pose/weapon source to EDIT. Input2 is approved new clean ink/cel SD Cless drawing style only; do not copy input2 poses or grid. Restyle every figure of input1 with bold clean dark navy ink, expressive SD face, 3-tone cel shading, no pixel texture/no noisy detail. Preserve original hair/outfit/weapon identity. Exact original count, cell placement, body tilt, leg step, arms and sword angle, direction and handedness. Never replace in-between movement poses with idle. Keep all original empty gutters and per-figure scale; no overlap/cutoffs. Preserve original canvas ratio. Real alpha transparent background, no shadows/checkerboard. No captions, labels, UI, frames. EXACT8columns x10rows=80 figures. This is 20 different motion poses times4directions, arranged two poses per row. Columns1-4 are front/back/right/left of poseA, columns5-8 are front/back/right/left of poseB. Preserve all80 unique input figures, every subtle stride, crouch, sword raise, slash, followthrough and recovery. No reordering or duplicate poses. Since this is dense, retain extremely precise spacing/layout from input1 and render clean readable mini figures; do not use the reference image's4x4 layout.",
+      "generated": "exec-135ae658-f6d3-41d6-9f20-519e2acc7c6c.png",
+      "review": "Compared dense 8x10 atlas against source: all 80 positions, front/back/right/left grouping, walking, crouching, sword raising, strike, follow-through, open-hand and recovery variations remain. No missing cells or merged figures.",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png"
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "mint-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-mint-hq-measurement.json",
+      "prompt": "Use case: precise-object-edit. Production 4x4 transparent Mint sprite atlas. Edit this newly approved ink/cel SD drawing style, keep exactly 16 figures and every original pose/direction/order. Critical correction1: no artwork may touch the outer canvas border. Slightly reduce each entire figure by about5% within its own cell, ensuring at least12px completely transparent margin at ALL outer edges, especially row2 column4 rightmost cape/hair. Keep all full caps, feet and staffheads visible. Critical correction2: each Mint has exactly ONE gold staff with ONE blue orb. In bottomrow side-facing guard poses, remove any accidentally duplicated second staff; one hand holds her only staff, other hand is an EMPTY open palm. Preserve her blondhair/whitepurpleclothes/blueeyes, precise staff angles for all other rows, same 4x4 positions, no newweapon, no newpose. Transparentalpha, no shadows/checkerboard, no text. All16figures must be separated by empty gutters.",
+      "generated": "exec-c53663e7-932f-4a5e-8205-72c0a66e3e04.png",
+      "review": "Compared all 16 idle, staff thrust, prayer and open-palm guard figures with source. Directions front/back/right/left and gold blue-orb staff remain; right canvas cutoff fixed; final guard cell corrected to one staff and empty palm."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "mint-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-mint-motion-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity character sprite atlas. Input1 EDIT TARGET, input2 approved clean ink/cel SD drawing style ONLY (do NOT copy the male character, weapon or colors from input2). Redraw all16 female Mint figures of input1 in crisp bold navy contours, smooth 3-tone cel shading, expressive large blue eyes, clean graphic shapes. Preserve Mint's long blond hair, white-purple gold-trimmed cleric cap/robes, gold staff with blue orb. No pixel texture or noisy microdetail. EXACT4columns x4rows=16figures, directionorder front/back/right/left everyrow. Preserve every pose, stance, handedness, staffangle, footstep, direction and position. Keep plain original staff, no redesign of its silhouette. Original squarecanvas and cellspacing, fully complete staff/hair/clothes/feet inside eachcell with at least3pixel canvasmargin, no touchingfigures. Real transparentalpha, no painted checkerboard, no groundshadow. No labels/text/UI/frames. Rows1+2 different walking steps. Row3 hurt recoil/eyesclosed. Row4 four genuinely lyingonfloor defeated poses with horizontalstaff, not standing or kneeling. Preserve allfour collapse orientations and staff location.",
+      "generated": "exec-54b72ff3-4c38-4443-8fcf-6f1d93414a34.png",
+      "review": "Compared all 16 figures: two distinct walking steps, recoil poses and four lying KO directions remain; long blonde hair, cleric costume and blue-orb staff preserved. All cells separate and complete."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "mint-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-mint-extra-measurement.json",
+      "prompt": "Use case: precise-object-edit. Edit the supplied 4x4 transparent game sprite atlas. ONLY fix the bottom-right figure (row4 column4): she currently has two blue-orb staffs. REMOVE the staff on image-left of this one figure and replace that hand with an EMPTY open gloved palm facing outward, same casting posture. KEEP her one gold staff with blue orb on image-right. All other 15 figures and their pose, position, scale, costume, hair, colors and style unchanged. Preserve 16 complete distinct figures, 4x4 layout, square canvas and genuine transparent alpha. No cutoffs, keep transparent padding on all edges. No colored fringe, red/magenta/green halo, shadows, labels or checkerboard.",
+      "generated": "exec-cc9bdbac-e85a-4fa6-b5ac-4339663ce0fa.png",
+      "review": "Compared all 16 transitional walks, prayer and spell-release poses. Last cell duplicate staff corrected to one staff plus empty open palm. Other 15 cell positions and four facing directions retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "mint-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-mint-polish-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animation atlas. Input1 EDIT TARGET is the exact layout and pose source: 4columns x4rows =16 Mint cleric figures. Input2 STYLE ONLY is approved clean ink/cel SD art; do not copy male character. Redraw all16 figures in crisp dark-navy ink contours, expressive 2.7head SD anime proportions and three-tone cel colors, no pixel texture. Preserve Mint longblond hair, blueeyes, white purple gold cleric cap/robe, ONE gold staff withblueorb perfigure. Every row directions front/back/right/left; exact source cellplacement, perfigure scale, feet, bodytilt, handposition and staffangle. Row1 staff raised overhead attack anticipation, row2 straight staff forwardthrust, row3 tall verticalstaff spellpreparation, row4 eyesclosed recovery. Preserve original large empty gutters and smaller scale. No motion substitution. Keep all16 complete figures inside canvas and cells, at least8px clear transparent margin. Real RGBA transparency, no shadow/background/checkerboard or red/magenta/green fringe. No text, labels, UI or ornamentoutsidecostume.",
+      "generated": "exec-eb58174b-d569-42d5-ad63-88cdb26f1970.png",
+      "review": "Compared all 16 staff anticipation, forward thrust, vertical spell preparation and eyes-closed recovery poses. Four directions and unique hand/staff angles retained; complete silhouettes and transparent gutters."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "mint",
+      "source": "Assets/TalesTactics/Art/MotionPremium/mint.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/mint.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-mint-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity sprite atlas. Image1 EDIT TARGET is exact animation layout, image2 ONLY STYLE and Mint identity reference. Redraw every one of image1's EXACT72 distinct figures in clean darknavy ink, expressive SD anime face, crisp3tone cel shading, no pixel/noisy texture. Preserve whitepurplegold cleric costume, longblondhair and ONE goldblueorb staff in eachpose. Layout MUST remain8columns by9rows, two4direction groups perrow, front/back/right/left eachgroup. Keep exact position, direction, staffangle, bodytilt, legstep, handgesture of every cell, all18 unique motionposes times4directions. No replacing subtle movement poses withidle. Retain same sparse spacing and eachfigure scale. Keep original squarecanvas and empty lowerstrip, do not enlarge tofillcanvas. At least8px clear alpha between separatefigures andinsidecanvas, no touching stafftips. True RGBA transparentbackground, no groundshadow/checkerboard/text/grid. Ignore neartransparent red/yellow RGB fringes of source, draw cleanalphaedges.",
+      "generated": "exec-f3405a83-09d2-482e-8bdc-270cd00272a2.png",
+      "review": "Compared all 72 cells in 8x9 layout to original: 18 pose groups retain four facing directions, walking variations, staff lifting, thrust, crouched follow-through and open-hand casting. No cells omitted or touching."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "farah-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-farah-hq-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity sprite atlas. Image1 EDIT TARGET exact poses and layout; image2 ONLY STYLE reference, don'tcopy character. Redraw all16 Farah female martialartist figures in clean darknavy ink, expressive SDanime face roughly2.7heads, crisp3tone cel shading, no pixeltexture. Preserve tousledgreenhair, redcroppedvest, orangebaggytrousers, redgloves/shoes, blackbelt/goldstraps. Exactly4columns x4rows, eachrow front/back/right/left. Row1 boxingidle fistsready; row2 straightpunch extendedarm; row3 focus handsat chest; row4 raisedfistsguard. Keep ALL originalpose arm/leg directions, handedness, stance, feetbaseline andcellplacement. No swords, no weapons. Preserve squarecanvas andcleartransparentgutters. Fullhair/feet/gloveswithin eachcell and canvas with8pxclearalpha margin, no overlap. RealRGBAtransparentbackground, no shadow/checkerboard/redfringe/text/frame.",
+      "generated": "exec-6098a2fc-1288-4cb4-afd5-6bcc0c027bf1.png",
+      "review": "Compared all 16 idle, extended punch, focus and high guard figures with source. Green hair, red gloves/vest, orange trousers, handedness and four facing directions retained with crisp ink and cel shading."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "farah-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-farah-motion-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animation atlas. Input1 EDIT TARGET exact pose and layout, input2 ONLY clean ink/cel SD Farah style reference. Redraw ALL16 figures with crisp darknavy ink, expressive SDanime face and3tone cel shading. Preserve Farah greenhair, redcroppedvest/gloves/shoes, orangetrousers, belt/straps. Exact4columns x4rows with front/back/right/left in eachrow. Preserve every handgesture, armposition, legstep, bodytilt, direction, handedness andcellposition, no substitutions. Keep squarecanvas with cleartransparentgutters and all completefigures within canvas,8pxmargin. RealRGBAalpha background, no shadows/text/checkerboard. Rows1+2 are distinct walkingsteps withalternate feet andarms. Row3 is knocked-back hurt/recoil. Row4 has FOUR fully lying prone defeated KO bodies, keep same face andback orientation. Keep all16 unique poses, do not standupKO bodies.",
+      "generated": "exec-88f74a0f-9fc7-4014-8692-199aad548bb7.png",
+      "review": "Compared all 16 alternate walking, leaning recoil and genuinely prone KO figures. Four directional views, hand/leg poses and costume identity retained. Foot registration remains for runtime review."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "farah-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-farah-extra-measurement.json",
+      "prompt": "Use case: precise-object-edit. Fix ONLY spacing in this exact16figure 4x4 transparent animationatlas. Keep every character identity, cellorder, direction, distinct hand/legpose, colors and cleaninkcel art. Each individual figure mustbe slightlysmaller(about92percent itscurrentheight/width) withinits SAMECELL soallfigures aredisconnected byatleast12transparentpixels, especially row1column1 shoe mustNOTtouch row2column1 hair. Keep figurecenters/feetwithinoriginalcells. Do not combine/reorder orstandupwalkingposes. All16 figures remain. Keep exactsquarecanvas andgenuinetransparentalpha. No grid/text/groundshadow.",
+      "generated": "exec-59ec6f73-f477-46f3-b5b8-e668df8097f7.png",
+      "review": "Compared all 16 transitional walking, fists-at-waist focus and open-palm strike figures. Corrected first/second row contact with clear gutters; all directions and spread-palm pose preserved."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "farah-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-farah-polish-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity spriteatlas. Input1 EDITTARGET exact16poses/positions, input2 ONLY cleanink/cel SD Farah stylereference. Redraw all16 in crispdarknavycontours,3tonecelshading, expressiveSDface, nopixeltexture. Keep greenhair redcroppedvest/gloves/shoes orangebaggytrousers blackgoldbelt. Exact4x4grid and percell smallfigure scale/spacing frominput1. Directions eachrowfront/back/right/left. Row1 twistingwinduppunch anticipation, row2 forwardpunchfollowthrough, row3 BOTHARMS raisedoverhead palmsjoined charge, row4 relaxedrecovery fistsdown. Preserve unique bodytwists/legstance/armangles, noidle substitution. Realtransparentalpha, fullfigureswithclear12pxgutters, no cutoffs/overlaps/groundshadow/checkerboard/text. Preserve squarecanvas.",
+      "generated": "exec-efab3ac3-0d45-435c-aa52-ea8504c1c583.png",
+      "review": "Compared all 16 windup, straight punch follow-through, arms joined overhead charge and relaxed recovery figures. All four views and distinct arms/legs preserved."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "farah",
+      "source": "Assets/TalesTactics/Art/MotionPremium/farah.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/farah.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-farah-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animation atlas. Image1 EDITTARGET is exact80pose layout, image2 ONLY cleanink/cel SD Farah identity reference. Redraw EVERY80 figure in crisp darknavyink, clean3tonecelshading, expressiveface, nopixeltexture. Preserve greenhair, redvest/gloves/shoes, orangebaggytrousers. EXACT8columns by10rows=80figures,20unique motiongroups eachfront/back/right/left, two4direction groups perrow. Precisely retain original sparse cellplacements, figureheights, every distinct footstep, crouch, punch, elbow, raisedknee, sidewayskick, overheadcharge and palms strike. All80 unique poses, do not replace movement withidle. Preserve direction andhandedness and same squarecanvas. Everyfigure fullyseparatewith12pxtransparentgutter, completefeet/fists/hair. ActualRGBAtransparentalpha, nogroundshadows/checkerboard/text/frames. Match sourcegrid exactly, not reference4x4.",
+      "generated": "exec-04980e4b-fe9f-44d2-986b-61afde4df78a.png",
+      "review": "Compared all 80 cells in 8x10 grid to source, including alternating steps, crouched guard, punch sequences, raised knee, side kick, overhead charge and glowing punch. All four directional groupings and unique motions retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "jade-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-jade-hq-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity spriteatlas. Image1 EDITTARGET exact16poses/layout, image2 ONLY cleanink/cel SD style, donotcopyblondcharacter. Redraw all16 Jade malespearman figures in crisp darknavyink and3tonecelshading, expressiveSDanimeface, no pixeltexture. Preserve longbrownhair, narrowrectangularglasses, bluegoldmilitarycoat andblackboots/gloves, ONE long blackspearshaft silverspearhead/goldtrim. Exact4columns x4rows withfront/back/right/left eachrow. Row1 uprightspearidle; row2 horizontalspearthrust, row3 verticalspearspellfocus bothhands; row4 diagonalspearguard. Keep eachpose's direction, weaponangle/handedness, hands/legs, cellposition andrelativefigure size. Allspear tips andhair mustbe insidecells with12pxcleargutters, prevent row2longspears touching neighbors. Keep squarecanvas/genuinetransparentalpha. No backgroundshadow/checkerboard/text/grid.",
+      "generated": "exec-dcb64048-2fe0-4fdf-a130-a3344d95b8a2.png",
+      "review": "Compared all 16 Jade idle spear, horizontal thrust, vertical focus and diagonal guard figures. Brown hair, glasses, blue gold uniform and silver spear retained. Neighboring spear tips remain separate by measurement."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "jade-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-jade-motion-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity sprite atlas. Input1 EDIT TARGET exact poses and layout; input2 ONLY clean ink/cel SD Jade reference. Redraw all16 Jade figures with crisp darknavy contours, deliberate3tone celshading, no pixeltexture. Preserve longbrownhair, glasses, bluegoldmilitarycoat, blackboots/gloves and ONE blackspear with silverhead/golddetails. Exact4columns x4rows, directionsfront/back/right/left eachrow. Keep originalcellpositions, handedness, direction, distinctlegs/arms/spearangles. Fullfigures with12pxalpha gutters, allspeartips insidecells/canvas, no overlaps. Keep squarecanvas, genuineRGBAtransparentbackground, no shadow/text/checkerboard. Rows1+2 preserve distinct alternate walkingsteps, row3 thrownbackhurt/recoil, row4 four fullylying prone KO figures and spearresting horizontallybesidebody. Never replaceKO withstanding, never replacewalkingwithinplaceidle.",
+      "generated": "exec-2c5e8cb7-525b-465e-8d7a-3c726fb7495b.png",
+      "review": "Compared 16 alternate walks, four hurt poses and four fully prone KO views with source; glasses, coat and resting spears intact. Large alpha-bottom drift comes from horizontal KO spear and is recorded for runtime registration review."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "jade-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-jade-extra-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity sprite atlas. Input1 EDIT TARGET exact poses and layout; input2 ONLY clean ink/cel SD Jade reference. Redraw all16 Jade figures with crisp darknavy contours, deliberate3tone celshading, no pixeltexture. Preserve longbrownhair, glasses, bluegoldmilitarycoat, blackboots/gloves and ONE blackspear with silverhead/golddetails. Exact4columns x4rows, directionsfront/back/right/left eachrow. Keep originalcellpositions, handedness, direction, distinctlegs/arms/spearangles. Fullfigures with12pxalpha gutters, allspeartips insidecells/canvas, no overlaps. Keep squarecanvas, genuineRGBAtransparentbackground, no shadow/text/checkerboard. Rows1+2 transitionalwalkingsteps; row3 ONEhand holdsverticalspear while other openpalmcasts forward; row4 twohand horizontalforward spearthrust. Preserve openpalms andexactstafftipangles, especially lastrow needs12pxcleargutter between tips.",
+      "generated": "exec-e68d856e-5bcf-47c7-b3ac-f0c35ebe1b57.png",
+      "review": "Compared 16 transitional walks, open-palm spellcast with upright spear and horizontal spear thrusts; all directions, hands and complete tips preserved."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "jade-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-jade-polish-measurement.json",
+      "prompt": "Use case: precise-object-edit. Correct spacing ONLY in this exact 4x4 transparent16figure atlas. Keep ALL16 drawn poses, direction, character face/hair/costume, spearangle and cleaninkcel style. Make eachfigure individually 90percent ofitscurrent size insideits samecell so thereare minimum12cleartransparentpixels between every pair. Especially row4 column2 verticalspear tip currentlytouches row3 column2 boot: detach themwithclearalpha gap. Also row2 column3/4 speartips mustnot touch. Keep figure center inits originalcell, no reordering/omissions/posechanges. Fullweaponsandfeetinsidecanvas. Same squarecanvas, genuineRGBA alpha, no gridtextshadow.",
+      "generated": "exec-790a858a-779a-4420-affa-dfbdacf13c40.png",
+      "review": "Compared 16 overhead windup, forward thrust, tilted spell charge and upright recovery figures. Corrected vertical spear/boot contact using per-cell clearance; all poses and directions retained."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "jade",
+      "source": "Assets/TalesTactics/Art/MotionPremium/jade.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/jade.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-jade-measurement.json",
+      "prompt": "Use case: precise-object-edit. Surgical correction to exact80figure 8x10 transparent spriteatlas. KEEP everyfigure and pose andgrid unchanged. Three touchingpairs remain: row6 columns3&4, row7 columns1&2, row9 columns7&8 (rows countedfromtop, columnsfromleft). Eachpair has long cyan glowing speartips thatjoin across itscellborder. For ONLY these SIX figures, SHORTEN their protruding spear blade and cyanenergy extension enough tocreate a visiblyclear20pixeltransparent gap between thetwo figures. Bothspear shafts andhands retain sameangle andpose. Every one ofthe80 characters remains fullydrawn, weapons stillblue/silver/gold. All other74 figures unchanged. Do not draw a shared spark between characters; eachglowendsinsideits owncell. Preserve squarecanvas andrealalpha. No lines/grids/captions/shadows.",
+      "generated": "exec-69a725f7-77a8-4605-b2a8-7685b7842e96.png",
+      "review": "Compared all 80 poses in 8x10 grid, including steps, crouch, overhead sweeps, spear thrusts, cyan spell and recovery. Three touching pairs corrected by shortening protruding spear/glow ends within their cells; body poses and directions retained. All80 independent outlines measured."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "tear-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-tear-hq-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity spriteatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLY cleaninkcel SDstyle. Redraw all16 Tear female staffmage withcrispnavy ink,3tonecelshading, expressiveSDface, nopixeltexture. Preserve longashblondhair partedoveroneeye, blueeyes, brownblackgold dress, whitegauntlets/boots, ONE goldstaff withblueorb. Exact4columns x4rows, eachrowfront/back/right/left. Rows idle uprightstaff, outwardstaffthrust, eyesclosedprayer, diagonalguard. Preciselykeep originalposes, handstaff angles, legstance, facing, cellcenterandrelative scale. Fullfigure andstaff insidecells with12pxcleargutters, reduceeachslightlyifnecessary toavoidtouch. RealRGBAtransparentbackground, same squarecanvas, no shadows/checkerboard/text/frames. All16 distinctposes maintained.",
+      "generated": "exec-597cf1af-a95e-469b-b958-947c7dac490c.png",
+      "review": "Compared 16 idle staff, outward thrust, eyes-closed prayer and diagonal guard poses. Ash-blonde hair over one eye, brown gold dress, white gauntlets and blue-orb staff retained across four directions."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "tear-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-tear-motion-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animationatlas. Input1 EDITTARGET exact poses/layout, input2 ONLY cleaninkcel SD Tear style. Redraw ALL16 figures withcrispdarknavycontours and3tonecelshading, expressiveface, nopixeltexture. Preserve longashblondhair overoneeye, blueeyes, browngold dress, whitegauntlets/boots andONEblueorbgoldstaff, exactsourceweapon. Exact4x4 withfront/back/right/left eachrow. Keep originalcellcenters, alluniqueposes/armlegstaffangles, handedness anddirection. Entirefigures andstaff insidecanvas with12pxcleargutters. RealRGBAalpha, same squarecanvas, noshadow/checkerboard/text. Rows1+2 alternatewalkingsteps, row3 leaningbackhurt, row4 fourfullylying KO poses withstaffrestinghorizontally. Retain source lastrow front/back/right/leftbodyorientation andweaponposition, no standingKO oridle substitution.",
+      "generated": "exec-59e87526-b798-42c7-ba51-9a72709c5dd2.png",
+      "review": "Compared all 16 alternate walking, backward recoil and fully prone KO views. Original staff/head orientation and white gauntlets/boots retained; all bodies separate."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "tear-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-tear-extra-measurement.json",
+      "prompt": "Use case: style-transfer. Production Unity animationatlas. Input1 EDITTARGET exact poses/layout, input2 ONLY cleaninkcel SD Tear style. Redraw ALL16 figures withcrispdarknavycontours and3tonecelshading, expressiveface, nopixeltexture. Preserve longashblondhair overoneeye, blueeyes, browngold dress, whitegauntlets/boots andONEblueorbgoldstaff, exactsourceweapon. Exact4x4 withfront/back/right/left eachrow. Keep originalcellcenters, alluniqueposes/armlegstaffangles, handedness anddirection. Entirefigures andstaff insidecanvas with12pxcleargutters. RealRGBAalpha, same squarecanvas, noshadow/checkerboard/text. Rows1+2 transitionalwalkingsteps, row3 closedeyes prayer withverticalstaff, row4 forwardstaffspellrelease. Retain all16 distinctstepsandhandposes, fullstaffsinside eachcell.",
+      "generated": "exec-94cc9eed-2dcb-471a-9ce2-4ad1285a4e7e.png",
+      "review": "Compared all 16 transitional walking, eyes-closed prayer and staff-forward spell release views. Four facings and distinct stepping/hands remain."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "tear-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-tear-polish-measurement.json",
+      "prompt": "Use case: precise-object-edit. Fix only spacing in exact16figure4x4 transparent spriteatlas. Eachfigure mustbe90percent ofcurrent wholefigure size within SAMECELL, soeveryfigure/staff hasatleast12pixelclearalpha gap toallneighbors. Particularly row2 columns3&4 blueorb staffheads currentlytouch: separatewith20pxemptygap. Keep all16 poses, hands/legs/directions/facing, ashblondhair/browngoldcostume/blueorbstaff andcelstyle. Keep samecellcenters, noreordering/omissions orposechanges. Allfeetandstaffs insidecanvas. Preserve squarecanvas/genuinealpha, no grid/text/shadow.",
+      "generated": "exec-bc050e4d-8957-46fa-9453-9466ae640552.png",
+      "review": "Compared all 16 shoulder windup, thrust, raised staff spell preparation and lowered staff recovery figures. Corrected touching staff heads in second row; all complete poses retained."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "tear",
+      "source": "Assets/TalesTactics/Art/MotionPremium/tear.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/tear.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-tear-measurement.json",
+      "prompt": "Use case: precise-object-edit. Fix only spacing in this EXACT72figure atlas,8columns by9rows. Keep everypose, direction, figurecount, costume, staff, celcolors and all18distinctmotiongroups unchanged. Reduceeach WHOLE figure includingstaff/glow to88percent ofcurrent size centered inits SAMECELL, notthewholeatlas. Needminimum12pixel alpha gap between allfigures horizontallyANDvertically. Especially row4 androw5 firstfourcolumns: row5 raisedstafftips mustnot touch row4feet/skirts. Retain all72figures andunique hand/leg/staffangles. Keep originalsquarecanvaswithbottomemptystrip. Do not enlargeorredistribute. TrueRGBAtransparentbackground,noshadows/text/grid/checkerboard. Completebodies andstaffs.",
+      "generated": "exec-343394fd-2812-4ae9-97b2-951b8cc9b2b1.png",
+      "review": "Compared all 72 cells in 8x9 layout: walking variations, torso turns, raised staff, outward spells, open-hand cast and recovery retained. Corrected fourth/fifth row staff-to-boot contact by reducing figures inside original cells; 72 independent outlines."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "natalia-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-natalia-hq-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityspriteatlas. Input1 EDITTARGET exact16pose/layout, image2 ONLY cleaninkcelSDstyle; donotcopymalecharacter. Redraw ALL16 Natalia femalearcher figures withcrispnavycontours,3tonecelshading, expressiveSDface,nopixeltexture. Preserve blondbob/brownheadband, greeneyes, tealwhitegold rangeroutfit, whitegauntlets/boots, yellowribbon, goldrecurvebow/quiver. Exactly4x4 withfront/back/right/left eachrow. Keep originalpercell poses, feet, limbs, bowangles, direction/handedness. Eachfigure 95percent sourceheight with12pxcleargutters soallfigures are separate, no cutoff. Same squarecanvas realRGBAtransparency, no groundshadow/text/checkerboard. Rows are idlebowdown, fullydrawnbow aiminghorizontal with arrow, verticalbowfocus/prayer, crouchedbowguard. Preserve arrowstringhandsand everydistinctaction, eachfullbow mustfitincell.",
+      "generated": "exec-4ee963fd-20fe-4fa2-996b-34d5dc06c5ea.png",
+      "review": "Compared 16 idle, drawn bow aim with arrow, vertical focus and crouched guard poses. Bob haircut, teal white gold outfit, quiver, bow and four facings retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "natalia-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-natalia-motion-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityspriteatlas. Input1 EDITTARGET exact16pose/layout, image2 ONLY cleaninkcelSDstyle; donotcopymalecharacter. Redraw ALL16 Natalia femalearcher figures withcrispnavycontours,3tonecelshading, expressiveSDface,nopixeltexture. Preserve blondbob/brownheadband, greeneyes, tealwhitegold rangeroutfit, whitegauntlets/boots, yellowribbon, goldrecurvebow/quiver. Exactly4x4 withfront/back/right/left eachrow. Keep originalpercell poses, feet, limbs, bowangles, direction/handedness. Eachfigure 95percent sourceheight with12pxcleargutters soallfigures are separate, no cutoff. Same squarecanvas realRGBAtransparency, no groundshadow/text/checkerboard. Rows1+2 distinctalternatingwalksteps, row3 leaningbackhurt, row4 FOURgenuinelylyingproneKO poses withbowrestinghorizontalalongground. Keep allsourcehead/bodyorientations andcompletebows, donotstandupKO.",
+      "generated": "exec-5523e7a2-90a2-4568-be57-2f90698c7be5.png",
+      "review": "Compared 16 alternate walking, hurt and four fully prone KO poses with bows on ground. Direction, bow orientation and costume preserved; all separate."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "natalia-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-natalia-extra-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 exact16pose EDITTARGET, input2 ONLY cleaninkcelSD Natalia style. Redraw all16 withcrispnavyink,3tonecelshading, expressiveSDface, no pixeltexture. Preserve blondbob/brownheadband, tealwhitegold outfit, whiteboots/gloves, goldrecurvebow andquiver. Exactly4columns x4rows, front/back/right/left eachrow. Preserve alloriginalpercell poses, directions, handedness, handsandlegangles, fullbows/arrows. Eachfigure fullyseparatewith12pxalphagutter, fitwithinoriginalcellandcanvas. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Row1+2 unique transitionalwalkingsteps. Row3 BOTHARMS holdbow overhead chargedpose; preserve the overheadbow, do notturnittoaimidle. Row4 fulldrawn horizontalbow/arrowrelease. Keep all16 unique frames.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 exact16pose EDITTARGET, input2 ONLY cleaninkcelSD Natalia style. Redraw all16 withcrispnavyink,3tonecelshading, expressiveSDface, no pixeltexture. Preserve blondbob/brownheadband, tealwhitegold outfit, whiteboots/gloves, goldrecurvebow andquiver. Exactly4columns x4rows, front/back/right/left eachrow. Preserve alloriginalpercell poses, directions, handedness, handsandlegangles, fullbows/arrows. Eachfigure fullyseparatewith12pxalphagutter, fitwithinoriginalcellandcanvas. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Row1+2 unique transitionalwalkingsteps. Row3 BOTHARMS holdbow overhead chargedpose; preserve the overheadbow, do notturnittoaimidle. Row4 fulldrawn horizontalbow/arrowrelease. Keep all16 unique frames.",
+          "generated": "exec-d1700489-b874-41f3-96f3-6fa8638f1035.png"
+        }
+      ],
+      "generated": "exec-d1700489-b874-41f3-96f3-6fa8638f1035.png",
+      "review": "Compared all16 transitional walks, raised overhead bow charge and full drawn arrow poses. Bow orientation, hands, quiver and four facings retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "natalia-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-natalia-polish-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 exact16pose EDITTARGET, input2 ONLY cleaninkcelSD Natalia style. Redraw all16 withcrispnavyink,3tonecelshading, expressiveSDface, no pixeltexture. Preserve blondbob/brownheadband, tealwhitegold outfit, whiteboots/gloves, goldrecurvebow andquiver. Exactly4columns x4rows, front/back/right/left eachrow. Preserve alloriginalpercell poses, directions, handedness, handsandlegangles, fullbows/arrows. Eachfigure fullyseparatewith12pxalphagutter, fitwithinoriginalcellandcanvas. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Row1 fulldrawn bowwitharrow aiming; row2 arrowreleased, stringhand openedwithspreadfingers whilebowarmstaysout; row3 uprightbowfocus, row4 eyesclosed bowloweredrecovery. Keep arrowpresent onlyinappropriate sourcecells, distinguishdrawing fromrelease hand.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 exact16pose EDITTARGET, input2 ONLY cleaninkcelSD Natalia style. Redraw all16 withcrispnavyink,3tonecelshading, expressiveSDface, no pixeltexture. Preserve blondbob/brownheadband, tealwhitegold outfit, whiteboots/gloves, goldrecurvebow andquiver. Exactly4columns x4rows, front/back/right/left eachrow. Preserve alloriginalpercell poses, directions, handedness, handsandlegangles, fullbows/arrows. Eachfigure fullyseparatewith12pxalphagutter, fitwithinoriginalcellandcanvas. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Row1 fulldrawn bowwitharrow aiming; row2 arrowreleased, stringhand openedwithspreadfingers whilebowarmstaysout; row3 uprightbowfocus, row4 eyesclosed bowloweredrecovery. Keep arrowpresent onlyinappropriate sourcecells, distinguishdrawing fromrelease hand.",
+          "generated": "exec-98e91443-da9c-43c9-b338-829ed3dadf88.png"
+        }
+      ],
+      "generated": "exec-98e91443-da9c-43c9-b338-829ed3dadf88.png",
+      "review": "Compared all16 drawn-arrow aim, released-string open hand, upright focus and lowered bow recovery. Correct arrow presence and open release hand remain distinct."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "natalia",
+      "source": "Assets/TalesTactics/Art/MotionPremium/natalia.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/natalia.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-natalia-measurement.json",
+      "prompt": "Use case: precise-object-edit. Fix ONLY green effect overflow in exact80figure 8x10 transparent animationatlas. Keep ALL80 characterbody poses, bows, directions, position, costume and celstyle unchanged. The greenarrowprojectiles in row7 andgreenmagic inrows9/10 currently spill between cells. Make eachgreen glow/projectile COMPACT and attachedtoits ownbow/hand only; allgreenvisible pixels muststaywithinitsoriginalcell, leaving15pxfullytransparentgap fromallneighborsandcanvasedges. Reduceglowradiusandarrowenergytrail tohalf currentlength, preserve greenmagicaction andwhitearrowcenter. No greenconnection/sharedspark between characters. Do notremoveorreplaceanybodyposes. Everyfigure andeffect fullyseparate, canvasunchanged, realalpha. No text/grid/shadows.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityanimationatlas. Image1 EDITTARGET exact80poses/layout, image2 ONLY cleaninkcel SD Natalia style. Redraw ALL80 in crispnavyink/3tonecel colors, expressiveSDface, nopixeltexture. Preserve blondbob/headband, tealwhitegold rangeroutfit, quiver andgoldbow, greenmagic. EXACT8columns by10rows=20posegroups x4facings front/back/right/left, twogroups perrow. Retain every walkingstep, bowdraw, overheadcharge, arrowrelease, openhandspell, greenprojectile and recovery variation; samehandedness/pose/weaponangle/cellcenter. Fit eachwholefigure andeffectinsideitsoriginalcellwith10pxtransparentgap; shorten protrudinggreenprojectile/glowonlyif needed toavoidadjacentcontact, retain action. No mergingorreplacingunique motions withidle. SquarecanvasrealRGBAtransparency,noshadow/checkerboard/grid/text.",
+          "generated": "exec-877e7714-00b3-46e3-9282-5c33590cce98.png"
+        },
+        {
+          "prompt": "Use case: precise-object-edit. Fix ONLY green effect overflow in exact80figure 8x10 transparent animationatlas. Keep ALL80 characterbody poses, bows, directions, position, costume and celstyle unchanged. The greenarrowprojectiles in row7 andgreenmagic inrows9/10 currently spill between cells. Make eachgreen glow/projectile COMPACT and attachedtoits ownbow/hand only; allgreenvisible pixels muststaywithinitsoriginalcell, leaving15pxfullytransparentgap fromallneighborsandcanvasedges. Reduceglowradiusandarrowenergytrail tohalf currentlength, preserve greenmagicaction andwhitearrowcenter. No greenconnection/sharedspark between characters. Do notremoveorreplaceanybodyposes. Everyfigure andeffect fullyseparate, canvasunchanged, realalpha. No text/grid/shadows.",
+          "generated": "exec-b6d20f17-766f-4939-9917-205a373579e5.png"
+        }
+      ],
+      "generated": "exec-b6d20f17-766f-4939-9917-205a373579e5.png",
+      "review": "Compared all80 cells including walking, overhead bow, draw/release, green projectile, open-hand magic and recovery. Compact green effect overflow corrected within cells while all bodyposes and directions remain."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "velvet-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-velvet-hq-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityspriteatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLYcleaninkcelSDstyle, donotcopycharacter. Redraw all16 Velvet adultfemale warriorfigures withcrispdarknavyink/3tonecelshading, expressiveSDface,nopixeltexture. Preserve verylongblackhair, redblacktatteredcoat, blackstrappedarmor/boots, whitebandagedarm andsilverredwristblade onotherarm. Exact4x4 front/back/right/left eachrow. Rowsidle, outwardwristbladeslash, crossedarmfocus, highbladeguard. Keep eachcell's limbs, bladeangle, handedness, bodytilt, direction andrelativefigurescale; no mirroredreplacement. Fullhair/coattails/feet/bladeinsidecellswith12pxalphagutters. Same squarecanvas, genuineRGBAtransparentbackground,noshadow/checkerboard/text.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityspriteatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLYcleaninkcelSDstyle, donotcopycharacter. Redraw all16 Velvet adultfemale warriorfigures withcrispdarknavyink/3tonecelshading, expressiveSDface,nopixeltexture. Preserve verylongblackhair, redblacktatteredcoat, blackstrappedarmor/boots, whitebandagedarm andsilverredwristblade onotherarm. Exact4x4 front/back/right/left eachrow. Rowsidle, outwardwristbladeslash, crossedarmfocus, highbladeguard. Keep eachcell's limbs, bladeangle, handedness, bodytilt, direction andrelativefigurescale; no mirroredreplacement. Fullhair/coattails/feet/bladeinsidecellswith12pxalphagutters. Same squarecanvas, genuineRGBAtransparentbackground,noshadow/checkerboard/text.",
+          "generated": "exec-13823558-3cd1-43d3-8de3-c255b6fd8e69.png"
+        }
+      ],
+      "generated": "exec-13823558-3cd1-43d3-8de3-c255b6fd8e69.png",
+      "review": "Compared all16 idle, outward wrist-blade slash, crossed-arm focus and high guard. Black hair, tattered red coat, bandaged arm versus bladed arm and four facings retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "velvet-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-velvet-motion-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLYcleaninkcelSD Velvetstyle. Redraw all16 crispnavyink/3tonecel shading, nopixeltexture. Preserve adultwoman verylongblackhair, redblacktatteredcoat, whitebandagedarm, silverredwristblade otherarm, blackstrappedbootsarmor. Exact4x4 front/back/right/left eachrow. Rows1+2 alternatingwalkingsteps; row3 torsohunched clutchingstomachhurt; row4 fourfullylying KOposes withhairspreadandbladealongground. Preserve allbodydirections, handedness, weapons anddistinctfeet, noidle substitution. Allfigures95percent originalsize within samecells,12pxalphagutters, fullhairfeetbladesinsidecanvas. RealRGBAtransparentbackground,samesquarecanvas,noshadow/checkerboard/text.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLYcleaninkcelSD Velvetstyle. Redraw all16 crispnavyink/3tonecel shading, nopixeltexture. Preserve adultwoman verylongblackhair, redblacktatteredcoat, whitebandagedarm, silverredwristblade otherarm, blackstrappedbootsarmor. Exact4x4 front/back/right/left eachrow. Rows1+2 alternatingwalkingsteps; row3 torsohunched clutchingstomachhurt; row4 fourfullylying KOposes withhairspreadandbladealongground. Preserve allbodydirections, handedness, weapons anddistinctfeet, noidle substitution. Allfigures95percent originalsize within samecells,12pxalphagutters, fullhairfeetbladesinsidecanvas. RealRGBAtransparentbackground,samesquarecanvas,noshadow/checkerboard/text.",
+          "generated": "exec-32c896f1-0338-4a21-baa6-a0f0145af2bd.png"
+        }
+      ],
+      "generated": "exec-32c896f1-0338-4a21-baa6-a0f0145af2bd.png",
+      "review": "Compared all16 alternate walks, hunched stomach hurt and fully prone KO views. Wristblade, bandaged arm, coat and spread hair preserved."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "velvet-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-velvet-extra-measurement.json",
+      "prompt": "Use case: precise-object-edit. Keep exact16figures4x4 atlas unchanged exceptspacing. Bottomrow columns3&4 silverwristblade tips currentlytouch. Shorten theseTWO protrudingbladetips justenough toleave20pxcleartransparentgap; preserve blade shape/silverredcolors, armangleandpose. Also keepallfigures completeinsidecanvas. No otherposes/positions/directions/costume changes, all16 remain. Same squarecanvasgenuinealpha, no text/grid/shadow.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLY cleaninkcelSD Velvetstyle. Redraw ALL16 withcrispdarknavyink/3tonecelshading, nopixeltexture. Preserve adultwoman verylongblackhair, redblacktatteredcoat, blackbootsarmor, whitebandagedarm andsilverredwristblade. Exact4x4 front/back/right/left eachrow. Keep eachcellbodypose, handedness, bladeangle, distinctarmslegs, characteridentity. Fullyseparateallfigures with12pxclearalpha, completehair/coattails/feet/bladesinsidecellsandcanvas. Same squarecanvas, realRGBAtransparency,noshadow/checkerboard/text/grid. Rows1+2 distincttransitionalwalkingsteps; row3 blade-arm liftedbehind shoulder preparation; row4 horizontalforwardblade strike. Keepcoattail/hair tilt and bladeangles, no idle substitutions.",
+          "generated": "exec-2b2555cf-eaf9-4d96-812c-57351c8d669c.png"
+        },
+        {
+          "prompt": "Use case: precise-object-edit. Keep exact16figures4x4 atlas unchanged exceptspacing. Bottomrow columns3&4 silverwristblade tips currentlytouch. Shorten theseTWO protrudingbladetips justenough toleave20pxcleartransparentgap; preserve blade shape/silverredcolors, armangleandpose. Also keepallfigures completeinsidecanvas. No otherposes/positions/directions/costume changes, all16 remain. Same squarecanvasgenuinealpha, no text/grid/shadow.",
+          "generated": "exec-9a3e6163-a7f7-4434-b6f6-4da9092b31de.png"
+        }
+      ],
+      "generated": "exec-9a3e6163-a7f7-4434-b6f6-4da9092b31de.png",
+      "review": "Compared all16 transitional walks, shoulder blade preparation and forward slash. Corrected last-row touching blade tips only; bodyposes and hand directions retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "velvet-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-velvet-polish-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLY cleaninkcelSD Velvetstyle. Redraw ALL16 withcrispdarknavyink/3tonecelshading, nopixeltexture. Preserve adultwoman verylongblackhair, redblacktatteredcoat, blackbootsarmor, whitebandagedarm andsilverredwristblade. Exact4x4 front/back/right/left eachrow. Keep eachcellbodypose, handedness, bladeangle, distinctarmslegs, characteridentity. Fullyseparateallfigures with12pxclearalpha, completehair/coattails/feet/bladesinsidecellsandcanvas. Same squarecanvas, realRGBAtransparency,noshadow/checkerboard/text/grid. Row1 shoulderblade windup withbandagedfistraised; row2 forwardwristbladeslashfollowthrough; row3 highcrossedarmguard, row4 loweredbladerecovery. Preserve all16 unique poses and directionviews.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Input1 EDITTARGET exact16poses/layout, input2 ONLY cleaninkcelSD Velvetstyle. Redraw ALL16 withcrispdarknavyink/3tonecelshading, nopixeltexture. Preserve adultwoman verylongblackhair, redblacktatteredcoat, blackbootsarmor, whitebandagedarm andsilverredwristblade. Exact4x4 front/back/right/left eachrow. Keep eachcellbodypose, handedness, bladeangle, distinctarmslegs, characteridentity. Fullyseparateallfigures with12pxclearalpha, completehair/coattails/feet/bladesinsidecellsandcanvas. Same squarecanvas, realRGBAtransparency,noshadow/checkerboard/text/grid. Row1 shoulderblade windup withbandagedfistraised; row2 forwardwristbladeslashfollowthrough; row3 highcrossedarmguard, row4 loweredbladerecovery. Preserve all16 unique poses and directionviews.",
+          "generated": "exec-967236d8-6cc0-4680-a974-625c3064ae87.png"
+        }
+      ],
+      "generated": "exec-967236d8-6cc0-4680-a974-625c3064ae87.png",
+      "review": "Compared all16 shoulder windup, slash follow-through, high crossed guard and lowered recovery figures. All four facings and blade/arm angles retained."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "velvet",
+      "source": "Assets/TalesTactics/Art/MotionPremium/velvet.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/velvet.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-velvet-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Image1 EDITTARGET exact72poses/layout/weapon, image2 ONLY cleaninkcelSDstyle. Redraw ALL72 withcrispnavyink,3tonecelshading, no pixeltexture. Preserve adult Velvet blackhair/redblacktatteredcoat/blackarmor/whitebandagedarm and source's large darksilver/redmonsterclaw weapon, don'treplaceclawwithreference simpleblade. EXACT8columns by9rows=18uniquegroups x4viewsfront/back/right/left twogroupsperrow. Keep everywalk/brace/crouch/windup/clawraise/swipe/followthrough/redpower/return pose, directions/handedness/weaponangles. Everyfigureandclaw95percentcurrentheightwithinSAMECELL,10pxalphagap allneighbors. Forrows6/7/8 wideclaws minimallyshorten protrudingtips/effectsifneeded instead ofmergingfigures. Preserve72poses andsquarecanvasloweremptystrip. GenuineRGBAtransparentbackground,noshadow/checkerboard/text/grid.",
+      "promptHistory": [
+        {
+          "prompt": "Use case: style-transfer. ProductionUnityatlas. Image1 EDITTARGET exact72poses/layout/weapon, image2 ONLY cleaninkcelSDstyle. Redraw ALL72 withcrispnavyink,3tonecelshading, no pixeltexture. Preserve adult Velvet blackhair/redblacktatteredcoat/blackarmor/whitebandagedarm and source's large darksilver/redmonsterclaw weapon, don'treplaceclawwithreference simpleblade. EXACT8columns by9rows=18uniquegroups x4viewsfront/back/right/left twogroupsperrow. Keep everywalk/brace/crouch/windup/clawraise/swipe/followthrough/redpower/return pose, directions/handedness/weaponangles. Everyfigureandclaw95percentcurrentheightwithinSAMECELL,10pxalphagap allneighbors. Forrows6/7/8 wideclaws minimallyshorten protrudingtips/effectsifneeded instead ofmergingfigures. Preserve72poses andsquarecanvasloweremptystrip. GenuineRGBAtransparentbackground,noshadow/checkerboard/text/grid.",
+          "generated": "exec-bfe6429c-3fcb-438d-8385-31e2c6fcc0bc.png"
+        }
+      ],
+      "generated": "exec-bfe6429c-3fcb-438d-8385-31e2c6fcc0bc.png",
+      "review": "Compared all72 cells in8x9 source grid, preserving distinct walk, brace, crouch, claw raise, swipe, follow-through, powered red claw and recovery. Retained source monster-claw appearance and all four facings; 72frames separated."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "alphen-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-alphen-hq-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityanimationatlas. Input1 EDITTARGET exact16pose/layout, input2 ONLY cleaninkcelSDstyle. Redraw all16 Alphen maleswordsman withcrispnavyink/3tonecelshading, expressiveSDface,nopixeltexture. Preserve silverwhitehair coveringoneeye, blue scarf/cape, blacksilver armor, orangeflamingsword. EXACT4x4 front/back/right/left eachrow. Keep originalpercell poses, every limb/weaponangle, facing/handedness, fireblade shape andfullcape. Fullfiguresandfireinsidecellswith12pxclearalpha, slightlyreducewholefigureifneeded, keepcellcenters. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Rows idle downwardfireblade, sweepingfirebladeslash ineachdirection, verticalswordfocus, diagonalbladeguard. Preserve eachunique slasharc andswordhand.",
+      "generated": "exec-eccb7537-a6d4-4d5c-966a-1e3935b4df7e.png",
+      "review": "Alphen 16 source poses visually compared: lowered fireblade idle, sweeping attack, vertical charge, diagonal guard; all front/back/right/left views and blue cape, armored boots and flame blade retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "alphen-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-alphen-motion-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityanimationatlas. Input1 EDITTARGET exact16pose/layout, input2 ONLY cleaninkcelSDstyle. Redraw all16 Alphen maleswordsman withcrispnavyink/3tonecelshading, expressiveSDface,nopixeltexture. Preserve silverwhitehair coveringoneeye, blue scarf/cape, blacksilver armor, orangeflamingsword. EXACT4x4 front/back/right/left eachrow. Keep originalpercell poses, every limb/weaponangle, facing/handedness, fireblade shape andfullcape. Fullfiguresandfireinsidecellswith12pxclearalpha, slightlyreducewholefigureifneeded, keepcellcenters. Same squarecanvas realRGBAtransparency,noshadow/checkerboard/text/grid. Rows1+2 distinctwalkingsteps, row3 knockedbackhurt/recoil, row4 fourgenuinelylyingKO poses withflameswordalongground. Preserve sourceback/right/left proneviews, no standingKO oridle substitution.",
+      "generated": "exec-443c4ada-e9d7-4a53-b6f3-3e54ba36c269.png",
+      "review": "Alphen 16 source poses compared: alternating walk steps, recoil, and four prone KO views remain distinct; silver hair, blue cape and flame blade preserved, no idle substitutions."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "alphen-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-alphen-extra-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Image1 EDITTARGET exact16poses/layout, image2 ONLY cleaninkcel SDAlphen style. Redrawall16 crispdarknavyink/3tonecelshading,nopixeltexture. Preserve silverwhitehair/bluecape/blacksteelarmor/orangeflamesword, distincteyesandface. Exact4x4 front/back/right/left eachrow. Keep eachpose direction, hand/legposition, swordangle, bodytilt andcellcenter. Fullfireblade/cape/feetinsidecellwith12pxcleargutters. Same squarecanvas,genuineRGBAtransparency,noshadow/checkerboard/text. Rows1+2 unique transitionalwalkingsteps; row3 BOTHHANDS swordoverheadcharge; row4 diagonalsword acrossbody release/guard stance. Retain sourcefeet andswordangles, nocopyidles.",
+      "generated": "exec-8cf609a8-d16c-4cca-af4c-2683828362c9.png",
+      "review": "Alphen 16 source poses compared: transitional walking rows, both hands overhead fireblade charge, diagonal release stance and four facings preserved. Complete sword tips, cape and feet in isolated cells."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "alphen-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-alphen-polish-measurement.json",
+      "prompt": "Use case: style-transfer. ProductionUnityatlas. Image1 EDITTARGET exact16poses/layout, image2 ONLY cleaninkcel SDAlphen style. Redrawall16 crispdarknavyink/3tonecelshading,nopixeltexture. Preserve silverwhitehair/bluecape/blacksteelarmor/orangeflamesword, distincteyesandface. Exact4x4 front/back/right/left eachrow. Keep eachpose direction, hand/legposition, swordangle, bodytilt andcellcenter. Fullfireblade/cape/feetinsidecellwith12pxcleargutters. Same squarecanvas,genuineRGBAtransparency,noshadow/checkerboard/text. SourceusesSMALLERfigures withlargegutters: retain thatscale/position. Row1 overheadswordwindup; row2 lowerslashfollowthrough; row3 uprightfirebladepreparation; row4 recoveryidle. Preserve all16 originalmotions.",
+      "generated": "exec-d4d05c7b-5756-4ec8-8c7d-4ebd5167dfd8.png",
+      "review": "Alphen 16 smaller source figures preserved at original spacing: overhead windup, lower followthrough, upright blade preparation and recovery; all four facings and equipment intact."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "alphen",
+      "source": "Assets/TalesTactics/Art/MotionPremium/alphen.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/alphen.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-alphen-measurement.json",
+      "prompt": "Use case: style-transfer. Image 1 EDIT TARGET exact 72 pose production atlas, image 2 is STYLE ONLY clean ink and cel SD Alphen. Redraw all 72 sprites in bold dark navy ink, readable expressive SD faces, flat three-tone cel shading, no pixel texture. Preserve silverwhite hair, black steel armor, blue cape, orange flame blade. Exact 8 columns by 9 populated rows on SAME square transparent canvas, keep bottom blank margin. Every quartet front/back/right/left; preserve EACH original animation pose and facing. Walking steps, lean/recoil, overhead winds, thrust/sweep attacks, vertical flame charge, recovery. All 72 are distinct; never substitute idle copies. Keep all figure centers and silhouettes at source size or 90% to ensure 12px clear transparent gutters; flame blade and cape must stay within each cell, shorten glow only if needed. Preserve sword angle, hand placement, foot pose, body lean for every cell. Genuine RGBA transparency, no shadows, no checkerboard, no text.",
+      "generated": "exec-a02a292f-28b0-4f99-bc42-6f041fd4bc64.png",
+      "review": "All 72 poses compared against source 8x9: alternate walking, recoil, overhead sword winds, angled sweeps/thrusts, vertical flame charge and recovery remain distinct in repeated four-direction groups. Silver hair, blue cape, black armor and fireblade preserved; all figures measured separately."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "shionne-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-shionne-hq-measurement.json",
+      "prompt": "Use case: style-transfer. Image 1 EDIT TARGET exact 16 Shionne poses; image 2 only style reference for clean bold ink/cel SD. Redraw all 16 as polished compact anime SD sprites with larger expressive face, crisp dark navy outlines, smooth 3 tone cel shading, no pixel texture. Preserve long pink ponytail, red thorn crown, gold-white black dress armor and ornate black/gold rifle. Exact 4x4 cells on same square canvas; row directions front/back/right/left exactly as original. Row 1 rifle lowered across body, row 2 horizontal rifle aiming in original direction (gun pointed LEFT in back and left cells), row 3 eyes shut vertical rifle held at chest, row 4 diagonal rifle guard. Maintain every original pose, head turn, gun handedness, foot positions, rifle angle and cell center. Fit full hair, rifle barrel and boots inside each cell with 12px clear gutters; use 92% scale if needed. Genuine RGBA transparent, no floor shadow, checkerboard or text.",
+      "generated": "exec-bf802c6c-628d-4b88-82f8-d5de2983c56e.png",
+      "review": "All 16 source poses compared: lowered rifle, horizontal aiming (opposite back/left direction), eyes shut with vertical rifle, and diagonal guard. Pink ponytail, thorn crown, white-gold armor and black-gold rifle retained in all four facings."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "shionne-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-shionne-motion-measurement.json",
+      "prompt": "Precise atlas correction ONLY. Preserve the existing clean ink/cel artwork and exactly all 16 distinct poses in this 4x4 Shionne atlas. Individually scale every complete figure plus gun/hair to 90% of current size INSIDE ITS SAME CELL around its own center. Do not resize canvas or grid. This creates at least 12px real transparent clearance around every figure and at outer canvas edges. Complete all hair tips/rifle barrels/boots without cropping, especially rightmost column and prone last row. Keep identical figure locations relative to cells, original directions, footsteps, hurt and lying KO poses. No pose redesign, no added objects. Genuine transparent RGBA, no checkerboard or floor.",
+      "promptHistory": [
+        "Use case style-transfer. Image 1 EDIT TARGET exact 16 distinct Shionne animation frames; image 2 STYLE ONLY approved clean ink/cel Shionne. Crisp navy outlines, flat three-tone smooth shading, expressive SD face, no pixel texture. Preserve pink high ponytail, thorn crown, white-black-gold dress armor, ornate black/gold rifle. Exact 4x4 on same square canvas, each row original front/back/right/left. Keep all pose/handedness/gun angle/footstep differences, centers and scale. Fit every figure, full rifle and hair inside its cell with 12px clear alpha gutter; use 92% size if needed. Genuine transparent RGBA, no text/checkerboard/floor shadow. Row 1 and 2 alternate walking stride, row 3 injured eyes closed clutching gun, row 4 all four prone KO lying horizontally on ground. Never replace KO or distinct walking poses with idle.",
+        "Precise atlas correction ONLY. Preserve the existing clean ink/cel artwork and exactly all 16 distinct poses in this 4x4 Shionne atlas. Individually scale every complete figure plus gun/hair to 90% of current size INSIDE ITS SAME CELL around its own center. Do not resize canvas or grid. This creates at least 12px real transparent clearance around every figure and at outer canvas edges. Complete all hair tips/rifle barrels/boots without cropping, especially rightmost column and prone last row. Keep identical figure locations relative to cells, original directions, footsteps, hurt and lying KO poses. No pose redesign, no added objects. Genuine transparent RGBA, no checkerboard or floor."
+      ],
+      "generated": "exec-95265cdb-6e95-45c6-b5f8-fa7678ef6716.png",
+      "review": "16 frames visually compared with original: two alternating walk rows, injured lean/eyes shut row, four prone KO views preserved with original rifle angles. Initial candidate touched right canvas edge; a uniform 90% in-cell correction clears all edges, remeasured. Runtime registration remains integration check."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "shionne-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-shionne-extra-measurement.json",
+      "prompt": "Use case style-transfer. Image 1 EDIT TARGET exact 16 distinct Shionne animation frames; image 2 STYLE ONLY approved clean ink/cel Shionne. Crisp navy outlines, flat three-tone smooth shading, expressive SD face, no pixel texture. Preserve pink high ponytail, thorn crown, white-black-gold dress armor, ornate black/gold rifle. Exact 4x4 on same square canvas, each row original front/back/right/left. Keep all pose/handedness/gun angle/footstep differences, centers and scale. Fit every figure, full rifle and hair inside its cell with 12px clear alpha gutter; use 92% size if needed. Genuine transparent RGBA, no text/checkerboard/floor shadow. Row 1 and 2 different walking transitional steps. Row 3 eyes closed vertical rifle at chest. Row 4 aim rifle: front muzzle directly at camera, back rear view of raised rifle, right/left mirrored horizontal aiming. Preserve these distinct muzzle orientations precisely.",
+      "promptHistory": [
+        "Use case style-transfer. Image 1 EDIT TARGET exact 16 distinct Shionne animation frames; image 2 STYLE ONLY approved clean ink/cel Shionne. Crisp navy outlines, flat three-tone smooth shading, expressive SD face, no pixel texture. Preserve pink high ponytail, thorn crown, white-black-gold dress armor, ornate black/gold rifle. Exact 4x4 on same square canvas, each row original front/back/right/left. Keep all pose/handedness/gun angle/footstep differences, centers and scale. Fit every figure, full rifle and hair inside its cell with 12px clear alpha gutter; use 92% size if needed. Genuine transparent RGBA, no text/checkerboard/floor shadow. Row 1 and 2 different walking transitional steps. Row 3 eyes closed vertical rifle at chest. Row 4 aim rifle: front muzzle directly at camera, back rear view of raised rifle, right/left mirrored horizontal aiming. Preserve these distinct muzzle orientations precisely."
+      ],
+      "generated": "exec-2b9da745-2720-44fe-91a7-fcd6c7b82835.png",
+      "review": "16 original poses preserved: two transitional walk rows, eyes shut vertical rifle, front-on muzzle and rear/side aimed rifle. All four directions, pink hair, crown, dress and gun retained; each cell separately measured."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "shionne-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-shionne-polish-measurement.json",
+      "prompt": "Style-transfer. Image1 edit target exact16 Shionne poses, image2 style only. Clean navy ink contours, smooth three tone cel shading, SD face. Keep pink ponytail/thorn crown/white black gold dress and ornate rifle. Exact4x4 same square transparent canvas. Retain original smaller figure scale and center per cell, ensure12px empty alpha gutters. Row1 upper diagonal rifle windup; row2 rifle diagonal upward aiming, row3 vertical rifle held to chest eyes shut; row4 lowered rifle recovery. All original front/back/right/left orientations, gun aim angles and hands preserved. Do not repeat idle poses. Genuine RGBA transparency, no checkerboard/text/shadow.",
+      "promptHistory": [
+        "Style-transfer. Image1 edit target exact16 Shionne poses, image2 style only. Clean navy ink contours, smooth three tone cel shading, SD face. Keep pink ponytail/thorn crown/white black gold dress and ornate rifle. Exact4x4 same square transparent canvas. Retain original smaller figure scale and center per cell, ensure12px empty alpha gutters. Row1 upper diagonal rifle windup; row2 rifle diagonal upward aiming, row3 vertical rifle held to chest eyes shut; row4 lowered rifle recovery. All original front/back/right/left orientations, gun aim angles and hands preserved. Do not repeat idle poses. Genuine RGBA transparency, no checkerboard/text/shadow."
+      ],
+      "generated": "exec-f25ea4a1-4774-4b7c-93a8-5976f2c7f01d.png",
+      "review": "16 source poses compared: raised diagonal windup, upward aiming, vertical chest-held rifle eyes closed and recovery. Original front/back/right/left aim angles and feet retained; clean ink/cel version isolated into all16 frames."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "shionne-right",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-right.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-right.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-shionne-right-measurement.json",
+      "prompt": "Style-transfer of a production sprite strip. Image1 edit target EXACTLY FOUR figures in ONE horizontal row, canvas aspect3:1; image2 only style reference clean navy ink, smooth3-tone cel SD Shionne. Keep the four right-facing unique poses: walking step1, walking step2, injured eyes shut leg raised, lying prone KO aiming RIGHT. This is a right direction correction strip, ALL faces and rifle muzzles must point RIGHT exactly like source. Preserve source footstep positions, gun angle, hand grip, pose and each cell center. Keep pink ponytail, thorn crown, white/gold/black dress armor and ornate rifle. Full figure and rifle in each quarter, clear12px alpha gutters, ample original top/bottom blank margin. Do not add other poses/rows. Genuine RGBA transparent background, no text/shadows/checkerboard.",
+      "promptHistory": [
+        "Style-transfer of a production sprite strip. Image1 edit target EXACTLY FOUR figures in ONE horizontal row, canvas aspect3:1; image2 only style reference clean navy ink, smooth3-tone cel SD Shionne. Keep the four right-facing unique poses: walking step1, walking step2, injured eyes shut leg raised, lying prone KO aiming RIGHT. This is a right direction correction strip, ALL faces and rifle muzzles must point RIGHT exactly like source. Preserve source footstep positions, gun angle, hand grip, pose and each cell center. Keep pink ponytail, thorn crown, white/gold/black dress armor and ornate rifle. Full figure and rifle in each quarter, clear12px alpha gutters, ample original top/bottom blank margin. Do not add other poses/rows. Genuine RGBA transparent background, no text/shadows/checkerboard."
+      ],
+      "generated": "exec-d335b691-0af2-45a7-a2d9-554bd5c137e9.png",
+      "review": "All four right-only correction frames compared: alternating steps, hurt with raised leg, prone KO. Faces and muzzles point right in every cell as original; full rifle and hair visible in the original 3:1 strip layout."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "shionne",
+      "source": "Assets/TalesTactics/Art/MotionPremium/shionne.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/shionne.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-shionne-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 exact72 pose edit target, image2 clean ink/cel style reference only. Redraw each of72 SMALL sprites in crisp navy ink and flat3tone cel shading, expressive compact SD Shionne, no pixel texture. Preserve long pink hair/thorn crown/white-black-gold armor dress/ornate rifle. Exact8 columns by9 populatedrows on same square canvas with bottommargin. Preserve original SMALL figure size, center, directions in each quartet front/back/right/left and every source motion: lowered walking, shoulder aiming, rifle overhead windup, horizontal shot, recoil, diagonal lift and recovery. Gun muzzles must point in ORIGINAL individual direction, no default idle substitution. Keep full barrel/hair/dress inside each cell with12px clear gutter. Genuine RGBA transparency, no shadows/checkerboard/text.",
+      "promptHistory": [
+        "Style-transfer production atlas. Image1 exact72 pose edit target, image2 clean ink/cel style reference only. Redraw each of72 SMALL sprites in crisp navy ink and flat3tone cel shading, expressive compact SD Shionne, no pixel texture. Preserve long pink hair/thorn crown/white-black-gold armor dress/ornate rifle. Exact8 columns by9 populatedrows on same square canvas with bottommargin. Preserve original SMALL figure size, center, directions in each quartet front/back/right/left and every source motion: lowered walking, shoulder aiming, rifle overhead windup, horizontal shot, recoil, diagonal lift and recovery. Gun muzzles must point in ORIGINAL individual direction, no default idle substitution. Keep full barrel/hair/dress inside each cell with12px clear gutter. Genuine RGBA transparency, no shadows/checkerboard/text."
+      ],
+      "generated": "exec-0cb49aa1-14fb-4090-b1ad-0b371f9808da.png",
+      "review": "All72 source poses compared in8x9: small-size walking, rifle shoulder aims, overhead lift, horizontal shots, recoil, diagonals and recovery preserved. Each original quartet facing/aim direction retained;72 separate components and contours measured."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "kisara-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-hq.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-kisara-hq-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 edit target exact16 Kisara poses, image2 ONLY style reference clean bold navy ink/cel SD. Redraw all16 with expressive SD faces, smooth3tone shading, no pixel texture. Preserve long golden hair/blue eyes, white/gold/navy heavy armor, huge white shield with gold border+blue diamond emblem, ornate spiked gold/silver mace. Exact4x4 same square canvas, original front/back/right/left in every row. Preserve original shield front vs dark back surface, left shield hand/right mace hand, every weapon angle/body lean/footstep/cell center. Fit complete shield/mace/hair/boots in same cell with12px clear transparent gutters. Genuine transparent RGBA, no shadows/checkerboard/text. Row1 lowered mace idle, row2 extended sideways mace attack, row3 eyes closed vertical mace held at chest with shield aside, row4 shield forward guard crouch. All16 distinct poses.",
+      "generated": "exec-bd9e5e14-705e-4208-9b9d-ac0c5feb5e5f.png",
+      "review": "16 original poses compared: lowered mace idle, extended strike, eyes closed vertical mace and shield guard. All four facings, dark shield reverse versus white emblem face, gold armor and spiked mace retained."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "kisara-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-motion.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-kisara-motion-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 edit target exact16 Kisara poses, image2 ONLY style reference clean bold navy ink/cel SD. Redraw all16 with expressive SD faces, smooth3tone shading, no pixel texture. Preserve long golden hair/blue eyes, white/gold/navy heavy armor, huge white shield with gold border+blue diamond emblem, ornate spiked gold/silver mace. Exact4x4 same square canvas, original front/back/right/left in every row. Preserve original shield front vs dark back surface, left shield hand/right mace hand, every weapon angle/body lean/footstep/cell center. Fit complete shield/mace/hair/boots in same cell with12px clear transparent gutters. Genuine transparent RGBA, no shadows/checkerboard/text. Rows1/2 alternating walking steps, row3 injured leaning and eyes closed, row4 FOUR prone lying KO poses with fallen shield/mace. Preserve horizontal KO positions, do not replace with standing idle.",
+      "generated": "exec-83e1b190-10b6-4ffe-b4ca-676b735d25ac.png",
+      "review": "16 source poses compared: alternate stride legs, hurt lean/closed eyes, four prone defeated orientations with fallen shield and mace. All hands/equipment/KO silhouettes preserved and separately measured."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "kisara-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-extra.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-kisara-extra-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 exact16 Kisara edit target; image2 style only clean ink/cel approved Kisara. Redraw each sprite crisp navy ink, smooth3tone cel shading, expressive SD face, no pixel texture. Preserve blonde hair/blue eyes, white/gold/navy heavy armor, large gold-white shield blue emblem with dark reverse, ornate spiked gold-silver mace. Exact4x4 same square canvas; front/back/right/left eachrow exactly as source. Preserve original centers/size, every distinct foot/hand/body pose and weapon angle. All full equipment and hair insidecell,12px clearalpha gutters. Genuine transparent RGBA, no shadow/text/checkerboard. Rows1/2 transitional alternate walking; row3 mace raised beside head while shieldforward; row4 low broad shield charge/lunge. Keep every leaning stance and mace pointing direction, no repeated idle.",
+      "generated": "exec-229aa074-2031-491e-ba48-e7b1f8610880.png",
+      "review": "16 source poses compared: two transitional walk rows, raised mace beside head with shield front, broad low lunge and shield charge. Original direction, hand placement and body lean preserved for every frame."
+    },
+    {
+      "category": "PixelCampaign",
+      "name": "kisara-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-polish.png",
+      "measurement": "Docs/SdCharacters/PixelCampaign-kisara-polish-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 exact16 Kisara edit target; image2 style only clean ink/cel approved Kisara. Redraw each sprite crisp navy ink, smooth3tone cel shading, expressive SD face, no pixel texture. Preserve blonde hair/blue eyes, white/gold/navy heavy armor, large gold-white shield blue emblem with dark reverse, ornate spiked gold-silver mace. Exact4x4 same square canvas; front/back/right/left eachrow exactly as source. Preserve original centers/size, every distinct foot/hand/body pose and weapon angle. All full equipment and hair insidecell,12px clearalpha gutters. Genuine transparent RGBA, no shadow/text/checkerboard. Source smaller figures and larger gutters MUST retain. Row1 mace overhead windup; row2 lowered followthrough; row3 upright mace with eyes OPEN; row4 idle recovery. Preserve all four orientations and shield surface visibility.",
+      "generated": "exec-e4f24fc1-f5c5-4be1-8f2e-d8bc16cf31e7.png",
+      "review": "16 source poses compared: overhead mace windup, low followthrough, upright mace with eyes open, idle recovery. Smaller source spacing, shield face versus dark reverse and all four directions retained."
+    },
+    {
+      "category": "MotionPremium",
+      "name": "kisara",
+      "source": "Assets/TalesTactics/Art/MotionPremium/kisara.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/kisara.png",
+      "measurement": "Docs/SdCharacters/MotionPremium-kisara-measurement.json",
+      "prompt": "Style-transfer production atlas. Image1 EDIT TARGET exact80 Kisara motion frames, image2 STYLE ONLY clean bold ink/three-tone cel SD. Redraw all80 small sprites with navy outlines, clear face and smoothcel shading, no pixel texture. Preserve golden long hair, white/gold/navy armor, large white/gold shield blue emblem with dark reverse, ornate gold-silver spiked mace. Exact8 columns x10 rows same square transparent canvas; maintain each original small figure size/center and original front/back/right/left repeatedquartets. Each individual animation pose is mandatory: alternatingsteps, recoil/crouch, mace overhead windup, forward swings, shield lunge/block, vertical charge and recovery. Preserve hand grips, shield sidedness, mace angles, lean and feet for EVERY frame; no replacement by repeated idle. Fit full figure/equipment inside owncell with12px clearalpha gutters; if needed reduceeach figure90% arounditsowncenter, not grid. Genuine RGBA transparency, no shadows/checkerboard/text.",
+      "generated": "exec-008b8721-db10-46d0-a9e4-9f18a270f952.png",
+      "review": "All80 source poses compared in8x10: alternating walk, recoil/crouch, overhead mace windups, forward swings, shield lunge/block, vertical charge and recovery retained. Every source facing and equipment angle preserved;80 imported frames measured with82 component outlines (detached equipment details)."
+    }
+  ],
+  "delegatedEnemySheets": 21
+}

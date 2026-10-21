@@ -1,0 +1,26 @@
+{
+  "buildWarnings": {
+    "normalFinal": 2,
+    "reviewFinal": 2,
+    "items": [
+      "Existing VfxUpgradeReview.cs uses DEVELOPMENT_BUILD (Unity UAC0009 deprecation).",
+      "Pipeline RuntimePipelineConfig is absent, so package automation Pipeline is disabled in players."
+    ],
+    "sdShaderWarningsFound": false,
+    "firstNormalBuildAdditionalWarnings": [
+      "URP build strips HDRP-only Hidden/Core/DebugOccluder and Hidden/Core/DebugOcclusionTest package shaders."
+    ]
+  },
+  "startup": {
+    "firstFixed12SecondProbe": {
+      "alive": true,
+      "responding": false,
+      "logErrors": 0,
+      "report": "windows-startup-before-load-wait.json"
+    },
+    "finalProbe": "Wait up to 60 seconds for scene UnloadTime log and five consecutive seconds of responsive process; latest passed after 25.77 seconds.",
+    "limits": "Hidden startup check with Editor active; not an isolated launch-performance benchmark. No actual player input or long-duration stress test."
+  },
+  "runtimeOptionalShaderMessages": "Startup/review logs note stripped URP depth-of-field and Panini postprocessing shaders. These passes are not used by this SD presentation. No unhandled exception was logged.",
+  "repositoryLogCopies": "Repository startup log copies preserve all message text but normalize line endings to LF; original raw logs remain at the absolute logPath recorded in each startup report."
+}

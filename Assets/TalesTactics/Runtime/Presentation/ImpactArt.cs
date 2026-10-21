@@ -11,6 +11,70 @@ namespace TalesTactics
         public bool Travelling=>travelling;
         static Vector2 CellUV(int cell,float x,float y)
         {const float inset=.0015f;return new Vector2((cell%4)*.25f+inset+x*(.25f-inset*2),(3-cell/4)*.25f+inset+y*(.25f-inset*2));}
+        void CelStroke(Vector3 a,Vector3 b,float width,Color color,bool highlight=false)
+        {
+            if(color.a<=.002f||(b-a).sqrMagnitude<.000001f)return;
+            Ribbon(a,b,width*1.65f,SkillVisualLanguage.Ink(color));
+            Ribbon(a,b,width,color);
+            if(highlight)Ribbon(a,b,width*.26f,Alpha(new Color(1,.98f,.87f),color.a));
+        }
+        void CelSlash(Vector3 center,float radius,float angle,float sweep,float width,Color color)
+        {
+            int segments=reduced?12:20;
+            for(int j=0;j<segments;j++)
+            {
+                float u=j/(float)segments,v=(j+1f)/segments;
+                float a=angle+sweep*u,b=angle+sweep*v;
+                float taper=Mathf.Pow(Mathf.Sin((u+v)*.5f*Mathf.PI),.65f);
+                CelStroke(center+Plane(Mathf.Cos(a)*radius,Mathf.Sin(a)*radius*.68f),
+                    center+Plane(Mathf.Cos(b)*radius,Mathf.Sin(b)*radius*.68f),width*taper,color,true);
+            }
+        }
+        void CelPetal(Vector3 center,Vector3 axis,Vector3 side,Color color)
+        {
+            // A pointed, asymmetric leaf with a drawn contour and a single lit face.
+            int n=solid.V.Count;var ink=SkillVisualLanguage.Ink(color);
+            var p0=axis;var p1=axis*.12f+side;var p2=-axis*.72f;var p3=-axis*.15f-side*.65f;
+            solid.Vertex(center+p0*1.17f,ink,Vector2.zero);solid.Vertex(center+p1*1.17f,ink,Vector2.zero);
+            solid.Vertex(center+p2*1.17f,ink,Vector2.zero);solid.Vertex(center+p3*1.17f,ink,Vector2.zero);
+            solid.Triangle(n,n+1,n+2);solid.Triangle(n,n+2,n+3);n=solid.V.Count;
+            solid.Vertex(center+p0,color,Vector2.zero);solid.Vertex(center+p1,color,Vector2.zero);
+            solid.Vertex(center+p2,color,Vector2.zero);solid.Vertex(center+p3,color,Vector2.zero);
+            solid.Vertex(center,Alpha(Color.Lerp(color,Color.white,.70f),color.a),Vector2.zero);
+            for(int i=0;i<4;i++)solid.Triangle(n+i,n+(i+1)%4,n+4);
+        }
+        void CelContact(Vector3 center,float phase,Color color,float radius=.65f)
+        {
+            float a=SkillVisualLanguage.ContactEnvelope(phase,.32f)*color.a;if(a<=0)return;
+            int count=reduced?4:7;float opening=.12f+Mathf.Clamp01(phase/.12f)*.15f;
+            for(int i=0;i<count;i++)
+            {
+                float angle=i*Mathf.PI*2/count+.19f,reach=radius*(i%2==0?1:.68f);
+                var direction=Plane(Mathf.Cos(angle),Mathf.Sin(angle));
+                var across=Plane(-Mathf.Sin(angle),Mathf.Cos(angle));
+                CelPetal(center+direction*(opening+reach*.32f),direction*reach*.38f,
+                    across*(i%2==0?.052f:.035f),Alpha(color,a));
+            }
+        }
+        void HealingFiligree(Vector3 center,float phase,float opacity)
+        {
+            var green=new Color(.35f,.92f,.64f,opacity*.78f);
+            int ribbons=reduced?1:2,segments=reduced?10:16;
+            for(int r=0;r<ribbons;r++)for(int j=0;j<segments;j++)
+            {
+                float u=j/(float)segments,v=(j+1f)/segments;
+                float a=u*Mathf.PI*1.65f+phase*1.6f+r*Mathf.PI,b=v*Mathf.PI*1.65f+phase*1.6f+r*Mathf.PI;
+                var p=center+Plane(Mathf.Cos(a)*.39f,.08f+u*.76f+phase*.24f);
+                var q=center+Plane(Mathf.Cos(b)*.39f,.08f+v*.76f+phase*.24f);
+                CelStroke(p,q,.014f*Mathf.Sin((u+v)*.5f*Mathf.PI),green,true);
+            }
+            for(int i=0;i<(reduced?3:6);i++)
+            {
+                float angle=i*2.39996f+phase*.7f,y=.14f+Mathf.Repeat(i*.19f+phase*.65f,.92f);
+                var point=center+Plane(Mathf.Cos(angle)*(.32f+phase*.12f),y);
+                CelPetal(point,Plane(Mathf.Sin(angle)*.045f,.068f),Plane(.036f,0),new Color(.89f,1,.73f,opacity*.8f));
+            }
+        }
         void FrameQuad(Geometry mesh,Vector3 center,Vector3 right,Vector3 up,Color tint,float frame,int first,int last)
         {
             frame=Mathf.Clamp(frame,first,last);int a=Mathf.FloorToInt(frame),b=Mathf.Min(a+1,last),n=mesh.V.Count;float blend=frame-a;
@@ -39,7 +103,8 @@ namespace TalesTactics
         {
             var c=feedback==CombatFeedback.Strike?new Color(.8f,.91f,1):new Color(.42f,1,.74f);
             float fade=1-Mathf.SmoothStep(0,1,t);
-            Glow(Vector3.zero,.28f,Alpha(c,fade*.65f));
+            if(feedback==CombatFeedback.Strike)CelContact(Vector3.zero,age,Alpha(c,fade),.28f);
+            else HealingFiligree(Plane(0,-.12f),t,fade*.65f);
             for(int i=0;i<5;i++){float a=i*2.39996f;var p=Plane(Mathf.Cos(a),Mathf.Sin(a))*(.08f+t*.45f);Ribbon(p,p+Plane(Mathf.Cos(a),Mathf.Sin(a))*.1f,.018f,Alpha(c,fade));}
         }
         void DrawAuthored(float t)

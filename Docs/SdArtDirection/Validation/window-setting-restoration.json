@@ -1,0 +1,18 @@
+{
+  "reason": "Normal Windows startup auto-saved nonmaximized window state and serialized existing default SeenContextHints=0. Verified no other setting differences. Restored exact pre-verification bytes from matching settings.json.bak after verification players exited.",
+  "source": "Assets/TalesTactics/Runtime/Presentation/WindowDisplayController.cs:31",
+  "differences": {
+    "SeenContextHints": {
+      "before": "<absent>",
+      "after": 0
+    },
+    "WindowMaximized": {
+      "before": true,
+      "after": false
+    }
+  },
+  "backupMatchedBaseline": true,
+  "currentMatchedObservedChangedHashBeforeWrite": true,
+  "restoredSha256": "a7551acd83fe0b695fae21ea42fc020e204817272457a9c07368a6d1cc853e4f",
+  "campaignFilesModified": false
+}

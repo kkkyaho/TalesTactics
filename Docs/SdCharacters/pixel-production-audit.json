@@ -1,0 +1,541 @@
+{
+  "status": "PASS",
+  "scope": "PixelCampaign heroes41 + MotionPremium10",
+  "sheets": 51,
+  "frames": 1404,
+  "checks": [
+    "exact referenced source set51",
+    "all visual approvals with individual notes",
+    "source and candidate SHA256",
+    "source GUID and original sprite local IDs",
+    "exact sprite order and count",
+    "nonzero in-bounds rectangles",
+    "normalized pivots in range",
+    "nonempty measured outlines",
+    "unique candidate PNGs",
+    "RGBA dimensions",
+    "portrait5x2 dimensions"
+  ],
+  "runtimeLimit": "Static art and import identity audit only. Engine animation registration and six-unit map readability remain root integration validation. Alpha-bottom delta is not imported pivot displacement.",
+  "portrait": {
+    "path": "Assets/TalesTactics/Resources/TalesTactics/FormationPortraits.png",
+    "sha256": "5ef56ef28039f66583986e349f7889a37c828f6df40f46658d9018012a8b8adf",
+    "count": 10,
+    "size": [
+      1983,
+      793
+    ]
+  },
+  "jobs": [
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/cless-hq.png",
+      "sourceGuid": "1ed9e9d0946bec441b492ad3d089a515",
+      "frames": 16,
+      "candidateSha256": "8d2a07b4067094a6bbaa9095fff8115f6ef36023d67627bc14cb27060402d3f4",
+      "alphaZeroFraction": 0.52985,
+      "maxCenterDriftPixels": 14.916,
+      "maxAlphaBottomDeltaPixels": 50.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-motion.png",
+      "sourceGuid": "e4e4c44ad7752524e8a16c9605524cdb",
+      "frames": 16,
+      "candidateSha256": "0827730e5832274df8f0934fa2eb2efc7f64e403bf4823a893f72f869db9a035",
+      "alphaZeroFraction": 0.562099,
+      "maxCenterDriftPixels": 6.576,
+      "maxAlphaBottomDeltaPixels": 33.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-extra.png",
+      "sourceGuid": "095a10fa5dd13cb409ff7ea4f046f4fa",
+      "frames": 16,
+      "candidateSha256": "448e1c4d57f395fcff25986c776ce22030db0883d4b6be35e19e9c940f1a430a",
+      "alphaZeroFraction": 0.57619,
+      "maxCenterDriftPixels": 4.472,
+      "maxAlphaBottomDeltaPixels": 28.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/cless-polish.png",
+      "sourceGuid": "c3a095f75a23401429bffc0e59b7ac50",
+      "frames": 16,
+      "candidateSha256": "64480ca9da0553ac8ddb8135150834c75002d8a66f00d00c017a25a1fe15e8c8",
+      "alphaZeroFraction": 0.595606,
+      "maxCenterDriftPixels": 5.385,
+      "maxAlphaBottomDeltaPixels": 41.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/cless.png",
+      "sourceGuid": "40e5b31d6d64b0a48b8b17f727aebee9",
+      "frames": 80,
+      "candidateSha256": "5d359182c24333fe3cc98fe72caf522d5a8b8107a0f4fc8b3d354d416f828127",
+      "alphaZeroFraction": 0.621799,
+      "maxCenterDriftPixels": 5.22,
+      "maxAlphaBottomDeltaPixels": 35.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-hq.png",
+      "sourceGuid": "f6c0b9f10441c824980481951256bad9",
+      "frames": 16,
+      "candidateSha256": "65de516b2e74dc6d79164193a9e69c3cfd74f24ef8a9d5d8cba7f031a75ebcd0",
+      "alphaZeroFraction": 0.443389,
+      "maxCenterDriftPixels": 19.912,
+      "maxAlphaBottomDeltaPixels": 25.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-motion.png",
+      "sourceGuid": "47131249f25b1544aa905c2155a7a990",
+      "frames": 16,
+      "candidateSha256": "6e339bc8253b3fe6607bacbde26825118f5fc94efe560425cb20533099d5b9e9",
+      "alphaZeroFraction": 0.468995,
+      "maxCenterDriftPixels": 16.401,
+      "maxAlphaBottomDeltaPixels": 84.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-extra.png",
+      "sourceGuid": "a76f150c4cad6b44b84b90bcbeba615a",
+      "frames": 16,
+      "candidateSha256": "cb6d02d42b2b814e0a7409d98dd0b4de5f852f43fcce23f7ff0b73a15c57a37a",
+      "alphaZeroFraction": 0.45789,
+      "maxCenterDriftPixels": 13.73,
+      "maxAlphaBottomDeltaPixels": 2.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/mint-polish.png",
+      "sourceGuid": "72ba7ad5e4855c34b97dccd775913ec1",
+      "frames": 16,
+      "candidateSha256": "797eb23efbbe8da094503e95d8239ea2c030fb4a60721a5ebe5225b410be376c",
+      "alphaZeroFraction": 0.547672,
+      "maxCenterDriftPixels": 26.575,
+      "maxAlphaBottomDeltaPixels": 19.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/mint.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/mint.png",
+      "sourceGuid": "1d2618ed80a6a0a4bbc161dd626374e3",
+      "frames": 72,
+      "candidateSha256": "5e7af6dd2f362137cab77e6163beda5d53e9e94fe3d0a685be8f99724a87ed1c",
+      "alphaZeroFraction": 0.448737,
+      "maxCenterDriftPixels": 23.42,
+      "maxAlphaBottomDeltaPixels": 20.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-hq.png",
+      "sourceGuid": "e9f9193d77d2b724abbb8c7ad7f73b6b",
+      "frames": 16,
+      "candidateSha256": "1f4dec33983e34c1220e4fa077aec0d56e1a4ef898ad114e0fd410d7e5827688",
+      "alphaZeroFraction": 0.534342,
+      "maxCenterDriftPixels": 24.042,
+      "maxAlphaBottomDeltaPixels": 66.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-motion.png",
+      "sourceGuid": "59b7e474429ad8944b4f14be1bcd4a1c",
+      "frames": 16,
+      "candidateSha256": "9298df9c2088cc958bb68570469838117e17a506562760bf44fac6717f754033",
+      "alphaZeroFraction": 0.53008,
+      "maxCenterDriftPixels": 40.651,
+      "maxAlphaBottomDeltaPixels": 58.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-extra.png",
+      "sourceGuid": "0a75376dd9b63094eac21c97eff48a8c",
+      "frames": 16,
+      "candidateSha256": "74c6a9e9c436a148bec8bf53f8af908ca2cdb356ac909d5a81eeb1fec655c757",
+      "alphaZeroFraction": 0.671293,
+      "maxCenterDriftPixels": 20.402,
+      "maxAlphaBottomDeltaPixels": 40.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/farah-polish.png",
+      "sourceGuid": "cd8170ea04e68a949ad15c309fe9762c",
+      "frames": 16,
+      "candidateSha256": "1962a63884487bad044e2741dfb6857c6175162a9b0f8572b710b1d7561befbc",
+      "alphaZeroFraction": 0.632173,
+      "maxCenterDriftPixels": 11.885,
+      "maxAlphaBottomDeltaPixels": 46.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/farah.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/farah.png",
+      "sourceGuid": "0f54ffb5d7963db4cb350bb98d161301",
+      "frames": 80,
+      "candidateSha256": "8deaac3201ff74431369a9c7951ba3962b44a09bddbf1d18de4fdb1dda8f2165",
+      "alphaZeroFraction": 0.504187,
+      "maxCenterDriftPixels": 6.727,
+      "maxAlphaBottomDeltaPixels": 27.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-hq.png",
+      "sourceGuid": "3b5086b3c4d716248ae1d1e774ce9537",
+      "frames": 16,
+      "candidateSha256": "834a578b0af19f3f47c9b3c94bb6ca5cfa14a171f2fddc056013374f870f2fcc",
+      "alphaZeroFraction": 0.512965,
+      "maxCenterDriftPixels": 18.788,
+      "maxAlphaBottomDeltaPixels": 40.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-motion.png",
+      "sourceGuid": "3ee20f82ef43023409baaa1e046d1280",
+      "frames": 16,
+      "candidateSha256": "5e0f7342c24a7f9cb43496d39f31b045d05ca4996a511032ae7d3a0602f6b864",
+      "alphaZeroFraction": 0.556446,
+      "maxCenterDriftPixels": 5.315,
+      "maxAlphaBottomDeltaPixels": 96.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-extra.png",
+      "sourceGuid": "e3a1c4d3382bbc345a8e5f9ab9211afd",
+      "frames": 16,
+      "candidateSha256": "9718ae7a168b7671a06071ddd68217afd5a33c55b34eae62b8a0274d3e51c845",
+      "alphaZeroFraction": 0.547885,
+      "maxCenterDriftPixels": 9.552,
+      "maxAlphaBottomDeltaPixels": 58.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/jade-polish.png",
+      "sourceGuid": "a02f7ac2927b3424fac202f6465a2bd4",
+      "frames": 16,
+      "candidateSha256": "3cd1ee1ca9bcdb75df141edabcd5e531733ad38ae5050eb766802c855b7d0b80",
+      "alphaZeroFraction": 0.630481,
+      "maxCenterDriftPixels": 13.901,
+      "maxAlphaBottomDeltaPixels": 72.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/jade.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/jade.png",
+      "sourceGuid": "3cff3f4f7b0a0384fb25124f3ec76c56",
+      "frames": 80,
+      "candidateSha256": "3c3f10f58ba486aae8103075b7a0835cbd38a6737209d5e0547e687a32799775",
+      "alphaZeroFraction": 0.588347,
+      "maxCenterDriftPixels": 15.033,
+      "maxAlphaBottomDeltaPixels": 38.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-hq.png",
+      "sourceGuid": "7114a063f506c284e8b7517aef579c15",
+      "frames": 16,
+      "candidateSha256": "23a3029657bbcefbebae3de0d2812990bdf33c35b71aaea99f34f82349cecbcc",
+      "alphaZeroFraction": 0.531093,
+      "maxCenterDriftPixels": 7.517,
+      "maxAlphaBottomDeltaPixels": 4.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-motion.png",
+      "sourceGuid": "e752eeeb3ab05424a9c75a7e59da9cff",
+      "frames": 16,
+      "candidateSha256": "d4409d2f4ad783dbcbe67173d23af22950cf98996f9cf87920f675d0ef621b4d",
+      "alphaZeroFraction": 0.499276,
+      "maxCenterDriftPixels": 4.031,
+      "maxAlphaBottomDeltaPixels": 117.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-extra.png",
+      "sourceGuid": "efd34d83adf0f60468c2f3e4e667f1c6",
+      "frames": 16,
+      "candidateSha256": "cec68394c1e82c939d94657ac46c6545d63c41387f018142a1df7c41750ebf02",
+      "alphaZeroFraction": 0.487686,
+      "maxCenterDriftPixels": 13.0,
+      "maxAlphaBottomDeltaPixels": 3.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/tear-polish.png",
+      "sourceGuid": "c44781ebf461dc247bd4159ba16adc8c",
+      "frames": 16,
+      "candidateSha256": "05a6beb0c542ebd91a4107244b5bf17a00283fff56f3c537d44f2d462a6bb0de",
+      "alphaZeroFraction": 0.573054,
+      "maxCenterDriftPixels": 14.142,
+      "maxAlphaBottomDeltaPixels": 17.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/tear.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/tear.png",
+      "sourceGuid": "53f04b9923ab67f428c0c66b50d7d39e",
+      "frames": 72,
+      "candidateSha256": "578187a956c0d65bdabc32b27be86017ced8cb46e949f45d085224c9e0718b12",
+      "alphaZeroFraction": 0.475921,
+      "maxCenterDriftPixels": 16.279,
+      "maxAlphaBottomDeltaPixels": 20.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-hq.png",
+      "sourceGuid": "1dd205ca1567d9148a6f41fe0a9a903d",
+      "frames": 16,
+      "candidateSha256": "a0ec9e5f6eeaa3956de6c8e0777f7b9d582f29b86acc14e55177b27a0fc34d42",
+      "alphaZeroFraction": 0.503861,
+      "maxCenterDriftPixels": 37.353,
+      "maxAlphaBottomDeltaPixels": 53.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-motion.png",
+      "sourceGuid": "2c50e5acfa1f4954eae5b5fb9c0643a6",
+      "frames": 16,
+      "candidateSha256": "97b7a1b38b619d0ceabbdbca281524e53ee3374b33656af3deb4dd65db5af8f5",
+      "alphaZeroFraction": 0.491722,
+      "maxCenterDriftPixels": 49.925,
+      "maxAlphaBottomDeltaPixels": 52.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-extra.png",
+      "sourceGuid": "7adfd9931303d534b839251391f59a28",
+      "frames": 16,
+      "candidateSha256": "a98530d1dc5dce6f399a6c1f1937fe02bb8088c5810442bb05bdc67c37cb2889",
+      "alphaZeroFraction": 0.50293,
+      "maxCenterDriftPixels": 5.148,
+      "maxAlphaBottomDeltaPixels": 11.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/natalia-polish.png",
+      "sourceGuid": "ebd3d985746b71243852c02f8a7a2242",
+      "frames": 16,
+      "candidateSha256": "15f98ffb0e2891a3b262f4425ecea81b7d06afc8bfcd823f1d56b00e46e7de80",
+      "alphaZeroFraction": 0.473866,
+      "maxCenterDriftPixels": 9.192,
+      "maxAlphaBottomDeltaPixels": 67.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/natalia.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/natalia.png",
+      "sourceGuid": "69789ece66dc3f544aa37ada4511f1a4",
+      "frames": 80,
+      "candidateSha256": "4ea8b82d764422578ef55ac8e30148bc3590541ddf4e1a4223c8a591fa4e0c7a",
+      "alphaZeroFraction": 0.450533,
+      "maxCenterDriftPixels": 12.59,
+      "maxAlphaBottomDeltaPixels": 25.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-hq.png",
+      "sourceGuid": "9f1033db45a03bf47b95c4de416bc477",
+      "frames": 16,
+      "candidateSha256": "ab2a5b6c369cbe5428fa81fccfccf51b70cd763740b682a2aed64c01bcac43d5",
+      "alphaZeroFraction": 0.41617,
+      "maxCenterDriftPixels": 13.509,
+      "maxAlphaBottomDeltaPixels": 11.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-motion.png",
+      "sourceGuid": "a24866da74cc6a04194225262f984c54",
+      "frames": 16,
+      "candidateSha256": "0ccf2bc5335398f81188a7aae84443169fe620cd2da203cfc4542a251f6a44c6",
+      "alphaZeroFraction": 0.488792,
+      "maxCenterDriftPixels": 6.708,
+      "maxAlphaBottomDeltaPixels": 22.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-extra.png",
+      "sourceGuid": "1488a4ddba3685b44a8fd844f0d36367",
+      "frames": 16,
+      "candidateSha256": "d8350799a5b00d89b86e9a559d964aac99bce3192688edc53f72477933f02e32",
+      "alphaZeroFraction": 0.432724,
+      "maxCenterDriftPixels": 7.0,
+      "maxAlphaBottomDeltaPixels": 15.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/velvet-polish.png",
+      "sourceGuid": "327e7b862dd43f94eb7131a67c9b714c",
+      "frames": 16,
+      "candidateSha256": "b9c72812694597d8b1c8c3b64b5f1d896326a55dd61cd256969a7caae41a68fb",
+      "alphaZeroFraction": 0.431625,
+      "maxCenterDriftPixels": 9.513,
+      "maxAlphaBottomDeltaPixels": 25.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/velvet.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/velvet.png",
+      "sourceGuid": "95d5e49ca45599541b4182b6c0af0e28",
+      "frames": 72,
+      "candidateSha256": "5d31a82412e42c40455eda41ebdfa39c10405fc875abd497c43df5bab36a5e49",
+      "alphaZeroFraction": 0.496669,
+      "maxCenterDriftPixels": 5.025,
+      "maxAlphaBottomDeltaPixels": 47.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-hq.png",
+      "sourceGuid": "8c9fc17ef8261634ca7437baa8969567",
+      "frames": 16,
+      "candidateSha256": "353a3bccb9366f011284d992bba4cc8c2c61c94ec72644a8deeec1d16749df02",
+      "alphaZeroFraction": 0.526496,
+      "maxCenterDriftPixels": 8.559,
+      "maxAlphaBottomDeltaPixels": 43.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-motion.png",
+      "sourceGuid": "9089ac688ec29e94ea6b288e2076b4d6",
+      "frames": 16,
+      "candidateSha256": "4b4f4a286f813daba0b05496762a9c49e57bb5e7021ff89e13a381cc181ec8f8",
+      "alphaZeroFraction": 0.541122,
+      "maxCenterDriftPixels": 12.349,
+      "maxAlphaBottomDeltaPixels": 80.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-extra.png",
+      "sourceGuid": "868f78253ba8d044bb9e99d705526e83",
+      "frames": 16,
+      "candidateSha256": "81a8e2d5d68dcd19aafac4fa7ff0e90e93a3ebae3faea9224e3ec64ec6d2488b",
+      "alphaZeroFraction": 0.492836,
+      "maxCenterDriftPixels": 6.576,
+      "maxAlphaBottomDeltaPixels": 18.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/alphen-polish.png",
+      "sourceGuid": "9a734e412822fa44cb04107225c8cf8d",
+      "frames": 16,
+      "candidateSha256": "34b98b077ceec910c97a61ebc920ba860026a49e6917ea7642b96d21dbc1f3da",
+      "alphaZeroFraction": 0.708565,
+      "maxCenterDriftPixels": 4.743,
+      "maxAlphaBottomDeltaPixels": 30.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/alphen.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/alphen.png",
+      "sourceGuid": "c3225fabec75c93498d78c600494c777",
+      "frames": 72,
+      "candidateSha256": "cdebbfcf48391f043e33df553db7914159a07a7dc601e22c5873f63be9b2dda1",
+      "alphaZeroFraction": 0.523194,
+      "maxCenterDriftPixels": 11.011,
+      "maxAlphaBottomDeltaPixels": 48.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-hq.png",
+      "sourceGuid": "9bd40766b02cf2d4993ac5c5d35875c1",
+      "frames": 16,
+      "candidateSha256": "6d607f64838515d8362046afe565a0a30a7bb7e9c31e6f0130922fd14d3e55b8",
+      "alphaZeroFraction": 0.41722,
+      "maxCenterDriftPixels": 11.18,
+      "maxAlphaBottomDeltaPixels": 13.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-motion.png",
+      "sourceGuid": "2ed950cfdd46b0c4f8d77ce984a000d3",
+      "frames": 16,
+      "candidateSha256": "0d4ff381986ee39c449d6b2a3f4e4547c89aa29cb8c3b2075fa49a8bbc9a34f4",
+      "alphaZeroFraction": 0.59033,
+      "maxCenterDriftPixels": 41.596,
+      "maxAlphaBottomDeltaPixels": 32.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-extra.png",
+      "sourceGuid": "bf510dfddc06b0048b5c0049437b166d",
+      "frames": 16,
+      "candidateSha256": "c6c25f68321ca069e9a27d960f73d87e4642b57dd29985d4acf8808669c1caf5",
+      "alphaZeroFraction": 0.455974,
+      "maxCenterDriftPixels": 16.508,
+      "maxAlphaBottomDeltaPixels": 18.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-polish.png",
+      "sourceGuid": "fa97f8078fea3ab4c8e1c25a245f3e6c",
+      "frames": 16,
+      "candidateSha256": "e1733d6b033d3895ef73e5439343e5de83f9c0f8f07e4a936a85bcc9f38d06d1",
+      "alphaZeroFraction": 0.446256,
+      "maxCenterDriftPixels": 10.112,
+      "maxAlphaBottomDeltaPixels": 28.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/shionne-right.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/shionne-right.png",
+      "sourceGuid": "5c36ad6d96c9fc04e8558b3e312ed4db",
+      "frames": 4,
+      "candidateSha256": "f7010f7cb60e4eaf837b71e39b2897064dfff59c324eed45bc9d423cb4e80af1",
+      "alphaZeroFraction": 0.676736,
+      "maxCenterDriftPixels": 5.099,
+      "maxAlphaBottomDeltaPixels": 21.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/shionne.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/shionne.png",
+      "sourceGuid": "4285ceaac68977040bd792fb9e691095",
+      "frames": 72,
+      "candidateSha256": "d78cf44362962c9fb64c6eae9dcb8cea33ebde78169a21a3f9dea5038f22eff7",
+      "alphaZeroFraction": 0.603883,
+      "maxCenterDriftPixels": 5.099,
+      "maxAlphaBottomDeltaPixels": 8.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-hq.png",
+      "sourceGuid": "4081f7badc4664749ae9d1a234d04514",
+      "frames": 16,
+      "candidateSha256": "32d43136ceada04d60cf527c2950b3f1b450317c28a35773888bf366aa1e4f87",
+      "alphaZeroFraction": 0.461134,
+      "maxCenterDriftPixels": 9.434,
+      "maxAlphaBottomDeltaPixels": 54.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-motion.png",
+      "sourceGuid": "7fe02f1760a11c94b96f15bfb9cc2922",
+      "frames": 16,
+      "candidateSha256": "08ddebe16f1fba4fff7a61051a800278dda7c74b1bbdbe3922139a5533ec2881",
+      "alphaZeroFraction": 0.482373,
+      "maxCenterDriftPixels": 19.981,
+      "maxAlphaBottomDeltaPixels": 62.5
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-extra.png",
+      "sourceGuid": "8805d68449593c34b82d5334258a9ebe",
+      "frames": 16,
+      "candidateSha256": "474c18f2c11b8235be172a9756516a7a205e08b1c558548880a0f9f613e4c987",
+      "alphaZeroFraction": 0.421652,
+      "maxCenterDriftPixels": 7.018,
+      "maxAlphaBottomDeltaPixels": 20.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/PixelCampaign/kisara-polish.png",
+      "sourceGuid": "5e84da338863ac042b4abcb4b865ab91",
+      "frames": 16,
+      "candidateSha256": "17eca299ec9918de7714f1901b67e915b3c81c56daedaf4e1f1862742786fa96",
+      "alphaZeroFraction": 0.524998,
+      "maxCenterDriftPixels": 3.041,
+      "maxAlphaBottomDeltaPixels": 39.0
+    },
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/kisara.png",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/MotionPremium/kisara.png",
+      "sourceGuid": "f6511366a6146b147ad770b677e224b9",
+      "frames": 80,
+      "candidateSha256": "a4bf46178f3e0a29c7ba60d9b30ef645833a4c40917a596c7bb0266c47431e22",
+      "alphaZeroFraction": 0.444707,
+      "maxCenterDriftPixels": 7.81,
+      "maxAlphaBottomDeltaPixels": 43.0
+    }
+  ]
+}

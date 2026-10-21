@@ -65,7 +65,7 @@ namespace TalesTactics.PlayModeTests
                 {
                     var sprite=character.Sprites.Get(facing);
                     Assert.That(sprite,Is.Not.Null,character.Id);
-                    Assert.That(sprite.texture.filterMode,Is.EqualTo(FilterMode.Point),character.Id);
+                    Assert.That(sprite.texture.filterMode,Is.EqualTo(FilterMode.Bilinear),character.Id+" SD artwork keeps smooth ink edges");
                     Assert.That(sprite.texture.mipmapCount,Is.EqualTo(1));
                     Assert.That(sprite.rect.width,Is.GreaterThan(50));
                     Assert.That(sprite.bounds.size.y,Is.InRange(.45f,1.7f));

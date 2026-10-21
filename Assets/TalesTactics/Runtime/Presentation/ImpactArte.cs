@@ -104,7 +104,7 @@ namespace TalesTactics
         int ArteCount=>Mathf.Clamp(reduced?(arte.Count+1)/2:arte.Count,1,8);
         float ArteOpacity=>reduced?.62f:.92f;
         static float Envelope(float t,float length)
-        {return t<0||t>=length?0:1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(length*.18f,length,t));}
+        {return SkillVisualLanguage.ContactEnvelope(t,length);}
         void DrawArtePreparation(float p)
         {
             var ground=casterAnchor.position-transform.position+Vector3.up*.06f;
@@ -138,6 +138,7 @@ namespace TalesTactics
         }
         void DrawArteTravel(float p)
         {
+            p=SkillVisualLanguage.Snap(p);
             float a=ArteOpacity;var motif=arte.Motif;
             if(Falls(motif))
             {
@@ -161,7 +162,7 @@ namespace TalesTactics
             if(motif==ArteMotif.Rifle||motif==ArteMotif.Arrow||motif==ArteMotif.Thrust)
             {
                 Glyph(motif,point+Vector3.up*.45f,.5f,.19f,a,angle);
-                Ribbon(point+Vector3.up*.45f-ArteDirection*.35f,point+Vector3.up*.45f,.014f,Alpha(arte.Tint,a*.5f));return;
+                CelStroke(point+Vector3.up*.45f-ArteDirection*.44f,point+Vector3.up*.45f,.018f,Alpha(arte.Tint,a*.8f),true);return;
             }
             if(motif==ArteMotif.Phoenix||motif==ArteMotif.Dragon||motif==ArteMotif.Lion)
             {Glyph(motif,point+Vector3.up*(.5f+Mathf.Sin(p*Mathf.PI)*.35f),.68f,.65f,a,arte.Angle*.15f);return;}
@@ -175,14 +176,18 @@ namespace TalesTactics
                 case ArteMotif.Slash:case ArteMotif.CrossSlash:case ArteMotif.RisingSlash:case ArteMotif.Claw:
                     angle+=(index%2==0?1:-1)*q*1.1f;
                     if(motif==ArteMotif.CrossSlash)angle+=index%2==0?-.65f:.65f;
-                    Glyph(motif,point+Vector3.up*(.45f+(motif==ArteMotif.RisingSlash?q*.8f:0)),.75f+q*.25f,motif==ArteMotif.Claw?.65f:.5f,a,angle);break;
+                    var slashPoint=point+Vector3.up*(.38f+(motif==ArteMotif.RisingSlash?q*.65f:0));
+                    Glyph(motif,slashPoint,.82f+q*.20f,motif==ArteMotif.Claw?.62f:.47f,a*.78f,angle);
+                    if(index==0||!reduced)CelSlash(slashPoint,.63f+q*.18f,angle-.9f,2.15f,.045f,Alpha(arte.Tint,a));break;
                 case ArteMotif.Thrust:
-                    Glyph(motif,point+Vector3.up*.5f+ArteDirection*q*.3f,.7f,.2f,a,angle+(index%2)*.08f);break;
+                    Glyph(motif,point+Vector3.up*.5f+ArteDirection*q*.3f,.8f,.19f,a,angle+(index%2)*.08f);
+                    CelStroke(point-ArteDirection*.4f+Vector3.up*.4f,point+ArteDirection*(.24f+q*.34f)+Vector3.up*.4f,.023f,Alpha(arte.Tint,a),true);break;
                 case ArteMotif.Martial:
                     Glyph(motif,point+Vector3.up*(.4f+(index%3)*.12f),.45f+q*.3f,.4f+q*.2f,a,angle+index*.75f);
                     FloorRing(point+Vector3.up*.04f,.15f+q*.6f,.013f,Alpha(arte.Tint,a*.4f));break;
                 case ArteMotif.Wave:
-                    Glyph(motif,point+ArteDirection*q*.65f+Vector3.up*.28f,.8f,.42f,a,angle*.3f);break;
+                    Glyph(motif,point+ArteDirection*q*.65f+Vector3.up*.28f,.8f,.42f,a*.8f,angle*.3f);
+                    CelSlash(point+ArteDirection*q*.65f+Vector3.up*.22f,.66f,-.35f+angle*.3f,2.3f,.052f,Alpha(arte.Tint,a));break;
                 case ArteMotif.Phoenix:case ArteMotif.Dragon:case ArteMotif.Lion:
                     Glyph(motif,point+Vector3.up*(.6f+q*.3f)+ArteDirection*q*.25f,.75f+q*.4f,.7f+q*.3f,a,angle*.12f);
                     FloorRing(point+Vector3.up*.035f,.2f+q*.8f,.014f,Alpha(arte.Tint,a*.45f));break;
@@ -220,19 +225,22 @@ namespace TalesTactics
                 case ArteMotif.Lightning:
                     Glyph(motif,point+Vector3.up*.95f,.4f,1.15f,a);
                     for(int branch=0;branch<(reduced?2:4);branch++)
-                    {var prev=point+Vector3.up*2.2f;for(int j=1;j<7;j++){var next=point+Vector3.up*(2.2f-j*.34f)+Plane(Mathf.Sin(j*7+branch*13+Mathf.Floor(q*14))*.15f,0);Ribbon(prev,next,.013f,Alpha(new Color(.72f,.78f,1),a));prev=next;}}break;
+                    {var prev=point+Vector3.up*2.2f;for(int j=1;j<7;j++){var next=point+Vector3.up*(2.2f-j*.34f)+Plane(Mathf.Sin(j*7+branch*13+Mathf.Floor(q*10))*.15f,0);CelStroke(prev,next,.018f,Alpha(new Color(.64f,.57f,1),a),true);prev=next;}}break;
                 case ArteMotif.Prism:case ArteMotif.Judgment:case ArteMotif.ArrowRain:
                     FallingGlyph(motif,point+Vector3.up*.1f,a,.8f);Glow(point+Vector3.up*.08f,.3f,Alpha(arte.Tint,a*.5f));break;
                 case ArteMotif.Meteor:
                     Glyph(ArteMotif.Fire,point+Vector3.up*.45f,.65f,.65f,a);
                     FloorRing(point+Vector3.up*.04f,.2f+q*.9f,.022f,Alpha(arte.Tint,a*.6f));break;
                 case ArteMotif.Heal:
-                    Glyph(motif,point+Vector3.up*(.22f+q*.5f),.45f,.44f,a);
+                    Glyph(motif,point+Vector3.up*(.22f+q*.5f),.36f,.35f,a*.65f);
+                    if(index==0)HealingFiligree(point,q,a);
                     Seal(point,.42f,a*.4f,-q*.3f);break;
                 case ArteMotif.Cleanse:
-                    Glyph(motif,point+Vector3.up*(.3f+q*.7f),.38f,.38f,a,Mathf.Sin(q*5+index)*.25f);break;
+                    Glyph(motif,point+Vector3.up*(.3f+q*.7f),.38f,.38f,a,Mathf.Sin(q*5+index)*.25f);
+                    if(index==0)HealingFiligree(point,q,a*.65f);break;
                 case ArteMotif.Revive:
                     Glyph(motif,point+Vector3.up*(.55f+q*.4f),.6f,.65f,a);
+                    if(index==0)HealingFiligree(point,q,a);
                     if(index==0)Glyph(ArteMotif.Judgment,point+Vector3.up*.7f,.28f,1f,a*.35f);break;
                 case ArteMotif.Barrier:
                     Glyph(motif,point+Vector3.up*.6f,.62f+q*.12f,.75f,a*.72f);break;
@@ -281,7 +289,9 @@ namespace TalesTactics
                 }
                 if(single)a=Envelope(age,.99f)*ArteOpacity;
                 if(Falls(motif)&&i>0&&local<0&&local>-.22f)FallingGlyph(motif,point+Plane(.25f,2.5f)*(1-Mathf.Pow((local+.22f)/.22f,2)),ArteOpacity*.75f,.7f);
-                if(a<=0)continue;float q=Mathf.Clamp01(local/.54f);
+                if(a<=0)continue;float q=SkillVisualLanguage.Snap(local/.54f);
+                if(feedback==CombatFeedback.Strike&&!single)
+                    CelContact(point+Vector3.up*.24f,local,Alpha(arte.Tint,ArteOpacity*(i==0?1:.55f)),i==0?.58f:.34f);
                 if(SpellSheet(motif)||motif==ArteMotif.Clock||motif==ArteMotif.Cage||motif==ArteMotif.ArrowRain)SpellSilhouette(motif,point,q,a,i);
                 else StrikeSilhouette(motif,point,q,a,i);
             }

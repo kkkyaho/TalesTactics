@@ -16,7 +16,7 @@ namespace TalesTactics
             var promotion=IntermissionPanel(center,"Promotion",new Vector2(.46f,0),Vector2.one);
             FormationText(profile,"캐릭터 정보",new Vector2(.02f,.92f),new Vector2(.98f,1),24).color=formationGold;
             IntermissionPortrait(profile,c,new Vector2(.02f,.62f),new Vector2(.50f,.92f));
-            FormationText(profile,c.DisplayName,new Vector2(.51f,.81f),new Vector2(.99f,.92f),23);
+            FormationText(profile,FormationWords(c.DisplayName),new Vector2(.51f,.81f),new Vector2(.99f,.92f),23);
             FormationText(profile,progress.Promoted?c.PromotionJob:c.Job,new Vector2(.51f,.72f),new Vector2(.99f,.81f),18).color=formationGold;
             FormationText(profile,"Lv "+progress.Level,new Vector2(.51f,.61f),new Vector2(.99f,.72f),32);
             FormationText(profile,progress.Level>=50?"EXP MAX":"EXP  "+progress.EXP.ToString("N0")+" / "+(ExperienceRules.PerLevel).ToString("N0"),new Vector2(.025f,.55f),new Vector2(.975f,.61f),18);

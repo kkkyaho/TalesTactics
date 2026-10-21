@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "Independent read-only actual-capture visual review and source-alpha comparison",
+  "reviewedAtUtc": "2026-10-21T18:29:44.003917+00:00",
+  "conclusion": "지정한 실제 4프레임과 원본/최종 원화·실행 코드를 대조한 범위에서 임포트 또는 코드의 액션 전용 가로 확대 오류 근거는 발견하지 못했다. 액션 시트가 대기 시트보다 부드러운 품질 차이는 남는다.",
+  "captures": [
+    {
+      "path": "D:/TalesTacticsHelpGuide/Temp/SdArtDirection/ClessMotionRelease/cless.0-normal/0010.png",
+      "sha256": "d4f9691eace2e3fce380d24a03aa288b04ada7a59bead3bf3dcd101ffa98e8c5",
+      "width": 1920,
+      "height": 1080,
+      "note": "준비/검격 자세. 머리·갑옷·칼날 윤곽은 교체된 SD 원화로 보이나, 0046의 대기 자세보다 얼굴과 갑옷 내부 선이 부드럽다."
+    },
+    {
+      "path": "D:/TalesTacticsHelpGuide/Temp/SdArtDirection/ClessMotionRelease/cless.0-normal/0020.png",
+      "sha256": "5a6124ea13f8ea3626ec1f7aa74c78f84e2e27cd3ffd1269e2bae3e2ddb38131",
+      "width": 1920,
+      "height": 1080,
+      "note": "낮고 넓은 돌진 실루엣. 검과 망토가 좌우로 펼쳐지는 형상은 원본 MotionPremium 시트에도 존재한다. 주변 동료가 일부 몸과 발을 가린다."
+    },
+    {
+      "path": "D:/TalesTacticsHelpGuide/Temp/SdArtDirection/ClessMotionRelease/cless.0-normal/0032.png",
+      "sha256": "6c014d7e172a52fc600ee1396889d6514b36edf9f5daa3a400be81bde34717b1",
+      "width": 1920,
+      "height": 1080,
+      "note": "후속/회복 동작. 액션 원화의 선명도 차이가 지속되며 일부 숫자·동료가 몸을 가린다. 보이는 부분에서 몸 분리나 명백한 바닥 관통은 보이지 않는다."
+    },
+    {
+      "path": "D:/TalesTacticsHelpGuide/Temp/SdArtDirection/ClessMotionRelease/cless.0-normal/0046.png",
+      "sha256": "135ef7017f24ad6852200441e3236cb489ea664039059d999ddeffdcd39492e8",
+      "width": 1920,
+      "height": 1080,
+      "note": "행동 종료 뒤 대기 자세. 얼굴·의상·장비 선이 액션 컷보다 세밀하다. 대기 자세로 복귀한 뒤 눈에 띄는 잔류 확대나 비율 변형은 보이지 않는다."
+    }
+  ],
+  "runEvidence": {
+    "path": "D:/TalesTacticsHelpGuide/Temp/SdArtDirection/ClessMotionRelease/result.json",
+    "sha256": "3982bb380c2f0ecb99729d3d63b60e92055f9304cfff46a8135cbc1c9d31d616",
+    "recordedStatus": "passed",
+    "recordedCompletedRuns": 1,
+    "recordedExpectedRuns": 1,
+    "recordedFramesPerSecond": 30,
+    "recordedFrameCount": 56,
+    "recordedContactFrame": 23,
+    "interpretation": "기존 실행 결과를 읽었다. 이 리뷰는 실행을 재수행하지 않았고 56프레임 전체를 육안 검수하지 않았다. 고정 30fps는 성능 보증이 아니다."
+  },
+  "sourceSheets": [
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "original": {
+        "path": "C:/dev/TalesTactics/Temp/SdCharacters/RegistrationAuditOriginals/Assets/TalesTactics/Art/MotionPremium/cless.png",
+        "sha256": "4c6dce8f5c2580608a107864512f4747c368b75f9c895948504564c952215a3a"
+      },
+      "originalMeta": {
+        "path": "C:/dev/TalesTactics/Temp/SdCharacters/RegistrationAuditOriginals/Assets/TalesTactics/Art/MotionPremium/cless.png.meta",
+        "sha256": "b7d16aa470511343af4913dd66c08d3012d2740b50fad1f44327a4998d567a03"
+      },
+      "final": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/MotionPremium/cless.png",
+        "sha256": "16ececda2c0b75a8aacf0fdd7d7a3455161418c6628e82eff500c4768f2908d0"
+      },
+      "finalMeta": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/MotionPremium/cless.png.meta",
+        "sha256": "e29b617628a8a373a694a0659400c255a6ff50ef8f812892b1fe4aff68a6f5de"
+      },
+      "originalPPU": 53.2787,
+      "finalPPU": 64.01166
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "original": {
+        "path": "C:/dev/TalesTactics/Temp/SdCharacters/RegistrationAuditOriginals/Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+        "sha256": "e8a948a049ceffaae4ac7f5ce68f66155e87d6708589ff2ea4620e9a3a8931df"
+      },
+      "originalMeta": {
+        "path": "C:/dev/TalesTactics/Temp/SdCharacters/RegistrationAuditOriginals/Assets/TalesTactics/Art/PixelCampaign/cless-hq.png.meta",
+        "sha256": "eb202190aeebe91b5b02738922144a2ddb126b10bdd413b56a8bbf44f265ad1b"
+      },
+      "final": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+        "sha256": "8d2a07b4067094a6bbaa9095fff8115f6ef36023d67627bc14cb27060402d3f4"
+      },
+      "finalMeta": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/PixelCampaign/cless-hq.png.meta",
+        "sha256": "6ea06fc52d9eaf159e1a4ad32629eeaa32a50f47d624bf010a71f0d12348a736"
+      },
+      "originalPPU": 208.1967,
+      "finalPPU": 224.96513
+    }
+  ],
+  "finalMotionMeasurement": {
+    "path": "C:/dev/TalesTactics/Docs/SdCharacters/cless-motion-refinement-measurement.json",
+    "sha256": "54c38fdaaad0452fac8664f1529af5214024b3179c30f6c966384412df276324"
+  },
+  "comparisonMethod": {
+    "alphaThresholdExclusive": 128,
+    "region": "각 시점의 해당 Sprite 메타 rect 내부에 있는 불투명 픽셀의 axis-aligned bounds",
+    "worldDimensions": "alpha bounds pixels / that source sheet PPU",
+    "interpretation": "무기와 망토를 포함한 실루엣 외접 크기이며 해부학적 몸통 크기·실제 접지점·화면상 픽셀 크기를 뜻하지 않는다. 캐릭터 공통 Body Scale과 동작 회전 전의 sprite-local world units다.",
+    "frameCorrespondence": "동일 Sprite 이름/원본 ID를 보존하는 시트끼리 비교했다. 대표 돌진 수치는 AttackMotion[6]=cless_12_0 및 AttackMotion[8]=cless_14_0이며, 캡처 0020의 정확한 sampled Sprite ID를 런타임 추출한 기록은 아니다."
+  },
+  "frameComparisons": [
+    {
+      "name": "cless_4_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        76,
+        66
+      ],
+      "finalAlphaBoundsPixels": [
+        88,
+        79
+      ],
+      "originalWorldWidthHeight": [
+        1.426461,
+        1.238769
+      ],
+      "finalWorldWidthHeight": [
+        1.37475,
+        1.23415
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.963748,
+        0.996271
+      ],
+      "originalAspect": 1.151515,
+      "finalAspect": 1.113924
+    },
+    {
+      "name": "cless_5_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        94,
+        62
+      ],
+      "finalAlphaBoundsPixels": [
+        103,
+        76
+      ],
+      "originalWorldWidthHeight": [
+        1.764307,
+        1.163692
+      ],
+      "finalWorldWidthHeight": [
+        1.609082,
+        1.187284
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.912019,
+        1.020273
+      ],
+      "originalAspect": 1.516129,
+      "finalAspect": 1.355263
+    },
+    {
+      "name": "cless_6_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        77,
+        68
+      ],
+      "finalAlphaBoundsPixels": [
+        88,
+        80
+      ],
+      "originalWorldWidthHeight": [
+        1.44523,
+        1.276307
+      ],
+      "finalWorldWidthHeight": [
+        1.37475,
+        1.249772
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.951232,
+        0.979209
+      ],
+      "originalAspect": 1.132353,
+      "finalAspect": 1.1
+    },
+    {
+      "name": "cless_7_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        103,
+        63
+      ],
+      "finalAlphaBoundsPixels": [
+        115,
+        77
+      ],
+      "originalWorldWidthHeight": [
+        1.93323,
+        1.182461
+      ],
+      "finalWorldWidthHeight": [
+        1.796548,
+        1.202906
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.929298,
+        1.01729
+      ],
+      "originalAspect": 1.634921,
+      "finalAspect": 1.493506
+    },
+    {
+      "name": "cless_8_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        73,
+        83
+      ],
+      "finalAlphaBoundsPixels": [
+        91,
+        100
+      ],
+      "originalWorldWidthHeight": [
+        1.370154,
+        1.557846
+      ],
+      "finalWorldWidthHeight": [
+        1.421616,
+        1.562215
+      ],
+      "finalVersusOriginalWorldRatio": [
+        1.03756,
+        1.002805
+      ],
+      "originalAspect": 0.879518,
+      "finalAspect": 0.91
+    },
+    {
+      "name": "cless_12_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        135,
+        65
+      ],
+      "finalAlphaBoundsPixels": [
+        143,
+        80
+      ],
+      "originalWorldWidthHeight": [
+        2.533846,
+        1.22
+      ],
+      "finalWorldWidthHeight": [
+        2.233968,
+        1.249772
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.881651,
+        1.024404
+      ],
+      "originalAspect": 2.076923,
+      "finalAspect": 1.7875
+    },
+    {
+      "name": "cless_13_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        104,
+        63
+      ],
+      "finalAlphaBoundsPixels": [
+        121,
+        78
+      ],
+      "originalWorldWidthHeight": [
+        1.952,
+        1.182461
+      ],
+      "finalWorldWidthHeight": [
+        1.890281,
+        1.218528
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.968382,
+        1.030501
+      ],
+      "originalAspect": 1.650794,
+      "finalAspect": 1.551282
+    },
+    {
+      "name": "cless_14_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        120,
+        59
+      ],
+      "finalAlphaBoundsPixels": [
+        131,
+        71
+      ],
+      "originalWorldWidthHeight": [
+        2.252307,
+        1.107384
+      ],
+      "finalWorldWidthHeight": [
+        2.046502,
+        1.109173
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.908625,
+        1.001615
+      ],
+      "originalAspect": 2.033898,
+      "finalAspect": 1.84507
+    },
+    {
+      "name": "cless_15_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "originalAlphaBoundsPixels": [
+        88,
+        66
+      ],
+      "finalAlphaBoundsPixels": [
+        98,
+        78
+      ],
+      "originalWorldWidthHeight": [
+        1.651692,
+        1.238769
+      ],
+      "finalWorldWidthHeight": [
+        1.530971,
+        1.218528
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.926911,
+        0.98366
+      ],
+      "originalAspect": 1.333333,
+      "finalAspect": 1.25641
+    },
+    {
+      "name": "cless-hq_0_0",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "originalAlphaBoundsPixels": [
+        269,
+        251
+      ],
+      "finalAlphaBoundsPixels": [
+        281,
+        277
+      ],
+      "originalWorldWidthHeight": [
+        1.292047,
+        1.205591
+      ],
+      "finalWorldWidthHeight": [
+        1.249082,
+        1.231302
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.966747,
+        1.021327
+      ],
+      "originalAspect": 1.071713,
+      "finalAspect": 1.01444
+    },
+    {
+      "name": "cless-hq_1_0",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "originalAlphaBoundsPixels": [
+        291,
+        219
+      ],
+      "finalAlphaBoundsPixels": [
+        304,
+        245
+      ],
+      "originalWorldWidthHeight": [
+        1.397717,
+        1.05189
+      ],
+      "finalWorldWidthHeight": [
+        1.351321,
+        1.089058
+      ],
+      "finalVersusOriginalWorldRatio": [
+        0.966806,
+        1.035334
+      ],
+      "originalAspect": 1.328767,
+      "finalAspect": 1.240816
+    }
+  ],
+  "sizingCodeEvidence": [
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Runtime/Presentation/CharacterVisualSizing.cs",
+      "sha256": "0bc37c753f0645952609fdab687ee8318b2ebc0a59b9c02ac00b9680530ee0bb",
+      "observation": "CharacterVisualSizing.Scale은 기본 front Sprite의 높이/PPU에 기반한 공통 Body Scale이다. 액션별 rect 폭에 맞춰 추가 확대하지 않는다."
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Runtime/Presentation/CharacterMotion.cs",
+      "sha256": "7add95a5b1e51f7ef69067f6779b5754c5a5deab9b4a018d95d0964c2f28b23f",
+      "observation": "localScale X는 1로 고정된다. presenting 준비 구간의 Y는 1 - 0.025 * sin(prep*pi), 즉 0.975~1이며 release에서 1이다. 이동·회전 연출은 존재하므로 화면 실루엣 외접 크기는 포즈와 회전에 따라 달라진다."
+    }
+  ],
+  "findings": [
+    {
+      "kind": "aspect_and_scale",
+      "severity": "no_defect_observed",
+      "detail": "대표 돌진 cless_12_0의 원본/최종 world width-height는 각각 [2.533846, 1.22] / [2.233968, 1.249772]이다. 폭은 약 11.8% 감소하고 높이는 약 2.4% 증가했다. 큰 가로폭 자체는 원래의 검·망토·낮은 돌진 포즈에서 온다."
+    },
+    {
+      "kind": "clarity",
+      "severity": "remaining_art_quality_limitation",
+      "detail": "액션의 윤곽 교체는 보이지만 0010/0020/0032의 얼굴·갑옷 내부 선은 0046 대기보다 여전히 부드럽다. 비교한 MotionPremium 공격 포즈의 불투명 픽셀 높이는 71~100px, 대기 front는 277px이며 PPU는 각각 64.01166와 224.96513이다. 비슷한 표시 높이에 쓰이는 원화 정보량 차이가 남으므로 대기와 동급 선명도라고 판정하지 않는다."
+    },
+    {
+      "kind": "grounding_and_body_integrity",
+      "severity": "no_obvious_defect_in_visible_regions",
+      "detail": "지정 캡처의 보이는 부위에서 몸 분리, 명백한 종횡비 찌그러짐, 바닥 관통 또는 지속적인 부유는 관찰하지 못했다. 밀집 동료·숫자가 일부 몸과 발을 가려 정밀 접지와 연속 프레임 흔들림을 보증할 수 없다."
+    }
+  ],
+  "scope": {
+    "visualFramesReviewed": 4,
+    "totalRunFrames": 56,
+    "visualization": "원본 실제 캡처와 원본/최종 atlas를 view_image로 직접 확인했다.",
+    "readOnlySourceChecks": true,
+    "notPerformed": [
+      "Unity 조작 또는 재실행",
+      "새 이미지 생성·리터칭",
+      "PNG/메타/측정 JSON/manifest 변경",
+      "56프레임 전체 동영상 재생 평가",
+      "새 프레임별 런타임 Sprite ID/transform 추출",
+      "장시간 성능·다른 해상도/DPI 검수"
+    ],
+    "integrityBoundary": "SHA256·정적 메타·엔진 불변식 감사는 파일/참조/좌표의 근거다. 완벽한 선명도나 시각 품질 보증으로 해석하지 않는다."
+  }
+}

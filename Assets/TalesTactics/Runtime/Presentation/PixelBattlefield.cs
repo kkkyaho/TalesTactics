@@ -187,8 +187,8 @@ namespace TalesTactics
             if(architecture==null)return;
             if(architectureSprites[index]==null)
             {
-                float w=architecture.width/4f,h=architecture.height/4f;
-                var art=Sprite.Create(architecture,new Rect(index%4*w,(3-index/4)*h,w,h),new Vector2(.5f,.06f),100,0,SpriteMeshType.FullRect);
+                var region=SdTerrainAtlas.Architecture(index,architecture);
+                var art=Sprite.Create(architecture,region,new Vector2(.5f,.02f),100,0,SpriteMeshType.FullRect);
                 art.name="Architectural detail "+index;sprites.Add(art);architectureSprites[index]=art;
             }
             var sprite=architectureSprites[index];var go=new GameObject("Architectural detail "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);

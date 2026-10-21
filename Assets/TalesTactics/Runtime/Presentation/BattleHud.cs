@@ -117,7 +117,7 @@ namespace TalesTactics
         TMP_Text Label(Transform parent,string value,float y,float height=40,int size=18)
         {
             var g=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));g.transform.SetParent(parent,false);var r=g.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(0.5f,1);r.anchoredPosition=new Vector2(0,-y);r.sizeDelta=new Vector2(-28,height);
-            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=new Color(0.9f,0.94f,0.98f);t.raycastTarget=false;t.enableAutoSizing=true;t.fontSizeMin=Mathf.Min(size,14);t.fontSizeMax=size;t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
+            var t=g.GetComponent<TextMeshProUGUI>();t.font=Font;t.text=value;t.fontSize=size;t.color=SdUiTheme.Text;t.raycastTarget=false;t.enableAutoSizing=true;t.fontSizeMin=Mathf.Min(size,14);t.fontSizeMax=size;t.textWrappingMode=TextWrappingModes.Normal;g.AddComponent<AccessibleText>();return t;
         }
         void Button(Transform parent,string value,float y,Action click,bool enabled=true,float height=38)
         {

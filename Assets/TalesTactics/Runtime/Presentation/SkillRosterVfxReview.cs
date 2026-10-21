@@ -255,7 +255,7 @@ namespace TalesTactics
             using(var scenario=new SkillRosterVfxFixture.Scenario(battle,entry.Skill,reduced,phase!="before"))
             {
                 yield return null;yield return new WaitForEndOfFrame();RequireTitleClosed();float cameraSize=battle.Board.BattleCamera.orthographicSize;
-                var captures=new List<string>();bool frames=fullFrames&&Representatives.Contains(entry.Skill.Id)&&!reduced;string output=Path.Combine(directory,currentSkill);Directory.CreateDirectory(output);
+                var captures=new List<string>();bool frames=fullFrames&&!reduced&&(Representatives.Contains(entry.Skill.Id)||Tokens(skillFilter).Contains(entry.Skill.Id));string output=Path.Combine(directory,currentSkill);Directory.CreateDirectory(output);
                 // PNG encoding is synchronous; slow storage must not shorten the simulated sequence.
                 scenario.Start();float deadline=Time.realtimeSinceStartup+600;int frame=0;bool capturedContact=false;
                 do

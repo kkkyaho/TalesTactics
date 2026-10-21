@@ -62,14 +62,14 @@ namespace TalesTactics
             if(item.Icon!=null)
             {
                 var art=FormationRect(parent,"EquipmentArt-"+item.Id,min,max,4);
-                var icon=art.gameObject.AddComponent<UnityEngine.UI.Image>();icon.sprite=item.Icon;icon.preserveAspect=true;icon.useSpriteMesh=true;icon.raycastTarget=false;
+                var icon=art.gameObject.AddComponent<UnityEngine.UI.Image>();icon.sprite=item.Icon;icon.preserveAspect=true;icon.useSpriteMesh=true;icon.raycastTarget=false;SdUiIconArt.Apply(icon);
                 return;
             }
             int cell=item==null?-1:item.Id=="healer-badge"?5:Array.IndexOf(equipmentArtIds,item.Id);var atlas=Resources.Load<Texture2D>("TalesTactics/EquipmentIcons");
             if(cell>=0&&atlas!=null)
             {
                 var bounds=FormationRect(parent,"EquipmentArt-"+item.Id,min,max,4);var r=FormationRect(bounds,"ItemArt",Vector2.zero,Vector2.one);var img=r.gameObject.AddComponent<UnityEngine.UI.RawImage>();img.texture=atlas;
-                img.uvRect=new Rect(cell%3/3f,(2-cell/3)/3f,1/3f,1/3f);img.raycastTarget=false;
+                img.uvRect=new Rect(cell%3/3f,(2-cell/3)/3f,1/3f,1/3f);img.raycastTarget=false;SdUiIconArt.Apply(img);
                 var fit=r.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=1;
             }
             else FormationIcon(parent,item==null?"empty":item.Slot==EquipmentSlot.Weapon?"attack":item.Slot==EquipmentSlot.Armor?"armor":"accessory",min,max,item==null?new Color(.35f,.43f,.52f):formationGold);
@@ -109,7 +109,8 @@ namespace TalesTactics
             string[] names={"HP","MP","공격","마력","방어","마방","민첩","이동","도약"};
             int[] a={before.HP,before.MP,before.STR,before.MAG,before.DEF,before.MDF,before.SPD,before.MOV,before.JMP};
             int[] b={after.HP,after.MP,after.STR,after.MAG,after.DEF,after.MDF,after.SPD,after.MOV,after.JMP};
-            for(int i=0;i<names.Length;i++){float x=i%2*.50f,top=.84f-i/2*.165f;FormationText(table,StatChange(names[i],a[i],b[i]),new Vector2(x,top-.16f),new Vector2(x+.50f,top),17);}
+            // The fifth row needs a bottom gutter above the frame's larger leaf ornaments.
+            for(int i=0;i<names.Length;i++){float x=i%2*.50f,top=.84f-i/2*.15f;FormationText(table,StatChange(names[i],a[i],b[i]),new Vector2(x,top-.16f),new Vector2(x+.50f,top),17);}
         }
         void IntermissionNotice(string text)=>FormationText(footer,text,new Vector2(.01f,.08f),new Vector2(.53f,.92f),17).color=formationGold;
         void IntermissionPrimary(string name,string label,Action action,bool enabled)

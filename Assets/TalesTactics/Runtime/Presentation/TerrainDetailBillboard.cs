@@ -12,9 +12,10 @@ namespace TalesTactics
             if(foliageMaterial==null){foliageMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));foliageMaterial.mainTexture=foliage;foliageMaterial.name="Foliage atlas details";owned.Add(foliageMaterial);}
             if(foliageQuads[index]==null)
             {
-                float u=index%4*.25f,v=(3-index/4)*.25f,inset=1f/foliage.width;
-                var mesh=new Mesh{name="Foliage cell "+index};mesh.vertices=new[]{new Vector3(-.5f,0),new Vector3(-.5f,1),new Vector3(.5f,1),new Vector3(.5f,0)};
-                mesh.uv=new[]{new Vector2(u+inset,v+inset),new Vector2(u+inset,v+.25f-inset),new Vector2(u+.25f-inset,v+.25f-inset),new Vector2(u+.25f-inset,v+inset)};
+                var r=SdTerrainAtlas.Foliage(index,foliage);
+                float u=r.xMin/foliage.width,v=r.yMin/foliage.height,right=r.xMax/foliage.width,top=r.yMax/foliage.height,halfWidth=r.width/r.height*.5f;
+                var mesh=new Mesh{name="Foliage cell "+index};mesh.vertices=new[]{new Vector3(-halfWidth,0),new Vector3(-halfWidth,1),new Vector3(halfWidth,1),new Vector3(halfWidth,0)};
+                mesh.uv=new[]{new Vector2(u,v),new Vector2(u,top),new Vector2(right,top),new Vector2(right,v)};
                 mesh.colors=new[]{Color.white,Color.white,Color.white,Color.white};mesh.triangles=new[]{0,1,2,0,2,3};mesh.RecalculateBounds();foliageQuads[index]=mesh;
             }
             var go=new GameObject("Foliage detail "+index,typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(transform,false);go.transform.localPosition=position;go.transform.localScale=Vector3.one*height;go.transform.rotation=view.transform.rotation;

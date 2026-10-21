@@ -395,7 +395,7 @@ namespace TalesTactics
             }
             rows.Add(new Row{screen=name,width=Screen.width,height=Screen.height,textScale=scale,issues=issues.ToArray()});
             File.WriteAllText(Path.Combine(directory,"progress.json"),JsonUtility.ToJson(new Report{rows=rows.ToArray(),errors=errors.ToArray()},true));
-            if((size.x==1920&&scale==1)||(size.x==1024&&scale==1.3f))
+            if((size.x==1920&&scale==1)||(size.x==1024&&scale==1.3f)||(size.x==1080&&scale==1.3f))
             {yield return new WaitForEndOfFrame();var texture=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(directory,name+"-"+size.x+".png"),texture.EncodeToPNG());Destroy(texture);}
         }
         void Log(string message,string trace,LogType type)

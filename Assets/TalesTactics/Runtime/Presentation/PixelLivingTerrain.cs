@@ -89,9 +89,12 @@ namespace TalesTactics
             if(trees==null)return;
             if(canopySprites[index]==null)
             {
-                // The atlas has a taller upper row. Use measured row bounds rather than cutting roots.
-                float w=trees.width*.5f,h=trees.height*(index<2?.54f:.46f),y=index<2?trees.height*.46f:0;
-                var art=Sprite.Create(trees,new Rect(index%2*w,y,w,h),new Vector2(.5f,.05f),100,0,SpriteMeshType.FullRect);sprites.Add(art);canopySprites[index]=art;
+                // Measured SD atlas islands, including transparent padding around leaves and roots.
+                // The oak extends past the old half-column boundary; equal cells would cut its crown.
+                Rect[] islands={new Rect(40,580,610,630),new Rect(690,570,530,640),new Rect(90,30,490,550),new Rect(635,25,600,415)};
+                var region=islands[index];float sx=trees.width/1254f,sy=trees.height/1254f;
+                region=new Rect(region.x*sx,region.y*sy,region.width*sx,region.height*sy);
+                var art=Sprite.Create(trees,region,new Vector2(.5f,.03f),100,0,SpriteMeshType.FullRect);sprites.Add(art);canopySprites[index]=art;
             }
             var sprite=canopySprites[index];var go=new GameObject("Forest canopy "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);
             go.transform.localPosition=foot;go.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);go.transform.rotation=view.transform.rotation;

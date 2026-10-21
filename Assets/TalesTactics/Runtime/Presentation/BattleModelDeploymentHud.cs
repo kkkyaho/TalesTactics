@@ -11,8 +11,8 @@ namespace TalesTactics
         int formationFilter, formationSort;
         float formationScrollOffset;
         bool resetFormationScroll;
-        readonly Color formationGold = new Color(.83f,.70f,.43f);
-        readonly Color formationTeal = new Color(.26f,.83f,.83f);
+        readonly Color formationGold = SdUiTheme.Brass;
+        readonly Color formationTeal = SdUiTheme.Teal;
         static readonly string[] portraitIds = {"cless","mint","farah","jade","tear","natalia","velvet","alphen","shionne","kisara"};
         static readonly string[] formationFilters = {"전체 병과","근접 병과","원거리 병과","마법 · 지원","출전 인원"};
         static readonly string[] formationSorts = {"기본순","레벨순","이름순"};
@@ -37,6 +37,8 @@ namespace TalesTactics
             var t=Label(parent,value,0,40,size);Place(t.rectTransform,min,max,new Vector2(6,2),new Vector2(-6,-2));
             t.alignment=alignment;t.enableAutoSizing=true;t.fontSizeMin=Mathf.Min(size,15);t.fontSizeMax=size;return t;
         }
+        // Keep Hangul words intact while still wrapping at spaces in narrow character details.
+        static string FormationWords(string value)=>string.IsNullOrEmpty(value)?value:"<nobr>"+value.Replace(" ","</nobr> <nobr>")+"</nobr>";
         RectTransform FormationButton(Transform parent,string name,string text,Vector2 min,Vector2 max,Action action,bool enabled=true,int size=18)
         {
             Button(parent,name,0,action,enabled);var r=(RectTransform)parent.GetChild(parent.childCount-1);
@@ -169,7 +171,7 @@ namespace TalesTactics
                 var aspect=art.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();aspect.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;aspect.aspectRatio=1;
             }
             else {var img=portrait.gameObject.AddComponent<UnityEngine.UI.Image>();img.sprite=c.Portrait!=null?c.Portrait:c.Sprites?.Front;img.preserveAspect=true;img.raycastTarget=false;}
-            FormationText(commands,c.DisplayName,new Vector2(.52f,.83f),new Vector2(.98f,.92f),25);
+            FormationText(commands,FormationWords(c.DisplayName),new Vector2(.52f,.83f),new Vector2(.98f,.92f),25);
             FormationText(commands,(promoted?c.PromotionJob:c.Job)+" · Lv "+level,new Vector2(.52f,.77f),new Vector2(.98f,.83f),17).color=formationGold;
             FormationMeter(commands,"HP",stats.HP,new Vector2(.52f,.68f),new Vector2(.97f,.76f),new Color(.32f,.68f,.38f));
             FormationMeter(commands,"MP",stats.MP,new Vector2(.52f,.59f),new Vector2(.97f,.67f),new Color(.18f,.57f,.79f));
@@ -183,7 +185,7 @@ namespace TalesTactics
                 if(item?.Icon!=null)EquipmentArt(button,item,new Vector2(.24f,.40f),new Vector2(.76f,.96f));
                 else if(i==0)ClassArt(button,c,new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.65f,.68f,.72f):Color.white);
                 else FormationIcon(button,i==1?"armor":"accessory",new Vector2(.34f,.40f),new Vector2(.66f,.93f),item==null?new Color(.38f,.44f,.52f):formationGold);
-                FormationText(button,item==null?SlotName(slot)+" · 없음":item.DisplayName,new Vector2(0,0),new Vector2(1,.40f),16,TextAlignmentOptions.Center);
+                FormationText(button,item==null?FormationWords(SlotName(slot)+" · 없음"):item.DisplayName,new Vector2(0,0),new Vector2(1,.40f),16,TextAlignmentOptions.Center);
             }
             FormationText(commands,"특성 · "+TacticalDevelopment.TraitName(progress.Trait),new Vector2(.03f,.11f),new Vector2(.65f,.17f),19).color=formationTeal;
             bool chosen=battle.Deployment.Contains(selectedCharacter);

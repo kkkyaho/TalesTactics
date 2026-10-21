@@ -4,7 +4,7 @@ namespace TalesTactics
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class TacticalIcon:UnityEngine.UI.MaskableGraphic
     {
-        string kind;public int Corner=-1;
+        string kind;public int Corner=-1;protected override void OnEnable(){base.OnEnable();SdUiIconArt.Apply(this);}
         public string Kind {get=>kind;set{if(kind==value)return;kind=value;SetAllDirty();}}
         public IllustratedIcons.Region Region=>IllustratedIcons.Get(kind,Mathf.Min(rectTransform.rect.width,rectTransform.rect.height)<=25);
         public override Texture mainTexture=>Region?.Texture;

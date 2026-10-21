@@ -198,9 +198,15 @@ namespace TalesTactics
 
         void EquipmentComparisonItem(RectTransform parent,EquipmentData item,string title,bool compact)
         {
-            FormationText(parent,title,new Vector2(.01f,.76f),new Vector2(.99f,1),compact?15:18,TextAlignmentOptions.Center);
-            if(item!=null)EquipmentArt(parent,item,new Vector2(.18f,.23f),new Vector2(.82f,.76f));
-            FormationText(parent,item?.DisplayName??"없음",new Vector2(.01f,0),new Vector2(.99f,.25f),compact?15:18,TextAlignmentOptions.Center);
+            // Share the body horizontally so bilingual weapon names can use its full height.
+            // Keep the title and body inside the existing frame without reducing readable type.
+            FormationText(parent,title,new Vector2(.01f,.70f),new Vector2(.99f,.94f),compact?15:18,TextAlignmentOptions.Center);
+            if(item!=null)
+            {
+                EquipmentArt(parent,item,new Vector2(.02f,.10f),new Vector2(.26f,.67f));
+                FormationText(parent,item.DisplayName.Replace(" / ","\n"),new Vector2(.28f,.06f),new Vector2(.99f,.69f),compact?15:18,TextAlignmentOptions.Center);
+            }
+            else FormationText(parent,"없음",new Vector2(.01f,.06f),new Vector2(.99f,.31f),compact?15:18,TextAlignmentOptions.Center);
         }
 
         void DrawEquipmentStatChanges(RectTransform parent,CharacterData c,Stats before,Stats after,bool compact)

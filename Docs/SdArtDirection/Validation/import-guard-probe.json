@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var json = System.IO.File.ReadAllText(\"Docs/SdCharacters/cless-motion-refinement-measurement.json\"); var method = typeof(TalesTactics.Editor.SdCharacterArtImporter).GetMethod(\"ValidateImportedSprites\",System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic); var valid = UnityEngine.JsonUtility.FromJson<TalesTactics.Editor.SdCharacterArtImporter.Measurement>(json); var positive = (UnityEngine.Sprite[])method.Invoke(null,new object[]{valid,valid.source,true}); var rejected = new System.Collections.Generic.List<string>(); foreach(var kind in new[]{\"pivot\",\"rect\",\"ppu\",\"localId\"}) { var m = UnityEngine.JsonUtility.FromJson<TalesTactics.Editor.SdCharacterArtImporter.Measurement>(json); if(kind==\"pivot\")m.frames[0].pivotX+=.1f; if(kind==\"rect\")m.frames[0].x+=1; if(kind==\"ppu\")m.pixelsPerUnit+=1; if(kind==\"localId\")m.frames[0].originalInternalId=\"0\"; try { method.Invoke(null,new object[]{m,m.source,true}); } catch(System.Reflection.TargetInvocationException e) { if(e.InnerException is System.InvalidOperationException)rejected.Add(kind+\": \"+e.InnerException.Message);else throw; } } if(positive.Length!=80||rejected.Count!=4)throw new System.InvalidOperationException(\"Import guard probe failed\"); return \"PASS: 80 actual sprites valid; all 4 read-only mutated-measurement checks rejected: \"+string.Join(\"; \",rejected);"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "PASS: 80 actual sprites valid; all 4 read-only mutated-measurement checks rejected: pivot: Measured pivot differs: cless_0_0; rect: Measured bounds or scale differ: cless_0_0; ppu: Measured bounds or scale differ: cless_0_0; localId: Source reference changed: cless_0_0"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\TalesTacticsHelpGuide"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

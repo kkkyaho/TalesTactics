@@ -7,13 +7,13 @@ namespace TalesTactics
         {
             switch(arte.Motion)
             {
-                case ArteMotion.Cast:return new CombatMotionProfile(.015f,.005f,.035f,0,0);
-                case ArteMotion.Jump:return new CombatMotionProfile(.40f,.12f,.45f,16,.055f);
-                case ArteMotion.Dash:return new CombatMotionProfile(.72f,.20f,.045f,22,.065f);
-                case ArteMotion.Blink:return new CombatMotionProfile(.85f,.08f,.08f,8,.04f);
-                case ArteMotion.Guard:return new CombatMotionProfile(.08f,.06f,0,3,.04f);
-                case ArteMotion.Shoot:return new CombatMotionProfile(.01f,.12f,0,2,.035f);
-                case ArteMotion.Spin:return new CombatMotionProfile(.35f,.12f,.18f,12,.045f);
+                case ArteMotion.Cast:return new CombatMotionProfile(.025f,.018f,.055f,2,.025f);
+                case ArteMotion.Jump:return new CombatMotionProfile(.46f,.16f,.56f,19,.075f);
+                case ArteMotion.Dash:return new CombatMotionProfile(.80f,.24f,.065f,25,.080f);
+                case ArteMotion.Blink:return new CombatMotionProfile(.85f,.11f,.11f,10,.055f);
+                case ArteMotion.Guard:return new CombatMotionProfile(.11f,.09f,.025f,5,.055f);
+                case ArteMotion.Shoot:return new CombatMotionProfile(.015f,.16f,.018f,4,.050f);
+                case ArteMotion.Spin:return new CombatMotionProfile(.42f,.16f,.24f,16,.065f);
                 default:return CombatMotionProfile.For(style,arte.Ultimate);
             }
         }

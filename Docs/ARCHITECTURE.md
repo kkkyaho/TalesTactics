@@ -1,5 +1,13 @@
 # 아키텍처
 
+## SD 원화와 표현 계층
+
+SD 전환은 기존 2.5D 전장과 애니메이션 클립을 유지하고, 캐릭터 원화를 다시 그리는 방식이다. 대상은 `PixelCampaign` 62장, `MotionPremium` 10장, `Crossover` 35장, `SignatureWeapons` 52장으로 총 159장이다. 원본 시트의 스프라이트 이름 4,898개(직접 참조 이름 4,870개)를 보존하며, `SdCharacterArtImporter`는 원본 텍스처 GUID와 스프라이트 ID·local fileID를 유지한 채 측정된 rect·pivot·outline·PPU를 적용한다. 이동·공격·피격·쓰러짐과 방향별 보정 스트립, 장착 무기의 외형 참조를 개별 프레임으로 유지한다.
+
+`Tools/MeasureSdCharacterArt.py`와 `Docs/SdCharacters`의 JSON은 원본 집합, 해시, 프레임 측정과 육안 검수 근거를 분리한다. 후보만 불러오는 `ImportCandidate`는 제작 중 확인에 사용하고, `ApplyCompleteProduction`은 현재 Content·전용무기 에셋이 참조하는 전체 원본 집합과 manifest가 정확히 일치하며 모든 후보가 승인된 경우에만 원본을 교체한다. 누락·중복·해시 불일치는 적용을 중단하고, 적용 예외에는 PNG와 meta를 복원한다. 후보 중복 PNG의 최종 보관 위치는 로컬 `Temp`이며, Git에는 기존 production 경로의 적용 원화와 제작 근거를 남기는 구조다. [제작·측정 절차](SdCharacters/README.md).
+
+공통 UI는 `SdUiTheme`·`SdUiIconArt`·`SdUiInk`가 잉크색, 장식 패널과 실제 아이콘의 셀 명암을 연결한다. 지형은 새 타일·식생·구조물 원화와 `SdTerrainAtlas`의 실측 UV, 단계형 명암을 사용하고, VFX는 `Impact.shader`·`SkillVisualLanguage`에서 외곽선과 색 면을 맞춘다. 10인 초상화는 기존 5×2 리소스 배치를 유지한다. 이 변경의 범위는 표현 계층이며 Core 전투 규칙·Content 정의·저장 형식은 유지한다. 실제 엔진 적용·레이아웃·빌드 결과와 한계는 [검증 기록](VALIDATION.md)에 별도로 기록한다.
+
 ## 연속 캠페인 성장·보상 검증
 
 `CampaignInventory.PurchaseUnlockRequirement`는 기존 일반 장비의 `chapter1..6` 조건을 해당 `crossover.chapter1..6` 완료로도 인정한다. 기존 저장 플래그를 추가·변환하지 않으며, 사용자 정의 조건은 정확히 일치해야 한다. 메인 조건 문구는 내부 stage 인덱스 대신 실제 화 번호를 사용한다.

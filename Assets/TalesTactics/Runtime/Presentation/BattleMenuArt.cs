@@ -11,7 +11,7 @@ namespace TalesTactics
             var art=FormationRect(bounds,"Illustration",Vector2.zero,Vector2.one);
             var image=art.gameObject.AddComponent<UnityEngine.UI.RawImage>();
             image.texture=Resources.Load<Texture2D>("TalesTactics/Ornate/MenuIcons");
-            image.uvRect=new Rect(cell%3/3f,cell<3?.5f:0,1/3f,.5f);image.raycastTarget=false;
+            image.uvRect=new Rect(cell%3/3f,cell<3?.5f:0,1/3f,.5f);image.raycastTarget=false;SdUiIconArt.Apply(image);
             var fit=art.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();
             fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;
             fit.aspectRatio=image.texture!=null?image.texture.width/3f/(image.texture.height/2f):1;

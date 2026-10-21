@@ -59,6 +59,57 @@ namespace TalesTactics.PlayModeTests
             }
         }
 
+        [Test] public void CelShaderAddsInkWithoutFillingTransparentArtworkSpace()
+        {
+            var shader=Resources.Load<Shader>("TalesTactics/Impact");Assert.That(shader,Is.Not.Null);Assert.That(shader.isSupported,Is.True);
+            var texture=new Texture2D(64,64,TextureFormat.RGBA32,false,true){filterMode=FilterMode.Bilinear,wrapMode=TextureWrapMode.Clamp};
+            var material=new Material(shader);var mesh=new Mesh();
+            try
+            {
+                var pixels=new Color[64*64];
+                for(int y=0;y<64;y++)for(int x=0;x<64;x++)
+                {
+                    float distance=Vector2.Distance(new Vector2(x,y),new Vector2(31.5f,31.5f));
+                    float alpha=Mathf.Clamp01((25-distance)/4f)*Mathf.Clamp01((distance-8)/3f),value=.4f+x/63f*.6f;
+                    pixels[y*64+x]=new Color(value*.3f,value*.65f,value,alpha);
+                }
+                texture.SetPixels(pixels);texture.Apply();material.mainTexture=texture;
+                material.SetFloat("_UseTexture",1);material.SetFloat("_AtlasGrid",1);
+                mesh.vertices=new[]{new Vector3(0,0,0),new Vector3(0,1,0),new Vector3(1,1,0),new Vector3(1,0,0)};
+                mesh.uv=new[]{Vector2.zero,Vector2.up,Vector2.one,Vector2.right};
+                mesh.colors=new[]{Color.white,Color.white,Color.white,Color.white};mesh.triangles=new[]{0,1,2,0,2,3};
+                material.SetFloat("_CelStyle",0);var soft=RenderArtwork(mesh,material);
+                material.SetFloat("_CelStyle",1);var cel=RenderArtwork(mesh,material);
+                int softInk=soft.Count(c=>c.a>220&&c.r<60&&c.g<60&&c.b<80);
+                int celInk=cel.Count(c=>c.a>220&&c.r<60&&c.g<60&&c.b<80);
+                Assert.That(celInk,Is.GreaterThan(softInk+20),"Opaque dark contours must be rendered around the painted silhouette");
+                Assert.That(cel.Count(c=>c.a>220&&c.b>120),Is.GreaterThan(300),"The colored body must survive the cel conversion");
+                Assert.That(cel[64*128+64].a,Is.LessThan(4),"A transparent hole must not turn into a solid billboard");
+                Assert.That(cel[0].a,Is.LessThan(4),"The atlas background must remain transparent");
+            }
+            finally{Object.DestroyImmediate(mesh);Object.DestroyImmediate(material);Object.DestroyImmediate(texture);}
+        }
+
+        static Color32[] RenderArtwork(Mesh mesh,Material material)
+        {
+            var target=RenderTexture.GetTemporary(128,128,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear);
+            var previous=RenderTexture.active;Texture2D readback=null;
+            var commands=new UnityEngine.Rendering.CommandBuffer();
+            try
+            {
+                commands.SetRenderTarget(target);commands.ClearRenderTarget(false,true,Color.clear);
+                commands.SetViewProjectionMatrices(Matrix4x4.identity,GL.GetGPUProjectionMatrix(Matrix4x4.Ortho(0,1,0,1,-1,1),true));
+                commands.DrawMesh(mesh,Matrix4x4.identity,material);Graphics.ExecuteCommandBuffer(commands);
+                RenderTexture.active=target;readback=new Texture2D(128,128,TextureFormat.RGBA32,false,true);
+                readback.ReadPixels(new Rect(0,0,128,128),0,0);readback.Apply();return readback.GetPixels32();
+            }
+            finally
+            {
+                commands.Release();RenderTexture.active=previous;RenderTexture.ReleaseTemporary(target);
+                if(readback!=null)Object.DestroyImmediate(readback);
+            }
+        }
+
         [UnityTest] public IEnumerator FullAndReducedImpactMeshesHaveFiniteCompleteUvStreams()
         {
             var elements=new[]{Element.Fire,Element.Ice,Element.Lightning,Element.None,Element.Light};

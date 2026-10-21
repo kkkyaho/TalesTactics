@@ -4,6 +4,24 @@ using System.IO;
 using UnityEngine;
 namespace TalesTactics
 {
+    // A separate host survives BattleDirector.Restart(), which cancels its own coroutines.
+    public sealed class MenuPreviewBakeRunner : MonoBehaviour
+    {
+        BattleDirector battle; string directory;
+        public static void Begin(BattleDirector battle, string directory)
+        {
+            var runner = new GameObject("SD map preview bake").AddComponent<MenuPreviewBakeRunner>();
+            runner.battle = battle; runner.directory = directory;
+        }
+        IEnumerator Start()
+        {
+            yield return MenuPreviewBake.Run(battle, directory);
+            if(Directory.GetFiles(directory,"Stage*.png").Length!=20)
+                throw new System.InvalidOperationException("Expected 20 real map previews");
+            File.WriteAllText(Path.Combine(directory,"complete.txt"),"20 Unity camera captures; isolated campaign storage");
+            Destroy(gameObject);
+        }
+    }
     public static class MenuPreviewBake
     {
         public static IEnumerator Run(BattleDirector battle,string directory)

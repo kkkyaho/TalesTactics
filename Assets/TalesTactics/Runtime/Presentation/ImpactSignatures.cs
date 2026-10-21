@@ -61,8 +61,10 @@ namespace TalesTactics
         void GroundWave(Vector3 point,float alpha)
         {
             float flip=Vector3.Dot(-from,view.transform.right)<0?-1:1;
-            SignatureQuad(point+Vector3.up*.25f*size,Plane(.85f*flip,0),Plane(0,.46f),0,new Color(.85f,1,1,alpha));
+            SignatureQuad(point+Vector3.up*.25f*size,Plane(.85f*flip,0),Plane(0,.46f),0,new Color(.85f,1,1,alpha*.78f));
+            CelSlash(point+Vector3.up*.19f*size,.73f,flip>0?-.45f:Mathf.PI+.45f,flip*2.45f,.063f,Alpha(WaveColor,alpha));
             var dir=Vector3.ProjectOnPlane(-from,Vector3.up).normalized;
+            CelStroke(point-dir*.72f+Vector3.up*.08f,point-dir*.12f+Vector3.up*.08f,.018f,Alpha(WaveColor,alpha*.8f),true);
             for(int i=1;i<=(reduced?1:3);i++)FrameQuad(backAtlas,point-dir*i*.18f+Vector3.up*.04f,Plane(.20f,0),Plane(0,.09f),new Color(.69f,.74f,.68f,alpha*.22f),12+i*.6f,12,15);
         }
         void FallingRock(Vector3 point,float radius,float alpha,float tilt=0)
@@ -75,12 +77,16 @@ namespace TalesTactics
         }
         void ElectricBlade(Vector3 tip,float alpha)
         {
-            var up=(view.transform.up-view.transform.right*.30f).normalized;var right=Vector3.Cross(up,view.transform.forward).normalized;
-            float h=1.75f*size;
-            SignatureQuad(tip+up*h*.80f,right*.66f*size,up*h,2,new Color(1,1,1,alpha));
+            var up=view.transform.up;var right=view.transform.right;float h=1.88f*size;
+            SignatureQuad(tip+up*h*.80f,right*.62f*size,up*h,2,new Color(1,1,1,alpha*.86f));
+            // The long inked edge, pale fuller and short crossguard read as a sword
+            // even when the illustrated electrical branches overlap the target.
+            CelStroke(tip,tip+up*h*1.53f,.052f,Alpha(BoltColor,alpha),true);
+            CelStroke(tip+up*h*1.30f-right*.30f*size,tip+up*h*1.30f+right*.30f*size,.037f,Alpha(BoltColor,alpha),true);
         }
         void DrawSignatureTravel(float p)
         {
+            p=SkillVisualLanguage.Snap(p);
             float opacity=reduced?.72f:1;
             if(signature==SkillSignature.DemonFang){GroundWave(Vector3.Lerp(from,Vector3.zero,p),opacity);return;}
             if(signature==SkillSignature.MeteorStorm)
@@ -99,6 +105,7 @@ namespace TalesTactics
         {
             float fade=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.04f,.38f,p));if(fade<=0)return;
             float expansion=.3f+Mathf.Min(1,p*5)*.6f;
+            CelContact(center+Vector3.up*.16f,p,new Color(1,.59f,.19f,opacity),.73f);
             SignatureQuad(center+Vector3.up*.025f,Vector3.right*expansion*size,Vector3.forward*expansion*size,3,new Color(1,1,1,fade*opacity*.9f));
             FloorRing(center+Vector3.up*.035f,expansion,.022f,new Color(1,.57f,.17f,fade*opacity*.65f));
             Flame(center+Vector3.up*(.18f+p*.35f)*size,.65f,.70f,Mathf.Clamp(p*20,0,10),new Color(1,.89f,.6f,fade*opacity*.9f));
@@ -111,7 +118,8 @@ namespace TalesTactics
             if(signature==SkillSignature.DemonFang)
             {
                 float fade=Mathf.Max(0,1-t*2.6f);var top=Vector3.up*(.65f+t*.35f)*size;
-                Ribbon(Vector3.zero,top,.035f*fade,new Color(.78f,.96f,1,fade*opacity));
+                CelStroke(Vector3.zero,top,.040f*fade,new Color(.50f,.87f,1,fade*opacity),true);
+                CelContact(Vector3.up*.26f,age,Alpha(WaveColor,opacity),.59f);
                 Glow(top*.35f,.23f,Alpha(WaveColor,fade*opacity*.6f));
                 var dir=(-from).normalized;
                 for(int i=0;i<(reduced?3:7);i++){float a=i*2.39996f;var p=dir*(t*.65f)+Plane(Mathf.Cos(a),Mathf.Sin(a))*(t*.4f)+Vector3.up*.2f;
@@ -130,6 +138,7 @@ namespace TalesTactics
                 return;
             }
             float bladeFade=Mathf.Max(0,1-t*2.7f);ElectricBlade(Vector3.zero,bladeFade*opacity);
+            CelContact(Vector3.up*.18f,age,Alpha(BoltColor,opacity),.82f);
             float fadeOut=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.12f,.85f,t));
             FloorRing(Vector3.up*.025f,.22f+t*1.3f,.014f,new Color(.65f,.70f,1,fadeOut*opacity*.6f));
             for(int i=0;i<(reduced?4:8);i++)
@@ -139,8 +148,7 @@ namespace TalesTactics
                 for(int j=1;j<=5;j++)
                 {
                     var next=dir*(j*.22f*(.6f+t)*size)+side*(Mathf.Sin(i*7+j*5+Mathf.Floor(t*18))*.10f*size)+Vector3.up*(.04f+(j%2)*.04f);
-                    Ribbon(previous,next,.028f,Alpha(BoltColor,fadeOut*opacity*.65f));
-                    Ribbon(previous,next,.008f,new Color(.86f,.89f,1,fadeOut*opacity));previous=next;
+                    CelStroke(previous,next,.025f,Alpha(BoltColor,fadeOut*opacity*.82f),true);previous=next;
                 }
             }
             Glow(Vector3.up*.13f,.34f,new Color(.6f,.67f,1,bladeFade*opacity*.6f));

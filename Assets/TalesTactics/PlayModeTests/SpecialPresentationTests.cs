@@ -15,9 +15,23 @@ namespace TalesTactics.PlayModeTests
             foreach(var entry in music)
             {
                 Assert.That(entry.Clip,Is.Not.Null,entry.Id);Assert.That(entry.Clip.channels,Is.EqualTo(2));
-                director.Audio.Play(entry.Id);yield return new WaitForSeconds(0.15f);
+                director.Audio.Play(entry.Id);
                 var source=director.Audio.GetComponent<AudioSource>();
+                // Compressed clips and the audio thread may start after the next game frame.
+                // Observe the one production Play call; do not force-load or retry playback.
+                float deadline=Time.realtimeSinceStartup+5;
+                while(Time.realtimeSinceStartup<deadline&&entry.Clip.loadState!=AudioDataLoadState.Failed&&
+                    (entry.Clip.loadState!=AudioDataLoadState.Loaded||!source.isPlaying||source.timeSamples<=0))yield return null;
+                string state=entry.Id+" loaded="+entry.Clip.loadState+" playing="+source.isPlaying+
+                    " samples="+source.timeSamples+" listenerPaused="+AudioListener.pause;
+                Assert.That(entry.Clip.loadState,Is.EqualTo(AudioDataLoadState.Loaded),state);
+                Assert.That(source.clip,Is.SameAs(entry.Clip),state);
                 Assert.That(source.isPlaying,Is.True,entry.Id);Assert.That(source.timeSamples,Is.GreaterThan(0),entry.Id);
+                int startedSample=source.timeSamples;deadline=Time.realtimeSinceStartup+5;
+                while(Time.realtimeSinceStartup<deadline&&source.isPlaying&&source.timeSamples==startedSample)yield return null;
+                Assert.That(source.clip,Is.SameAs(entry.Clip),entry.Id);
+                Assert.That(source.isPlaying,Is.True,entry.Id);
+                Assert.That(source.timeSamples,Is.Not.EqualTo(startedSample),entry.Id+" sample cursor must continue advancing");
                 Assert.That(source.volume,Is.EqualTo(director.Audio.MusicVolume));
             }
             director.Audio.StopAll();

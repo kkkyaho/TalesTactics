@@ -10,6 +10,10 @@ ZIP을 **새 폴더에 모두 풀고** `TalesTactics.exe`를 실행하세요. �
 
 preview.8은 기존 메인20화·개인30단계와 거점·편성·장비 UX를 유지하면서 **전체 기술 연출 확장**, **창 내부 여백과 글자 배치 수정**, **마우스 가운데 버튼 맵 이동**, **정확한 턴 종료 안내**, **적 기술·보상 아이템 상세**, **장비 착용자 표시와 중앙 레벨업 강조**를 포함합니다. 릴리즈 빌드·패키지·공개 다운로드 검증을 완료했습니다. 아래 플레이 안내는 현재 소스 기준입니다.
 
+현재 `develop`은 확인한 디스가이아풍 시안을 바탕으로 **SD 캐릭터·초상화, 셀 명암의 전장·배경, 일러스트 아이콘, 남색·청록 UI와 기술 연출**로 전환했습니다. 캐릭터 159장·4,898프레임과 기존 저장·전투 규칙을 유지합니다. 공개 preview.8에는 이 디자인 전환이 포함되어 있지 않습니다. [현재 디자인의 실제 화면과 검증](Docs/SdArtDirection/README.md) · [실행 화면 갤러리](Docs/SdArtDirection/gallery.html).
+
+이전 개선별 기록은 아래에 보존합니다. 현재 화면은 SD 전환 갤러리를 우선합니다.
+
 - [거점·대화·장비 정비 화면과 검증](Docs/IntermissionUx/README.md)
 - [전용무기 이미지·장착 외형과 검증](Docs/SignatureWeapons/README.md)
 - [현재 도움말 화면과 검증](Docs/HelpGuide/README.md)
@@ -135,7 +139,7 @@ PlayMode의 화면 검수는 그래픽 Editor나 Windows 플레이어에서 수�
 
 ## 구현과 검증 기록
 
-최신 개선의 실제 Unity 검증은 **EditMode 358/358 · 전체 PlayMode 173/173**이며, 이후 스크롤·세부 배치 변경은 관련 테스트로 재확인했습니다. 최종 Editor 화면 검사 **795/795**, Windows 현재 창 검사 **159/159**, 일반 Windows 빌드·시작 검사를 통과했습니다. 실행본·실제 캡처·후속 테스트와 환경 한계는 [적용 기록](Docs/CommercialUxProposal/IMPLEMENTATION.md), 이전 이력은 [VALIDATION](Docs/VALIDATION.md)을 따릅니다. 전체 캠페인 수동 완주·실물 게임패드·다른 PC/DPI·장시간 성능 검수를 모두 마쳤다는 뜻은 아닙니다.
+현재 개발 버전의 실제 Unity 테스트, UI 경계 검사, 기술 실행, Windows 빌드와 원시 결과는 [SD 전환 검증](Docs/SdArtDirection/README.md)을 따릅니다. 이전 작업 수치를 현재 결과로 합산하지 않습니다. 전체 캠페인 수동 완주·실물 게임패드·다른 PC/DPI·장시간 성능 검수를 모두 마쳤다는 뜻은 아닙니다.
 
 - [구현 구조와 확장 지점](Docs/ARCHITECTURE.md): 코어 규칙, 저장, 런타임 UI와 외형 해석.
 - [완료 목록과 후속 후보](Docs/TODO.md): 작업 범위와 남은 검수.
@@ -145,4 +149,4 @@ PlayMode의 화면 검수는 그래픽 Editor나 Windows 플레이어에서 수�
 
 기획과 과거 구현 기록은 `Docs`에 보존합니다. 이전 6장의 공략·경제 수치·실행본 경로는 해당 당시의 이력이며 현재 캠페인의 안내로 사용하지 않습니다.
 
-최신 UI 경계 점검: [1,065개 Editor·213개 Windows 화면 검사와 실제 캡처](Docs/FinalUiBounds/README.md).
+현재 UI 경계 점검과 실제 화면: [SD 전환 검증·갤러리](Docs/SdArtDirection/README.md). 과거 UI 검사 이력은 [이전 기록](Docs/FinalUiBounds/README.md)에 보존합니다.

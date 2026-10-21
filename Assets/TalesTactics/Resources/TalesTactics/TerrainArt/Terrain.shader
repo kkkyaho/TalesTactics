@@ -74,8 +74,10 @@ Shader "TalesTactics/Architectural Terrain"
                 }
                 half key=saturate(dot(normalize(i.normalWS),normalize(float3(-.45,.85,-.35))));
                 c=lerp(half3(.43,.44,.43),c,_DetailContrast);
-                half3 illumination=lerp(_FillColor.rgb*.65,_KeyColor.rgb*1.06,key);
-                illumination*=1+clamp(relief*5,-.20,.20)*_SurfaceRelief;
+                // Broad cel planes retain the new painted shapes instead of adding noisy relief.
+                key=.35*step(.22,key)+.38*step(.56,key)+.27*step(.82,key);
+                half3 illumination=lerp(_FillColor.rgb*.76,_KeyColor.rgb*1.02,key);
+                illumination*=1+clamp(relief*2,-.08,.08)*_SurfaceRelief;
                 float dapple=sin(i.world.x*1.37+sin(i.world.z*1.8))*sin(i.world.z*1.63+cos(i.world.x*2.2));
                 illumination*=1-_Dapple*smoothstep(-.4,.6,dapple)*saturate(i.normalWS.y);
                 illumination=lerp(illumination,1,_Unlit);
