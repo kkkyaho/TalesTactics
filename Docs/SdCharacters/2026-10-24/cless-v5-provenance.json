@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-27",
+  "method": "Built-in imagegen edit; originals retained",
+  "references": [
+    "Logs/SdPolish20261027/ClessAligned/q2.png",
+    "Logs/SdPolish20261027/ClessAligned/q3.png"
+  ],
+  "prompt": "Use case: precise sprite pose continuity edit. Image 1 is the only EDIT TARGET, a 4-column x 5-row transparent sprite sheet. Image 2 is the neighboring sprite sheet for the SAME Cless character. Change ONLY Image 1's BOTTOM ROW, SECOND COLUMN character (the back view). In that one cell, redraw the back-facing low sword recovery to match the shoulder handedness and cape direction of Image 2's BOTTOM ROW SECOND COLUMN: visible SILVER LEFT shoulder/arm on the LEFT, red cape extends to the RIGHT, back of blond head centered over the same pelvis and two boots. No face visible. The current wrong character has the exposed shoulder on the right and mirrored cape on left; fix that shoulder/cape flip. Keep its low crouching recovery pose, single sword, costume, head size, feet baseline and cell center. This is one in-between recovery frame, not a duplicated overhead sword pose. Preserve ALL other 19 characters and their positions/poses, especially third-row third-column sword pointing right. Exact target canvas 1122x1402, actual transparent alpha, 20 full figures separated with gutters, no labels/effects/shadows. Output only the edited first sheet.",
+  "output": "exec-aa83f916-9753-40b9-8cbf-14120f7f769b.png",
+  "notes": "Only back-facing recovery in row5 column2 was requested; generator may also alter other pixels. All output native pixels are retained by packer. Runtime size is separately calibrated against actual existing head/boot sizes, not whole crouched pose height."
+}

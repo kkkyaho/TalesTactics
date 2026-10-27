@@ -52,7 +52,8 @@ namespace TalesTactics
             FormationText(mission,"전장 미리보기",new Vector2(.47f,.17f),new Vector2(.96f,.26f),19);
             FormationText(mission,"권장 Lv."+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 최대 "+battle.Catalog.Rules.MaxDeployment+"명",new Vector2(.47f,.06f),new Vector2(.96f,.17f),17);
             var party=IntermissionPanel(center,"HubParty",new Vector2(.57f,.03f),new Vector2(.98f,.97f));
-            FormationText(party,"출전 멤버  "+battle.Deployment.Count+" / "+battle.Catalog.Rules.MaxDeployment,new Vector2(.04f,.85f),new Vector2(.96f,.96f),23);
+            var reserves=JoinedCharacters().Where(c=>battle.CanDeploy(Array.IndexOf(battle.Catalog.Characters,c))&&!battle.Deployment.Contains(Array.IndexOf(battle.Catalog.Characters,c))).ToArray();
+            FormationText(party,"출전 "+battle.Deployment.Count+" / "+battle.Catalog.Rules.MaxDeployment+(reserves.Length>0?" · 대기 "+reserves.Length+"명":""),new Vector2(.04f,.85f),new Vector2(.96f,.96f),23);
             var members=battle.Deployment.Where(i=>i>=0&&i<battle.Catalog.Characters.Length).ToArray();
             for(int n=0;n<members.Length;n++)
             {
@@ -63,9 +64,16 @@ namespace TalesTactics
             }
             if(members.Length==0)FormationText(party,"출전할 동료를 편성하세요.",new Vector2(.04f,.4f),new Vector2(.96f,.7f),22,TextAlignmentOptions.Center);
             FormationButton(party,"동료의 이야기 · 30","동료의 이야기",new Vector2(.04f,.12f),new Vector2(.96f,.23f),ShowPersonalScenarios,!battle.TrainingMode,17);
-            FormationText(party,"동료를 선택하면 장비를 정비합니다.",new Vector2(.04f,.035f),new Vector2(.96f,.105f),15).color=new Color(.7f,.77f,.85f);
-            string[] names={"출전 편성","장비 관리","장비 상점","성장 · 승급"};string[] labels={"편성","장비","상점","성장"};
-            Action[] actions={ShowDeployment,ShowEquipmentRoster,()=>ShowShop(),ShowGrowthRoster};
+            var arrivals=CurrentEpisodeArrivals();
+            if(arrivals.Length>0||reserves.Length>0)
+            {
+                string text=arrivals.Length>0?"이번 합류 · "+string.Join(" · ",arrivals.Select(c=>c.DisplayName.Split(' ')[0])):"대기 동료 "+reserves.Length+"명 · 편성에서 교대";
+                FormationButton(party,"합류 동료 편성 보기",text,new Vector2(.04f,.025f),new Vector2(.96f,.11f),ShowAvailableCompanions,true,15);
+            }
+            else FormationText(party,"동료를 선택하면 장비를 정비합니다.",new Vector2(.04f,.035f),new Vector2(.96f,.105f),15).color=new Color(.7f,.77f,.85f);
+            bool trainingAvailable=PreparationTrainees().Length>0;
+            string[] names={"출전 편성","장비 관리","장비 상점","성장 · 승급"};string[] labels={"편성","장비","상점",trainingAvailable?"성장 · 훈련":"성장"};
+            Action[] actions={ShowDeployment,ShowEquipmentRoster,()=>ShowShop(),ShowPreparationGrowth};
             for(int i=0;i<4;i++)
             {
                 var button=FormationButton(footer,names[i],labels[i],new Vector2(.02f+i*.17f,.32f),new Vector2(.18f+i*.17f,.91f),actions[i],true,21);

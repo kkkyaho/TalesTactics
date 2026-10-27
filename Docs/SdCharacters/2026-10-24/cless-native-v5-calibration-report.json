@@ -1,0 +1,5729 @@
+{
+  "schemaVersion": 1,
+  "method": "cless-native-bbox-world-offset-v1",
+  "baseline": "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\cless-before.png",
+  "baselineSha256": "16ececda2c0b75a8aacf0fdd7d7a3455161418c6628e82eff500c4768f2908d0",
+  "baselineMetaSha256": "e29b617628a8a373a694a0659400c255a6ff50ef8f812892b1fe4aff68a6f5de",
+  "inputMeasurement": "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v5-measurement.json",
+  "inputMeasurementSha256": "683a6d162e80d0ada18b543696bed8f2f17eb8118ca8962feafbf30233bc956f",
+  "candidateSha256": "0ffd2c058365aa5fb3d2659a837053c950d84083704973baf94ba16d1a221d86",
+  "formula": "newBboxCenterX + (oldPivotAbsoluteX - oldBboxCenterX) * newPPU / oldPPU",
+  "bboxDefinition": "alpha > 128, components >= 8 pixels; half-open pixel bbox center",
+  "footDiagnostic": "Bottom 18% alpha median; diagnostic only, not an anatomical foot guarantee",
+  "imageShiftDiagnostic": "imageShiftWorld is the anchor-only translation at selected PPU; bboxCenterImageShiftWorld includes both raw-to-selected scale and anchor changes. Before footprint diagnostics use raw PPU, after diagnostics use selected PPU.",
+  "unchanged": "PNG pixels, source/meta, frame names/IDs, absolute outline geometry, rect Y/height and pivotY=.01",
+  "rectPaddingPolicy": "Minimum integer X extension within original cell, no rect overlap; added pixels may have alpha 0..8 only and lie outside the unchanged absolute outline. This is not a claim of strictly zero alpha.",
+  "calibration": {
+    "requested": true,
+    "rawPixelsPerUnit": 166.42948,
+    "selectedPixelsPerUnit": 255.0,
+    "renderedSizeMultiplier": 0.6526646274509804,
+    "reason": "Explicit visual anatomical-size calibration against existing Cless HQ/extra/polish head and boot sizes; crouched total bbox height is not the size reference."
+  },
+  "inputVisualApproved": false,
+  "inputVisualReview": "",
+  "summary": {
+    "frameCount": 80,
+    "adjustedFrames": 80,
+    "expandedRectFrames": 2,
+    "addedRectPixels": 2508,
+    "addedWeakAlphaPixels": 126,
+    "maximumAddedAlpha": 4,
+    "maximumAbsoluteOutlineErrorPixels": 0.0,
+    "adjustedRectsNonoverlapping": true,
+    "oldPixelsPerUnit": 64.01166,
+    "rawPixelsPerUnit": 166.42948,
+    "newPixelsPerUnit": 255.0,
+    "canvasScale": 3.266347687400319,
+    "artScale": 3.983649228906108,
+    "maximumAnchorDeltaPixels": 25.750976000000037,
+    "maximumImageShiftWorld": 0.10098421960784328,
+    "maximumBboxCenterImageShiftWorld": 0.14872868422090013,
+    "maximumFootOffsetChangeWorldBefore": 0.7069087932046252,
+    "maximumFootOffsetChangeWorldAfter": 0.5354914635786849,
+    "maximumWorldOffsetRoundingError": 5.062275055256471e-07
+  },
+  "frames": [
+    {
+      "name": "cless_0_0",
+      "originalSpriteId": "6b2ac8f38a927a84b90238f427748377",
+      "originalInternalId": "291681203",
+      "oldRect": [
+        42.0,
+        1131.0,
+        94.0,
+        88.0
+      ],
+      "oldPivotX": 0.510638,
+      "oldBbox": [
+        44,
+        1133,
+        90,
+        84
+      ],
+      "rawMeasuredRect": [
+        178,
+        3746,
+        225,
+        233
+      ],
+      "newRect": [
+        178,
+        3746,
+        225,
+        233
+      ],
+      "newBbox": [
+        180,
+        3748,
+        221,
+        229
+      ],
+      "oldPivotAbsoluteX": 89.99997200000001,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 89.0,
+      "newBboxCenterX": 290.5,
+      "priorPivotX": 0.515428,
+      "pivotX": 0.517705,
+      "pivotDeltaFraction": 0.0022769999999999735,
+      "anchorDeltaPixels": 0.5123249999999757,
+      "imageShiftWorld": -0.002009117647058728,
+      "rawBboxCenterOffsetWorld": -0.020857482700781044,
+      "newBboxCenterOffsetWorld": -0.015622058823529258,
+      "bboxCenterImageShiftWorld": 0.005235423877251786,
+      "oldBboxToPivotWorld": 0.015621716418540212,
+      "newBboxToPivotWorld": 0.015622058823529258,
+      "worldOffsetRoundingError": 3.424049890461689e-07,
+      "oldFootOffsetWorld": -0.031243870257387694,
+      "priorFootOffsetWorld": -0.03587885992313372,
+      "newFootOffsetWorld": -0.02542598039215671
+    },
+    {
+      "name": "cless_0_1",
+      "originalSpriteId": "35b8dbc0f95e55b488e50d8e133e75b1",
+      "originalInternalId": "447795121",
+      "oldRect": [
+        194.0,
+        1130.0,
+        96.0,
+        87.0
+      ],
+      "oldPivotX": 0.395833,
+      "oldBbox": [
+        196,
+        1132,
+        92,
+        83
+      ],
+      "rawMeasuredRect": [
+        675,
+        3718,
+        229,
+        230
+      ],
+      "newRect": [
+        675,
+        3718,
+        229,
+        230
+      ],
+      "newBbox": [
+        677,
+        3720,
+        225,
+        226
+      ],
+      "oldPivotAbsoluteX": 231.999968,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 242.0,
+      "newBboxCenterX": 789.5,
+      "priorPivotX": 0.36154,
+      "pivotX": 0.326041,
+      "pivotDeltaFraction": -0.03549899999999995,
+      "anchorDeltaPixels": -8.129270999999903,
+      "imageShiftWorld": 0.03187949411764668,
+      "rawBboxCenterOffsetWorld": 0.190515165942957,
+      "newBboxCenterOffsetWorld": 0.15622200392156843,
+      "bboxCenterImageShiftWorld": -0.034293162021388574,
+      "oldBboxToPivotWorld": -0.15622203829739775,
+      "newBboxToPivotWorld": -0.15622200392156843,
+      "worldOffsetRoundingError": 3.437582932197536e-08,
+      "oldFootOffsetWorld": -0.01562165392992457,
+      "priorFootOffsetWorld": 0.007254363830254379,
+      "newFootOffsetWorld": 0.036614160784313524
+    },
+    {
+      "name": "cless_0_2",
+      "originalSpriteId": "e444bfc891fb8de41bacf609626ede29",
+      "originalInternalId": "1282720972",
+      "oldRect": [
+        344.0,
+        1130.0,
+        75.0,
+        89.0
+      ],
+      "oldPivotX": 0.493333,
+      "oldBbox": [
+        346,
+        1132,
+        71,
+        85
+      ],
+      "rawMeasuredRect": [
+        1151,
+        3742,
+        191,
+        235
+      ],
+      "newRect": [
+        1151,
+        3742,
+        191,
+        235
+      ],
+      "newBbox": [
+        1153,
+        3744,
+        187,
+        231
+      ],
+      "oldPivotAbsoluteX": 380.999975,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 381.5,
+      "newBboxCenterX": 1246.5,
+      "priorPivotX": 0.489416,
+      "pivotX": 0.489571,
+      "pivotDeltaFraction": 0.00015499999999996072,
+      "anchorDeltaPixels": 0.029604999999946813,
+      "imageShiftWorld": -0.00011609803921547769,
+      "rawBboxCenterOffsetWorld": 0.012146549998233178,
+      "newBboxCenterOffsetWorld": 0.0078115254901960866,
+      "bboxCenterImageShiftWorld": -0.004335024508037091,
+      "oldBboxToPivotWorld": -0.007811467473269615,
+      "newBboxToPivotWorld": -0.0078115254901960866,
+      "worldOffsetRoundingError": -5.801692647133816e-08,
+      "oldFootOffsetWorld": 0.015622544392693357,
+      "priorFootOffsetWorld": -0.035921857113295375,
+      "newFootOffsetWorld": -0.023561023529411758
+    },
+    {
+      "name": "cless_0_3",
+      "originalSpriteId": "141515be3741ab24aa273c80f7d9f3d1",
+      "originalInternalId": "1147473635",
+      "oldRect": [
+        511.0,
+        1129.0,
+        76.0,
+        88.0
+      ],
+      "oldPivotX": 0.381579,
+      "oldBbox": [
+        513,
+        1131,
+        72,
+        84
+      ],
+      "rawMeasuredRect": [
+        1701,
+        3713,
+        186,
+        236
+      ],
+      "newRect": [
+        1701,
+        3713,
+        186,
+        236
+      ],
+      "newBbox": [
+        1703,
+        3715,
+        182,
+        232
+      ],
+      "oldPivotAbsoluteX": 540.000004,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 549.0,
+      "newBboxCenterX": 1794.0,
+      "priorPivotX": 0.337784,
+      "pivotX": 0.307243,
+      "pivotDeltaFraction": -0.030540999999999985,
+      "anchorDeltaPixels": -5.680626000000075,
+      "imageShiftWorld": 0.022276964705882647,
+      "rawBboxCenterOffsetWorld": 0.1812910549260866,
+      "newBboxCenterOffsetWorld": 0.1405992235294122,
+      "bboxCenterImageShiftWorld": -0.0406918313966744,
+      "oldBboxToPivotWorld": -0.14059932206101217,
+      "newBboxToPivotWorld": -0.1405992235294122,
+      "worldOffsetRoundingError": 9.853159996242589e-08,
+      "oldFootOffsetWorld": 0.046866399027927254,
+      "priorFootOffsetWorld": 0.0851542407030295,
+      "newFootOffsetWorld": 0.07785412549019652
+    },
+    {
+      "name": "cless_1_0",
+      "originalSpriteId": "35f5580131294df4f83bef951bf5a4c4",
+      "originalInternalId": "693122094",
+      "oldRect": [
+        661.0,
+        1130.0,
+        96.0,
+        89.0
+      ],
+      "oldPivotX": 0.489583,
+      "oldBbox": [
+        663,
+        1132,
+        92,
+        85
+      ],
+      "rawMeasuredRect": [
+        2204,
+        3741,
+        223,
+        249
+      ],
+      "newRect": [
+        2204,
+        3741,
+        223,
+        249
+      ],
+      "newBbox": [
+        2206,
+        3743,
+        219,
+        245
+      ],
+      "oldPivotAbsoluteX": 707.999968,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2315.5,
+      "priorPivotX": 0.486879,
+      "pivotX": 0.482136,
+      "pivotDeltaFraction": -0.004742999999999997,
+      "anchorDeltaPixels": -1.0576889999997547,
+      "imageShiftWorld": 0.004147799999999038,
+      "rawBboxCenterOffsetWorld": 0.017580917755676984,
+      "newBboxCenterOffsetWorld": 0.015622243137254284,
+      "bboxCenterImageShiftWorld": -0.0019586746184227007,
+      "oldBboxToPivotWorld": -0.01562265374777084,
+      "newBboxToPivotWorld": -0.015622243137254284,
+      "worldOffsetRoundingError": 4.106105165567475e-07,
+      "oldFootOffsetWorld": -0.015621653929924127,
+      "priorFootOffsetWorld": 0.026593744089088586,
+      "newFootOffsetWorld": 0.021504596078430752
+    },
+    {
+      "name": "cless_1_1",
+      "originalSpriteId": "72ca1c30c00d4ac43aab40eb554b5a08",
+      "originalInternalId": "-1514159011",
+      "oldRect": [
+        822.0,
+        1129.0,
+        93.0,
+        87.0
+      ],
+      "oldPivotX": 0.387097,
+      "oldBbox": [
+        824,
+        1131,
+        89,
+        83
+      ],
+      "rawMeasuredRect": [
+        2726,
+        3709,
+        221,
+        242
+      ],
+      "newRect": [
+        2726,
+        3709,
+        221,
+        242
+      ],
+      "newBbox": [
+        2728,
+        3711,
+        217,
+        238
+      ],
+      "oldPivotAbsoluteX": 858.0000210000001,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 868.5,
+      "newBboxCenterX": 2836.5,
+      "priorPivotX": 0.346273,
+      "pivotX": 0.310732,
+      "pivotDeltaFraction": -0.03554099999999999,
+      "anchorDeltaPixels": -7.854560999999649,
+      "imageShiftWorld": 0.03080219999999862,
+      "rawBboxCenterOffsetWorld": 0.2041325070534391,
+      "newBboxCenterOffsetWorld": 0.1640322666666661,
+      "bboxCenterImageShiftWorld": -0.04010024038677301,
+      "oldBboxToPivotWorld": -0.16403228724266702,
+      "newBboxToPivotWorld": -0.1640322666666661,
+      "worldOffsetRoundingError": 2.057600093086087e-08,
+      "oldFootOffsetWorld": -3.280652315635453e-07,
+      "priorFootOffsetWorld": 0.12902562094167574,
+      "newFootOffsetWorld": 0.11501265882352883
+    },
+    {
+      "name": "cless_1_2",
+      "originalSpriteId": "d2622518681373243ad9d971393045a2",
+      "originalInternalId": "-1599462093",
+      "oldRect": [
+        971.0,
+        1130.0,
+        77.0,
+        87.0
+      ],
+      "oldPivotX": 0.480519,
+      "oldBbox": [
+        973,
+        1132,
+        73,
+        83
+      ],
+      "rawMeasuredRect": [
+        3203,
+        3739,
+        189,
+        246
+      ],
+      "newRect": [
+        3203,
+        3739,
+        189,
+        246
+      ],
+      "newBbox": [
+        3205,
+        3741,
+        185,
+        242
+      ],
+      "oldPivotAbsoluteX": 1007.999963,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1009.5,
+      "newBboxCenterX": 3297.5,
+      "priorPivotX": 0.47343,
+      "pivotX": 0.468383,
+      "pivotDeltaFraction": -0.005047000000000024,
+      "anchorDeltaPixels": -0.9538830000001326,
+      "imageShiftWorld": 0.0037407176470593433,
+      "rawBboxCenterOffsetWorld": 0.03017332025552164,
+      "newBboxCenterOffsetWorld": 0.023433776470588495,
+      "bboxCenterImageShiftWorld": -0.006739543784933143,
+      "oldBboxToPivotWorld": -0.02343380877796358,
+      "newBboxToPivotWorld": -0.023433776470588495,
+      "worldOffsetRoundingError": 3.230737508422288e-08,
+      "oldFootOffsetWorld": 0.015622731858539837,
+      "priorFootOffsetWorld": 0.021160493922110037,
+      "newFootOffsetWorld": 0.017551423529412025
+    },
+    {
+      "name": "cless_1_3",
+      "originalSpriteId": "71d65592915e12243bc49b729c9ae914",
+      "originalInternalId": "846984748",
+      "oldRect": [
+        1138.0,
+        1130.0,
+        77.0,
+        86.0
+      ],
+      "oldPivotX": 0.337663,
+      "oldBbox": [
+        1140,
+        1132,
+        73,
+        82
+      ],
+      "rawMeasuredRect": [
+        3747,
+        3737,
+        192,
+        247
+      ],
+      "newRect": [
+        3747,
+        3737,
+        192,
+        247
+      ],
+      "newBbox": [
+        3749,
+        3739,
+        188,
+        243
+      ],
+      "oldPivotAbsoluteX": 1164.000051,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          3687,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1176.5,
+      "newBboxCenterX": 3843.0,
+      "priorPivotX": 0.286609,
+      "pivotX": 0.240649,
+      "pivotDeltaFraction": -0.04596,
+      "anchorDeltaPixels": -8.82432000000017,
+      "imageShiftWorld": 0.0346051764705889,
+      "rawBboxCenterOffsetWorld": 0.2461767710864675,
+      "newBboxCenterOffsetWorld": 0.1952760470588235,
+      "bboxCenterImageShiftWorld": -0.05090072402764398,
+      "oldBboxToPivotWorld": -0.195276126255748,
+      "newBboxToPivotWorld": -0.1952760470588235,
+      "worldOffsetRoundingError": 7.91969244906543e-08,
+      "oldFootOffsetWorld": 0.09373212630323935,
+      "priorFootOffsetWorld": 0.15003995686341037,
+      "newFootOffsetWorld": 0.13253094901960782
+    },
+    {
+      "name": "cless_2_0",
+      "originalSpriteId": "0727a6015171047448a771d7d7051430",
+      "originalInternalId": "-1889653284",
+      "oldRect": [
+        39.0,
+        1018.0,
+        95.0,
+        82.0
+      ],
+      "oldPivotX": 0.515789,
+      "oldBbox": [
+        41,
+        1020,
+        91,
+        78
+      ],
+      "rawMeasuredRect": [
+        172,
+        3347,
+        222,
+        226
+      ],
+      "newRect": [
+        172,
+        3347,
+        222,
+        226
+      ],
+      "newBbox": [
+        174,
+        3349,
+        218,
+        222
+      ],
+      "oldPivotAbsoluteX": 87.999955,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 86.5,
+      "newBboxCenterX": 283.0,
+      "priorPivotX": 0.519993,
+      "pivotX": 0.526916,
+      "pivotDeltaFraction": 0.0069230000000000125,
+      "anchorDeltaPixels": 1.5369060000000445,
+      "imageShiftWorld": -0.006027082352941351,
+      "rawBboxCenterOffsetWorld": -0.026668628658816928,
+      "newBboxCenterOffsetWorld": -0.02343275294117664,
+      "bboxCenterImageShiftWorld": 0.0032358757176402866,
+      "oldBboxToPivotWorld": 0.023432527761348475,
+      "newBboxToPivotWorld": 0.02343275294117664,
+      "worldOffsetRoundingError": 2.2517982816577797e-07,
+      "oldFootOffsetWorld": -0.015621450841924733,
+      "priorFootOffsetWorld": -0.044694281325640135,
+      "newFootOffsetWorld": -0.035197458823529586
+    },
+    {
+      "name": "cless_2_1",
+      "originalSpriteId": "e8f4fef2750fd1d459dcdd102e380691",
+      "originalInternalId": "-568219782",
+      "oldRect": [
+        199.0,
+        1018.0,
+        93.0,
+        81.0
+      ],
+      "oldPivotX": 0.365592,
+      "oldBbox": [
+        201,
+        1020,
+        89,
+        77
+      ],
+      "rawMeasuredRect": [
+        688,
+        3343,
+        227,
+        228
+      ],
+      "newRect": [
+        688,
+        3343,
+        227,
+        228
+      ],
+      "newBbox": [
+        690,
+        3345,
+        223,
+        224
+      ],
+      "oldPivotAbsoluteX": 233.000056,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 245.5,
+      "newBboxCenterX": 801.5,
+      "priorPivotX": 0.321847,
+      "pivotX": 0.280637,
+      "pivotDeltaFraction": -0.04120999999999997,
+      "anchorDeltaPixels": -9.354669999999942,
+      "imageShiftWorld": 0.03668498039215663,
+      "rawBboxCenterOffsetWorld": 0.24299019019947682,
+      "newBboxCenterOffsetWorld": 0.19527608235294105,
+      "bboxCenterImageShiftWorld": -0.047714107846535764,
+      "oldBboxToPivotWorld": -0.19527604814497856,
+      "newBboxToPivotWorld": -0.19527608235294105,
+      "worldOffsetRoundingError": -3.420796249042901e-08,
+      "oldFootOffsetWorld": -8.748406149867405e-07,
+      "priorFootOffsetWorld": 0.07174648986465636,
+      "newFootOffsetWorld": 0.08351137647058812
+    },
+    {
+      "name": "cless_2_2",
+      "originalSpriteId": "3258e712ca5ec0344b135e5fb3cec084",
+      "originalInternalId": "1596023460",
+      "oldRect": [
+        343.0,
+        1017.0,
+        77.0,
+        84.0
+      ],
+      "oldPivotX": 0.493507,
+      "oldBbox": [
+        345,
+        1019,
+        73,
+        80
+      ],
+      "rawMeasuredRect": [
+        1148,
+        3346,
+        197,
+        228
+      ],
+      "newRect": [
+        1148,
+        3346,
+        197,
+        228
+      ],
+      "newBbox": [
+        1150,
+        3348,
+        193,
+        224
+      ],
+      "oldPivotAbsoluteX": 381.000039,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 381.5,
+      "newBboxCenterX": 1246.5,
+      "priorPivotX": 0.489739,
+      "pivotX": 0.48989,
+      "pivotDeltaFraction": 0.00015100000000001224,
+      "anchorDeltaPixels": 0.029747000000043045,
+      "imageShiftWorld": -0.00011665490196095312,
+      "rawBboxCenterOffsetWorld": 0.012145786912270161,
+      "newBboxCenterOffsetWorld": 0.007810470588234845,
+      "bboxCenterImageShiftWorld": -0.004335316324035316,
+      "oldBboxToPivotWorld": -0.007810467655423789,
+      "newBboxToPivotWorld": -0.007810470588234845,
+      "worldOffsetRoundingError": -2.9328110565107757e-09,
+      "oldFootOffsetWorld": -0.03124491694169492,
+      "priorFootOffsetWorld": -0.014892692087964652,
+      "newFootOffsetWorld": -0.009836588235294567
+    },
+    {
+      "name": "cless_2_3",
+      "originalSpriteId": "4017873c221484a43b6276ae4b5c790e",
+      "originalInternalId": "121740285",
+      "oldRect": [
+        504.0,
+        1018.0,
+        79.0,
+        82.0
+      ],
+      "oldPivotX": 0.468354,
+      "oldBbox": [
+        506,
+        1020,
+        75,
+        78
+      ],
+      "rawMeasuredRect": [
+        1678,
+        3347,
+        196,
+        224
+      ],
+      "newRect": [
+        1678,
+        3347,
+        196,
+        224
+      ],
+      "newBbox": [
+        1680,
+        3349,
+        192,
+        220
+      ],
+      "oldPivotAbsoluteX": 540.999966,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 543.5,
+      "newBboxCenterX": 1776.0,
+      "priorPivotX": 0.454561,
+      "pivotX": 0.449187,
+      "pivotDeltaFraction": -0.00537399999999999,
+      "anchorDeltaPixels": -1.0533040000000256,
+      "imageShiftWorld": 0.004130603921568728,
+      "rawBboxCenterOffsetWorld": 0.05351241859314867,
+      "newBboxCenterOffsetWorld": 0.039056266666667026,
+      "bboxCenterImageShiftWorld": -0.014456151926481642,
+      "oldBboxToPivotWorld": -0.03905591575034967,
+      "newBboxToPivotWorld": -0.039056266666667026,
+      "worldOffsetRoundingError": -3.5091631735845175e-07,
+      "oldFootOffsetWorld": 5.311532309558147e-07,
+      "priorFootOffsetWorld": -0.012581641185203093,
+      "newFootOffsetWorld": -0.004080988235293761
+    },
+    {
+      "name": "cless_3_0",
+      "originalSpriteId": "aed45237043bc9040b729908f49e4b4f",
+      "originalInternalId": "595479373",
+      "oldRect": [
+        658.0,
+        1017.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.554455,
+      "oldBbox": [
+        660,
+        1019,
+        97,
+        78
+      ],
+      "rawMeasuredRect": [
+        2203,
+        3342,
+        222,
+        236
+      ],
+      "newRect": [
+        2203,
+        3342,
+        222,
+        236
+      ],
+      "newBbox": [
+        2205,
+        3344,
+        218,
+        232
+      ],
+      "oldPivotAbsoluteX": 713.999955,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 708.5,
+      "newBboxCenterX": 2314.0,
+      "priorPivotX": 0.581856,
+      "pivotX": 0.598693,
+      "pivotDeltaFraction": 0.01683699999999999,
+      "anchorDeltaPixels": 3.7378140000000712,
+      "imageShiftWorld": -0.014658094117647338,
+      "rawBboxCenterOffsetWorld": -0.10918757902746523,
+      "newBboxCenterOffsetWorld": -0.08592096470588241,
+      "bboxCenterImageShiftWorld": 0.02326661432158282,
+      "oldBboxToPivotWorld": 0.08592114311673842,
+      "newBboxToPivotWorld": 0.08592096470588241,
+      "worldOffsetRoundingError": -1.7841085600545092e-07,
+      "oldFootOffsetWorld": -0.062487912358467186,
+      "priorFootOffsetWorld": -0.09116192636064202,
+      "newFootOffsetWorld": -0.07415625882352947
+    },
+    {
+      "name": "cless_3_1",
+      "originalSpriteId": "ebc8f2d64770f5141a54c0b6661e25d8",
+      "originalInternalId": "-1649125015",
+      "oldRect": [
+        823.0,
+        1017.0,
+        92.0,
+        82.0
+      ],
+      "oldPivotX": 0.369565,
+      "oldBbox": [
+        825,
+        1019,
+        88,
+        78
+      ],
+      "rawMeasuredRect": [
+        2724,
+        3337,
+        229,
+        238
+      ],
+      "newRect": [
+        2724,
+        3337,
+        229,
+        238
+      ],
+      "newBbox": [
+        2726,
+        3339,
+        225,
+        234
+      ],
+      "oldPivotAbsoluteX": 856.99998,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 869.0,
+      "newBboxCenterX": 2838.5,
+      "priorPivotX": 0.328646,
+      "pivotX": 0.291249,
+      "pivotDeltaFraction": -0.037397000000000014,
+      "anchorDeltaPixels": -8.563912999999957,
+      "imageShiftWorld": 0.03358397254901944,
+      "rawBboxCenterOffsetWorld": 0.2357759334464053,
+      "newBboxCenterOffsetWorld": 0.1874665843137247,
+      "bboxCenterImageShiftWorld": -0.04830934913268059,
+      "oldBboxToPivotWorld": -0.18746615850924578,
+      "newBboxToPivotWorld": -0.1874665843137247,
+      "worldOffsetRoundingError": -4.258044789262616e-07,
+      "oldFootOffsetWorld": -0.031243995234618977,
+      "priorFootOffsetWorld": 0.15466049644570085,
+      "newFootOffsetWorld": 0.13452540784313646
+    },
+    {
+      "name": "cless_3_2",
+      "originalSpriteId": "7c361ef249f439b489848b15a1547cb8",
+      "originalInternalId": "312029061",
+      "oldRect": [
+        970.0,
+        1018.0,
+        78.0,
+        82.0
+      ],
+      "oldPivotX": 0.487179,
+      "oldBbox": [
+        972,
+        1020,
+        74,
+        78
+      ],
+      "rawMeasuredRect": [
+        3195,
+        3341,
+        202,
+        235
+      ],
+      "newRect": [
+        3195,
+        3341,
+        202,
+        235
+      ],
+      "newBbox": [
+        3197,
+        3343,
+        198,
+        231
+      ],
+      "oldPivotAbsoluteX": 1007.999962,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1009.0,
+      "newBboxCenterX": 3296.0,
+      "priorPivotX": 0.482566,
+      "pivotX": 0.480278,
+      "pivotDeltaFraction": -0.0022880000000000122,
+      "anchorDeltaPixels": -0.4621759999999995,
+      "imageShiftWorld": 0.0018124549019607823,
+      "rawBboxCenterOffsetWorld": 0.021160121391954497,
+      "newBboxCenterOffsetWorld": 0.015622917647058285,
+      "bboxCenterImageShiftWorld": -0.005537203744896212,
+      "oldBboxToPivotWorld": -0.015622747480693637,
+      "newBboxToPivotWorld": -0.015622917647058285,
+      "worldOffsetRoundingError": -1.7016636464847745e-07,
+      "oldFootOffsetWorld": -0.01562156019700133,
+      "priorFootOffsetWorld": 0.015151570503013427,
+      "newFootOffsetWorld": 0.011701349019607305
+    },
+    {
+      "name": "cless_3_3",
+      "originalSpriteId": "a848464e98c2e5845acb2233c540ab7e",
+      "originalInternalId": "2006409854",
+      "oldRect": [
+        1130.0,
+        1018.0,
+        80.0,
+        80.0
+      ],
+      "oldPivotX": 0.4625,
+      "oldBbox": [
+        1132,
+        1020,
+        76,
+        76
+      ],
+      "rawMeasuredRect": [
+        3724,
+        3338,
+        197,
+        235
+      ],
+      "newRect": [
+        3724,
+        3338,
+        197,
+        235
+      ],
+      "newBbox": [
+        3726,
+        3340,
+        193,
+        231
+      ],
+      "oldPivotAbsoluteX": 1167.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          3277,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.5,
+      "priorPivotX": 0.445826,
+      "pivotX": 0.439335,
+      "pivotDeltaFraction": -0.0064910000000000245,
+      "anchorDeltaPixels": -1.2787269999998898,
+      "imageShiftWorld": 0.0050146156862740775,
+      "rawBboxCenterOffsetWorld": 0.06412492546392626,
+      "newBboxCenterOffsetWorld": 0.04686668627450939,
+      "bboxCenterImageShiftWorld": -0.017258239189416866,
+      "oldBboxToPivotWorld": -0.04686646151654245,
+      "newBboxToPivotWorld": -0.04686668627450939,
+      "worldOffsetRoundingError": -2.2475796693927075e-07,
+      "oldFootOffsetWorld": 0.0,
+      "priorFootOffsetWorld": -0.010981960647837114,
+      "newFootOffsetWorld": -0.002152921568627861
+    },
+    {
+      "name": "cless_4_0",
+      "originalSpriteId": "0d811cb9813250f43801ef455ebc77c2",
+      "originalInternalId": "407145226",
+      "oldRect": [
+        39.0,
+        904.0,
+        92.0,
+        83.0
+      ],
+      "oldPivotX": 0.652174,
+      "oldBbox": [
+        41,
+        906,
+        88,
+        79
+      ],
+      "rawMeasuredRect": [
+        167,
+        2982,
+        221,
+        213
+      ],
+      "newRect": [
+        167,
+        2982,
+        221,
+        213
+      ],
+      "newBbox": [
+        169,
+        2984,
+        217,
+        209
+      ],
+      "oldPivotAbsoluteX": 99.00000800000001,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 85.0,
+      "newBboxCenterX": 277.5,
+      "priorPivotX": 0.70755,
+      "pivotX": 0.752358,
+      "pivotDeltaFraction": 0.04480799999999996,
+      "anchorDeltaPixels": 9.902567999999974,
+      "imageShiftWorld": -0.0388335999999999,
+      "rawBboxCenterOffsetWorld": -0.27560351687693807,
+      "newBboxCenterOffsetWorld": -0.21871026666666668,
+      "bboxCenterImageShiftWorld": 0.05689325021027139,
+      "oldBboxToPivotWorld": 0.2187102787210956,
+      "newBboxToPivotWorld": 0.21871026666666668,
+      "worldOffsetRoundingError": -1.2054428927266159e-08,
+      "oldFootOffsetWorld": -0.07029981725204451,
+      "priorFootOffsetWorld": -0.18847952898729253,
+      "newFootOffsetWorld": -0.16184752156862744
+    },
+    {
+      "name": "cless_4_1",
+      "originalSpriteId": "327dff79fc72b404fa3c0c1feafffd62",
+      "originalInternalId": "-940373323",
+      "oldRect": [
+        196.0,
+        903.0,
+        94.0,
+        83.0
+      ],
+      "oldPivotX": 0.340425,
+      "oldBbox": [
+        198,
+        905,
+        90,
+        79
+      ],
+      "rawMeasuredRect": [
+        679,
+        2978,
+        230,
+        218
+      ],
+      "newRect": [
+        679,
+        2978,
+        230,
+        218
+      ],
+      "newBbox": [
+        681,
+        2980,
+        226,
+        214
+      ],
+      "oldPivotAbsoluteX": 227.99995,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 243.0,
+      "newBboxCenterX": 794.0,
+      "priorPivotX": 0.28577,
+      "pivotX": 0.240196,
+      "pivotDeltaFraction": -0.04557400000000003,
+      "anchorDeltaPixels": -10.482020000000034,
+      "imageShiftWorld": 0.04110596078431386,
+      "rawBboxCenterOffsetWorld": 0.296058727095704,
+      "newBboxCenterOffsetWorld": 0.23433301960784303,
+      "bboxCenterImageShiftWorld": -0.06172570748786099,
+      "oldBboxToPivotWorld": -0.234333088690404,
+      "newBboxToPivotWorld": -0.23433301960784303,
+      "worldOffsetRoundingError": 6.908256097726273e-08,
+      "oldFootOffsetWorld": 0.031245088785386715,
+      "priorFootOffsetWorld": 0.13382785309429515,
+      "newFootOffsetWorld": 0.12845066666666655
+    },
+    {
+      "name": "cless_4_2",
+      "originalSpriteId": "4c89d84ae90dab34e9cf693734152a0e",
+      "originalInternalId": "-1420383089",
+      "oldRect": [
+        340.0,
+        902.0,
+        80.0,
+        83.0
+      ],
+      "oldPivotX": 0.61875,
+      "oldBbox": [
+        342,
+        904,
+        76,
+        79
+      ],
+      "rawMeasuredRect": [
+        1142,
+        2970,
+        200,
+        223
+      ],
+      "newRect": [
+        1142,
+        2970,
+        200,
+        223
+      ],
+      "newBbox": [
+        1144,
+        2972,
+        196,
+        219
+      ],
+      "oldPivotAbsoluteX": 389.5,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 380.0,
+      "newBboxCenterX": 1242.0,
+      "priorPivotX": 0.651212,
+      "pivotX": 0.689223,
+      "pivotDeltaFraction": 0.03801100000000002,
+      "anchorDeltaPixels": 7.6021999999998116,
+      "imageShiftWorld": -0.029812549019607105,
+      "rawBboxCenterOffsetWorld": -0.18171299940371194,
+      "newBboxCenterOffsetWorld": -0.14841019607843098,
+      "bboxCenterImageShiftWorld": 0.03330280332528096,
+      "oldBboxToPivotWorld": 0.1484104614690511,
+      "newBboxToPivotWorld": 0.14841019607843098,
+      "worldOffsetRoundingError": -2.6539062011887715e-07,
+      "oldFootOffsetWorld": -0.03905538459711871,
+      "priorFootOffsetWorld": -0.15767879584794764,
+      "newFootOffsetWorld": -0.13272392156862706
+    },
+    {
+      "name": "cless_4_3",
+      "originalSpriteId": "26c075f874b07a84f805afd33d4de6b4",
+      "originalInternalId": "1863705933",
+      "oldRect": [
+        503.0,
+        903.0,
+        92.0,
+        81.0
+      ],
+      "oldPivotX": 0.282609,
+      "oldBbox": [
+        505,
+        905,
+        88,
+        77
+      ],
+      "rawMeasuredRect": [
+        1693,
+        2974,
+        200,
+        216
+      ],
+      "newRect": [
+        1693,
+        2974,
+        200,
+        216
+      ],
+      "newBbox": [
+        1695,
+        2976,
+        196,
+        212
+      ],
+      "oldPivotAbsoluteX": 529.000028,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 549.0,
+      "newBboxCenterX": 1793.0,
+      "priorPivotX": 0.17449,
+      "pivotX": 0.101636,
+      "pivotDeltaFraction": -0.072854,
+      "anchorDeltaPixels": -14.570799999999963,
+      "imageShiftWorld": 0.0571403921568626,
+      "rawBboxCenterOffsetWorld": 0.391168679971842,
+      "newBboxCenterOffsetWorld": 0.31244235294117667,
+      "bboxCenterImageShiftWorld": -0.07872632703066534,
+      "oldBboxToPivotWorld": -0.3124426393566415,
+      "newBboxToPivotWorld": -0.31244235294117667,
+      "worldOffsetRoundingError": 2.864154648452022e-07,
+      "oldFootOffsetWorld": 0.04686602409623429,
+      "priorFootOffsetWorld": 0.21692070419255102,
+      "newFootOffsetWorld": 0.19871686274509825
+    },
+    {
+      "name": "cless_5_0",
+      "originalSpriteId": "2d773d60fe065fd41a88b995c654772e",
+      "originalInternalId": "-1794479540",
+      "oldRect": [
+        652.0,
+        905.0,
+        107.0,
+        80.0
+      ],
+      "oldPivotX": 0.401869,
+      "oldBbox": [
+        654,
+        907,
+        103,
+        76
+      ],
+      "rawMeasuredRect": [
+        2184,
+        2971,
+        240,
+        232
+      ],
+      "newRect": [
+        2184,
+        2971,
+        240,
+        232
+      ],
+      "newBbox": [
+        2186,
+        2973,
+        236,
+        228
+      ],
+      "oldPivotAbsoluteX": 694.999983,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 705.5,
+      "newBboxCenterX": 2304.0,
+      "priorPivotX": 0.358798,
+      "pivotX": 0.325715,
+      "pivotDeltaFraction": -0.03308300000000003,
+      "anchorDeltaPixels": -7.939919999999802,
+      "imageShiftWorld": 0.031136941176469812,
+      "rawBboxCenterOffsetWorld": 0.20362065662886208,
+      "newBboxCenterOffsetWorld": 0.1640329411764701,
+      "bboxCenterImageShiftWorld": -0.03958771545239198,
+      "oldBboxToPivotWorld": -0.16403288088451318,
+      "newBboxToPivotWorld": -0.1640329411764701,
+      "worldOffsetRoundingError": -6.029195692702771e-08,
+      "oldFootOffsetWorld": 0.015622419415462073,
+      "priorFootOffsetWorld": 0.0834496388500407,
+      "newFootOffsetWorld": 0.08560156862745048
+    },
+    {
+      "name": "cless_5_1",
+      "originalSpriteId": "e34d2486fed727241ab370fb132173c6",
+      "originalInternalId": "-1252333515",
+      "oldRect": [
+        822.0,
+        903.0,
+        95.0,
+        82.0
+      ],
+      "oldPivotX": 0.315789,
+      "oldBbox": [
+        824,
+        905,
+        91,
+        78
+      ],
+      "rawMeasuredRect": [
+        2727,
+        2967,
+        227,
+        233
+      ],
+      "newRect": [
+        2727,
+        2967,
+        227,
+        233
+      ],
+      "newBbox": [
+        2729,
+        2969,
+        223,
+        229
+      ],
+      "oldPivotAbsoluteX": 851.999955,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2840.5,
+      "priorPivotX": 0.246379,
+      "pivotX": 0.19289,
+      "pivotDeltaFraction": -0.05348899999999998,
+      "anchorDeltaPixels": -12.142002999999931,
+      "imageShiftWorld": 0.04761569803921542,
+      "rawBboxCenterOffsetWorld": 0.34592409349593506,
+      "newBboxCenterOffsetWorld": 0.273388117647058,
+      "bboxCenterImageShiftWorld": -0.07253597584887705,
+      "oldBboxToPivotWorld": -0.27338839517675373,
+      "newBboxToPivotWorld": -0.273388117647058,
+      "worldOffsetRoundingError": 2.7752969572469866e-07,
+      "oldFootOffsetWorld": 0.05467824143288894,
+      "priorFootOffsetWorld": 0.2588001056062896,
+      "newFootOffsetWorld": 0.2165253725490188
+    },
+    {
+      "name": "cless_5_2",
+      "originalSpriteId": "43b396088458f4641b95298a4c51c4cc",
+      "originalInternalId": "1055154349",
+      "oldRect": [
+        959.0,
+        905.0,
+        90.0,
+        79.0
+      ],
+      "oldPivotX": 0.366667,
+      "oldBbox": [
+        961,
+        907,
+        86,
+        75
+      ],
+      "rawMeasuredRect": [
+        3176,
+        2969,
+        207,
+        232
+      ],
+      "newRect": [
+        3176,
+        2969,
+        207,
+        232
+      ],
+      "newBbox": [
+        3178,
+        2971,
+        203,
+        228
+      ],
+      "oldPivotAbsoluteX": 992.00003,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1004.0,
+      "newBboxCenterX": 3279.5,
+      "priorPivotX": 0.310227,
+      "pivotX": 0.269064,
+      "pivotDeltaFraction": -0.04116299999999995,
+      "anchorDeltaPixels": -8.520740999999816,
+      "imageShiftWorld": 0.03341467058823457,
+      "rawBboxCenterOffsetWorld": 0.23603397066433174,
+      "newBboxCenterOffsetWorld": 0.1874656941176463,
+      "bboxCenterImageShiftWorld": -0.04856827654668544,
+      "oldBboxToPivotWorld": -0.18746537740155406,
+      "newBboxToPivotWorld": -0.1874656941176463,
+      "worldOffsetRoundingError": -3.1671609224126485e-07,
+      "oldFootOffsetWorld": 0.062488146690774175,
+      "priorFootOffsetWorld": 0.10084157566315767,
+      "newFootOffsetWorld": 0.09923039999999923
+    },
+    {
+      "name": "cless_5_3",
+      "originalSpriteId": "8d984a4e659dca74abaf2d1a936c174b",
+      "originalInternalId": "-2127999419",
+      "oldRect": [
+        1120.0,
+        905.0,
+        100.0,
+        79.0
+      ],
+      "oldPivotX": 0.36,
+      "oldBbox": [
+        1122,
+        907,
+        96,
+        75
+      ],
+      "rawMeasuredRect": [
+        3717,
+        2971,
+        210,
+        229
+      ],
+      "newRect": [
+        3717,
+        2971,
+        210,
+        229
+      ],
+      "newBbox": [
+        3719,
+        2973,
+        206,
+        225
+      ],
+      "oldPivotAbsoluteX": 1156.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          2868,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.0,
+      "priorPivotX": 0.280466,
+      "pivotX": 0.234423,
+      "pivotDeltaFraction": -0.046043,
+      "anchorDeltaPixels": -9.66903000000002,
+      "imageShiftWorld": 0.037917764705882435,
+      "rawBboxCenterOffsetWorld": 0.2770070542790854,
+      "newBboxCenterOffsetWorld": 0.21871047058823523,
+      "bboxCenterImageShiftWorld": -0.05829658369085017,
+      "oldBboxToPivotWorld": -0.21871015374386477,
+      "newBboxToPivotWorld": -0.21871047058823523,
+      "worldOffsetRoundingError": -3.1684437046264335e-07,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.1027590784997944,
+      "newFootOffsetWorld": 0.1049849803921568
+    },
+    {
+      "name": "cless_6_0",
+      "originalSpriteId": "8aec6dd586ce3b246853290a378f2a81",
+      "originalInternalId": "-1090570019",
+      "oldRect": [
+        42.0,
+        790.0,
+        92.0,
+        84.0
+      ],
+      "oldPivotX": 0.315217,
+      "oldBbox": [
+        44,
+        792,
+        88,
+        80
+      ],
+      "rawMeasuredRect": [
+        180,
+        2601,
+        214,
+        234
+      ],
+      "newRect": [
+        180,
+        2601,
+        214,
+        234
+      ],
+      "newBbox": [
+        182,
+        2603,
+        210,
+        230
+      ],
+      "oldPivotAbsoluteX": 70.999964,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 88.0,
+      "newBboxCenterX": 287.0,
+      "priorPivotX": 0.242573,
+      "pivotX": 0.183541,
+      "pivotDeltaFraction": -0.059032,
+      "anchorDeltaPixels": -12.632847999999996,
+      "imageShiftWorld": 0.04954058039215684,
+      "rawBboxCenterOffsetWorld": 0.33100733115311065,
+      "newBboxCenterOffsetWorld": 0.26557735686274514,
+      "bboxCenterImageShiftWorld": -0.06542997429036551,
+      "oldBboxToPivotWorld": -0.2655771776579453,
+      "newBboxToPivotWorld": -0.26557735686274514,
+      "worldOffsetRoundingError": -1.7920479983279947e-07,
+      "oldFootOffsetWorld": 0.062489177752928046,
+      "priorFootOffsetWorld": 0.16877645715170178,
+      "newFootOffsetWorld": 0.15969500392156866
+    },
+    {
+      "name": "cless_6_1",
+      "originalSpriteId": "eeeb3db5eb9b53b4da19c536672921b4",
+      "originalInternalId": "-1784538601",
+      "oldRect": [
+        198.0,
+        792.0,
+        94.0,
+        83.0
+      ],
+      "oldPivotX": 0.234043,
+      "oldBbox": [
+        200,
+        794,
+        90,
+        79
+      ],
+      "rawMeasuredRect": [
+        676,
+        2609,
+        248,
+        228
+      ],
+      "newRect": [
+        676,
+        2609,
+        248,
+        228
+      ],
+      "newBbox": [
+        678,
+        2611,
+        244,
+        224
+      ],
+      "oldPivotAbsoluteX": 220.000042,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 245.0,
+      "newBboxCenterX": 800.0,
+      "priorPivotX": 0.171761,
+      "pivotX": 0.098423,
+      "pivotDeltaFraction": -0.073338,
+      "anchorDeltaPixels": -18.187823999999978,
+      "imageShiftWorld": 0.07132479999999991,
+      "rawBboxCenterOffsetWorld": 0.48911570233831175,
+      "newBboxCenterOffsetWorld": 0.3905533176470588,
+      "bboxCenterImageShiftWorld": -0.09856238469125295,
+      "oldBboxToPivotWorld": -0.39055318984072573,
+      "newBboxToPivotWorld": -0.3905533176470588,
+      "worldOffsetRoundingError": -1.2780633307230005e-07,
+      "oldFootOffsetWorld": 0.2499538052910984,
+      "priorFootOffsetWorld": 0.4049959898931368,
+      "newFootOffsetWorld": 0.33565135686274505
+    },
+    {
+      "name": "cless_6_2",
+      "originalSpriteId": "0b8443c04b4f0a945992cff2fb089a98",
+      "originalInternalId": "-1686153134",
+      "oldRect": [
+        338.0,
+        790.0,
+        84.0,
+        87.0
+      ],
+      "oldPivotX": 0.654762,
+      "oldBbox": [
+        340,
+        792,
+        80,
+        83
+      ],
+      "rawMeasuredRect": [
+        1141,
+        2610,
+        202,
+        226
+      ],
+      "newRect": [
+        1141,
+        2610,
+        202,
+        226
+      ],
+      "newBbox": [
+        1143,
+        2612,
+        198,
+        222
+      ],
+      "oldPivotAbsoluteX": 393.000008,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 380.0,
+      "newBboxCenterX": 1242.0,
+      "priorPivotX": 0.70631,
+      "pivotX": 0.756374,
+      "pivotDeltaFraction": 0.050064,
+      "anchorDeltaPixels": 10.11292800000001,
+      "imageShiftWorld": -0.03965854117647063,
+      "rawBboxCenterOffsetWorld": -0.2504040750472813,
+      "newBboxCenterOffsetWorld": -0.20308842352941184,
+      "bboxCenterImageShiftWorld": 0.047315651517869456,
+      "oldBboxToPivotWorld": 0.20308812488224767,
+      "newBboxToPivotWorld": 0.20308842352941184,
+      "worldOffsetRoundingError": 2.986471641652777e-07,
+      "oldFootOffsetWorld": -0.015622278816077879,
+      "priorFootOffsetWorld": -0.24439552415834023,
+      "newFootOffsetWorld": -0.19916685490196084
+    },
+    {
+      "name": "cless_6_3",
+      "originalSpriteId": "bb2797a1f1ed7024d999bedc04443159",
+      "originalInternalId": "991059225",
+      "oldRect": [
+        497.0,
+        792.0,
+        98.0,
+        84.0
+      ],
+      "oldPivotX": 0.255102,
+      "oldBbox": [
+        499,
+        794,
+        94,
+        80
+      ],
+      "rawMeasuredRect": [
+        1683,
+        2612,
+        201,
+        225
+      ],
+      "newRect": [
+        1683,
+        2612,
+        201,
+        225
+      ],
+      "newBbox": [
+        1685,
+        2614,
+        197,
+        221
+      ],
+      "oldPivotAbsoluteX": 521.999996,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 546.0,
+      "newBboxCenterX": 1783.5,
+      "priorPivotX": 0.109619,
+      "pivotX": 0.02434,
+      "pivotDeltaFraction": -0.085279,
+      "anchorDeltaPixels": -17.14107899999999,
+      "imageShiftWorld": 0.06721991764705879,
+      "rawBboxCenterOffsetWorld": 0.47147044501971586,
+      "newBboxCenterOffsetWorld": 0.3749319999999996,
+      "bboxCenterImageShiftWorld": -0.09653844501971626,
+      "oldBboxToPivotWorld": -0.3749317546209548,
+      "newBboxToPivotWorld": -0.3749319999999996,
+      "worldOffsetRoundingError": -2.4537904480537165e-07,
+      "oldFootOffsetWorld": 0.046866524005157645,
+      "priorFootOffsetWorld": 0.34228660090748286,
+      "newFootOffsetWorld": 0.2906182745098035
+    },
+    {
+      "name": "cless_7_0",
+      "originalSpriteId": "8c28a6e1d2b1c4b46b1277d6160950f1",
+      "originalInternalId": "-1769122838",
+      "oldRect": [
+        647.0,
+        787.0,
+        119.0,
+        81.0
+      ],
+      "oldPivotX": 0.394958,
+      "oldBbox": [
+        649,
+        789,
+        115,
+        77
+      ],
+      "rawMeasuredRect": [
+        2187,
+        2587,
+        240,
+        231
+      ],
+      "newRect": [
+        2187,
+        2587,
+        240,
+        231
+      ],
+      "newBbox": [
+        2189,
+        2589,
+        236,
+        227
+      ],
+      "oldPivotAbsoluteX": 694.000002,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 706.5,
+      "newBboxCenterX": 2307.0,
+      "priorPivotX": 0.332689,
+      "pivotX": 0.292518,
+      "pivotDeltaFraction": -0.04017100000000001,
+      "anchorDeltaPixels": -9.641039999999975,
+      "imageShiftWorld": 0.037807999999999904,
+      "rawBboxCenterOffsetWorld": 0.24127119786710982,
+      "newBboxCenterOffsetWorld": 0.19527717647058893,
+      "bboxCenterImageShiftWorld": -0.045994021396520895,
+      "oldBboxToPivotWorld": -0.19527689174128596,
+      "newBboxToPivotWorld": -0.19527717647058893,
+      "worldOffsetRoundingError": -2.847293029684117e-07,
+      "oldFootOffsetWorld": 0.5467753531153543,
+      "priorFootOffsetWorld": 0.37345931742381333,
+      "newFootOffsetWorld": 0.2815516862745105
+    },
+    {
+      "name": "cless_7_1",
+      "originalSpriteId": "d0ad319177605004480babb0d880e538",
+      "originalInternalId": "976387031",
+      "oldRect": [
+        828.0,
+        790.0,
+        89.0,
+        79.0
+      ],
+      "oldPivotX": 0.235955,
+      "oldBbox": [
+        830,
+        792,
+        85,
+        75
+      ],
+      "rawMeasuredRect": [
+        2727,
+        2584,
+        247,
+        252
+      ],
+      "newRect": [
+        2727,
+        2584,
+        247,
+        252
+      ],
+      "newBbox": [
+        2729,
+        2586,
+        243,
+        248
+      ],
+      "oldPivotAbsoluteX": 848.999995,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 872.5,
+      "newBboxCenterX": 2850.5,
+      "priorPivotX": 0.186758,
+      "pivotX": 0.120989,
+      "pivotDeltaFraction": -0.06576900000000001,
+      "anchorDeltaPixels": -16.24494300000015,
+      "imageShiftWorld": 0.06370565882352999,
+      "rawBboxCenterOffsetWorld": 0.4648862328957585,
+      "newBboxCenterOffsetWorld": 0.36712045882352995,
+      "bboxCenterImageShiftWorld": -0.09776577407222853,
+      "oldBboxToPivotWorld": -0.36712069332368485,
+      "newBboxToPivotWorld": -0.36712045882352995,
+      "worldOffsetRoundingError": 2.3450015490533715e-07,
+      "oldFootOffsetWorld": 0.3905539240819561,
+      "priorFootOffsetWorld": 0.3296938378945844,
+      "newFootOffsetWorld": 0.27888516470588287
+    },
+    {
+      "name": "cless_7_2",
+      "originalSpriteId": "e632c7a8e0021184f8ba4ce7ce1291dc",
+      "originalInternalId": "193740199",
+      "oldRect": [
+        965.0,
+        787.0,
+        97.0,
+        88.0
+      ],
+      "oldPivotX": 0.28866,
+      "oldBbox": [
+        967,
+        789,
+        93,
+        84
+      ],
+      "rawMeasuredRect": [
+        3196,
+        2590,
+        228,
+        249
+      ],
+      "newRect": [
+        3196,
+        2590,
+        228,
+        249
+      ],
+      "newBbox": [
+        3198,
+        2592,
+        224,
+        245
+      ],
+      "oldPivotAbsoluteX": 993.00002,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1013.5,
+      "newBboxCenterX": 3310.0,
+      "priorPivotX": 0.20826,
+      "pivotX": 0.141821,
+      "pivotDeltaFraction": -0.066439,
+      "anchorDeltaPixels": -15.148091999999906,
+      "imageShiftWorld": 0.059404282352940804,
+      "rawBboxCenterOffsetWorld": 0.3996690970854447,
+      "newBboxCenterOffsetWorld": 0.3202541647058823,
+      "bboxCenterImageShiftWorld": -0.07941493237956238,
+      "oldBboxToPivotWorld": -0.3202538412532974,
+      "newBboxToPivotWorld": -0.3202541647058823,
+      "worldOffsetRoundingError": -3.234525848827552e-07,
+      "oldFootOffsetWorld": 0.42179784120580605,
+      "priorFootOffsetWorld": 0.4477375041969732,
+      "newFootOffsetWorld": 0.35162671372549015
+    },
+    {
+      "name": "cless_7_3",
+      "originalSpriteId": "c122812fc3bee7e4bb323c1700cf099a",
+      "originalInternalId": "-1357735377",
+      "oldRect": [
+        1119.0,
+        786.0,
+        107.0,
+        92.0
+      ],
+      "oldPivotX": 0.635514,
+      "oldBbox": [
+        1121,
+        788,
+        103,
+        88
+      ],
+      "rawMeasuredRect": [
+        3719,
+        2587,
+        221,
+        262
+      ],
+      "newRect": [
+        3719,
+        2587,
+        221,
+        262
+      ],
+      "newBbox": [
+        3721,
+        2589,
+        217,
+        258
+      ],
+      "oldPivotAbsoluteX": 1186.999998,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          2458,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1172.5,
+      "newBboxCenterX": 3829.5,
+      "priorPivotX": 0.715632,
+      "pivotX": 0.761371,
+      "pivotDeltaFraction": 0.045738999999999974,
+      "anchorDeltaPixels": 10.108318999999938,
+      "imageShiftWorld": -0.03964046666666642,
+      "rawBboxCenterOffsetWorld": -0.2863355218077958,
+      "newBboxCenterOffsetWorld": -0.22652153333333355,
+      "bboxCenterImageShiftWorld": 0.05981398847446226,
+      "oldBboxToPivotWorld": 0.2265211994189809,
+      "newBboxToPivotWorld": 0.22652153333333355,
+      "worldOffsetRoundingError": 3.339143526404076e-07,
+      "oldFootOffsetWorld": -0.06248858411108234,
+      "priorFootOffsetWorld": -0.21122863569603242,
+      "newFootOffsetWorld": -0.1775019254901963
+    },
+    {
+      "name": "cless_8_0",
+      "originalSpriteId": "f33c7a772ee2b5a418a908590540bffd",
+      "originalInternalId": "-1584485316",
+      "oldRect": [
+        48.0,
+        668.0,
+        95.0,
+        104.0
+      ],
+      "oldPivotX": 0.578948,
+      "oldBbox": [
+        50,
+        670,
+        91,
+        100
+      ],
+      "rawMeasuredRect": [
+        194,
+        2170,
+        236,
+        286
+      ],
+      "newRect": [
+        194,
+        2170,
+        236,
+        286
+      ],
+      "newBbox": [
+        196,
+        2172,
+        232,
+        282
+      ],
+      "oldPivotAbsoluteX": 103.00006,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 95.5,
+      "newBboxCenterX": 312.0,
+      "priorPivotX": 0.603534,
+      "pivotX": 0.6266,
+      "pivotDeltaFraction": 0.02306600000000003,
+      "anchorDeltaPixels": 5.443576000000007,
+      "imageShiftWorld": -0.021347356862745127,
+      "rawBboxCenterOffsetWorld": -0.14681307662560755,
+      "newBboxCenterOffsetWorld": -0.11716705882352953,
+      "bboxCenterImageShiftWorld": 0.029646017802078026,
+      "oldBboxToPivotWorld": 0.11716709112058653,
+      "newBboxToPivotWorld": 0.11716705882352953,
+      "worldOffsetRoundingError": -3.229705700102947e-08,
+      "oldFootOffsetWorld": -9.373292304063659e-07,
+      "priorFootOffsetWorld": 0.0034006955979191773,
+      "newFootOffsetWorld": -0.01912784313725502
+    },
+    {
+      "name": "cless_8_1",
+      "originalSpriteId": "891c9639b514ebf4ab48feaf4b5e882a",
+      "originalInternalId": "-329984083",
+      "oldRect": [
+        191.0,
+        666.0,
+        94.0,
+        96.0
+      ],
+      "oldPivotX": 0.329787,
+      "oldBbox": [
+        193,
+        668,
+        90,
+        92
+      ],
+      "rawMeasuredRect": [
+        654,
+        2179,
+        245,
+        276
+      ],
+      "newRect": [
+        654,
+        2179,
+        245,
+        276
+      ],
+      "newBbox": [
+        656,
+        2181,
+        241,
+        272
+      ],
+      "oldPivotAbsoluteX": 221.999978,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 238.0,
+      "newBboxCenterX": 776.5,
+      "priorPivotX": 0.290323,
+      "pivotX": 0.239843,
+      "pivotDeltaFraction": -0.05048,
+      "anchorDeltaPixels": -12.367600000000039,
+      "imageShiftWorld": 0.048500392156862894,
+      "rawBboxCenterOffsetWorld": 0.30866445656142155,
+      "newBboxCenterOffsetWorld": 0.24995476470588243,
+      "bboxCenterImageShiftWorld": -0.05870969185553912,
+      "oldBboxToPivotWorld": -0.24995480510894422,
+      "newBboxToPivotWorld": -0.24995476470588243,
+      "worldOffsetRoundingError": 4.0403061785099226e-08,
+      "oldFootOffsetWorld": 0.1718440359147068,
+      "priorFootOffsetWorld": 0.2455746722275403,
+      "newFootOffsetWorld": 0.20877829411764715
+    },
+    {
+      "name": "cless_8_2",
+      "originalSpriteId": "55e97a7c8689f5243b22be54f1045dac",
+      "originalInternalId": "-2024879551",
+      "oldRect": [
+        338.0,
+        667.0,
+        91.0,
+        107.0
+      ],
+      "oldPivotX": 0.626374,
+      "oldBbox": [
+        340,
+        669,
+        87,
+        103
+      ],
+      "rawMeasuredRect": [
+        1137,
+        2168,
+        232,
+        284
+      ],
+      "newRect": [
+        1137,
+        2168,
+        232,
+        284
+      ],
+      "newBbox": [
+        1139,
+        2170,
+        228,
+        280
+      ],
+      "oldPivotAbsoluteX": 395.000034,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 383.5,
+      "newBboxCenterX": 1253.0,
+      "priorPivotX": 0.660377,
+      "pivotX": 0.697466,
+      "pivotDeltaFraction": 0.03708900000000004,
+      "anchorDeltaPixels": 8.604647999999997,
+      "imageShiftWorld": -0.033743717647058816,
+      "rawBboxCenterOffsetWorld": -0.22356294089244327,
+      "newBboxCenterOffsetWorld": -0.17965534117647086,
+      "bboxCenterImageShiftWorld": 0.04390759971597241,
+      "oldBboxToPivotWorld": 0.179655300299977,
+      "newBboxToPivotWorld": 0.17965534117647086,
+      "worldOffsetRoundingError": 4.0876493856423224e-08,
+      "oldFootOffsetWorld": -0.07811130034746837,
+      "priorFootOffsetWorld": -0.15746888111409152,
+      "newFootOffsetWorld": -0.1365180862745101
+    },
+    {
+      "name": "cless_8_3",
+      "originalSpriteId": "8fd1e4df242f08940a1ee8307a7431e6",
+      "originalInternalId": "1512592301",
+      "oldRect": [
+        487.0,
+        667.0,
+        100.0,
+        101.0
+      ],
+      "oldPivotX": 0.33,
+      "oldBbox": [
+        489,
+        669,
+        96,
+        97
+      ],
+      "rawMeasuredRect": [
+        1636,
+        2172,
+        237,
+        284
+      ],
+      "newRect": [
+        1636,
+        2172,
+        237,
+        284
+      ],
+      "newBbox": [
+        1638,
+        2174,
+        233,
+        280
+      ],
+      "oldPivotAbsoluteX": 520.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 537.0,
+      "newBboxCenterX": 1754.5,
+      "priorPivotX": 0.263716,
+      "pivotX": 0.214253,
+      "pivotDeltaFraction": -0.04946300000000001,
+      "anchorDeltaPixels": -11.722731000000067,
+      "imageShiftWorld": 0.045971494117647324,
+      "rawBboxCenterOffsetWorld": 0.33647469186348433,
+      "newBboxCenterOffsetWorld": 0.26557662352941175,
+      "bboxCenterImageShiftWorld": -0.07089806833407258,
+      "oldBboxToPivotWorld": -0.2655766152604072,
+      "newBboxToPivotWorld": -0.26557662352941175,
+      "worldOffsetRoundingError": -8.269004536654023e-09,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.16523099152866383,
+      "newFootOffsetWorld": 0.15381191764705882
+    },
+    {
+      "name": "cless_9_0",
+      "originalSpriteId": "84b763d47098f4545b4d0d9f8e617a88",
+      "originalInternalId": "783845174",
+      "oldRect": [
+        668.0,
+        665.0,
+        107.0,
+        82.0
+      ],
+      "oldPivotX": 0.261682,
+      "oldBbox": [
+        670,
+        667,
+        103,
+        78
+      ],
+      "rawMeasuredRect": [
+        2226,
+        2187,
+        261,
+        239
+      ],
+      "newRect": [
+        2226,
+        2187,
+        261,
+        239
+      ],
+      "newBbox": [
+        2228,
+        2189,
+        257,
+        235
+      ],
+      "oldPivotAbsoluteX": 695.999974,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 721.5,
+      "newBboxCenterX": 2356.5,
+      "priorPivotX": 0.181525,
+      "pivotX": 0.110792,
+      "pivotDeltaFraction": -0.07073299999999999,
+      "anchorDeltaPixels": -18.46131299999979,
+      "imageShiftWorld": 0.07239730588235212,
+      "rawBboxCenterOffsetWorld": 0.4994426167767875,
+      "newBboxCenterOffsetWorld": 0.3983658352941169,
+      "bboxCenterImageShiftWorld": -0.10107678148267057,
+      "oldBboxToPivotWorld": -0.3983653290666114,
+      "newBboxToPivotWorld": -0.3983658352941169,
+      "worldOffsetRoundingError": -5.062275055256471e-07,
+      "oldFootOffsetWorld": 0.14059979072562792,
+      "priorFootOffsetWorld": 0.7307718260010186,
+      "newFootOffsetWorld": 0.5493462274509796
+    },
+    {
+      "name": "cless_9_1",
+      "originalSpriteId": "08bd1af1ac0c388488614578c40c4019",
+      "originalInternalId": "-2082098290",
+      "oldRect": [
+        821.0,
+        665.0,
+        97.0,
+        85.0
+      ],
+      "oldPivotX": 0.257732,
+      "oldBbox": [
+        823,
+        667,
+        93,
+        81
+      ],
+      "rawMeasuredRect": [
+        2726,
+        2188,
+        227,
+        246
+      ],
+      "newRect": [
+        2726,
+        2188,
+        227,
+        246
+      ],
+      "newBbox": [
+        2728,
+        2190,
+        223,
+        242
+      ],
+      "oldPivotAbsoluteX": 846.000004,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2839.5,
+      "priorPivotX": 0.16445,
+      "pivotX": 0.087596,
+      "pivotDeltaFraction": -0.07685400000000002,
+      "anchorDeltaPixels": -17.44585799999959,
+      "imageShiftWorld": 0.0684151294117631,
+      "rawBboxCenterOffsetWorld": 0.4576704199280093,
+      "newBboxCenterOffsetWorld": 0.36712042352941104,
+      "bboxCenterImageShiftWorld": -0.09054999639859823,
+      "oldBboxToPivotWorld": -0.36712055272430066,
+      "newBboxToPivotWorld": -0.36712042352941104,
+      "worldOffsetRoundingError": 1.291948896198214e-07,
+      "oldFootOffsetWorld": 0.23433224509409706,
+      "priorFootOffsetWorld": 0.5147516533729494,
+      "newFootOffsetWorld": 0.40437532549019534
+    },
+    {
+      "name": "cless_9_2",
+      "originalSpriteId": "7e5a18aaef90162478a26ac7d2075e2c",
+      "originalInternalId": "913719907",
+      "oldRect": [
+        958.0,
+        664.0,
+        104.0,
+        81.0
+      ],
+      "oldPivotX": 0.423077,
+      "oldBbox": [
+        960,
+        666,
+        100,
+        77
+      ],
+      "rawMeasuredRect": [
+        3191,
+        2171,
+        216,
+        261
+      ],
+      "newRect": [
+        3191,
+        2171,
+        216,
+        261
+      ],
+      "newBbox": [
+        3193,
+        2173,
+        212,
+        257
+      ],
+      "oldPivotAbsoluteX": 1002.000008,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1010.0,
+      "newBboxCenterX": 3299.0,
+      "priorPivotX": 0.379076,
+      "pivotX": 0.352458,
+      "pivotDeltaFraction": -0.02661800000000003,
+      "anchorDeltaPixels": -5.749487999999928,
+      "imageShiftWorld": 0.022547011764705603,
+      "rawBboxCenterOffsetWorld": 0.1569408496619711,
+      "newBboxCenterOffsetWorld": 0.12497675294117631,
+      "bboxCenterImageShiftWorld": -0.031964096720794796,
+      "oldBboxToPivotWorld": -0.12497710573354948,
+      "newBboxToPivotWorld": -0.12497675294117631,
+      "worldOffsetRoundingError": 3.52792373162214e-07,
+      "oldFootOffsetWorld": 0.015622028861617088,
+      "priorFootOffsetWorld": 0.26509476566291035,
+      "newFootOffsetWorld": 0.19556498823529397
+    },
+    {
+      "name": "cless_9_3",
+      "originalSpriteId": "4ba10b023ddc9ca40b601041c0c084ca",
+      "originalInternalId": "-674660621",
+      "oldRect": [
+        1104.0,
+        664.0,
+        117.0,
+        83.0
+      ],
+      "oldPivotX": 0.435898,
+      "oldBbox": [
+        1106,
+        666,
+        113,
+        79
+      ],
+      "rawMeasuredRect": [
+        3669,
+        2194,
+        256,
+        221
+      ],
+      "newRect": [
+        3669,
+        2194,
+        256,
+        221
+      ],
+      "newBbox": [
+        3671,
+        2196,
+        252,
+        217
+      ],
+      "oldPivotAbsoluteX": 1155.000066,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          2048,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1162.5,
+      "newBboxCenterX": 3797.0,
+      "priorPivotX": 0.404812,
+      "pivotX": 0.383293,
+      "pivotDeltaFraction": -0.02151900000000001,
+      "anchorDeltaPixels": -5.508863999999903,
+      "imageShiftWorld": 0.021603388235293737,
+      "rawBboxCenterOffsetWorld": 0.14641713715623017,
+      "newBboxCenterOffsetWorld": 0.11716467450980382,
+      "bboxCenterImageShiftWorld": -0.02925246264642635,
+      "oldBboxToPivotWorld": -0.1171651227292018,
+      "newBboxToPivotWorld": -0.11716467450980382,
+      "worldOffsetRoundingError": 4.4821939798600496e-07,
+      "oldFootOffsetWorld": 0.4061749687478803,
+      "priorFootOffsetWorld": 0.020237568488467726,
+      "newFootOffsetWorld": 0.03481173333333323
+    },
+    {
+      "name": "cless_10_0",
+      "originalSpriteId": "5022fb5136a4e004a869aec01ab33338",
+      "originalInternalId": "-512473263",
+      "oldRect": [
+        34.0,
+        553.0,
+        128.0,
+        80.0
+      ],
+      "oldPivotX": 0.265625,
+      "oldBbox": [
+        36,
+        555,
+        124,
+        76
+      ],
+      "rawMeasuredRect": [
+        168,
+        1791,
+        305,
+        223
+      ],
+      "newRect": [
+        168,
+        1791,
+        305,
+        223
+      ],
+      "newBbox": [
+        170,
+        1793,
+        301,
+        219
+      ],
+      "oldPivotAbsoluteX": 68.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 98.0,
+      "newBboxCenterX": 320.5,
+      "priorPivotX": 0.177415,
+      "pivotX": 0.108166,
+      "pivotDeltaFraction": -0.06924899999999999,
+      "anchorDeltaPixels": -21.120944999999978,
+      "imageShiftWorld": 0.08282723529411756,
+      "rawBboxCenterOffsetWorld": 0.5911718584952618,
+      "newBboxCenterOffsetWorld": 0.46866419607843135,
+      "bboxCenterImageShiftWorld": -0.12250766241683042,
+      "oldBboxToPivotWorld": -0.4686646151654245,
+      "newBboxToPivotWorld": -0.46866419607843135,
+      "worldOffsetRoundingError": 4.1908699316417497e-07,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.5160649723834985,
+      "newFootOffsetWorld": 0.4196445882352941
+    },
+    {
+      "name": "cless_10_1",
+      "originalSpriteId": "8f12a9d619830f441a605763423c694d",
+      "originalInternalId": "-261916320",
+      "oldRect": [
+        191.0,
+        553.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.653465,
+      "oldBbox": [
+        193,
+        555,
+        97,
+        78
+      ],
+      "rawMeasuredRect": [
+        677,
+        1800,
+        225,
+        227
+      ],
+      "newRect": [
+        677,
+        1800,
+        225,
+        227
+      ],
+      "newBbox": [
+        679,
+        1802,
+        221,
+        223
+      ],
+      "oldPivotAbsoluteX": 256.999965,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 241.5,
+      "newBboxCenterX": 789.5,
+      "priorPivotX": 0.722006,
+      "pivotX": 0.774429,
+      "pivotDeltaFraction": 0.052423,
+      "anchorDeltaPixels": 11.795174999999972,
+      "imageShiftWorld": -0.04625558823529401,
+      "rawBboxCenterOffsetWorld": -0.30013522844630675,
+      "newBboxCenterOffsetWorld": -0.24214323529411771,
+      "bboxCenterImageShiftWorld": 0.05799199315218903,
+      "oldBboxToPivotWorld": 0.24214283772675124,
+      "newBboxToPivotWorld": 0.24214323529411771,
+      "worldOffsetRoundingError": 3.9756736647245106e-07,
+      "oldFootOffsetWorld": -0.09373237625770015,
+      "priorFootOffsetWorld": -0.17695993522301484,
+      "newFootOffsetWorld": -0.16175107843137262
+    },
+    {
+      "name": "cless_10_2",
+      "originalSpriteId": "b0070a3afd3a3274286829bb11c9c1c8",
+      "originalInternalId": "-442166789",
+      "oldRect": [
+        340.0,
+        553.0,
+        111.0,
+        80.0
+      ],
+      "oldPivotX": 0.243243,
+      "oldBbox": [
+        342,
+        555,
+        107,
+        76
+      ],
+      "rawMeasuredRect": [
+        1182,
+        1799,
+        220,
+        201
+      ],
+      "newRect": [
+        1178,
+        1799,
+        224,
+        201
+      ],
+      "newBbox": [
+        1184,
+        1801,
+        216,
+        197
+      ],
+      "oldPivotAbsoluteX": 366.999973,
+      "rectExpansion": {
+        "leftPixels": 4,
+        "rightPixels": 0,
+        "addedPixels": 804,
+        "weakPixelCount": 36,
+        "maximumAlpha": 3,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 2.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 395.5,
+      "newBboxCenterX": 1292.0,
+      "priorPivotX": 0.076134,
+      "pivotX": 0.00208,
+      "pivotDeltaFraction": -0.074054,
+      "anchorDeltaPixels": -20.283559999999852,
+      "imageShiftWorld": 0.07954337254901903,
+      "rawBboxCenterOffsetWorld": 0.5603004948402173,
+      "newBboxCenterOffsetWorld": 0.44523168627450943,
+      "bboxCenterImageShiftWorld": -0.11506880856570784,
+      "oldBboxToPivotWorld": -0.4452318062053067,
+      "newBboxToPivotWorld": -0.44523168627450943,
+      "worldOffsetRoundingError": 1.1993079729322176e-07,
+      "oldFootOffsetWorld": 0.015622575637000955,
+      "priorFootOffsetWorld": 0.7225313688416262,
+      "newFootOffsetWorld": 0.5511140392156859
+    },
+    {
+      "name": "cless_10_3",
+      "originalSpriteId": "e88b198f339d5284db12031b0fb46401",
+      "originalInternalId": "437417660",
+      "oldRect": [
+        478.0,
+        554.0,
+        116.0,
+        80.0
+      ],
+      "oldPivotX": 0.681034,
+      "oldBbox": [
+        480,
+        556,
+        112,
+        76
+      ],
+      "rawMeasuredRect": [
+        1617,
+        1786,
+        268,
+        220
+      ],
+      "newRect": [
+        1617,
+        1786,
+        268,
+        220
+      ],
+      "newBbox": [
+        1619,
+        1788,
+        264,
+        216
+      ],
+      "oldPivotAbsoluteX": 556.999944,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 536.0,
+      "newBboxCenterX": 1751.0,
+      "priorPivotX": 0.755058,
+      "pivotX": 0.812151,
+      "pivotDeltaFraction": 0.05709299999999995,
+      "anchorDeltaPixels": 15.300923999999895,
+      "imageShiftWorld": -0.060003623529411354,
+      "rawBboxCenterOffsetWorld": -0.41071776466525045,
+      "newBboxCenterOffsetWorld": -0.32806458039215647,
+      "bboxCenterImageShiftWorld": 0.08265318427309398,
+      "oldBboxToPivotWorld": 0.3280643557751826,
+      "newBboxToPivotWorld": 0.32806458039215647,
+      "worldOffsetRoundingError": 2.2461697385400825e-07,
+      "oldFootOffsetWorld": -0.031243432837080424,
+      "priorFootOffsetWorld": -0.2965552977753701,
+      "newFootOffsetWorld": -0.2535547764705879
+    },
+    {
+      "name": "cless_11_0",
+      "originalSpriteId": "6af2c1d541844dd44aa031ff131d5129",
+      "originalInternalId": "1337454255",
+      "oldRect": [
+        651.0,
+        551.0,
+        120.0,
+        78.0
+      ],
+      "oldPivotX": 0.416667,
+      "oldBbox": [
+        653,
+        553,
+        116,
+        74
+      ],
+      "rawMeasuredRect": [
+        2183,
+        1798,
+        279,
+        223
+      ],
+      "newRect": [
+        2183,
+        1798,
+        279,
+        223
+      ],
+      "newBbox": [
+        2185,
+        1800,
+        275,
+        219
+      ],
+      "oldPivotAbsoluteX": 701.00004,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 711.0,
+      "newBboxCenterX": 2322.5,
+      "priorPivotX": 0.382473,
+      "pivotX": 0.357217,
+      "pivotDeltaFraction": -0.025256,
+      "anchorDeltaPixels": -7.046423999999661,
+      "imageShiftWorld": 0.02763303529411632,
+      "rawBboxCenterOffsetWorld": 0.19702058193055833,
+      "newBboxCenterOffsetWorld": 0.15622139999999954,
+      "bboxCenterImageShiftWorld": -0.04079918193055879,
+      "oldBboxToPivotWorld": -0.1562209135023211,
+      "newBboxToPivotWorld": -0.15622139999999954,
+      "worldOffsetRoundingError": -4.864976784479946e-07,
+      "oldFootOffsetWorld": 0.43741968260157577,
+      "priorFootOffsetWorld": 0.4343583420437306,
+      "newFootOffsetWorld": 0.31112336078431324
+    },
+    {
+      "name": "cless_11_1",
+      "originalSpriteId": "3a3f002990d270e46b8ab074ac43fda7",
+      "originalInternalId": "72541706",
+      "oldRect": [
+        823.0,
+        551.0,
+        96.0,
+        82.0
+      ],
+      "oldPivotX": 0.28125,
+      "oldBbox": [
+        825,
+        553,
+        92,
+        78
+      ],
+      "rawMeasuredRect": [
+        2730,
+        1780,
+        229,
+        238
+      ],
+      "newRect": [
+        2730,
+        1780,
+        229,
+        238
+      ],
+      "newBbox": [
+        2732,
+        1782,
+        225,
+        234
+      ],
+      "oldPivotAbsoluteX": 850.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2844.5,
+      "priorPivotX": 0.202601,
+      "pivotX": 0.134687,
+      "pivotDeltaFraction": -0.067914,
+      "anchorDeltaPixels": -15.552306000000044,
+      "imageShiftWorld": 0.06098943529411782,
+      "rawBboxCenterOffsetWorld": 0.4092085789128218,
+      "newBboxCenterOffsetWorld": 0.3280653999999998,
+      "bboxCenterImageShiftWorld": -0.08114317891282202,
+      "oldBboxToPivotWorld": -0.3280652306157972,
+      "newBboxToPivotWorld": -0.3280653999999998,
+      "worldOffsetRoundingError": -1.693842026084802e-07,
+      "oldFootOffsetWorld": 0.04686646151654245,
+      "priorFootOffsetWorld": 0.32809314191211736,
+      "newFootOffsetWorld": 0.27512422352941157
+    },
+    {
+      "name": "cless_11_2",
+      "originalSpriteId": "5c725dc497d30ed47987e3a160e3bbe4",
+      "originalInternalId": "-1568913851",
+      "oldRect": [
+        964.0,
+        551.0,
+        92.0,
+        76.0
+      ],
+      "oldPivotX": 0.717392,
+      "oldBbox": [
+        966,
+        553,
+        88,
+        72
+      ],
+      "rawMeasuredRect": [
+        3186,
+        1794,
+        226,
+        252
+      ],
+      "newRect": [
+        3186,
+        1794,
+        226,
+        252
+      ],
+      "newBbox": [
+        3188,
+        1796,
+        222,
+        248
+      ],
+      "oldPivotAbsoluteX": 1030.000064,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1010.0,
+      "newBboxCenterX": 3299.0,
+      "priorPivotX": 0.789108,
+      "pivotX": 0.852536,
+      "pivotDeltaFraction": 0.06342799999999993,
+      "anchorDeltaPixels": 14.334727999999814,
+      "imageShiftWorld": -0.05621461960784241,
+      "rawBboxCenterOffsetWorld": -0.3925891494703947,
+      "newBboxCenterOffsetWorld": -0.31244367058823486,
+      "bboxCenterImageShiftWorld": 0.08014547888215984,
+      "oldBboxToPivotWorld": 0.3124440765947964,
+      "newBboxToPivotWorld": 0.31244367058823486,
+      "worldOffsetRoundingError": -4.0600656153744197e-07,
+      "oldFootOffsetWorld": -0.4686656149832712,
+      "priorFootOffsetWorld": -0.4707003110266286,
+      "newFootOffsetWorld": -0.3634240627450976
+    },
+    {
+      "name": "cless_11_3",
+      "originalSpriteId": "37f094d8b8a1fe64bb3ebdf7eb6d8758",
+      "originalInternalId": "728702869",
+      "oldRect": [
+        1115.0,
+        551.0,
+        110.0,
+        77.0
+      ],
+      "oldPivotX": 0.436363,
+      "oldBbox": [
+        1117,
+        553,
+        106,
+        73
+      ],
+      "rawMeasuredRect": [
+        3687,
+        1800,
+        270,
+        232
+      ],
+      "newRect": [
+        3687,
+        1800,
+        270,
+        232
+      ],
+      "newBbox": [
+        3689,
+        1802,
+        266,
+        228
+      ],
+      "oldPivotAbsoluteX": 1162.99993,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          1639,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.0,
+      "priorPivotX": 0.413934,
+      "pivotX": 0.396719,
+      "pivotDeltaFraction": -0.017215000000000036,
+      "anchorDeltaPixels": -4.648050000000239,
+      "imageShiftWorld": 0.01822764705882447,
+      "rawBboxCenterOffsetWorld": 0.13962562401805154,
+      "newBboxCenterOffsetWorld": 0.10935635294117674,
+      "bboxCenterImageShiftWorld": -0.0302692710768748,
+      "oldBboxToPivotWorld": -0.10935617042270189,
+      "newBboxToPivotWorld": -0.10935635294117674,
+      "worldOffsetRoundingError": -1.825184748477371e-07,
+      "oldFootOffsetWorld": 0.42179924719965156,
+      "priorFootOffsetWorld": 0.025463157128171213,
+      "newFootOffsetWorld": 0.03484654901960811
+    },
+    {
+      "name": "cless_12_0",
+      "originalSpriteId": "ce1adb702f15b384187c05dd9ebd902c",
+      "originalInternalId": "282183586",
+      "oldRect": [
+        35.0,
+        434.0,
+        147.0,
+        84.0
+      ],
+      "oldPivotX": 0.272109,
+      "oldBbox": [
+        37,
+        436,
+        143,
+        80
+      ],
+      "rawMeasuredRect": [
+        205,
+        1390,
+        297,
+        216
+      ],
+      "newRect": [
+        205,
+        1390,
+        297,
+        216
+      ],
+      "newBbox": [
+        207,
+        1392,
+        293,
+        212
+      ],
+      "oldPivotAbsoluteX": 75.000023,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 108.5,
+      "newBboxCenterX": 353.5,
+      "priorPivotX": 0.1346,
+      "pivotX": 0.050666,
+      "pivotDeltaFraction": -0.083934,
+      "anchorDeltaPixels": -24.928398000000016,
+      "imageShiftWorld": 0.09775842352941183,
+      "rawBboxCenterOffsetWorld": 0.6520707749612628,
+      "newBboxCenterOffsetWorld": 0.5233419529411765,
+      "bboxCenterImageShiftWorld": -0.1287288220200863,
+      "oldBboxToPivotWorld": -0.5233417942918525,
+      "newBboxToPivotWorld": -0.5233419529411765,
+      "worldOffsetRoundingError": -1.5864932401132847e-07,
+      "oldFootOffsetWorld": 0.07811040988469914,
+      "priorFootOffsetWorld": 0.30057054795821025,
+      "newFootOffsetWorld": 0.29393018823529415
+    },
+    {
+      "name": "cless_12_1",
+      "originalSpriteId": "b7e82edd28089e449a642d244efadc48",
+      "originalInternalId": "1962594708",
+      "oldRect": [
+        188.0,
+        435.0,
+        103.0,
+        82.0
+      ],
+      "oldPivotX": 0.587379,
+      "oldBbox": [
+        190,
+        437,
+        99,
+        78
+      ],
+      "rawMeasuredRect": [
+        665,
+        1401,
+        236,
+        212
+      ],
+      "newRect": [
+        665,
+        1401,
+        236,
+        212
+      ],
+      "newBbox": [
+        667,
+        1403,
+        232,
+        208
+      ],
+      "oldPivotAbsoluteX": 248.500037,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 239.5,
+      "newBboxCenterX": 783.0,
+      "priorPivotX": 0.621557,
+      "pivotX": 0.651919,
+      "pivotDeltaFraction": 0.030362,
+      "anchorDeltaPixels": 7.16543200000001,
+      "imageShiftWorld": -0.028099733333333373,
+      "rawBboxCenterOffsetWorld": -0.1723700152160543,
+      "newBboxCenterOffsetWorld": -0.1405995450980393,
+      "bboxCenterImageShiftWorld": 0.03177047011801501,
+      "oldBboxToPivotWorld": 0.14059996256931925,
+      "newBboxToPivotWorld": 0.1405995450980393,
+      "worldOffsetRoundingError": -4.1747127996205613e-07,
+      "oldFootOffsetWorld": 0.0078104988997318315,
+      "priorFootOffsetWorld": -0.04018189565935078,
+      "newFootOffsetWorld": -0.05432503529411772
+    },
+    {
+      "name": "cless_12_2",
+      "originalSpriteId": "1c2ee92a5b186f2498a35e503e9a6942",
+      "originalInternalId": "1567431102",
+      "oldRect": [
+        336.0,
+        434.0,
+        147.0,
+        83.0
+      ],
+      "oldPivotX": 0.2517,
+      "oldBbox": [
+        338,
+        436,
+        143,
+        79
+      ],
+      "rawMeasuredRect": [
+        1200,
+        1393,
+        276,
+        213
+      ],
+      "newRect": [
+        1192,
+        1393,
+        284,
+        213
+      ],
+      "newBbox": [
+        1202,
+        1395,
+        272,
+        209
+      ],
+      "oldPivotAbsoluteX": 372.9999,
+      "rectExpansion": {
+        "leftPixels": 8,
+        "rightPixels": 0,
+        "addedPixels": 1704,
+        "weakPixelCount": 90,
+        "maximumAlpha": 4,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 4.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 409.5,
+      "newBboxCenterX": 1338.0,
+      "priorPivotX": 0.066476,
+      "pivotX": 0.0021,
+      "pivotDeltaFraction": -0.06437599999999999,
+      "anchorDeltaPixels": -25.750976000000037,
+      "imageShiftWorld": 0.10098421960784328,
+      "rawBboxCenterOffsetWorld": 0.7189388802993318,
+      "newBboxCenterOffsetWorld": 0.5702101960784317,
+      "bboxCenterImageShiftWorld": -0.14872868422090013,
+      "oldBboxToPivotWorld": -0.5702101773333167,
+      "newBboxToPivotWorld": -0.5702101960784317,
+      "worldOffsetRoundingError": -1.874511501576137e-08,
+      "oldFootOffsetWorld": 0.015623716054230977,
+      "priorFootOffsetWorld": 0.33439162340710343,
+      "newFootOffsetWorld": 0.319229803921569
+    },
+    {
+      "name": "cless_12_3",
+      "originalSpriteId": "a581fa6663d1fc74e94d6bd601223065",
+      "originalInternalId": "-541480110",
+      "oldRect": [
+        502.0,
+        434.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.569307,
+      "oldBbox": [
+        504,
+        436,
+        97,
+        78
+      ],
+      "rawMeasuredRect": [
+        1695,
+        1407,
+        217,
+        212
+      ],
+      "newRect": [
+        1695,
+        1407,
+        217,
+        212
+      ],
+      "newBbox": [
+        1697,
+        1409,
+        213,
+        208
+      ],
+      "oldPivotAbsoluteX": 559.500007,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 552.5,
+      "newBboxCenterX": 1803.5,
+      "priorPivotX": 0.610698,
+      "pivotX": 0.628505,
+      "pivotDeltaFraction": 0.017807000000000017,
+      "anchorDeltaPixels": 3.8641190000000734,
+      "imageShiftWorld": -0.015153407843137543,
+      "rawBboxCenterOffsetWorld": -0.1443342008879672,
+      "newBboxCenterOffsetWorld": -0.10935523529411761,
+      "bboxCenterImageShiftWorld": 0.03497896559384958,
+      "oldBboxToPivotWorld": 0.10935518622700897,
+      "newBboxToPivotWorld": 0.10935523529411761,
+      "worldOffsetRoundingError": 4.9067108640055146e-08,
+      "oldFootOffsetWorld": -0.031244417032771563,
+      "priorFootOffsetWorld": 0.026909499446853294,
+      "newFootOffsetWorld": 0.0024094705882353263
+    },
+    {
+      "name": "cless_13_0",
+      "originalSpriteId": "3321f5f9abbcc6344bbdcfab0e28b81e",
+      "originalInternalId": "-1201097799",
+      "oldRect": [
+        657.0,
+        434.0,
+        125.0,
+        82.0
+      ],
+      "oldPivotX": 0.256,
+      "oldBbox": [
+        659,
+        436,
+        121,
+        78
+      ],
+      "rawMeasuredRect": [
+        2196,
+        1410,
+        309,
+        221
+      ],
+      "newRect": [
+        2196,
+        1410,
+        309,
+        221
+      ],
+      "newBbox": [
+        2198,
+        1412,
+        305,
+        217
+      ],
+      "oldPivotAbsoluteX": 689.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 719.5,
+      "newBboxCenterX": 2350.5,
+      "priorPivotX": 0.176419,
+      "pivotX": 0.106792,
+      "pivotDeltaFraction": -0.069627,
+      "anchorDeltaPixels": -21.51474300000018,
+      "imageShiftWorld": 0.08437154117647129,
+      "rawBboxCenterOffsetWorld": 0.6007741477050808,
+      "newBboxCenterOffsetWorld": 0.47647557647058814,
+      "bboxCenterImageShiftWorld": -0.12429857123449262,
+      "oldBboxToPivotWorld": -0.47647569208484825,
+      "newBboxToPivotWorld": -0.47647557647058814,
+      "worldOffsetRoundingError": 1.1561426010997522e-07,
+      "oldFootOffsetWorld": 0.03124430767769497,
+      "priorFootOffsetWorld": 0.2913337769246157,
+      "newFootOffsetWorld": 0.27451479215686264
+    },
+    {
+      "name": "cless_13_1",
+      "originalSpriteId": "f975417bcccaba3429a8ae6396ac3ffe",
+      "originalInternalId": "702735140",
+      "oldRect": [
+        823.0,
+        435.0,
+        95.0,
+        81.0
+      ],
+      "oldPivotX": 0.236842,
+      "oldBbox": [
+        825,
+        437,
+        91,
+        77
+      ],
+      "rawMeasuredRect": [
+        2737,
+        1401,
+        213,
+        230
+      ],
+      "newRect": [
+        2737,
+        1401,
+        213,
+        230
+      ],
+      "newBbox": [
+        2739,
+        1403,
+        209,
+        226
+      ],
+      "oldPivotAbsoluteX": 845.49999,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 870.5,
+      "newBboxCenterX": 2843.5,
+      "priorPivotX": 0.115948,
+      "pivotX": 0.032435,
+      "pivotDeltaFraction": -0.083513,
+      "anchorDeltaPixels": -17.788268999999673,
+      "imageShiftWorld": 0.06975791764705754,
+      "rawBboxCenterOffsetWorld": 0.49151794501791474,
+      "newBboxCenterOffsetWorld": 0.39055429411764636,
+      "bboxCenterImageShiftWorld": -0.10096365090026838,
+      "oldBboxToPivotWorld": -0.39055400219272507,
+      "newBboxToPivotWorld": -0.39055429411764636,
+      "worldOffsetRoundingError": -2.9192492129181957e-07,
+      "oldFootOffsetWorld": 0.28901000224021645,
+      "priorFootOffsetWorld": 0.4404452624619156,
+      "newFootOffsetWorld": 0.35722096078431304
+    },
+    {
+      "name": "cless_13_2",
+      "originalSpriteId": "10b92352fe2c7394cbaf6aacdf881899",
+      "originalInternalId": "-1331915917",
+      "oldRect": [
+        963.0,
+        433.0,
+        123.0,
+        82.0
+      ],
+      "oldPivotX": 0.231708,
+      "oldBbox": [
+        965,
+        435,
+        119,
+        78
+      ],
+      "rawMeasuredRect": [
+        3199,
+        1385,
+        294,
+        221
+      ],
+      "newRect": [
+        3199,
+        1385,
+        294,
+        221
+      ],
+      "newBbox": [
+        3201,
+        1387,
+        290,
+        217
+      ],
+      "oldPivotAbsoluteX": 991.500084,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1024.5,
+      "newBboxCenterX": 3346.0,
+      "priorPivotX": 0.134639,
+      "pivotX": 0.052857,
+      "pivotDeltaFraction": -0.08178200000000001,
+      "anchorDeltaPixels": -24.0439080000001,
+      "imageShiftWorld": 0.09428983529411804,
+      "rawBboxCenterOffsetWorld": 0.6454153074323133,
+      "newBboxCenterOffsetWorld": 0.5155295764705888,
+      "bboxCenterImageShiftWorld": -0.1298857309617245,
+      "oldBboxToPivotWorld": -0.5155297644210443,
+      "newBboxToPivotWorld": -0.5155295764705888,
+      "worldOffsetRoundingError": 1.8795045542141509e-07,
+      "oldFootOffsetWorld": 0.07810945693331471,
+      "priorFootOffsetWorld": 0.5973469003207849,
+      "newFootOffsetWorld": 0.484157027450981
+    },
+    {
+      "name": "cless_13_3",
+      "originalSpriteId": "af3a16600356ec742be7f05e2199ff42",
+      "originalInternalId": "693727514",
+      "oldRect": [
+        1106.0,
+        433.0,
+        120.0,
+        83.0
+      ],
+      "oldPivotX": 0.475,
+      "oldBbox": [
+        1108,
+        435,
+        116,
+        79
+      ],
+      "rawMeasuredRect": [
+        3703,
+        1377,
+        213,
+        238
+      ],
+      "newRect": [
+        3703,
+        1377,
+        213,
+        238
+      ],
+      "newBbox": [
+        3705,
+        1379,
+        209,
+        234
+      ],
+      "oldPivotAbsoluteX": 1163.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          1229,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1166.0,
+      "newBboxCenterX": 3809.5,
+      "priorPivotX": 0.449589,
+      "pivotX": 0.443892,
+      "pivotDeltaFraction": -0.005697000000000008,
+      "anchorDeltaPixels": -1.2134609999998247,
+      "imageShiftWorld": 0.004758670588234606,
+      "rawBboxCenterOffsetWorld": 0.06451707353769408,
+      "newBboxCenterOffsetWorld": 0.046866682352941225,
+      "bboxCenterImageShiftWorld": -0.017650391184752853,
+      "oldBboxToPivotWorld": -0.04686646151654245,
+      "newBboxToPivotWorld": -0.046866682352941225,
+      "worldOffsetRoundingError": -2.208363987718509e-07,
+      "oldFootOffsetWorld": 0.03124430767769497,
+      "priorFootOffsetWorld": 0.25979497742827884,
+      "newFootOffsetWorld": 0.17431766274509808
+    },
+    {
+      "name": "cless_14_0",
+      "originalSpriteId": "da9977fd5e0900a488a823fa5c13b9ec",
+      "originalInternalId": "-859490207",
+      "oldRect": [
+        35.0,
+        318.0,
+        135.0,
+        75.0
+      ],
+      "oldPivotX": 0.518519,
+      "oldBbox": [
+        37,
+        320,
+        131,
+        71
+      ],
+      "rawMeasuredRect": [
+        186,
+        968,
+        297,
+        215
+      ],
+      "newRect": [
+        186,
+        968,
+        297,
+        215
+      ],
+      "newBbox": [
+        188,
+        970,
+        293,
+        211
+      ],
+      "oldPivotAbsoluteX": 105.00006499999999,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 102.5,
+      "newBboxCenterX": 334.5,
+      "priorPivotX": 0.528507,
+      "pivotX": 0.533533,
+      "pivotDeltaFraction": 0.005026000000000086,
+      "anchorDeltaPixels": 1.492721999999958,
+      "imageShiftWorld": -0.005853811764705718,
+      "rawBboxCenterOffsetWorld": -0.050871870776739936,
+      "newBboxCenterOffsetWorld": -0.039056082352941106,
+      "bboxCenterImageShiftWorld": 0.01181578842379883,
+      "oldBboxToPivotWorld": 0.03905640003711811,
+      "newBboxToPivotWorld": 0.039056082352941106,
+      "worldOffsetRoundingError": -3.176841770063943e-07,
+      "oldFootOffsetWorld": -0.5467763997996613,
+      "priorFootOffsetWorld": -0.4023720977797925,
+      "newFootOffsetWorld": -0.2684678470588235
+    },
+    {
+      "name": "cless_14_1",
+      "originalSpriteId": "ebf71dd00d3d50b4c94475612a06a21b",
+      "originalInternalId": "-1572977832",
+      "oldRect": [
+        189.0,
+        319.0,
+        103.0,
+        82.0
+      ],
+      "oldPivotX": 0.407767,
+      "oldBbox": [
+        191,
+        321,
+        99,
+        78
+      ],
+      "rawMeasuredRect": [
+        669,
+        977,
+        233,
+        208
+      ],
+      "newRect": [
+        669,
+        977,
+        233,
+        208
+      ],
+      "newBbox": [
+        671,
+        979,
+        229,
+        204
+      ],
+      "oldPivotAbsoluteX": 231.000001,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 240.5,
+      "newBboxCenterX": 785.5,
+      "priorPivotX": 0.367066,
+      "pivotX": 0.337577,
+      "pivotDeltaFraction": -0.029488999999999987,
+      "anchorDeltaPixels": -6.870937000000026,
+      "imageShiftWorld": 0.02694485098039226,
+      "rawBboxCenterOffsetWorld": 0.18610658400182453,
+      "newBboxCenterOffsetWorld": 0.14841003529411767,
+      "bboxCenterImageShiftWorld": -0.03769654870770686,
+      "oldBboxToPivotWorld": -0.1484104458468973,
+      "newBboxToPivotWorld": -0.14841003529411767,
+      "worldOffsetRoundingError": 4.1055277963386594e-07,
+      "oldFootOffsetWorld": 0.32806521499364333,
+      "priorFootOffsetWorld": 0.2972647754472343,
+      "newFootOffsetWorld": 0.2209590549019608
+    },
+    {
+      "name": "cless_14_2",
+      "originalSpriteId": "2253bf028f2e5824ba52962efa3e5463",
+      "originalInternalId": "-894768622",
+      "oldRect": [
+        322.0,
+        319.0,
+        115.0,
+        78.0
+      ],
+      "oldPivotX": 0.434783,
+      "oldBbox": [
+        324,
+        321,
+        111,
+        74
+      ],
+      "rawMeasuredRect": [
+        1095,
+        970,
+        290,
+        221
+      ],
+      "newRect": [
+        1095,
+        970,
+        290,
+        221
+      ],
+      "newBbox": [
+        1097,
+        972,
+        286,
+        217
+      ],
+      "oldPivotAbsoluteX": 372.000045,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 379.5,
+      "newBboxCenterX": 1240.0,
+      "priorPivotX": 0.414074,
+      "pivotX": 0.396975,
+      "pivotDeltaFraction": -0.017098999999999975,
+      "anchorDeltaPixels": -4.958709999999883,
+      "imageShiftWorld": 0.01944592156862699,
+      "rawBboxCenterOffsetWorld": 0.1497243156681143,
+      "newBboxCenterOffsetWorld": 0.11716568627450982,
+      "bboxCenterImageShiftWorld": -0.03255862939360449,
+      "oldBboxToPivotWorld": -0.11716545079443337,
+      "newBboxToPivotWorld": -0.11716568627450982,
+      "worldOffsetRoundingError": -2.3548007645202151e-07,
+      "oldFootOffsetWorld": -7.029969227492734e-07,
+      "priorFootOffsetWorld": -0.22881439033517306,
+      "newFootOffsetWorld": -0.12989313725490195
+    },
+    {
+      "name": "cless_14_3",
+      "originalSpriteId": "52b1a0c8b14275944bdedcd1ae79533b",
+      "originalInternalId": "-991939548",
+      "oldRect": [
+        482.0,
+        318.0,
+        114.0,
+        79.0
+      ],
+      "oldPivotX": 0.644737,
+      "oldBbox": [
+        484,
+        320,
+        110,
+        75
+      ],
+      "rawMeasuredRect": [
+        1658,
+        957,
+        204,
+        269
+      ],
+      "newRect": [
+        1658,
+        957,
+        204,
+        269
+      ],
+      "newBbox": [
+        1660,
+        959,
+        200,
+        265
+      ],
+      "oldPivotAbsoluteX": 555.500018,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 539.0,
+      "newBboxCenterX": 1760.0,
+      "priorPivotX": 0.766942,
+      "pivotX": 0.822207,
+      "pivotDeltaFraction": 0.05526500000000001,
+      "anchorDeltaPixels": 11.274059999999963,
+      "imageShiftWorld": -0.044211999999999856,
+      "rawBboxCenterOffsetWorld": -0.3272026566447238,
+      "newBboxCenterOffsetWorld": -0.2577655999999996,
+      "bboxCenterImageShiftWorld": 0.06943705664472422,
+      "oldBboxToPivotWorld": 0.25776581953975186,
+      "newBboxToPivotWorld": 0.2577655999999996,
+      "worldOffsetRoundingError": -2.1953975226640665e-07,
+      "oldFootOffsetWorld": -0.039055665795887096,
+      "priorFootOffsetWorld": -0.36325396197837023,
+      "newFootOffsetWorld": -0.2812950117647055
+    },
+    {
+      "name": "cless_15_0",
+      "originalSpriteId": "f0937adfebd4af546ba701c68f280bcd",
+      "originalInternalId": "1910925147",
+      "oldRect": [
+        658.0,
+        316.0,
+        102.0,
+        82.0
+      ],
+      "oldPivotX": 0.431372,
+      "oldBbox": [
+        660,
+        318,
+        98,
+        78
+      ],
+      "rawMeasuredRect": [
+        2211,
+        964,
+        211,
+        248
+      ],
+      "newRect": [
+        2211,
+        964,
+        211,
+        248
+      ],
+      "newBbox": [
+        2213,
+        966,
+        207,
+        244
+      ],
+      "oldPivotAbsoluteX": 701.999944,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2316.5,
+      "priorPivotX": 0.388511,
+      "pivotX": 0.36784,
+      "pivotDeltaFraction": -0.020670999999999995,
+      "anchorDeltaPixels": -4.361581000000115,
+      "imageShiftWorld": 0.017104239215686726,
+      "rawBboxCenterOffsetWorld": 0.14134622664205887,
+      "newBboxCenterOffsetWorld": 0.10935592156862792,
+      "bboxCenterImageShiftWorld": -0.03199030507343095,
+      "oldBboxToPivotWorld": -0.10935595171254693,
+      "newBboxToPivotWorld": -0.10935592156862792,
+      "worldOffsetRoundingError": 3.0143919013680964e-08,
+      "oldFootOffsetWorld": 8.748406145427321e-07,
+      "priorFootOffsetWorld": 0.03619658608559014,
+      "newFootOffsetWorld": 0.04072847058823576
+    },
+    {
+      "name": "cless_15_1",
+      "originalSpriteId": "40e1b1c0a4012974e84de5cc02fea56f",
+      "originalInternalId": "-1979332120",
+      "oldRect": [
+        823.0,
+        319.0,
+        96.0,
+        81.0
+      ],
+      "oldPivotX": 0.302084,
+      "oldBbox": [
+        825,
+        321,
+        92,
+        77
+      ],
+      "rawMeasuredRect": [
+        2733,
+        986,
+        224,
+        241
+      ],
+      "newRect": [
+        2733,
+        986,
+        224,
+        241
+      ],
+      "newBbox": [
+        2735,
+        988,
+        220,
+        237
+      ],
+      "oldPivotAbsoluteX": 852.000064,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2845.0,
+      "priorPivotX": 0.222895,
+      "pivotX": 0.162102,
+      "pivotDeltaFraction": -0.060793000000000014,
+      "anchorDeltaPixels": -13.617631999999958,
+      "imageShiftWorld": 0.053402478431372385,
+      "rawBboxCenterOffsetWorld": 0.37295988667392316,
+      "newBboxCenterOffsetWorld": 0.2968202039215683,
+      "bboxCenterImageShiftWorld": -0.07613968275235483,
+      "oldBboxToPivotWorld": -0.29681992312025723,
+      "newBboxToPivotWorld": -0.2968202039215683,
+      "worldOffsetRoundingError": -2.8080131109220474e-07,
+      "oldFootOffsetWorld": 0.046865461698697514,
+      "priorFootOffsetWorld": 0.3188829286734535,
+      "newFootOffsetWorld": 0.2615260862745095
+    },
+    {
+      "name": "cless_15_2",
+      "originalSpriteId": "92af42f842943674fbc5b7e92641754c",
+      "originalInternalId": "1366228664",
+      "oldRect": [
+        964.0,
+        314.0,
+        89.0,
+        87.0
+      ],
+      "oldPivotX": 0.426966,
+      "oldBbox": [
+        966,
+        316,
+        85,
+        83
+      ],
+      "rawMeasuredRect": [
+        3197,
+        975,
+        195,
+        246
+      ],
+      "newRect": [
+        3197,
+        975,
+        195,
+        246
+      ],
+      "newBbox": [
+        3199,
+        977,
+        191,
+        242
+      ],
+      "oldPivotAbsoluteX": 1001.999974,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1008.5,
+      "newBboxCenterX": 3294.5,
+      "priorPivotX": 0.38913,
+      "pivotX": 0.367211,
+      "pivotDeltaFraction": -0.021918999999999966,
+      "anchorDeltaPixels": -4.274204999999711,
+      "imageShiftWorld": 0.016761588235292984,
+      "rawBboxCenterOffsetWorld": 0.12990276722609534,
+      "newBboxCenterOffsetWorld": 0.10154452941176394,
+      "bboxCenterImageShiftWorld": -0.028358237814331402,
+      "oldBboxToPivotWorld": -0.10154440612850921,
+      "newBboxToPivotWorld": -0.10154452941176394,
+      "worldOffsetRoundingError": -1.232832547298779e-07,
+      "oldFootOffsetWorld": -0.031243901501694406,
+      "priorFootOffsetWorld": 0.04277877933644984,
+      "newFootOffsetWorld": 0.044681784313724715
+    },
+    {
+      "name": "cless_15_3",
+      "originalSpriteId": "9a3c8b6766672b1478787a76d95100bb",
+      "originalInternalId": "971994381",
+      "oldRect": [
+        1134.0,
+        313.0,
+        86.0,
+        86.0
+      ],
+      "oldPivotX": 0.581396,
+      "oldBbox": [
+        1136,
+        315,
+        82,
+        82
+      ],
+      "rawMeasuredRect": [
+        3739,
+        982,
+        210,
+        242
+      ],
+      "newRect": [
+        3739,
+        982,
+        210,
+        242
+      ],
+      "newBbox": [
+        3741,
+        984,
+        206,
+        238
+      ],
+      "oldPivotAbsoluteX": 1184.000056,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          820,
+          512,
+          409
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1177.0,
+      "newBboxCenterX": 3844.0,
+      "priorPivotX": 0.611218,
+      "pivotX": 0.632789,
+      "pivotDeltaFraction": 0.021571000000000007,
+      "anchorDeltaPixels": 4.5299100000002,
+      "imageShiftWorld": -0.017764352941177255,
+      "rawBboxCenterOffsetWorld": -0.14033439268091125,
+      "newBboxCenterOffsetWorld": -0.1093556470588238,
+      "bboxCenterImageShiftWorld": 0.030978745622087453,
+      "oldBboxToPivotWorld": 0.10935595171254871,
+      "newBboxToPivotWorld": 0.1093556470588238,
+      "worldOffsetRoundingError": -3.046537249140613e-07,
+      "oldFootOffsetWorld": 0.04686558667592613,
+      "priorFootOffsetWorld": -0.05621468023573628,
+      "newFootOffsetWorld": -0.05445368627451007
+    },
+    {
+      "name": "cless_16_0",
+      "originalSpriteId": "9aada9668a72384438808e6a3b4f37df",
+      "originalInternalId": "1953008225",
+      "oldRect": [
+        35.0,
+        196.0,
+        106.0,
+        88.0
+      ],
+      "oldPivotX": 0.396226,
+      "oldBbox": [
+        37,
+        198,
+        102,
+        84
+      ],
+      "rawMeasuredRect": [
+        160,
+        575,
+        253,
+        224
+      ],
+      "newRect": [
+        160,
+        575,
+        253,
+        224
+      ],
+      "newBbox": [
+        162,
+        577,
+        249,
+        220
+      ],
+      "oldPivotAbsoluteX": 76.999956,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 88.0,
+      "newBboxCenterX": 286.5,
+      "priorPivotX": 0.361694,
+      "pivotX": 0.326797,
+      "pivotDeltaFraction": -0.03489700000000001,
+      "anchorDeltaPixels": -8.828940999999986,
+      "imageShiftWorld": 0.034623298039215634,
+      "rawBboxCenterOffsetWorld": 0.21024771572920858,
+      "newBboxCenterOffsetWorld": 0.1718445450980392,
+      "bboxCenterImageShiftWorld": -0.03840317063116938,
+      "oldBboxToPivotWorld": -0.17184437960209126,
+      "newBboxToPivotWorld": -0.1718445450980392,
+      "worldOffsetRoundingError": -1.6549594794579292e-07,
+      "oldFootOffsetWorld": 6.873747689498681e-07,
+      "priorFootOffsetWorld": 0.08707242250591668,
+      "newFootOffsetWorld": 0.0914523882352941
+    },
+    {
+      "name": "cless_16_1",
+      "originalSpriteId": "07bcace9402377a498f1cb3bec387520",
+      "originalInternalId": "520844679",
+      "oldRect": [
+        192.0,
+        192.0,
+        100.0,
+        88.0
+      ],
+      "oldPivotX": 0.32,
+      "oldBbox": [
+        194,
+        194,
+        96,
+        84
+      ],
+      "rawMeasuredRect": [
+        677,
+        580,
+        225,
+        221
+      ],
+      "newRect": [
+        677,
+        580,
+        225,
+        221
+      ],
+      "newBbox": [
+        679,
+        582,
+        221,
+        217
+      ],
+      "oldPivotAbsoluteX": 224.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 242.0,
+      "newBboxCenterX": 789.5,
+      "priorPivotX": 0.242942,
+      "pivotX": 0.181308,
+      "pivotDeltaFraction": -0.061633999999999994,
+      "anchorDeltaPixels": -13.867650000000026,
+      "imageShiftWorld": 0.05438294117647069,
+      "rawBboxCenterOffsetWorld": 0.34752286674211774,
+      "newBboxCenterOffsetWorld": 0.28119882352941167,
+      "bboxCenterImageShiftWorld": -0.06632404321270607,
+      "oldBboxToPivotWorld": -0.2811987690992547,
+      "newBboxToPivotWorld": -0.28119882352941167,
+      "worldOffsetRoundingError": -5.4430156992690826e-08,
+      "oldFootOffsetWorld": 0.3749316921323396,
+      "priorFootOffsetWorld": 0.3625442439644704,
+      "newFootOffsetWorld": 0.29100274509803914
+    },
+    {
+      "name": "cless_16_2",
+      "originalSpriteId": "e7c865700fce4844c98e24ce1cb36583",
+      "originalInternalId": "-400452133",
+      "oldRect": [
+        346.0,
+        192.0,
+        103.0,
+        87.0
+      ],
+      "oldPivotX": 0.699029,
+      "oldBbox": [
+        348,
+        194,
+        99,
+        83
+      ],
+      "rawMeasuredRect": [
+        1178,
+        564,
+        240,
+        218
+      ],
+      "newRect": [
+        1178,
+        564,
+        240,
+        218
+      ],
+      "newBbox": [
+        1180,
+        566,
+        236,
+        214
+      ],
+      "oldPivotAbsoluteX": 417.99998700000003,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 397.5,
+      "newBboxCenterX": 1298.0,
+      "priorPivotX": 0.780555,
+      "pivotX": 0.84027,
+      "pivotDeltaFraction": 0.05971499999999996,
+      "anchorDeltaPixels": 14.33159999999998,
+      "imageShiftWorld": -0.05620235294117639,
+      "rawBboxCenterOffsetWorld": -0.404574958715247,
+      "newBboxCenterOffsetWorld": -0.32025411764705886,
+      "bboxCenterImageShiftWorld": 0.08432084106818816,
+      "oldBboxToPivotWorld": 0.320253950608374,
+      "newBboxToPivotWorld": 0.32025411764705886,
+      "worldOffsetRoundingError": 1.6703868482847994e-07,
+      "oldFootOffsetWorld": -0.0937327199450855,
+      "priorFootOffsetWorld": -0.572814383605597,
+      "newFootOffsetWorld": -0.4300580392156863
+    },
+    {
+      "name": "cless_16_3",
+      "originalSpriteId": "7f9aa48174fb59a42ab95d288b359355",
+      "originalInternalId": "-719084066",
+      "oldRect": [
+        508.0,
+        188.0,
+        89.0,
+        94.0
+      ],
+      "oldPivotX": 0.224719,
+      "oldBbox": [
+        510,
+        190,
+        85,
+        90
+      ],
+      "rawMeasuredRect": [
+        1707,
+        567,
+        198,
+        223
+      ],
+      "newRect": [
+        1707,
+        567,
+        198,
+        223
+      ],
+      "newBbox": [
+        1709,
+        569,
+        194,
+        219
+      ],
+      "oldPivotAbsoluteX": 527.999991,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 552.5,
+      "newBboxCenterX": 1806.0,
+      "priorPivotX": 0.089048,
+      "pivotX": 0.007074,
+      "pivotDeltaFraction": -0.081974,
+      "anchorDeltaPixels": -16.230851999999913,
+      "imageShiftWorld": 0.06365039999999966,
+      "rawBboxCenterOffsetWorld": 0.48890674897259817,
+      "newBboxCenterOffsetWorld": 0.38274254117647044,
+      "bboxCenterImageShiftWorld": -0.10616420779612773,
+      "oldBboxToPivotWorld": -0.38274290965114754,
+      "newBboxToPivotWorld": -0.38274254117647044,
+      "worldOffsetRoundingError": 3.6847467710376947e-07,
+      "oldFootOffsetWorld": 0.45304260192596124,
+      "priorFootOffsetWorld": 0.6391205211961248,
+      "newFootOffsetWorld": 0.48078175686274494
+    },
+    {
+      "name": "cless_17_0",
+      "originalSpriteId": "45d76b6c49cabc849adb5713ce821e79",
+      "originalInternalId": "-2071486327",
+      "oldRect": [
+        655.0,
+        190.0,
+        113.0,
+        100.0
+      ],
+      "oldPivotX": 0.327433,
+      "oldBbox": [
+        657,
+        192,
+        109,
+        96
+      ],
+      "rawMeasuredRect": [
+        2212,
+        551,
+        223,
+        267
+      ],
+      "newRect": [
+        2212,
+        551,
+        223,
+        267
+      ],
+      "newBbox": [
+        2214,
+        553,
+        219,
+        263
+      ],
+      "oldPivotAbsoluteX": 691.999929,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 711.5,
+      "newBboxCenterX": 2323.5,
+      "priorPivotX": 0.216647,
+      "pivotX": 0.151653,
+      "pivotDeltaFraction": -0.064994,
+      "anchorDeltaPixels": -14.493661999999858,
+      "imageShiftWorld": 0.05683789019607788,
+      "rawBboxCenterOffsetWorld": 0.3796666251676086,
+      "newBboxCenterOffsetWorld": 0.30463286666666617,
+      "bboxCenterImageShiftWorld": -0.0750337585009424,
+      "oldBboxToPivotWorld": -0.3046331090304492,
+      "newBboxToPivotWorld": -0.30463286666666617,
+      "worldOffsetRoundingError": 2.42363783042876e-07,
+      "oldFootOffsetWorld": 0.5780208012102802,
+      "priorFootOffsetWorld": 0.3165768408337274,
+      "newFootOffsetWorld": 0.26345639607843085
+    },
+    {
+      "name": "cless_17_1",
+      "originalSpriteId": "7ec6ef313a79fad41be538ae0ba4b676",
+      "originalInternalId": "-762811067",
+      "oldRect": [
+        822.0,
+        190.0,
+        95.0,
+        98.0
+      ],
+      "oldPivotX": 0.494737,
+      "oldBbox": [
+        824,
+        192,
+        91,
+        94
+      ],
+      "rawMeasuredRect": [
+        2723,
+        551,
+        234,
+        267
+      ],
+      "newRect": [
+        2723,
+        551,
+        234,
+        267
+      ],
+      "newBbox": [
+        2725,
+        553,
+        230,
+        263
+      ],
+      "oldPivotAbsoluteX": 869.000015,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2840.0,
+      "priorPivotX": 0.493403,
+      "pivotX": 0.491488,
+      "pivotDeltaFraction": -0.001915,
+      "anchorDeltaPixels": -0.4481100000002698,
+      "imageShiftWorld": 0.001757294117648117,
+      "rawBboxCenterOffsetWorld": 0.009275387990156246,
+      "newBboxCenterOffsetWorld": 0.007811011764706742,
+      "bboxCenterImageShiftWorld": -0.0014643762254495044,
+      "oldBboxToPivotWorld": -0.00781084258711675,
+      "newBboxToPivotWorld": -0.007811011764706742,
+      "worldOffsetRoundingError": -1.691775899917078e-07,
+      "oldFootOffsetWorld": 0.015621919506540492,
+      "priorFootOffsetWorld": -0.098878528010783,
+      "newFootOffsetWorld": -0.06277722352941091
+    },
+    {
+      "name": "cless_17_2",
+      "originalSpriteId": "c26666dffbbdc6f4bbd63c84d30e1c22",
+      "originalInternalId": "171801297",
+      "oldRect": [
+        975.0,
+        190.0,
+        102.0,
+        96.0
+      ],
+      "oldPivotX": 0.294118,
+      "oldBbox": [
+        977,
+        192,
+        98,
+        92
+      ],
+      "rawMeasuredRect": [
+        3243,
+        536,
+        216,
+        276
+      ],
+      "newRect": [
+        3243,
+        536,
+        216,
+        276
+      ],
+      "newBbox": [
+        3245,
+        538,
+        212,
+        272
+      ],
+      "oldPivotAbsoluteX": 1005.000036,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1026.0,
+      "newBboxCenterX": 3351.0,
+      "priorPivotX": 0.183702,
+      "pivotX": 0.112701,
+      "pivotDeltaFraction": -0.07100100000000001,
+      "anchorDeltaPixels": -15.336215999999695,
+      "imageShiftWorld": 0.06014202352941057,
+      "rawBboxCenterOffsetWorld": 0.41050640787918186,
+      "newBboxCenterOffsetWorld": 0.328065035294117,
+      "bboxCenterImageShiftWorld": -0.08244137258506484,
+      "oldBboxToPivotWorld": -0.3280646682182586,
+      "newBboxToPivotWorld": -0.328065035294117,
+      "worldOffsetRoundingError": -3.670758584317646e-07,
+      "oldFootOffsetWorld": 0.09373236063554635,
+      "priorFootOffsetWorld": 0.3564294498787122,
+      "newFootOffsetWorld": 0.2927709176470582
+    },
+    {
+      "name": "cless_17_3",
+      "originalSpriteId": "7d0ce0a010dd2b042bf7a8519ccdf948",
+      "originalInternalId": "-1363522215",
+      "oldRect": [
+        1127.0,
+        189.0,
+        89.0,
+        101.0
+      ],
+      "oldPivotX": 0.573034,
+      "oldBbox": [
+        1129,
+        191,
+        85,
+        97
+      ],
+      "rawMeasuredRect": [
+        3720,
+        535,
+        213,
+        276
+      ],
+      "newRect": [
+        3720,
+        535,
+        213,
+        276
+      ],
+      "newBbox": [
+        3722,
+        537,
+        209,
+        272
+      ],
+      "oldPivotAbsoluteX": 1178.000026,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          410,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1171.5,
+      "newBboxCenterX": 3826.5,
+      "priorPivotX": 0.599801,
+      "pivotX": 0.621567,
+      "pivotDeltaFraction": 0.021765999999999952,
+      "anchorDeltaPixels": 4.636157999999796,
+      "imageShiftWorld": -0.01818101176470508,
+      "rawBboxCenterOffsetWorld": -0.12772744948791656,
+      "newBboxCenterOffsetWorld": -0.10154420000000006,
+      "bboxCenterImageShiftWorld": 0.026183249487916505,
+      "oldBboxToPivotWorld": 0.10154440612850743,
+      "newBboxToPivotWorld": 0.10154420000000006,
+      "worldOffsetRoundingError": -2.061285073740038e-07,
+      "oldFootOffsetWorld": -0.03124471385369375,
+      "priorFootOffsetWorld": -0.0706462160429764,
+      "newFootOffsetWorld": -0.06428929803921575
+    },
+    {
+      "name": "cless_18_0",
+      "originalSpriteId": "9fbce66a9df9e0f4582af19425a9cf00",
+      "originalInternalId": "185970023",
+      "oldRect": [
+        40.0,
+        61.0,
+        133.0,
+        86.0
+      ],
+      "oldPivotX": 0.240602,
+      "oldBbox": [
+        42,
+        63,
+        129,
+        82
+      ],
+      "rawMeasuredRect": [
+        202,
+        159,
+        290,
+        215
+      ],
+      "newRect": [
+        202,
+        159,
+        290,
+        215
+      ],
+      "newBbox": [
+        204,
+        161,
+        286,
+        211
+      ],
+      "oldPivotAbsoluteX": 72.000066,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          0,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 106.5,
+      "newBboxCenterX": 347.0,
+      "priorPivotX": 0.114404,
+      "pivotX": 0.026084,
+      "pivotDeltaFraction": -0.08832000000000001,
+      "anchorDeltaPixels": -25.61280000000002,
+      "imageShiftWorld": 0.10044235294117655,
+      "rawBboxCenterOffsetWorld": 0.6718932246859148,
+      "newBboxCenterOffsetWorld": 0.5389632941176471,
+      "bboxCenterImageShiftWorld": -0.13292993056826774,
+      "oldBboxToPivotWorld": -0.5389632763780847,
+      "newBboxToPivotWorld": -0.5389632941176471,
+      "worldOffsetRoundingError": -1.7739562374607942e-08,
+      "oldFootOffsetWorld": 0.078109738132084,
+      "priorFootOffsetWorld": 0.29936306957156855,
+      "newFootOffsetWorld": 0.2958260392156863
+    },
+    {
+      "name": "cless_18_1",
+      "originalSpriteId": "b711993f1d7d8b04bba68a157bd0a4a2",
+      "originalInternalId": "-278213506",
+      "oldRect": [
+        193.0,
+        61.0,
+        106.0,
+        87.0
+      ],
+      "oldPivotX": 0.339623,
+      "oldBbox": [
+        195,
+        63,
+        102,
+        83
+      ],
+      "rawMeasuredRect": [
+        691,
+        160,
+        224,
+        216
+      ],
+      "newRect": [
+        691,
+        160,
+        224,
+        216
+      ],
+      "newBbox": [
+        693,
+        162,
+        220,
+        212
+      ],
+      "oldPivotAbsoluteX": 229.00003800000002,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          512,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 246.0,
+      "newBboxCenterX": 803.0,
+      "priorPivotX": 0.254436,
+      "pivotX": 0.19767,
+      "pivotDeltaFraction": -0.05676599999999998,
+      "anchorDeltaPixels": -12.715583999999922,
+      "imageShiftWorld": 0.04986503529411734,
+      "rawBboxCenterOffsetWorld": 0.3305083690701913,
+      "newBboxCenterOffsetWorld": 0.26557615686274494,
+      "bboxCenterImageShiftWorld": -0.06493221220744638,
+      "oldBboxToPivotWorld": -0.2655760216185611,
+      "newBboxToPivotWorld": -0.26557615686274494,
+      "worldOffsetRoundingError": -1.3524418385202353e-07,
+      "oldFootOffsetWorld": 0.01562156019700133,
+      "priorFootOffsetWorld": 0.29445706373654496,
+      "newFootOffsetWorld": 0.24204674509803903
+    },
+    {
+      "name": "cless_18_2",
+      "originalSpriteId": "d0af17a21a52bc44fad8be77c94f67f6",
+      "originalInternalId": "121652871",
+      "oldRect": [
+        338.0,
+        63.0,
+        90.0,
+        91.0
+      ],
+      "oldPivotX": 0.533334,
+      "oldBbox": [
+        340,
+        65,
+        86,
+        87
+      ],
+      "rawMeasuredRect": [
+        1148,
+        138,
+        206,
+        271
+      ],
+      "newRect": [
+        1148,
+        138,
+        206,
+        271
+      ],
+      "newBbox": [
+        1150,
+        140,
+        202,
+        267
+      ],
+      "oldPivotAbsoluteX": 386.00006,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1024,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 383.0,
+      "newBboxCenterX": 1251.0,
+      "priorPivotX": 0.547623,
+      "pivotX": 0.558015,
+      "pivotDeltaFraction": 0.010392000000000068,
+      "anchorDeltaPixels": 2.1407520000000204,
+      "imageShiftWorld": -0.00839510588235302,
+      "rawBboxCenterOffsetWorld": -0.058945915110712364,
+      "newBboxCenterOffsetWorld": -0.04686701960784322,
+      "bboxCenterImageShiftWorld": 0.012078895502869141,
+      "oldBboxToPivotWorld": 0.04686739884577308,
+      "newBboxToPivotWorld": 0.04686701960784322,
+      "worldOffsetRoundingError": -3.7923792985811167e-07,
+      "oldFootOffsetWorld": -0.2187110910730954,
+      "priorFootOffsetWorld": -0.06495446599965343,
+      "newFootOffsetWorld": -0.0507885882352942
+    },
+    {
+      "name": "cless_18_3",
+      "originalSpriteId": "8fe094852e84b7343a2a5f9d2f8cee75",
+      "originalInternalId": "-426498769",
+      "oldRect": [
+        472.0,
+        62.0,
+        123.0,
+        86.0
+      ],
+      "oldPivotX": 0.382114,
+      "oldBbox": [
+        474,
+        64,
+        119,
+        82
+      ],
+      "rawMeasuredRect": [
+        1620,
+        157,
+        245,
+        223
+      ],
+      "newRect": [
+        1620,
+        157,
+        245,
+        223
+      ],
+      "newBbox": [
+        1622,
+        159,
+        241,
+        219
+      ],
+      "oldPivotAbsoluteX": 519.000022,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          1536,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 533.5,
+      "newBboxCenterX": 1742.5,
+      "priorPivotX": 0.30708,
+      "pivotX": 0.264233,
+      "pivotDeltaFraction": -0.042847000000000024,
+      "anchorDeltaPixels": -10.497515000000021,
+      "imageShiftWorld": 0.04116672549019616,
+      "rawBboxCenterOffsetWorld": 0.28399656118615524,
+      "newBboxCenterOffsetWorld": 0.22652123529411772,
+      "bboxCenterImageShiftWorld": -0.05747532589203752,
+      "oldBboxToPivotWorld": -0.22652088697590492,
+      "newBboxToPivotWorld": -0.22652123529411772,
+      "worldOffsetRoundingError": -3.4831821280056907e-07,
+      "oldFootOffsetWorld": 0.07811042550685383,
+      "priorFootOffsetWorld": 0.14880416618498116,
+      "newFootOffsetWorld": 0.13828594117647067
+    },
+    {
+      "name": "cless_19_0",
+      "originalSpriteId": "7ebf3260d13e3be43a3df65b44a6b019",
+      "originalInternalId": "826817581",
+      "oldRect": [
+        653.0,
+        62.0,
+        112.0,
+        85.0
+      ],
+      "oldPivotX": 0.375,
+      "oldBbox": [
+        655,
+        64,
+        108,
+        81
+      ],
+      "rawMeasuredRect": [
+        2211,
+        165,
+        209,
+        242
+      ],
+      "newRect": [
+        2211,
+        165,
+        209,
+        242
+      ],
+      "newBbox": [
+        2213,
+        167,
+        205,
+        238
+      ],
+      "oldPivotAbsoluteX": 695.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2048,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2315.5,
+      "priorPivotX": 0.282831,
+      "pivotX": 0.233153,
+      "pivotDeltaFraction": -0.049678,
+      "anchorDeltaPixels": -10.382701999999881,
+      "imageShiftWorld": 0.040716478431372084,
+      "rawBboxCenterOffsetWorld": 0.27271803649209203,
+      "newBboxCenterOffsetWorld": 0.21870989411764621,
+      "bboxCenterImageShiftWorld": -0.05400814237444582,
+      "oldBboxToPivotWorld": -0.21871015374386477,
+      "newBboxToPivotWorld": -0.21870989411764621,
+      "worldOffsetRoundingError": 2.5962621855168955e-07,
+      "oldFootOffsetWorld": 0.015622153838847484,
+      "priorFootOffsetWorld": 0.10748288704621263,
+      "newFootOffsetWorld": 0.11086675686274426
+    },
+    {
+      "name": "cless_19_1",
+      "originalSpriteId": "c9521d7675cea14419114f632d009980",
+      "originalInternalId": "1643743300",
+      "oldRect": [
+        821.0,
+        62.0,
+        100.0,
+        85.0
+      ],
+      "oldPivotX": 0.57,
+      "oldBbox": [
+        823,
+        64,
+        96,
+        81
+      ],
+      "rawMeasuredRect": [
+        2732,
+        164,
+        227,
+        244
+      ],
+      "newRect": [
+        2732,
+        164,
+        227,
+        244
+      ],
+      "newBbox": [
+        2734,
+        166,
+        223,
+        240
+      ],
+      "oldPivotAbsoluteX": 878.0,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          2560,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2845.5,
+      "priorPivotX": 0.598473,
+      "pivotX": 0.622844,
+      "pivotDeltaFraction": 0.02437099999999992,
+      "anchorDeltaPixels": 5.532216999999946,
+      "imageShiftWorld": -0.021694968627450767,
+      "rawBboxCenterOffsetWorld": -0.13431136719288042,
+      "newBboxCenterOffsetWorld": -0.1093552470588239,
+      "bboxCenterImageShiftWorld": 0.024956120134056514,
+      "oldBboxToPivotWorld": 0.10935507687193238,
+      "newBboxToPivotWorld": 0.1093552470588239,
+      "worldOffsetRoundingError": 1.7018689152381583e-07,
+      "oldFootOffsetWorld": -0.24995446142155975,
+      "priorFootOffsetWorld": -0.19740115152676166,
+      "newFootOffsetWorld": -0.15053171764705922
+    },
+    {
+      "name": "cless_19_2",
+      "originalSpriteId": "76fabc690fc9f4c40a3f07b07f3fb8e5",
+      "originalInternalId": "1535972436",
+      "oldRect": [
+        964.0,
+        61.0,
+        88.0,
+        87.0
+      ],
+      "oldPivotX": 0.477273,
+      "oldBbox": [
+        966,
+        63,
+        84,
+        83
+      ],
+      "rawMeasuredRect": [
+        3193,
+        146,
+        199,
+        242
+      ],
+      "newRect": [
+        3193,
+        146,
+        199,
+        242
+      ],
+      "newBbox": [
+        3195,
+        148,
+        195,
+        238
+      ],
+      "oldPivotAbsoluteX": 1006.000024,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3072,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1008.0,
+      "newBboxCenterX": 3292.5,
+      "priorPivotX": 0.467065,
+      "pivotX": 0.459964,
+      "pivotDeltaFraction": -0.007101000000000024,
+      "anchorDeltaPixels": -1.4130990000003294,
+      "imageShiftWorld": 0.005541564705883645,
+      "rawBboxCenterOffsetWorld": 0.0393804330819264,
+      "newBboxCenterOffsetWorld": 0.031243780392157406,
+      "bboxCenterImageShiftWorld": -0.008136652689768997,
+      "oldBboxToPivotWorld": -0.031243932746002005,
+      "newBboxToPivotWorld": -0.031243780392157406,
+      "worldOffsetRoundingError": 1.5235384459924561e-07,
+      "oldFootOffsetWorld": -0.04686683644823541,
+      "priorFootOffsetWorld": -0.0657692074745423,
+      "newFootOffsetWorld": -0.037383670588234746
+    },
+    {
+      "name": "cless_19_3",
+      "originalSpriteId": "184279d498566fe4db9f7b32bd3f9320",
+      "originalInternalId": "333022766",
+      "oldRect": [
+        1128.0,
+        60.0,
+        88.0,
+        87.0
+      ],
+      "oldPivotX": 0.534091,
+      "oldBbox": [
+        1130,
+        62,
+        84,
+        83
+      ],
+      "rawMeasuredRect": [
+        3724,
+        157,
+        208,
+        241
+      ],
+      "newRect": [
+        3724,
+        157,
+        208,
+        241
+      ],
+      "newBbox": [
+        3726,
+        159,
+        204,
+        237
+      ],
+      "oldPivotAbsoluteX": 1175.000008,
+      "rectExpansion": {
+        "leftPixels": 0,
+        "rightPixels": 0,
+        "addedPixels": 0,
+        "weakPixelCount": 0,
+        "maximumAlpha": 0,
+        "alphaAbove8Count": 0,
+        "allowedAlphaMaximum": 8,
+        "atlasCell": [
+          3584,
+          0,
+          512,
+          410
+        ],
+        "outlineLocalXShift": 0.0,
+        "absoluteOutlineMaximumErrorPixels": 0.0,
+        "extensionOutsideAbsoluteOutline": true
+      },
+      "oldBboxCenterX": 1172.0,
+      "newBboxCenterX": 3828.0,
+      "priorPivotX": 0.547878,
+      "pivotX": 0.557457,
+      "pivotDeltaFraction": 0.009579000000000004,
+      "anchorDeltaPixels": 1.992432000000008,
+      "imageShiftWorld": -0.007813458823529443,
+      "rawBboxCenterOffsetWorld": -0.059836899087829104,
+      "newBboxCenterOffsetWorld": -0.046866886274509335,
+      "bboxCenterImageShiftWorld": 0.012970012813319769,
+      "oldBboxToPivotWorld": 0.046866586493772844,
+      "newBboxToPivotWorld": 0.046866886274509335,
+      "worldOffsetRoundingError": 2.9978073649156167e-07,
+      "oldFootOffsetWorld": 0.046866336539312055,
+      "priorFootOffsetWorld": 0.054325567802051215,
+      "newFootOffsetWorld": 0.02764291764705929
+    }
+  ],
+  "limitation": "Preserves source bbox-relative world offsets; anatomical pose changes still need actual motion review."
+}

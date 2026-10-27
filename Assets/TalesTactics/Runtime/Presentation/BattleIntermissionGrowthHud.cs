@@ -40,7 +40,7 @@ namespace TalesTactics
                 ShowGrowth(c,saved?"승급을 저장했습니다. 다음 캠페인 전투에 적용됩니다.":"승급하지 못했습니다. 조건과 저장 상태를 확인하세요.");
             },reason==null);
             int target=CampaignStages.Get(battle.SelectedStage).EntryLevel;
-            FormationButton(promotion,"합류 훈련 · Lv"+target,"합류 훈련 · Lv"+target,new Vector2(.53f,.065f),new Vector2(.975f,.13f),()=>
+            FormationButton(promotion,"합류 훈련 · Lv"+target,"무료 훈련 · Lv"+target,new Vector2(.53f,.065f),new Vector2(.975f,.13f),()=>
             {
                 if(battle.TrainingMode||!battle.CanSave)return;bool saved=TacticalDevelopment.CatchUp(battle.Campaign,c,battle.SelectedStage,battle.PersistCampaign);
                 ShowGrowth(c,saved?"합류 훈련을 저장했습니다.":"훈련을 저장하지 못했습니다. 기존 성장을 유지합니다.");
@@ -61,7 +61,7 @@ namespace TalesTactics
                 FormationText(card,effect,new Vector2(.20f,.02f),new Vector2(.98f,.62f),16);
             }
             FormationText(commands,"준비 중 무료 변경 · 저장 후 다음 전투부터 적용",new Vector2(.025f,.015f),new Vector2(.975f,.11f),17).color=formationTeal;
-            IntermissionNotice(notice??(battle.TrainingMode?"훈련 중에는 저장된 성장만 조회합니다.":!battle.CanSave?"저장 보호 상태입니다.":trait!=progress.Trait?"특성 변경 · 아직 저장되지 않음":"저장된 캐릭터의 성장 정보를 표시합니다."));
+            IntermissionNotice(notice??(battle.TrainingMode?"훈련 중에는 저장된 성장만 조회합니다.":!battle.CanSave?"저장 보호 상태입니다.":trait!=progress.Trait?"특성 변경 · 아직 저장되지 않음":PreparationGrowthNotice(c)));
             FormationButton(footer,"출전 준비로","출전 준비로",new Vector2(.55f,.14f),new Vector2(.74f,.86f),ShowDeployment);
             IntermissionPrimary("특성 적용 · 저장","특성 적용 · 저장",()=>
             {

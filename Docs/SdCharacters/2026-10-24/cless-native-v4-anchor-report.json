@@ -1,0 +1,3552 @@
+{
+  "schemaVersion": 1,
+  "method": "cless-native-bbox-world-offset-v1",
+  "baseline": "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\cless-before.png",
+  "baselineSha256": "16ececda2c0b75a8aacf0fdd7d7a3455161418c6628e82eff500c4768f2908d0",
+  "baselineMetaSha256": "e29b617628a8a373a694a0659400c255a6ff50ef8f812892b1fe4aff68a6f5de",
+  "inputMeasurement": "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v4-measurement.json",
+  "inputMeasurementSha256": "af632d005394f362a349607b5e43186badc43bf964d0632e8e17b3a98f1439b3",
+  "candidateSha256": "1735ae05d8b5d2060017e072ebf144cd8a40684e9549dba0f16908830342f1d7",
+  "formula": "newBboxCenterX + (oldPivotAbsoluteX - oldBboxCenterX) * newPPU / oldPPU",
+  "bboxDefinition": "alpha > 128, components >= 8 pixels; half-open pixel bbox center",
+  "footDiagnostic": "Bottom 18% alpha median; diagnostic only, not an anatomical foot guarantee",
+  "unchanged": "PNG pixels, source/meta, frame names/IDs, rects, PPU, outlines and pivotY=.01",
+  "inputVisualApproved": false,
+  "inputVisualReview": "",
+  "summary": {
+    "frameCount": 80,
+    "adjustedFrames": 80,
+    "oldPixelsPerUnit": 64.01166,
+    "newPixelsPerUnit": 166.42948,
+    "canvasScale": 3.266347687400319,
+    "artScale": 2.5999869398793907,
+    "maximumAnchorDeltaPixels": 24.752612000000227,
+    "maximumImageShiftWorld": 0.14872732883621476,
+    "maximumFootOffsetChangeWorldBefore": 0.7189263155810698,
+    "maximumFootOffsetChangeWorldAfter": 0.6038573746698792,
+    "maximumWorldOffsetRoundingError": 8.374891453666322e-07
+  },
+  "frames": [
+    {
+      "name": "cless_0_0",
+      "originalSpriteId": "6b2ac8f38a927a84b90238f427748377",
+      "originalInternalId": "291681203",
+      "oldRect": [
+        42.0,
+        1131.0,
+        94.0,
+        88.0
+      ],
+      "oldPivotX": 0.510638,
+      "oldBbox": [
+        44,
+        1133,
+        90,
+        84
+      ],
+      "newRect": [
+        178,
+        3746,
+        225,
+        233
+      ],
+      "newBbox": [
+        180,
+        3748,
+        221,
+        229
+      ],
+      "oldPivotAbsoluteX": 89.99997200000001,
+      "oldBboxCenterX": 89.0,
+      "newBboxCenterX": 290.5,
+      "priorPivotX": 0.515428,
+      "pivotX": 0.511555,
+      "pivotDeltaFraction": -0.0038730000000000153,
+      "anchorDeltaPixels": -0.8714249999999879,
+      "imageShiftWorld": 0.005236001458395399,
+      "oldBboxToPivotWorld": 0.015621716418540212,
+      "newBboxToPivotWorld": 0.015621481242385646,
+      "worldOffsetRoundingError": -2.3517615456609964e-07,
+      "oldFootOffsetWorld": -0.031243870257387694,
+      "priorFootOffsetWorld": -0.03587885992313372,
+      "newFootOffsetWorld": -0.03064285846473832
+    },
+    {
+      "name": "cless_0_1",
+      "originalSpriteId": "35b8dbc0f95e55b488e50d8e133e75b1",
+      "originalInternalId": "447795121",
+      "oldRect": [
+        194.0,
+        1130.0,
+        96.0,
+        87.0
+      ],
+      "oldPivotX": 0.395833,
+      "oldBbox": [
+        196,
+        1132,
+        92,
+        83
+      ],
+      "newRect": [
+        675,
+        3718,
+        229,
+        230
+      ],
+      "newBbox": [
+        677,
+        3720,
+        225,
+        226
+      ],
+      "oldPivotAbsoluteX": 231.999968,
+      "oldBboxCenterX": 242.0,
+      "newBboxCenterX": 789.5,
+      "priorPivotX": 0.36154,
+      "pivotX": 0.386463,
+      "pivotDeltaFraction": 0.02492300000000003,
+      "anchorDeltaPixels": 5.70736700000009,
+      "imageShiftWorld": -0.034293005061363464,
+      "oldBboxToPivotWorld": -0.15622203829739775,
+      "newBboxToPivotWorld": -0.15622216088159352,
+      "worldOffsetRoundingError": -1.2258419576638424e-07,
+      "oldFootOffsetWorld": -0.01562165392992457,
+      "priorFootOffsetWorld": 0.007254363830254379,
+      "newFootOffsetWorld": -0.027038641231109085
+    },
+    {
+      "name": "cless_0_2",
+      "originalSpriteId": "e444bfc891fb8de41bacf609626ede29",
+      "originalInternalId": "1282720972",
+      "oldRect": [
+        344.0,
+        1130.0,
+        75.0,
+        89.0
+      ],
+      "oldPivotX": 0.493333,
+      "oldBbox": [
+        346,
+        1132,
+        71,
+        85
+      ],
+      "newRect": [
+        1151,
+        3742,
+        191,
+        235
+      ],
+      "newBbox": [
+        1153,
+        3744,
+        187,
+        231
+      ],
+      "oldPivotAbsoluteX": 380.999975,
+      "oldBboxCenterX": 381.5,
+      "newBboxCenterX": 1246.5,
+      "priorPivotX": 0.489416,
+      "pivotX": 0.493193,
+      "pivotDeltaFraction": 0.003776999999999975,
+      "anchorDeltaPixels": 0.7214069999999992,
+      "imageShiftWorld": -0.0043346106711383055,
+      "oldBboxToPivotWorld": -0.007811467473269615,
+      "newBboxToPivotWorld": -0.007811939327094873,
+      "worldOffsetRoundingError": -4.718538252580437e-07,
+      "oldFootOffsetWorld": 0.015622544392693357,
+      "priorFootOffsetWorld": -0.035921857113295375,
+      "newFootOffsetWorld": -0.04025646778443368
+    },
+    {
+      "name": "cless_0_3",
+      "originalSpriteId": "141515be3741ab24aa273c80f7d9f3d1",
+      "originalInternalId": "1147473635",
+      "oldRect": [
+        511.0,
+        1129.0,
+        76.0,
+        88.0
+      ],
+      "oldPivotX": 0.381579,
+      "oldBbox": [
+        513,
+        1131,
+        72,
+        84
+      ],
+      "newRect": [
+        1701,
+        3713,
+        186,
+        236
+      ],
+      "newBbox": [
+        1703,
+        3715,
+        182,
+        232
+      ],
+      "oldPivotAbsoluteX": 540.000004,
+      "oldBboxCenterX": 549.0,
+      "newBboxCenterX": 1794.0,
+      "priorPivotX": 0.337784,
+      "pivotX": 0.374194,
+      "pivotDeltaFraction": 0.03641000000000005,
+      "anchorDeltaPixels": 6.77225999999996,
+      "imageShiftWorld": -0.04069146884313981,
+      "oldBboxToPivotWorld": -0.14059932206101217,
+      "newBboxToPivotWorld": -0.14059958608294681,
+      "worldOffsetRoundingError": -2.640219346483619e-07,
+      "oldFootOffsetWorld": 0.046866399027927254,
+      "priorFootOffsetWorld": 0.0851542407030295,
+      "newFootOffsetWorld": 0.0444627718598897
+    },
+    {
+      "name": "cless_1_0",
+      "originalSpriteId": "35f5580131294df4f83bef951bf5a4c4",
+      "originalInternalId": "693122094",
+      "oldRect": [
+        661.0,
+        1130.0,
+        96.0,
+        89.0
+      ],
+      "oldPivotX": 0.489583,
+      "oldBbox": [
+        663,
+        1132,
+        92,
+        85
+      ],
+      "newRect": [
+        2204,
+        3741,
+        223,
+        249
+      ],
+      "newBbox": [
+        2206,
+        3743,
+        219,
+        245
+      ],
+      "oldPivotAbsoluteX": 707.999968,
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2315.5,
+      "priorPivotX": 0.486879,
+      "pivotX": 0.48834,
+      "pivotDeltaFraction": 0.00146099999999999,
+      "anchorDeltaPixels": 0.32580300000017814,
+      "imageShiftWorld": -0.0019576039052707377,
+      "oldBboxToPivotWorld": -0.01562265374777084,
+      "newBboxToPivotWorld": -0.015623313850406245,
+      "worldOffsetRoundingError": -6.601026354049327e-07,
+      "oldFootOffsetWorld": -0.015621653929924127,
+      "priorFootOffsetWorld": 0.026593744089088586,
+      "newFootOffsetWorld": 0.02463614018381785
+    },
+    {
+      "name": "cless_1_1",
+      "originalSpriteId": "72ca1c30c00d4ac43aab40eb554b5a08",
+      "originalInternalId": "-1514159011",
+      "oldRect": [
+        822.0,
+        1129.0,
+        93.0,
+        87.0
+      ],
+      "oldPivotX": 0.387097,
+      "oldBbox": [
+        824,
+        1131,
+        89,
+        83
+      ],
+      "newRect": [
+        2726,
+        3709,
+        221,
+        242
+      ],
+      "newBbox": [
+        2728,
+        3711,
+        217,
+        238
+      ],
+      "oldPivotAbsoluteX": 858.0000210000001,
+      "oldBboxCenterX": 868.5,
+      "newBboxCenterX": 2836.5,
+      "priorPivotX": 0.346273,
+      "pivotX": 0.376471,
+      "pivotDeltaFraction": 0.030198000000000003,
+      "anchorDeltaPixels": 6.673758000000362,
+      "imageShiftWorld": -0.04009961456347975,
+      "oldBboxToPivotWorld": -0.16403228724266702,
+      "newBboxToPivotWorld": -0.16403289248995936,
+      "worldOffsetRoundingError": -6.052472923401275e-07,
+      "oldFootOffsetWorld": -3.280652315635453e-07,
+      "priorFootOffsetWorld": 0.12902562094167574,
+      "newFootOffsetWorld": 0.08892600637819599
+    },
+    {
+      "name": "cless_1_2",
+      "originalSpriteId": "d2622518681373243ad9d971393045a2",
+      "originalInternalId": "-1599462093",
+      "oldRect": [
+        971.0,
+        1130.0,
+        77.0,
+        87.0
+      ],
+      "oldPivotX": 0.480519,
+      "oldBbox": [
+        973,
+        1132,
+        73,
+        83
+      ],
+      "newRect": [
+        3203,
+        3739,
+        189,
+        246
+      ],
+      "newBbox": [
+        3205,
+        3741,
+        185,
+        242
+      ],
+      "oldPivotAbsoluteX": 1007.999963,
+      "oldBboxCenterX": 1009.5,
+      "newBboxCenterX": 3297.5,
+      "priorPivotX": 0.47343,
+      "pivotX": 0.479365,
+      "pivotDeltaFraction": 0.005934999999999968,
+      "anchorDeltaPixels": 1.1217149999997673,
+      "imageShiftWorld": -0.0067398816603871335,
+      "oldBboxToPivotWorld": -0.02343380877796358,
+      "newBboxToPivotWorld": -0.023433438595134505,
+      "worldOffsetRoundingError": 3.7018282907433364e-07,
+      "oldFootOffsetWorld": 0.015622731858539837,
+      "priorFootOffsetWorld": 0.021160493922110037,
+      "newFootOffsetWorld": 0.014420612261722903
+    },
+    {
+      "name": "cless_1_3",
+      "originalSpriteId": "71d65592915e12243bc49b729c9ae914",
+      "originalInternalId": "846984748",
+      "oldRect": [
+        1138.0,
+        1130.0,
+        77.0,
+        86.0
+      ],
+      "oldPivotX": 0.337663,
+      "oldBbox": [
+        1140,
+        1132,
+        73,
+        82
+      ],
+      "newRect": [
+        3747,
+        3737,
+        192,
+        247
+      ],
+      "newBbox": [
+        3749,
+        3739,
+        188,
+        243
+      ],
+      "oldPivotAbsoluteX": 1164.000051,
+      "oldBboxCenterX": 1176.5,
+      "newBboxCenterX": 3843.0,
+      "priorPivotX": 0.286609,
+      "pivotX": 0.330731,
+      "pivotDeltaFraction": 0.044121999999999995,
+      "anchorDeltaPixels": 8.471423999999843,
+      "imageShiftWorld": -0.05090098220579577,
+      "oldBboxToPivotWorld": -0.195276126255748,
+      "newBboxToPivotWorld": -0.19527578888067174,
+      "worldOffsetRoundingError": 3.373750762647454e-07,
+      "oldFootOffsetWorld": 0.09373212630323935,
+      "priorFootOffsetWorld": 0.15003995686341037,
+      "newFootOffsetWorld": 0.0991389746576146
+    },
+    {
+      "name": "cless_2_0",
+      "originalSpriteId": "0727a6015171047448a771d7d7051430",
+      "originalInternalId": "-1889653284",
+      "oldRect": [
+        39.0,
+        1018.0,
+        95.0,
+        82.0
+      ],
+      "oldPivotX": 0.515789,
+      "oldBbox": [
+        41,
+        1020,
+        91,
+        78
+      ],
+      "newRect": [
+        172,
+        3347,
+        222,
+        226
+      ],
+      "newBbox": [
+        174,
+        3349,
+        218,
+        222
+      ],
+      "oldPivotAbsoluteX": 87.999955,
+      "oldBboxCenterX": 86.5,
+      "newBboxCenterX": 283.0,
+      "priorPivotX": 0.519993,
+      "pivotX": 0.517567,
+      "pivotDeltaFraction": -0.0024260000000000392,
+      "anchorDeltaPixels": -0.5385719999999878,
+      "imageShiftWorld": 0.0032360372693586966,
+      "oldBboxToPivotWorld": 0.023432527761348475,
+      "newBboxToPivotWorld": 0.023432591389458232,
+      "worldOffsetRoundingError": 6.362810975671374e-08,
+      "oldFootOffsetWorld": -0.015621450841924733,
+      "priorFootOffsetWorld": -0.044694281325640135,
+      "newFootOffsetWorld": -0.041458244056281436
+    },
+    {
+      "name": "cless_2_1",
+      "originalSpriteId": "e8f4fef2750fd1d459dcdd102e380691",
+      "originalInternalId": "-568219782",
+      "oldRect": [
+        199.0,
+        1018.0,
+        93.0,
+        81.0
+      ],
+      "oldPivotX": 0.365592,
+      "oldBbox": [
+        201,
+        1020,
+        89,
+        77
+      ],
+      "newRect": [
+        688,
+        3343,
+        227,
+        228
+      ],
+      "newBbox": [
+        690,
+        3345,
+        223,
+        224
+      ],
+      "oldPivotAbsoluteX": 233.000056,
+      "oldBboxCenterX": 245.5,
+      "newBboxCenterX": 801.5,
+      "priorPivotX": 0.321847,
+      "pivotX": 0.35683,
+      "pivotDeltaFraction": 0.034982999999999986,
+      "anchorDeltaPixels": 7.941141000000016,
+      "imageShiftWorld": -0.04771474981475647,
+      "oldBboxToPivotWorld": -0.19527604814497856,
+      "newBboxToPivotWorld": -0.19527544038472036,
+      "worldOffsetRoundingError": 6.077602582033048e-07,
+      "oldFootOffsetWorld": -8.748406149867405e-07,
+      "priorFootOffsetWorld": 0.07174648986465636,
+      "newFootOffsetWorld": 0.024031740049899882
+    },
+    {
+      "name": "cless_2_2",
+      "originalSpriteId": "3258e712ca5ec0344b135e5fb3cec084",
+      "originalInternalId": "1596023460",
+      "oldRect": [
+        343.0,
+        1017.0,
+        77.0,
+        84.0
+      ],
+      "oldPivotX": 0.493507,
+      "oldBbox": [
+        345,
+        1019,
+        73,
+        80
+      ],
+      "newRect": [
+        1148,
+        3346,
+        197,
+        228
+      ],
+      "newBbox": [
+        1150,
+        3348,
+        193,
+        224
+      ],
+      "oldPivotAbsoluteX": 381.000039,
+      "oldBboxCenterX": 381.5,
+      "newBboxCenterX": 1246.5,
+      "priorPivotX": 0.489739,
+      "pivotX": 0.493402,
+      "pivotDeltaFraction": 0.0036630000000000273,
+      "anchorDeltaPixels": 0.7216109999999389,
+      "imageShiftWorld": -0.004335836415519287,
+      "oldBboxToPivotWorld": -0.007810467655423789,
+      "newBboxToPivotWorld": -0.007809950496750873,
+      "worldOffsetRoundingError": 5.171586729161778e-07,
+      "oldFootOffsetWorld": -0.03124491694169492,
+      "priorFootOffsetWorld": -0.014892692087964652,
+      "newFootOffsetWorld": -0.01922852850348394
+    },
+    {
+      "name": "cless_2_3",
+      "originalSpriteId": "4017873c221484a43b6276ae4b5c790e",
+      "originalInternalId": "121740285",
+      "oldRect": [
+        504.0,
+        1018.0,
+        79.0,
+        82.0
+      ],
+      "oldPivotX": 0.468354,
+      "oldBbox": [
+        506,
+        1020,
+        75,
+        78
+      ],
+      "newRect": [
+        1678,
+        3347,
+        196,
+        224
+      ],
+      "newBbox": [
+        1680,
+        3349,
+        192,
+        220
+      ],
+      "oldPivotAbsoluteX": 540.999966,
+      "oldBboxCenterX": 543.5,
+      "newBboxCenterX": 1776.0,
+      "priorPivotX": 0.454561,
+      "pivotX": 0.466836,
+      "pivotDeltaFraction": 0.01227499999999998,
+      "anchorDeltaPixels": 2.405899999999974,
+      "imageShiftWorld": -0.014455972583703163,
+      "oldBboxToPivotWorld": -0.03905591575034967,
+      "newBboxToPivotWorld": -0.03905644600944551,
+      "worldOffsetRoundingError": -5.302590958405906e-07,
+      "oldFootOffsetWorld": 5.311532309558147e-07,
+      "priorFootOffsetWorld": -0.012581641185203093,
+      "newFootOffsetWorld": -0.027037613768906257
+    },
+    {
+      "name": "cless_3_0",
+      "originalSpriteId": "aed45237043bc9040b729908f49e4b4f",
+      "originalInternalId": "595479373",
+      "oldRect": [
+        658.0,
+        1017.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.554455,
+      "oldBbox": [
+        660,
+        1019,
+        97,
+        78
+      ],
+      "newRect": [
+        2203,
+        3342,
+        222,
+        236
+      ],
+      "newBbox": [
+        2205,
+        3344,
+        218,
+        232
+      ],
+      "oldPivotAbsoluteX": 713.999955,
+      "oldBboxCenterX": 708.5,
+      "newBboxCenterX": 2314.0,
+      "priorPivotX": 0.581856,
+      "pivotX": 0.564414,
+      "pivotDeltaFraction": -0.01744200000000007,
+      "anchorDeltaPixels": -3.8721239999999852,
+      "imageShiftWorld": 0.02326585410228996,
+      "oldBboxToPivotWorld": 0.08592114311673842,
+      "newBboxToPivotWorld": 0.08592172492517526,
+      "worldOffsetRoundingError": 5.81808436844744e-07,
+      "oldFootOffsetWorld": -0.062487912358467186,
+      "priorFootOffsetWorld": -0.09116192636064202,
+      "newFootOffsetWorld": -0.06789607225835206
+    },
+    {
+      "name": "cless_3_1",
+      "originalSpriteId": "ebc8f2d64770f5141a54c0b6661e25d8",
+      "originalInternalId": "-1649125015",
+      "oldRect": [
+        823.0,
+        1017.0,
+        92.0,
+        82.0
+      ],
+      "oldPivotX": 0.369565,
+      "oldBbox": [
+        825,
+        1019,
+        88,
+        78
+      ],
+      "newRect": [
+        2724,
+        3337,
+        229,
+        238
+      ],
+      "newBbox": [
+        2726,
+        3339,
+        225,
+        234
+      ],
+      "oldPivotAbsoluteX": 856.99998,
+      "oldBboxCenterX": 869.0,
+      "newBboxCenterX": 2838.5,
+      "priorPivotX": 0.328646,
+      "pivotX": 0.363756,
+      "pivotDeltaFraction": 0.03511000000000003,
+      "anchorDeltaPixels": 8.040189999999711,
+      "imageShiftWorld": -0.048309890771753364,
+      "oldBboxToPivotWorld": -0.18746615850924578,
+      "newBboxToPivotWorld": -0.18746604267465192,
+      "worldOffsetRoundingError": 1.158345938612193e-07,
+      "oldFootOffsetWorld": -0.031243995234618977,
+      "priorFootOffsetWorld": 0.15466049644570085,
+      "newFootOffsetWorld": 0.10635060567394748
+    },
+    {
+      "name": "cless_3_2",
+      "originalSpriteId": "7c361ef249f439b489848b15a1547cb8",
+      "originalInternalId": "312029061",
+      "oldRect": [
+        970.0,
+        1018.0,
+        78.0,
+        82.0
+      ],
+      "oldPivotX": 0.487179,
+      "oldBbox": [
+        972,
+        1020,
+        74,
+        78
+      ],
+      "newRect": [
+        3195,
+        3341,
+        202,
+        235
+      ],
+      "newBbox": [
+        3197,
+        3343,
+        198,
+        231
+      ],
+      "oldPivotAbsoluteX": 1007.999962,
+      "oldBboxCenterX": 1009.0,
+      "newBboxCenterX": 3296.0,
+      "priorPivotX": 0.482566,
+      "pivotX": 0.487128,
+      "pivotDeltaFraction": 0.0045620000000000105,
+      "anchorDeltaPixels": 0.921523999999863,
+      "imageShiftWorld": -0.005537023849379707,
+      "oldBboxToPivotWorld": -0.015622747480693637,
+      "newBboxToPivotWorld": -0.01562309754257479,
+      "worldOffsetRoundingError": -3.500618811526357e-07,
+      "oldFootOffsetWorld": -0.01562156019700133,
+      "priorFootOffsetWorld": 0.015151570503013427,
+      "newFootOffsetWorld": 0.00961454665363372
+    },
+    {
+      "name": "cless_3_3",
+      "originalSpriteId": "a848464e98c2e5845acb2233c540ab7e",
+      "originalInternalId": "2006409854",
+      "oldRect": [
+        1130.0,
+        1018.0,
+        80.0,
+        80.0
+      ],
+      "oldPivotX": 0.4625,
+      "oldBbox": [
+        1132,
+        1020,
+        76,
+        76
+      ],
+      "newRect": [
+        3724,
+        3338,
+        197,
+        235
+      ],
+      "newBbox": [
+        3726,
+        3340,
+        193,
+        231
+      ],
+      "oldPivotAbsoluteX": 1167.0,
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.5,
+      "priorPivotX": 0.445826,
+      "pivotX": 0.460406,
+      "pivotDeltaFraction": 0.014579999999999982,
+      "anchorDeltaPixels": 2.8722600000000966,
+      "imageShiftWorld": -0.017258120376270458,
+      "oldBboxToPivotWorld": -0.04686646151654245,
+      "newBboxToPivotWorld": -0.0468668050876558,
+      "worldOffsetRoundingError": -3.435711133439878e-07,
+      "oldFootOffsetWorld": 0.0,
+      "priorFootOffsetWorld": -0.010981960647837114,
+      "newFootOffsetWorld": -0.02824008102410757
+    },
+    {
+      "name": "cless_4_0",
+      "originalSpriteId": "0d811cb9813250f43801ef455ebc77c2",
+      "originalInternalId": "407145226",
+      "oldRect": [
+        39.0,
+        904.0,
+        92.0,
+        83.0
+      ],
+      "oldPivotX": 0.652174,
+      "oldBbox": [
+        41,
+        906,
+        88,
+        79
+      ],
+      "newRect": [
+        167,
+        2982,
+        221,
+        213
+      ],
+      "newBbox": [
+        169,
+        2984,
+        217,
+        209
+      ],
+      "oldPivotAbsoluteX": 99.00000800000001,
+      "oldBboxCenterX": 85.0,
+      "newBboxCenterX": 277.5,
+      "priorPivotX": 0.70755,
+      "pivotX": 0.664705,
+      "pivotDeltaFraction": -0.04284500000000002,
+      "anchorDeltaPixels": -9.468745000000013,
+      "imageShiftWorld": 0.056893436186906385,
+      "oldBboxToPivotWorld": 0.2187102787210956,
+      "newBboxToPivotWorld": 0.21871008069003167,
+      "worldOffsetRoundingError": -1.9803106393601055e-07,
+      "oldFootOffsetWorld": -0.07029981725204451,
+      "priorFootOffsetWorld": -0.18847952898729253,
+      "newFootOffsetWorld": -0.13158609280038616
+    },
+    {
+      "name": "cless_4_1",
+      "originalSpriteId": "327dff79fc72b404fa3c0c1feafffd62",
+      "originalInternalId": "-940373323",
+      "oldRect": [
+        196.0,
+        903.0,
+        94.0,
+        83.0
+      ],
+      "oldPivotX": 0.340425,
+      "oldBbox": [
+        198,
+        905,
+        90,
+        79
+      ],
+      "newRect": [
+        679,
+        2978,
+        230,
+        218
+      ],
+      "newBbox": [
+        681,
+        2980,
+        226,
+        214
+      ],
+      "oldPivotAbsoluteX": 227.99995,
+      "oldBboxCenterX": 243.0,
+      "newBboxCenterX": 794.0,
+      "priorPivotX": 0.28577,
+      "pivotX": 0.330435,
+      "pivotDeltaFraction": 0.044664999999999955,
+      "anchorDeltaPixels": 10.272949999999923,
+      "imageShiftWorld": -0.0617255428545467,
+      "oldBboxToPivotWorld": -0.234333088690404,
+      "newBboxToPivotWorld": -0.23433318424115734,
+      "worldOffsetRoundingError": -9.555075333733676e-08,
+      "oldFootOffsetWorld": 0.031245088785386715,
+      "priorFootOffsetWorld": 0.13382785309429515,
+      "newFootOffsetWorld": 0.07210231023974846
+    },
+    {
+      "name": "cless_4_2",
+      "originalSpriteId": "4c89d84ae90dab34e9cf693734152a0e",
+      "originalInternalId": "-1420383089",
+      "oldRect": [
+        340.0,
+        902.0,
+        80.0,
+        83.0
+      ],
+      "oldPivotX": 0.61875,
+      "oldBbox": [
+        342,
+        904,
+        76,
+        79
+      ],
+      "newRect": [
+        1142,
+        2970,
+        200,
+        223
+      ],
+      "newBbox": [
+        1144,
+        2972,
+        196,
+        219
+      ],
+      "oldPivotAbsoluteX": 389.5,
+      "oldBboxCenterX": 380.0,
+      "newBboxCenterX": 1242.0,
+      "priorPivotX": 0.651212,
+      "pivotX": 0.623499,
+      "pivotDeltaFraction": -0.027712999999999988,
+      "anchorDeltaPixels": -5.542599999999993,
+      "imageShiftWorld": 0.03330299415704473,
+      "oldBboxToPivotWorld": 0.1484104614690511,
+      "newBboxToPivotWorld": 0.1484100052466672,
+      "worldOffsetRoundingError": -4.5622238389886327e-07,
+      "oldFootOffsetWorld": -0.03905538459711871,
+      "priorFootOffsetWorld": -0.15767879584794764,
+      "newFootOffsetWorld": -0.12437580169090293
+    },
+    {
+      "name": "cless_4_3",
+      "originalSpriteId": "26c075f874b07a84f805afd33d4de6b4",
+      "originalInternalId": "1863705933",
+      "oldRect": [
+        503.0,
+        903.0,
+        92.0,
+        81.0
+      ],
+      "oldPivotX": 0.282609,
+      "oldBbox": [
+        505,
+        905,
+        88,
+        77
+      ],
+      "newRect": [
+        1693,
+        2974,
+        200,
+        216
+      ],
+      "newBbox": [
+        1695,
+        2976,
+        196,
+        212
+      ],
+      "oldPivotAbsoluteX": 529.000028,
+      "oldBboxCenterX": 549.0,
+      "newBboxCenterX": 1793.0,
+      "priorPivotX": 0.17449,
+      "pivotX": 0.240002,
+      "pivotDeltaFraction": 0.06551199999999999,
+      "anchorDeltaPixels": 13.102399999999989,
+      "imageShiftWorld": -0.0787264371672614,
+      "oldBboxToPivotWorld": -0.3124426393566415,
+      "newBboxToPivotWorld": -0.31244224280458066,
+      "worldOffsetRoundingError": 3.965520608550932e-07,
+      "oldFootOffsetWorld": 0.04686602409623429,
+      "priorFootOffsetWorld": 0.21692070419255102,
+      "newFootOffsetWorld": 0.1381942670252896
+    },
+    {
+      "name": "cless_5_0",
+      "originalSpriteId": "2d773d60fe065fd41a88b995c654772e",
+      "originalInternalId": "-1794479540",
+      "oldRect": [
+        652.0,
+        905.0,
+        107.0,
+        80.0
+      ],
+      "oldPivotX": 0.401869,
+      "oldBbox": [
+        654,
+        907,
+        103,
+        76
+      ],
+      "newRect": [
+        2184,
+        2971,
+        240,
+        232
+      ],
+      "newBbox": [
+        2186,
+        2973,
+        236,
+        228
+      ],
+      "oldPivotAbsoluteX": 694.999983,
+      "oldBboxCenterX": 705.5,
+      "newBboxCenterX": 2304.0,
+      "priorPivotX": 0.358798,
+      "pivotX": 0.38625,
+      "pivotDeltaFraction": 0.027451999999999976,
+      "anchorDeltaPixels": 6.58847999999989,
+      "imageShiftWorld": -0.0395872173607698,
+      "oldBboxToPivotWorld": -0.16403288088451318,
+      "newBboxToPivotWorld": -0.16403343926809227,
+      "worldOffsetRoundingError": -5.583835790967662e-07,
+      "oldFootOffsetWorld": 0.015622419415462073,
+      "priorFootOffsetWorld": 0.0834496388500407,
+      "newFootOffsetWorld": 0.0438624214892709
+    },
+    {
+      "name": "cless_5_1",
+      "originalSpriteId": "e34d2486fed727241ab370fb132173c6",
+      "originalInternalId": "-1252333515",
+      "oldRect": [
+        822.0,
+        903.0,
+        95.0,
+        82.0
+      ],
+      "oldPivotX": 0.315789,
+      "oldBbox": [
+        824,
+        905,
+        91,
+        78
+      ],
+      "newRect": [
+        2727,
+        2967,
+        227,
+        233
+      ],
+      "newBbox": [
+        2729,
+        2969,
+        223,
+        229
+      ],
+      "oldPivotAbsoluteX": 851.999955,
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2840.5,
+      "priorPivotX": 0.246379,
+      "pivotX": 0.29956,
+      "pivotDeltaFraction": 0.053181000000000006,
+      "anchorDeltaPixels": 12.07208700000001,
+      "imageShiftWorld": -0.07253574907522399,
+      "oldBboxToPivotWorld": -0.27338839517675373,
+      "newBboxToPivotWorld": -0.2733883444207111,
+      "worldOffsetRoundingError": 5.075604264659361e-08,
+      "oldFootOffsetWorld": 0.05467824143288894,
+      "priorFootOffsetWorld": 0.2588001056062896,
+      "newFootOffsetWorld": 0.18626435653106557
+    },
+    {
+      "name": "cless_5_2",
+      "originalSpriteId": "43b396088458f4641b95298a4c51c4cc",
+      "originalInternalId": "1055154349",
+      "oldRect": [
+        959.0,
+        905.0,
+        90.0,
+        79.0
+      ],
+      "oldPivotX": 0.366667,
+      "oldBbox": [
+        961,
+        907,
+        86,
+        75
+      ],
+      "newRect": [
+        3176,
+        2969,
+        207,
+        232
+      ],
+      "newBbox": [
+        3178,
+        2971,
+        203,
+        228
+      ],
+      "oldPivotAbsoluteX": 992.00003,
+      "oldBboxCenterX": 1004.0,
+      "newBboxCenterX": 3279.5,
+      "priorPivotX": 0.310227,
+      "pivotX": 0.349276,
+      "pivotDeltaFraction": 0.039049,
+      "anchorDeltaPixels": 8.083142999999836,
+      "imageShiftWorld": -0.0485679760580868,
+      "oldBboxToPivotWorld": -0.18746537740155406,
+      "newBboxToPivotWorld": -0.18746599460624494,
+      "worldOffsetRoundingError": -6.172046908836659e-07,
+      "oldFootOffsetWorld": 0.062488146690774175,
+      "priorFootOffsetWorld": 0.10084157566315767,
+      "newFootOffsetWorld": 0.05227359960507087
+    },
+    {
+      "name": "cless_5_3",
+      "originalSpriteId": "8d984a4e659dca74abaf2d1a936c174b",
+      "originalInternalId": "-2127999419",
+      "oldRect": [
+        1120.0,
+        905.0,
+        100.0,
+        79.0
+      ],
+      "oldPivotX": 0.36,
+      "oldBbox": [
+        1122,
+        907,
+        96,
+        75
+      ],
+      "newRect": [
+        3717,
+        2971,
+        210,
+        229
+      ],
+      "newBbox": [
+        3719,
+        2973,
+        206,
+        225
+      ],
+      "oldPivotAbsoluteX": 1156.0,
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.0,
+      "priorPivotX": 0.280466,
+      "pivotX": 0.326668,
+      "pivotDeltaFraction": 0.04620200000000002,
+      "anchorDeltaPixels": 9.702420000000075,
+      "imageShiftWorld": -0.05829748431588006,
+      "oldBboxToPivotWorld": -0.21871015374386477,
+      "newBboxToPivotWorld": -0.21870956996320534,
+      "worldOffsetRoundingError": 5.837806594244377e-07,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.1027590784997944,
+      "newFootOffsetWorld": 0.04446159418391434
+    },
+    {
+      "name": "cless_6_0",
+      "originalSpriteId": "8aec6dd586ce3b246853290a378f2a81",
+      "originalInternalId": "-1090570019",
+      "oldRect": [
+        42.0,
+        790.0,
+        92.0,
+        84.0
+      ],
+      "oldPivotX": 0.315217,
+      "oldBbox": [
+        44,
+        792,
+        88,
+        80
+      ],
+      "newRect": [
+        180,
+        2601,
+        214,
+        234
+      ],
+      "newBbox": [
+        182,
+        2603,
+        210,
+        230
+      ],
+      "oldPivotAbsoluteX": 70.999964,
+      "oldBboxCenterX": 88.0,
+      "newBboxCenterX": 287.0,
+      "priorPivotX": 0.242573,
+      "pivotX": 0.293459,
+      "pivotDeltaFraction": 0.050886000000000015,
+      "anchorDeltaPixels": 10.88960400000002,
+      "imageShiftWorld": -0.06543073979441634,
+      "oldBboxToPivotWorld": -0.2655771776579453,
+      "newBboxToPivotWorld": -0.2655765913586943,
+      "worldOffsetRoundingError": 5.862992509819698e-07,
+      "oldFootOffsetWorld": 0.062489177752928046,
+      "priorFootOffsetWorld": 0.16877645715170178,
+      "newFootOffsetWorld": 0.10334571735728544
+    },
+    {
+      "name": "cless_6_1",
+      "originalSpriteId": "eeeb3db5eb9b53b4da19c536672921b4",
+      "originalInternalId": "-1784538601",
+      "oldRect": [
+        198.0,
+        792.0,
+        94.0,
+        83.0
+      ],
+      "oldPivotX": 0.234043,
+      "oldBbox": [
+        200,
+        794,
+        90,
+        79
+      ],
+      "newRect": [
+        676,
+        2609,
+        248,
+        228
+      ],
+      "newBbox": [
+        678,
+        2611,
+        244,
+        224
+      ],
+      "oldPivotAbsoluteX": 220.000042,
+      "oldBboxCenterX": 245.0,
+      "newBboxCenterX": 800.0,
+      "priorPivotX": 0.171761,
+      "pivotX": 0.237905,
+      "pivotDeltaFraction": 0.06614400000000001,
+      "anchorDeltaPixels": 16.40371200000004,
+      "imageShiftWorld": -0.09856253831953353,
+      "oldBboxToPivotWorld": -0.39055318984072573,
+      "newBboxToPivotWorld": -0.3905531640187782,
+      "worldOffsetRoundingError": 2.582194752465128e-08,
+      "oldFootOffsetWorld": 0.2499538052910984,
+      "priorFootOffsetWorld": 0.4049959898931368,
+      "newFootOffsetWorld": 0.30643345157360324
+    },
+    {
+      "name": "cless_6_2",
+      "originalSpriteId": "0b8443c04b4f0a945992cff2fb089a98",
+      "originalInternalId": "-1686153134",
+      "oldRect": [
+        338.0,
+        790.0,
+        84.0,
+        87.0
+      ],
+      "oldPivotX": 0.654762,
+      "oldBbox": [
+        340,
+        792,
+        80,
+        83
+      ],
+      "newRect": [
+        1141,
+        2610,
+        202,
+        226
+      ],
+      "newBbox": [
+        1143,
+        2612,
+        198,
+        222
+      ],
+      "oldPivotAbsoluteX": 393.000008,
+      "oldBboxCenterX": 380.0,
+      "newBboxCenterX": 1242.0,
+      "priorPivotX": 0.70631,
+      "pivotX": 0.667326,
+      "pivotDeltaFraction": -0.03898400000000002,
+      "anchorDeltaPixels": -7.874767999999904,
+      "imageShiftWorld": 0.047315944266604106,
+      "oldBboxToPivotWorld": 0.20308812488224767,
+      "newBboxToPivotWorld": 0.2030881307806772,
+      "worldOffsetRoundingError": 5.898429522588344e-09,
+      "oldFootOffsetWorld": -0.015622278816077879,
+      "priorFootOffsetWorld": -0.24439552415834023,
+      "newFootOffsetWorld": -0.1970795798917361
+    },
+    {
+      "name": "cless_6_3",
+      "originalSpriteId": "bb2797a1f1ed7024d999bedc04443159",
+      "originalInternalId": "991059225",
+      "oldRect": [
+        497.0,
+        792.0,
+        98.0,
+        84.0
+      ],
+      "oldPivotX": 0.255102,
+      "oldBbox": [
+        499,
+        794,
+        94,
+        80
+      ],
+      "newRect": [
+        1683,
+        2612,
+        201,
+        225
+      ],
+      "newBbox": [
+        1685,
+        2614,
+        197,
+        221
+      ],
+      "oldPivotAbsoluteX": 521.999996,
+      "oldBboxCenterX": 546.0,
+      "newBboxCenterX": 1783.5,
+      "priorPivotX": 0.109619,
+      "pivotX": 0.189554,
+      "pivotDeltaFraction": 0.079935,
+      "anchorDeltaPixels": 16.06693499999983,
+      "imageShiftWorld": -0.09653899657680737,
+      "oldBboxToPivotWorld": -0.3749317546209548,
+      "newBboxToPivotWorld": -0.3749314484429085,
+      "worldOffsetRoundingError": 3.0617804630539425e-07,
+      "oldFootOffsetWorld": 0.046866524005157645,
+      "priorFootOffsetWorld": 0.34228660090748286,
+      "newFootOffsetWorld": 0.2457476043306755
+    },
+    {
+      "name": "cless_7_0",
+      "originalSpriteId": "8c28a6e1d2b1c4b46b1277d6160950f1",
+      "originalInternalId": "-1769122838",
+      "oldRect": [
+        647.0,
+        787.0,
+        119.0,
+        81.0
+      ],
+      "oldPivotX": 0.394958,
+      "oldBbox": [
+        649,
+        789,
+        115,
+        77
+      ],
+      "newRect": [
+        2187,
+        2587,
+        240,
+        231
+      ],
+      "newBbox": [
+        2189,
+        2589,
+        236,
+        227
+      ],
+      "oldPivotAbsoluteX": 694.000002,
+      "oldBboxCenterX": 706.5,
+      "newBboxCenterX": 2307.0,
+      "priorPivotX": 0.332689,
+      "pivotX": 0.364584,
+      "pivotDeltaFraction": 0.03189500000000001,
+      "anchorDeltaPixels": 7.65480000000025,
+      "imageShiftWorld": -0.045994255344667605,
+      "oldBboxToPivotWorld": -0.19527689174128596,
+      "newBboxToPivotWorld": -0.1952769425224422,
+      "worldOffsetRoundingError": -5.078115625223312e-08,
+      "oldFootOffsetWorld": 0.5467753531153543,
+      "priorFootOffsetWorld": 0.37345931742381333,
+      "newFootOffsetWorld": 0.3274650620791457
+    },
+    {
+      "name": "cless_7_1",
+      "originalSpriteId": "d0ad319177605004480babb0d880e538",
+      "originalInternalId": "976387031",
+      "oldRect": [
+        828.0,
+        790.0,
+        89.0,
+        79.0
+      ],
+      "oldPivotX": 0.235955,
+      "oldBbox": [
+        830,
+        792,
+        85,
+        75
+      ],
+      "newRect": [
+        2727,
+        2584,
+        247,
+        252
+      ],
+      "newBbox": [
+        2729,
+        2586,
+        243,
+        248
+      ],
+      "oldPivotAbsoluteX": 848.999995,
+      "oldBboxCenterX": 872.5,
+      "newBboxCenterX": 2850.5,
+      "priorPivotX": 0.186758,
+      "pivotX": 0.252633,
+      "pivotDeltaFraction": 0.06587499999999999,
+      "anchorDeltaPixels": 16.27112500000021,
+      "imageShiftWorld": -0.09776588258282252,
+      "oldBboxToPivotWorld": -0.36712069332368485,
+      "newBboxToPivotWorld": -0.36712035031293594,
+      "worldOffsetRoundingError": 3.4301074891551764e-07,
+      "oldFootOffsetWorld": 0.3905539240819561,
+      "priorFootOffsetWorld": 0.3296938378945844,
+      "newFootOffsetWorld": 0.23192795531176189
+    },
+    {
+      "name": "cless_7_2",
+      "originalSpriteId": "e632c7a8e0021184f8ba4ce7ce1291dc",
+      "originalInternalId": "193740199",
+      "oldRect": [
+        965.0,
+        787.0,
+        97.0,
+        88.0
+      ],
+      "oldPivotX": 0.28866,
+      "oldBbox": [
+        967,
+        789,
+        93,
+        84
+      ],
+      "newRect": [
+        3196,
+        2590,
+        228,
+        249
+      ],
+      "newBbox": [
+        3198,
+        2592,
+        224,
+        245
+      ],
+      "oldPivotAbsoluteX": 993.00002,
+      "oldBboxCenterX": 1013.5,
+      "newBboxCenterX": 3310.0,
+      "priorPivotX": 0.20826,
+      "pivotX": 0.266229,
+      "pivotDeltaFraction": 0.05796899999999999,
+      "anchorDeltaPixels": 13.21693200000027,
+      "imageShiftWorld": -0.07941460851767529,
+      "oldBboxToPivotWorld": -0.3202538412532974,
+      "newBboxToPivotWorld": -0.3202544885677694,
+      "worldOffsetRoundingError": -6.473144719687518e-07,
+      "oldFootOffsetWorld": 0.42179784120580605,
+      "priorFootOffsetWorld": 0.4477375041969732,
+      "newFootOffsetWorld": 0.36832289567929793
+    },
+    {
+      "name": "cless_7_3",
+      "originalSpriteId": "c122812fc3bee7e4bb323c1700cf099a",
+      "originalInternalId": "-1357735377",
+      "oldRect": [
+        1119.0,
+        786.0,
+        107.0,
+        92.0
+      ],
+      "oldPivotX": 0.635514,
+      "oldBbox": [
+        1121,
+        788,
+        103,
+        88
+      ],
+      "newRect": [
+        3719,
+        2587,
+        221,
+        262
+      ],
+      "newBbox": [
+        3721,
+        2589,
+        217,
+        258
+      ],
+      "oldPivotAbsoluteX": 1186.999998,
+      "oldBboxCenterX": 1172.5,
+      "newBboxCenterX": 3829.5,
+      "priorPivotX": 0.715632,
+      "pivotX": 0.670587,
+      "pivotDeltaFraction": -0.045045,
+      "anchorDeltaPixels": -9.954944999999952,
+      "imageShiftWorld": 0.059814793629109166,
+      "oldBboxToPivotWorld": 0.2265211994189809,
+      "newBboxToPivotWorld": 0.22652072817868663,
+      "worldOffsetRoundingError": -4.7124029428635694e-07,
+      "oldFootOffsetWorld": -0.06248858411108234,
+      "priorFootOffsetWorld": -0.21122863569603242,
+      "newFootOffsetWorld": -0.15141384206692327
+    },
+    {
+      "name": "cless_8_0",
+      "originalSpriteId": "f33c7a772ee2b5a418a908590540bffd",
+      "originalInternalId": "-1584485316",
+      "oldRect": [
+        48.0,
+        668.0,
+        95.0,
+        104.0
+      ],
+      "oldPivotX": 0.578948,
+      "oldBbox": [
+        50,
+        670,
+        91,
+        100
+      ],
+      "newRect": [
+        194,
+        2170,
+        236,
+        286
+      ],
+      "newBbox": [
+        196,
+        2172,
+        232,
+        282
+      ],
+      "oldPivotAbsoluteX": 103.00006,
+      "oldBboxCenterX": 95.5,
+      "newBboxCenterX": 312.0,
+      "priorPivotX": 0.603534,
+      "pivotX": 0.582627,
+      "pivotDeltaFraction": -0.02090700000000001,
+      "anchorDeltaPixels": -4.934052000000008,
+      "imageShiftWorld": 0.02964650253068151,
+      "oldBboxToPivotWorld": 0.11716709112058653,
+      "newBboxToPivotWorld": 0.11716657409492605,
+      "worldOffsetRoundingError": -5.170256604791756e-07,
+      "oldFootOffsetWorld": -9.373292304063659e-07,
+      "priorFootOffsetWorld": 0.0034006955979191773,
+      "newFootOffsetWorld": 0.033047198128600686
+    },
+    {
+      "name": "cless_8_1",
+      "originalSpriteId": "891c9639b514ebf4ab48feaf4b5e882a",
+      "originalInternalId": "-329984083",
+      "oldRect": [
+        191.0,
+        666.0,
+        94.0,
+        96.0
+      ],
+      "oldPivotX": 0.329787,
+      "oldBbox": [
+        193,
+        668,
+        90,
+        92
+      ],
+      "newRect": [
+        654,
+        2179,
+        245,
+        276
+      ],
+      "newBbox": [
+        656,
+        2181,
+        241,
+        272
+      ],
+      "oldPivotAbsoluteX": 221.999978,
+      "oldBboxCenterX": 238.0,
+      "newBboxCenterX": 776.5,
+      "priorPivotX": 0.290323,
+      "pivotX": 0.330205,
+      "pivotDeltaFraction": 0.03988200000000003,
+      "anchorDeltaPixels": 9.771089999999958,
+      "imageShiftWorld": -0.058710091505422946,
+      "oldBboxToPivotWorld": -0.24995480510894422,
+      "newBboxToPivotWorld": -0.2499543650559986,
+      "worldOffsetRoundingError": 4.400529456105584e-07,
+      "oldFootOffsetWorld": 0.1718440359147068,
+      "priorFootOffsetWorld": 0.2455746722275403,
+      "newFootOffsetWorld": 0.18686458072211737
+    },
+    {
+      "name": "cless_8_2",
+      "originalSpriteId": "55e97a7c8689f5243b22be54f1045dac",
+      "originalInternalId": "-2024879551",
+      "oldRect": [
+        338.0,
+        667.0,
+        91.0,
+        107.0
+      ],
+      "oldPivotX": 0.626374,
+      "oldBbox": [
+        340,
+        669,
+        87,
+        103
+      ],
+      "newRect": [
+        1137,
+        2168,
+        232,
+        284
+      ],
+      "newBbox": [
+        1139,
+        2170,
+        228,
+        280
+      ],
+      "oldPivotAbsoluteX": 395.000034,
+      "oldBboxCenterX": 383.5,
+      "newBboxCenterX": 1253.0,
+      "priorPivotX": 0.660377,
+      "pivotX": 0.628879,
+      "pivotDeltaFraction": -0.031498000000000026,
+      "anchorDeltaPixels": -7.307536000000027,
+      "imageShiftWorld": 0.04390770192876903,
+      "oldBboxToPivotWorld": 0.179655300299977,
+      "newBboxToPivotWorld": 0.17965523896367425,
+      "worldOffsetRoundingError": -6.133630275906299e-08,
+      "oldFootOffsetWorld": -0.07811130034746837,
+      "priorFootOffsetWorld": -0.15746888111409152,
+      "newFootOffsetWorld": -0.11356117918532248
+    },
+    {
+      "name": "cless_8_3",
+      "originalSpriteId": "8fd1e4df242f08940a1ee8307a7431e6",
+      "originalInternalId": "1512592301",
+      "oldRect": [
+        487.0,
+        667.0,
+        100.0,
+        101.0
+      ],
+      "oldPivotX": 0.33,
+      "oldBbox": [
+        489,
+        669,
+        96,
+        97
+      ],
+      "newRect": [
+        1636,
+        2172,
+        237,
+        284
+      ],
+      "newBbox": [
+        1638,
+        2174,
+        233,
+        280
+      ],
+      "oldPivotAbsoluteX": 520.0,
+      "oldBboxCenterX": 537.0,
+      "newBboxCenterX": 1754.5,
+      "priorPivotX": 0.263716,
+      "pivotX": 0.313503,
+      "pivotDeltaFraction": 0.04978699999999997,
+      "anchorDeltaPixels": 11.799518999999918,
+      "imageShiftWorld": -0.07089801037652654,
+      "oldBboxToPivotWorld": -0.2655766152604072,
+      "newBboxToPivotWorld": -0.26557668148695773,
+      "worldOffsetRoundingError": -6.622655052135329e-08,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.16523099152866383,
+      "newFootOffsetWorld": 0.09433298115213729
+    },
+    {
+      "name": "cless_9_0",
+      "originalSpriteId": "84b763d47098f4545b4d0d9f8e617a88",
+      "originalInternalId": "783845174",
+      "oldRect": [
+        668.0,
+        665.0,
+        107.0,
+        82.0
+      ],
+      "oldPivotX": 0.261682,
+      "oldBbox": [
+        670,
+        667,
+        103,
+        78
+      ],
+      "newRect": [
+        2226,
+        2187,
+        261,
+        239
+      ],
+      "newBbox": [
+        2228,
+        2189,
+        257,
+        235
+      ],
+      "oldPivotAbsoluteX": 695.999974,
+      "oldBboxCenterX": 721.5,
+      "newBboxCenterX": 2356.5,
+      "priorPivotX": 0.181525,
+      "pivotX": 0.245978,
+      "pivotDeltaFraction": 0.06445300000000001,
+      "anchorDeltaPixels": 16.82223299999987,
+      "imageShiftWorld": -0.101077243046123,
+      "oldBboxToPivotWorld": -0.3983653290666114,
+      "newBboxToPivotWorld": -0.39836537373066444,
+      "worldOffsetRoundingError": -4.4664053067133835e-08,
+      "oldFootOffsetWorld": 0.14059979072562792,
+      "priorFootOffsetWorld": 0.7307718260010186,
+      "newFootOffsetWorld": 0.6296945829548957
+    },
+    {
+      "name": "cless_9_1",
+      "originalSpriteId": "08bd1af1ac0c388488614578c40c4019",
+      "originalInternalId": "-2082098290",
+      "oldRect": [
+        821.0,
+        665.0,
+        97.0,
+        85.0
+      ],
+      "oldPivotX": 0.257732,
+      "oldBbox": [
+        823,
+        667,
+        93,
+        81
+      ],
+      "newRect": [
+        2726,
+        2188,
+        227,
+        246
+      ],
+      "newBbox": [
+        2728,
+        2190,
+        223,
+        242
+      ],
+      "oldPivotAbsoluteX": 846.000004,
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2839.5,
+      "priorPivotX": 0.16445,
+      "pivotX": 0.230838,
+      "pivotDeltaFraction": 0.06638799999999997,
+      "anchorDeltaPixels": 15.070076000000427,
+      "imageShiftWorld": -0.09054931854621204,
+      "oldBboxToPivotWorld": -0.36712055272430066,
+      "newBboxToPivotWorld": -0.3671211013817972,
+      "worldOffsetRoundingError": -5.48657496546312e-07,
+      "oldFootOffsetWorld": 0.23433224509409706,
+      "priorFootOffsetWorld": 0.5147516533729494,
+      "newFootOffsetWorld": 0.42420233482673736
+    },
+    {
+      "name": "cless_9_2",
+      "originalSpriteId": "7e5a18aaef90162478a26ac7d2075e2c",
+      "originalInternalId": "913719907",
+      "oldRect": [
+        958.0,
+        664.0,
+        104.0,
+        81.0
+      ],
+      "oldPivotX": 0.423077,
+      "oldBbox": [
+        960,
+        666,
+        100,
+        77
+      ],
+      "newRect": [
+        3191,
+        2171,
+        216,
+        261
+      ],
+      "newBbox": [
+        3193,
+        2173,
+        212,
+        257
+      ],
+      "oldPivotAbsoluteX": 1002.000008,
+      "oldBboxCenterX": 1010.0,
+      "newBboxCenterX": 3299.0,
+      "priorPivotX": 0.379076,
+      "pivotX": 0.403704,
+      "pivotDeltaFraction": 0.024627999999999983,
+      "anchorDeltaPixels": 5.319648000000143,
+      "imageShiftWorld": -0.03196337571925444,
+      "oldBboxToPivotWorld": -0.12497710573354948,
+      "newBboxToPivotWorld": -0.12497747394271669,
+      "worldOffsetRoundingError": -3.682091672119192e-07,
+      "oldFootOffsetWorld": 0.015622028861617088,
+      "priorFootOffsetWorld": 0.26509476566291035,
+      "newFootOffsetWorld": 0.23313138994365593
+    },
+    {
+      "name": "cless_9_3",
+      "originalSpriteId": "4ba10b023ddc9ca40b601041c0c084ca",
+      "originalInternalId": "-674660621",
+      "oldRect": [
+        1104.0,
+        664.0,
+        117.0,
+        83.0
+      ],
+      "oldPivotX": 0.435898,
+      "oldBbox": [
+        1106,
+        666,
+        113,
+        79
+      ],
+      "newRect": [
+        3669,
+        2194,
+        256,
+        221
+      ],
+      "newBbox": [
+        3671,
+        2196,
+        252,
+        217
+      ],
+      "oldPivotAbsoluteX": 1155.000066,
+      "oldBboxCenterX": 1162.5,
+      "newBboxCenterX": 3797.0,
+      "priorPivotX": 0.404812,
+      "pivotX": 0.423829,
+      "pivotDeltaFraction": 0.019017000000000006,
+      "anchorDeltaPixels": 4.868351999999959,
+      "imageShiftWorld": -0.029251740737277786,
+      "oldBboxToPivotWorld": -0.1171651227292018,
+      "newBboxToPivotWorld": -0.11716539641895239,
+      "worldOffsetRoundingError": -2.7368975058505995e-07,
+      "oldFootOffsetWorld": 0.4061749687478803,
+      "priorFootOffsetWorld": 0.020237568488467726,
+      "newFootOffsetWorld": -0.009014172248810062
+    },
+    {
+      "name": "cless_10_0",
+      "originalSpriteId": "5022fb5136a4e004a869aec01ab33338",
+      "originalInternalId": "-512473263",
+      "oldRect": [
+        34.0,
+        553.0,
+        128.0,
+        80.0
+      ],
+      "oldPivotX": 0.265625,
+      "oldBbox": [
+        36,
+        555,
+        124,
+        76
+      ],
+      "newRect": [
+        169,
+        1793,
+        303,
+        220
+      ],
+      "newBbox": [
+        171,
+        1795,
+        299,
+        216
+      ],
+      "oldPivotAbsoluteX": 68.0,
+      "oldBboxCenterX": 98.0,
+      "newBboxCenterX": 320.5,
+      "priorPivotX": 0.175286,
+      "pivotX": 0.242576,
+      "pivotDeltaFraction": 0.06729000000000002,
+      "anchorDeltaPixels": 20.388869999999997,
+      "imageShiftWorld": -0.12250756296300389,
+      "oldBboxToPivotWorld": -0.4686646151654245,
+      "newBboxToPivotWorld": -0.468663796822534,
+      "worldOffsetRoundingError": 8.183428905073065e-07,
+      "oldFootOffsetWorld": 0.06248861535538994,
+      "priorFootOffsetWorld": 0.5340901263405977,
+      "newFootOffsetWorld": 0.41158256337759386
+    },
+    {
+      "name": "cless_10_1",
+      "originalSpriteId": "8f12a9d619830f441a605763423c694d",
+      "originalInternalId": "-261916320",
+      "oldRect": [
+        191.0,
+        553.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.653465,
+      "oldBbox": [
+        193,
+        555,
+        97,
+        78
+      ],
+      "newRect": [
+        678,
+        1803,
+        222,
+        221
+      ],
+      "newBbox": [
+        680,
+        1805,
+        218,
+        217
+      ],
+      "oldPivotAbsoluteX": 256.999965,
+      "oldBboxCenterX": 241.5,
+      "newBboxCenterX": 789.0,
+      "priorPivotX": 0.727258,
+      "pivotX": 0.68153,
+      "pivotDeltaFraction": -0.04572799999999999,
+      "anchorDeltaPixels": -10.15161599999999,
+      "imageShiftWorld": 0.06099650134098832,
+      "oldBboxToPivotWorld": 0.24214283772675124,
+      "newBboxToPivotWorld": 0.24214255791702297,
+      "worldOffsetRoundingError": -2.7980972827634787e-07,
+      "oldFootOffsetWorld": -0.09373237625770015,
+      "priorFootOffsetWorld": -0.17695949059024882,
+      "newFootOffsetWorld": -0.1159629892492605
+    },
+    {
+      "name": "cless_10_2",
+      "originalSpriteId": "b0070a3afd3a3274286829bb11c9c1c8",
+      "originalInternalId": "-442166789",
+      "oldRect": [
+        340.0,
+        553.0,
+        111.0,
+        80.0
+      ],
+      "oldPivotX": 0.243243,
+      "oldBbox": [
+        342,
+        555,
+        107,
+        76
+      ],
+      "newRect": [
+        1183,
+        1801,
+        218,
+        197
+      ],
+      "newBbox": [
+        1185,
+        1803,
+        214,
+        193
+      ],
+      "oldPivotAbsoluteX": 366.999973,
+      "oldBboxCenterX": 395.5,
+      "newBboxCenterX": 1292.0,
+      "priorPivotX": 0.072245,
+      "pivotX": 0.160093,
+      "pivotDeltaFraction": 0.08784800000000001,
+      "anchorDeltaPixels": 19.150864000000183,
+      "imageShiftWorld": -0.11506894091119063,
+      "oldBboxToPivotWorld": -0.4452318062053067,
+      "newBboxToPivotWorld": -0.44523197452758917,
+      "worldOffsetRoundingError": -1.6832228244556546e-07,
+      "oldFootOffsetWorld": 0.015622575637000955,
+      "priorFootOffsetWorld": 0.7345488912180708,
+      "newFootOffsetWorld": 0.6194799503068802
+    },
+    {
+      "name": "cless_10_3",
+      "originalSpriteId": "e88b198f339d5284db12031b0fb46401",
+      "originalInternalId": "437417660",
+      "oldRect": [
+        478.0,
+        554.0,
+        116.0,
+        80.0
+      ],
+      "oldPivotX": 0.681034,
+      "oldBbox": [
+        480,
+        556,
+        112,
+        76
+      ],
+      "newRect": [
+        1617,
+        1796,
+        267,
+        214
+      ],
+      "newBbox": [
+        1619,
+        1798,
+        263,
+        210
+      ],
+      "oldPivotAbsoluteX": 556.999944,
+      "oldBboxCenterX": 536.0,
+      "newBboxCenterX": 1750.5,
+      "priorPivotX": 0.757886,
+      "pivotX": 0.704493,
+      "pivotDeltaFraction": -0.05339299999999991,
+      "anchorDeltaPixels": -14.255930999999919,
+      "imageShiftWorld": 0.08565748688273206,
+      "oldBboxToPivotWorld": 0.3280643557751826,
+      "newBboxToPivotWorld": 0.3280646613809046,
+      "worldOffsetRoundingError": 3.056057220063302e-07,
+      "oldFootOffsetWorld": -0.031243432837080424,
+      "priorFootOffsetWorld": -0.308572507707168,
+      "newFootOffsetWorld": -0.22291502082443593
+    },
+    {
+      "name": "cless_11_0",
+      "originalSpriteId": "6af2c1d541844dd44aa031ff131d5129",
+      "originalInternalId": "1337454255",
+      "oldRect": [
+        651.0,
+        551.0,
+        120.0,
+        78.0
+      ],
+      "oldPivotX": 0.416667,
+      "oldBbox": [
+        653,
+        553,
+        116,
+        74
+      ],
+      "newRect": [
+        2183,
+        1798,
+        279,
+        223
+      ],
+      "newBbox": [
+        2185,
+        1800,
+        275,
+        219
+      ],
+      "oldPivotAbsoluteX": 701.00004,
+      "oldBboxCenterX": 711.0,
+      "newBboxCenterX": 2322.5,
+      "priorPivotX": 0.382473,
+      "pivotX": 0.406811,
+      "pivotDeltaFraction": 0.02433799999999997,
+      "anchorDeltaPixels": 6.790302000000338,
+      "imageShiftWorld": -0.04079987511828035,
+      "oldBboxToPivotWorld": -0.1562209135023211,
+      "newBboxToPivotWorld": -0.15622070681227798,
+      "worldOffsetRoundingError": 2.0669004310858163e-07,
+      "oldFootOffsetWorld": 0.43741968260157577,
+      "priorFootOffsetWorld": 0.4343583420437306,
+      "newFootOffsetWorld": 0.3935584669254502
+    },
+    {
+      "name": "cless_11_1",
+      "originalSpriteId": "3a3f002990d270e46b8ab074ac43fda7",
+      "originalInternalId": "72541706",
+      "oldRect": [
+        823.0,
+        551.0,
+        96.0,
+        82.0
+      ],
+      "oldPivotX": 0.28125,
+      "oldBbox": [
+        825,
+        553,
+        92,
+        78
+      ],
+      "newRect": [
+        2730,
+        1780,
+        229,
+        238
+      ],
+      "newBbox": [
+        2732,
+        1782,
+        225,
+        234
+      ],
+      "oldPivotAbsoluteX": 850.0,
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2844.5,
+      "priorPivotX": 0.202601,
+      "pivotX": 0.261573,
+      "pivotDeltaFraction": 0.058972,
+      "anchorDeltaPixels": 13.504587999999785,
+      "imageShiftWorld": -0.08114300423218161,
+      "oldBboxToPivotWorld": -0.3280652306157972,
+      "newBboxToPivotWorld": -0.3280655746806402,
+      "worldOffsetRoundingError": -3.440648430053095e-07,
+      "oldFootOffsetWorld": 0.04686646151654245,
+      "priorFootOffsetWorld": 0.32809314191211736,
+      "newFootOffsetWorld": 0.24695013767993576
+    },
+    {
+      "name": "cless_11_2",
+      "originalSpriteId": "5c725dc497d30ed47987e3a160e3bbe4",
+      "originalInternalId": "-1568913851",
+      "oldRect": [
+        964.0,
+        551.0,
+        92.0,
+        76.0
+      ],
+      "oldPivotX": 0.717392,
+      "oldBbox": [
+        966,
+        553,
+        88,
+        72
+      ],
+      "newRect": [
+        3186,
+        1794,
+        226,
+        252
+      ],
+      "newBbox": [
+        3188,
+        1796,
+        222,
+        248
+      ],
+      "oldPivotAbsoluteX": 1030.000064,
+      "oldBboxCenterX": 1010.0,
+      "newBboxCenterX": 3299.0,
+      "priorPivotX": 0.789108,
+      "pivotX": 0.730088,
+      "pivotDeltaFraction": -0.05902000000000007,
+      "anchorDeltaPixels": -13.338520000000244,
+      "imageShiftWorld": 0.0801451762031597,
+      "oldBboxToPivotWorld": 0.3124440765947964,
+      "newBboxToPivotWorld": 0.312443973267235,
+      "worldOffsetRoundingError": -1.0332756139597166e-07,
+      "oldFootOffsetWorld": -0.4686656149832712,
+      "priorFootOffsetWorld": -0.4707003110266286,
+      "newFootOffsetWorld": -0.39055513482346893
+    },
+    {
+      "name": "cless_11_3",
+      "originalSpriteId": "37f094d8b8a1fe64bb3ebdf7eb6d8758",
+      "originalInternalId": "728702869",
+      "oldRect": [
+        1115.0,
+        551.0,
+        110.0,
+        77.0
+      ],
+      "oldPivotX": 0.436363,
+      "oldBbox": [
+        1117,
+        553,
+        106,
+        73
+      ],
+      "newRect": [
+        3687,
+        1800,
+        270,
+        232
+      ],
+      "newBbox": [
+        3689,
+        1802,
+        266,
+        228
+      ],
+      "oldPivotAbsoluteX": 1162.99993,
+      "oldBboxCenterX": 1170.0,
+      "newBboxCenterX": 3822.0,
+      "priorPivotX": 0.413934,
+      "pivotX": 0.432592,
+      "pivotDeltaFraction": 0.018657999999999952,
+      "anchorDeltaPixels": 5.03765999999996,
+      "imageShiftWorld": -0.030269036471182627,
+      "oldBboxToPivotWorld": -0.10935617042270189,
+      "newBboxToPivotWorld": -0.1093565875468689,
+      "worldOffsetRoundingError": -4.171241670125614e-07,
+      "oldFootOffsetWorld": 0.42179924719965156,
+      "priorFootOffsetWorld": 0.025463157128171213,
+      "newFootOffsetWorld": -0.0048058793430114126
+    },
+    {
+      "name": "cless_12_0",
+      "originalSpriteId": "ce1adb702f15b384187c05dd9ebd902c",
+      "originalInternalId": "282183586",
+      "oldRect": [
+        35.0,
+        434.0,
+        147.0,
+        84.0
+      ],
+      "oldPivotX": 0.272109,
+      "oldBbox": [
+        37,
+        436,
+        143,
+        80
+      ],
+      "newRect": [
+        207,
+        1409,
+        295,
+        213
+      ],
+      "newBbox": [
+        209,
+        1411,
+        291,
+        209
+      ],
+      "oldPivotAbsoluteX": 75.000023,
+      "oldBboxCenterX": 108.5,
+      "newBboxCenterX": 354.5,
+      "priorPivotX": 0.128733,
+      "pivotX": 0.204747,
+      "pivotDeltaFraction": 0.07601400000000003,
+      "anchorDeltaPixels": 22.42413000000002,
+      "imageShiftWorld": -0.13473652624523022,
+      "oldBboxToPivotWorld": -0.5233417942918525,
+      "newBboxToPivotWorld": -0.5233425893056926,
+      "worldOffsetRoundingError": -7.950138400936169e-07,
+      "oldFootOffsetWorld": 0.07811040988469914,
+      "priorFootOffsetWorld": 0.31859599032575237,
+      "newFootOffsetWorld": 0.18385946408052212
+    },
+    {
+      "name": "cless_12_1",
+      "originalSpriteId": "b7e82edd28089e449a642d244efadc48",
+      "originalInternalId": "1962594708",
+      "oldRect": [
+        188.0,
+        435.0,
+        103.0,
+        82.0
+      ],
+      "oldPivotX": 0.587379,
+      "oldBbox": [
+        190,
+        437,
+        99,
+        78
+      ],
+      "newRect": [
+        666,
+        1403,
+        233,
+        211
+      ],
+      "newBbox": [
+        668,
+        1405,
+        229,
+        207
+      ],
+      "oldPivotAbsoluteX": 248.500037,
+      "oldBboxCenterX": 239.5,
+      "newBboxCenterX": 782.5,
+      "priorPivotX": 0.625268,
+      "pivotX": 0.600429,
+      "pivotDeltaFraction": -0.024839000000000055,
+      "anchorDeltaPixels": -5.787487000000056,
+      "imageShiftWorld": 0.03477441015858522,
+      "oldBboxToPivotWorld": 0.14059996256931925,
+      "newBboxToPivotWorld": 0.14059983243353263,
+      "worldOffsetRoundingError": -1.3013578661902336e-07,
+      "oldFootOffsetWorld": 0.0078104988997318315,
+      "priorFootOffsetWorld": -0.028164745813061647,
+      "newFootOffsetWorld": 0.006609664345523568
+    },
+    {
+      "name": "cless_12_2",
+      "originalSpriteId": "1c2ee92a5b186f2498a35e503e9a6942",
+      "originalInternalId": "1567431102",
+      "oldRect": [
+        336.0,
+        434.0,
+        147.0,
+        83.0
+      ],
+      "oldPivotX": 0.2517,
+      "oldBbox": [
+        338,
+        436,
+        143,
+        79
+      ],
+      "newRect": [
+        1201,
+        1426,
+        274,
+        209
+      ],
+      "newBbox": [
+        1203,
+        1428,
+        270,
+        205
+      ],
+      "oldPivotAbsoluteX": 372.9999,
+      "oldBboxCenterX": 409.5,
+      "newBboxCenterX": 1338.0,
+      "priorPivotX": 0.063312,
+      "pivotX": 0.15365,
+      "pivotDeltaFraction": 0.09033800000000002,
+      "anchorDeltaPixels": 24.752612000000227,
+      "imageShiftWorld": -0.14872732883621476,
+      "oldBboxToPivotWorld": -0.5702101773333167,
+      "newBboxToPivotWorld": -0.570210878505418,
+      "worldOffsetRoundingError": -7.011721012695205e-07,
+      "oldFootOffsetWorld": 0.015623716054230977,
+      "priorFootOffsetWorld": 0.32838239956046317,
+      "newFootOffsetWorld": 0.1796550707242484
+    },
+    {
+      "name": "cless_12_3",
+      "originalSpriteId": "a581fa6663d1fc74e94d6bd601223065",
+      "originalInternalId": "-541480110",
+      "oldRect": [
+        502.0,
+        434.0,
+        101.0,
+        82.0
+      ],
+      "oldPivotX": 0.569307,
+      "oldBbox": [
+        504,
+        436,
+        97,
+        78
+      ],
+      "newRect": [
+        1697,
+        1409,
+        214,
+        209
+      ],
+      "newBbox": [
+        1699,
+        1411,
+        210,
+        205
+      ],
+      "oldPivotAbsoluteX": 559.500007,
+      "oldBboxCenterX": 552.5,
+      "newBboxCenterX": 1804.0,
+      "priorPivotX": 0.609914,
+      "pivotX": 0.585046,
+      "pivotDeltaFraction": -0.024868,
+      "anchorDeltaPixels": -5.32175200000006,
+      "imageShiftWorld": 0.031976017710324274,
+      "oldBboxToPivotWorld": 0.10935518622700897,
+      "newBboxToPivotWorld": 0.10935468884478869,
+      "worldOffsetRoundingError": -4.973822202852807e-07,
+      "oldFootOffsetWorld": -0.031244417032771563,
+      "priorFootOffsetWorld": 0.056951472779942315,
+      "newFootOffsetWorld": 0.08892749049026659
+    },
+    {
+      "name": "cless_13_0",
+      "originalSpriteId": "3321f5f9abbcc6344bbdcfab0e28b81e",
+      "originalInternalId": "-1201097799",
+      "oldRect": [
+        657.0,
+        434.0,
+        125.0,
+        82.0
+      ],
+      "oldPivotX": 0.256,
+      "oldBbox": [
+        659,
+        436,
+        121,
+        78
+      ],
+      "newRect": [
+        2196,
+        1410,
+        309,
+        221
+      ],
+      "newBbox": [
+        2198,
+        1412,
+        305,
+        217
+      ],
+      "oldPivotAbsoluteX": 689.0,
+      "oldBboxCenterX": 719.5,
+      "newBboxCenterX": 2350.5,
+      "priorPivotX": 0.176419,
+      "pivotX": 0.243367,
+      "pivotDeltaFraction": 0.06694800000000001,
+      "anchorDeltaPixels": 20.686931999999615,
+      "imageShiftWorld": -0.12429848365806113,
+      "oldBboxToPivotWorld": -0.47647569208484825,
+      "newBboxToPivotWorld": -0.47647566404701963,
+      "worldOffsetRoundingError": 2.803782861438009e-08,
+      "oldFootOffsetWorld": 0.03124430767769497,
+      "priorFootOffsetWorld": 0.2913337769246157,
+      "newFootOffsetWorld": 0.16703529326655456
+    },
+    {
+      "name": "cless_13_1",
+      "originalSpriteId": "f975417bcccaba3429a8ae6396ac3ffe",
+      "originalInternalId": "702735140",
+      "oldRect": [
+        823.0,
+        435.0,
+        95.0,
+        81.0
+      ],
+      "oldPivotX": 0.236842,
+      "oldBbox": [
+        825,
+        437,
+        91,
+        77
+      ],
+      "newRect": [
+        2737,
+        1401,
+        213,
+        230
+      ],
+      "newBbox": [
+        2739,
+        1403,
+        209,
+        226
+      ],
+      "oldPivotAbsoluteX": 845.49999,
+      "oldBboxCenterX": 870.5,
+      "newBboxCenterX": 2843.5,
+      "priorPivotX": 0.115948,
+      "pivotX": 0.194837,
+      "pivotDeltaFraction": 0.07888900000000001,
+      "anchorDeltaPixels": 16.803357000000233,
+      "imageShiftWorld": -0.10096382563954553,
+      "oldBboxToPivotWorld": -0.39055400219272507,
+      "newBboxToPivotWorld": -0.3905541193783692,
+      "worldOffsetRoundingError": -1.171856441328778e-07,
+      "oldFootOffsetWorld": 0.28901000224021645,
+      "priorFootOffsetWorld": 0.4404452624619156,
+      "newFootOffsetWorld": 0.3394814368223701
+    },
+    {
+      "name": "cless_13_2",
+      "originalSpriteId": "10b92352fe2c7394cbaf6aacdf881899",
+      "originalInternalId": "-1331915917",
+      "oldRect": [
+        963.0,
+        433.0,
+        123.0,
+        82.0
+      ],
+      "oldPivotX": 0.231708,
+      "oldBbox": [
+        965,
+        435,
+        119,
+        78
+      ],
+      "newRect": [
+        3199,
+        1385,
+        294,
+        221
+      ],
+      "newBbox": [
+        3201,
+        1387,
+        290,
+        217
+      ],
+      "oldPivotAbsoluteX": 991.500084,
+      "oldBboxCenterX": 1024.5,
+      "newBboxCenterX": 3346.0,
+      "priorPivotX": 0.134639,
+      "pivotX": 0.208165,
+      "pivotDeltaFraction": 0.07352599999999998,
+      "anchorDeltaPixels": 21.61664400000018,
+      "imageShiftWorld": -0.1298847055221237,
+      "oldBboxToPivotWorld": -0.5155297644210443,
+      "newBboxToPivotWorld": -0.5155306019101896,
+      "worldOffsetRoundingError": -8.374891453666322e-07,
+      "oldFootOffsetWorld": 0.07810945693331471,
+      "priorFootOffsetWorld": 0.5973469003207849,
+      "newFootOffsetWorld": 0.4674621947986611
+    },
+    {
+      "name": "cless_13_3",
+      "originalSpriteId": "af3a16600356ec742be7f05e2199ff42",
+      "originalInternalId": "693727514",
+      "oldRect": [
+        1106.0,
+        433.0,
+        120.0,
+        83.0
+      ],
+      "oldPivotX": 0.475,
+      "oldBbox": [
+        1108,
+        435,
+        116,
+        79
+      ],
+      "newRect": [
+        3703,
+        1377,
+        213,
+        238
+      ],
+      "newBbox": [
+        3705,
+        1379,
+        209,
+        234
+      ],
+      "oldPivotAbsoluteX": 1163.0,
+      "oldBboxCenterX": 1166.0,
+      "newBboxCenterX": 3809.5,
+      "priorPivotX": 0.449589,
+      "pivotX": 0.46338,
+      "pivotDeltaFraction": 0.013790999999999998,
+      "anchorDeltaPixels": 2.9374830000001566,
+      "imageShiftWorld": -0.01765001609090022,
+      "oldBboxToPivotWorld": -0.04686646151654245,
+      "newBboxToPivotWorld": -0.04686705744679386,
+      "worldOffsetRoundingError": -5.959302514096931e-07,
+      "oldFootOffsetWorld": 0.03124430767769497,
+      "priorFootOffsetWorld": 0.25979497742827884,
+      "newFootOffsetWorld": 0.24214496133737862
+    },
+    {
+      "name": "cless_14_0",
+      "originalSpriteId": "da9977fd5e0900a488a823fa5c13b9ec",
+      "originalInternalId": "-859490207",
+      "oldRect": [
+        35.0,
+        318.0,
+        135.0,
+        75.0
+      ],
+      "oldPivotX": 0.518519,
+      "oldBbox": [
+        37,
+        320,
+        131,
+        71
+      ],
+      "newRect": [
+        188,
+        971,
+        293,
+        210
+      ],
+      "newBbox": [
+        190,
+        973,
+        289,
+        206
+      ],
+      "oldPivotAbsoluteX": 105.00006499999999,
+      "oldBboxCenterX": 102.5,
+      "newBboxCenterX": 334.5,
+      "priorPivotX": 0.528897,
+      "pivotX": 0.522185,
+      "pivotDeltaFraction": -0.00671199999999994,
+      "anchorDeltaPixels": -1.9666159999999877,
+      "imageShiftWorld": 0.011816512315005656,
+      "oldBboxToPivotWorld": 0.03905640003711811,
+      "newBboxToPivotWorld": 0.039056812531049145,
+      "worldOffsetRoundingError": 4.1249393103320875e-07,
+      "oldFootOffsetWorld": -0.5467763997996613,
+      "priorFootOffsetWorld": -0.3963650009601663,
+      "newFootOffsetWorld": -0.3845484886451606
+    },
+    {
+      "name": "cless_14_1",
+      "originalSpriteId": "ebf71dd00d3d50b4c94475612a06a21b",
+      "originalInternalId": "-1572977832",
+      "oldRect": [
+        189.0,
+        319.0,
+        103.0,
+        82.0
+      ],
+      "oldPivotX": 0.407767,
+      "oldBbox": [
+        191,
+        321,
+        99,
+        78
+      ],
+      "newRect": [
+        670,
+        978,
+        232,
+        205
+      ],
+      "newBbox": [
+        672,
+        980,
+        228,
+        201
+      ],
+      "oldPivotAbsoluteX": 231.000001,
+      "oldBboxCenterX": 240.5,
+      "newBboxCenterX": 786.0,
+      "priorPivotX": 0.364338,
+      "pivotX": 0.393535,
+      "pivotDeltaFraction": 0.02919700000000003,
+      "anchorDeltaPixels": 6.773703999999952,
+      "imageShiftWorld": -0.04070014519062339,
+      "oldBboxToPivotWorld": -0.1484104458468973,
+      "newBboxToPivotWorld": -0.14841048593073777,
+      "worldOffsetRoundingError": -4.008384046905178e-08,
+      "oldFootOffsetWorld": 0.32806521499364333,
+      "priorFootOffsetWorld": 0.30928164890018256,
+      "newFootOffsetWorld": 0.2685815037095592
+    },
+    {
+      "name": "cless_14_2",
+      "originalSpriteId": "2253bf028f2e5824ba52962efa3e5463",
+      "originalInternalId": "-894768622",
+      "oldRect": [
+        322.0,
+        319.0,
+        115.0,
+        78.0
+      ],
+      "oldPivotX": 0.434783,
+      "oldBbox": [
+        324,
+        321,
+        111,
+        74
+      ],
+      "newRect": [
+        1096,
+        974,
+        288,
+        217
+      ],
+      "newBbox": [
+        1098,
+        976,
+        284,
+        213
+      ],
+      "oldPivotAbsoluteX": 372.000045,
+      "oldBboxCenterX": 379.5,
+      "newBboxCenterX": 1240.0,
+      "priorPivotX": 0.413477,
+      "pivotX": 0.432292,
+      "pivotDeltaFraction": 0.018815000000000026,
+      "anchorDeltaPixels": 5.418719999999894,
+      "imageShiftWorld": -0.032558654872922116,
+      "oldBboxToPivotWorld": -0.11716545079443337,
+      "newBboxToPivotWorld": -0.1171661655134656,
+      "worldOffsetRoundingError": -7.147190322354113e-07,
+      "oldFootOffsetWorld": -7.029969227492734e-07,
+      "priorFootOffsetWorld": -0.23482243650584073,
+      "newFootOffsetWorld": -0.2673810913787628
+    },
+    {
+      "name": "cless_14_3",
+      "originalSpriteId": "52b1a0c8b14275944bdedcd1ae79533b",
+      "originalInternalId": "-991939548",
+      "oldRect": [
+        482.0,
+        318.0,
+        114.0,
+        79.0
+      ],
+      "oldPivotX": 0.644737,
+      "oldBbox": [
+        484,
+        320,
+        110,
+        75
+      ],
+      "newRect": [
+        1661,
+        958,
+        199,
+        267
+      ],
+      "newBbox": [
+        1663,
+        960,
+        195,
+        263
+      ],
+      "oldPivotAbsoluteX": 555.500018,
+      "oldBboxCenterX": 539.0,
+      "newBboxCenterX": 1760.5,
+      "priorPivotX": 0.771137,
+      "pivotX": 0.715577,
+      "pivotDeltaFraction": -0.05555999999999994,
+      "anchorDeltaPixels": -11.056440000000066,
+      "imageShiftWorld": 0.066433182390524,
+      "oldBboxToPivotWorld": 0.25776581953975186,
+      "newBboxToPivotWorld": 0.2577657696220643,
+      "worldOffsetRoundingError": -4.991768753903614e-08,
+      "oldFootOffsetWorld": -0.039055665795887096,
+      "priorFootOffsetWorld": -0.3452288801238821,
+      "newFootOffsetWorld": -0.2787956977333581
+    },
+    {
+      "name": "cless_15_0",
+      "originalSpriteId": "f0937adfebd4af546ba701c68f280bcd",
+      "originalInternalId": "1910925147",
+      "oldRect": [
+        658.0,
+        316.0,
+        102.0,
+        82.0
+      ],
+      "oldPivotX": 0.431372,
+      "oldBbox": [
+        660,
+        318,
+        98,
+        78
+      ],
+      "newRect": [
+        2211,
+        964,
+        211,
+        248
+      ],
+      "newBbox": [
+        2213,
+        966,
+        207,
+        244
+      ],
+      "oldPivotAbsoluteX": 701.999944,
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2316.5,
+      "priorPivotX": 0.388511,
+      "pivotX": 0.413744,
+      "pivotDeltaFraction": 0.025233000000000005,
+      "anchorDeltaPixels": 5.324163000000226,
+      "imageShiftWorld": -0.03199050432651851,
+      "oldBboxToPivotWorld": -0.10935595171254693,
+      "newBboxToPivotWorld": -0.10935572231554035,
+      "worldOffsetRoundingError": 2.2939700658475282e-07,
+      "oldFootOffsetWorld": 8.748406145427321e-07,
+      "priorFootOffsetWorld": 0.03619658608559014,
+      "newFootOffsetWorld": 0.004206081759071636
+    },
+    {
+      "name": "cless_15_1",
+      "originalSpriteId": "40e1b1c0a4012974e84de5cc02fea56f",
+      "originalInternalId": "-1979332120",
+      "oldRect": [
+        823.0,
+        319.0,
+        96.0,
+        81.0
+      ],
+      "oldPivotX": 0.302084,
+      "oldBbox": [
+        825,
+        321,
+        92,
+        77
+      ],
+      "newRect": [
+        2733,
+        986,
+        224,
+        241
+      ],
+      "newBbox": [
+        2735,
+        988,
+        220,
+        237
+      ],
+      "oldPivotAbsoluteX": 852.000064,
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2845.0,
+      "priorPivotX": 0.222895,
+      "pivotX": 0.279466,
+      "pivotDeltaFraction": 0.05657099999999998,
+      "anchorDeltaPixels": 12.671903999999813,
+      "imageShiftWorld": -0.07613978004377477,
+      "oldBboxToPivotWorld": -0.29681992312025723,
+      "newBboxToPivotWorld": -0.2968201066301484,
+      "worldOffsetRoundingError": -1.8350989117177363e-07,
+      "oldFootOffsetWorld": 0.046865461698697514,
+      "priorFootOffsetWorld": 0.3188829286734535,
+      "newFootOffsetWorld": 0.24274314862967875
+    },
+    {
+      "name": "cless_15_2",
+      "originalSpriteId": "92af42f842943674fbc5b7e92641754c",
+      "originalInternalId": "1366228664",
+      "oldRect": [
+        964.0,
+        314.0,
+        89.0,
+        87.0
+      ],
+      "oldPivotX": 0.426966,
+      "oldBbox": [
+        966,
+        316,
+        85,
+        83
+      ],
+      "newRect": [
+        3197,
+        975,
+        195,
+        246
+      ],
+      "newBbox": [
+        3199,
+        977,
+        191,
+        242
+      ],
+      "oldPivotAbsoluteX": 1001.999974,
+      "oldBboxCenterX": 1008.5,
+      "newBboxCenterX": 3294.5,
+      "priorPivotX": 0.38913,
+      "pivotX": 0.413333,
+      "pivotDeltaFraction": 0.02420300000000003,
+      "anchorDeltaPixels": 4.719585000000279,
+      "imageShiftWorld": -0.028357866647184614,
+      "oldBboxToPivotWorld": -0.10154440612850921,
+      "newBboxToPivotWorld": -0.10154490057891073,
+      "worldOffsetRoundingError": -4.944504015252926e-07,
+      "oldFootOffsetWorld": -0.031243901501694406,
+      "priorFootOffsetWorld": 0.04277877933644984,
+      "newFootOffsetWorld": 0.014420912689265226
+    },
+    {
+      "name": "cless_15_3",
+      "originalSpriteId": "9a3c8b6766672b1478787a76d95100bb",
+      "originalInternalId": "971994381",
+      "oldRect": [
+        1134.0,
+        313.0,
+        86.0,
+        86.0
+      ],
+      "oldPivotX": 0.581396,
+      "oldBbox": [
+        1136,
+        315,
+        82,
+        82
+      ],
+      "newRect": [
+        3739,
+        982,
+        210,
+        242
+      ],
+      "newBbox": [
+        3741,
+        984,
+        206,
+        238
+      ],
+      "oldPivotAbsoluteX": 1184.000056,
+      "oldBboxCenterX": 1177.0,
+      "newBboxCenterX": 3844.0,
+      "priorPivotX": 0.611218,
+      "pivotX": 0.586667,
+      "pivotDeltaFraction": -0.02455099999999999,
+      "anchorDeltaPixels": -5.155709999999999,
+      "imageShiftWorld": 0.030978345903622355,
+      "oldBboxToPivotWorld": 0.10935595171254871,
+      "newBboxToPivotWorld": 0.1093560467772889,
+      "worldOffsetRoundingError": 9.506474019094213e-08,
+      "oldFootOffsetWorld": 0.04686558667592613,
+      "priorFootOffsetWorld": -0.05621468023573628,
+      "newFootOffsetWorld": -0.02523633433211393
+    },
+    {
+      "name": "cless_16_0",
+      "originalSpriteId": "9aada9668a72384438808e6a3b4f37df",
+      "originalInternalId": "1953008225",
+      "oldRect": [
+        35.0,
+        196.0,
+        106.0,
+        88.0
+      ],
+      "oldPivotX": 0.396226,
+      "oldBbox": [
+        37,
+        198,
+        102,
+        84
+      ],
+      "newRect": [
+        162,
+        577,
+        250,
+        220
+      ],
+      "newBbox": [
+        164,
+        579,
+        246,
+        216
+      ],
+      "oldPivotAbsoluteX": 76.999956,
+      "oldBboxCenterX": 88.0,
+      "newBboxCenterX": 287.0,
+      "priorPivotX": 0.358035,
+      "pivotX": 0.3856,
+      "pivotDeltaFraction": 0.027565000000000006,
+      "anchorDeltaPixels": 6.891249999999985,
+      "imageShiftWorld": -0.041406426313415054,
+      "oldBboxToPivotWorld": -0.17184437960209126,
+      "newBboxToPivotWorld": -0.1718445554237147,
+      "worldOffsetRoundingError": -1.7582162345486374e-07,
+      "oldFootOffsetWorld": 6.873747689498681e-07,
+      "priorFootOffsetWorld": 0.08106286218042626,
+      "newFootOffsetWorld": 0.039656435867011196
+    },
+    {
+      "name": "cless_16_1",
+      "originalSpriteId": "07bcace9402377a498f1cb3bec387520",
+      "originalInternalId": "520844679",
+      "oldRect": [
+        192.0,
+        192.0,
+        100.0,
+        88.0
+      ],
+      "oldPivotX": 0.32,
+      "oldBbox": [
+        194,
+        194,
+        96,
+        84
+      ],
+      "newRect": [
+        679,
+        582,
+        222,
+        217
+      ],
+      "newBbox": [
+        681,
+        584,
+        218,
+        213
+      ],
+      "oldPivotAbsoluteX": 224.0,
+      "oldBboxCenterX": 242.0,
+      "newBboxCenterX": 790.0,
+      "priorPivotX": 0.237216,
+      "pivotX": 0.28919,
+      "pivotDeltaFraction": 0.05197399999999999,
+      "anchorDeltaPixels": 11.538228000000004,
+      "imageShiftWorld": -0.06932803010620477,
+      "oldBboxToPivotWorld": -0.2811987690992547,
+      "newBboxToPivotWorld": -0.28119910006328175,
+      "worldOffsetRoundingError": -3.309640270732217e-07,
+      "oldFootOffsetWorld": 0.3749316921323396,
+      "priorFootOffsetWorld": 0.3715570582807803,
+      "newFootOffsetWorld": 0.30222902817457553
+    },
+    {
+      "name": "cless_16_2",
+      "originalSpriteId": "e7c865700fce4844c98e24ce1cb36583",
+      "originalInternalId": "-400452133",
+      "oldRect": [
+        346.0,
+        192.0,
+        103.0,
+        87.0
+      ],
+      "oldPivotX": 0.699029,
+      "oldBbox": [
+        348,
+        194,
+        99,
+        83
+      ],
+      "newRect": [
+        1179,
+        567,
+        237,
+        213
+      ],
+      "newBbox": [
+        1181,
+        569,
+        233,
+        209
+      ],
+      "oldPivotAbsoluteX": 417.99998700000003,
+      "oldBboxCenterX": 397.5,
+      "newBboxCenterX": 1297.5,
+      "priorPivotX": 0.786216,
+      "pivotX": 0.724893,
+      "pivotDeltaFraction": -0.061323000000000016,
+      "anchorDeltaPixels": -14.533550999999989,
+      "imageShiftWorld": 0.0873255807805203,
+      "oldBboxToPivotWorld": 0.320253950608374,
+      "newBboxToPivotWorld": 0.3202536053107903,
+      "worldOffsetRoundingError": -3.452975837481276e-07,
+      "oldFootOffsetWorld": -0.0937327199450855,
+      "priorFootOffsetWorld": -0.5848314373150721,
+      "newFootOffsetWorld": -0.4975058565345518
+    },
+    {
+      "name": "cless_16_3",
+      "originalSpriteId": "7f9aa48174fb59a42ab95d288b359355",
+      "originalInternalId": "-719084066",
+      "oldRect": [
+        508.0,
+        188.0,
+        89.0,
+        94.0
+      ],
+      "oldPivotX": 0.224719,
+      "oldBbox": [
+        510,
+        190,
+        85,
+        90
+      ],
+      "newRect": [
+        1708,
+        568,
+        195,
+        221
+      ],
+      "newBbox": [
+        1710,
+        570,
+        191,
+        217
+      ],
+      "oldPivotAbsoluteX": 527.999991,
+      "oldBboxCenterX": 552.5,
+      "newBboxCenterX": 1805.5,
+      "priorPivotX": 0.08529,
+      "pivotX": 0.173335,
+      "pivotDeltaFraction": 0.08804499999999998,
+      "anchorDeltaPixels": 17.16877499999987,
+      "imageShiftWorld": -0.10315945828827842,
+      "oldBboxToPivotWorld": -0.38274290965114754,
+      "newBboxToPivotWorld": -0.3827427388465076,
+      "worldOffsetRoundingError": 1.7080463993179862e-07,
+      "oldFootOffsetWorld": 0.45304260192596124,
+      "priorFootOffsetWorld": 0.6451287956917244,
+      "newFootOffsetWorld": 0.541969337403446
+    },
+    {
+      "name": "cless_17_0",
+      "originalSpriteId": "45d76b6c49cabc849adb5713ce821e79",
+      "originalInternalId": "-2071486327",
+      "oldRect": [
+        655.0,
+        190.0,
+        113.0,
+        100.0
+      ],
+      "oldPivotX": 0.327433,
+      "oldBbox": [
+        657,
+        192,
+        109,
+        96
+      ],
+      "newRect": [
+        2212,
+        551,
+        223,
+        267
+      ],
+      "newBbox": [
+        2214,
+        553,
+        219,
+        263
+      ],
+      "oldPivotAbsoluteX": 691.999929,
+      "oldBboxCenterX": 711.5,
+      "newBboxCenterX": 2323.5,
+      "priorPivotX": 0.216647,
+      "pivotX": 0.272646,
+      "pivotDeltaFraction": 0.05599899999999999,
+      "anchorDeltaPixels": 12.487776999999824,
+      "imageShiftWorld": -0.07503344359424678,
+      "oldBboxToPivotWorld": -0.3046331090304492,
+      "newBboxToPivotWorld": -0.30463318157336183,
+      "worldOffsetRoundingError": -7.254291262137613e-08,
+      "oldFootOffsetWorld": 0.5780208012102802,
+      "priorFootOffsetWorld": 0.3165768408337274,
+      "newFootOffsetWorld": 0.2415433972394806
+    },
+    {
+      "name": "cless_17_1",
+      "originalSpriteId": "7ec6ef313a79fad41be538ae0ba4b676",
+      "originalInternalId": "-762811067",
+      "oldRect": [
+        822.0,
+        190.0,
+        95.0,
+        98.0
+      ],
+      "oldPivotX": 0.494737,
+      "oldBbox": [
+        824,
+        192,
+        91,
+        94
+      ],
+      "newRect": [
+        2723,
+        551,
+        234,
+        267
+      ],
+      "newBbox": [
+        2725,
+        553,
+        230,
+        263
+      ],
+      "oldPivotAbsoluteX": 869.000015,
+      "oldBboxCenterX": 869.5,
+      "newBboxCenterX": 2840.0,
+      "priorPivotX": 0.493403,
+      "pivotX": 0.494445,
+      "pivotDeltaFraction": 0.001042000000000043,
+      "anchorDeltaPixels": 0.2438280000001214,
+      "imageShiftWorld": -0.0014650529461494525,
+      "oldBboxToPivotWorld": -0.00781084258711675,
+      "newBboxToPivotWorld": -0.007810335044006795,
+      "worldOffsetRoundingError": 5.075431099557312e-07,
+      "oldFootOffsetWorld": 0.015621919506540492,
+      "priorFootOffsetWorld": -0.098878528010783,
+      "newFootOffsetWorld": -0.10034358095693245
+    },
+    {
+      "name": "cless_17_2",
+      "originalSpriteId": "c26666dffbbdc6f4bbd63c84d30e1c22",
+      "originalInternalId": "171801297",
+      "oldRect": [
+        975.0,
+        190.0,
+        102.0,
+        96.0
+      ],
+      "oldPivotX": 0.294118,
+      "oldBbox": [
+        977,
+        192,
+        98,
+        92
+      ],
+      "newRect": [
+        3243,
+        536,
+        216,
+        276
+      ],
+      "newBbox": [
+        3245,
+        538,
+        212,
+        272
+      ],
+      "oldPivotAbsoluteX": 1005.000036,
+      "oldBboxCenterX": 1026.0,
+      "newBboxCenterX": 3351.0,
+      "priorPivotX": 0.183702,
+      "pivotX": 0.247224,
+      "pivotDeltaFraction": 0.063522,
+      "anchorDeltaPixels": 13.720752000000175,
+      "imageShiftWorld": -0.082441836626541,
+      "oldBboxToPivotWorld": -0.3280646682182586,
+      "newBboxToPivotWorld": -0.3280645712526408,
+      "worldOffsetRoundingError": 9.69656177574052e-08,
+      "oldFootOffsetWorld": 0.09373236063554635,
+      "priorFootOffsetWorld": 0.3564294498787122,
+      "newFootOffsetWorld": 0.27398761325217125
+    },
+    {
+      "name": "cless_17_3",
+      "originalSpriteId": "7d0ce0a010dd2b042bf7a8519ccdf948",
+      "originalInternalId": "-1363522215",
+      "oldRect": [
+        1127.0,
+        189.0,
+        89.0,
+        101.0
+      ],
+      "oldPivotX": 0.573034,
+      "oldBbox": [
+        1129,
+        191,
+        85,
+        97
+      ],
+      "newRect": [
+        3720,
+        535,
+        213,
+        276
+      ],
+      "newBbox": [
+        3722,
+        537,
+        209,
+        272
+      ],
+      "oldPivotAbsoluteX": 1178.000026,
+      "oldBboxCenterX": 1171.5,
+      "newBboxCenterX": 3826.5,
+      "priorPivotX": 0.599801,
+      "pivotX": 0.579343,
+      "pivotDeltaFraction": -0.020457999999999976,
+      "anchorDeltaPixels": -4.357554000000164,
+      "imageShiftWorld": 0.026182584960309698,
+      "oldBboxToPivotWorld": 0.10154440612850743,
+      "newBboxToPivotWorld": 0.10154486452760686,
+      "worldOffsetRoundingError": 4.583990994289078e-07,
+      "oldFootOffsetWorld": -0.03124471385369375,
+      "priorFootOffsetWorld": -0.0706462160429764,
+      "newFootOffsetWorld": -0.044463631082666696
+    },
+    {
+      "name": "cless_18_0",
+      "originalSpriteId": "9fbce66a9df9e0f4582af19425a9cf00",
+      "originalInternalId": "185970023",
+      "oldRect": [
+        40.0,
+        61.0,
+        133.0,
+        86.0
+      ],
+      "oldPivotX": 0.240602,
+      "oldBbox": [
+        42,
+        63,
+        129,
+        82
+      ],
+      "newRect": [
+        205,
+        169,
+        285,
+        210
+      ],
+      "newBbox": [
+        207,
+        171,
+        281,
+        206
+      ],
+      "oldPivotAbsoluteX": 72.000066,
+      "oldBboxCenterX": 106.5,
+      "newBboxCenterX": 347.5,
+      "priorPivotX": 0.105885,
+      "pivotX": 0.185265,
+      "pivotDeltaFraction": 0.07938,
+      "anchorDeltaPixels": 22.6233,
+      "imageShiftWorld": -0.1359332493257805,
+      "oldBboxToPivotWorld": -0.5389632763780847,
+      "newBboxToPivotWorld": -0.5389638602487973,
+      "worldOffsetRoundingError": -5.83870712556056e-07,
+      "oldFootOffsetWorld": 0.078109738132084,
+      "priorFootOffsetWorld": 0.2933541281268199,
+      "newFootOffsetWorld": 0.15742087880103936
+    },
+    {
+      "name": "cless_18_1",
+      "originalSpriteId": "b711993f1d7d8b04bba68a157bd0a4a2",
+      "originalInternalId": "-278213506",
+      "oldRect": [
+        193.0,
+        61.0,
+        106.0,
+        87.0
+      ],
+      "oldPivotX": 0.339623,
+      "oldBbox": [
+        195,
+        63,
+        102,
+        83
+      ],
+      "newRect": [
+        688,
+        180,
+        230,
+        205
+      ],
+      "newBbox": [
+        690,
+        182,
+        226,
+        201
+      ],
+      "oldPivotAbsoluteX": 229.00003800000002,
+      "oldBboxCenterX": 246.0,
+      "newBboxCenterX": 803.0,
+      "priorPivotX": 0.260842,
+      "pivotX": 0.307827,
+      "pivotDeltaFraction": 0.046985,
+      "anchorDeltaPixels": 10.806550000000016,
+      "imageShiftWorld": -0.06493170560888621,
+      "oldBboxToPivotWorld": -0.2655760216185611,
+      "newBboxToPivotWorld": -0.2655766874955086,
+      "worldOffsetRoundingError": -6.658769475254012e-07,
+      "oldFootOffsetWorld": 0.01562156019700133,
+      "priorFootOffsetWorld": 0.4386623091053341,
+      "newFootOffsetWorld": 0.3737306034964479
+    },
+    {
+      "name": "cless_18_2",
+      "originalSpriteId": "d0af17a21a52bc44fad8be77c94f67f6",
+      "originalInternalId": "121652871",
+      "oldRect": [
+        338.0,
+        63.0,
+        90.0,
+        91.0
+      ],
+      "oldPivotX": 0.533334,
+      "oldBbox": [
+        340,
+        65,
+        86,
+        87
+      ],
+      "newRect": [
+        1149,
+        139,
+        205,
+        269
+      ],
+      "newBbox": [
+        1151,
+        141,
+        201,
+        265
+      ],
+      "oldPivotAbsoluteX": 386.00006,
+      "oldBboxCenterX": 383.0,
+      "newBboxCenterX": 1251.5,
+      "priorPivotX": 0.545417,
+      "pivotX": 0.538049,
+      "pivotDeltaFraction": -0.007368000000000041,
+      "anchorDeltaPixels": -1.5104400000000169,
+      "imageShiftWorld": 0.00907555560469225,
+      "oldBboxToPivotWorld": 0.04686739884577308,
+      "newBboxToPivotWorld": 0.04686696731853007,
+      "worldOffsetRoundingError": -4.315272430083228e-07,
+      "oldFootOffsetWorld": -0.2187110910730954,
+      "priorFootOffsetWorld": -0.09499810370133928,
+      "newFootOffsetWorld": -0.08592254809664703
+    },
+    {
+      "name": "cless_18_3",
+      "originalSpriteId": "8fe094852e84b7343a2a5f9d2f8cee75",
+      "originalInternalId": "-426498769",
+      "oldRect": [
+        472.0,
+        62.0,
+        123.0,
+        86.0
+      ],
+      "oldPivotX": 0.382114,
+      "oldBbox": [
+        474,
+        64,
+        119,
+        82
+      ],
+      "newRect": [
+        1621,
+        158,
+        243,
+        220
+      ],
+      "newBbox": [
+        1623,
+        160,
+        239,
+        216
+      ],
+      "oldPivotAbsoluteX": 519.000022,
+      "oldBboxCenterX": 533.5,
+      "newBboxCenterX": 1742.5,
+      "priorPivotX": 0.305492,
+      "pivotX": 0.344857,
+      "pivotDeltaFraction": 0.03936500000000004,
+      "anchorDeltaPixels": 9.565695000000233,
+      "imageShiftWorld": -0.05747596519559054,
+      "oldBboxToPivotWorld": -0.22652088697590492,
+      "newBboxToPivotWorld": -0.2265208603668045,
+      "worldOffsetRoundingError": 2.660910042306952e-08,
+      "oldFootOffsetWorld": 0.07811042550685383,
+      "priorFootOffsetWorld": 0.13678732878333882,
+      "newFootOffsetWorld": 0.07931136358774829
+    },
+    {
+      "name": "cless_19_0",
+      "originalSpriteId": "7ebf3260d13e3be43a3df65b44a6b019",
+      "originalInternalId": "826817581",
+      "oldRect": [
+        653.0,
+        62.0,
+        112.0,
+        85.0
+      ],
+      "oldPivotX": 0.375,
+      "oldBbox": [
+        655,
+        64,
+        108,
+        81
+      ],
+      "newRect": [
+        2211,
+        165,
+        209,
+        242
+      ],
+      "newBbox": [
+        2213,
+        167,
+        205,
+        238
+      ],
+      "oldPivotAbsoluteX": 695.0,
+      "oldBboxCenterX": 709.0,
+      "newBboxCenterX": 2315.5,
+      "priorPivotX": 0.282831,
+      "pivotX": 0.325838,
+      "pivotDeltaFraction": 0.04300700000000002,
+      "anchorDeltaPixels": 8.988463000000138,
+      "imageShiftWorld": -0.05400763734886474,
+      "oldBboxToPivotWorld": -0.21871015374386477,
+      "newBboxToPivotWorld": -0.2187103991432273,
+      "worldOffsetRoundingError": -2.4539936252510053e-07,
+      "oldFootOffsetWorld": 0.015622153838847484,
+      "priorFootOffsetWorld": 0.10748288704621263,
+      "newFootOffsetWorld": 0.05347524969734789
+    },
+    {
+      "name": "cless_19_1",
+      "originalSpriteId": "c9521d7675cea14419114f632d009980",
+      "originalInternalId": "1643743300",
+      "oldRect": [
+        821.0,
+        62.0,
+        100.0,
+        85.0
+      ],
+      "oldPivotX": 0.57,
+      "oldBbox": [
+        823,
+        64,
+        96,
+        81
+      ],
+      "newRect": [
+        2732,
+        164,
+        227,
+        244
+      ],
+      "newBbox": [
+        2734,
+        166,
+        223,
+        240
+      ],
+      "oldPivotAbsoluteX": 878.0,
+      "oldBboxCenterX": 871.0,
+      "newBboxCenterX": 2845.5,
+      "priorPivotX": 0.598473,
+      "pivotX": 0.580176,
+      "pivotDeltaFraction": -0.018297000000000008,
+      "anchorDeltaPixels": -4.153419000000213,
+      "imageShiftWorld": 0.024956029424596005,
+      "oldBboxToPivotWorld": 0.10935507687193238,
+      "newBboxToPivotWorld": 0.10935533776828443,
+      "worldOffsetRoundingError": 2.6089635205006623e-07,
+      "oldFootOffsetWorld": -0.24995446142155975,
+      "priorFootOffsetWorld": -0.19740115152676166,
+      "newFootOffsetWorld": -0.17244512210216564
+    },
+    {
+      "name": "cless_19_2",
+      "originalSpriteId": "76fabc690fc9f4c40a3f07b07f3fb8e5",
+      "originalInternalId": "1535972436",
+      "oldRect": [
+        964.0,
+        61.0,
+        88.0,
+        87.0
+      ],
+      "oldPivotX": 0.477273,
+      "oldBbox": [
+        966,
+        63,
+        84,
+        83
+      ],
+      "newRect": [
+        3193,
+        146,
+        199,
+        242
+      ],
+      "newBbox": [
+        3195,
+        148,
+        195,
+        238
+      ],
+      "oldPivotAbsoluteX": 1006.000024,
+      "oldBboxCenterX": 1008.0,
+      "newBboxCenterX": 3292.5,
+      "priorPivotX": 0.467065,
+      "pivotX": 0.47387,
+      "pivotDeltaFraction": 0.0068050000000000055,
+      "anchorDeltaPixels": 1.3541949999998906,
+      "imageShiftWorld": -0.008136749571048894,
+      "oldBboxToPivotWorld": -0.031243932746002005,
+      "newBboxToPivotWorld": -0.03124368351087751,
+      "worldOffsetRoundingError": 2.4923512449356866e-07,
+      "oldFootOffsetWorld": -0.04686683644823541,
+      "priorFootOffsetWorld": -0.0657692074745423,
+      "newFootOffsetWorld": -0.0739059570455912
+    },
+    {
+      "name": "cless_19_3",
+      "originalSpriteId": "184279d498566fe4db9f7b32bd3f9320",
+      "originalInternalId": "333022766",
+      "oldRect": [
+        1128.0,
+        60.0,
+        88.0,
+        87.0
+      ],
+      "oldPivotX": 0.534091,
+      "oldBbox": [
+        1130,
+        62,
+        84,
+        83
+      ],
+      "newRect": [
+        3724,
+        157,
+        208,
+        241
+      ],
+      "newBbox": [
+        3726,
+        159,
+        204,
+        237
+      ],
+      "oldPivotAbsoluteX": 1175.000008,
+      "oldBboxCenterX": 1172.0,
+      "newBboxCenterX": 3828.0,
+      "priorPivotX": 0.547878,
+      "pivotX": 0.5375,
+      "pivotDeltaFraction": -0.010377999999999998,
+      "anchorDeltaPixels": -2.1586239999996906,
+      "imageShiftWorld": 0.012970202154087668,
+      "oldBboxToPivotWorld": 0.046866586493772844,
+      "newBboxToPivotWorld": 0.04686669693374143,
+      "worldOffsetRoundingError": 1.104399685869506e-07,
+      "oldFootOffsetWorld": 0.046866336539312055,
+      "priorFootOffsetWorld": 0.054325567802051215,
+      "newFootOffsetWorld": 0.06729576995613888
+    }
+  ],
+  "limitation": "Preserves source bbox-relative world offsets; anatomical pose changes still need actual motion review."
+}

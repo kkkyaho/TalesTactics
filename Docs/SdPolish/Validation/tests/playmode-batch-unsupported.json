@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 9.9,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.CameraMiddleButtonDoesNotBlockModalEscapeOrTimingInput",
+      "Status": "Failed",
+      "Duration": 9.868179,
+      "Message": "Unhandled log message: '[Exception] Exception: UnityTest yielded WaitForEndOfFrame, which is not evoked in batchmode.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "UnityEngine.TestTools.Utils.CoroutineRunner+<WrapEnumeratorForChecks>d__8.MoveNext () (at ./Library/PackageCache/com.unity.test-framework@7a3849e09bd0/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:68)\r\nUnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <d5ea965f39d74501b56f4006ef80da34>:0)\r\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\r\n\r\n"
+    }
+  ]
+}

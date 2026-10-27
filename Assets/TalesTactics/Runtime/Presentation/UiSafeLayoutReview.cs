@@ -75,6 +75,7 @@ namespace TalesTactics
                 new CampaignFile(battle.Profiles.PathFor(1)).Save(second);battle.LoadTitleGame(1,false);yield return Settle();yield return Inspect("hub",battle.Hud.transform,size,scale);
                 Click("거점 적 정보");yield return Settle();yield return Inspect("hub-enemies",battle.Hud.transform,size,scale);
                 Click("거점 목표");yield return Settle();
+                yield return InspectPreparationGuidance(size,scale);
                 battle.Hud.ShowMission();yield return Settle();yield return Inspect("mission",battle.Hud.transform,size,scale);
                 Click("적 정보");yield return Settle();yield return Inspect("enemies",battle.Hud.transform,size,scale);
                 Click("적 상세 보기");yield return Settle();yield return Inspect("enemy-detail",battle.Hud.transform,size,scale);
@@ -189,6 +190,76 @@ namespace TalesTactics
             Application.Quit(exitCode);
 #endif
         }
+        IEnumerator InspectPreparationGuidance(Vector2Int size,float scale)
+        {
+            // Four additional read-only states share the normal geometry/glyph/raycast collector.
+            // Their campaign is a detached fixture, never a rewarded or persisted playthrough.
+            if(battle.Session!=null||battle.StoryActive||!battle.Catalog.CrossoverReady)throw new InvalidOperationException("Preparation guidance review requires an idle crossover hub");
+            var original=battle.Campaign;string originalJson=JsonUtility.ToJson(original);
+            int originalStage=battle.SelectedStage;bool originalTraining=battle.TrainingMode;var originalParty=battle.Deployment.ToArray();
+            var persist=battle.PersistCampaign;int writes=0;
+            var files=Directory.GetFiles(battle.Profiles.Root,"*",SearchOption.AllDirectories).ToDictionary(path=>path,File.ReadAllBytes);
+            string[] names={"selectedCharacter","selectedEquipmentSlot","equipmentPage","intermissionRosterPage","formationFilter","formationSort","formationScrollOffset","resetFormationScroll","hubMissionTab","shopSlot","purchasePreviewCharacter","equipmentDraftCampaign","equipmentDraftTraining","equipmentViewCharacter","equipmentViewCompact","equipmentViewNotice"};
+            var fields=names.Select(name=>typeof(BattleHud).GetField(name,System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)??throw new InvalidOperationException("Missing guidance review state: "+name)).ToArray();
+            var values=fields.Select(field=>field.GetValue(battle.Hud)).ToArray();
+            var drafts=(Dictionary<string,EquipmentLoadout>)typeof(BattleHud).GetField("equipmentDrafts",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).GetValue(battle.Hud);
+            var draftValues=drafts.ToArray();var draftIds=draftValues.ToDictionary(pair=>pair.Key,pair=>pair.Value.ExportIDs());
+            void Field(string name,object value)=>fields[Array.IndexOf(names,name)].SetValue(battle.Hud,value);
+            void Fixture(int episode,string[] party)
+            {
+                battle.Campaign=new CampaignSave{SelectedStage=CrossoverCampaign.FirstStage+episode-1};
+                for(int number=1;number<episode;number++)battle.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(number));
+                battle.SelectedStage=battle.Campaign.SelectedStage;battle.TrainingMode=false;
+                battle.Deployment.Clear();battle.Deployment.AddRange(party.Select(id=>Array.FindIndex(battle.Catalog.Characters,c=>c.Id==id)));
+                if(battle.Deployment.Any(index=>index<0))throw new InvalidOperationException("Guidance fixture companion missing from catalog");
+                battle.Campaign.Deployment=battle.Deployment.ToArray();
+                Field("selectedCharacter",battle.Deployment[0]);Field("formationFilter",0);Field("formationSort",0);Field("formationScrollOffset",0f);Field("resetFormationScroll",true);Field("hubMissionTab",0);Field("intermissionRosterPage",0);
+            }
+            try
+            {
+                battle.PersistCampaign=_=>{writes++;return false;};drafts.Clear();
+                Fixture(2,new[]{"cless","mint"});string episodeTwo=JsonUtility.ToJson(battle.Campaign);
+                battle.Hud.ShowIntermissionHub();yield return Settle();
+                var arrivalLink=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(button=>button.name=="합류 동료 편성 보기");
+                string arrivalText=arrivalLink.GetComponentInChildren<TMP_Text>().text;
+                if(!arrivalText.Contains("알펜")||!arrivalText.Contains("시온"))throw new InvalidOperationException("Episode two arrival link must identify its two joined companions");
+                yield return Inspect("guidance-episode-two-hub",battle.Hud.transform,size,scale);
+                Click("합류 동료 편성 보기");yield return Settle();
+                var badges=battle.Hud.GetComponentsInChildren<TMP_Text>().Where(text=>text.name.StartsWith("CurrentEpisodeArrival-")).Select(text=>text.name).OrderBy(name=>name).ToArray();
+                if(!badges.SequenceEqual(new[]{"CurrentEpisodeArrival-alphen","CurrentEpisodeArrival-shionne"}))throw new InvalidOperationException("Arrival badges must exclude previous and unrecruited companions");
+                yield return Inspect("guidance-episode-two-formation",battle.Hud.transform,size,scale);
+                if(JsonUtility.ToJson(battle.Campaign)!=episodeTwo||!battle.Deployment.SequenceEqual(battle.Campaign.Deployment))throw new InvalidOperationException("Arrival browsing changed the fixture campaign or party");
+
+                Fixture(5,new[]{"cless","mint","alphen","shionne","farah","jade"});
+                battle.Campaign.Get("cless").Level=7;battle.Campaign.Get("mint").Level=1;
+                string episodeFive=JsonUtility.ToJson(battle.Campaign);
+                battle.Hud.ShowIntermissionHub();yield return Settle();
+                if(battle.Deployment.Count!=6||!battle.Hud.GetComponentsInChildren<TMP_Text>().Any(text=>text.text.Contains("대기 4명")))throw new InvalidOperationException("Full guidance fixture must retain six deployed and four reserve companions");
+                yield return Inspect("guidance-six-with-reserves",battle.Hud.transform,size,scale);
+                Click("성장 · 승급");yield return Settle();
+                if(!battle.Hud.GetComponentsInChildren<TMP_Text>().Any(text=>text.text.Contains("Lv1 → Lv7")&&text.text.Contains("골드 소모 없음")))throw new InvalidOperationException("Low-level companion training notice is missing");
+                var train=battle.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Single(button=>button.name=="합류 훈련 · Lv7");
+                if(!train.IsInteractable())throw new InvalidOperationException("Free training preview should be available in the isolated unlocked fixture");
+                yield return Inspect("guidance-free-training",battle.Hud.transform,size,scale);
+                if(JsonUtility.ToJson(battle.Campaign)!=episodeFive||!battle.Deployment.SequenceEqual(battle.Campaign.Deployment)||writes!=0)throw new InvalidOperationException("Training preview mutated or attempted to save its fixture");
+            }
+            finally
+            {
+                battle.Campaign=original;battle.SelectedStage=originalStage;battle.TrainingMode=originalTraining;battle.PersistCampaign=persist;
+                battle.Deployment.Clear();battle.Deployment.AddRange(originalParty);
+                for(int i=0;i<fields.Length;i++)fields[i].SetValue(battle.Hud,values[i]);
+                drafts.Clear();foreach(var pair in draftValues)drafts.Add(pair.Key,pair.Value);
+                battle.Hud.ShowIntermissionHub();
+                // Rendering the restored hub must not alter parked selection, filters or drafts.
+                for(int i=0;i<fields.Length;i++)fields[i].SetValue(battle.Hud,values[i]);
+                if(JsonUtility.ToJson(original)!=originalJson||!battle.Deployment.SequenceEqual(originalParty)||battle.SelectedStage!=originalStage)throw new InvalidOperationException("Guidance review changed its caller campaign/preparation state");
+                foreach(var pair in draftValues)if(!drafts.TryGetValue(pair.Key,out var draft)||!ReferenceEquals(draft,pair.Value)||!draft.ExportIDs().SequenceEqual(draftIds[pair.Key]))throw new InvalidOperationException("Guidance review changed a parked equipment draft");
+                var current=Directory.GetFiles(battle.Profiles.Root,"*",SearchOption.AllDirectories);
+                if(writes!=0||!current.OrderBy(path=>path).SequenceEqual(files.Keys.OrderBy(path=>path))||current.Any(path=>!File.ReadAllBytes(path).SequenceEqual(files[path])))throw new InvalidOperationException("Guidance review changed isolated profile files");
+            }
+            yield return Settle();
+        }
+
         IEnumerator InspectOtherWearer(Vector2Int size,float scale)
         {
             // An isolated in-memory copy keeps this fixture out of the real reward and save flow.

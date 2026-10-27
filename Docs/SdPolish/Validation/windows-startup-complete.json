@@ -1,0 +1,80 @@
+{
+  "scope": "Automated normal-build startup and OS process responsiveness only; no human playthrough or interactive gameplay validation",
+  "exe": "D:\\TalesTacticsHelpGuide\\Builds\\SdPolishWindows20261027Final\\TalesTactics.exe",
+  "exeSha256": "A4C71B1BFC3E42D02F2F129FE04ADEF3EBF2343A662884E4B99598E9DFC90E7D",
+  "runtimeSha256": "59B23F1DDA7ED49D75C26D3072F3DFDD420828EA5BB9119E5F5DD257D224E947",
+  "buildReport": "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\build-windows-complete.json",
+  "buildReportSha256": "7C8EB384E7567430AD5A03A71A80CA436BFA9CA6EFA44C52A599115780E2B8D1",
+  "logFile": "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\normal-startup-complete.log",
+  "startedAtUtc": "2026-10-27T09:05:53.6835991Z",
+  "windowStyle": "Hidden",
+  "arguments": [
+    "-logFile",
+    "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\normal-startup-complete.log"
+  ],
+  "pid": 305176,
+  "inputIdle": false,
+  "observations": [
+    {
+      "seconds": 1.79,
+      "responding": true,
+      "mainWindowHandle": 0,
+      "windowTitle": "",
+      "workingSetBytes": 10244096
+    },
+    {
+      "seconds": 5.01,
+      "responding": true,
+      "mainWindowHandle": 0,
+      "windowTitle": "",
+      "workingSetBytes": 95596544
+    },
+    {
+      "seconds": 10.01,
+      "responding": true,
+      "mainWindowHandle": 0,
+      "windowTitle": "",
+      "workingSetBytes": 206442496
+    },
+    {
+      "seconds": 15.01,
+      "responding": true,
+      "mainWindowHandle": 0,
+      "windowTitle": "",
+      "workingSetBytes": 340578304
+    },
+    {
+      "seconds": 20.01,
+      "responding": true,
+      "mainWindowHandle": 0,
+      "windowTitle": "",
+      "workingSetBytes": 282357760
+    }
+  ],
+  "closeRequested": false,
+  "forcedStop": true,
+  "exitCode": -1,
+  "error": null,
+  "completed": true,
+  "processStartUtc": "2026-10-27T09:05:54.0727234Z",
+  "finishedAtUtc": "2026-10-27T09:06:24.2070657Z",
+  "startupSecondsRequested": 20,
+  "baselineMatchedBeforeStartup": true,
+  "logBytes": 2215,
+  "engineInitialized": true,
+  "errorLines": [],
+  "warningLines": [
+    "Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldGaussianPostProcessPass'). PostProcessing render passes will not execute.",
+    "Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldGaussianPostProcessPass'). PostProcessing render passes will not execute.",
+    "Shader 'Hidden/Universal Render Pipeline/BokehDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldBokehPostProcessPass'). PostProcessing render passes will not execute.",
+    "Shader 'Hidden/Universal Render Pipeline/PaniniProjection' is not supported or has been stripped from the build (in 'PaniniProjectionPostProcessPass'). PostProcessing render passes will not execute."
+  ],
+  "responsiveWindowObserved": false,
+  "ownProcessStopped": true,
+  "userFileChanges": [],
+  "newUserFiles": [],
+  "userFilesUnchanged": true,
+  "existingProcessesPreserved": true,
+  "startupPassed": false,
+  "note": "Only the process started by this script can be closed/stopped, after PID/start-time/executable verification. No gameplay input, display arguments, save commands, user file restoration, Unity, or build commands."
+}

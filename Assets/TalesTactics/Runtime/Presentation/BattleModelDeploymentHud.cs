@@ -145,6 +145,13 @@ namespace TalesTactics
             var gear=new EquipmentLoadout(c,FormationProgress(c),battle.Catalog.Equipment,battle.Campaign);
             var sprite=body.gameObject.AddComponent<CharacterModelImage>();sprite.Character=c;sprite.sprite=EquipmentAppearance.Resolve(c,gear.Get(EquipmentSlot.Weapon),c.Sprites?.Front);sprite.preserveAspect=true;sprite.raycastTarget=false;
             ClassArt(cell,c,new Vector2(.055f,.72f),new Vector2(.24f,.95f));
+            if(CurrentEpisodeArrivals().Contains(c))
+            {
+                // This badge describes the model selection button and belongs inside its hit area.
+                var arrival=FormationText(model,"이번 합류",new Vector2(.25f,1),new Vector2(.76f,1),15,TextAlignmentOptions.Center);
+                arrival.rectTransform.offsetMin=new Vector2(6,-30);arrival.rectTransform.offsetMax=new Vector2(-6,-2);
+                arrival.name="CurrentEpisodeArrival-"+c.Id;arrival.color=formationTeal;arrival.raycastTarget=false;
+            }
             if(deployed)FormationIcon(cell,"deployed",new Vector2(.79f,.78f),new Vector2(.95f,.96f),Color.white);
             if(selected){var corners=IconSelectionCorners.Add(cell);var opacity=corners.gameObject.AddComponent<CanvasGroup>();opacity.alpha=.55f;opacity.blocksRaycasts=false;}
             var caption=FormationRect(cell,"ModelCaption",Vector2.zero,new Vector2(1,0));caption.offsetMin=new Vector2(8,8);caption.offsetMax=new Vector2(-8,112);
@@ -195,7 +202,7 @@ namespace TalesTactics
                 var unit=new UnitRuntime(c,Team.Player,battle.Catalog.Rules,level){Promoted=promoted,Trait=progress.Trait};gear.Apply(unit);unit.CurrentHP=unit.Stats.HP;unit.CurrentMP=unit.Stats.MP;ShowUnitDetails(unit);
             },true,21);
             FormationButton(commands,"선택 캐릭터 장비","장비",new Vector2(.345f,.015f),new Vector2(.665f,.09f),()=>ShowEquipment(c),true,21);
-            FormationButton(commands,"선택 캐릭터 성장","성장",new Vector2(.665f,.015f),new Vector2(.985f,.09f),()=>ShowGrowth(c),true,21);
+            FormationButton(commands,"선택 캐릭터 성장",PreparationTrainingAvailable(c)?"무료 훈련":"성장",new Vector2(.665f,.015f),new Vector2(.985f,.09f),()=>ShowGrowth(c),true,21);
         }
         void FormationMeter(Transform parent,string title,int value,Vector2 min,Vector2 max,Color color)
         {

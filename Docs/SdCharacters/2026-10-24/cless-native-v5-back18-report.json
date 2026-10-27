@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "method": "cless-v5-back18-observed-body-anchor-v1",
+  "inputMeasurement": "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v5-calibrated220.json",
+  "inputMeasurementSha256": "02e7482b5595ba718f866c47b193b02cbecbfc246a3aa48c3a12466d6704ca94",
+  "specification": "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v5-back18-correction.json",
+  "specificationSha256": "b1182e33254e31df63ea77b76d65af4b8b12bdb0e4e76943e98426b6b2b6d407",
+  "candidateSha256": "0ffd2c058365aa5fb3d2659a837053c950d84083704973baf94ba16d1a221d86",
+  "captureResult": "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\result.json",
+  "captureResultSha256": "189a2c699feebc9a6f1e8d8af1f191c931d06a599fd2b0a7a5473049f1b50bfa",
+  "targetSprite": "cless_18_1",
+  "pixelsPerUnit": 220,
+  "bodyScale": 0.976716934519573,
+  "scaleReferenceMetaSha256": "6ea06fc52d9eaf159e1a4ad32629eeaa32a50f47d624bf010a71f0d12348a736",
+  "oldPivotX": 0.239166,
+  "newPivotX": 0.540512,
+  "requestedAnchorDeltaPixels": 67.50152282171707,
+  "appliedAnchorDeltaPixels": 67.501504,
+  "targetBodyXRelativeAnchorPixels": -17.69769125174232,
+  "measuredBodyXRelativeAnchorPixels": 49.803831569974754,
+  "policy": "Back18 body midpoint moves to the mean of unchanged Back17/19 body midpoints after removing recovered root translation and billboard tilt.",
+  "supersedes": "The old bbox-relative world-X invariant is intentionally overridden only for cless_18_1.",
+  "unchanged": "All PNG pixels, PPU, 80 names/IDs, every rect, pivotY, and outline coordinates; 79 entire frame records.",
+  "inputVisualApproved": false,
+  "inputVisualReview": "",
+  "limitation": "Body ROI is a measured boot-stance proxy. Neighbors remain unchanged; residual pose steps are predicted, and actual playback must be reviewed. PivotY is unchanged, but an X change under tilt also changes projected screen Y.",
+  "evidenceHashes": {
+    "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v5-calibrated220.json": "02e7482b5595ba718f866c47b193b02cbecbfc246a3aa48c3a12466d6704ca94",
+    "C:\\dev\\TalesTactics\\Docs\\SdCharacters\\2026-10-24\\cless-native-v5-back18-correction.json": "b1182e33254e31df63ea77b76d65af4b8b12bdb0e4e76943e98426b6b2b6d407",
+    "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\cless-before.png": "16ececda2c0b75a8aacf0fdd7d7a3455161418c6628e82eff500c4768f2908d0",
+    "C:\\dev\\TalesTactics\\Logs\\SdPolish20261027\\cless-before.png.meta": "e29b617628a8a373a694a0659400c255a6ff50ef8f812892b1fe4aff68a6f5de",
+    "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\cless-native-v5.png": "0ffd2c058365aa5fb3d2659a837053c950d84083704973baf94ba16d1a221d86",
+    "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\PixelCampaign\\cless-hq.png.meta": "6ea06fc52d9eaf159e1a4ad32629eeaa32a50f47d624bf010a71f0d12348a736",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\result.json": "189a2c699feebc9a6f1e8d8af1f191c931d06a599fd2b0a7a5473049f1b50bfa",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0057.png": "380a09837adcbead6ad911426ac13c014a881c1a7ab2325c4e42e3b948e13d14",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0058.png": "32317e8a8fe0eee57ac0306919b965dbf07e141fa41422d31182b8bee493a13e",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0059.png": "6c2c47b8f20460554fbcf446ca1fcf0048348edf574b15dd3b50ce9ec1614651",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0060.png": "c6c92b451babb8252f13190a564516e724df45819c6bde12c7612cd3fd698dc9",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0061.png": "6d1833ad847d0acca87ec69e423518a356e8d3332c1c57372180619d2e21edf2",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0062.png": "f9be3da095fcdd54b10d2520452e0d2f8f85c0a7332922e39df6a48f53f87fc4",
+    "D:\\TalesTacticsCrossover\\d3d2\\Builds\\SdPolishReview20261027V5\\SdMotionReviews\\d450f0d5da8447fc82e0564cdee1f7fa\\cless.ultimate-Back\\0063.png": "e9faeace886c0ff41a2fe07621ee38ccff5443dbcff2ce77de2c6bcebaa014ff"
+  },
+  "frames": [
+    {
+      "frame": 57,
+      "sprite": "cless_17_1",
+      "tiltDegrees": -3.0435554168192693,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8350130981859188,
+      "rootScreenX": 512.8021942013849,
+      "rootScreenY": 349.989607248143,
+      "meshExtentFitErrorPixels": 1.5120025137448678e-05,
+      "predictedScreenShiftX": 0,
+      "predictedScreenShiftY": 0
+    },
+    {
+      "frame": 58,
+      "sprite": "cless_17_1",
+      "tiltDegrees": -2.6085388098262707,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8353261160524292,
+      "rootScreenX": 508.3332935926051,
+      "rootScreenY": 355.1908396310555,
+      "meshExtentFitErrorPixels": 1.4720393420300515e-05,
+      "boots": [
+        {
+          "x": 459.5,
+          "y": 353,
+          "roi": [
+            432,
+            315,
+            487,
+            359
+          ]
+        },
+        {
+          "x": 552.0,
+          "y": 354,
+          "roi": [
+            522,
+            316,
+            581,
+            359
+          ]
+        }
+      ],
+      "stanceScreenX": 505.75,
+      "stanceScreenY": 353.5,
+      "bodyXRelativeAnchorPixels": -3.178179412460818,
+      "bodyYRelativeAnchorPixels": 1.8793721793487008,
+      "predictedScreenShiftX": 0,
+      "predictedScreenShiftY": 0,
+      "predictedStanceScreenX": 505.75
+    },
+    {
+      "frame": 59,
+      "sprite": "cless_18_1",
+      "tiltDegrees": -2.193645444081566,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8355797914122809,
+      "rootScreenX": 504.0482989665418,
+      "rootScreenY": 360.2450401342537,
+      "meshExtentFitErrorPixels": 9.371051556861305e-05,
+      "boots": [
+        {
+          "x": 494.5,
+          "y": 360,
+          "roi": [
+            467,
+            321,
+            523,
+            365
+          ]
+        },
+        {
+          "x": 597.0,
+          "y": 363,
+          "roi": [
+            568,
+            320,
+            626,
+            365
+          ]
+        }
+      ],
+      "stanceScreenX": 545.75,
+      "stanceScreenY": 361.5,
+      "bodyXRelativeAnchorPixels": 49.89182844252846,
+      "bodyYRelativeAnchorPixels": 0.40920609127796537,
+      "predictedScreenShiftX": -56.402892632335245,
+      "predictedScreenShiftY": -2.1605158398339572,
+      "predictedStanceScreenX": 489.34710736766476
+    },
+    {
+      "frame": 60,
+      "sprite": "cless_18_1",
+      "tiltDegrees": -1.8028640861643463,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8357786557244984,
+      "rootScreenX": 499.9853544984611,
+      "rootScreenY": 365.10925461939655,
+      "meshExtentFitErrorPixels": 3.1056558714185996e-05,
+      "predictedScreenShiftX": -56.416316272501845,
+      "predictedScreenShiftY": -1.7757770777755815
+    },
+    {
+      "frame": 61,
+      "sprite": "cless_18_1",
+      "tiltDegrees": -1.4399370285426283,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8359285247963127,
+      "rootScreenX": 496.1839857527635,
+      "rootScreenY": 369.73897901266616,
+      "meshExtentFitErrorPixels": 2.78403226913747e-05,
+      "boots": [
+        {
+          "x": 486.5,
+          "y": 370,
+          "roi": [
+            459,
+            330,
+            516,
+            374
+          ]
+        },
+        {
+          "x": 589.0,
+          "y": 371,
+          "roi": [
+            560,
+            329,
+            619,
+            374
+          ]
+        }
+      ],
+      "stanceScreenX": 537.75,
+      "stanceScreenY": 370.5,
+      "bodyXRelativeAnchorPixels": 49.71583469742105,
+      "bodyYRelativeAnchorPixels": 0.33931366179061695,
+      "predictedScreenShiftX": -56.4264326602524,
+      "predictedScreenShiftY": -1.418387544682796,
+      "predictedStanceScreenX": 481.32356733974757
+    },
+    {
+      "frame": 62,
+      "sprite": "cless_19_1",
+      "tiltDegrees": -1.1088931720767268,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8360359784212695,
+      "rootScreenX": 492.6834276376268,
+      "rootScreenY": 374.08920303188097,
+      "meshExtentFitErrorPixels": 8.401629422531278e-05,
+      "boots": [
+        {
+          "x": 416.0,
+          "y": 373,
+          "roi": [
+            389,
+            330,
+            447,
+            377
+          ]
+        },
+        {
+          "x": 515.5,
+          "y": 374,
+          "roi": [
+            480,
+            332,
+            542,
+            378
+          ]
+        }
+      ],
+      "stanceScreenX": 465.75,
+      "stanceScreenY": 373.5,
+      "bodyXRelativeAnchorPixels": -32.21720309102382,
+      "bodyYRelativeAnchorPixels": 0.08115362791496394,
+      "predictedScreenShiftX": 0,
+      "predictedScreenShiftY": 0,
+      "predictedStanceScreenX": 465.75
+    },
+    {
+      "frame": 63,
+      "sprite": "cless_19_1",
+      "tiltDegrees": -0.8135094062978141,
+      "screenPixelsPerNativePixel": 0.8361925802797039,
+      "screenXPerAnchorPixel": 0.8361082955475649,
+      "rootScreenX": 489.5234273531863,
+      "rootScreenY": 378.1151154707036,
+      "meshExtentFitErrorPixels": 3.048998018801471e-05,
+      "predictedScreenShiftX": 0,
+      "predictedScreenShiftY": 0
+    }
+  ],
+  "transitions": [
+    {
+      "fromFrame": 58,
+      "toFrame": 59,
+      "rootDeltaPixels": -4.284994626063337,
+      "beforeBodyDeltaPixels": 40.0,
+      "predictedBodyDeltaPixels": -16.402892632335238
+    },
+    {
+      "fromFrame": 61,
+      "toFrame": 62,
+      "rootDeltaPixels": -3.5005581151366982,
+      "beforeBodyDeltaPixels": -72.0,
+      "predictedBodyDeltaPixels": -15.57356733974757
+    }
+  ],
+  "atlasFrameEvidence": [
+    {
+      "name": "cless_17_1",
+      "rect": [
+        2723,
+        551,
+        234,
+        267
+      ],
+      "rectRgbaSha256": "11c55edea410d5a826708fc2bcc7592577b7c822c853290a9d1e275fd5f12e34",
+      "alpha128BboxInRectTopOrigin": [
+        2,
+        2,
+        232,
+        265
+      ],
+      "alpha128BboxRgbaSha256": "83eb45dbdf67c52e840bb4e87b98d471ba9ce5e2508ec7f285d6af0070701c2c"
+    },
+    {
+      "name": "cless_18_1",
+      "rect": [
+        691,
+        160,
+        224,
+        216
+      ],
+      "rectRgbaSha256": "ab2f61a353900a5bff3b3c7cc6c15472223a76e3d8470a364632ed8942d9649c",
+      "alpha128BboxInRectTopOrigin": [
+        2,
+        2,
+        222,
+        214
+      ],
+      "alpha128BboxRgbaSha256": "0d6155211d983bab8b55c3bf436726a694a896c8c580f747b94b6833e956b98c"
+    },
+    {
+      "name": "cless_19_1",
+      "rect": [
+        2732,
+        164,
+        227,
+        244
+      ],
+      "rectRgbaSha256": "af1b1d4dd5bc94d6f48b6244c0ca4e29869d1fe0cfc68addc03ef3d2f7410627",
+      "alpha128BboxInRectTopOrigin": [
+        2,
+        2,
+        225,
+        242
+      ],
+      "alpha128BboxRgbaSha256": "088e3221a8afee9972463930dadf21c2f3139dbc517c54b96b9e2df2540f2f80"
+    }
+  ],
+  "maximumMeshExtentFitErrorPixels": 9.371051556861305e-05
+}

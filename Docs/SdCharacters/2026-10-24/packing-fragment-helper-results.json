@@ -1,0 +1,62 @@
+[
+  {
+    "name": "reported 1px tie",
+    "actualOwner": 14,
+    "passed": true
+  },
+  {
+    "name": "four-pixel single-cell tie",
+    "actualOwner": 14,
+    "passed": true
+  },
+  {
+    "name": "five-pixel fragment rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "horizontal cell crossing rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "vertical cell crossing rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "cell owner absent from tie rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "overlapping containing cells rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "out-of-canvas rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "three-way tie with cell owner accepted",
+    "actualOwner": 14,
+    "passed": true
+  },
+  {
+    "name": "non-tie not relaxed",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "zero-pixel invalid component rejected",
+    "actualOwner": -1,
+    "passed": true
+  },
+  {
+    "name": "last fully contained boundary pixel accepted",
+    "actualOwner": 14,
+    "passed": true
+  }
+]

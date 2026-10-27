@@ -3,6 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 namespace TalesTactics.PlayModeTests
@@ -12,33 +13,73 @@ namespace TalesTactics.PlayModeTests
         BattleDirector director;
         BattleCatalog legacyFixtureCatalog;
         string testStorage;
+        InputSettings originalInputSettings, fixtureInputSettings;
+        bool originalRunInBackground;
         [UnitySetUp] public IEnumerator LoadBattle()
         {
-            yield return SceneManager.LoadSceneAsync("TestBattle",LoadSceneMode.Single);
-            yield return null;
-            director=Object.FindAnyObjectByType<BattleDirector>();
-            Assert.That(director,Is.Not.Null);
-            Assert.That(director.Hud.TitleOpen,Is.True,"The production scene must start on the title screen.");
-            director.Audio.PersonalMusicEnabled=false; // Keep regression tests independent of local user music.
-            Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
-            // Old scenes remain explicit compatibility fixtures, never the production campaign menu.
-            legacyFixtureCatalog=Object.Instantiate(director.Catalog);legacyFixtureCatalog.CrossoverReady=false;director.Catalog=legacyFixtureCatalog;
-            testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
-            director.ConfigureStorage(testStorage);
-            director.SelectedStage=0; // Existing shared fixtures exercise the original campaign explicitly.
-            director.TrainingMode=true; // Never grant campaign EXP or write a save in these tests.
-            // Awake may have restored the user's roster before switching to isolated storage.
-            director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,3});
-            director.Hud.ShowDeployment();
+            bool setupCompleted=false;
+            try
+            {
+                ConfigureTestInput();
+                yield return SceneManager.LoadSceneAsync("TestBattle",LoadSceneMode.Single);
+                yield return null;
+                director=Object.FindAnyObjectByType<BattleDirector>();
+                Assert.That(director,Is.Not.Null);
+                Assert.That(director.Hud.TitleOpen,Is.True,"The production scene must start on the title screen.");
+                director.Audio.PersonalMusicEnabled=false; // Keep regression tests independent of local user music.
+                Assert.That(director.enabled,Is.True,"Startup validation failed; inspect Console.");
+                // Old scenes remain explicit compatibility fixtures, never the production campaign menu.
+                legacyFixtureCatalog=Object.Instantiate(director.Catalog);legacyFixtureCatalog.CrossoverReady=false;director.Catalog=legacyFixtureCatalog;
+                testStorage=System.IO.Path.Combine(Application.temporaryCachePath,"PersistenceTests",System.Guid.NewGuid().ToString("N"));
+                director.ConfigureStorage(testStorage);
+                director.SelectedStage=0; // Existing shared fixtures exercise the original campaign explicitly.
+                director.TrainingMode=true; // Never grant campaign EXP or write a save in these tests.
+                // Awake may have restored the user's roster before switching to isolated storage.
+                director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,3});
+                director.Hud.ShowDeployment();
+                setupCompleted=true;
+            }
+            finally { if(!setupCompleted)RestoreTestInput(); }
         }
         [UnityTearDown] public IEnumerator Cleanup()
         {
-            var battle=SceneManager.GetSceneByName("TestBattle");
-            var empty=SceneManager.CreateScene("Test cleanup");SceneManager.SetActiveScene(empty);
-            if(battle.isLoaded)yield return SceneManager.UnloadSceneAsync(battle);
-            if(legacyFixtureCatalog!=null)Object.Destroy(legacyFixtureCatalog);
-            if(System.IO.Directory.Exists(testStorage))System.IO.Directory.Delete(testStorage,true);
-            LogAssert.NoUnexpectedReceived();
+            try
+            {
+                var battle=SceneManager.GetSceneByName("TestBattle");
+                var empty=SceneManager.CreateScene("Test cleanup");SceneManager.SetActiveScene(empty);
+                if(battle.isLoaded)yield return SceneManager.UnloadSceneAsync(battle);
+                if(legacyFixtureCatalog!=null)Object.Destroy(legacyFixtureCatalog);
+                if(System.IO.Directory.Exists(testStorage))System.IO.Directory.Delete(testStorage,true);
+                LogAssert.NoUnexpectedReceived();
+            }
+            finally { RestoreTestInput(); }
+        }
+        void ConfigureTestInput()
+        {
+            originalInputSettings=InputSystem.settings;
+            originalRunInBackground=Application.runInBackground;
+            fixtureInputSettings=Object.Instantiate(originalInputSettings);
+            fixtureInputSettings.hideFlags=HideFlags.HideAndDontSave;
+            // QueueStateEvent must exercise the real player loop without Game View
+            // focus routing synthetic keyboard/mouse events into Editor-only state.
+            // Unity's InputTestFixture uses the same editor routing policy. IgnoreFocus
+            // also keeps added virtual devices and the UI input module active.
+            fixtureInputSettings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
+            fixtureInputSettings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+            // With player-like routing, focus regain can otherwise sync/reset a
+            // virtual device when runInBackground is false (InputManager.OnFocusChanged).
+            Application.runInBackground=true;
+            InputSystem.settings=fixtureInputSettings;
+        }
+        void RestoreTestInput()
+        {
+            if(originalInputSettings!=null)
+            {
+                InputSystem.settings=originalInputSettings;
+                Application.runInBackground=originalRunInBackground;
+            }
+            if(fixtureInputSettings!=null)Object.DestroyImmediate(fixtureInputSettings);
+            originalInputSettings=null;fixtureInputSettings=null;
         }
         void Click(string name)
         {

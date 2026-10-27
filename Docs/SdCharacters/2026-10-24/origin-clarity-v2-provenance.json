@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-24T13:17:02.626316+00:00",
+  "status": "candidate_approved_pending_integration",
+  "operation": "Single built-in imagegen clarity-only edit of the current production Origin atlas",
+  "source": {
+    "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/Crossover/origin.png",
+    "sha256": "95c63f6ea4ae8469672868d28340c096ec95d70e10a82a7173b94fa6773ff76a"
+  },
+  "sourceMeta": {
+    "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/Crossover/origin.png.meta",
+    "sha256": "19cfbfab55abd95c62d04ea6616c7c91178ea5d95501f5397386c89d6ebb6453"
+  },
+  "priorMeasurement": {
+    "path": "C:/dev/TalesTactics/Docs/SdCharacters/Crossover-origin-measurement.json",
+    "sha256": "62fc9d8f092e00d943718e37f06e4bad908b6a4c18c5140e101ea02909e9e112"
+  },
+  "generatedOriginal": {
+    "path": "C:/Users/USER-PC/.codex/generated_images/01a15eed-3a6e-7cc1-9fd5-ca608ca84560/exec-4c5a322c-803b-4f90-9d50-2cc372d3e603.png",
+    "sha256": "5e61346d221c7a78c183c5befa8cc571b0ba7c9c9e28c17fec38ea1235060877"
+  },
+  "rawAttempt": {
+    "path": "C:/dev/TalesTactics/Temp/SdCharacters/2026-10-24/OriginClarity/attempt-1.png",
+    "sha256": "5e61346d221c7a78c183c5befa8cc571b0ba7c9c9e28c17fec38ea1235060877"
+  },
+  "finalCandidate": {
+    "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/origin-clarity-v2.png",
+    "sha256": "5e61346d221c7a78c183c5befa8cc571b0ba7c9c9e28c17fec38ea1235060877"
+  },
+  "finalMeasurement": {
+    "path": "C:/dev/TalesTactics/Docs/SdCharacters/2026-10-24/origin-clarity-v2-measurement.json",
+    "sha256": "fa568ddabb32e756c4904a4a5779ec1bd727bbf96aa90d6bdd08537b3837f9cd"
+  },
+  "prompt": "Use case: identity-preserve, precise-object-edit.\nAsset type: existing transparent SD tactical RPG character animation sprite atlas. Image 1 is the ONLY edit target and authoritative artwork/pose/placement reference.\n\nImprove only clarity and crispness of this exact Origin atlas. Re-ink its existing silhouettes and fine features with confident clean dark anime outlines, distinct eyes and mouth, separated golden hair locks, readable hands/wrist joints, precise gold trim, and sharp silver blade edges. Replace the soft airbrushed contour halos and muddy interior transitions with restrained clean cel-shaded color regions. This is a clarity pass of the existing SD character, not a character redesign, animation reinterpretation, pose cleanup, new costume or new weapons.\n\nPreserve exactly all 72 individual figures in this 8-column by 9-row atlas, same order, same proportional cell positions and spacing, same pose, camera/facing, body proportions, head orientation, arm gestures, weapon direction/length and garment shape per frame. Origin has FOUR ARMS and FOUR silver bladed weapons; preserve the four-arm/four-weapon anatomy and attachment arrangement visible in each source cell, including occluded arms. Do not simplify to two arms, add arms, detach weapons, merge shoulders, or turn side views into front views.\n\nFacing invariants, counting rows top-to-bottom and columns left-to-right starting at 1: ONLY these 18 cells show the rear of the head with NO face: rows 1,2,3,4,6,8,9 columns 2 and 6; row 5 columns 2,6,7; row 7 column 6. All remaining 54 cells must retain their visible face and the exact original front/side-facing angle. Pay particular attention to row1 columns4 and7, row3 columns3 and7, row7 column2, row8 column4: their faces MUST stay visible as in the edit target. Do not change the pose or turn the head to satisfy a generic directional pattern.\n\nKeep warm blond hair, black-and-gold tunic, skin tone, leather straps/arm ornaments, all existing equipment identity, and the source's dark outline color. Keep every blade point, foot and hair tip inside its existing proportional cell, with transparent separation and no touches between neighboring figures. Preserve any transparent gaps inside the silhouettes.\n\nOutput a genuine transparent RGBA PNG, with no opaque or checkerboard background, no glow aura, no painted floor shadow, no text/grid/labels/UI. Keep the canvas aspect ratio 1215:1295 and the exact full-sheet composition. If the built-in renderer supports it, render at native 2430×2590 or higher proportional resolution to provide real clean line detail, not a sharpened/upscaled raster. If its output is size-limited, still preserve the entire 8×9 atlas and geometry rather than cropping/repacking. Do not include a comparison layout or surrounding poster. Deliver only the complete atlas.",
+  "promptPath": "C:/dev/TalesTactics/Docs/SdCharacters/2026-10-24/origin-clarity-v2-prompt.txt",
+  "tool": "built-in image_gen.imagegen",
+  "attemptCount": 1,
+  "dimensions": {
+    "requestedNative": [
+      2430,
+      2590
+    ],
+    "source": [
+      1215,
+      1295
+    ],
+    "generated": [
+      1215,
+      1295
+    ],
+    "nativeResolutionIncreased": false,
+    "interpretation": "The tool returned the original 1215x1295 size. This is a modest line/feature clarity pass; no native pixel-count or information-density increase is claimed."
+  },
+  "staticMeasurement": {
+    "frameCount": 72,
+    "sourceGuid": "1077d0a24e8e10a47ac685140b503ca4",
+    "allNamesAndOriginalSpriteAndLocalIdsPreserved": true,
+    "allImportedFramesHaveMajorComponents": true,
+    "originalPPU": 102.436485,
+    "measuredCandidatePPU": 100.513774,
+    "sourceAlphaZeroFraction": 0.315876,
+    "candidateAlphaZeroFraction": 0.323546,
+    "candidateSolidFraction": 0.373409,
+    "maxCenterDriftPixels": 3.64,
+    "maxLower18PercentFootProxyDriftPixels": 14.921,
+    "outlineCount": 160,
+    "measurementIsEngineImportValidation": false,
+    "footProxyCaveat": "Bottom-18% silhouette median can include blades/garment and is not an anatomical foot or world registration proof."
+  },
+  "visualReview": {
+    "atlasLayout": "8 columns x 9 rows; 72 figures",
+    "rearCellsOneBased": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        9,
+        6
+      ]
+    ],
+    "faceVisibleCellCount": 54,
+    "specificallyRecheckedFaceVisibleCells": [
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        4
+      ]
+    ],
+    "retained": [
+      "Per-cell pose and visible facing",
+      "Four-arm/four-weapon identity, including source occlusion",
+      "Weapon gesture/orientation and garment outline",
+      "All 72 figures and transparent separation"
+    ],
+    "improved": [
+      "Eye and mouth separation",
+      "Hair-lock edges",
+      "Gold garment/strap trim",
+      "Silver blade edges and local wrist/weapon junctions"
+    ],
+    "acceptance": "The full-atlas source/candidate comparison shows a usable modest clarity improvement with no observed missing figure, changed rear/face mask, detached head, or absent weapon. Accepted as a candidate only.",
+    "limits": [
+      "No actual Unity import or in-game screenshot validation in this subtask",
+      "Small hands and densely crossing weapons remain constrained by original atlas resolution",
+      "Not a higher-resolution redraw and not proof that all 72 frames match idle-art fidelity"
+    ]
+  },
+  "applyIntegrationNotes": {
+    "productionUnchanged": true,
+    "productionMetaUnchanged": true,
+    "globalManifestNotWritten": true,
+    "candidateMetaNotCreatedByThisTask": true,
+    "exactCurrentlyAppliedSourceSha256": "95c63f6ea4ae8469672868d28340c096ec95d70e10a82a7173b94fa6773ff76a",
+    "historicalOriginalSourceSha256": "60e4da0a6434f5b1e2c037ccd895f895a20c02784ab18cafc181463ebfee4819",
+    "measurementSourceHashUsesCurrentProduction": true,
+    "note": "The new measurement was calculated against the current applied production PNG/meta, so its sourceSha256 is the exact prior applied art, not the global manifest's historical original source hash. Root must reconcile this explicitly with ApplyApprovedRevision provenance/job checks; do not silently relabel a measurement as using a different image. GUID, sprite IDs and local IDs already match the historical original measurement."
+  },
+  "possibleFurtherWork": {
+    "independentCandidate": "If a truly higher native information budget is needed, generate an independent four-direction idle pose sheet at large native size using the same identity; keep it separate from the 72-frame motion atlas.",
+    "packingPlan": "For all motion poses, a bounded four-pose group per generation can provide larger per-figure pixels; Unity Editor can mechanically pack the approved figures while preserving named Sprite IDs and mapping. Geometry/alignment/alpha verification and actual animation review would remain mandatory. This task did not generate, pack, or apply such a split."
+  }
+}
