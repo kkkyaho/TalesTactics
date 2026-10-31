@@ -1,0 +1,831 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "sd_mockup_review",
+  "date": "2026-10-31",
+  "status": "static_overview_review_complete_no_new_blocking_defect_observed_with_resolution_limits",
+  "visualApprovalForAllAnimation": false,
+  "scope": {
+    "characters": [
+      "farah",
+      "velvet"
+    ],
+    "equipment": [
+      "base",
+      "signature"
+    ],
+    "directions": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "imagesViewed": 16,
+    "renderedPoseInstancesViewed": 320,
+    "rows": [
+      "premium poses0,5,10,last",
+      "HQ poses0..3",
+      "motion poses0..3",
+      "extra poses0..3",
+      "polish poses0..3"
+    ],
+    "method": "All16 actual Unity PNGs opened sequentially with filename labels. No crop/resize/composite/edit was performed by reviewer. All320 displayed slots checked at overview resolution; this is not all premium frames."
+  },
+  "mappingPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\row-mapping.json",
+  "mappingSha256": "ffc177fb5e599b3625ca689b949f9cee7cecd6ab9fbb3ef763dac044b87e177f",
+  "selectionSha256": "9cf76a7965578440d766cbf1909477fae9307331c48898c84d319904fcfa1c57",
+  "captureEvidence": {
+    "passed": true,
+    "images": 64,
+    "renderedSprites": 1280,
+    "width": 2048,
+    "height": 1536,
+    "cameraOrthographicSize": 14.4170055,
+    "pixelsPerWorldUnit": 53.2704239,
+    "sourceFilesUnchanged": true
+  },
+  "characterScales": [
+    {
+      "hero": "farah",
+      "scale": 0.92652,
+      "originalScale": 0.985937536,
+      "scaleAnchor": "farah-hq_0_0",
+      "scaleAnchorPpu": 237.705536,
+      "policy": "One CharacterVisualSizing.Scale(previewClone) for base/signature and all5rows; no per-sprite fitting."
+    },
+    {
+      "hero": "velvet",
+      "scale": 0.9406504,
+      "originalScale": 0.986580253,
+      "scaleAnchor": "velvet-hq_0_0",
+      "scaleAnchorPpu": 214.344925,
+      "policy": "One CharacterVisualSizing.Scale(previewClone) for base/signature and all5rows; no per-sprite fitting."
+    }
+  ],
+  "findings": [
+    {
+      "id": "farah-body-scale",
+      "severity": "no-gross-regression-observed",
+      "observation": "Across eight basic/signature directional images, head/body/boot silhouette scale stays broadly comparable between premium and support rows. The earlier tall small-headed support/body replacement is not apparent at this common camera scale. Motion prone figures and high-arm/clasped-hand poses correctly alter total silhouette height; these were not treated as scaling defects."
+    },
+    {
+      "id": "velvet-body-scale",
+      "severity": "no-gross-regression-observed",
+      "observation": "Across eight basic/signature directional images, support rows retain long dark hair, red hem, a compact body and feet at broadly comparable scale to premium. Lower/leaning attack poses are distinguishable from uniform shrinking. No entire figure, major limb or whole boot appears missing in these small overview renderings."
+    },
+    {
+      "id": "bounds",
+      "severity": "passed-bounded-check",
+      "observation": "No figure touches the image edge or neighboring slot. The selected320 slots all have fullRectInsideFrame=true in the capture mapping. This is a geometric/overview result, not a guarantee of detailed sprite anatomy."
+    },
+    {
+      "id": "weapon-details",
+      "severity": "requires-final-continuous-detail-check",
+      "observation": "No obvious second arm-mounted weapon mass or detached weapon is visible in the overview. The characters render only roughly55-65 native screen pixels tall in normal upright poses, so precise glove/finger/blade counts cannot be approved from these16 images. Previous full native source-sheet inspections remain the detailed-art evidence. Velvet basic premium has the established broader claw silhouette while support sheets preserve their original narrower single forearm blade; evaluate the visible transition in final continuous playback rather than classifying its source-specific outline as an added hand weapon."
+    },
+    {
+      "id": "foot-registration",
+      "severity": "no-gross-static-displacement-observed",
+      "observation": "Feet stay near their corresponding row baselines at overview scale; walking stride, crouch, recoil and prone shifts are expected. These static unanimated slots do not exercise root motion or prove exact contact/foot registration."
+    }
+  ],
+  "followUpTargets": [
+    {
+      "character": "farah",
+      "scope": "Final continuous base/signature Front/Back; premium -> HQ attack -> premium and polish recovery -> HQ idle. Earlier direct evidence is Validation/farah-transition-visual.json."
+    },
+    {
+      "character": "velvet",
+      "scope": "Final continuous basic15_0 (previous duplicate-claw correction), premium/support hand-weapon silhouette change, recovery/idle head+boot scale, and Back root/foot continuity. Premium15_0 is not guaranteed to be among row1 sampled0/5/10/last."
+    }
+  ],
+  "limitations": [
+    "The 64-image capture passed is an engine/geometry result. This reviewer viewed only the16 Farah/Velvet images, not all64.",
+    "Common camera ortho14.4170055 and53.2704239 pixels/world make individual bodies small; fine hand/blade/face quality cannot be conclusively judged here.",
+    "Tool display further reduced2048x1536 to1824x1368. Requested original does not negate this display limitation.",
+    "No exact head/boot ratio was inferred from total bounds, which include hair, weapons, pose and transparent rect padding.",
+    "Static images do not prove timing, interpolation, root movement, ground contact, VFX visibility or every premium frame. Final enlarged actual continuous rendering remains required.",
+    "No production PNG/meta/selection manifest, source code or Unity state was modified. Only this new review JSON is written."
+  ],
+  "images": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-base-direction-0.png",
+      "sha256": "43c013ce55eeb0bb79423943916f7d334d07f30ddbb091080ed2878a2a521f1e",
+      "hero": "farah",
+      "equipment": "base",
+      "direction": 0,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah_0_0",
+          "farah_5_0",
+          "farah_10_0",
+          "farah_19_0"
+        ],
+        [
+          "farah-hq_0_0",
+          "farah-hq_1_0",
+          "farah-hq_2_0",
+          "farah-hq_3_0"
+        ],
+        [
+          "farah-motion_0_0",
+          "farah-motion_1_0",
+          "farah-motion_2_0",
+          "farah-motion_3_0"
+        ],
+        [
+          "farah-extra_0_0",
+          "farah-extra_1_0",
+          "farah-extra_2_0",
+          "farah-extra_3_0"
+        ],
+        [
+          "farah-polish_0_0",
+          "farah-polish_1_0",
+          "farah-polish_2_0",
+          "farah-polish_3_0"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-base-direction-1.png",
+      "sha256": "fd29bf25435ca217b1df2df9f234931dbe4b6f3e1fe088c0027708e769f7c639",
+      "hero": "farah",
+      "equipment": "base",
+      "direction": 1,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah_0_1",
+          "farah_5_1",
+          "farah_10_1",
+          "farah_19_1"
+        ],
+        [
+          "farah-hq_0_1",
+          "farah-hq_1_1",
+          "farah-hq_2_1",
+          "farah-hq_3_1"
+        ],
+        [
+          "farah-motion_0_1",
+          "farah-motion_1_1",
+          "farah-motion_2_1",
+          "farah-motion_3_1"
+        ],
+        [
+          "farah-extra_0_1",
+          "farah-extra_1_1",
+          "farah-extra_2_1",
+          "farah-extra_3_1"
+        ],
+        [
+          "farah-polish_0_1",
+          "farah-polish_1_1",
+          "farah-polish_2_1",
+          "farah-polish_3_1"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-base-direction-2.png",
+      "sha256": "0e8548063791b6f834ba98ebb6ec505c64defacf9538ca33b5fcb45c7b74824a",
+      "hero": "farah",
+      "equipment": "base",
+      "direction": 2,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah_0_2",
+          "farah_5_2",
+          "farah_10_2",
+          "farah_19_2"
+        ],
+        [
+          "farah-hq_0_2",
+          "farah-hq_1_2",
+          "farah-hq_2_2",
+          "farah-hq_3_2"
+        ],
+        [
+          "farah-motion_0_2",
+          "farah-motion_1_2",
+          "farah-motion_2_2",
+          "farah-motion_3_2"
+        ],
+        [
+          "farah-extra_0_2",
+          "farah-extra_1_2",
+          "farah-extra_2_2",
+          "farah-extra_3_2"
+        ],
+        [
+          "farah-polish_0_2",
+          "farah-polish_1_2",
+          "farah-polish_2_2",
+          "farah-polish_3_2"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-base-direction-3.png",
+      "sha256": "9b14935a4e83b9c940dac9da5a1968e347e6b92f4c78fba7440b16fd63b52b32",
+      "hero": "farah",
+      "equipment": "base",
+      "direction": 3,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah_0_3",
+          "farah_5_3",
+          "farah_10_3",
+          "farah_19_3"
+        ],
+        [
+          "farah-hq_0_3",
+          "farah-hq_1_3",
+          "farah-hq_2_3",
+          "farah-hq_3_3"
+        ],
+        [
+          "farah-motion_0_3",
+          "farah-motion_1_3",
+          "farah-motion_2_3",
+          "farah-motion_3_3"
+        ],
+        [
+          "farah-extra_0_3",
+          "farah-extra_1_3",
+          "farah-extra_2_3",
+          "farah-extra_3_3"
+        ],
+        [
+          "farah-polish_0_3",
+          "farah-polish_1_3",
+          "farah-polish_2_3",
+          "farah-polish_3_3"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-signature-direction-0.png",
+      "sha256": "c24273e05670acd69a9966cedb6891b209125bf628085652edf5c269e2789453",
+      "hero": "farah",
+      "equipment": "signature",
+      "direction": 0,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah-premium_0_0",
+          "farah-premium_5_0",
+          "farah-premium_10_0",
+          "farah-premium_19_0"
+        ],
+        [
+          "farah-hq_0_0",
+          "farah-hq_1_0",
+          "farah-hq_2_0",
+          "farah-hq_3_0"
+        ],
+        [
+          "farah-motion_0_0",
+          "farah-motion_1_0",
+          "farah-motion_2_0",
+          "farah-motion_3_0"
+        ],
+        [
+          "farah-extra_0_0",
+          "farah-extra_1_0",
+          "farah-extra_2_0",
+          "farah-extra_3_0"
+        ],
+        [
+          "farah-polish_0_0",
+          "farah-polish_1_0",
+          "farah-polish_2_0",
+          "farah-polish_3_0"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-signature-direction-1.png",
+      "sha256": "58ff906eb73152436692b07e84488ba942ac8603108ef18f06b2962fa81e1d6a",
+      "hero": "farah",
+      "equipment": "signature",
+      "direction": 1,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah-premium_0_1",
+          "farah-premium_5_1",
+          "farah-premium_10_1",
+          "farah-premium_19_1"
+        ],
+        [
+          "farah-hq_0_1",
+          "farah-hq_1_1",
+          "farah-hq_2_1",
+          "farah-hq_3_1"
+        ],
+        [
+          "farah-motion_0_1",
+          "farah-motion_1_1",
+          "farah-motion_2_1",
+          "farah-motion_3_1"
+        ],
+        [
+          "farah-extra_0_1",
+          "farah-extra_1_1",
+          "farah-extra_2_1",
+          "farah-extra_3_1"
+        ],
+        [
+          "farah-polish_0_1",
+          "farah-polish_1_1",
+          "farah-polish_2_1",
+          "farah-polish_3_1"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-signature-direction-2.png",
+      "sha256": "79653798697ef756285de5c93be4d251065d59207f3d86023da4b8e4737fba53",
+      "hero": "farah",
+      "equipment": "signature",
+      "direction": 2,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah-premium_0_2",
+          "farah-premium_5_2",
+          "farah-premium_10_2",
+          "farah-premium_19_2"
+        ],
+        [
+          "farah-hq_0_2",
+          "farah-hq_1_2",
+          "farah-hq_2_2",
+          "farah-hq_3_2"
+        ],
+        [
+          "farah-motion_0_2",
+          "farah-motion_1_2",
+          "farah-motion_2_2",
+          "farah-motion_3_2"
+        ],
+        [
+          "farah-extra_0_2",
+          "farah-extra_1_2",
+          "farah-extra_2_2",
+          "farah-extra_3_2"
+        ],
+        [
+          "farah-polish_0_2",
+          "farah-polish_1_2",
+          "farah-polish_2_2",
+          "farah-polish_3_2"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\farah-signature-direction-3.png",
+      "sha256": "c222ccefe62969042b4676d92e7a56539cfc628f9666029bebeda845ef7acd5a",
+      "hero": "farah",
+      "equipment": "signature",
+      "direction": 3,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "farah-premium_0_3",
+          "farah-premium_5_3",
+          "farah-premium_10_3",
+          "farah-premium_19_3"
+        ],
+        [
+          "farah-hq_0_3",
+          "farah-hq_1_3",
+          "farah-hq_2_3",
+          "farah-hq_3_3"
+        ],
+        [
+          "farah-motion_0_3",
+          "farah-motion_1_3",
+          "farah-motion_2_3",
+          "farah-motion_3_3"
+        ],
+        [
+          "farah-extra_0_3",
+          "farah-extra_1_3",
+          "farah-extra_2_3",
+          "farah-extra_3_3"
+        ],
+        [
+          "farah-polish_0_3",
+          "farah-polish_1_3",
+          "farah-polish_2_3",
+          "farah-polish_3_3"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-base-direction-0.png",
+      "sha256": "531ac6a8c014c87a811dfa7f72ead312f4b9477a3657cb74f0516f026e38dd36",
+      "hero": "velvet",
+      "equipment": "base",
+      "direction": 0,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet_0_0",
+          "velvet_5_0",
+          "velvet_10_0",
+          "velvet_17_0"
+        ],
+        [
+          "velvet-hq_0_0",
+          "velvet-hq_1_0",
+          "velvet-hq_2_0",
+          "velvet-hq_3_0"
+        ],
+        [
+          "velvet-motion_0_0",
+          "velvet-motion_1_0",
+          "velvet-motion_2_0",
+          "velvet-motion_3_0"
+        ],
+        [
+          "velvet-extra_0_0",
+          "velvet-extra_1_0",
+          "velvet-extra_2_0",
+          "velvet-extra_3_0"
+        ],
+        [
+          "velvet-polish_0_0",
+          "velvet-polish_1_0",
+          "velvet-polish_2_0",
+          "velvet-polish_3_0"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-base-direction-1.png",
+      "sha256": "4eecdb3c44d4ff70a67d46611f93fa15dec9ee734b4cfa7d73a643ca61b59dad",
+      "hero": "velvet",
+      "equipment": "base",
+      "direction": 1,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet_0_1",
+          "velvet_5_1",
+          "velvet_10_1",
+          "velvet_17_1"
+        ],
+        [
+          "velvet-hq_0_1",
+          "velvet-hq_1_1",
+          "velvet-hq_2_1",
+          "velvet-hq_3_1"
+        ],
+        [
+          "velvet-motion_0_1",
+          "velvet-motion_1_1",
+          "velvet-motion_2_1",
+          "velvet-motion_3_1"
+        ],
+        [
+          "velvet-extra_0_1",
+          "velvet-extra_1_1",
+          "velvet-extra_2_1",
+          "velvet-extra_3_1"
+        ],
+        [
+          "velvet-polish_0_1",
+          "velvet-polish_1_1",
+          "velvet-polish_2_1",
+          "velvet-polish_3_1"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-base-direction-2.png",
+      "sha256": "3c750133c17bf814285a17a3bc85e017739c25c625bd7f7cf6a88e3f97f37ebd",
+      "hero": "velvet",
+      "equipment": "base",
+      "direction": 2,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet_0_2",
+          "velvet_5_2",
+          "velvet_10_2",
+          "velvet_17_2"
+        ],
+        [
+          "velvet-hq_0_2",
+          "velvet-hq_1_2",
+          "velvet-hq_2_2",
+          "velvet-hq_3_2"
+        ],
+        [
+          "velvet-motion_0_2",
+          "velvet-motion_1_2",
+          "velvet-motion_2_2",
+          "velvet-motion_3_2"
+        ],
+        [
+          "velvet-extra_0_2",
+          "velvet-extra_1_2",
+          "velvet-extra_2_2",
+          "velvet-extra_3_2"
+        ],
+        [
+          "velvet-polish_0_2",
+          "velvet-polish_1_2",
+          "velvet-polish_2_2",
+          "velvet-polish_3_2"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-base-direction-3.png",
+      "sha256": "c801578728a62bc92aa12c133c2c91e3badf778b399339c0a388cedbc0145031",
+      "hero": "velvet",
+      "equipment": "base",
+      "direction": 3,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet_0_3",
+          "velvet_5_3",
+          "velvet_10_3",
+          "velvet_17_3"
+        ],
+        [
+          "velvet-hq_0_3",
+          "velvet-hq_1_3",
+          "velvet-hq_2_3",
+          "velvet-hq_3_3"
+        ],
+        [
+          "velvet-motion_0_3",
+          "velvet-motion_1_3",
+          "velvet-motion_2_3",
+          "velvet-motion_3_3"
+        ],
+        [
+          "velvet-extra_0_3",
+          "velvet-extra_1_3",
+          "velvet-extra_2_3",
+          "velvet-extra_3_3"
+        ],
+        [
+          "velvet-polish_0_3",
+          "velvet-polish_1_3",
+          "velvet-polish_2_3",
+          "velvet-polish_3_3"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-signature-direction-0.png",
+      "sha256": "dd09dc0b35eb54e14bfd2607ca9dc4f46258f4a1db514dd03c178bd1a6086a8e",
+      "hero": "velvet",
+      "equipment": "signature",
+      "direction": 0,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet-premium_0_0",
+          "velvet-premium_5_0",
+          "velvet-premium_10_0",
+          "velvet-premium_17_0"
+        ],
+        [
+          "velvet-hq_0_0",
+          "velvet-hq_1_0",
+          "velvet-hq_2_0",
+          "velvet-hq_3_0"
+        ],
+        [
+          "velvet-motion_0_0",
+          "velvet-motion_1_0",
+          "velvet-motion_2_0",
+          "velvet-motion_3_0"
+        ],
+        [
+          "velvet-extra_0_0",
+          "velvet-extra_1_0",
+          "velvet-extra_2_0",
+          "velvet-extra_3_0"
+        ],
+        [
+          "velvet-polish_0_0",
+          "velvet-polish_1_0",
+          "velvet-polish_2_0",
+          "velvet-polish_3_0"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-signature-direction-1.png",
+      "sha256": "f66be8bdb6230598ab4f9acb883a07819df1b60f74c4dce95b5a02ab07a35b61",
+      "hero": "velvet",
+      "equipment": "signature",
+      "direction": 1,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet-premium_0_1",
+          "velvet-premium_5_1",
+          "velvet-premium_10_1",
+          "velvet-premium_17_1"
+        ],
+        [
+          "velvet-hq_0_1",
+          "velvet-hq_1_1",
+          "velvet-hq_2_1",
+          "velvet-hq_3_1"
+        ],
+        [
+          "velvet-motion_0_1",
+          "velvet-motion_1_1",
+          "velvet-motion_2_1",
+          "velvet-motion_3_1"
+        ],
+        [
+          "velvet-extra_0_1",
+          "velvet-extra_1_1",
+          "velvet-extra_2_1",
+          "velvet-extra_3_1"
+        ],
+        [
+          "velvet-polish_0_1",
+          "velvet-polish_1_1",
+          "velvet-polish_2_1",
+          "velvet-polish_3_1"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-signature-direction-2.png",
+      "sha256": "9ad7be678c4f8c06b24a0ce63d451893958feea6ef6dad1831b1fd672616edad",
+      "hero": "velvet",
+      "equipment": "signature",
+      "direction": 2,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet-premium_0_2",
+          "velvet-premium_5_2",
+          "velvet-premium_10_2",
+          "velvet-premium_17_2"
+        ],
+        [
+          "velvet-hq_0_2",
+          "velvet-hq_1_2",
+          "velvet-hq_2_2",
+          "velvet-hq_3_2"
+        ],
+        [
+          "velvet-motion_0_2",
+          "velvet-motion_1_2",
+          "velvet-motion_2_2",
+          "velvet-motion_3_2"
+        ],
+        [
+          "velvet-extra_0_2",
+          "velvet-extra_1_2",
+          "velvet-extra_2_2",
+          "velvet-extra_3_2"
+        ],
+        [
+          "velvet-polish_0_2",
+          "velvet-polish_1_2",
+          "velvet-polish_2_2",
+          "velvet-polish_3_2"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\velvet-signature-direction-3.png",
+      "sha256": "f6e20113f040a23d5c075c42c603a81ab82b3eed21e0e74398fd4a062c1ecbe3",
+      "hero": "velvet",
+      "equipment": "signature",
+      "direction": 3,
+      "visuallyViewed": true,
+      "viewMethod": "view_image original requested; display resized2048x1536 to1824x1368 by tool.",
+      "slotCount": 20,
+      "fullRectInsideFrame": true,
+      "rowSprites": [
+        [
+          "velvet-premium_0_3",
+          "velvet-premium_5_3",
+          "velvet-premium_10_3",
+          "velvet-premium_17_3"
+        ],
+        [
+          "velvet-hq_0_3",
+          "velvet-hq_1_3",
+          "velvet-hq_2_3",
+          "velvet-hq_3_3"
+        ],
+        [
+          "velvet-motion_0_3",
+          "velvet-motion_1_3",
+          "velvet-motion_2_3",
+          "velvet-motion_3_3"
+        ],
+        [
+          "velvet-extra_0_3",
+          "velvet-extra_1_3",
+          "velvet-extra_2_3",
+          "velvet-extra_3_3"
+        ],
+        [
+          "velvet-polish_0_3",
+          "velvet-polish_1_3",
+          "velvet-polish_2_3",
+          "velvet-polish_3_3"
+        ]
+      ],
+      "assessment": "No gross whole-body size replacement, canvas clipping, missing complete figure or isolated detached foot is visible at this overview scale. Prone row3col4 and leaning/wide attack poses are intentional. Fine weapon and facial details remain below reliable inspection size.",
+      "facingNote": "Support rows retain the expected directional silhouettes. Premium attack twists are authored action poses and were not classified from head-facing alone."
+    }
+  ]
+}

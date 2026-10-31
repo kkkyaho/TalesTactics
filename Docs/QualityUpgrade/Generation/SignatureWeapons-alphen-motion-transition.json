@@ -1,0 +1,13 @@
+{
+  "visual": "All 16 original poses/directions checked against reference; overhead/attack/guard/idle or walk/recoil/prone remain distinct. One signature black/red sword per visible original cell, no added sword.",
+  "prompt": "Edit target IMAGE 1. Redraw exactly its SIXTEEN Alphen animation frames, same order, same facing, same pose per cell, in the precise large-head short-sturdy-body high-detail game style of IMAGE 2. Image2 supplies proportions, short boots, white hair, refined black/gold armor, blue scarf; never copy its poses. Keep target's one jagged black/red sword and its exact position/visible vs hidden state per frame. Target row1 walking stride A, row2 distinct walking stride B, row3 injury/recoil, row4 four PRONE horizontal knocked-down poses. Columns front/back/rightward/leftward; facing/eyes hidden from back must remain. Larger head than old target, shorter limbs matching image2 even while prone; identical body/head scale across cells so no animation pop. Each whole body and sword uncut inside cell with transparent gutters. Production RGBA sprite sheet, four columns, first4rows occupied (16 sprites), transparent blank fifth row. No background of any kind, no baked checkerboard, no floor/shadow/text/extra figures. Preserve exact independent leg positions distinguishing row1 and row2. Do not replace prone poses with standing or crouching. Crisp polished detailed cel shading; render native, no blurry enlargement.",
+  "inputs": [
+    "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-motion/reference-00.png",
+    "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+  ],
+  "status": "candidate, native packing and actual transition review pending",
+  "sourceGenerated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-b695afcd-df75-4c0a-a99d-3e9c68d525c3.png",
+  "sha256": "b29cdc6cf4826f08cc6ad0528d0a40b1defc90c6e6912716d0153ab4ee2f6597",
+  "target": "SignatureWeapons-alphen-motion",
+  "tool": "image_gen"
+}

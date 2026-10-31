@@ -1,0 +1,2044 @@
+{
+  "schemaVersion": 1,
+  "scope": "Four Cless base transition sheets,16poses each, aligned to accepted premium SD anatomy. Candidate-only generation.",
+  "tool": "built-in imagegen",
+  "productionModified": false,
+  "unityRun": false,
+  "jobs": [
+    {
+      "key": "PixelCampaign-cless-hq",
+      "prompt": "Use case: style-transfer. Project game sprite atlas edit, true transparent RGBA. Image1 is the exact edit target and the only pose/order/direction reference. Image2 is the canonical current Cless action art, use ONLY its anatomy and rendering quality, never replace Image1 poses with Image2 crouches. Reillustrate all16 Cless poses in image1 with Image2's SAME large skull, face size, warm brown eyes, short compact limbs, thick armored boots, bright layered blond hair, red headband, silver segmented armor with gold trim and black joints, red cape. Fresh crisp anime SD line art and cel shading, premium detail. Standing poses must legitimately stand, lying poses lie; keep actual arm/foot placements and facing from Image1. Consistent head/skull/torso/boot anatomy across all16 poses, not changing whole character scale from row to row. Exactly one ordinary straight silver sword with gold guard per character when visible; no flaming/black signature weapon. Background entirely alpha0, no shadow, floor, text, icons, checkerboard, vignette, smoke, VFX. Four columns Front, Back, Right, Left. Back always rear skull with no face. Four occupied rows of4 =16 distinct complete figures, within a4column5row portrait canvas; fifth row empty transparent. Large independent transparent gutters between figures and safe exterior margins; no sword/cape/boot crop or touching neighbor. Draw complete figures at similarly substantial native detail. Preserve each cell's gesture including unusual slash directions; do not mirror, reorder or repeat a neutral pose. Output only the sprite atlas.\nRows:1 relaxed standing sword held low;2 broad attack/slash in original directions (Back overhead windup, Front blade toward screen-left, Right toward screen-right, Left across toward screen-right);3 one-hand guard/cast with opposite open palm;4 both hands on one vertical sword guard. IMPORTANT authorized source-defect fix at row3 col2 BACK: source wrongly has TWO blades, one floating above the hair and one held low at the right side. REMOVE the floating blade above the head completely. Keep ONLY the low right-hand sword, keep the opposite open palm, rear hair/cape. This correction applies only to that extra duplicate blade, no other pose redesign. Row4 Back may legitimately show the tip of its single front-held vertical sword above the hair.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-hq/reference-00.png",
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png"
+      ],
+      "visualReview": "All16 poses inspected against exact source and canonical native motion. Standing, attacking, open-palm guard and two-handed vertical guard retained in Front/Back/Right/Left order. Authorized row3 col2 Back duplicate removed: no blade above hair, low right-hand sword retained. Row4 Back correctly retains one tip from the single front-held sword. Silver ordinary sword, red cape, large skull and armored short limbs remain. No visible extra sword, body loss or hard crop. Motion-to-standing anatomical continuity needs root render, since natural standing height differs from crouched canonical pose.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-16e669ae-b79b-4238-9a48-a27af1d04f54.png",
+      "generatedSha256": "bffb879d07382da36b6eab15ab81eed34c17fb202e437a2379febe424605ec0b",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-cless-hq\\reference-manifest.json",
+      "manifestSha256": "1d0319a4fda9dd1fd479bfe3bdd4e0ee8558a8e96130c9b76af92b2787b26a88",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png",
+      "sourceGuid": "1ed9e9d0946bec441b492ad3d089a515",
+      "sourceSha256": "8d2a07b4067094a6bbaa9095fff8115f6ef36023d67627bc14cb27060402d3f4",
+      "sourceMetaSha256": "6ea06fc52d9eaf159e1a4ad32629eeaa32a50f47d624bf010a71f0d12348a736",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-hq/reference-00.png",
+          "sha256": "b080efbf29f3bc2f335f88f20eacd0edb9f8afa819b0f825ec2870667428af78"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png",
+          "sha256": "f3edf1cbae4e38eb888bb4944e18ce9a5d6bc80acaf259c35dc77c02326b7db7"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "cless-hq_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "2a86b910409ebc747b1dc3f678252c23",
+          "originalInternalId": "-628865702"
+        },
+        {
+          "index": 1,
+          "name": "cless-hq_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "cf0a6c7430deb7b42aa34421839cbae6",
+          "originalInternalId": "333599381"
+        },
+        {
+          "index": 2,
+          "name": "cless-hq_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "d99e55ad3ad666244b48e3ba780d71ef",
+          "originalInternalId": "-945251095"
+        },
+        {
+          "index": 3,
+          "name": "cless-hq_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "71fc1857231b3324bade209ef457847d",
+          "originalInternalId": "-1664936103"
+        },
+        {
+          "index": 4,
+          "name": "cless-hq_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "d103486fb224bd14698764350d03c2f8",
+          "originalInternalId": "1432945884"
+        },
+        {
+          "index": 5,
+          "name": "cless-hq_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "2f9d9bc9a39ed864da173403e632e4f0",
+          "originalInternalId": "1364167831"
+        },
+        {
+          "index": 6,
+          "name": "cless-hq_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "fd17d4b68619b6544802348ec4439bd7",
+          "originalInternalId": "-28647693"
+        },
+        {
+          "index": 7,
+          "name": "cless-hq_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "881bf23a10b30994a91ba68a510a780a",
+          "originalInternalId": "1148890390"
+        },
+        {
+          "index": 8,
+          "name": "cless-hq_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "8c3aadf04eea1ef4abc826a9335530ec",
+          "originalInternalId": "917766813"
+        },
+        {
+          "index": 9,
+          "name": "cless-hq_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "afbfeb23953c7704aa4a06f97a36ad14",
+          "originalInternalId": "1283721510"
+        },
+        {
+          "index": 10,
+          "name": "cless-hq_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "75561145103f88040818035ee40a2471",
+          "originalInternalId": "-425633100"
+        },
+        {
+          "index": 11,
+          "name": "cless-hq_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "a25ff4387f29e1a429c4b8242f62e766",
+          "originalInternalId": "37436053"
+        },
+        {
+          "index": 12,
+          "name": "cless-hq_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "ef32d1aa23205df489ddc7374dd2953c",
+          "originalInternalId": "-1770955656"
+        },
+        {
+          "index": 13,
+          "name": "cless-hq_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "cc497772a522fee4b89b22447b2f8e58",
+          "originalInternalId": "1828835638"
+        },
+        {
+          "index": 14,
+          "name": "cless-hq_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "fddc7ed6fc5e5a94fbc2be88c80d9ae0",
+          "originalInternalId": "-1493165637"
+        },
+        {
+          "index": 15,
+          "name": "cless-hq_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "ad5017cd5b1e5af4ba384060c60b62d7",
+          "originalInternalId": "-1171861636"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1154,
+          1363
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 722874,
+        "strongPixels": 608399,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          12,
+          1153,
+          1363
+        ],
+        "strongCanvasBbox": [
+          14,
+          21,
+          1144,
+          1222
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 39499,
+            "bbox": [
+              14,
+              21,
+              279,
+              297
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              14.0,
+              21.0,
+              9.5,
+              -24.4
+            ],
+            "widthFractionOfCell": 0.9185,
+            "heightFractionOfCell": 1.0125
+          },
+          {
+            "pixels": 38144,
+            "bbox": [
+              308,
+              21,
+              575,
+              295
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              19.5,
+              21.0,
+              2.0,
+              -22.4
+            ],
+            "widthFractionOfCell": 0.9255,
+            "heightFractionOfCell": 1.0051
+          },
+          {
+            "pixels": 33429,
+            "bbox": [
+              611,
+              22,
+              835,
+              297
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              34.0,
+              22.0,
+              30.5,
+              -24.4
+            ],
+            "widthFractionOfCell": 0.7764,
+            "heightFractionOfCell": 1.0088
+          },
+          {
+            "pixels": 37409,
+            "bbox": [
+              880,
+              23,
+              1140,
+              299
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              14.5,
+              23.0,
+              14.0,
+              -26.4
+            ],
+            "widthFractionOfCell": 0.9012,
+            "heightFractionOfCell": 1.0125
+          },
+          {
+            "pixels": 37019,
+            "bbox": [
+              16,
+              338,
+              299,
+              580
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              16.0,
+              65.4,
+              -10.5,
+              -34.8
+            ],
+            "widthFractionOfCell": 0.9809,
+            "heightFractionOfCell": 0.8877
+          },
+          {
+            "pixels": 37067,
+            "bbox": [
+              322,
+              322,
+              556,
+              588
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              33.5,
+              49.4,
+              21.0,
+              -42.8
+            ],
+            "widthFractionOfCell": 0.8111,
+            "heightFractionOfCell": 0.9758
+          },
+          {
+            "pixels": 38561,
+            "bbox": [
+              567,
+              337,
+              882,
+              582
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              -10.0,
+              64.4,
+              -16.5,
+              -36.8
+            ],
+            "widthFractionOfCell": 1.0919,
+            "heightFractionOfCell": 0.8988
+          },
+          {
+            "pixels": 36468,
+            "bbox": [
+              911,
+              338,
+              1144,
+              582
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              45.5,
+              65.4,
+              10.0,
+              -36.8
+            ],
+            "widthFractionOfCell": 0.8076,
+            "heightFractionOfCell": 0.8951
+          },
+          {
+            "pixels": 41609,
+            "bbox": [
+              22,
+              596,
+              282,
+              889
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              22.0,
+              50.8,
+              6.5,
+              -71.2
+            ],
+            "widthFractionOfCell": 0.9012,
+            "heightFractionOfCell": 1.0748
+          },
+          {
+            "pixels": 39233,
+            "bbox": [
+              314,
+              621,
+              581,
+              886
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              25.5,
+              75.8,
+              -4.0,
+              -68.2
+            ],
+            "widthFractionOfCell": 0.9255,
+            "heightFractionOfCell": 0.9721
+          },
+          {
+            "pixels": 35755,
+            "bbox": [
+              613,
+              596,
+              834,
+              887
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              36.0,
+              50.8,
+              31.5,
+              -69.2
+            ],
+            "widthFractionOfCell": 0.766,
+            "heightFractionOfCell": 1.0675
+          },
+          {
+            "pixels": 38395,
+            "bbox": [
+              897,
+              596,
+              1141,
+              889
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              31.5,
+              50.8,
+              13.0,
+              -71.2
+            ],
+            "widthFractionOfCell": 0.8458,
+            "heightFractionOfCell": 1.0748
+          },
+          {
+            "pixels": 41344,
+            "bbox": [
+              30,
+              925,
+              281,
+              1220
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              30.0,
+              107.2,
+              7.5,
+              -129.6
+            ],
+            "widthFractionOfCell": 0.87,
+            "heightFractionOfCell": 1.0822
+          },
+          {
+            "pixels": 40343,
+            "bbox": [
+              319,
+              916,
+              561,
+              1217
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              30.5,
+              98.2,
+              16.0,
+              -126.6
+            ],
+            "widthFractionOfCell": 0.8388,
+            "heightFractionOfCell": 1.1042
+          },
+          {
+            "pixels": 35822,
+            "bbox": [
+              610,
+              923,
+              812,
+              1222
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              33.0,
+              105.2,
+              53.5,
+              -131.6
+            ],
+            "widthFractionOfCell": 0.7002,
+            "heightFractionOfCell": 1.0968
+          },
+          {
+            "pixels": 38295,
+            "bbox": [
+              914,
+              924,
+              1138,
+              1219
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              48.5,
+              106.2,
+              16.0,
+              -128.6
+            ],
+            "widthFractionOfCell": 0.7764,
+            "heightFractionOfCell": 1.0822
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          242,
+          301
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 96566,
+          "maxAlpha": 255,
+          "above8Pixels": 86525,
+          "above128Pixels": 84079
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-cless-hq\\source-sheet-00.png",
+      "candidateSha256": "bffb879d07382da36b6eab15ab81eed34c17fb202e437a2379febe424605ec0b",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-cless-motion",
+      "prompt": "Use case: style-transfer. Project game sprite atlas edit, true transparent RGBA. Image1 is the exact edit target and the only pose/order/direction reference. Image2 is the canonical current Cless action art, use ONLY its anatomy and rendering quality, never replace Image1 poses with Image2 crouches. Reillustrate all16 Cless poses in image1 with Image2's SAME large skull, face size, warm brown eyes, short compact limbs, thick armored boots, bright layered blond hair, red headband, silver segmented armor with gold trim and black joints, red cape. Fresh crisp anime SD line art and cel shading, premium detail. Standing poses must legitimately stand, lying poses lie; keep actual arm/foot placements and facing from Image1. Consistent head/skull/torso/boot anatomy across all16 poses, not changing whole character scale from row to row. Exactly one ordinary straight silver sword with gold guard per character when visible; no flaming/black signature weapon. Background entirely alpha0, no shadow, floor, text, icons, checkerboard, vignette, smoke, VFX. Four columns Front, Back, Right, Left. Back always rear skull with no face. Four occupied rows of4 =16 distinct complete figures, within a4column5row portrait canvas; fifth row empty transparent. Large independent transparent gutters between figures and safe exterior margins; no sword/cape/boot crop or touching neighbor. Draw complete figures at similarly substantial native detail. Preserve each cell's gesture including unusual slash directions; do not mirror, reorder or repeat a neutral pose. Output only the sprite atlas.\nRows:1 walking stepA with low sword;2 walking stepB opposite stepping leg with low sword;3 pain/recoil leaning back, Front and side eyes shut/open mouth as source;4 defeated lying on ground eyes closed. Preserve each fallen body's orientation, sword and hands in the source exactly, including back-facing fallen pose. No standing substitutions in final occupied row, no added shield or second sword. Image2 crouch is anatomy only; do not turn walking or hurt frames into crouching attacks.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-motion/reference-00.png",
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png"
+      ],
+      "visualReview": "All16 poses inspected against exact source and canonical native motion. Distinct walking steps, recoil with closed eyes/open mouth, and four lying defeated orientations retained. One ordinary silver sword per visible source pose; no extra weapon. Back hair/cape face hiding preserved. Foreground left sword edge looked tight in alpha preview but read-only alpha>128 bound starts8px inside canvas; all16 strong components separate and strong edge0. Native size and game scale are separate; root continuous render pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-07225ea6-2b8d-46a2-b8a3-1157af3677f0.png",
+      "generatedSha256": "b0a18bb7cc7ee06371fa280fa28d401ec041e9d09490a0cc3ac594aacff03772",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-cless-motion\\reference-manifest.json",
+      "manifestSha256": "39058c0f814e2df1167d0f9554673d6d4ac66e181eb28584f7c904253e5dbe21",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "sourceGuid": "e4e4c44ad7752524e8a16c9605524cdb",
+      "sourceSha256": "0827730e5832274df8f0934fa2eb2efc7f64e403bf4823a893f72f869db9a035",
+      "sourceMetaSha256": "6bb78fff372cbbb9fcb4a9dc9bf3dab51d867bcb8cc20efa47accce902ebb5a4",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-motion/reference-00.png",
+          "sha256": "fb3f3ea47f6249fdb7d128e8eff9878f5fc5d5065addc7da0c100cfda619a4d0"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png",
+          "sha256": "f3edf1cbae4e38eb888bb4944e18ce9a5d6bc80acaf259c35dc77c02326b7db7"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "cless-motion_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "caf40dea4c81b744888b9fb90b9de2fa",
+          "originalInternalId": "1483206624"
+        },
+        {
+          "index": 1,
+          "name": "cless-motion_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "8bb559c844943784f805e15e6c525a42",
+          "originalInternalId": "-1408919103"
+        },
+        {
+          "index": 2,
+          "name": "cless-motion_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "5818a7a52551f5c4589a61c0e5f8b8b0",
+          "originalInternalId": "-1550653932"
+        },
+        {
+          "index": 3,
+          "name": "cless-motion_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "2597ccf4e310b8148bd827bdb0e7811d",
+          "originalInternalId": "1500983943"
+        },
+        {
+          "index": 4,
+          "name": "cless-motion_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "85419698f1cea864783abc65b6924a4e",
+          "originalInternalId": "-312369049"
+        },
+        {
+          "index": 5,
+          "name": "cless-motion_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "6848d58e2179fbf46be4d3475cec3701",
+          "originalInternalId": "-1685104873"
+        },
+        {
+          "index": 6,
+          "name": "cless-motion_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "7bda8b713d9318c49ab1c5d76e4d2e7a",
+          "originalInternalId": "-1486801605"
+        },
+        {
+          "index": 7,
+          "name": "cless-motion_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "e628d54d7bb763a4ea5dc6c1e3a099c0",
+          "originalInternalId": "598534169"
+        },
+        {
+          "index": 8,
+          "name": "cless-motion_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "a8be03427d61e1948962836765026a70",
+          "originalInternalId": "-235105565"
+        },
+        {
+          "index": 9,
+          "name": "cless-motion_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "c66309c7e6a44d14b9f231a8bfc4b17b",
+          "originalInternalId": "430473414"
+        },
+        {
+          "index": 10,
+          "name": "cless-motion_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "137c487cd300eee419a86b4c5d7539e7",
+          "originalInternalId": "1791156552"
+        },
+        {
+          "index": 11,
+          "name": "cless-motion_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "ae8f71fc6a3baa04a9ab9f2a27b24043",
+          "originalInternalId": "168834660"
+        },
+        {
+          "index": 12,
+          "name": "cless-motion_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "95f482eb793b5b94a98d97399ffc631b",
+          "originalInternalId": "425675721"
+        },
+        {
+          "index": 13,
+          "name": "cless-motion_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "447ffbfcca1b37e45a67dc856c439eb4",
+          "originalInternalId": "817906175"
+        },
+        {
+          "index": 14,
+          "name": "cless-motion_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "edbae29d28939e244936e9bf1f4f25c9",
+          "originalInternalId": "392570385"
+        },
+        {
+          "index": 15,
+          "name": "cless-motion_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "cb2dabbd6128daa4aa1f07189e34d9d5",
+          "originalInternalId": "-1500612111"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1146,
+          1372
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 746566,
+        "strongPixels": 623342,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          24,
+          1146,
+          1372
+        ],
+        "strongCanvasBbox": [
+          8,
+          27,
+          1139,
+          1199
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 39499,
+            "bbox": [
+              8,
+              32,
+              272,
+              327
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              8.0,
+              32.0,
+              14.5,
+              -52.6
+            ],
+            "widthFractionOfCell": 0.9215,
+            "heightFractionOfCell": 1.0751
+          },
+          {
+            "pixels": 41777,
+            "bbox": [
+              313,
+              29,
+              569,
+              330
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              26.5,
+              29.0,
+              4.0,
+              -55.6
+            ],
+            "widthFractionOfCell": 0.8935,
+            "heightFractionOfCell": 1.0969
+          },
+          {
+            "pixels": 38581,
+            "bbox": [
+              582,
+              30,
+              825,
+              329
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              9.0,
+              30.0,
+              34.5,
+              -54.6
+            ],
+            "widthFractionOfCell": 0.8482,
+            "heightFractionOfCell": 1.0897
+          },
+          {
+            "pixels": 41880,
+            "bbox": [
+              868,
+              27,
+              1139,
+              329
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              8.5,
+              27.0,
+              7.0,
+              -54.6
+            ],
+            "widthFractionOfCell": 0.9459,
+            "heightFractionOfCell": 1.1006
+          },
+          {
+            "pixels": 41112,
+            "bbox": [
+              12,
+              351,
+              268,
+              654
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              12.0,
+              76.6,
+              18.5,
+              -105.2
+            ],
+            "widthFractionOfCell": 0.8935,
+            "heightFractionOfCell": 1.1042
+          },
+          {
+            "pixels": 41430,
+            "bbox": [
+              317,
+              356,
+              576,
+              651
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              30.5,
+              81.6,
+              -3.0,
+              -102.2
+            ],
+            "widthFractionOfCell": 0.904,
+            "heightFractionOfCell": 1.0751
+          },
+          {
+            "pixels": 40631,
+            "bbox": [
+              580,
+              355,
+              840,
+              651
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              7.0,
+              80.6,
+              19.5,
+              -102.2
+            ],
+            "widthFractionOfCell": 0.9075,
+            "heightFractionOfCell": 1.0787
+          },
+          {
+            "pixels": 40692,
+            "bbox": [
+              880,
+              356,
+              1139,
+              653
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              20.5,
+              81.6,
+              7.0,
+              -104.2
+            ],
+            "widthFractionOfCell": 0.904,
+            "heightFractionOfCell": 1.0824
+          },
+          {
+            "pixels": 45420,
+            "bbox": [
+              8,
+              690,
+              284,
+              973
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              8.0,
+              -133.2,
+              2.5,
+              124.6
+            ],
+            "widthFractionOfCell": 0.9634,
+            "heightFractionOfCell": 1.0313
+          },
+          {
+            "pixels": 46628,
+            "bbox": [
+              311,
+              691,
+              589,
+              981
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              24.5,
+              -132.2,
+              -16.0,
+              116.6
+            ],
+            "widthFractionOfCell": 0.9703,
+            "heightFractionOfCell": 1.0569
+          },
+          {
+            "pixels": 42991,
+            "bbox": [
+              591,
+              693,
+              865,
+              975
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              18.0,
+              -130.2,
+              -5.5,
+              122.6
+            ],
+            "widthFractionOfCell": 0.9564,
+            "heightFractionOfCell": 1.0277
+          },
+          {
+            "pixels": 43059,
+            "bbox": [
+              882,
+              689,
+              1139,
+              975
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              22.5,
+              -134.2,
+              7.0,
+              122.6
+            ],
+            "widthFractionOfCell": 0.897,
+            "heightFractionOfCell": 1.0423
+          },
+          {
+            "pixels": 30567,
+            "bbox": [
+              9,
+              1026,
+              283,
+              1199
+            ],
+            "cellIndex": 16,
+            "cellMarginsPixels": [
+              9.0,
+              -71.6,
+              3.5,
+              173.0
+            ],
+            "widthFractionOfCell": 0.9564,
+            "heightFractionOfCell": 0.6305
+          },
+          {
+            "pixels": 30113,
+            "bbox": [
+              292,
+              1020,
+              570,
+              1197
+            ],
+            "cellIndex": 17,
+            "cellMarginsPixels": [
+              5.5,
+              -77.6,
+              3.0,
+              175.0
+            ],
+            "widthFractionOfCell": 0.9703,
+            "heightFractionOfCell": 0.645
+          },
+          {
+            "pixels": 29817,
+            "bbox": [
+              573,
+              1029,
+              847,
+              1196
+            ],
+            "cellIndex": 18,
+            "cellMarginsPixels": [
+              0.0,
+              -68.6,
+              12.5,
+              176.0
+            ],
+            "widthFractionOfCell": 0.9564,
+            "heightFractionOfCell": 0.6086
+          },
+          {
+            "pixels": 29136,
+            "bbox": [
+              873,
+              1031,
+              1139,
+              1199
+            ],
+            "cellIndex": 19,
+            "cellMarginsPixels": [
+              13.5,
+              -66.6,
+              7.0,
+              173.0
+            ],
+            "widthFractionOfCell": 0.9284,
+            "heightFractionOfCell": 0.6122
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          167,
+          303
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 93254,
+          "maxAlpha": 255,
+          "above8Pixels": 80761,
+          "above128Pixels": 78128
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-cless-motion\\source-sheet-00.png",
+      "candidateSha256": "b0a18bb7cc7ee06371fa280fa28d401ec041e9d09490a0cc3ac594aacff03772",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-cless-extra",
+      "prompt": "Use case: style-transfer. Project game sprite atlas edit, true transparent RGBA. Image1 is the exact edit target and the only pose/order/direction reference. Image2 is the canonical current Cless action art, use ONLY its anatomy and rendering quality, never replace Image1 poses with Image2 crouches. Reillustrate all16 Cless poses in image1 with Image2's SAME large skull, face size, warm brown eyes, short compact limbs, thick armored boots, bright layered blond hair, red headband, silver segmented armor with gold trim and black joints, red cape. Fresh crisp anime SD line art and cel shading, premium detail. Standing poses must legitimately stand, lying poses lie; keep actual arm/foot placements and facing from Image1. Consistent head/skull/torso/boot anatomy across all16 poses, not changing whole character scale from row to row. Exactly one ordinary straight silver sword with gold guard per character when visible; no flaming/black signature weapon. Background entirely alpha0, no shadow, floor, text, icons, checkerboard, vignette, smoke, VFX. Four columns Front, Back, Right, Left. Back always rear skull with no face. Four occupied rows of4 =16 distinct complete figures, within a4column5row portrait canvas; fifth row empty transparent. Large independent transparent gutters between figures and safe exterior margins; no sword/cape/boot crop or touching neighbor. Draw complete figures at similarly substantial native detail. Preserve each cell's gesture including unusual slash directions; do not mirror, reorder or repeat a neutral pose. Output only the sprite atlas.\nRows:1 short walking stepA with low sword;2 walking stepB opposite forward leg (in some side poses sword is partially hidden behind body: preserve hidden visibility);3 both hands raise the ONE sword overhead in all4 directions, knees wide;4 low broad slash/thrust in exact original direction, Front and Right sword extends right, Back and Left sword extends left. Keep both hands on sword only where source has both hands; no extra sword. Preserve legitimate source arm elevation and crouching while matching canonical skull/torso/boot anatomy. Do not copy neutral canonical crouch into overhead row.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-extra/reference-00.png",
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png"
+      ],
+      "visualReview": "All16 figures directly reviewed. Walk steps remain distinct, side hidden-sword visibility remains as source, all four overhead preparations still have both hands on one sword, last row preserves broad attack direction including Back/Left sword pointing screen-left. No added weapon or direction swap. Character anatomy follows canonical Cless while preserving upright vs crouched roles. Strong body16, hard canvas edge0. Tight interfigure sword gaps need root native component ownership check; pixels left unchanged.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-1149eb8c-f740-486b-87d5-78247b1813a4.png",
+      "generatedSha256": "ab2493b1760c47ab960e9071da03d8994d6f249159ecdec8dd07d616961c1053",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-cless-extra\\reference-manifest.json",
+      "manifestSha256": "fed39bd4c7143d9db795a4201f7c9809dba26e6d00524eb0438e123abf1fa214",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-extra.png",
+      "sourceGuid": "095a10fa5dd13cb409ff7ea4f046f4fa",
+      "sourceSha256": "448e1c4d57f395fcff25986c776ce22030db0883d4b6be35e19e9c940f1a430a",
+      "sourceMetaSha256": "28cd4407c8f59372f8982f802b61aa394073e5f1b8595d1d9b9fd6e101947c2e",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-extra/reference-00.png",
+          "sha256": "ab0282821f69d729676e7c592532a97569d22c7be71e7b2c4706b37aae224732"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png",
+          "sha256": "f3edf1cbae4e38eb888bb4944e18ce9a5d6bc80acaf259c35dc77c02326b7db7"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "cless-extra_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "3f9d520875f965d4399fd5d49fc98dc4",
+          "originalInternalId": "55385742"
+        },
+        {
+          "index": 1,
+          "name": "cless-extra_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "c02aa86c3c99bd44bbcde97e527ac9af",
+          "originalInternalId": "-94725907"
+        },
+        {
+          "index": 2,
+          "name": "cless-extra_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "1eec5e64042263d4ebdc6296686037db",
+          "originalInternalId": "-1518978419"
+        },
+        {
+          "index": 3,
+          "name": "cless-extra_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "4f6316651257b4047807227b63e1a740",
+          "originalInternalId": "-955302408"
+        },
+        {
+          "index": 4,
+          "name": "cless-extra_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "9de47906ede86d746b0b2592d92f7b78",
+          "originalInternalId": "1298937224"
+        },
+        {
+          "index": 5,
+          "name": "cless-extra_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "aecb4388fefa8274a98572b19dc0992d",
+          "originalInternalId": "-2099777970"
+        },
+        {
+          "index": 6,
+          "name": "cless-extra_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "0fd084479a87db546aaa63a4bc251392",
+          "originalInternalId": "2014897868"
+        },
+        {
+          "index": 7,
+          "name": "cless-extra_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "c145230c225b4724ca0e7e2ee98ae70f",
+          "originalInternalId": "-1137490676"
+        },
+        {
+          "index": 8,
+          "name": "cless-extra_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "893b8f5f757eb4245a1ae4859f453f16",
+          "originalInternalId": "1679968183"
+        },
+        {
+          "index": 9,
+          "name": "cless-extra_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "1e2d158a2a2d7f447879dffeab260e45",
+          "originalInternalId": "-562071154"
+        },
+        {
+          "index": 10,
+          "name": "cless-extra_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "b7181f4b4c2c002429f90473a1bded26",
+          "originalInternalId": "-1235658029"
+        },
+        {
+          "index": 11,
+          "name": "cless-extra_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "d2382c871497b0341a7eb0861f572393",
+          "originalInternalId": "-1481944892"
+        },
+        {
+          "index": 12,
+          "name": "cless-extra_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "4e265508ae135ff4db6b69ce54d82044",
+          "originalInternalId": "-189151270"
+        },
+        {
+          "index": 13,
+          "name": "cless-extra_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "a1bbcb20015450f4faf623b94d5ec1ef",
+          "originalInternalId": "-887792859"
+        },
+        {
+          "index": 14,
+          "name": "cless-extra_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "0b199a5074870bb4294975d4d7cb25ce",
+          "originalInternalId": "-1005035912"
+        },
+        {
+          "index": 15,
+          "name": "cless-extra_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "c953ea4421fd7fe41b59efd01d627069",
+          "originalInternalId": "850474810"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1099,
+          1431
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 620568,
+        "strongPixels": 520310,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          13,
+          1099,
+          1431
+        ],
+        "strongCanvasBbox": [
+          10,
+          17,
+          1095,
+          1177
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 34143,
+            "bbox": [
+              12,
+              17,
+              265,
+              288
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              12.0,
+              17.0,
+              9.75,
+              -1.8
+            ],
+            "widthFractionOfCell": 0.9208,
+            "heightFractionOfCell": 0.9469
+          },
+          {
+            "pixels": 34469,
+            "bbox": [
+              302,
+              23,
+              542,
+              289
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              27.25,
+              23.0,
+              7.5,
+              -2.8
+            ],
+            "widthFractionOfCell": 0.8735,
+            "heightFractionOfCell": 0.9294
+          },
+          {
+            "pixels": 30502,
+            "bbox": [
+              580,
+              25,
+              792,
+              288
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              30.5,
+              25.0,
+              32.25,
+              -1.8
+            ],
+            "widthFractionOfCell": 0.7716,
+            "heightFractionOfCell": 0.9189
+          },
+          {
+            "pixels": 31949,
+            "bbox": [
+              857,
+              21,
+              1081,
+              290
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              32.75,
+              21.0,
+              18.0,
+              -3.8
+            ],
+            "widthFractionOfCell": 0.8153,
+            "heightFractionOfCell": 0.9399
+          },
+          {
+            "pixels": 32538,
+            "bbox": [
+              10,
+              328,
+              263,
+              588
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              10.0,
+              41.8,
+              11.75,
+              -15.6
+            ],
+            "widthFractionOfCell": 0.9208,
+            "heightFractionOfCell": 0.9085
+          },
+          {
+            "pixels": 32542,
+            "bbox": [
+              308,
+              330,
+              546,
+              588
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              33.25,
+              43.8,
+              3.5,
+              -15.6
+            ],
+            "widthFractionOfCell": 0.8662,
+            "heightFractionOfCell": 0.9015
+          },
+          {
+            "pixels": 28528,
+            "bbox": [
+              590,
+              328,
+              783,
+              589
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              40.5,
+              41.8,
+              41.25,
+              -16.6
+            ],
+            "widthFractionOfCell": 0.7025,
+            "heightFractionOfCell": 0.9119
+          },
+          {
+            "pixels": 29363,
+            "bbox": [
+              892,
+              327,
+              1082,
+              587
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              67.75,
+              40.8,
+              17.0,
+              -14.6
+            ],
+            "widthFractionOfCell": 0.6915,
+            "heightFractionOfCell": 0.9085
+          },
+          {
+            "pixels": 36290,
+            "bbox": [
+              15,
+              609,
+              257,
+              916
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              15.0,
+              36.6,
+              17.75,
+              -57.4
+            ],
+            "widthFractionOfCell": 0.8808,
+            "heightFractionOfCell": 1.0727
+          },
+          {
+            "pixels": 35362,
+            "bbox": [
+              312,
+              610,
+              551,
+              916
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              37.25,
+              37.6,
+              -1.5,
+              -57.4
+            ],
+            "widthFractionOfCell": 0.8699,
+            "heightFractionOfCell": 1.0692
+          },
+          {
+            "pixels": 32384,
+            "bbox": [
+              589,
+              613,
+              807,
+              916
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              39.5,
+              40.6,
+              17.25,
+              -57.4
+            ],
+            "widthFractionOfCell": 0.7934,
+            "heightFractionOfCell": 1.0587
+          },
+          {
+            "pixels": 32315,
+            "bbox": [
+              882,
+              612,
+              1091,
+              916
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              57.75,
+              39.6,
+              8.0,
+              -57.4
+            ],
+            "widthFractionOfCell": 0.7607,
+            "heightFractionOfCell": 1.0622
+          },
+          {
+            "pixels": 34115,
+            "bbox": [
+              11,
+              952,
+              283,
+              1177
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              11.0,
+              93.4,
+              -8.25,
+              -32.2
+            ],
+            "widthFractionOfCell": 0.99,
+            "heightFractionOfCell": 0.7862
+          },
+          {
+            "pixels": 32636,
+            "bbox": [
+              293,
+              959,
+              560,
+              1176
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              18.25,
+              100.4,
+              -10.5,
+              -31.2
+            ],
+            "widthFractionOfCell": 0.9718,
+            "heightFractionOfCell": 0.7582
+          },
+          {
+            "pixels": 31889,
+            "bbox": [
+              572,
+              956,
+              834,
+              1176
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              22.5,
+              97.4,
+              -9.75,
+              -31.2
+            ],
+            "widthFractionOfCell": 0.9536,
+            "heightFractionOfCell": 0.7687
+          },
+          {
+            "pixels": 31284,
+            "bbox": [
+              847,
+              960,
+              1095,
+              1177
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              22.75,
+              101.4,
+              4.0,
+              -32.2
+            ],
+            "widthFractionOfCell": 0.9026,
+            "heightFractionOfCell": 0.7582
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          217,
+          307
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 19245,
+          "maxAlpha": 255,
+          "above8Pixels": 14906,
+          "above128Pixels": 13993
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-cless-extra\\source-sheet-00.png",
+      "candidateSha256": "ab2493b1760c47ab960e9071da03d8994d6f249159ecdec8dd07d616961c1053",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-cless-polish",
+      "prompt": "Use case: precise-object-edit. Edit this already finished transparent16-pose Cless sprite sheet. Change ONLY one small erroneous object: in ROW3 COLUMN2 (the rear-facing character with his LEFT palm raised and his RIGHT hand holding a sword down at lower-right), there is a SECOND silver sword tip floating vertically above the top of his blond hair. ERASE THAT ENTIRE UPPER FLOATING SILVER TIP and replace with transparent background; the rear hair silhouette should end naturally with only blond spikes, no silver vertical object above it. Keep his real lower-right sword and its hand unchanged. Do NOT remove the real low sword. Every other15 character, every other silver sword, all cape/hair/body poses, dimensions, position, size, alpha, detail and colors unchanged. Do not add an upper sword hilt or connect the floating tip, remove it. No new objects, no backdrop. Preserve original transparent RGBA canvas. Only remove floating tip in third row second column. Output corrected fullsheet.",
+      "referenceImagePaths": [
+        "C:/Users/USER-PC/.codex/generated_images/01a15eed-3a6e-7cc1-9fd5-ca608ca84560/exec-d8806ee8-74b2-4289-8a63-08981318193f.png"
+      ],
+      "visualReview": "All16 final figures visually inspected in order against source and first generated candidate. Row3 col2 rear-facing duplicate upper silver tip removed; low right-hand sword and open other palm remain. Other15 poses retain same roles/directions/equipment counts and similar anatomy. Fullsheet was regenerated by imagegen; do not claim pixel-identical unchanged cells. No visible second sword, missing limb, face reversal or hard crop. Root native packing and actual continuity still pending.",
+      "rejectedAttempts": [
+        {
+          "prompt": "Use case: style-transfer. Project game sprite atlas edit, true transparent RGBA. Image1 is the exact edit target and the only pose/order/direction reference. Image2 is the canonical current Cless action art, use ONLY its anatomy and rendering quality, never replace Image1 poses with Image2 crouches. Reillustrate all16 Cless poses in image1 with Image2's SAME large skull, face size, warm brown eyes, short compact limbs, thick armored boots, bright layered blond hair, red headband, silver segmented armor with gold trim and black joints, red cape. Fresh crisp anime SD line art and cel shading, premium detail. Standing poses must legitimately stand, lying poses lie; keep actual arm/foot placements and facing from Image1. Consistent head/skull/torso/boot anatomy across all16 poses, not changing whole character scale from row to row. Exactly one ordinary straight silver sword with gold guard per character when visible; no flaming/black signature weapon. Background entirely alpha0, no shadow, floor, text, icons, checkerboard, vignette, smoke, VFX. Four columns Front, Back, Right, Left. Back always rear skull with no face. Four occupied rows of4 =16 distinct complete figures, within a4column5row portrait canvas; fifth row empty transparent. Large independent transparent gutters between figures and safe exterior margins; no sword/cape/boot crop or touching neighbor. Draw complete figures at similarly substantial native detail. Preserve each cell's gesture including unusual slash directions; do not mirror, reorder or repeat a neutral pose. Output only the sprite atlas.\nRows:1 one-handed sword raised behind shoulder/windup;2 horizontal forward/across-body attack following exact source direction;3 vertical guard with opposite open palm;4 relaxed recovery standing low sword, including Right sword mostly hidden as source. IMPORTANT authorized source-defect fix at row3 col2 BACK: source wrongly has TWO blades, one floating above the hair and one held low at the right side. REMOVE the floating blade above the head completely. Keep ONLY the low right-hand sword and opposite open palm, rear skull/cape. No duplicate tips or additional hilts. Other cells preserve source original single sword position. Canonical image2 controls anatomical proportions and line detail only.",
+          "referenceImagePaths": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-polish/reference-00.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-d8806ee8-74b2-4289-8a63-08981318193f.png",
+          "rejectionReason": "Row3 col2 Back retained duplicate floating upper sword despite requested correction. Other figure count/order was acceptable. Used as target for precise-object-edit retry.",
+          "generatedSha256": "6227b47f209b9ee36e3f0808260a46b759dd607a9686f6e670616abaae089637",
+          "referenceImageHashes": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-cless-polish/reference-00.png",
+              "sha256": "d2d11251a93a09ba2789c919e4f7b08051f742778a4dcdf80de3d4e8d4d479f5"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-cless-canonical/reference-00.png",
+              "sha256": "f3edf1cbae4e38eb888bb4944e18ce9a5d6bc80acaf259c35dc77c02326b7db7"
+            }
+          ]
+        }
+      ],
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-7d8313d5-4087-4e94-ae56-7b9252de0d24.png",
+      "generatedSha256": "d3b91fb4a13dd6dc79fd558ef71f7a2c2c911c78c50fb5247fe436d452ab51a1",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-cless-polish\\reference-manifest.json",
+      "manifestSha256": "de8fbe60d73ac2481e77711e83f4e6714446b1d566e782274b1f6a4f14a34caa",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-polish.png",
+      "sourceGuid": "c3a095f75a23401429bffc0e59b7ac50",
+      "sourceSha256": "64480ca9da0553ac8ddb8135150834c75002d8a66f00d00c017a25a1fe15e8c8",
+      "sourceMetaSha256": "846d8ffdfff23736085d409caf765a26197bb7bdf323e9397cd780da3409574d",
+      "referenceImageHashes": [
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15eed-3a6e-7cc1-9fd5-ca608ca84560/exec-d8806ee8-74b2-4289-8a63-08981318193f.png",
+          "sha256": "6227b47f209b9ee36e3f0808260a46b759dd607a9686f6e670616abaae089637"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "cless-polish_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "a51c63f4ca8642c4c92ea34db9e502ae",
+          "originalInternalId": "-1242204951"
+        },
+        {
+          "index": 1,
+          "name": "cless-polish_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "81cc88e93a49bf54dbf08112f5e1f661",
+          "originalInternalId": "1102481957"
+        },
+        {
+          "index": 2,
+          "name": "cless-polish_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "c22c5cdce2302a94992f348fdc3c17a6",
+          "originalInternalId": "-1592351846"
+        },
+        {
+          "index": 3,
+          "name": "cless-polish_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "ea132f11fc7768946b42736329300cb1",
+          "originalInternalId": "1630098117"
+        },
+        {
+          "index": 4,
+          "name": "cless-polish_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "fe49c36fcffdb48419f30e0ea1e5834a",
+          "originalInternalId": "194873792"
+        },
+        {
+          "index": 5,
+          "name": "cless-polish_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "f7a3abe3854e56049a4681805629427b",
+          "originalInternalId": "806627499"
+        },
+        {
+          "index": 6,
+          "name": "cless-polish_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "df625dfcc188c9b4c9cc4452e8fa608e",
+          "originalInternalId": "834520055"
+        },
+        {
+          "index": 7,
+          "name": "cless-polish_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "561a26a5e97b570428151baf50d26e81",
+          "originalInternalId": "1089881336"
+        },
+        {
+          "index": 8,
+          "name": "cless-polish_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "11c3ec4781ee74b41bd41ca07ade7fec",
+          "originalInternalId": "1525660503"
+        },
+        {
+          "index": 9,
+          "name": "cless-polish_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "b8d385508c8131d4093ae9004a344423",
+          "originalInternalId": "393489195"
+        },
+        {
+          "index": 10,
+          "name": "cless-polish_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "9f94533664a75294f822bec3c99367a0",
+          "originalInternalId": "1782912500"
+        },
+        {
+          "index": 11,
+          "name": "cless-polish_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "49608c2f11e3b4c41a70c0c5856e5d8a",
+          "originalInternalId": "-1044947544"
+        },
+        {
+          "index": 12,
+          "name": "cless-polish_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "bac4d07da9c7e134c8478fa56a93ce50",
+          "originalInternalId": "1057671743"
+        },
+        {
+          "index": 13,
+          "name": "cless-polish_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "22a1f6dd2bdeb3040b08bc84ae9b96f1",
+          "originalInternalId": "263173138"
+        },
+        {
+          "index": 14,
+          "name": "cless-polish_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "cc11d6a870aaf324eb567aab68ea2aff",
+          "originalInternalId": "-1459361749"
+        },
+        {
+          "index": 15,
+          "name": "cless-polish_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "324d1d5b310f6004ab0e76d434ceb587",
+          "originalInternalId": "1070133669"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1161,
+          1354
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 747378,
+        "strongPixels": 619109,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          15,
+          1161,
+          1354
+        ],
+        "strongCanvasBbox": [
+          15,
+          20,
+          1154,
+          1224
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 41313,
+            "bbox": [
+              25,
+              20,
+              282,
+              305
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              25.0,
+              20.0,
+              8.25,
+              -34.2
+            ],
+            "widthFractionOfCell": 0.8854,
+            "heightFractionOfCell": 1.0524
+          },
+          {
+            "pixels": 41890,
+            "bbox": [
+              304,
+              21,
+              564,
+              303
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              13.75,
+              21.0,
+              16.5,
+              -32.2
+            ],
+            "widthFractionOfCell": 0.8958,
+            "heightFractionOfCell": 1.0414
+          },
+          {
+            "pixels": 36217,
+            "bbox": [
+              605,
+              34,
+              834,
+              300
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              24.5,
+              34.0,
+              36.75,
+              -29.2
+            ],
+            "widthFractionOfCell": 0.789,
+            "heightFractionOfCell": 0.9823
+          },
+          {
+            "pixels": 38015,
+            "bbox": [
+              918,
+              20,
+              1144,
+              305
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              47.25,
+              20.0,
+              17.0,
+              -34.2
+            ],
+            "widthFractionOfCell": 0.7786,
+            "heightFractionOfCell": 1.0524
+          },
+          {
+            "pixels": 37978,
+            "bbox": [
+              15,
+              349,
+              290,
+              597
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              15.0,
+              78.2,
+              0.25,
+              -55.4
+            ],
+            "widthFractionOfCell": 0.9475,
+            "heightFractionOfCell": 0.9158
+          },
+          {
+            "pixels": 37926,
+            "bbox": [
+              298,
+              349,
+              596,
+              595
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              7.75,
+              78.2,
+              -15.5,
+              -53.4
+            ],
+            "widthFractionOfCell": 1.0267,
+            "heightFractionOfCell": 0.9084
+          },
+          {
+            "pixels": 38759,
+            "bbox": [
+              588,
+              349,
+              893,
+              597
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              7.5,
+              78.2,
+              -22.25,
+              -55.4
+            ],
+            "widthFractionOfCell": 1.0508,
+            "heightFractionOfCell": 0.9158
+          },
+          {
+            "pixels": 37057,
+            "bbox": [
+              907,
+              351,
+              1146,
+              597
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              36.25,
+              80.2,
+              15.0,
+              -55.4
+            ],
+            "widthFractionOfCell": 0.8234,
+            "heightFractionOfCell": 0.9084
+          },
+          {
+            "pixels": 40733,
+            "bbox": [
+              28,
+              625,
+              281,
+              917
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              28.0,
+              83.4,
+              9.25,
+              -104.6
+            ],
+            "widthFractionOfCell": 0.8717,
+            "heightFractionOfCell": 1.0783
+          },
+          {
+            "pixels": 39436,
+            "bbox": [
+              313,
+              660,
+              575,
+              917
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              22.75,
+              118.4,
+              5.5,
+              -104.6
+            ],
+            "widthFractionOfCell": 0.9027,
+            "heightFractionOfCell": 0.949
+          },
+          {
+            "pixels": 35881,
+            "bbox": [
+              615,
+              625,
+              834,
+              918
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              34.5,
+              83.4,
+              36.75,
+              -105.6
+            ],
+            "widthFractionOfCell": 0.7545,
+            "heightFractionOfCell": 1.082
+          },
+          {
+            "pixels": 38849,
+            "bbox": [
+              912,
+              625,
+              1154,
+              917
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              41.25,
+              83.4,
+              7.0,
+              -104.6
+            ],
+            "widthFractionOfCell": 0.8338,
+            "heightFractionOfCell": 1.0783
+          },
+          {
+            "pixels": 41301,
+            "bbox": [
+              307,
+              943,
+              588,
+              1218
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              16.75,
+              130.6,
+              -7.5,
+              -134.8
+            ],
+            "widthFractionOfCell": 0.9681,
+            "heightFractionOfCell": 1.0155
+          },
+          {
+            "pixels": 39869,
+            "bbox": [
+              15,
+              950,
+              297,
+              1222
+            ],
+            "cellIndex": 16,
+            "cellMarginsPixels": [
+              15.0,
+              -133.2,
+              -6.75,
+              132.0
+            ],
+            "widthFractionOfCell": 0.9716,
+            "heightFractionOfCell": 1.0044
+          },
+          {
+            "pixels": 35308,
+            "bbox": [
+              622,
+              945,
+              824,
+              1224
+            ],
+            "cellIndex": 18,
+            "cellMarginsPixels": [
+              41.5,
+              -138.2,
+              46.75,
+              130.0
+            ],
+            "widthFractionOfCell": 0.696,
+            "heightFractionOfCell": 1.0303
+          },
+          {
+            "pixels": 38575,
+            "bbox": [
+              878,
+              951,
+              1143,
+              1224
+            ],
+            "cellIndex": 19,
+            "cellMarginsPixels": [
+              7.25,
+              -132.2,
+              18.0,
+              130.0
+            ],
+            "widthFractionOfCell": 0.913,
+            "heightFractionOfCell": 1.0081
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          246,
+          293
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          16,
+          18,
+          19
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 110420,
+          "maxAlpha": 255,
+          "above8Pixels": 95512,
+          "above128Pixels": 92365
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-cless-polish\\source-sheet-00.png",
+      "candidateSha256": "d3b91fb4a13dd6dc79fd558ef71f7a2c2c911c78c50fb5247fe436d452ab51a1",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    }
+  ],
+  "limitations": [
+    "Native pixel dimensions are not game scale. Root must pack, calibrate and validate continuous transitions.",
+    "BBox heights include pose, hair and equipment; anatomy is reviewed visually.",
+    "No image resizing, raster painting or compositing by Python. All saved candidate bytes are unchanged imagegen output."
+  ],
+  "finalVerification": {
+    "selectedSheets": 4,
+    "preservedSourceFrames": 64,
+    "strongMajorFigures": 64,
+    "inputAndSourceHashesStable": true,
+    "candidateExactlyGeneratedBytes": true,
+    "noRasterPixelTransform": true,
+    "allInputAndOutputImagesVisuallyInspected": true,
+    "unityNotRun": true,
+    "productionUnchanged": true,
+    "rootPackAndContinuousRenderPending": true,
+    "nominalLayoutDeviationAcceptedForNativeComponent128": "Root explicitly accepted actual4rows/16intact poses when only nominal4x5 row boundaries differ; lower20% is not universally empty and measurement records it. No5th figure row exists."
+  },
+  "status": "candidate_generation_complete_pending_root_native_pack_and_actual_render"
+}

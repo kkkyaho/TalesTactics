@@ -1,0 +1,13 @@
+{
+  "visual": "All 16 original poses/directions checked against reference; overhead/attack/guard/idle or walk/recoil/prone remain distinct. One signature black/red sword per visible original cell, no added sword.",
+  "prompt": "Edit IMAGE 1 target sprite sheet. Exactly SIXTEEN separate Alphen sprites, in same original 4-column order, same exact pose and facing per cell. Use IMAGE 2 only for character proportions / rendering: same large white head relative to short sturdy black-and-gold armored body and small boots, blue scarf and black/red jagged signature sword. Target first row stepping stance A, second row stepping stance B, third row holding sword OVER HEAD with two arms, fourth row low cross-body sword guard. Each row front/back/rightward/leftward views. Preserve those poses, exact sword direction, correct hands and visible/hidden parts; don't replace with style-reference poses. Remove stray cropped fragments from other cells visible in target, but keep every complete intended sprite. One body and one sword per cell; full sword/feet/hair/scarf must be entirely visible with transparent gutters, never cropped. RGBA transparent background, four columns, first four rows occupied and fifth row EMPTY TRANSPARENT. No backdrop/checkerboard/text/shadows. Rich crisp native cel shading, detailed gold/silver armor accents exactly like style ref, preserve anatomy and face direction, no extra figures or weapons. Keep head, boots, hands scale stable between poses.",
+  "inputs": [
+    "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-extra/reference-00.png",
+    "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+  ],
+  "status": "candidate, native packing and actual transition review pending",
+  "sourceGenerated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-6635ab2c-d11e-4843-a460-7820f5d622cc.png",
+  "sha256": "7104d31aa5e1b682cd4b7e1cd50ec9f8804321abaf763a369b5c37233cbd6ea8",
+  "target": "SignatureWeapons-alphen-extra",
+  "tool": "image_gen"
+}

@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "kind": "derived-summary-not-raw-report",
+  "derivedUtc": "2026-10-31T15:00:46.3639342Z",
+  "source": {
+    "projectRelativePath": "Logs/QualityUpgrade20261031/Presentation/vfx2-a2ce1ceb995546029e78a309c75f4008/result.json",
+    "localAbsolutePath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/Presentation/vfx2-a2ce1ceb995546029e78a309c75f4008/result.json",
+    "sha256": "53a610d63775bfcd4b37c71ccca0eabd5486b8d0ecbf09c7e23d150b953049e1",
+    "bytes": 40894958,
+    "rawFileCopied": false,
+    "rawFileModified": false,
+    "rawRemainsLocal": true
+  },
+  "derivation": "Copy selected actual result fields and aggregate rows only. This is not a replacement for the full raw result.json, timeline, mesh/camera/frame evidence or manual PNG review. No result, threshold or original evidence was modified.",
+  "omitted": "Detailed per-frame/per-mesh camera geometry, full successful non-continuous rows, candidate input arrays, PNGs and timelines remain at the local source path.",
+  "report": {
+    "schema": 2,
+    "status": "passed",
+    "passed": true,
+    "mode": "vfx",
+    "filter": "",
+    "expectedRuns": 364,
+    "completedRuns": 364,
+    "actualRowCount": 364,
+    "catalogSkills": 182,
+    "owners": 39,
+    "heroes": 10,
+    "bosses": 20,
+    "signatureWeapons": 10,
+    "pngCount": 1340,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "unityVersion": "6000.6.0f1",
+    "scope": "Presentation-only fixture: six original battlefield allies plus one isolated native-sprite actor. CharacterMotion, ImpactPool prepare/travel and CombatEffect contact APIs use authored timing. One staged recipient per effect; no multi-recipient/HP-number/audio/resolver/AI/turn/campaign certification. Use SkillRosterVfxReview separately for actual Director execution.",
+    "coverage": "All-direction phase telemetry is sampled at 30 simulated fps. Unobserved individual authored poses are listed rather than claimed covered. Continuous images: one selected skill for Cless, Mint, Alphen, Farah, Dhaos, Barbatos, Front/Back only; other motion runs have one release image. Missing categories fail coverage counts, absent optional ultimates are not invented.",
+    "visualApproval": "Not approved by this automated report. passed means bounded execution/state/geometry checks only, not visible VFX or visual quality. Inspect captures and their geometry/depth evidence. Prior schema1 single-contact captures are incomplete visual evidence.",
+    "errors": []
+  },
+  "preservation": {
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": null,
+    "candidateOriginalsUnchanged": null,
+    "candidateCleanupComplete": null,
+    "candidateClonesCreated": null,
+    "candidateClonesDestroyed": null
+  },
+  "candidateSelection": {
+    "path": null,
+    "sha256": null,
+    "inputCount": 0,
+    "scope": null
+  },
+  "rowAssertionFalseCounts": {
+    "finished": 0,
+    "clean": 0,
+    "preparationObserved": 0,
+    "releaseObserved": 0,
+    "returnedIdle": 0,
+    "authoredDirectionMatches": 0,
+    "sessionUnchanged": 0
+  },
+  "ownerCoverage": [
+    {
+      "owner": "alphen",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "archer",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "artorius",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "asch",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "balseph",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "cless",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "demitel",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "dhaos",
+      "rows": 10,
+      "continuousRows": 0,
+      "normalRows": 5,
+      "reducedRows": 5,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "eggbear",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "executor",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "farah",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "ganabelt",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "golem",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "hyades",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "jade",
+      "rows": 20,
+      "continuousRows": 0,
+      "normalRows": 10,
+      "reducedRows": 10,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "jahmir",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "kisara",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "legretta",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "mage",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "maxwell",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "mint",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "natalia",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "ordo",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "origin",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "oscar",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "penguinist",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "polwigle",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "rassius",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "sentinel",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 6,
+      "reducedRows": 6,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shigure",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shionne",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shizel",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "slime",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "tear",
+      "rows": 18,
+      "continuousRows": 0,
+      "normalRows": 9,
+      "reducedRows": 9,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "van",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "velvet",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 6,
+      "reducedRows": 6,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "vholran",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 4,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "wolf",
+      "rows": 2,
+      "continuousRows": 0,
+      "normalRows": 1,
+      "reducedRows": 1,
+      "rowsWithErrors": 0
+    }
+  ],
+  "continuousSequences": [],
+  "failedRows": [],
+  "interpretation": "Candidate preview: the six field models used then-production assets and the separate review actor used candidate clones. VFX result predates final art application. Automated pass is bounded execution/state/geometry, never complete visual approval, post-application regression or human play."
+}

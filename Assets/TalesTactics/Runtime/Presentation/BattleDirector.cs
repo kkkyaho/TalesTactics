@@ -36,7 +36,14 @@ namespace TalesTactics
         {
             if(Hud==null||Board==null||Audio==null)
             {Debug.LogError("TalesTactics: BattleDirector requires HUD, Board and Audio references.");enabled=false;return;}
-            ConfigureStorage(Application.persistentDataPath,true);Hud.Initialize(this);
+            string storageRoot=Application.persistentDataPath;
+#if TALESTACTICS_REVIEW && !UNITY_EDITOR
+            // Resolve before loading preferences/campaign or constructing the window
+            // autosave component. Invalid review arguments must not fall back to user data.
+            try{storageRoot=ReviewStorageBootstrap.Resolve(System.Environment.GetCommandLineArgs(),Application.dataPath,Application.persistentDataPath)??storageRoot;}
+            catch(System.Exception e){Debug.LogError("Review storage initialization rejected: "+e.Message);enabled=false;Application.Quit(2);return;}
+#endif
+            ConfigureStorage(storageRoot,true);Hud.Initialize(this);
             gameObject.AddComponent<WindowDisplayController>().Initialize(this);
             if(!CatalogValidation.TryValidate(Catalog,out var error))
             {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}

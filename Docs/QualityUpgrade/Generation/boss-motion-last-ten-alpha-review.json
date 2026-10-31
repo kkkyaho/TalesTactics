@@ -1,0 +1,5206 @@
+{
+  "schema": 1,
+  "method": "Read-only PIL/numpy alpha and straight-corridor analysis; no image modification.",
+  "candidateSheets": 37,
+  "dimensionsRgbaAllMatch": true,
+  "straightCorridorPass": 29,
+  "reviewNotes": [
+    "Grid analysis searches full-sheet alpha>8-free straight cuts within 20% of nominal 4x5 pitch with two clear pixels on each side. It does not certify the requested 16px alpha-zero corridors.",
+    "Failure to find a common cut does not prove touching silhouettes. Those sheets need explicit reviewed row/component ownership.",
+    "Unused-cell alpha totals are available only where cuts succeeded. Alpha1..8 remnants are preserved and are not automatically treated as visible VFX.",
+    "Opaque bounds include solid weapons/accessories; they are not an anatomical body-size measurement.",
+    "Candidate visual review is not runtime approval, directional animation validation, or proof of pixel-perfect pose correspondence."
+  ],
+  "sheets": [
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-maxwell/source-sheet-00.png",
+      "index": "maxwell-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 871998,
+      "alphaAbove8": 734141,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 35352,
+          "opaquePixels": 33176,
+          "width": 216,
+          "height": 227
+        },
+        {
+          "index": 1,
+          "pixels": 35413,
+          "opaquePixels": 32732,
+          "width": 228,
+          "height": 218
+        },
+        {
+          "index": 2,
+          "pixels": 35268,
+          "opaquePixels": 33144,
+          "width": 213,
+          "height": 228
+        },
+        {
+          "index": 3,
+          "pixels": 36219,
+          "opaquePixels": 33929,
+          "width": 230,
+          "height": 221
+        },
+        {
+          "index": 4,
+          "pixels": 35924,
+          "opaquePixels": 33660,
+          "width": 219,
+          "height": 230
+        },
+        {
+          "index": 5,
+          "pixels": 35392,
+          "opaquePixels": 32696,
+          "width": 229,
+          "height": 219
+        },
+        {
+          "index": 6,
+          "pixels": 36125,
+          "opaquePixels": 33844,
+          "width": 224,
+          "height": 225
+        },
+        {
+          "index": 7,
+          "pixels": 36495,
+          "opaquePixels": 34064,
+          "width": 231,
+          "height": 215
+        },
+        {
+          "index": 8,
+          "pixels": 37389,
+          "opaquePixels": 34841,
+          "width": 224,
+          "height": 233
+        },
+        {
+          "index": 9,
+          "pixels": 35957,
+          "opaquePixels": 33281,
+          "width": 229,
+          "height": 215
+        },
+        {
+          "index": 10,
+          "pixels": 36978,
+          "opaquePixels": 34437,
+          "width": 226,
+          "height": 226
+        },
+        {
+          "index": 11,
+          "pixels": 37358,
+          "opaquePixels": 34910,
+          "width": 238,
+          "height": 220
+        },
+        {
+          "index": 12,
+          "pixels": 37202,
+          "opaquePixels": 34895,
+          "width": 224,
+          "height": 226
+        },
+        {
+          "index": 13,
+          "pixels": 36906,
+          "opaquePixels": 34144,
+          "width": 226,
+          "height": 222
+        },
+        {
+          "index": 14,
+          "pixels": 37488,
+          "opaquePixels": 34996,
+          "width": 225,
+          "height": 230
+        },
+        {
+          "index": 15,
+          "pixels": 37994,
+          "opaquePixels": 35534,
+          "width": 236,
+          "height": 227
+        },
+        {
+          "index": 16,
+          "pixels": 37618,
+          "opaquePixels": 35112,
+          "width": 225,
+          "height": 230
+        },
+        {
+          "index": 17,
+          "pixels": 36654,
+          "opaquePixels": 33926,
+          "width": 232,
+          "height": 217
+        },
+        {
+          "index": 18,
+          "pixels": 37921,
+          "opaquePixels": 35446,
+          "width": 229,
+          "height": 229
+        },
+        {
+          "index": 19,
+          "pixels": 38488,
+          "opaquePixels": 35958,
+          "width": 239,
+          "height": 224
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        837,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        547,
+        811,
+        1081,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-maxwell/source-sheet-01.png",
+      "index": "maxwell-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 862579,
+      "alphaAbove8": 735384,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 34737,
+          "opaquePixels": 32840,
+          "width": 221,
+          "height": 226
+        },
+        {
+          "index": 1,
+          "pixels": 34306,
+          "opaquePixels": 32332,
+          "width": 224,
+          "height": 218
+        },
+        {
+          "index": 2,
+          "pixels": 35117,
+          "opaquePixels": 33560,
+          "width": 215,
+          "height": 229
+        },
+        {
+          "index": 3,
+          "pixels": 35363,
+          "opaquePixels": 33700,
+          "width": 235,
+          "height": 220
+        },
+        {
+          "index": 4,
+          "pixels": 38530,
+          "opaquePixels": 36387,
+          "width": 231,
+          "height": 246
+        },
+        {
+          "index": 5,
+          "pixels": 36602,
+          "opaquePixels": 34360,
+          "width": 227,
+          "height": 238
+        },
+        {
+          "index": 6,
+          "pixels": 37764,
+          "opaquePixels": 35794,
+          "width": 232,
+          "height": 240
+        },
+        {
+          "index": 7,
+          "pixels": 37125,
+          "opaquePixels": 35118,
+          "width": 235,
+          "height": 237
+        },
+        {
+          "index": 8,
+          "pixels": 38154,
+          "opaquePixels": 36128,
+          "width": 226,
+          "height": 232
+        },
+        {
+          "index": 9,
+          "pixels": 38441,
+          "opaquePixels": 36390,
+          "width": 237,
+          "height": 246
+        },
+        {
+          "index": 10,
+          "pixels": 37533,
+          "opaquePixels": 35499,
+          "width": 226,
+          "height": 237
+        },
+        {
+          "index": 11,
+          "pixels": 37345,
+          "opaquePixels": 35655,
+          "width": 243,
+          "height": 226
+        },
+        {
+          "index": 12,
+          "pixels": 37086,
+          "opaquePixels": 35211,
+          "width": 235,
+          "height": 228
+        },
+        {
+          "index": 13,
+          "pixels": 36667,
+          "opaquePixels": 34704,
+          "width": 228,
+          "height": 230
+        },
+        {
+          "index": 14,
+          "pixels": 36247,
+          "opaquePixels": 34480,
+          "width": 234,
+          "height": 231
+        },
+        {
+          "index": 15,
+          "pixels": 35772,
+          "opaquePixels": 34005,
+          "width": 244,
+          "height": 223
+        },
+        {
+          "index": 16,
+          "pixels": 37668,
+          "opaquePixels": 35710,
+          "width": 230,
+          "height": 231
+        },
+        {
+          "index": 17,
+          "pixels": 36229,
+          "opaquePixels": 34001,
+          "width": 228,
+          "height": 224
+        },
+        {
+          "index": 18,
+          "pixels": 38081,
+          "opaquePixels": 36194,
+          "width": 233,
+          "height": 237
+        },
+        {
+          "index": 19,
+          "pixels": 36617,
+          "opaquePixels": 34950,
+          "width": 234,
+          "height": 228
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        837,
+        1122
+      ],
+      "yCuts": [
+        0,
+        274,
+        544,
+        819,
+        1081,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-maxwell/source-sheet-02.png",
+      "index": "maxwell-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 864707,
+      "alphaAbove8": 739417,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36212,
+          "opaquePixels": 34739,
+          "width": 220,
+          "height": 228
+        },
+        {
+          "index": 1,
+          "pixels": 36336,
+          "opaquePixels": 34673,
+          "width": 228,
+          "height": 227
+        },
+        {
+          "index": 2,
+          "pixels": 36042,
+          "opaquePixels": 34441,
+          "width": 221,
+          "height": 233
+        },
+        {
+          "index": 3,
+          "pixels": 37391,
+          "opaquePixels": 35536,
+          "width": 242,
+          "height": 222
+        },
+        {
+          "index": 4,
+          "pixels": 36864,
+          "opaquePixels": 35239,
+          "width": 225,
+          "height": 229
+        },
+        {
+          "index": 5,
+          "pixels": 37553,
+          "opaquePixels": 35710,
+          "width": 227,
+          "height": 229
+        },
+        {
+          "index": 6,
+          "pixels": 36398,
+          "opaquePixels": 34650,
+          "width": 223,
+          "height": 231
+        },
+        {
+          "index": 7,
+          "pixels": 37723,
+          "opaquePixels": 35843,
+          "width": 238,
+          "height": 226
+        },
+        {
+          "index": 8,
+          "pixels": 36658,
+          "opaquePixels": 35075,
+          "width": 228,
+          "height": 224
+        },
+        {
+          "index": 9,
+          "pixels": 36511,
+          "opaquePixels": 34694,
+          "width": 230,
+          "height": 223
+        },
+        {
+          "index": 10,
+          "pixels": 36245,
+          "opaquePixels": 34591,
+          "width": 227,
+          "height": 226
+        },
+        {
+          "index": 11,
+          "pixels": 37460,
+          "opaquePixels": 35786,
+          "width": 238,
+          "height": 224
+        },
+        {
+          "index": 12,
+          "pixels": 36920,
+          "opaquePixels": 35302,
+          "width": 225,
+          "height": 227
+        },
+        {
+          "index": 13,
+          "pixels": 37793,
+          "opaquePixels": 36016,
+          "width": 234,
+          "height": 226
+        },
+        {
+          "index": 14,
+          "pixels": 37534,
+          "opaquePixels": 35786,
+          "width": 228,
+          "height": 231
+        },
+        {
+          "index": 15,
+          "pixels": 37099,
+          "opaquePixels": 35356,
+          "width": 239,
+          "height": 223
+        },
+        {
+          "index": 16,
+          "pixels": 37245,
+          "opaquePixels": 35840,
+          "width": 222,
+          "height": 232
+        },
+        {
+          "index": 17,
+          "pixels": 40101,
+          "opaquePixels": 38222,
+          "width": 238,
+          "height": 237
+        },
+        {
+          "index": 18,
+          "pixels": 34464,
+          "opaquePixels": 33034,
+          "width": 227,
+          "height": 231
+        },
+        {
+          "index": 19,
+          "pixels": 36868,
+          "opaquePixels": 35450,
+          "width": 230,
+          "height": 247
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        838,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        554,
+        815,
+        1081,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-maxwell/source-sheet-03.png",
+      "index": "maxwell-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 523730,
+      "alphaAbove8": 441013,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 2295,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 35976,
+          "opaquePixels": 33675,
+          "width": 211,
+          "height": 249
+        },
+        {
+          "index": 1,
+          "pixels": 38078,
+          "opaquePixels": 35392,
+          "width": 221,
+          "height": 253
+        },
+        {
+          "index": 2,
+          "pixels": 38306,
+          "opaquePixels": 35757,
+          "width": 226,
+          "height": 251
+        },
+        {
+          "index": 3,
+          "pixels": 37994,
+          "opaquePixels": 35797,
+          "width": 215,
+          "height": 250
+        },
+        {
+          "index": 4,
+          "pixels": 35235,
+          "opaquePixels": 33017,
+          "width": 217,
+          "height": 233
+        },
+        {
+          "index": 5,
+          "pixels": 36870,
+          "opaquePixels": 34143,
+          "width": 225,
+          "height": 228
+        },
+        {
+          "index": 6,
+          "pixels": 35326,
+          "opaquePixels": 33030,
+          "width": 240,
+          "height": 222
+        },
+        {
+          "index": 7,
+          "pixels": 34839,
+          "opaquePixels": 32838,
+          "width": 227,
+          "height": 229
+        },
+        {
+          "index": 8,
+          "pixels": 36048,
+          "opaquePixels": 33826,
+          "width": 215,
+          "height": 240
+        },
+        {
+          "index": 9,
+          "pixels": 37375,
+          "opaquePixels": 34772,
+          "width": 230,
+          "height": 248
+        },
+        {
+          "index": 10,
+          "pixels": 36808,
+          "opaquePixels": 34475,
+          "width": 220,
+          "height": 236
+        },
+        {
+          "index": 11,
+          "pixels": 38158,
+          "opaquePixels": 35754,
+          "width": 228,
+          "height": 243
+        },
+        {
+          "index": 12,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 13,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        296,
+        566,
+        846,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-ordo/source-sheet-00.png",
+      "index": "ordo-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 945563,
+      "alphaAbove8": 751322,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 40448,
+          "opaquePixels": 37193,
+          "width": 238,
+          "height": 243
+        },
+        {
+          "index": 1,
+          "pixels": 37903,
+          "opaquePixels": 34589,
+          "width": 225,
+          "height": 242
+        },
+        {
+          "index": 2,
+          "pixels": 38951,
+          "opaquePixels": 35656,
+          "width": 231,
+          "height": 244
+        },
+        {
+          "index": 3,
+          "pixels": 35835,
+          "opaquePixels": 32475,
+          "width": 221,
+          "height": 242
+        },
+        {
+          "index": 4,
+          "pixels": 40573,
+          "opaquePixels": 37302,
+          "width": 240,
+          "height": 240
+        },
+        {
+          "index": 5,
+          "pixels": 39947,
+          "opaquePixels": 36892,
+          "width": 231,
+          "height": 244
+        },
+        {
+          "index": 6,
+          "pixels": 38795,
+          "opaquePixels": 35399,
+          "width": 240,
+          "height": 241
+        },
+        {
+          "index": 7,
+          "pixels": 38800,
+          "opaquePixels": 35793,
+          "width": 235,
+          "height": 246
+        },
+        {
+          "index": 8,
+          "pixels": 37540,
+          "opaquePixels": 34596,
+          "width": 229,
+          "height": 231
+        },
+        {
+          "index": 9,
+          "pixels": 36565,
+          "opaquePixels": 33389,
+          "width": 229,
+          "height": 231
+        },
+        {
+          "index": 10,
+          "pixels": 37012,
+          "opaquePixels": 33827,
+          "width": 236,
+          "height": 236
+        },
+        {
+          "index": 11,
+          "pixels": 33328,
+          "opaquePixels": 30314,
+          "width": 201,
+          "height": 236
+        },
+        {
+          "index": 12,
+          "pixels": 37629,
+          "opaquePixels": 34664,
+          "width": 230,
+          "height": 233
+        },
+        {
+          "index": 13,
+          "pixels": 36481,
+          "opaquePixels": 33445,
+          "width": 229,
+          "height": 229
+        },
+        {
+          "index": 14,
+          "pixels": 36971,
+          "opaquePixels": 34019,
+          "width": 238,
+          "height": 231
+        },
+        {
+          "index": 15,
+          "pixels": 32886,
+          "opaquePixels": 29962,
+          "width": 196,
+          "height": 238
+        },
+        {
+          "index": 16,
+          "pixels": 38754,
+          "opaquePixels": 35638,
+          "width": 236,
+          "height": 236
+        },
+        {
+          "index": 17,
+          "pixels": 39628,
+          "opaquePixels": 36796,
+          "width": 255,
+          "height": 240
+        },
+        {
+          "index": 18,
+          "pixels": 38190,
+          "opaquePixels": 34986,
+          "width": 236,
+          "height": 237
+        },
+        {
+          "index": 19,
+          "pixels": 35086,
+          "opaquePixels": 32048,
+          "width": 215,
+          "height": 238
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        841,
+        1113,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-ordo/source-sheet-01.png",
+      "index": "ordo-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 924745,
+      "alphaAbove8": 740174,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 37841,
+          "opaquePixels": 35113,
+          "width": 236,
+          "height": 236
+        },
+        {
+          "index": 1,
+          "pixels": 36797,
+          "opaquePixels": 33991,
+          "width": 234,
+          "height": 234
+        },
+        {
+          "index": 2,
+          "pixels": 36479,
+          "opaquePixels": 33715,
+          "width": 243,
+          "height": 230
+        },
+        {
+          "index": 3,
+          "pixels": 34174,
+          "opaquePixels": 31442,
+          "width": 216,
+          "height": 235
+        },
+        {
+          "index": 4,
+          "pixels": 37761,
+          "opaquePixels": 35207,
+          "width": 228,
+          "height": 229
+        },
+        {
+          "index": 5,
+          "pixels": 39643,
+          "opaquePixels": 36634,
+          "width": 247,
+          "height": 233
+        },
+        {
+          "index": 6,
+          "pixels": 35049,
+          "opaquePixels": 32591,
+          "width": 238,
+          "height": 233
+        },
+        {
+          "index": 7,
+          "pixels": 34142,
+          "opaquePixels": 31338,
+          "width": 220,
+          "height": 230
+        },
+        {
+          "index": 8,
+          "pixels": 37485,
+          "opaquePixels": 34431,
+          "width": 222,
+          "height": 235
+        },
+        {
+          "index": 9,
+          "pixels": 37680,
+          "opaquePixels": 34964,
+          "width": 232,
+          "height": 237
+        },
+        {
+          "index": 10,
+          "pixels": 36418,
+          "opaquePixels": 33769,
+          "width": 242,
+          "height": 238
+        },
+        {
+          "index": 11,
+          "pixels": 34303,
+          "opaquePixels": 31633,
+          "width": 220,
+          "height": 235
+        },
+        {
+          "index": 12,
+          "pixels": 39135,
+          "opaquePixels": 35961,
+          "width": 232,
+          "height": 228
+        },
+        {
+          "index": 13,
+          "pixels": 40214,
+          "opaquePixels": 37422,
+          "width": 240,
+          "height": 233
+        },
+        {
+          "index": 14,
+          "pixels": 34427,
+          "opaquePixels": 31678,
+          "width": 245,
+          "height": 228
+        },
+        {
+          "index": 15,
+          "pixels": 34930,
+          "opaquePixels": 32287,
+          "width": 232,
+          "height": 232
+        },
+        {
+          "index": 16,
+          "pixels": 38984,
+          "opaquePixels": 35982,
+          "width": 246,
+          "height": 233
+        },
+        {
+          "index": 17,
+          "pixels": 39744,
+          "opaquePixels": 37176,
+          "width": 245,
+          "height": 236
+        },
+        {
+          "index": 18,
+          "pixels": 38610,
+          "opaquePixels": 35557,
+          "width": 254,
+          "height": 238
+        },
+        {
+          "index": 19,
+          "pixels": 36358,
+          "opaquePixels": 33882,
+          "width": 228,
+          "height": 237
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        833,
+        1101,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-ordo/source-sheet-02.png",
+      "index": "ordo-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 918974,
+      "alphaAbove8": 750926,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36766,
+          "opaquePixels": 34401,
+          "width": 221,
+          "height": 237
+        },
+        {
+          "index": 1,
+          "pixels": 33395,
+          "opaquePixels": 31137,
+          "width": 211,
+          "height": 234
+        },
+        {
+          "index": 2,
+          "pixels": 37939,
+          "opaquePixels": 35325,
+          "width": 222,
+          "height": 238
+        },
+        {
+          "index": 3,
+          "pixels": 35167,
+          "opaquePixels": 32519,
+          "width": 215,
+          "height": 235
+        },
+        {
+          "index": 4,
+          "pixels": 36248,
+          "opaquePixels": 33772,
+          "width": 216,
+          "height": 231
+        },
+        {
+          "index": 5,
+          "pixels": 35690,
+          "opaquePixels": 33414,
+          "width": 211,
+          "height": 229
+        },
+        {
+          "index": 6,
+          "pixels": 36154,
+          "opaquePixels": 33663,
+          "width": 231,
+          "height": 237
+        },
+        {
+          "index": 7,
+          "pixels": 35180,
+          "opaquePixels": 32378,
+          "width": 211,
+          "height": 231
+        },
+        {
+          "index": 8,
+          "pixels": 38770,
+          "opaquePixels": 36099,
+          "width": 239,
+          "height": 231
+        },
+        {
+          "index": 9,
+          "pixels": 39846,
+          "opaquePixels": 36893,
+          "width": 229,
+          "height": 223
+        },
+        {
+          "index": 10,
+          "pixels": 37551,
+          "opaquePixels": 34915,
+          "width": 228,
+          "height": 224
+        },
+        {
+          "index": 11,
+          "pixels": 38620,
+          "opaquePixels": 35521,
+          "width": 226,
+          "height": 225
+        },
+        {
+          "index": 12,
+          "pixels": 36855,
+          "opaquePixels": 34376,
+          "width": 225,
+          "height": 223
+        },
+        {
+          "index": 13,
+          "pixels": 35356,
+          "opaquePixels": 33013,
+          "width": 215,
+          "height": 226
+        },
+        {
+          "index": 14,
+          "pixels": 38278,
+          "opaquePixels": 35727,
+          "width": 234,
+          "height": 228
+        },
+        {
+          "index": 15,
+          "pixels": 36589,
+          "opaquePixels": 33886,
+          "width": 221,
+          "height": 226
+        },
+        {
+          "index": 16,
+          "pixels": 40677,
+          "opaquePixels": 38142,
+          "width": 234,
+          "height": 263
+        },
+        {
+          "index": 17,
+          "pixels": 42401,
+          "opaquePixels": 39514,
+          "width": 234,
+          "height": 263
+        },
+        {
+          "index": 18,
+          "pixels": 38826,
+          "opaquePixels": 36184,
+          "width": 221,
+          "height": 265
+        },
+        {
+          "index": 19,
+          "pixels": 40618,
+          "opaquePixels": 37950,
+          "width": 240,
+          "height": 270
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        556,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        837,
+        1081,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-ordo/source-sheet-03.png",
+      "index": "ordo-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 570475,
+      "alphaAbove8": 449921,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 2668,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 43795,
+          "opaquePixels": 40862,
+          "width": 237,
+          "height": 273
+        },
+        {
+          "index": 1,
+          "pixels": 43345,
+          "opaquePixels": 40134,
+          "width": 236,
+          "height": 276
+        },
+        {
+          "index": 2,
+          "pixels": 43490,
+          "opaquePixels": 40303,
+          "width": 250,
+          "height": 273
+        },
+        {
+          "index": 3,
+          "pixels": 39864,
+          "opaquePixels": 36880,
+          "width": 225,
+          "height": 274
+        },
+        {
+          "index": 4,
+          "pixels": 35745,
+          "opaquePixels": 33413,
+          "width": 239,
+          "height": 206
+        },
+        {
+          "index": 5,
+          "pixels": 35149,
+          "opaquePixels": 32857,
+          "width": 227,
+          "height": 214
+        },
+        {
+          "index": 6,
+          "pixels": 35062,
+          "opaquePixels": 32709,
+          "width": 232,
+          "height": 216
+        },
+        {
+          "index": 7,
+          "pixels": 32312,
+          "opaquePixels": 30030,
+          "width": 219,
+          "height": 220
+        },
+        {
+          "index": 8,
+          "pixels": 36939,
+          "opaquePixels": 34479,
+          "width": 232,
+          "height": 220
+        },
+        {
+          "index": 9,
+          "pixels": 37032,
+          "opaquePixels": 34550,
+          "width": 234,
+          "height": 223
+        },
+        {
+          "index": 10,
+          "pixels": 34914,
+          "opaquePixels": 32363,
+          "width": 222,
+          "height": 224
+        },
+        {
+          "index": 11,
+          "pixels": 32274,
+          "opaquePixels": 29937,
+          "width": 202,
+          "height": 221
+        },
+        {
+          "index": 12,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 13,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        325,
+        587,
+        870,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-origin/source-sheet-00.png",
+      "index": "origin-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 819660,
+      "alphaAbove8": 677747,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 34890,
+          "opaquePixels": 32486,
+          "width": 236,
+          "height": 251
+        },
+        {
+          "index": 1,
+          "pixels": 36103,
+          "opaquePixels": 33483,
+          "width": 235,
+          "height": 259
+        },
+        {
+          "index": 2,
+          "pixels": 34718,
+          "opaquePixels": 32464,
+          "width": 220,
+          "height": 257
+        },
+        {
+          "index": 3,
+          "pixels": 32953,
+          "opaquePixels": 30689,
+          "width": 210,
+          "height": 257
+        },
+        {
+          "index": 4,
+          "pixels": 34822,
+          "opaquePixels": 32512,
+          "width": 235,
+          "height": 251
+        },
+        {
+          "index": 5,
+          "pixels": 34243,
+          "opaquePixels": 31977,
+          "width": 232,
+          "height": 250
+        },
+        {
+          "index": 6,
+          "pixels": 33798,
+          "opaquePixels": 31583,
+          "width": 207,
+          "height": 251
+        },
+        {
+          "index": 7,
+          "pixels": 32976,
+          "opaquePixels": 30830,
+          "width": 204,
+          "height": 252
+        },
+        {
+          "index": 8,
+          "pixels": 34931,
+          "opaquePixels": 32598,
+          "width": 208,
+          "height": 254
+        },
+        {
+          "index": 9,
+          "pixels": 36273,
+          "opaquePixels": 33772,
+          "width": 238,
+          "height": 256
+        },
+        {
+          "index": 10,
+          "pixels": 34384,
+          "opaquePixels": 32185,
+          "width": 220,
+          "height": 255
+        },
+        {
+          "index": 11,
+          "pixels": 33478,
+          "opaquePixels": 31116,
+          "width": 203,
+          "height": 255
+        },
+        {
+          "index": 12,
+          "pixels": 33291,
+          "opaquePixels": 30931,
+          "width": 204,
+          "height": 247
+        },
+        {
+          "index": 13,
+          "pixels": 34501,
+          "opaquePixels": 32061,
+          "width": 226,
+          "height": 247
+        },
+        {
+          "index": 14,
+          "pixels": 33443,
+          "opaquePixels": 31235,
+          "width": 208,
+          "height": 250
+        },
+        {
+          "index": 15,
+          "pixels": 31807,
+          "opaquePixels": 29698,
+          "width": 194,
+          "height": 247
+        },
+        {
+          "index": 16,
+          "pixels": 33921,
+          "opaquePixels": 31642,
+          "width": 209,
+          "height": 250
+        },
+        {
+          "index": 17,
+          "pixels": 32998,
+          "opaquePixels": 30883,
+          "width": 217,
+          "height": 250
+        },
+        {
+          "index": 18,
+          "pixels": 32721,
+          "opaquePixels": 30441,
+          "width": 204,
+          "height": 246
+        },
+        {
+          "index": 19,
+          "pixels": 31496,
+          "opaquePixels": 29384,
+          "width": 197,
+          "height": 250
+        }
+      ],
+      "xCuts": [
+        0,
+        288,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        282,
+        561,
+        841,
+        1116,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-oscar/source-sheet-00.png",
+      "index": "oscar-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 717420,
+      "alphaAbove8": 587267,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 30944,
+          "opaquePixels": 28991,
+          "width": 236,
+          "height": 240
+        },
+        {
+          "index": 1,
+          "pixels": 31793,
+          "opaquePixels": 30132,
+          "width": 224,
+          "height": 240
+        },
+        {
+          "index": 2,
+          "pixels": 27467,
+          "opaquePixels": 25738,
+          "width": 228,
+          "height": 236
+        },
+        {
+          "index": 3,
+          "pixels": 28666,
+          "opaquePixels": 26811,
+          "width": 240,
+          "height": 236
+        },
+        {
+          "index": 4,
+          "pixels": 30845,
+          "opaquePixels": 28948,
+          "width": 242,
+          "height": 236
+        },
+        {
+          "index": 5,
+          "pixels": 31814,
+          "opaquePixels": 30282,
+          "width": 232,
+          "height": 237
+        },
+        {
+          "index": 6,
+          "pixels": 27568,
+          "opaquePixels": 25959,
+          "width": 231,
+          "height": 231
+        },
+        {
+          "index": 7,
+          "pixels": 28877,
+          "opaquePixels": 27117,
+          "width": 241,
+          "height": 235
+        },
+        {
+          "index": 8,
+          "pixels": 30119,
+          "opaquePixels": 28187,
+          "width": 247,
+          "height": 224
+        },
+        {
+          "index": 9,
+          "pixels": 31412,
+          "opaquePixels": 29915,
+          "width": 235,
+          "height": 226
+        },
+        {
+          "index": 10,
+          "pixels": 26438,
+          "opaquePixels": 24744,
+          "width": 194,
+          "height": 227
+        },
+        {
+          "index": 11,
+          "pixels": 28956,
+          "opaquePixels": 27315,
+          "width": 246,
+          "height": 228
+        },
+        {
+          "index": 12,
+          "pixels": 30211,
+          "opaquePixels": 28341,
+          "width": 250,
+          "height": 227
+        },
+        {
+          "index": 13,
+          "pixels": 31069,
+          "opaquePixels": 29675,
+          "width": 227,
+          "height": 229
+        },
+        {
+          "index": 14,
+          "pixels": 24296,
+          "opaquePixels": 22818,
+          "width": 196,
+          "height": 226
+        },
+        {
+          "index": 15,
+          "pixels": 28189,
+          "opaquePixels": 26524,
+          "width": 240,
+          "height": 229
+        },
+        {
+          "index": 16,
+          "pixels": 29837,
+          "opaquePixels": 28066,
+          "width": 250,
+          "height": 225
+        },
+        {
+          "index": 17,
+          "pixels": 31616,
+          "opaquePixels": 30178,
+          "width": 224,
+          "height": 233
+        },
+        {
+          "index": 18,
+          "pixels": 28069,
+          "opaquePixels": 26416,
+          "width": 236,
+          "height": 226
+        },
+        {
+          "index": 19,
+          "pixels": 29081,
+          "opaquePixels": 27390,
+          "width": 242,
+          "height": 228
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        836,
+        1107,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-origin/source-sheet-01.png",
+      "index": "origin-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 854758,
+      "alphaAbove8": 649253,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 33063,
+          "opaquePixels": 30534,
+          "width": 199,
+          "height": 254
+        },
+        {
+          "index": 1,
+          "pixels": 33540,
+          "opaquePixels": 30842,
+          "width": 202,
+          "height": 257
+        },
+        {
+          "index": 2,
+          "pixels": 33970,
+          "opaquePixels": 31240,
+          "width": 199,
+          "height": 257
+        },
+        {
+          "index": 3,
+          "pixels": 33051,
+          "opaquePixels": 30856,
+          "width": 192,
+          "height": 258
+        },
+        {
+          "index": 4,
+          "pixels": 35357,
+          "opaquePixels": 32391,
+          "width": 225,
+          "height": 260
+        },
+        {
+          "index": 5,
+          "pixels": 33904,
+          "opaquePixels": 31305,
+          "width": 203,
+          "height": 262
+        },
+        {
+          "index": 6,
+          "pixels": 35177,
+          "opaquePixels": 32465,
+          "width": 223,
+          "height": 264
+        },
+        {
+          "index": 7,
+          "pixels": 32615,
+          "opaquePixels": 30070,
+          "width": 208,
+          "height": 262
+        },
+        {
+          "index": 8,
+          "pixels": 32874,
+          "opaquePixels": 30048,
+          "width": 214,
+          "height": 252
+        },
+        {
+          "index": 9,
+          "pixels": 33013,
+          "opaquePixels": 30498,
+          "width": 185,
+          "height": 255
+        },
+        {
+          "index": 10,
+          "pixels": 34885,
+          "opaquePixels": 32158,
+          "width": 229,
+          "height": 255
+        },
+        {
+          "index": 11,
+          "pixels": 30972,
+          "opaquePixels": 27972,
+          "width": 210,
+          "height": 255
+        },
+        {
+          "index": 12,
+          "pixels": 30781,
+          "opaquePixels": 28101,
+          "width": 255,
+          "height": 216
+        },
+        {
+          "index": 13,
+          "pixels": 32543,
+          "opaquePixels": 29886,
+          "width": 259,
+          "height": 222
+        },
+        {
+          "index": 14,
+          "pixels": 29547,
+          "opaquePixels": 27175,
+          "width": 246,
+          "height": 226
+        },
+        {
+          "index": 15,
+          "pixels": 30131,
+          "opaquePixels": 27902,
+          "width": 224,
+          "height": 228
+        },
+        {
+          "index": 16,
+          "pixels": 29069,
+          "opaquePixels": 26665,
+          "width": 223,
+          "height": 228
+        },
+        {
+          "index": 17,
+          "pixels": 30990,
+          "opaquePixels": 28469,
+          "width": 242,
+          "height": 226
+        },
+        {
+          "index": 18,
+          "pixels": 31946,
+          "opaquePixels": 29520,
+          "width": 245,
+          "height": 239
+        },
+        {
+          "index": 19,
+          "pixels": 31825,
+          "opaquePixels": 29433,
+          "width": 238,
+          "height": 244
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        571,
+        852,
+        1116,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-oscar/source-sheet-01.png",
+      "index": "oscar-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 711943,
+      "alphaAbove8": 592744,
+      "edgeAlphaAbove8": 28,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 27569,
+          "opaquePixels": 25858,
+          "width": 243,
+          "height": 215
+        },
+        {
+          "index": 1,
+          "pixels": 29148,
+          "opaquePixels": 27746,
+          "width": 218,
+          "height": 218
+        },
+        {
+          "index": 2,
+          "pixels": 25448,
+          "opaquePixels": 24000,
+          "width": 224,
+          "height": 210
+        },
+        {
+          "index": 3,
+          "pixels": 26699,
+          "opaquePixels": 25187,
+          "width": 232,
+          "height": 218
+        },
+        {
+          "index": 4,
+          "pixels": 32630,
+          "opaquePixels": 30913,
+          "width": 220,
+          "height": 277
+        },
+        {
+          "index": 5,
+          "pixels": 33847,
+          "opaquePixels": 32304,
+          "width": 222,
+          "height": 267
+        },
+        {
+          "index": 6,
+          "pixels": 27726,
+          "opaquePixels": 26350,
+          "width": 192,
+          "height": 273
+        },
+        {
+          "index": 7,
+          "pixels": 29467,
+          "opaquePixels": 28066,
+          "width": 190,
+          "height": 280
+        },
+        {
+          "index": 8,
+          "pixels": 31409,
+          "opaquePixels": 29771,
+          "width": 214,
+          "height": 265
+        },
+        {
+          "index": 9,
+          "pixels": 31890,
+          "opaquePixels": 30452,
+          "width": 226,
+          "height": 265
+        },
+        {
+          "index": 10,
+          "pixels": 27279,
+          "opaquePixels": 25875,
+          "width": 202,
+          "height": 273
+        },
+        {
+          "index": 11,
+          "pixels": 30967,
+          "opaquePixels": 29472,
+          "width": 210,
+          "height": 252
+        },
+        {
+          "index": 12,
+          "pixels": 29046,
+          "opaquePixels": 27260,
+          "width": 265,
+          "height": 202
+        },
+        {
+          "index": 13,
+          "pixels": 29123,
+          "opaquePixels": 27765,
+          "width": 237,
+          "height": 207
+        },
+        {
+          "index": 14,
+          "pixels": 29938,
+          "opaquePixels": 28403,
+          "width": 268,
+          "height": 211
+        },
+        {
+          "index": 15,
+          "pixels": 26556,
+          "opaquePixels": 25052,
+          "width": 237,
+          "height": 210
+        },
+        {
+          "index": 16,
+          "pixels": 30253,
+          "opaquePixels": 28528,
+          "width": 255,
+          "height": 219
+        },
+        {
+          "index": 17,
+          "pixels": 31766,
+          "opaquePixels": 30243,
+          "width": 235,
+          "height": 227
+        },
+        {
+          "index": 18,
+          "pixels": 32249,
+          "opaquePixels": 30450,
+          "width": 285,
+          "height": 220
+        },
+        {
+          "index": 19,
+          "pixels": 29734,
+          "opaquePixels": 27893,
+          "width": 253,
+          "height": 222
+        }
+      ],
+      "xCuts": [
+        0,
+        283,
+        560,
+        851,
+        1122
+      ],
+      "yCuts": [
+        0,
+        273,
+        561,
+        852,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 11,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 20,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-origin/source-sheet-02.png",
+      "index": "origin-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 803670,
+      "alphaAbove8": 670289,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 32594,
+          "opaquePixels": 30574,
+          "width": 213,
+          "height": 252
+        },
+        {
+          "index": 1,
+          "pixels": 33633,
+          "opaquePixels": 31632,
+          "width": 199,
+          "height": 252
+        },
+        {
+          "index": 2,
+          "pixels": 33435,
+          "opaquePixels": 31199,
+          "width": 221,
+          "height": 253
+        },
+        {
+          "index": 3,
+          "pixels": 33317,
+          "opaquePixels": 31046,
+          "width": 218,
+          "height": 252
+        },
+        {
+          "index": 4,
+          "pixels": 32703,
+          "opaquePixels": 30833,
+          "width": 188,
+          "height": 256
+        },
+        {
+          "index": 5,
+          "pixels": 34096,
+          "opaquePixels": 32063,
+          "width": 200,
+          "height": 258
+        },
+        {
+          "index": 6,
+          "pixels": 33949,
+          "opaquePixels": 31813,
+          "width": 209,
+          "height": 254
+        },
+        {
+          "index": 7,
+          "pixels": 32552,
+          "opaquePixels": 30624,
+          "width": 203,
+          "height": 256
+        },
+        {
+          "index": 8,
+          "pixels": 34276,
+          "opaquePixels": 31943,
+          "width": 234,
+          "height": 225
+        },
+        {
+          "index": 9,
+          "pixels": 35206,
+          "opaquePixels": 32980,
+          "width": 229,
+          "height": 223
+        },
+        {
+          "index": 10,
+          "pixels": 35645,
+          "opaquePixels": 33117,
+          "width": 241,
+          "height": 223
+        },
+        {
+          "index": 11,
+          "pixels": 34326,
+          "opaquePixels": 32119,
+          "width": 250,
+          "height": 223
+        },
+        {
+          "index": 12,
+          "pixels": 34106,
+          "opaquePixels": 31889,
+          "width": 231,
+          "height": 226
+        },
+        {
+          "index": 13,
+          "pixels": 35103,
+          "opaquePixels": 32779,
+          "width": 228,
+          "height": 226
+        },
+        {
+          "index": 14,
+          "pixels": 35967,
+          "opaquePixels": 33176,
+          "width": 239,
+          "height": 225
+        },
+        {
+          "index": 15,
+          "pixels": 34899,
+          "opaquePixels": 32665,
+          "width": 249,
+          "height": 227
+        },
+        {
+          "index": 16,
+          "pixels": 30577,
+          "opaquePixels": 28909,
+          "width": 202,
+          "height": 255
+        },
+        {
+          "index": 17,
+          "pixels": 31058,
+          "opaquePixels": 29340,
+          "width": 193,
+          "height": 256
+        },
+        {
+          "index": 18,
+          "pixels": 31277,
+          "opaquePixels": 29443,
+          "width": 223,
+          "height": 259
+        },
+        {
+          "index": 19,
+          "pixels": 31570,
+          "opaquePixels": 28941,
+          "width": 242,
+          "height": 259
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        833,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        841,
+        1104,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-oscar/source-sheet-02.png",
+      "index": "oscar-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 665337,
+      "alphaAbove8": 550480,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 26775,
+          "opaquePixels": 25224,
+          "width": 215,
+          "height": 213
+        },
+        {
+          "index": 1,
+          "pixels": 27786,
+          "opaquePixels": 26491,
+          "width": 223,
+          "height": 215
+        },
+        {
+          "index": 2,
+          "pixels": 23823,
+          "opaquePixels": 22352,
+          "width": 201,
+          "height": 208
+        },
+        {
+          "index": 3,
+          "pixels": 23357,
+          "opaquePixels": 21825,
+          "width": 187,
+          "height": 213
+        },
+        {
+          "index": 4,
+          "pixels": 28796,
+          "opaquePixels": 27082,
+          "width": 229,
+          "height": 223
+        },
+        {
+          "index": 5,
+          "pixels": 30216,
+          "opaquePixels": 28934,
+          "width": 230,
+          "height": 226
+        },
+        {
+          "index": 6,
+          "pixels": 24299,
+          "opaquePixels": 22756,
+          "width": 198,
+          "height": 217
+        },
+        {
+          "index": 7,
+          "pixels": 24365,
+          "opaquePixels": 22831,
+          "width": 184,
+          "height": 224
+        },
+        {
+          "index": 8,
+          "pixels": 27448,
+          "opaquePixels": 25828,
+          "width": 218,
+          "height": 208
+        },
+        {
+          "index": 9,
+          "pixels": 27898,
+          "opaquePixels": 26667,
+          "width": 227,
+          "height": 208
+        },
+        {
+          "index": 10,
+          "pixels": 28152,
+          "opaquePixels": 26364,
+          "width": 256,
+          "height": 210
+        },
+        {
+          "index": 11,
+          "pixels": 25616,
+          "opaquePixels": 24077,
+          "width": 241,
+          "height": 211
+        },
+        {
+          "index": 12,
+          "pixels": 26671,
+          "opaquePixels": 25407,
+          "width": 201,
+          "height": 217
+        },
+        {
+          "index": 13,
+          "pixels": 28020,
+          "opaquePixels": 26775,
+          "width": 226,
+          "height": 210
+        },
+        {
+          "index": 14,
+          "pixels": 27396,
+          "opaquePixels": 25790,
+          "width": 249,
+          "height": 210
+        },
+        {
+          "index": 15,
+          "pixels": 26084,
+          "opaquePixels": 24652,
+          "width": 236,
+          "height": 215
+        },
+        {
+          "index": 16,
+          "pixels": 32338,
+          "opaquePixels": 30826,
+          "width": 225,
+          "height": 259
+        },
+        {
+          "index": 17,
+          "pixels": 31555,
+          "opaquePixels": 30165,
+          "width": 242,
+          "height": 250
+        },
+        {
+          "index": 18,
+          "pixels": 28657,
+          "opaquePixels": 27075,
+          "width": 221,
+          "height": 258
+        },
+        {
+          "index": 19,
+          "pixels": 31228,
+          "opaquePixels": 29780,
+          "width": 220,
+          "height": 249
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        830,
+        1073,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-origin/source-sheet-03.png",
+      "index": "origin-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 444260,
+      "alphaAbove8": 361347,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 752,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 27801,
+          "opaquePixels": 25784,
+          "width": 194,
+          "height": 247
+        },
+        {
+          "index": 1,
+          "pixels": 31415,
+          "opaquePixels": 28710,
+          "width": 244,
+          "height": 248
+        },
+        {
+          "index": 2,
+          "pixels": 30184,
+          "opaquePixels": 27844,
+          "width": 242,
+          "height": 252
+        },
+        {
+          "index": 3,
+          "pixels": 28488,
+          "opaquePixels": 26090,
+          "width": 245,
+          "height": 252
+        },
+        {
+          "index": 4,
+          "pixels": 32026,
+          "opaquePixels": 29600,
+          "width": 239,
+          "height": 237
+        },
+        {
+          "index": 5,
+          "pixels": 30067,
+          "opaquePixels": 27683,
+          "width": 201,
+          "height": 239
+        },
+        {
+          "index": 6,
+          "pixels": 29322,
+          "opaquePixels": 27039,
+          "width": 200,
+          "height": 236
+        },
+        {
+          "index": 7,
+          "pixels": 29736,
+          "opaquePixels": 27554,
+          "width": 205,
+          "height": 235
+        },
+        {
+          "index": 8,
+          "pixels": 31872,
+          "opaquePixels": 29661,
+          "width": 239,
+          "height": 237
+        },
+        {
+          "index": 9,
+          "pixels": 30523,
+          "opaquePixels": 28278,
+          "width": 201,
+          "height": 238
+        },
+        {
+          "index": 10,
+          "pixels": 30672,
+          "opaquePixels": 28644,
+          "width": 196,
+          "height": 234
+        },
+        {
+          "index": 11,
+          "pixels": 29241,
+          "opaquePixels": 27271,
+          "width": 194,
+          "height": 235
+        },
+        {
+          "index": 12,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 13,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        285,
+        564,
+        841,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 0,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 0,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-oscar/source-sheet-03.png",
+      "index": "oscar-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 422020,
+      "alphaAbove8": 351082,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 5 parts at boundary 3",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-rassius/source-sheet-00.png",
+      "index": "rassius-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 847651,
+      "alphaAbove8": 690917,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36078,
+          "opaquePixels": 34112,
+          "width": 238,
+          "height": 224
+        },
+        {
+          "index": 1,
+          "pixels": 36115,
+          "opaquePixels": 34353,
+          "width": 229,
+          "height": 226
+        },
+        {
+          "index": 2,
+          "pixels": 32268,
+          "opaquePixels": 30314,
+          "width": 237,
+          "height": 223
+        },
+        {
+          "index": 3,
+          "pixels": 33228,
+          "opaquePixels": 31169,
+          "width": 229,
+          "height": 222
+        },
+        {
+          "index": 4,
+          "pixels": 36930,
+          "opaquePixels": 34801,
+          "width": 238,
+          "height": 228
+        },
+        {
+          "index": 5,
+          "pixels": 36451,
+          "opaquePixels": 34795,
+          "width": 233,
+          "height": 228
+        },
+        {
+          "index": 6,
+          "pixels": 32776,
+          "opaquePixels": 30886,
+          "width": 242,
+          "height": 225
+        },
+        {
+          "index": 7,
+          "pixels": 32936,
+          "opaquePixels": 31066,
+          "width": 232,
+          "height": 222
+        },
+        {
+          "index": 8,
+          "pixels": 36299,
+          "opaquePixels": 34623,
+          "width": 239,
+          "height": 229
+        },
+        {
+          "index": 9,
+          "pixels": 36077,
+          "opaquePixels": 34410,
+          "width": 227,
+          "height": 228
+        },
+        {
+          "index": 10,
+          "pixels": 32391,
+          "opaquePixels": 30263,
+          "width": 237,
+          "height": 224
+        },
+        {
+          "index": 11,
+          "pixels": 32154,
+          "opaquePixels": 30203,
+          "width": 226,
+          "height": 222
+        },
+        {
+          "index": 12,
+          "pixels": 36598,
+          "opaquePixels": 34670,
+          "width": 240,
+          "height": 234
+        },
+        {
+          "index": 13,
+          "pixels": 35783,
+          "opaquePixels": 34210,
+          "width": 227,
+          "height": 228
+        },
+        {
+          "index": 14,
+          "pixels": 32281,
+          "opaquePixels": 30437,
+          "width": 237,
+          "height": 224
+        },
+        {
+          "index": 15,
+          "pixels": 32931,
+          "opaquePixels": 30771,
+          "width": 231,
+          "height": 224
+        },
+        {
+          "index": 16,
+          "pixels": 36761,
+          "opaquePixels": 34900,
+          "width": 239,
+          "height": 233
+        },
+        {
+          "index": 17,
+          "pixels": 36349,
+          "opaquePixels": 34659,
+          "width": 225,
+          "height": 231
+        },
+        {
+          "index": 18,
+          "pixels": 32822,
+          "opaquePixels": 30868,
+          "width": 234,
+          "height": 223
+        },
+        {
+          "index": 19,
+          "pixels": 33689,
+          "opaquePixels": 31683,
+          "width": 230,
+          "height": 227
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        827,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        557,
+        822,
+        1090,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shizel/source-sheet-00.png",
+      "index": "shizel-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 884179,
+      "alphaAbove8": 761202,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 39714,
+          "opaquePixels": 38277,
+          "width": 241,
+          "height": 234
+        },
+        {
+          "index": 1,
+          "pixels": 39967,
+          "opaquePixels": 38421,
+          "width": 234,
+          "height": 234
+        },
+        {
+          "index": 2,
+          "pixels": 34854,
+          "opaquePixels": 33381,
+          "width": 211,
+          "height": 235
+        },
+        {
+          "index": 3,
+          "pixels": 35502,
+          "opaquePixels": 34032,
+          "width": 214,
+          "height": 230
+        },
+        {
+          "index": 4,
+          "pixels": 40007,
+          "opaquePixels": 38565,
+          "width": 245,
+          "height": 231
+        },
+        {
+          "index": 5,
+          "pixels": 40247,
+          "opaquePixels": 38628,
+          "width": 240,
+          "height": 230
+        },
+        {
+          "index": 6,
+          "pixels": 35066,
+          "opaquePixels": 33673,
+          "width": 215,
+          "height": 232
+        },
+        {
+          "index": 7,
+          "pixels": 35818,
+          "opaquePixels": 34479,
+          "width": 219,
+          "height": 231
+        },
+        {
+          "index": 8,
+          "pixels": 40392,
+          "opaquePixels": 38725,
+          "width": 249,
+          "height": 230
+        },
+        {
+          "index": 9,
+          "pixels": 40563,
+          "opaquePixels": 38924,
+          "width": 241,
+          "height": 233
+        },
+        {
+          "index": 10,
+          "pixels": 34019,
+          "opaquePixels": 32440,
+          "width": 215,
+          "height": 223
+        },
+        {
+          "index": 11,
+          "pixels": 35158,
+          "opaquePixels": 33757,
+          "width": 218,
+          "height": 230
+        },
+        {
+          "index": 12,
+          "pixels": 40430,
+          "opaquePixels": 38805,
+          "width": 250,
+          "height": 233
+        },
+        {
+          "index": 13,
+          "pixels": 40532,
+          "opaquePixels": 38838,
+          "width": 238,
+          "height": 233
+        },
+        {
+          "index": 14,
+          "pixels": 34895,
+          "opaquePixels": 33302,
+          "width": 213,
+          "height": 231
+        },
+        {
+          "index": 15,
+          "pixels": 36730,
+          "opaquePixels": 35259,
+          "width": 221,
+          "height": 237
+        },
+        {
+          "index": 16,
+          "pixels": 42004,
+          "opaquePixels": 40338,
+          "width": 249,
+          "height": 238
+        },
+        {
+          "index": 17,
+          "pixels": 42499,
+          "opaquePixels": 40973,
+          "width": 246,
+          "height": 235
+        },
+        {
+          "index": 18,
+          "pixels": 35266,
+          "opaquePixels": 33763,
+          "width": 212,
+          "height": 237
+        },
+        {
+          "index": 19,
+          "pixels": 37539,
+          "opaquePixels": 36051,
+          "width": 223,
+          "height": 239
+        }
+      ],
+      "xCuts": [
+        0,
+        283,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        553,
+        821,
+        1086,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-rassius/source-sheet-01.png",
+      "index": "rassius-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 848420,
+      "alphaAbove8": 689513,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 4 parts at boundary 1",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shizel/source-sheet-01.png",
+      "index": "shizel-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 828702,
+      "alphaAbove8": 735327,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 5 parts at boundary 4",
+      "exactEdgeAlphaMax": 0,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 0,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-rassius/source-sheet-02.png",
+      "index": "rassius-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 792079,
+      "alphaAbove8": 612303,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 31911,
+          "opaquePixels": 29731,
+          "width": 215,
+          "height": 245
+        },
+        {
+          "index": 1,
+          "pixels": 29078,
+          "opaquePixels": 27108,
+          "width": 206,
+          "height": 237
+        },
+        {
+          "index": 2,
+          "pixels": 30390,
+          "opaquePixels": 28427,
+          "width": 207,
+          "height": 241
+        },
+        {
+          "index": 3,
+          "pixels": 30680,
+          "opaquePixels": 28828,
+          "width": 210,
+          "height": 241
+        },
+        {
+          "index": 4,
+          "pixels": 31833,
+          "opaquePixels": 29754,
+          "width": 216,
+          "height": 239
+        },
+        {
+          "index": 5,
+          "pixels": 29050,
+          "opaquePixels": 27185,
+          "width": 210,
+          "height": 235
+        },
+        {
+          "index": 6,
+          "pixels": 29848,
+          "opaquePixels": 27968,
+          "width": 202,
+          "height": 242
+        },
+        {
+          "index": 7,
+          "pixels": 31048,
+          "opaquePixels": 28938,
+          "width": 207,
+          "height": 243
+        },
+        {
+          "index": 8,
+          "pixels": 31928,
+          "opaquePixels": 29977,
+          "width": 252,
+          "height": 204
+        },
+        {
+          "index": 9,
+          "pixels": 29969,
+          "opaquePixels": 27971,
+          "width": 229,
+          "height": 201
+        },
+        {
+          "index": 10,
+          "pixels": 30020,
+          "opaquePixels": 28141,
+          "width": 235,
+          "height": 204
+        },
+        {
+          "index": 11,
+          "pixels": 30096,
+          "opaquePixels": 28082,
+          "width": 246,
+          "height": 199
+        },
+        {
+          "index": 12,
+          "pixels": 31448,
+          "opaquePixels": 29321,
+          "width": 257,
+          "height": 202
+        },
+        {
+          "index": 13,
+          "pixels": 29370,
+          "opaquePixels": 27384,
+          "width": 209,
+          "height": 200
+        },
+        {
+          "index": 14,
+          "pixels": 30828,
+          "opaquePixels": 28610,
+          "width": 244,
+          "height": 200
+        },
+        {
+          "index": 15,
+          "pixels": 28629,
+          "opaquePixels": 26637,
+          "width": 223,
+          "height": 196
+        },
+        {
+          "index": 16,
+          "pixels": 33219,
+          "opaquePixels": 31122,
+          "width": 231,
+          "height": 241
+        },
+        {
+          "index": 17,
+          "pixels": 31240,
+          "opaquePixels": 29342,
+          "width": 218,
+          "height": 222
+        },
+        {
+          "index": 18,
+          "pixels": 33037,
+          "opaquePixels": 30677,
+          "width": 208,
+          "height": 242
+        },
+        {
+          "index": 19,
+          "pixels": 28681,
+          "opaquePixels": 26613,
+          "width": 222,
+          "height": 247
+        }
+      ],
+      "xCuts": [
+        0,
+        292,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        840,
+        1080,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shizel/source-sheet-02.png",
+      "index": "shizel-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 834639,
+      "alphaAbove8": 717357,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 37148,
+          "opaquePixels": 35776,
+          "width": 237,
+          "height": 215
+        },
+        {
+          "index": 1,
+          "pixels": 35698,
+          "opaquePixels": 34452,
+          "width": 229,
+          "height": 216
+        },
+        {
+          "index": 2,
+          "pixels": 33021,
+          "opaquePixels": 31669,
+          "width": 237,
+          "height": 220
+        },
+        {
+          "index": 3,
+          "pixels": 33787,
+          "opaquePixels": 32418,
+          "width": 238,
+          "height": 218
+        },
+        {
+          "index": 4,
+          "pixels": 37379,
+          "opaquePixels": 36169,
+          "width": 243,
+          "height": 213
+        },
+        {
+          "index": 5,
+          "pixels": 35608,
+          "opaquePixels": 34411,
+          "width": 231,
+          "height": 214
+        },
+        {
+          "index": 6,
+          "pixels": 33570,
+          "opaquePixels": 32285,
+          "width": 240,
+          "height": 219
+        },
+        {
+          "index": 7,
+          "pixels": 34382,
+          "opaquePixels": 33053,
+          "width": 246,
+          "height": 219
+        },
+        {
+          "index": 8,
+          "pixels": 35654,
+          "opaquePixels": 34303,
+          "width": 240,
+          "height": 208
+        },
+        {
+          "index": 9,
+          "pixels": 36105,
+          "opaquePixels": 34860,
+          "width": 235,
+          "height": 212
+        },
+        {
+          "index": 10,
+          "pixels": 33596,
+          "opaquePixels": 32206,
+          "width": 252,
+          "height": 219
+        },
+        {
+          "index": 11,
+          "pixels": 34065,
+          "opaquePixels": 32679,
+          "width": 250,
+          "height": 222
+        },
+        {
+          "index": 12,
+          "pixels": 37747,
+          "opaquePixels": 36414,
+          "width": 242,
+          "height": 216
+        },
+        {
+          "index": 13,
+          "pixels": 35978,
+          "opaquePixels": 34799,
+          "width": 225,
+          "height": 214
+        },
+        {
+          "index": 14,
+          "pixels": 34775,
+          "opaquePixels": 33122,
+          "width": 240,
+          "height": 224
+        },
+        {
+          "index": 15,
+          "pixels": 35468,
+          "opaquePixels": 33898,
+          "width": 243,
+          "height": 225
+        },
+        {
+          "index": 16,
+          "pixels": 41438,
+          "opaquePixels": 40223,
+          "width": 233,
+          "height": 218
+        },
+        {
+          "index": 17,
+          "pixels": 40564,
+          "opaquePixels": 39299,
+          "width": 245,
+          "height": 219
+        },
+        {
+          "index": 18,
+          "pixels": 35603,
+          "opaquePixels": 34038,
+          "width": 245,
+          "height": 221
+        },
+        {
+          "index": 19,
+          "pixels": 35771,
+          "opaquePixels": 34508,
+          "width": 241,
+          "height": 224
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        553,
+        813,
+        1083,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-rassius/source-sheet-03.png",
+      "index": "rassius-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 512383,
+      "alphaAbove8": 423093,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 5292,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36265,
+          "opaquePixels": 34475,
+          "width": 242,
+          "height": 246
+        },
+        {
+          "index": 1,
+          "pixels": 35692,
+          "opaquePixels": 33946,
+          "width": 238,
+          "height": 223
+        },
+        {
+          "index": 2,
+          "pixels": 33957,
+          "opaquePixels": 32185,
+          "width": 233,
+          "height": 243
+        },
+        {
+          "index": 3,
+          "pixels": 33530,
+          "opaquePixels": 31507,
+          "width": 209,
+          "height": 255
+        },
+        {
+          "index": 4,
+          "pixels": 34947,
+          "opaquePixels": 33152,
+          "width": 240,
+          "height": 222
+        },
+        {
+          "index": 5,
+          "pixels": 35103,
+          "opaquePixels": 33532,
+          "width": 227,
+          "height": 226
+        },
+        {
+          "index": 6,
+          "pixels": 34056,
+          "opaquePixels": 32014,
+          "width": 231,
+          "height": 221
+        },
+        {
+          "index": 7,
+          "pixels": 36259,
+          "opaquePixels": 33939,
+          "width": 226,
+          "height": 225
+        },
+        {
+          "index": 8,
+          "pixels": 37148,
+          "opaquePixels": 34825,
+          "width": 210,
+          "height": 247
+        },
+        {
+          "index": 9,
+          "pixels": 37420,
+          "opaquePixels": 35583,
+          "width": 234,
+          "height": 238
+        },
+        {
+          "index": 10,
+          "pixels": 32049,
+          "opaquePixels": 30166,
+          "width": 201,
+          "height": 254
+        },
+        {
+          "index": 11,
+          "pixels": 36667,
+          "opaquePixels": 34478,
+          "width": 215,
+          "height": 255
+        },
+        {
+          "index": 12,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 13,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        563,
+        864,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shizel/source-sheet-03.png",
+      "index": "shizel-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 553199,
+      "alphaAbove8": 471283,
+      "edgeAlphaAbove8": 5,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 6796,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 42035,
+          "opaquePixels": 40414,
+          "width": 240,
+          "height": 223
+        },
+        {
+          "index": 1,
+          "pixels": 43366,
+          "opaquePixels": 41684,
+          "width": 237,
+          "height": 228
+        },
+        {
+          "index": 2,
+          "pixels": 38489,
+          "opaquePixels": 36872,
+          "width": 253,
+          "height": 230
+        },
+        {
+          "index": 3,
+          "pixels": 37719,
+          "opaquePixels": 36190,
+          "width": 248,
+          "height": 231
+        },
+        {
+          "index": 4,
+          "pixels": 40726,
+          "opaquePixels": 39373,
+          "width": 256,
+          "height": 217
+        },
+        {
+          "index": 5,
+          "pixels": 40046,
+          "opaquePixels": 38774,
+          "width": 246,
+          "height": 219
+        },
+        {
+          "index": 6,
+          "pixels": 36922,
+          "opaquePixels": 35604,
+          "width": 241,
+          "height": 226
+        },
+        {
+          "index": 7,
+          "pixels": 39011,
+          "opaquePixels": 37682,
+          "width": 257,
+          "height": 221
+        },
+        {
+          "index": 8,
+          "pixels": 39625,
+          "opaquePixels": 38170,
+          "width": 239,
+          "height": 223
+        },
+        {
+          "index": 9,
+          "pixels": 39413,
+          "opaquePixels": 38115,
+          "width": 224,
+          "height": 227
+        },
+        {
+          "index": 10,
+          "pixels": 36942,
+          "opaquePixels": 35465,
+          "width": 246,
+          "height": 230
+        },
+        {
+          "index": 11,
+          "pixels": 36989,
+          "opaquePixels": 35608,
+          "width": 235,
+          "height": 232
+        },
+        {
+          "index": 12,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 13,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        293,
+        574,
+        842,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 8,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 9,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-00.png",
+      "index": "van-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 877308,
+      "alphaAbove8": 734103,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36618,
+          "opaquePixels": 35000,
+          "width": 227,
+          "height": 238
+        },
+        {
+          "index": 1,
+          "pixels": 35140,
+          "opaquePixels": 33438,
+          "width": 214,
+          "height": 236
+        },
+        {
+          "index": 2,
+          "pixels": 37791,
+          "opaquePixels": 35945,
+          "width": 271,
+          "height": 236
+        },
+        {
+          "index": 3,
+          "pixels": 37350,
+          "opaquePixels": 35603,
+          "width": 249,
+          "height": 241
+        },
+        {
+          "index": 4,
+          "pixels": 37618,
+          "opaquePixels": 35866,
+          "width": 234,
+          "height": 237
+        },
+        {
+          "index": 5,
+          "pixels": 36367,
+          "opaquePixels": 34660,
+          "width": 216,
+          "height": 235
+        },
+        {
+          "index": 6,
+          "pixels": 37450,
+          "opaquePixels": 35599,
+          "width": 261,
+          "height": 237
+        },
+        {
+          "index": 7,
+          "pixels": 37745,
+          "opaquePixels": 35993,
+          "width": 259,
+          "height": 235
+        },
+        {
+          "index": 8,
+          "pixels": 35472,
+          "opaquePixels": 33634,
+          "width": 248,
+          "height": 234
+        },
+        {
+          "index": 9,
+          "pixels": 35348,
+          "opaquePixels": 33861,
+          "width": 221,
+          "height": 233
+        },
+        {
+          "index": 10,
+          "pixels": 36301,
+          "opaquePixels": 34576,
+          "width": 252,
+          "height": 235
+        },
+        {
+          "index": 11,
+          "pixels": 36061,
+          "opaquePixels": 34115,
+          "width": 240,
+          "height": 231
+        },
+        {
+          "index": 12,
+          "pixels": 37153,
+          "opaquePixels": 35390,
+          "width": 252,
+          "height": 235
+        },
+        {
+          "index": 13,
+          "pixels": 36386,
+          "opaquePixels": 34820,
+          "width": 216,
+          "height": 237
+        },
+        {
+          "index": 14,
+          "pixels": 37150,
+          "opaquePixels": 35345,
+          "width": 265,
+          "height": 234
+        },
+        {
+          "index": 15,
+          "pixels": 36617,
+          "opaquePixels": 34748,
+          "width": 241,
+          "height": 237
+        },
+        {
+          "index": 16,
+          "pixels": 36435,
+          "opaquePixels": 34584,
+          "width": 250,
+          "height": 239
+        },
+        {
+          "index": 17,
+          "pixels": 36263,
+          "opaquePixels": 34783,
+          "width": 217,
+          "height": 238
+        },
+        {
+          "index": 18,
+          "pixels": 37399,
+          "opaquePixels": 35446,
+          "width": 263,
+          "height": 235
+        },
+        {
+          "index": 19,
+          "pixels": 37439,
+          "opaquePixels": 35550,
+          "width": 241,
+          "height": 241
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        550,
+        813,
+        1078,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-dhaos/source-sheet-00.png",
+      "index": "dhaos-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 967222,
+      "alphaAbove8": 836419,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 40004,
+          "opaquePixels": 37919,
+          "width": 239,
+          "height": 251
+        },
+        {
+          "index": 1,
+          "pixels": 42934,
+          "opaquePixels": 40930,
+          "width": 248,
+          "height": 251
+        },
+        {
+          "index": 2,
+          "pixels": 36168,
+          "opaquePixels": 34371,
+          "width": 206,
+          "height": 252
+        },
+        {
+          "index": 3,
+          "pixels": 41385,
+          "opaquePixels": 39390,
+          "width": 246,
+          "height": 251
+        },
+        {
+          "index": 4,
+          "pixels": 44337,
+          "opaquePixels": 42090,
+          "width": 246,
+          "height": 252
+        },
+        {
+          "index": 5,
+          "pixels": 38193,
+          "opaquePixels": 36273,
+          "width": 210,
+          "height": 254
+        },
+        {
+          "index": 6,
+          "pixels": 39820,
+          "opaquePixels": 37874,
+          "width": 231,
+          "height": 252
+        },
+        {
+          "index": 7,
+          "pixels": 43726,
+          "opaquePixels": 41601,
+          "width": 243,
+          "height": 249
+        },
+        {
+          "index": 8,
+          "pixels": 39331,
+          "opaquePixels": 37353,
+          "width": 229,
+          "height": 248
+        },
+        {
+          "index": 9,
+          "pixels": 41685,
+          "opaquePixels": 39702,
+          "width": 244,
+          "height": 253
+        },
+        {
+          "index": 10,
+          "pixels": 44671,
+          "opaquePixels": 42499,
+          "width": 254,
+          "height": 250
+        },
+        {
+          "index": 11,
+          "pixels": 40010,
+          "opaquePixels": 37791,
+          "width": 223,
+          "height": 249
+        },
+        {
+          "index": 12,
+          "pixels": 40571,
+          "opaquePixels": 38258,
+          "width": 229,
+          "height": 254
+        },
+        {
+          "index": 13,
+          "pixels": 45371,
+          "opaquePixels": 43237,
+          "width": 255,
+          "height": 252
+        },
+        {
+          "index": 14,
+          "pixels": 40390,
+          "opaquePixels": 38225,
+          "width": 231,
+          "height": 250
+        },
+        {
+          "index": 15,
+          "pixels": 40452,
+          "opaquePixels": 38380,
+          "width": 226,
+          "height": 251
+        },
+        {
+          "index": 16,
+          "pixels": 45672,
+          "opaquePixels": 43541,
+          "width": 252,
+          "height": 256
+        },
+        {
+          "index": 17,
+          "pixels": 41167,
+          "opaquePixels": 38977,
+          "width": 237,
+          "height": 253
+        },
+        {
+          "index": 18,
+          "pixels": 45686,
+          "opaquePixels": 43551,
+          "width": 263,
+          "height": 253
+        },
+        {
+          "index": 19,
+          "pixels": 44846,
+          "opaquePixels": 42857,
+          "width": 248,
+          "height": 252
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        562,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        556,
+        822,
+        1095,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-01.png",
+      "index": "van-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 860894,
+      "alphaAbove8": 748305,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 35199,
+          "opaquePixels": 33356,
+          "width": 247,
+          "height": 233
+        },
+        {
+          "index": 1,
+          "pixels": 34660,
+          "opaquePixels": 33259,
+          "width": 208,
+          "height": 237
+        },
+        {
+          "index": 2,
+          "pixels": 35183,
+          "opaquePixels": 33475,
+          "width": 245,
+          "height": 233
+        },
+        {
+          "index": 3,
+          "pixels": 37062,
+          "opaquePixels": 35124,
+          "width": 252,
+          "height": 235
+        },
+        {
+          "index": 4,
+          "pixels": 39191,
+          "opaquePixels": 37429,
+          "width": 227,
+          "height": 259
+        },
+        {
+          "index": 5,
+          "pixels": 40164,
+          "opaquePixels": 38367,
+          "width": 232,
+          "height": 248
+        },
+        {
+          "index": 6,
+          "pixels": 39411,
+          "opaquePixels": 37781,
+          "width": 254,
+          "height": 244
+        },
+        {
+          "index": 7,
+          "pixels": 39703,
+          "opaquePixels": 37663,
+          "width": 221,
+          "height": 254
+        },
+        {
+          "index": 8,
+          "pixels": 39359,
+          "opaquePixels": 37573,
+          "width": 229,
+          "height": 259
+        },
+        {
+          "index": 9,
+          "pixels": 38036,
+          "opaquePixels": 36274,
+          "width": 231,
+          "height": 242
+        },
+        {
+          "index": 10,
+          "pixels": 36992,
+          "opaquePixels": 35380,
+          "width": 230,
+          "height": 253
+        },
+        {
+          "index": 11,
+          "pixels": 36685,
+          "opaquePixels": 35071,
+          "width": 219,
+          "height": 254
+        },
+        {
+          "index": 12,
+          "pixels": 37659,
+          "opaquePixels": 35861,
+          "width": 253,
+          "height": 230
+        },
+        {
+          "index": 13,
+          "pixels": 35347,
+          "opaquePixels": 33823,
+          "width": 227,
+          "height": 231
+        },
+        {
+          "index": 14,
+          "pixels": 36721,
+          "opaquePixels": 34968,
+          "width": 222,
+          "height": 226
+        },
+        {
+          "index": 15,
+          "pixels": 38159,
+          "opaquePixels": 36342,
+          "width": 246,
+          "height": 229
+        },
+        {
+          "index": 16,
+          "pixels": 37166,
+          "opaquePixels": 35543,
+          "width": 245,
+          "height": 227
+        },
+        {
+          "index": 17,
+          "pixels": 37323,
+          "opaquePixels": 35638,
+          "width": 227,
+          "height": 232
+        },
+        {
+          "index": 18,
+          "pixels": 37446,
+          "opaquePixels": 35773,
+          "width": 226,
+          "height": 226
+        },
+        {
+          "index": 19,
+          "pixels": 36839,
+          "opaquePixels": 35267,
+          "width": 217,
+          "height": 231
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        560,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        556,
+        841,
+        1113,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-dhaos/source-sheet-01.png",
+      "index": "dhaos-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 868638,
+      "alphaAbove8": 751387,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 36068,
+          "opaquePixels": 34369,
+          "width": 238,
+          "height": 237
+        },
+        {
+          "index": 1,
+          "pixels": 37408,
+          "opaquePixels": 35777,
+          "width": 237,
+          "height": 238
+        },
+        {
+          "index": 2,
+          "pixels": 39222,
+          "opaquePixels": 37578,
+          "width": 240,
+          "height": 237
+        },
+        {
+          "index": 3,
+          "pixels": 35712,
+          "opaquePixels": 33949,
+          "width": 231,
+          "height": 237
+        },
+        {
+          "index": 4,
+          "pixels": 35834,
+          "opaquePixels": 34085,
+          "width": 234,
+          "height": 232
+        },
+        {
+          "index": 5,
+          "pixels": 38251,
+          "opaquePixels": 36615,
+          "width": 233,
+          "height": 233
+        },
+        {
+          "index": 6,
+          "pixels": 37139,
+          "opaquePixels": 35354,
+          "width": 252,
+          "height": 224
+        },
+        {
+          "index": 7,
+          "pixels": 39049,
+          "opaquePixels": 37307,
+          "width": 236,
+          "height": 231
+        },
+        {
+          "index": 8,
+          "pixels": 38453,
+          "opaquePixels": 36836,
+          "width": 231,
+          "height": 234
+        },
+        {
+          "index": 9,
+          "pixels": 36734,
+          "opaquePixels": 35020,
+          "width": 241,
+          "height": 226
+        },
+        {
+          "index": 10,
+          "pixels": 37077,
+          "opaquePixels": 35414,
+          "width": 216,
+          "height": 236
+        },
+        {
+          "index": 11,
+          "pixels": 38835,
+          "opaquePixels": 37202,
+          "width": 231,
+          "height": 233
+        },
+        {
+          "index": 12,
+          "pixels": 34321,
+          "opaquePixels": 32666,
+          "width": 202,
+          "height": 246
+        },
+        {
+          "index": 13,
+          "pixels": 36622,
+          "opaquePixels": 34965,
+          "width": 213,
+          "height": 241
+        },
+        {
+          "index": 14,
+          "pixels": 39249,
+          "opaquePixels": 37728,
+          "width": 235,
+          "height": 237
+        },
+        {
+          "index": 15,
+          "pixels": 36345,
+          "opaquePixels": 34557,
+          "width": 223,
+          "height": 246
+        },
+        {
+          "index": 16,
+          "pixels": 39259,
+          "opaquePixels": 37423,
+          "width": 232,
+          "height": 239
+        },
+        {
+          "index": 17,
+          "pixels": 40093,
+          "opaquePixels": 38492,
+          "width": 236,
+          "height": 238
+        },
+        {
+          "index": 18,
+          "pixels": 38251,
+          "opaquePixels": 36340,
+          "width": 256,
+          "height": 236
+        },
+        {
+          "index": 19,
+          "pixels": 37465,
+          "opaquePixels": 35859,
+          "width": 231,
+          "height": 239
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        827,
+        1104,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-02.png",
+      "index": "van-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 815897,
+      "alphaAbove8": 687483,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 4 parts at boundary 3",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-dhaos/source-sheet-02.png",
+      "index": "dhaos-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 626018,
+      "alphaAbove8": 547066,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 2478,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 37824,
+          "opaquePixels": 36370,
+          "width": 230,
+          "height": 228
+        },
+        {
+          "index": 1,
+          "pixels": 37627,
+          "opaquePixels": 35567,
+          "width": 249,
+          "height": 226
+        },
+        {
+          "index": 2,
+          "pixels": 39956,
+          "opaquePixels": 38244,
+          "width": 247,
+          "height": 236
+        },
+        {
+          "index": 3,
+          "pixels": 39083,
+          "opaquePixels": 37561,
+          "width": 241,
+          "height": 235
+        },
+        {
+          "index": 4,
+          "pixels": 41596,
+          "opaquePixels": 39562,
+          "width": 259,
+          "height": 238
+        },
+        {
+          "index": 5,
+          "pixels": 41288,
+          "opaquePixels": 39636,
+          "width": 255,
+          "height": 244
+        },
+        {
+          "index": 6,
+          "pixels": 38474,
+          "opaquePixels": 36994,
+          "width": 238,
+          "height": 237
+        },
+        {
+          "index": 7,
+          "pixels": 42566,
+          "opaquePixels": 40450,
+          "width": 264,
+          "height": 237
+        },
+        {
+          "index": 8,
+          "pixels": 35727,
+          "opaquePixels": 33930,
+          "width": 227,
+          "height": 217
+        },
+        {
+          "index": 9,
+          "pixels": 37394,
+          "opaquePixels": 35615,
+          "width": 237,
+          "height": 216
+        },
+        {
+          "index": 10,
+          "pixels": 38131,
+          "opaquePixels": 36281,
+          "width": 241,
+          "height": 231
+        },
+        {
+          "index": 11,
+          "pixels": 36914,
+          "opaquePixels": 35364,
+          "width": 244,
+          "height": 227
+        },
+        {
+          "index": 12,
+          "pixels": 40609,
+          "opaquePixels": 39169,
+          "width": 249,
+          "height": 236
+        },
+        {
+          "index": 13,
+          "pixels": 39877,
+          "opaquePixels": 38185,
+          "width": 252,
+          "height": 236
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        292,
+        569,
+        841,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 3,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 3,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-03.png",
+      "index": "van-3",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 435981,
+      "alphaAbove8": 383981,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 5 parts at boundary 2",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shigure/source-sheet-00.png",
+      "index": "shigure-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 899316,
+      "alphaAbove8": 783011,
+      "edgeAlphaAbove8": 16,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 38947,
+          "opaquePixels": 36470,
+          "width": 224,
+          "height": 252
+        },
+        {
+          "index": 1,
+          "pixels": 41670,
+          "opaquePixels": 38832,
+          "width": 247,
+          "height": 252
+        },
+        {
+          "index": 2,
+          "pixels": 41220,
+          "opaquePixels": 38139,
+          "width": 236,
+          "height": 254
+        },
+        {
+          "index": 3,
+          "pixels": 40107,
+          "opaquePixels": 37594,
+          "width": 230,
+          "height": 254
+        },
+        {
+          "index": 4,
+          "pixels": 40117,
+          "opaquePixels": 37396,
+          "width": 229,
+          "height": 244
+        },
+        {
+          "index": 5,
+          "pixels": 40680,
+          "opaquePixels": 37919,
+          "width": 230,
+          "height": 248
+        },
+        {
+          "index": 6,
+          "pixels": 36920,
+          "opaquePixels": 34410,
+          "width": 263,
+          "height": 246
+        },
+        {
+          "index": 7,
+          "pixels": 36849,
+          "opaquePixels": 34563,
+          "width": 231,
+          "height": 246
+        },
+        {
+          "index": 8,
+          "pixels": 37578,
+          "opaquePixels": 34753,
+          "width": 226,
+          "height": 247
+        },
+        {
+          "index": 9,
+          "pixels": 36957,
+          "opaquePixels": 34409,
+          "width": 246,
+          "height": 251
+        },
+        {
+          "index": 10,
+          "pixels": 36983,
+          "opaquePixels": 34364,
+          "width": 230,
+          "height": 242
+        },
+        {
+          "index": 11,
+          "pixels": 38367,
+          "opaquePixels": 35869,
+          "width": 228,
+          "height": 249
+        },
+        {
+          "index": 12,
+          "pixels": 38019,
+          "opaquePixels": 35291,
+          "width": 224,
+          "height": 243
+        },
+        {
+          "index": 13,
+          "pixels": 38080,
+          "opaquePixels": 35505,
+          "width": 229,
+          "height": 242
+        },
+        {
+          "index": 14,
+          "pixels": 40232,
+          "opaquePixels": 37720,
+          "width": 256,
+          "height": 241
+        },
+        {
+          "index": 15,
+          "pixels": 39398,
+          "opaquePixels": 36392,
+          "width": 234,
+          "height": 247
+        },
+        {
+          "index": 16,
+          "pixels": 37705,
+          "opaquePixels": 35161,
+          "width": 232,
+          "height": 242
+        },
+        {
+          "index": 17,
+          "pixels": 41520,
+          "opaquePixels": 38797,
+          "width": 259,
+          "height": 244
+        },
+        {
+          "index": 18,
+          "pixels": 39469,
+          "opaquePixels": 37000,
+          "width": 236,
+          "height": 255
+        },
+        {
+          "index": 19,
+          "pixels": 42193,
+          "opaquePixels": 39198,
+          "width": 237,
+          "height": 250
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        832,
+        1093,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 8,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 11,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-vholran/source-sheet-00.png",
+      "index": "vholran-0",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 699653,
+      "alphaAbove8": 600187,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 4 parts at boundary 1",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shigure/source-sheet-01.png",
+      "index": "shigure-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 829854,
+      "alphaAbove8": 721756,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 34513,
+          "opaquePixels": 32978,
+          "width": 221,
+          "height": 221
+        },
+        {
+          "index": 1,
+          "pixels": 32550,
+          "opaquePixels": 30438,
+          "width": 218,
+          "height": 220
+        },
+        {
+          "index": 2,
+          "pixels": 34124,
+          "opaquePixels": 32572,
+          "width": 211,
+          "height": 236
+        },
+        {
+          "index": 3,
+          "pixels": 34786,
+          "opaquePixels": 32954,
+          "width": 221,
+          "height": 232
+        },
+        {
+          "index": 4,
+          "pixels": 30985,
+          "opaquePixels": 29163,
+          "width": 226,
+          "height": 210
+        },
+        {
+          "index": 5,
+          "pixels": 39899,
+          "opaquePixels": 38080,
+          "width": 263,
+          "height": 220
+        },
+        {
+          "index": 6,
+          "pixels": 36522,
+          "opaquePixels": 34452,
+          "width": 231,
+          "height": 220
+        },
+        {
+          "index": 7,
+          "pixels": 34025,
+          "opaquePixels": 31977,
+          "width": 229,
+          "height": 217
+        },
+        {
+          "index": 8,
+          "pixels": 38865,
+          "opaquePixels": 36850,
+          "width": 242,
+          "height": 235
+        },
+        {
+          "index": 9,
+          "pixels": 40007,
+          "opaquePixels": 37640,
+          "width": 267,
+          "height": 219
+        },
+        {
+          "index": 10,
+          "pixels": 34884,
+          "opaquePixels": 32955,
+          "width": 220,
+          "height": 232
+        },
+        {
+          "index": 11,
+          "pixels": 35600,
+          "opaquePixels": 33238,
+          "width": 224,
+          "height": 235
+        },
+        {
+          "index": 12,
+          "pixels": 35627,
+          "opaquePixels": 33261,
+          "width": 222,
+          "height": 238
+        },
+        {
+          "index": 13,
+          "pixels": 36093,
+          "opaquePixels": 34045,
+          "width": 226,
+          "height": 231
+        },
+        {
+          "index": 14,
+          "pixels": 36728,
+          "opaquePixels": 34404,
+          "width": 231,
+          "height": 236
+        },
+        {
+          "index": 15,
+          "pixels": 37319,
+          "opaquePixels": 34847,
+          "width": 234,
+          "height": 242
+        },
+        {
+          "index": 16,
+          "pixels": 39937,
+          "opaquePixels": 37199,
+          "width": 224,
+          "height": 238
+        },
+        {
+          "index": 17,
+          "pixels": 37924,
+          "opaquePixels": 35684,
+          "width": 243,
+          "height": 232
+        },
+        {
+          "index": 18,
+          "pixels": 38055,
+          "opaquePixels": 35766,
+          "width": 235,
+          "height": 234
+        },
+        {
+          "index": 19,
+          "pixels": 33313,
+          "opaquePixels": 30793,
+          "width": 210,
+          "height": 230
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        563,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        545,
+        813,
+        1090,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-vholran/source-sheet-01.png",
+      "index": "vholran-1",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 722494,
+      "alphaAbove8": 620844,
+      "edgeAlphaAbove8": 7,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 4 parts at boundary 2",
+      "exactEdgeAlphaMax": 21,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 134,
+      "twoPixelEdgeOpaquePixels": 1
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-shigure/source-sheet-02.png",
+      "index": "shigure-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 690908,
+      "alphaAbove8": 605976,
+      "edgeAlphaAbove8": 0,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 0,
+      "cells": [],
+      "issue": "No alpha>8-free separating corridor for 4 parts at boundary 2",
+      "exactEdgeAlphaMax": 1,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 1,
+      "twoPixelEdgeOpaquePixels": 0
+    },
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-vholran/source-sheet-02.png",
+      "index": "vholran-2",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "nontransparent": 505451,
+      "alphaAbove8": 427191,
+      "edgeAlphaAbove8": 7,
+      "unusedAlphaAbove8": 0,
+      "unusedAlphaNonzero": 2978,
+      "cells": [
+        {
+          "index": 0,
+          "pixels": 28883,
+          "opaquePixels": 27168,
+          "width": 254,
+          "height": 198
+        },
+        {
+          "index": 1,
+          "pixels": 26474,
+          "opaquePixels": 24772,
+          "width": 234,
+          "height": 200
+        },
+        {
+          "index": 2,
+          "pixels": 33426,
+          "opaquePixels": 31614,
+          "width": 238,
+          "height": 215
+        },
+        {
+          "index": 3,
+          "pixels": 32068,
+          "opaquePixels": 30208,
+          "width": 239,
+          "height": 210
+        },
+        {
+          "index": 4,
+          "pixels": 27605,
+          "opaquePixels": 25904,
+          "width": 238,
+          "height": 209
+        },
+        {
+          "index": 5,
+          "pixels": 34821,
+          "opaquePixels": 32860,
+          "width": 250,
+          "height": 228
+        },
+        {
+          "index": 6,
+          "pixels": 31955,
+          "opaquePixels": 30002,
+          "width": 270,
+          "height": 218
+        },
+        {
+          "index": 7,
+          "pixels": 27243,
+          "opaquePixels": 25638,
+          "width": 202,
+          "height": 210
+        },
+        {
+          "index": 8,
+          "pixels": 33775,
+          "opaquePixels": 31897,
+          "width": 234,
+          "height": 223
+        },
+        {
+          "index": 9,
+          "pixels": 29398,
+          "opaquePixels": 27609,
+          "width": 251,
+          "height": 220
+        },
+        {
+          "index": 10,
+          "pixels": 29924,
+          "opaquePixels": 28096,
+          "width": 249,
+          "height": 217
+        },
+        {
+          "index": 11,
+          "pixels": 34413,
+          "opaquePixels": 32735,
+          "width": 238,
+          "height": 223
+        },
+        {
+          "index": 12,
+          "pixels": 28140,
+          "opaquePixels": 26385,
+          "width": 254,
+          "height": 214
+        },
+        {
+          "index": 13,
+          "pixels": 29066,
+          "opaquePixels": 27259,
+          "width": 252,
+          "height": 215
+        },
+        {
+          "index": 14,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 15,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 16,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 17,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 18,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "index": 19,
+          "pixels": 0,
+          "opaquePixels": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "xCuts": [
+        0,
+        281,
+        561,
+        842,
+        1122
+      ],
+      "yCuts": [
+        0,
+        280,
+        561,
+        841,
+        1122,
+        1402
+      ],
+      "issue": null,
+      "exactEdgeAlphaMax": 7,
+      "exactEdgeOpaquePixels": 0,
+      "twoPixelEdgeAlphaMax": 11,
+      "twoPixelEdgeOpaquePixels": 0
+    }
+  ]
+}

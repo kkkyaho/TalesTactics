@@ -1,0 +1,1616 @@
+{
+  "schema": 1,
+  "status": "read-only-native-alpha-analysis",
+  "scope": "Read-only original PNG alpha, current Unity-exported rects/PPU and appearance pairs. All qualifying pixels included, including disconnected weapons. No component exclusions. Authored subset obtained from CharacterData Sprites and Poses GUID/localID refs.",
+  "geometryExport": "Logs\\QualityUpgrade20261031\\all-signature-native-geometry.json",
+  "geometryExportSha256": "83c5905ff17bf1ce6d29b5a763220c3990d9978e75145aa705aebb2e60e76d7e",
+  "method": {
+    "thresholdPolicy": "All alpha>128 pixels within each exact frame, matching the existing QualityMotionAtlasTools native strong-alpha policy. Includes all disconnected opaque pieces and weapons; no largest-component filtering.",
+    "height": "(max qualified Y - min qualified Y + 1) / actual Unity pixelsPerUnit",
+    "comparison": "equipped visible world height / original visible world height",
+    "limitsUnchanged": [
+      0.65,
+      1.65
+    ],
+    "sensitivityThresholdsInclusive": [
+      1,
+      16,
+      64,
+      128,
+      129,
+      200
+    ],
+    "authoredCoverage": "CharacterData Sprites/Poses GUID/localID refs matched to current EquipmentAppearance pairs. All mappings also checked, including 84 mappings not in the existing authored test subset."
+  },
+  "coverage": [
+    {
+      "hero": "cless",
+      "allPairs": 144,
+      "authored": 136
+    },
+    {
+      "hero": "mint",
+      "allPairs": 136,
+      "authored": 128
+    },
+    {
+      "hero": "farah",
+      "allPairs": 144,
+      "authored": 136
+    },
+    {
+      "hero": "tear",
+      "allPairs": 136,
+      "authored": 128
+    },
+    {
+      "hero": "jade",
+      "allPairs": 144,
+      "authored": 136
+    },
+    {
+      "hero": "natalia",
+      "allPairs": 144,
+      "authored": 136
+    },
+    {
+      "hero": "velvet",
+      "allPairs": 136,
+      "authored": 128
+    },
+    {
+      "hero": "alphen",
+      "allPairs": 136,
+      "authored": 128
+    },
+    {
+      "hero": "shionne",
+      "allPairs": 140,
+      "authored": 128
+    },
+    {
+      "hero": "kisara",
+      "allPairs": 144,
+      "authored": 136
+    }
+  ],
+  "allMappings": {
+    "rect": {
+      "count": 1404,
+      "below": 0,
+      "above": 78,
+      "min": 0.6862480430385957,
+      "median": 1.0465642745525288,
+      "max": 2.76702771017426
+    },
+    "1": {
+      "count": 1404,
+      "below": 0,
+      "above": 77,
+      "min": 0.6823155081074418,
+      "median": 1.0468895780223346,
+      "max": 2.7367869701723557
+    },
+    "16": {
+      "count": 1404,
+      "below": 0,
+      "above": 0,
+      "min": 0.792024444440231,
+      "median": 1.0326661330149047,
+      "max": 1.595023216844636
+    },
+    "64": {
+      "count": 1404,
+      "below": 0,
+      "above": 0,
+      "min": 0.7881035313489427,
+      "median": 1.033166352846623,
+      "max": 1.595023216844636
+    },
+    "128": {
+      "count": 1404,
+      "below": 0,
+      "above": 0,
+      "min": 0.7904560792037156,
+      "median": 1.032868309463408,
+      "max": 1.5948457554275417
+    },
+    "129": {
+      "count": 1404,
+      "below": 0,
+      "above": 0,
+      "min": 0.7904560792037156,
+      "median": 1.032709236951096,
+      "max": 1.5948457554275417
+    },
+    "200": {
+      "count": 1404,
+      "below": 0,
+      "above": 0,
+      "min": 0.7865037988076972,
+      "median": 1.0324484245766075,
+      "max": 1.6021886401009016
+    }
+  },
+  "authored": {
+    "rect": {
+      "count": 1320,
+      "below": 0,
+      "above": 78,
+      "min": 0.6862480430385957,
+      "median": 1.047268905586105,
+      "max": 2.76702771017426
+    },
+    "1": {
+      "count": 1320,
+      "below": 0,
+      "above": 77,
+      "min": 0.6823155081074418,
+      "median": 1.0470374737874573,
+      "max": 2.7367869701723557
+    },
+    "16": {
+      "count": 1320,
+      "below": 0,
+      "above": 0,
+      "min": 0.792024444440231,
+      "median": 1.0323567003610878,
+      "max": 1.595023216844636
+    },
+    "64": {
+      "count": 1320,
+      "below": 0,
+      "above": 0,
+      "min": 0.7881035313489427,
+      "median": 1.03317481776647,
+      "max": 1.595023216844636
+    },
+    "128": {
+      "count": 1320,
+      "below": 0,
+      "above": 0,
+      "min": 0.7904560792037156,
+      "median": 1.032793797777644,
+      "max": 1.5948457554275417
+    },
+    "129": {
+      "count": 1320,
+      "below": 0,
+      "above": 0,
+      "min": 0.7904560792037156,
+      "median": 1.0325007098369723,
+      "max": 1.5948457554275417
+    },
+    "200": {
+      "count": 1320,
+      "below": 0,
+      "above": 0,
+      "min": 0.7865037988076972,
+      "median": 1.0325117195489868,
+      "max": 1.6021886401009016
+    }
+  },
+  "perHero": {
+    "cless": {
+      "allPairCount": 144,
+      "oldRectFailures": 78,
+      "visibleAlphaGreaterThan128": {
+        "count": 144,
+        "below": 0,
+        "above": 0,
+        "min": 1.056368483753155,
+        "median": 1.181048884274649,
+        "max": 1.5948457554275417
+      }
+    },
+    "mint": {
+      "allPairCount": 136,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 136,
+        "below": 0,
+        "above": 0,
+        "min": 0.8650557385877233,
+        "median": 1.0201099530757731,
+        "max": 1.1053893802072268
+      }
+    },
+    "farah": {
+      "allPairCount": 144,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 144,
+        "below": 0,
+        "above": 0,
+        "min": 0.9369461816287549,
+        "median": 1.0201417781702817,
+        "max": 1.1291115749011031
+      }
+    },
+    "tear": {
+      "allPairCount": 136,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 136,
+        "below": 0,
+        "above": 0,
+        "min": 0.9420880108875973,
+        "median": 1.0807680902649746,
+        "max": 1.203799985215479
+      }
+    },
+    "jade": {
+      "allPairCount": 144,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 144,
+        "below": 0,
+        "above": 0,
+        "min": 0.9242918129065204,
+        "median": 1.1182800718475066,
+        "max": 1.3435221142796547
+      }
+    },
+    "natalia": {
+      "allPairCount": 144,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 144,
+        "below": 0,
+        "above": 0,
+        "min": 0.9577687304608619,
+        "median": 1.0704791544183077,
+        "max": 1.3108642534736523
+      }
+    },
+    "velvet": {
+      "allPairCount": 136,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 136,
+        "below": 0,
+        "above": 0,
+        "min": 0.8897866501407901,
+        "median": 1.0143115689453635,
+        "max": 1.1257142901520791
+      }
+    },
+    "alphen": {
+      "allPairCount": 136,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 136,
+        "below": 0,
+        "above": 0,
+        "min": 0.8596029054757711,
+        "median": 1.0073442150840977,
+        "max": 1.2286666266030657
+      }
+    },
+    "shionne": {
+      "allPairCount": 140,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 140,
+        "below": 0,
+        "above": 0,
+        "min": 0.8801583337805102,
+        "median": 1.0072204106072524,
+        "max": 1.2790693574406597
+      }
+    },
+    "kisara": {
+      "allPairCount": 144,
+      "oldRectFailures": 0,
+      "visibleAlphaGreaterThan128": {
+        "count": 144,
+        "below": 0,
+        "above": 0,
+        "min": 0.7904560792037156,
+        "median": 0.9842465150629265,
+        "max": 1.0989267442588242
+      }
+    }
+  },
+  "examples": [
+    {
+      "hero": "cless",
+      "original": "cless_0_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_0_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "originalPPU": 220.0,
+      "equippedPPU": 134.721375,
+      "originalRect": [
+        178.0,
+        3746.0,
+        225.0,
+        233.0
+      ],
+      "equippedRect": [
+        2.0,
+        382.0,
+        276.0,
+        317.0
+      ],
+      "originalReference": {
+        "guid": "40e5b31d6d64b0a48b8b17f727aebee9",
+        "localID": "291681203"
+      },
+      "equippedReference": {
+        "guid": "cb3953392a1dbf544bf8ce841c1cf4e2",
+        "localID": "-683029301"
+      },
+      "authored": true,
+      "heightRatios": {
+        "rect": 2.2217209757622354,
+        "1": 2.1936866416832173,
+        "16": 1.3360908764477797,
+        "64": 1.3290216125512306,
+        "128": 1.326366779821522,
+        "129": 1.326366779821522,
+        "200": 1.332184177978634
+      },
+      "originalAlphaHeights": {
+        "1": 233,
+        "16": 231,
+        "64": 231,
+        "128": 229,
+        "129": 229,
+        "200": 228
+      },
+      "equippedAlphaHeights": {
+        "1": 313,
+        "16": 189,
+        "64": 188,
+        "128": 186,
+        "129": 186,
+        "200": 186
+      }
+    },
+    {
+      "hero": "cless",
+      "original": "cless-motion_3_2",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "equipped": "cless-motion_3_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-motion.png",
+      "originalPPU": 246.315369,
+      "equippedPPU": 194.162048,
+      "originalRect": [
+        901.0,
+        2.0,
+        297.0,
+        352.0
+      ],
+      "equippedRect": [
+        2.0,
+        2.0,
+        329.0,
+        484.0
+      ],
+      "originalReference": {
+        "guid": "e4e4c44ad7752524e8a16c9605524cdb",
+        "localID": "392570385"
+      },
+      "equippedReference": {
+        "guid": "d85a93e1e908c144586082932d9ee02e",
+        "localID": "-365804528"
+      },
+      "authored": true,
+      "heightRatios": {
+        "rect": 1.7443348783331747,
+        "1": 1.7498030127480124,
+        "16": 1.1790584418252046,
+        "64": 1.1785285676097188,
+        "128": 1.1850462319868276,
+        "129": 1.1850462319868276,
+        "200": 1.1845428527563726
+      },
+      "originalAlphaHeights": {
+        "1": 348,
+        "16": 170,
+        "64": 169,
+        "128": 167,
+        "129": 167,
+        "200": 166
+      },
+      "equippedAlphaHeights": {
+        "1": 480,
+        "16": 158,
+        "64": 157,
+        "128": 156,
+        "129": 156,
+        "200": 155
+      }
+    },
+    {
+      "hero": "cless",
+      "original": "cless_16_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_16_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "originalPPU": 220.0,
+      "equippedPPU": 134.721375,
+      "originalRect": [
+        1178.0,
+        564.0,
+        240.0,
+        218.0
+      ],
+      "equippedRect": [
+        1659.0,
+        382.0,
+        290.0,
+        305.0
+      ],
+      "originalReference": {
+        "guid": "40e5b31d6d64b0a48b8b17f727aebee9",
+        "localID": "-400452133"
+      },
+      "equippedReference": {
+        "guid": "cb3953392a1dbf544bf8ce841c1cf4e2",
+        "localID": "1140403307"
+      },
+      "authored": true,
+      "heightRatios": {
+        "rect": 2.2847017790429667,
+        "1": 2.2547384770227312,
+        "16": 1.595023216844636,
+        "64": 1.595023216844636,
+        "128": 1.5948457554275417,
+        "129": 1.5948457554275417,
+        "200": 1.6021886401009016
+      },
+      "originalAlphaHeights": {
+        "1": 218,
+        "16": 215,
+        "64": 215,
+        "128": 214,
+        "129": 214,
+        "200": 212
+      },
+      "equippedAlphaHeights": {
+        "1": 301,
+        "16": 210,
+        "64": 210,
+        "128": 209,
+        "129": 209,
+        "200": 208
+      }
+    }
+  ],
+  "oldRectFailureFrames": [
+    {
+      "hero": "cless",
+      "original": "cless-motion_3_2",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png",
+      "equipped": "cless-motion_3_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-motion.png",
+      "ratio": 1.7443348783331747,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_0_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_0_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2217209757622354,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_0_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_0_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9524999522968762,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_0_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_0_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.063833992129975,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_0_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_0_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.068927915554024,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_1_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_1_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.83630517601926,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_1_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_1_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7477148333332067,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_1_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_1_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7325731284017958,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_1_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_1_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8048946927452463,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_2_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_2_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9726061464959108,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_2_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_2_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9409780227538163,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_2_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_2_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9839517059144174,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_2_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_2_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.063120485308501,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_3_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_3_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8890211402884571,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_3_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_3_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.804533569357342,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_3_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_3_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0499361201290993,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_3_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_3_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8275701681150955,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_4_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_4_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.6066666029810626,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_4_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_4_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.7491329603566195,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_4_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_4_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.753399035868469,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_4_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_4_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.76702771017426,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_5_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_5_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0060559854711637,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_5_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_5_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.025480637209104,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_5_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_5_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0623663289229857,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_5_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_5_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2605283290506586,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_6_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_6_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9679743108931682,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_6_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_6_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.048412230655319,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_6_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_6_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.030411454818135,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_6_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_6_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1555599473357514,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_7_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_7_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0430172661026895,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_7_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_7_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7950039243987586,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_7_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_7_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.013377460849689,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_7_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_7_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7638892698820772,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_8_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_8_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.6843880707354486,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_8_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_8_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.6625832927134006,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_9_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_9_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.036125473266305,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_9_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_9_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8387845079206795,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_9_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_9_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.002145544953676,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_9_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_9_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2980225682895195,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_10_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_10_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2774125004124834,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_10_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_10_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.064629905504474,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_10_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_10_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.3398208383563106,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_10_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_10_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1897044919560833,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_11_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_11_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1529237142163025,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_11_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_11_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8937310461696821,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_11_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_11_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8079642415424322,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_11_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_11_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.935668056156386,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_12_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_12_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.056370320129505,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_12_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_12_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2184150401397096,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_12_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_12_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1696666136577663,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_12_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_12_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7639480701110888,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_13_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_13_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.076348365560627,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_13_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_13_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9524999522968762,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_13_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_13_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2167420272889253,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_13_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_13_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.701613403804642,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_14_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_14_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.012767392684898,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_14_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_14_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1590143703282765,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_14_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_14_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.98767868446907,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_15_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_15_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8437096323741766,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_15_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_15_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.802398296213095,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_15_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_15_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.7591259732815168,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_15_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_15_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8691776402830047,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_16_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_16_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.063120485308501,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_16_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_16_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0172352448329223,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_16_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_16_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2847017790429667,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_16_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_16_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.1602465839925484,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_17_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_17_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.963269614955102,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_17_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_17_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.957153510235616,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_17_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_17_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.8223332888104178,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_17_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_17_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.816416622288306,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_18_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_18_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.301390641447261,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_18_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_18_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.200013835138551,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_18_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_18_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9463431258790327,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_18_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_18_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.0723721466775973,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_19_0",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_19_0",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.96364871235507,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_19_1",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_19_1",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.733389301912443,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_19_2",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_19_2",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 2.2804448782052904,
+      "authored": true
+    },
+    {
+      "hero": "cless",
+      "original": "cless_19_3",
+      "source": "Assets/TalesTactics/Art/MotionPremium/cless.png",
+      "equipped": "cless-premium_19_3",
+      "target": "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png",
+      "ratio": 1.9650206988789385,
+      "authored": true
+    }
+  ],
+  "inputFiles": {
+    "Assets/TalesTactics/Art/PixelCampaign/cless-hq.png": {
+      "sha256": "6eb3b09130803dd01c1eeff90d5f885b3ce8d9f3f9b1186bd18b165cadccd049",
+      "metaSha256": "5bf2cd12a32039fdb95110f0d71cd42a5de0805301b8141aee9cf1ae258166ab"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png": {
+      "sha256": "01363f4e245c5ef7c3d4973b5d660d86f8201ecdf84bb4df495cdc36514e2466",
+      "metaSha256": "5f5492cc75757cf35568cd9a83c331099381cc88914c68f9f2152e6043f954e9"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/cless-motion.png": {
+      "sha256": "9bf2b83631cde1155e560c0562b70fad30305ca4e51e547f98f11967915215d6",
+      "metaSha256": "52f3f4a96546535a12beb66af130cc66a374d3c9a2cfd120d0d3f54731f786c4"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/cless-motion.png": {
+      "sha256": "11f2d5ea5f5437e95fa48bcc7106f9b1c406b0ef10a69960c67f838b8a4c9447",
+      "metaSha256": "e65abac2042f003c69a037fb3b1fbe9500322cee413203018328650d9b8d5f40"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/cless-extra.png": {
+      "sha256": "49bf5d6d6553c6cb26943b49772302bc5affa34851e207bafb4b52cdaae5e1ce",
+      "metaSha256": "875257ed336e9507da9ef48c1b540eb5848f26bc7ba83d35cadd44f5539727ba"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/cless-extra.png": {
+      "sha256": "01e6e5952d0207ca22a224d22e452938b7ccf02d7e65da0d18657146fe439fd4",
+      "metaSha256": "13bfc20fa2b3bd13dbf95bafa8e0b8e6fdac9d964070089ec8cd4a6317734b8d"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/cless-polish.png": {
+      "sha256": "3789f41a6b2ca6bfcdb4f927e12466860594f0db45e51fc58fedcbb352ea9d5b",
+      "metaSha256": "72a3cf4bf368bc33dcda286e3522839fc17ec496858837d5bdba56abc033cba5"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/cless-polish.png": {
+      "sha256": "f00992ea38e353dda5af156b75931cafbb3ab5fd72d5616a126418b1f5e9acfe",
+      "metaSha256": "dc497d57c5dd539d300e1db8c77479b447f61d74f10bee2b175002bf0675e5fe"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/cless.png": {
+      "sha256": "c6bd896f69d75e1f9df5d8d22af72bb265693777181b3e94c081e5f902c2be44",
+      "metaSha256": "79488c6da228e57c979f7211eac5ca23e4eccd2a560794544b9806bd7aa1befc"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/cless-premium.png": {
+      "sha256": "98a47c8469e2d1163b2eea657a072338a2795c766a5c1e3bb9b6ff7e63af1a08",
+      "metaSha256": "cf3ef73646c80dcbdae67b1e705e565f79a2be0cadea69fd37cff089bac18063"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png": {
+      "sha256": "febb2c5be6cc583226b6f3fb8ae131c7df009c2a596be6154587fa8b236a9f9d",
+      "metaSha256": "a99634197edd99f6d8d5523569cf73bfb4ba41a6801c82065d6ee569cee6a500"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png": {
+      "sha256": "3213c7adf12e50d67cae6169fc6acd76d11d71855a647ad883a2da7dc1b25a0f",
+      "metaSha256": "eeb03d59587cb1921de8add33279be6d9592000e5e8be68b4da4ade551b84772"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/mint-motion.png": {
+      "sha256": "e0f187c1faa556baf4284ebd22d0105f82b211f66d8c2c4ba9f2f210288910cf",
+      "metaSha256": "5e8984f8e47e039361426ecd2c5fee2aeea80bf7d3b823eee5413eff015cc12e"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/mint-motion.png": {
+      "sha256": "dcbfc421945420be4c5b0e0626b0dfec2f0c67663cbeba93319e224d92cfdde9",
+      "metaSha256": "cb869fdf6b3938705bf5f56e61e76cadfa76d4f90003cec350ab26e8a74d5ac4"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/mint-extra.png": {
+      "sha256": "486b0496cd2f0a0853176c9073c21f8ddcaccfb1168ef6e2cf8bc1946beb5980",
+      "metaSha256": "9b6e96aece67dc60219d98728df7f87dce6de274e3ebaf1332324e6343c90726"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/mint-extra.png": {
+      "sha256": "b12ee829563eaa3cc10ac8a22bceed3b10b44fd082bd45bdad1fdca53745367f",
+      "metaSha256": "8dd9d9845484949685af3d0c79eaef65a86889e624ba2fcc6b0faca024883a99"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/mint-polish.png": {
+      "sha256": "fbf343495b72ca572ba6e948a32fb1b1b78cc4f19b2e4f9540ad7600629bb671",
+      "metaSha256": "8017baa0a700868c8dbf87fa4d66b772b6ffe7f8417f74b9d73b17ec27ffd40b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/mint-polish.png": {
+      "sha256": "06b72ee4d5533f7eb305e686b55f42aee14ab6ebc994e483c7d53b76985a3271",
+      "metaSha256": "97114a218b2ae350d4d79345963a731b8578d2bbd00dcd7ff0529a074d4c63ae"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/mint.png": {
+      "sha256": "bf810c38451df6cb06c655261ef809279d1ae8bb2a7870ff1a42dfb07e0fc3d6",
+      "metaSha256": "0f20e45f4d8a43440adc1642c993ef81db1bbc31db9f903c1a98171d47607e27"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/mint-premium.png": {
+      "sha256": "b96299323b77dc193da2f3a24a8931483e6d4747532c4fc44f2b6ec9de00d27f",
+      "metaSha256": "628a8da4e2efc501aba805d299bb665d24367d175be69aafe5a33635c0ac0289"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/farah-hq.png": {
+      "sha256": "083883568431a74da7faded2ee19c9df97e16e02dcf4bc6247df67a10ba8a332",
+      "metaSha256": "71aa38f8f76d49c51a86c8b186ce911482ce2c62c8a7c76ddb9ee41689521a1c"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/farah-hq.png": {
+      "sha256": "b1dbbebe5d7336863907eb709947599dc23c375961d41cffacbbed7e240a66c0",
+      "metaSha256": "7c232f06960c66299b945e70f496af6f313873fc2034df6f53ec8d58abe44300"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/farah-motion.png": {
+      "sha256": "c6f42ec3c1d662d42db8c4d2d1a06452d512aa8b42f716ad166bac9764b98831",
+      "metaSha256": "f97452dad66bec6d3460ae3a03cbd8c1306087bd94b2032d383fc33286e5a53b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/farah-motion.png": {
+      "sha256": "874a868ff07a428a0406e9d4c53f2ccb9c701bff661a6c7d195c01beb2b0b1e4",
+      "metaSha256": "22e634d79daf2768bf20fddc45da371ec3ee434b52a530902eec0ed57ea56230"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/farah-extra.png": {
+      "sha256": "e2227f18b367a925530e2bb5f3e403388e9908b20e2aa631c8e7069c64b3a741",
+      "metaSha256": "1c5d7806c3b17af19d497e6a3cae70b07db2aead87ba853aefd56f4854ef6b8e"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/farah-extra.png": {
+      "sha256": "fd489a0df3d997bcf779634b49df12fdb1b941fc38b08efb1e3ff7025cb609c4",
+      "metaSha256": "6988fc1d74d3d8558caf5e3775da6bfb4784cfd4ef739e2f7594eab4db9df8f9"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/farah-polish.png": {
+      "sha256": "f1ff2e242dece8feed5e88ad01493e093c86fc96539c9cfdb49434fbb3f9ce3e",
+      "metaSha256": "29a9cf35038d8170cd9d1c5034b4059ddfad31b68738608640637255566111d5"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/farah-polish.png": {
+      "sha256": "5ffc080aef62a1d8ee677b1bc53dfb141e6718794f35072ecf9cb96a9f5a4dd2",
+      "metaSha256": "3bb94fef9a0a4a26486aa5dbe4ba06e8d4b04d5307618512d769064058b53515"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/farah.png": {
+      "sha256": "4e9dd16c6966c95587462374a46c1c659d4ccf685d0ed31e22ba87561f99dfea",
+      "metaSha256": "85724f1b76d21ba66829bbdf3383cac6b81a438d75ff27e4946452ab6f993cec"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/farah-premium.png": {
+      "sha256": "340bee371afe039b905b378b43667a793bcd54f9424e838f2c8d15b03dbbd99b",
+      "metaSha256": "d109fff5404ac7303578d1e39afe0ff2508b52908c2a98ca7e468abdb79ded34"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png": {
+      "sha256": "918b72ca1d843fcbf261226951e19406c717afaee38b45a2a0317c57ef0b6520",
+      "metaSha256": "44732add09e4e0cbb0e2c8bff3e5d4c413096e73902c9a91d6dd471a4392f517"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/tear-hq.png": {
+      "sha256": "667c2b833fe5b658368c21c3cd40711987ba16f6f575ed3608cf509b5deb5a3a",
+      "metaSha256": "55d5cffba0f8ccb4a80cf50fb18656bbdfb160a1fb24703fd6615f9db2c7c816"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/tear-motion.png": {
+      "sha256": "1b8be7e4ca603b4903b215f40967c51d004e46c6d7f83e89c389962f5cb77e26",
+      "metaSha256": "6af9f16ff45752d7d6b7a25b411c9a1a877dcbda43fbf2e260edb205f6b3a3d5"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/tear-motion.png": {
+      "sha256": "0b5518f803bc2ba42aa0b8a8e381a9e0d7fe9da1051b5e4b7942df01cac7f207",
+      "metaSha256": "91ea065f5e6b643901743be7f6721e27ac5ed5229b12175abeada97da71914d2"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/tear-extra.png": {
+      "sha256": "3c31372a8a021cb8fbf112e3cc7b7e27cfc75a543279695b0f706780f7118ed5",
+      "metaSha256": "f2381c18688c0f05316a287ccd7eb99d9352439a780d34e92a4b175ed4fef698"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/tear-extra.png": {
+      "sha256": "8a76120cc2537047fd1e8f5c20f67e9140643e3765b2d230c53b59fa6ff9efbd",
+      "metaSha256": "dc3edddb330c37d97f33afb81976d158e8d5b85d5d6bad99eaa1ed24a964db0a"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/tear-polish.png": {
+      "sha256": "869173b7d8f8c3d190430632bbdb78709ea4dd2dde421fe0a0ed190c3286d832",
+      "metaSha256": "210de69f2ddfdd6298e7c1aabc2f2d31db83e2ae909cfd689c657bc20122288e"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/tear-polish.png": {
+      "sha256": "8339ac7e18ddd80a3058a17532e52a06304e01b8467a697360bbbe6f8fcf6338",
+      "metaSha256": "d46a904e621fc109583494d0fbe311428d58e1eb98083be4fb2c31a93658447d"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/tear.png": {
+      "sha256": "a45e572ca314a598197d7b2b7ae062e20a96a042435c1a0c66ffdc6a2c99c70d",
+      "metaSha256": "5fcd16a2b6db671f0c035d7e44c165d4a5e630187a35f2440f27ff7fad30c579"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/tear-premium.png": {
+      "sha256": "75afb4d454757830ad5053e17480fe36e2084e1640d9cf322a25fc01bc5e92ca",
+      "metaSha256": "f9df54d93c498181ebedf9157be0484faa248e186836181750da3ded218b0be2"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/jade-hq.png": {
+      "sha256": "f4ca185a21dceb0ffbaec0136b546e48bff41c592d7fd25b10a6ad58b9f02ff4",
+      "metaSha256": "9404d6bde8035f97c010569f7803c32879a945b71a110189d6f41417e0ad85e8"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/jade-hq.png": {
+      "sha256": "31a17dde9d56cade38b538f9d18f7ebcb79f667aa28100280ebbc9a1660a0dbf",
+      "metaSha256": "646b1f49dfafd277979c9cb593d84538b5d65db1d0a8d235604df1879ad72460"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/jade-motion.png": {
+      "sha256": "d3ff99882015107cc1b129695b63733628d27de33c2c33c55c448493b3abf676",
+      "metaSha256": "687473ffdf77863a20518b54cd01f630e16d0a90cf1993c6e98cbb00000a745b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/jade-motion.png": {
+      "sha256": "cbb1363c5f2094cbb10e433568e955922e8ad1de4bc33b8c5542e1486c5e25ff",
+      "metaSha256": "09ba47b935b2d5f7636a6e2beb7a1d77bc1d2c1db514282fdf0185ad66120a49"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/jade-extra.png": {
+      "sha256": "b5cce062c6658658ba387c5904fccb827e0f7b322cf285f2d629bb55628eb3d3",
+      "metaSha256": "6eebf8a81c5c94aaeb203fda7b71e008981d255b4918c0b25032bf8ba0eec3cf"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/jade-extra.png": {
+      "sha256": "81c1d02f6b021a04c38683f755a3abd9cf4d9f0a854f59249799a24f6ff64d4c",
+      "metaSha256": "20865ff97cce60d227a7525d1140b5fe6ea4e240332a213691743bd63a84f610"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/jade-polish.png": {
+      "sha256": "905340419556ca781c0f6018a33d6ece6f5be04cbd550cc27615e0a44b558e96",
+      "metaSha256": "c8109ef24773a39047898af68700363b417311774f86165b65bf6441a5657efa"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/jade-polish.png": {
+      "sha256": "779d8654fea096e6b1a377d77e1fcff05274c1038d6eab0f0661c2d5845429f0",
+      "metaSha256": "5e3208b126219073c74c0e3fc509e6c4b4806e37d0ad755f81f489945c44c63d"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/jade.png": {
+      "sha256": "30f95911aae5f87feeefecd2dc6952038f4ae5fdb089214e4332f480cc4896b4",
+      "metaSha256": "1021556b807d12046e53c3a6c914355785a783e3790064f09843423481090bd9"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/jade-premium.png": {
+      "sha256": "a8adeb037bea8ce44b141ce050860a2859ab6816c1ab1028dbc9633c5e4c4702",
+      "metaSha256": "01bfe3bd841939b13a45e956d0019ddf57374178cd5fa7b6646b45c53eb23e10"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png": {
+      "sha256": "a0ec9e5f6eeaa3956de6c8e0777f7b9d582f29b86acc14e55177b27a0fc34d42",
+      "metaSha256": "ad0316f5cd424a8719f66553435d0e490377b0498db064cec9064e7149b1ce65"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/natalia-hq.png": {
+      "sha256": "bc23f521557ebda374e59e810229c50f78d4f41e7f9973264f2f3d3f89d59529",
+      "metaSha256": "21eca9921826bab737232c8a192fd6bb7cdb9c1f56fafd7211a96221380e7b81"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/natalia-motion.png": {
+      "sha256": "97b7a1b38b619d0ceabbdbca281524e53ee3374b33656af3deb4dd65db5af8f5",
+      "metaSha256": "bff714394f62f81c264cdb73e5678e105497f9621bf85bb6b4b1b6e30ed9fcad"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/natalia-motion.png": {
+      "sha256": "9aba85a257c7863a5ccd380512b8cab6ffc79367f53e372534e9dc2d86825efb",
+      "metaSha256": "faa068a851b01fa7f915277051155aa217f2b511da8920d6005999b23a1b0133"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/natalia-extra.png": {
+      "sha256": "a98530d1dc5dce6f399a6c1f1937fe02bb8088c5810442bb05bdc67c37cb2889",
+      "metaSha256": "b09bc4daebcb7288496d42b0426345bbaf53e1701ca4f2bcbef226689345b33b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/natalia-extra.png": {
+      "sha256": "89553d5b022717115c5862643bcbcb6a1058f2072622e6eaded5a6f81dc05f13",
+      "metaSha256": "0859f214d7a3e09c70c2cd7be1d398bb56ff190e9391b1e5978b468ad7f4b70d"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/natalia-polish.png": {
+      "sha256": "15f98ffb0e2891a3b262f4425ecea81b7d06afc8bfcd823f1d56b00e46e7de80",
+      "metaSha256": "1d3a02e987f252f8903c9bc4ff585cf7076b004a9ff18df8dcfe1b512965c1ce"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/natalia-polish.png": {
+      "sha256": "8cc9f4a3cd975d14ceb41aebf4d76804e1996da0d2e0e2a6a49c82c3d82476b6",
+      "metaSha256": "e927d94ca536009bdd9bd01273492a77f948f47a38c835aa1f1d163cfe3b5a3c"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/natalia.png": {
+      "sha256": "22ec50c1afa7b235f73e6b54a8933747c84467a071ef4e4d847ca6fb4a174df6",
+      "metaSha256": "d2e59fcf4e7d936e193b15f439f56dd679fc3cf93e55992fa67b7344de1da45e"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/natalia-premium.png": {
+      "sha256": "274c38d35d95e0358313fd7df7926d00245e822f6ee91f800b0bd41b07cebdbd",
+      "metaSha256": "a235b9a4c1fd1d305aaec6b8c7edad44ee6d21a79668e2ca1289e23b4ebbf026"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png": {
+      "sha256": "087cce48376ccf142e9a1b68f3f2cd43cb66529bbe32b45fa6e65995a2dd0cca",
+      "metaSha256": "9022295e02ac339e1f82fccf6c1902182f7b8bedd6883481a998dfe3c037e049"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/velvet-hq.png": {
+      "sha256": "231fac341b227df3c559771858ee385d7fa4e64fb18dfd01c2b13505a798f1fc",
+      "metaSha256": "12e9ba0807854e4ccfc54d38f49318f651cb9c6757e78daa0e2d5dea01d2d4e4"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png": {
+      "sha256": "cb935e60c5d7d9e964e5f227563144c9b33ba623dc5689d72d25c948e5352329",
+      "metaSha256": "908dba873f41db7d350ae6f09bbe3c084d9e90e79e5835ca5a7b038c6fc8fb30"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/velvet-motion.png": {
+      "sha256": "5ba5e3ef59aeff0b69f4a061e165685dbc4535446928fcd349a3ec6f3236d9cd",
+      "metaSha256": "e7ecaf8dfc272f5bbf109c9a6b90ebbdbeb22c7b00ca71d616d95eb301b194ae"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png": {
+      "sha256": "10a97e622f1170434fde88977589dfe23b07a91df3984b8d1684ab5653b95166",
+      "metaSha256": "e792c4df5bdb8e15dbaff90fd2fd111eb905091d68f31665e9090d8a4be2238f"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/velvet-extra.png": {
+      "sha256": "be3b8bb79701634bf86b63554090aed94c058fafbaff1bcbc243c827563984a9",
+      "metaSha256": "95d8beab106044e3ac682ae88c5b61f1cbfdb7bb24ba084545e0a5c7b439dc4c"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png": {
+      "sha256": "d2f5ec2e59a687f41f51597cbe3705684a62b7ac33f3e97478be8d5018431819",
+      "metaSha256": "a8e096f2c0e924ab4f738e7ca9466a7a19540be1ea7dd219edd6d3b21ea708ad"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/velvet-polish.png": {
+      "sha256": "821dcef579ac96e2ea00a9c77a5a8b352bf9dd6445d0b0f0c2f090d859f842ca",
+      "metaSha256": "afe401aec837457e1ee24da31d2d6eb59a78b2f0bee362ee2fda6244ca658813"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/velvet.png": {
+      "sha256": "10dc506cfde3cfe6fd46d75d44142b64c599455702f92eb364d6ba18f3115cb1",
+      "metaSha256": "1c5bd486273bb1e394da29b39e2bbe076326842e074f985b1ab35664f6f943f0"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/velvet-premium.png": {
+      "sha256": "fef038a714ed0663b60df3e5837bbdaf1377ed8d21f7a2e9a72a072093d01d3d",
+      "metaSha256": "af27b8504794b054336aea0dd0651b8317b07ae06a48a0a67eb6423d80758c06"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png": {
+      "sha256": "0ec5e1eefa983e66b12262938c8110112ac4bbbf38a661383e27cf0259188ac7",
+      "metaSha256": "defb33e2e431eeff493b5d865dd20852147c55c831ef40fdf3e3b087904a69a3"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/alphen-hq.png": {
+      "sha256": "4f8490b7d13a6518991ef6b418ab9980a3894ee9d2dbc4402b6cb6df55e9b6b4",
+      "metaSha256": "9e9a70ad8571b3c202cf9ad0f2e912979e6a65c679d5a1e5bd818064f992407e"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/alphen-motion.png": {
+      "sha256": "1672dc343dc06717f6656b8d134846f9a90d381a55e5c66ec10aca6828653a6b",
+      "metaSha256": "0579737d722c6ceea03bb3fca33bbe8d4ed2952ffee9b555cd455f84c7ac1b1c"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/alphen-motion.png": {
+      "sha256": "46350c3362c5af3707c76810250659865feb6826600bba4277282accc92250a5",
+      "metaSha256": "4d0a5aee84422e51d0037b524f72a5375f49016e1d616cec8122df8434f8dcc4"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/alphen-extra.png": {
+      "sha256": "6f6fcaa2a4e10b89f291e56a67dcaeffb768ab68c8f265c616898ff4759b15ce",
+      "metaSha256": "dff034c959b93948e89108e99f080e73ad2355e9f6eb134ae525e4e71a33f65b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/alphen-extra.png": {
+      "sha256": "2148f54090390c4affeaff972e7c334960d4deb4d5661e615d6acea8accc390b",
+      "metaSha256": "c914669e4a0e975888dde8e867c9fa618c34bb70d8ebed8630c6d95abc2c6cb0"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/alphen-polish.png": {
+      "sha256": "d60d99bb750286bb102ea4b202bacc03cd06080d35dea9decd9c40efa4c177cc",
+      "metaSha256": "0db45cf614eff26f62b25bf9d00c3b294ef39249939ed70fd5be1751f5fad38a"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/alphen-polish.png": {
+      "sha256": "c84097a40226ca49186ce845acc5fcaf81c6133358d75c9f814a6b87a1f18e3e",
+      "metaSha256": "1460b6787e3682f40cc4d4bcfea9d4c9ddd4018edae14eaa654a41e8a8c917b8"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/alphen.png": {
+      "sha256": "6249e002fdd66f2daf7b215010b46489d07e4b67d4009aa2ef0af5726b75d73c",
+      "metaSha256": "6b1b3b56294bbc0d9dc2069b2f8642f55c339d0bbc99e2c8ed9cfff2d52e08aa"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/alphen-premium.png": {
+      "sha256": "12e052373becc7c2e22160bbd43898316ba15a1a5562febb21745096b235834a",
+      "metaSha256": "8be0fd8fc102d9e4bc96392af725a360d4061905976621fe01905d2c8b772400"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png": {
+      "sha256": "5e5ca22da2eb9f972d08bcbfd3c1c28184d40326a7c03749c9d37df1c7baa491",
+      "metaSha256": "21156aa2a7ac9b56d7874f386098ba36420ab321306f0a9c9e8781e802af59b6"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-hq.png": {
+      "sha256": "01b0c14dc638c1e27447ee28eaf7f8b66f6d259b0086c00d63baa9fbfa87f6f6",
+      "metaSha256": "f1da405192d31c2f4c29fabfb6bc5545055c5cea7b1c054c497bab22ebfeb925"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png": {
+      "sha256": "db972ec29f25135c6fdb623cc1c4ef791f5faf2725d2e24da0dec87557452301",
+      "metaSha256": "60a8c872f2b3446021d0236703cefefa68b9e881ff8a47ffde6619201aac98e3"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-motion.png": {
+      "sha256": "136e53c3ce2393625dcd60a8e87bac40f5e5484ae50777d3315d27d034f7c9a5",
+      "metaSha256": "6cb6132e38566dcc00c6b20e112a456e545e8bb0feaa119694335724d49ffcbe"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png": {
+      "sha256": "4ed0657267563df628ad84efacd836c59e6564ad03c0b787ae6b1ee60f50ae9c",
+      "metaSha256": "5dbab3d85339bfd1d42383dad0acf311d3e42a8d180d429e63127bf4637c8ee4"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-extra.png": {
+      "sha256": "3f1e6e55341358b21aa8ad8b85adb05da45d1f281f2e2c5dba3cd7023770cae9",
+      "metaSha256": "daadc0d420f7231449e3b94603e131e3a4c26cd8dac9d6fbe2c0362507cdb620"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png": {
+      "sha256": "40c4f2d9c522c49ccaad3b3589862f800bc096380db1b4103519a7d723d60fdb",
+      "metaSha256": "fee0cc7143ae63caecfff4d723e5e67829d87ac807ba4c0a032fd97e4795f336"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-polish.png": {
+      "sha256": "93a8643ce541db2f93c9a63d0e58ee5d1381421ac057e0ecd2773f125d4665e1",
+      "metaSha256": "17d43fb864b0e126014cae19498d3864e7218fc7a542ab43fc1df50aa4d803d7"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/shionne.png": {
+      "sha256": "2e82d224d1c50a3d2cc0dde85f0c0cc72cfd672b7883777bce2553b1494ea97b",
+      "metaSha256": "0d4b6b62407078567c378dd8167e9e2522d23f8dfc3d3c95f14fa6be3c2e0b87"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-premium.png": {
+      "sha256": "3682771c1c6de8819dd65508084dee5a93368aecbdf3c79355da5dbd1c493540",
+      "metaSha256": "4c68cdf729946925382f5ffc243f0aa09306df14b59128ee291bda3e90dd2da7"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/shionne-right.png": {
+      "sha256": "f7010f7cb60e4eaf837b71e39b2897064dfff59c324eed45bc9d423cb4e80af1",
+      "metaSha256": "b0ec03ad91114dc561060a0e65096823dad086afb90ce14ea859a90f24722897"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/shionne-right.png": {
+      "sha256": "70d433924650017cc016d3425263ad2bcbacb3a325e9f749a9ec692dde590ab0",
+      "metaSha256": "b2cf14f0663eac1f22eb3191bf6f27132b3901f4b4cf6d5ec4244dac191bde47"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/kisara-hq.png": {
+      "sha256": "32d43136ceada04d60cf527c2950b3f1b450317c28a35773888bf366aa1e4f87",
+      "metaSha256": "91d9fa037ad96ce59267c68359045e3f3321401e7d8b36394b3b4cb531968f94"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/kisara-hq.png": {
+      "sha256": "7b91f76fe39d427300fdaefc79cbc9779b2914b3cdbeb3bd1e1887749cf61597",
+      "metaSha256": "9ee5b5307981288e07ab5a5afe88095230630c391744c05613ecc50d2f83b3fc"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/kisara-motion.png": {
+      "sha256": "08ddebe16f1fba4fff7a61051a800278dda7c74b1bbdbe3922139a5533ec2881",
+      "metaSha256": "510afe4e1ba6b016eddbaeb5ba91b5ab8e61ff4d85bc1b6cf0528462dc3c0643"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/kisara-motion.png": {
+      "sha256": "2afd821d2a10c4793393389152cb1f282a4ccd2827ce01d609151acf89ecae6a",
+      "metaSha256": "4a72c7bb642e578f4f2502699f44132e040d6a051d0559b1211e7c3ae1251f24"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/kisara-extra.png": {
+      "sha256": "474c18f2c11b8235be172a9756516a7a205e08b1c558548880a0f9f613e4c987",
+      "metaSha256": "f52a9cef88f3bdecfa135c556a9d5dc4bf19850dbf38d11a2a3d797c0ada0728"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/kisara-extra.png": {
+      "sha256": "2056e9638ea30ca5ca1a4747a0f460c5cc24aa7a28ff32e3b84a47e98e3947d2",
+      "metaSha256": "36ff0af388d21358f3d19fa4c209f7179d91d2eec1735c282a041f672d817a30"
+    },
+    "Assets/TalesTactics/Art/PixelCampaign/kisara-polish.png": {
+      "sha256": "17eca299ec9918de7714f1901b67e915b3c81c56daedaf4e1f1862742786fa96",
+      "metaSha256": "2cb860e4139908e2b96e92fb3b89e3d078ee2556b37cd0444e6c4263fa4d835f"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/kisara-polish.png": {
+      "sha256": "c79a681a03f142443c6950061fc8f2033a7333b5c51d2c0846a2b3fae3b96ec3",
+      "metaSha256": "424219f765c0e99b11865b0a8b8d40f719f8ccc7fe3ca639f0a3491214129a10"
+    },
+    "Assets/TalesTactics/Art/MotionPremium/kisara.png": {
+      "sha256": "fe9ac2330299b2f8ebb0501c9da4e08cc3ac005295eee36237b9e40357d42eb6",
+      "metaSha256": "72ca170f7d96be6c35d18d01834b4c9604c3c4d7e907970e80dce142ff062a1b"
+    },
+    "Assets/TalesTactics/Art/SignatureWeapons/kisara-premium.png": {
+      "sha256": "e532e66e93fc698dbff08428db1e8782694c9a8b09796ced10d38667de617582",
+      "metaSha256": "9a852fca1c871e862f25de7aa1efb9d183966f46e5494ef061f9616ba5f5977b"
+    }
+  },
+  "allInputHashesRecheckedUnchanged": true,
+  "testChange": {
+    "file": "Assets/TalesTactics/Tests/SignatureAppearanceTests.cs",
+    "sameRangeAndAuthoredCoverage": true,
+    "existingIdentityMeshAndEquipmentAssertionsRetained": true,
+    "addedSyntheticCases": 2,
+    "syntheticEvidence": [
+      "Alpha128 support padding does not enlarge the measured height.",
+      "A disconnected alpha129 pixel expands total visible bounds.",
+      "A frame without alpha>128 pixels fails.",
+      "A true 2x opaque body at identical PPU fails the unchanged range."
+    ],
+    "importSettingsOrProductionAssetsChanged": false,
+    "unityCompilationAndExecution": "Pending root execution; this document is PNG analysis, not an engine test result."
+  },
+  "limitations": [
+    "Total visible height includes hair, clothing and weapons; it is not an anatomical body measurement.",
+    "A passing scale contract does not prove smooth pose transitions, accurate hands or lack of clipping. Actual prior static/continuous visual reviews remain separate evidence.",
+    "This report does not claim that weak pixels are deleted or invisible under every compositing condition. They remain preserved in production pixels and are excluded only from this size metric."
+  ]
+}

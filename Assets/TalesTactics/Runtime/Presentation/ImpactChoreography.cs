@@ -73,8 +73,8 @@ namespace TalesTactics
         {
             float flameFade=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.48f,.88f,t));
             float strength=reduced?.66f:1;
-            GroundGlow(1.35f,new Color(1,.32f,.025f,flameFade*.65f*strength));
-            Glow(Plane(0,.15f),1.35f,new Color(1,.26f,.01f,(1-t)*.42f*strength));
+            GroundGlow(1.15f,new Color(1,.32f,.025f,flameFade*.32f*strength));
+            Glow(Plane(0,.15f),1.10f,new Color(1,.26f,.01f,(1-t)*.18f*strength));
 
             // Back layer is occluded by characters; asymmetric front wisps keep faces visible.
             int count=reduced?2:4;

@@ -14,21 +14,13 @@ namespace TalesTactics
         void CelStroke(Vector3 a,Vector3 b,float width,Color color,bool highlight=false)
         {
             if(color.a<=.002f||(b-a).sqrMagnitude<.000001f)return;
-            Ribbon(a,b,width*1.65f,SkillVisualLanguage.Ink(color));
+            Ribbon(a,b,width*1.30f,SkillVisualLanguage.Ink(Alpha(color,color.a*.76f)));
             Ribbon(a,b,width,color);
-            if(highlight)Ribbon(a,b,width*.26f,Alpha(new Color(1,.98f,.87f),color.a));
+            if(highlight)Ribbon(a,b,width*.26f,SkillVisualLanguage.Highlight(color));
         }
         void CelSlash(Vector3 center,float radius,float angle,float sweep,float width,Color color)
         {
-            int segments=reduced?12:20;
-            for(int j=0;j<segments;j++)
-            {
-                float u=j/(float)segments,v=(j+1f)/segments;
-                float a=angle+sweep*u,b=angle+sweep*v;
-                float taper=Mathf.Pow(Mathf.Sin((u+v)*.5f*Mathf.PI),.65f);
-                CelStroke(center+Plane(Mathf.Cos(a)*radius,Mathf.Sin(a)*radius*.68f),
-                    center+Plane(Mathf.Cos(b)*radius,Mathf.Sin(b)*radius*.68f),width*taper,color,true);
-            }
+            LayeredCrescent(center,Plane(1,0),Plane(0,1),radius,radius*.68f,angle,sweep,width,color);
         }
         void CelPetal(Vector3 center,Vector3 axis,Vector3 side,Color color)
         {
@@ -45,34 +37,34 @@ namespace TalesTactics
         }
         void CelContact(Vector3 center,float phase,Color color,float radius=.65f)
         {
-            float a=SkillVisualLanguage.ContactEnvelope(phase,.32f)*color.a;if(a<=0)return;
-            int count=reduced?4:7;float opening=.12f+Mathf.Clamp01(phase/.12f)*.15f;
+            float a=SkillVisualLanguage.ContactEnvelope(phase,.26f)*color.a;if(a<=0)return;
+            int count=reduced?3:6;float opening=.06f+Mathf.Clamp01(phase/.10f)*.16f;
             for(int i=0;i<count;i++)
             {
                 float angle=i*Mathf.PI*2/count+.19f,reach=radius*(i%2==0?1:.68f);
                 var direction=Plane(Mathf.Cos(angle),Mathf.Sin(angle));
-                var across=Plane(-Mathf.Sin(angle),Mathf.Cos(angle));
-                CelPetal(center+direction*(opening+reach*.32f),direction*reach*.38f,
-                    across*(i%2==0?.052f:.035f),Alpha(color,a));
+                CelTrail(center+direction*opening,center+direction*(opening+reach),i%2==0?.033f:.020f,Alpha(color,a));
             }
+            Glow(center,.09f*(1-Mathf.Clamp01(phase/.16f)),Alpha(SkillVisualLanguage.Highlight(color),a*.55f));
         }
         void HealingFiligree(Vector3 center,float phase,float opacity)
         {
-            var green=new Color(.35f,.92f,.64f,opacity*.78f);
+            var green=Alpha(SkillVisualLanguage.HealingLeaf,opacity*.55f);
             int ribbons=reduced?1:2,segments=reduced?10:16;
             for(int r=0;r<ribbons;r++)for(int j=0;j<segments;j++)
             {
                 float u=j/(float)segments,v=(j+1f)/segments;
                 float a=u*Mathf.PI*1.65f+phase*1.6f+r*Mathf.PI,b=v*Mathf.PI*1.65f+phase*1.6f+r*Mathf.PI;
-                var p=center+Plane(Mathf.Cos(a)*.39f,.08f+u*.76f+phase*.24f);
-                var q=center+Plane(Mathf.Cos(b)*.39f,.08f+v*.76f+phase*.24f);
-                CelStroke(p,q,.014f*Mathf.Sin((u+v)*.5f*Mathf.PI),green,true);
+                var p=center+Plane(Mathf.Cos(a)*.50f,.15f+Mathf.Sin(a)*.085f+r*.12f);
+                var q=center+Plane(Mathf.Cos(b)*.50f,.15f+Mathf.Sin(b)*.085f+r*.12f);
+                CelStroke(p,q,.010f*Mathf.Sin((u+v)*.5f*Mathf.PI),green,true);
             }
             for(int i=0;i<(reduced?3:6);i++)
             {
-                float angle=i*2.39996f+phase*.7f,y=.14f+Mathf.Repeat(i*.19f+phase*.65f,.92f);
-                var point=center+Plane(Mathf.Cos(angle)*(.32f+phase*.12f),y);
-                CelPetal(point,Plane(Mathf.Sin(angle)*.045f,.068f),Plane(.036f,0),new Color(.89f,1,.73f,opacity*.8f));
+                float angle=i*2.39996f+phase*.7f,y=.16f+Mathf.Repeat(i*.19f+phase*.65f,.88f);
+                float side=i%2==0?-1:1;
+                var point=center+Plane(side*(.46f+Mathf.Sin(angle)*.065f),y);
+                HealingPetal(point,Plane(Mathf.Sin(angle)*.065f,.18f),Plane(.046f,0),opacity*.82f);
             }
         }
         void FrameQuad(Geometry mesh,Vector3 center,Vector3 right,Vector3 up,Color tint,float frame,int first,int last)
@@ -198,7 +190,7 @@ namespace TalesTactics
                 else
                 {
                     var tail=Vector3.Lerp(from,Vector3.zero,Mathf.Max(0,p-.22f));
-                    Ribbon(tail,point,style==CombatVisualStyle.Rifle?.025f:.045f,new Color(.72f,.89f,1,opacity));
+                    CelTrail(tail,point,style==CombatVisualStyle.Rifle?.025f:.045f,new Color(.72f,.89f,1,opacity));
                     Glow(point,.09f,new Color(.95f,.98f,1,opacity));
                 }
             }

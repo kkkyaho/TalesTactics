@@ -1,0 +1,1480 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-31",
+  "reviewer": "sd_mockup_review",
+  "status": "sampled_final_continuous_joins_reviewed_no_new_blocking_defect_observed",
+  "visualApprovalForAllAnimation": false,
+  "scope": {
+    "character": "velvet",
+    "skill": "velvet.ultimate",
+    "baseDirections": [
+      "Front",
+      "Back",
+      "Right",
+      "Left"
+    ],
+    "signatureDirections": [
+      "Front",
+      "Back"
+    ],
+    "continuousClips": 6,
+    "recordedFramesPerClip": 74,
+    "actualCaptureImagesViewed": 37,
+    "originalReferenceImagesViewed": 2,
+    "frameNumbersPerClip": [
+      40,
+      41,
+      44,
+      61,
+      62,
+      68
+    ],
+    "additionalFrame": {
+      "equipment": "base",
+      "direction": "Front",
+      "frame": 51,
+      "sprite": "velvet_15_0"
+    },
+    "joins": [
+      {
+        "frames": [
+          40,
+          41,
+          44
+        ],
+        "roles": "premium attack to HQ attack and back to premium attack"
+      },
+      {
+        "frames": [
+          61,
+          62,
+          68
+        ],
+        "roles": "premium recovery to polish recovery and HQ idle"
+      }
+    ],
+    "method": "Read six current final-b timelines and opened all listed original 960x540 Unity PNGs sequentially with filename labels. Also opened two original signature reference sheets to identify an inherited Back weapon-side discrepancy. No crop, resizing, image composition, pixel editing or Unity execution by reviewer."
+  },
+  "automatedEvidence": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\result.json",
+    "sha256": "464b9d5e281f53c37c16ca170e5658041d643f6a7d452c00d83abb07a71e3e03",
+    "schema": 2,
+    "passed": true,
+    "expectedRuns": 104,
+    "completedRuns": 104,
+    "pngCount": 1433,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "mode": "motion",
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateSelectionSha256": "87ae89fd88d691665f7fd066f87d4a9f25cf6bfdee305bbe997f42e369edc46a",
+    "errors": [],
+    "interpretation": "The 104-run pass is execution/state/geometry evidence. It does not provide visual approval of every PNG or candidate pose."
+  },
+  "captureCandidateInputs": [
+    {
+      "source": "Assets/TalesTactics/Art/MotionPremium/velvet.png",
+      "sourceGuid": "95d5e49ca45599541b4182b6c0af0e28",
+      "sourceSha256": "5d31a82412e42c40455eda41ebdfa39c10405fc875abd497c43df5bab36a5e49",
+      "sourceMetaSha256": "23be16815315ba0c81f76ddab09d13b310d02bacf8b68331d649f3245f9d6a82",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/MotionPremium-velvet-v4.png",
+      "candidateSha256": "10dc506cfde3cfe6fd46d75d44142b64c599455702f92eb364d6ba18f3115cb1",
+      "candidateMetaSha256": "f529af13ec6a86493872a03ba8ea15ab9dd3217fa80de262346d2439833e294c",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-velvet-v4.json",
+      "measurementSha256": "e2634be8d963625ab3e398e9856aa21f51c8df6674b9b7d782a3af2f78dc8b76",
+      "frames": 72,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-extra.png",
+      "sourceGuid": "1488a4ddba3685b44a8fd844f0d36367",
+      "sourceSha256": "d8350799a5b00d89b86e9a559d964aac99bce3192688edc53f72477933f02e32",
+      "sourceMetaSha256": "6feb4b5ec7c88a62f4f1ebb609b87740ed7a88b415e94f193a106adcb69edb64",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/PixelCampaign-velvet-extra-v1.png",
+      "candidateSha256": "10a97e622f1170434fde88977589dfe23b07a91df3984b8d1684ab5653b95166",
+      "candidateMetaSha256": "bcb95dc52ddb8b8139174d4712c3f18a9f27cccbbc303002eac5272be64d81e2",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/PixelCampaign-velvet-extra-v1.json",
+      "measurementSha256": "b94de8bd00634d3d49d53406fdc8b1d9820c4da0ca67d22ba2861ec267ec22a2",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-hq.png",
+      "sourceGuid": "9f1033db45a03bf47b95c4de416bc477",
+      "sourceSha256": "ab2a5b6c369cbe5428fa81fccfccf51b70cd763740b682a2aed64c01bcac43d5",
+      "sourceMetaSha256": "6ece634800ee6963845b5b27f6f8a8b808c22774604db831a0c59b4e214ec223",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/PixelCampaign-velvet-hq-v1.png",
+      "candidateSha256": "087cce48376ccf142e9a1b68f3f2cd43cb66529bbe32b45fa6e65995a2dd0cca",
+      "candidateMetaSha256": "d04799807f03468bf200da56e1e153eb36bca8855ccaf1b71951f9f23a7eede3",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/PixelCampaign-velvet-hq-v1.json",
+      "measurementSha256": "cddf20c65b4f326987df16d48050cc8c74b0492000364de05dadd275229dbd30",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-motion.png",
+      "sourceGuid": "a24866da74cc6a04194225262f984c54",
+      "sourceSha256": "0ccf2bc5335398f81188a7aae84443169fe620cd2da203cfc4542a251f6a44c6",
+      "sourceMetaSha256": "130cbba4b1dabce12f6a8f1c80b5ba017665497e84357e254c95c709976f8220",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/PixelCampaign-velvet-motion-v1.png",
+      "candidateSha256": "cb935e60c5d7d9e964e5f227563144c9b33ba623dc5689d72d25c948e5352329",
+      "candidateMetaSha256": "2234a268360c10df08c4922eab98ae8e899488526a35d3a3d0c242c8ea1fd87c",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/PixelCampaign-velvet-motion-v1.json",
+      "measurementSha256": "296ff0f937798d27d9e651f35c6691d4ac761bdca99f5a8b647a034af79c9081",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/PixelCampaign/velvet-polish.png",
+      "sourceGuid": "327e7b862dd43f94eb7131a67c9b714c",
+      "sourceSha256": "b9c72812694597d8b1c8c3b64b5f1d896326a55dd61cd256969a7caae41a68fb",
+      "sourceMetaSha256": "323d12bf533837252d49b4d945cf81ab52264f7c6f7031ca0f7a06dbe020553d",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/PixelCampaign-velvet-polish-v1.png",
+      "candidateSha256": "d2f5ec2e59a687f41f51597cbe3705684a62b7ac33f3e97478be8d5018431819",
+      "candidateMetaSha256": "d0d308538e56c8e2e490b31f44a3674a8b3181f8c894e012d619eae2f8be8914",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/PixelCampaign-velvet-polish-v1.json",
+      "measurementSha256": "00453ab5bde21e9053d44981642632d6ee90bf5592f5581405fc13940f5d21ba",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/velvet-extra.png",
+      "sourceGuid": "a3e7d1b61770beb44bcfe0a983f1b5df",
+      "sourceSha256": "78e941839abb1264bdeba30327184c06fbd0a25d2f689b63dfcf9b9eece1773e",
+      "sourceMetaSha256": "8930d8fae15f51b9f65c796bf06699ea843bb058165c7bf8afb8edf03e1abece",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-velvet-extra-v1.png",
+      "candidateSha256": "be3b8bb79701634bf86b63554090aed94c058fafbaff1bcbc243c827563984a9",
+      "candidateMetaSha256": "165444595e7f21b63ad4e0fbc843e5278e9dda82fd089830fcfa95173a8c9368",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-extra-v1.json",
+      "measurementSha256": "fb56583d696f63630313b58e16590a5605eb9985da4888bf119797cfab9217de",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/velvet-hq.png",
+      "sourceGuid": "8c52d846f49c26a4cadfaed9ec023f93",
+      "sourceSha256": "6ebc1e31ef265080c9dfaad3a1c2dd8024d0cf7a67128684d9b75022483d3282",
+      "sourceMetaSha256": "ee1217ae952b1986f4a3a3654a0105b4e2e9b6dd12a1819d3ea7e905e5a6c866",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-velvet-hq-v1.png",
+      "candidateSha256": "231fac341b227df3c559771858ee385d7fa4e64fb18dfd01c2b13505a798f1fc",
+      "candidateMetaSha256": "4fc911ca0f7f0bde677d4d200b1235c2fd797f87ac6657b66f794ae18f4e18fb",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-hq-v1.json",
+      "measurementSha256": "62a8e11be5433fc983a796fa509535a1cf44cb830372bcf8dc6b162eeed4bb45",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/velvet-motion.png",
+      "sourceGuid": "4bb079f95fc56784b93d6f2919394d6f",
+      "sourceSha256": "1aefb3c37422b0b1554223807adfedca1ca34260277e9e24ee4c26f77412ab3d",
+      "sourceMetaSha256": "93366a87a02af6302cd1678b9a0fea547a21fd47cd9f4a516c3dbfd50006698c",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-velvet-motion-v1.png",
+      "candidateSha256": "5ba5e3ef59aeff0b69f4a061e165685dbc4535446928fcd349a3ec6f3236d9cd",
+      "candidateMetaSha256": "ccf4fc7d772f018818675a67db6be1cf92644ba1c44a30ae1698432e490f12c4",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-motion-v1.json",
+      "measurementSha256": "4901ec8fb20b7a8737cde12ef962532724fddd62daf4c1e78e50298dbe5249a9",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/velvet-polish.png",
+      "sourceGuid": "98b4081a0110dac42bcf0d7f13153af7",
+      "sourceSha256": "c293326aefc6c5a45410e62fb4390b53be0efba763565a31122564b72651868e",
+      "sourceMetaSha256": "62f5c0fef306652120168d896a6edc558fbb59477b479c92d71ad399a8db010e",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-velvet-polish-v1.png",
+      "candidateSha256": "821dcef579ac96e2ea00a9c77a5a8b352bf9dd6445d0b0f0c2f090d859f842ca",
+      "candidateMetaSha256": "4e4472e42f16a64982e7fdde637178e44c84f94f12861713821a5918dd78d3be",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-polish-v1.json",
+      "measurementSha256": "318f24ff59fad77212b1afca005e1d920866ede69ead8bc4b82305f0f15b7c68",
+      "frames": 16,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    },
+    {
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/velvet-premium.png",
+      "sourceGuid": "5272d9116e1a6a9409f7034ad359d72c",
+      "sourceSha256": "1f7184a1144ea3035ce4af6c4949d84fe78e7c348a0584a0b89aa1c390566ced",
+      "sourceMetaSha256": "649cd2292919ea5029ec535bafe99a09d4ca6d6090e2c1b64b89f75793510ace",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-velvet-premium-v2.png",
+      "candidateSha256": "fef038a714ed0663b60df3e5837bbdaf1377ed8d21f7a2e9a72a072093d01d3d",
+      "candidateMetaSha256": "2e4da2b2aad36e4d4663b72420e8d2936b265c252519dafbe27060c9c21649a7",
+      "measurement": "Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-premium-v2.json",
+      "measurementSha256": "edc078419818fb6d632c7dfa015ed2521469e91c06035cbdb40fe0ac9ee96b5a",
+      "frames": 72,
+      "identity": "Exact authored frame name and original source GUID/local file ID; candidate measured rect/pivot/PPU checked. Candidate asset IDs are separate and are never written into production."
+    }
+  ],
+  "findings": [
+    {
+      "id": "base_front_claw_correction_visible",
+      "severity": "correction_confirmed_in_sample",
+      "evidence": "base Front 0051 / velvet_15_0 / MotionPremium-velvet-v4",
+      "observation": "A single long multi-blade claw is visible on the raised screen-left hand. The extended opposite screen-right hand is a small dark glove and has no second long claw. The previously reported duplicated long weapon is not present in this final rendered pose."
+    },
+    {
+      "id": "base_four_direction_attack_joins",
+      "severity": "no_new_blocking_defect_observed",
+      "evidence": "base Front/Back/Right/Left 0040,0041,0044",
+      "observation": "Head, torso and armored boots remain within the same SD body range across the HQ/premium joins. The HQ slash folds the legs and brings the arm across the body; premium extends into a lunge. No large simultaneous head-and-body scale swap, extra visible arm, detached boot or clipping was identified. Hair, coat and weapon reach change the outer bounds and are not treated as body-scale errors."
+    },
+    {
+      "id": "base_recovery_idle_joins",
+      "severity": "no_new_blocking_defect_observed_with_drawing_variation",
+      "evidence": "base Front/Back/Right/Left 0061,0062,0068",
+      "observation": "Premium recovery is slightly broader through the boots and outer hair/coat silhouette than the support poses. The polish-to-idle body remains close in head/torso/boot scale; no conspicuous whole-body replacement was observed. The transition from the broad premium multi-blade claw to the support single forearm blade remains visible as the established artwork-role difference; this is not a claim of perfectly identical weapon silhouettes."
+    },
+    {
+      "id": "signature_front_back_joins",
+      "severity": "no_new_blocking_defect_observed",
+      "evidence": "signature Front/Back 0040,0041,0044,0061,0062,0068",
+      "observation": "The single pale green/silver forearm weapon stays identifiable across premium/HQ/polish. The unarmed white-bandaged hand is visible where the pose exposes it; hands hidden by long hair are not counted as missing. No duplicate weapon, duplicated hand, cropped extremity or major head/torso proportion change was seen in these samples."
+    },
+    {
+      "id": "back_weapon_screen_side_is_inherited",
+      "severity": "existing_authored_inconsistency",
+      "evidence": "signature Back 0062 versus 0068; original HQ reference row1/col2 and Polish reference row4/col2",
+      "observation": "The lowered weapon is on screen-right in polish recovery and screen-left in HQ idle. Direct rereading of the two original reference sheets shows the same difference (velvet-polish_3_1 versus velvet-hq_0_1). This visible inherited hand/weapon-side inconsistency remains; it was not introduced by the current candidate or classified as a new automatic facing reversal. The review does not claim perfect left/right anatomical consistency of the original poses."
+    },
+    {
+      "id": "crop_and_body_presence",
+      "severity": "no_defect_observed_in_sample",
+      "evidence": "all 37 capture PNGs",
+      "observation": "The figure and exposed limbs remain inside the frame. No obvious detached body fragment, missing full character or second hand-mounted long weapon was found at the displayed capture scale."
+    }
+  ],
+  "limits": [
+    "Only the listed 37 stills from six 74-frame clips were visually inspected. This is not full real-time playback or a visual review of all 1433 final-b PNGs, all skills, or signature Left/Right continuous motion.",
+    "At the fixed 960x540 camera scale the illustrated body occupies roughly 100 image pixels vertically in many views. Major silhouette/weapon duplication and body-size changes are readable, but individual fingers, exact blade count within the one claw, and native line sharpness are not certified.",
+    "Native sheet review and prior static optical review remain separate evidence. This sampled pass does not replace the earlier all-pose art review.",
+    "Dark isolated captures have no visible floor. This review cannot establish physical foot planting, exact pivot correctness or full root-motion continuity from boot screen coordinates.",
+    "Different crouches, lunges, twists, hair and coat spreads legitimately change silhouette bounds. No body-scale conclusion was based on sprite rectangles or total bounding-box height alone.",
+    "The inherited Back weapon-side discrepancy and premium-versus-support weapon silhouette difference are explicitly retained observations, not silently approved as perfect consistency.",
+    "The candidate-preview result and preserved originals do not establish production replacement or visual approval of a final release build."
+  ],
+  "originalReferencesViewed": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-velvet-hq\\reference-00.png",
+      "sha256": "42342e4cd7fbf8f98319cea31428012e26f40796b65febc0d3ad45947ca8b634",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-velvet-hq\\reference-manifest.json",
+      "manifestSha256": "86c5b91af64d99d9224f6491f4b908df875a44a19b7d48dc2e2a35ce35536544",
+      "name": "velvet-hq_0_1",
+      "cellIndex": 1,
+      "purpose": "Original authored screen-side weapon placement comparison for Back recovery-to-idle; full reference image actually viewed."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-velvet-polish\\reference-00.png",
+      "sha256": "1d996c5b29fe789bb86e45dc61bd2c382b30b74ab683791cb8ae697b750db723",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-velvet-polish\\reference-manifest.json",
+      "manifestSha256": "80c325500003c28279570de77986ef01c677a2f5fa124835f45ad5d5a4bb6fa1",
+      "name": "velvet-polish_3_1",
+      "cellIndex": 13,
+      "purpose": "Original authored screen-side weapon placement comparison for Back recovery-to-idle; full reference image actually viewed."
+    }
+  ],
+  "relatedEvidence": [
+    "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\Validation\\final-optical-farah-velvet.json"
+  ],
+  "clips": [
+    {
+      "equipment": "base",
+      "facing": "Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\timeline.json",
+      "timelineSha256": "a9b9cb8fbe0738765a91168db265772e9e42514f8b2a30b57177a10fc33ce115",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0040.png",
+          "sha256": "f70a980f9e8a9ea6bd3b0bbc5bac4e1fb93ecd208fa764d579c4e5aab72e9ac7",
+          "sprite": "velvet_12_0",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 860.0,
+            "y": 824.0,
+            "width": 299.0,
+            "height": 301.0
+          },
+          "nativePivot": {
+            "x": 82.26183319091797,
+            "y": 43.00638961791992
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0041.png",
+          "sha256": "bed3e8f3ff5b8b7b589347eeb3d866ffc0fadee2d84cf256740b649175c7ce02",
+          "sprite": "velvet-hq_1_0",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1114.0,
+            "width": 285.0,
+            "height": 239.0
+          },
+          "nativePivot": {
+            "x": 166.1762237548828,
+            "y": 5.658188343048096
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0044.png",
+          "sha256": "08133da101c0e54cff0a625a9d4c1d0a969aa309d5a9eb9b0a966224f68158e0",
+          "sprite": "velvet_13_0",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1138.0,
+            "y": 2287.0,
+            "width": 316.0,
+            "height": 260.0
+          },
+          "nativePivot": {
+            "x": 196.6763458251953,
+            "y": 13.006389617919922
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 51,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0051.png",
+          "sha256": "c87c91efecf173656407cc30271221bc02b501b0e9979898c24da79054225138",
+          "sprite": "velvet_15_0",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.7333221435546875,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1146.0,
+            "y": 3327.0,
+            "width": 304.0,
+            "height": 238.0
+          },
+          "nativePivot": {
+            "x": 74.40379333496094,
+            "y": 3.097027063369751
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.0794568657875061,
+            "z": -0.3960736393928528
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0061.png",
+          "sha256": "96f6ccbdad10612adbdeac04166ba4fbad76a9cb704f78f51dd0e2f00afaa26a",
+          "sprite": "velvet_17_0",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 558.0,
+            "y": 2.0,
+            "width": 289.0,
+            "height": 782.0
+          },
+          "nativePivot": {
+            "x": 188.14544677734375,
+            "y": 521.0743408203125
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0062.png",
+          "sha256": "533aee3a4d4806a07ff12633d501b8f47d9a9002ba86dddd954b471c28b239a0",
+          "sprite": "velvet-polish_3_0",
+          "texture": "PixelCampaign-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 216.33033752441406,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 575.0,
+            "width": 290.0,
+            "height": 529.0
+          },
+          "nativePivot": {
+            "x": 178.87818908691406,
+            "y": 252.83621215820312
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Front\\0068.png",
+          "sha256": "dfb20c54657ff760b9fee6443ba43c08f671050c4aee503de7f3dc3ced87c14f",
+          "sprite": "velvet-hq_0_0",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 519.0,
+            "y": 559.0,
+            "width": 264.0,
+            "height": 278.0
+          },
+          "nativePivot": {
+            "x": 150.18128967285156,
+            "y": 8.871649742126465
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "base",
+      "facing": "Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\timeline.json",
+      "timelineSha256": "0f038c162db8549ead6311e50ab947073ac4577921f7ecde165300386914c851",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0040.png",
+          "sha256": "2637658fb00aae9dcc3c68bcd5e8d2134ae8f4909e4e5f63a5f03e4656630ef3",
+          "sprite": "velvet_12_1",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2555.0,
+            "width": 286.0,
+            "height": 257.0
+          },
+          "nativePivot": {
+            "x": 189.14564514160156,
+            "y": 26.983713150024414
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0041.png",
+          "sha256": "47a6f0e91b78c5d3528845f486c0641459df343e46f8a74b4cbb97aae3a208ff",
+          "sprite": "velvet-hq_1_1",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 291.0,
+            "y": 1114.0,
+            "width": 289.0,
+            "height": 235.0
+          },
+          "nativePivot": {
+            "x": 146.17593383789062,
+            "y": 7.5781683921813965
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0044.png",
+          "sha256": "80ed18d915965ec558086b8debce0755b5126514e24c4f89133976094521751b",
+          "sprite": "velvet_13_1",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1416.0,
+            "y": 2816.0,
+            "width": 292.0,
+            "height": 249.0
+          },
+          "nativePivot": {
+            "x": 176.3490753173828,
+            "y": 29.006389617919922
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0061.png",
+          "sha256": "aece444c570ea92b4f1a7381cabcf6586356a5ef9a20376fedec12701e46c282",
+          "sprite": "velvet_17_1",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2.0,
+            "width": 281.0,
+            "height": 818.0
+          },
+          "nativePivot": {
+            "x": 152.4910430908203,
+            "y": 557.0970458984375
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0062.png",
+          "sha256": "69f58de5f114a85c5e976d284a590088bd8b76a1d0930d1d9546ed45131726e4",
+          "sprite": "velvet-polish_3_1",
+          "texture": "PixelCampaign-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 216.33033752441406,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2.0,
+            "width": 279.0,
+            "height": 569.0
+          },
+          "nativePivot": {
+            "x": 146.47299194335938,
+            "y": 293.8178405761719
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Back\\0068.png",
+          "sha256": "7dcc423718ed6a1b68e703204f59261d470cb71da64d862963f9eb3821dfb409",
+          "sprite": "velvet-hq_0_1",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 277.0,
+            "y": 559.0,
+            "width": 238.0,
+            "height": 279.0
+          },
+          "nativePivot": {
+            "x": 101.26612854003906,
+            "y": 10.871649742126465
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "base",
+      "facing": "Right",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\timeline.json",
+      "timelineSha256": "9bc1d9e0e36239a68b8112ab4f2d047c6d2de175e288d7b3550697b4891e9e6e",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0040.png",
+          "sha256": "c606f692a2821700ea9bfda1c9127c177a520d314c7c529abfe891204a634a05",
+          "sprite": "velvet_12_2",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1137.0,
+            "y": 1451.0,
+            "width": 284.0,
+            "height": 276.0
+          },
+          "nativePivot": {
+            "x": 190.0654296875,
+            "y": 30.961105346679688
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0041.png",
+          "sha256": "a03480284f8efd6e85dce8cb1b02bd865d6ceb9a8f38c61c0df43455c2e41e79",
+          "sprite": "velvet-hq_1_2",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 584.0,
+            "y": 1114.0,
+            "width": 244.0,
+            "height": 233.0
+          },
+          "nativePivot": {
+            "x": 124.93950653076172,
+            "y": 5.578167915344238
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0044.png",
+          "sha256": "61b58c3b474f9a95838c40db219f1761fbbb6144a5254e74d258988a3071fcb1",
+          "sprite": "velvet_13_2",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 854.0,
+            "y": 3074.0,
+            "width": 284.0,
+            "height": 245.0
+          },
+          "nativePivot": {
+            "x": 192.0654296875,
+            "y": 7.9611053466796875
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0061.png",
+          "sha256": "baa2dff4fb3f42caa6bcf7340ddaa6120488cb1d4be657bec3c913c2cfa9d234",
+          "sprite": "velvet_17_2",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 287.0,
+            "y": 2.0,
+            "width": 267.0,
+            "height": 802.0
+          },
+          "nativePivot": {
+            "x": 163.55271911621094,
+            "y": 547.0970458984375
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0062.png",
+          "sha256": "736985d163074068dbe9e41ec1683554c7d4aef5705ece266803960aef7a4f31",
+          "sprite": "velvet-polish_3_2",
+          "texture": "PixelCampaign-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 216.33033752441406,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 296.0,
+            "y": 575.0,
+            "width": 279.0,
+            "height": 525.0
+          },
+          "nativePivot": {
+            "x": 128.85133361816406,
+            "y": 250.73513793945312
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Right\\0068.png",
+          "sha256": "1d6afa68afc18e431acb6df64cef3239ca10397cd8b0bd426307ea5c844af788",
+          "sprite": "velvet-hq_0_2",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Right",
+          "cameraYaw": 51.07244873046875,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 559.0,
+            "width": 271.0,
+            "height": 279.0
+          },
+          "nativePivot": {
+            "x": 130.613037109375,
+            "y": 5.862745761871338
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "base",
+      "facing": "Left",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\timeline.json",
+      "timelineSha256": "f1763ba55960390da788c53e49a88ed0dfbf7451c85d5b46ac07a3ff1ec943fa",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0040.png",
+          "sha256": "a2a75b3d646b02954bbc41eeddc601689de37dd38166d742cf0235c36a921969",
+          "sprite": "velvet_12_3",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1451.0,
+            "width": 267.0,
+            "height": 284.0
+          },
+          "nativePivot": {
+            "x": 81.93456268310547,
+            "y": 31.961105346679688
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0041.png",
+          "sha256": "6c048aaa1656ab262d695b114473a67cf14cba059f6e93b01739f363b20cf3ed",
+          "sprite": "velvet-hq_1_3",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 832.0,
+            "y": 1114.0,
+            "width": 271.0,
+            "height": 229.0
+          },
+          "nativePivot": {
+            "x": 153.39710998535156,
+            "y": 5.578167915344238
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0044.png",
+          "sha256": "274ff0382cc3662fe34fc29dd883a5e5afd56c3972cc9f364f8f4d323e212a6d",
+          "sprite": "velvet_13_3",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 575.0,
+            "y": 2555.0,
+            "width": 267.0,
+            "height": 257.0
+          },
+          "nativePivot": {
+            "x": 84.20001983642578,
+            "y": 18.961105346679688
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0061.png",
+          "sha256": "1bd8cc9a4031a2f9e758d483c47092fa79b4295106d7508d01b6011aebdef03d",
+          "sprite": "velvet_17_3",
+          "texture": "MotionPremium-velvet-v4",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 192.12925720214844,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 851.0,
+            "y": 2.0,
+            "width": 280.0,
+            "height": 654.0
+          },
+          "nativePivot": {
+            "x": 104.38519287109375,
+            "y": 392.0970153808594
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0062.png",
+          "sha256": "0c57b08a3f2c41ed268b154db4fe22ce4841b4d4752d5b91d3bf0b3d490723bf",
+          "sprite": "velvet-polish_3_3",
+          "texture": "PixelCampaign-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 216.33033752441406,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 285.0,
+            "y": 2.0,
+            "width": 275.0,
+            "height": 547.0
+          },
+          "nativePivot": {
+            "x": 140.8783721923828,
+            "y": 276.7535095214844
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\base\\velvet.ultimate-Left\\0068.png",
+          "sha256": "5627645e7c86c135ec1d4c2fe3d014e79b4b9d1173ba06550fa0100320499cc9",
+          "sprite": "velvet-hq_0_3",
+          "texture": "PixelCampaign-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Left",
+          "cameraYaw": 231.0724639892578,
+          "pixelsPerUnit": 214.3449249267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 787.0,
+            "y": 559.0,
+            "width": 262.0,
+            "height": 273.0
+          },
+          "nativePivot": {
+            "x": 128.27125549316406,
+            "y": 5.871649265289307
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "signature",
+      "facing": "Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\timeline.json",
+      "timelineSha256": "f18cc81d589c7cd769cc6e57e0965ad6da66fe6fd3130a48ceeeea119ca8d706",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0040.png",
+          "sha256": "96a8a08f18b52734091ed4858b6ec2dd08a212f05c6acbd5735f23c58e322a73",
+          "sprite": "velvet-premium_12_0",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 272.0,
+            "y": 1797.0,
+            "width": 281.0,
+            "height": 285.0
+          },
+          "nativePivot": {
+            "x": 90.28119659423828,
+            "y": 46.02742004394531
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0041.png",
+          "sha256": "17258ea71e1135d3a722551c30844971953077d4c6e9701a3fb4d248c7b9405d",
+          "sprite": "velvet-hq_1_0",
+          "texture": "SignatureWeapons-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 217.83932495117188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1101.0,
+            "width": 292.0,
+            "height": 276.0
+          },
+          "nativePivot": {
+            "x": 171.30917358398438,
+            "y": 28.626989364624023
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0044.png",
+          "sha256": "e0516297a2ac0d370f06998a226ff5a92032f6b126f8999b8e78fe1184109f30",
+          "sprite": "velvet-premium_13_0",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1428.0,
+            "y": 1148.0,
+            "width": 306.0,
+            "height": 300.0
+          },
+          "nativePivot": {
+            "x": 186.1514434814453,
+            "y": 51.02742004394531
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0061.png",
+          "sha256": "a7fb4de8d55d91f0c5be8585d64e6a81d9408cac855880ba8bc71d07cb8be7ec",
+          "sprite": "velvet-premium_17_0",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2.0,
+            "width": 303.0,
+            "height": 770.0
+          },
+          "nativePivot": {
+            "x": 183.85350036621094,
+            "y": 522.1826171875
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0062.png",
+          "sha256": "2d9ba4b299eb6906871fb45a49861c797f85044cc8715249f723f0b8bc0a351b",
+          "sprite": "velvet-polish_3_0",
+          "texture": "SignatureWeapons-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 216.43849182128906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 842.0,
+            "y": 2.0,
+            "width": 262.0,
+            "height": 452.0
+          },
+          "nativePivot": {
+            "x": 166.64988708496094,
+            "y": 174.78231811523438
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Front\\0068.png",
+          "sha256": "6ae52799c5257ed027b601c663598d3518eee88e7a569939199cd919cf9dfc07",
+          "sprite": "velvet-hq_0_0",
+          "texture": "SignatureWeapons-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 217.83932495117188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 558.0,
+            "y": 811.0,
+            "width": 276.0,
+            "height": 283.0
+          },
+          "nativePivot": {
+            "x": 147.23806762695312,
+            "y": 4.829509258270264
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "signature",
+      "facing": "Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\timeline.json",
+      "timelineSha256": "67423ab05d35db72a8a888db775fa3deb1d59912b0908a7ffe5bcc811f09b9bc",
+      "continuousCapture": true,
+      "recordedFrames": 74,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 40,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0040.png",
+          "sha256": "d55c233ce359f472d983b100c35f9b903877fac331ed6f6194ed19a605099412",
+          "sprite": "velvet-premium_12_1",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 1.3666534423828125,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 547.0,
+            "y": 2649.0,
+            "width": 286.0,
+            "height": 266.0
+          },
+          "nativePivot": {
+            "x": 178.42086791992188,
+            "y": 13.027419090270996
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10479407757520676,
+            "z": -0.7794749736785889
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0041.png",
+          "sha256": "144e47511548e0c3655a19ddcf1efc334e30e9820af5c8d60148eb6fea059536",
+          "sprite": "velvet-hq_1_1",
+          "texture": "SignatureWeapons-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 217.83932495117188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 549.0,
+            "y": 1101.0,
+            "width": 303.0,
+            "height": 253.0
+          },
+          "nativePivot": {
+            "x": 153.4861297607422,
+            "y": 6.511246204376221
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1043698787689209,
+            "z": -0.7633761763572693
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0044.png",
+          "sha256": "4ad105cb18d419f8920a5e379e68fd2f2c4b4265d148afa5155670a15cae5ffd",
+          "sprite": "velvet-premium_13_1",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 1.5,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 837.0,
+            "y": 2649.0,
+            "width": 285.0,
+            "height": 265.0
+          },
+          "nativePivot": {
+            "x": 174.2044677734375,
+            "y": 46.983116149902344
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10093563050031662,
+            "z": -0.6885886788368225
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 61,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0061.png",
+          "sha256": "61f7182f1adba82d990c6fafc73c4cb9b42faad4b5ae203eb75e1a7dbd67d990",
+          "sprite": "velvet-premium_17_1",
+          "texture": "SignatureWeapons-velvet-premium-v2",
+          "phase": "contact/recovery",
+          "seconds": 2.0666656494140625,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 180.91358947753906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 309.0,
+            "y": 2.0,
+            "width": 273.0,
+            "height": 764.0
+          },
+          "nativePivot": {
+            "x": 153.3389434814453,
+            "y": 528.0939331054688
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04481811076402664,
+            "z": -0.04221457988023758
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 62,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0062.png",
+          "sha256": "45509ee7f510648d8732d7a38855db7c5ab3aedb1419919b6cdd2a81ff376125",
+          "sprite": "velvet-polish_3_1",
+          "texture": "SignatureWeapons-velvet-polish-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.0999908447265625,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 216.43849182128906,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 280.0,
+            "y": 2.0,
+            "width": 283.0,
+            "height": 463.0
+          },
+          "nativePivot": {
+            "x": 138.57289123535156,
+            "y": 188.79197692871094
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043096497654914856,
+            "z": -0.02687501534819603
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\velvet\\signature\\velvet.ultimate-Back\\0068.png",
+          "sha256": "20281285cc4d1be0132f5e3a2e4c110e8a959fb5fa7dc6028364acd2643d5301",
+          "sprite": "velvet-hq_0_1",
+          "texture": "SignatureWeapons-velvet-hq-v1",
+          "phase": "contact/recovery",
+          "seconds": 2.29998779296875,
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 217.83932495117188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 838.0,
+            "y": 811.0,
+            "width": 268.0,
+            "height": 283.0
+          },
+          "nativePivot": {
+            "x": 122.62015533447266,
+            "y": 7.810258388519287
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    }
+  ],
+  "changesPerformed": [
+    "Created this validation JSON only. No production/candidate/metadata/selection/runtime/Unity/save changes."
+  ]
+}

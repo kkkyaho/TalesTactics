@@ -1,0 +1,1379 @@
+{
+  "schemaVersion": 1,
+  "scope": "Single-frame extra-claw repair for MotionPremium Velvet pose15 Front (velvet_15_0).",
+  "mode": "built-in imagegen precise-object-edit",
+  "requestedOutput": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-03-v3.png",
+  "targetFrame": "velvet_15_0",
+  "targetCell": {
+    "row": 1,
+    "column": 1
+  },
+  "inputPaths": [
+    "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-03-v2.png",
+    "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-velvet/reference-03.png"
+  ],
+  "attempts": [
+    {
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15eed-3a6e-7cc1-9fd5-ca608ca84560/exec-792d40f3-7452-45b6-8594-c8631c2914f0.png",
+      "prompt": "Use case: precise-object-edit. Edit image 1, a transparent 1122x1402 sprite sheet. Image 2 is the older pose/hand reference ONLY, not the desired rendering quality. Make ONE small local correction in image 1: TOP ROW, FIRST COLUMN, Velvet facing front (velvet_15_0). The hand on the VIEWER'S RIGHT currently has an erroneous second giant silver triple-blade claw. Replace ONLY that viewer-right giant claw and its red monster gauntlet with the small normal black glove / visible little fingers and normal slim forearm matching image 2 row1 column1. Keep the hand's outward pose, restore the red coat fabric behind it naturally. The giant three silver blade claw on the VIEWER'S LEFT MUST remain unchanged: there is exactly ONE giant claw assembly. This is an equipment-count repair, not a style or anatomy redesign. Keep the corrected figure's head, face, torso, legs, boots, body size, feet position, other arm and weapon exactly as they are. Keep ALL OTHER ELEVEN SPRITES in image 1 unchanged: same exact drawing, scale, placement, facing, pose, hands, costumes, weapons and fine detail. Maintain the original 4-column by 5-row transparent canvas: 12 sprites in the first 3 rows, last 2 rows completely empty and transparent. Retain current native 1122x1402 canvas, current crisp premium anime SD linework and colors. Preserve genuine transparent alpha, empty gaps and all silhouettes without cropping, added shadows, effects, text or background. Do not redraw the whole atlas; confine the edit to the small viewer-right hand/erroneous claw of row1 column1.",
+      "selection": "rejected",
+      "reason": "Removed the wrong upper-left claw and changed the bandage arm in row2 column1.",
+      "generatedSha256": "a1bb997461b310e3fc10df71276df1233f5efe29770a8870bf09afdbb9d0c6db"
+    },
+    {
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15eed-3a6e-7cc1-9fd5-ca608ca84560/exec-52a95f1b-01bf-42c2-831d-bd867d64f0df.png",
+      "prompt": "Use case: precise-object-edit. IMAGE 1 is the edit target; IMAGE 2 shows the original one-claw pose. Make an extremely local correction ONLY to the UPPER-LEFT sprite (row 1 column 1) in IMAGE 1. It presently has two silver claw weapons: an UPPER-LEFT raised claw near canvas x40,y125 and a LOWER-RIGHT hanging claw near canvas x245,y195. KEEP THE UPPER-LEFT RAISED CLAW UNCHANGED. REMOVE THE LOWER-RIGHT HANGING CLAW only. Specifically, replace the weapon occupying roughly x190..299,y143..236 of the 1122x1402 image with a SMALL BLACK GLOVE WITH TINY NORMAL FINGERS, matching the outstretched normal hand on the RIGHT SIDE OF THE CANVAS in the first sprite of image 2. Restore only the red cape behind this removed lower-right weapon. The finished first sprite has silver blades only on the LEFT side of the canvas, and a normal tiny black hand on the RIGHT side of the canvas. Do not swap sides. Do not remove the raised upper-left claw. Do not alter any other cell or any other part: all other 11 sprites, particularly the white bandage forearm in row2 column1, must remain exactly unchanged. Preserve size, feet, head, face, costume, anatomy, pose, fine detail and position. Preserve the 1122x1402 native canvas, genuine transparent alpha and existing crisp linework. Exactly 12 poses in first 3 rows of the4x5 layout; lower2rows empty alpha0. No new background, VFX, shadows or text. This is a local unwanted-object removal, not a full-sheet redrawing.",
+      "selection": "selected-whole-sheet-pending-component128-pack",
+      "visualReview": "The first figure retains the raised viewer-left triple claw; the erroneous hanging viewer-right claw is replaced by a small black glove and fingers. Head, boots, stance and placement remain visually consistent. Other11 poses retain their directions/anatomy/weapon arrangement on direct viewing, including row2 front white bandage, but their pixels are not identical.",
+      "generatedSha256": "4db951d6339990f4eecc3e435df34975f31eed2aede639578021bb5be5310cee"
+    }
+  ],
+  "recommendedIntegration": "Root approved the complete12-pose sheet as a native component128 packing input, pending root validation. Preserve all weak alpha pixels through existing component ownership logic. No hand compositing or raster editing.",
+  "visualApproved": true,
+  "targetFrameVisualApproved": true,
+  "wholeSheetAlpha8SeparationPassed": false,
+  "productionModified": false,
+  "existingCandidatesModified": false,
+  "unityRun": false,
+  "limitations": [
+    "The generator redraws nominally untouched pixels. No claim of exact other11-pixel preservation.",
+    "A new alpha>8 weak connection joins row1 columns3/4, although alpha>128 separates all12 figures. Target row1 column1 is independent at both thresholds.",
+    "Whole-sheet native component packing and actual render validation remain root-owned. No scale, crop, compositing or raster changes were performed by Python."
+  ],
+  "wholeSheetPixelIdenticalOutsideTarget": false,
+  "rootIntegrationDirection": "2026-10-31: Root confirmed existing component128 native pack covers12 strong bodies and assigns weak alpha bridges losslessly. Save complete03-v3 as candidate; root performs component validation, pack and actual render.",
+  "nativeMeasurement": {
+    "before": {
+      "nativeSize": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaNonzeroPixels": 528675,
+      "strongPixels": 455230,
+      "alphaNonzeroCanvasBbox": [
+        0,
+        48,
+        1122,
+        1384
+      ],
+      "strongCanvasBbox": [
+        14,
+        52,
+        1116,
+        807
+      ],
+      "strongMajorComponents": [
+        {
+          "pixels": 39667,
+          "bbox": [
+            14,
+            52,
+            298,
+            275
+          ],
+          "cellIndex": 0,
+          "cellMarginsPixels": [
+            14.0,
+            52.0,
+            -17.5,
+            5.4
+          ],
+          "widthFractionOfCell": 1.0125,
+          "heightFractionOfCell": 0.7953
+        },
+        {
+          "pixels": 35855,
+          "bbox": [
+            315,
+            57,
+            567,
+            274
+          ],
+          "cellIndex": 1,
+          "cellMarginsPixels": [
+            34.5,
+            57.0,
+            -6.0,
+            6.4
+          ],
+          "widthFractionOfCell": 0.8984,
+          "heightFractionOfCell": 0.7739
+        },
+        {
+          "pixels": 31728,
+          "bbox": [
+            587,
+            69,
+            840,
+            268
+          ],
+          "cellIndex": 2,
+          "cellMarginsPixels": [
+            26.0,
+            69.0,
+            1.5,
+            12.4
+          ],
+          "widthFractionOfCell": 0.902,
+          "heightFractionOfCell": 0.7097
+        },
+        {
+          "pixels": 31406,
+          "bbox": [
+            850,
+            68,
+            1104,
+            272
+          ],
+          "cellIndex": 3,
+          "cellMarginsPixels": [
+            8.5,
+            68.0,
+            18.0,
+            8.4
+          ],
+          "widthFractionOfCell": 0.9055,
+          "heightFractionOfCell": 0.7275
+        },
+        {
+          "pixels": 40396,
+          "bbox": [
+            17,
+            304,
+            288,
+            542
+          ],
+          "cellIndex": 4,
+          "cellMarginsPixels": [
+            17.0,
+            23.6,
+            -7.5,
+            18.8
+          ],
+          "widthFractionOfCell": 0.9661,
+          "heightFractionOfCell": 0.8488
+        },
+        {
+          "pixels": 43009,
+          "bbox": [
+            304,
+            299,
+            574,
+            542
+          ],
+          "cellIndex": 5,
+          "cellMarginsPixels": [
+            23.5,
+            18.6,
+            -13.0,
+            18.8
+          ],
+          "widthFractionOfCell": 0.9626,
+          "heightFractionOfCell": 0.8666
+        },
+        {
+          "pixels": 36604,
+          "bbox": [
+            590,
+            304,
+            826,
+            541
+          ],
+          "cellIndex": 6,
+          "cellMarginsPixels": [
+            29.0,
+            23.6,
+            15.5,
+            19.8
+          ],
+          "widthFractionOfCell": 0.8414,
+          "heightFractionOfCell": 0.8452
+        },
+        {
+          "pixels": 38219,
+          "bbox": [
+            873,
+            303,
+            1115,
+            542
+          ],
+          "cellIndex": 7,
+          "cellMarginsPixels": [
+            31.5,
+            22.6,
+            7.0,
+            18.8
+          ],
+          "widthFractionOfCell": 0.8627,
+          "heightFractionOfCell": 0.8524
+        },
+        {
+          "pixels": 40919,
+          "bbox": [
+            16,
+            560,
+            276,
+            807
+          ],
+          "cellIndex": 8,
+          "cellMarginsPixels": [
+            16.0,
+            -0.8,
+            4.5,
+            34.2
+          ],
+          "widthFractionOfCell": 0.9269,
+          "heightFractionOfCell": 0.8809
+        },
+        {
+          "pixels": 40642,
+          "bbox": [
+            311,
+            560,
+            571,
+            805
+          ],
+          "cellIndex": 9,
+          "cellMarginsPixels": [
+            30.5,
+            -0.8,
+            -10.0,
+            36.2
+          ],
+          "widthFractionOfCell": 0.9269,
+          "heightFractionOfCell": 0.8738
+        },
+        {
+          "pixels": 37768,
+          "bbox": [
+            588,
+            562,
+            831,
+            806
+          ],
+          "cellIndex": 10,
+          "cellMarginsPixels": [
+            27.0,
+            1.2,
+            10.5,
+            35.2
+          ],
+          "widthFractionOfCell": 0.8663,
+          "heightFractionOfCell": 0.8702
+        },
+        {
+          "pixels": 38972,
+          "bbox": [
+            861,
+            560,
+            1116,
+            806
+          ],
+          "cellIndex": 11,
+          "cellMarginsPixels": [
+            19.5,
+            -0.8,
+            6.0,
+            35.2
+          ],
+          "widthFractionOfCell": 0.9091,
+          "heightFractionOfCell": 0.8773
+        }
+      ],
+      "majorCount": 12,
+      "expectedFigureCount": 12,
+      "uniqueAssignedCellCount": 12,
+      "majorSilhouetteHeightRange": [
+        199,
+        247
+      ],
+      "central70x76PercentSatisfiedForAllMajorComponents": false,
+      "componentsCrossingNominalCell": [
+        0,
+        1,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allAlphaInLastTwoRows": 2397,
+      "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited."
+    },
+    "after": {
+      "nativeSize": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaNonzeroPixels": 525056,
+      "strongPixels": 474441,
+      "alphaNonzeroCanvasBbox": [
+        0,
+        33,
+        1122,
+        1362
+      ],
+      "strongCanvasBbox": [
+        12,
+        51,
+        1117,
+        807
+      ],
+      "strongMajorComponents": [
+        {
+          "pixels": 38800,
+          "bbox": [
+            12,
+            51,
+            289,
+            276
+          ],
+          "cellIndex": 0,
+          "cellMarginsPixels": [
+            12.0,
+            51.0,
+            -8.5,
+            4.4
+          ],
+          "widthFractionOfCell": 0.9875,
+          "heightFractionOfCell": 0.8024
+        },
+        {
+          "pixels": 37784,
+          "bbox": [
+            311,
+            56,
+            569,
+            275
+          ],
+          "cellIndex": 1,
+          "cellMarginsPixels": [
+            30.5,
+            56.0,
+            -8.0,
+            5.4
+          ],
+          "widthFractionOfCell": 0.9198,
+          "heightFractionOfCell": 0.781
+        },
+        {
+          "pixels": 33669,
+          "bbox": [
+            586,
+            67,
+            843,
+            269
+          ],
+          "cellIndex": 2,
+          "cellMarginsPixels": [
+            25.0,
+            67.0,
+            -1.5,
+            11.4
+          ],
+          "widthFractionOfCell": 0.9162,
+          "heightFractionOfCell": 0.7204
+        },
+        {
+          "pixels": 33222,
+          "bbox": [
+            848,
+            66,
+            1104,
+            272
+          ],
+          "cellIndex": 3,
+          "cellMarginsPixels": [
+            6.5,
+            66.0,
+            18.0,
+            8.4
+          ],
+          "widthFractionOfCell": 0.9127,
+          "heightFractionOfCell": 0.7347
+        },
+        {
+          "pixels": 42007,
+          "bbox": [
+            16,
+            304,
+            288,
+            543
+          ],
+          "cellIndex": 4,
+          "cellMarginsPixels": [
+            16.0,
+            23.6,
+            -7.5,
+            17.8
+          ],
+          "widthFractionOfCell": 0.9697,
+          "heightFractionOfCell": 0.8524
+        },
+        {
+          "pixels": 44930,
+          "bbox": [
+            303,
+            299,
+            575,
+            543
+          ],
+          "cellIndex": 5,
+          "cellMarginsPixels": [
+            22.5,
+            18.6,
+            -14.0,
+            17.8
+          ],
+          "widthFractionOfCell": 0.9697,
+          "heightFractionOfCell": 0.8702
+        },
+        {
+          "pixels": 38534,
+          "bbox": [
+            587,
+            302,
+            828,
+            543
+          ],
+          "cellIndex": 6,
+          "cellMarginsPixels": [
+            26.0,
+            21.6,
+            13.5,
+            17.8
+          ],
+          "widthFractionOfCell": 0.8592,
+          "heightFractionOfCell": 0.8595
+        },
+        {
+          "pixels": 39792,
+          "bbox": [
+            871,
+            302,
+            1117,
+            542
+          ],
+          "cellIndex": 7,
+          "cellMarginsPixels": [
+            29.5,
+            21.6,
+            5.0,
+            18.8
+          ],
+          "widthFractionOfCell": 0.877,
+          "heightFractionOfCell": 0.8559
+        },
+        {
+          "pixels": 42723,
+          "bbox": [
+            14,
+            559,
+            278,
+            807
+          ],
+          "cellIndex": 8,
+          "cellMarginsPixels": [
+            14.0,
+            -1.8,
+            2.5,
+            34.2
+          ],
+          "widthFractionOfCell": 0.9412,
+          "heightFractionOfCell": 0.8845
+        },
+        {
+          "pixels": 42279,
+          "bbox": [
+            310,
+            559,
+            573,
+            805
+          ],
+          "cellIndex": 9,
+          "cellMarginsPixels": [
+            29.5,
+            -1.8,
+            -12.0,
+            36.2
+          ],
+          "widthFractionOfCell": 0.9376,
+          "heightFractionOfCell": 0.8773
+        },
+        {
+          "pixels": 39758,
+          "bbox": [
+            586,
+            561,
+            832,
+            807
+          ],
+          "cellIndex": 10,
+          "cellMarginsPixels": [
+            25.0,
+            0.2,
+            9.5,
+            34.2
+          ],
+          "widthFractionOfCell": 0.877,
+          "heightFractionOfCell": 0.8773
+        },
+        {
+          "pixels": 40942,
+          "bbox": [
+            859,
+            558,
+            1117,
+            807
+          ],
+          "cellIndex": 11,
+          "cellMarginsPixels": [
+            17.5,
+            -2.8,
+            5.0,
+            34.2
+          ],
+          "widthFractionOfCell": 0.9198,
+          "heightFractionOfCell": 0.888
+        }
+      ],
+      "majorCount": 12,
+      "expectedFigureCount": 12,
+      "uniqueAssignedCellCount": 12,
+      "majorSilhouetteHeightRange": [
+        202,
+        249
+      ],
+      "central70x76PercentSatisfiedForAllMajorComponents": false,
+      "componentsCrossingNominalCell": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allAlphaInLastTwoRows": 369,
+      "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited."
+    },
+    "threshold8": {
+      "alphaThresholdExclusive": 8,
+      "majorMinPixels": 800,
+      "components": [
+        {
+          "pixels": 39798,
+          "bbox": [
+            11,
+            50,
+            290,
+            276
+          ]
+        },
+        {
+          "pixels": 38799,
+          "bbox": [
+            310,
+            55,
+            570,
+            275
+          ]
+        },
+        {
+          "pixels": 68967,
+          "bbox": [
+            584,
+            65,
+            1105,
+            273
+          ]
+        },
+        {
+          "pixels": 43055,
+          "bbox": [
+            15,
+            303,
+            289,
+            543
+          ]
+        },
+        {
+          "pixels": 45968,
+          "bbox": [
+            302,
+            297,
+            576,
+            544
+          ]
+        },
+        {
+          "pixels": 39485,
+          "bbox": [
+            586,
+            301,
+            830,
+            543
+          ]
+        },
+        {
+          "pixels": 40846,
+          "bbox": [
+            870,
+            301,
+            1122,
+            543
+          ]
+        },
+        {
+          "pixels": 43744,
+          "bbox": [
+            14,
+            558,
+            278,
+            808
+          ]
+        },
+        {
+          "pixels": 43324,
+          "bbox": [
+            309,
+            558,
+            574,
+            806
+          ]
+        },
+        {
+          "pixels": 40849,
+          "bbox": [
+            585,
+            560,
+            833,
+            807
+          ]
+        },
+        {
+          "pixels": 42016,
+          "bbox": [
+            857,
+            557,
+            1121,
+            808
+          ]
+        }
+      ],
+      "majorCount": 11,
+      "canvasEdgePixels": 9
+    },
+    "threshold128": {
+      "alphaThresholdExclusive": 128,
+      "majorMinPixels": 800,
+      "components": [
+        {
+          "pixels": 38800,
+          "bbox": [
+            12,
+            51,
+            289,
+            276
+          ]
+        },
+        {
+          "pixels": 37784,
+          "bbox": [
+            311,
+            56,
+            569,
+            275
+          ]
+        },
+        {
+          "pixels": 33669,
+          "bbox": [
+            586,
+            67,
+            843,
+            269
+          ]
+        },
+        {
+          "pixels": 33222,
+          "bbox": [
+            848,
+            66,
+            1104,
+            272
+          ]
+        },
+        {
+          "pixels": 42007,
+          "bbox": [
+            16,
+            304,
+            288,
+            543
+          ]
+        },
+        {
+          "pixels": 44930,
+          "bbox": [
+            303,
+            299,
+            575,
+            543
+          ]
+        },
+        {
+          "pixels": 38534,
+          "bbox": [
+            587,
+            302,
+            828,
+            543
+          ]
+        },
+        {
+          "pixels": 39792,
+          "bbox": [
+            871,
+            302,
+            1117,
+            542
+          ]
+        },
+        {
+          "pixels": 42723,
+          "bbox": [
+            14,
+            559,
+            278,
+            807
+          ]
+        },
+        {
+          "pixels": 42279,
+          "bbox": [
+            310,
+            559,
+            573,
+            805
+          ]
+        },
+        {
+          "pixels": 39758,
+          "bbox": [
+            586,
+            561,
+            832,
+            807
+          ]
+        },
+        {
+          "pixels": 40942,
+          "bbox": [
+            859,
+            558,
+            1117,
+            807
+          ]
+        }
+      ],
+      "majorCount": 12,
+      "canvasEdgePixels": 0
+    },
+    "sourceSha256": "ffcb9663f63e97d182c894d73ccb175260c23425273f05525bbc31091eb3b75b",
+    "generatedSha256": "4db951d6339990f4eecc3e435df34975f31eed2aede639578021bb5be5310cee",
+    "sameCanvasSize": true,
+    "noRasterEdits": true,
+    "wholeRgbaChangedPixels": 531668,
+    "perVisualCellDifferences": [
+      {
+        "row": 1,
+        "column": 1,
+        "comparisonRect": [
+          0,
+          0,
+          300,
+          289
+        ],
+        "rgbaChangedPixels": 45688,
+        "strongSupportPixels": 41069,
+        "changedOnStrongSupport": 41033
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "comparisonRect": [
+          300,
+          0,
+          578,
+          289
+        ],
+        "rgbaChangedPixels": 41960,
+        "strongSupportPixels": 37807,
+        "changedOnStrongSupport": 37727
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "comparisonRect": [
+          578,
+          0,
+          840,
+          289
+        ],
+        "rgbaChangedPixels": 38032,
+        "strongSupportPixels": 33670,
+        "changedOnStrongSupport": 33601
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "comparisonRect": [
+          840,
+          0,
+          1122,
+          289
+        ],
+        "rgbaChangedPixels": 37263,
+        "strongSupportPixels": 33242,
+        "changedOnStrongSupport": 33169
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "comparisonRect": [
+          0,
+          289,
+          300,
+          551
+        ],
+        "rgbaChangedPixels": 46839,
+        "strongSupportPixels": 42054,
+        "changedOnStrongSupport": 42003
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "comparisonRect": [
+          300,
+          289,
+          578,
+          551
+        ],
+        "rgbaChangedPixels": 48974,
+        "strongSupportPixels": 44963,
+        "changedOnStrongSupport": 44854
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "comparisonRect": [
+          578,
+          289,
+          840,
+          551
+        ],
+        "rgbaChangedPixels": 42640,
+        "strongSupportPixels": 38538,
+        "changedOnStrongSupport": 38463
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "comparisonRect": [
+          840,
+          289,
+          1122,
+          551
+        ],
+        "rgbaChangedPixels": 44205,
+        "strongSupportPixels": 39813,
+        "changedOnStrongSupport": 39760
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "comparisonRect": [
+          0,
+          551,
+          300,
+          841
+        ],
+        "rgbaChangedPixels": 47256,
+        "strongSupportPixels": 42763,
+        "changedOnStrongSupport": 42714
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "comparisonRect": [
+          300,
+          551,
+          578,
+          841
+        ],
+        "rgbaChangedPixels": 46645,
+        "strongSupportPixels": 42335,
+        "changedOnStrongSupport": 42207
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "comparisonRect": [
+          578,
+          551,
+          840,
+          841
+        ],
+        "rgbaChangedPixels": 43970,
+        "strongSupportPixels": 39781,
+        "changedOnStrongSupport": 39658
+      },
+      {
+        "row": 3,
+        "column": 4,
+        "comparisonRect": [
+          840,
+          551,
+          1122,
+          841
+        ],
+        "rgbaChangedPixels": 45496,
+        "strongSupportPixels": 40981,
+        "changedOnStrongSupport": 40884
+      }
+    ]
+  },
+  "referenceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\MotionPremium-velvet\\reference-manifest.json",
+    "sha256": "3c24f7021659106f76da8b49ff3049b72932feffc4f697e38262e78c8137d280",
+    "source": "Assets/TalesTactics/Art/MotionPremium/velvet.png",
+    "sourceGuid": "95d5e49ca45599541b4182b6c0af0e28"
+  },
+  "exactFrames": [
+    {
+      "index": 60,
+      "name": "velvet_15_0",
+      "cellIndex": 0,
+      "originalSpriteId": "dd5243c5714c79a4aa080dd6a49e7d27",
+      "originalInternalId": "1089322246"
+    },
+    {
+      "index": 61,
+      "name": "velvet_15_1",
+      "cellIndex": 1,
+      "originalSpriteId": "c35e81731bff9604ea029c1cf205c12a",
+      "originalInternalId": "-734833180"
+    },
+    {
+      "index": 62,
+      "name": "velvet_15_2",
+      "cellIndex": 2,
+      "originalSpriteId": "416275af58f493348a848386b4b698d5",
+      "originalInternalId": "-1250555222"
+    },
+    {
+      "index": 63,
+      "name": "velvet_15_3",
+      "cellIndex": 3,
+      "originalSpriteId": "9bfea207f55c89940b15d9d8c9009a27",
+      "originalInternalId": "1626926406"
+    },
+    {
+      "index": 64,
+      "name": "velvet_16_0",
+      "cellIndex": 4,
+      "originalSpriteId": "0cd02a503c148a644ad6b92320894701",
+      "originalInternalId": "1090370213"
+    },
+    {
+      "index": 65,
+      "name": "velvet_16_1",
+      "cellIndex": 5,
+      "originalSpriteId": "7986b91f1d6aa8347bdbe1a71651f5b1",
+      "originalInternalId": "-1707643744"
+    },
+    {
+      "index": 66,
+      "name": "velvet_16_2",
+      "cellIndex": 6,
+      "originalSpriteId": "d3d52106b5912e143a6beb121901d630",
+      "originalInternalId": "345337652"
+    },
+    {
+      "index": 67,
+      "name": "velvet_16_3",
+      "cellIndex": 7,
+      "originalSpriteId": "2fe17bd5ce7272e49b14d85f53c9cc5e",
+      "originalInternalId": "-29234338"
+    },
+    {
+      "index": 68,
+      "name": "velvet_17_0",
+      "cellIndex": 8,
+      "originalSpriteId": "076945f9202d7ce46b483741d5d392ab",
+      "originalInternalId": "-1288183343"
+    },
+    {
+      "index": 69,
+      "name": "velvet_17_1",
+      "cellIndex": 9,
+      "originalSpriteId": "cd182ebee9824ae46a62413b8440b9fb",
+      "originalInternalId": "1299988212"
+    },
+    {
+      "index": 70,
+      "name": "velvet_17_2",
+      "cellIndex": 10,
+      "originalSpriteId": "f9e4d1ba830ef2b449549f461454526b",
+      "originalInternalId": "-618085186"
+    },
+    {
+      "index": 71,
+      "name": "velvet_17_3",
+      "cellIndex": 11,
+      "originalSpriteId": "f21be72db295b9840bae4a1dc9869a13",
+      "originalInternalId": "341080868"
+    }
+  ],
+  "inputHashes": [
+    {
+      "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-03-v2.png",
+      "sha256": "ffcb9663f63e97d182c894d73ccb175260c23425273f05525bbc31091eb3b75b"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-velvet/reference-03.png",
+      "sha256": "c12eb26c055d04eff77d8488496c785bb0764a2687533bdbbee38ad246682c62"
+    }
+  ],
+  "unusedRowsAlpha": {
+    "nonzeroCount": 369,
+    "maxAlpha": 1,
+    "above8Count": 0,
+    "valueCounts": {
+      "1": 369
+    },
+    "note": "No unused figure; generated weak alpha pixels retained byte-for-byte for root native packing verification."
+  },
+  "targetFrameSeparation": {
+    "alphaThresholdExclusive": 8,
+    "majorPixelCount": 39798,
+    "componentBbox": [
+      11,
+      50,
+      290,
+      276
+    ],
+    "readOnlyInspectionRoi": [
+      0,
+      0,
+      300,
+      289
+    ],
+    "independentMajorComponent": true,
+    "roiBoundaryAlphaAbove8Count": 0,
+    "wholeSheetIndependentMajorCount": 11,
+    "requiresComponent128NativePacking": true,
+    "rootPackValidationPending": true
+  },
+  "productionPreservation": {
+    "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\MotionPremium\\velvet.png",
+    "sha256": "5d31a82412e42c40455eda41ebdfa39c10405fc875abd497c43df5bab36a5e49",
+    "metaPath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\MotionPremium\\velvet.png.meta",
+    "metaSha256": "23be16815315ba0c81f76ddab09d13b310d02bacf8b68331d649f3245f9d6a82",
+    "sourcePngMetaUntouched": true
+  },
+  "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\MotionPremium-velvet\\source-sheet-03-v3.png",
+  "candidateSha256": "4db951d6339990f4eecc3e435df34975f31eed2aede639578021bb5be5310cee",
+  "strongBboxComparison": [
+    {
+      "cellIndex": 0,
+      "sprite": "velvet_15_0",
+      "beforeStrongBbox": [
+        14,
+        52,
+        298,
+        275
+      ],
+      "afterStrongBbox": [
+        12,
+        51,
+        289,
+        276
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -1,
+        -9,
+        1
+      ],
+      "heightDeltaPixels": 2
+    },
+    {
+      "cellIndex": 1,
+      "sprite": "velvet_15_1",
+      "beforeStrongBbox": [
+        315,
+        57,
+        567,
+        274
+      ],
+      "afterStrongBbox": [
+        311,
+        56,
+        569,
+        275
+      ],
+      "edgeDeltasPixels": [
+        -4,
+        -1,
+        2,
+        1
+      ],
+      "heightDeltaPixels": 2
+    },
+    {
+      "cellIndex": 2,
+      "sprite": "velvet_15_2",
+      "beforeStrongBbox": [
+        587,
+        69,
+        840,
+        268
+      ],
+      "afterStrongBbox": [
+        586,
+        67,
+        843,
+        269
+      ],
+      "edgeDeltasPixels": [
+        -1,
+        -2,
+        3,
+        1
+      ],
+      "heightDeltaPixels": 3
+    },
+    {
+      "cellIndex": 3,
+      "sprite": "velvet_15_3",
+      "beforeStrongBbox": [
+        850,
+        68,
+        1104,
+        272
+      ],
+      "afterStrongBbox": [
+        848,
+        66,
+        1104,
+        272
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -2,
+        0,
+        0
+      ],
+      "heightDeltaPixels": 2
+    },
+    {
+      "cellIndex": 4,
+      "sprite": "velvet_16_0",
+      "beforeStrongBbox": [
+        17,
+        304,
+        288,
+        542
+      ],
+      "afterStrongBbox": [
+        16,
+        304,
+        288,
+        543
+      ],
+      "edgeDeltasPixels": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "heightDeltaPixels": 1
+    },
+    {
+      "cellIndex": 5,
+      "sprite": "velvet_16_1",
+      "beforeStrongBbox": [
+        304,
+        299,
+        574,
+        542
+      ],
+      "afterStrongBbox": [
+        303,
+        299,
+        575,
+        543
+      ],
+      "edgeDeltasPixels": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "heightDeltaPixels": 1
+    },
+    {
+      "cellIndex": 6,
+      "sprite": "velvet_16_2",
+      "beforeStrongBbox": [
+        590,
+        304,
+        826,
+        541
+      ],
+      "afterStrongBbox": [
+        587,
+        302,
+        828,
+        543
+      ],
+      "edgeDeltasPixels": [
+        -3,
+        -2,
+        2,
+        2
+      ],
+      "heightDeltaPixels": 4
+    },
+    {
+      "cellIndex": 7,
+      "sprite": "velvet_16_3",
+      "beforeStrongBbox": [
+        873,
+        303,
+        1115,
+        542
+      ],
+      "afterStrongBbox": [
+        871,
+        302,
+        1117,
+        542
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -1,
+        2,
+        0
+      ],
+      "heightDeltaPixels": 1
+    },
+    {
+      "cellIndex": 8,
+      "sprite": "velvet_17_0",
+      "beforeStrongBbox": [
+        16,
+        560,
+        276,
+        807
+      ],
+      "afterStrongBbox": [
+        14,
+        559,
+        278,
+        807
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -1,
+        2,
+        0
+      ],
+      "heightDeltaPixels": 1
+    },
+    {
+      "cellIndex": 9,
+      "sprite": "velvet_17_1",
+      "beforeStrongBbox": [
+        311,
+        560,
+        571,
+        805
+      ],
+      "afterStrongBbox": [
+        310,
+        559,
+        573,
+        805
+      ],
+      "edgeDeltasPixels": [
+        -1,
+        -1,
+        2,
+        0
+      ],
+      "heightDeltaPixels": 1
+    },
+    {
+      "cellIndex": 10,
+      "sprite": "velvet_17_2",
+      "beforeStrongBbox": [
+        588,
+        562,
+        831,
+        806
+      ],
+      "afterStrongBbox": [
+        586,
+        561,
+        832,
+        807
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -1,
+        1,
+        1
+      ],
+      "heightDeltaPixels": 2
+    },
+    {
+      "cellIndex": 11,
+      "sprite": "velvet_17_3",
+      "beforeStrongBbox": [
+        861,
+        560,
+        1116,
+        806
+      ],
+      "afterStrongBbox": [
+        859,
+        558,
+        1117,
+        807
+      ],
+      "edgeDeltasPixels": [
+        -2,
+        -2,
+        1,
+        1
+      ],
+      "heightDeltaPixels": 3
+    }
+  ],
+  "maximumNonTargetStrongBboxEdgeDifferencePixels": 4,
+  "geometryComparisonLimit": "Strong alpha bounds are silhouette/weapon bounds, not anatomy or pivot measurements. Small edge changes do not imply pixel-identical preservation."
+}

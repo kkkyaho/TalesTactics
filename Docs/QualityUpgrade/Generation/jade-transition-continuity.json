@@ -1,0 +1,1280 @@
+{
+    "character":  "jade",
+    "generationTool":  "built-in image_gen",
+    "scope":  "Eight support source sheets, 16 poses each, imagegen-native redraw from exact source crops and corresponding premium canonical. Generated PNGs remain byte-for-byte untouched. No packing/import/production changes.",
+    "nativeCheckLimit":  "Independent read-only System.Drawing alpha128 8-connected-component count \u003e=1000px, alpha pixel count and strong outer margins. This is NOT Unity Pack, full RGBA assignment, or continuous rendered motion validation.",
+    "records":  [
+                    {
+                        "key":  "PixelCampaign-jade-hq",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter: Jade, long brown hair, rectangular blue glasses, navy-and-gold uniform, dark boots, one black/gold spear with silver-blue point. Group PixelCampaign-jade-hq. Row1 idle with upright spear; row2 horizontal forward thrust; row3 vertical defensive two-hand spear; row4 diagonally held ready stance. Pose image1 is authoritative. Match image2\u0027s compact skull-to-body model.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-hq/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-64187165-7b58-41c5-9a5b-dcf085bc9e56.png",
+                        "poseReview":  "16 poses: idle upright / horizontal thrust / vertical guard / diagonal ready. Four facing orders retained, back heads remain obscured. Generic spear stays single; native skull/chest/boots match compact premium more closely.",
+                        "native":  {
+                                       "width":  1082,
+                                       "height":  1454,
+                                       "nonzeroAlphaPixels":  784387,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      11,
+                                                                      38,
+                                                                      5,
+                                                                      102
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              305,
+                                                                              38,
+                                                                              204,
+                                                                              334
+                                                                          ],
+                                                                          [
+                                                                              19,
+                                                                              39,
+                                                                              231,
+                                                                              334
+                                                                          ],
+                                                                          [
+                                                                              562,
+                                                                              40,
+                                                                              223,
+                                                                              333
+                                                                          ],
+                                                                          [
+                                                                              860,
+                                                                              40,
+                                                                              217,
+                                                                              333
+                                                                          ],
+                                                                          [
+                                                                              11,
+                                                                              421,
+                                                                              272,
+                                                                              247
+                                                                          ],
+                                                                          [
+                                                                              271,
+                                                                              424,
+                                                                              268,
+                                                                              244
+                                                                          ],
+                                                                          [
+                                                                              816,
+                                                                              428,
+                                                                              260,
+                                                                              240
+                                                                          ],
+                                                                          [
+                                                                              546,
+                                                                              429,
+                                                                              265,
+                                                                              239
+                                                                          ],
+                                                                          [
+                                                                              25,
+                                                                              691,
+                                                                              232,
+                                                                              336
+                                                                          ],
+                                                                          [
+                                                                              566,
+                                                                              691,
+                                                                              216,
+                                                                              336
+                                                                          ],
+                                                                          [
+                                                                              841,
+                                                                              691,
+                                                                              219,
+                                                                              336
+                                                                          ],
+                                                                          [
+                                                                              309,
+                                                                              693,
+                                                                              223,
+                                                                              333
+                                                                          ],
+                                                                          [
+                                                                              294,
+                                                                              1053,
+                                                                              243,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              16,
+                                                                              1054,
+                                                                              253,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              558,
+                                                                              1056,
+                                                                              256,
+                                                                              295
+                                                                          ],
+                                                                          [
+                                                                              832,
+                                                                              1059,
+                                                                              245,
+                                                                              292
+                                                                          ]
+                                                                      ]
+                                   },
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-jade-hq/source-sheet-00.png",
+                        "sha256":  "bdc11e7352658487ca03375e1dacd4e9104864eb5a13f59f28ddbfb0923658fe",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-hq/reference-00.png",
+                                                 "sha256":  "13bf801a198b140ca36a7a51e27742625d835fcbad0ed164cc92138e5be205d0"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png",
+                                                 "sha256":  "0569c41e5cf8e31222e9bdd1dd10d042785d770f05a9ce0a0e094df8d7683d0f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/jade-hq.png",
+                        "sourceGuid":  "3b5086b3c4d716248ae1d1e774ce9537",
+                        "originalSourceSha256":  "4add1619424f09f3e92c92971122cc7c058efe96f2dab79a066e1ab6873cd5e7",
+                        "currentSourceSha256":  "834a578b0af19f3f47c9b3c94bb6ca5cfa14a171f2fddc056013374f870f2fcc",
+                        "frameNames":  [
+                                           "jade-hq_0_0",
+                                           "jade-hq_0_1",
+                                           "jade-hq_0_2",
+                                           "jade-hq_0_3",
+                                           "jade-hq_1_0",
+                                           "jade-hq_1_1",
+                                           "jade-hq_1_2",
+                                           "jade-hq_1_3",
+                                           "jade-hq_2_0",
+                                           "jade-hq_2_1",
+                                           "jade-hq_2_2",
+                                           "jade-hq_2_3",
+                                           "jade-hq_3_0",
+                                           "jade-hq_3_1",
+                                           "jade-hq_3_2",
+                                           "jade-hq_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-jade-motion",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade. Group PixelCampaign-jade-motion. Exact rows from image1: row1 walk step A with upright spear; row2 walk step B; row3 HIT RECOIL leaning back, eyes squeezed closed where visible, upright spear; row4 KNOCKED DOWN lying on side with spear lying alongside, four corresponding directions. Do not turn hurt/dead rows into walking. Keep closed eyes and back views. Native body proportions match image2; compact neck/chest and substantial rounded boots, large skull.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-motion/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-3fa537af-92af-4efd-a50c-0554f004e453.png",
+                        "native":  {
+                                       "width":  1078,
+                                       "height":  1460,
+                                       "nonzeroAlphaPixels":  667628,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      18,
+                                                                      26,
+                                                                      11,
+                                                                      132
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              32,
+                                                                              26,
+                                                                              214,
+                                                                              327
+                                                                          ],
+                                                                          [
+                                                                              312,
+                                                                              26,
+                                                                              205,
+                                                                              326
+                                                                          ],
+                                                                          [
+                                                                              844,
+                                                                              26,
+                                                                              206,
+                                                                              326
+                                                                          ],
+                                                                          [
+                                                                              549,
+                                                                              27,
+                                                                              212,
+                                                                              325
+                                                                          ],
+                                                                          [
+                                                                              34,
+                                                                              379,
+                                                                              215,
+                                                                              315
+                                                                          ],
+                                                                          [
+                                                                              311,
+                                                                              379,
+                                                                              211,
+                                                                              315
+                                                                          ],
+                                                                          [
+                                                                              550,
+                                                                              379,
+                                                                              223,
+                                                                              317
+                                                                          ],
+                                                                          [
+                                                                              840,
+                                                                              379,
+                                                                              212,
+                                                                              313
+                                                                          ],
+                                                                          [
+                                                                              552,
+                                                                              730,
+                                                                              222,
+                                                                              311
+                                                                          ],
+                                                                          [
+                                                                              22,
+                                                                              737,
+                                                                              241,
+                                                                              302
+                                                                          ],
+                                                                          [
+                                                                              835,
+                                                                              737,
+                                                                              224,
+                                                                              304
+                                                                          ],
+                                                                          [
+                                                                              303,
+                                                                              741,
+                                                                              231,
+                                                                              289
+                                                                          ],
+                                                                          [
+                                                                              283,
+                                                                              1191,
+                                                                              248,
+                                                                              134
+                                                                          ],
+                                                                          [
+                                                                              543,
+                                                                              1200,
+                                                                              250,
+                                                                              128
+                                                                          ],
+                                                                          [
+                                                                              818,
+                                                                              1200,
+                                                                              249,
+                                                                              128
+                                                                          ],
+                                                                          [
+                                                                              18,
+                                                                              1202,
+                                                                              251,
+                                                                              125
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: two walking steps, backward hurt recoil with closed eyes, side-lying knocked-down poses. Four lying face/back orientations and horizontal spear positions preserved.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-jade-motion/source-sheet-00.png",
+                        "sha256":  "ddafa2bb5b90b018813e3e43acc3268ebad99d5143e4e8fb0d11335cd67cdc79",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-motion/reference-00.png",
+                                                 "sha256":  "7c4a19a18d83692126ab55c22408771422198ad1663fa16238250f3c95f8cc21"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png",
+                                                 "sha256":  "0569c41e5cf8e31222e9bdd1dd10d042785d770f05a9ce0a0e094df8d7683d0f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/jade-motion.png",
+                        "sourceGuid":  "3ee20f82ef43023409baaa1e046d1280",
+                        "originalSourceSha256":  "c1a7aa208c92ad09852658afd18ca8a071784a9f7042a559c301d158c19e286f",
+                        "currentSourceSha256":  "5e0f7342c24a7f9cb43496d39f31b045d05ca4996a511032ae7d3a0602f6b864",
+                        "frameNames":  [
+                                           "jade-motion_0_0",
+                                           "jade-motion_0_1",
+                                           "jade-motion_0_2",
+                                           "jade-motion_0_3",
+                                           "jade-motion_1_0",
+                                           "jade-motion_1_1",
+                                           "jade-motion_1_2",
+                                           "jade-motion_1_3",
+                                           "jade-motion_2_0",
+                                           "jade-motion_2_1",
+                                           "jade-motion_2_2",
+                                           "jade-motion_2_3",
+                                           "jade-motion_3_0",
+                                           "jade-motion_3_1",
+                                           "jade-motion_3_2",
+                                           "jade-motion_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-jade-extra",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade. Group PixelCampaign-jade-extra. Exact rows from image1: row1 and row2 two walking steps upright spear; row3 casting with open gloved palm extended and other hand retaining upright spear, rear head hidden behind hair in back view; row4 two-hand low horizontal spear thrust. Keep each original direction and pose. Compact large skull/short torso of image2.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-extra/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-256f79ad-e308-407a-b405-83e1f0efa74e.png",
+                        "native":  {
+                                       "width":  1067,
+                                       "height":  1474,
+                                       "nonzeroAlphaPixels":  675648,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      11,
+                                                                      33,
+                                                                      3,
+                                                                      127
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              843,
+                                                                              33,
+                                                                              200,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              31,
+                                                                              36,
+                                                                              205,
+                                                                              312
+                                                                          ],
+                                                                          [
+                                                                              308,
+                                                                              36,
+                                                                              194,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              564,
+                                                                              36,
+                                                                              205,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              308,
+                                                                              386,
+                                                                              214,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              569,
+                                                                              386,
+                                                                              198,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              863,
+                                                                              386,
+                                                                              195,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              31,
+                                                                              387,
+                                                                              203,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              841,
+                                                                              735,
+                                                                              223,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              12,
+                                                                              736,
+                                                                              241,
+                                                                              299
+                                                                          ],
+                                                                          [
+                                                                              304,
+                                                                              736,
+                                                                              219,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              564,
+                                                                              742,
+                                                                              223,
+                                                                              290
+                                                                          ],
+                                                                          [
+                                                                              541,
+                                                                              1132,
+                                                                              256,
+                                                                              214
+                                                                          ],
+                                                                          [
+                                                                              11,
+                                                                              1135,
+                                                                              261,
+                                                                              211
+                                                                          ],
+                                                                          [
+                                                                              278,
+                                                                              1135,
+                                                                              259,
+                                                                              210
+                                                                          ],
+                                                                          [
+                                                                              799,
+                                                                              1135,
+                                                                              261,
+                                                                              212
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: two walking steps, open-palm cast with other hand upright spear, low horizontal thrust. Back view retains rear hair and raised palm.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-jade-extra/source-sheet-00.png",
+                        "sha256":  "b9169b88c764d330d4891ec6a424da7603d517f32ea5af6576eedfbd4617eceb",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-extra/reference-00.png",
+                                                 "sha256":  "5d1a2a5706ca349c23b06ccd4e03e6790a21e0e886ebc271c35bf6240d3e6180"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png",
+                                                 "sha256":  "0569c41e5cf8e31222e9bdd1dd10d042785d770f05a9ce0a0e094df8d7683d0f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/jade-extra.png",
+                        "sourceGuid":  "e3a1c4d3382bbc345a8e5f9ab9211afd",
+                        "originalSourceSha256":  "2242f7c98fec0b3b6e6ebbc77f7d21265045e3dfa97d2677667d605675c774a7",
+                        "currentSourceSha256":  "9718ae7a168b7671a06071ddd68217afd5a33c55b34eae62b8a0274d3e51c845",
+                        "frameNames":  [
+                                           "jade-extra_0_0",
+                                           "jade-extra_0_1",
+                                           "jade-extra_0_2",
+                                           "jade-extra_0_3",
+                                           "jade-extra_1_0",
+                                           "jade-extra_1_1",
+                                           "jade-extra_1_2",
+                                           "jade-extra_1_3",
+                                           "jade-extra_2_0",
+                                           "jade-extra_2_1",
+                                           "jade-extra_2_2",
+                                           "jade-extra_2_3",
+                                           "jade-extra_3_0",
+                                           "jade-extra_3_1",
+                                           "jade-extra_3_2",
+                                           "jade-extra_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-jade-polish",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade. Group PixelCampaign-jade-polish. Follow all sixteen reference poses exactly, preserving open/closed eyes, hair direction and spear position. Same short torso/large skull/rounded boot model as image2; do not extend legs back into the older style.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-polish/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-a9442ac2-dd9c-4028-a88c-d71081b9515c.png",
+                        "native":  {
+                                       "width":  1136,
+                                       "height":  1385,
+                                       "nonzeroAlphaPixels":  627079,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      14,
+                                                                      18,
+                                                                      13,
+                                                                      138
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              319,
+                                                                              18,
+                                                                              202,
+                                                                              284
+                                                                          ],
+                                                                          [
+                                                                              39,
+                                                                              22,
+                                                                              227,
+                                                                              281
+                                                                          ],
+                                                                          [
+                                                                              609,
+                                                                              22,
+                                                                              210,
+                                                                              281
+                                                                          ],
+                                                                          [
+                                                                              889,
+                                                                              22,
+                                                                              207,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              14,
+                                                                              362,
+                                                                              284,
+                                                                              220
+                                                                          ],
+                                                                          [
+                                                                              849,
+                                                                              365,
+                                                                              274,
+                                                                              217
+                                                                          ],
+                                                                          [
+                                                                              302,
+                                                                              366,
+                                                                              257,
+                                                                              216
+                                                                          ],
+                                                                          [
+                                                                              573,
+                                                                              367,
+                                                                              274,
+                                                                              215
+                                                                          ],
+                                                                          [
+                                                                              336,
+                                                                              621,
+                                                                              189,
+                                                                              303
+                                                                          ],
+                                                                          [
+                                                                              614,
+                                                                              624,
+                                                                              187,
+                                                                              301
+                                                                          ],
+                                                                          [
+                                                                              922,
+                                                                              625,
+                                                                              177,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              39,
+                                                                              628,
+                                                                              214,
+                                                                              296
+                                                                          ],
+                                                                          [
+                                                                              332,
+                                                                              967,
+                                                                              180,
+                                                                              279
+                                                                          ],
+                                                                          [
+                                                                              912,
+                                                                              967,
+                                                                              195,
+                                                                              279
+                                                                          ],
+                                                                          [
+                                                                              38,
+                                                                              968,
+                                                                              194,
+                                                                              279
+                                                                          ],
+                                                                          [
+                                                                              604,
+                                                                              968,
+                                                                              197,
+                                                                              278
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: overhead diagonal windup, horizontal thrust, raised recovery and idle. All four spear angles/directions per row preserved; no weapon duplication.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-jade-polish/source-sheet-00.png",
+                        "sha256":  "57f97aa94b3f6a7951e08b2d22b6f6c737d0d19de38c6803b3d43cfc67c4e7cf",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-jade-polish/reference-00.png",
+                                                 "sha256":  "561fc68111e3cfda030932384e2449d422118b6283c0e2c891babcb000ed1d30"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-jade/source-sheet-00.png",
+                                                 "sha256":  "0569c41e5cf8e31222e9bdd1dd10d042785d770f05a9ce0a0e094df8d7683d0f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/jade-polish.png",
+                        "sourceGuid":  "a02f7ac2927b3424fac202f6465a2bd4",
+                        "originalSourceSha256":  "cc9ef0e170d2717337a44c9d7e8aa9e0922792898dfbf98e9171df949efac934",
+                        "currentSourceSha256":  "3cd1ee1ca9bcdb75df141edabcd5e531733ad38ae5050eb766802c855b7d0b80",
+                        "frameNames":  [
+                                           "jade-polish_0_0",
+                                           "jade-polish_0_1",
+                                           "jade-polish_0_2",
+                                           "jade-polish_0_3",
+                                           "jade-polish_1_0",
+                                           "jade-polish_1_1",
+                                           "jade-polish_1_2",
+                                           "jade-polish_1_3",
+                                           "jade-polish_2_0",
+                                           "jade-polish_2_1",
+                                           "jade-polish_2_2",
+                                           "jade-polish_2_3",
+                                           "jade-polish_3_0",
+                                           "jade-polish_3_1",
+                                           "jade-polish_3_2",
+                                           "jade-polish_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-jade-hq",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade, SIGNATURE WEAPON. Group SignatureWeapons-jade-hq. Image2 is the exact approved signature model: red-brown long hair, rectangular glasses, blue/gold coat, white shirt waist detail, short torso/legs and round black boots; ONE RED-BLACK SPLIT-BLADED signature spear. Absolutely no ordinary silver/gold spear. Four row actions in image1: upright idle, horizontal thrust, vertical guard, diagonal ready. Preserve all16 poses and rear-head occlusion. Copy anatomy from image2 but all stances/gazes from image1.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-hq/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-0ed19edd-031c-4f4d-9632-279e3677331a.png",
+                        "native":  {
+                                       "width":  1108,
+                                       "height":  1420,
+                                       "nonzeroAlphaPixels":  766006,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      7,
+                                                                      12,
+                                                                      3,
+                                                                      158
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              306,
+                                                                              12,
+                                                                              217,
+                                                                              313
+                                                                          ],
+                                                                          [
+                                                                              15,
+                                                                              15,
+                                                                              220,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              876,
+                                                                              15,
+                                                                              222,
+                                                                              312
+                                                                          ],
+                                                                          [
+                                                                              572,
+                                                                              17,
+                                                                              226,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              287,
+                                                                              384,
+                                                                              263,
+                                                                              227
+                                                                          ],
+                                                                          [
+                                                                              558,
+                                                                              385,
+                                                                              282,
+                                                                              227
+                                                                          ],
+                                                                          [
+                                                                              835,
+                                                                              385,
+                                                                              270,
+                                                                              227
+                                                                          ],
+                                                                          [
+                                                                              7,
+                                                                              386,
+                                                                              270,
+                                                                              225
+                                                                          ],
+                                                                          [
+                                                                              15,
+                                                                              637,
+                                                                              233,
+                                                                              312
+                                                                          ],
+                                                                          [
+                                                                              299,
+                                                                              637,
+                                                                              230,
+                                                                              311
+                                                                          ],
+                                                                          [
+                                                                              878,
+                                                                              638,
+                                                                              219,
+                                                                              311
+                                                                          ],
+                                                                          [
+                                                                              583,
+                                                                              639,
+                                                                              218,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              310,
+                                                                              985,
+                                                                              236,
+                                                                              277
+                                                                          ],
+                                                                          [
+                                                                              19,
+                                                                              990,
+                                                                              248,
+                                                                              272
+                                                                          ],
+                                                                          [
+                                                                              573,
+                                                                              993,
+                                                                              249,
+                                                                              269
+                                                                          ],
+                                                                          [
+                                                                              853,
+                                                                              994,
+                                                                              252,
+                                                                              268
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: upright / horizontal thrust / vertical guard / diagonal ready. Red-black signature spear retained; larger skull and compact torso match signature premium.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-hq/source-sheet-00.png",
+                        "sha256":  "2efdd25ac3c45c363e73a6ebf4b92563940e19f07f3af23f67697b571b09c802",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-hq/reference-00.png",
+                                                 "sha256":  "8922cfe1a2d8a45dbf0e973594d2c99a4ab8abc30cc94f69b7322d972b070497"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png",
+                                                 "sha256":  "806980dccdf45012c053d7885e53c04e3dbcf1d49ac1e87ea2cb7294ec4d15ff"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/jade-hq.png",
+                        "sourceGuid":  "1c876f647a11517479fb2c746fbcfd11",
+                        "originalSourceSha256":  "e29c0c6e0e26983c00b0aebb0d1d347094857d540012d90e804600f536255e76",
+                        "currentSourceSha256":  "92d6a0eb85f831d017a202b0508abfaafbb2c5d6b2cd503c2f3324885e357260",
+                        "frameNames":  [
+                                           "jade-hq_0_0",
+                                           "jade-hq_0_1",
+                                           "jade-hq_0_2",
+                                           "jade-hq_0_3",
+                                           "jade-hq_1_0",
+                                           "jade-hq_1_1",
+                                           "jade-hq_1_2",
+                                           "jade-hq_1_3",
+                                           "jade-hq_2_0",
+                                           "jade-hq_2_1",
+                                           "jade-hq_2_2",
+                                           "jade-hq_2_3",
+                                           "jade-hq_3_0",
+                                           "jade-hq_3_1",
+                                           "jade-hq_3_2",
+                                           "jade-hq_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-jade-motion",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade SIGNATURE model. Group SignatureWeapons-jade-motion. Rows1/2 two walking steps; row3 hit recoil eyes closed and backward lean; row4 knocked down lying on side, spear lying beside. All downed eyes remain closed. Exact four directional views per row. Use image2\u0027s large skull/short body, blue coat with white waist center, red-brown hair, glasses. Weapon MUST remain one red-black split-bladed spear from image1, not ordinary gold/silver spear. Preserve reference hand and point directions. Generous transparent gaps, no clipped hair/weapon.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-motion/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-5521033e-8666-4364-8db7-be389cd43cb0.png",
+                        "native":  {
+                                       "width":  1051,
+                                       "height":  1496,
+                                       "nonzeroAlphaPixels":  756508,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      7,
+                                                                      31,
+                                                                      4,
+                                                                      89
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              7,
+                                                                              31,
+                                                                              232,
+                                                                              360
+                                                                          ],
+                                                                          [
+                                                                              286,
+                                                                              31,
+                                                                              228,
+                                                                              359
+                                                                          ],
+                                                                          [
+                                                                              527,
+                                                                              31,
+                                                                              236,
+                                                                              358
+                                                                          ],
+                                                                          [
+                                                                              812,
+                                                                              31,
+                                                                              235,
+                                                                              359
+                                                                          ],
+                                                                          [
+                                                                              286,
+                                                                              417,
+                                                                              236,
+                                                                              342
+                                                                          ],
+                                                                          [
+                                                                              11,
+                                                                              419,
+                                                                              235,
+                                                                              340
+                                                                          ],
+                                                                          [
+                                                                              810,
+                                                                              419,
+                                                                              235,
+                                                                              341
+                                                                          ],
+                                                                          [
+                                                                              532,
+                                                                              421,
+                                                                              240,
+                                                                              338
+                                                                          ],
+                                                                          [
+                                                                              283,
+                                                                              790,
+                                                                              246,
+                                                                              331
+                                                                          ],
+                                                                          [
+                                                                              533,
+                                                                              790,
+                                                                              240,
+                                                                              334
+                                                                          ],
+                                                                          [
+                                                                              800,
+                                                                              790,
+                                                                              242,
+                                                                              333
+                                                                          ],
+                                                                          [
+                                                                              10,
+                                                                              791,
+                                                                              259,
+                                                                              332
+                                                                          ],
+                                                                          [
+                                                                              265,
+                                                                              1262,
+                                                                              260,
+                                                                              144
+                                                                          ],
+                                                                          [
+                                                                              797,
+                                                                              1266,
+                                                                              249,
+                                                                              141
+                                                                          ],
+                                                                          [
+                                                                              532,
+                                                                              1268,
+                                                                              255,
+                                                                              133
+                                                                          ],
+                                                                          [
+                                                                              9,
+                                                                              1276,
+                                                                              250,
+                                                                              131
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: two walk steps, hurt recoil and side-lying collapse. Signature spear remains red-black in every row; closed recoil/downed eyes retained.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-motion/source-sheet-00.png",
+                        "sha256":  "34b53134bf3d7fecd48c7be3ee478ba660536fd807d7052e3154eb6fb69f15f9",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-motion/reference-00.png",
+                                                 "sha256":  "163ca3486c1ce8d6868ba9425a128a5fe66ca0a71220c0a357468a0d5045640e"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png",
+                                                 "sha256":  "806980dccdf45012c053d7885e53c04e3dbcf1d49ac1e87ea2cb7294ec4d15ff"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/jade-motion.png",
+                        "sourceGuid":  "6d045f6ea0446ed4fa9cf098aa5ebef4",
+                        "originalSourceSha256":  "f94d7dc216c697ee427755cb83118a99ceb0b7a4b3ba56687b1b632de6e40874",
+                        "currentSourceSha256":  "a87496d9bb63a4bf48c794e11894f7dbd2ff58f3aca38bf31ed739c86749ad34",
+                        "frameNames":  [
+                                           "jade-motion_0_0",
+                                           "jade-motion_0_1",
+                                           "jade-motion_0_2",
+                                           "jade-motion_0_3",
+                                           "jade-motion_1_0",
+                                           "jade-motion_1_1",
+                                           "jade-motion_1_2",
+                                           "jade-motion_1_3",
+                                           "jade-motion_2_0",
+                                           "jade-motion_2_1",
+                                           "jade-motion_2_2",
+                                           "jade-motion_2_3",
+                                           "jade-motion_3_0",
+                                           "jade-motion_3_1",
+                                           "jade-motion_3_2",
+                                           "jade-motion_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-jade-extra",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade SIGNATURE model. Group SignatureWeapons-jade-extra. Rows1/2 two walking steps; row3 casting open black-gloved palm with spear held upright by other hand; row4 low horizontal thrust. Keep back-head view in second column. Use image2\u0027s large skull/short body, blue coat with white waist center, red-brown hair, glasses. Weapon MUST remain one red-black split-bladed spear from image1, not ordinary gold/silver spear. Preserve reference hand and point directions. Generous transparent gaps, no clipped hair/weapon.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-extra/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-87b9e799-7077-4608-aa82-73287c9838c6.png",
+                        "native":  {
+                                       "width":  1065,
+                                       "height":  1477,
+                                       "nonzeroAlphaPixels":  716580,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      13,
+                                                                      26,
+                                                                      6,
+                                                                      147
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              18,
+                                                                              26,
+                                                                              221,
+                                                                              327
+                                                                          ],
+                                                                          [
+                                                                              553,
+                                                                              27,
+                                                                              229,
+                                                                              327
+                                                                          ],
+                                                                          [
+                                                                              288,
+                                                                              29,
+                                                                              211,
+                                                                              325
+                                                                          ],
+                                                                          [
+                                                                              846,
+                                                                              29,
+                                                                              205,
+                                                                              325
+                                                                          ],
+                                                                          [
+                                                                              22,
+                                                                              386,
+                                                                              226,
+                                                                              317
+                                                                          ],
+                                                                          [
+                                                                              558,
+                                                                              386,
+                                                                              226,
+                                                                              317
+                                                                          ],
+                                                                          [
+                                                                              852,
+                                                                              388,
+                                                                              201,
+                                                                              315
+                                                                          ],
+                                                                          [
+                                                                              289,
+                                                                              394,
+                                                                              214,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              17,
+                                                                              743,
+                                                                              234,
+                                                                              293
+                                                                          ],
+                                                                          [
+                                                                              553,
+                                                                              745,
+                                                                              238,
+                                                                              295
+                                                                          ],
+                                                                          [
+                                                                              839,
+                                                                              745,
+                                                                              219,
+                                                                              294
+                                                                          ],
+                                                                          [
+                                                                              296,
+                                                                              751,
+                                                                              225,
+                                                                              283
+                                                                          ],
+                                                                          [
+                                                                              814,
+                                                                              1119,
+                                                                              245,
+                                                                              210
+                                                                          ],
+                                                                          [
+                                                                              13,
+                                                                              1120,
+                                                                              253,
+                                                                              207
+                                                                          ],
+                                                                          [
+                                                                              272,
+                                                                              1122,
+                                                                              265,
+                                                                              208
+                                                                          ],
+                                                                          [
+                                                                              543,
+                                                                              1123,
+                                                                              261,
+                                                                              205
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: two walk steps, open-palm cast and horizontal thrust. Single red-black spear; rear head and staff occlusion consistent with reference.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-extra/source-sheet-00.png",
+                        "sha256":  "ff3cfbb8046a47b1e3f11c49f6a220817928afb3f1f02abe43b25e9adeb30e9a",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-extra/reference-00.png",
+                                                 "sha256":  "7a453ce38669eb9ca447235993c3b4eff6066f1f4e85936ea9ae430dfc277c93"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png",
+                                                 "sha256":  "806980dccdf45012c053d7885e53c04e3dbcf1d49ac1e87ea2cb7294ec4d15ff"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/jade-extra.png",
+                        "sourceGuid":  "766d4dfd8ef784e44a1b12902ff92fb2",
+                        "originalSourceSha256":  "f8c056269db6547e5e67aa6b61ebcae32f33388e759f081c6863c7854a6e2f38",
+                        "currentSourceSha256":  "b43acad000784eafd10e0aaa723e675f46ff85e6ffb427b67b26a544e1a1490c",
+                        "frameNames":  [
+                                           "jade-extra_0_0",
+                                           "jade-extra_0_1",
+                                           "jade-extra_0_2",
+                                           "jade-extra_0_3",
+                                           "jade-extra_1_0",
+                                           "jade-extra_1_1",
+                                           "jade-extra_1_2",
+                                           "jade-extra_1_3",
+                                           "jade-extra_2_0",
+                                           "jade-extra_2_1",
+                                           "jade-extra_2_2",
+                                           "jade-extra_2_3",
+                                           "jade-extra_3_0",
+                                           "jade-extra_3_1",
+                                           "jade-extra_3_2",
+                                           "jade-extra_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-jade-polish",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Jade SIGNATURE model. Group SignatureWeapons-jade-polish. Rows: overhead/behind-head diagonal windup; two-hand forward horizontal thrust; raised-spear recovery with original closed/open eyes; final upright idle. Keep each exact reference pose and four facings. One red-black split-bladed signature spear. Use canonical image2 compact body, large face/skull, detailed red-brown hair/glasses and navy/gold/white-waist costume; no ordinary spear. All four rows must have identical underlying skull/chest/boot scale.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-polish/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-cf461f98-eb17-4f39-992b-87b26dda0981.png",
+                        "native":  {
+                                       "width":  1101,
+                                       "height":  1428,
+                                       "nonzeroAlphaPixels":  668838,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      10,
+                                                                      26,
+                                                                      8,
+                                                                      180
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              24,
+                                                                              26,
+                                                                              238,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              309,
+                                                                              27,
+                                                                              215,
+                                                                              283
+                                                                          ],
+                                                                          [
+                                                                              847,
+                                                                              27,
+                                                                              235,
+                                                                              287
+                                                                          ],
+                                                                          [
+                                                                              580,
+                                                                              32,
+                                                                              232,
+                                                                              285
+                                                                          ],
+                                                                          [
+                                                                              305,
+                                                                              377,
+                                                                              250,
+                                                                              204
+                                                                          ],
+                                                                          [
+                                                                              839,
+                                                                              377,
+                                                                              254,
+                                                                              204
+                                                                          ],
+                                                                          [
+                                                                              573,
+                                                                              378,
+                                                                              258,
+                                                                              201
+                                                                          ],
+                                                                          [
+                                                                              10,
+                                                                              380,
+                                                                              285,
+                                                                              200
+                                                                          ],
+                                                                          [
+                                                                              891,
+                                                                              615,
+                                                                              190,
+                                                                              319
+                                                                          ],
+                                                                          [
+                                                                              333,
+                                                                              619,
+                                                                              207,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              40,
+                                                                              620,
+                                                                              221,
+                                                                              313
+                                                                          ],
+                                                                          [
+                                                                              599,
+                                                                              620,
+                                                                              182,
+                                                                              317
+                                                                          ],
+                                                                          [
+                                                                              45,
+                                                                              966,
+                                                                              210,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              884,
+                                                                              967,
+                                                                              201,
+                                                                              281
+                                                                          ],
+                                                                          [
+                                                                              595,
+                                                                              970,
+                                                                              200,
+                                                                              277
+                                                                          ],
+                                                                          [
+                                                                              331,
+                                                                              973,
+                                                                              196,
+                                                                              273
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "16 poses: overhead diagonal windup, horizontal strike, raised recovery, upright idle. Single red-black signature spear in original four directions.",
+                        "attempt":  1,
+                        "retries":  [
+
+                                    ],
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-polish/source-sheet-00.png",
+                        "sha256":  "cb8c28d8200f97517b40539db2fc0d49fe52f28a104e31a39ad6298cd12892b6",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-jade-polish/reference-00.png",
+                                                 "sha256":  "111225b5d5468dcdff4a6d55338b898d352e606f0e276010dda8dfa7a84c6587"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-jade-premium/source-sheet-00.png",
+                                                 "sha256":  "806980dccdf45012c053d7885e53c04e3dbcf1d49ac1e87ea2cb7294ec4d15ff"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/jade-polish.png",
+                        "sourceGuid":  "66c107c6f04b07f4caf92eea4d6219d2",
+                        "originalSourceSha256":  "9d7f9eb7f86986508921829de0d1b632fa2b13cc05a0b68b83c1b493a5f88f20",
+                        "currentSourceSha256":  "9c209da7d7ee431b2e02b769b2fd7ebe81a134df783cee353d754304278c5cb8",
+                        "frameNames":  [
+                                           "jade-polish_0_0",
+                                           "jade-polish_0_1",
+                                           "jade-polish_0_2",
+                                           "jade-polish_0_3",
+                                           "jade-polish_1_0",
+                                           "jade-polish_1_1",
+                                           "jade-polish_1_2",
+                                           "jade-polish_1_3",
+                                           "jade-polish_2_0",
+                                           "jade-polish_2_1",
+                                           "jade-polish_2_2",
+                                           "jade-polish_2_3",
+                                           "jade-polish_3_0",
+                                           "jade-polish_3_1",
+                                           "jade-polish_3_2",
+                                           "jade-polish_3_3"
+                                       ]
+                    }
+                ]
+}

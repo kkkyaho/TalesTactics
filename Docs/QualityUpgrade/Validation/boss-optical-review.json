@@ -1,0 +1,919 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-31T20:21:05.2456502+09:00",
+  "reviewer": "campaign_progression_runner",
+  "status": "sample-review-complete-corrections-pending-not-final-art-approval",
+  "method": "Read-only visual comparison of actual Unity UnitTone / CharacterVisualSizing renders: top row old production, bottom row candidate, exact sprite-name pairing. No image edits, Unity operations, or production changes were made by this review.",
+  "captureScript": "Logs/QualityUpgrade20261031/capture-all-optical.cs",
+  "captureScriptSha256": "990ce146911297eb6dd1060256b9f8f0398ad9e554da533b90a121ce7447acd9",
+  "scope": {
+    "bossArtSets": 20,
+    "pngCount": 77.0,
+    "representativePosePairs": 462.0,
+    "setsWithFourAuthoredDirections": 17,
+    "setsWithThreeAuthoredDirections": 3,
+    "resolution": "1920x900",
+    "inspectedConcerns": [
+      "Severe body size differences",
+      "Feet/root baseline differences",
+      "Pose/facing changes",
+      "Weapon count and direction",
+      "New embedded effect differences"
+    ]
+  },
+  "limitations": [
+    "77 PNGs and 462 representative old/new pose pairs, not 80 directional captures and not every authored frame.",
+    "This is static sprite render inspection, not animation timing/continuity, live battle, gameplay facing, or six-unit performance certification.",
+    "Subtle arm angle, lean, facial expression, hair, cloth, accessory, and anatomical proportions may differ; exact pose/pixel identity is not claimed.",
+    "No severe scale/feet/direction regression was found outside the listed findings in these samples; this is not proof that none exists in unsampled poses.",
+    "Each recorded hash identifies the reviewed image. Corrected images must be reviewed separately; this report does not automatically approve later replacements.",
+    "Three sets lack one authored direction and the capture script deliberately skips absent directions; runtime directional fallback is outside this evidence."
+  ],
+  "correctionPending": [
+    {
+      "id": "executor",
+      "frames": [
+        "executor_9_1",
+        "executor_4_2"
+      ],
+      "reason": "Changed facing/spearhead silhouette",
+      "assignedByRoot": true
+    },
+    {
+      "id": "hyades",
+      "frames": [
+        "hyades_13_3"
+      ],
+      "reason": "New rear-emitting beam",
+      "assignedByRoot": true
+    },
+    {
+      "id": "van",
+      "frames": [
+        "van_17_2",
+        "van_17_3"
+      ],
+      "reason": "Raised guard sword becomes lowered sword",
+      "assignedByRoot": true
+    }
+  ],
+  "bosses": [
+    {
+      "id": "asch",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-asch-direction-0.png",
+          "sha256": "407d8f7bb8f801cc64e1396649ace637bb8c6537facf5572bfb8005419c5d12b",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-asch-direction-1.png",
+          "sha256": "15490adcfc0329895f1ee7cdf243c11364138d647e306ada832b737f9634209c",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-asch-direction-2.png",
+          "sha256": "5d982fbe87ed50797b67845656b96f4dc5e84f69f39ad42e863c681592320139",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-asch-direction-3.png",
+          "sha256": "8f4b1d6db392ec62b311d8ab1327d51ef160d284f7fecbaab14afe602be8adc1",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Column 4 crouch/lean silhouette is modestly reinterpreted; no severe size or foot baseline error found in the sampled stills."
+      ]
+    },
+    {
+      "id": "balseph",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-balseph-direction-0.png",
+          "sha256": "d15d263210624a5ebc60cc7a11813998a729547ddf9bad8caf69523b10fce6d6",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-balseph-direction-1.png",
+          "sha256": "fdfc37d995f36e965088b5f441460cfbc92c5cb79b1b418527a98609281e67a5",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-balseph-direction-2.png",
+          "sha256": "1ee1e121ffa540b6f2411786661ffbacc6dc072217d6c018c7a60cc0365ca1a3",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-balseph-direction-3.png",
+          "sha256": "e272480c6968b317040a6775a79e98e1ed26ba447547bcd46e8e1bea2ef57c50",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Direction 3 column 2 exposes more of the rear axe than the old silhouette; pose/weapon silhouette is not claimed to be pixel-identical."
+      ]
+    },
+    {
+      "id": "demitel-v2",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-demitel-v2-direction-0.png",
+          "sha256": "cf57984f47fca6ebabe14473e1064959804c666cf4145f12439e6a91db19b5eb",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-demitel-v2-direction-1.png",
+          "sha256": "d12e18823736dbe6cc03e041f20d1844d71f99a8884b1e286bf0db5e1dd3e0b6",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-demitel-v2-direction-2.png",
+          "sha256": "58827f038826bb5c2047578225cc1b73a313284e4df03bf40f1bb607db8c1015",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-demitel-v2-direction-3.png",
+          "sha256": "3c230ce5e2ee23bba53e2fb87bea8d54554790af481c63deac1a297584075350",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "executor",
+      "status": "correction-pending",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-executor-direction-0.png",
+          "sha256": "74036c4d7e75840afab290fd1c07b2d54d31c0cc57ec23fdae14d57b09a6a53d",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-executor-direction-1.png",
+          "sha256": "a849c7b2ba40565841d7c4fa9b15d014edd827075412869fe5e9e7b4fdd5a180",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-executor-direction-2.png",
+          "sha256": "8cd12a46bf3ee48f044a27037b4d5872adb2802f4b5945c7124a7cd44349d4f6",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-executor-direction-3.png",
+          "sha256": "1d7f5bde665cbb68b59aa6788cdf327eb07f3759ef67d0185177684259a02add",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [
+        "executor_9_1: direction 1 column 3 changes the rear helmet reading to a visible side/front cross face and raises the left spearhead instead of the original lowered left spearhead.",
+        "executor_4_2: direction 2 column 2 adds an upper-left purple spearhead while retaining the lower-right spearhead, changing the weapon silhouette to double-ended/two-headed."
+      ],
+      "notes": [
+        "Root assigned these two cells to a separate correction task; this review does not certify the corrected output."
+      ]
+    },
+    {
+      "id": "ganabelt",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ganabelt-direction-0.png",
+          "sha256": "92e01b028a009a31f7f5864f1ab161ba171f68895c172460e6dec3401cc17f97",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ganabelt-direction-1.png",
+          "sha256": "5f37144f4c3d7261b16f9de43580ad8edb9f1bd4ad837bccd4d167386901430b",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ganabelt-direction-2.png",
+          "sha256": "2d8a570d75719d0509f6bfeb8c7b126a26ceccb34aa65f28b15e9bebd60459b2",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ganabelt-direction-3.png",
+          "sha256": "98dcebe0dad3fc11145916555e39211a3411fdc60ac6a889fdf0ab33d1e53886",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "golem",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-golem-direction-0.png",
+          "sha256": "feb2d1da01e476995d5c0285d4aca206fd4aaa9ec99e285ce916559c3ac3d066",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-golem-direction-1.png",
+          "sha256": "8528d4ff51337d07aecc85babf3ef72ed330f4f3e619706f41fd61c08f3fe76a",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-golem-direction-2.png",
+          "sha256": "f2523c5497a8489626fb394306d822228ad89d2569816237e5b2ef3f5b92058c",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-golem-direction-3.png",
+          "sha256": "8cdd83922ce15406c8181f904562b6b7f01eeebe598c0aac2795745a572bac60",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "hyades",
+      "status": "correction-pending",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-direction-0.png",
+          "sha256": "11fb725a4de510a946703334d74f377c835de0ed5e958accfa9d3f1f08e87336",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-direction-1.png",
+          "sha256": "a056cadf26ffbf2c3b483e41004a584ec4ed538a03cade2a8c09186084d278ab",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-direction-2.png",
+          "sha256": "c0d702c79690c507af4dc4fae9e0ae3829b3e20e6d22673250f17ab60bafe285",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-direction-3.png",
+          "sha256": "27bc85d3eb3563b55b2eab1f12829dfed204e404e22ec7a7f90211f255503eb2",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [
+        "hyades_13_3: direction 3 column 4 adds a bright pink beam behind the shoulder, pointing right while the head looks left; no beam is visible in the original corresponding pose. This changes the perceived emission origin/direction."
+      ],
+      "notes": [
+        "Direction 0 original and candidate both have a mouth/front beam. Direction 2 original and candidate both contain a rear/shoulder beam; the pre-existing direction 2 oddity does not validate adding a new beam to direction 3.",
+        "Recommend removing only the newly added direction 3 embedded beam to recover the original silhouette. Root assigned this cell to a separate correction task."
+      ]
+    },
+    {
+      "id": "hyades-human",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-human-direction-0.png",
+          "sha256": "08e1ab7426e09e70179f2c4f6db96f4b16773faec7495b83332810f706106ca7",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-human-direction-1.png",
+          "sha256": "451642898b30d459999de18d2eead663ca9727a191d19e0c5f1986d73ca5b410",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-human-direction-2.png",
+          "sha256": "b4d5b4cb6e12ba7f4bc9da688064f217a8a5601927c865c136abe322a3e841f3",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-human-direction-3.png",
+          "sha256": "a98ed50c62286e1c8ec5875c070a887751f5f09864d716d51ad163dd8e3b560f",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Direction 0 column 3 raised hand is somewhat lower than the old pose; no severe size or facing error found in the sample."
+      ]
+    },
+    {
+      "id": "legretta",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-legretta-direction-0.png",
+          "sha256": "5f730c7b23a092739abe75be929218ff1e00e933577141157e7024da3803a502",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-legretta-direction-1.png",
+          "sha256": "2c0a46a1f5b21fc41c76cb8ab812244d9e581919ef8dc17714d97b32a11d9344",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-legretta-direction-2.png",
+          "sha256": "73bc248745e819029e53767495410c27dcdfbdafe84cf266cbd47c64c8a87a28",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-legretta-direction-3.png",
+          "sha256": "bdb5743d56e59db4b5399aea861354cb02fd33a087cd8c0ede6a4a1adb47cc17",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Sampled firing-arm/gun angle has a modest lower-angle reinterpretation; full weapon pose identity is not certified."
+      ]
+    },
+    {
+      "id": "maxwell",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-maxwell-direction-0.png",
+          "sha256": "d3e950a22246ff741a6f3fba663d06398bbb3cc5266f2c68299f9d8f910a0418",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-maxwell-direction-1.png",
+          "sha256": "f0568e86aa0e4280290dd6413350b3fbb3aa4fdbf83a526f1406cb0b3c4e7111",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-maxwell-direction-2.png",
+          "sha256": "111086767a46f73ad97aec73f04a0972fdbe921fce1ca78ca37246ffa6c7ca84",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-maxwell-direction-3.png",
+          "sha256": "86b27b12bec877ae32bac8a1fc7358462be6dcea751f9a056f71606ec6616cf1",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Direction 1 column 4 side-facing turn is already present in the original; not a newly introduced direction swap."
+      ]
+    },
+    {
+      "id": "ordo",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ordo-direction-0.png",
+          "sha256": "0c56e04f1c643ce8fdbbf56d8bbf519eae39d68d7ff8c8ffff8d783b49cf7616",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ordo-direction-1.png",
+          "sha256": "d78d8f27d04884cacbf0a847200e4c702631008f4a2c8161d2326a37b920f6b6",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ordo-direction-2.png",
+          "sha256": "2c949bbef52fe32f42e80fd580ffea54478da6d6998e51eacdecf1e0300b1a1f",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-ordo-direction-3.png",
+          "sha256": "eae7e76d1543972866c3e570e4138b7a18abb9bfe4a6d9fbadaa38adbca82d43",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "origin",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-origin-direction-0.png",
+          "sha256": "6b3ad8db74acca428b78697d8081cdb6e6d4f7db8dd36fc724aa11c3a2c53a25",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-origin-direction-1.png",
+          "sha256": "9d7affc0410b4f9bfe3cec0b48640169541de740e5dc0e7e74b8f94f059e153f",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-origin-direction-2.png",
+          "sha256": "d35a6c54c51fdb9ccd65126b6424e2728171f763a1b735a7035debb479ff0c9e",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-origin-direction-3.png",
+          "sha256": "4a1bf2deb3efbfedd79ad19306b8363022f0984b2fbbf5d665b16bf89c037886",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Direction 2 column 3 back turn is already present in the original; not a newly introduced direction swap."
+      ]
+    },
+    {
+      "id": "oscar",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-oscar-direction-0.png",
+          "sha256": "aef917bad1c6b0c14361abc0d49bf3f47575e271190f0a122a243402ead99422",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-oscar-direction-1.png",
+          "sha256": "53e7c34f173024d8f693681e9915ad4b18cde5e93a53ffe87dbc5003f84b84c4",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-oscar-direction-2.png",
+          "sha256": "933c81e6fd614f04be9ae5fdafc7badeacf29e5a86bb3f0210b9707b91e2e149",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-oscar-direction-3.png",
+          "sha256": "0e1bef3c2b8fea511cf7c3bfd7c6c442ca4c38f3e062b0b1bed31fce78f812f3",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "jahmir",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-jahmir-direction-0.png",
+          "sha256": "21771d13993f6ab33210a02c3002df228a27bfd5530436227f5f56d24c173f7b",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-jahmir-direction-1.png",
+          "sha256": "45d12597b292e6646a93b237ed0ade9247061c9cf434684b8c9cf6b257ca079c",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-jahmir-direction-2.png",
+          "sha256": "e2d9f83d3c2033c086c1def5f4e4dac5950584a34fb93714e87f30bd31320bc0",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-jahmir-direction-3.png",
+          "sha256": "43255ee8b29adc9b14cccf08fb82cb574169297fede47e371957e0ef808b55f3",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "rassius",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-rassius-direction-0.png",
+          "sha256": "898629a0604a00e15ca2da4e9b8b7978bc34620bb7296d0cdccfc6b65ab2a078",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-rassius-direction-1.png",
+          "sha256": "5dfc9172ae981b39c08b13834f50d1a8544e1ee68b1acbc841fbf1b5a12dc95c",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-rassius-direction-2.png",
+          "sha256": "6c25770ac730f8fee23602ec11ac765e012d26be20cbd4ac7cad8cc45b5694b5",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-rassius-direction-3.png",
+          "sha256": "d445438dc78c2dcbd189c8f5d800d25eac9abb822b2e0a3b71fc7fefe7e6c4e6",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": []
+    },
+    {
+      "id": "shizel",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shizel-direction-0.png",
+          "sha256": "d3feaabc70d362ec09b257cddd1d546a4a4d5102e97e5f17993c12b2d96eb617",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shizel-direction-1.png",
+          "sha256": "8e56b738bdeb013e4db3ae0afd24fe4327dfb6a9545be42c6332d97c08a6d90d",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shizel-direction-2.png",
+          "sha256": "a2478ab0f7233df63a1876971b5462a915a84da42f2db3a75eaa83b64b990c5e",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shizel-direction-3.png",
+          "sha256": "26b70640062beb53451e581b548fe37af3ee14cb744bd75d1323c39690c451a4",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Direction 1 pose 16 turns toward the camera in both old and candidate artwork; not a newly introduced back/front swap."
+      ]
+    },
+    {
+      "id": "van",
+      "status": "correction-pending",
+      "captureCount": 4,
+      "representativePosePairs": 24,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-van-direction-0.png",
+          "sha256": "92ff79ea7a34f7b6964768548cdfafa041bd53862e76e373f3c5e69716005233",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-van-direction-1.png",
+          "sha256": "f88e8d0b92b3178b9b1d7f59a7ca9d088e3863f18fd2b2aaa42a3e2065e5f38d",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-van-direction-2.png",
+          "sha256": "d37937eeb86af1062d50929e787c81a83952daf28373160e12976f5b7b253b61",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-van-direction-3.png",
+          "sha256": "0565812eddfd7d309fd3412b296423202fd4429802b3ac885c2b712c66b88803",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [
+        "van_17_2 and van_17_3: direction 2/3 column 6 changes the original forward-upward guarding sword into a forward-downward sword; preceding pose 16 retains the original raised sword, introducing a roughly right-angle pose change in 16-to-17."
+      ],
+      "notes": [
+        "Root assigned these two cells to a separate correction task; actual animation impact remains to be checked after correction.",
+        "Direction 2 pose 13 already has the apparent double-sided sword in the old sprite; it is not a new candidate defect."
+      ]
+    },
+    {
+      "id": "dhaos",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 3,
+      "representativePosePairs": 18,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-dhaos-direction-0.png",
+          "sha256": "db7ba2bbc1df2defdcffa04c89deba4ed8761b96b7e51a1a3e074c9ca7f626c4",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-dhaos-direction-1.png",
+          "sha256": "a729d57bbcbff42209601bbe7f0674a158a59a9226eb366672ff60133506a76f",
+          "direction": 1,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-dhaos-direction-2.png",
+          "sha256": "d4697d7a1978f2c28ca8e1fcf11cc5dbb1e55f773bc371f4496b9bbe53129262",
+          "direction": 2,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Original artwork contains only directions 0,1,2. Direction 2 pose 4 faces the opposite side in both original and candidate; not a newly introduced error."
+      ]
+    },
+    {
+      "id": "shigure",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 3,
+      "representativePosePairs": 18,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shigure-direction-0.png",
+          "sha256": "5c05c67f2916258f65e0b76330198f19c24d3b1a14ed57f01383f63cd83a7c34",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shigure-direction-2.png",
+          "sha256": "5ad6bcab78a16059271a0234677981b159a03a4ad666d9f71dde78d201a9a87c",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-shigure-direction-3.png",
+          "sha256": "ac11856ca99f88b2bd84dac57b76b2a29bcd8a7d43b8de9d2d510f5cc6c9df03",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Original artwork contains only directions 0,2,3. Sampled multiple sword silhouettes are already present in the original. No severe new scale/feet/direction issue found."
+      ]
+    },
+    {
+      "id": "vholran",
+      "status": "no-severe-regression-found-in-samples",
+      "captureCount": 3,
+      "representativePosePairs": 18,
+      "poses": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-vholran-direction-0.png",
+          "sha256": "c3ecc6d853e4d25a5b5a1f105d28ebe08729ad76d43c81e79c085ce142534e83",
+          "direction": 0,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-vholran-direction-2.png",
+          "sha256": "f1b9dfbc96f701578537eb7b3408f9aae6523d80a8165bedf7ec72e92f9704dd",
+          "direction": 2,
+          "representativePoseCount": 6
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/AllOptical/Crossover-vholran-direction-3.png",
+          "sha256": "e765533073afd7f3b33b103fa2b04827079bf7babb672266840bbdd506296b26",
+          "direction": 3,
+          "representativePoseCount": 6
+        }
+      ],
+      "findings": [],
+      "notes": [
+        "Original artwork contains only directions 0,2,3. Large embedded slash arcs were omitted in accordance with the character-only generation policy; this is not evidence that runtime VFX is absent. No severe new scale/feet/direction issue found."
+      ]
+    }
+  ]
+}

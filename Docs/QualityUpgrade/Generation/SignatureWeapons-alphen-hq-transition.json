@@ -1,0 +1,13 @@
+{
+  "visual": "All 16 original poses/directions checked against reference; overhead/attack/guard/idle or walk/recoil/prone remain distinct. One signature black/red sword per visible original cell, no added sword.",
+  "prompt": "Edit target IMAGE 1, preserving exactly all SIXTEEN Alphen poses in their current row-major order and facing directions. Redraw them to precisely match IMAGE 2 character style/proportions: oversized white hair/head, short sturdy body and boots, black armor with refined gold/silver highlights, blue scarf, one black/red glowing jagged sword. IMAGE 2 is a STYLE / BODY-RATIO reference only: NEVER replace target poses with reference poses. Target row1 idle, row2 attack, row3 upright sword raised in front, row4 cross-body guard; each row has front/back/rightward/leftward views. Preserve each target sword angle and correct hand ownership, cape silhouette, foot stance, rear face hidden. Do not invent another sword. Make head to torso ratio and armor identical to image2 so animation doesn't pop between poses. Native high-detail crisp cel-shaded game sprites with RGBA transparent background, four columns and four occupied rows plus entirely blank transparent fifth row. Full uncut bodies and sword tips, separate transparent gutters, no text, no grid, no checkerboard/color background, no shadow. Only redraw sixteen existing poses, no duplication/extra figures.",
+  "inputs": [
+    "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-hq/reference-00.png",
+    "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+  ],
+  "status": "candidate, native packing and actual transition review pending",
+  "sourceGenerated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-08e10ae3-b6c7-458f-abb2-0d4a685e531f.png",
+  "sha256": "a73ddf1322e651734212e25dee7fc10579d084349e4e811b2356d583042f8dba",
+  "target": "SignatureWeapons-alphen-hq",
+  "tool": "image_gen"
+}

@@ -1,2 +1,6 @@
 # Preserve raw Windows startup evidence byte for byte (mixed CRLF/CRCRLF).
 Docs/SdPolish/Validation/normal-startup*.log -text -diff
+
+# Keep hash-pinned quality validation and provenance artifacts byte-exact.
+Docs/QualityUpgrade/**/*.json -text whitespace=cr-at-eol
+Docs/QualityUpgrade/**/*.txt -text whitespace=cr-at-eol

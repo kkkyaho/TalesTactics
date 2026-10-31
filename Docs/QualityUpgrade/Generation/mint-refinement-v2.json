@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-31",
+  "tool": "built-in image_gen.imagegen",
+  "purpose": "Mint motion sheet 02 redraw iteration",
+  "prompt": "Production sprite atlas edit. Input 1 is the existing Mint 20-frame motion atlas: exactly 4 columns and 5 rows, preserve each cell's pose, facing direction, staff grip, and timing stage. Input 2 is the approved art-direction illustration: use the priestess on the right for professional ink line quality, refined facial features, crisp gold trim, cloth shading, hair strands. Redraw all 20 figures freshly with clean, detailed 2.7-head-tall SD proportions, not squat round baby proportions. Input 1's bright red/purple fringes and ragged pixels are DEFECTS: eliminate these completely, render clean antialiased alpha silhouette, no colored halo, no glow, no ground shadows. White and lavender priestess robes, blonde hair, blue eyes, white-purple hat and gold staff with blue orb consistent in all frames. Column1 front, column2 back (NO face visible), column3 right, column4 left. Preserve original directed attack/recovery hand gestures; do not replace with generic prayer poses. Keep one staff per figure. All figures have identical anatomical scale, hat to feet about 255px at final native resolution. Full-body figures centered in equal cells with clear gaps; no clipping. Request high-resolution portrait 4:5 output 2048x2560 if supported, never fake sharpening or upscale prior pixels. Background must be truly transparent RGBA, not black or checkerboard. No text, UI, grid, frames, decoration, extra characters. Improve drawing, not simply resize.",
+  "references": [
+    "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-02.png",
+    "Docs/QualityUpgrade/Samples/character-motion-approved.png"
+  ],
+  "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a1382c-15f7-70d2-a550-3a56303cb362/exec-99fda217-376b-4e3d-b14d-6ce97e9f540f.png",
+  "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-02-v2.png",
+  "sha256": "9e2f0ed410a7cb74558662c0dca025b518d340254de1cbc31688559397a0d7cc",
+  "status": "pending-native-layout-and-engine-review",
+  "productionApplied": false,
+  "note": "Preview exposes low-alpha RGB. Read-only pixel analysis: 31864 red-like pixels alpha>=1, only17 alpha>=8, zero alpha255. Judge halo in actual Unity compositing."
+}

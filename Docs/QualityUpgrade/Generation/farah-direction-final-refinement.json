@@ -1,0 +1,789 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "New native redraw candidates only; production not modified; engine approval pending.",
+  "records": [
+    {
+      "group": "MotionPremium-farah",
+      "character": "farah-direction",
+      "sheetIndex": 2,
+      "usedFrames": 20,
+      "sourceManifest": "Logs/QualityUpgrade20261031/References/MotionPremium-farah/reference-manifest.json",
+      "referencePath": "Logs/QualityUpgrade20261031/References/MotionPremium-farah/reference-02.png",
+      "supportingReference": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+      "attempt": 2,
+      "targetFrames": [
+        "farah_10_1"
+      ],
+      "state": "Selected narrow direction-correction candidate; visual source comparison and pure native analysis passed; root Unity rerender pending",
+      "inputOrder": [
+        "current candidate sheet (edit this)",
+        "original source pose reference (pose identity)"
+      ],
+      "actualOpticalEvidence": "Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-farah-direction-1.png (column4, original above, candidate below)",
+      "prompt": "Make ONE precise correction to the FIRST attached sprite sheet. Preserve native 1122x1402 dimensions, true alpha transparency, 4 columns x5 rows, twenty figures and all existing cell locations. TARGET ONLY THE TOP ROW SECOND FIGURE FROM THE LEFT, frame farah_10_1. Its current pose mistakenly shows the back of her green-haired head and back of red vest. The SECOND attached small original source reference shows the correct same cell: a face-visible three-quarter front punching pose, both eyes/cheek visible under green bangs, torso facing toward viewer, red boxing glove still punching toward the RIGHT. Correct target head/face and upper-body orientation to that source original. Keep the exact punch direction to the RIGHT, extended arm position and glove, foot positions, body/skull scale, leg stance, clothing, color palette and crisp illustrated SD linework of the first image. This is a direction error repair, NOT a new pose or mirrored punch. Do NOT change top row first/third/fourth sprites; do NOT change any of the sixteen sprites in rows2-5. In particular row3 second figure remains the intended back-view LEFT punch, and row5 first/second figures stay high kicks. Preserve all twenty existing full figures in their own isolated transparent cells, with no clipping, no touching, no effects or new props, no label/grid/background. Keep the entire first image unchanged outside the one target head/upper torso and preserve canvas size and layout. Output the full corrected sheet with genuine alpha transparency.",
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-71ed3fd7-9d21-4bb3-bc9d-3ecd66ab7013.png",
+      "visualReview": "Compared first source reference row1col2 and actual PilotOptical column4: candidate farah_10_1 now has a visible front three-quarter face/torso and still punches right. All other nineteen pose identities, kick/punch directions, and 4x5 ordering visually retained. Generative edit is not a byte-identical patch outside target; no exact-pixel preservation claim.",
+      "outputSha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188",
+      "byteIdenticalToGeneratedOutput": true,
+      "exactFrames": [
+        {
+          "index": 40,
+          "sheetIndex": 2,
+          "cellIndex": 0,
+          "name": "farah_10_0",
+          "originalSpriteId": "776c6eea6f7f7904690ea41903169381",
+          "originalInternalId": "598417843",
+          "sourceRect": {
+            "x": 72.0,
+            "y": 496.0,
+            "width": 105.0,
+            "height": 111.0
+          },
+          "sourcePivot": {
+            "x": 0.6000000238418579,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 41,
+          "sheetIndex": 2,
+          "cellIndex": 1,
+          "name": "farah_10_1",
+          "originalSpriteId": "1e4cccb4e73f36746b9b6eb50b8e3174",
+          "originalInternalId": "-1994574979",
+          "sourceRect": {
+            "x": 216.0,
+            "y": 496.0,
+            "width": 102.0,
+            "height": 114.0
+          },
+          "sourcePivot": {
+            "x": 0.6274510025978088,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 42,
+          "sheetIndex": 2,
+          "cellIndex": 2,
+          "name": "farah_10_2",
+          "originalSpriteId": "35fb06f4a1012c04d98fc43a62397c99",
+          "originalInternalId": "123561186",
+          "sourceRect": {
+            "x": 359.0,
+            "y": 496.0,
+            "width": 97.0,
+            "height": 115.0
+          },
+          "sourcePivot": {
+            "x": 0.3917520046234131,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 43,
+          "sheetIndex": 2,
+          "cellIndex": 3,
+          "name": "farah_10_3",
+          "originalSpriteId": "4ed0c6bbfc4a89944a10893e8d2e2b97",
+          "originalInternalId": "1342273831",
+          "sourceRect": {
+            "x": 496.0,
+            "y": 495.0,
+            "width": 100.0,
+            "height": 115.0
+          },
+          "sourcePivot": {
+            "x": 0.5699999928474426,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 44,
+          "sheetIndex": 2,
+          "cellIndex": 4,
+          "name": "farah_11_0",
+          "originalSpriteId": "9629725cd426d52409d30e56b3707de2",
+          "originalInternalId": "402312499",
+          "sourceRect": {
+            "x": 661.0,
+            "y": 496.0,
+            "width": 103.0,
+            "height": 106.0
+          },
+          "sourcePivot": {
+            "x": 0.3398059904575348,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 45,
+          "sheetIndex": 2,
+          "cellIndex": 5,
+          "name": "farah_11_1",
+          "originalSpriteId": "9fb5a94398120a44ea01a232648cfe4f",
+          "originalInternalId": "-1076353620",
+          "sourceRect": {
+            "x": 806.0,
+            "y": 496.0,
+            "width": 94.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.6170219779014587,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 46,
+          "sheetIndex": 2,
+          "cellIndex": 6,
+          "name": "farah_11_2",
+          "originalSpriteId": "fd95abd8758d542458400e7d2fd63a27",
+          "originalInternalId": "465452047",
+          "sourceRect": {
+            "x": 947.0,
+            "y": 496.0,
+            "width": 90.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.37777701020240784,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 47,
+          "sheetIndex": 2,
+          "cellIndex": 7,
+          "name": "farah_11_3",
+          "originalSpriteId": "361205bbc1bb2b3419cb4dd957511a02",
+          "originalInternalId": "1615111427",
+          "sourceRect": {
+            "x": 1094.0,
+            "y": 496.0,
+            "width": 97.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.5360820293426514,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 48,
+          "sheetIndex": 2,
+          "cellIndex": 8,
+          "name": "farah_12_0",
+          "originalSpriteId": "7e31d96383aed7b4e9b129b4ff81deb6",
+          "originalInternalId": "898532506",
+          "sourceRect": {
+            "x": 74.0,
+            "y": 371.0,
+            "width": 115.0,
+            "height": 117.0
+          },
+          "sourcePivot": {
+            "x": 0.5217390060424805,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 49,
+          "sheetIndex": 2,
+          "cellIndex": 9,
+          "name": "farah_12_1",
+          "originalSpriteId": "65f736f06b5f2a04ebf2c023db9148c4",
+          "originalInternalId": "-825462717",
+          "sourceRect": {
+            "x": 206.0,
+            "y": 371.0,
+            "width": 111.0,
+            "height": 117.0
+          },
+          "sourcePivot": {
+            "x": 0.43243199586868286,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 50,
+          "sheetIndex": 2,
+          "cellIndex": 10,
+          "name": "farah_12_2",
+          "originalSpriteId": "e1e20235904aba8438c505a5302fa510",
+          "originalInternalId": "-324836797",
+          "sourceRect": {
+            "x": 349.0,
+            "y": 371.0,
+            "width": 112.0,
+            "height": 114.0
+          },
+          "sourcePivot": {
+            "x": 0.3392859995365143,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 51,
+          "sheetIndex": 2,
+          "cellIndex": 11,
+          "name": "farah_12_3",
+          "originalSpriteId": "f7537ccad4acc1f44852438eb50aa391",
+          "originalInternalId": "135045345",
+          "sourceRect": {
+            "x": 490.0,
+            "y": 370.0,
+            "width": 111.0,
+            "height": 115.0
+          },
+          "sourcePivot": {
+            "x": 0.6576579809188843,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 52,
+          "sheetIndex": 2,
+          "cellIndex": 12,
+          "name": "farah_13_0",
+          "originalSpriteId": "cc5e3e21c59b35142bce52ca01f4c50f",
+          "originalInternalId": "-629447910",
+          "sourceRect": {
+            "x": 666.0,
+            "y": 370.0,
+            "width": 93.0,
+            "height": 102.0
+          },
+          "sourcePivot": {
+            "x": 0.6236559748649597,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 53,
+          "sheetIndex": 2,
+          "cellIndex": 13,
+          "name": "farah_13_1",
+          "originalSpriteId": "3052f35a16471164db66b3b6c2bf0a5f",
+          "originalInternalId": "312567995",
+          "sourceRect": {
+            "x": 815.0,
+            "y": 370.0,
+            "width": 85.0,
+            "height": 110.0
+          },
+          "sourcePivot": {
+            "x": 0.5882350206375122,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 54,
+          "sheetIndex": 2,
+          "cellIndex": 14,
+          "name": "farah_13_2",
+          "originalSpriteId": "1b224099511300b4f8ec8d4289fa2a63",
+          "originalInternalId": "2016442115",
+          "sourceRect": {
+            "x": 947.0,
+            "y": 369.0,
+            "width": 93.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.5967739820480347,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 55,
+          "sheetIndex": 2,
+          "cellIndex": 15,
+          "name": "farah_13_3",
+          "originalSpriteId": "e2e5370e0e0ad794dbbec051c7644c18",
+          "originalInternalId": "1166603611",
+          "sourceRect": {
+            "x": 1088.0,
+            "y": 370.0,
+            "width": 92.0,
+            "height": 107.0
+          },
+          "sourcePivot": {
+            "x": 0.5543479919433594,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 56,
+          "sheetIndex": 2,
+          "cellIndex": 16,
+          "name": "farah_14_0",
+          "originalSpriteId": "7ac742b29234b8b4e9d5567c66bc7d6a",
+          "originalInternalId": "-169694014",
+          "sourceRect": {
+            "x": 70.0,
+            "y": 245.0,
+            "width": 109.0,
+            "height": 116.0
+          },
+          "sourcePivot": {
+            "x": 0.39449599385261536,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 57,
+          "sheetIndex": 2,
+          "cellIndex": 17,
+          "name": "farah_14_1",
+          "originalSpriteId": "f972124cf7d02594594f8984fb24c816",
+          "originalInternalId": "-2104931990",
+          "sourceRect": {
+            "x": 205.0,
+            "y": 246.0,
+            "width": 105.0,
+            "height": 116.0
+          },
+          "sourcePivot": {
+            "x": 0.5904759764671326,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 58,
+          "sheetIndex": 2,
+          "cellIndex": 18,
+          "name": "farah_14_2",
+          "originalSpriteId": "b7c0b5232b79e0f4fbaf117a0dadabd1",
+          "originalInternalId": "-667346610",
+          "sourceRect": {
+            "x": 346.0,
+            "y": 248.0,
+            "width": 106.0,
+            "height": 110.0
+          },
+          "sourcePivot": {
+            "x": 0.37735798954963684,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 59,
+          "sheetIndex": 2,
+          "cellIndex": 19,
+          "name": "farah_14_3",
+          "originalSpriteId": "0ecc778a72192154ca25f8583287d6bb",
+          "originalInternalId": "1755163112",
+          "sourceRect": {
+            "x": 496.0,
+            "y": 248.0,
+            "width": 107.0,
+            "height": 109.0
+          },
+          "sourcePivot": {
+            "x": 0.6261680126190186,
+            "y": 0.009999999776482582
+          }
+        }
+      ],
+      "manifestSha256": "c26ccf6c41a164e0f03344b55cc2ec8bc2db2250e276cdcf09b75a11c2c7eb4b",
+      "referenceSha256": "98021fe17afc90635c848a239a55e6d8cf16cdcfc259b0b8abf53a3253ba96c3",
+      "sourceIdentity": {
+        "source": "Assets/TalesTactics/Art/MotionPremium/farah.png",
+        "sourceGuid": "0f54ffb5d7963db4cb350bb98d161301",
+        "sourceSha256": "73a6e86d79c5af0ae6f0c4b800f0fab97856affac42ffc6dfc2c9ad6e175f223",
+        "currentSourceSha256": "8deaac3201ff74431369a9c7951ba3962b44a09bddbf1d18de4fdb1dda8f2165",
+        "sourceMetaSha256": "77e7262de8c6f735160a2acb068885a821a398d186985ed649ffab1b9bd4ba8f"
+      },
+      "supportingReferenceSha256": "eaec22ff5fe42dbfdced1d0d19552f0edb27cda064a8c12140546968e27a5f87",
+      "nativeAnalysis": {
+        "name": "farah-direction-2-attempt2",
+        "passed": true,
+        "explicitLayout": false,
+        "width": 1122,
+        "height": 1402,
+        "usedFrames": 20,
+        "columnCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "rowColumnCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "rowCutsFromTop": [
+          0,
+          280,
+          561,
+          841,
+          1113,
+          1402
+        ],
+        "nativeRgbaHistogramSha256": "bd002813a5e270e471a925e91efcda4db1af150011952cefa82ff52d8cd63c08",
+        "nativePixelCount": 675307,
+        "ownedPixelCount": 675307,
+        "uniqueOwnedPixelCount": 675307,
+        "allNativeRgbaPixelsPreserved": true,
+        "alphaAbove8OuterMarginsLeftRightBottomTop": [
+          33,
+          46,
+          39,
+          27
+        ],
+        "minimumSameRowHorizontalAlpha8Gap": 22,
+        "sameRowHorizontalAlpha8Gaps": [
+          55,
+          44,
+          72,
+          67,
+          73,
+          77,
+          22,
+          37,
+          44,
+          87,
+          75,
+          76,
+          47,
+          47,
+          55
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "strongComponentX": 51,
+            "strongComponentY": 1135,
+            "strongComponentWidth": 207,
+            "strongComponentHeight": 239,
+            "alphaAbove8Bounds": [
+              50,
+              1134,
+              209,
+              241
+            ],
+            "nativePixelCount": 34379
+          },
+          {
+            "index": 1,
+            "strongComponentX": 315,
+            "strongComponentY": 1135,
+            "strongComponentWidth": 227,
+            "strongComponentHeight": 239,
+            "alphaAbove8Bounds": [
+              314,
+              1134,
+              229,
+              241
+            ],
+            "nativePixelCount": 36432
+          },
+          {
+            "index": 2,
+            "strongComponentX": 588,
+            "strongComponentY": 1133,
+            "strongComponentWidth": 199,
+            "strongComponentHeight": 237,
+            "alphaAbove8Bounds": [
+              587,
+              1132,
+              201,
+              239
+            ],
+            "nativePixelCount": 33525
+          },
+          {
+            "index": 3,
+            "strongComponentX": 861,
+            "strongComponentY": 1133,
+            "strongComponentWidth": 202,
+            "strongComponentHeight": 237,
+            "alphaAbove8Bounds": [
+              860,
+              1132,
+              203,
+              239
+            ],
+            "nativePixelCount": 33148
+          },
+          {
+            "index": 4,
+            "strongComponentX": 44,
+            "strongComponentY": 868,
+            "strongComponentWidth": 209,
+            "strongComponentHeight": 229,
+            "alphaAbove8Bounds": [
+              44,
+              867,
+              210,
+              231
+            ],
+            "nativePixelCount": 32609
+          },
+          {
+            "index": 5,
+            "strongComponentX": 322,
+            "strongComponentY": 867,
+            "strongComponentWidth": 197,
+            "strongComponentHeight": 231,
+            "alphaAbove8Bounds": [
+              321,
+              866,
+              198,
+              233
+            ],
+            "nativePixelCount": 31643
+          },
+          {
+            "index": 6,
+            "strongComponentX": 593,
+            "strongComponentY": 866,
+            "strongComponentWidth": 193,
+            "strongComponentHeight": 227,
+            "alphaAbove8Bounds": [
+              592,
+              865,
+              195,
+              229
+            ],
+            "nativePixelCount": 31025
+          },
+          {
+            "index": 7,
+            "strongComponentX": 865,
+            "strongComponentY": 866,
+            "strongComponentWidth": 208,
+            "strongComponentHeight": 229,
+            "alphaAbove8Bounds": [
+              864,
+              865,
+              210,
+              230
+            ],
+            "nativePixelCount": 32497
+          },
+          {
+            "index": 8,
+            "strongComponentX": 36,
+            "strongComponentY": 581,
+            "strongComponentWidth": 230,
+            "strongComponentHeight": 246,
+            "alphaAbove8Bounds": [
+              35,
+              580,
+              234,
+              248
+            ],
+            "nativePixelCount": 36945
+          },
+          {
+            "index": 9,
+            "strongComponentX": 292,
+            "strongComponentY": 581,
+            "strongComponentWidth": 244,
+            "strongComponentHeight": 247,
+            "alphaAbove8Bounds": [
+              291,
+              580,
+              246,
+              249
+            ],
+            "nativePixelCount": 37563
+          },
+          {
+            "index": 10,
+            "strongComponentX": 575,
+            "strongComponentY": 584,
+            "strongComponentWidth": 229,
+            "strongComponentHeight": 243,
+            "alphaAbove8Bounds": [
+              574,
+              583,
+              231,
+              245
+            ],
+            "nativePixelCount": 35376
+          },
+          {
+            "index": 11,
+            "strongComponentX": 850,
+            "strongComponentY": 584,
+            "strongComponentWidth": 225,
+            "strongComponentHeight": 243,
+            "alphaAbove8Bounds": [
+              849,
+              583,
+              227,
+              244
+            ],
+            "nativePixelCount": 34725
+          },
+          {
+            "index": 12,
+            "strongComponentX": 46,
+            "strongComponentY": 315,
+            "strongComponentWidth": 197,
+            "strongComponentHeight": 232,
+            "alphaAbove8Bounds": [
+              45,
+              315,
+              199,
+              233
+            ],
+            "nativePixelCount": 32846
+          },
+          {
+            "index": 13,
+            "strongComponentX": 332,
+            "strongComponentY": 312,
+            "strongComponentWidth": 178,
+            "strongComponentHeight": 236,
+            "alphaAbove8Bounds": [
+              331,
+              311,
+              180,
+              238
+            ],
+            "nativePixelCount": 31701
+          },
+          {
+            "index": 14,
+            "strongComponentX": 587,
+            "strongComponentY": 310,
+            "strongComponentWidth": 199,
+            "strongComponentHeight": 234,
+            "alphaAbove8Bounds": [
+              586,
+              309,
+              201,
+              236
+            ],
+            "nativePixelCount": 33668
+          },
+          {
+            "index": 15,
+            "strongComponentX": 863,
+            "strongComponentY": 309,
+            "strongComponentWidth": 199,
+            "strongComponentHeight": 238,
+            "alphaAbove8Bounds": [
+              863,
+              308,
+              200,
+              240
+            ],
+            "nativePixelCount": 34345
+          },
+          {
+            "index": 16,
+            "strongComponentX": 34,
+            "strongComponentY": 42,
+            "strongComponentWidth": 226,
+            "strongComponentHeight": 241,
+            "alphaAbove8Bounds": [
+              33,
+              41,
+              228,
+              243
+            ],
+            "nativePixelCount": 30952
+          },
+          {
+            "index": 17,
+            "strongComponentX": 309,
+            "strongComponentY": 40,
+            "strongComponentWidth": 218,
+            "strongComponentHeight": 247,
+            "alphaAbove8Bounds": [
+              308,
+              39,
+              219,
+              248
+            ],
+            "nativePixelCount": 31200
+          },
+          {
+            "index": 18,
+            "strongComponentX": 575,
+            "strongComponentY": 47,
+            "strongComponentWidth": 225,
+            "strongComponentHeight": 232,
+            "alphaAbove8Bounds": [
+              574,
+              47,
+              227,
+              233
+            ],
+            "nativePixelCount": 36045
+          },
+          {
+            "index": 19,
+            "strongComponentX": 857,
+            "strongComponentY": 47,
+            "strongComponentWidth": 219,
+            "strongComponentHeight": 231,
+            "alphaAbove8Bounds": [
+              856,
+              46,
+              220,
+              233
+            ],
+            "nativePixelCount": 34683
+          }
+        ]
+      }
+    }
+  ],
+  "selectedSheets": [
+    {
+      "group": "MotionPremium-farah",
+      "sheetIndex": 2,
+      "path": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+      "sha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188",
+      "targetFrames": [
+        "farah_10_1"
+      ]
+    }
+  ],
+  "evidence": "Docs/QualityUpgrade/Validation/farah-direction-final-native.json",
+  "comparison": {
+    "target": "farah_10_1; sheet2 cell1; row1 column2",
+    "before": "Candidate showed back of head and red vest while punching right; source original and actual capture show face-visible punch.",
+    "after": "Visible front three-quarter face and torso restored; punch remains right, leg stance retained.",
+    "otherPoses": "Nineteen pose identities, orientations and 4x5 placement visually retained; generative edit does not ensure identical pixels outside target.",
+    "canvas": "1122x1402 preserved",
+    "sourceCandidateUnchanged": true,
+    "productionUnchanged": true,
+    "runtimeRenderApproval": "Pending root review; no Unity or Pack called by this task."
+  },
+  "generationStopped": true,
+  "scopeLimit": "One requested cell direction repair, one generated sheet, frozen after validation. Pure .NET pixel analysis is not a Unity test. No code/production/meta edits; no Pack execution. Original candidate retained."
+}

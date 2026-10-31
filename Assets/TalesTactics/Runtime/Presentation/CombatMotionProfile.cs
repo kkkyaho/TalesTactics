@@ -7,6 +7,23 @@ namespace TalesTactics
         public readonly float Advance, Recoil, Lift, Tilt, Hold;
         public CombatMotionProfile(float advance,float recoil,float lift,float tilt,float hold)
         {Advance=advance;Recoil=recoil;Lift=lift;Tilt=tilt;Hold=hold;}
+        public CombatMotionSample Sample(float phase,bool released)
+        {
+            if(float.IsNaN(phase)||float.IsInfinity(phase))phase=0;
+            phase=Mathf.Clamp01(phase);
+            if(!released)
+            {
+                float load=Ease(phase/.58f),drive=Ease((phase-.62f)/.38f);
+                return new CombatMotionSample(Mathf.Lerp(-Recoil*load,Advance,drive),
+                    Lift*.18f*Ease(phase),Tilt*Mathf.Lerp(-.5f*load,1,drive));
+            }
+            float follow=1-Ease((phase-.18f)/.82f);
+            return new CombatMotionSample(Advance*follow+Recoil*.12f*Mathf.Sin(Ease(phase)*Mathf.PI)*follow,
+                Lift*Mathf.Lerp(.18f,1,Ease(phase/.28f))*(1-Ease((phase-.28f)/.72f)),Tilt*follow);
+        }
+        // Zero velocity/acceleration at the joins avoids a pop on release and on returning idle.
+        static float Ease(float value)
+        {float t=Mathf.Clamp01(value);return Mathf.Clamp01(t*t*t*(t*(t*6-15)+10));}
         public static CombatMotionProfile For(CombatVisualStyle style,bool ultimate=false)
         {
             CombatMotionProfile p;
@@ -24,5 +41,10 @@ namespace TalesTactics
             }
             return ultimate?new CombatMotionProfile(p.Advance*1.15f,p.Recoil,p.Lift,p.Tilt,Mathf.Min(.08f,p.Hold+.015f)):p;
         }
+    }
+    public readonly struct CombatMotionSample
+    {
+        public readonly float Travel,Lift,Tilt;
+        public CombatMotionSample(float travel,float lift,float tilt){Travel=travel;Lift=lift;Tilt=tilt;}
     }
 }

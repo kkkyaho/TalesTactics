@@ -1,0 +1,1957 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-31T00:39:33.497Z",
+  "tool": "built-in image_gen.imagegen",
+  "task": "Signature weapon premium Cless and Mint directional motion redraw candidates",
+  "productionApplied": false,
+  "unityExecuted": false,
+  "engineValidationPassed": false,
+  "sourceArtModified": false,
+  "generationFrozen": true,
+  "summary": {
+    "candidateSheets": 8,
+    "expectedClessFrames": 80,
+    "expectedMintFrames": 72,
+    "blockingPoseReviewSheets": [
+      "SignatureWeapons-mint-premium/sheet-00.png",
+      "SignatureWeapons-mint-premium/sheet-02.png"
+    ],
+    "actualCanvas": "1122x1402 RGBA for all eight sheets; requested 2048x2560 was not returned by the built-in tool.",
+    "resolutionLimit": "Native opaque bounding heights are measurements of the alpha>128 support including weapons, not semantic anatomical body heights. Several Cless crouching frames and the Mint spacing revision fall below the original approximate 250px target; no pixels were upscaled.",
+    "safety": "No production atlas, content assets, sprite metadata, or runtime code was changed. Output candidates must not be described as applied art or engine-tested results.",
+    "remaining": [
+      "Resolve Mint sheet00 weapon-visibility drift and Mint sheet02 source pose substitutions before production use.",
+      "Confirm motion continuity, relative scale, signature-weapon appearance, pivots and four-facing readability in the actual Unity renderer after licensing is available.",
+      "Run the production packer's complete connected-component and native-RGBA preservation audit; the independent read-only check here covers global alpha>8 separation corridors and outer safety margin only.",
+      "Mint sheet03 bottom two rows have zero alpha>8 artwork but 2350 alpha1..8 residual pixels after adaptive splitting; not literally all-zero alpha. Preserve and audit ownership rather than trim."
+    ]
+  },
+  "referencePadding": {
+    "character": "mint",
+    "sheetIndex": 3,
+    "originalReference": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03.png",
+    "paddedReference": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03-padded.png",
+    "operation": "Copy unchanged top 652x528 RGBA rows into a 652x880 zero-initialized RGBA image; no scaling or generated-art pixel edit.",
+    "manifestUpdated": true,
+    "frameIdsUnchanged": true,
+    "rowsBefore": 3,
+    "rowsAfter": 5
+  },
+  "records": [
+    {
+      "character": "cless",
+      "sheetIndex": 0,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-52c22a58-883e-4624-ad15-cffc889b5975.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-cless-premium/sheet-00.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6a54e67f-c820-4c27-bf4c-5e3972a873ee.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 00 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "13562d9bbd6fa57a075732d615dd1ac13a4cf47183788142341d185fa0f95245",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+              "sha256": "a646a1f28475063b71d0c41f0900b003fa9ac44c233b358deaf1ecbd3911654d"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-52c22a58-883e-4624-ad15-cffc889b5975.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 00 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nCRITICAL LAYOUT CORRECTION: make each complete sprite substantially SMALLER inside its cell than the reference: only 58% of cell WIDTH, 66% of cell HEIGHT. Center it with completely empty wide margins. No blade may reach canvas edge or a neighbor. Prioritize these generous margins over filling the canvas. No colored edge noise or external glow; clean alpha silhouette. ",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "b56b9b16c3ece63d2c2d0ec1541bc2672b54ddbfc8c5827e9b1bd7858a50b232",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-00.png",
+              "sha256": "a646a1f28475063b71d0c41f0900b003fa9ac44c233b358deaf1ecbd3911654d"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "b56b9b16c3ece63d2c2d0ec1541bc2672b54ddbfc8c5827e9b1bd7858a50b232",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-52c22a58-883e-4624-ad15-cffc889b5975.png",
+        "index": 0,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 558880,
+        "alphaAbove8": 450985,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 23043,
+            "opaquePixels": 21852,
+            "width": 207,
+            "height": 186
+          },
+          {
+            "index": 1,
+            "pixels": 22483,
+            "opaquePixels": 21439,
+            "width": 188,
+            "height": 191
+          },
+          {
+            "index": 2,
+            "pixels": 19816,
+            "opaquePixels": 18619,
+            "width": 185,
+            "height": 186
+          },
+          {
+            "index": 3,
+            "pixels": 20609,
+            "opaquePixels": 19506,
+            "width": 178,
+            "height": 186
+          },
+          {
+            "index": 4,
+            "pixels": 23413,
+            "opaquePixels": 22276,
+            "width": 215,
+            "height": 186
+          },
+          {
+            "index": 5,
+            "pixels": 23351,
+            "opaquePixels": 22365,
+            "width": 193,
+            "height": 186
+          },
+          {
+            "index": 6,
+            "pixels": 20744,
+            "opaquePixels": 19518,
+            "width": 190,
+            "height": 183
+          },
+          {
+            "index": 7,
+            "pixels": 22430,
+            "opaquePixels": 21111,
+            "width": 182,
+            "height": 195
+          },
+          {
+            "index": 8,
+            "pixels": 23318,
+            "opaquePixels": 22142,
+            "width": 208,
+            "height": 188
+          },
+          {
+            "index": 9,
+            "pixels": 24666,
+            "opaquePixels": 23659,
+            "width": 199,
+            "height": 187
+          },
+          {
+            "index": 10,
+            "pixels": 21061,
+            "opaquePixels": 19645,
+            "width": 194,
+            "height": 189
+          },
+          {
+            "index": 11,
+            "pixels": 22389,
+            "opaquePixels": 21209,
+            "width": 184,
+            "height": 192
+          },
+          {
+            "index": 12,
+            "pixels": 23370,
+            "opaquePixels": 22259,
+            "width": 218,
+            "height": 185
+          },
+          {
+            "index": 13,
+            "pixels": 23244,
+            "opaquePixels": 22167,
+            "width": 194,
+            "height": 185
+          },
+          {
+            "index": 14,
+            "pixels": 20810,
+            "opaquePixels": 19609,
+            "width": 191,
+            "height": 190
+          },
+          {
+            "index": 15,
+            "pixels": 22174,
+            "opaquePixels": 20971,
+            "width": 184,
+            "height": 196
+          },
+          {
+            "index": 16,
+            "pixels": 24245,
+            "opaquePixels": 23093,
+            "width": 212,
+            "height": 195
+          },
+          {
+            "index": 17,
+            "pixels": 24678,
+            "opaquePixels": 23522,
+            "width": 190,
+            "height": 196
+          },
+          {
+            "index": 18,
+            "pixels": 22153,
+            "opaquePixels": 20875,
+            "width": 193,
+            "height": 200
+          },
+          {
+            "index": 19,
+            "pixels": 22988,
+            "opaquePixels": 21703,
+            "width": 185,
+            "height": 199
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          280,
+          561,
+          815,
+          1070,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "cless",
+      "sheetIndex": 1,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-4485c543-1a05-44a2-952b-04dec727e406.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-cless-premium/sheet-01.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-fc015c09-8abf-4a76-8e76-e87cd784b098.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 01 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "d34c0e59da7bbfdb97fb3b9f3304c1dea20bd5f15806bed9401064758aaa81ee",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+              "sha256": "87560d959bcde6f264b09c7458f1c10da279a66dc6c518f8de26df7285ddc63b"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-4485c543-1a05-44a2-952b-04dec727e406.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 01 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nCRITICAL LAYOUT CORRECTION: make each complete sprite substantially SMALLER inside its cell than the reference: only 58% of cell WIDTH, 66% of cell HEIGHT. Center it with completely empty wide margins. No blade may reach canvas edge or a neighbor. Prioritize these generous margins over filling the canvas. No colored edge noise or external glow; clean alpha silhouette. In ROW 1 COLUMN 4 the blue sword MUST extend from his hands diagonally DOWN AND RIGHT toward lower-right corner, exactly as first input, NOT down-left. All remaining cells individually match first input.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "1c90af74b7074a32df10d4415b01106955929b47a68593a63b4900da71331505",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-01.png",
+              "sha256": "87560d959bcde6f264b09c7458f1c10da279a66dc6c518f8de26df7285ddc63b"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "1c90af74b7074a32df10d4415b01106955929b47a68593a63b4900da71331505",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-4485c543-1a05-44a2-952b-04dec727e406.png",
+        "index": 1,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 512251,
+        "alphaAbove8": 402053,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 19844,
+            "opaquePixels": 18444,
+            "width": 206,
+            "height": 164
+          },
+          {
+            "index": 1,
+            "pixels": 20150,
+            "opaquePixels": 19082,
+            "width": 176,
+            "height": 170
+          },
+          {
+            "index": 2,
+            "pixels": 18777,
+            "opaquePixels": 17615,
+            "width": 184,
+            "height": 167
+          },
+          {
+            "index": 3,
+            "pixels": 18251,
+            "opaquePixels": 16934,
+            "width": 194,
+            "height": 162
+          },
+          {
+            "index": 4,
+            "pixels": 17565,
+            "opaquePixels": 16193,
+            "width": 165,
+            "height": 164
+          },
+          {
+            "index": 5,
+            "pixels": 19936,
+            "opaquePixels": 18861,
+            "width": 173,
+            "height": 166
+          },
+          {
+            "index": 6,
+            "pixels": 16590,
+            "opaquePixels": 15465,
+            "width": 163,
+            "height": 169
+          },
+          {
+            "index": 7,
+            "pixels": 18584,
+            "opaquePixels": 17490,
+            "width": 175,
+            "height": 160
+          },
+          {
+            "index": 8,
+            "pixels": 19817,
+            "opaquePixels": 18420,
+            "width": 216,
+            "height": 160
+          },
+          {
+            "index": 9,
+            "pixels": 20380,
+            "opaquePixels": 19228,
+            "width": 176,
+            "height": 168
+          },
+          {
+            "index": 10,
+            "pixels": 18995,
+            "opaquePixels": 17879,
+            "width": 172,
+            "height": 175
+          },
+          {
+            "index": 11,
+            "pixels": 21600,
+            "opaquePixels": 20419,
+            "width": 191,
+            "height": 173
+          },
+          {
+            "index": 12,
+            "pixels": 21293,
+            "opaquePixels": 19992,
+            "width": 170,
+            "height": 201
+          },
+          {
+            "index": 13,
+            "pixels": 21909,
+            "opaquePixels": 20891,
+            "width": 167,
+            "height": 188
+          },
+          {
+            "index": 14,
+            "pixels": 21582,
+            "opaquePixels": 20239,
+            "width": 168,
+            "height": 211
+          },
+          {
+            "index": 15,
+            "pixels": 21899,
+            "opaquePixels": 20645,
+            "width": 169,
+            "height": 202
+          },
+          {
+            "index": 16,
+            "pixels": 21552,
+            "opaquePixels": 20329,
+            "width": 184,
+            "height": 167
+          },
+          {
+            "index": 17,
+            "pixels": 20843,
+            "opaquePixels": 19768,
+            "width": 175,
+            "height": 172
+          },
+          {
+            "index": 18,
+            "pixels": 21837,
+            "opaquePixels": 20530,
+            "width": 183,
+            "height": 169
+          },
+          {
+            "index": 19,
+            "pixels": 20649,
+            "opaquePixels": 19290,
+            "width": 202,
+            "height": 169
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          280,
+          561,
+          830,
+          1122,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "cless",
+      "sheetIndex": 2,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc2e6a23-0edb-439c-94c0-c8a1dac6fae9.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-cless-premium/sheet-02.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-613ddd88-d428-438d-bcc6-1865f49fe4ca.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 02 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nEnsure clear quiet transparent gutters between cells. Each entire figure with its long sword must be centered and at most 70% cell width, 76% cell height. Do not enlarge a sword or cape beyond these limits. Preserve first-image poses literally, especially overhead sword vs horizontal thrust and the raised free hand. No floating aura or colored edge noise.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "35e925b291af917544f135df4d220047723acae69dbd76b17b585c889d65b0e0",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+              "sha256": "ab530dba82aaee5884107a5a4c1ac613f27ca817ea7de81ab5958748b8589f4f"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc2e6a23-0edb-439c-94c0-c8a1dac6fae9.png",
+          "prompt": "Use case: precise-object-edit. EDIT IMAGE 1, a transparent Cless/Cress animation sprite sheet, keeping ALL TWENTY current poses, face, hands, facing, armor, cape and blue crystal sword exactly. Only fix spacing and cleanup: reduce every complete sprite, including sword and cape, to 73% of its present size about the CENTER OF ITS OWN CELL. Keep the SAME 4 columns x 5 rows, same canvas aspect. The result must have wide empty transparent gutters on both sides of every sprite. Each character must lie wholly within its cell: no sword can cross any vertical cell boundary. No cropping, no overlaps. Remove the stray colored glitter/speckles and cyan glow outside the weapon silhouette; the blue sword itself remains solid crisp blue with gold hilt. Keep crisp native detailed anime SD rendering, not blurred scaling, preserve brown eyes and red headband. Image 2 is the exact original pose/order reference, image 3 is identity and signature weapon, image 4 style only. Do not replace any pose. No background, no text, no shadows, no VFX. Real RGBA transparent PNG. Requested canvas 2048x2560, no decorations. IMPORTANT: these sprites are for separate animation frames, NEVER a single character group scene.",
+          "referencePaths": [
+            "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-613ddd88-d428-438d-bcc6-1865f49fe4ca.png",
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "4af80aac0fbc9e5cefd26d91b26a40919563c95091368b8d69dbfe8aec0d2fb7",
+          "inputReferences": [
+            {
+              "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-613ddd88-d428-438d-bcc6-1865f49fe4ca.png",
+              "sha256": "35e925b291af917544f135df4d220047723acae69dbd76b17b585c889d65b0e0"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-02.png",
+              "sha256": "ab530dba82aaee5884107a5a4c1ac613f27ca817ea7de81ab5958748b8589f4f"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "4af80aac0fbc9e5cefd26d91b26a40919563c95091368b8d69dbfe8aec0d2fb7",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc2e6a23-0edb-439c-94c0-c8a1dac6fae9.png",
+        "index": 2,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 512100,
+        "alphaAbove8": 415092,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 20390,
+            "opaquePixels": 19096,
+            "width": 233,
+            "height": 163
+          },
+          {
+            "index": 1,
+            "pixels": 20443,
+            "opaquePixels": 19397,
+            "width": 178,
+            "height": 175
+          },
+          {
+            "index": 2,
+            "pixels": 21003,
+            "opaquePixels": 19857,
+            "width": 235,
+            "height": 164
+          },
+          {
+            "index": 3,
+            "pixels": 20305,
+            "opaquePixels": 19216,
+            "width": 226,
+            "height": 164
+          },
+          {
+            "index": 4,
+            "pixels": 20208,
+            "opaquePixels": 19023,
+            "width": 229,
+            "height": 158
+          },
+          {
+            "index": 5,
+            "pixels": 20411,
+            "opaquePixels": 19297,
+            "width": 177,
+            "height": 170
+          },
+          {
+            "index": 6,
+            "pixels": 20969,
+            "opaquePixels": 19867,
+            "width": 181,
+            "height": 177
+          },
+          {
+            "index": 7,
+            "pixels": 19900,
+            "opaquePixels": 18713,
+            "width": 224,
+            "height": 155
+          },
+          {
+            "index": 8,
+            "pixels": 20953,
+            "opaquePixels": 19776,
+            "width": 237,
+            "height": 167
+          },
+          {
+            "index": 9,
+            "pixels": 20917,
+            "opaquePixels": 19767,
+            "width": 174,
+            "height": 173
+          },
+          {
+            "index": 10,
+            "pixels": 21724,
+            "opaquePixels": 20514,
+            "width": 250,
+            "height": 167
+          },
+          {
+            "index": 11,
+            "pixels": 19793,
+            "opaquePixels": 18746,
+            "width": 182,
+            "height": 165
+          },
+          {
+            "index": 12,
+            "pixels": 21215,
+            "opaquePixels": 19866,
+            "width": 231,
+            "height": 165
+          },
+          {
+            "index": 13,
+            "pixels": 19683,
+            "opaquePixels": 18568,
+            "width": 175,
+            "height": 163
+          },
+          {
+            "index": 14,
+            "pixels": 22443,
+            "opaquePixels": 21046,
+            "width": 249,
+            "height": 167
+          },
+          {
+            "index": 15,
+            "pixels": 21552,
+            "opaquePixels": 20298,
+            "width": 214,
+            "height": 166
+          },
+          {
+            "index": 16,
+            "pixels": 21684,
+            "opaquePixels": 20325,
+            "width": 242,
+            "height": 166
+          },
+          {
+            "index": 17,
+            "pixels": 20266,
+            "opaquePixels": 19192,
+            "width": 176,
+            "height": 172
+          },
+          {
+            "index": 18,
+            "pixels": 20606,
+            "opaquePixels": 19359,
+            "width": 209,
+            "height": 166
+          },
+          {
+            "index": 19,
+            "pixels": 20627,
+            "opaquePixels": 19597,
+            "width": 193,
+            "height": 177
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          559,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          280,
+          561,
+          841,
+          1122,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "cless",
+      "sheetIndex": 3,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7163a5a2-a772-4d44-a065-4d33ba77f9d2.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-cless-premium/sheet-03.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9f42d396-9fbe-4632-9df7-52c71c61ac5d.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nCless/Cress: golden spiky hair, BROWN eyes, red forehead band, red cape, silver armor with gold edging over charcoal clothing. His signature weapon is a luminous-looking solid BLUE crystal sword with ornate GOLD crossguard and blue jewel. It remains a sword, one per character, with no detached magical aura. Brown eyes, not red eyes.\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 03 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nEnsure clear quiet transparent gutters between cells. Each entire figure with its long sword must be centered and at most 70% cell width, 76% cell height. Do not enlarge a sword or cape beyond these limits. Preserve first-image poses literally, especially overhead sword vs horizontal thrust and the raised free hand. No floating aura or colored edge noise.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "68d3cedf8bae4e98d0dece50f49fb84fd851a2c5748b6ae8568f94e36b1f5feb",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+              "sha256": "ee0729256d022a4108402ad53afe90a9a2dcffec6c42ae600326c5493c27076e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7163a5a2-a772-4d44-a065-4d33ba77f9d2.png",
+          "prompt": "Use case: precise-object-edit. EDIT IMAGE 1, a transparent Cless/Cress animation sprite sheet, keeping ALL TWENTY current poses, face, hands, facing, armor, cape and blue crystal sword exactly. Only fix spacing and cleanup: reduce every complete sprite, including sword and cape, to 73% of its present size about the CENTER OF ITS OWN CELL. Keep the SAME 4 columns x 5 rows, same canvas aspect. The result must have wide empty transparent gutters on both sides of every sprite. Each character must lie wholly within its cell: no sword can cross any vertical cell boundary. No cropping, no overlaps. Remove the stray colored glitter/speckles and cyan glow outside the weapon silhouette; the blue sword itself remains solid crisp blue with gold hilt. Keep crisp native detailed anime SD rendering, not blurred scaling, preserve brown eyes and red headband. Image 2 is the exact original pose/order reference, image 3 is identity and signature weapon, image 4 style only. Do not replace any pose. No background, no text, no shadows, no VFX. Real RGBA transparent PNG. Requested canvas 2048x2560, no decorations. IMPORTANT: these sprites are for separate animation frames, NEVER a single character group scene.",
+          "referencePaths": [
+            "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9f42d396-9fbe-4632-9df7-52c71c61ac5d.png",
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "b417cf299f3f89dd2863949e05adde6b69881756d399d5ab0e95deb7ff1db839",
+          "inputReferences": [
+            {
+              "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9f42d396-9fbe-4632-9df7-52c71c61ac5d.png",
+              "sha256": "68d3cedf8bae4e98d0dece50f49fb84fd851a2c5748b6ae8568f94e36b1f5feb"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+              "sha256": "ee0729256d022a4108402ad53afe90a9a2dcffec6c42ae600326c5493c27076e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 3,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6d9680fd-c73a-4557-a5e2-deb29e364793.png",
+          "prompt": "Use case: precise-object-edit. Keep the twenty Cless blue-crystal-sword sprites in IMAGE 1 and their exact poses / 4x5 order. Make EVERY sprite MUCH SMALLER: HALF ITS CURRENT WIDTH AND HEIGHT, centered in its original equal grid cell. The whole canvas remains 4 columns x5 rows on real transparent RGBA. This is a spacing correction for separate animation cells, not a new group illustration. Especially row4 column1: sword tip must end before its own cell edge. Every sprite and all equipment must be fully isolated by HUGE empty transparent margins. Do not invent a pose, omit a weapon, add a shadow or VFX. Brown eyes, red headband, cape, silver/gold armor, blue crystal sword with gold hilt preserved. Second input is original pose authority, third character/weapon. Do not change canvas aspect ratio or number/order of sprites. Crisp detailed clean linework, no pixelated outline. Request 2048x2560.",
+          "referencePaths": [
+            "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7163a5a2-a772-4d44-a065-4d33ba77f9d2.png",
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png"
+          ],
+          "rejectionReason": "Spacing became safe but character detail/body size shrank too much; not selected.",
+          "selected": false,
+          "generatedSha256": "2f45dde5191e5d866ae727b60da6e25c165039aa931a8452f822a452a1342af9",
+          "inputReferences": [
+            {
+              "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7163a5a2-a772-4d44-a065-4d33ba77f9d2.png",
+              "sha256": "b417cf299f3f89dd2863949e05adde6b69881756d399d5ab0e95deb7ff1db839"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-cless-premium/reference-03.png",
+              "sha256": "ee0729256d022a4108402ad53afe90a9a2dcffec6c42ae600326c5493c27076e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/cless-hq.png",
+              "sha256": "6df5a058c6e151517c083f9d192bf60f2fde65ec7c1f9c72fe4ec57346980b4c"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "b417cf299f3f89dd2863949e05adde6b69881756d399d5ab0e95deb7ff1db839",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7163a5a2-a772-4d44-a065-4d33ba77f9d2.png",
+        "index": 3,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 626844,
+        "alphaAbove8": 514952,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 22607,
+            "opaquePixels": 21360,
+            "width": 201,
+            "height": 186
+          },
+          {
+            "index": 1,
+            "pixels": 22580,
+            "opaquePixels": 21389,
+            "width": 178,
+            "height": 183
+          },
+          {
+            "index": 2,
+            "pixels": 23056,
+            "opaquePixels": 21789,
+            "width": 183,
+            "height": 186
+          },
+          {
+            "index": 3,
+            "pixels": 23381,
+            "opaquePixels": 22156,
+            "width": 178,
+            "height": 193
+          },
+          {
+            "index": 4,
+            "pixels": 25044,
+            "opaquePixels": 23773,
+            "width": 215,
+            "height": 188
+          },
+          {
+            "index": 5,
+            "pixels": 25240,
+            "opaquePixels": 23998,
+            "width": 188,
+            "height": 187
+          },
+          {
+            "index": 6,
+            "pixels": 27992,
+            "opaquePixels": 26573,
+            "width": 229,
+            "height": 209
+          },
+          {
+            "index": 7,
+            "pixels": 25271,
+            "opaquePixels": 24086,
+            "width": 194,
+            "height": 209
+          },
+          {
+            "index": 8,
+            "pixels": 28735,
+            "opaquePixels": 27211,
+            "width": 215,
+            "height": 235
+          },
+          {
+            "index": 9,
+            "pixels": 27212,
+            "opaquePixels": 25851,
+            "width": 184,
+            "height": 235
+          },
+          {
+            "index": 10,
+            "pixels": 28679,
+            "opaquePixels": 27156,
+            "width": 217,
+            "height": 234
+          },
+          {
+            "index": 11,
+            "pixels": 27578,
+            "opaquePixels": 26118,
+            "width": 189,
+            "height": 237
+          },
+          {
+            "index": 12,
+            "pixels": 26349,
+            "opaquePixels": 24854,
+            "width": 262,
+            "height": 188
+          },
+          {
+            "index": 13,
+            "pixels": 25800,
+            "opaquePixels": 24687,
+            "width": 202,
+            "height": 194
+          },
+          {
+            "index": 14,
+            "pixels": 25313,
+            "opaquePixels": 23983,
+            "width": 199,
+            "height": 216
+          },
+          {
+            "index": 15,
+            "pixels": 26821,
+            "opaquePixels": 25359,
+            "width": 246,
+            "height": 194
+          },
+          {
+            "index": 16,
+            "pixels": 26367,
+            "opaquePixels": 24992,
+            "width": 213,
+            "height": 194
+          },
+          {
+            "index": 17,
+            "pixels": 25094,
+            "opaquePixels": 23788,
+            "width": 175,
+            "height": 198
+          },
+          {
+            "index": 18,
+            "pixels": 25983,
+            "opaquePixels": 24435,
+            "width": 190,
+            "height": 196
+          },
+          {
+            "index": 19,
+            "pixels": 25850,
+            "opaquePixels": 24653,
+            "width": 188,
+            "height": 198
+          }
+        ],
+        "xCuts": [
+          0,
+          294,
+          561,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          280,
+          550,
+          841,
+          1122,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "mint",
+      "sheetIndex": 0,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-f3a3b5dc-5cf2-410a-ac08-0140c7f42848.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00.png",
+      "state": "candidate-blocked-pose-drift",
+      "blockers": [
+        "Selected spacing correction reveals staff in some right-facing walking frames where the source occludes it; source pose/weapon visibility invariants are not met."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-28f62ded-e84d-47c2-a841-7f1534c28b84.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nMint: long golden-blonde hair, BLUE eyes, ivory/white and purple cleric robes with gold embroidery, white cap with purple ribbons and gold cross, gloves and boots. Her signature weapon is a long dark straight staff with gold fittings and a faceted pointed BLUE crystal spear-like jewel at its top. Keep this crystal-tipped staff (not the approved sample's round sun/orb scepter).\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 00 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nSTRICT EMPTY SPACE: the complete figure including staff and flowing hair must occupy no more than 62% of the cell width and 70% of cell height. Each cell centered in equal grid. Large empty gutters, no elements touching edges. Maintain clear pointed BLUE CRYSTAL staff tip, not round orb. Preserve all subtle walking/bending gestures. Do not add sparkles, aura, or decorative colored pixels outside the silhouette.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "9c4068d416657c35a4112843ff84dadcec711f72d5eead7b30a02fc3f7e8acec",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+              "sha256": "80c44c0af338635fbaaa1f9a0838e58b31e1b2b462c9ac2199915457c5c0703e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-f3a3b5dc-5cf2-410a-ac08-0140c7f42848.png",
+          "prompt": "Use case: precise-object-edit. EDIT IMAGE 1: keep its EXACT 20 Mint sprites, identity, poses, facing, blue crystal staff, hand placement, clothing and hair. Fix only the sprite sheet spacing. Use a precise 4-column by 5-row uniform grid on portrait 4:5 transparent canvas. Sprite centers must lie at x=12.5%,37.5%,62.5%,87.5% and y=10%,30%,50%,70%,90% of canvas. Reduce complete sprites to 85% their current size and center each in these cells. EVERY horizontal row boundary at 20%,40%,60%,80% must have a broad empty transparent corridor across the ENTIRE image. EVERY column boundary likewise empty. Entire figure including staff and hair within central70%width and70%height of its own cell. The last row must be centered at90%height, NOT squeezed upward. Keep crisp native detailed anime SD linework, exactly the same first-image pose per cell. Images2 originalposeauthority,3 identity/blue pointed crystal signature staff,4 approvedfinish. No shadows, floor, VFX, colored edge debris, glow, text or other sprites. Genuine transparent alpha PNG, request2048x2560.",
+          "referencePaths": [
+            "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-28f62ded-e84d-47c2-a841-7f1534c28b84.png",
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "faa67cca6b077bc80b2d49aaa59d40d2514b304133fe02dabefcdc384a604ff8",
+          "inputReferences": [
+            {
+              "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-28f62ded-e84d-47c2-a841-7f1534c28b84.png",
+              "sha256": "9c4068d416657c35a4112843ff84dadcec711f72d5eead7b30a02fc3f7e8acec"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-00.png",
+              "sha256": "80c44c0af338635fbaaa1f9a0838e58b31e1b2b462c9ac2199915457c5c0703e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "faa67cca6b077bc80b2d49aaa59d40d2514b304133fe02dabefcdc384a604ff8",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-f3a3b5dc-5cf2-410a-ac08-0140c7f42848.png",
+        "index": 4,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 656220,
+        "alphaAbove8": 503688,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 25991,
+            "opaquePixels": 24676,
+            "width": 201,
+            "height": 188
+          },
+          {
+            "index": 1,
+            "pixels": 25130,
+            "opaquePixels": 23945,
+            "width": 203,
+            "height": 187
+          },
+          {
+            "index": 2,
+            "pixels": 23159,
+            "opaquePixels": 21863,
+            "width": 192,
+            "height": 183
+          },
+          {
+            "index": 3,
+            "pixels": 22934,
+            "opaquePixels": 21752,
+            "width": 198,
+            "height": 183
+          },
+          {
+            "index": 4,
+            "pixels": 25571,
+            "opaquePixels": 24435,
+            "width": 200,
+            "height": 185
+          },
+          {
+            "index": 5,
+            "pixels": 24913,
+            "opaquePixels": 23800,
+            "width": 203,
+            "height": 185
+          },
+          {
+            "index": 6,
+            "pixels": 23414,
+            "opaquePixels": 22120,
+            "width": 194,
+            "height": 182
+          },
+          {
+            "index": 7,
+            "pixels": 22931,
+            "opaquePixels": 21781,
+            "width": 200,
+            "height": 182
+          },
+          {
+            "index": 8,
+            "pixels": 26416,
+            "opaquePixels": 25330,
+            "width": 202,
+            "height": 191
+          },
+          {
+            "index": 9,
+            "pixels": 25803,
+            "opaquePixels": 24660,
+            "width": 202,
+            "height": 191
+          },
+          {
+            "index": 10,
+            "pixels": 24654,
+            "opaquePixels": 23234,
+            "width": 197,
+            "height": 187
+          },
+          {
+            "index": 11,
+            "pixels": 23992,
+            "opaquePixels": 22805,
+            "width": 202,
+            "height": 188
+          },
+          {
+            "index": 12,
+            "pixels": 27814,
+            "opaquePixels": 26734,
+            "width": 206,
+            "height": 196
+          },
+          {
+            "index": 13,
+            "pixels": 26673,
+            "opaquePixels": 25299,
+            "width": 205,
+            "height": 192
+          },
+          {
+            "index": 14,
+            "pixels": 25089,
+            "opaquePixels": 23876,
+            "width": 198,
+            "height": 191
+          },
+          {
+            "index": 15,
+            "pixels": 24573,
+            "opaquePixels": 23456,
+            "width": 202,
+            "height": 193
+          },
+          {
+            "index": 16,
+            "pixels": 27887,
+            "opaquePixels": 26551,
+            "width": 207,
+            "height": 195
+          },
+          {
+            "index": 17,
+            "pixels": 27089,
+            "opaquePixels": 25907,
+            "width": 209,
+            "height": 193
+          },
+          {
+            "index": 18,
+            "pixels": 25042,
+            "opaquePixels": 23626,
+            "width": 196,
+            "height": 189
+          },
+          {
+            "index": 19,
+            "pixels": 24613,
+            "opaquePixels": 23386,
+            "width": 206,
+            "height": 190
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          280,
+          561,
+          836,
+          1118,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "mint",
+      "sheetIndex": 1,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-01.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-01.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9adfabd5-2b5a-4063-9698-99dcd9bf76d3.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-01.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9adfabd5-2b5a-4063-9698-99dcd9bf76d3.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nMint: long golden-blonde hair, BLUE eyes, ivory/white and purple cleric robes with gold embroidery, white cap with purple ribbons and gold cross, gloves and boots. Her signature weapon is a long dark straight staff with gold fittings and a faceted pointed BLUE crystal spear-like jewel at its top. Keep this crystal-tipped staff (not the approved sample's round sun/orb scepter).\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally, including rear facing in column two. Chunk 01 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nSTRICT EMPTY SPACE: the complete figure including staff and flowing hair must occupy no more than 62% of the cell width and 70% of cell height. Each cell centered in equal grid. Large empty gutters, no elements touching edges. Maintain clear pointed BLUE CRYSTAL staff tip, not round orb. Preserve all subtle walking/bending gestures. Do not add sparkles, aura, or decorative colored pixels outside the silhouette.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-01.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "1a8c7d3c03c9bf6b62b43ee6beafbe695c7ebb27002e119071362a5fe726b09f",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-01.png",
+              "sha256": "0de739b772b12d41db008dd5d61fbbe9a0330c66d46042e04225f6a698396f01"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "1a8c7d3c03c9bf6b62b43ee6beafbe695c7ebb27002e119071362a5fe726b09f",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-9adfabd5-2b5a-4063-9698-99dcd9bf76d3.png",
+        "index": 5,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 742461,
+        "alphaAbove8": 612316,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 31065,
+            "opaquePixels": 29605,
+            "width": 201,
+            "height": 209
+          },
+          {
+            "index": 1,
+            "pixels": 30631,
+            "opaquePixels": 29129,
+            "width": 210,
+            "height": 209
+          },
+          {
+            "index": 2,
+            "pixels": 25901,
+            "opaquePixels": 24417,
+            "width": 223,
+            "height": 203
+          },
+          {
+            "index": 3,
+            "pixels": 28121,
+            "opaquePixels": 26588,
+            "width": 230,
+            "height": 207
+          },
+          {
+            "index": 4,
+            "pixels": 33727,
+            "opaquePixels": 31907,
+            "width": 227,
+            "height": 212
+          },
+          {
+            "index": 5,
+            "pixels": 31278,
+            "opaquePixels": 29780,
+            "width": 214,
+            "height": 209
+          },
+          {
+            "index": 6,
+            "pixels": 27350,
+            "opaquePixels": 25565,
+            "width": 223,
+            "height": 202
+          },
+          {
+            "index": 7,
+            "pixels": 29571,
+            "opaquePixels": 27889,
+            "width": 249,
+            "height": 207
+          },
+          {
+            "index": 8,
+            "pixels": 34177,
+            "opaquePixels": 32541,
+            "width": 227,
+            "height": 215
+          },
+          {
+            "index": 9,
+            "pixels": 31641,
+            "opaquePixels": 30101,
+            "width": 215,
+            "height": 212
+          },
+          {
+            "index": 10,
+            "pixels": 28342,
+            "opaquePixels": 26770,
+            "width": 238,
+            "height": 204
+          },
+          {
+            "index": 11,
+            "pixels": 29135,
+            "opaquePixels": 27498,
+            "width": 237,
+            "height": 207
+          },
+          {
+            "index": 12,
+            "pixels": 33987,
+            "opaquePixels": 32478,
+            "width": 223,
+            "height": 217
+          },
+          {
+            "index": 13,
+            "pixels": 31719,
+            "opaquePixels": 30276,
+            "width": 217,
+            "height": 213
+          },
+          {
+            "index": 14,
+            "pixels": 28463,
+            "opaquePixels": 26844,
+            "width": 233,
+            "height": 209
+          },
+          {
+            "index": 15,
+            "pixels": 30105,
+            "opaquePixels": 28525,
+            "width": 235,
+            "height": 210
+          },
+          {
+            "index": 16,
+            "pixels": 32047,
+            "opaquePixels": 30612,
+            "width": 220,
+            "height": 208
+          },
+          {
+            "index": 17,
+            "pixels": 32779,
+            "opaquePixels": 31168,
+            "width": 237,
+            "height": 213
+          },
+          {
+            "index": 18,
+            "pixels": 30548,
+            "opaquePixels": 28870,
+            "width": 244,
+            "height": 211
+          },
+          {
+            "index": 19,
+            "pixels": 31729,
+            "opaquePixels": 30162,
+            "width": 252,
+            "height": 212
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          560,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          275,
+          540,
+          804,
+          1071,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "mint",
+      "sheetIndex": 2,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 20,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-c856d718-bc78-4b03-a74c-0a8936a41f5b.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-02.png",
+      "state": "candidate-blocked-pose-drift",
+      "blockers": [
+        "Rows 4 and 5 drift to casting/guard poses from the HQ identity reference; several hands/staff positions and row5 column2 facing no longer match the original sequence."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-df3e8c92-9fb4-4aa3-9830-209e13ee49e5.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nMint: long golden-blonde hair, BLUE eyes, ivory/white and purple cleric robes with gold embroidery, white cap with purple ribbons and gold cross, gloves and boots. Her signature weapon is a long dark straight staff with gold fittings and a faceted pointed BLUE crystal spear-like jewel at its top. Keep this crystal-tipped staff (not the approved sample's round sun/orb scepter).\nOutput exactly 4 columns x 5 rows = 20 sprites; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally. Chunk 02 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nIMPORTANT PER-CELL FACING: follow each first-image cell literally, not an assumed four-direction template. In this segment some column-two poses are LEFT PROFILE rather than back view; preserve those head/body turns. Preserve the blue CRYSTAL-TIPPED staff, exact hands, its visibility or occlusion behind hair. Whole sprite inside central 65% of cell width and 75% of cell height, clean fully transparent wide gutters. No glow or colored edge debris.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": false,
+          "generatedSha256": "1eb9d2d11011b3c4e8c7e3b562303a1e6f069a8276498ed2f304564619db9a83",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+              "sha256": "40057c2833fc37acfd42302badd6d8b53d5c154611587f6982398987d46f5aa6"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-c856d718-bc78-4b03-a74c-0a8936a41f5b.png",
+          "prompt": "Use case: style-transfer. Redraw IMAGE 1 as crisp high-resolution premium anime SD game animation sprites. EXACTLY TWENTY sprites, FOUR columns and FIVE rows, never six rows. Do not add an extra row. Every source cell has exactly one matching output cell in original row-major order. Uniform 4:5 portrait transparent canvas, requested2048x2560. Character Mint has BLUE eyes, long golden blonde hair, ivory-white/purple/gold cleric robes and cap. Preserve her signature long dark staff with GOLD fittings and pointed faceted BLUE CRYSTAL tip, as images1and2. Image2 identityonly, image3 lineworkfinishonly (do not use its orb staff or other layout). All source poses/hand positions/staff angles/turns must remain exact. ROW1 directions: front, LEFT PROFILE, right profile, left profile. ROW2: front, BACK, right, left. ROW3: front, LEFT PROFILE, right, left. ROW4: front, BACK, right, left. ROW5: front, LEFT PROFILE, right, left. Those back/left differences in column2 are vital. No new rows, no dropped rows. Native drawn sharp clean anime SD linework, readable faces, detailed hair and cloth, controlled celshading. Each full sprite including hair and staff only65%cellwidth and72%cellheight; centered in equal cells, with broad fullytransparent gutters. Keep all20 separate, no cropping, no overlaps. Genuine transparent RGBA, no background or checkerboard, no grid, text, floor, shadow, VFX, aura or detached glitter. No upscaling of pixels.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "72114164119876e554c0a44406b9a210b93bba77b509ce1d4c1b9ca39a9086f4",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-02.png",
+              "sha256": "40057c2833fc37acfd42302badd6d8b53d5c154611587f6982398987d46f5aa6"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "72114164119876e554c0a44406b9a210b93bba77b509ce1d4c1b9ca39a9086f4",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-c856d718-bc78-4b03-a74c-0a8936a41f5b.png",
+        "index": 6,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 852170,
+        "alphaAbove8": 730327,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 0,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 33126,
+            "opaquePixels": 31656,
+            "width": 225,
+            "height": 221
+          },
+          {
+            "index": 1,
+            "pixels": 28368,
+            "opaquePixels": 26798,
+            "width": 229,
+            "height": 212
+          },
+          {
+            "index": 2,
+            "pixels": 31158,
+            "opaquePixels": 29527,
+            "width": 222,
+            "height": 212
+          },
+          {
+            "index": 3,
+            "pixels": 30694,
+            "opaquePixels": 29156,
+            "width": 241,
+            "height": 210
+          },
+          {
+            "index": 4,
+            "pixels": 35001,
+            "opaquePixels": 33551,
+            "width": 220,
+            "height": 226
+          },
+          {
+            "index": 5,
+            "pixels": 34863,
+            "opaquePixels": 33283,
+            "width": 234,
+            "height": 221
+          },
+          {
+            "index": 6,
+            "pixels": 31618,
+            "opaquePixels": 29802,
+            "width": 244,
+            "height": 212
+          },
+          {
+            "index": 7,
+            "pixels": 30995,
+            "opaquePixels": 29510,
+            "width": 240,
+            "height": 209
+          },
+          {
+            "index": 8,
+            "pixels": 33851,
+            "opaquePixels": 32460,
+            "width": 228,
+            "height": 216
+          },
+          {
+            "index": 9,
+            "pixels": 31530,
+            "opaquePixels": 29909,
+            "width": 237,
+            "height": 212
+          },
+          {
+            "index": 10,
+            "pixels": 31359,
+            "opaquePixels": 29658,
+            "width": 244,
+            "height": 212
+          },
+          {
+            "index": 11,
+            "pixels": 31118,
+            "opaquePixels": 29595,
+            "width": 241,
+            "height": 210
+          },
+          {
+            "index": 12,
+            "pixels": 43099,
+            "opaquePixels": 41410,
+            "width": 230,
+            "height": 268
+          },
+          {
+            "index": 13,
+            "pixels": 43169,
+            "opaquePixels": 41474,
+            "width": 226,
+            "height": 267
+          },
+          {
+            "index": 14,
+            "pixels": 38730,
+            "opaquePixels": 36825,
+            "width": 212,
+            "height": 265
+          },
+          {
+            "index": 15,
+            "pixels": 37965,
+            "opaquePixels": 36217,
+            "width": 222,
+            "height": 264
+          },
+          {
+            "index": 16,
+            "pixels": 47862,
+            "opaquePixels": 45874,
+            "width": 246,
+            "height": 268
+          },
+          {
+            "index": 17,
+            "pixels": 45973,
+            "opaquePixels": 43888,
+            "width": 247,
+            "height": 261
+          },
+          {
+            "index": 18,
+            "pixels": 44164,
+            "opaquePixels": 42044,
+            "width": 240,
+            "height": 267
+          },
+          {
+            "index": 19,
+            "pixels": 45684,
+            "opaquePixels": 43698,
+            "width": 236,
+            "height": 266
+          }
+        ],
+        "xCuts": [
+          0,
+          287,
+          565,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          275,
+          539,
+          791,
+          1097,
+          1402
+        ],
+        "issue": null
+      }
+    },
+    {
+      "character": "mint",
+      "sheetIndex": 3,
+      "sourceManifest": "Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/manifest.json",
+      "originalReferencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03.png",
+      "referencePath": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03-padded.png",
+      "columns": 4,
+      "rows": 5,
+      "activeFrameCount": 12,
+      "selectedGeneratedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-2f2e3e77-925c-4fc0-9f23-80dd8777587a.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-03.png",
+      "state": "candidate-requires-production-review",
+      "blockers": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-2f2e3e77-925c-4fc0-9f23-80dd8777587a.png",
+          "prompt": "Use case: style-transfer. Asset type: production transparent directional animation sprite sheet for Tales Tactics. REDRAW the first input image from scratch in crisp high-resolution premium anime SD game art, not an enlarged/pixelated copy. The first input is the exact pose/layout authority; the second is the same character's equipped identity/weapon authority; the third is approved linework and finish only. Preserve EVERY first-input cell's body pose, knee/foot position, facing direction, weapon type, blade/staff direction, weapon holding hand, cape/hair gesture, and row-major order. Do not substitute a new motion or copy idle into every frame. Match the SAME character across every frame. Delicate clean confident outlines, defined readable anime face, detailed hair locks, controlled cel-shaded silver/gold materials, premium cutout sprite finish. Whole figure INCLUDING weapon and cape must fit inside the central 70% width and 76% height of its own uniform cell, leaving large fully transparent margins on all sides and between all sprites. Keep native head-to-foot body approximately 280-350 pixels or more at requested resolution (no enlargement of already low-res pixels). All cells separate; NO overlap or crop; no extra sprites. Real RGBA transparent background, not a checkerboard image, no white backing, no text, no labels, no grid lines, no ground, no floor shadow, no cast shadow, no particles, no VFX, no external weapon glow/aura. Any blue blade is the physical weapon material itself. Do not borrow the approved illustration's ordinary weapon: preserve the equipped weapon from the first two references.\nMint: long golden-blonde hair, BLUE eyes, ivory/white and purple cleric robes with gold embroidery, white cap with purple ribbons and gold cross, gloves and boots. Her signature weapon is a long dark straight staff with gold fittings and a faceted pointed BLUE crystal spear-like jewel at its top. Keep this crystal-tipped staff (not the approved sample's round sun/orb scepter).\nOutput exactly 4 columns x 5 rows with 12 sprites in the first 3 rows, and the bottom 2 rows COMPLETELY EMPTY TRANSPARENT; use a 2048 x 2560 RGBA canvas with equal 512 x 512 cells. Column directions and all individual poses must match first input literally. Chunk 03 is one sequence segment, retain its specific motion differences. No animation frames from input two or three may replace the sequence from input one.\nIMPORTANT PER-CELL FACING: follow each first-image cell literally, not an assumed four-direction template. In this segment some column-two poses are LEFT PROFILE rather than back view; preserve those head/body turns. Preserve the blue CRYSTAL-TIPPED staff, exact hands, its visibility or occlusion behind hair. Whole sprite inside central 65% of cell width and 75% of cell height, clean fully transparent wide gutters. No glow or colored edge debris.\nABSOLUTE COUNT AND CANVAS: 4 columns x 5 equal rows. Exactly TWELVE sprites at rows 1,2,3 only. All eight cells in rows 4 and 5 are entirely empty transparent alpha=0. Do NOT fill or crop away the empty rows. Keep the original transparent padding. Canvas portrait 4:5 ratio, requested 2048x2560. Use the same sprite scale as a twenty-pose sheet.",
+          "referencePaths": [
+            "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03-padded.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+            "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png"
+          ],
+          "selected": true,
+          "generatedSha256": "3a2b8c8d8ab752919a10560aa3181bf1034db3c3658671be98bff10746fdee21",
+          "inputReferences": [
+            {
+              "path": "C:/dev/TalesTactics/Temp/QualityUpgrade20261031/SignatureWeapons-mint-premium/reference-03-padded.png",
+              "sha256": "50f3a1b882d7d2ad57c43d40c51056e72d733fe61095d830f3ad8025def7e6de"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+              "sha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Samples/character-motion-approved.png",
+              "sha256": "a7b3ef16c1f7a3d16c26b8e512e1f6104bffe0e377c756c061c839eadd72f17f"
+            }
+          ]
+        }
+      ],
+      "outputSha256": "3a2b8c8d8ab752919a10560aa3181bf1034db3c3658671be98bff10746fdee21",
+      "byteIdenticalToGeneratedOutput": true,
+      "readOnlyAlphaInspection": {
+        "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-2f2e3e77-925c-4fc0-9f23-80dd8777587a.png",
+        "index": 7,
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGBA",
+        "nontransparent": 484470,
+        "alphaAbove8": 404916,
+        "edgeAlphaAbove8": 0,
+        "unusedAlphaAbove8": 0,
+        "unusedAlphaNonzero": 2350,
+        "cells": [
+          {
+            "index": 0,
+            "pixels": 33426,
+            "opaquePixels": 32221,
+            "width": 214,
+            "height": 217
+          },
+          {
+            "index": 1,
+            "pixels": 31562,
+            "opaquePixels": 30286,
+            "width": 229,
+            "height": 220
+          },
+          {
+            "index": 2,
+            "pixels": 31478,
+            "opaquePixels": 30052,
+            "width": 257,
+            "height": 222
+          },
+          {
+            "index": 3,
+            "pixels": 29558,
+            "opaquePixels": 28078,
+            "width": 223,
+            "height": 219
+          },
+          {
+            "index": 4,
+            "pixels": 36861,
+            "opaquePixels": 35417,
+            "width": 227,
+            "height": 268
+          },
+          {
+            "index": 5,
+            "pixels": 35770,
+            "opaquePixels": 34396,
+            "width": 219,
+            "height": 271
+          },
+          {
+            "index": 6,
+            "pixels": 36229,
+            "opaquePixels": 34698,
+            "width": 224,
+            "height": 261
+          },
+          {
+            "index": 7,
+            "pixels": 34804,
+            "opaquePixels": 33231,
+            "width": 227,
+            "height": 265
+          },
+          {
+            "index": 8,
+            "pixels": 35862,
+            "opaquePixels": 34659,
+            "width": 229,
+            "height": 259
+          },
+          {
+            "index": 9,
+            "pixels": 34460,
+            "opaquePixels": 33182,
+            "width": 221,
+            "height": 262
+          },
+          {
+            "index": 10,
+            "pixels": 32135,
+            "opaquePixels": 30758,
+            "width": 223,
+            "height": 254
+          },
+          {
+            "index": 11,
+            "pixels": 32771,
+            "opaquePixels": 31419,
+            "width": 216,
+            "height": 258
+          },
+          {
+            "index": 12,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 13,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 14,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 15,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 16,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 17,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 18,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "index": 19,
+            "pixels": 0,
+            "opaquePixels": 0,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "xCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "yCuts": [
+          0,
+          281,
+          591,
+          886,
+          1122,
+          1402
+        ],
+        "issue": null
+      }
+    }
+  ],
+  "independentInspectionScriptSha256": "646c723674fa7b84b8aba2ea5fc6b04ad7014917a5088d174b31b490b074a355"
+}

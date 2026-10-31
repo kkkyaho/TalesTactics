@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "kind": "derived-summary-not-raw-report",
+  "derivedUtc": "2026-10-31T15:00:42.3132192Z",
+  "source": {
+    "projectRelativePath": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/result.json",
+    "localAbsolutePath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/CandidateMotion/final-b/result.json",
+    "sha256": "464b9d5e281f53c37c16ca170e5658041d643f6a7d452c00d83abb07a71e3e03",
+    "bytes": 10104067,
+    "rawFileCopied": false,
+    "rawFileModified": false,
+    "rawRemainsLocal": true
+  },
+  "derivation": "Copy selected actual result fields and aggregate rows only. This is not a replacement for the full raw result.json, timeline, mesh/camera/frame evidence or manual PNG review. No result, threshold or original evidence was modified.",
+  "omitted": "Detailed per-frame/per-mesh camera geometry, full successful non-continuous rows, candidate input arrays, PNGs and timelines remain at the local source path.",
+  "report": {
+    "schema": 2,
+    "status": "passed",
+    "passed": true,
+    "mode": "motion",
+    "filter": "jade,alphen,shionne,velvet",
+    "expectedRuns": 104,
+    "completedRuns": 104,
+    "actualRowCount": 104,
+    "catalogSkills": 182,
+    "owners": 39,
+    "heroes": 10,
+    "bosses": 20,
+    "signatureWeapons": 10,
+    "pngCount": 1433,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "unityVersion": "6000.6.0f1",
+    "scope": "Presentation-only fixture: six original battlefield allies plus one isolated native-sprite actor. CharacterMotion, ImpactPool prepare/travel and CombatEffect contact APIs use authored timing. One staged recipient per effect; no multi-recipient/HP-number/audio/resolver/AI/turn/campaign certification. Use SkillRosterVfxReview separately for actual Director execution.",
+    "coverage": "All-direction phase telemetry is sampled at 30 simulated fps. Unobserved individual authored poses are listed rather than claimed covered. With continuous capture enabled: one selected base skill for Cless, Mint, Alphen, Farah, Jade, Tear, Shionne, Velvet, Dhaos, Barbatos, Front/Back only. Candidate preview also captures the same selected skill with signature weapons Front/Back, plus Velvet base ultimate and Alphen signature ultimate in all four directions. Split owner filters to stay within the bounded image budget. All other motion runs retain one representative release image plus phase telemetry, not continuous-image coverage. Missing categories fail coverage counts; absent optional ultimates are not invented.",
+    "visualApproval": "Not approved by this automated report. passed means bounded execution/state/geometry checks only, not visible VFX or visual quality. Inspect captures and their geometry/depth evidence. Prior schema1 single-contact captures are incomplete visual evidence.",
+    "errors": []
+  },
+  "preservation": {
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateClonesCreated": 12,
+    "candidateClonesDestroyed": 12
+  },
+  "candidateSelection": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\selected-revisions.json",
+    "sha256": "87ae89fd88d691665f7fd066f87d4a9f25cf6bfdee305bbe997f42e369edc46a",
+    "inputCount": 103,
+    "scope": "When enabled: six battlefield allies remain original; only the isolated actor uses transient candidate CharacterData/EquipmentData/EquipmentAppearance clones. This is read-only candidate evidence, not production application or approval."
+  },
+  "rowAssertionFalseCounts": {
+    "finished": 0,
+    "clean": 0,
+    "preparationObserved": 0,
+    "releaseObserved": 0,
+    "returnedIdle": 0,
+    "authoredDirectionMatches": 0,
+    "sessionUnchanged": 0
+  },
+  "ownerCoverage": [
+    {
+      "owner": "alphen",
+      "rows": 24,
+      "continuousRows": 6,
+      "normalRows": 24,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "jade",
+      "rows": 24,
+      "continuousRows": 4,
+      "normalRows": 24,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shionne",
+      "rows": 32,
+      "continuousRows": 4,
+      "normalRows": 32,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "velvet",
+      "rows": 24,
+      "continuousRows": 6,
+      "normalRows": 24,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    }
+  ],
+  "continuousSequences": [
+    {
+      "owner": "alphen",
+      "equipment": "",
+      "skill": "alphen.ultimate",
+      "facing": "Front",
+      "frames": 75,
+      "capture": "alphen/base/alphen.ultimate-Front/0037.png",
+      "errors": []
+    },
+    {
+      "owner": "alphen",
+      "equipment": "",
+      "skill": "alphen.ultimate",
+      "facing": "Back",
+      "frames": 74,
+      "capture": "alphen/base/alphen.ultimate-Back/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "alphen",
+      "equipment": "nebilim",
+      "skill": "alphen.ultimate",
+      "facing": "Front",
+      "frames": 73,
+      "capture": "alphen/signature/alphen.ultimate-Front/0035.png",
+      "errors": []
+    },
+    {
+      "owner": "alphen",
+      "equipment": "nebilim",
+      "skill": "alphen.ultimate",
+      "facing": "Back",
+      "frames": 74,
+      "capture": "alphen/signature/alphen.ultimate-Back/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "alphen",
+      "equipment": "nebilim",
+      "skill": "alphen.ultimate",
+      "facing": "Left",
+      "frames": 74,
+      "capture": "alphen/signature/alphen.ultimate-Left/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "alphen",
+      "equipment": "nebilim",
+      "skill": "alphen.ultimate",
+      "facing": "Right",
+      "frames": 74,
+      "capture": "alphen/signature/alphen.ultimate-Right/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "jade",
+      "equipment": "",
+      "skill": "jade.0",
+      "facing": "Front",
+      "frames": 63,
+      "capture": "jade/base/jade.0-Front/0028.png",
+      "errors": []
+    },
+    {
+      "owner": "jade",
+      "equipment": "",
+      "skill": "jade.0",
+      "facing": "Back",
+      "frames": 64,
+      "capture": "jade/base/jade.0-Back/0029.png",
+      "errors": []
+    },
+    {
+      "owner": "jade",
+      "equipment": "blood-pain",
+      "skill": "jade.0",
+      "facing": "Front",
+      "frames": 63,
+      "capture": "jade/signature/jade.0-Front/0028.png",
+      "errors": []
+    },
+    {
+      "owner": "jade",
+      "equipment": "blood-pain",
+      "skill": "jade.0",
+      "facing": "Back",
+      "frames": 63,
+      "capture": "jade/signature/jade.0-Back/0028.png",
+      "errors": []
+    },
+    {
+      "owner": "shionne",
+      "equipment": "",
+      "skill": "shionne.0",
+      "facing": "Front",
+      "frames": 52,
+      "capture": "shionne/base/shionne.0-Front/0023.png",
+      "errors": []
+    },
+    {
+      "owner": "shionne",
+      "equipment": "",
+      "skill": "shionne.0",
+      "facing": "Back",
+      "frames": 52,
+      "capture": "shionne/base/shionne.0-Back/0023.png",
+      "errors": []
+    },
+    {
+      "owner": "shionne",
+      "equipment": "damonisch-core",
+      "skill": "shionne.0",
+      "facing": "Front",
+      "frames": 52,
+      "capture": "shionne/signature/shionne.0-Front/0023.png",
+      "errors": []
+    },
+    {
+      "owner": "shionne",
+      "equipment": "damonisch-core",
+      "skill": "shionne.0",
+      "facing": "Back",
+      "frames": 52,
+      "capture": "shionne/signature/shionne.0-Back/0023.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "",
+      "skill": "velvet.ultimate",
+      "facing": "Front",
+      "frames": 74,
+      "capture": "velvet/base/velvet.ultimate-Front/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "",
+      "skill": "velvet.ultimate",
+      "facing": "Back",
+      "frames": 74,
+      "capture": "velvet/base/velvet.ultimate-Back/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "",
+      "skill": "velvet.ultimate",
+      "facing": "Left",
+      "frames": 74,
+      "capture": "velvet/base/velvet.ultimate-Left/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "",
+      "skill": "velvet.ultimate",
+      "facing": "Right",
+      "frames": 74,
+      "capture": "velvet/base/velvet.ultimate-Right/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "unnamed-blade",
+      "skill": "velvet.ultimate",
+      "facing": "Front",
+      "frames": 74,
+      "capture": "velvet/signature/velvet.ultimate-Front/0036.png",
+      "errors": []
+    },
+    {
+      "owner": "velvet",
+      "equipment": "unnamed-blade",
+      "skill": "velvet.ultimate",
+      "facing": "Back",
+      "frames": 74,
+      "capture": "velvet/signature/velvet.ultimate-Back/0036.png",
+      "errors": []
+    }
+  ],
+  "failedRows": [],
+  "interpretation": "Candidate preview: the six field models used then-production assets and the separate review actor used candidate clones. VFX result predates final art application. Automated pass is bounded execution/state/geometry, never complete visual approval, post-application regression or human play."
+}

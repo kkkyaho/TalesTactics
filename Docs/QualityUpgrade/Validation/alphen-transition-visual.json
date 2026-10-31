@@ -1,0 +1,618 @@
+{
+  "schema": "tales-tactics.alphen-transition-visual.v1",
+  "reviewedAt": "2026-10-31T22:22:50.2623942+09:00",
+  "reviewer": "campaign_growth_audit",
+  "status": "no_blocking_issue_observed_in_sampled_joins",
+  "productionApproval": false,
+  "scope": "Read-only visual inspection of actual candidate-rendered Alphen ultimate transitions: base Front/Back and signature Front/Back/Left/Right. No new generation, source changes, Unity operation, or test execution by this reviewer.",
+  "method": "Viewed original 960x540 PNGs, comparing visible head/face, torso, boots, weapon and foot placement across each selected sprite transition. This is paired-frame visual inspection, not real-time playback or a bounding-box-only assessment.",
+  "inspectedCurrentPngCount": 40,
+  "inspectedPreviousPngCount": 8,
+  "current": [
+    {
+      "mode": "base",
+      "direction": "Front",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/timeline.json",
+        "sha256": "4547a5afd527e6e0028a7d854d90673e95f7dbdff08b7f1a913ecc33d73c904e"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 74,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen_8_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0013.png",
+                "sha256": "a3355757a6a853a05ce9ec41248a60179c32a6f8ee21fccd42ed793c225988be"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0014.png",
+                "sha256": "373d10a02a6ee6ad5b50725ebf22fd9e76c88f3b4553977332767e010d343c24"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 39,
+              "sprite": "alphen_12_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0039.png",
+                "sha256": "52410e4ccaa46920c2ffa1396546af7995614ca167b38b4ac738925f7ca1ee5a"
+              }
+            },
+            {
+              "frame": 40,
+              "sprite": "alphen-hq_1_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0040.png",
+                "sha256": "d0210438bb96bd11ef1467e763d8d3220c3061997ee6d238795a7e2f5fdacf1b"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 61,
+              "sprite": "alphen_17_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0061.png",
+                "sha256": "c57fec3f1801d2f61988515079bd7daf19c334b263b7398ebb7c171aa6105dec"
+              }
+            },
+            {
+              "frame": 62,
+              "sprite": "alphen-polish_3_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0062.png",
+                "sha256": "22985c3db6bf7f52ae1c216211d48440fbec47a8061a2d7aad3df01bfd709194"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 67,
+              "sprite": "alphen-polish_3_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0067.png",
+                "sha256": "f219c3efc21f44d73f9b6a393fbd72b905a1a4a5be4250a61ece4f0d7390d1a1"
+              }
+            },
+            {
+              "frame": 68,
+              "sprite": "alphen-hq_0_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Front/0068.png",
+                "sha256": "7f71b4367c69ca48740f2234ce9a2190bfbf80e9dc3c8aae216ccd47c54cee55"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    },
+    {
+      "mode": "base",
+      "direction": "Back",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/timeline.json",
+        "sha256": "1ee340b544fcada95de1ec411560c8b46ce7a7b8ff586612cbf5bee91d65945e"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 74,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen_8_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0013.png",
+                "sha256": "095020660797a4e49842e93d1804b09f30ec5061bb8983c8cbdfdc319c8a66c9"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0014.png",
+                "sha256": "2575591e3c3445d949b542fc2ed95e6e98cbd744fd44da54dd4cf1281f21d52a"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 39,
+              "sprite": "alphen_12_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0039.png",
+                "sha256": "4682fc4eb4a0e14ebd1a6787e52623bbe8ec102a3ff5769ba70fd29041623051"
+              }
+            },
+            {
+              "frame": 40,
+              "sprite": "alphen-hq_1_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0040.png",
+                "sha256": "41056502283ab082dd7c12a122b93f0f5d9cba0bd196282f3f5788e03667442e"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 61,
+              "sprite": "alphen_17_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0061.png",
+                "sha256": "38cecccfdf490760a04e5df0d1fa0078a6e4c607187b5e67609c5f517ef3f88d"
+              }
+            },
+            {
+              "frame": 62,
+              "sprite": "alphen-polish_3_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/base/alphen.ultimate-Back/0062.png",
+                "sha256": "0c9843a977e79940487f2217e5f58b741294268b9770a5d5e2078ea5406e9ae0"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    },
+    {
+      "mode": "signature",
+      "direction": "Front",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/timeline.json",
+        "sha256": "ee8b01752898eadd5e1e74e34af9f33c0db8cef585d93b40dc6959f6f5030e54"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 73,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen-premium_8_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0013.png",
+                "sha256": "ced479f3fdd1f67f1b443f782b9af65c954b0704e074c7603b58a86ecbfb18e0"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0014.png",
+                "sha256": "cebfdadc0bec6159870420a6c3dd76c2a8941690de28f6da3eed3129b1a86288"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 38,
+              "sprite": "alphen-premium_12_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0038.png",
+                "sha256": "d3ef8493914dc3a599143f24358dc4116c3c3761048b98df624c99fcbd234e4e"
+              }
+            },
+            {
+              "frame": 39,
+              "sprite": "alphen-hq_1_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0039.png",
+                "sha256": "3dc33a9891ee00f4ba2208080dce2e597ddadb8db18f0af76da56b4a7d835d7f"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 60,
+              "sprite": "alphen-premium_17_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0060.png",
+                "sha256": "0f1503481cd3f7fcd49034a6fa1c2da26b5a033820d373b2c13f0bca2a70f2fb"
+              }
+            },
+            {
+              "frame": 61,
+              "sprite": "alphen-polish_3_0",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Front/0061.png",
+                "sha256": "85593b0a8267c9b73210fb835861ccba1d9cde7a36c1e04dcd63466589ffa5e5"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    },
+    {
+      "mode": "signature",
+      "direction": "Back",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/timeline.json",
+        "sha256": "b99407ec59cc514ea61ff73ce73752b1532ab5a1e4b09b8c84b4492035824bda"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 73,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen-premium_8_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0013.png",
+                "sha256": "763bd83196acea653221b727dc9213e14aef2e11a896c43b028de9a1cde310ac"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0014.png",
+                "sha256": "e608d2e7aca2d756caa77591190b4405b3b8ad697d6d9691bdd73afc1b25497e"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 38,
+              "sprite": "alphen-premium_12_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0038.png",
+                "sha256": "84a4b7471bfb29f27c128117e0e2ea66cddc5e0a27c40ffd3cfebecf4e3736ba"
+              }
+            },
+            {
+              "frame": 39,
+              "sprite": "alphen-hq_1_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0039.png",
+                "sha256": "1519efd9e55956c934878bc588187d323efbcc821764d956be13ba95abf4e3e5"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 60,
+              "sprite": "alphen-premium_17_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0060.png",
+                "sha256": "01bec879dbe16f921f4cb9f1ce1e069975271a4c1ea28d046e753ce3d35118d2"
+              }
+            },
+            {
+              "frame": 61,
+              "sprite": "alphen-polish_3_1",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Back/0061.png",
+                "sha256": "e5769cd37acb45ff75fa5f0d3213ca4720b90aaf9c16ce4ae2d24dd7b5ac0f29"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    },
+    {
+      "mode": "signature",
+      "direction": "Left",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/timeline.json",
+        "sha256": "0ac92acb446b870250bba7274e67982328c563b65d20d05c0ac3ff64b8c6c4c4"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 73,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen-premium_8_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0013.png",
+                "sha256": "f46b903daeec816f3616d76c0380b4aea3dc7a00e9f3be18dc1878c0ff3d63ae"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0014.png",
+                "sha256": "aa944a57d4c503680c2aa026287211289f1362414aac1c3aebcf37d5ff77babc"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 38,
+              "sprite": "alphen-premium_12_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0038.png",
+                "sha256": "2e9cf80139b04893bb27a5c47d15ef40050ec32acc742487e3a7b90fcb7fc0a1"
+              }
+            },
+            {
+              "frame": 39,
+              "sprite": "alphen-hq_1_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0039.png",
+                "sha256": "4b078065edbc9ba75a7b6a8fecef65a0aef76e2322ffeb90d11c2c8554dd9bfe"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 60,
+              "sprite": "alphen-premium_17_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0060.png",
+                "sha256": "4f096bca6290e331d269e7bd4f914b281e4b935d3be60ad9ade0c1bf467d8677"
+              }
+            },
+            {
+              "frame": 61,
+              "sprite": "alphen-polish_3_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0061.png",
+                "sha256": "d7c040df9b0a81bd4991fd0788d6b5e7120c0f269720d3844a506a59c4c0e6e1"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 66,
+              "sprite": "alphen-polish_3_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0066.png",
+                "sha256": "b669ecf9fd8b7e1c3a7d3bf8f60e74e98e7a5fe2118b8c2586de44399cbaaa15"
+              }
+            },
+            {
+              "frame": 67,
+              "sprite": "alphen-hq_0_3",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Left/0067.png",
+                "sha256": "7ddc34a9180a1cd6709a22f406ff39c495278e42f5761d8c0f1f56b2e150906f"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    },
+    {
+      "mode": "signature",
+      "direction": "Right",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/timeline.json",
+        "sha256": "bd5dd372cd74f611e7b7ebc12b70143b4684729c85ef97c0a9f02b1d11eda46e"
+      },
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "timelineFrameCount": 74,
+      "inspectedPairs": [
+        {
+          "frames": [
+            {
+              "frame": 13,
+              "sprite": "alphen-premium_8_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0013.png",
+                "sha256": "9d19fab331e08f615bb6d1a8ec2510f01f6dd6b5dbb868f53e79f9f69de95a0e"
+              }
+            },
+            {
+              "frame": 14,
+              "sprite": "alphen-hq_2_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0014.png",
+                "sha256": "cbc06e4e1cfbdd9b2cb6603cb4811ea4525ac321e27c8a03ef26964178092732"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 39,
+              "sprite": "alphen-premium_12_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0039.png",
+                "sha256": "5af12d583f6b523f65656f684d290f5137fe3616451bf7204819f8cc58f35484"
+              }
+            },
+            {
+              "frame": 40,
+              "sprite": "alphen-hq_1_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0040.png",
+                "sha256": "9672311b79aff3f26f2f72328666c111f65da5ee3cf122033426bd48b33598ac"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        },
+        {
+          "frames": [
+            {
+              "frame": 61,
+              "sprite": "alphen-premium_17_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0061.png",
+                "sha256": "198e933a7c5dfd7d40497b1111fbd88a2602339bac067aa391bf1223406e84e1"
+              }
+            },
+            {
+              "frame": 62,
+              "sprite": "alphen-polish_3_2",
+              "capture": {
+                "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/alphen/signature/alphen.ultimate-Right/0062.png",
+                "sha256": "ac38d0e7adf1e6c172d20c32d41e70d5a0b2a76f36648c946e807a2daa6c143b"
+              }
+            }
+          ],
+          "blockingIssueObserved": false
+        }
+      ]
+    }
+  ],
+  "previousComparison": [
+    {
+      "mode": "base",
+      "direction": "Front",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/timeline.json",
+        "sha256": "f94291b37583ab5d00a81fc1a98007c7e6d7949b7a078fdaa51682507f11fbb1"
+      },
+      "inspectedCaptures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0013.png",
+          "sha256": "3683cd9db66cc9650f6c2a99c7a0b06fe5b788cb7a5aaaf03140b86286010702"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0014.png",
+          "sha256": "f798d832667067883486c74a04c75c58f7aa25dde0ecc00dca1de5abfbf2ac88"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0038.png",
+          "sha256": "d1dd921dc10c02b96a55986fb0fe65f1f49d341a6a367bc67a5c11520d292d41"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0039.png",
+          "sha256": "859d8b0b11581868e9b2a1a3d52dda88bf2a1385844905d56eca474366421304"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0060.png",
+          "sha256": "1e30631aac3a8c8e400843912b36c16cfa9f53d2817e3ba3c86aefb61b54ba0f"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/base/alphen.ultimate-Front/0061.png",
+          "sha256": "b2fabca04ec0d42ecdc456754026bd225cc41388f0f26775a6a2344d152e1d98"
+        }
+      ]
+    },
+    {
+      "mode": "signature",
+      "direction": "Left",
+      "timeline": {
+        "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/signature/alphen.ultimate-Left/timeline.json",
+        "sha256": "346b1b056cc38e0357ade377eff907b950de747d00805657b525c76ff2f8a5b5"
+      },
+      "inspectedCaptures": [
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/signature/alphen.ultimate-Left/0060.png",
+          "sha256": "fbe92eb64aa758525b59ef17937e885f57338fa4452f98c27de3ee65406ea8a0"
+        },
+        {
+          "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/alphen/signature/alphen.ultimate-Left/0061.png",
+          "sha256": "0f773cde1f899b385cfa31492e507586b6d7bdde60ecc050b89b0c85d3c8f174"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "severity": "resolved_in_sample",
+      "area": "head_body_continuity",
+      "detail": "The earlier base Front premium-to-HQ and premium-to-Polish joins showed a distinctly smaller head and slimmer body. At the corresponding new joins, head/torso/boot scale reads consistently. The same marked collapse is not visible in the new signature Left recovery comparison."
+    },
+    {
+      "severity": "no_blocking_issue_observed",
+      "area": "direction_weapon_feet",
+      "detail": "All six inspected sequences retain the intended facing and a single appropriate sword through the sampled joins. Foot and body shifts follow the changed attack/guard/recovery pose; no detached foot, duplicated weapon, reversed facing, or severe anchor displacement was identified in these samples."
+    },
+    {
+      "severity": "non_blocking_observation",
+      "area": "signature_side_recovery_hair",
+      "detail": "Signature Left 0060-to-0061 and Right 0061-to-0062 retain a visible change in the hair silhouette/volume and head angle. Face, torso and boots do not exhibit the previous simultaneous collapse. This is not a claim of pixel-identical anatomy across poses."
+    },
+    {
+      "severity": "no_blocking_issue_observed",
+      "area": "idle_return",
+      "detail": "Additional base Front 0067-to-0068 and signature Left 0066-to-0067 Polish-to-HQ idle returns retain a comparable visible head/boot/body scale."
+    }
+  ],
+  "executionEvidence": {
+    "source": {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/result.json",
+      "sha256": "0d91394b9cf44dbf335c420ed0722f73f78a5eed7de0af7bfb7bc84dd93b5193"
+    },
+    "expectedRuns": 72,
+    "completedRuns": 72,
+    "pngCount": 777,
+    "status": "passed",
+    "passed": true,
+    "errors": [],
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateClonesCreated": 9,
+    "candidateClonesDestroyed": 9,
+    "interpretation": "Values copied from the existing root-run result, not tests executed by this reviewer. Automated 72/72 and 777 PNG collection are not a claim that this reviewer visually inspected every frame."
+  },
+  "limitations": [
+    "Visual finding is limited to the listed 40 current PNGs, 8 previous PNGs and six current timelines. It does not approve all 777 captures, all actions, all characters or all intermediate frames.",
+    "Previous and new captures have different apparent framing/scale. Improvement is judged from proportional continuity within each run, not absolute pixel size across separate runs.",
+    "Candidate preview evidence does not establish final production import, normal Windows build, general performance or whole-project completion."
+  ]
+}

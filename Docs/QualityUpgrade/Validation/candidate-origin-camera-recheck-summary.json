@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "derived-summary-not-raw-report",
+  "derivedUtc": "2026-10-31T15:00:44.0392736Z",
+  "source": {
+    "projectRelativePath": "Logs/QualityUpgrade20261031/CandidateMotion/origin-camera-fixed/result.json",
+    "localAbsolutePath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/CandidateMotion/origin-camera-fixed/result.json",
+    "sha256": "155d57d4793c2c05269e711b73f8226ebed387ec4e27fbebd33c17b8e942c117",
+    "bytes": 1020303,
+    "rawFileCopied": false,
+    "rawFileModified": false,
+    "rawRemainsLocal": true
+  },
+  "derivation": "Copy selected actual result fields and aggregate rows only. This is not a replacement for the full raw result.json, timeline, mesh/camera/frame evidence or manual PNG review. No result, threshold or original evidence was modified.",
+  "omitted": "Detailed per-frame/per-mesh camera geometry, full successful non-continuous rows, candidate input arrays, PNGs and timelines remain at the local source path.",
+  "report": {
+    "schema": 2,
+    "status": "passed",
+    "passed": true,
+    "mode": "motion",
+    "filter": "origin",
+    "expectedRuns": 12,
+    "completedRuns": 12,
+    "actualRowCount": 12,
+    "catalogSkills": 182,
+    "owners": 39,
+    "heroes": 10,
+    "bosses": 20,
+    "signatureWeapons": 10,
+    "pngCount": 12,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "unityVersion": "6000.6.0f1",
+    "scope": "Presentation-only fixture: six original battlefield allies plus one isolated native-sprite actor. CharacterMotion, ImpactPool prepare/travel and CombatEffect contact APIs use authored timing. One staged recipient per effect; no multi-recipient/HP-number/audio/resolver/AI/turn/campaign certification. Use SkillRosterVfxReview separately for actual Director execution.",
+    "coverage": "All-direction phase telemetry is sampled at 30 simulated fps. Unobserved individual authored poses are listed rather than claimed covered. With continuous capture enabled: one selected base skill for Cless, Mint, Alphen, Farah, Dhaos, Barbatos, Front/Back only. Candidate preview additionally captures Velvet's base ultimate and Alphen's signature-weapon ultimate in all four directions (8 additional runs in this catalog). All other motion runs retain one representative release image plus phase telemetry, not continuous-image coverage. Missing categories fail coverage counts; absent optional ultimates are not invented.",
+    "visualApproval": "Not approved by this automated report. passed means bounded execution/state/geometry checks only, not visible VFX or visual quality. Inspect captures and their geometry/depth evidence. Prior schema1 single-contact captures are incomplete visual evidence.",
+    "errors": []
+  },
+  "preservation": {
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateClonesCreated": 1,
+    "candidateClonesDestroyed": 1
+  },
+  "candidateSelection": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\selected-revisions.json",
+    "sha256": "1b4354f7ee9e9198e1501763f24bb609812d1de829a197d3a4804433c4ced080",
+    "inputCount": 39,
+    "scope": "When enabled: six battlefield allies remain original; only the isolated actor uses transient candidate CharacterData/EquipmentData/EquipmentAppearance clones. This is read-only candidate evidence, not production application or approval."
+  },
+  "rowAssertionFalseCounts": {
+    "finished": 0,
+    "clean": 0,
+    "preparationObserved": 0,
+    "releaseObserved": 0,
+    "returnedIdle": 0,
+    "authoredDirectionMatches": 0,
+    "sessionUnchanged": 0
+  },
+  "ownerCoverage": [
+    {
+      "owner": "origin",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    }
+  ],
+  "continuousSequences": [],
+  "failedRows": [],
+  "interpretation": "Candidate preview: the six field models used then-production assets and the separate review actor used candidate clones. VFX result predates final art application. Automated pass is bounded execution/state/geometry, never complete visual approval, post-application regression or human play."
+}

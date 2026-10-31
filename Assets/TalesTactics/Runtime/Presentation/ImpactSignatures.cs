@@ -60,11 +60,18 @@ namespace TalesTactics
         }
         void GroundWave(Vector3 point,float alpha)
         {
-            float flip=Vector3.Dot(-from,view.transform.right)<0?-1:1;
-            SignatureQuad(point+Vector3.up*.25f*size,Plane(.85f*flip,0),Plane(0,.46f),0,new Color(.85f,1,1,alpha*.78f));
-            CelSlash(point+Vector3.up*.19f*size,.73f,flip>0?-.45f:Mathf.PI+.45f,flip*2.45f,.063f,Alpha(WaveColor,alpha));
-            var dir=Vector3.ProjectOnPlane(-from,Vector3.up).normalized;
-            CelStroke(point-dir*.72f+Vector3.up*.08f,point-dir*.12f+Vector3.up*.08f,.018f,Alpha(WaveColor,alpha*.8f),true);
+            var dir=ArteDirection;var side=Vector3.Cross(Vector3.up,dir);
+            float angle=Mathf.Atan2(Vector3.Dot(dir,view.transform.up),Vector3.Dot(dir,view.transform.right));
+            float c=Mathf.Cos(angle),s=Mathf.Sin(angle);
+            SignatureQuad(point+Vector3.up*.16f*size,Plane(c*.64f,s*.64f),Plane(-s*.34f,c*.34f),0,new Color(.86f,.98f,1,alpha*.55f));
+            // The leading crescent is on the battlefield plane, so all four views retain the actual travel direction.
+            LayeredCrescent(point+Vector3.up*.09f*size,dir*size,side*size,.56f,.50f,-1.32f,2.64f,.074f,Alpha(WaveColor,alpha));
+            for(int i=0;i<(reduced?1:3);i++)
+            {
+                float offset=(i-1)*.15f;if(reduced)offset=0;
+                var head=point+side*offset*size+Vector3.up*.065f*size;
+                CelTrail(head-dir*(.92f-Mathf.Abs(offset))*size,head+dir*.12f*size,.024f,Alpha(WaveColor,alpha*(i==1||reduced?.72f:.42f)),true);
+            }
             for(int i=1;i<=(reduced?1:3);i++)FrameQuad(backAtlas,point-dir*i*.18f+Vector3.up*.04f,Plane(.20f,0),Plane(0,.09f),new Color(.69f,.74f,.68f,alpha*.22f),12+i*.6f,12,15);
         }
         void FallingRock(Vector3 point,float radius,float alpha,float tilt=0)
@@ -117,13 +124,17 @@ namespace TalesTactics
             float opacity=reduced?.62f:1;
             if(signature==SkillSignature.DemonFang)
             {
-                float fade=Mathf.Max(0,1-t*2.6f);var top=Vector3.up*(.65f+t*.35f)*size;
-                CelStroke(Vector3.zero,top,.040f*fade,new Color(.50f,.87f,1,fade*opacity),true);
-                CelContact(Vector3.up*.26f,age,Alpha(WaveColor,opacity),.59f);
-                Glow(top*.35f,.23f,Alpha(WaveColor,fade*opacity*.6f));
-                var dir=(-from).normalized;
-                for(int i=0;i<(reduced?3:7);i++){float a=i*2.39996f;var p=dir*(t*.65f)+Plane(Mathf.Cos(a),Mathf.Sin(a))*(t*.4f)+Vector3.up*.2f;
-                    Ribbon(p,p+dir*.11f,.012f,Alpha(WaveColor,fade*opacity));}
+                float fade=Envelope(age,.38f)*opacity;var dir=ArteDirection;
+                CelContact(Vector3.up*.25f,age,Alpha(WaveColor,opacity),.46f);
+                float spark=Envelope(age,.23f)*opacity;
+                for(int i=0;i<(reduced?3:6);i++)
+                {
+                    float a=i*2.39996f;var outward=Plane(Mathf.Cos(a),Mathf.Sin(a));
+                    var p=dir*(.08f+t*.34f)+outward*(.08f+t*.42f)+Vector3.up*.24f;
+                    CelTrail(p,p+outward*.19f,.014f,new Color(1,.77f,.40f,spark));
+                }
+                var side=Vector3.Cross(Vector3.up,dir);
+                LayeredCrescent(dir*t*.38f+Vector3.up*.07f,dir*size,side*size,.48f,.43f,-1.25f,2.5f,.035f,Alpha(WaveColor,fade*.7f));
                 return;
             }
             if(signature==SkillSignature.MeteorStorm)

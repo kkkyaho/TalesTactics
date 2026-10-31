@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "Read-only visual inspection of actual Unity render files",
+  "status": "changes_requested",
+  "productionApproval": false,
+  "unityExecutedByReviewer": false,
+  "mappingFile": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\row-mapping.json",
+  "mappingSha256": "ffc177fb5e599b3625ca689b949f9cee7cecd6ab9fbb3ef763dac044b87e177f",
+  "capturedSelectionSha256": "9cf76a7965578440d766cbf1909477fae9307331c48898c84d319904fcfa1c57",
+  "scope": {
+    "images": 24,
+    "renderedSpriteSlots": 480,
+    "owners": [
+      "mint",
+      "tear",
+      "cless"
+    ],
+    "equipment": [
+      "base",
+      "signature"
+    ],
+    "directions": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rows": [
+      "premium: poses0,5,10,last",
+      "hq: poses0,1,2,3",
+      "motion: poses0,1,2,3",
+      "extra: poses0,1,2,3",
+      "polish: poses0,1,2,3"
+    ],
+    "allImagesOpened": true
+  },
+  "captureEvidence": {
+    "width": 2048,
+    "height": 1536,
+    "shader": "TalesTactics/UnitTone",
+    "productionModified": false,
+    "sourceFilesUnchanged": true,
+    "sharedPerCharacterScale": true,
+    "commonCamera": true,
+    "all480FullRectsInsideFrame": true
+  },
+  "findings": [
+    {
+      "id": "CL-SIG-SIZE",
+      "priority": "quality_blocker_pending_recheck",
+      "owner": "cless",
+      "equipment": "signature",
+      "observation": "Across all four directions, HQ, motion, extra and polish bodies/heads are smaller than premium. The effect is not restricted to a crouch or prone pose.",
+      "evidence": "Compare row1 column1 premium0 against row2/3/4 column1 and row5 column4.",
+      "recommendation": "Preview support-only PPU divided by about 1.13, preserve original art and pivots; rerun actual transitions. Do not enlarge base support.",
+      "exactMeasurementMethod": "Read-only RGB mask: max channel difference from corner background >25, excluding blue blade pixels (B>1.3R and B>90). Full-mask and blade-excluded heights agree. Extents are reproducible pixels, not anatomical landmarks; antialias uncertainty about 1-2 pixels.",
+      "heightsByDirection": {
+        "premium": [
+          68,
+          70,
+          68,
+          68
+        ],
+        "hq": [
+          61,
+          61,
+          59,
+          61
+        ],
+        "motion": [
+          61,
+          60,
+          61,
+          61
+        ],
+        "extra": [
+          62,
+          62,
+          61,
+          61
+        ],
+        "polish": [
+          59,
+          60,
+          60,
+          60
+        ]
+      },
+      "suggestedSupportScale": 1.13,
+      "measurements": [
+        {
+          "direction": 0,
+          "row": 1,
+          "column": 1,
+          "sprite": "cless-premium_0_0",
+          "foregroundYMin": 43,
+          "foregroundYMax": 110,
+          "heightPixels": 68,
+          "pixelsPerUnit": 134.721375
+        },
+        {
+          "direction": 0,
+          "row": 2,
+          "column": 1,
+          "sprite": "cless-hq_0_0",
+          "foregroundYMin": 357,
+          "foregroundYMax": 417,
+          "heightPixels": 61,
+          "pixelsPerUnit": 205.765976
+        },
+        {
+          "direction": 0,
+          "row": 3,
+          "column": 1,
+          "sprite": "cless-motion_0_0",
+          "foregroundYMin": 663,
+          "foregroundYMax": 723,
+          "heightPixels": 61,
+          "pixelsPerUnit": 219.403122
+        },
+        {
+          "direction": 0,
+          "row": 4,
+          "column": 1,
+          "sprite": "cless-extra_0_0",
+          "foregroundYMin": 968,
+          "foregroundYMax": 1029,
+          "heightPixels": 62,
+          "pixelsPerUnit": 198.37439
+        },
+        {
+          "direction": 0,
+          "row": 5,
+          "column": 4,
+          "sprite": "cless-polish_3_0",
+          "foregroundYMin": 1276,
+          "foregroundYMax": 1334,
+          "heightPixels": 59,
+          "pixelsPerUnit": 221.478622
+        },
+        {
+          "direction": 1,
+          "row": 1,
+          "column": 1,
+          "sprite": "cless-premium_0_1",
+          "foregroundYMin": 41,
+          "foregroundYMax": 110,
+          "heightPixels": 70,
+          "pixelsPerUnit": 134.721375
+        },
+        {
+          "direction": 1,
+          "row": 2,
+          "column": 1,
+          "sprite": "cless-hq_0_1",
+          "foregroundYMin": 357,
+          "foregroundYMax": 417,
+          "heightPixels": 61,
+          "pixelsPerUnit": 205.765976
+        },
+        {
+          "direction": 1,
+          "row": 3,
+          "column": 1,
+          "sprite": "cless-motion_0_1",
+          "foregroundYMin": 663,
+          "foregroundYMax": 722,
+          "heightPixels": 60,
+          "pixelsPerUnit": 219.403122
+        },
+        {
+          "direction": 1,
+          "row": 4,
+          "column": 1,
+          "sprite": "cless-extra_0_1",
+          "foregroundYMin": 968,
+          "foregroundYMax": 1029,
+          "heightPixels": 62,
+          "pixelsPerUnit": 198.37439
+        },
+        {
+          "direction": 1,
+          "row": 5,
+          "column": 4,
+          "sprite": "cless-polish_3_1",
+          "foregroundYMin": 1276,
+          "foregroundYMax": 1335,
+          "heightPixels": 60,
+          "pixelsPerUnit": 221.478622
+        },
+        {
+          "direction": 2,
+          "row": 1,
+          "column": 1,
+          "sprite": "cless-premium_0_2",
+          "foregroundYMin": 43,
+          "foregroundYMax": 110,
+          "heightPixels": 68,
+          "pixelsPerUnit": 134.721375
+        },
+        {
+          "direction": 2,
+          "row": 2,
+          "column": 1,
+          "sprite": "cless-hq_0_2",
+          "foregroundYMin": 357,
+          "foregroundYMax": 415,
+          "heightPixels": 59,
+          "pixelsPerUnit": 205.765976
+        },
+        {
+          "direction": 2,
+          "row": 3,
+          "column": 1,
+          "sprite": "cless-motion_0_2",
+          "foregroundYMin": 663,
+          "foregroundYMax": 723,
+          "heightPixels": 61,
+          "pixelsPerUnit": 219.403122
+        },
+        {
+          "direction": 2,
+          "row": 4,
+          "column": 1,
+          "sprite": "cless-extra_0_2",
+          "foregroundYMin": 969,
+          "foregroundYMax": 1029,
+          "heightPixels": 61,
+          "pixelsPerUnit": 198.37439
+        },
+        {
+          "direction": 2,
+          "row": 5,
+          "column": 4,
+          "sprite": "cless-polish_3_2",
+          "foregroundYMin": 1276,
+          "foregroundYMax": 1335,
+          "heightPixels": 60,
+          "pixelsPerUnit": 221.478622
+        },
+        {
+          "direction": 3,
+          "row": 1,
+          "column": 1,
+          "sprite": "cless-premium_0_3",
+          "foregroundYMin": 43,
+          "foregroundYMax": 110,
+          "heightPixels": 68,
+          "pixelsPerUnit": 134.721375
+        },
+        {
+          "direction": 3,
+          "row": 2,
+          "column": 1,
+          "sprite": "cless-hq_0_3",
+          "foregroundYMin": 357,
+          "foregroundYMax": 417,
+          "heightPixels": 61,
+          "pixelsPerUnit": 205.765976
+        },
+        {
+          "direction": 3,
+          "row": 3,
+          "column": 1,
+          "sprite": "cless-motion_0_3",
+          "foregroundYMin": 663,
+          "foregroundYMax": 723,
+          "heightPixels": 61,
+          "pixelsPerUnit": 219.403122
+        },
+        {
+          "direction": 3,
+          "row": 4,
+          "column": 1,
+          "sprite": "cless-extra_0_3",
+          "foregroundYMin": 969,
+          "foregroundYMax": 1029,
+          "heightPixels": 61,
+          "pixelsPerUnit": 198.37439
+        },
+        {
+          "direction": 3,
+          "row": 5,
+          "column": 4,
+          "sprite": "cless-polish_3_3",
+          "foregroundYMin": 1276,
+          "foregroundYMax": 1335,
+          "heightPixels": 60,
+          "pixelsPerUnit": 221.478622
+        }
+      ]
+    }
+  ],
+  "additionalObservations": [
+    "Mint: all 8 images show one body per slot and no obvious frame clipping or extra staff. Some staff hiding and face turning are authored poses, not proven regressions.",
+    "Tear: all 8 images show one body per slot and no obvious clipping or duplicate staff. Premium looks modestly larger than support; closer continuous evidence is needed to judge the transition.",
+    "Tear base uses pale golden hair, signature uses brown hair throughout the five rows. This existing canonical category palette difference is retained; no within-category abrupt palette change is observed. It is not certified as a desired equipment appearance change.",
+    "Cless base has no comparable signature-wide shrink. Prone, crouched, raised-weapon and leaning silhouettes naturally differ.",
+    "No gross foot-level jump is evident among comparable standing samples; the static background has no ground ruler and does not prove anatomical foot alignment."
+  ],
+  "limitations": [
+    "Only the listed 24 images/480 representative slots were inspected, not all animation frames or the other 40 images.",
+    "Sprites occupy roughly 45-70 screen pixels in these full 2048x1536 frames; this is insufficient to certify small hand/facial details.",
+    "Static Unity UnitTone rendering does not exercise CharacterMotion timing, tilt, root movement, VFX, camera motion, combat rules or UI.",
+    "Automated fullRectInsideFrame and source immutability are supporting telemetry, not visual approval.",
+    "This report records the original captured selection. Later calibration needs its own captures and cannot inherit this review as a pass."
+  ],
+  "images": [
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-base-direction-0.png",
+      "sha256": "80f7e75052960c869fa08542233fc1f17dd3d662ecb70bca7e12c6456216e336",
+      "owner": "mint",
+      "equipment": "base",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-base-direction-1.png",
+      "sha256": "b3cf49d32bbabcfe8afd2a449a70ff72b71d67f0234fc3c5247a122674d03278",
+      "owner": "mint",
+      "equipment": "base",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-base-direction-2.png",
+      "sha256": "5a8f67142e418b536ca8b3cbfb3cc1d587967369982b3a4762eaeff6a9308fc5",
+      "owner": "mint",
+      "equipment": "base",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-base-direction-3.png",
+      "sha256": "ab3b88b52c1654eb04c635fc69d10ae3b97c8cb9ba075257d1e554993d0b1064",
+      "owner": "mint",
+      "equipment": "base",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-signature-direction-0.png",
+      "sha256": "98ac08e245f647cbf4f711e10b8d60dd51ad8d3e35984f12e8239959792e2467",
+      "owner": "mint",
+      "equipment": "signature",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-signature-direction-1.png",
+      "sha256": "3d01cc7e30f467727a0ac5a7ee94c41bb499efe08c7ccfa2acdde9f131f7546f",
+      "owner": "mint",
+      "equipment": "signature",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-signature-direction-2.png",
+      "sha256": "932109dc313701d4519a151c21816fa1aa21cce8eede404c581e0277532a6936",
+      "owner": "mint",
+      "equipment": "signature",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\mint-signature-direction-3.png",
+      "sha256": "4d508357b7a8388d6e0af2b9943570aa91da59d34c8c36fc08d04849d8f2390c",
+      "owner": "mint",
+      "equipment": "signature",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-base-direction-0.png",
+      "sha256": "f3c347b812654c7d0552bde9e2073fafbe2d43550cd98d190d93304c0ab35aa6",
+      "owner": "tear",
+      "equipment": "base",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-base-direction-1.png",
+      "sha256": "4a38e66903f4e8dd31edbd506c1b44398a4970fbe3966c93c46a14bc4096f6f2",
+      "owner": "tear",
+      "equipment": "base",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-base-direction-2.png",
+      "sha256": "27d464ff6ec39d110cf1aa81735762ac5c97617e44404a245c76f36eed543ce5",
+      "owner": "tear",
+      "equipment": "base",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-base-direction-3.png",
+      "sha256": "239a0b199478a9a387109afd73974148541bd9a493105060fb934a80cfe06ae6",
+      "owner": "tear",
+      "equipment": "base",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-signature-direction-0.png",
+      "sha256": "c0a38d1ae8b7e3e3de3f93abd75ed975c1e75c533b4b4d468ec99f1b9d824417",
+      "owner": "tear",
+      "equipment": "signature",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-signature-direction-1.png",
+      "sha256": "a61f45ad9324837af197c35cad7626fc6e77d9acd7dd7800a963e45ca6ba6fa8",
+      "owner": "tear",
+      "equipment": "signature",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-signature-direction-2.png",
+      "sha256": "b62d57b4ef8212af1c83ae60d1694969c9e36bd3b1ced0974278df90fcb79071",
+      "owner": "tear",
+      "equipment": "signature",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\tear-signature-direction-3.png",
+      "sha256": "15eb60c2580d77ba21a07331788d081cd9c48940ee98781362f823f1d91b2be1",
+      "owner": "tear",
+      "equipment": "signature",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Premium body/head looks modestly larger than support rows; continuous transition review follows."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-base-direction-0.png",
+      "sha256": "756418cf3a620b1b995172bbc20508d0e8c6f0374c6f3b46a65fc0b357e0645e",
+      "owner": "cless",
+      "equipment": "base",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Base premium is existing production art, with minor drawing/stance differences."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-base-direction-1.png",
+      "sha256": "8cc8380ab0c320fe88eab22cc8d93c6720c2bbf85fdb3cd506344f7aa80b30b8",
+      "owner": "cless",
+      "equipment": "base",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Base premium is existing production art, with minor drawing/stance differences."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-base-direction-2.png",
+      "sha256": "fd52bf44ca069ceb76bfa90dd742a9e9318aa3dae661a76f43f713d7ca548b7c",
+      "owner": "cless",
+      "equipment": "base",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Base premium is existing production art, with minor drawing/stance differences."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-base-direction-3.png",
+      "sha256": "95ba6c16475403b6e3a98b0361e3ed57ad960e01d6ad6ea7b3727acc56c24a36",
+      "owner": "cless",
+      "equipment": "base",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [],
+      "notes": "Base premium is existing production art, with minor drawing/stance differences."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-signature-direction-0.png",
+      "sha256": "664d8ba4e490a23905c11473b9b917dd3adc64bfe16cfe28be4305251d938864",
+      "owner": "cless",
+      "equipment": "signature",
+      "direction": 0,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [
+        "CL-SIG-SIZE"
+      ],
+      "notes": "All four support rows are smaller than premium, including standing recovery."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-signature-direction-1.png",
+      "sha256": "791a97f7322f52d8a46c642b6beeda1c8c2b21fc4c688f114867a33d261a740f",
+      "owner": "cless",
+      "equipment": "signature",
+      "direction": 1,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [
+        "CL-SIG-SIZE"
+      ],
+      "notes": "All four support rows are smaller than premium, including standing recovery."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-signature-direction-2.png",
+      "sha256": "13d6ddab4e3c0ee0226a6775ee10086942b69c899eea465aa8b286b16a9fb58d",
+      "owner": "cless",
+      "equipment": "signature",
+      "direction": 2,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [
+        "CL-SIG-SIZE"
+      ],
+      "notes": "All four support rows are smaller than premium, including standing recovery."
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\3c2adf83184840d1ade77ae3678c5033\\cless-signature-direction-3.png",
+      "sha256": "031493cd0358a469451f25114a0f2e81498b7be0966800c367bdf61d9ddd034f",
+      "owner": "cless",
+      "equipment": "signature",
+      "direction": 3,
+      "visuallyOpened": true,
+      "slotsReviewed": 20,
+      "fullRectsInsideFrame": true,
+      "findings": [
+        "CL-SIG-SIZE"
+      ],
+      "notes": "All four support rows are smaller than premium, including standing recovery."
+    }
+  ]
+}

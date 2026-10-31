@@ -81,21 +81,23 @@ namespace TalesTactics.PlayModeTests
                     var facing=CharacterMotion.ViewFacing(owner.Facing,camera.transform.rotation);
                     foreach(var skill in new[]{data.Skills[0],data.UltimateSkill}.Concat(data.Skills.Where(s=>s.Id=="jade.3"||s.Id=="jade.6"||s.Id=="natalia.6")).Distinct())
                     {
-                        // Healing/earth spells use the authored directional casting pose;
-                        // Consume Claw and Revive's protective stance use Guard. Ultimates
+                        // Ordinary spells now use the existing directional channel/release art;
+                        // Consume Claw and Revive's protective stance still use Guard. Ultimates
                         // keep their separate authored phase clips in every camera direction.
                         bool casting=new[]{"mint.0","tear.0","jade.0","jade.3","jade.6"}.Contains(skill.Id);
                         bool guarding=skill.Id=="velvet.0"||skill.Id=="natalia.6";
-                        var clip=skill.IsUltimate?data.Poses.Ultimate:skill.Id=="cless.0"?data.Poses.AttackMotion:data.Poses.Skill;
+                        var clip=skill.IsUltimate?data.Poses.Ultimate:casting?CharacterMotionClips.Casting(data):skill.Id=="cless.0"?data.Poses.AttackMotion:data.Poses.Skill;
                         float previousScale=Time.timeScale;
                         try
                         {
                             // Inspect phase starts without a slow editor frame advancing past them.
                             Time.timeScale=0;
                             motion.BeginSkill(skill,0.4f,0.3f);yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):guarding?data.Poses.Guard.Get(facing):clip.Frames[0].Get(facing)),skill.Id+facing+" preparation");
+                            Assert.That(renderer.sprite,Is.EqualTo(guarding?data.Poses.Guard.Get(facing):clip.Frames[0].Get(facing)),skill.Id+facing+" preparation");
+                            var preparedSprite=renderer.sprite;
                             motion.ReleaseSkill();yield return new WaitForEndOfFrame();
-                            Assert.That(renderer.sprite,Is.EqualTo(casting?data.Poses.Cast.Get(facing):guarding?data.Poses.Guard.Get(facing):clip.Frames[clip.ReleaseFrame].Get(facing)),skill.Id+facing+" release");
+                            Assert.That(renderer.sprite,Is.EqualTo(guarding?data.Poses.Guard.Get(facing):clip.Frames[clip.ReleaseFrame].Get(facing)),skill.Id+facing+" release");
+                            if(casting)Assert.That(renderer.sprite,Is.Not.SameAs(preparedSprite),"Spell release must show a new authored pose");
                             Time.timeScale=previousScale;
                             yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
                             Assert.That(renderer.sprite,Is.EqualTo(data.Sprites.Get(facing)));

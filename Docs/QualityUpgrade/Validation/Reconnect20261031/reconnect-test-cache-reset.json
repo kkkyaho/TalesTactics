@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var type = typeof(UnityEngine.TestTools.UnityTestAttribute).Assembly.GetType(\"UnityEngine.TestTools.Utils.PlayerTestAssemblyProvider\", true); var field = type.GetField(\"m_LoadedAssemblies\", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic); var before = field.GetValue(null) as System.Collections.ICollection; var result = new { wasNull = before == null, count = before == null ? -1 : before.Count, playMode = UnityEditor.EditorApplication.isPlaying }; if (UnityEditor.EditorApplication.isPlaying) throw new System.InvalidOperationException(\"Refuse cache reset while playing\"); field.SetValue(null, null); return result;"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "wasNull": false,
+        "count": 0,
+        "playMode": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

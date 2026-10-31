@@ -38,6 +38,43 @@ namespace TalesTactics.Editor
         const string Production="Docs/SdCharacters/production-manifest.json";
         static string Hash(string path)
         {using(var sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(path))).Replace("-","").ToLowerInvariant();}
+        // Never truncate a destination that Unity or another process may still have mapped.
+        // A sibling guarantees the same volume. Unsupported filesystems/sharing modes fail;
+        // there is no delete/copy fallback and no retry that could overwrite a partial file.
+        static void ReplaceFileAtomically(string destination,byte[] bytes)
+        {
+            string path=Path.GetFullPath(destination),directory=Path.GetDirectoryName(path);
+            if(!File.Exists(path))throw new FileNotFoundException("Atomic replacement requires an existing destination",path);
+            string token=Guid.NewGuid().ToString("N"),prefix=Path.Combine(directory,"."+Path.GetFileName(path)+".sd-"+token);
+            string staged=prefix+".new",backup=prefix+".old";
+            bool ownsStaged=false,replaced=false;
+            try
+            {
+                if(File.Exists(backup))throw new IOException("Atomic backup path already exists: "+backup);
+                using(var stream=new FileStream(staged,FileMode.CreateNew,FileAccess.Write,FileShare.None))
+                {ownsStaged=true;stream.Write(bytes,0,bytes.Length);stream.Flush(true);}
+                // Supplying a backup also retains the old file for documented partial native
+                // rename failures. Do not ignore ACL/metadata merge errors.
+                File.Replace(staged,path,backup,false);replaced=true;
+            }
+            catch(Exception error)when(error is IOException||error is UnauthorizedAccessException||error is NotSupportedException)
+            {
+                // ReplaceFile can leave the old file under its backup name. Restore that
+                // name only when the destination is absent; Move never overwrites a file.
+                if(File.Exists(backup)&&!File.Exists(path))
+                {
+                    try{File.Move(backup,path);}
+                    catch(Exception restore){throw new AggregateException("Atomic replacement failed and its original backup could not be renamed back: "+backup,error,restore);}
+                }
+                if(error is NotSupportedException)throw new NotSupportedException("Atomic File.Replace is unsupported by this platform/filesystem; no in-place fallback was attempted: "+path,error);
+                throw new IOException("Atomic File.Replace failed (filesystem support, permissions or file sharing); no in-place fallback or retry was attempted: "+path+". Any retained original backup: "+backup,error);
+            }
+            finally
+            {
+                if(ownsStaged&&File.Exists(staged))File.Delete(staged);
+                if(replaced&&File.Exists(backup))File.Delete(backup);
+            }
+        }
         static void ValidatePath(string path,string root)
         {
             string resolved=Path.GetFullPath(path),allowed=Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar)+Path.DirectorySeparatorChar;
@@ -65,7 +102,7 @@ namespace TalesTactics.Editor
         }
         static void Import(Measurement m,string destination,bool preserveOriginalIds)
         {
-            AssetDatabase.ImportAsset(destination,ImportAssetOptions.ForceUpdate);
+            AssetDatabase.ImportAsset(destination,ImportAssetOptions.ForceSynchronousImport|ImportAssetOptions.ForceUpdate);
             var importer=AssetImporter.GetAtPath(destination) as TextureImporter;
             if(importer==null)throw new InvalidOperationException("Missing candidate importer: "+destination);
             importer.textureType=TextureImporterType.Sprite;importer.spriteImportMode=SpriteImportMode.Multiple;
@@ -73,10 +110,16 @@ namespace TalesTactics.Editor
             importer.textureCompression=TextureImporterCompression.Uncompressed;importer.maxTextureSize=4096;
             importer.npotScale=TextureImporterNPOTScale.None;importer.spritePixelsPerUnit=m.pixelsPerUnit;
             importer.SaveAndReimport();
+            importer=AssetImporter.GetAtPath(destination) as TextureImporter;
+            if(importer==null)throw new InvalidOperationException("Missing refreshed sprite importer: "+destination);
             var factories=new SpriteDataProviderFactories();factories.Init();
             var provider=factories.GetSpriteEditorDataProviderFromObject(importer);
             if(provider==null)throw new InvalidOperationException("Missing sprite provider: "+destination);
             provider.InitSpriteEditorDataProvider();
+            var capability=provider.GetDataProvider<ISpriteFrameEditCapability>();
+            if(capability==null)throw new InvalidOperationException("Missing sprite edit capability: "+destination);
+            foreach(var flag in new[]{EEditCapability.EditSpriteName,EEditCapability.EditSpriteRect,EEditCapability.EditPivot,EEditCapability.CreateAndDeleteSprite})
+                if(!capability.GetEditCapability().HasCapability(flag))throw new InvalidOperationException("Unsupported sprite operation "+flag+": "+destination);
             var names=provider.GetDataProvider<ISpriteNameFileIdDataProvider>();var outlines=provider.GetDataProvider<ISpriteOutlineDataProvider>();
             if(names==null||outlines==null)throw new InvalidOperationException("Missing sprite names/outlines provider");
             var previous=provider.GetSpriteRects().ToDictionary(r=>r.name);
@@ -96,6 +139,24 @@ namespace TalesTactics.Editor
             provider.SetSpriteRects(rects.ToArray());names.SetNameFileIdPairs(pairs);
             for(int i=0;i<rects.Count;i++)outlines.SetOutlines(rects[i].spriteID,m.frames[i].outlines.Select(p=>p.points.Select(v=>new Vector2(v.x,v.y)).ToArray()).ToList());
             provider.Apply();importer.SaveAndReimport();
+            // Complete the refreshed sprite import before reading actual sub-assets, including
+            // when an earlier atlas revision is already loaded during a batch application.
+            AssetDatabase.ImportAsset(destination,ImportAssetOptions.ForceSynchronousImport|ImportAssetOptions.ForceUpdate);
+            var appliedImporter=AssetImporter.GetAtPath(destination) as TextureImporter;
+            if(appliedImporter==null)throw new InvalidOperationException("Missing applied sprite importer: "+destination);
+            var appliedProvider=factories.GetSpriteEditorDataProviderFromObject(appliedImporter);
+            if(appliedProvider==null)throw new InvalidOperationException("Missing applied sprite provider: "+destination);
+            appliedProvider.InitSpriteEditorDataProvider();var appliedRects=appliedProvider.GetSpriteRects();
+            if(appliedRects.Length!=rects.Count||!appliedRects.Select(r=>r.name).OrderBy(n=>n,StringComparer.Ordinal).SequenceEqual(rects.Select(r=>r.name).OrderBy(n=>n,StringComparer.Ordinal)))
+                throw new InvalidOperationException("Applied sprite provider name/count mismatch: "+destination+"; actual="+appliedRects.Length+", expected="+rects.Count);
+            foreach(var expected in rects)
+            {
+                var actual=appliedRects.Single(r=>r.name==expected.name);
+                if(actual.spriteID.ToString()!=expected.spriteID.ToString()||!MatchesImportValue(actual.rect.x,expected.rect.x)||!MatchesImportValue(actual.rect.y,expected.rect.y)
+                    ||!MatchesImportValue(actual.rect.width,expected.rect.width)||!MatchesImportValue(actual.rect.height,expected.rect.height)
+                    ||!MatchesImportValue(actual.pivot.x*actual.rect.width,expected.pivot.x*expected.rect.width)||!MatchesImportValue(actual.pivot.y*actual.rect.height,expected.pivot.y*expected.rect.height))
+                    throw new InvalidOperationException("Applied sprite provider geometry/ID mismatch: "+destination+"/"+expected.name+"; actual rect="+actual.rect+", pivot="+actual.pivot+", ID="+actual.spriteID+"; expected rect="+expected.rect+", pivot="+expected.pivot+", ID="+expected.spriteID);
+            }
             // Both production callers execute Import inside their backup/restore try block.
             ValidateImportedSprites(m,destination,preserveOriginalIds);
         }
@@ -104,7 +165,7 @@ namespace TalesTactics.Editor
         {
             var imported=AssetDatabase.LoadAllAssetsAtPath(destination).OfType<Sprite>().OrderBy(s=>s.name,StringComparer.Ordinal).ToArray();
             if(imported.Length!=m.frameCount||!imported.Select(s=>s.name).SequenceEqual(m.frames.Select(f=>f.name).OrderBy(n=>n,StringComparer.Ordinal)))
-                throw new InvalidOperationException("Imported frame coverage mismatch: "+destination);
+                throw new InvalidOperationException("Imported frame coverage mismatch: "+destination+"; actual count="+imported.Length+", expected count="+m.frameCount+"; missing=["+string.Join(", ",m.frames.Select(f=>f.name).Except(imported.Select(s=>s.name),StringComparer.Ordinal))+"], unexpected=["+string.Join(", ",imported.Select(s=>s.name).Except(m.frames.Select(f=>f.name),StringComparer.Ordinal))+"]");
             var frames=m.frames.ToDictionary(f=>f.name);
             foreach(var sprite in imported)
             {
@@ -115,10 +176,10 @@ namespace TalesTactics.Editor
                 if(!MatchesImportValue(sprite.rect.x,f.x)||!MatchesImportValue(sprite.rect.y,f.y)
                     ||!MatchesImportValue(sprite.rect.width,f.width)||!MatchesImportValue(sprite.rect.height,f.height)
                     ||!MatchesImportValue(sprite.pixelsPerUnit,m.pixelsPerUnit))
-                    throw new InvalidOperationException("Measured bounds or scale differ: "+sprite.name);
+                    throw new InvalidOperationException(FormattableString.Invariant($"Measured bounds or scale differ: {destination}/{sprite.name}; actual rect=({sprite.rect.x:R}, {sprite.rect.y:R}, {sprite.rect.width:R}, {sprite.rect.height:R}), PPU={sprite.pixelsPerUnit:R}; expected rect=({f.x:R}, {f.y:R}, {f.width:R}, {f.height:R}), PPU={m.pixelsPerUnit:R}"));
                 // Sprite.pivot is in pixels; measurements store normalized rect coordinates.
                 if(!MatchesImportValue(sprite.pivot.x,f.pivotX*f.width)||!MatchesImportValue(sprite.pivot.y,f.pivotY*f.height))
-                    throw new InvalidOperationException("Measured pivot differs: "+sprite.name);
+                    throw new InvalidOperationException(FormattableString.Invariant($"Measured pivot differs: {destination}/{sprite.name}; actual pixels=({sprite.pivot.x:R}, {sprite.pivot.y:R}); expected pixels=({f.pivotX*f.width:R}, {f.pivotY*f.height:R})"));
             }
             return imported;
         }
@@ -127,10 +188,12 @@ namespace TalesTactics.Editor
         {
             ImportCandidate(Prototype);
         }
-        public static void ImportCandidate(string measurementPath)
+        public static void ImportCandidate(string measurementPath,string expectedCurrentSha256=null)
         {
-            AssetDatabase.Refresh();var m=Read(measurementPath);Import(m,m.candidate,false);
-            if(Hash(m.source)!=m.sourceSha256||AssetDatabase.AssetPathToGUID(m.source)!=m.sourceGuid)throw new InvalidOperationException("Prototype changed production source");
+            // Revisions retain the initial provenance hash; bind this preview to the current source explicitly.
+            AssetDatabase.Refresh();var m=Read(measurementPath,expectedCurrentSha256);string currentHash=Hash(m.source);
+            Import(m,m.candidate,false);
+            if(Hash(m.source)!=currentHash||AssetDatabase.AssetPathToGUID(m.source)!=m.sourceGuid)throw new InvalidOperationException("Prototype changed production source");
             Debug.Log("SD candidate imported: "+m.frameCount+" frames. Production sprites, clips and equipment remain unchanged.");
         }
         static string[] ReferencedProductionSheets()
@@ -173,16 +236,28 @@ namespace TalesTactics.Editor
                 ||!job.spriteNames.OrderBy(n=>n).SequenceEqual(m.frames.Select(f=>f.name).OrderBy(n=>n)))
                 throw new InvalidOperationException("Revision does not match its approved production job");
             var original=File.ReadAllBytes(m.source);var meta=File.ReadAllBytes(m.source+".meta");
+            // Explicit imports below own this transaction. Avoid an automatic import racing
+            // the file replacement and release Unity's cached mapped source-file handles.
+            AssetDatabase.DisallowAutoRefresh();
             try
             {
-                File.Copy(m.candidate,m.source,true);Import(m,m.source,true);
-                SignatureWeaponImporter.ValidateAll();AssetDatabase.SaveAssets();
+                AssetDatabase.ReleaseCachedFileHandles();
+                ReplaceFileAtomically(m.source,File.ReadAllBytes(m.candidate));Import(m,m.source,true);
+                SignatureWeaponImporter.ValidateAll(); // Import saves only this texture; preserve unrelated dirty assets.
             }
-            catch
+            catch(Exception failure)
             {
-                File.WriteAllBytes(m.source,original);File.WriteAllBytes(m.source+".meta",meta);
-                AssetDatabase.Refresh();throw;
+                AssetDatabase.ReleaseCachedFileHandles();
+                var errors=new List<Exception>{failure};
+                // A denied atomic rename may have changed nothing. Do not replace an
+                // unchanged mapped file merely to restore the bytes it already contains.
+                try{if(!File.ReadAllBytes(m.source).SequenceEqual(original))ReplaceFileAtomically(m.source,original);}catch(Exception restore){errors.Add(restore);}
+                try{if(!File.ReadAllBytes(m.source+".meta").SequenceEqual(meta))ReplaceFileAtomically(m.source+".meta",meta);}catch(Exception restore){errors.Add(restore);}
+                try{AssetDatabase.Refresh();}catch(Exception refresh){errors.Add(refresh);}
+                if(errors.Count>1)throw new AggregateException("SD revision failed; one or more atomic restoration/refresh steps also failed: "+m.source,errors);
+                throw;
             }
+            finally{AssetDatabase.AllowAutoRefresh();}
             Debug.Log("Approved SD refinement applied with original sprite IDs: "+m.source);
         }
         // This explicit call only runs after all coverage checks pass. It preserves source .meta GUIDs,

@@ -1,0 +1,21 @@
+Result Failed
+Errors 1
+Warnings 6
+DurationSeconds 53.9341612
+SizeBytes 65756688
+Log: 1 URP assets included in build
+- PC_RPAsset - Assets/Settings/PC_RPAsset.asset
+	 - PC_Renderer - Assets/Settings/PC_Renderer.asset - UnityEngine.Rendering.Universal.UniversalRendererData
+
+Log: [TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunInfo.json' (2310 bytes)
+Log: [TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunSettings.json' (23 bytes)
+Warning: Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.
+Warning: Assets\TalesTactics\Runtime\Presentation\SdMotionDirectionReview.cs(101,128): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Warning: Assets\TalesTactics\Runtime\Presentation\SdMotionDirectionReview.cs(101,72): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+Warning: Assets\TalesTactics\Runtime\Presentation\SdMotionDirectionReview.cs(162,108): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Warning: Assets\TalesTactics\Runtime\Presentation\SdMotionDirectionReview.cs(162,54): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+Warning: Assets\TalesTactics\Runtime\Presentation\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.
+Log: Including Unity Splash Screen logo because 'Show Unity Logo' is enabled.
+Error: Building Builds\QualityUpgradeReview\TalesTactics_Data\resources.assets.resS failed with output:
+Copying the file failed: 디스크 공간이 부족합니다.
+

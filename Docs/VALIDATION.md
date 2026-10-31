@@ -1,4 +1,39 @@
-# 검증 기록 — 2026-10-27
+# 검증 기록 — 2026-11-01
+
+## 2026-11-01 — 추가 품질 개선 원화 적용·사후 회귀 완료
+
+선택 **103시트·3,850프레임**을 실제 production에 적용했다. 기존 전체 **159시트·4,898프레임**의 식별자와 보호 Content·장비·폰트537파일 바이트 보존을 확인했다. 앞선 네 적용 실패와 전체 롤백은 별도 기록으로 남기고, 다섯 번째 성공과 구별한다. [적용 결과](QualityUpgrade/Validation/production-application.json), [적용 범위·실패 이력](QualityUpgrade/README.md).
+
+적용 전 실제 Unity 전체 **EditMode433/433(9.83초)**와 **PlayMode247/247(596.49초)**를 확보했다. 후보 기본/전용 아군8명의 연속 검수 A96/96·1,077PNG와 B104/104·1,433PNG, 후속 크레스/티아 각24행을 실행했다. 공통 카메라 정적64PNG와 선택 연결 PNG를 육안 확인했으며 모든 네이티브 프레임의 수동 품질 승인으로 세지 않는다. VFX schema2 **364/364·1,340PNG**는182기술×일반/축소 표현 fixture이며 실제 Director 피해 판정이나 새 원화 적용 후 결과를 대신하지 않는다. [도구별 범위·각 파생 요약과 원본 출처](QualityUpgrade/quality-presentation-review.md).
+
+적용 후 첫 전체 EditMode는 **432/433(11.47초)**로 `SignatureAppearanceTests`의 크레스 크기 비교1건이 실패했다. [첫 사후 실패 원본](QualityUpgrade/Validation/full-editmode-after-art-attempt1.json)을 보존한다. Unity의 실제 rect/PPU로1,404장비 매핑(기존 authored 검사1,320개)을 읽기 분석한 결과 사각형 높이는78개가 초과했지만, 분리된 무기도 포함한 전체 alpha>128 높이는 모두 기존 허용범위 **.65~1.65** 안이었다. `cless_0_0`은2.221721→1.326367, 짧은 쓰러짐 `cless-motion_3_2`는1.744335→1.185046이었다. alpha16/64/128/200 민감도 비교도 위반0이었다. 이는 PNG 측정 근거이며 Unity 테스트 성공 수치가 아니다.
+
+크기 검사는 동일 허용범위와 기존 참조·메시·장비 계약을 유지하고 실제 alpha>128 높이로 교정했다. 약한 여백/다른 프레임 제외, 분리 무기 포함, 강한 알파가 없는 프레임 거절, 실제2배 확대 거절의 합성2개 회귀를 추가했다. 원화·PPU·메타를 검사 통과 목적으로 축소하지 않았다. [입력 SHA와 수치 근거](QualityUpgrade/Validation/signature-visible-scale-audit.json). 교정 후 실제 전체 **[EditMode435/435(30.03초)](QualityUpgrade/Validation/full-editmode-after-art.json)**를 통과했으며 실패·건너뜀·미결정0이다. 후보 통과나10월27일 결과와 구분하며, 현재 사후 PlayMode와 Windows 기술 실행의 새 결과는 아래에 기록한다.
+
+적용 후 첫 전체 PlayMode는 **246/247(624.07초)**였고 HQ 포즈의 `Sprite.bounds` 크기 비교1건이 실패했다. 최초 전체 raw JSON은 보관 전에 후속0개 실행 결과로 덮어써 남지 않았다. [당시 추출한 실패 요약](QualityUpgrade/Validation/full-playmode-after-art-attempt1-summary.json)에 관측 SHA·61,039바이트·단일 실패·원문 부재를 명시했으며 전체 원본이나 복원본으로 표현하지 않는다. 정확한 원본 PNG·Unity rect/PPU의160포즈 분석에서 기존0.8~1.6 범위는 alpha16/64/128/129/200 모두 위반0이었다. GPU readback으로 전체 alpha>128 픽셀 높이를 검사하도록 보완한 뒤 **[표적1/1(8.21초)](QualityUpgrade/Validation/pose-playmode-recheck.json)**를 통과했다. 허용 범위·원화·PPU는 그대로이며 전체247개 결과와 합산하지 않는다.
+
+후속 전체 실행0개 문제는 설치된 Test Framework의 `PlayerTestAssemblyProvider.ResetStaticsOnLoad()`가 목록을 `Clear()`하지만 `LoadAssemblies()`는 그 목록이 non-null이면 다시 로드하지 않는 경로에서 확인했다. 패키지/프로젝트 소스를 바꾸지 않고 중지 상태의 해당 메모리 캐시를 null로 초기화한 뒤, 최종 전체 **[PlayMode247/247(608.92초)](QualityUpgrade/Validation/full-playmode-after-art.json)**를 통과했다. 실패·건너뜀·미결정0이며 적용 전 결과나 표적1/1의 합산이 아닌 별도 전체 실행이다. [0개 실행 기록](QualityUpgrade/Validation/playmode-empty-cache-attempt.json)은 통과가 아니다.
+
+첫 일반 Windows 빌드는 **83.0916633초·오류0·경고5·BuildReport 크기2,241,447,788바이트**로 성공했다. [첫 일반 빌드 원시 결과](QualityUpgrade/Validation/windows-normal-build-attempt1.txt)를 보존한다. 경고5개에는 미컴파일 코드 변경 경고가 포함되어 있어 검수 실행 이후 별도 최종 일반 재빌드·런타임 DLL·검수 타입 제외·실제 시작을 다시 검사했다. 이 첫 성공본을 최종 검증본으로 세지 않는다. 첫 검수 빌드는 resources 데이터 복사 중 디스크 부족으로 **실패**했으며 [원시 실패 로그](QualityUpgrade/Validation/windows-review-disk-failure.txt)를 보존한다. 공간 확보는 이번 작업 소유의 빌드2폴더만 대상으로 했으며, 일반201파일·2,241,675,224바이트와 실패한 검수 산출물54파일·1,999,845,249바이트를 전체 SHA 대조한 후 각각 `D:/TalesTacticsBuildArchive/QualityUpgradeWindows20261101`, `D:/TalesTacticsBuildArchive/QualityUpgradeReview20261101`에 이관했다. 기존 `C:/dev/TalesTactics/Builds/QualityUpgradeWindows`와 `QualityUpgradeReview`는 해당 경로의 junction이다. 파일 합계는 BuildReport 크기와 다른 지표이고, 실패 산출물의 무결성 보존은 검수 빌드 성공을 뜻하지 않는다. 이관 근거는 로컬 `Logs/QualityUpgrade20261031/build-relocation.json`이다. 이후 검수 Windows 재빌드는 **44.729153초·오류0·경고3·2,241,797,650바이트**로 성공했다. [최종 검수 빌드 원시 결과](QualityUpgrade/Validation/windows-review-build-final.txt)를 보존하며 경고는 Pipeline 런타임 설정1건과 URP 내부 디버그 셰이더 stripping2건이다.
+
+실제 DLL 분리 검사 `inspect-a640548d0a824a17a9bfaba1d1264fdf`는 통과했고 일반 빌드에서 검수 타입과 REVIEW 저장 진입 호출이 제외됨을 확인했다. 이는 메타데이터/IL 검사이며 실행본을 시작한 검사는 아니다. 이어 최종 Windows 기술 실행 `roster-bf9491e67d584d30804a565a7aa96fdc`는 **아군88기술×일반/축소176/176회**를 완료했다. 실제 Director 실행에서 각1회 판정, 접촉 전 상태 불변, resolver 결과·격자·RNG 일치,6명 아군, 정리와 각 contact PNG를 검사했다. 정상 종료0·강제 종료 없음·오류0·사용자/격리 저장 불변이다. [Roster 원시 결과](QualityUpgrade/Validation/windows-roster-final.json)와 [Windows 파생 요약](QualityUpgrade/Validation/windows-final-validation-summary.json)에 수치·보존·원시 wrapper 경로/SHA를 보존했다. [선택 실제 PNG6장과 출처](QualityUpgrade/Evidence/actual-capture-manifest.json)는 전체176장 수동 검수 주장과 구분한다. 반응/자동 타이밍을 끈 아군 훈련 fixture이므로 적/보스 AI·전용무기 전수·캠페인·모든 PNG의 수동 미술 승인을 뜻하지 않는다.
+
+캠페인 실행 `56ca649134d646c6ab5eca3664d01496`은 **20/20화·46,057검사·175저장 재로드 검사**를 완료했다. 실제 Director/UI의 필수 이야기·전투·보상·후일담·다음 장과 매화 타이틀 재로드를 검증했으며 오류0·정상 종료0·강제 종료 없음·사용자 파일 불변이다. [캠페인 원시 결과](QualityUpgrade/Validation/windows-campaign-final.json)를 보존한다. 자연성장과 실제 구매/장비 저장을 사용하는 고정 자동 정책·4배속이며 무료 합류훈련·매각·선택 개인이야기·반응 공격·수동 타이밍·되돌리기/재도전은 이 실행의 범위가 아니다. 대화를 사람이 읽은 완주나 난이도·경제 밸런스 판정으로 해석하지 않는다.
+
+성능 실행 `4f07b133955d4440926f1f2f75285fe0`은 **대표 효과10종×일반/축소20/20회**를 완료했다. RTX3060/D3D11·1920×1080·수직동기/프레임 제한 없음에서 PNG/readback 없이29,007프레임을 측정했으며 평균1.657ms·P95 2.189ms·P99 2.630ms·최대72.829ms였다. 전환20표본은 제외했고 최대 동시 효과1개였다. 오류0·정상 종료0·사용자/격리 저장/세션 불변이며 [성능 원시 결과](QualityUpgrade/Validation/windows-performance-final.json)를 보존한다. 6명 전장 아군과 별도 배우1명의 예열된 표현 fixture 관측값으로, 전체182효과·다중 대상·다른GPU·장시간·독립 GPU 시간이나 고정 프레임률 보장이 아니다. 최종 일반 실행본의 시작 확인과 별도 범위다.
+
+최종 일반 Windows 빌드는 **61.3938916초·오류0·경고2·2,241,463,980바이트**로 성공했다. [최종 일반 빌드 원시 결과](QualityUpgrade/Validation/windows-normal-build-final.txt)를 보존하며 경고는 Pipeline 런타임 설정1건과 기존 `DEVELOPMENT_BUILD` 지시문 사용 안내1건이다. 첫 빌드의 미컴파일 변경 경고는 최종 보고서에 없다. 최종 `packed-assets` 출력은 캐시된 보고서에서0바이트였으므로 raw 제작 원화가 패키지에 없음을 이 목록으로 새로 입증했다고 주장하지 않는다.
+
+일반 시작 검사 두 회(`740713a7148a4e5fb9bf7ec3b6b800c0`, `4d2616aa67b3441a85647b1cf5c0f060`)에 이어 실제 창 확인을 포함한 최종 `f04e22a0644345f4a9d2f2dbe39a67ba`도 **20초 전체 유지·정상 종료0·오류0**으로 통과했다. 최종 일반 DLL에서 Review/Fixture·Editor/테스트 타입/참조와 REVIEW 저장 진입 호출이 제외됨을 다시 확인했다. [최종 일반 시작 원시 결과](QualityUpgrade/Validation/windows-normal-startup-final.json)와 [전체 Windows 파생 요약](QualityUpgrade/Validation/windows-final-validation-summary.json)에 해시·범위·종료·보존 근거를 연결한다. 일반 시작 로그의 URP 후처리 셰이더 stripping 안내4건은 오류0과 구분한다.
+
+최종 시작 중 `settings.json`의 `WindowMaximized`와 기존에 없던 `SeenContextHints: 0`이 자동 직렬화되어 실행 중 바이트 불변은 아니었다. 명시적으로 허용된 변경만 확인하고 이번 실행의 새 백업으로 해당 설정을 복원한 뒤 전체 사용자 파일 최종 일치를 확인했다. 캠페인 파일은 복원 대상이 아니다. 별도 최신 실제 창 캡처2회에서 타이틀의 새 게임/불러오기 표시를 확인했으며 초기 다른 앱/이전 창의 캐시 프레임은 근거에서 제외했다. 이 두 창 이미지는 파일로 보관하지 않았으므로 별도 원시 PNG 증거를 제공한 것으로 세지 않는다. 게임 입력·일반 실행본의 수동 플레이를 수행한 것은 아니다. 구현과 이 문서에 열거한 검증을 완료했다. 버전 관리 반영 상태는 develop 이력에서 확인하며 공개 릴리즈는 별도 범위다.
+
+남는 육안 한계는 시전·웅크림의 머리/옷 펼침, 일부 상속된 방향 표현과 손·장비 세부 차이다. 픽셀/식별자 보존과 크기 검사는 모든 포즈 접합의 매끄러움·해부학을 보증하지 않는다. 사람의 전체 수동 완주·다른PC/DPI·장시간 성능·공개 릴리즈도 별도 범위다.
+
+## 2026-10-31 — 초기 재연결 검증 이력
+
+당시 새 공통 모션/VFX 코드를 반영하고 고해상도 모션 원화 후보를 제작 중이었다. 독립 C# 컴파일·순수 관리 코드 검사와 실제 Unity 검증을 구분한다. 초기 라이선스 차단은 재연결 시 해소됐다. 초기 실제 Unity EditMode **413/413(8.83초)**, 신규 VFX PlayMode **2/2(0.22초)** 통과를 확인했다. 궁극기/전체 동료 모션의 초기 개별 PlayMode 시도는 테스트 도구의 빈 캐시 때문에 각각 실행0건이었다. 패키지/프로젝트 설정을 바꾸지 않고 중지 상태에서 임시 캐시를 초기화한 뒤 같은 테스트가 각각 **1/1(4.44초)**, **1/1(34.14초)** 통과했다. 관련 PlayMode는 합계4/4이며 전체247개 재실행 결과가 아니다. 이 초기 실행 시점에는 전체 PlayMode·렌더·Windows 빌드와 원화의 전체 production 교체가 미완료였다. 현재 결과는 위 최신 항목을 따른다. [재연결 원본 결과](QualityUpgrade/Validation/Reconnect20261031). 10월27일의 통과 수치는 이번 변경의 검증으로 재사용하지 않는다. [현재 범위·후보·차단 사유·남은 검수](QualityUpgrade/README.md).
+
 
 ## 2026-10-27 — SD 후속 보완·합류 안내·일반 무기·실제 20화 진행
 

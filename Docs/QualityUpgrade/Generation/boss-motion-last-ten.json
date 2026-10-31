@@ -1,0 +1,1089 @@
+{
+  "expectedSheets": 37,
+  "rejectedCandidates": [
+    {
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's established premium rendering/identity/scale, not pose/order.\nSUBJECT: Origin: blond long-haired youthful spirit, black sleeveless tunic with gold trim, bare arms and gold wrist armor, gold boots. Preserve ALL multiple arms and all visible silver-tipped spear/pole weapons exactly as each source cell: the upright rear spears and forward hand weapons are solid physical accessories, not VFX. No extra hands or lost spearheads.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Read every source cell: row3 col2 is FRONT face (not back), crossed horizontal spear poses in rows3-4, row5 lowered head/raised crossing spears. Preserve all arms and spear counts/positions, including airborne/crouched differences. Preserve full weapons inside cells; generous 16px transparent corridors.",
+      "owner": "origin",
+      "reason": "Origin sheet 02 cell 9 (origin_12_1) was incorrectly interpreted as back-facing. Replaced by a separately generated correction restoring the source front-facing pose.",
+      "sha256": "0667d4222ed353ba7e58f8b3386ec2d1860b9475a34308f8b06780fb22beae94",
+      "sheet": 2,
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-02.png",
+          "sha256": "f213bd6db58de68c3dc205ec8412488246d2cfe726c632b5febfc56d540cb187"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-a9e94d11-9dda-44b7-a3ed-c093598cae3f.png",
+          "sha256": "61b36154f0721a8f754a7fd9cca80ff2a8ae4c0d8e9c2590cadfdc04c8278e25"
+        }
+      ],
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e82a2364-b1f7-4364-b37b-671433b84430.png"
+    }
+  ],
+  "status": "candidate-generation-complete-final-approval-pending",
+  "schema": 1,
+  "method": "built-in image_gen.imagegen",
+  "records": [
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Dhaos: very long wavy golden-blond hair, red forehead gem/headband, stern mature male face, black/dark navy close-fitting suit, orange-red cape with gold edging and dark green lining, light silver/lavender gloves, dark boots, round gold collar jewel. NO physical weapon: preserve authored open-palm/fist casting gestures exactly.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. CRITICAL source pose directions do NOT follow fixed columns: this is a sequential54frame sprite sequence packed20perpage. Match EVERY input cell individually, including row2col1 back, row2col3 facing-left casting fist, row2col4 back; row3col3 back; row4col2 back; row5col1 andcol4 back. Do not invent fourth angle or impose front/back/left/right columns. Preserve all hands, red-cape positions, full long hair. No swords/staff.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-00.png",
+          "sha256": "4cd4bb843c56fa7f6e80c1221aaf9aeff61d47f8735cec03c71b8b151308ae2d"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-dhaos\\source-sheet-00.png",
+      "owner": "dhaos",
+      "outputSha256": "039c22f20b19244f97326142ba2ba7e9332899f1a77b0a8b2f07e700c4103c2f",
+      "referenceManifestSha256": "d301baa02eedc2c75d1b4bf1a43122d18b54905cfc1a72442d42f1af5a471239",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-07f09f6f-4b9b-4af1-b7f6-f4ee33c49906.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character first new sheet: keep body scale/style, not its poses/order.\nSUBJECT: Dhaos: very long wavy golden-blond hair, red forehead gem/headband, stern mature male face, black/dark navy close-fitting suit, orange-red cape with gold edging and dark green lining, light silver/lavender gloves, dark boots, round gold collar jewel. NO physical weapon: preserve authored open-palm/fist casting gestures exactly.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. 20 sequential casting/attack poses, NOT direction-column layout. Preserve source back-facing cells row1col3,row2col2,row3col1/4,row4col3,row5col2; all other cells keep their exact source open palms/clasped hands/forward leaning/lunging poses. Crouching/lunging and cape airborne tilt must not become idle. No physical weapons or effects. Full silhouette fits16px cell corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-01.png",
+          "sha256": "80aae6b1096ef39ba9ee536bc12919a62de308b57a62206276a1c50115b94ee0"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-07f09f6f-4b9b-4af1-b7f6-f4ee33c49906.png",
+          "sha256": "039c22f20b19244f97326142ba2ba7e9332899f1a77b0a8b2f07e700c4103c2f"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-dhaos\\source-sheet-01.png",
+      "owner": "dhaos",
+      "outputSha256": "3f78efa006723527223fa314dd65bcfa3ad8a247c312a0e8c25b79b4c8d100b0",
+      "referenceManifestSha256": "d301baa02eedc2c75d1b4bf1a43122d18b54905cfc1a72442d42f1af5a471239",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-4d934df5-861d-4916-b767-f2616b5467bf.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character first new sheet for body scale/style; INPUT1 controls exact14 sequential poses.\nSUBJECT: Dhaos: very long wavy golden-blond hair, red forehead gem/headband, stern mature male face, black/dark navy close-fitting suit, orange-red cape with gold edging and dark green lining, light silver/lavender gloves, dark boots, round gold collar jewel. NO physical weapon: preserve authored open-palm/fist casting gestures exactly.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL SHEET exactly14figures: first3rows full (12), row4columns1 and2 (2), row4columns3/4 and entire row5 completely transparent. Keep4x5canvas/cellpitch. Preserve row1col1back, row1col3raised-armsfront, row1col4raised-armsback; row2 open arms/overhead poses; row3col2 is bowed forward/side with hair hidingface, not standard back; row4col1back. No new poses or fixeddirectioncolumns.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-dhaos/reference-02.png",
+          "sha256": "143fd7ae656dcd2b43018fbc721cfc8e34452e3c39fb2c4f42da2737f7fba49e"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-07f09f6f-4b9b-4af1-b7f6-f4ee33c49906.png",
+          "sha256": "039c22f20b19244f97326142ba2ba7e9332899f1a77b0a8b2f07e700c4103c2f"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-dhaos\\source-sheet-02.png",
+      "owner": "dhaos",
+      "outputSha256": "6186e35f48f7cb65cda0329660e6fa9b0e5ac048e6bd20136be504fc79663205",
+      "referenceManifestSha256": "d301baa02eedc2c75d1b4bf1a43122d18b54905cfc1a72442d42f1af5a471239",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-3e7e10dc-6e77-4f09-86e9-5236e99bdba7.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: style-transfer / identity-preserving sprite reconstruction.\nAsset: Crossover-maxwell native motion sheet 00, for a tactical RPG.\nINPUT 1 is the exact pose/order/direction/identity reference to redraw. INPUT 2 (Mint) is STYLE ONLY, never copy its character, costume, face, staff design, or poses.\nCreate one fresh crisp premium anime SD sprite sheet on actual transparent RGBA, 1122 x 1402 portrait canvas. EXACT 4 columns x 5 rows, exactly 20 figures. Match INPUT 1 cell-for-cell, reading left to right then top to bottom. Its columns are front / back / screen-left-facing three-quarter / screen-right-facing three-quarter; preserve the subtle walk/stance differences between rows and ALL original hand, beard, hair, robe and staff positions.\nSubject: Maxwell, floating elderly male sage with long white hair and flowing white moustache/beard, stern closed/narrow eyes, dark indigo robes with ornate gold edging, the same ornate gold staff with a large blue eye-shaped gem. Keep the original number/location of his small solid elemental orbs, but omit all cropped/faint VFX residue, outer glow, sparkles, dust and ground shadow. Never turn him into Mint. Preserve each exact staff shape, hand grip, direction and occlusion. Back views remain fully back views without invented visible face.\nStyle: clean high-detail premium anime chibi, around 2.7 heads, smooth precise linework, readable facial details, elegant crisp cel shading, polished gold and cloth, consistent anatomy. Redraw at native output scale, NOT a blurred enlarged pixel sprite. Every standing/floating body's crown-to-robe-hem height about 230-250 actual pixels; consistent same character scale in all 20 cells. Preserve row-specific bob/tilt rather than normalizing every pose.\nGrid: cell size about 280x280. Keep the complete character/staff/orbs inside its cell with at least 16 transparent pixels from each cell boundary on all sides. Make continuous completely alpha-zero straight corridors across the entire sheet between EVERY row and column, no pixels, weapons, hair or glow crossing. Center each pose at the same anatomical body anchor as its reference within its cell. Generous outer transparent margin, nothing clipped.\nNo grid lines, no checkerboard image, no labels/text/numbers, no floor, no shadow, no scenery, no particles. Transparent background must be real alpha, not painted black. Preserve all 20 pose identities and order. Only improve rendering resolution/detail and consistent premium SD proportions.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-00.png",
+          "sha256": "b6327d694c33a4b21ffe3ec48c77613af280c819a85906229da7f72499ea14c3"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-maxwell\\source-sheet-00.png",
+      "owner": "maxwell",
+      "outputSha256": "c4c5eb95596ccfe5f586ff066ed6de8e320c57748ab79153d0487dc531d66cfa",
+      "referenceManifestSha256": "4d016487f434c1ed8ca3f183578d1a2d18f0be7df3b98b0d859a582c5953cdfe",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6ea624b8-2ed7-4add-bade-ceff76714daf.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Inspected full sheet: intended pose count/grid, identity, staff, main facing/action silhouettes retained. Small hand/robe/face differences and faint colored edge pixels remain a review risk; not final art approval.",
+        "productionApplied": false,
+        "alphaAudit": "Alpha>8 grid corridors found, 20 occupied cells, no strong-alpha canvas-edge pixels. Opaque bounds (includes staff/orbs, not anatomical body): 215-233 px."
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: style-transfer / identity-preserving sprite reconstruction.\nAsset: Crossover-maxwell native motion sheet 01, for a tactical RPG.\nINPUT 1 is the exact pose/order/direction/identity reference to redraw. INPUT 2 is the newly redrawn Maxwell sheet00: use ONLY its character proportions, native body scale, crisp rendering and identity. INPUT1 is the ONLY source of pose/order/facing for this sheet; do NOT repeat poses from sheet00.\nCreate one fresh crisp premium anime SD sprite sheet on actual transparent RGBA, 1122 x 1402 portrait canvas. EXACT 4 columns x 5 rows, exactly 20 figures. Match INPUT 1 cell-for-cell, reading left to right then top to bottom. Preserve the exact different stance/casting/raised-staff poses in every cell, all front/back/side directions, inclinations, hand grips and floating heights. Row2 and row3 staff positions differ substantially from idle: preserve these differences. All body, beard, staff and robe positions must trace INPUT1 rather than sheet00.\nSubject: Maxwell, floating elderly male sage with long white hair and flowing white moustache/beard, stern closed/narrow eyes, dark indigo robes with ornate gold edging, the same ornate gold staff with a large blue eye-shaped gem. Keep the original number/location of his small solid elemental orbs, but omit all cropped/faint VFX residue, outer glow, sparkles, dust and ground shadow. Preserve each exact staff shape, hand grip, direction and occlusion. Back views remain fully back views without invented visible face.\nStyle: clean high-detail premium anime chibi, around 2.7 heads, smooth precise linework, readable facial details, elegant crisp cel shading, polished gold and cloth, consistent anatomy. Redraw at native output scale, NOT a blurred enlarged pixel sprite. Every standing/floating body's crown-to-robe-hem height about 230-250 actual pixels; consistent same character scale in all 20 cells. Preserve row-specific bob/tilt rather than normalizing every pose.\nGrid: cell size about 280x280. Keep the complete character/staff/orbs inside its cell with at least 16 transparent pixels from each cell boundary on all sides. Make continuous completely alpha-zero straight corridors across the entire sheet between EVERY row and column, no pixels, weapons, hair or glow crossing. Center each pose at the same anatomical body anchor as its reference within its cell. Generous outer transparent margin, nothing clipped.\nNo grid lines, no checkerboard image, no labels/text/numbers, no floor, no shadow, no scenery, no particles. Transparent background must be real alpha, not painted black. Preserve all 20 pose identities and order. Only improve rendering resolution/detail and consistent premium SD proportions. Do not reproduce the faint colored halos or isolated colored pixels in either reference. Every pixel outside the solid character, solid staff and solid three small identity orbs must have alpha zero, including broad clean boundary corridors. Keep character scale the same as sheet00, not the different input reference dimensions.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-01.png",
+          "sha256": "4713448ad1321448c548c052a45bca6473be444268baa74f9da9f6d7abda69f2"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6ea624b8-2ed7-4add-bade-ceff76714daf.png",
+          "sha256": "c4c5eb95596ccfe5f586ff066ed6de8e320c57748ab79153d0487dc531d66cfa"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-maxwell\\source-sheet-01.png",
+      "owner": "maxwell",
+      "outputSha256": "ce9ff45df4a67254cec8d989bdb8003d781c0f2c0fd419ece78b2a6a7fe7a43a",
+      "referenceManifestSha256": "4d016487f434c1ed8ca3f183578d1a2d18f0be7df3b98b0d859a582c5953cdfe",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e2cc54b3-b96c-42fc-9168-b651566deba3.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Inspected full sheet: intended pose count/grid, identity, staff, main facing/action silhouettes retained. Small hand/robe/face differences and faint colored edge pixels remain a review risk; not final art approval.",
+        "productionApplied": false,
+        "alphaAudit": "Alpha>8 grid corridors found, 20 occupied cells, no strong-alpha canvas-edge pixels. Opaque bounds (includes staff/orbs, not anatomical body): 218-246 px."
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: style-transfer / identity-preserving sprite reconstruction.\nAsset: Crossover-maxwell native motion sheet 02, for a tactical RPG.\nINPUT 1 is the exact pose/order/direction/identity reference to redraw. INPUT 2 is the newly redrawn Maxwell sheet00: use ONLY its character proportions, native body scale, crisp rendering and identity. INPUT1 is the ONLY source of pose/order/facing for this sheet; do NOT repeat poses from sheet00.\nCreate one fresh crisp premium anime SD sprite sheet on actual transparent RGBA, 1122 x 1402 portrait canvas. EXACT 4 columns x 5 rows, exactly 20 figures. Match INPUT 1 cell-for-cell, reading left to right then top to bottom. Preserve the exact different stance/casting/raised-staff poses in every cell, all front/back/side directions, inclinations, hand grips and floating heights. Rows 1-2 include angled/casting stances. Row3 column2 is a side-facing rather than a back-facing pose: DO NOT convert it to the usual back column. Row4 column2 is also side-facing. Row5 columns3 and4 are hunched/crouching hurt poses with staff held diagonally over the head: preserve their lowered body anchors, shoulder/head angle and staff diagonals, never replace them with upright idle. Match the exact pose and facing in EACH individual cell, not a generic column direction rule. All body, beard, staff and robe positions must trace INPUT1 rather than sheet00.\nSubject: Maxwell, floating elderly male sage with long white hair and flowing white moustache/beard, stern closed/narrow eyes, dark indigo robes with ornate gold edging, the same ornate gold staff with a large blue eye-shaped gem. Keep the original number/location of his small solid elemental orbs, but omit all cropped/faint VFX residue, outer glow, sparkles, dust and ground shadow. Preserve each exact staff shape, hand grip, direction and occlusion. Back views remain fully back views without invented visible face.\nStyle: clean high-detail premium anime chibi, around 2.7 heads, smooth precise linework, readable facial details, elegant crisp cel shading, polished gold and cloth, consistent anatomy. Redraw at native output scale, NOT a blurred enlarged pixel sprite. Every standing/floating body's crown-to-robe-hem height about 230-250 actual pixels; consistent same character scale in all 20 cells. Preserve row-specific bob/tilt rather than normalizing every pose.\nGrid: cell size about 280x280. Keep the complete character/staff/orbs inside its cell with at least 16 transparent pixels from each cell boundary on all sides. Make continuous completely alpha-zero straight corridors across the entire sheet between EVERY row and column, no pixels, weapons, hair or glow crossing. Center each pose at the same anatomical body anchor as its reference within its cell. Generous outer transparent margin, nothing clipped.\nNo grid lines, no checkerboard image, no labels/text/numbers, no floor, no shadow, no scenery, no particles. Transparent background must be real alpha, not painted black. Preserve all 20 pose identities and order. Only improve rendering resolution/detail and consistent premium SD proportions. Do not reproduce the faint colored halos or isolated colored pixels in either reference. Every pixel outside the solid character, solid staff and solid three small identity orbs must have alpha zero, including broad clean boundary corridors. Keep character scale the same as sheet00, not the different input reference dimensions.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-02.png",
+          "sha256": "2303dae91c013f674c8b2b006293a9afea31831a88e70f4285c30a1b44733ebb"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6ea624b8-2ed7-4add-bade-ceff76714daf.png",
+          "sha256": "c4c5eb95596ccfe5f586ff066ed6de8e320c57748ab79153d0487dc531d66cfa"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-maxwell\\source-sheet-02.png",
+      "owner": "maxwell",
+      "outputSha256": "ffd3655720c761dd25778e3d401db0f7aa21b828da2318fcbe9af6b79ff76035",
+      "referenceManifestSha256": "4d016487f434c1ed8ca3f183578d1a2d18f0be7df3b98b0d859a582c5953cdfe",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-7c60ca28-f394-4872-b471-752eb09d7f38.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Inspected full sheet: intended pose count/grid, identity, staff, main facing/action silhouettes retained. Small hand/robe/face differences and faint colored edge pixels remain a review risk; not final art approval.",
+        "productionApplied": false,
+        "alphaAudit": "Alpha>8 grid corridors found, 20 occupied cells, no strong-alpha canvas-edge pixels. Opaque bounds (includes staff/orbs, not anatomical body): 222-247 px."
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: style-transfer / identity-preserving sprite reconstruction.\nAsset: Crossover-maxwell native motion sheet 03, for a tactical RPG.\nINPUT 1 is the exact pose/order/direction/identity reference to redraw. INPUT 2 is the newly redrawn Maxwell sheet00: use ONLY its character proportions, native body scale, crisp rendering and identity. INPUT1 is the ONLY source of pose/order/facing for this sheet; do NOT repeat poses from sheet00.\nCreate one fresh crisp premium anime SD sprite sheet on actual transparent RGBA, 1122 x 1402 portrait canvas. EXACT 4 columns x 5 rows, exactly 12 figures in the FIRST THREE ROWS; rows FOUR AND FIVE must be entirely transparent and empty. Match INPUT 1 cell-for-cell, reading left to right then top to bottom. Preserve the exact different stance/casting/raised-staff poses in every cell, all front/back/side directions, inclinations, hand grips and floating heights. The first row shows raised-staff/flaring robe poses. Row2 column3 has the body leaning forward and one arm extended horizontally toward screen right, with staff on the other side: preserve this specific action instead of idle. The 3rd row returns to the original upright recovery. Copy each cell faithfully. All body, beard, staff and robe positions must trace INPUT1 rather than sheet00.\nSubject: Maxwell, floating elderly male sage with long white hair and flowing white moustache/beard, stern closed/narrow eyes, dark indigo robes with ornate gold edging, the same ornate gold staff with a large blue eye-shaped gem. Keep the original number/location of his small solid elemental orbs, but omit all cropped/faint VFX residue, outer glow, sparkles, dust and ground shadow. Preserve each exact staff shape, hand grip, direction and occlusion. Back views remain fully back views without invented visible face.\nStyle: clean high-detail premium anime chibi, around 2.7 heads, smooth precise linework, readable facial details, elegant crisp cel shading, polished gold and cloth, consistent anatomy. Redraw at native output scale, NOT a blurred enlarged pixel sprite. Every standing/floating body's crown-to-robe-hem height about 230-250 actual pixels; consistent same character scale in all 12 occupied cells. Preserve row-specific bob/tilt rather than normalizing every pose.\nGrid: cell size about 280x280. Keep the complete character/staff/orbs inside its cell with at least 16 transparent pixels from each cell boundary on all sides. Make continuous completely alpha-zero straight corridors across the entire sheet between EVERY row and column, no pixels, weapons, hair or glow crossing. Center each pose at the same anatomical body anchor as its reference within its cell. Generous outer transparent margin, nothing clipped.\nNo grid lines, no checkerboard image, no labels/text/numbers, no floor, no shadow, no scenery, no particles. Transparent background must be real alpha, not painted black. Preserve all 12 pose identities and order. Only improve rendering resolution/detail and consistent premium SD proportions. Do not reproduce the faint colored halos or isolated colored pixels in either reference. Every pixel outside the solid character, solid staff and solid three small identity orbs must have alpha zero, including broad clean boundary corridors. Keep character scale the same as sheet00, not the different input reference dimensions. CRITICAL partial last sheet: full canvas STILL 1122x1402 / FOUR columns FIVE equal rows. Exactly 12 figures at row1,row2,row3 (4 figures each), with the SAME body pixel size and cell pitch as supporting sheet00. Do NOT expand 12 figures to fill height, do NOT center them vertically in the canvas, and do NOT draw any pixels in rows4/5, not even faint alpha. Rows4/5 are transparent padding.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-maxwell/reference-03.png",
+          "sha256": "8ae687608476337565179dd275f5938248e3da28100cec1960131c06f0e44b3e"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-6ea624b8-2ed7-4add-bade-ceff76714daf.png",
+          "sha256": "c4c5eb95596ccfe5f586ff066ed6de8e320c57748ab79153d0487dc531d66cfa"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-maxwell\\source-sheet-03.png",
+      "owner": "maxwell",
+      "outputSha256": "cee386e63df66d4d604a664f0f66428e7304072dd85837e1d4657ae338f0419b",
+      "referenceManifestSha256": "4d016487f434c1ed8ca3f183578d1a2d18f0be7df3b98b0d859a582c5953cdfe",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-2a663146-a445-4faa-bbef-05615cdf6691.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Inspected full sheet: intended pose count/grid, identity, staff, main facing/action silhouettes retained. Small hand/robe/face differences and faint colored edge pixels remain a review risk; not final art approval.",
+        "productionApplied": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Ordo, silver-white tousled hair, black/red geometric half-mask, ivory-and-black archivist long coat with elegant gold-orange inlays, black boots, the same floating/open dark-gold book and solid amber memory shards in the original positions. Preserve mask side and book hand/occlusion; back views show hair/back coat without a face.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Sheet00 shows original idle/walk preparations; preserve each row's different leg and coat swing.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-00.png",
+          "sha256": "e8d9ba7f2f6041b2d6b4539fee0f4b3392a946ffecd3dcb60eb95dbc72d6589e"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-ordo\\source-sheet-00.png",
+      "owner": "ordo",
+      "outputSha256": "480db442dbae970092c4a371ea5905bfceee2aba5da8afbaf0877cf69aa1334e",
+      "referenceManifestSha256": "6e38689403ac847668df0a775bb47ba073d0895483e38ea7388a8def5c59c1ae",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ca644ff9-4d68-4fd1-b52a-7b1e6e138363.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the new Ordo sheet00, for identical native body scale, rendering detail and identity ONLY. INPUT1 exclusively controls the new poses, ordering and directions. Do not copy sheet00's idle poses.\nSUBJECT: Ordo, silver-white tousled hair, black/red geometric half-mask, ivory-and-black archivist long coat with elegant gold-orange inlays, black boots, the same floating/open dark-gold book and solid amber memory shards in the original positions. Preserve mask side and book hand/occlusion; back views show hair/back coat without a face.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Sheet01: preserve the changing book height, hand gestures and coat swing in each row. In row2 front pose the book moves to the opposite side; reproduce the reference exactly. Remove all red/yellow colored cutout fringe and faint halos; only solid outfit, book and solid identity shards remain.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-01.png",
+          "sha256": "584f06d00f3d67f9069e47cb23f8addc3f57b2b771feea0ba28c84a6023b076b"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ca644ff9-4d68-4fd1-b52a-7b1e6e138363.png",
+          "sha256": "480db442dbae970092c4a371ea5905bfceee2aba5da8afbaf0877cf69aa1334e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-ordo\\source-sheet-01.png",
+      "owner": "ordo",
+      "outputSha256": "e2409c5b7c8392caeda857e04a4751669fe35c383aa2cec62967c82697018cee",
+      "referenceManifestSha256": "6e38689403ac847668df0a775bb47ba073d0895483e38ea7388a8def5c59c1ae",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ce9c2bfa-d362-4ed2-ad09-ce1d3c2cfe57.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the new Ordo sheet00, for identical native body scale, rendering detail and identity ONLY. INPUT1 exclusively controls the new poses, ordering and directions. Do not copy sheet00's idle poses.\nSUBJECT: Ordo, silver-white tousled hair, black/red geometric half-mask, ivory-and-black archivist long coat with elegant gold-orange inlays, black boots, the same floating/open dark-gold book and solid amber memory shards in the original positions. Preserve mask side and book hand/occlusion; back views show hair/back coat without a face.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Sheet02: row3 raises one arm sideways and spreads the coat, with the exact book positions from the source. Row5 has arms thrown HIGH overhead, heads angled and robes flaring. Preserve these genuine casting/action positions, do not substitute a calm idle pose. Some frames have books visible on both sides: preserve the exact count shown in THAT cell. Keep the same body size as sheet00 despite the source's different reference cell dimensions. Remove all red/yellow colored cutout fringe and faint halos; only solid outfit, book and solid identity shards remain.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-02.png",
+          "sha256": "4ff751599ac59344656896646c0bff6a41f9f31b6fe542898fb435bf66b9b4db"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ca644ff9-4d68-4fd1-b52a-7b1e6e138363.png",
+          "sha256": "480db442dbae970092c4a371ea5905bfceee2aba5da8afbaf0877cf69aa1334e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-ordo\\source-sheet-02.png",
+      "owner": "ordo",
+      "outputSha256": "edb1651350cfe91e30e4fe86f7e8ec9572552c38180a923ef023df6c40bd506d",
+      "referenceManifestSha256": "6e38689403ac847668df0a775bb47ba073d0895483e38ea7388a8def5c59c1ae",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b3ace10c-fd70-4a98-b85f-ecc708c42854.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the SAME CHARACTER'S established new premium style/identity/scale reference, NOT the pose or order reference.\nSUBJECT: Ordo, silver-white tousled hair, black/red geometric half-mask, ivory-and-black archivist long coat with elegant gold-orange inlays, black boots, the same floating/open dark-gold book and solid amber memory shards in the original positions. Preserve mask side and book hand/occlusion; back views show hair/back coat without a face.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells, with only the first12 occupied. In every occupied cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. INPUT2 is this same character's first new sheet. Match its anatomy, linework and scale; INPUT1 controls these different action poses. This final partial sheet has exactly 12 figures in the first THREE rows, preserving original positions and poses; the bottom TWO rows (8 cells) are fully transparent. Keep the identical full 4x5 canvas and cell pitch. Do not stretch these12 across5rows. First row raised arms and floating books/shards, second row crouched/braced, third row recovery; preserve each pose exactly.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-ordo/reference-03.png",
+          "sha256": "00ce7667b16c8e3a5c1186debfeee43163ea6b60ca8c63adfe89e72af965f787"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ca644ff9-4d68-4fd1-b52a-7b1e6e138363.png",
+          "sha256": "480db442dbae970092c4a371ea5905bfceee2aba5da8afbaf0877cf69aa1334e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-ordo\\source-sheet-03.png",
+      "owner": "ordo",
+      "outputSha256": "8ca874df8bb0416a3787943e5edb0ed1bfe8b355f5557516ff45c238df85e83a",
+      "referenceManifestSha256": "6e38689403ac847668df0a775bb47ba073d0895483e38ea7388a8def5c59c1ae",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-5dd5d276-725b-4d32-9808-5b27931014df.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Origin: blond long-haired youthful spirit, black sleeveless tunic with gold trim, bare arms and gold wrist armor, gold boots. Preserve ALL multiple arms and all visible silver-tipped spear/pole weapons exactly as each source cell: the upright rear spears and forward hand weapons are solid physical accessories, not VFX. No extra hands or lost spearheads.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. CRITICAL: All red/yellow/gray ragged aura pixels in the reference outside the solid character and solid weapons are extraction residue. OMIT THEM. Do not reproduce colored aura, fringe, dot clouds or translucent squares. A clean silhouette ends directly in fully transparent space. Keep the 5 distinct action rows rather than identical copies.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-00.png",
+          "sha256": "33ac92be705c8b29d34660a6e1359d56f8e6816fdd5c0e6dbe8ac96454bb80b2"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-origin\\source-sheet-00.png",
+      "owner": "origin",
+      "outputSha256": "61b36154f0721a8f754a7fd9cca80ff2a8ae4c0d8e9c2590cadfdc04c8278e25",
+      "referenceManifestSha256": "dda23ea37dc589a07aa064acde3b4bf45178cada7fd27c3786a3dfc464f5d49d",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-a9e94d11-9dda-44b7-a3ed-c093598cae3f.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's established premium rendering/identity/scale, not pose/order.\nSUBJECT: Origin: blond long-haired youthful spirit, black sleeveless tunic with gold trim, bare arms and gold wrist armor, gold boots. Preserve ALL multiple arms and all visible silver-tipped spear/pole weapons exactly as each source cell: the upright rear spears and forward hand weapons are solid physical accessories, not VFX. No extra hands or lost spearheads.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. This sheet has 5 action rows: row2 spears raised at angles, row3 tensed forward blades, row4 horizontal arm sweep, row5 dynamic turn, including row5 col3 BACK view. Do not normalize to idle or fixed facing-column order. Preserve exactly each weapon and each arm. REMOVE all red/yellow fringe and ghost dust outside the solid silhouette; fully alpha-zero cell corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-01.png",
+          "sha256": "0506d2b52bcbb2ff3a8836e8543fd63d2bfc52a48fbcfd9b44358d99d94e1cfe"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-a9e94d11-9dda-44b7-a3ed-c093598cae3f.png",
+          "sha256": "61b36154f0721a8f754a7fd9cca80ff2a8ae4c0d8e9c2590cadfdc04c8278e25"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-origin\\source-sheet-01.png",
+      "owner": "origin",
+      "outputSha256": "9f8c9273e8365c311fb45f506f590233f8055aa5c442626d26882d75268aae5a",
+      "referenceManifestSha256": "dda23ea37dc589a07aa064acde3b4bf45178cada7fd27c3786a3dfc464f5d49d",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dfc08816-5536-4096-9aa9-74e887cd72c8.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "owner": "origin",
+      "sheet": 2,
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-2f92a994-af66-428a-863d-35b019af462d.png",
+      "prompt": "Edit INPUT1 sprite sheet with ONE necessary correction. Actual transparent RGBA 1122x1402, exact 4x5 grid, no resize. ONLY ROW3 COLUMN2 (the tenth figure, center-left of middle row): it is incorrectly shown from the BACK. Replace that figure with the corresponding FRONT-facing pose in INPUT2's row3 column2. Blond face and red eyes visible, black front tunic and gold waist clasp visible, four arms with upper arms extended horizontally, silver/gold spears angled upward exactly like INPUT2 row3 column2. INPUT2 is the original exact pose sheet. DO NOT interpret the cell's usual column as requiring a back view: this particular original cell is unequivocally FRONT. Keep identical premium style/body size as the surrounding INPUT1 sprites. Preserve the other19 cells, all their poses/facing/weapons/order and transparent grid corridors. Do not add effects, text, shadows, grids or backgrounds.",
+      "columns": 4,
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-manifest.json",
+      "referenceManifestSha256": "dda23ea37dc589a07aa064acde3b4bf45178cada7fd27c3786a3dfc464f5d49d",
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Corrected original front-facing origin_12_1 (row3,col2) after first generated candidate incorrectly used back view. New candidate directly inspected with front pose restored. Other main poses and weapon silhouettes retained.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "references": [
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e82a2364-b1f7-4364-b37b-671433b84430.png",
+          "sha256": "0667d4222ed353ba7e58f8b3386ec2d1860b9475a34308f8b06780fb22beae94"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-02.png",
+          "sha256": "f213bd6db58de68c3dc205ec8412488246d2cfe726c632b5febfc56d540cb187"
+        }
+      ],
+      "previousCandidate": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e82a2364-b1f7-4364-b37b-671433b84430.png",
+      "outputSha256": "f75ae5027a9f4e378b15c125172d6c4ff79f894259e5e15eac7866442ef42f7f",
+      "rejectionReason": "Row3 column2 original front-facing origin_12_1 was incorrectly generated as back-facing.",
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-origin\\source-sheet-02.png",
+      "rows": 5
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's first new sheet for matching detail, identity and anatomical size; only INPUT1 controls these poses.\nSUBJECT: Origin: blond long-haired youthful spirit, black sleeveless tunic with gold trim, bare arms and gold wrist armor, gold boots. Preserve ALL multiple arms and all visible silver-tipped spear/pole weapons exactly as each source cell: the upright rear spears and forward hand weapons are solid physical accessories, not VFX. No extra hands or lost spearheads.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL SHEET: exactly12 figures in first3 rows, bottom2rows completely alpha-zero. KEEP4x5canvas/cellpitch, do not stretch12figures across5rows. Row1 raised arms and tilted overhead weapons, rows2/3 gradually recovered spear poses. Preserve original airborne offsets and precise weapon/hand positions.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-origin/reference-03.png",
+          "sha256": "a04f94809744cfbcf28eccb8cf126af9b8a8cf559be42aaed7657d973e1d4a5a"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-a9e94d11-9dda-44b7-a3ed-c093598cae3f.png",
+          "sha256": "61b36154f0721a8f754a7fd9cca80ff2a8ae4c0d8e9c2590cadfdc04c8278e25"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-origin\\source-sheet-03.png",
+      "owner": "origin",
+      "outputSha256": "c69cb0f6317ad31a5779cc27bc61c1c6d8a2ad9bca2af22bd89f21ddc9b7f2f2",
+      "referenceManifestSha256": "dda23ea37dc589a07aa064acde3b4bf45178cada7fd27c3786a3dfc464f5d49d",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-4e533fbd-8c94-4b07-917e-f7d57febc032.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected full sheet: occupied cells, dominant facing, identity, hand/weapon poses and empty final rows appear retained. Fine correspondence, alpha corridors and consistent native/world scale remain pack/engine review items.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Oscar: blond blue-eyed young male knight, white/silver plate armor with gold trim, deep royal-blue cape with large gold cross-like crest on the back, white greaves, one thick white/silver sword with gold border. Preserve hand gripping sword, blade orientation and blue cape folds and crest per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. CRITICAL: All red/yellow/gray ragged aura pixels in the reference outside the solid character and solid weapons are extraction residue. OMIT THEM. Do not reproduce colored aura, fringe, dot clouds or translucent squares. A clean silhouette ends directly in fully transparent space. Keep the 5 distinct action rows rather than identical copies.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-00.png",
+          "sha256": "51ffdd09688718b2f191024f4445694bc983abee0b30797bc04285e3e5253338"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-oscar\\source-sheet-00.png",
+      "owner": "oscar",
+      "outputSha256": "4648958ccf22946b27575e3e9407cf4c56a9dd53ad5f29eca4d86ead403d9fe3",
+      "referenceManifestSha256": "331aefe84da28ae5bf23a26200fb89e3ada9a279f0b86b70ad41a7608b9b053c",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-97e974ad-c9d3-43b7-b2ca-7163b35df132.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's established premium rendering/identity/scale, not pose/order.\nSUBJECT: Oscar: blond blue-eyed young male knight, white/silver plate armor with gold trim, deep royal-blue cape with large gold cross-like crest on the back, white greaves, one thick white/silver sword with gold border. Preserve hand gripping sword, blade orientation and blue cape folds and crest per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Preserve the source overhead sword preparation in rows2-3, horizontal swinging sword in rows4-5, crouch and cloak followthrough. Back-facing cells hide the face. One sword per cell; keep grip and tip direction. Do not replace actions with idle. All physical shapes fit with wide transparent common grid corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-01.png",
+          "sha256": "252202c8a8d51941cd738be5ce59bfb4d5af7eff4767a8c8dcffa1065cfdced1"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-97e974ad-c9d3-43b7-b2ca-7163b35df132.png",
+          "sha256": "4648958ccf22946b27575e3e9407cf4c56a9dd53ad5f29eca4d86ead403d9fe3"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-oscar\\source-sheet-01.png",
+      "owner": "oscar",
+      "outputSha256": "06774c9bab0166f7d636d1e68005210be6a03405d8c6a24632f43b9f5763aa5a",
+      "referenceManifestSha256": "331aefe84da28ae5bf23a26200fb89e3ada9a279f0b86b70ad41a7608b9b053c",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-fc2ae641-9758-42d8-ad5a-3268a02f0747.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, principal identity, facing, pose order and weapon silhouettes retained. Some wide silhouettes approach cell boundaries; exact cutout/native-alpha and per-frame correspondence require pack/engine validation. Preview colored fringe is not assumed opaque; low-alpha pixels must be measured.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's established premium rendering/identity/scale, not pose/order.\nSUBJECT: Oscar: blond blue-eyed young male knight, white/silver plate armor with gold trim, deep royal-blue cape with large gold cross-like crest on the back, white greaves, one thick white/silver sword with gold border. Preserve hand gripping sword, blade orientation and blue cape folds and crest per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Source rows1-2 guard/raised fist with cape, rows3-4 sword horizontal across the torso, row5 sword raised overhead and body crouch. Match all hands, sword tip direction, back/side face visibility per cell. All swordtips/cape corners stay 16px or more inside cell boundaries; do not crop the left/right canvas edge.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-02.png",
+          "sha256": "2362dbfb769c9b9957426a6ce2c907f5f4d1cd4a694f22ebcf2659d67b92fb24"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-97e974ad-c9d3-43b7-b2ca-7163b35df132.png",
+          "sha256": "4648958ccf22946b27575e3e9407cf4c56a9dd53ad5f29eca4d86ead403d9fe3"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-oscar\\source-sheet-02.png",
+      "owner": "oscar",
+      "outputSha256": "cdb1712f163afd5e833422fb5e44db746b1056fbd8af3fe0f6a6eb1727440f22",
+      "referenceManifestSha256": "331aefe84da28ae5bf23a26200fb89e3ada9a279f0b86b70ad41a7608b9b053c",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-597146dd-bfe1-4205-8eb0-3fe2dba1a998.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected full sheet: occupied cells, dominant facing, identity, hand/weapon poses and empty final rows appear retained. Fine correspondence, alpha corridors and consistent native/world scale remain pack/engine review items.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's established premium style/identity/scale, not pose/order.\nSUBJECT: Oscar: blond blue-eyed young male knight, white/silver plate armor with gold trim, deep royal-blue cape with large gold cross-like crest on the back, white greaves, one thick white/silver sword with gold border. Preserve hand gripping sword, blade orientation and blue cape folds and crest per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL SHEET: exactly12 occupied cells, first3rows only; bottom2rows fully transparent. Full4x5canvas same cellpitch and body size as INPUT2, not oversized12frame layout. Row1 overhead attack followthrough, rows2-3 sword vertical guard/recovery. Observe precise sword occlusion at face and do not invent missing sword for back-facing cells. Keep ALL edges16px inside cell, even wide cape.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-oscar/reference-03.png",
+          "sha256": "f1b174fecd04beebe5ad0dbedf676530fbb70d4f2772b1f6c8e149c346907244"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-97e974ad-c9d3-43b7-b2ca-7163b35df132.png",
+          "sha256": "4648958ccf22946b27575e3e9407cf4c56a9dd53ad5f29eca4d86ead403d9fe3"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-oscar\\source-sheet-03.png",
+      "owner": "oscar",
+      "outputSha256": "d23f45647fa77626c5d718141a7b052fbb14348c2e81d910d2b6ad6d2d27bf5c",
+      "referenceManifestSha256": "331aefe84da28ae5bf23a26200fb89e3ada9a279f0b86b70ad41a7608b9b053c",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e560f8ed-25ae-4df9-ae52-4b509b05b78f.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected full sheet: occupied cells, dominant facing, identity, hand/weapon poses and empty final rows appear retained. Fine correspondence, alpha corridors and consistent native/world scale remain pack/engine review items.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Rassius: long golden-blond hair, blue eyes, royal-navy wide-brimmed musketeer hat with gold trim and round gold medallion, one large white feather, elegant white/gold/navy coat over dark purple burgundy inner cloak, dark boots, one narrow silver rapier with gold guard. Preserve hat/feather shape, cape crest, rapier's exact hand/angle/occlusion per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Watch the wide hat feather and rapier: all tips must remain completely inside their own cell, with straight alpha-zero corridors. These source rows are distinct walk/stance positions; preserve all20 original differences. No aura/ground/shadow/text.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-00.png",
+          "sha256": "1d1bc98dabbebe49c3e80326dc561b0392ee081eb3fdc38ff9a9bf39ef9271a6"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-rassius\\source-sheet-00.png",
+      "owner": "rassius",
+      "outputSha256": "97985cf7177b9eb99321b7c25e2c8505b17e1adc02b052b942df20d16d71de3f",
+      "referenceManifestSha256": "28d07a490e3238067c8157a83e03bd69b58cc39f1a43d2ef75d3121f8ff78380",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b783a220-bd21-4639-9571-962dc92d66d7.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected full sheet: occupied cells, dominant facing, identity, hand/weapon poses and empty final rows appear retained. Fine correspondence, alpha corridors and consistent native/world scale remain pack/engine review items.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's first new sheet: match anatomy, identity, detail and size; only INPUT1 controls pose/order.\nSUBJECT: Rassius: long golden-blond hair, blue eyes, royal-navy wide-brimmed musketeer hat with gold trim and round gold medallion, one large white feather, elegant white/gold/navy coat over dark purple burgundy inner cloak, dark boots, one narrow silver rapier with gold guard. Preserve hat/feather shape, cape crest, rapier's exact hand/angle/occlusion per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Rows2-3 sword lifted above feathered hat, rows4-5 horizontal thrust with low stance. Preserve each source hand and all visible blades, including any second visible blade/edge where present; do not invent/remove. Wide thrusts must stay16px inside owncell, with full swordtips, no crop. Original front/back/side frames remain exactly ordered.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-01.png",
+          "sha256": "fa52b00f9c3a6993a5d20d42a4b0493e778adb04ca658d07c1a2bf631c589a42"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b783a220-bd21-4639-9571-962dc92d66d7.png",
+          "sha256": "97985cf7177b9eb99321b7c25e2c8505b17e1adc02b052b942df20d16d71de3f"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-rassius\\source-sheet-01.png",
+      "owner": "rassius",
+      "outputSha256": "1760490db1650e3c15937ae352b4a48ac4d2b3caadf243a65febe20999b7c8e2",
+      "referenceManifestSha256": "28d07a490e3238067c8157a83e03bd69b58cc39f1a43d2ef75d3121f8ff78380",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-fbdccfd7-ef7e-410a-b143-0ff70bec9920.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's first new sheet: match detail/body scale, not poses.\nSUBJECT: Rassius: long golden-blond hair, blue eyes, royal-navy wide-brimmed musketeer hat with gold trim and round gold medallion, one large white feather, elegant white/gold/navy coat over dark purple burgundy inner cloak, dark boots, one narrow silver rapier with gold guard. Preserve hat/feather shape, cape crest, rapier's exact hand/angle/occlusion per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Rows1-2 sword upright crossing face or raised above hat, rows3-4 horizontal thrust, row5 overhead attack. Do not lose blade behind hat or swap hands. Some original faint cropped residues above cell are NOT physical new blades: omit residue. Keep actual rapier fully visible within cell without adding new weapon. Wide thrusts fit with full16px transparent corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-02.png",
+          "sha256": "4dc2c71de8e40525c2b9e4e37eaf25924a3224da866ebb4363fff32840c7a7f0"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b783a220-bd21-4639-9571-962dc92d66d7.png",
+          "sha256": "97985cf7177b9eb99321b7c25e2c8505b17e1adc02b052b942df20d16d71de3f"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-rassius\\source-sheet-02.png",
+      "owner": "rassius",
+      "outputSha256": "4e91fbf0cfa3de08906130cf530d0fef177df7c3f4b0dbe6801cde42a1089590",
+      "referenceManifestSha256": "28d07a490e3238067c8157a83e03bd69b58cc39f1a43d2ef75d3121f8ff78380",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-cac34a87-5eda-43ae-90ae-d07476e45df8.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character new identity/style/scale reference; INPUT1 alone sets poses.\nSUBJECT: Rassius: long golden-blond hair, blue eyes, royal-navy wide-brimmed musketeer hat with gold trim and round gold medallion, one large white feather, elegant white/gold/navy coat over dark purple burgundy inner cloak, dark boots, one narrow silver rapier with gold guard. Preserve hat/feather shape, cape crest, rapier's exact hand/angle/occlusion per cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL SHEET exactly12figures first3rows, bottom2rows fully alpha-zero. Keep full4x5grid/cellpitch/nativebody size same asINPUT2. Row1 overhead attack, row2 lowered/recoiling torso/hat, row3 vertical sword guard. Preserve distinct source poses, including head-down tilt. No figure/tool/feather clipping and minimum16px grid corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-rassius/reference-03.png",
+          "sha256": "178b06614998948bcc9fe91ab417f1e196aa85d15674c409637b4ba8787a7204"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b783a220-bd21-4639-9571-962dc92d66d7.png",
+          "sha256": "97985cf7177b9eb99321b7c25e2c8505b17e1adc02b052b942df20d16d71de3f"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-rassius\\source-sheet-03.png",
+      "owner": "rassius",
+      "outputSha256": "ddc7e92e885a85fe06c1393104e4a3856819ac6a6b1ff37d674cfa50cfaecf53",
+      "referenceManifestSha256": "28d07a490e3238067c8157a83e03bd69b58cc39f1a43d2ef75d3121f8ff78380",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-ba930b14-1359-4ad4-a81d-0d83db6d23f1.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Shigure: mature black-haired swordsman with very long dark ponytail, vivid orange hair ribbons, open white/cream coat exposing upper chest with orange/red markings, black belt and cuffs, ragged cream skirt panels/trousers with black/orange trim, black-orange sandals/boots. One very broad black greatsword with thick silver edge and red-orange inset channels; preserve exact source hands, sword count/shape and directions. Not a thin katana.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. 20 sequential poses from54total; NO fixed-direction-column interpretation. Preserve every exact source direction, swordhand/grip and blade position. Lastrow col3 is raised sword OVERHEAD, lastrowcol4 low sideways followthrough with windblown ponytail; do not convert either toidle. Hair/ribbons/swordmustfit16pxinsidecells, widthkeptcompactwithoutclipping.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-00.png",
+          "sha256": "4186ad0630c08d436af5d2b67da09b2aa550714bd57d6868db95c43695d3ed0e"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shigure\\source-sheet-00.png",
+      "owner": "shigure",
+      "outputSha256": "4cb563a5bade51f4f8108c0d8a832ca1c4db71f3f8fc2360b698829fbe4efd0c",
+      "referenceManifestSha256": "ecd9aeec34c08e064fae73afa7210bb9a43efb2c20e283a6c15e091206b1a394",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-d33e0cce-f83d-49b6-9a5e-7afee175bd8d.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's new identity/style/native scale only; INPUT1 exact pose/order is authoritative.\nSUBJECT: Shigure: mature black-haired swordsman with very long dark ponytail, vivid orange hair ribbons, open white/cream coat exposing upper chest with orange/red markings, black belt and cuffs, ragged cream skirt panels/trousers with black/orange trim, black-orange sandals/boots. One very broad black greatsword with thick silver edge and red-orange inset channels; preserve exact source hands, sword count/shape and directions. Not a thin katana.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. All20 source cells have a distinct action/direction. Row1 sword overhead/back, row2 swinging crouch, row3 follow-through, row4 recovery/guard, row5 cast/openhand. Preserve original airborne/crouch/head offsets and body turns; do not normalize all figures toidle/front. Preserve exact broad sword position and hand grip. Long sword and ponytail stay16px insideeachcell.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-01.png",
+          "sha256": "0e6ec7a91a3dba9e7ad4fe62e9a7d2b448b1cf19de35b975c2cb2ca92d766f89"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-d33e0cce-f83d-49b6-9a5e-7afee175bd8d.png",
+          "sha256": "4cb563a5bade51f4f8108c0d8a832ca1c4db71f3f8fc2360b698829fbe4efd0c"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shigure\\source-sheet-01.png",
+      "owner": "shigure",
+      "outputSha256": "30456940eb38a25d3a17c5300dba7e4677613e43f079745625601b89899807ce",
+      "referenceManifestSha256": "ecd9aeec34c08e064fae73afa7210bb9a43efb2c20e283a6c15e091206b1a394",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-c9288a78-9dc0-44dd-8985-98f4e7861e39.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's new style/anatomical scale; INPUT1 exact poses/order control.\nSUBJECT: Shigure: mature black-haired swordsman with very long dark ponytail, vivid orange hair ribbons, open white/cream coat exposing upper chest with orange/red markings, black belt and cuffs, ragged cream skirt panels/trousers with black/orange trim, black-orange sandals/boots. One very broad black greatsword with thick silver edge and red-orange inset channels; preserve exact source hands, sword count/shape and directions. Not a thin katana.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL exactly14figures: first3rows full, row4col1+col2 only, remaining6cells fully transparent. Keep4x5canvas and same cellpitch, do not enlarge figures to fill. Firstrowcol1/2 openhand then col3/4 swordoverhead. Secondrow fouroverhead sword angles. Thirdrow recovering/guard. Row4two vertical sword guard poses. Match every hand, broad blade angle, crouch/tilt and hair/body offset. Full swordtips within16px corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shigure/reference-02.png",
+          "sha256": "042efd484694834e031dec50efa2cbc8f880640a29e75c9b57f7bdc859478328"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-d33e0cce-f83d-49b6-9a5e-7afee175bd8d.png",
+          "sha256": "4cb563a5bade51f4f8108c0d8a832ca1c4db71f3f8fc2360b698829fbe4efd0c"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shigure\\source-sheet-02.png",
+      "owner": "shigure",
+      "outputSha256": "a49548ac6e74803b6a76cdd094b61518883382e7d345c0f8a91505c8ab873845",
+      "referenceManifestSha256": "ecd9aeec34c08e064fae73afa7210bb9a43efb2c20e283a6c15e091206b1a394",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-a8d60424-6f0e-4caa-b03e-d3fd484dc352.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Shizel: female sorceress with very long pink hair fading to pale lavender ends, pink eyes, large angular crimson headpiece with gold edges, dark purple/navy full-length dress with gold geometric trim and crimson accents, long sleeves. No physical weapon in source; preserve exact empty-hand gestures, skirt silhouette, hair direction and face visibility.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Long hair and skirt stay inside their own cell with16px transparent corridors; all20 exact stance/walk pose differences and original four view angles retained. Rows3-5 include feet/skirt movement; do not normalize to static gown. No aura/ground/shadow/text.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-00.png",
+          "sha256": "fb6f6e9aabddc782408bedac2c7984f9629964f6750599b65ebf75ef9226b002"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shizel\\source-sheet-00.png",
+      "owner": "shizel",
+      "outputSha256": "f68b78e595a5638dbcaed58c1570a832a556098cb0e87b4f12ac2abb4cc2643e",
+      "referenceManifestSha256": "ae6d6b00079bfd79dad29f76f517eacaa4105fc4c51443f5a36d0e934c69cb34",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc70a964-7162-4e1a-9cc1-4410887282e8.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected full sheet: occupied cells, dominant facing, identity, hand/weapon poses and empty final rows appear retained. Fine correspondence, alpha corridors and consistent native/world scale remain pack/engine review items.",
+        "previewFringe": "Visible red/yellow preview fringe may be alpha1..7. Judge actual alpha and runtime rendering; do not infer opaque VFX from preview alone.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's first new sheet; match identity/style/anatomical scale only, not poses.\nSUBJECT: Shizel: female sorceress with very long pink hair fading to pale lavender ends, pink eyes, large angular crimson headpiece with gold edges, dark purple/navy full-length dress with gold geometric trim and crimson accents, long sleeves. No physical weapon in source; preserve exact empty-hand gestures, skirt silhouette, hair direction and face visibility.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Source rows2-4 have a defined solid purple sphere immediately above her gesturing palm. Preserve each such compact sphere in its exact hand and cell position as authored; do not add an extra aura, ray or diffuse particles. Row1 androw5 have empty hands/no sphere, preserve that. Keep full hair/sleeves/skirts inside cells16px from boundaries.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-01.png",
+          "sha256": "60c451073a8b55ad8b1ff313a8621083e6c7a984ba7c79cdba38f464f04ca12f"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc70a964-7162-4e1a-9cc1-4410887282e8.png",
+          "sha256": "f68b78e595a5638dbcaed58c1570a832a556098cb0e87b4f12ac2abb4cc2643e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shizel\\source-sheet-01.png",
+      "owner": "shizel",
+      "outputSha256": "60f977f47212807d12878ecdae419dabfffb348646fae1416a47cc7b01479659",
+      "referenceManifestSha256": "ae6d6b00079bfd79dad29f76f517eacaa4105fc4c51443f5a36d0e934c69cb34",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-62a5bf51-ea66-404b-b648-39402a72d146.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is the same character's new style and anatomical-scale reference; INPUT1 controls exact poses/order.\nSUBJECT: Shizel: female sorceress with very long pink hair fading to pale lavender ends, pink eyes, large angular crimson headpiece with gold edges, dark purple/navy full-length dress with gold geometric trim and crimson accents, long sleeves. No physical weapon in source; preserve exact empty-hand gestures, skirt silhouette, hair direction and face visibility.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Keep each authored solid purple hand-sphere in its source position, including chest-centered sphere front row1/2, forward arm inrow3/4, arms behind/above head inrow5 front/back. Do not invent sphere where occluded in back view. Preserve exact sleeve/hand/face visibility. No diffuse aura, extraVFX, backgrounds or floor. Keep full silhouette inside cell16px corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-02.png",
+          "sha256": "9fddd3949fe0e27033dfc9d9db8f6c9f7f98c4af19d3674ba04f1282361161ec"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc70a964-7162-4e1a-9cc1-4410887282e8.png",
+          "sha256": "f68b78e595a5638dbcaed58c1570a832a556098cb0e87b4f12ac2abb4cc2643e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shizel\\source-sheet-02.png",
+      "owner": "shizel",
+      "outputSha256": "ba7abdcc97180fc41bda664070a978aadb48bda21b2f41ccd6a07e9af6c38c11",
+      "referenceManifestSha256": "ae6d6b00079bfd79dad29f76f517eacaa4105fc4c51443f5a36d0e934c69cb34",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-68944d59-ae29-459c-b9a6-02feeb49cf07.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character new identity/style/anatomical-scale reference; INPUT1 controls poses/order.\nSUBJECT: Shizel: female sorceress with very long pink hair fading to pale lavender ends, pink eyes, large angular crimson headpiece with gold edges, dark purple/navy full-length dress with gold geometric trim and crimson accents, long sleeves. No physical weapon in source; preserve exact empty-hand gestures, skirt silhouette, hair direction and face visibility.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL SHEET exactly12 figures first3rows, bottom2rows empty alpha-zero, retain4x5canvas/cellpitch. CRITICAL ROW2 COLUMN2 is FRONT-FACING with CLOSED EYES and bowed head, not a back view. Preserve this exceptional facing exactly. Row1 front/back two solid hand-spheres, side views one sphere; row2 exhausted bowed poses with no sphere; row3 one raised hand-sphere. No extraaura or particles.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-shizel/reference-03.png",
+          "sha256": "307901806730321b0a6ae101a1ff41d592a259380a929a9228412b31dfafac02"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-dc70a964-7162-4e1a-9cc1-4410887282e8.png",
+          "sha256": "f68b78e595a5638dbcaed58c1570a832a556098cb0e87b4f12ac2abb4cc2643e"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-shizel\\source-sheet-03.png",
+      "owner": "shizel",
+      "outputSha256": "b94beb3c632b65ccd3703d3d772dba8a08ea093fb4c93954c2ae9277dc2b3256",
+      "referenceManifestSha256": "ae6d6b00079bfd79dad29f76f517eacaa4105fc4c51443f5a36d0e934c69cb34",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-36b676e5-47c9-405b-bfa1-694845b0faac.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Full sheet directly inspected: intended occupied cell count, hand/weapon/compact sphere poses, principal facing and identity retained. Final partial rows remain blank. Shizel final row2 column2 correctly remains front-facing bowed pose. Fine frame matching, native size and alpha corridors require root pack/Unity validation.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Van: mature long brown-haired male swordsman with stern face and short beard/goatee, white/light-silver armor and white long coat/cape with orange-gold borders and orange back emblem, dark trousers/boots, one silver sword with gold guard. Preserve actual facing, sword grip and long flowing hair/cape in each source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Maintain the mature stern face and facial hair, don't turn him into a young boy. Preserve every row's walk/stance changes, sword position, front/back/left/right-facing silhouette. Full hair/coat/sword inside eachcell, transparent16px common corridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-00.png",
+          "sha256": "2a1e63b15368cbc1983ef34a1aab67638c75890757767fcaa8efb105e0062529"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-van\\source-sheet-00.png",
+      "owner": "van",
+      "outputSha256": "d190bb9847eb2d27d4f4aa92637608f3e57fc8a3b614cdcbe5ad805eb9cefb69",
+      "referenceManifestSha256": "d5e47f19ff49aedec94399e6bafc82f99d5a03de75d3430104f51764ad6aa2be",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-718a7d2f-4b16-4ead-80e0-07814798c3cc.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character new style/identity/anatomical scale; INPUT1 sets these action poses.\nSUBJECT: Van: mature long brown-haired male swordsman with stern face and short beard/goatee, white/light-silver armor and white long coat/cape with orange-gold borders and orange back emblem, dark trousers/boots, one silver sword with gold guard. Preserve actual facing, sword grip and long flowing hair/cape in each source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Rows2-3 lift sword behind/above head with strong bent knees, rows4-5 follow-through torso twist with blade across shoulder. Preserve crouch and horizontal body offsets, beard, hair sweep, sword gripping arm. No idle substitutions. Back-view rows keep hair and orange back emblem, no invented face. All tips fit16px inside cell.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-01.png",
+          "sha256": "0a3e15f0c689a23828fda8ab185d08e900101e140add2bf295456a589f05a34e"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-718a7d2f-4b16-4ead-80e0-07814798c3cc.png",
+          "sha256": "d190bb9847eb2d27d4f4aa92637608f3e57fc8a3b614cdcbe5ad805eb9cefb69"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-van\\source-sheet-01.png",
+      "owner": "van",
+      "outputSha256": "d093fb0d8d488dd1e39f96e0ded9e4c0547e5c75081267d1f78e4a93ec4f1467",
+      "referenceManifestSha256": "d5e47f19ff49aedec94399e6bafc82f99d5a03de75d3430104f51764ad6aa2be",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-b48ca521-86a3-489d-a1b7-3111f00e5b93.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character new style/body-scale reference; INPUT1 controls action poses and order.\nSUBJECT: Van: mature long brown-haired male swordsman with stern face and short beard/goatee, white/light-silver armor and white long coat/cape with orange-gold borders and orange back emblem, dark trousers/boots, one silver sword with gold guard. Preserve actual facing, sword grip and long flowing hair/cape in each source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. Rows1-2 close guard arms, rows3-4 crouched cross-body sweeping sword, row5 both hands lift sword vertical abovehead. Preserve exact body lean/hair/cape sweep and hidden sword portions. The long horizontal blade is physical but faint detached cutoffs outside source figure are not. Keep entire figure/blade16px within owncell.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-02.png",
+          "sha256": "5e0b8b682f7f365febf0d08ae1c5f782bbe270123b987ccf4c75b8a17a5208f4"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-718a7d2f-4b16-4ead-80e0-07814798c3cc.png",
+          "sha256": "d190bb9847eb2d27d4f4aa92637608f3e57fc8a3b614cdcbe5ad805eb9cefb69"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-van\\source-sheet-02.png",
+      "owner": "van",
+      "outputSha256": "f25061f04948a859ac2aabc6959e9dae46039e7059731c705782bd1b10ba1c20",
+      "referenceManifestSha256": "d5e47f19ff49aedec94399e6bafc82f99d5a03de75d3430104f51764ad6aa2be",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-15c35262-5457-4e71-a994-ef404ce86b75.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character first new sheet for style/anatomical scale; INPUT1 alone determines pose/order.\nSUBJECT: Van: mature long brown-haired male swordsman with stern face and short beard/goatee, white/light-silver armor and white long coat/cape with orange-gold borders and orange back emblem, dark trousers/boots, one silver sword with gold guard. Preserve actual facing, sword grip and long flowing hair/cape in each source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL exactly12figures in first3rows, bottom2rows fully transparent; keep4x5canvas and samecellpitch. Firstrow strong raised verticalsword, nextrow lowered guarded crouch, finalrow recovery. Maintain each pose's lower height/offset, never resize crouches to tallidle. No clipping: all blades, hair and cloak fit16px insidecells.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-van/reference-03.png",
+          "sha256": "b840bf05b1c6d23d1bdb029189b0f288a738011b4ed8d35bb55bd6debb9a166e"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-718a7d2f-4b16-4ead-80e0-07814798c3cc.png",
+          "sha256": "d190bb9847eb2d27d4f4aa92637608f3e57fc8a3b614cdcbe5ad805eb9cefb69"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-van\\source-sheet-03.png",
+      "owner": "van",
+      "outputSha256": "a81dcb4134da3f264611cf4896ec224e61516e8d0aa794e481b238063a724344",
+      "referenceManifestSha256": "d5e47f19ff49aedec94399e6bafc82f99d5a03de75d3430104f51764ad6aa2be",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-66ccb2f3-0170-4c6f-870a-70b351d88939.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected all occupied cells, distinctive hair/cape/face/weapon and nonuniform source-facing order. Dhaos final14 cell order/empty positions retained; Van final12 occupies first3 rows. No engine/packing approval claimed. Fine native scale/alpha corridors remain to verify.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 3
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is STYLE ONLY: clean premium anime SD rendering and approximately 2.7-head proportions, NOT its costume, identity or poses.\nSUBJECT: Vholran: young pale male with short dark navy-black hair and white wing-shaped temple tufts, sharp stern eyes, ornate black/dark steel armor with gold engraved trim, vivid royal-cobalt layered feather cape, one ice-blue luminous blade with dark/gold handle. Preserve compact blue blade itself but no added aura trails. Exact weapon grip, cape feather layers and view angle per source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. 20 sequential poses from54frames, NOT a fixed4-direction-column layout. Keep exact front/threequarter/opposite-view order for every cell and all slight walking changes. Bright blue blade remains the same solid narrow sword; no new long wave or particles. White temple tufts and blue layered feather cloak mandatory. All edges16px inside owncell, native body same scale acrossrows.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-00.png",
+          "sha256": "782d75a9c1cb5c60b6102c5fe34b705b671caa6183634542ba46eea97b0c34d7"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00.png",
+          "sha256": "8cbda408c5afef9564ffa1e40e95dc08aa1a8260ede502cf2d4dea7608d1f54a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-vholran\\source-sheet-00.png",
+      "owner": "vholran",
+      "outputSha256": "00c2614751b8b6f482639533f0e47ac091ed552b1b8f81c5dc4f7aa4504e2a4a",
+      "referenceManifestSha256": "bb0ad6fab4bb532a0191ae9809d00b314d2ee3fe63ab83b0b7154efa982b3a25",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-47abea59-dc28-47ab-a91d-7257303c26bc.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 0
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is same-character first new sheet for identity/style/native body size; INPUT1 exact action poses/order must match.\nSUBJECT: Vholran: young pale male with short dark navy-black hair and white wing-shaped temple tufts, sharp stern eyes, ornate black/dark steel armor with gold engraved trim, vivid royal-cobalt layered feather cape, one ice-blue luminous blade with dark/gold handle. Preserve compact blue blade itself but no added aura trails. Exact weapon grip, cape feather layers and view angle per source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. IMPORTANT source lastrow has large cyan crescent slash WAVES: OMIT ALL those VFX waves and detached blue shards, draw only physical character, feather cape and held blue sword(s) actually visible. Preserve body lean, sword-hand position, direction and physical blade angle beneath effects. Rows2-3 overhead sword prep and row4 slash/recovery remain distinct. Do not invent missing hands or normalize toidle. Exact4x5grid20figures16pxcorridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-01.png",
+          "sha256": "1dcb668b676c987acf2263963b4d666a87ab3205d3b047b0bb606b9436cdbbe8"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-47abea59-dc28-47ab-a91d-7257303c26bc.png",
+          "sha256": "00c2614751b8b6f482639533f0e47ac091ed552b1b8f81c5dc4f7aa4504e2a4a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-vholran\\source-sheet-01.png",
+      "owner": "vholran",
+      "outputSha256": "67bb88adb0859f85300baee5946f31b06cde7e57f21bc83bf371674ef6049a8e",
+      "referenceManifestSha256": "bb0ad6fab4bb532a0191ae9809d00b314d2ee3fe63ab83b0b7154efa982b3a25",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-aa95317c-79bf-498e-beae-12b85cd4217b.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 1
+    },
+    {
+      "rows": 5,
+      "prompt": "Use case: identity-preserving style-transfer. Create a fresh native high-detail animation sprite sheet for a tactical RPG, not an enlarged blurry source.\nINPUT1 is the exact cell-by-cell pose, direction, expression, anatomy, weapons/accessories and order reference. INPUT2 is this same character's new style/identity/native body scale; INPUT1 sets poses/order.\nSUBJECT: Vholran: young pale male with short dark navy-black hair and white wing-shaped temple tufts, sharp stern eyes, ornate black/dark steel armor with gold engraved trim, vivid royal-cobalt layered feather cape, one ice-blue luminous blade with dark/gold handle. Preserve compact blue blade itself but no added aura trails. Exact weapon grip, cape feather layers and view angle per source cell.\nCanvas 1122x1402, actual transparent RGBA. EXACT 4 columns x 5 rows, 20 cells. In every cell redraw only the corresponding original figure in INPUT1. Keep every front/back/side facing, hand grip, weapon number/type/occlusion, airborne height, lean, crouch, expression and action; do not replace varied action frames with idle. Do not assume every row has the same direction ordering; read EACH cell. Match the original pose's body anchor within its cell.\nClean precise anime linework and crisp cel-shaded forms with polished material detail. Native standing body height about230-250pixels, consistent anatomical scale across the entire character's sheets; crouches and jumps keep actual pose-relative height and offset. All hair, cloth, weapons/accessories fit inside their own cell. At least16 completely alpha-zero pixels from each cell edge on all sides, creating straight completely transparent common corridors across the FULL canvas between every row/column. No partial figures, clipping, overlaps or stray pixels.\nRetain solid identity accessories from the source, but DO NOT DRAW faint/cropped source effects, ambient glow halos, colored edge artifacts, ghost images, light streaks, dust, ground shadows, or scenic background. Transparent means true alpha, not checkerboard or painted black/white. No text, labels, numbers or grid lines. Do not add/remove weapons, invent attacks or change identity. FINAL PARTIAL exactly14figures first3rows full plusrow4col1/2, remaining6cells fully transparent. Keep4x5canvas and samecellpitch. Source firstrow col1/2 has huge cyan crescent waves: OMIT WAVES/blueparticleeffects, keep only character, feathercloak and physical heldblueblade(s) preserving pose. Row1col3/4 raised diagonalblade, rows2-4 rest/guard positions exactly matchsource. Do not enlarge final14 or inventnewposes. Minimum16px transparentcommoncorridors.",
+      "referenceManifest": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-manifest.json",
+      "references": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/Crossover-vholran/reference-02.png",
+          "sha256": "643f91c6aa36aee5ad17b7019604f42ec71327ba4da02dc293acdd488dc96dd3"
+        },
+        {
+          "path": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-47abea59-dc28-47ab-a91d-7257303c26bc.png",
+          "sha256": "00c2614751b8b6f482639533f0e47ac091ed552b1b8f81c5dc4f7aa4504e2a4a"
+        }
+      ],
+      "output": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\Crossover-vholran\\source-sheet-02.png",
+      "owner": "vholran",
+      "outputSha256": "f6ad6b17cecccc3eb9a8c2fa0c443d159503636f66e516701b27f4bf1f605c5d",
+      "referenceManifestSha256": "bb0ad6fab4bb532a0191ae9809d00b314d2ee3fe63ab83b0b7154efa982b3a25",
+      "generated": "C:/Users/USER-PC/.codex/generated_images/01a15ecb-f85b-74d0-999d-ed7070bf6f9f/exec-e203cf69-001d-491d-bf55-6e5717a71221.png",
+      "columns": 4,
+      "review": {
+        "status": "candidate-needs-frame-correspondence-and-engine-review",
+        "visual": "Directly inspected generated sheet against the original reference. Four columns and pose ordering retained; last 14-frame sheet keeps six blank cells. Character design and physical weapons retained; detached effects omitted. This is candidate review, not runtime or pixel-perfect pose certification.",
+        "productionApplied": false,
+        "unityRun": false
+      },
+      "sheet": 2
+    }
+  ],
+  "productionApplied": false,
+  "unityValidationPerformed": false,
+  "imageEdits": "No image-edit scripts used. Generated PNG copied byte-for-byte. This task did not alter original source PNG/meta.",
+  "imageEditingScriptsUsed": false,
+  "expectedOwners": [
+    "maxwell",
+    "ordo",
+    "origin",
+    "oscar",
+    "rassius",
+    "shizel",
+    "van",
+    "dhaos",
+    "shigure",
+    "vholran"
+  ],
+  "completedSheets": 37,
+  "alphaReview": "Docs/QualityUpgrade/Generation/boss-motion-last-ten-alpha-review.json"
+}

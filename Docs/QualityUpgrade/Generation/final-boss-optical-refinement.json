@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "New native redraw candidates only; production not modified; engine approval pending.",
+  "records": [
+    {
+      "character": "hyades",
+      "sheetIndex": 2,
+      "usedFrames": 20,
+      "targetFrames": [
+        "hyades_13_3"
+      ],
+      "detail": "ONLY remove the added horizontal MAGENTA LASER emerging from behind the shoulder to the RIGHT of the monster at ROW4 COLUMN4 (cell15, hyades_13_3). That source cell has NO laser at all. Restore the ordinary rounded dark-blue shoulder/arm silhouette, pink tendrils behind it, and transparent space to its right, exactly as SECOND input row4col4. Retain its same left-facing head, glowing mouth, ivory shoulder collars, claws, pose, size and exact location. Do not remove lasers from other cells: row3col1/3/4 and row4col1/3 MUST retain their original beams. Never change the other19figures or their effects.",
+      "actual": "Crossover-hyades-direction-3.png",
+      "sourceManifest": "Logs/QualityUpgrade20261031/References/Crossover-hyades/reference-manifest.json",
+      "referencePath": "Logs/QualityUpgrade20261031/References/Crossover-hyades/reference-02.png",
+      "supportingReference": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-hyades/source-sheet-02.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-hyades/source-sheet-02-v2.png",
+      "attempt": 2,
+      "state": "Selected targeted optical-correction candidate; source/actual-capture comparison and pure native-RGBA separation passed; root Unity rerender approval pending",
+      "actualOpticalEvidence": "Logs/QualityUpgrade20261031/AllOptical/Crossover-hyades-direction-3.png",
+      "inputOrder": "finished candidate first; exact original pose reference second",
+      "prompt": "Perform a tightly scoped sprite-sheet art edit. FIRST image is the finished native high-detail candidate; preserve its canvas, composition, exact 4-column5-row arrangement, anatomy sizes and crisp drawing style. SECOND image is original per-cell pose/effect truth. Transparent RGBA background, NO opaque black/checkerboard/background, no extra glow/shadow/border/labels. Do not resize, relocate, add/remove figures or redesign frames. Only make the stated corrections; all other cells keep their existing art, positions and effects. Every character/weapon remains fully inside canvas with clear transparent separation.\nONLY remove the added horizontal MAGENTA LASER emerging from behind the shoulder to the RIGHT of the monster at ROW4 COLUMN4 (cell15, hyades_13_3). That source cell has NO laser at all. Restore the ordinary rounded dark-blue shoulder/arm silhouette, pink tendrils behind it, and transparent space to its right, exactly as SECOND input row4col4. Retain its same left-facing head, glowing mouth, ivory shoulder collars, claws, pose, size and exact location. Do not remove lasers from other cells: row3col1/3/4 and row4col1/3 MUST retain their original beams. Never change the other19figures or their effects.",
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-21feae0a-b4a7-431a-ab8e-c17517dc0aed.png",
+      "visualReview": "Inspected source and actual Unity comparison: row4col4 invented rear-shoulder beam removed, natural shoulder/tendrils retained; other originally present beams and 20-cell order retained. No further generation planned.",
+      "outputSha256": "08330194cc5744f269509756e351fae5f4c7f8c3f1d0a7043f8a8b26bd3dd0a9",
+      "byteIdenticalToGeneratedOutput": true,
+      "exactFrames": [
+        {
+          "index": 40,
+          "sheetIndex": 2,
+          "cellIndex": 0,
+          "name": "hyades_10_0",
+          "originalSpriteId": "9bd633a7c6d18b0499e9097150de5b38",
+          "originalInternalId": "1008273657",
+          "sourceRect": {
+            "x": 23.0,
+            "y": 468.0,
+            "width": 138.0,
+            "height": 109.0
+          },
+          "sourcePivot": {
+            "x": 0.5077890157699585,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 41,
+          "sheetIndex": 2,
+          "cellIndex": 1,
+          "name": "hyades_10_1",
+          "originalSpriteId": "c6ff129cc8bd27a43b8355d8c50817cc",
+          "originalInternalId": "506032251",
+          "sourceRect": {
+            "x": 172.0,
+            "y": 467.0,
+            "width": 125.0,
+            "height": 109.0
+          },
+          "sourcePivot": {
+            "x": 0.4494679868221283,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 42,
+          "sheetIndex": 2,
+          "cellIndex": 2,
+          "name": "hyades_10_2",
+          "originalSpriteId": "084d574d5a0880349a85e99470b00f2b",
+          "originalInternalId": "-263440849",
+          "sourceRect": {
+            "x": 326.0,
+            "y": 464.0,
+            "width": 128.0,
+            "height": 115.0
+          },
+          "sourcePivot": {
+            "x": 0.3695339858531952,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 43,
+          "sheetIndex": 2,
+          "cellIndex": 3,
+          "name": "hyades_10_3",
+          "originalSpriteId": "809627ff0fd3bd04d8c2d70393a4c79a",
+          "originalInternalId": "-1250190584",
+          "sourceRect": {
+            "x": 479.0,
+            "y": 464.0,
+            "width": 123.0,
+            "height": 113.0
+          },
+          "sourcePivot": {
+            "x": 0.5889719724655151,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 44,
+          "sheetIndex": 2,
+          "cellIndex": 4,
+          "name": "hyades_11_0",
+          "originalSpriteId": "c3c72ffa249b3d742b797be5a82285a2",
+          "originalInternalId": "280436478",
+          "sourceRect": {
+            "x": 633.0,
+            "y": 464.0,
+            "width": 139.0,
+            "height": 114.0
+          },
+          "sourcePivot": {
+            "x": 0.34926798939704895,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 45,
+          "sheetIndex": 2,
+          "cellIndex": 5,
+          "name": "hyades_11_1",
+          "originalSpriteId": "4418781036faa7f47bfb521d1126bc73",
+          "originalInternalId": "-1743211395",
+          "sourceRect": {
+            "x": 785.0,
+            "y": 464.0,
+            "width": 129.0,
+            "height": 112.0
+          },
+          "sourcePivot": {
+            "x": 0.4471159875392914,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 46,
+          "sheetIndex": 2,
+          "cellIndex": 6,
+          "name": "hyades_11_2",
+          "originalSpriteId": "e88ac524a3b1e234babefa6845a06b56",
+          "originalInternalId": "-154509025",
+          "sourceRect": {
+            "x": 941.0,
+            "y": 464.0,
+            "width": 126.0,
+            "height": 113.0
+          },
+          "sourcePivot": {
+            "x": 0.4865590035915375,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 47,
+          "sheetIndex": 2,
+          "cellIndex": 7,
+          "name": "hyades_11_3",
+          "originalSpriteId": "617b13711f1bb8d44a8d6e2239cf4a8c",
+          "originalInternalId": "-1442519992",
+          "sourceRect": {
+            "x": 1093.0,
+            "y": 464.0,
+            "width": 124.0,
+            "height": 113.0
+          },
+          "sourcePivot": {
+            "x": 0.5720679759979248,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 48,
+          "sheetIndex": 2,
+          "cellIndex": 8,
+          "name": "hyades_12_0",
+          "originalSpriteId": "ebf067e51ea29a44784f88c24ecbe141",
+          "originalInternalId": "-546364920",
+          "sourceRect": {
+            "x": 22.0,
+            "y": 334.0,
+            "width": 142.0,
+            "height": 110.0
+          },
+          "sourcePivot": {
+            "x": 0.3454729914665222,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 49,
+          "sheetIndex": 2,
+          "cellIndex": 9,
+          "name": "hyades_12_1",
+          "originalSpriteId": "addcb819915dfa74891a220d24117ec0",
+          "originalInternalId": "-2005161623",
+          "sourceRect": {
+            "x": 174.0,
+            "y": 334.0,
+            "width": 122.0,
+            "height": 107.0
+          },
+          "sourcePivot": {
+            "x": 0.44412699341773987,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 50,
+          "sheetIndex": 2,
+          "cellIndex": 10,
+          "name": "hyades_12_2",
+          "originalSpriteId": "76ecf548653068a47866da1291ea1eaa",
+          "originalInternalId": "-1378866513",
+          "sourceRect": {
+            "x": 307.0,
+            "y": 334.0,
+            "width": 134.0,
+            "height": 113.0
+          },
+          "sourcePivot": {
+            "x": 0.6068090200424194,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 51,
+          "sheetIndex": 2,
+          "cellIndex": 11,
+          "name": "hyades_12_3",
+          "originalSpriteId": "a5ca5288fec7c1c48bfcd854777116ad",
+          "originalInternalId": "-1886761446",
+          "sourceRect": {
+            "x": 483.0,
+            "y": 334.0,
+            "width": 133.0,
+            "height": 112.0
+          },
+          "sourcePivot": {
+            "x": 0.4055039882659912,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 52,
+          "sheetIndex": 2,
+          "cellIndex": 12,
+          "name": "hyades_13_0",
+          "originalSpriteId": "cd1b1f649e3dc324e9857af9e6da1ce8",
+          "originalInternalId": "296252285",
+          "sourceRect": {
+            "x": 631.0,
+            "y": 333.0,
+            "width": 147.0,
+            "height": 111.0
+          },
+          "sourcePivot": {
+            "x": 0.41875600814819336,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 53,
+          "sheetIndex": 2,
+          "cellIndex": 13,
+          "name": "hyades_13_1",
+          "originalSpriteId": "401c8bc7c7ffac6468bb40d03839eeed",
+          "originalInternalId": "-272825131",
+          "sourceRect": {
+            "x": 787.0,
+            "y": 334.0,
+            "width": 124.0,
+            "height": 107.0
+          },
+          "sourcePivot": {
+            "x": 0.4812990128993988,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 54,
+          "sheetIndex": 2,
+          "cellIndex": 14,
+          "name": "hyades_13_2",
+          "originalSpriteId": "d90a7dc2c9ba581408f5d34b351a36a8",
+          "originalInternalId": "272837886",
+          "sourceRect": {
+            "x": 924.0,
+            "y": 333.0,
+            "width": 131.0,
+            "height": 113.0
+          },
+          "sourcePivot": {
+            "x": 0.5710189938545227,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 55,
+          "sheetIndex": 2,
+          "cellIndex": 15,
+          "name": "hyades_13_3",
+          "originalSpriteId": "947d59eadb8bbfa46a0e914061f50e88",
+          "originalInternalId": "-196437536",
+          "sourceRect": {
+            "x": 1106.0,
+            "y": 333.0,
+            "width": 111.0,
+            "height": 112.0
+          },
+          "sourcePivot": {
+            "x": 0.6752259731292725,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 56,
+          "sheetIndex": 2,
+          "cellIndex": 16,
+          "name": "hyades_14_0",
+          "originalSpriteId": "ad81e80ddeb2da144a1a9107f879502b",
+          "originalInternalId": "-811727388",
+          "sourceRect": {
+            "x": 20.0,
+            "y": 194.0,
+            "width": 142.0,
+            "height": 120.0
+          },
+          "sourcePivot": {
+            "x": 0.38774898648262024,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 57,
+          "sheetIndex": 2,
+          "cellIndex": 17,
+          "name": "hyades_14_1",
+          "originalSpriteId": "6845229ac6bc4874eb1e059e126eac9d",
+          "originalInternalId": "1660571797",
+          "sourceRect": {
+            "x": 174.0,
+            "y": 193.0,
+            "width": 125.0,
+            "height": 118.0
+          },
+          "sourcePivot": {
+            "x": 0.4735009968280792,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 58,
+          "sheetIndex": 2,
+          "cellIndex": 18,
+          "name": "hyades_14_2",
+          "originalSpriteId": "4f5d1bc03c45c084b94d45b2cad0c567",
+          "originalInternalId": "516189260",
+          "sourceRect": {
+            "x": 322.0,
+            "y": 194.0,
+            "width": 130.0,
+            "height": 119.0
+          },
+          "sourcePivot": {
+            "x": 0.2483460009098053,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 59,
+          "sheetIndex": 2,
+          "cellIndex": 19,
+          "name": "hyades_14_3",
+          "originalSpriteId": "6919041d6ae535644b006eeee1a738d2",
+          "originalInternalId": "-465165726",
+          "sourceRect": {
+            "x": 474.0,
+            "y": 194.0,
+            "width": 128.0,
+            "height": 118.0
+          },
+          "sourcePivot": {
+            "x": 0.7614039778709412,
+            "y": 0.009999999776482582
+          }
+        }
+      ],
+      "manifestSha256": "175b35a08bcc0c394a82cab1ffd0097ca9b23d266d65b108ad94fa4ab073be78",
+      "referenceSha256": "bb3154d44e31a8401c4c360abf106a70f8dd077a0e515f05f9b7ff9495ffe957",
+      "sourceIdentity": {
+        "source": "Assets/TalesTactics/Art/Crossover/hyades.png",
+        "sourceGuid": "09924e8332d16924383cdc9f1d5c481f",
+        "sourceSha256": "64b1ed18b0960ab116fd2ce18736771b4a384cfac71173ca99274724a1cc7b9a",
+        "currentSourceSha256": "4d7e15a9f700dc8692b5f18f419b8c835298497dedc41d521c9c15e0c2ef4e96",
+        "sourceMetaSha256": "069263043e2e81364e339bd232bbe85f0326992cafe50fe0af051a1ec65d004a"
+      },
+      "supportingReferenceSha256": "94fb69c628cb6e5804cf50406a03ab0bb8564c881962bf4f8c9f55831e83f820",
+      "nativeAnalysis": {
+        "name": "hyades-2-attempt2",
+        "passed": true,
+        "explicitLayout": false,
+        "width": 1122,
+        "height": 1402,
+        "usedFrames": 20,
+        "columnCuts": [
+          0,
+          293,
+          564,
+          841,
+          1122
+        ],
+        "rowColumnCuts": [
+          0,
+          293,
+          564,
+          841,
+          1122,
+          0,
+          293,
+          564,
+          841,
+          1122,
+          0,
+          293,
+          564,
+          841,
+          1122,
+          0,
+          293,
+          564,
+          841,
+          1122,
+          0,
+          293,
+          564,
+          841,
+          1122
+        ],
+        "rowCutsFromTop": [
+          0,
+          280,
+          561,
+          841,
+          1111,
+          1402
+        ],
+        "nativeRgbaHistogramSha256": "cbd482adfa68636a5898674c8209668fbcb0824262eeecfd0b80a9e58120510e",
+        "nativePixelCount": 840145,
+        "ownedPixelCount": 840145,
+        "uniqueOwnedPixelCount": 840145,
+        "allNativeRgbaPixelsPreserved": true,
+        "alphaAbove8OuterMarginsLeftRightBottomTop": [
+          20,
+          22,
+          64,
+          64
+        ],
+        "minimumSameRowHorizontalAlpha8Gap": 18,
+        "sameRowHorizontalAlpha8Gaps": [
+          33,
+          29,
+          37,
+          22,
+          27,
+          30,
+          20,
+          20,
+          43,
+          20,
+          18,
+          60,
+          27,
+          18,
+          23
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "strongComponentX": 28,
+            "strongComponentY": 1138,
+            "strongComponentWidth": 247,
+            "strongComponentHeight": 198,
+            "alphaAbove8Bounds": [
+              27,
+              1137,
+              249,
+              200
+            ],
+            "nativePixelCount": 42822
+          },
+          {
+            "index": 1,
+            "strongComponentX": 310,
+            "strongComponentY": 1139,
+            "strongComponentWidth": 240,
+            "strongComponentHeight": 197,
+            "alphaAbove8Bounds": [
+              309,
+              1138,
+              242,
+              199
+            ],
+            "nativePixelCount": 39342
+          },
+          {
+            "index": 2,
+            "strongComponentX": 581,
+            "strongComponentY": 1133,
+            "strongComponentWidth": 232,
+            "strongComponentHeight": 204,
+            "alphaAbove8Bounds": [
+              580,
+              1132,
+              235,
+              206
+            ],
+            "nativePixelCount": 40283
+          },
+          {
+            "index": 3,
+            "strongComponentX": 854,
+            "strongComponentY": 1133,
+            "strongComponentWidth": 225,
+            "strongComponentHeight": 204,
+            "alphaAbove8Bounds": [
+              852,
+              1132,
+              228,
+              206
+            ],
+            "nativePixelCount": 39054
+          },
+          {
+            "index": 4,
+            "strongComponentX": 28,
+            "strongComponentY": 871,
+            "strongComponentWidth": 256,
+            "strongComponentHeight": 206,
+            "alphaAbove8Bounds": [
+              27,
+              870,
+              258,
+              208
+            ],
+            "nativePixelCount": 44703
+          },
+          {
+            "index": 5,
+            "strongComponentX": 308,
+            "strongComponentY": 876,
+            "strongComponentWidth": 242,
+            "strongComponentHeight": 202,
+            "alphaAbove8Bounds": [
+              307,
+              873,
+              244,
+              206
+            ],
+            "nativePixelCount": 41363
+          },
+          {
+            "index": 6,
+            "strongComponentX": 579,
+            "strongComponentY": 869,
+            "strongComponentWidth": 233,
+            "strongComponentHeight": 210,
+            "alphaAbove8Bounds": [
+              578,
+              868,
+              236,
+              211
+            ],
+            "nativePixelCount": 40477
+          },
+          {
+            "index": 7,
+            "strongComponentX": 846,
+            "strongComponentY": 869,
+            "strongComponentWidth": 236,
+            "strongComponentHeight": 211,
+            "alphaAbove8Bounds": [
+              844,
+              868,
+              239,
+              213
+            ],
+            "nativePixelCount": 41357
+          },
+          {
+            "index": 8,
+            "strongComponentX": 27,
+            "strongComponentY": 611,
+            "strongComponentWidth": 260,
+            "strongComponentHeight": 200,
+            "alphaAbove8Bounds": [
+              26,
+              610,
+              265,
+              202
+            ],
+            "nativePixelCount": 43691
+          },
+          {
+            "index": 9,
+            "strongComponentX": 313,
+            "strongComponentY": 613,
+            "strongComponentWidth": 234,
+            "strongComponentHeight": 198,
+            "alphaAbove8Bounds": [
+              311,
+              612,
+              237,
+              200
+            ],
+            "nativePixelCount": 38853
+          },
+          {
+            "index": 10,
+            "strongComponentX": 572,
+            "strongComponentY": 607,
+            "strongComponentWidth": 234,
+            "strongComponentHeight": 208,
+            "alphaAbove8Bounds": [
+              568,
+              606,
+              240,
+              212
+            ],
+            "nativePixelCount": 41049
+          },
+          {
+            "index": 11,
+            "strongComponentX": 853,
+            "strongComponentY": 608,
+            "strongComponentWidth": 243,
+            "strongComponentHeight": 210,
+            "alphaAbove8Bounds": [
+              851,
+              607,
+              249,
+              213
+            ],
+            "nativePixelCount": 41827
+          },
+          {
+            "index": 12,
+            "strongComponentX": 23,
+            "strongComponentY": 344,
+            "strongComponentWidth": 264,
+            "strongComponentHeight": 203,
+            "alphaAbove8Bounds": [
+              20,
+              342,
+              271,
+              206
+            ],
+            "nativePixelCount": 44471
+          },
+          {
+            "index": 13,
+            "strongComponentX": 312,
+            "strongComponentY": 348,
+            "strongComponentWidth": 237,
+            "strongComponentHeight": 199,
+            "alphaAbove8Bounds": [
+              311,
+              347,
+              239,
+              201
+            ],
+            "nativePixelCount": 40249
+          },
+          {
+            "index": 14,
+            "strongComponentX": 572,
+            "strongComponentY": 343,
+            "strongComponentWidth": 227,
+            "strongComponentHeight": 208,
+            "alphaAbove8Bounds": [
+              568,
+              341,
+              233,
+              211
+            ],
+            "nativePixelCount": 40677
+          },
+          {
+            "index": 15,
+            "strongComponentX": 862,
+            "strongComponentY": 341,
+            "strongComponentWidth": 219,
+            "strongComponentHeight": 211,
+            "alphaAbove8Bounds": [
+              861,
+              340,
+              221,
+              213
+            ],
+            "nativePixelCount": 41254
+          },
+          {
+            "index": 16,
+            "strongComponentX": 27,
+            "strongComponentY": 70,
+            "strongComponentWidth": 260,
+            "strongComponentHeight": 214,
+            "alphaAbove8Bounds": [
+              26,
+              69,
+              262,
+              217
+            ],
+            "nativePixelCount": 46894
+          },
+          {
+            "index": 17,
+            "strongComponentX": 316,
+            "strongComponentY": 71,
+            "strongComponentWidth": 245,
+            "strongComponentHeight": 212,
+            "alphaAbove8Bounds": [
+              315,
+              70,
+              247,
+              215
+            ],
+            "nativePixelCount": 44107
+          },
+          {
+            "index": 18,
+            "strongComponentX": 582,
+            "strongComponentY": 65,
+            "strongComponentWidth": 237,
+            "strongComponentHeight": 221,
+            "alphaAbove8Bounds": [
+              580,
+              64,
+              240,
+              224
+            ],
+            "nativePixelCount": 43195
+          },
+          {
+            "index": 19,
+            "strongComponentX": 844,
+            "strongComponentY": 65,
+            "strongComponentWidth": 241,
+            "strongComponentHeight": 223,
+            "alphaAbove8Bounds": [
+              843,
+              64,
+              244,
+              225
+            ],
+            "nativePixelCount": 44477
+          }
+        ]
+      }
+    },
+    {
+      "character": "van",
+      "sheetIndex": 3,
+      "usedFrames": 12,
+      "targetFrames": [
+        "van_17_2",
+        "van_17_3"
+      ],
+      "detail": "ONLY correct ROW3 COLUMN3 and ROW3 COLUMN4 (cells10/11, van_17_2 and van_17_3). They incorrectly hold their sword tips DOWN. In both original source poses the blade is held UPWARD in front of the face as a guarding stance. Row3col3 faces RIGHT: two gloved hands close near chest, sword tip diagonally UPPER-RIGHT in front of face. Row3col4 faces LEFT: hands near chest, sword tip diagonally UPPER-LEFT in front of face. The immediately preceding row2col3/4 already has correct UPWARD guard and shows the intended continuity; retain the slight original crouch differences from SECOND image. Keep their current body height, face/head size, feet positions, hair and white-gold coat; rotate/repose only the hands and sword to match original. IMPORTANT row3col1 intentionally has its sword tip DOWN and MUST remain DOWN. Row3col2 remains rear view with no visible blade. Do not change any other10figures. Output remains FOUR columns FIVE nominal rows, ONLY first12figures in top3rows; bottom8cells fully transparent, no enlarging figures to fill blank rows.",
+      "actual": "Crossover-van-direction-2.png",
+      "sourceManifest": "Logs/QualityUpgrade20261031/References/Crossover-van/reference-manifest.json",
+      "referencePath": "Logs/QualityUpgrade20261031/References/Crossover-van/reference-03.png",
+      "supportingReference": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-03.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-03-v2.png",
+      "attempt": 2,
+      "state": "Selected targeted optical-correction candidate; source/actual-capture comparison and pure native-RGBA separation passed; root Unity rerender approval pending",
+      "actualOpticalEvidence": "Logs/QualityUpgrade20261031/AllOptical/Crossover-van-direction-2.png",
+      "inputOrder": "finished candidate first; exact original pose reference second",
+      "prompt": "Perform a tightly scoped sprite-sheet art edit. FIRST image is the finished native high-detail candidate; preserve its canvas, composition, exact 4-column5-row arrangement, anatomy sizes and crisp drawing style. SECOND image is original per-cell pose/effect truth. Transparent RGBA background, NO opaque black/checkerboard/background, no extra glow/shadow/border/labels. Do not resize, relocate, add/remove figures or redesign frames. Only make the stated corrections; all other cells keep their existing art, positions and effects. Every character/weapon remains fully inside canvas with clear transparent separation.\nONLY correct ROW3 COLUMN3 and ROW3 COLUMN4 (cells10/11, van_17_2 and van_17_3). They incorrectly hold their sword tips DOWN. In both original source poses the blade is held UPWARD in front of the face as a guarding stance. Row3col3 faces RIGHT: two gloved hands close near chest, sword tip diagonally UPPER-RIGHT in front of face. Row3col4 faces LEFT: hands near chest, sword tip diagonally UPPER-LEFT in front of face. The immediately preceding row2col3/4 already has correct UPWARD guard and shows the intended continuity; retain the slight original crouch differences from SECOND image. Keep their current body height, face/head size, feet positions, hair and white-gold coat; rotate/repose only the hands and sword to match original. IMPORTANT row3col1 intentionally has its sword tip DOWN and MUST remain DOWN. Row3col2 remains rear view with no visible blade. Do not change any other10figures. Output remains FOUR columns FIVE nominal rows, ONLY first12figures in top3rows; bottom8cells fully transparent, no enlarging figures to fill blank rows.",
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-9bf6f917-c8c5-40aa-8159-f3f3ca2f3407.png",
+      "visualReview": "Inspected original and both actual direction comparisons: row3col3 sword points upper-right, row3col4 upper-left, matching previous guard frames; row3col1 intentionally remains sword-down; 12-cell layout plus bottom blank rows retained. No further generation planned.",
+      "outputSha256": "252c3fd8fd04614d9da948e5630b53b56c58647ad63cb48c303782862bb5af62",
+      "byteIdenticalToGeneratedOutput": true,
+      "exactFrames": [
+        {
+          "index": 60,
+          "sheetIndex": 3,
+          "cellIndex": 0,
+          "name": "van_15_0",
+          "originalSpriteId": "5667e96044c608a4c800a8e3a30785d1",
+          "originalInternalId": "-24213133",
+          "sourceRect": {
+            "x": 652.0,
+            "y": 112.0,
+            "width": 115.0,
+            "height": 145.0
+          },
+          "sourcePivot": {
+            "x": 0.39130499958992004,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 61,
+          "sheetIndex": 3,
+          "cellIndex": 1,
+          "name": "van_15_1",
+          "originalSpriteId": "23f70006ff1950149a5ffbdf6641c6a1",
+          "originalInternalId": "-1722753634",
+          "sourceRect": {
+            "x": 798.0,
+            "y": 113.0,
+            "width": 116.0,
+            "height": 141.0
+          },
+          "sourcePivot": {
+            "x": 0.5172420144081116,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 62,
+          "sheetIndex": 3,
+          "cellIndex": 2,
+          "name": "van_15_2",
+          "originalSpriteId": "3a606f128190d654db24d295927f9936",
+          "originalInternalId": "912733119",
+          "sourceRect": {
+            "x": 955.0,
+            "y": 112.0,
+            "width": 106.0,
+            "height": 141.0
+          },
+          "sourcePivot": {
+            "x": 0.47169798612594604,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 63,
+          "sheetIndex": 3,
+          "cellIndex": 3,
+          "name": "van_15_3",
+          "originalSpriteId": "712a3a5103a8e7749bd4ed7c4bed567e",
+          "originalInternalId": "1798462490",
+          "sourceRect": {
+            "x": 1112.0,
+            "y": 113.0,
+            "width": 104.0,
+            "height": 136.0
+          },
+          "sourcePivot": {
+            "x": 0.46153900027275085,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 64,
+          "sheetIndex": 3,
+          "cellIndex": 4,
+          "name": "van_16_0",
+          "originalSpriteId": "d71a41357b0fce24b97637ab8ab07e67",
+          "originalInternalId": "686716033",
+          "sourceRect": {
+            "x": 46.0,
+            "y": 11.0,
+            "width": 96.0,
+            "height": 99.0
+          },
+          "sourcePivot": {
+            "x": 0.5208330154418945,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 65,
+          "sheetIndex": 3,
+          "cellIndex": 5,
+          "name": "van_16_1",
+          "originalSpriteId": "7d5677748647f0340a20aeb26b810595",
+          "originalInternalId": "-364915091",
+          "sourceRect": {
+            "x": 197.0,
+            "y": 11.0,
+            "width": 105.0,
+            "height": 94.0
+          },
+          "sourcePivot": {
+            "x": 0.5142859816551208,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 66,
+          "sheetIndex": 3,
+          "cellIndex": 6,
+          "name": "van_16_2",
+          "originalSpriteId": "798124211cf4f074f8f7921e366c6b55",
+          "originalInternalId": "-466517142",
+          "sourceRect": {
+            "x": 354.0,
+            "y": 11.0,
+            "width": 108.0,
+            "height": 97.0
+          },
+          "sourcePivot": {
+            "x": 0.2453709989786148,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 67,
+          "sheetIndex": 3,
+          "cellIndex": 7,
+          "name": "van_16_3",
+          "originalSpriteId": "78d85670b3ef38f4f84ce91feb7ff73a",
+          "originalInternalId": "-463454307",
+          "sourceRect": {
+            "x": 500.0,
+            "y": 11.0,
+            "width": 105.0,
+            "height": 98.0
+          },
+          "sourcePivot": {
+            "x": 0.6952379941940308,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 68,
+          "sheetIndex": 3,
+          "cellIndex": 8,
+          "name": "van_17_0",
+          "originalSpriteId": "c29d2b2357c5bfc4595baaf8323cf49e",
+          "originalInternalId": "-281837565",
+          "sourceRect": {
+            "x": 653.0,
+            "y": 11.0,
+            "width": 117.0,
+            "height": 97.0
+          },
+          "sourcePivot": {
+            "x": 0.5726500153541565,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 69,
+          "sheetIndex": 3,
+          "cellIndex": 9,
+          "name": "van_17_1",
+          "originalSpriteId": "b86f12bf145132d41b9ed3a6966a7086",
+          "originalInternalId": "-819890958",
+          "sourceRect": {
+            "x": 807.0,
+            "y": 11.0,
+            "width": 105.0,
+            "height": 93.0
+          },
+          "sourcePivot": {
+            "x": 0.4666669964790344,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 70,
+          "sheetIndex": 3,
+          "cellIndex": 10,
+          "name": "van_17_2",
+          "originalSpriteId": "41e4248f274731241ab73faffae70c0b",
+          "originalInternalId": "1780315644",
+          "sourceRect": {
+            "x": 958.0,
+            "y": 11.0,
+            "width": 106.0,
+            "height": 95.0
+          },
+          "sourcePivot": {
+            "x": 0.5,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 71,
+          "sheetIndex": 3,
+          "cellIndex": 11,
+          "name": "van_17_3",
+          "originalSpriteId": "fb940f654b46f6d4b8a575b3e6d741bf",
+          "originalInternalId": "-131218434",
+          "sourceRect": {
+            "x": 1118.0,
+            "y": 11.0,
+            "width": 103.0,
+            "height": 95.0
+          },
+          "sourcePivot": {
+            "x": 0.35436901450157166,
+            "y": 0.009999999776482582
+          }
+        }
+      ],
+      "manifestSha256": "d5e47f19ff49aedec94399e6bafc82f99d5a03de75d3430104f51764ad6aa2be",
+      "referenceSha256": "b840bf05b1c6d23d1bdb029189b0f288a738011b4ed8d35bb55bd6debb9a166e",
+      "sourceIdentity": {
+        "source": "Assets/TalesTactics/Art/Crossover/van.png",
+        "sourceGuid": "798eb8592c0c1284bbc07ba6e6b9d292",
+        "sourceSha256": "faf1d7807546eacd9c9b1f4ff94c52fc93605020e13d02bcddeb6c72d3665825",
+        "currentSourceSha256": "8b7e1870961e28b6ae76f5f67b44f28c1f6c29c97480ecb6adf53f07d77ef902",
+        "sourceMetaSha256": "779d315a6ba6d4bdb61e1e745fbe1395c20633fc74e6074b894dcecb17eef444"
+      },
+      "supportingReferenceSha256": "a81dcb4134da3f264611cf4896ec224e61516e8d0aa794e481b238063a724344",
+      "nativeAnalysis": {
+        "name": "van-3-attempt2",
+        "passed": true,
+        "explicitLayout": true,
+        "width": 1122,
+        "height": 1402,
+        "usedFrames": 12,
+        "columnCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "rowColumnCuts": [
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122,
+          0,
+          281,
+          561,
+          842,
+          1122
+        ],
+        "rowCutsFromTop": [
+          0,
+          370,
+          655,
+          920,
+          1122,
+          1402
+        ],
+        "nativeRgbaHistogramSha256": "ea4acc854eb3d72bffc9113bcfd7213de95d52bdd47f8f39cf9649c794d25acd",
+        "nativePixelCount": 437607,
+        "ownedPixelCount": 437607,
+        "uniqueOwnedPixelCount": 437607,
+        "allNativeRgbaPixelsPreserved": true,
+        "alphaAbove8OuterMarginsLeftRightBottomTop": [
+          24,
+          31,
+          510,
+          47
+        ],
+        "minimumSameRowHorizontalAlpha8Gap": 40,
+        "sameRowHorizontalAlpha8Gaps": [
+          47,
+          48,
+          92,
+          66,
+          49,
+          53,
+          40,
+          51,
+          80
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "strongComponentX": 25,
+            "strongComponentY": 1071,
+            "strongComponentWidth": 224,
+            "strongComponentHeight": 283,
+            "alphaAbove8Bounds": [
+              24,
+              1070,
+              226,
+              285
+            ],
+            "nativePixelCount": 38562
+          },
+          {
+            "index": 1,
+            "strongComponentX": 298,
+            "strongComponentY": 1071,
+            "strongComponentWidth": 230,
+            "strongComponentHeight": 282,
+            "alphaAbove8Bounds": [
+              297,
+              1070,
+              232,
+              284
+            ],
+            "nativePixelCount": 41855
+          },
+          {
+            "index": 2,
+            "strongComponentX": 577,
+            "strongComponentY": 1072,
+            "strongComponentWidth": 208,
+            "strongComponentHeight": 283,
+            "alphaAbove8Bounds": [
+              577,
+              1070,
+              209,
+              285
+            ],
+            "nativePixelCount": 39792
+          },
+          {
+            "index": 3,
+            "strongComponentX": 880,
+            "strongComponentY": 1075,
+            "strongComponentWidth": 198,
+            "strongComponentHeight": 279,
+            "alphaAbove8Bounds": [
+              878,
+              1074,
+              201,
+              281
+            ],
+            "nativePixelCount": 38703
+          },
+          {
+            "index": 4,
+            "strongComponentX": 32,
+            "strongComponentY": 783,
+            "strongComponentWidth": 204,
+            "strongComponentHeight": 207,
+            "alphaAbove8Bounds": [
+              31,
+              782,
+              206,
+              209
+            ],
+            "nativePixelCount": 36051
+          },
+          {
+            "index": 5,
+            "strongComponentX": 304,
+            "strongComponentY": 782,
+            "strongComponentWidth": 220,
+            "strongComponentHeight": 205,
+            "alphaAbove8Bounds": [
+              303,
+              781,
+              223,
+              207
+            ],
+            "nativePixelCount": 34527
+          },
+          {
+            "index": 6,
+            "strongComponentX": 576,
+            "strongComponentY": 782,
+            "strongComponentWidth": 235,
+            "strongComponentHeight": 205,
+            "alphaAbove8Bounds": [
+              575,
+              781,
+              237,
+              207
+            ],
+            "nativePixelCount": 36069
+          },
+          {
+            "index": 7,
+            "strongComponentX": 866,
+            "strongComponentY": 783,
+            "strongComponentWidth": 218,
+            "strongComponentHeight": 207,
+            "alphaAbove8Bounds": [
+              865,
+              782,
+              220,
+              209
+            ],
+            "nativePixelCount": 35623
+          },
+          {
+            "index": 8,
+            "strongComponentX": 25,
+            "strongComponentY": 512,
+            "strongComponentWidth": 237,
+            "strongComponentHeight": 200,
+            "alphaAbove8Bounds": [
+              24,
+              511,
+              239,
+              202
+            ],
+            "nativePixelCount": 34459
+          },
+          {
+            "index": 9,
+            "strongComponentX": 304,
+            "strongComponentY": 512,
+            "strongComponentWidth": 221,
+            "strongComponentHeight": 199,
+            "alphaAbove8Bounds": [
+              303,
+              510,
+              223,
+              201
+            ],
+            "nativePixelCount": 34112
+          },
+          {
+            "index": 10,
+            "strongComponentX": 578,
+            "strongComponentY": 511,
+            "strongComponentWidth": 213,
+            "strongComponentHeight": 195,
+            "alphaAbove8Bounds": [
+              577,
+              510,
+              215,
+              197
+            ],
+            "nativePixelCount": 33753
+          },
+          {
+            "index": 11,
+            "strongComponentX": 873,
+            "strongComponentY": 511,
+            "strongComponentWidth": 218,
+            "strongComponentHeight": 198,
+            "alphaAbove8Bounds": [
+              872,
+              510,
+              219,
+              201
+            ],
+            "nativePixelCount": 34101
+          }
+        ]
+      }
+    }
+  ],
+  "selectedSheets": [
+    {
+      "character": "hyades",
+      "sheetIndex": 2,
+      "path": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-hyades/source-sheet-02-v2.png",
+      "sha256": "08330194cc5744f269509756e351fae5f4c7f8c3f1d0a7043f8a8b26bd3dd0a9",
+      "targetFrames": [
+        "hyades_13_3"
+      ]
+    },
+    {
+      "character": "van",
+      "sheetIndex": 3,
+      "path": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-van/source-sheet-03-v2.png",
+      "sha256": "252c3fd8fd04614d9da948e5630b53b56c58647ad63cb48c303782862bb5af62",
+      "targetFrames": [
+        "van_17_2",
+        "van_17_3"
+      ]
+    }
+  ],
+  "reviewedLayouts": "Docs/QualityUpgrade/Generation/final-boss-optical-refinement-layouts.json",
+  "evidence": "Docs/QualityUpgrade/Validation/final-boss-optical-refinement-native.json",
+  "generationStopped": true,
+  "scopeLimit": "Only requested Hyades13_3 added beam and Van17_2/17_3 sword directions corrected. All other figures visually compared; AI image edit does not guarantee identical bytes for untouched cells. No further generation. Source PNG/meta/importer/runtime not changed. Actual root Unity rerender still required.",
+  "remainingObservations": [
+    {
+      "character": "executor",
+      "frame": "executor_3_3",
+      "reference": "Logs/QualityUpgrade20261031/References/Crossover-executor/reference-00.png row4col4",
+      "candidate": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/Crossover-executor/source-sheet-00-v2.png row4col4",
+      "observation": "Source weapon is occluded; candidate exposes rear purple spearhead. Previously reported to root, outside the last two-sheet correction scope and not generated again."
+    }
+  ]
+}

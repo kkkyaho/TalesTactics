@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "kind": "derived-summary-not-raw-report",
+  "derivedUtc": "2026-10-31T15:00:43.9678422Z",
+  "source": {
+    "projectRelativePath": "Logs/QualityUpgrade20261031/CandidateMotion/enemies-f4637f9d3638483b864b7349ea61930a/result.json",
+    "localAbsolutePath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/CandidateMotion/enemies-f4637f9d3638483b864b7349ea61930a/result.json",
+    "sha256": "71e1102a057284e24ce2c6eba8c690cdc527abe95ccc6ecf1359dde3eedbdd8b",
+    "bytes": 19051536,
+    "rawFileCopied": false,
+    "rawFileModified": false,
+    "rawRemainsLocal": true
+  },
+  "derivation": "Copy selected actual result fields and aggregate rows only. This is not a replacement for the full raw result.json, timeline, mesh/camera/frame evidence or manual PNG review. No result, threshold or original evidence was modified.",
+  "omitted": "Detailed per-frame/per-mesh camera geometry, full successful non-continuous rows, candidate input arrays, PNGs and timelines remain at the local source path.",
+  "report": {
+    "schema": 2,
+    "status": "failed",
+    "passed": false,
+    "mode": "motion",
+    "filter": "archer,artorius,asch,balseph,demitel,dhaos,eggbear,executor,ganabelt,golem,hyades,jahmir,legretta,mage,maxwell,ordo,origin,oscar,penguinist,polwigle,rassius,sentinel,shigure,shizel,slime,van,vholran,wolf",
+    "expectedRuns": 224,
+    "completedRuns": 224,
+    "actualRowCount": 224,
+    "catalogSkills": 182,
+    "owners": 39,
+    "heroes": 10,
+    "bosses": 20,
+    "signatureWeapons": 10,
+    "pngCount": 348,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "unityVersion": "6000.6.0f1",
+    "scope": "Presentation-only fixture: six original battlefield allies plus one isolated native-sprite actor. CharacterMotion, ImpactPool prepare/travel and CombatEffect contact APIs use authored timing. One staged recipient per effect; no multi-recipient/HP-number/audio/resolver/AI/turn/campaign certification. Use SkillRosterVfxReview separately for actual Director execution.",
+    "coverage": "All-direction phase telemetry is sampled at 30 simulated fps. Unobserved individual authored poses are listed rather than claimed covered. With continuous capture enabled: one selected base skill for Cless, Mint, Alphen, Farah, Dhaos, Barbatos, Front/Back only. Candidate preview additionally captures Velvet's base ultimate and Alphen's signature-weapon ultimate in all four directions (8 additional runs in this catalog). All other motion runs retain one representative release image plus phase telemetry, not continuous-image coverage. Missing categories fail coverage counts; absent optional ultimates are not invented.",
+    "visualApproval": "Not approved by this automated report. passed means bounded execution/state/geometry checks only, not visible VFX or visual quality. Inspect captures and their geometry/depth evidence. Prior schema1 single-contact captures are incomplete visual evidence.",
+    "errors": [
+      "origin/base/boss.origin.1-Front: Actor sprite left the render frame.",
+      "origin/base/boss.origin.1-Back: Actor sprite left the render frame.",
+      "origin/base/boss.origin.1-Left: Actor sprite left the render frame.",
+      "origin/base/boss.origin.1-Right: Actor sprite left the render frame."
+    ]
+  },
+  "preservation": {
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateClonesCreated": 28,
+    "candidateClonesDestroyed": 28
+  },
+  "candidateSelection": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\selected-revisions.json",
+    "sha256": "1b4354f7ee9e9198e1501763f24bb609812d1de829a197d3a4804433c4ced080",
+    "inputCount": 39,
+    "scope": "When enabled: six battlefield allies remain original; only the isolated actor uses transient candidate CharacterData/EquipmentData/EquipmentAppearance clones. This is read-only candidate evidence, not production application or approval."
+  },
+  "rowAssertionFalseCounts": {
+    "finished": 0,
+    "clean": 0,
+    "preparationObserved": 0,
+    "releaseObserved": 0,
+    "returnedIdle": 0,
+    "authoredDirectionMatches": 0,
+    "sessionUnchanged": 0
+  },
+  "ownerCoverage": [
+    {
+      "owner": "archer",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "artorius",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "asch",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "balseph",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "demitel",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "dhaos",
+      "rows": 8,
+      "continuousRows": 2,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "eggbear",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "executor",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "ganabelt",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "golem",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "hyades",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "jahmir",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "legretta",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "mage",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "maxwell",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "ordo",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "origin",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 4
+    },
+    {
+      "owner": "oscar",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "penguinist",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "polwigle",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "rassius",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "sentinel",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shigure",
+      "rows": 8,
+      "continuousRows": 0,
+      "normalRows": 8,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "shizel",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "slime",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "van",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "vholran",
+      "rows": 12,
+      "continuousRows": 0,
+      "normalRows": 12,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    },
+    {
+      "owner": "wolf",
+      "rows": 4,
+      "continuousRows": 0,
+      "normalRows": 4,
+      "reducedRows": 0,
+      "rowsWithErrors": 0
+    }
+  ],
+  "continuousSequences": [
+    {
+      "owner": "dhaos",
+      "equipment": "",
+      "skill": "dhaos-blast",
+      "facing": "Front",
+      "frames": 63,
+      "capture": "dhaos/base/dhaos-blast-Front/0028.png",
+      "errors": []
+    },
+    {
+      "owner": "dhaos",
+      "equipment": "",
+      "skill": "dhaos-blast",
+      "facing": "Back",
+      "frames": 63,
+      "capture": "dhaos/base/dhaos-blast-Back/0029.png",
+      "errors": []
+    }
+  ],
+  "failedRows": [
+    {
+      "owner": "origin",
+      "equipment": "",
+      "skill": "boss.origin.1",
+      "facing": "Front",
+      "mode": "motion",
+      "reduced": false,
+      "continuous": false,
+      "frames": 45,
+      "capture": "origin/base/boss.origin.1-Front/contact.png",
+      "errors": [
+        "Actor sprite left the render frame."
+      ]
+    },
+    {
+      "owner": "origin",
+      "equipment": "",
+      "skill": "boss.origin.1",
+      "facing": "Back",
+      "mode": "motion",
+      "reduced": false,
+      "continuous": false,
+      "frames": 45,
+      "capture": "origin/base/boss.origin.1-Back/contact.png",
+      "errors": [
+        "Actor sprite left the render frame."
+      ]
+    },
+    {
+      "owner": "origin",
+      "equipment": "",
+      "skill": "boss.origin.1",
+      "facing": "Left",
+      "mode": "motion",
+      "reduced": false,
+      "continuous": false,
+      "frames": 45,
+      "capture": "origin/base/boss.origin.1-Left/contact.png",
+      "errors": [
+        "Actor sprite left the render frame."
+      ]
+    },
+    {
+      "owner": "origin",
+      "equipment": "",
+      "skill": "boss.origin.1",
+      "facing": "Right",
+      "mode": "motion",
+      "reduced": false,
+      "continuous": false,
+      "frames": 45,
+      "capture": "origin/base/boss.origin.1-Right/contact.png",
+      "errors": [
+        "Actor sprite left the render frame."
+      ]
+    }
+  ],
+  "interpretation": "Candidate preview: the six field models used then-production assets and the separate review actor used candidate clones. VFX result predates final art application. Automated pass is bounded execution/state/geometry, never complete visual approval, post-application regression or human play."
+}

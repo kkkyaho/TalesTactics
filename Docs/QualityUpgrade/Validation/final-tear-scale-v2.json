@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "Tear display-only support-scale v2, independent actual Unity render review",
+  "status": "acceptable_with_explicit_pose_art_limitations",
+  "newBlockingFinding": false,
+  "productionAppliedByReviewer": false,
+  "unityExecutedByReviewer": false,
+  "priorReportsPreserved": [
+    "final-optical-mint-tear-cless.json",
+    "final-continuous-mint-tear-cless.json"
+  ],
+  "adjustment": {
+    "baseSupportDisplayMultiplier": 1.07,
+    "signatureSupportDisplayMultiplier": 1.12,
+    "categories": [
+      "hq",
+      "motion",
+      "extra",
+      "polish"
+    ],
+    "premiumArtUnchanged": true,
+    "meaning": "Candidate support PPU calibration; no PNG painting, runtime timing or combat rule change performed by this reviewer."
+  },
+  "staticSource": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\row-mapping.json",
+  "staticSha256": "c51a24b7b4c8fc160b63ddb4e9fcfe055d5d1e2341cda5aafc3d58b680443f68",
+  "candidateSelectionSha256": "dcf37a1b312e50348088b94541a99ba560f51defd4c42b25ae9dbe101834aa28",
+  "automaticEvidence": {
+    "expectedRuns": 24,
+    "completedRuns": 24,
+    "pngCount": 271,
+    "passed": true,
+    "errors": [],
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true
+  },
+  "continuousResult": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\result.json",
+  "continuousResultSha256": "da19d6aa00ccdbbfd3a457f92d8359c6a3901bdba54988e296d1d795b6b34023",
+  "scope": {
+    "staticImagesOpened": 8,
+    "staticSprites": 160,
+    "continuousBoundaryImagesOpened": 16,
+    "timelinesRead": 4,
+    "framesPerTimeline": [
+      8,
+      9,
+      43,
+      44
+    ],
+    "owners": [
+      "tear"
+    ],
+    "equipment": [
+      "base",
+      "signature"
+    ],
+    "staticDirections": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "continuousDirections": [
+      "Front",
+      "Back"
+    ],
+    "skill": "tear.0"
+  },
+  "conclusions": [
+    "Standing premium0 versus HQ0/motion0/extra0/polish3 is now close in all eight static images; no obvious support over-enlargement was found.",
+    "The same cast-entry 8/9 and recovery 43/44 boundaries remain contained. No duplicate staff, newly clipped body/weapon, or gross foot-position teleport was seen in the sixteen opened images.",
+    "Signature preparation-to-premium transition is closer after calibration. Base premium16 still has broader hair/cloth and different head/face mass than HQ preparation; it is not claimed seamless.",
+    "Raised arms, a crossed leg, flared cloth and hair explain significant silhouette variation. Residual illustration-specific head/body changes cannot be measured as a pure whole-sprite scale error; no further global PPU enlargement is recommended from these samples.",
+    "Signature Back premium16 hides the staff behind the body, matching the previously identified authored pose. It is not classified here as a newly missing weapon.",
+    "Base pale-gold hair versus signature brown hair is retained from the selected canonical art categories, not a colour change inside a run."
+  ],
+  "measurement": {
+    "method": "Read-only RGB foreground height within a 25px vertical band centred on the world anchor. Pixel differs from the corner background by more than 25 in any channel; viewport rect limits the row. AA/pose uncertainty about 1-2px. Proxy excludes much side-held weapon extent and is not anatomical landmark tracking.",
+    "comparison": "Use ratios inside each shared-camera image. v1 and v2 cameras and CharacterVisualSizing scales differ, so raw pixel heights across runs are not comparable.",
+    "cameraOrthographicSize": 11.938077,
+    "pixelsPerWorldUnit": 64.33197,
+    "characterScales": [
+      {
+        "hero": "tear",
+        "scale": 0.8042122,
+        "originalScale": 0.9845892,
+        "scaleAnchor": "tear-hq_0_0",
+        "scaleAnchorPpu": 210.281708,
+        "policy": "One CharacterVisualSizing.Scale(previewClone) for base/signature and all5rows; no per-sprite fitting."
+      }
+    ]
+  },
+  "limitations": [
+    "Eight static images and sixteen selected consecutive boundary images were visually opened, not all 271 output PNGs or a human real-time playthrough.",
+    "Four timeline telemetry files were read. Automated 24/24 pass is execution/state/geometry evidence only, and is not universal visual approval.",
+    "These first-spell transitions use HQ preparation and premium16, not polish; polish is reviewed only in the static representative samples.",
+    "No subpixel anatomical foot locking, all-pose anatomy, VFX readability, six-ally overlap, gameplay timing, resolver or build performance certification is claimed.",
+    "Remaining premium16 head/hair/cloth proportion and detail differences are explicitly retained rather than hidden by enlarging every support sprite.",
+    "This report supports the bounded Tear scale correction only. Production application and the final project acceptance gate remain the parent task responsibilities."
+  ],
+  "staticReviews": [
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-base-direction-0.png",
+      "sha256": "88290a2a6c84d5bc7852e8b2363ecce2420f9fdaf628a329d0269937bdcec83c",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear_0_0",
+          "heightPixels": 65,
+          "pixelsPerUnit": 166.373062
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_0",
+          "heightPixels": 66,
+          "pixelsPerUnit": 210.281708
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_0",
+          "heightPixels": 64,
+          "pixelsPerUnit": 215.581146
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_0",
+          "heightPixels": 64,
+          "pixelsPerUnit": 215.655884
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_0",
+          "heightPixels": 66,
+          "pixelsPerUnit": 186.940369
+        }
+      ],
+      "premiumToSupportRatios": [
+        0.9848,
+        1.0156,
+        1.0156,
+        0.9848
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-base-direction-1.png",
+      "sha256": "567d804bf131f37d7e4e4d9d63af9349ce24bfa9eb03e01844b97b65ec48dec9",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear_0_1",
+          "heightPixels": 67,
+          "pixelsPerUnit": 166.373062
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_1",
+          "heightPixels": 64,
+          "pixelsPerUnit": 210.281708
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_1",
+          "heightPixels": 61,
+          "pixelsPerUnit": 215.581146
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_1",
+          "heightPixels": 64,
+          "pixelsPerUnit": 215.655884
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_1",
+          "heightPixels": 66,
+          "pixelsPerUnit": 186.940369
+        }
+      ],
+      "premiumToSupportRatios": [
+        1.0469,
+        1.0984,
+        1.0469,
+        1.0152
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-base-direction-2.png",
+      "sha256": "d88e02adef57cc18f420e7f1f1d8fc383057bfa2273eea1f0996ed2c9c2a07aa",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear_0_2",
+          "heightPixels": 65,
+          "pixelsPerUnit": 166.373062
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_2",
+          "heightPixels": 64,
+          "pixelsPerUnit": 210.281708
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_2",
+          "heightPixels": 64,
+          "pixelsPerUnit": 215.581146
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_2",
+          "heightPixels": 63,
+          "pixelsPerUnit": 215.655884
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_2",
+          "heightPixels": 65,
+          "pixelsPerUnit": 186.940369
+        }
+      ],
+      "premiumToSupportRatios": [
+        1.0156,
+        1.0156,
+        1.0317,
+        1.0
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-base-direction-3.png",
+      "sha256": "16be3814696a018a706986bbc86a80350775a74e1bddee91e6d56bd43d6d9d96",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear_0_3",
+          "heightPixels": 65,
+          "pixelsPerUnit": 166.373062
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_3",
+          "heightPixels": 65,
+          "pixelsPerUnit": 210.281708
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_3",
+          "heightPixels": 64,
+          "pixelsPerUnit": 215.581146
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_3",
+          "heightPixels": 63,
+          "pixelsPerUnit": 215.655884
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_3",
+          "heightPixels": 65,
+          "pixelsPerUnit": 186.940369
+        }
+      ],
+      "premiumToSupportRatios": [
+        1.0,
+        1.0156,
+        1.0317,
+        1.0
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-signature-direction-0.png",
+      "sha256": "5e94bb60ba6dc96e960b6bc99fcea4d93268f4e13a8c96e26bf38da5d258fe08",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear-premium_0_0",
+          "heightPixels": 68,
+          "pixelsPerUnit": 160.405548
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_0",
+          "heightPixels": 68,
+          "pixelsPerUnit": 181.190857
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_0",
+          "heightPixels": 68,
+          "pixelsPerUnit": 203.430984
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_0",
+          "heightPixels": 69,
+          "pixelsPerUnit": 189.812256
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_0",
+          "heightPixels": 70,
+          "pixelsPerUnit": 175.103027
+        }
+      ],
+      "premiumToSupportRatios": [
+        1.0,
+        1.0,
+        0.9855,
+        0.9714
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-signature-direction-1.png",
+      "sha256": "5a8f07e043c88790392ba3bce37118c692ab3884e9e3e59f8a2adc90cc18cfb9",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear-premium_0_1",
+          "heightPixels": 69,
+          "pixelsPerUnit": 160.405548
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_1",
+          "heightPixels": 68,
+          "pixelsPerUnit": 181.190857
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_1",
+          "heightPixels": 69,
+          "pixelsPerUnit": 203.430984
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_1",
+          "heightPixels": 67,
+          "pixelsPerUnit": 189.812256
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_1",
+          "heightPixels": 71,
+          "pixelsPerUnit": 175.103027
+        }
+      ],
+      "premiumToSupportRatios": [
+        1.0147,
+        1.0,
+        1.0299,
+        0.9718
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-signature-direction-2.png",
+      "sha256": "1dcf49c87d6b61ae64941eb013a919edcb8486210256afe3ff679532b7388cae",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear-premium_0_2",
+          "heightPixels": 66,
+          "pixelsPerUnit": 160.405548
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_2",
+          "heightPixels": 68,
+          "pixelsPerUnit": 181.190857
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_2",
+          "heightPixels": 66,
+          "pixelsPerUnit": 203.430984
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_2",
+          "heightPixels": 65,
+          "pixelsPerUnit": 189.812256
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_2",
+          "heightPixels": 71,
+          "pixelsPerUnit": 175.103027
+        }
+      ],
+      "premiumToSupportRatios": [
+        0.9706,
+        1.0,
+        1.0154,
+        0.9296
+      ]
+    },
+    {
+      "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\5e5fd515ad18465c93bbbf66cb634cbf\\tear-signature-direction-3.png",
+      "sha256": "33209c2978dd7a0a1986c973f7f3024e6ff714782d75378dfb3f968202c8e261",
+      "visuallyOpened": true,
+      "slots": 20,
+      "allRectsInside": true,
+      "standingBodyBand": [
+        {
+          "row": 1,
+          "column": 1,
+          "sprite": "tear-premium_0_3",
+          "heightPixels": 67,
+          "pixelsPerUnit": 160.405548
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "sprite": "tear-hq_0_3",
+          "heightPixels": 69,
+          "pixelsPerUnit": 181.190857
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "sprite": "tear-motion_0_3",
+          "heightPixels": 68,
+          "pixelsPerUnit": 203.430984
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "sprite": "tear-extra_0_3",
+          "heightPixels": 67,
+          "pixelsPerUnit": 189.812256
+        },
+        {
+          "row": 5,
+          "column": 4,
+          "sprite": "tear-polish_3_3",
+          "heightPixels": 70,
+          "pixelsPerUnit": 175.103027
+        }
+      ],
+      "premiumToSupportRatios": [
+        0.971,
+        0.9853,
+        1.0,
+        0.9571
+      ]
+    }
+  ],
+  "continuousReviews": [
+    {
+      "equipment": "base",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Front\\timeline.json",
+      "sha256": "22e4be966747e66e8e2fb06a7b833de876d42c8a459e0853c3579e6e52b3c60c",
+      "frames": 62,
+      "images": [
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Front\\0008.png",
+          "sha256": "482587000ed63309db9d939f642eade3cbd405272be86b622886f1c02ae686d0",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Front\\0009.png",
+          "sha256": "986106e28f04e9cfbba2c824c77d1de75ae108192bb6a4401e1ded172717ffd0",
+          "sprite": "tear_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Front\\0043.png",
+          "sha256": "dfb791d3f9da07fdd6b9dc58f97233a3524848270bd2f6adc7aeb04e3f0832db",
+          "sprite": "tear_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Front\\0044.png",
+          "sha256": "50cfb6c7c5fb0bb367f5da5f5d051c1712715183ea3e8438fe3c9d8ed9a474c3",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        }
+      ],
+      "insideFrameAllSamples": true,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "equipment": "base",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Back\\timeline.json",
+      "sha256": "de305b59bd3d10c736c313ef66fd169a719d09fd143555b16d43be3349122dd9",
+      "frames": 63,
+      "images": [
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Back\\0008.png",
+          "sha256": "945e30b3be40e5b7aaf42edffd86bd218a52b9b611f1016578df1076976f24e6",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Back\\0009.png",
+          "sha256": "fb4be80f0d1868d30f1797e735ac36d1a21eca9a7b094bbb39026d61e184121d",
+          "sprite": "tear_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Back\\0043.png",
+          "sha256": "e30967dd0c3823ba41ad7e900316707e99940180173a22bf90c40d03cc34bc9f",
+          "sprite": "tear_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\base\\tear.0-Back\\0044.png",
+          "sha256": "d0827b98670050991e120b91872e3a6912051c306b2a7e46fdb4003d105106d5",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        }
+      ],
+      "insideFrameAllSamples": true,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "equipment": "signature",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Front\\timeline.json",
+      "sha256": "d6da517668741f0ae4b24353564f00fcab6f71a0eca8dfb5dd43142b04af67b9",
+      "frames": 63,
+      "images": [
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Front\\0008.png",
+          "sha256": "ad3a6ef74b5c20423d38b6ff5734b5bfe017eb5573b3a167edbdc393021ffce9",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Front\\0009.png",
+          "sha256": "95ab54c683035afeb029ac51dbc510e90c3bf4a8576467aaedf3e00cbfd9a613",
+          "sprite": "tear-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Front\\0043.png",
+          "sha256": "355093acf5f23bd7dfac50ec2c75e0ad09f0826df86d84c7788713b9df99c6bf",
+          "sprite": "tear-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Front\\0044.png",
+          "sha256": "bfd60544d159a639dddc17bf742b89e04cc6a2242f6e463225d8164c0e69b99e",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        }
+      ],
+      "insideFrameAllSamples": true,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "equipment": "signature",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Back\\timeline.json",
+      "sha256": "8becb7c69ca29fb9bf6d71b2fa16303b7b804845f873d402ffa9eb8fda70016e",
+      "frames": 63,
+      "images": [
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Back\\0008.png",
+          "sha256": "395d774ec1277cc2c363b60d2e8ee9e607e7f7778df5bfb95a953238ea9bece1",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Back\\0009.png",
+          "sha256": "e59027294d876070379ef053076326a98e03fecc19bf710d220613cdb302d88e",
+          "sprite": "tear-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Back\\0043.png",
+          "sha256": "3f091e0c0d80869a8e7ae4ab2a8a9280bca592f7b9ab52690043a7dde87303a5",
+          "sprite": "tear-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-tear-scale\\tear\\signature\\tear.0-Back\\0044.png",
+          "sha256": "a4936d6f1ce9a232b4991a087c99be77e1d0e506ae8822d1843656c208ae6dde",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        }
+      ],
+      "insideFrameAllSamples": true,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "unobservedAuthoredSprites": []
+    }
+  ]
+}

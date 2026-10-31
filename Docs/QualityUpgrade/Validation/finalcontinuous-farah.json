@@ -1,0 +1,1157 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-31",
+  "reviewer": "sd_mockup_review",
+  "status": "sampled_final_continuous_joins_reviewed_no_new_blocking_defect_observed",
+  "visualApprovalForAllAnimation": false,
+  "scope": {
+    "character": "farah",
+    "skill": "farah.ultimate",
+    "equipment": [
+      "base",
+      "signature"
+    ],
+    "viewFacings": [
+      "Front",
+      "Back"
+    ],
+    "continuousClips": 4,
+    "recordedFramesPerClip": 74,
+    "imagesActuallyViewed": 32,
+    "frameNumbersActuallyViewedPerClip": [
+      13,
+      14,
+      37,
+      38,
+      41,
+      63,
+      67,
+      68
+    ],
+    "joins": [
+      {
+        "frames": [
+          13,
+          14
+        ],
+        "roles": "premium preparation to HQ preparation"
+      },
+      {
+        "frames": [
+          37,
+          38,
+          41
+        ],
+        "roles": "premium punch to HQ punch and back to premium recovery"
+      },
+      {
+        "frames": [
+          63,
+          67,
+          68
+        ],
+        "roles": "polish recovery hold to HQ idle"
+      }
+    ],
+    "method": "Read four current final-a timelines, then opened the 32 original 960x540 Unity PNGs sequentially with explicit filename labels via view_image. These are sampled stills from continuous captures, not a full real-time playback. No image crop, composite, resizing or pixel editing by the reviewer."
+  },
+  "automatedEvidence": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\result.json",
+    "sha256": "0f11123d660440c541ce1e08597c00442b365a1add886458f2bfb4860533d278",
+    "schema": 2,
+    "passed": true,
+    "expectedRuns": 96,
+    "completedRuns": 96,
+    "pngCount": 1077,
+    "captureWidth": 960,
+    "captureHeight": 540,
+    "mode": "motion",
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidatePreview": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "candidateSelectionSha256": "9cf76a7965578440d766cbf1909477fae9307331c48898c84d319904fcfa1c57",
+    "errors": [],
+    "interpretation": "Engine execution/state/geometry evidence only. The 96-run pass does not establish visual approval of all 1077 PNGs or all candidate frames."
+  },
+  "findings": [
+    {
+      "id": "base_hq_premium_joins",
+      "severity": "no_new_blocking_defect_observed",
+      "evidence": "base Front/Back 0013,0014,0037,0038,0041",
+      "observation": "The change from raised knee to braced hands and from extended punch to the HQ punch changes stance and projected height. Head, torso and red boots remain recognizably the same SD character. No large simultaneous whole-body scale replacement, extra arm, extra weapon or clipped extremity was observed. HQ/premium hair outline and glove detailing still differ slightly."
+    },
+    {
+      "id": "base_polish_to_idle",
+      "severity": "nonblocking_drawing_variation",
+      "evidence": "base Front/Back 0063,0067,0068",
+      "observation": "The relaxed polish pose raises both hands into the HQ guard. Idle has a slightly fuller head outline; the boots remain on a similar image baseline without a conspicuous detached-foot event. Gold belt/hanging-ring decoration changes to a green tie. This is a remaining sheet-detail discrepancy, not proof of perfectly uniform costume drawings."
+    },
+    {
+      "id": "signature_hq_premium_joins",
+      "severity": "nonblocking_drawing_variation",
+      "evidence": "signature Front/Back 0013,0014,0037,0038,0041",
+      "observation": "The gold-cuffed gauntlet equipment category, two hands and two red boots are retained. The HQ drawing has narrower boots and a lighter silver grid over the fist, while premium uses a darker brown fist surface and broader rounded boots. These appearance differences are visible; no additional weapon, missing limb or major simultaneous head-and-torso size jump was identified in the sampled joins. Equipment-detail uniformity is not claimed."
+    },
+    {
+      "id": "signature_polish_to_idle",
+      "severity": "nonblocking_drawing_variation",
+      "evidence": "signature Front/Back 0063,0067,0068",
+      "observation": "The head and torso stay close in apparent scale while the hands move into guard. HQ idle boots are slimmer than the broad polish boots, and the gauntlet fist material/detail changes. This is local shape variation rather than the former conspicuous full-body proportion replacement; no new redraw is required by this sampled review."
+    },
+    {
+      "id": "back_twisting_pose_is_not_new_flip",
+      "severity": "authored_pose_change",
+      "evidence": "base Back 0041, farah_13_1",
+      "observation": "The face becomes visible during the twisting pose. The earlier source/baseline comparison in farah-transition-visual.json already records this same face-visible source pose, so it is not classified as a new view-direction reversal. Signature Back 0041 remains back-facing in its separately authored equipment drawing."
+    },
+    {
+      "id": "crop_and_limbs",
+      "severity": "no_defect_observed_in_sample",
+      "evidence": "all 32 viewed PNGs",
+      "observation": "Visible bodies and extremities remain inside the capture, with no obvious detached body piece, duplicate weapon or missing boot in this sample. Occluded far hands are not counted as missing limbs."
+    }
+  ],
+  "limits": [
+    "Only the listed 32 stills from four 74-frame clips were visually inspected in this final-a pass. This is not a review of every recorded frame, every skill, Left/Right continuous motion, or all 103 candidate sheets.",
+    "This pass checks selected cross-sheet joins at close-up capture size. Earlier native-source review and the 16-image static overview are separate evidence and are not replaced by these samples.",
+    "No real-time video playback was performed; perfectly smooth timing, in-between motion and all transient artifacts are not certified.",
+    "These isolated dark-background close-ups do not expose a battlefield floor. Similar boot image baselines do not prove physical foot planting, exact pivot correctness or root-motion continuity.",
+    "Changes in crouch, knee lift, torso twist and perspective legitimately alter the whole-sprite bounding box. No body-size defect was inferred solely from changing sprite bounds, hair width, or image height.",
+    "Visible glove material, belt decoration and boot-silhouette differences remain as explicitly recorded drawing variation. The review does not claim pixel-identical equipment or anatomy across poses.",
+    "Candidate-preview captures and preserved originals do not establish that production assets have been replaced or that the final Windows release build was visually reviewed."
+  ],
+  "relatedEvidence": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\Validation\\final-optical-farah-velvet.json",
+      "role": "Separate coarse overview of 16 Farah/Velvet base/signature images."
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Docs\\QualityUpgrade\\Validation\\farah-transition-visual.json",
+      "role": "Earlier old/new comparison; includes source-preserved Back twisting pose evidence. Not substituted for current final-a image review."
+    }
+  ],
+  "clips": [
+    {
+      "equipment": "base",
+      "facing": "Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\timeline.json",
+      "timelineSha256": "4602f7d2850f94df72d351eaf61517de64a771155978e46e932fb3b6de613115",
+      "recordedFrames": 74,
+      "continuousCapture": true,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 13,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0013.png",
+          "sha256": "b5ada8eaca41f228b8205776769c5c2466a173a653c96da759a26f275247425d",
+          "sprite": "farah_8_0",
+          "phase": "prepare",
+          "seconds": 0.46666717529296875,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1707.0,
+            "y": 339.0,
+            "width": 303.0,
+            "height": 295.0
+          },
+          "nativePivot": {
+            "x": 144.45498657226562,
+            "y": 16.253034591674805
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.1058608815073967,
+            "z": 0.1599999964237213
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 14,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0014.png",
+          "sha256": "60fc29313e88252079a7db628765893f11e5a205be40284f8faabd25bf92ff1a",
+          "sprite": "farah-hq_2_0",
+          "phase": "prepare",
+          "seconds": 0.5,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 282.0,
+            "y": 473.0,
+            "width": 253.0,
+            "height": 341.0
+          },
+          "nativePivot": {
+            "x": 148.21151733398438,
+            "y": 43.05704879760742
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.11305908113718033,
+            "z": 0.15998615324497223
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 37,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0037.png",
+          "sha256": "8200f4d4ba056d308ae3ec2ffeda3982d99e43aab7f0405cb955a7db84159d2d",
+          "sprite": "farah_12_0",
+          "phase": "contact/recovery",
+          "seconds": 1.2666664123535156,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1483.0,
+            "width": 246.0,
+            "height": 256.0
+          },
+          "nativePivot": {
+            "x": 131.1283721923828,
+            "y": 3.09218692779541
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5986284017562866,
+            "z": -0.46298182010650635
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 38,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0038.png",
+          "sha256": "70e564c90855ab12d421d5e184036b91712452b65c339356a405686a308c822d",
+          "sprite": "farah-hq_1_0",
+          "phase": "contact/recovery",
+          "seconds": 1.2999992370605469,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 805.0,
+            "y": 473.0,
+            "width": 254.0,
+            "height": 336.0
+          },
+          "nativePivot": {
+            "x": 140.45411682128906,
+            "y": 34.01107406616211
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5999983549118042,
+            "z": -0.4603627324104309
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0041.png",
+          "sha256": "f2de3db6e214796f041669c4003fcc74b9a6d0520ec8c0347b1d006ec22a8c46",
+          "sprite": "farah_13_0",
+          "phase": "contact/recovery",
+          "seconds": 1.3999977111816406,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 957.0,
+            "y": 1743.0,
+            "width": 208.0,
+            "height": 246.0
+          },
+          "nativePivot": {
+            "x": 126.53118896484375,
+            "y": 6.747339725494385
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5940790772438049,
+            "z": -0.43963393568992615
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 63,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0063.png",
+          "sha256": "65a65a49c2bcea1398b2ca89bd9e11d7633a6cacd6602ca3d5300e16101e5c41",
+          "sprite": "farah-polish_3_0",
+          "phase": "contact/recovery",
+          "seconds": 2.1333351135253906,
+          "texture": "PixelCampaign-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 259.399169921875,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 243.0,
+            "y": 2.0,
+            "width": 227.0,
+            "height": 480.0
+          },
+          "nativePivot": {
+            "x": 94.442626953125,
+            "y": 175.8527069091797
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.05531904101371765,
+            "z": -0.008796998299658298
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 67,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0067.png",
+          "sha256": "60d14248a1d1fac5366b2213cb373e7af88abc2357754c67a5c8f87a479f7236",
+          "sprite": "farah-polish_3_0",
+          "phase": "contact/recovery",
+          "seconds": 2.2666664123535156,
+          "texture": "PixelCampaign-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 259.399169921875,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 243.0,
+            "y": 2.0,
+            "width": 227.0,
+            "height": 480.0
+          },
+          "nativePivot": {
+            "x": 94.442626953125,
+            "y": 175.8527069091797
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04002603515982628,
+            "z": -1.453164622944314e-05
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Front\\0068.png",
+          "sha256": "5fc2b1b56c8b4da0c9161cbe9cf56adc72a6de7630afa36c095bc27621ddbe2d",
+          "sprite": "farah-hq_0_0",
+          "phase": "contact/recovery",
+          "seconds": 2.299999237060547,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 287.0,
+            "y": 830.0,
+            "width": 243.0,
+            "height": 313.0
+          },
+          "nativePivot": {
+            "x": 96.57594299316406,
+            "y": 12.103025436401367
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "base",
+      "facing": "Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\timeline.json",
+      "timelineSha256": "f00b72add12abf268e98750de47a80a44d3c036681ac27cc9f57dc03b353a8fa",
+      "recordedFrames": 74,
+      "continuousCapture": true,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 13,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0013.png",
+          "sha256": "3261e79bdfbdfabf1d0dc5cf6cc1e17c985ef83c3ce524aa9c1dfdb983def452",
+          "sprite": "farah_8_1",
+          "phase": "prepare",
+          "seconds": 0.4666595458984375,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1143.0,
+            "y": 339.0,
+            "width": 285.0,
+            "height": 297.0
+          },
+          "nativePivot": {
+            "x": 167.82974243164062,
+            "y": 16.230026245117188
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10585917532444,
+            "z": 0.1599999964237213
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 14,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0014.png",
+          "sha256": "12a75763e92f6362b07962dc3d2427943bd72309d96ff63df6ee887c52e02021",
+          "sprite": "farah-hq_2_1",
+          "phase": "prepare",
+          "seconds": 0.5,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 539.0,
+            "y": 473.0,
+            "width": 262.0,
+            "height": 340.0
+          },
+          "nativePivot": {
+            "x": 111.22265625,
+            "y": 39.0754508972168
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.11305908113718033,
+            "z": 0.15998615324497223
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 37,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0037.png",
+          "sha256": "b17105a9e8118eeb63ce9cbcd1af02db3228b9fc09c8d696a6f552476b723c69",
+          "sprite": "farah_12_1",
+          "phase": "contact/recovery",
+          "seconds": 1.26666259765625,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2318.0,
+            "y": 339.0,
+            "width": 265.0,
+            "height": 295.0
+          },
+          "nativePivot": {
+            "x": 113.46869659423828,
+            "y": 35.092185974121094
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5986284017562866,
+            "z": -0.46298182010650635
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 38,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0038.png",
+          "sha256": "073131ae93f145edf5c7f8489678bd3285d87116731f4fdbf638b6e5714cbaca",
+          "sprite": "farah-hq_1_1",
+          "phase": "contact/recovery",
+          "seconds": 1.2999954223632812,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 774.0,
+            "y": 1160.0,
+            "width": 278.0,
+            "height": 301.0
+          },
+          "nativePivot": {
+            "x": 93.59676361083984,
+            "y": 8.047877311706543
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5999983549118042,
+            "z": -0.4603627324104309
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0041.png",
+          "sha256": "334131bc5d009f1bf061e1f249a1783d44b71211df67f2ac49859aad8880d104",
+          "sprite": "farah_13_1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "texture": "MotionPremium-farah-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 189.8214874267578,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2109.0,
+            "y": 1483.0,
+            "width": 236.0,
+            "height": 251.0
+          },
+          "nativePivot": {
+            "x": 159.6353759765625,
+            "y": 7.931267738342285
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5940790772438049,
+            "z": -0.43963393568992615
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 63,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0063.png",
+          "sha256": "8a00f4ffc6eca30e7f211c67348990a36a22bcd6b956f5e90c888584fae3027c",
+          "sprite": "farah-polish_3_1",
+          "phase": "contact/recovery",
+          "seconds": 2.133331298828125,
+          "texture": "PixelCampaign-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 259.399169921875,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 706.0,
+            "y": 2.0,
+            "width": 251.0,
+            "height": 468.0
+          },
+          "nativePivot": {
+            "x": 99.90548706054688,
+            "y": 163.83055114746094
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.05531904101371765,
+            "z": -0.008796998299658298
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 67,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0067.png",
+          "sha256": "880502bd0229911799d5cf59b88cbbbfeb10b2c6f5575757df7a290a52c936e4",
+          "sprite": "farah-polish_3_1",
+          "phase": "contact/recovery",
+          "seconds": 2.26666259765625,
+          "texture": "PixelCampaign-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 259.399169921875,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 706.0,
+            "y": 2.0,
+            "width": 251.0,
+            "height": 468.0
+          },
+          "nativePivot": {
+            "x": 99.90548706054688,
+            "y": 163.83055114746094
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04002603515982628,
+            "z": -1.453164622944314e-05
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\base\\farah.ultimate-Back\\0068.png",
+          "sha256": "88dc9f43fc9e96a3d3567073202987302713aef1ed2c4ba3246f32e86cf88fee",
+          "sprite": "farah-hq_0_1",
+          "phase": "contact/recovery",
+          "seconds": 2.2999954223632812,
+          "texture": "PixelCampaign-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 237.70553588867188,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 748.0,
+            "y": 830.0,
+            "width": 244.0,
+            "height": 309.0
+          },
+          "nativePivot": {
+            "x": 109.39389038085938,
+            "y": 9.09382438659668
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "signature",
+      "facing": "Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\timeline.json",
+      "timelineSha256": "65ae36ebbfea4098a4b845b3eb4a02357d73ee778d1cb2c1da62416324b91310",
+      "recordedFrames": 74,
+      "continuousCapture": true,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 13,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0013.png",
+          "sha256": "e22cf443de73aefd7f57f868203faa6340b5aa0f7f7c936288982eb4b426c87f",
+          "sprite": "farah-premium_8_0",
+          "phase": "prepare",
+          "seconds": 0.4666595458984375,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1521.0,
+            "y": 330.0,
+            "width": 268.0,
+            "height": 298.0
+          },
+          "nativePivot": {
+            "x": 128.64588928222656,
+            "y": 5.001552581787109
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10585917532444,
+            "z": 0.1599999964237213
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 14,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0014.png",
+          "sha256": "74169b4e6437081ed070e16ccf35e12cf31ef181fd11c8c27dcc277a3d1ea1d2",
+          "sprite": "farah-hq_2_0",
+          "phase": "prepare",
+          "seconds": 0.5,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 238.0,
+            "y": 2336.0,
+            "width": 246.0,
+            "height": 311.0
+          },
+          "nativePivot": {
+            "x": 157.5016326904297,
+            "y": 6.14325475692749
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.11305908113718033,
+            "z": 0.15998615324497223
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 37,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0037.png",
+          "sha256": "7b53b8072377eca2499cb8f8107831ee49a1799c3b4eb77176ddf69e9e766f22",
+          "sprite": "farah-premium_12_0",
+          "phase": "contact/recovery",
+          "seconds": 1.26666259765625,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1516.0,
+            "width": 246.0,
+            "height": 272.0
+          },
+          "nativePivot": {
+            "x": 141.65174865722656,
+            "y": 2.7232396602630615
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5986284017562866,
+            "z": -0.46298182010650635
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 38,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0038.png",
+          "sha256": "80950ecb2d773bae6daac927d0a481533b36a6da93e7d30d40c35b318b8a4dd1",
+          "sprite": "farah-hq_1_0",
+          "phase": "contact/recovery",
+          "seconds": 1.2999954223632812,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1015.0,
+            "width": 248.0,
+            "height": 345.0
+          },
+          "nativePivot": {
+            "x": 152.63169860839844,
+            "y": 44.143226623535156
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5999983549118042,
+            "z": -0.4603627324104309
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0041.png",
+          "sha256": "246eb0587d83ad793823908ea7cc05f3bebb95afd66e349ffd9722cfd70030b9",
+          "sprite": "farah-premium_13_0",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1026.0,
+            "y": 2063.0,
+            "width": 229.0,
+            "height": 262.0
+          },
+          "nativePivot": {
+            "x": 117.29461669921875,
+            "y": 2.4449269771575928
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5940790772438049,
+            "z": -0.43963393568992615
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 63,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0063.png",
+          "sha256": "8b282b785829797616431199a9be1ad0e81a53983125ffac1968ac4d25cddfc2",
+          "sprite": "farah-polish_3_0",
+          "phase": "contact/recovery",
+          "seconds": 2.133331298828125,
+          "texture": "SignatureWeapons-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 241.0946807861328,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 514.0,
+            "y": 2.0,
+            "width": 251.0,
+            "height": 549.0
+          },
+          "nativePivot": {
+            "x": 92.62749481201172,
+            "y": 241.83489990234375
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.05531904101371765,
+            "z": -0.008796998299658298
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 67,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0067.png",
+          "sha256": "6af21c700130237914a7c1d549d269e78cc9064de594e514e411b6c9ebe9020a",
+          "sprite": "farah-polish_3_0",
+          "phase": "contact/recovery",
+          "seconds": 2.26666259765625,
+          "texture": "SignatureWeapons-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 241.0946807861328,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 514.0,
+            "y": 2.0,
+            "width": 251.0,
+            "height": 549.0
+          },
+          "nativePivot": {
+            "x": 92.62749481201172,
+            "y": 241.83489990234375
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04002603515982628,
+            "z": -1.453164622944314e-05
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Front\\0068.png",
+          "sha256": "7acf34ebd1b6e643572e7d048c8ef4cf7619160a40f59d15c43254342985f0fd",
+          "sprite": "farah-hq_0_0",
+          "phase": "contact/recovery",
+          "seconds": 2.2999954223632812,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Front",
+          "cameraYaw": 321.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1692.0,
+            "width": 242.0,
+            "height": 322.0
+          },
+          "nativePivot": {
+            "x": 99.29595947265625,
+            "y": 9.143224716186523
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    },
+    {
+      "equipment": "signature",
+      "facing": "Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\timeline.json",
+      "timelineSha256": "7637960084050306f7256d54528aeaadf915045b1092c67cf3b8145b8d84f962",
+      "recordedFrames": 74,
+      "continuousCapture": true,
+      "finished": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "timelineErrors": [],
+      "viewedFrames": [
+        {
+          "frame": 13,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0013.png",
+          "sha256": "380728a33a4adc1a3258dc09bb96d2c59ef54e68c00d38b2b2d6be38b5ab1782",
+          "sprite": "farah-premium_8_1",
+          "phase": "prepare",
+          "seconds": 0.4666595458984375,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 772.0,
+            "y": 639.0,
+            "width": 209.0,
+            "height": 295.0
+          },
+          "nativePivot": {
+            "x": 148.0028076171875,
+            "y": 2.9762301445007324
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.10585917532444,
+            "z": 0.1599999964237213
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 14,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0014.png",
+          "sha256": "2b0aee9ec1f1ebb40d4c9b3197918a95ae6f77a7c2d2a16b96e3cecdf96b1670",
+          "sprite": "farah-hq_2_1",
+          "phase": "prepare",
+          "seconds": 0.5,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2652.0,
+            "width": 249.0,
+            "height": 310.0
+          },
+          "nativePivot": {
+            "x": 100.36814880371094,
+            "y": 7.133389472961426
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.11305908113718033,
+            "z": 0.15998615324497223
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 37,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0037.png",
+          "sha256": "c9e1edd69d6465114d9f4aebe84a4cc23ab53780232dc01072ce29813b5314ee",
+          "sprite": "farah-premium_12_1",
+          "phase": "contact/recovery",
+          "seconds": 1.26666259765625,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1837.0,
+            "y": 1516.0,
+            "width": 240.0,
+            "height": 269.0
+          },
+          "nativePivot": {
+            "x": 93.28878784179688,
+            "y": 3.7232396602630615
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5986284017562866,
+            "z": -0.46298182010650635
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 38,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0038.png",
+          "sha256": "bf386d2cc55962a53b8b3fc70582f45de970e27ebf3363408debf69388f0a5ca",
+          "sprite": "farah-hq_1_1",
+          "phase": "contact/recovery",
+          "seconds": 1.2999954223632812,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 255.0,
+            "y": 2652.0,
+            "width": 265.0,
+            "height": 309.0
+          },
+          "nativePivot": {
+            "x": 83.67139434814453,
+            "y": 7.143224239349365
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5999983549118042,
+            "z": -0.4603627324104309
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 41,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0041.png",
+          "sha256": "7e2f00b14b60530f2a60ce575689a305f1fe00c2f8c0705a208117b419c0442f",
+          "sprite": "farah-premium_13_1",
+          "phase": "contact/recovery",
+          "seconds": 1.399993896484375,
+          "texture": "SignatureWeapons-farah-premium-v2",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 195.87075805664062,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 1276.0,
+            "y": 1792.0,
+            "width": 266.0,
+            "height": 265.0
+          },
+          "nativePivot": {
+            "x": 98.58637237548828,
+            "y": 3.5208163261413574
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.5940790772438049,
+            "z": -0.43963393568992615
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 63,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0063.png",
+          "sha256": "859303b5ce888b39a165feb459429a53e51750bd35ab3f6f69e9cb398df323d5",
+          "sprite": "farah-polish_3_1",
+          "phase": "contact/recovery",
+          "seconds": 2.133331298828125,
+          "texture": "SignatureWeapons-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 241.0946807861328,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2.0,
+            "width": 269.0,
+            "height": 551.0
+          },
+          "nativePivot": {
+            "x": 121.8386459350586,
+            "y": 241.79208374023438
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.05531904101371765,
+            "z": -0.008796998299658298
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 67,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0067.png",
+          "sha256": "8885a2cbfa339eb15ed103d904eef7dcf0895890104a99a1a0184e7d9a7a31eb",
+          "sprite": "farah-polish_3_1",
+          "phase": "contact/recovery",
+          "seconds": 2.26666259765625,
+          "texture": "SignatureWeapons-farah-polish-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 241.0946807861328,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 2.0,
+            "width": 269.0,
+            "height": 551.0
+          },
+          "nativePivot": {
+            "x": 121.8386459350586,
+            "y": 241.79208374023438
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04002603515982628,
+            "z": -1.453164622944314e-05
+          },
+          "insideFrame": true
+        },
+        {
+          "frame": 68,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\farah\\signature\\farah.ultimate-Back\\0068.png",
+          "sha256": "95b99b23c3ebd6260edd26825a3f3b899aeb23cd660b2a68f0a9d1c8d9b6e619",
+          "sprite": "farah-hq_0_1",
+          "phase": "contact/recovery",
+          "seconds": 2.2999954223632812,
+          "texture": "SignatureWeapons-farah-hq-v1",
+          "worldFacing": "Front",
+          "viewFacing": "Back",
+          "cameraYaw": 141.07244873046875,
+          "pixelsPerUnit": 245.0731658935547,
+          "nativeRect": {
+            "serializedVersion": "2",
+            "x": 2.0,
+            "y": 1364.0,
+            "width": 241.0,
+            "height": 324.0
+          },
+          "nativePivot": {
+            "x": 135.79063415527344,
+            "y": 10.143224716186523
+          },
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.03999999910593033,
+            "z": 0.0
+          },
+          "insideFrame": true
+        }
+      ]
+    }
+  ],
+  "changesPerformed": [
+    "Created this validation JSON only; no production, candidate, metadata, selection, runtime, Unity state or save edits."
+  ]
+}

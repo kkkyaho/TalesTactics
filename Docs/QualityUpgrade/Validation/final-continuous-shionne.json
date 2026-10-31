@@ -1,0 +1,84 @@
+{
+  "status": "no_blocking_visual_regression_in_reviewed_samples",
+  "reviewer": "root",
+  "inspectedImageCount": 17,
+  "inspectedImages": [
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Front/0009.png",
+      "sha256": "ba853a1c5fc1b8a74bfb7462c4a7a17e7a960be0b8c57902f01d9ecb026d4509"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Front/0010.png",
+      "sha256": "8b7fcdf81f5fbbc016feb9e8923255981fc781606f7684da709b64c43ae348b7"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Front/0013.png",
+      "sha256": "758007334a50eb7151db4ffba0d0b47687ce2b65e0f5e06d8498c75bdcc99d0f"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Front/0045.png",
+      "sha256": "1e8587e400db0be3c679a194fa8949a2bce3cfa9f24e7951c187a6af2c5eca5c"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Front/0046.png",
+      "sha256": "f92357154b00e726fb722df668b432f68c8e5d9b3cbab7c37ca3ba594a709dba"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Back/0009.png",
+      "sha256": "f5e73f2b4a96b27dddc8862e2de957ae4ac3204f241c99765e2bc6266eca69d6"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Back/0010.png",
+      "sha256": "83d2695a04452d77afb43941e01cd3f3835f437d89b6299af845f43293288c5d"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Back/0045.png",
+      "sha256": "fbff66678a947c9ec7ee0395fde641ccce3b346662559fb3e4f39054268450b7"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/base/shionne.0-Back/0046.png",
+      "sha256": "bff2ec5f068a9614aaa3dc034abbcd783dd0a1adc399281719be21e00c061f93"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Front/0009.png",
+      "sha256": "49cfd05ec61d17e7dc568f3f039d14a820029990f743bad0c6cc5893ca9a6c60"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Front/0010.png",
+      "sha256": "6c6bec57e892fac0ff87e2c5b95b520ab3f9592a56d4901e5f16c8d737981c57"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Front/0045.png",
+      "sha256": "277052f96e3a82e1d11a2a9bd7eff51ba9983262d2b4548101732612e33f7895"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Front/0046.png",
+      "sha256": "53c12af890859acdef83767f7840030191f6b85830e407e59a9cb08d2fb5379c"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Back/0009.png",
+      "sha256": "b183a1e7bcfc1c796ff4b4ab3ccdab24e7cf5020fe30414bd1767a6548189b53"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Back/0010.png",
+      "sha256": "148f2dd0578d4709b080ca1c3de5d23b07c2d83d68800dd4f7a67afe934e44d8"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Back/0045.png",
+      "sha256": "4a08054725091b4546ee945b21a2fbd19fc1a59b7bf22aa43c8b84b72c768ae9"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-b/shionne/signature/shionne.0-Back/0046.png",
+      "sha256": "a850b25b0fed181ad6ba58a9d82cea3f981873569728826a5ce2ece44b0c2ee8"
+    }
+  ],
+  "findings": [
+    "Actual normal/signature Front/Back sprite transitions preserve one equipped gun and recognizable body/face; no clipping or extra limbs observed.",
+    "Small hair-volume and stance differences remain between authored sheets; observed changes are not a whole-body scale collapse.",
+    "Source-authored Left/Right facing discrepancies noted separately in static review; not claimed fixed."
+  ],
+  "limitations": [
+    "17 sampled actual Unity frames in 4 continuous timelines, not all frames or all attacks.",
+    "Isolated presentation actor without field ground is not a final battlefield-contact or performance validation."
+  ]
+}

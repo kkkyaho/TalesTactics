@@ -30,7 +30,7 @@ Shader "TalesTactics/Impact"
                 float2 lo=cell+_MainTex_TexelSize.xy,hi=cell+1/_AtlasGrid-_MainTex_TexelSize.xy;
                 // Screen-space width keeps the ink readable at tactical zoom, while
                 // clamping every tap prevents a neighbouring atlas cell bleeding in.
-                float2 stroke=max(_MainTex_TexelSize.xy*2.5,fwidth(uv)*.9);
+                float2 stroke=min(max(_MainTex_TexelSize.xy*1.35,fwidth(uv)*.8),float2(.08,.08)/_AtlasGrid);
                 half edge=0;
                 edge=max(edge,SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,clamp(uv+float2(stroke.x,0),lo,hi)).a);
                 edge=max(edge,SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,clamp(uv-float2(stroke.x,0),lo,hi)).a);
@@ -38,9 +38,9 @@ Shader "TalesTactics/Impact"
                 edge=max(edge,SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,clamp(uv-float2(0,stroke.y),lo,hi)).a);
                 half body=smoothstep(.11,.24,tex.a),outline=smoothstep(.13,.27,edge);
                 half luminance=max(tex.r,max(tex.g,tex.b));
-                half band=luminance<.28?.24:luminance<.55?.49:luminance<.81?.75:1;
-                half3 painted=saturate(tex.rgb/max(luminance,.001)*band);
-                half3 ink=half3(.07,.045,.14)+painted*.08;
+                half band=luminance<.28?.27:luminance<.55?.52:luminance<.81?.78:1;
+                half3 painted=saturate(lerp(tex.rgb/max(luminance,.001)*band,tex.rgb,.18));
+                half3 ink=half3(.045,.055,.095)+painted*.07;
                 return half4(lerp(ink,painted,body),max(body,outline)*saturate(tex.a*4+outline));
             }
             half4 frag(Varyings i):SV_Target
@@ -50,7 +50,7 @@ Shader "TalesTactics/Impact"
                 half4 result=i.color*lerp(half4(1,1,1,1),tex,_UseTexture);
                 if(_CellFeather>.5)
                 {
-                    float2 local=frac(i.uv*4);float2 edge=min(local,1-local);
+                    float2 local=frac(i.uv*_AtlasGrid);float2 edge=min(local,1-local);
                     result.a*=smoothstep(.004,.025,min(edge.x,edge.y));
                 }
                 if(_SoftParticles>.5)

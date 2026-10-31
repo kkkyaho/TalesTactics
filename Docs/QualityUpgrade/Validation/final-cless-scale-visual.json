@@ -1,0 +1,65 @@
+{
+  "status": "no_blocking_visual_regression_in_reviewed_samples",
+  "reviewer": "root",
+  "inspectedImageCount": 12,
+  "inspectedImages": [
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Front/0011.png",
+      "sha256": "1cd6130ea122de480ca815b2aabbb698bb9a45182f20cf0b3adc2c8064eed651"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Front/0012.png",
+      "sha256": "6a97bbe6a82a0749a9b00e0013bea31ff046af04e5bd39df6d64076945b0e8ed"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Front/0041.png",
+      "sha256": "b2734dd13c855916abdee7ae6ff9844c159050e4ea6302a4cb3b662f640cd0a3"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Front/0042.png",
+      "sha256": "20ba219b140bbc651f2851331d796afc89cab989c04f5183c771d2635ac5357e"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Back/0010.png",
+      "sha256": "f64526bfb8741ddfad952a462c4351dc95fd1d31b1fb0f43bba554c51e2897ba"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Back/0011.png",
+      "sha256": "c967562e6bafd23d967abc7642897e10bba5ac038e85dd64a84d5036b9c82ff0"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Back/0040.png",
+      "sha256": "3c965bd3de32c0172f6e5664d6936c5b2b4071e67b783c4aa90cacd6f190b921"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/final-cless-scale/cless/signature/cless.0-Back/0041.png",
+      "sha256": "d2219a96ea3da7b6639c150a6bc177d4185a93da6d992a56d1135be9a8c12a05"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/TransitionOptical/d3315fa6f00543b28535a61078111b53/cless-signature-direction-0.png",
+      "sha256": "6116b3b38eece37b32d90f5d08b70e318046e9ba77bad24ba172630defe44f5d"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/TransitionOptical/d3315fa6f00543b28535a61078111b53/cless-signature-direction-1.png",
+      "sha256": "cb8cb075fe6ed9b4e0381306b038eb585df80ccb28a0624d3786aa6a72c606fb"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/TransitionOptical/d3315fa6f00543b28535a61078111b53/cless-signature-direction-2.png",
+      "sha256": "4d2f78d4f9d8d9debcd18426457b529c3cfcf72698386a6ca2057363b15279c9"
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/TransitionOptical/d3315fa6f00543b28535a61078111b53/cless-signature-direction-3.png",
+      "sha256": "4bf56f8c5d79ba4a49cf7b01ed56b2c384a5ebbf528a2a81921579b21f041e8c"
+    }
+  ],
+  "findings": [
+    "Final signature support import PPU divided by 1.13; raster bytes and sprite IDs unchanged.",
+    "Static 4-direction comparison and Front/Back HQ release/idle seams visibly reduce the previous smaller-head/body transition.",
+    "No duplicate sword, clipping or large body-size pop observed in these samples.",
+    "Earlier base Front/Back 9 sample frames and signature 8 prior frames were viewed to identify correction; base candidates unchanged."
+  ],
+  "limitations": [
+    "8 corrected continuous frames and 4 static sheets, not complete animation playback.",
+    "Single-sprite pose/limb orientation changes and modest hair-volume differences remain."
+  ]
+}

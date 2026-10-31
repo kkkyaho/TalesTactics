@@ -1,0 +1,4028 @@
+{
+  "schemaVersion": 1,
+  "scope": "Eight Farah base/signature transition sheets,16poses each, aligned to accepted premium SD anatomy. Candidate-only generation.",
+  "tool": "built-in imagegen",
+  "productionModified": false,
+  "unityRun": false,
+  "jobs": [
+    {
+      "key": "PixelCampaign-farah-motion",
+      "prompt": "Use case: style-transfer. Production transparent sprite atlas, fresh native high-resolution anime SD illustration. IMAGE1 is the exact16-pose and direction reference. IMAGE2 is ONLY the premium anatomical/style reference: copy its large skull/face-to-body ratio, compact torso, short limbs, chunky red shoes, crisp thick ink contours and clean cel shading. Redraw each pose from IMAGE1 with IMAGE2's anatomy, never replace IMAGE1 poses with IMAGE2 idle poses. Same Farah identity, green bob hair, green eyes, red sleeveless crop top, orange loose martial-arts trousers, red gloves and red chunky boots. Preserve the specific pose, head/eye direction, hand gesture and extended leg/foot role of each source cell. Use exactly4columns x5rows on a native1122x1402 transparent canvas. Exactly16 separate whole figures occupy rows1..4; row5 completely empty transparent. Direction order EACHROW: front, back (face hidden), right-facing profile (face visible), left-facing profile (face visible), except retain the face exposure of the source lying poses. Each figure centered in its owncell, safe transparent gaps at least20px between strong silhouettes, at least15px outer margin, no neighboring contact. Upright figures should have the same native head/body scale as IMAGE2, roughly235-245px high; crouched and lying poses must naturally be shorter, do not enlarge them to fill their cells. Keep kicks/punches complete with enough transparent clearance. Ignore stray duplicate foot/hair fragments between cells in IMAGE1 extraction; draw only the16 complete intended figures. True alpha0 background, no ground/shadow/VFX/text/borders/grid. No weapons added, no pose/order changes, no mirrored rear/front confusion, no photoreal shading or blur.\nPose rows from IMAGE1: row1 walk stride with first leading foot and arm swing; row2 complementary stride with the opposite leading foot/arm; row3 hit recoil leaning backward with arms spread and pained face, backcell face hidden; row4 unconscious lying face-down/on side with eyes closed, exact head-to-feet orientation and face visibility from IMAGE1. Preserve the difference of both walk strides. Do not stand up the lying row, do not rotate its body. Keep all figures including death poses at same head and boot size; lying poses naturally much shorter.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-motion/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: two distinct arm/stride sequences, recoil row with pained expression and four lying dead poses preserved. Side profiles remain face-visible; back rows face-hidden where source does. Same skull and chunky boot style through standing/recoil/lying; lying figures naturally shorter. No apparent clipping. Render/PPU continuity pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-0213d680-980a-48dc-bb48-5e0ab5cfad68.png",
+      "generatedSha256": "67b8fe0e48cd38a56b1ea15f295e22e6e461293d70da7755dc8ae0435a4b19a7",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-farah-motion\\reference-manifest.json",
+      "manifestSha256": "13dcdd7d13ea3cd2315b97080c54949605dac3bd05faff7bf08539ce92cdb382",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-motion.png",
+      "sourceGuid": "59b7e474429ad8944b4f14be1bcd4a1c",
+      "sourceSha256": "9298df9c2088cc958bb68570469838117e17a506562760bf44fac6717f754033",
+      "sourceMetaSha256": "ecabb6ffaaf7d540e0670c703d7a7fe3cba7c234a1e10a99c775aa6b4669ab2e",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-motion/reference-00.png",
+          "sha256": "b7a433019fa972c47154680aa34f3559dfd8cc667b796585b1e1a640812c61a2"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png",
+          "sha256": "37818113bf7ee9a1cbbf96e329ec669dfc7f9f61a458f420dec07eeb39c378f1"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-motion_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "cf6dcc4680aabbb4994ec1848e5f1429",
+          "originalInternalId": "1566737377"
+        },
+        {
+          "index": 1,
+          "name": "farah-motion_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "3f1072dacda3c514eb4b54366ded995c",
+          "originalInternalId": "-1846731605"
+        },
+        {
+          "index": 2,
+          "name": "farah-motion_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "36eea7c102559824c9366c07dcac7d4e",
+          "originalInternalId": "-1392918410"
+        },
+        {
+          "index": 3,
+          "name": "farah-motion_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "8e7d61d9cba4c6141abb948529865f2d",
+          "originalInternalId": "1020695443"
+        },
+        {
+          "index": 4,
+          "name": "farah-motion_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "9a735128a589802438aa4542f6a296b3",
+          "originalInternalId": "-84382865"
+        },
+        {
+          "index": 5,
+          "name": "farah-motion_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "250cefc62f2552a40b550c7d0a2a776f",
+          "originalInternalId": "1402284808"
+        },
+        {
+          "index": 6,
+          "name": "farah-motion_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "2448eb82a6a20234686d283af3017ac6",
+          "originalInternalId": "-43456191"
+        },
+        {
+          "index": 7,
+          "name": "farah-motion_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "cf52b51a51841af4695f2e9f429d060d",
+          "originalInternalId": "1380872787"
+        },
+        {
+          "index": 8,
+          "name": "farah-motion_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "6addae29b08bee24b99613cd5f27e1bc",
+          "originalInternalId": "1991466503"
+        },
+        {
+          "index": 9,
+          "name": "farah-motion_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "2af143997eb67af41ac53cc32c1fb908",
+          "originalInternalId": "-221862406"
+        },
+        {
+          "index": 10,
+          "name": "farah-motion_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "e3a76b928f622e54787234eb07f97895",
+          "originalInternalId": "-1726753475"
+        },
+        {
+          "index": 11,
+          "name": "farah-motion_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "c4c07b163afb90042bb7f45490781842",
+          "originalInternalId": "1218107076"
+        },
+        {
+          "index": 12,
+          "name": "farah-motion_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "45059a592f2516d4fb951dd1747e578a",
+          "originalInternalId": "-2110846902"
+        },
+        {
+          "index": 13,
+          "name": "farah-motion_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "0209f84e38f231345b74bc8a4acb070a",
+          "originalInternalId": "465926894"
+        },
+        {
+          "index": 14,
+          "name": "farah-motion_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "c740f0df1b8029c4798a033b01cdbe94",
+          "originalInternalId": "-2032609434"
+        },
+        {
+          "index": 15,
+          "name": "farah-motion_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "473617169df63ad4bb72849e5d71529b",
+          "originalInternalId": "814320495"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 660023,
+        "strongPixels": 562708,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          30,
+          1108,
+          1402
+        ],
+        "strongCanvasBbox": [
+          17,
+          32,
+          1105,
+          1161
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 36502,
+            "bbox": [
+              77,
+              34,
+              246,
+              342
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              77.0,
+              34.0,
+              34.5,
+              -61.6
+            ],
+            "widthFractionOfCell": 0.6025,
+            "heightFractionOfCell": 1.0984
+          },
+          {
+            "pixels": 35457,
+            "bbox": [
+              349,
+              32,
+              513,
+              342
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              68.5,
+              32.0,
+              48.0,
+              -61.6
+            ],
+            "widthFractionOfCell": 0.5847,
+            "heightFractionOfCell": 1.1056
+          },
+          {
+            "pixels": 38934,
+            "bbox": [
+              576,
+              34,
+              780,
+              341
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              15.0,
+              34.0,
+              61.5,
+              -60.6
+            ],
+            "widthFractionOfCell": 0.7273,
+            "heightFractionOfCell": 1.0949
+          },
+          {
+            "pixels": 40689,
+            "bbox": [
+              851,
+              33,
+              1071,
+              343
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              9.5,
+              33.0,
+              51.0,
+              -62.6
+            ],
+            "widthFractionOfCell": 0.7843,
+            "heightFractionOfCell": 1.1056
+          },
+          {
+            "pixels": 37935,
+            "bbox": [
+              72,
+              363,
+              255,
+              678
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              72.0,
+              82.6,
+              25.5,
+              -117.2
+            ],
+            "widthFractionOfCell": 0.6524,
+            "heightFractionOfCell": 1.1234
+          },
+          {
+            "pixels": 37281,
+            "bbox": [
+              353,
+              363,
+              520,
+              678
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              72.5,
+              82.6,
+              41.0,
+              -117.2
+            ],
+            "widthFractionOfCell": 0.5954,
+            "heightFractionOfCell": 1.1234
+          },
+          {
+            "pixels": 41509,
+            "bbox": [
+              584,
+              365,
+              800,
+              677
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              23.0,
+              84.6,
+              41.5,
+              -116.2
+            ],
+            "widthFractionOfCell": 0.7701,
+            "heightFractionOfCell": 1.1127
+          },
+          {
+            "pixels": 41340,
+            "bbox": [
+              864,
+              368,
+              1079,
+              678
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              22.5,
+              87.6,
+              43.0,
+              -117.2
+            ],
+            "widthFractionOfCell": 0.7665,
+            "heightFractionOfCell": 1.1056
+          },
+          {
+            "pixels": 43083,
+            "bbox": [
+              42,
+              702,
+              282,
+              987
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              42.0,
+              -139.2,
+              -1.5,
+              134.6
+            ],
+            "widthFractionOfCell": 0.8556,
+            "heightFractionOfCell": 1.0164
+          },
+          {
+            "pixels": 23961,
+            "bbox": [
+              17,
+              1028,
+              290,
+              1159
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              17.0,
+              186.8,
+              -9.5,
+              -37.4
+            ],
+            "widthFractionOfCell": 0.9733,
+            "heightFractionOfCell": 0.4672
+          },
+          {
+            "pixels": 41229,
+            "bbox": [
+              326,
+              702,
+              537,
+              986
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              45.5,
+              -139.2,
+              24.0,
+              135.6
+            ],
+            "widthFractionOfCell": 0.7522,
+            "heightFractionOfCell": 1.0128
+          },
+          {
+            "pixels": 22556,
+            "bbox": [
+              302,
+              1025,
+              562,
+              1161
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              21.5,
+              183.8,
+              -1.0,
+              -39.4
+            ],
+            "widthFractionOfCell": 0.9269,
+            "heightFractionOfCell": 0.485
+          },
+          {
+            "pixels": 40034,
+            "bbox": [
+              581,
+              703,
+              827,
+              990
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              20.0,
+              -138.2,
+              14.5,
+              131.6
+            ],
+            "widthFractionOfCell": 0.877,
+            "heightFractionOfCell": 1.0235
+          },
+          {
+            "pixels": 20250,
+            "bbox": [
+              584,
+              1040,
+              837,
+              1160
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              23.0,
+              198.8,
+              4.5,
+              -38.4
+            ],
+            "widthFractionOfCell": 0.902,
+            "heightFractionOfCell": 0.428
+          },
+          {
+            "pixels": 41321,
+            "bbox": [
+              858,
+              704,
+              1100,
+              990
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              16.5,
+              -137.2,
+              22.0,
+              131.6
+            ],
+            "widthFractionOfCell": 0.8627,
+            "heightFractionOfCell": 1.02
+          },
+          {
+            "pixels": 20627,
+            "bbox": [
+              851,
+              1042,
+              1105,
+              1161
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              9.5,
+              200.8,
+              17.0,
+              -39.4
+            ],
+            "widthFractionOfCell": 0.9055,
+            "heightFractionOfCell": 0.4244
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 12,
+        "majorSilhouetteHeightRange": [
+          119,
+          315
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          12,
+          12,
+          13,
+          13,
+          14,
+          14,
+          15,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 34776,
+          "maxAlpha": 255,
+          "above8Pixels": 29590,
+          "above128Pixels": 28281
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-farah-motion\\source-sheet-00.png",
+      "candidateSha256": "67b8fe0e48cd38a56b1ea15f295e22e6e461293d70da7755dc8ae0435a4b19a7",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-farah-hq",
+      "prompt": "Use case: style-transfer. Production transparent sprite atlas, fresh native high-resolution anime SD illustration. IMAGE1 is the exact16-pose and direction reference. IMAGE2 is ONLY the premium anatomical/style reference: copy its large skull/face-to-body ratio, compact torso, short limbs, chunky red shoes, crisp thick ink contours and clean cel shading. Redraw each pose from IMAGE1 with IMAGE2's anatomy, never replace IMAGE1 poses with IMAGE2 idle poses. Same Farah identity, green bob hair, green eyes, red sleeveless crop top, orange loose martial-arts trousers, red gloves and red chunky boots. Preserve the specific pose, head/eye direction, hand gesture and extended leg/foot role of each source cell. Use exactly4columns x5rows on a native1122x1402 transparent canvas. Exactly16 separate whole figures occupy rows1..4; row5 completely empty transparent. Direction order EACHROW: front, back (face hidden), right-facing profile (face visible), left-facing profile (face visible), except retain the face exposure of the source lying poses. Each figure centered in its owncell, safe transparent gaps at least20px between strong silhouettes, at least15px outer margin, no neighboring contact. Upright figures should have the same native head/body scale as IMAGE2, roughly235-245px high; crouched and lying poses must naturally be shorter, do not enlarge them to fill their cells. Keep kicks/punches complete with enough transparent clearance. Ignore stray duplicate foot/hair fragments between cells in IMAGE1 extraction; draw only the16 complete intended figures. True alpha0 background, no ground/shadow/VFX/text/borders/grid. No weapons added, no pose/order changes, no mirrored rear/front confusion, no photoreal shading or blur.\nPose rows from IMAGE1: row1 guarded idle fists raised; row2 one forward punch (front foreshortened fist, back punch arm extends screen-right, right profile punches right, left punches left); row3 hands clasped at chest preparing energy, preserve clasped fingers; row4 tight raised-fists defensive brace. Row2 punch must not become a kick. Maintain the body facing for every cell.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-hq/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: four facing directions retained; row2 punches, row3 clasped hands, row4 tight guard preserved. Large head, compact torso, chunky boots align to premium reference. No extra equipment or apparent silhouette clipping. Render/PPU continuity still pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-7579955c-4ce0-45b9-b1d1-8722597afc63.png",
+      "generatedSha256": "13b2f2d0081cdd91f6cb5b1dc323880cdfa06032a2e96a9544ff2768feb2ff43",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-farah-hq\\reference-manifest.json",
+      "manifestSha256": "5d6b8b23315bf39d2f5bf814610f8a387490dbf3af7752aa19480eae478c3917",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-hq.png",
+      "sourceGuid": "e9f9193d77d2b724abbb8c7ad7f73b6b",
+      "sourceSha256": "1f4dec33983e34c1220e4fa077aec0d56e1a4ef898ad114e0fd410d7e5827688",
+      "sourceMetaSha256": "82c6f4c6362e188582615a8cec017d1efb65190e2f6b89a91be9a3ecb9d818a4",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-hq/reference-00.png",
+          "sha256": "c23b793106bf019245afd89b1638662b05ab08daebeb1ebb225783bfd9ac79da"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png",
+          "sha256": "37818113bf7ee9a1cbbf96e329ec669dfc7f9f61a458f420dec07eeb39c378f1"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-hq_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "f007e5244ec2677488e7b2a8df7a3d96",
+          "originalInternalId": "2014007978"
+        },
+        {
+          "index": 1,
+          "name": "farah-hq_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "15961044488fd9048b7776fbfa575e29",
+          "originalInternalId": "-1466531466"
+        },
+        {
+          "index": 2,
+          "name": "farah-hq_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "049b533fdf7e5f944a9452232057f083",
+          "originalInternalId": "-1023473893"
+        },
+        {
+          "index": 3,
+          "name": "farah-hq_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "cf8537c147e84e54ca9e4c239ac76514",
+          "originalInternalId": "-1485753651"
+        },
+        {
+          "index": 4,
+          "name": "farah-hq_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "020039a5745721d44a3dc49f5fa2f290",
+          "originalInternalId": "126271846"
+        },
+        {
+          "index": 5,
+          "name": "farah-hq_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "998124d246fc31c458e50d64e84ebf98",
+          "originalInternalId": "-1081821434"
+        },
+        {
+          "index": 6,
+          "name": "farah-hq_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "fdc09f00ec54c9840a5174731c592044",
+          "originalInternalId": "1993009860"
+        },
+        {
+          "index": 7,
+          "name": "farah-hq_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "fb6621fbd7e0a6c45abd1f5facbc9db0",
+          "originalInternalId": "108061821"
+        },
+        {
+          "index": 8,
+          "name": "farah-hq_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "29a858aa37249a64bb490199cec8fcd6",
+          "originalInternalId": "-419147894"
+        },
+        {
+          "index": 9,
+          "name": "farah-hq_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "8a065ad132e810f49977f4b525596cca",
+          "originalInternalId": "769201004"
+        },
+        {
+          "index": 10,
+          "name": "farah-hq_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "20a68b79b3007da40a983456d54ed8cb",
+          "originalInternalId": "1484060660"
+        },
+        {
+          "index": 11,
+          "name": "farah-hq_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "783fa6abea2db9744a831aab3b5a76d1",
+          "originalInternalId": "1415393634"
+        },
+        {
+          "index": 12,
+          "name": "farah-hq_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "7107d04fadadef346896d9a33fb0d8d9",
+          "originalInternalId": "-1371340532"
+        },
+        {
+          "index": 13,
+          "name": "farah-hq_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "c343fbe78e8048744a7aed23bff5e3df",
+          "originalInternalId": "1571641483"
+        },
+        {
+          "index": 14,
+          "name": "farah-hq_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "36f4ad455eb13ea4380ac82213b4fcfa",
+          "originalInternalId": "79703700"
+        },
+        {
+          "index": 15,
+          "name": "farah-hq_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "65461f440fb0b3944b07c7c3fc9707f8",
+          "originalInternalId": "-732361931"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 718801,
+        "strongPixels": 608273,
+        "alphaNonzeroCanvasBbox": [
+          33,
+          15,
+          1108,
+          1402
+        ],
+        "strongCanvasBbox": [
+          42,
+          23,
+          1088,
+          1237
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 38699,
+            "bbox": [
+              57,
+              25,
+              256,
+              315
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              57.0,
+              25.0,
+              24.5,
+              -34.6
+            ],
+            "widthFractionOfCell": 0.7094,
+            "heightFractionOfCell": 1.0342
+          },
+          {
+            "pixels": 37068,
+            "bbox": [
+              335,
+              23,
+              529,
+              316
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              54.5,
+              23.0,
+              32.0,
+              -35.6
+            ],
+            "widthFractionOfCell": 0.6916,
+            "heightFractionOfCell": 1.0449
+          },
+          {
+            "pixels": 34997,
+            "bbox": [
+              600,
+              29,
+              777,
+              315
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              39.0,
+              29.0,
+              64.5,
+              -34.6
+            ],
+            "widthFractionOfCell": 0.631,
+            "heightFractionOfCell": 1.02
+          },
+          {
+            "pixels": 35768,
+            "bbox": [
+              874,
+              25,
+              1065,
+              315
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              32.5,
+              25.0,
+              57.0,
+              -34.6
+            ],
+            "widthFractionOfCell": 0.6809,
+            "heightFractionOfCell": 1.0342
+          },
+          {
+            "pixels": 39740,
+            "bbox": [
+              42,
+              334,
+              255,
+              624
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              42.0,
+              53.6,
+              25.5,
+              -63.2
+            ],
+            "widthFractionOfCell": 0.7594,
+            "heightFractionOfCell": 1.0342
+          },
+          {
+            "pixels": 39477,
+            "bbox": [
+              319,
+              337,
+              555,
+              624
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              38.5,
+              56.6,
+              6.0,
+              -63.2
+            ],
+            "widthFractionOfCell": 0.8414,
+            "heightFractionOfCell": 1.0235
+          },
+          {
+            "pixels": 38272,
+            "bbox": [
+              590,
+              336,
+              815,
+              626
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              29.0,
+              55.6,
+              26.5,
+              -65.2
+            ],
+            "widthFractionOfCell": 0.8021,
+            "heightFractionOfCell": 1.0342
+          },
+          {
+            "pixels": 39534,
+            "bbox": [
+              851,
+              336,
+              1088,
+              626
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              9.5,
+              55.6,
+              34.0,
+              -65.2
+            ],
+            "widthFractionOfCell": 0.8449,
+            "heightFractionOfCell": 1.0342
+          },
+          {
+            "pixels": 39311,
+            "bbox": [
+              45,
+              641,
+              255,
+              935
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              45.0,
+              80.2,
+              25.5,
+              -93.8
+            ],
+            "widthFractionOfCell": 0.7487,
+            "heightFractionOfCell": 1.0485
+          },
+          {
+            "pixels": 39256,
+            "bbox": [
+              318,
+              641,
+              529,
+              937
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              37.5,
+              80.2,
+              32.0,
+              -95.8
+            ],
+            "widthFractionOfCell": 0.7522,
+            "heightFractionOfCell": 1.0556
+          },
+          {
+            "pixels": 36729,
+            "bbox": [
+              591,
+              639,
+              782,
+              937
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              30.0,
+              78.2,
+              59.5,
+              -95.8
+            ],
+            "widthFractionOfCell": 0.6809,
+            "heightFractionOfCell": 1.0628
+          },
+          {
+            "pixels": 37422,
+            "bbox": [
+              879,
+              639,
+              1083,
+              937
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              37.5,
+              78.2,
+              39.0,
+              -95.8
+            ],
+            "widthFractionOfCell": 0.7273,
+            "heightFractionOfCell": 1.0628
+          },
+          {
+            "pixels": 39641,
+            "bbox": [
+              49,
+              948,
+              257,
+              1236
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              49.0,
+              106.8,
+              23.5,
+              -114.4
+            ],
+            "widthFractionOfCell": 0.7415,
+            "heightFractionOfCell": 1.0271
+          },
+          {
+            "pixels": 38619,
+            "bbox": [
+              332,
+              949,
+              528,
+              1237
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              51.5,
+              107.8,
+              33.0,
+              -115.4
+            ],
+            "widthFractionOfCell": 0.6988,
+            "heightFractionOfCell": 1.0271
+          },
+          {
+            "pixels": 36512,
+            "bbox": [
+              591,
+              951,
+              782,
+              1236
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              30.0,
+              109.8,
+              59.5,
+              -114.4
+            ],
+            "widthFractionOfCell": 0.6809,
+            "heightFractionOfCell": 1.0164
+          },
+          {
+            "pixels": 37228,
+            "bbox": [
+              875,
+              951,
+              1072,
+              1237
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              33.5,
+              109.8,
+              50.0,
+              -115.4
+            ],
+            "widthFractionOfCell": 0.7023,
+            "heightFractionOfCell": 1.02
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          285,
+          298
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 75414,
+          "maxAlpha": 255,
+          "above8Pixels": 63800,
+          "above128Pixels": 61248
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-farah-hq\\source-sheet-00.png",
+      "candidateSha256": "13b2f2d0081cdd91f6cb5b1dc323880cdfa06032a2e96a9544ff2768feb2ff43",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-farah-extra",
+      "prompt": "Use case: style-transfer. Redraw a transparent Farah game sprite atlas. IMAGE1 defines16 EXACT poses, gestures, body/face directions, feet placement roles and their order. IMAGE2 defines large-head premium SD anatomy and rendering only: large rounded skull, same face/eye proportions, compact torso, shorter thick limbs, chunky red boots, crisp high-detail ink/cel shading. Keep green hair, green eyes, red sleeveless top, orange loose trousers and red fingerless gloves. DO NOT copy idle poses from IMAGE2. EACH FIRST4ROWS has directions front/back/right-profile/left-profile. Back faces hidden, side faces visible as in source. Native1122x1402 canvas arranged4columns x5equalrows: cell centers x140,420,700,980; used row centers y140,420,700,980. EXACTLY16 figures in rows1-4 only. IMPORTANT empty row5 is a large completely transparent rectangular band y1122..1401, the bottom20% of canvas; NOT a narrow footer. All artwork must end above y1100. All source figures including raised arms fit inside their own 280px-high cell with generous gutters. Upright total height around230-240px, while maintaining IMAGE2's anatomical ratios; crouches shorter. Keep strong silhouettes separated by20px;15px safe outer margins. No neighboring overlaps or cut hands. Do not stretch limbs or turn backs to show faces. True alpha0 background, no ground, shadows, effects, words, borders or grid lines. Fresh native redraw, no pixel-art enlargement or blur.\nRows in IMAGE1: row1 walking light stride; row2 opposite walk stride with alternate forward foot/arm; row3 low martial-arts guard with fists held near waist; row4 forward OPEN PALM strike, actual visible spread fingers and thumb rather than a closed boxing glove. Front projects one open palm toward viewer, rear shows arm toward screen-right, side rows face and palm toward their matching side. Preserve all16 exact action roles and differences.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-extra/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures. Walking stride roles, low guard and forward open-palm row retained with visible fingers. Rear column hidden faces and side columns visible faces preserved. Compact head/body and chunky shoes align to premium. No extra weapons or hard clipping. Native component128/actual render validation still pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-54baf5e7-0a7d-452c-bd41-8f385cdb6381.png",
+      "generatedSha256": "6f9d48e2c42e5fb2e972861e18b4427fca9f97da28b2044e1c568f0d5fe11e20",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-farah-extra\\reference-manifest.json",
+      "manifestSha256": "11c5871e18af95ef37fb69c6e4a33465c09f0196acb0bed8b948290fbbd28850",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-extra.png",
+      "sourceGuid": "0a75376dd9b63094eac21c97eff48a8c",
+      "sourceSha256": "74c6a9e9c436a148bec8bf53f8af908ca2cdb356ac909d5a81eeb1fec655c757",
+      "sourceMetaSha256": "8c5a990321b3a79d17bad3e02a9177a86f12dc481562a145a19a913cadb7432f",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-extra/reference-00.png",
+          "sha256": "0860f3d61f180c93e755498abf6cc3fb49a79560c4c3a50bccf9ec18273c29a4"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png",
+          "sha256": "37818113bf7ee9a1cbbf96e329ec669dfc7f9f61a458f420dec07eeb39c378f1"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-extra_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "8d46f44939013b14eabb0608d6e450ba",
+          "originalInternalId": "-1183357280"
+        },
+        {
+          "index": 1,
+          "name": "farah-extra_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "0c6030611ea4186469f5f7f5717bcf92",
+          "originalInternalId": "-1986088984"
+        },
+        {
+          "index": 2,
+          "name": "farah-extra_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "d58439b0f509e444eb4a0f34b1ac776c",
+          "originalInternalId": "-1956924597"
+        },
+        {
+          "index": 3,
+          "name": "farah-extra_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "ab9ffbe98a7116b43b7d0b9ac6c64fc6",
+          "originalInternalId": "-623033151"
+        },
+        {
+          "index": 4,
+          "name": "farah-extra_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "cbc442b6bb2a8f34a83da4a1e94bce42",
+          "originalInternalId": "-372387629"
+        },
+        {
+          "index": 5,
+          "name": "farah-extra_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "a32c5648a4ebce34db11324b803467b3",
+          "originalInternalId": "1912245545"
+        },
+        {
+          "index": 6,
+          "name": "farah-extra_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "31df5133e22554f48b5218e3a307cd0a",
+          "originalInternalId": "129799203"
+        },
+        {
+          "index": 7,
+          "name": "farah-extra_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "e4151865f3a30454fbc7b83e5142f02f",
+          "originalInternalId": "-502851177"
+        },
+        {
+          "index": 8,
+          "name": "farah-extra_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "b109b3a97893f234880562e154fffe89",
+          "originalInternalId": "-1504390283"
+        },
+        {
+          "index": 9,
+          "name": "farah-extra_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "61673e189ccd16048be15213e7bcfbe6",
+          "originalInternalId": "986573129"
+        },
+        {
+          "index": 10,
+          "name": "farah-extra_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "67606fd95e3ffb540b2cf9886174af7d",
+          "originalInternalId": "-239768267"
+        },
+        {
+          "index": 11,
+          "name": "farah-extra_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "0d383de5ef9b9da42a115cea68b220c3",
+          "originalInternalId": "-2003774430"
+        },
+        {
+          "index": 12,
+          "name": "farah-extra_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "cb0dac1c14e2c0740ae11f96d3d20ef2",
+          "originalInternalId": "-1755524088"
+        },
+        {
+          "index": 13,
+          "name": "farah-extra_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "7e57a520517d38e4e99689047b204940",
+          "originalInternalId": "-442003809"
+        },
+        {
+          "index": 14,
+          "name": "farah-extra_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "84809713e976e77499f43d3edf45e30e",
+          "originalInternalId": "1922272390"
+        },
+        {
+          "index": 15,
+          "name": "farah-extra_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "b667078dde5e13945a705d629bbd6d8d",
+          "originalInternalId": "1042947466"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 725886,
+        "strongPixels": 604917,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          13,
+          1062,
+          1467
+        ],
+        "strongCanvasBbox": [
+          22,
+          20,
+          1052,
+          1245
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 38176,
+            "bbox": [
+              47,
+              20,
+              231,
+              336
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              47.0,
+              20.0,
+              37.0,
+              -42.6
+            ],
+            "widthFractionOfCell": 0.6866,
+            "heightFractionOfCell": 1.077
+          },
+          {
+            "pixels": 36311,
+            "bbox": [
+              313,
+              20,
+              485,
+              336
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              45.0,
+              20.0,
+              51.0,
+              -42.6
+            ],
+            "widthFractionOfCell": 0.6418,
+            "heightFractionOfCell": 1.077
+          },
+          {
+            "pixels": 35736,
+            "bbox": [
+              584,
+              22,
+              756,
+              331
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              48.0,
+              22.0,
+              48.0,
+              -37.6
+            ],
+            "widthFractionOfCell": 0.6418,
+            "heightFractionOfCell": 1.0532
+          },
+          {
+            "pixels": 37156,
+            "bbox": [
+              844,
+              20,
+              1020,
+              333
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              40.0,
+              20.0,
+              52.0,
+              -39.6
+            ],
+            "widthFractionOfCell": 0.6567,
+            "heightFractionOfCell": 1.0668
+          },
+          {
+            "pixels": 37293,
+            "bbox": [
+              56,
+              349,
+              229,
+              663
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              56.0,
+              55.6,
+              39.0,
+              -76.2
+            ],
+            "widthFractionOfCell": 0.6455,
+            "heightFractionOfCell": 1.0702
+          },
+          {
+            "pixels": 35929,
+            "bbox": [
+              311,
+              350,
+              479,
+              662
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              43.0,
+              56.6,
+              57.0,
+              -75.2
+            ],
+            "widthFractionOfCell": 0.6269,
+            "heightFractionOfCell": 1.0634
+          },
+          {
+            "pixels": 37090,
+            "bbox": [
+              578,
+              350,
+              753,
+              660
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              42.0,
+              56.6,
+              51.0,
+              -73.2
+            ],
+            "widthFractionOfCell": 0.653,
+            "heightFractionOfCell": 1.0566
+          },
+          {
+            "pixels": 38212,
+            "bbox": [
+              839,
+              351,
+              1021,
+              661
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              35.0,
+              57.6,
+              51.0,
+              -74.2
+            ],
+            "widthFractionOfCell": 0.6791,
+            "heightFractionOfCell": 1.0566
+          },
+          {
+            "pixels": 38127,
+            "bbox": [
+              28,
+              679,
+              257,
+              961
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              28.0,
+              92.2,
+              11.0,
+              -80.8
+            ],
+            "widthFractionOfCell": 0.8545,
+            "heightFractionOfCell": 0.9611
+          },
+          {
+            "pixels": 39269,
+            "bbox": [
+              288,
+              677,
+              514,
+              958
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              20.0,
+              90.2,
+              22.0,
+              -77.8
+            ],
+            "widthFractionOfCell": 0.8433,
+            "heightFractionOfCell": 0.9577
+          },
+          {
+            "pixels": 36546,
+            "bbox": [
+              556,
+              674,
+              775,
+              958
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              20.0,
+              87.2,
+              29.0,
+              -77.8
+            ],
+            "widthFractionOfCell": 0.8172,
+            "heightFractionOfCell": 0.968
+          },
+          {
+            "pixels": 36978,
+            "bbox": [
+              822,
+              677,
+              1042,
+              959
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              18.0,
+              90.2,
+              30.0,
+              -78.8
+            ],
+            "widthFractionOfCell": 0.8209,
+            "heightFractionOfCell": 0.9611
+          },
+          {
+            "pixels": 39826,
+            "bbox": [
+              22,
+              966,
+              268,
+              1243
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              22.0,
+              85.8,
+              0.0,
+              -69.4
+            ],
+            "widthFractionOfCell": 0.9179,
+            "heightFractionOfCell": 0.9441
+          },
+          {
+            "pixels": 40105,
+            "bbox": [
+              290,
+              965,
+              549,
+              1245
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              22.0,
+              84.8,
+              -13.0,
+              -71.4
+            ],
+            "widthFractionOfCell": 0.9664,
+            "heightFractionOfCell": 0.9543
+          },
+          {
+            "pixels": 39048,
+            "bbox": [
+              545,
+              966,
+              792,
+              1243
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              9.0,
+              85.8,
+              12.0,
+              -69.4
+            ],
+            "widthFractionOfCell": 0.9216,
+            "heightFractionOfCell": 0.9441
+          },
+          {
+            "pixels": 39115,
+            "bbox": [
+              805,
+              967,
+              1052,
+              1244
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              1.0,
+              86.8,
+              20.0,
+              -70.4
+            ],
+            "widthFractionOfCell": 0.9216,
+            "heightFractionOfCell": 0.9441
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          277,
+          316
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 52658,
+          "maxAlpha": 255,
+          "above8Pixels": 42688,
+          "above128Pixels": 40892
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-farah-extra\\source-sheet-00.png",
+      "candidateSha256": "6f9d48e2c42e5fb2e972861e18b4427fca9f97da28b2044e1c568f0d5fe11e20",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "PixelCampaign-farah-polish",
+      "prompt": "Use case: style-transfer. Redraw a transparent Farah game sprite atlas. IMAGE1 defines16 EXACT poses, gestures, body/face directions, feet placement roles and their order. IMAGE2 defines large-head premium SD anatomy and rendering only: large rounded skull, same face/eye proportions, compact torso, shorter thick limbs, chunky red boots, crisp high-detail ink/cel shading. Keep green hair, green eyes, red sleeveless top, orange loose trousers and red fingerless gloves. DO NOT copy idle poses from IMAGE2. EACH FIRST4ROWS has directions front/back/right-profile/left-profile. Back faces hidden, side faces visible as in source. Native1122x1402 canvas arranged4columns x5equalrows: cell centers x140,420,700,980; used row centers y140,420,700,980. EXACTLY16 figures in rows1-4 only. IMPORTANT empty row5 is a large completely transparent rectangular band y1122..1401, the bottom20% of canvas; NOT a narrow footer. All artwork must end above y1100. All source figures including raised arms fit inside their own 280px-high cell with generous gutters. Upright total height around230-240px, while maintaining IMAGE2's anatomical ratios; crouches shorter. Keep strong silhouettes separated by20px;15px safe outer margins. No neighboring overlaps or cut hands. Do not stretch limbs or turn backs to show faces. True alpha0 background, no ground, shadows, effects, words, borders or grid lines. Fresh native redraw, no pixel-art enlargement or blur.\nRows in IMAGE1: row1 twisting wind-up with one fist back and other hand low; row2 straight single fist punch, front foreshortened/back punches screen-right/right and left profiles punch their own side; row3 BOTH HANDS CLASPED ABOVE HEAD, arms raised fully with correct hand connection, front/back/right/left preserved; row4 relaxed recovery with both arms lowered. Keep above-head clasp in row3 within its cell by compact SD arms/normal posing, NOT by making the head/body smaller than other rows. Match IMAGE2 skull and boot anatomy consistently across rows.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-polish/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures. Windup, straight punch, both hands clasped above head, lowered-arm recovery all retained in four directions. Large skull/compact torso and thick shoes remain across rows. No duplicate hand, added weapon or obvious clipping. Native component128/actual render validation still pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-12297370-20a7-4f5c-a11e-be15401fb568.png",
+      "generatedSha256": "12c2289b674d05a3ef6490e09ff5cdc8962393bb9b206560492772a2273a86ee",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-farah-polish\\reference-manifest.json",
+      "manifestSha256": "59b0fa517dd73c60a17ce392985a3730ee67e305cf1d5d939f14564e20a9dac2",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/farah-polish.png",
+      "sourceGuid": "cd8170ea04e68a949ad15c309fe9762c",
+      "sourceSha256": "1962a63884487bad044e2741dfb6857c6175162a9b0f8572b710b1d7561befbc",
+      "sourceMetaSha256": "db0e590732524d6f5f0e160f7422ef880b06b8af9d14c7079777405ef90df1e6",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-farah-polish/reference-00.png",
+          "sha256": "51773e2bc893674d082f0fa9827ffcd3be6fe0b1e480ed37c28aa0a75e32e6dd"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-00.png",
+          "sha256": "37818113bf7ee9a1cbbf96e329ec669dfc7f9f61a458f420dec07eeb39c378f1"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-polish_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "7cc02466f81202e47824b044dec63779",
+          "originalInternalId": "1446362570"
+        },
+        {
+          "index": 1,
+          "name": "farah-polish_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "b2ec370e2fd02594183c7b1f7b5a614f",
+          "originalInternalId": "1596592879"
+        },
+        {
+          "index": 2,
+          "name": "farah-polish_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "7e4a5ed3cef031a48b23f9a4fe33ac3a",
+          "originalInternalId": "241864920"
+        },
+        {
+          "index": 3,
+          "name": "farah-polish_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "5369e0b561b81e94fa488fcb41bfc402",
+          "originalInternalId": "-1699233584"
+        },
+        {
+          "index": 4,
+          "name": "farah-polish_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "fd7e02e49084a414b9accc09a36c3a2b",
+          "originalInternalId": "1909276239"
+        },
+        {
+          "index": 5,
+          "name": "farah-polish_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "c186470c5e523374e83ac817f2e24aee",
+          "originalInternalId": "1580092432"
+        },
+        {
+          "index": 6,
+          "name": "farah-polish_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "e34fefc57cf5a354e9fc7b510bc8eafe",
+          "originalInternalId": "-671737113"
+        },
+        {
+          "index": 7,
+          "name": "farah-polish_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "53e23b97a59ed5f41901c000f3b0fe5e",
+          "originalInternalId": "-1225279911"
+        },
+        {
+          "index": 8,
+          "name": "farah-polish_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "1363b038878b46a4285e4604fcf3a1a9",
+          "originalInternalId": "1913338792"
+        },
+        {
+          "index": 9,
+          "name": "farah-polish_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "0f31e8451e0a1374e8355de99a64f9fb",
+          "originalInternalId": "-2112952994"
+        },
+        {
+          "index": 10,
+          "name": "farah-polish_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "5e6f9db08f98bb044afdfc80eb3a5486",
+          "originalInternalId": "-992285293"
+        },
+        {
+          "index": 11,
+          "name": "farah-polish_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "d17f0403ffc997e41875afb919b89dfb",
+          "originalInternalId": "1458565010"
+        },
+        {
+          "index": 12,
+          "name": "farah-polish_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "22c6a2b02de71df4997d64d79bfb117b",
+          "originalInternalId": "1648409508"
+        },
+        {
+          "index": 13,
+          "name": "farah-polish_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "7077bffab8794d742a97f020c1e327e4",
+          "originalInternalId": "-2063169258"
+        },
+        {
+          "index": 14,
+          "name": "farah-polish_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "17939d649876f2c43a928628fe111657",
+          "originalInternalId": "1791491508"
+        },
+        {
+          "index": 15,
+          "name": "farah-polish_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "e730979e2b32c7f40be706cdce5bc708",
+          "originalInternalId": "-1324749048"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 749713,
+        "strongPixels": 630221,
+        "alphaNonzeroCanvasBbox": [
+          17,
+          18,
+          1064,
+          1433
+        ],
+        "strongCanvasBbox": [
+          28,
+          21,
+          1059,
+          1238
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 41984,
+            "bbox": [
+              28,
+              21,
+              249,
+              324
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              28.0,
+              21.0,
+              19.0,
+              -30.6
+            ],
+            "widthFractionOfCell": 0.8246,
+            "heightFractionOfCell": 1.0327
+          },
+          {
+            "pixels": 41080,
+            "bbox": [
+              295,
+              23,
+              517,
+              323
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              27.0,
+              23.0,
+              19.0,
+              -29.6
+            ],
+            "widthFractionOfCell": 0.8284,
+            "heightFractionOfCell": 1.0225
+          },
+          {
+            "pixels": 42068,
+            "bbox": [
+              549,
+              22,
+              777,
+              324
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              13.0,
+              22.0,
+              27.0,
+              -30.6
+            ],
+            "widthFractionOfCell": 0.8507,
+            "heightFractionOfCell": 1.0293
+          },
+          {
+            "pixels": 41313,
+            "bbox": [
+              838,
+              25,
+              1059,
+              323
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              34.0,
+              25.0,
+              13.0,
+              -29.6
+            ],
+            "widthFractionOfCell": 0.8246,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 39921,
+            "bbox": [
+              29,
+              327,
+              247,
+              628
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              29.0,
+              33.6,
+              21.0,
+              -41.2
+            ],
+            "widthFractionOfCell": 0.8134,
+            "heightFractionOfCell": 1.0259
+          },
+          {
+            "pixels": 41647,
+            "bbox": [
+              290,
+              328,
+              537,
+              628
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              22.0,
+              34.6,
+              -1.0,
+              -41.2
+            ],
+            "widthFractionOfCell": 0.9216,
+            "heightFractionOfCell": 1.0225
+          },
+          {
+            "pixels": 40540,
+            "bbox": [
+              546,
+              330,
+              789,
+              629
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              10.0,
+              36.6,
+              15.0,
+              -42.2
+            ],
+            "widthFractionOfCell": 0.9067,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 40643,
+            "bbox": [
+              821,
+              330,
+              1058,
+              628
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              17.0,
+              36.6,
+              14.0,
+              -41.2
+            ],
+            "widthFractionOfCell": 0.8843,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 36544,
+            "bbox": [
+              28,
+              636,
+              254,
+              933
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              28.0,
+              49.2,
+              14.0,
+              -52.8
+            ],
+            "widthFractionOfCell": 0.8433,
+            "heightFractionOfCell": 1.0123
+          },
+          {
+            "pixels": 35836,
+            "bbox": [
+              295,
+              635,
+              517,
+              934
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              27.0,
+              48.2,
+              19.0,
+              -53.8
+            ],
+            "widthFractionOfCell": 0.8284,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 34815,
+            "bbox": [
+              564,
+              637,
+              781,
+              933
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              28.0,
+              50.2,
+              23.0,
+              -52.8
+            ],
+            "widthFractionOfCell": 0.8097,
+            "heightFractionOfCell": 1.0089
+          },
+          {
+            "pixels": 35287,
+            "bbox": [
+              843,
+              641,
+              1056,
+              933
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              39.0,
+              54.2,
+              16.0,
+              -52.8
+            ],
+            "widthFractionOfCell": 0.7948,
+            "heightFractionOfCell": 0.9952
+          },
+          {
+            "pixels": 41370,
+            "bbox": [
+              41,
+              938,
+              246,
+              1238
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              41.0,
+              57.8,
+              22.0,
+              -64.4
+            ],
+            "widthFractionOfCell": 0.7649,
+            "heightFractionOfCell": 1.0225
+          },
+          {
+            "pixels": 40717,
+            "bbox": [
+              307,
+              938,
+              514,
+              1236
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              39.0,
+              57.8,
+              22.0,
+              -62.4
+            ],
+            "widthFractionOfCell": 0.7724,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 38052,
+            "bbox": [
+              576,
+              937,
+              766,
+              1238
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              40.0,
+              56.8,
+              38.0,
+              -64.4
+            ],
+            "widthFractionOfCell": 0.709,
+            "heightFractionOfCell": 1.0259
+          },
+          {
+            "pixels": 38401,
+            "bbox": [
+              845,
+              941,
+              1038,
+              1238
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              41.0,
+              60.8,
+              34.0,
+              -64.4
+            ],
+            "widthFractionOfCell": 0.7201,
+            "heightFractionOfCell": 1.0123
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          292,
+          303
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 44587,
+          "maxAlpha": 255,
+          "above8Pixels": 38207,
+          "above128Pixels": 36507
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\PixelCampaign-farah-polish\\source-sheet-00.png",
+      "candidateSha256": "12c2289b674d05a3ef6490e09ff5cdc8962393bb9b206560492772a2273a86ee",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "SignatureWeapons-farah-hq",
+      "prompt": "Use case: style-transfer. Create a fresh crisp premium anime SD native sprite atlas by editing IMAGE1. IMAGE1 is authoritative for all16 poses, their exact order, body directions, head/eye exposure, gestures, foot/hand roles and SIGNATURE WEAPON. IMAGE2 is the anatomy/rendering reference ONLY: match its large head/face-to-body ratio, short compact torso and limbs, thick chunky red boots, rich ink contours, clean cel shading. Same Farah green bob hair, expressive green eyes, red cropped sleeveless top, loose orange trousers. SIGNATURE EQUIPMENT: both hands wear the brown leather gauntlets with large GOLD cuffs and SILVER armored knuckles from IMAGE1, never red ordinary gloves; weapon material and visibility must follow each source pose. Exactly16 complete isolated figures in4columns and first4rows of a4x5 canvas, bottom row empty genuine transparency. Output native1122x1402 if possible, each figure safely inset, no clipping, no neighboring contact, minimum20px transparent figure gaps and15px canvas margins. Match head and shoe dimensions across action rows; crouching/lying shapes must NOT be enlarged just to equal upright bbox height. Do not use IMAGE2's idle poses instead of IMAGE1's gestures. Copy its body anatomy while preserving source pose mechanics. Perrow direction order front/back/right/left; back face hidden, profile face visible unless the original lying pose differs. Ignore stray tiny duplicate shoe/hair fragments between IMAGE1 cells: draw only the16 intended bodies. No VFX, text, grid, shadows, floor, added weapons, duplicate limbs, cropped weapons or blurry filtering. Preserve genuine transparent alpha.\nRow1 guarded idle with fists raised, row2 forward straight punch, row3 gauntleted hands together clasped at chest, row4 tighter defensive brace. Front punches toward viewer, back punch extends screen-right, side punches each face direction. Both gauntlets always retained at their source arm locations; no extra hand/weapon.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-hq/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: guard, straight punches, chest clasp and tight brace match original four-direction order. Brown gold-cuff silver-knuckle gauntlets retained, no red-glove replacement. Large head/short torso/chunky shoes comparable to premium. No apparent hard clipping. Native pack/actual render pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-66dca458-786f-40a2-9266-25d72f374c92.png",
+      "generatedSha256": "e41480b40f65a406c64b9a6eff7167288e2e75432181202353e2b2184ba3e957",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-farah-hq\\reference-manifest.json",
+      "manifestSha256": "5a96c339c5f9bae2bbb61f7a3560604fd4cb672f4cda748d562440ba5b8fe217",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/farah-hq.png",
+      "sourceGuid": "a7454627a53f5014f824af2f610f7e58",
+      "sourceSha256": "08f0575493e3c29c4aad3731e65b5840fe332e5a077669d076a2e2cc23e68796",
+      "sourceMetaSha256": "90620a7845bb84a40f6a7c646998ddeba380ddc52863674c71168757db48f7a8",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-hq/reference-00.png",
+          "sha256": "425c3dc2b0f4c51533ef5770f1fe3ee1b5117054f565b4a341f4abe74522f7cb"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png",
+          "sha256": "b11bc8225c8b2f19ae4d738131c6d8bcb7fbe68ef252896db680512f463f7684"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-hq_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "7e61daa895d68504699ddafbead9d871",
+          "originalInternalId": "352273874"
+        },
+        {
+          "index": 1,
+          "name": "farah-hq_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "db68e66a670522b4098c1db31398d504",
+          "originalInternalId": "471768486"
+        },
+        {
+          "index": 2,
+          "name": "farah-hq_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "fd67075dfb07c1f45b5a184e36ecfb1b",
+          "originalInternalId": "-1991418666"
+        },
+        {
+          "index": 3,
+          "name": "farah-hq_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "6ad8b094a811777418d72b6597084b53",
+          "originalInternalId": "-2026399256"
+        },
+        {
+          "index": 4,
+          "name": "farah-hq_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "835e72e2dfcd5db4c95db87ec3c5f6e6",
+          "originalInternalId": "7535973"
+        },
+        {
+          "index": 5,
+          "name": "farah-hq_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "041ff58fb9d924c4cb4b0ec8919eefdb",
+          "originalInternalId": "-1797339298"
+        },
+        {
+          "index": 6,
+          "name": "farah-hq_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "71831c5a6fc1f8149b5cccd61427b55e",
+          "originalInternalId": "-185135423"
+        },
+        {
+          "index": 7,
+          "name": "farah-hq_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "77cd4a33610005a46bafa4b918098faf",
+          "originalInternalId": "-1739289982"
+        },
+        {
+          "index": 8,
+          "name": "farah-hq_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "27bc5094dbdbb7842b82316eae427470",
+          "originalInternalId": "-717689201"
+        },
+        {
+          "index": 9,
+          "name": "farah-hq_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "cbf69d7b4ab64264dbdfbc5d26d77c5f",
+          "originalInternalId": "-2011121709"
+        },
+        {
+          "index": 10,
+          "name": "farah-hq_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "480e80fdbdb9ecf48930e81a5c23f825",
+          "originalInternalId": "-1861601478"
+        },
+        {
+          "index": 11,
+          "name": "farah-hq_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "f14f5db411e4a91499a32477ae978e07",
+          "originalInternalId": "511367117"
+        },
+        {
+          "index": 12,
+          "name": "farah-hq_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "26e9c28d477d6ba42bb2109067de3fe3",
+          "originalInternalId": "770674882"
+        },
+        {
+          "index": 13,
+          "name": "farah-hq_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "445ebd910203e2242bc427cb757f97a5",
+          "originalInternalId": "-1894964695"
+        },
+        {
+          "index": 14,
+          "name": "farah-hq_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "54ee4ccead044394380ca1f984e80e00",
+          "originalInternalId": "1881965860"
+        },
+        {
+          "index": 15,
+          "name": "farah-hq_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "b42c0eb23ea4cf142ba1b89a7c51a6b3",
+          "originalInternalId": "38861937"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 725613,
+        "strongPixels": 624829,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          30,
+          1060,
+          1467
+        ],
+        "strongCanvasBbox": [
+          17,
+          34,
+          1057,
+          1258
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 39865,
+            "bbox": [
+              25,
+              37,
+              246,
+              343
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              25.0,
+              37.0,
+              22.0,
+              -49.6
+            ],
+            "widthFractionOfCell": 0.8246,
+            "heightFractionOfCell": 1.0429
+          },
+          {
+            "pixels": 39129,
+            "bbox": [
+              299,
+              34,
+              517,
+              343
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              31.0,
+              34.0,
+              19.0,
+              -49.6
+            ],
+            "widthFractionOfCell": 0.8134,
+            "heightFractionOfCell": 1.0532
+          },
+          {
+            "pixels": 37528,
+            "bbox": [
+              569,
+              37,
+              783,
+              343
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              33.0,
+              37.0,
+              21.0,
+              -49.6
+            ],
+            "widthFractionOfCell": 0.7985,
+            "heightFractionOfCell": 1.0429
+          },
+          {
+            "pixels": 38124,
+            "bbox": [
+              831,
+              35,
+              1049,
+              343
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              27.0,
+              35.0,
+              23.0,
+              -49.6
+            ],
+            "widthFractionOfCell": 0.8134,
+            "heightFractionOfCell": 1.0498
+          },
+          {
+            "pixels": 39041,
+            "bbox": [
+              17,
+              351,
+              254,
+              646
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              17.0,
+              57.6,
+              14.0,
+              -59.2
+            ],
+            "widthFractionOfCell": 0.8843,
+            "heightFractionOfCell": 1.0055
+          },
+          {
+            "pixels": 40469,
+            "bbox": [
+              290,
+              349,
+              542,
+              647
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              22.0,
+              55.6,
+              -6.0,
+              -60.2
+            ],
+            "widthFractionOfCell": 0.9403,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 39443,
+            "bbox": [
+              556,
+              350,
+              794,
+              647
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              20.0,
+              56.6,
+              10.0,
+              -60.2
+            ],
+            "widthFractionOfCell": 0.8881,
+            "heightFractionOfCell": 1.0123
+          },
+          {
+            "pixels": 38867,
+            "bbox": [
+              821,
+              352,
+              1057,
+              647
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              17.0,
+              58.6,
+              15.0,
+              -60.2
+            ],
+            "widthFractionOfCell": 0.8806,
+            "heightFractionOfCell": 1.0055
+          },
+          {
+            "pixels": 39642,
+            "bbox": [
+              19,
+              653,
+              254,
+              950
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              19.0,
+              66.2,
+              14.0,
+              -69.8
+            ],
+            "widthFractionOfCell": 0.8769,
+            "heightFractionOfCell": 1.0123
+          },
+          {
+            "pixels": 38271,
+            "bbox": [
+              293,
+              652,
+              522,
+              950
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              25.0,
+              65.2,
+              14.0,
+              -69.8
+            ],
+            "widthFractionOfCell": 0.8545,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 38130,
+            "bbox": [
+              558,
+              653,
+              777,
+              951
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              22.0,
+              66.2,
+              27.0,
+              -70.8
+            ],
+            "widthFractionOfCell": 0.8172,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 37629,
+            "bbox": [
+              833,
+              653,
+              1053,
+              950
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              29.0,
+              66.2,
+              19.0,
+              -69.8
+            ],
+            "widthFractionOfCell": 0.8209,
+            "heightFractionOfCell": 1.0123
+          },
+          {
+            "pixels": 41313,
+            "bbox": [
+              18,
+              958,
+              255,
+              1257
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              18.0,
+              77.8,
+              13.0,
+              -83.4
+            ],
+            "widthFractionOfCell": 0.8843,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 40261,
+            "bbox": [
+              294,
+              959,
+              522,
+              1258
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              26.0,
+              78.8,
+              14.0,
+              -84.4
+            ],
+            "widthFractionOfCell": 0.8507,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 38499,
+            "bbox": [
+              560,
+              960,
+              781,
+              1257
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              24.0,
+              79.8,
+              23.0,
+              -83.4
+            ],
+            "widthFractionOfCell": 0.8246,
+            "heightFractionOfCell": 1.0123
+          },
+          {
+            "pixels": 38618,
+            "bbox": [
+              830,
+              961,
+              1056,
+              1257
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              26.0,
+              80.8,
+              16.0,
+              -83.4
+            ],
+            "widthFractionOfCell": 0.8433,
+            "heightFractionOfCell": 1.0089
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          295,
+          309
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 59878,
+          "maxAlpha": 255,
+          "above8Pixels": 52565,
+          "above128Pixels": 50621
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\SignatureWeapons-farah-hq\\source-sheet-00.png",
+      "candidateSha256": "e41480b40f65a406c64b9a6eff7167288e2e75432181202353e2b2184ba3e957",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "SignatureWeapons-farah-motion",
+      "prompt": "Use case: style-transfer. Create a fresh crisp premium anime SD native sprite atlas by editing IMAGE1. IMAGE1 is authoritative for all16 poses, their exact order, body directions, head/eye exposure, gestures, foot/hand roles and SIGNATURE WEAPON. IMAGE2 is the anatomy/rendering reference ONLY: match its large head/face-to-body ratio, short compact torso and limbs, thick chunky red boots, rich ink contours, clean cel shading. Same Farah green bob hair, expressive green eyes, red cropped sleeveless top, loose orange trousers. SIGNATURE EQUIPMENT: both hands wear the brown leather gauntlets with large GOLD cuffs and SILVER armored knuckles from IMAGE1, never red ordinary gloves; weapon material and visibility must follow each source pose. Exactly16 complete isolated figures in4columns and first4rows of a4x5 canvas, bottom row empty genuine transparency. Output native1122x1402 if possible, each figure safely inset, no clipping, no neighboring contact, minimum20px transparent figure gaps and15px canvas margins. Match head and shoe dimensions across action rows; crouching/lying shapes must NOT be enlarged just to equal upright bbox height. Do not use IMAGE2's idle poses instead of IMAGE1's gestures. Copy its body anatomy while preserving source pose mechanics. Perrow direction order front/back/right/left; back face hidden, profile face visible unless the original lying pose differs. Ignore stray tiny duplicate shoe/hair fragments between IMAGE1 cells: draw only the16 intended bodies. No VFX, text, grid, shadows, floor, added weapons, duplicate limbs, cropped weapons or blurry filtering. Preserve genuine transparent alpha.\nRow1 forward walking stride A; row2 complementary walking stride B with source alternate arm/leading foot exactly retained; row3 hit recoil leaning back with pained expression and arms spread; row4 lying unconscious with eyes closed, exact source head-to-feet direction and face visibility. Do not turn lying figures upright. Keep golden/brown gauntlets visible where reference shows them during lying too. Same head/boot anatomy as premium style image, lying body naturally lower.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-motion/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: two walking arm/leg variants, recoil and four lying dead poses preserved; source face-visible/hidden roles maintained. Gold-cuff brown/silver gauntlets remain on both arms where visible. Compact SD head/torso/boot ratios match premium reference. Lying silhouettes naturally lower. No apparent hard clipping. Native pack/actual render pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-6d85bc4c-caaa-4eba-8fe5-25e6a30e364d.png",
+      "generatedSha256": "e2fe4d0ac3540b257031ddb65639779461361402638405cb14c5db31cf47f4ce",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-farah-motion\\reference-manifest.json",
+      "manifestSha256": "bc9ef1bd147d04f8b29c8718d55b5d8bcffac89dbd55ba6b1c832315ea7e7c0c",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/farah-motion.png",
+      "sourceGuid": "47c659f892c093646b0f1bfb5e9441e6",
+      "sourceSha256": "49ec74f62ab5338fd6b331c9ac05151fb3b4cf9cdd8cc78ca09a947b77f05f16",
+      "sourceMetaSha256": "df9da3b3120259b31a53f0c6124063f1653459be16a251f7ec414d7c361ee212",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-motion/reference-00.png",
+          "sha256": "6e54bf81180e58314e8a21217e7e785acde97627fe12d782691c8c16d732b82b"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png",
+          "sha256": "b11bc8225c8b2f19ae4d738131c6d8bcb7fbe68ef252896db680512f463f7684"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-motion_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "73db5286bf6f25d4dbd4b44fce758e72",
+          "originalInternalId": "-102371451"
+        },
+        {
+          "index": 1,
+          "name": "farah-motion_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "75d6f599344705b4daa22c9c8c734308",
+          "originalInternalId": "-1994966615"
+        },
+        {
+          "index": 2,
+          "name": "farah-motion_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "b5891c571c2bb0d458fd59f157cb4cb8",
+          "originalInternalId": "1014171154"
+        },
+        {
+          "index": 3,
+          "name": "farah-motion_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "4ff7b8e77f9c99f4e8a76cc53febd621",
+          "originalInternalId": "-207840682"
+        },
+        {
+          "index": 4,
+          "name": "farah-motion_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "40501592fa6722a47a61f85a94b15ead",
+          "originalInternalId": "-290249519"
+        },
+        {
+          "index": 5,
+          "name": "farah-motion_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "0d71d2845ebd82548a0c4636797d1a46",
+          "originalInternalId": "1093808146"
+        },
+        {
+          "index": 6,
+          "name": "farah-motion_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "135b32c199ec19746bf58580459bc314",
+          "originalInternalId": "-795437970"
+        },
+        {
+          "index": 7,
+          "name": "farah-motion_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "fc20f1ca3dfd6424e8f92627e1626ba6",
+          "originalInternalId": "-1849875048"
+        },
+        {
+          "index": 8,
+          "name": "farah-motion_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "6a63ad3d20d23c04481b7caf04e4cdc9",
+          "originalInternalId": "343731928"
+        },
+        {
+          "index": 9,
+          "name": "farah-motion_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "6985e474400147342ae3dc3721b7111b",
+          "originalInternalId": "1085912738"
+        },
+        {
+          "index": 10,
+          "name": "farah-motion_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "73a21e281163b6c4ba463e3a291ab44e",
+          "originalInternalId": "1742063095"
+        },
+        {
+          "index": 11,
+          "name": "farah-motion_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "ece1fe117a5980c4496e1605054a97ca",
+          "originalInternalId": "-1420592603"
+        },
+        {
+          "index": 12,
+          "name": "farah-motion_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "e2d1225895557014b8eed0aa8c8b699f",
+          "originalInternalId": "1434483936"
+        },
+        {
+          "index": 13,
+          "name": "farah-motion_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "8aa5faa6a5e009843adcba5f5015ea9e",
+          "originalInternalId": "1853893872"
+        },
+        {
+          "index": 14,
+          "name": "farah-motion_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "57432c5f890d09848b878d7674ca1626",
+          "originalInternalId": "754938318"
+        },
+        {
+          "index": 15,
+          "name": "farah-motion_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "eb0aeba223aaa3e4d93b7fbedd8cbe2d",
+          "originalInternalId": "-1170434024"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 741259,
+        "strongPixels": 599274,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          14,
+          1122,
+          1402
+        ],
+        "strongCanvasBbox": [
+          10,
+          20,
+          1116,
+          1168
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 38774,
+            "bbox": [
+              51,
+              20,
+              224,
+              341
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              51.0,
+              20.0,
+              56.5,
+              -60.6
+            ],
+            "widthFractionOfCell": 0.6168,
+            "heightFractionOfCell": 1.1448
+          },
+          {
+            "pixels": 36460,
+            "bbox": [
+              336,
+              22,
+              508,
+              341
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              55.5,
+              22.0,
+              53.0,
+              -60.6
+            ],
+            "widthFractionOfCell": 0.6132,
+            "heightFractionOfCell": 1.1377
+          },
+          {
+            "pixels": 41028,
+            "bbox": [
+              585,
+              22,
+              800,
+              341
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              24.0,
+              22.0,
+              41.5,
+              -60.6
+            ],
+            "widthFractionOfCell": 0.7665,
+            "heightFractionOfCell": 1.1377
+          },
+          {
+            "pixels": 40743,
+            "bbox": [
+              867,
+              20,
+              1079,
+              341
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              25.5,
+              20.0,
+              43.0,
+              -60.6
+            ],
+            "widthFractionOfCell": 0.7558,
+            "heightFractionOfCell": 1.1448
+          },
+          {
+            "pixels": 40979,
+            "bbox": [
+              45,
+              358,
+              241,
+              687
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              45.0,
+              77.6,
+              39.5,
+              -126.2
+            ],
+            "widthFractionOfCell": 0.6988,
+            "heightFractionOfCell": 1.1733
+          },
+          {
+            "pixels": 39169,
+            "bbox": [
+              334,
+              359,
+              528,
+              687
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              53.5,
+              78.6,
+              33.0,
+              -126.2
+            ],
+            "widthFractionOfCell": 0.6916,
+            "heightFractionOfCell": 1.1698
+          },
+          {
+            "pixels": 42466,
+            "bbox": [
+              582,
+              363,
+              814,
+              686
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              21.0,
+              82.6,
+              27.5,
+              -125.2
+            ],
+            "widthFractionOfCell": 0.8271,
+            "heightFractionOfCell": 1.1519
+          },
+          {
+            "pixels": 43583,
+            "bbox": [
+              864,
+              359,
+              1098,
+              687
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              22.5,
+              78.6,
+              24.0,
+              -126.2
+            ],
+            "widthFractionOfCell": 0.8342,
+            "heightFractionOfCell": 1.1698
+          },
+          {
+            "pixels": 47758,
+            "bbox": [
+              29,
+              704,
+              267,
+              1005
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              29.0,
+              -137.2,
+              13.5,
+              116.6
+            ],
+            "widthFractionOfCell": 0.8485,
+            "heightFractionOfCell": 1.0735
+          },
+          {
+            "pixels": 24412,
+            "bbox": [
+              10,
+              1027,
+              285,
+              1168
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              10.0,
+              185.8,
+              -4.5,
+              -46.4
+            ],
+            "widthFractionOfCell": 0.9804,
+            "heightFractionOfCell": 0.5029
+          },
+          {
+            "pixels": 45543,
+            "bbox": [
+              306,
+              705,
+              527,
+              1005
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              25.5,
+              -136.2,
+              34.0,
+              116.6
+            ],
+            "widthFractionOfCell": 0.7879,
+            "heightFractionOfCell": 1.0699
+          },
+          {
+            "pixels": 22808,
+            "bbox": [
+              305,
+              1027,
+              560,
+              1167
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              24.5,
+              185.8,
+              1.0,
+              -45.4
+            ],
+            "widthFractionOfCell": 0.9091,
+            "heightFractionOfCell": 0.4993
+          },
+          {
+            "pixels": 45639,
+            "bbox": [
+              571,
+              701,
+              830,
+              1005
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              10.0,
+              -140.2,
+              11.5,
+              116.6
+            ],
+            "widthFractionOfCell": 0.9234,
+            "heightFractionOfCell": 1.0842
+          },
+          {
+            "pixels": 22830,
+            "bbox": [
+              577,
+              1031,
+              840,
+              1167
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              16.0,
+              189.8,
+              1.5,
+              -45.4
+            ],
+            "widthFractionOfCell": 0.9376,
+            "heightFractionOfCell": 0.485
+          },
+          {
+            "pixels": 44806,
+            "bbox": [
+              848,
+              703,
+              1094,
+              1007
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              6.5,
+              -138.2,
+              28.0,
+              114.6
+            ],
+            "widthFractionOfCell": 0.877,
+            "heightFractionOfCell": 1.0842
+          },
+          {
+            "pixels": 22241,
+            "bbox": [
+              860,
+              1031,
+              1116,
+              1168
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              18.5,
+              189.8,
+              6.0,
+              -46.4
+            ],
+            "widthFractionOfCell": 0.9127,
+            "heightFractionOfCell": 0.4886
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 12,
+        "majorSilhouetteHeightRange": [
+          136,
+          329
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          12,
+          12,
+          13,
+          13,
+          14,
+          14,
+          15,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 43232,
+          "maxAlpha": 255,
+          "above8Pixels": 31745,
+          "above128Pixels": 30122
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\SignatureWeapons-farah-motion\\source-sheet-00.png",
+      "candidateSha256": "e2fe4d0ac3540b257031ddb65639779461361402638405cb14c5db31cf47f4ce",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "SignatureWeapons-farah-extra",
+      "prompt": "Use case: style-transfer. Fresh native crisp premium anime SD sprite atlas. IMAGE1 is exact16-pose and equipment reference; IMAGE2 is premium skull/face-body ratio and ink/cel-shading guide ONLY. Redraw IMAGE1's exactposes using IMAGE2's large rounded head, short torso/limbs, thick chunky red boots; do not substitute any pose from IMAGE2. Same green-haired Farah, red sleeveless crop top, loose orange trousers. SIGNATURE WEAPONS on both arms: brown leather gauntlets, large GOLD wrist cuffs and SILVER armored knuckles from IMAGE1, never ordinary red gloves. Preserve weapon visibility, forearm and finger gesture for every pose. Native1122x1402 if possible, a4column by5row layout with16 whole figures in rows1..4 only, row5 empty transparent. Aim each used row at y140,420,700,980 and all artwork above y1100 with empty lower280px. More important: every body/hand/boot whole, exact16poses, ample safe alpha gaps, no contact/overlap and no clipping. Keep anatomy size consistent from row to row; raised hands add height naturally, do not shrink the whole figure. Direction order in eachrow front,back,rightprofile,leftprofile; preserve source face exposure. Full genuine alpha0 background, no floor/shadow/VFX/text/grid/borders. Ignore any tiny extracted fragments between sourcecells; only16complete characters. No extra limbs/weapons, no mirrored gesture mistakes, no blur.\nEXACT row roles: row1 walking light strideA, row2 alternate arm/leading foot strideB, row3 low wide martial-arts guard with fists at waist, row4 forward OPEN PALM strike with five articulated brown glove fingers and thumb, not a closed gauntlet fist. Keep the gold cuff/silver armor with the open brown palm. Frontpalm projects toward viewer, backpalm points screen-right, right/leftprofiles strike their own facing. Pose feet must remain source consistent.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-extra/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: two light walk variants, waist-level guard and open-palm strike remain in source four-direction order. Open palm retains brown fingers plus gold cuff/silver armor, not closed fist or red glove. Compact face/body ratios and thick red footwear match premium reference. No extra weapon or obvious hard clipping. Root component128/actual render pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-7abe82c7-5371-4c2f-a45b-a54314a16151.png",
+      "generatedSha256": "e90000179506afdf4c76491f5aaf1d84d76dd5252b18610044c3936ddab3f897",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-farah-extra\\reference-manifest.json",
+      "manifestSha256": "ed436bede743318ba815935dca92298ddf07e1e88b3c9767777ffc6e1e09708e",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/farah-extra.png",
+      "sourceGuid": "6ec6802ac790d1e49b46902a279920e5",
+      "sourceSha256": "6a2e57c1da671c008760a43d8dcd41031466336e52282825d1955a93f2268c46",
+      "sourceMetaSha256": "04293f26cc47bd7a4448744c5b5b9accf6468f789cb2a21782b6d8794dcbecb4",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-extra/reference-00.png",
+          "sha256": "a8003cd46125ced4bc89178ced73c04020e1ed7aa06afe4be1297caf83962c71"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png",
+          "sha256": "b11bc8225c8b2f19ae4d738131c6d8bcb7fbe68ef252896db680512f463f7684"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-extra_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "73059b5d6edd70f4992f6effaf9f75cf",
+          "originalInternalId": "-1378084502"
+        },
+        {
+          "index": 1,
+          "name": "farah-extra_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "450f1618adc04964ea66448605fd424b",
+          "originalInternalId": "2056356568"
+        },
+        {
+          "index": 2,
+          "name": "farah-extra_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "003b9d6677d895b4d87839f55d1ae893",
+          "originalInternalId": "-1760619621"
+        },
+        {
+          "index": 3,
+          "name": "farah-extra_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "a3e98ec5bd1563f4eb72a7efdf878bd8",
+          "originalInternalId": "1278448722"
+        },
+        {
+          "index": 4,
+          "name": "farah-extra_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "5f0a3c3c8d4e585498ebd8f57831e145",
+          "originalInternalId": "1943426283"
+        },
+        {
+          "index": 5,
+          "name": "farah-extra_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "befb1fc446d5ce14fad1c28bbd49e1c7",
+          "originalInternalId": "34005755"
+        },
+        {
+          "index": 6,
+          "name": "farah-extra_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "60d94fb2f610e594c90971a1ad56ecd6",
+          "originalInternalId": "2087399847"
+        },
+        {
+          "index": 7,
+          "name": "farah-extra_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "09ee86557229f5e43acea03ec245f8f3",
+          "originalInternalId": "1558545700"
+        },
+        {
+          "index": 8,
+          "name": "farah-extra_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "a21a80574ed44b342944e2b2e3eae475",
+          "originalInternalId": "-834061870"
+        },
+        {
+          "index": 9,
+          "name": "farah-extra_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "f66e8dc5026e7764fb0a8e2476c5c953",
+          "originalInternalId": "-1089484449"
+        },
+        {
+          "index": 10,
+          "name": "farah-extra_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "8f9c83d3d9f90b940905b55199d3d609",
+          "originalInternalId": "524852996"
+        },
+        {
+          "index": 11,
+          "name": "farah-extra_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "2c03b13600c299c4f8de9bbb42587e9d",
+          "originalInternalId": "67621725"
+        },
+        {
+          "index": 12,
+          "name": "farah-extra_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "310968da3af196a4d9277a409acdbfd4",
+          "originalInternalId": "1155118764"
+        },
+        {
+          "index": 13,
+          "name": "farah-extra_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "a8d148f3d6d70694380b38d89f34d041",
+          "originalInternalId": "1766393305"
+        },
+        {
+          "index": 14,
+          "name": "farah-extra_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "c8b4ad2687d426249a669879443ee2c2",
+          "originalInternalId": "-1476832163"
+        },
+        {
+          "index": 15,
+          "name": "farah-extra_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "75585ac328e75db4ea2eb3276d0853e2",
+          "originalInternalId": "-37036183"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 733015,
+        "strongPixels": 638506,
+        "alphaNonzeroCanvasBbox": [
+          0,
+          15,
+          1072,
+          1467
+        ],
+        "strongCanvasBbox": [
+          18,
+          24,
+          1062,
+          1240
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 40416,
+            "bbox": [
+              45,
+              25,
+              234,
+              341
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              45.0,
+              25.0,
+              34.0,
+              -47.6
+            ],
+            "widthFractionOfCell": 0.7052,
+            "heightFractionOfCell": 1.077
+          },
+          {
+            "pixels": 38924,
+            "bbox": [
+              319,
+              26,
+              501,
+              343
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              51.0,
+              26.0,
+              35.0,
+              -49.6
+            ],
+            "widthFractionOfCell": 0.6791,
+            "heightFractionOfCell": 1.0804
+          },
+          {
+            "pixels": 40700,
+            "bbox": [
+              589,
+              27,
+              773,
+              341
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              53.0,
+              27.0,
+              31.0,
+              -47.6
+            ],
+            "widthFractionOfCell": 0.6866,
+            "heightFractionOfCell": 1.0702
+          },
+          {
+            "pixels": 40680,
+            "bbox": [
+              845,
+              24,
+              1030,
+              340
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              41.0,
+              24.0,
+              42.0,
+              -46.6
+            ],
+            "widthFractionOfCell": 0.6903,
+            "heightFractionOfCell": 1.077
+          },
+          {
+            "pixels": 38908,
+            "bbox": [
+              51,
+              351,
+              237,
+              660
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              51.0,
+              57.6,
+              31.0,
+              -73.2
+            ],
+            "widthFractionOfCell": 0.694,
+            "heightFractionOfCell": 1.0532
+          },
+          {
+            "pixels": 38232,
+            "bbox": [
+              313,
+              351,
+              501,
+              659
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              45.0,
+              57.6,
+              35.0,
+              -72.2
+            ],
+            "widthFractionOfCell": 0.7015,
+            "heightFractionOfCell": 1.0498
+          },
+          {
+            "pixels": 40504,
+            "bbox": [
+              591,
+              350,
+              774,
+              661
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              55.0,
+              56.6,
+              30.0,
+              -74.2
+            ],
+            "widthFractionOfCell": 0.6828,
+            "heightFractionOfCell": 1.06
+          },
+          {
+            "pixels": 40340,
+            "bbox": [
+              848,
+              350,
+              1032,
+              661
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              44.0,
+              56.6,
+              40.0,
+              -74.2
+            ],
+            "widthFractionOfCell": 0.6866,
+            "heightFractionOfCell": 1.06
+          },
+          {
+            "pixels": 41835,
+            "bbox": [
+              18,
+              668,
+              263,
+              952
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              18.0,
+              81.2,
+              5.0,
+              -71.8
+            ],
+            "widthFractionOfCell": 0.9142,
+            "heightFractionOfCell": 0.968
+          },
+          {
+            "pixels": 40396,
+            "bbox": [
+              293,
+              668,
+              526,
+              952
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              25.0,
+              81.2,
+              10.0,
+              -71.8
+            ],
+            "widthFractionOfCell": 0.8694,
+            "heightFractionOfCell": 0.968
+          },
+          {
+            "pixels": 38033,
+            "bbox": [
+              566,
+              668,
+              793,
+              954
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              30.0,
+              81.2,
+              11.0,
+              -73.8
+            ],
+            "widthFractionOfCell": 0.847,
+            "heightFractionOfCell": 0.9748
+          },
+          {
+            "pixels": 38358,
+            "bbox": [
+              827,
+              668,
+              1056,
+              954
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              23.0,
+              81.2,
+              16.0,
+              -73.8
+            ],
+            "widthFractionOfCell": 0.8545,
+            "heightFractionOfCell": 0.9748
+          },
+          {
+            "pixels": 41634,
+            "bbox": [
+              18,
+              962,
+              276,
+              1240
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              18.0,
+              81.8,
+              -8.0,
+              -66.4
+            ],
+            "widthFractionOfCell": 0.9627,
+            "heightFractionOfCell": 0.9475
+          },
+          {
+            "pixels": 39650,
+            "bbox": [
+              288,
+              964,
+              544,
+              1240
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              20.0,
+              83.8,
+              -8.0,
+              -66.4
+            ],
+            "widthFractionOfCell": 0.9552,
+            "heightFractionOfCell": 0.9407
+          },
+          {
+            "pixels": 40335,
+            "bbox": [
+              552,
+              963,
+              798,
+              1240
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              16.0,
+              82.8,
+              6.0,
+              -66.4
+            ],
+            "widthFractionOfCell": 0.9179,
+            "heightFractionOfCell": 0.9441
+          },
+          {
+            "pixels": 39561,
+            "bbox": [
+              814,
+              964,
+              1062,
+              1240
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              10.0,
+              83.8,
+              10.0,
+              -66.4
+            ],
+            "widthFractionOfCell": 0.9254,
+            "heightFractionOfCell": 0.9407
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          276,
+          317
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 46195,
+          "maxAlpha": 255,
+          "above8Pixels": 40732,
+          "above128Pixels": 39074
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\SignatureWeapons-farah-extra\\source-sheet-00.png",
+      "candidateSha256": "e90000179506afdf4c76491f5aaf1d84d76dd5252b18610044c3936ddab3f897",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    },
+    {
+      "key": "SignatureWeapons-farah-polish",
+      "prompt": "Use case: style-transfer. Fresh native crisp premium anime SD sprite atlas. IMAGE1 is exact16-pose and equipment reference; IMAGE2 is premium skull/face-body ratio and ink/cel-shading guide ONLY. Redraw IMAGE1's exactposes using IMAGE2's large rounded head, short torso/limbs, thick chunky red boots; do not substitute any pose from IMAGE2. Same green-haired Farah, red sleeveless crop top, loose orange trousers. SIGNATURE WEAPONS on both arms: brown leather gauntlets, large GOLD wrist cuffs and SILVER armored knuckles from IMAGE1, never ordinary red gloves. Preserve weapon visibility, forearm and finger gesture for every pose. Native1122x1402 if possible, a4column by5row layout with16 whole figures in rows1..4 only, row5 empty transparent. Aim each used row at y140,420,700,980 and all artwork above y1100 with empty lower280px. More important: every body/hand/boot whole, exact16poses, ample safe alpha gaps, no contact/overlap and no clipping. Keep anatomy size consistent from row to row; raised hands add height naturally, do not shrink the whole figure. Direction order in eachrow front,back,rightprofile,leftprofile; preserve source face exposure. Full genuine alpha0 background, no floor/shadow/VFX/text/grid/borders. Ignore any tiny extracted fragments between sourcecells; only16complete characters. No extra limbs/weapons, no mirrored gesture mistakes, no blur.\nEXACT row roles: row1 twisting windup, one fist back and other hand low; row2 single straight punch with foreshortened front fist and correctly directed profiles; row3 BOTH GAUNTLETED HANDS CLASPED OVER HEAD, connected hands above skull with both arms lifted (do not lower to chest), front/back/right/left orientation as source; row4 lowered hands relaxed recovery. Preserve two gold cuffs and brown/silver gauntlets on all16poses without adding a third hand. Skull and thick red boots should match premium styleimage in everyrow, notshrink under raised arms.",
+      "referenceImagePaths": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-polish/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png"
+      ],
+      "visualReview": "Directly viewed16 figures: twist windup, single straight punch, both gauntleted hands joined overhead, lowered-arm recovery preserved in all four source directions. Gold cuffs/brown gloves/silver knuckles retained. Overhead pose has normal head/boot proportions and added arm height; no whole-body scale-down detected visually. No extra hand/weapon or apparent hard clipping. Root component128/actual render pending.",
+      "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-5a2861bc-f45b-4746-a364-5d8e9c36f87a.png",
+      "generatedSha256": "722810491763693e21a9a41388bb7fba18bf4cabcd251178dc1a16be000453b2",
+      "manifestPath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-farah-polish\\reference-manifest.json",
+      "manifestSha256": "366bb5250424148abcd4368533a636d0606e7479e57e17c6380a455168cb1203",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/farah-polish.png",
+      "sourceGuid": "7f8c6b8b229764d4283e68a33137a199",
+      "sourceSha256": "4c5ff645b796e53f8cceb051e65cf36416f0070ad395f57ed57588d248c9d9eb",
+      "sourceMetaSha256": "45cb6926cb5b9bef837c8b7a5d90d5ff3b79b0aa1018ebf2061cf3f1a21563b5",
+      "referenceImageHashes": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-farah-polish/reference-00.png",
+          "sha256": "7b66589c5744768e362da513b7edd328be0a420e676912251b96bc430711f060"
+        },
+        {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-farah-premium/source-sheet-00.png",
+          "sha256": "b11bc8225c8b2f19ae4d738131c6d8bcb7fbe68ef252896db680512f463f7684"
+        }
+      ],
+      "exactFrames": [
+        {
+          "index": 0,
+          "name": "farah-polish_0_0",
+          "cellIndex": 0,
+          "originalSpriteId": "8de35ae3bb9346b4b9d1d7aa0a71db16",
+          "originalInternalId": "1573633772"
+        },
+        {
+          "index": 1,
+          "name": "farah-polish_0_1",
+          "cellIndex": 1,
+          "originalSpriteId": "d830f1f0f68fb8a4ea6f623362f4a5e9",
+          "originalInternalId": "-2029846266"
+        },
+        {
+          "index": 2,
+          "name": "farah-polish_0_2",
+          "cellIndex": 2,
+          "originalSpriteId": "f87c3f0635b1af8458352b10e287e935",
+          "originalInternalId": "-1888812161"
+        },
+        {
+          "index": 3,
+          "name": "farah-polish_0_3",
+          "cellIndex": 3,
+          "originalSpriteId": "6eee21d2a471a724da8b457988510818",
+          "originalInternalId": "-199092243"
+        },
+        {
+          "index": 4,
+          "name": "farah-polish_1_0",
+          "cellIndex": 4,
+          "originalSpriteId": "5f5f7c49a91a74247869987afcf67a06",
+          "originalInternalId": "-721766777"
+        },
+        {
+          "index": 5,
+          "name": "farah-polish_1_1",
+          "cellIndex": 5,
+          "originalSpriteId": "737b322aa7b5c054dbcb261dc77eef2d",
+          "originalInternalId": "107234876"
+        },
+        {
+          "index": 6,
+          "name": "farah-polish_1_2",
+          "cellIndex": 6,
+          "originalSpriteId": "5b88d34e0312bff4885d8c62f35834de",
+          "originalInternalId": "-1112216706"
+        },
+        {
+          "index": 7,
+          "name": "farah-polish_1_3",
+          "cellIndex": 7,
+          "originalSpriteId": "a5542708ceb13674b8b95a513f4c619a",
+          "originalInternalId": "-467065734"
+        },
+        {
+          "index": 8,
+          "name": "farah-polish_2_0",
+          "cellIndex": 8,
+          "originalSpriteId": "00c5304095300014081e2a29e197eb83",
+          "originalInternalId": "-1154280609"
+        },
+        {
+          "index": 9,
+          "name": "farah-polish_2_1",
+          "cellIndex": 9,
+          "originalSpriteId": "c52f237b17f51b5448bf43812c578fcc",
+          "originalInternalId": "84497755"
+        },
+        {
+          "index": 10,
+          "name": "farah-polish_2_2",
+          "cellIndex": 10,
+          "originalSpriteId": "1a64b0ad4618dd4429a8f165d8c9e33c",
+          "originalInternalId": "-1113463818"
+        },
+        {
+          "index": 11,
+          "name": "farah-polish_2_3",
+          "cellIndex": 11,
+          "originalSpriteId": "4fc36ad79ec148e49b34b24425c2d4d4",
+          "originalInternalId": "1504941954"
+        },
+        {
+          "index": 12,
+          "name": "farah-polish_3_0",
+          "cellIndex": 12,
+          "originalSpriteId": "f7c1642e9dae29841b97dfe03bdaa05c",
+          "originalInternalId": "657958980"
+        },
+        {
+          "index": 13,
+          "name": "farah-polish_3_1",
+          "cellIndex": 13,
+          "originalSpriteId": "48fe306e7f781bc4ab193cb0f651c303",
+          "originalInternalId": "-1470684330"
+        },
+        {
+          "index": 14,
+          "name": "farah-polish_3_2",
+          "cellIndex": 14,
+          "originalSpriteId": "a45ca6b4033040e479730d2e4d8f00a5",
+          "originalInternalId": "-1148166547"
+        },
+        {
+          "index": 15,
+          "name": "farah-polish_3_3",
+          "cellIndex": 15,
+          "originalSpriteId": "6c454ada76e3b6a42958e9ed77c43cdf",
+          "originalInternalId": "-104475540"
+        }
+      ],
+      "measurement": {
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaNonzeroPixels": 743997,
+        "strongPixels": 632600,
+        "alphaNonzeroCanvasBbox": [
+          19,
+          17,
+          1072,
+          1467
+        ],
+        "strongCanvasBbox": [
+          23,
+          24,
+          1062,
+          1228
+        ],
+        "strongMajorComponents": [
+          {
+            "pixels": 41845,
+            "bbox": [
+              23,
+              24,
+              246,
+              313
+            ],
+            "cellIndex": 0,
+            "cellMarginsPixels": [
+              23.0,
+              24.0,
+              22.0,
+              -19.6
+            ],
+            "widthFractionOfCell": 0.8321,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 40914,
+            "bbox": [
+              297,
+              24,
+              523,
+              313
+            ],
+            "cellIndex": 1,
+            "cellMarginsPixels": [
+              29.0,
+              24.0,
+              13.0,
+              -19.6
+            ],
+            "widthFractionOfCell": 0.8433,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 39482,
+            "bbox": [
+              570,
+              25,
+              782,
+              314
+            ],
+            "cellIndex": 2,
+            "cellMarginsPixels": [
+              34.0,
+              25.0,
+              22.0,
+              -20.6
+            ],
+            "widthFractionOfCell": 0.791,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 40607,
+            "bbox": [
+              836,
+              24,
+              1055,
+              313
+            ],
+            "cellIndex": 3,
+            "cellMarginsPixels": [
+              32.0,
+              24.0,
+              17.0,
+              -19.6
+            ],
+            "widthFractionOfCell": 0.8172,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 38697,
+            "bbox": [
+              25,
+              326,
+              247,
+              615
+            ],
+            "cellIndex": 4,
+            "cellMarginsPixels": [
+              25.0,
+              32.6,
+              21.0,
+              -28.2
+            ],
+            "widthFractionOfCell": 0.8284,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 41310,
+            "bbox": [
+              293,
+              326,
+              529,
+              617
+            ],
+            "cellIndex": 5,
+            "cellMarginsPixels": [
+              25.0,
+              32.6,
+              7.0,
+              -30.2
+            ],
+            "widthFractionOfCell": 0.8806,
+            "heightFractionOfCell": 0.9918
+          },
+          {
+            "pixels": 39965,
+            "bbox": [
+              555,
+              329,
+              794,
+              617
+            ],
+            "cellIndex": 6,
+            "cellMarginsPixels": [
+              19.0,
+              35.6,
+              10.0,
+              -30.2
+            ],
+            "widthFractionOfCell": 0.8918,
+            "heightFractionOfCell": 0.9816
+          },
+          {
+            "pixels": 40047,
+            "bbox": [
+              823,
+              327,
+              1062,
+              616
+            ],
+            "cellIndex": 7,
+            "cellMarginsPixels": [
+              19.0,
+              33.6,
+              10.0,
+              -29.2
+            ],
+            "widthFractionOfCell": 0.8918,
+            "heightFractionOfCell": 0.985
+          },
+          {
+            "pixels": 38050,
+            "bbox": [
+              24,
+              622,
+              243,
+              921
+            ],
+            "cellIndex": 8,
+            "cellMarginsPixels": [
+              24.0,
+              35.2,
+              25.0,
+              -40.8
+            ],
+            "widthFractionOfCell": 0.8172,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 35957,
+            "bbox": [
+              299,
+              622,
+              520,
+              921
+            ],
+            "cellIndex": 9,
+            "cellMarginsPixels": [
+              31.0,
+              35.2,
+              16.0,
+              -40.8
+            ],
+            "widthFractionOfCell": 0.8246,
+            "heightFractionOfCell": 1.0191
+          },
+          {
+            "pixels": 35165,
+            "bbox": [
+              574,
+              629,
+              779,
+              922
+            ],
+            "cellIndex": 10,
+            "cellMarginsPixels": [
+              38.0,
+              42.2,
+              25.0,
+              -41.8
+            ],
+            "widthFractionOfCell": 0.7649,
+            "heightFractionOfCell": 0.9986
+          },
+          {
+            "pixels": 35666,
+            "bbox": [
+              841,
+              626,
+              1047,
+              922
+            ],
+            "cellIndex": 11,
+            "cellMarginsPixels": [
+              37.0,
+              39.2,
+              25.0,
+              -41.8
+            ],
+            "widthFractionOfCell": 0.7687,
+            "heightFractionOfCell": 1.0089
+          },
+          {
+            "pixels": 43267,
+            "bbox": [
+              28,
+              930,
+              242,
+              1228
+            ],
+            "cellIndex": 12,
+            "cellMarginsPixels": [
+              28.0,
+              49.8,
+              26.0,
+              -54.4
+            ],
+            "widthFractionOfCell": 0.7985,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 42546,
+            "bbox": [
+              306,
+              930,
+              516,
+              1228
+            ],
+            "cellIndex": 13,
+            "cellMarginsPixels": [
+              38.0,
+              49.8,
+              20.0,
+              -54.4
+            ],
+            "widthFractionOfCell": 0.7836,
+            "heightFractionOfCell": 1.0157
+          },
+          {
+            "pixels": 39004,
+            "bbox": [
+              577,
+              932,
+              776,
+              1228
+            ],
+            "cellIndex": 14,
+            "cellMarginsPixels": [
+              41.0,
+              51.8,
+              28.0,
+              -54.4
+            ],
+            "widthFractionOfCell": 0.7425,
+            "heightFractionOfCell": 1.0089
+          },
+          {
+            "pixels": 40071,
+            "bbox": [
+              840,
+              932,
+              1045,
+              1228
+            ],
+            "cellIndex": 15,
+            "cellMarginsPixels": [
+              36.0,
+              51.8,
+              27.0,
+              -54.4
+            ],
+            "widthFractionOfCell": 0.7649,
+            "heightFractionOfCell": 1.0089
+          }
+        ],
+        "majorCount": 16,
+        "expectedFigureCount": 16,
+        "uniqueAssignedCellCount": 16,
+        "majorSilhouetteHeightRange": [
+          288,
+          299
+        ],
+        "central70x76PercentSatisfiedForAllMajorComponents": false,
+        "componentsCrossingNominalCell": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "allAlphaInLastTwoRows": null,
+        "measurementLimit": "Alpha silhouette height includes hair, weapons and clothes; it is not an anatomical body-height measurement. Components use8-connectivity and alpha>128. No raster was edited.",
+        "strongCanvasEdgePixelCount": 0,
+        "unusedFinalRow": {
+          "nonzeroAlphaPixels": 42695,
+          "maxAlpha": 255,
+          "above8Pixels": 35592,
+          "above128Pixels": 34158
+        }
+      },
+      "nominalEmptyLastRowSatisfied": false,
+      "packingMethodRequired": "component128 native ownership for16 complete figures, row-major order; actual used row positions may cross nominal4x5 rows. Root explicitly accepted on2026-10-31 if16poses intact, separated at strong alpha, no canvas clipping. No pixel resizing or deletion.",
+      "candidatePath": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Art\\SdCharacters\\QualityUpgrade20261031\\Generated\\SignatureWeapons-farah-polish\\source-sheet-00.png",
+      "candidateSha256": "722810491763693e21a9a41388bb7fba18bf4cabcd251178dc1a16be000453b2",
+      "visualApproved": true,
+      "rootPackAndRenderValidationPending": true,
+      "rejectedAttempts": [],
+      "nativeGeneratedCandidateBytesIdentical": true,
+      "sourcePngAndMetaUnchanged": true
+    }
+  ],
+  "limitations": [
+    "Native pixel dimensions are not game scale. Root must pack, calibrate and validate continuous transitions.",
+    "BBox heights include pose, hair and equipment; anatomy is reviewed visually.",
+    "No image resizing, raster painting or compositing by Python. All saved candidate bytes are unchanged imagegen output."
+  ],
+  "finalVerification": {
+    "selectedSheets": 8,
+    "preservedSourceFrames": 128,
+    "strongMajorFigures": 128,
+    "inputAndSourceHashesStable": true,
+    "candidateExactlyGeneratedBytes": true,
+    "noRasterPixelTransform": true,
+    "allInputAndOutputImagesVisuallyInspected": true,
+    "unityNotRun": true,
+    "productionUnchanged": true,
+    "rootPackAndContinuousRenderPending": true,
+    "nominalLayoutDeviationAcceptedForNativeComponent128": "Root explicitly accepted actual4rows/16intact poses when only nominal4x5 row boundaries differ; lower20% is not universally empty and measurement records it. No5th figure row exists."
+  },
+  "status": "candidate_generation_complete_pending_root_native_pack_and_actual_render"
+}

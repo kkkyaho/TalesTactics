@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "kind": "extracted-failure-summary-not-raw-test-report",
+  "scope": "First full PlayMode run after production art application, before pose-scale test correction.",
+  "originalReport": {
+    "path": "Docs/QualityUpgrade/Validation/full-playmode-after-art.json",
+    "sha256ObservedBeforeOverwrite": "141cf4c46ca7ae9029b4ff82de96bbf21b53e4031ac1b46c5dc945b1eea3e1c1",
+    "byteLengthObservedBeforeOverwrite": 61039,
+    "rawBytesRetained": false,
+    "lossReason": "The root validation chain accidentally overwrote this path with a later zero-test result before an archival copy was made. The guarded archive attempt rejected the changed hash. No replacement raw report is fabricated.",
+    "evidenceSource": "Summary and failed-row fields read from the original report in tool output before the overwrite; its SHA was independently observed immediately before the guarded copy attempt.",
+    "omittedUnavailable": "The complete original JSON bytes and full list of 246 passing tests are not retained in this extracted record."
+  },
+  "observedResult": {
+    "status": "completed",
+    "durationSeconds": 624.07,
+    "total": 247,
+    "passed": 246,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "observedSingleFailure": {
+    "fullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections",
+    "status": "Failed",
+    "durationSeconds": 1.1127736,
+    "messageExcerpt": "Pose scale: cless-hq_3_0; expected in range (0.8, 1.6); observed 1.87923837f.",
+    "sourceLocationAtFailure": "Assets/TalesTactics/PlayModeTests/CharacterPoseSceneTests.cs:24",
+    "measurementAtFailure": "Sprite.bounds.size.y, including weak-alpha frame padding."
+  },
+  "interpretation": "This remains a failed Unity execution. Native pixel analysis and any later execution must be reported separately; a zero-test run is not a pass."
+}

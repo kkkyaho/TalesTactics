@@ -11,7 +11,9 @@ namespace TalesTactics
             arte=value;
             artRenderer.sharedMaterial=value.Enabled?weaponArt:signature==SkillSignature.None?defaultArt:signatureArt;
             backRenderer.sharedMaterial=value.Enabled?spellArt:defaultBack;
-            backRenderer.sortingOrder=value.Enabled?22:-1;
+            // Painted spell volumes sit behind the recipient; only the short contact accents
+            // use the foreground solid mesh. The four shared mesh/material slots stay intact.
+            backRenderer.sortingOrder=-1;
         }
         static bool SpellSheet(ArteMotif motif)
         {
@@ -109,6 +111,7 @@ namespace TalesTactics
         {
             var ground=casterAnchor.position-transform.position+Vector3.up*.06f;
             float a=Mathf.Sin(p*Mathf.PI)*ArteOpacity;
+            if(arte.Id=="mint.0"){FirstAidPreparation(ground,p,a);return;}
             if(arte.IsSpell)
             {
                 Seal(ground,.6f+.12f*p,a*.7f,p*.12f);
@@ -140,6 +143,7 @@ namespace TalesTactics
         {
             p=SkillVisualLanguage.Snap(p);
             float a=ArteOpacity;var motif=arte.Motif;
+            if(arte.Id=="mint.0"){FirstAidTravel(p,a);return;}
             if(Falls(motif))
             {
                 FallingGlyph(motif,Vector3.Lerp(Plane(-.4f,2.5f),Vector3.zero,p*p),a);
@@ -154,7 +158,7 @@ namespace TalesTactics
             {
                 int count=Mathf.Min(3,ArteCount);
                 for(int i=count-1;i>=0;i--){var head=Vector3.Lerp(from,Vector3.zero,Mathf.Clamp01(p-i*.12f));
-                    Glyph(motif,head+Vector3.up*.3f,.65f,.4f,a*(1-i*.2f),angle*.2f);}
+                    Glyph(motif,head+Vector3.up*.3f,.65f*(1-i*.16f),.4f*(1-i*.16f),a*(1-i*.28f),angle*.2f);}
                 return;
             }
             if(motif==ArteMotif.Grenade)
@@ -162,7 +166,7 @@ namespace TalesTactics
             if(motif==ArteMotif.Rifle||motif==ArteMotif.Arrow||motif==ArteMotif.Thrust)
             {
                 Glyph(motif,point+Vector3.up*.45f,.5f,.19f,a,angle);
-                CelStroke(point+Vector3.up*.45f-ArteDirection*.44f,point+Vector3.up*.45f,.018f,Alpha(arte.Tint,a*.8f),true);return;
+                CelTrail(point+Vector3.up*.45f-ArteDirection*.54f,point+Vector3.up*.45f,.024f,Alpha(arte.Tint,a*.8f));return;
             }
             if(motif==ArteMotif.Phoenix||motif==ArteMotif.Dragon||motif==ArteMotif.Lion)
             {Glyph(motif,point+Vector3.up*(.5f+Mathf.Sin(p*Mathf.PI)*.35f),.68f,.65f,a,arte.Angle*.15f);return;}
@@ -261,6 +265,7 @@ namespace TalesTactics
         }
         void DrawArteImpact(float t)
         {
+            if(arte.Id=="mint.0"){FirstAidImpact(t);return;}
             int count=ArteCount;var motif=arte.Motif;
             // One readable creature silhouette; rapid follow-ups are shock accents, not
             // multiple large faces covering the nearby squad at the same time.

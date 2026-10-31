@@ -1,0 +1,2166 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-31",
+  "reviewRecordedAtUtc": "2026-10-31T12:07:53.547906+00:00",
+  "reviewType": "Read-only visual review of actual Unity static SpriteRenderer contact sheets; selected native redraws reviewed separately.",
+  "productionModifiedByThisReview": false,
+  "unityOperatedByThisReviewer": false,
+  "visualApprovalForProduction": false,
+  "scope": {
+    "jobCount": 19,
+    "captureCount": 76,
+    "sampledCandidateFrames": 456,
+    "rows": "top=current production at capture time; bottom=imported candidate",
+    "resolution": [
+      1920,
+      900
+    ],
+    "shader": "TalesTactics/UnitTone",
+    "perCharacterScale": "CharacterVisualSizing.Scale(character), same for current and candidate",
+    "captureScripts": [
+      {
+        "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/capture-all-optical.cs",
+        "sha256": "990ce146911297eb6dd1060256b9f8f0398ad9e554da533b90a121ce7447acd9"
+      },
+      {
+        "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/capture-pilot-optical.cs",
+        "sha256": "695fbba003ac77a334d1f9978f3ee46fcdba998f923bb6b24d2db77e759dc006"
+      },
+      {
+        "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/capture-v3-optical.cs",
+        "sha256": "e85e0d8edecfe7ab24f38d2062b59d5233e595dc466cb0e73eb51eb395997dc2"
+      }
+    ],
+    "captureCountMeaning": "Latest static capture per reviewed job; earlier superseded captures are in previousReviewHistory.",
+    "historicalSupersededCaptureCount": 12,
+    "totalDistinctCaptureFilesReviewed": 88
+  },
+  "limits": [
+    "These are actual Unity-rendered stills, not screenshots of a live animation sequence. CharacterMotion root translation, tilt, hit timing, cross-sheet transitions, battlefield occlusion and reduced VFX were not exercised here.",
+    "Six selected poses in each of four sprite directions do not cover every frame. No claim of perfect anatomy, all-frame equipment correctness or motion smoothness is made.",
+    "Total silhouette bbox includes weapons, hair and crouching. It is not used alone to reject anatomical scale. Face-skin and toe measurements are approximate proxies, not a skull/foot anatomy ground truth.",
+    "PilotOptical uses different pose indices from AllOptical. Farah mismatch was initially messaged as pose13 and corrected to farah_10_1 after reading the capture script; this report uses the corrected exact mapping.",
+    "Mint AllOptical uses the final selected eight revisions as confirmed by root. Velvet basic and Alphen signature current reviews use FinalOptical v3; Farah uses new AllOptical v2. Earlier candidate captures/findings remain in previousReviewHistory. Static correction approval does not establish continuous-motion smoothness."
+  ],
+  "reviews": [
+    {
+      "job": "MotionPremium-tear",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_static_blocker_pose_variation",
+      "observation": "Late16/17 look about10%larger than early guards, with visible face/clothing variation; pose13 is lowered. No extra staff or new direction reversal. Static comparison alone does not justify a global scale change; review13-to16/17 and17-to0 dynamically.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-tear-direction-0.png",
+          "sha256": "1e9f64f0bb0db09da31f9ffa7b7e71a3aef5c53fb8434db32a9adb35bb2e6cbf",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-tear-direction-1.png",
+          "sha256": "ff05a0ff9beabea49e9ab6d95b69ce4c871ade0f7c7e47b78fca28995c04fae2",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-tear-direction-2.png",
+          "sha256": "5dd878376364a770ce1aad9284fe8d10d73e0c3b5e931ac2b40b586f5e37eed8",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-tear-direction-3.png",
+          "sha256": "1bc7f9ca73d01d5d0833980d0286e0f73e303ca380c8e10ab472b44743b8df42",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-tear-v2.json",
+        "sha256": "87b7ca1e690c662e3ccdb86589db93c0484031b9f3982c4d6c401c51590ef3f8"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-velvet",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "static_refinement_observed_continuous_review_pending",
+      "observation": "Final v3 renders use redrawn sheets01-v2 and03-v2. Guard/recovery16/17 faces, torsos and boots are closer to the first-sheet anatomy than the previous candidate. One claw assembly and all sampled facing roles remain. Unchanged sheet02 pose13 still appears smaller in head and boots than9/16 in front and side views; crouch/lean changes also contribute. Keep9-to13-to16 as a continuous-motion target; do not infer a scalar pivot or PPU fault from bbox height. No newly duplicated weapon or obvious facing reversal in these24samples.",
+      "captureMethod": "FinalOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/MotionPremium-velvet-direction-0.png",
+          "sha256": "560ed7b83c728efd1f178aebaa50b175865788af26c6fb90696fb7b849517842",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/MotionPremium-velvet-direction-1.png",
+          "sha256": "c694f96e6d0e2dd341ff588c7e8ea53ca44576a1fb027a892ca6864e5ea3436c",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/MotionPremium-velvet-direction-2.png",
+          "sha256": "804ce83ac36ecd68cb22932fd125d5464f0b885ca2c27035820bc4ca0ca74345",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/MotionPremium-velvet-direction-3.png",
+          "sha256": "4cb707158b6f5e716dd333960127fe7f2853b6c62915b153e6a9476a25cba2bd",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-velvet-v3.json",
+        "sha256": "f8547aee52819c97bb7173d08af347d0db793c045d5264df01961b5756000267"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "packedCandidate": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/MotionPremium-velvet-v3.png",
+        "sha256": "21ae50a2c6faae3513a19c8d3f61282b13bfdec68d98cf9bb09f21285ffef845"
+      }
+    },
+    {
+      "job": "MotionPremium-jade",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "One connected spear, source hand roles and direction exception (pose10 back-direction face visible) retained. Wide thrust/cloak and crouch total-height changes follow source. No severe skull/body scale discontinuity in24sampled poses.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-jade-direction-0.png",
+          "sha256": "892da813ed8603fba0ab7d6544ecd4a90c92967d4bd15964add4136327dc3be4",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-jade-direction-1.png",
+          "sha256": "beca5a5e833708335e80f918199208948aaa313ebd2249157859c575243ea6a3",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-jade-direction-2.png",
+          "sha256": "88541f6da4b3c73ec3d497b48acda9fb373c205c3296046f189055a4fc1283d1",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-jade-direction-3.png",
+          "sha256": "8df9bfd709e08b359963b4898e3d928e0b7ade7e2b38031d4e690bc9a25e9214",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-jade-v2.json",
+        "sha256": "738d3bccde49226348bec792615da4f4f36a9aa813dcc11d5d1857a3f4b17841"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-natalia",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "One bow with quiver; draw/lift/guard roles and source back-direction face-visible exceptions retained. Closed-eye cast18 variation and VFX removal recorded. Skull/boots remain broadly consistent; pose5 squats legitimately. No extra bow or direction reversal in24samples.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-natalia-direction-0.png",
+          "sha256": "986265c2023ff9c5c1eee39f569faea2cb6216b00c01319bea5996912e5909d8",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-natalia-direction-1.png",
+          "sha256": "96283bccbb6d70308eb59b36ae060c76c5cb46c7c2b18412858b65712871cf01",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-natalia-direction-2.png",
+          "sha256": "aec529f793adb9aba3a76faca881aba4ad1b03916c2534b964d5781be0f6b86c",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-natalia-direction-3.png",
+          "sha256": "5b3039aa9f11c2586765d29e3fc261f00c581e1508f320489b0910883056532d",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-natalia-v2.json",
+        "sha256": "f5fb1c22c522939be1b26a606caaa2d42f1e36e3bd8ce08c08f81eefae013df7"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-shionne",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "One rifle throughout24samples; diagonal/aim/raised poses retain direction and rear hair. Pose9 lowers body as source; face/boot sizes remain broadly stable. Candidate neck/armor/stock are sharper without visible extra weapon in sampled frames.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-shionne-direction-0.png",
+          "sha256": "261a0592e9c0700891a89127369fcad75c830660a0be173426d01e732b89807f",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-shionne-direction-1.png",
+          "sha256": "1a69ffbe683488183188679bdc6eb6eac8f3b9ba6bb6c9681a468f07fc540195",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-shionne-direction-2.png",
+          "sha256": "229430b8b83193fccecdb46d4fd7aeef6ecdebb6422a84d9f94e90a3d64edb69",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-shionne-direction-3.png",
+          "sha256": "035d50e15e48c600132f4b49d114eae979e708941f3ad1b2343806c1db3cd2bb",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-shionne-v2.json",
+        "sha256": "8c5e93bf95707898325577662c123ee185a58f725d737f4d9701a5c332907f7a"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-kisara",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "One mace and one shield where source-visible; shield backside/occlusion and raised mace direction preserved. No duplicate head in these24samples. Skull, torso armor and boot sizes broadly consistent despite squat/lunge changes.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-kisara-direction-0.png",
+          "sha256": "a6196fbff4cf80edb4b378d5a425ac84095b9ed68fac112da077688a2cbf270a",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-kisara-direction-1.png",
+          "sha256": "183ef4fb213c821b82dbdd7d9fa7bf0bb0282b742e77da08cd746335cde0cbee",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-kisara-direction-2.png",
+          "sha256": "1376d957d6af6a52e2c9a6752ac674b02df6be979f9c77452a805644b2a2ff04",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-kisara-direction-3.png",
+          "sha256": "7fb02c03d0246782766680d0b2d5f164f4d05d67aa149e9d2ccc2bf73df9fb25",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-kisara-v2.json",
+        "sha256": "676dc6ebe91d8f82c0340266e3af9d37fa107bbe839f3937ad4502c19a6106a9"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-mint",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "Root confirms captures use final8chosen sheets. Source staff-hidden poses (front15/right0) remain without extra visible staff; direction2 pose18 front-facing is also in source. White/purple/gold costume, one staff and comparable face/boot scale across24samples. No new duplicated staff or reversed orientation.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-mint-direction-0.png",
+          "sha256": "e7409316c79893e0853d18eb45b42a07911da9265cf887f18639beb319869bfe",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-mint-direction-1.png",
+          "sha256": "b00bd30beca3bf0843c9886aff45f775c21341168fa9457974e24e1b49b07dc9",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-mint-direction-2.png",
+          "sha256": "d2cfcc96f8a6ffd0b505c86beb0e0fd4a2eba9c098983ecfff648dfcb87ca798",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-mint-direction-3.png",
+          "sha256": "779284fe5d795ec73d99e5a902a9b575524c3b4a433145e548152bf70bc0c244",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-mint-v2.json",
+        "sha256": "15574fcf924a4f732b3b246bb0cb5dec1f0474d5892d202bf414862793caac54"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-alphen-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "static_refinement_observed_continuous_review_pending",
+      "observation": "Final v3 renders show pose17 head and boot scale closer to16 than the previous candidate in all four directions. Pose17 remains crouched while16 stands, so lower overall height is not treated as failed anatomy by itself. One red/black blade and original facing roles remain. No new equipment duplication or obvious left/right reversal in these24samples. Actual16-to17 motion continuity is still pending.",
+      "captureMethod": "FinalOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/SignatureWeapons-alphen-premium-direction-0.png",
+          "sha256": "d6025543e77e1ed7038e2f405ee956af7639ec0038e3297fc74445f7c8b0556f",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/SignatureWeapons-alphen-premium-direction-1.png",
+          "sha256": "402b752f951a795d4842e848ce04127ae0c7219a034eee2276ed3b7f2e3a93db",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/SignatureWeapons-alphen-premium-direction-2.png",
+          "sha256": "dc05032b81283f07bfebbad73345e63b29903e885a2f215351461968a9e9bfb1",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/FinalOptical/SignatureWeapons-alphen-premium-direction-3.png",
+          "sha256": "3a87332545a73a4e1592372c46fb0038e21cd46bb313440a9e3102ab1b221b47",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-alphen-premium-v3.json",
+        "sha256": "3ba6cbc7bc2c88057f78fdd73d18c1b29eb441adcbf5bd6019928ccd6b435821"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "packedCandidate": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/SignatureWeapons-alphen-premium-v3.png",
+        "sha256": "12e052373becc7c2e22160bbd43898316ba15a1a5562febb21745096b235834a"
+      }
+    },
+    {
+      "job": "SignatureWeapons-farah-premium",
+      "reviewer": "/root/campaign_growth_audit",
+      "status": "no_obvious_static_blocker",
+      "observation": "Independent8image review completed forAlphen/Farah. Farah24samples show no extra weapon, new reversal or obvious size pop. Several back-direction front-facing poses also occur in current source.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-farah-premium-direction-0.png",
+          "sha256": "c006acb3c519b711c242c94db5a01022277b3c6792ecd25949f1abf6ee15d16f",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-farah-premium-direction-1.png",
+          "sha256": "2b9edf1a57330a796bb218930c07378c9d646797e5e866beb83c7c08546f14ea",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-farah-premium-direction-2.png",
+          "sha256": "2024a3d8fe30b3cfb09a8b3af1aeee5c996ea14831267299374597d43039aba5",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-farah-premium-direction-3.png",
+          "sha256": "b138097559d79f22abd8b1618bcc325a1233a97f5813762addec78fa623f64e6",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-farah-premium-v2.json",
+        "sha256": "0e1bb50ad42f0a3edc5ffc6151268d89de37aaee80c64b556bda36e636c31896"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-shionne-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "Black/silver/red signature rifle remains a single connected gun in24samples. Cleanup removes source-like double-weapon ambiguity; no new direction reversal. Pose9 crouch is lower as source. Head/boot scale broadly stable; eye-close correction visible front13.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-shionne-premium-direction-0.png",
+          "sha256": "6935b96329200927f4e49dd0c334a5f7c02dbfc88d10369b6e7da712ff085507",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-shionne-premium-direction-1.png",
+          "sha256": "bce175b0923f346b22337784b19e3ed61a6cc352ad47db779c84a3bd96d9de27",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-shionne-premium-direction-2.png",
+          "sha256": "1ee8dac4dfa54f22fa711e6f65329bb54af25e76aed463059e1a3ec9aee7c03b",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-shionne-premium-direction-3.png",
+          "sha256": "e8485f373ebbac2b789b846b2a4c62daaad76c3a6c6eec14b42f449d680ef815",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-shionne-premium-v2.json",
+        "sha256": "dd9c700b4e2f9549a4c0fd75fea26c4eb9a2552054ed5e769383ad2d2cf46327"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-jade-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker_pose_variation",
+      "observation": "Single red/black signature spear, glasses and source-facing exceptions retained across24samples. Latepose18 spear is more upright and torso less lunged than source in several directions; no duplicated weapon or new facing reversal. Latehead slightly fuller than thrustpose10; not a proven dynamic pop.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-jade-premium-direction-0.png",
+          "sha256": "efa4c54534d1ac77ad4113fdcd3f6ac4b9e63c1b2b1bd34e87940d13746baa19",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-jade-premium-direction-1.png",
+          "sha256": "be57d04e01fa3f80bcefdfa81849db34191c41b83a8da97e077eb9b69e95bc64",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-jade-premium-direction-2.png",
+          "sha256": "e1e14d0e99172bc14dc2ddbd6f3a451f562ad807096b6d5ad283ade44170ea30",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-jade-premium-direction-3.png",
+          "sha256": "ce1d4b61e0e7dae47a394049c16b05a0bc0da6210a9ff4d93b665b661fd8e101",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-jade-premium-v2.json",
+        "sha256": "8ec9b8e86f6827d5315a273866fcb230615b1ff3f15a5ac526f29599bd0f4b79"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-mint-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "Latest selected Mint revision confirmed by root. Blue crystal signature staff is single; source-hidden staff in frontpose15/back5,15 retained. Side18 front-facing exception matches source. Face, torso and visible boots broadly stable across24samples; no new reversal/extra staff.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-mint-premium-direction-0.png",
+          "sha256": "a6ac7621acbca04e5c47f5a3a877a260ed2ffdfa0ae7069234af221845f83f39",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-mint-premium-direction-1.png",
+          "sha256": "b4f32aa587ef3dd36251eb89e5b236577d80bd23e522129b92589d2a7496fdfb",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-mint-premium-direction-2.png",
+          "sha256": "020b2a884e67dc0d230f76c99f9d9e9f368a7b436f73cb6288a17e3ed04987c6",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-mint-premium-direction-3.png",
+          "sha256": "924e789a3e9e4df14659fd40c679fd18e89bee940ab32d2a7ddbb3c8ef24358a",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-mint-premium-v2.json",
+        "sha256": "b1722c08cf2ee104f6b9ef10c98795394a13fe75e363249cfe6c57ce7334df02"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-tear-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker_pose_variation",
+      "observation": "Single ivory cone/purple-orb staff and stable face/boot scale across24samples. Backdirection pose9 shows a more exposed face/eye during the twist than source; overall turn/staff role retained, no full left/right reversal. No extra staff or severe size discontinuity.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-tear-premium-direction-0.png",
+          "sha256": "4a9fc2ee7138842f91a2228c4d137d3dd8e6971e6d8c30d7993d1027593756c8",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-tear-premium-direction-1.png",
+          "sha256": "851f08c0fb3580d0aed148b93bfb17cbe8e7765dd96462452f83747985f35a03",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-tear-premium-direction-2.png",
+          "sha256": "0205dfa1b6dc52cc0b80e35fae3177ffd354137a04326c512d591280441c6766",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-tear-premium-direction-3.png",
+          "sha256": "a0b52bc44c3115a9987587d3035bb769719a00657f98e777f3dc97cfe6ca03a7",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-tear-premium-v2.json",
+        "sha256": "70062ca913fe1247eef82afc78503f0fea6821572347d2e643e7f6ccdef7a045"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-velvet-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker_pose_variation",
+      "observation": "One broad silver/green forearm blade and opposite gauntlet; rear/front hand switching follows source turn. No new blade duplication/reversal in24samples. Pose13 skull/torso looks slightly smaller than guard0/4 but is also crouched/lunged; unlike basic pre-correction sheets there is no clear whole late-sheet downsizing. Dynamic13-to16 remains useful.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-velvet-premium-direction-0.png",
+          "sha256": "514f0eb1087a2b2e29faf6fa92410cde8c7ef230d77545e3503ba71ff63cd84f",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-velvet-premium-direction-1.png",
+          "sha256": "cb06ba140c08b2e46c2cbe3971d49c0b4fd07c601a7d5ea92d98bf2950b8b5f0",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-velvet-premium-direction-2.png",
+          "sha256": "2e71f879e7350455ce89d89a5b930638b7879f7b0fa0d49fdd467c165fbe333b",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-velvet-premium-direction-3.png",
+          "sha256": "5f51d546415e7c63ef7e086bdbe1c9c140e9b06468e9ea42d91f4b0160fb0952",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-velvet-premium-v2.json",
+        "sha256": "edc078419818fb6d632c7dfa015ed2521469e91c06035cbdb40fe0ac9ee96b5a"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-natalia-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker",
+      "observation": "Single white/gold-green signature bow and quiver, source face-visible backpose10/18 retained. Restored left-facing pose18 is correct in direction1. Skull/torso/boots broadly consistent across24samples; crouch5 remains lower but no extra bow or new facing reversal.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-natalia-premium-direction-0.png",
+          "sha256": "97c9786600ed70959f9ade252325bffb58d55701275ffd6fb5030bf95d1475c2",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-natalia-premium-direction-1.png",
+          "sha256": "2f7b99eeea1d73b397b339123e1d4c4e0177c1e549b8c7c1db4999bafb45c826",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-natalia-premium-direction-2.png",
+          "sha256": "9e1d6cdaa65f224313d4c75c25edf8dedca546f4cdc2b2f981713212e76b0a3d",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-natalia-premium-direction-3.png",
+          "sha256": "f46231fd0fc34f50f27143006654c0fe28c4c276910ee783ba54301f3a784abc",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-natalia-premium-v2.json",
+        "sha256": "c9f5c41ec61764ee028a8680e28f407e1df10b823e19b73b9aedd00e2f6c480b"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "SignatureWeapons-kisara-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker_pose_variation",
+      "observation": "Single gold mace and silver/dark-purple bird shield; source rear0 ambiguous second shield reads correctly as mace in candidate. No duplicate mace heads in24samples. Pose0 looks taller with a somewhat larger head than5/10/15; those poses lower/tilt the torso, while18/19 recover. Record dynamic0-to5/19-to0 check, not bbox-only scale rejection.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-kisara-premium-direction-0.png",
+          "sha256": "6c81c224b481430be9c4b365393c37d687fa70d9697023f137eda40fa046b65c",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-kisara-premium-direction-1.png",
+          "sha256": "d1a8774f4a01ea1a192312f1e387a205367a8acdf6c8f24e99a252c8fc53d18f",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-kisara-premium-direction-2.png",
+          "sha256": "508d6209b89e7de1a5f0d1a1f5ea3d73f44b8bf6c9a1ffe67c45fcd6847dcbdf",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-kisara-premium-direction-3.png",
+          "sha256": "80e5dfacfd8c9f16b7dfb2505c4fc3fa2d25b765becd6de24aaaa3e581da33a1",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-kisara-premium-v2.json",
+        "sha256": "6884b7f45fdae53d3b944f28df177255f622da9a4e2b4c18c7513a278ea7ca79"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-alphen",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_new_equipment_or_facing_error_pose_variation",
+      "observation": "Pilot poses[0,5,9,10,15,17]. Whitehair/bluecape/fireblade retained, no new facing reversal. Direction2 pose15 already has two visible flame lobes/blades in source and candidate, not counted as new duplication. Pose10 head/body smaller than9/0 across several views; dynamic9-to10-to15 check useful because crouch changes alone cannot establish smoothness.",
+      "captureMethod": "PilotOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        9,
+        10,
+        15,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-alphen-direction-0.png",
+          "sha256": "402baafdcd79f0efa24ab56d7ae4b3114625e723b83a654bb56b957ede52ed68",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-alphen-direction-1.png",
+          "sha256": "a2c653e1b50bef55e45292d5d10442934dd94ffc466b11f9b28c7c7fc1be714e",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-alphen-direction-2.png",
+          "sha256": "e9092abb26f475fee7222b640aeee25d3fff36b6da5011788dfa2e87c9f76345",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-alphen-direction-3.png",
+          "sha256": "7a75cbcd7ea55837a7d22d83d4862bf315c2f269d076b3608f6f267001bea114",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-alphen-v1.json",
+        "sha256": "b5a65c7d659e84f04eb1e3407f5f0ec4d88d132eeb56d17c8005e976088e5612"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    },
+    {
+      "job": "MotionPremium-farah",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "facing_correction_verified_in_static_render",
+      "observation": "Four new v2 Unity renders reviewed directly. Direction1 column3 is farah_10_1 and now exposes face/eyes above the rightward punch, matching the source-facing role; the previous rear-head error is resolved in this actual static render. Other sampled glove counts, facing roles and stance/boot forms show no new obvious defect. Crouch15 remains lower as source. Review covers poses0/5/10/15/18/19 across four directions; continuous transition smoothness is not asserted.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        10,
+        15,
+        18,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-farah-direction-0.png",
+          "sha256": "8474e9fbdab1834ea00160f6f5e39bf348fc58a0d185ffcee93579aa8ca61d87",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-farah-direction-1.png",
+          "sha256": "830c989fb9057a12c4efe99915da79a7f8434bfc257b63446abd009f0309a2a2",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-farah-direction-2.png",
+          "sha256": "6f39c6e824f78e6d1948b21b50e9bc8110db3a7cc347329b704ccf3935411169",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-farah-direction-3.png",
+          "sha256": "6197a6b21769034555b8aa0ce30370901d3a0a408ce16c25df6df0221b633f44",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-farah-v2.json",
+        "sha256": "efdd26e11a28d29da2b55379369733a3362143a980d41f2fab42ee9983e28d72"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "capturesArePreviousCandidate": false,
+      "correctedSource": {
+        "group": "MotionPremium-farah",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+          "sha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188"
+        },
+        "targetFrames": [
+          "farah_10_1"
+        ],
+        "matchesGenerationProvenance": true
+      },
+      "packedCandidate": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/MotionPremium-farah-v2.png",
+        "sha256": "4e9dd16c6966c95587462374a46c1c659d4ccf685d0ed31e22ba87561f99dfea"
+      }
+    },
+    {
+      "job": "SignatureWeapons-cless-premium",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "no_obvious_static_blocker_pose_variation",
+      "observation": "Pilot poses[0,5,9,10,15,19]. Single blue blade/goldhilt, hand roles/rear occlusion and left-right lunge direction retained. Guards0/15/19 fuller than crouches5/10; source also changes squat. No clear new equipment/facing defect in24samples; actual cross-sheet head-size continuity remains runtime scope.",
+      "captureMethod": "PilotOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        9,
+        10,
+        15,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/SignatureWeapons-cless-premium-direction-0.png",
+          "sha256": "f96e05c0806aad3944c9fd54419b24158b12c09d804f2bae363aaa6e3691d3f2",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/SignatureWeapons-cless-premium-direction-1.png",
+          "sha256": "375204da8fef47a00053da933aae7a8742bfcacd92e7aafd865f40030de47471",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/SignatureWeapons-cless-premium-direction-2.png",
+          "sha256": "f20b8eefb57ec3929fde3aef03d6bf781ecbea543d556237322c997cbbcaf5ea",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/SignatureWeapons-cless-premium-direction-3.png",
+          "sha256": "793cae272f59e334fe6bab4abfb96b01d92079d8abd8e05db2f6a77b028a5e87",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-cless-premium-v1.json",
+        "sha256": "9c44c7a1195d56b3aa87236def7c502be4e0fbba54bdaa3fe32457586ea33047"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false
+    }
+  ],
+  "specificFollowups": [
+    {
+      "job": "MotionPremium-farah",
+      "type": "historical facing mismatch resolved in new actual static render",
+      "sprite": {
+        "index": 41,
+        "sheetIndex": 2,
+        "cellIndex": 1,
+        "name": "farah_10_1",
+        "originalSpriteId": "1e4cccb4e73f36746b9b6eb50b8e3174",
+        "originalInternalId": "-1994574979",
+        "sourceRect": {
+          "x": 216.0,
+          "y": 496.0,
+          "width": 102.0,
+          "height": 114.0
+        },
+        "sourcePivot": {
+          "x": 0.6274510025978088,
+          "y": 0.009999999776482582
+        }
+      },
+      "referenceManifest": {
+        "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-farah/reference-manifest.json",
+        "sha256": "c26ccf6c41a164e0f03344b55cc2ec8bc2db2250e276cdcf09b75a11c2c7eb4b"
+      },
+      "referenceImage": {
+        "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/MotionPremium-farah/reference-02.png",
+        "sha256": "98021fe17afc90635c848a239a55e6d8cf16cdcfc259b0b8abf53a3253ba96c3"
+      },
+      "candidateSheet": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02.png",
+        "sha256": "eaec22ff5fe42dbfdced1d0d19552f0edb27cda064a8c12140546968e27a5f87"
+      },
+      "location": "PilotOptical direction1, fourth column; native reference/candidate sheet02 row1 column2",
+      "action": "AllOptical v2 direction1 column3 confirms farah_10_1 face-visible rightward punch. Earlier PilotOptical defect remains historical evidence. Continuous-motion review remains separate.",
+      "historicalObservation": "Source has face/eye visible above the forward punch; candidate shows back of head and red shirt back. Exact frame was independently checked in source reference and generated sheet. No new image generated during this review.",
+      "status": "static_correction_verified",
+      "correctedSource": {
+        "group": "MotionPremium-farah",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+          "sha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188"
+        },
+        "targetFrames": [
+          "farah_10_1"
+        ],
+        "matchesGenerationProvenance": true
+      }
+    },
+    {
+      "job": "MotionPremium-velvet",
+      "type": "within-atlas anatomy variation",
+      "action": "FinalOptical v3 verifies sheets01/03 refinement in24sampled poses. Unchanged pose13 remains a9-to13-to16 continuous-review target; no automatic global size/pivot correction recommended.",
+      "status": "static_refinement_reviewed_continuous_pending"
+    },
+    {
+      "job": "SignatureWeapons-alphen-premium",
+      "type": "pose16-to17 anatomy shrink",
+      "reportedBy": "/root/campaign_growth_audit",
+      "action": "FinalOptical v3 verifies improved16/17 head/boot correspondence in four directions. Standing-to-crouched pose difference remains; actual transition smoothness has not been approved.",
+      "status": "static_refinement_reviewed_continuous_pending"
+    }
+  ],
+  "velvetNativeComparison": {
+    "provenance": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Generation/velvet-optical-refinement.json",
+      "sha256": "5ba09ba2e2e46b88405b5493c396e8950a63d579a3e907b836277a3e5a3fa9e9"
+    },
+    "method": "Read-only RGBA measurement. Human-selected face-only ROIs; largest8connected peach skin component with RGB thresholds r>=150,g>=105,b>=65,r-g>=8,g-b>=8,alpha>128. Excludes separate collar/ear highlights. Face-skin extent is a proxy, not complete skull anatomy. Sole is lowest strong pixel of source front figure. Bottom20px toe runs are angle-dependent support widths, not anatomical foot lengths. No raster edited.",
+    "beforeSummary": [
+      {
+        "sheetIndex": 0,
+        "frontPoses": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "faceSkinMedianWidth": 40,
+        "faceSkinMedianHeight": 25,
+        "faceSkinMedianArea": 507,
+        "chinToSoleMedian": 163
+      },
+      {
+        "sheetIndex": 1,
+        "frontPoses": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "faceSkinMedianWidth": 36,
+        "faceSkinMedianHeight": 23,
+        "faceSkinMedianArea": 386,
+        "chinToSoleMedian": 119
+      },
+      {
+        "sheetIndex": 2,
+        "frontPoses": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "faceSkinMedianWidth": 31,
+        "faceSkinMedianHeight": 26,
+        "faceSkinMedianArea": 422,
+        "chinToSoleMedian": 132
+      },
+      {
+        "sheetIndex": 3,
+        "frontPoses": [
+          15,
+          16,
+          17
+        ],
+        "faceSkinMedianWidth": 34,
+        "faceSkinMedianHeight": 20,
+        "faceSkinMedianArea": 361,
+        "chinToSoleMedian": 133
+      }
+    ],
+    "refinedCandidates": [
+      {
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-03-v2.png",
+          "sha256": "ffcb9663f63e97d182c894d73ccb175260c23425273f05525bbc31091eb3b75b"
+        },
+        "sheetIndex": 3,
+        "currentHashMatchesProvenance": true,
+        "actualNewRenderReviewed": true,
+        "renderScope": "FinalOptical v3, six selected poses in each of four directions; not every authored frame or a continuous sequence."
+      },
+      {
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-01-v2.png",
+          "sha256": "eb158f4c5c606f90fde337b964911bf3c7ce818edc3fe97f2993e0fae04add1d"
+        },
+        "sheetIndex": 1,
+        "currentHashMatchesProvenance": true,
+        "actualNewRenderReviewed": true,
+        "renderScope": "FinalOptical v3, six selected poses in each of four directions; not every authored frame or a continuous sequence."
+      }
+    ],
+    "specificGapRepair": "Sheet01 final repair redraw shortened the far-right claw tips of row4 column3 by approximately20px, keeping one claw assembly and direction. Earlier attempted pair translation moved other columns and was rejected. This is a local art change, not pure translation or exact weapon-length preservation.",
+    "freeze": "Both candidate hashes checked against provenance after root requested freeze. No further raster changes."
+  },
+  "twentySignatureSheets": {
+    "provenance": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Generation/signature-last-five.json",
+      "sha256": "bee98024ca72c87779bacf0f11ed9f71bc3a98a82bb6eaa69ff341f8c56310be"
+    },
+    "sheetCount": 20,
+    "referencedFrameCount": 376,
+    "sheets": [
+      {
+        "character": "kisara",
+        "sheetIndex": 0,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-kisara-premium/source-sheet-00.png",
+          "sha256": "87111fbf2d21a430067a3eba69bce6361c205d091a8b8306004952746bd9528a"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-14827f91-86ee-4b20-9bd6-42df76b6e585.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "kisara-premium_0_0",
+          "kisara-premium_0_1",
+          "kisara-premium_0_2",
+          "kisara-premium_0_3",
+          "kisara-premium_1_0",
+          "kisara-premium_1_1",
+          "kisara-premium_1_2",
+          "kisara-premium_1_3",
+          "kisara-premium_2_0",
+          "kisara-premium_2_1",
+          "kisara-premium_2_2",
+          "kisara-premium_2_3",
+          "kisara-premium_3_0",
+          "kisara-premium_3_1",
+          "kisara-premium_3_2",
+          "kisara-premium_3_3",
+          "kisara-premium_4_0",
+          "kisara-premium_4_1",
+          "kisara-premium_4_2",
+          "kisara-premium_4_3"
+        ],
+        "orderedSpriteIdsSha256": "1da9c22deafdeb218da4e15ed05bedb118f5bb2604e9167a324141c87d99be9f",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20walking/guard poses retain source-hidden/edge-on shield directions. One gold runed star-disc mace plus one black/dark-silver pointed shield with purple wingedbird and silver segmented rim. Ordinary white/blue shield not substituted."
+      },
+      {
+        "character": "kisara",
+        "sheetIndex": 1,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-kisara-premium/source-sheet-01.png",
+          "sha256": "b9421a02b78352e4aa7625b8572c1b3923ba7d3f373eb80144489aa192cff0aa"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-a3f12f77-0a25-4d36-bb86-e0f6f596a20b.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "kisara-premium_5_0",
+          "kisara-premium_5_1",
+          "kisara-premium_5_2",
+          "kisara-premium_5_3",
+          "kisara-premium_6_0",
+          "kisara-premium_6_1",
+          "kisara-premium_6_2",
+          "kisara-premium_6_3",
+          "kisara-premium_7_0",
+          "kisara-premium_7_1",
+          "kisara-premium_7_2",
+          "kisara-premium_7_3",
+          "kisara-premium_8_0",
+          "kisara-premium_8_1",
+          "kisara-premium_8_2",
+          "kisara-premium_8_3",
+          "kisara-premium_9_0",
+          "kisara-premium_9_1",
+          "kisara-premium_9_2",
+          "kisara-premium_9_3"
+        ],
+        "orderedSpriteIdsSha256": "3e649bb8a98b7f1c292b220ac87ae9de09879b48009ce1d64293c0ba0f7edd03",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted edit restores missing gold macehead above rear r5c2 crown, attached by short dark handle to raised glove. Other19poses retain original guard/raised-mace roles, rear-view hair and face-visible side profiles."
+      },
+      {
+        "character": "kisara",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-kisara-premium/source-sheet-02.png",
+          "sha256": "7a347993e79a7acc4ffa36a3a86bb8e22c8c62ab292feb4a089fc4805ff40d8f"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-a9db45aa-6cbd-4859-91b6-242be0930134.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "kisara-premium_10_0",
+          "kisara-premium_10_1",
+          "kisara-premium_10_2",
+          "kisara-premium_10_3",
+          "kisara-premium_11_0",
+          "kisara-premium_11_1",
+          "kisara-premium_11_2",
+          "kisara-premium_11_3",
+          "kisara-premium_12_0",
+          "kisara-premium_12_1",
+          "kisara-premium_12_2",
+          "kisara-premium_12_3",
+          "kisara-premium_13_0",
+          "kisara-premium_13_1",
+          "kisara-premium_13_2",
+          "kisara-premium_13_3",
+          "kisara-premium_14_0",
+          "kisara-premium_14_1",
+          "kisara-premium_14_2",
+          "kisara-premium_14_3"
+        ],
+        "orderedSpriteIdsSha256": "3a6a1bf8c3c1e49d4519db2ec0027f3409cb522b3860cef373ea95d2da373806",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20strikes/recoveries retain one gold runed mace and one signature purple-bird shield, including rear hair/shield occlusion. Source hand/foot roles retained; no duplicated front shield in r2c1. Strong pixel silhouettes remain20separate figures."
+      },
+      {
+        "character": "kisara",
+        "sheetIndex": 3,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-kisara-premium/source-sheet-03.png",
+          "sha256": "04aef086f1d4997b1c680f9bba5af5b671b936e451601af90f276cec82a023a7"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-bbe4cc47-b4d1-407a-ac91-6652b67521cf.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "kisara-premium_15_0",
+          "kisara-premium_15_1",
+          "kisara-premium_15_2",
+          "kisara-premium_15_3",
+          "kisara-premium_16_0",
+          "kisara-premium_16_1",
+          "kisara-premium_16_2",
+          "kisara-premium_16_3",
+          "kisara-premium_17_0",
+          "kisara-premium_17_1",
+          "kisara-premium_17_2",
+          "kisara-premium_17_3",
+          "kisara-premium_18_0",
+          "kisara-premium_18_1",
+          "kisara-premium_18_2",
+          "kisara-premium_18_3",
+          "kisara-premium_19_0",
+          "kisara-premium_19_1",
+          "kisara-premium_19_2",
+          "kisara-premium_19_3"
+        ],
+        "orderedSpriteIdsSha256": "4cc6e5296d6f4427774d0b758bb75ebbbc4335aff8fd01781f9f3d1845509944",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted cleanup removes extra upper/behind-hair maceheads in r2c1/r2c3/r2c4/r3c3/r3c4. Keeps lower mace r2c1 with raised empty hand, and foreground extended mace in the four side poses. One visible mace per figure remains. This intentionally resolves source-like duplicated equipment rather than claiming identical equipment pixels; raised-hand/shield articulation needs runtime inspection."
+      },
+      {
+        "character": "natalia",
+        "sheetIndex": 0,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-natalia-premium/source-sheet-00.png",
+          "sha256": "63585537ffef48e75c3944382ad4a9d1d27f1534229330d8bd2950e3e11867c9"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-75fa13f9-361e-469c-a085-246ec5b32098.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "natalia-premium_0_0",
+          "natalia-premium_0_1",
+          "natalia-premium_0_2",
+          "natalia-premium_0_3",
+          "natalia-premium_1_0",
+          "natalia-premium_1_1",
+          "natalia-premium_1_2",
+          "natalia-premium_1_3",
+          "natalia-premium_2_0",
+          "natalia-premium_2_1",
+          "natalia-premium_2_2",
+          "natalia-premium_2_3",
+          "natalia-premium_3_0",
+          "natalia-premium_3_1",
+          "natalia-premium_3_2",
+          "natalia-premium_3_3",
+          "natalia-premium_4_0",
+          "natalia-premium_4_1",
+          "natalia-premium_4_2",
+          "natalia-premium_4_3"
+        ],
+        "orderedSpriteIdsSha256": "f2cec86b92c00bc79e78ffbe879eeb0d85d434f8f222ad735381e2da1247dcdc",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Selected margin revision preserves20poses and complete white/gold/green bow ornaments inside canvas. Rear r3c2 hides bow as source; blonde bob, forest-green cloak and gold fittings retained. Top ornament margin is narrower than requested40px but strong pixels do not touch canvas edge."
+      },
+      {
+        "character": "natalia",
+        "sheetIndex": 1,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-natalia-premium/source-sheet-01.png",
+          "sha256": "d6e64f3024f0aa53cd18cba70066502eb8f8c59e5fd71d224378fe199a577201"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-cf646ed8-2f4d-4313-a279-6860e8e8fd2a.png",
+        "nativeSize": [
+          1072,
+          1467
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "natalia-premium_5_0",
+          "natalia-premium_5_1",
+          "natalia-premium_5_2",
+          "natalia-premium_5_3",
+          "natalia-premium_6_0",
+          "natalia-premium_6_1",
+          "natalia-premium_6_2",
+          "natalia-premium_6_3",
+          "natalia-premium_7_0",
+          "natalia-premium_7_1",
+          "natalia-premium_7_2",
+          "natalia-premium_7_3",
+          "natalia-premium_8_0",
+          "natalia-premium_8_1",
+          "natalia-premium_8_2",
+          "natalia-premium_8_3",
+          "natalia-premium_9_0",
+          "natalia-premium_9_1",
+          "natalia-premium_9_2",
+          "natalia-premium_9_3"
+        ],
+        "orderedSpriteIdsSha256": "dc112ed8ffe0669ff5448ba483b58c6fad092fc3fba2e5012ff5facafa6b25cf",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted edit restores missing white/gold signature bows on SCREEN-LEFT of rear figures r3c2/r5c2. r2c2 remains face-visible left profile; r4c1/c2 overhead bow poses retained. Native output1072x1467 differs from other1122x1402 sheets; no tool resize used. Skull/torso/boot scale must be calibrated using actual anatomy, not canvas ratio."
+      },
+      {
+        "character": "natalia",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-natalia-premium/source-sheet-02.png",
+          "sha256": "8f5bc04c15abe7c37ca7c81214680c8788a40fe1201345d082de7aa0dede5dfd"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-a04a3554-a853-484b-a1a7-ea368e9a4b4d.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "natalia-premium_10_0",
+          "natalia-premium_10_1",
+          "natalia-premium_10_2",
+          "natalia-premium_10_3",
+          "natalia-premium_11_0",
+          "natalia-premium_11_1",
+          "natalia-premium_11_2",
+          "natalia-premium_11_3",
+          "natalia-premium_12_0",
+          "natalia-premium_12_1",
+          "natalia-premium_12_2",
+          "natalia-premium_12_3",
+          "natalia-premium_13_0",
+          "natalia-premium_13_1",
+          "natalia-premium_13_2",
+          "natalia-premium_13_3",
+          "natalia-premium_14_0",
+          "natalia-premium_14_1",
+          "natalia-premium_14_2",
+          "natalia-premium_14_3"
+        ],
+        "orderedSpriteIdsSha256": "ead078824f8bb251634232b92d5f619d0230ea20eb8a97a6499a1cc5fa162c3a",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted edit restores rear r4c2 bow to SCREEN-LEFT; r3c2 bow remains screen-right as source. Other second-column cells remain left-facing profiles. Physical arrow/draw hands retained; source projectile VFX omitted."
+      },
+      {
+        "character": "natalia",
+        "sheetIndex": 3,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-natalia-premium/source-sheet-03.png",
+          "sha256": "153aea1d98e8178f0929dc1f6cd256513e161963ce6fa196f2d672a2fc4746d6"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-31897d0f-33fe-44a5-8fe0-4e651797d481.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "natalia-premium_15_0",
+          "natalia-premium_15_1",
+          "natalia-premium_15_2",
+          "natalia-premium_15_3",
+          "natalia-premium_16_0",
+          "natalia-premium_16_1",
+          "natalia-premium_16_2",
+          "natalia-premium_16_3",
+          "natalia-premium_17_0",
+          "natalia-premium_17_1",
+          "natalia-premium_17_2",
+          "natalia-premium_17_3",
+          "natalia-premium_18_0",
+          "natalia-premium_18_1",
+          "natalia-premium_18_2",
+          "natalia-premium_18_3",
+          "natalia-premium_19_0",
+          "natalia-premium_19_1",
+          "natalia-premium_19_2",
+          "natalia-premium_19_3"
+        ],
+        "orderedSpriteIdsSha256": "4b9273f15601dd4738d2324b3f91e1a5a9837fe32ad42feda3361ef16731ed4c",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted edit restores r4c2 LEFT-facing face and bow grip instead of erroneous rear view. Raised free hand in row2 and release followthrough row3 preserved. Other second-column rear views retained. Original source was re-viewed: r4c3/c4 small downward eyes are not confidently closed, so no unsupported eyelid edit was made."
+      },
+      {
+        "character": "shionne",
+        "sheetIndex": 0,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png",
+          "sha256": "d327963a503e3af1c11deae19aa3d9738e7fd1fee68fdc38acb7b8dc1e522233"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-ee2ddb94-ee46-479e-a28a-5a8dc55d02d0.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "shionne-premium_0_0",
+          "shionne-premium_0_1",
+          "shionne-premium_0_2",
+          "shionne-premium_0_3",
+          "shionne-premium_1_0",
+          "shionne-premium_1_1",
+          "shionne-premium_1_2",
+          "shionne-premium_1_3",
+          "shionne-premium_2_0",
+          "shionne-premium_2_1",
+          "shionne-premium_2_2",
+          "shionne-premium_2_3",
+          "shionne-premium_3_0",
+          "shionne-premium_3_1",
+          "shionne-premium_3_2",
+          "shionne-premium_3_3",
+          "shionne-premium_4_0",
+          "shionne-premium_4_1",
+          "shionne-premium_4_2",
+          "shionne-premium_4_3"
+        ],
+        "orderedSpriteIdsSha256": "b9d69e282136deed466475f4fcdb8d7ed9c0aa6435add83a7b5c66c3ce373ed6",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted cleanup shortens ambiguous second screen-left barrel in r4c2 to a short stock, retaining one main down-right rifle and rear body. Black/silver rectangular red-inset signature gun retained across20poses; not ordinary gold rifle. The tiny opposite stock remains a stylized gun shape and actual render should confirm it reads as one weapon."
+      },
+      {
+        "character": "shionne",
+        "sheetIndex": 1,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-01.png",
+          "sha256": "67d365711d22e71324a90159e421df06fc97b14aeacd41274e3a96c1cce0153b"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-7e07558d-b911-406d-ba01-d87e9d50fe87.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "shionne-premium_5_0",
+          "shionne-premium_5_1",
+          "shionne-premium_5_2",
+          "shionne-premium_5_3",
+          "shionne-premium_6_0",
+          "shionne-premium_6_1",
+          "shionne-premium_6_2",
+          "shionne-premium_6_3",
+          "shionne-premium_7_0",
+          "shionne-premium_7_1",
+          "shionne-premium_7_2",
+          "shionne-premium_7_3",
+          "shionne-premium_8_0",
+          "shionne-premium_8_1",
+          "shionne-premium_8_2",
+          "shionne-premium_8_3",
+          "shionne-premium_9_0",
+          "shionne-premium_9_1",
+          "shionne-premium_9_2",
+          "shionne-premium_9_3"
+        ],
+        "orderedSpriteIdsSha256": "5f1a5f012ab17f67b64a2b78038c042a24cbafbfda975a5277e16b91a1d1f238",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted cleanup removes duplicated descending rifles in r1c1/r3c1, retaining one horizontal gun; removes waist-level second rifles in r4c3/r4c4, retaining one overhead gun with empty lower hand. Source body/feet/facing roles retained. This is explicit equipment cleanup rather than exact ambiguous source silhouette preservation."
+      },
+      {
+        "character": "shionne",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-02.png",
+          "sha256": "40a5cfcc4e8433ed4190b291368989c685e0f6805cf7176f9c777d3f8ccf91d7"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-34acd5b8-6a04-4e77-b592-d1748fb8984d.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "shionne-premium_10_0",
+          "shionne-premium_10_1",
+          "shionne-premium_10_2",
+          "shionne-premium_10_3",
+          "shionne-premium_11_0",
+          "shionne-premium_11_1",
+          "shionne-premium_11_2",
+          "shionne-premium_11_3",
+          "shionne-premium_12_0",
+          "shionne-premium_12_1",
+          "shionne-premium_12_2",
+          "shionne-premium_12_3",
+          "shionne-premium_13_0",
+          "shionne-premium_13_1",
+          "shionne-premium_13_2",
+          "shionne-premium_13_3",
+          "shionne-premium_14_0",
+          "shionne-premium_14_1",
+          "shionne-premium_14_2",
+          "shionne-premium_14_3"
+        ],
+        "orderedSpriteIdsSha256": "5904b62e2c1e5eef6210535755d444fe2278020a97c94f344ae17592b98f76f4",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Eye revision preserves closed-eye casting/aiming expressions while retaining20horizontal/diagonal/overhead rifle poses, rear views and pink ponytail/red crown identity. One connected black/silver/red signature rifle. Broad double-ended stock remains stylized rather than realistic firearm construction."
+      },
+      {
+        "character": "shionne",
+        "sheetIndex": 3,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-03.png",
+          "sha256": "ae9ee91f383cb7694c30bf70a655e7aa7db66b42b7abc30b0e5f5f645be1598b"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-268ca06b-abd5-4b44-a953-dd461701404e.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 12,
+        "frameNamesInOrder": [
+          "shionne-premium_15_0",
+          "shionne-premium_15_1",
+          "shionne-premium_15_2",
+          "shionne-premium_15_3",
+          "shionne-premium_16_0",
+          "shionne-premium_16_1",
+          "shionne-premium_16_2",
+          "shionne-premium_16_3",
+          "shionne-premium_17_0",
+          "shionne-premium_17_1",
+          "shionne-premium_17_2",
+          "shionne-premium_17_3"
+        ],
+        "orderedSpriteIdsSha256": "5f2eadf0160e0c78feadc25fdf5a4877b8aaaa55d96a1cf8a36b8cde41ec4e20",
+        "strongMajorCount": 12,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "12final casting/aim/recovery figures in first3visualrows, no extra figures below. r1c1 closed-eye horizontal rifle and raised diagonal side rifles preserved. Native skull/boot size appears close to sheet00; animation continuity still unverified."
+      },
+      {
+        "character": "tear",
+        "sheetIndex": 0,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png",
+          "sha256": "fed1fd81552f570bc40dd7be6bed9b32ba39c88bc8239ef23d3eef625645a684"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-f08276c7-db35-4cc9-9027-d694ad71a05e.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "tear-premium_0_0",
+          "tear-premium_0_1",
+          "tear-premium_0_2",
+          "tear-premium_0_3",
+          "tear-premium_1_0",
+          "tear-premium_1_1",
+          "tear-premium_1_2",
+          "tear-premium_1_3",
+          "tear-premium_2_0",
+          "tear-premium_2_1",
+          "tear-premium_2_2",
+          "tear-premium_2_3",
+          "tear-premium_3_0",
+          "tear-premium_3_1",
+          "tear-premium_3_2",
+          "tear-premium_3_3",
+          "tear-premium_4_0",
+          "tear-premium_4_1",
+          "tear-premium_4_2",
+          "tear-premium_4_3"
+        ],
+        "orderedSpriteIdsSha256": "7287c026783ccfd936b01c999c30396b0a4352d534fee295f1b9eee46868d957",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20 walking/guard poses preserve face-hidden rear column, opposite profiles and alternating feet. Chestnut-brown hair and dark silver purple-orb/ivory-tip signature staff retained; basic blonde/gold-star design not substituted."
+      },
+      {
+        "character": "tear",
+        "sheetIndex": 1,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-01.png",
+          "sha256": "1efefae44cb4f622bf1620b5480d2416d5a6ee7b50d0c7bab649af339aef921d"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-ef463356-0f9d-4466-8ba1-f774840779ed.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "tear-premium_5_0",
+          "tear-premium_5_1",
+          "tear-premium_5_2",
+          "tear-premium_5_3",
+          "tear-premium_6_0",
+          "tear-premium_6_1",
+          "tear-premium_6_2",
+          "tear-premium_6_3",
+          "tear-premium_7_0",
+          "tear-premium_7_1",
+          "tear-premium_7_2",
+          "tear-premium_7_3",
+          "tear-premium_8_0",
+          "tear-premium_8_1",
+          "tear-premium_8_2",
+          "tear-premium_8_3",
+          "tear-premium_9_0",
+          "tear-premium_9_1",
+          "tear-premium_9_2",
+          "tear-premium_9_3"
+        ],
+        "orderedSpriteIdsSha256": "0396ff5510c999b2c019c75e7c4bc7965b2863bc6c73a7fc6929ef18bd782b56",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Targeted revision restores upper-left staff tips in r2c3 and r3c3. r2c4 remains upper-right; r3c2/r5c2 remain right-profile face-visible, rear views r1c2/r2c2/r4c2 preserved. Four overhead casting poses retain raised hands. Generated redraw, not pixel-identical pose geometry."
+      },
+      {
+        "character": "tear",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-02.png",
+          "sha256": "01dd6526fef95830e5631dc45ae8f250cf70f3ad3e2581f62d40cf423cd3200c"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-65ff40d9-75cf-41d2-9314-dcefe85e9dbb.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "tear-premium_10_0",
+          "tear-premium_10_1",
+          "tear-premium_10_2",
+          "tear-premium_10_3",
+          "tear-premium_11_0",
+          "tear-premium_11_1",
+          "tear-premium_11_2",
+          "tear-premium_11_3",
+          "tear-premium_12_0",
+          "tear-premium_12_1",
+          "tear-premium_12_2",
+          "tear-premium_12_3",
+          "tear-premium_13_0",
+          "tear-premium_13_1",
+          "tear-premium_13_2",
+          "tear-premium_13_3",
+          "tear-premium_14_0",
+          "tear-premium_14_1",
+          "tear-premium_14_2",
+          "tear-premium_14_3"
+        ],
+        "orderedSpriteIdsSha256": "45f18b9795f68b693cd293531e54ff144f0cd2b0dcf53cc052d33a129bb5f6a4",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20 strikes/recoveries preserve r3c3 left-facing exception and rear column. r5c1 left open hand/right staff grip retained. One connected staff; rear hair occlusion intentionally follows source."
+      },
+      {
+        "character": "tear",
+        "sheetIndex": 3,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-03.png",
+          "sha256": "349a3c6d03a6c17b3c6f716ce1dffd10482a2984fa5bef4aa5a10e4fdf3ad08d"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-d228f31c-de1b-4bf8-9a14-351027d740e2.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 12,
+        "frameNamesInOrder": [
+          "tear-premium_15_0",
+          "tear-premium_15_1",
+          "tear-premium_15_2",
+          "tear-premium_15_3",
+          "tear-premium_16_0",
+          "tear-premium_16_1",
+          "tear-premium_16_2",
+          "tear-premium_16_3",
+          "tear-premium_17_0",
+          "tear-premium_17_1",
+          "tear-premium_17_2",
+          "tear-premium_17_3"
+        ],
+        "orderedSpriteIdsSha256": "39b21812e1efca71f2e6b19028681ca97134e2d3bb904d7a689af307be28fa8e",
+        "strongMajorCount": 12,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "12 final cast/recovery poses in first three visual rows, lower two rows contain no extra figures. Raised/free casting hands and rear view retained. Source-sized skull/boots visually consistent with sheet00, subject to actual runtime comparison."
+      },
+      {
+        "character": "velvet",
+        "sheetIndex": 0,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-velvet-premium/source-sheet-00.png",
+          "sha256": "92be7054dfcde05fca5ae40bb5be01e1449fcdb4671eddd4fa53454e605aae67"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-75877c50-1c9f-44d6-8108-26f19cad97b5.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "velvet-premium_0_0",
+          "velvet-premium_0_1",
+          "velvet-premium_0_2",
+          "velvet-premium_0_3",
+          "velvet-premium_1_0",
+          "velvet-premium_1_1",
+          "velvet-premium_1_2",
+          "velvet-premium_1_3",
+          "velvet-premium_2_0",
+          "velvet-premium_2_1",
+          "velvet-premium_2_2",
+          "velvet-premium_2_3",
+          "velvet-premium_3_0",
+          "velvet-premium_3_1",
+          "velvet-premium_3_2",
+          "velvet-premium_3_3",
+          "velvet-premium_4_0",
+          "velvet-premium_4_1",
+          "velvet-premium_4_2",
+          "velvet-premium_4_3"
+        ],
+        "orderedSpriteIdsSha256": "c637a3e9434a9ca978e38254cf87392e66e2294c930404d6ee2eff03488a2d15",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "Initial attempt produced24figures and was rejected. Selected revision has20 walking poses, preserving r3c3 left-facing and r3c4 right-facing exceptions. Black/red clothing, dark violet hair and broad silver forearm blade with pale mint center retained, not basic multi-prong claws."
+      },
+      {
+        "character": "velvet",
+        "sheetIndex": 1,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-velvet-premium/source-sheet-01.png",
+          "sha256": "f0908491aae9dc08b181dbd85114cb2a86b20cff56c04b0a5ece68d50000da16"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-06f9bfd5-63e7-4e4d-acdc-77e4ac616d22.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "velvet-premium_5_0",
+          "velvet-premium_5_1",
+          "velvet-premium_5_2",
+          "velvet-premium_5_3",
+          "velvet-premium_6_0",
+          "velvet-premium_6_1",
+          "velvet-premium_6_2",
+          "velvet-premium_6_3",
+          "velvet-premium_7_0",
+          "velvet-premium_7_1",
+          "velvet-premium_7_2",
+          "velvet-premium_7_3",
+          "velvet-premium_8_0",
+          "velvet-premium_8_1",
+          "velvet-premium_8_2",
+          "velvet-premium_8_3",
+          "velvet-premium_9_0",
+          "velvet-premium_9_1",
+          "velvet-premium_9_2",
+          "velvet-premium_9_3"
+        ],
+        "orderedSpriteIdsSha256": "abb5ce351e767748eb047af93b89695df12d9ba71cc7b5e64d9cb63f78575bbf",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20 anticipation/raised-blade poses retain rear column and source hand/foot roles. Each visible mint-inlay blade remains attached to its gauntlet. Long blades approach neighboring cells, requiring guarded alpha>8 packing before runtime review."
+      },
+      {
+        "character": "velvet",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-velvet-premium/source-sheet-02.png",
+          "sha256": "cf0497f84e8c0430aca6623cb97a93d581403901f533963f07908d2f73c0f25b"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-fd4dc232-db9f-4d3d-9aff-fc3fb04c1f72.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 20,
+        "frameNamesInOrder": [
+          "velvet-premium_10_0",
+          "velvet-premium_10_1",
+          "velvet-premium_10_2",
+          "velvet-premium_10_3",
+          "velvet-premium_11_0",
+          "velvet-premium_11_1",
+          "velvet-premium_11_2",
+          "velvet-premium_11_3",
+          "velvet-premium_12_0",
+          "velvet-premium_12_1",
+          "velvet-premium_12_2",
+          "velvet-premium_12_3",
+          "velvet-premium_13_0",
+          "velvet-premium_13_1",
+          "velvet-premium_13_2",
+          "velvet-premium_13_3",
+          "velvet-premium_14_0",
+          "velvet-premium_14_1",
+          "velvet-premium_14_2",
+          "velvet-premium_14_3"
+        ],
+        "orderedSpriteIdsSha256": "77eb558036ffb760db0bd8922aaf576d2b8382caecdfafaaa03e78fe9b8fca78",
+        "strongMajorCount": 20,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "20 strike/recovery poses preserve crouches and rear views. Signature broad silver/mint blades retained; no source red glow copied. Bounds include blade/hair reach and must not be used as anatomy-size measurement."
+      },
+      {
+        "character": "velvet",
+        "sheetIndex": 3,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-velvet-premium/source-sheet-03.png",
+          "sha256": "83865d88533e53824d3d9fde1f892dc8c643b3598603454a6eb0e83ee5c44146"
+        },
+        "matchesGenerationProvenance": true,
+        "generatedSource": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15eed-3a6e-7cc1-9fd5-ca608ca84560\\exec-3a2325be-e1c5-460b-a516-79bccaa458e9.png",
+        "nativeSize": [
+          1122,
+          1402
+        ],
+        "frameCount": 12,
+        "frameNamesInOrder": [
+          "velvet-premium_15_0",
+          "velvet-premium_15_1",
+          "velvet-premium_15_2",
+          "velvet-premium_15_3",
+          "velvet-premium_16_0",
+          "velvet-premium_16_1",
+          "velvet-premium_16_2",
+          "velvet-premium_16_3",
+          "velvet-premium_17_0",
+          "velvet-premium_17_1",
+          "velvet-premium_17_2",
+          "velvet-premium_17_3"
+        ],
+        "orderedSpriteIdsSha256": "ab72a1f421ddb131b13efc139e19e011b919254cda812e851f8ce4b276f6fba9",
+        "strongMajorCount": 12,
+        "strongCanvasEdgePixels": 0,
+        "sourceReview": "12 cast/recovery/guard poses in first three visual rows. Both arm blades are retained where original shows them; no invented single-blade-only restriction. Third visual row extends below nominal60% canvas boundary; actual safe row boundaries must be used without deleting pixels. Skull/torso/boot size across sheet03-to-HQ still needs actual runtime review."
+      }
+    ],
+    "sourcePreservationRecheck": [
+      {
+        "character": "tear",
+        "source": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/tear-premium.png",
+          "sha256": "7cea4708477b658a54e1d6f8330388fc0368b151b64cdaef8a3b6f3bce9552ad"
+        },
+        "meta": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/tear-premium.png.meta",
+          "sha256": "5cfc8233787081c7ad7f577150ea4f8236c642cedb54019ad69302f53c405c41"
+        },
+        "matchesPreparedSource": true,
+        "matchesPreparedMeta": true
+      },
+      {
+        "character": "velvet",
+        "source": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/velvet-premium.png",
+          "sha256": "1f7184a1144ea3035ce4af6c4949d84fe78e7c348a0584a0b89aa1c390566ced"
+        },
+        "meta": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/velvet-premium.png.meta",
+          "sha256": "649cd2292919ea5029ec535bafe99a09d4ca6d6090e2c1b64b89f75793510ace"
+        },
+        "matchesPreparedSource": true,
+        "matchesPreparedMeta": true
+      },
+      {
+        "character": "natalia",
+        "source": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/natalia-premium.png",
+          "sha256": "26464d3044acbefc754fde77b8e48362e732c5639a43c9ec44e7858341fc22b2"
+        },
+        "meta": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/natalia-premium.png.meta",
+          "sha256": "e27d14bf2c9b635c2fa9cf7bc6dcd7295edd966412e7e072a5a5ed7aab0986a1"
+        },
+        "matchesPreparedSource": true,
+        "matchesPreparedMeta": true
+      },
+      {
+        "character": "kisara",
+        "source": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/kisara-premium.png",
+          "sha256": "ab6ece5e74ec443426b100d201ba8574f360979b13b44d592e2a67b60e8bcdf9"
+        },
+        "meta": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/kisara-premium.png.meta",
+          "sha256": "022831064dc46e772b159d260e361c716afe793b9692171c85e2a00d2ff63c4a"
+        },
+        "matchesPreparedSource": true,
+        "matchesPreparedMeta": true
+      },
+      {
+        "character": "shionne",
+        "source": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/shionne-premium.png",
+          "sha256": "4ea32195c8271e2f7b8de528f3a6db5f269f2d46eaa66da6c96a81b8632ffed9"
+        },
+        "meta": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SignatureWeapons/shionne-premium.png.meta",
+          "sha256": "21112b5e4ce0c7d580dc1897ebf7d560500d21365884c41a7b3c9247a1addaf9"
+        },
+        "matchesPreparedSource": true,
+        "matchesPreparedMeta": true
+      }
+    ],
+    "limits": "Static alpha>128 component counts are diagnostics, not Unity packing validation. Guarded native-pixel packing/import and continuous render approval belong to root."
+  },
+  "currentStatus": "39 atlas / 2826 frame candidates prepared and imported separately; production art unchanged. Final static revisions reviewed below. Full pre-art PlayMode247/247 has passed; candidate continuous motion and Windows validation remain in progress.",
+  "previousReviewHistory": [
+    {
+      "job": "MotionPremium-velvet",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "size_consistency_followup",
+      "observation": "Late9/13/16/17 have smaller face/body/boots than0/4; persists across fronts and side recovery poses. One armclaw assembly preserved, source-facing exceptions retained. Native per-sheet anatomy analysis required; globalPPU cannot remove within-atlas variation.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-velvet-direction-0.png",
+          "sha256": "48fcbe2a77aba5cff728d01060e1b52c47ff38f8801b65d66e8e443b45a1e54d",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-velvet-direction-1.png",
+          "sha256": "591e1ba5e99dd15fd99c891ebb404a465187ed42fc174989317f7148ee3e55eb",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-velvet-direction-2.png",
+          "sha256": "191e9c8fc8b8288a3c613c73535760c6a4c83d9a38244529dc2daed4c1bd19ec",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/MotionPremium-velvet-direction-3.png",
+          "sha256": "49d9d7b1e4f5c8bd6ad064e15931792d06f91cb30529f822bc91c6b8abffe28f",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-velvet-v2.json",
+        "sha256": "b671791c3152ed5aa30040cb201478f61d191e4ce936b0983a84657c1329b15b"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "recordRole": "Historical earlier candidate render; superseded for current static assessment by FinalOptical v3."
+    },
+    {
+      "job": "SignatureWeapons-alphen-premium",
+      "reviewer": "/root/campaign_growth_audit",
+      "status": "size_consistency_followup",
+      "observation": "Independent16to17 comparison in directions2/3: candidate17 head/body/boots smaller than16; corresponding current sprites are similar. No additional weapon or reversal in24samples. Static observation; actual motion pop untested.",
+      "captureMethod": "AllOptical",
+      "posesLeftToRight": [
+        0,
+        4,
+        9,
+        13,
+        16,
+        17
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-alphen-premium-direction-0.png",
+          "sha256": "5ac1c1ea138f7e6e6cfdb4c5874bda6bbf91c0298cecbc2572cc2228b535433a",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-alphen-premium-direction-1.png",
+          "sha256": "21af113c98d9c8979bdedbb22f67d8c6b36f69136940f65b850500c5c87a790d",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-alphen-premium-direction-2.png",
+          "sha256": "bdf6920ec9f07c93067ee75a37f8a4ab4dcda83f51b553280ff24ab03c64f672",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-alphen-premium-direction-3.png",
+          "sha256": "c04bac90e9b1ca789a6038d9e97e1a5aa36cf3645422621e76589bc8b66b6d09",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/SignatureWeapons-alphen-premium-v2.json",
+        "sha256": "a3f619d9bd9a18846f9a730106643ae720bfe1d5f143bc96af35cf999fdfacab"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "recordRole": "Historical earlier candidate render; superseded for current static assessment by FinalOptical v3."
+    },
+    {
+      "job": "MotionPremium-farah",
+      "reviewer": "/root/sd_mockup_review",
+      "status": "source_corrected_render_pending",
+      "observation": "Historical PilotOptical captures show farah_10_1 changed to a rear head/back. Newly inspected source-sheet02-v2 restores face-visible rightward punch. These listed captures remain the earlier candidate and do not verify the correction in Unity.",
+      "captureMethod": "PilotOptical",
+      "posesLeftToRight": [
+        0,
+        5,
+        9,
+        10,
+        15,
+        19
+      ],
+      "captures": [
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-farah-direction-0.png",
+          "sha256": "ee687d1b3b98f6958b77fb77a819a01975fbfa975d54a784a8750983580cf04a",
+          "direction": 0
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-farah-direction-1.png",
+          "sha256": "d4dbb558a25bfef79f0575a12fd0655f37f1b4251ea793834edd6b8948d3366f",
+          "direction": 1
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-farah-direction-2.png",
+          "sha256": "82d23f22375e05bb07c8135201f2040dad3493b9d5f1737cb31d5cb1635c359f",
+          "direction": 2
+        },
+        {
+          "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/PilotOptical/MotionPremium-farah-direction-3.png",
+          "sha256": "7566f84d86e1dbee43671d7a2cdf8240d63ee3c33bd5da4e31faf61a95e91407",
+          "direction": 3
+        }
+      ],
+      "measurementUsedByCaptureScript": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-farah-v1.json",
+        "sha256": "b5a15282289ca0b0d8cf132c16f28453dbfb619e4ed185121afb9f6937b19593"
+      },
+      "sampledCandidateFrames": 24,
+      "continuousMotionReviewed": false,
+      "capturesArePreviousCandidate": true,
+      "correctedSource": {
+        "group": "MotionPremium-farah",
+        "sheetIndex": 2,
+        "candidate": {
+          "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+          "sha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188"
+        },
+        "targetFrames": [
+          "farah_10_1"
+        ],
+        "matchesGenerationProvenance": true
+      },
+      "recordRole": "Historical PilotOptical candidate before face-direction correction; superseded by AllOptical v2."
+    }
+  ],
+  "finalGenerationEvidence": {
+    "velvet": {
+      "provenance": {
+        "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Generation/velvet-optical-refinement.json",
+        "sha256": "5ba09ba2e2e46b88405b5493c396e8950a63d579a3e907b836277a3e5a3fa9e9"
+      },
+      "selectedSheets": [
+        {
+          "sheetIndex": 3,
+          "candidate": {
+            "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-03-v2.png",
+            "sha256": "ffcb9663f63e97d182c894d73ccb175260c23425273f05525bbc31091eb3b75b"
+          }
+        },
+        {
+          "sheetIndex": 1,
+          "candidate": {
+            "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-velvet/source-sheet-01-v2.png",
+            "sha256": "eb158f4c5c606f90fde337b964911bf3c7ce818edc3fe97f2993e0fae04add1d"
+          }
+        }
+      ]
+    },
+    "alphenSignature": {
+      "provenance": {
+        "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Generation/alphen-signature-final-refinement.json",
+        "sha256": "5c7b59a796be200e6b3bfed9d41e25352c645d05b6401085b6644cc1af81c511"
+      },
+      "selectedSheets": [
+        {
+          "group": "SignatureWeapons-alphen-premium",
+          "sheetIndex": 3,
+          "candidate": {
+            "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-03-v2.png",
+            "sha256": "4886163c27bc488a2b21d1414090406fee4d6a2a1b10d7d7c9ae61df2d5afe3c"
+          },
+          "targetFrames": [
+            "alphen-premium_17_0",
+            "alphen-premium_17_1",
+            "alphen-premium_17_2",
+            "alphen-premium_17_3"
+          ],
+          "matchesGenerationProvenance": true
+        }
+      ]
+    },
+    "farahSourceCorrection": {
+      "provenance": {
+        "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Generation/farah-direction-final-refinement.json",
+        "sha256": "bf89d30a2d55b1a2cef0576f784f4c1df92cc3ac47f481f44980645d05d8499b"
+      },
+      "selectedSheets": [
+        {
+          "group": "MotionPremium-farah",
+          "sheetIndex": 2,
+          "candidate": {
+            "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-farah/source-sheet-02-v2.png",
+            "sha256": "756c5d09025d453b23680bc4208dee2dc513ba1e70da5e9e81925fd7c5174188"
+          },
+          "targetFrames": [
+            "farah_10_1"
+          ],
+          "matchesGenerationProvenance": true
+        }
+      ],
+      "review": "Source-sheet02-v2 face correction is now also verified in all four AllOptical v2 renders; target farah_10_1 is direction1 column3. Sample indices0/5/10/15/18/19. No continuous sequence reviewed.",
+      "actualNewRenderReviewed": true,
+      "productionModified": false,
+      "measurement": {
+        "path": "C:/dev/TalesTactics/Docs/SdCharacters/QualityUpgrade20261031/MotionPremium-farah-v2.json",
+        "sha256": "efdd26e11a28d29da2b55379369733a3362143a980d41f2fab42ee9983e28d72"
+      },
+      "packedCandidate": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Packed/MotionPremium-farah-v2.png",
+        "sha256": "4e9dd16c6966c95587462374a46c1c659d4ccf685d0ed31e22ba87561f99dfea"
+      }
+    }
+  },
+  "documentationStatusEvidence": {
+    "selectionAtReview": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/selected-revisions.json",
+      "sha256": "1b4354f7ee9e9198e1501763f24bb609812d1de829a197d3a4804433c4ced080"
+    },
+    "candidateAtlases": 39,
+    "candidateFrames": 2826,
+    "editMode": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Validation/full-editmode-candidate-preview.json",
+      "sha256": "ab9cf85108c70067754514aedf70d2ec598a209ec49f6c314460826a5c228b14"
+    },
+    "editModePassed": 424,
+    "productionPreservation": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Validation/production-unchanged-before-preview.json",
+      "sha256": "a5e3fd634ad1b41940c1920b6774bd54163a5e01b3f7b3308c743cd92c835343"
+    },
+    "production78FilesRecheckedUnchanged": true,
+    "newFarahSourceAlreadyInSelection": true,
+    "limit": "Selection was read only. Static candidate renders and pre-art full tests are separate from production application and continuous-motion approval.",
+    "playMode": {
+      "path": "C:/dev/TalesTactics/Docs/QualityUpgrade/Validation/full-playmode-before-art.json",
+      "sha256": "3a2bd64c163115e5515e2d94f30f5b3ad181b014f4cd03b35977c553bfab1425"
+    },
+    "playModePassed": 247
+  }
+}

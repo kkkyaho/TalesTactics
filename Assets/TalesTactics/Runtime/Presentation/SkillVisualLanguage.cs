@@ -7,6 +7,12 @@ namespace TalesTactics
         // A common ink and timing vocabulary for every authored arte. These values
         // affect presentation only; resolver timing and Content assets remain intact.
         public static Color Ink(Color color)=>new Color(.055f+color.r*.09f,.045f+color.g*.07f,.11f+color.b*.12f,color.a);
+        public static readonly Color HealingIvory=new Color(1f,.98f,.79f);
+        public static readonly Color HealingLeaf=new Color(.68f,.92f,.61f);
+        public static Color Highlight(Color color)=>Color.Lerp(color,new Color(1f,.99f,.92f,color.a),.78f);
+        // A narrow tail and a rounded leading shoulder, with zero width at both ends.
+        public static float TrailWidth(float phase)
+        {phase=Mathf.Clamp01(phase);return Mathf.Pow(Mathf.Max(0,Mathf.Sin(phase*Mathf.PI)),.72f)*Mathf.Lerp(.35f,1,phase);}
         public static float Snap(float phase)
         {
             phase=Mathf.Clamp01(phase);

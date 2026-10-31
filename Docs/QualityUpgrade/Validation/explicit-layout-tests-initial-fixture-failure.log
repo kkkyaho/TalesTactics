@@ -1,0 +1,20 @@
+PASS CellAnalysisRetainsWeakAlphaFragmentsWithoutChangingNativeRgba
+PASS EvenNearlyTransparentCellBoundaryContactIsRejectedInsteadOfTrimmed
+PASS ASecondMajorFigureInOneCellIsRejected
+PASS UnusedLastCellMustRemainTransparentAndMissingRequiredCellsFail
+PASS AdaptiveRowsUseRealTransparentCorridorsWithoutCuttingStrongArt
+PASS AdaptiveWeakPixelsUseNearestStrongOwnerAndPreserveEdgeRgba
+PASS AdaptiveLayoutRejectsStrongArtWhenNoCorridorExists
+PASS PaddedLastSheetKeepsTwelveFramesAndRejectsArtInEightBlankCells
+PASS ExplicitCutsCannotCrossStrongArtworkOrChangeCanvasCoverage
+NUnit.Framework.AssertionException:   Expected: <System.InvalidOperationException>
+  But was:  null
+
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args)
+   at NUnit.Framework.Assert.Throws(IResolveConstraint expression, TestDelegate code, String message, Object[] args)
+   at NUnit.Framework.Assert.Throws(Type expectedExceptionType, TestDelegate code, String message, Object[] args)
+   at NUnit.Framework.Assert.Throws[TActual](TestDelegate code, String message, Object[] args)
+   at NUnit.Framework.Assert.Throws[TActual](TestDelegate code)
+   at TalesTactics.Tests.QualityMotionAtlasToolsTests.ExplicitSafeUnequalRowsPreserveEveryNativePixelAndFrameOrder(Int32 used)
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)

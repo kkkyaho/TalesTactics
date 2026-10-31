@@ -13,7 +13,8 @@ namespace TalesTactics
         Facing facing;
         bool presenting, released;
         float windup=0.18f,recovery=0.3f,releasedAt;
-        bool specialUltimate;SkillSignature signature;ArteProfile arte;
+        bool specialUltimate,casting;SkillSignature signature;ArteProfile arte;
+        DirectionalSpriteClip phaseClip;
         CombatMotionProfile profile;
         float hold, damageStrength=1;
         Vector3 damageDirection;
@@ -26,7 +27,7 @@ namespace TalesTactics
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)
         {
-            presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;
+            presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;casting=false;phaseClip=null;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
             facing=unit.Facing;
@@ -35,15 +36,19 @@ namespace TalesTactics
         {
             Set(skill.Animation);started=Time.time;presenting=true;
             specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;signature=SkillSignatures.Resolve(skill);arte=ArteProfiles.Resolve(skill);
-            profile=arte.Enabled?ArteMotionProfile.For(arte,CombatEffect.Resolve(unit.Data,skill)):SkillSignatures.IsSpell(signature)?new CombatMotionProfile(.015f,.005f,.025f,0,0):
+            casting=!specialUltimate&&(SkillSignatures.IsSpell(signature)||arte.IsSpell||skill.Animation==AnimationKind.Cast);
+            phaseClip=specialUltimate?unit.Data.Poses?.Ultimate:casting?CharacterMotionClips.Casting(unit.Data):
+                action==AnimationKind.Attack||signature==SkillSignature.DemonFang?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
+            profile=arte.Enabled?ArteMotionProfile.For(arte,CombatEffect.Resolve(unit.Data,skill)):casting?new CombatMotionProfile(.015f,.005f,.025f,0,0):
                 signature==SkillSignature.DemonFang?new CombatMotionProfile(.3f,.12f,0,17,.065f):
                 CombatMotionProfile.For(CombatEffect.Resolve(unit.Data,skill),specialUltimate);
             hold=Mathf.Min(profile.Hold,recovery*.18f);
         }
         public void ReleaseSkill(float travelDuration=0)
         {
+            if(!presenting||released)return;
             // Keep the signature pose until its projectile and contact sequence have both completed.
-            if(!released&&(signature!=SkillSignature.None||arte.Enabled)&&!float.IsNaN(travelDuration)&&!float.IsInfinity(travelDuration))recovery+=Mathf.Max(0,travelDuration);
+            if((signature!=SkillSignature.None||arte.Enabled)&&!float.IsNaN(travelDuration)&&!float.IsInfinity(travelDuration))recovery+=Mathf.Max(0,travelDuration);
             released=true;releasedAt=Time.time;
         }
         public void Impact(Vector3 direction,bool heavy)
@@ -78,14 +83,11 @@ namespace TalesTactics
                 action==AnimationKind.Dead?unit.Data.Poses?.Dead?.Sample(view,t,false):null;
             if(presenting)
             {
-                var clip=specialUltimate?unit.Data.Poses?.Ultimate:
-                    action==AnimationKind.Attack||signature==SkillSignature.DemonFang?unit.Data.Poses?.AttackMotion:unit.Data.Poses?.Skill;
                 float phaseTime=released?Mathf.Max(0,Time.time-releasedAt-hold):t;
-                frame=clip?.SamplePhase(view,phaseTime,released?Mathf.Max(.01f,recovery-hold):windup,released);
-                // A casting pose avoids the shared skill clip's spear thrust for Jade's two spells.
-                if(SkillSignatures.IsSpell(signature)||arte.IsSpell&&!specialUltimate)frame=unit.Data.Poses?.Cast?.Get(view)??frame;
+                frame=phaseClip?.SamplePhase(view,phaseTime,released?Mathf.Max(.01f,recovery-hold):windup,released,
+                    casting?SpritePhasePacing.Cast:SpritePhasePacing.Action);
                 if(arte.Enabled&&arte.Motion==ArteMotion.Guard&&!specialUltimate)frame=unit.Data.Poses?.Guard?.Get(view)??frame;
-                if(released&&Time.time-releasedAt>=recovery){presenting=false;frame=null;action=AnimationKind.Idle;}
+                if(released&&Time.time-releasedAt>=recovery){presenting=false;phaseClip=null;frame=null;action=AnimationKind.Idle;started=Time.time;t=0;}
             }
             var pose=unit.Data.Poses?.Get(action,view);
             if((action==AnimationKind.Attack||action==AnimationKind.Skill)&&(t<0.08f||t>=0.34f))pose=null;
@@ -96,7 +98,7 @@ namespace TalesTactics
             var color=art!=null?Color.white:unit.Data.PlaceholderColor;
             switch(action)
             {
-                case AnimationKind.Idle: scaleY=1+Mathf.Sin(t*3)*0.008f;break;
+                case AnimationKind.Idle: bob=Mathf.Sin(t*3)*.004f;break;
                 case AnimationKind.Walk:if(frame==null){bob=Mathf.Abs(Mathf.Sin(t*14))*0.055f;angle=Mathf.Sin(t*14)*2;}break;
                 case AnimationKind.Attack:case AnimationKind.Skill:
                     float motionTime=presenting?(released?windup+Time.time-releasedAt:Mathf.Min(t,windup)):t;
@@ -105,7 +107,7 @@ namespace TalesTactics
                 case AnimationKind.Guard:scaleY=pose!=null?1:0.92f;angle=pose!=null?0:-sign*4;break;
                 case AnimationKind.Damage:x=sign*Mathf.Sin(t*55)*0.04f*Mathf.Max(0,1-t*3);color=Color.Lerp(new Color(1,0.3f,0.3f),color,Mathf.Clamp01(t*4));break;
                 case AnimationKind.Dead:scaleY=frame!=null?1:0.25f;color=frame!=null?new Color(0.75f,0.75f,0.75f,0.85f):new Color(0.4f,0.4f,0.4f,0.5f);break;
-                case AnimationKind.Ultimate:bob=0.12f+Mathf.Sin(t*6)*0.025f;scaleY=1.05f;color=Color.Lerp(Color.white,new Color(1,0.85f,0.5f),0.25f);break;
+                case AnimationKind.Ultimate:bob=0.12f+Mathf.Sin(t*6)*0.025f;color=Color.Lerp(Color.white,new Color(1,0.85f,0.5f),0.25f);break;
             }
             if(timingSpin){x=0;angle=0;bob=Mathf.Sin(spinProgress*Mathf.PI)*0.06f;}
             Vector3 offset=new Vector3(x,0.04f+bob,0);
@@ -115,11 +117,9 @@ namespace TalesTactics
                 var world=new Vector3(direction.x,0,direction.y);
                 float prep=Mathf.Clamp01(t/Mathf.Max(.01f,windup));
                 float release=Mathf.Clamp01((Time.time-releasedAt-hold)/Mathf.Max(.01f,recovery-hold));
-                float drive=Mathf.SmoothStep(0,1,Mathf.InverseLerp(.58f,1,prep));
-                float follow=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.25f,1,release));
-                float travel=released?profile.Advance*follow+profile.Recoil*.3f*Mathf.Sin(release*Mathf.PI):Mathf.Lerp(-profile.Recoil*Mathf.Sin(prep*Mathf.PI*.5f),profile.Advance,drive);
-                offset=world*travel+Vector3.up*(.04f+profile.Lift*(released?Mathf.Sin(release*Mathf.PI):prep*.2f));
-                angle=-sign*profile.Tilt*(released?follow:Mathf.Lerp(-.65f*prep,1,drive));scaleY=1-(released?0:.025f*Mathf.Sin(prep*Mathf.PI));
+                var sample=profile.Sample(released?release:prep,released);
+                offset=world*sample.Travel+Vector3.up*(.04f+sample.Lift);
+                angle=-sign*sample.Tilt;scaleY=1; // Authored faces and bodies are never squashed.
             }
             if(action==AnimationKind.Damage)
             {

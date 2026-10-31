@@ -160,8 +160,9 @@ namespace TalesTactics
             else if(style==CombatVisualStyle.Spear)
             {var start=Vector3.Lerp(from,Vector3.zero,Mathf.Clamp01(t*5));Ribbon(start,Vector3.zero,style==CombatVisualStyle.Spear?.07f:.025f,white);}
             else Arc(.14f+contact*.7f,0,360,style==CombatVisualStyle.Shield?.09f:.06f,white,-.08f);
-            if(t<.25f){Disc(0,0,.72f,new Color(1,.68f,.19f,(1-t/.25f)*(reduced?.25f:.72f)));Disc(0,0,.25f,new Color(1,1,.87f,1-t/.25f));}
-            for(int i=0;i<(reduced?5:16);i++){float a=i*2.39996f,r=t*2;Ribbon(Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),Plane(Mathf.Cos(a)*(r+.22f),Mathf.Sin(a)*(r+.22f)),.022f,new Color(1,.79f,.39f,fade));}
+            CelContact(Vector3.zero,age,new Color(1,.82f,.52f,reduced?.6f:1),.48f);
+            float spark=SkillVisualLanguage.ContactEnvelope(age,.40f)*(reduced?.6f:1);
+            for(int i=0;i<(reduced?3:8);i++){float a=i*2.39996f,r=.10f+t*1.1f;CelTrail(Plane(Mathf.Cos(a)*r,Mathf.Sin(a)*r),Plane(Mathf.Cos(a)*(r+.18f),Mathf.Sin(a)*(r+.18f)),.016f,new Color(1,.79f,.39f,spark));}
             GroundDust(t);
         }
         void OnDestroy(){if(solid.Mesh!=null)Destroy(solid.Mesh);if(atlas.Mesh!=null)Destroy(atlas.Mesh);if(art.Mesh!=null)Destroy(art.Mesh);if(backAtlas.Mesh!=null)Destroy(backAtlas.Mesh);}

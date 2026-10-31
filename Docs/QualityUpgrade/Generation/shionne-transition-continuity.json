@@ -1,0 +1,1625 @@
+{
+    "character":  "shionne",
+    "generationTool":  "built-in image_gen",
+    "scope":  "Eight support source sheets, 16 poses each, imagegen-native redraw from exact source crops and corresponding premium canonical. Generated PNGs remain byte-for-byte untouched. No packing/import/production changes.",
+    "nativeCheckLimit":  "Independent read-only System.Drawing alpha128 8-connected-component count \u003e=1000px, alpha pixel count and strong outer margins. This is NOT Unity Pack, full RGBA assignment, or continuous rendered motion validation.",
+    "records":  [
+                    {
+                        "key":  "PixelCampaign-shionne-hq",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne, pink high ponytail, red crown band, white/gold armor over dark-red dress. Group PixelCampaign-shionne-hq. Match image2\u0027s larger round face/skull and short neck/chest/leg proportions, not merely more ponytail volume. Image1 exact rows: idle carrying one black-gold rifle diagonally; aiming horizontal rifle; eyes CLOSED while rifle held vertically in front/chest; low ready stance with rifle across chest. Preserve each face orientation, including unusual reference left/right facing on idle row. No extra gun, no muzzle effect.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-hq/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-fc02776f-0d7c-47ba-aa30-98805273cd73.png",
+                        "native":  {
+                                       "width":  1096,
+                                       "height":  1435,
+                                       "nonzeroAlphaPixels":  922940,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      5,
+                                                                      32,
+                                                                      4,
+                                                                      113
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              14,
+                                                                              32,
+                                                                              265,
+                                                                              301
+                                                                          ],
+                                                                          [
+                                                                              297,
+                                                                              32,
+                                                                              260,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              573,
+                                                                              34,
+                                                                              228,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              823,
+                                                                              36,
+                                                                              261,
+                                                                              297
+                                                                          ],
+                                                                          [
+                                                                              292,
+                                                                              370,
+                                                                              261,
+                                                                              293
+                                                                          ],
+                                                                          [
+                                                                              5,
+                                                                              373,
+                                                                              271,
+                                                                              289
+                                                                          ],
+                                                                          [
+                                                                              559,
+                                                                              375,
+                                                                              257,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              830,
+                                                                              375,
+                                                                              262,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              20,
+                                                                              672,
+                                                                              252,
+                                                                              327
+                                                                          ],
+                                                                          [
+                                                                              567,
+                                                                              674,
+                                                                              219,
+                                                                              325
+                                                                          ],
+                                                                          [
+                                                                              308,
+                                                                              676,
+                                                                              224,
+                                                                              321
+                                                                          ],
+                                                                          [
+                                                                              872,
+                                                                              677,
+                                                                              213,
+                                                                              321
+                                                                          ],
+                                                                          [
+                                                                              13,
+                                                                              1021,
+                                                                              270,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              303,
+                                                                              1023,
+                                                                              249,
+                                                                              299
+                                                                          ],
+                                                                          [
+                                                                              824,
+                                                                              1024,
+                                                                              267,
+                                                                              298
+                                                                          ],
+                                                                          [
+                                                                              559,
+                                                                              1027,
+                                                                              248,
+                                                                              295
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Sixteen poses retained: carried idle, horizontal aim, vertical eyes-closed prayer, ready. Reference left/right gazes and single black/gold rifle maintained. Compact skull/chest/legs match premium.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-shionne-hq/source-sheet-00.png",
+                        "sha256":  "502ec8f06128655fe729a0abc6e7cbb156204f6f46923b4c9ccbb59a77296f00",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-hq/reference-00.png",
+                                                 "sha256":  "5e8ce99a781f0a629ce2cf441b56e56070f0dc26a41e1bfb36e830493e2cf5e1"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png",
+                                                 "sha256":  "305f76d11ba3fa05825cbf3ca68bdf6a221934d7a9a3c3b76ae6a96cdb6c643f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+                        "sourceGuid":  "9bd40766b02cf2d4993ac5c5d35875c1",
+                        "originalSourceSha256":  "5bc0a66e223f8f89de59336f5329918ecbeaae46e4be1a5776aefc7d13faecbd",
+                        "currentSourceSha256":  "6d607f64838515d8362046afe565a0a30a7bb7e9c31e6f0130922fd14d3e55b8",
+                        "frameNames":  [
+                                           "shionne-hq_0_0",
+                                           "shionne-hq_0_1",
+                                           "shionne-hq_0_2",
+                                           "shionne-hq_0_3",
+                                           "shionne-hq_1_0",
+                                           "shionne-hq_1_1",
+                                           "shionne-hq_1_2",
+                                           "shionne-hq_1_3",
+                                           "shionne-hq_2_0",
+                                           "shionne-hq_2_1",
+                                           "shionne-hq_2_2",
+                                           "shionne-hq_2_3",
+                                           "shionne-hq_3_0",
+                                           "shionne-hq_3_1",
+                                           "shionne-hq_3_2",
+                                           "shionne-hq_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-shionne-motion",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne, pink ponytail/red crown, white/gold armor and dark-red skirt. Group PixelCampaign-shionne-motion. Rows1/2 two walking steps carrying one black-gold rifle, row3 HURT face/closed eyes/hunched body and rifle across chest, row4 KNOCKED DOWN prone or side-lying in the exact four reference directions, rifle alongside. Keep original eyes closed in hurt/downed and back of head hidden by hair. Same compact body/large skull as image2; never turn lying poses into walking. Full hair and gun tips inside each isolated body.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-motion/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-a97f5f18-3f2b-4f69-8f86-975211e785f0.png",
+                        "native":  {
+                                       "width":  1159,
+                                       "height":  1356,
+                                       "nonzeroAlphaPixels":  850748,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      10,
+                                                                      32,
+                                                                      8,
+                                                                      135
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              21,
+                                                                              32,
+                                                                              254,
+                                                                              294
+                                                                          ],
+                                                                          [
+                                                                              891,
+                                                                              33,
+                                                                              252,
+                                                                              292
+                                                                          ],
+                                                                          [
+                                                                              581,
+                                                                              34,
+                                                                              292,
+                                                                              291
+                                                                          ],
+                                                                          [
+                                                                              338,
+                                                                              39,
+                                                                              217,
+                                                                              289
+                                                                          ],
+                                                                          [
+                                                                              326,
+                                                                              353,
+                                                                              238,
+                                                                              296
+                                                                          ],
+                                                                          [
+                                                                              20,
+                                                                              355,
+                                                                              268,
+                                                                              292
+                                                                          ],
+                                                                          [
+                                                                              586,
+                                                                              356,
+                                                                              284,
+                                                                              291
+                                                                          ],
+                                                                          [
+                                                                              886,
+                                                                              356,
+                                                                              262,
+                                                                              290
+                                                                          ],
+                                                                          [
+                                                                              30,
+                                                                              680,
+                                                                              241,
+                                                                              282
+                                                                          ],
+                                                                          [
+                                                                              622,
+                                                                              683,
+                                                                              237,
+                                                                              282
+                                                                          ],
+                                                                          [
+                                                                              911,
+                                                                              683,
+                                                                              224,
+                                                                              284
+                                                                          ],
+                                                                          [
+                                                                              333,
+                                                                              685,
+                                                                              227,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              310,
+                                                                              1039,
+                                                                              267,
+                                                                              172
+                                                                          ],
+                                                                          [
+                                                                              10,
+                                                                              1043,
+                                                                              283,
+                                                                              176
+                                                                          ],
+                                                                          [
+                                                                              581,
+                                                                              1045,
+                                                                              294,
+                                                                              176
+                                                                          ],
+                                                                          [
+                                                                              884,
+                                                                              1061,
+                                                                              267,
+                                                                              152
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Two walking rows, closed-eye hunched hit reactions and four prone/side-lying collapse poses. Back view face remains hidden; single rifle lies alongside when downed.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-shionne-motion/source-sheet-00.png",
+                        "sha256":  "b1982744b62923b94eab7bc32fa0116140dd486742b4b976b9bac0576a0fba99",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-motion/reference-00.png",
+                                                 "sha256":  "1f461f7da25fe9e2b83c2a565573aa880ffb5912c86add12b72d074f55297da4"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png",
+                                                 "sha256":  "305f76d11ba3fa05825cbf3ca68bdf6a221934d7a9a3c3b76ae6a96cdb6c643f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/shionne-motion.png",
+                        "sourceGuid":  "2ed950cfdd46b0c4f8d77ce984a000d3",
+                        "originalSourceSha256":  "68ac24c597a79fce37a3f5ed585197b08296c6c0241f3e948d989fd659a9be83",
+                        "currentSourceSha256":  "0d4ff381986ee39c449d6b2a3f4e4547c89aa29cb8c3b2075fa49a8bbc9a34f4",
+                        "frameNames":  [
+                                           "shionne-motion_0_0",
+                                           "shionne-motion_0_1",
+                                           "shionne-motion_0_2",
+                                           "shionne-motion_0_3",
+                                           "shionne-motion_1_0",
+                                           "shionne-motion_1_1",
+                                           "shionne-motion_1_2",
+                                           "shionne-motion_1_3",
+                                           "shionne-motion_2_0",
+                                           "shionne-motion_2_1",
+                                           "shionne-motion_2_2",
+                                           "shionne-motion_2_3",
+                                           "shionne-motion_3_0",
+                                           "shionne-motion_3_1",
+                                           "shionne-motion_3_2",
+                                           "shionne-motion_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-shionne-extra",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne, pink ponytail, red crown, white/gold armor and dark-red skirt. Group PixelCampaign-shionne-extra. Rows1/2 two walk-step poses with exact alternating direction and carried gun angle. Row3 eyes CLOSED and rifle upright; row4 FIRE AIMING: front cell muzzle directly toward viewer, rear cell gun obscured behind body, side cells exact left/right horizontal muzzle orientation. Do NOT rotate that front muzzle sideways. One black/gold rifle only. Same round larger skull, compact short chest/legs from image2. Plenty of independent transparent space around full ponytail and rifle.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-extra/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-2c62e53b-5511-4e37-b6bd-aa7446ad7cc4.png",
+                        "native":  {
+                                       "width":  1061,
+                                       "height":  1483,
+                                       "nonzeroAlphaPixels":  979166,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      3,
+                                                                      19,
+                                                                      1,
+                                                                      129
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              7,
+                                                                              19,
+                                                                              260,
+                                                                              320
+                                                                          ],
+                                                                          [
+                                                                              568,
+                                                                              19,
+                                                                              225,
+                                                                              327
+                                                                          ],
+                                                                          [
+                                                                              810,
+                                                                              25,
+                                                                              250,
+                                                                              321
+                                                                          ],
+                                                                          [
+                                                                              285,
+                                                                              28,
+                                                                              273,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              263,
+                                                                              359,
+                                                                              275,
+                                                                              320
+                                                                          ],
+                                                                          [
+                                                                              6,
+                                                                              360,
+                                                                              261,
+                                                                              322
+                                                                          ],
+                                                                          [
+                                                                              814,
+                                                                              360,
+                                                                              241,
+                                                                              324
+                                                                          ],
+                                                                          [
+                                                                              553,
+                                                                              364,
+                                                                              255,
+                                                                              317
+                                                                          ],
+                                                                          [
+                                                                              6,
+                                                                              699,
+                                                                              267,
+                                                                              322
+                                                                          ],
+                                                                          [
+                                                                              297,
+                                                                              699,
+                                                                              241,
+                                                                              322
+                                                                          ],
+                                                                          [
+                                                                              837,
+                                                                              700,
+                                                                              217,
+                                                                              325
+                                                                          ],
+                                                                          [
+                                                                              560,
+                                                                              701,
+                                                                              218,
+                                                                              326
+                                                                          ],
+                                                                          [
+                                                                              272,
+                                                                              1049,
+                                                                              269,
+                                                                              305
+                                                                          ],
+                                                                          [
+                                                                              3,
+                                                                              1052,
+                                                                              259,
+                                                                              301
+                                                                          ],
+                                                                          [
+                                                                              536,
+                                                                              1059,
+                                                                              257,
+                                                                              293
+                                                                          ],
+                                                                          [
+                                                                              805,
+                                                                              1064,
+                                                                              252,
+                                                                              289
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Two exact walk rows, vertical eyes-closed prayer, four aiming views. Bottom-left muzzle remains directly toward viewer; back gun occlusion kept.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-shionne-extra/source-sheet-00.png",
+                        "sha256":  "a807e2fc7d415639d77c5935d2000686eb2c0e243dcccf36022aab54ddaa22e5",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-extra/reference-00.png",
+                                                 "sha256":  "88201b314659553677cd17e8e58038c412afab0d0b086470a93a2938667cf3d8"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png",
+                                                 "sha256":  "305f76d11ba3fa05825cbf3ca68bdf6a221934d7a9a3c3b76ae6a96cdb6c643f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/shionne-extra.png",
+                        "sourceGuid":  "bf510dfddc06b0048b5c0049437b166d",
+                        "originalSourceSha256":  "f03112bc3055839ad9470aae32670ce44d03e64e1004f6697fc863d8cc1e237b",
+                        "currentSourceSha256":  "c6c25f68321ca069e9a27d960f73d87e4642b57dd29985d4acf8808669c1caf5",
+                        "frameNames":  [
+                                           "shionne-extra_0_0",
+                                           "shionne-extra_0_1",
+                                           "shionne-extra_0_2",
+                                           "shionne-extra_0_3",
+                                           "shionne-extra_1_0",
+                                           "shionne-extra_1_1",
+                                           "shionne-extra_1_2",
+                                           "shionne-extra_1_3",
+                                           "shionne-extra_2_0",
+                                           "shionne-extra_2_1",
+                                           "shionne-extra_2_2",
+                                           "shionne-extra_2_3",
+                                           "shionne-extra_3_0",
+                                           "shionne-extra_3_1",
+                                           "shionne-extra_3_2",
+                                           "shionne-extra_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "PixelCampaign-shionne-polish",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nIMPORTANT LAYOUT OVERRIDE: output SQUARE 1:1 sheet, FOUR columns by FOUR rows only, no fifth blank row. Sixteen independent SMALLER-ON-CANVAS complete characters centered in 16 equal generous square cells. Each figure (including hair/gun) occupies no more than75% cell width, leaving at least30 native transparent pixels between strong silhouettes and25px outer canvas margin. Image1 ONLY POSE SOURCE, its tall packing is NOT to be copied. Rebuild layout as spacious square. Native detailed figures around250-280px high. Character Shionne, pink ponytail red crown white/gold armor, one black/gold rifle. Preserve rows: diagonal raised aim / farther upward aim / vertical rifle eyes CLOSED / low carried idle; exact source facings. Large skull short torso from image2. Every ponytail full and separate; in second row specifically keep second andthird character\u0027s hair clearly apart and fourth character\u0027s ponytail fully insidecanvas. No added frames.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-polish/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-27dfb146-387f-443a-bc3f-174bd897efad.png",
+                        "native":  {
+                                       "width":  1254,
+                                       "height":  1254,
+                                       "nonzeroAlphaPixels":  856757,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      27,
+                                                                      37,
+                                                                      23,
+                                                                      30
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              343,
+                                                                              37,
+                                                                              248,
+                                                                              282
+                                                                          ],
+                                                                          [
+                                                                              38,
+                                                                              39,
+                                                                              245,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              655,
+                                                                              39,
+                                                                              258,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              970,
+                                                                              39,
+                                                                              245,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              337,
+                                                                              334,
+                                                                              272,
+                                                                              284
+                                                                          ],
+                                                                          [
+                                                                              27,
+                                                                              335,
+                                                                              276,
+                                                                              287
+                                                                          ],
+                                                                          [
+                                                                              640,
+                                                                              335,
+                                                                              283,
+                                                                              285
+                                                                          ],
+                                                                          [
+                                                                              950,
+                                                                              338,
+                                                                              281,
+                                                                              283
+                                                                          ],
+                                                                          [
+                                                                              44,
+                                                                              636,
+                                                                              243,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              353,
+                                                                              637,
+                                                                              241,
+                                                                              299
+                                                                          ],
+                                                                          [
+                                                                              998,
+                                                                              637,
+                                                                              213,
+                                                                              299
+                                                                          ],
+                                                                          [
+                                                                              683,
+                                                                              639,
+                                                                              204,
+                                                                              297
+                                                                          ],
+                                                                          [
+                                                                              33,
+                                                                              950,
+                                                                              253,
+                                                                              274
+                                                                          ],
+                                                                          [
+                                                                              350,
+                                                                              950,
+                                                                              252,
+                                                                              274
+                                                                          ],
+                                                                          [
+                                                                              972,
+                                                                              950,
+                                                                              249,
+                                                                              274
+                                                                          ],
+                                                                          [
+                                                                              663,
+                                                                              953,
+                                                                              249,
+                                                                              271
+                                                                          ]
+                                                                      ]
+                                   },
+                        "retries":  [
+                                        {
+                                            "attempt":  1,
+                                            "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne, pink ponytail, red crown, white/gold armor and dark-red skirt. Group PixelCampaign-shionne-polish. Row1 raised diagonal aim; row2 farther upward rifle aim; row3 eyes CLOSED with rifle held vertical; row4 return to low carried rifle idle. Preserve each exact muzzle direction and reference face orientation, no mirrored replacements. One black/gold rifle only. Same round larger skull, compact short chest/legs from image2. Plenty of independent transparent space around full ponytail and rifle.",
+                                            "inputs":  [
+                                                           "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-polish/reference-00.png",
+                                                           "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                                       ],
+                                            "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-20e7625d-5f75-4256-9616-990a031a8f60.png",
+                                            "native":  {
+                                                           "width":  1073,
+                                                           "height":  1466,
+                                                           "nonzeroAlphaPixels":  903685,
+                                                           "majorComponentsAlpha128":  15,
+                                                           "outerStrongMarginsLTRB":  [
+                                                                                          11,
+                                                                                          28,
+                                                                                          0,
+                                                                                          152
+                                                                                      ],
+                                                           "majorComponentRectsTopLeft":  [
+                                                                                              [
+                                                                                                  287,
+                                                                                                  28,
+                                                                                                  243,
+                                                                                                  292
+                                                                                              ],
+                                                                                              [
+                                                                                                  556,
+                                                                                                  28,
+                                                                                                  250,
+                                                                                                  294
+                                                                                              ],
+                                                                                              [
+                                                                                                  16,
+                                                                                                  29,
+                                                                                                  242,
+                                                                                                  292
+                                                                                              ],
+                                                                                              [
+                                                                                                  831,
+                                                                                                  30,
+                                                                                                  233,
+                                                                                                  292
+                                                                                              ],
+                                                                                              [
+                                                                                                  16,
+                                                                                                  345,
+                                                                                                  278,
+                                                                                                  300
+                                                                                              ],
+                                                                                              [
+                                                                                                  303,
+                                                                                                  345,
+                                                                                                  512,
+                                                                                                  294
+                                                                                              ],
+                                                                                              [
+                                                                                                  831,
+                                                                                                  355,
+                                                                                                  242,
+                                                                                                  287
+                                                                                              ],
+                                                                                              [
+                                                                                                  18,
+                                                                                                  663,
+                                                                                                  254,
+                                                                                                  324
+                                                                                              ],
+                                                                                              [
+                                                                                                  297,
+                                                                                                  664,
+                                                                                                  232,
+                                                                                                  315
+                                                                                              ],
+                                                                                              [
+                                                                                                  865,
+                                                                                                  665,
+                                                                                                  205,
+                                                                                                  323
+                                                                                              ],
+                                                                                              [
+                                                                                                  566,
+                                                                                                  668,
+                                                                                                  212,
+                                                                                                  322
+                                                                                              ],
+                                                                                              [
+                                                                                                  570,
+                                                                                                  1011,
+                                                                                                  234,
+                                                                                                  303
+                                                                                              ],
+                                                                                              [
+                                                                                                  298,
+                                                                                                  1012,
+                                                                                                  249,
+                                                                                                  300
+                                                                                              ],
+                                                                                              [
+                                                                                                  11,
+                                                                                                  1013,
+                                                                                                  253,
+                                                                                                  301
+                                                                                              ],
+                                                                                              [
+                                                                                                  842,
+                                                                                                  1016,
+                                                                                                  227,
+                                                                                                  298
+                                                                                              ]
+                                                                                          ]
+                                                       },
+                                            "rejection":  "Major opaque components15: row2 columns2/3 hair touches; row2 column4 hair reaches right canvas edge. Pose content is correct but not independently packable.",
+                                            "sha256":  "fea8b901765da6e8508d26a7732c7208c6e433ef9a2c7eb2bc203000200e477e"
+                                        },
+                                        {
+                                            "attempt":  2,
+                                            "prompt":  "Use case: precise-object-edit. Correct only packing spacing in IMAGE1, the sixteen Shionne poses. Image2 is the original pose reference. Image3 is the approved anatomy/style. Preserve all16 poses, order, directions, head/torso/boot model, rifle angles, hand positions, eyes, outfit and detailing. Current image1 has row2 columns2 and3 HAIR TOUCHING, and row2 column4 PONYTAIL CLIPPED at right outer edge. Redraw same sixteen poses in a clean 4 columns x4 rows grid with substantially more transparent space on all four sides of EVERY figure and between ALL adjacent figures. Restore a complete curved ponytail outline on row2 col4. Each body including gun/hair must be fully separated with at least12 transparent pixels, outer margin at least16px. Use a generous transparent canvas, no touching tips or hair anywhere. Do not add/remove/mirror any pose, do not change original 4-row motions. Image1 large skull compact anatomy retained. Native crisp imagegen illustration, true RGBA alpha, no backgrounds/labels/grid/shadow/effect. Only sixteen full bodies.",
+                                            "inputs":  [
+                                                           "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-20e7625d-5f75-4256-9616-990a031a8f60.png",
+                                                           "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-polish/reference-00.png",
+                                                           "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png"
+                                                       ],
+                                            "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-de552a76-0fc1-41b1-b9c1-f2b632dbbd0a.png",
+                                            "native":  {
+                                                           "width":  1073,
+                                                           "height":  1466,
+                                                           "nonzeroAlphaPixels":  883110,
+                                                           "majorComponentsAlpha128":  15,
+                                                           "outerStrongMarginsLTRB":  [
+                                                                                          12,
+                                                                                          49,
+                                                                                          0,
+                                                                                          111
+                                                                                      ],
+                                                           "majorComponentRectsTopLeft":  [
+                                                                                              [
+                                                                                                  551,
+                                                                                                  49,
+                                                                                                  247,
+                                                                                                  292
+                                                                                              ],
+                                                                                              [
+                                                                                                  16,
+                                                                                                  51,
+                                                                                                  242,
+                                                                                                  289
+                                                                                              ],
+                                                                                              [
+                                                                                                  283,
+                                                                                                  51,
+                                                                                                  242,
+                                                                                                  290
+                                                                                              ],
+                                                                                              [
+                                                                                                  816,
+                                                                                                  51,
+                                                                                                  239,
+                                                                                                  291
+                                                                                              ],
+                                                                                              [
+                                                                                                  17,
+                                                                                                  378,
+                                                                                                  271,
+                                                                                                  296
+                                                                                              ],
+                                                                                              [
+                                                                                                  301,
+                                                                                                  382,
+                                                                                                  508,
+                                                                                                  291
+                                                                                              ],
+                                                                                              [
+                                                                                                  829,
+                                                                                                  385,
+                                                                                                  244,
+                                                                                                  289
+                                                                                              ],
+                                                                                              [
+                                                                                                  293,
+                                                                                                  705,
+                                                                                                  237,
+                                                                                                  318
+                                                                                              ],
+                                                                                              [
+                                                                                                  16,
+                                                                                                  706,
+                                                                                                  252,
+                                                                                                  321
+                                                                                              ],
+                                                                                              [
+                                                                                                  856,
+                                                                                                  707,
+                                                                                                  207,
+                                                                                                  323
+                                                                                              ],
+                                                                                              [
+                                                                                                  562,
+                                                                                                  708,
+                                                                                                  213,
+                                                                                                  322
+                                                                                              ],
+                                                                                              [
+                                                                                                  12,
+                                                                                                  1055,
+                                                                                                  250,
+                                                                                                  299
+                                                                                              ],
+                                                                                              [
+                                                                                                  297,
+                                                                                                  1055,
+                                                                                                  246,
+                                                                                                  298
+                                                                                              ],
+                                                                                              [
+                                                                                                  561,
+                                                                                                  1055,
+                                                                                                  239,
+                                                                                                  300
+                                                                                              ],
+                                                                                              [
+                                                                                                  830,
+                                                                                                  1056,
+                                                                                                  236,
+                                                                                                  299
+                                                                                              ]
+                                                                                          ]
+                                                       },
+                                            "rejection":  "Requested spacing edit did not separate row2 C2/C3 opaque hair and still clipped row2 C4 at right edge. Rejected unchanged blocking layout defect.",
+                                            "sha256":  "cfb1d3469ebe248dc726d52795cb7cb4d02849ca08c9d58a2fe3408d28f3f6ac"
+                                        }
+                                    ],
+                        "poseReview":  "Third attempt accepted after two rejected merged/clipped layouts. Square arrangement has separated16figures and23px minimum strong outer margin. Diagonal aim/upward aim/closed-eye vertical recovery/idle sequences retained.",
+                        "attempt":  3,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-shionne-polish/source-sheet-00.png",
+                        "sha256":  "e07a82ad904e33585f03d9f06dbd99e481299ef3b633ebb770e59b07d8e65d46",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-shionne-polish/reference-00.png",
+                                                 "sha256":  "dec86d2f070d9a8f97fc81403c681028cd610c80be5b3daaa47f7380113c3d64"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-shionne/source-sheet-00.png",
+                                                 "sha256":  "305f76d11ba3fa05825cbf3ca68bdf6a221934d7a9a3c3b76ae6a96cdb6c643f"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/PixelCampaign/shionne-polish.png",
+                        "sourceGuid":  "fa97f8078fea3ab4c8e1c25a245f3e6c",
+                        "originalSourceSha256":  "0554aa7cc9a98c629d6d1132949723b56f404382248703a64c934cb9d98db3b2",
+                        "currentSourceSha256":  "e1733d6b033d3895ef73e5439343e5de83f9c0f8f07e4a936a85bcc9f38d06d1",
+                        "frameNames":  [
+                                           "shionne-polish_0_0",
+                                           "shionne-polish_0_1",
+                                           "shionne-polish_0_2",
+                                           "shionne-polish_0_3",
+                                           "shionne-polish_1_0",
+                                           "shionne-polish_1_1",
+                                           "shionne-polish_1_2",
+                                           "shionne-polish_1_3",
+                                           "shionne-polish_2_0",
+                                           "shionne-polish_2_1",
+                                           "shionne-polish_2_2",
+                                           "shionne-polish_2_3",
+                                           "shionne-polish_3_0",
+                                           "shionne-polish_3_1",
+                                           "shionne-polish_3_2",
+                                           "shionne-polish_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-shionne-hq",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne SIGNATURE model. Group SignatureWeapons-shionne-hq. Image2 large round skull/short chest/compact legs, pink ponytail red crown and white/gold/dark-red armor. One RED-BLACK SILVER-BANDED signature rifle only, no ordinary golden rifle. Exact reference rows: diagonal carried idle; horizontal aim; vertical rifle prayer eyes CLOSED; rifle across chest ready. Retain unusual reference gaze/left-right facings, muzzle angle and which parts are hidden by body. Generous transparent separation around complete ponytails and gun tips, at least16px outer margin, no touching adjacent figures.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-hq/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-548bb786-cde8-436d-af9b-afb9556424a6.png",
+                        "native":  {
+                                       "width":  1127,
+                                       "height":  1396,
+                                       "nonzeroAlphaPixels":  925864,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      5,
+                                                                      47,
+                                                                      1,
+                                                                      81
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              15,
+                                                                              47,
+                                                                              263,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              591,
+                                                                              47,
+                                                                              226,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              850,
+                                                                              47,
+                                                                              276,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              290,
+                                                                              50,
+                                                                              283,
+                                                                              304
+                                                                          ],
+                                                                          [
+                                                                              5,
+                                                                              378,
+                                                                              282,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              298,
+                                                                              378,
+                                                                              259,
+                                                                              286
+                                                                          ],
+                                                                          [
+                                                                              578,
+                                                                              379,
+                                                                              270,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              863,
+                                                                              379,
+                                                                              259,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              893,
+                                                                              680,
+                                                                              207,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              24,
+                                                                              681,
+                                                                              243,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              314,
+                                                                              681,
+                                                                              224,
+                                                                              315
+                                                                          ],
+                                                                          [
+                                                                              590,
+                                                                              681,
+                                                                              200,
+                                                                              316
+                                                                          ],
+                                                                          [
+                                                                              575,
+                                                                              1014,
+                                                                              251,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              14,
+                                                                              1015,
+                                                                              273,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              848,
+                                                                              1015,
+                                                                              262,
+                                                                              300
+                                                                          ],
+                                                                          [
+                                                                              310,
+                                                                              1016,
+                                                                              256,
+                                                                              299
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Four exact rows: carried idle, horizontal aim, vertical prayer, ready. Red-black silver-banded signature rifle preserved with no standard golden gun.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-hq/source-sheet-00.png",
+                        "sha256":  "b6526b28561c34f19b7f1f2f5ee0a7766df91d1716ebe7d78ada21cd2bfd95c4",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-hq/reference-00.png",
+                                                 "sha256":  "85fe03044a1af637e6a73ae2bfee345130edbe7fb7c115aa2178a8ad27037a40"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png",
+                                                 "sha256":  "d327963a503e3af1c11deae19aa3d9738e7fd1fee68fdc38acb7b8dc1e522233"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/shionne-hq.png",
+                        "sourceGuid":  "0edf32fb3e240f24e84fcb4098116683",
+                        "originalSourceSha256":  "32c2ba80d0247f5d190106087ccb33079bef4a24ef7c960326ae4150365a55fe",
+                        "currentSourceSha256":  "54a41c715c0917fdb4aae024b33ef4a0abac3726674eb41ab9cc6495ee0bdb4d",
+                        "frameNames":  [
+                                           "shionne-hq_0_0",
+                                           "shionne-hq_0_1",
+                                           "shionne-hq_0_2",
+                                           "shionne-hq_0_3",
+                                           "shionne-hq_1_0",
+                                           "shionne-hq_1_1",
+                                           "shionne-hq_1_2",
+                                           "shionne-hq_1_3",
+                                           "shionne-hq_2_0",
+                                           "shionne-hq_2_1",
+                                           "shionne-hq_2_2",
+                                           "shionne-hq_2_3",
+                                           "shionne-hq_3_0",
+                                           "shionne-hq_3_1",
+                                           "shionne-hq_3_2",
+                                           "shionne-hq_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-shionne-motion",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne SIGNATURE model. Group SignatureWeapons-shionne-motion. Rows1/2 two walking steps with one red-black/silver-banded signature rifle; row3 HURT eyes CLOSED and hunched body carrying rifle across chest, back view keeps face hidden; row4 KNOCKED DOWN prone/side lying, all eyes closed and red-black rifle lying alongside. Same exact four directions. Match image2 larger skull/short neck/chest/compact legs, pink ponytail, red crown, white/gold/red costume. Keep every hair edge and gun tip fully on canvas, more transparent breathing room around all16figures.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-motion/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-53db13fe-4053-4fce-99bc-fb4514339337.png",
+                        "native":  {
+                                       "width":  1139,
+                                       "height":  1381,
+                                       "nonzeroAlphaPixels":  835504,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      14,
+                                                                      78,
+                                                                      12,
+                                                                      148
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              24,
+                                                                              78,
+                                                                              254,
+                                                                              290
+                                                                          ],
+                                                                          [
+                                                                              314,
+                                                                              80,
+                                                                              232,
+                                                                              289
+                                                                          ],
+                                                                          [
+                                                                              555,
+                                                                              81,
+                                                                              283,
+                                                                              283
+                                                                          ],
+                                                                          [
+                                                                              872,
+                                                                              82,
+                                                                              247,
+                                                                              283
+                                                                          ],
+                                                                          [
+                                                                              18,
+                                                                              386,
+                                                                              276,
+                                                                              293
+                                                                          ],
+                                                                          [
+                                                                              874,
+                                                                              387,
+                                                                              248,
+                                                                              294
+                                                                          ],
+                                                                          [
+                                                                              324,
+                                                                              390,
+                                                                              234,
+                                                                              288
+                                                                          ],
+                                                                          [
+                                                                              573,
+                                                                              390,
+                                                                              285,
+                                                                              285
+                                                                          ],
+                                                                          [
+                                                                              318,
+                                                                              698,
+                                                                              245,
+                                                                              296
+                                                                          ],
+                                                                          [
+                                                                              616,
+                                                                              699,
+                                                                              244,
+                                                                              294
+                                                                          ],
+                                                                          [
+                                                                              38,
+                                                                              700,
+                                                                              241,
+                                                                              290
+                                                                          ],
+                                                                          [
+                                                                              903,
+                                                                              701,
+                                                                              224,
+                                                                              293
+                                                                          ],
+                                                                          [
+                                                                              14,
+                                                                              1033,
+                                                                              278,
+                                                                              194
+                                                                          ],
+                                                                          [
+                                                                              301,
+                                                                              1038,
+                                                                              264,
+                                                                              183
+                                                                          ],
+                                                                          [
+                                                                              570,
+                                                                              1045,
+                                                                              278,
+                                                                              185
+                                                                          ],
+                                                                          [
+                                                                              850,
+                                                                              1047,
+                                                                              275,
+                                                                              186
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Two walking rows, closed-eye hurt and downed four-view poses. Pink ponytail, red crown, compact anatomy and one signature rifle maintained.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-motion/source-sheet-00.png",
+                        "sha256":  "b7dfc4fdfdd96399a95e5c23e291ffca5cc09633d77b4c15976a6d187979402b",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-motion/reference-00.png",
+                                                 "sha256":  "eba92945081ac5af983994f00582cb2ce9386c08483fa0c011750a8fabca6b6e"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png",
+                                                 "sha256":  "d327963a503e3af1c11deae19aa3d9738e7fd1fee68fdc38acb7b8dc1e522233"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/shionne-motion.png",
+                        "sourceGuid":  "bd7544af96516bc478e31aef343c87fb",
+                        "originalSourceSha256":  "48d2f86a778fa6d56b7bc810c9043475562ca8e7d5c3cac65432176999425dad",
+                        "currentSourceSha256":  "eaa6d71e0a5965bf428ac3ce9663ac7b01960af27ec73c2e0dc9b23c602530de",
+                        "frameNames":  [
+                                           "shionne-motion_0_0",
+                                           "shionne-motion_0_1",
+                                           "shionne-motion_0_2",
+                                           "shionne-motion_0_3",
+                                           "shionne-motion_1_0",
+                                           "shionne-motion_1_1",
+                                           "shionne-motion_1_2",
+                                           "shionne-motion_1_3",
+                                           "shionne-motion_2_0",
+                                           "shionne-motion_2_1",
+                                           "shionne-motion_2_2",
+                                           "shionne-motion_2_3",
+                                           "shionne-motion_3_0",
+                                           "shionne-motion_3_1",
+                                           "shionne-motion_3_2",
+                                           "shionne-motion_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-shionne-extra",
+                        "prompt":  "Use case: precise-object-edit. Edit THIS EXISTING sprite sheet with one tiny local correction ONLY. In the BOTTOM ROW, FIRST COLUMN (lower-left Shionne), there is a conspicuous GOLDEN ROUND HOLLOW RING immediately in front of her chest under the horizontal RED-BLACK rifle. That gold ring is an erroneous obsolete second gun muzzle. REMOVE that golden circular hollow muzzle completely, and restore her white/gold chest armor and supporting gloved hand underneath it. Preserve the existing RED-BLACK horizontal signature rifle at her chest with its silver bands and right-pointing muzzle, do not remove or rotate that correct gun. She must hold exactly ONE rifle, no yellow circular muzzle. All other15 characters and this character\u0027s head/pose/hair/feet unchanged. Keep all16 poses and exact square sheet resolution/layout/scale and genuine transparent alpha. Do not crop, resize, mirror, recolor, add glow, change spacing or edit any other part. Only remove the obsolete yellow circle from bottom-left figure.",
+                        "inputs":  [
+                                       "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-6edb5452-d12a-4deb-85a0-d1aba4f0904d.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-fe8cb086-2dbd-4fb6-9343-49ca3264549e.png",
+                        "native":  {
+                                       "width":  1254,
+                                       "height":  1254,
+                                       "nonzeroAlphaPixels":  976156,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      21,
+                                                                      9,
+                                                                      1,
+                                                                      14
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              35,
+                                                                              9,
+                                                                              275,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              349,
+                                                                              9,
+                                                                              306,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              689,
+                                                                              9,
+                                                                              240,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              968,
+                                                                              10,
+                                                                              285,
+                                                                              310
+                                                                          ],
+                                                                          [
+                                                                              323,
+                                                                              319,
+                                                                              304,
+                                                                              307
+                                                                          ],
+                                                                          [
+                                                                              645,
+                                                                              320,
+                                                                              297,
+                                                                              306
+                                                                          ],
+                                                                          [
+                                                                              36,
+                                                                              321,
+                                                                              275,
+                                                                              304
+                                                                          ],
+                                                                          [
+                                                                              958,
+                                                                              321,
+                                                                              284,
+                                                                              305
+                                                                          ],
+                                                                          [
+                                                                              355,
+                                                                              630,
+                                                                              250,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              37,
+                                                                              631,
+                                                                              275,
+                                                                              309
+                                                                          ],
+                                                                          [
+                                                                              669,
+                                                                              632,
+                                                                              232,
+                                                                              308
+                                                                          ],
+                                                                          [
+                                                                              1001,
+                                                                              633,
+                                                                              229,
+                                                                              307
+                                                                          ],
+                                                                          [
+                                                                              21,
+                                                                              943,
+                                                                              287,
+                                                                              297
+                                                                          ],
+                                                                          [
+                                                                              334,
+                                                                              944,
+                                                                              272,
+                                                                              295
+                                                                          ],
+                                                                          [
+                                                                              652,
+                                                                              944,
+                                                                              285,
+                                                                              295
+                                                                          ],
+                                                                          [
+                                                                              968,
+                                                                              945,
+                                                                              276,
+                                                                              295
+                                                                          ]
+                                                                      ]
+                                   },
+                        "retries":  [
+                                        {
+                                            "attempt":  1,
+                                            "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne SIGNATURE model, group SignatureWeapons-shionne-extra. Rows1/2 exact two walking-step carried-rifle poses. Row3 vertical rifle, eyes closed where source shows closed. Row4 front-facing horizontal aiming, back view obscures gun, side cells keep source left/right gun directions. In row4 column1 there is an obsolete GOLDEN circular muzzle fragment below the correct red-black rifle: OMIT ONLY that obsolete gold fragment; keep the single red-black rifle across the chest and both hands as referenced. Never depict two guns. Weapon exclusively one RED-BLACK SILVER-BANDED signature rifle. Never gold gun. Large round skull/short chest/compact leg anatomy from image2, pink ponytail red crown white/gold and dark-red armor. OVERRIDE LAYOUT: output square1:1, four columns by four rows only, generous transparent spacing and at least20px full-figure margins. Every hairstyle and gun fully drawn and separated. Don\u0027t copy tall cramped layout from reference; retain its16pose order exactly.",
+                                            "inputs":  [
+                                                           "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-extra/reference-00.png",
+                                                           "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png"
+                                                       ],
+                                            "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-6edb5452-d12a-4deb-85a0-d1aba4f0904d.png",
+                                            "native":  {
+                                                           "width":  1254,
+                                                           "height":  1254,
+                                                           "nonzeroAlphaPixels":  969904,
+                                                           "majorComponentsAlpha128":  16,
+                                                           "outerStrongMarginsLTRB":  [
+                                                                                          22,
+                                                                                          9,
+                                                                                          3,
+                                                                                          14
+                                                                                      ],
+                                                           "majorComponentRectsTopLeft":  [
+                                                                                              [
+                                                                                                  36,
+                                                                                                  9,
+                                                                                                  272,
+                                                                                                  310
+                                                                                              ],
+                                                                                              [
+                                                                                                  350,
+                                                                                                  10,
+                                                                                                  304,
+                                                                                                  307
+                                                                                              ],
+                                                                                              [
+                                                                                                  690,
+                                                                                                  11,
+                                                                                                  238,
+                                                                                                  307
+                                                                                              ],
+                                                                                              [
+                                                                                                  970,
+                                                                                                  11,
+                                                                                                  281,
+                                                                                                  308
+                                                                                              ],
+                                                                                              [
+                                                                                                  324,
+                                                                                                  321,
+                                                                                                  302,
+                                                                                                  304
+                                                                                              ],
+                                                                                              [
+                                                                                                  38,
+                                                                                                  322,
+                                                                                                  271,
+                                                                                                  302
+                                                                                              ],
+                                                                                              [
+                                                                                                  646,
+                                                                                                  322,
+                                                                                                  294,
+                                                                                                  304
+                                                                                              ],
+                                                                                              [
+                                                                                                  960,
+                                                                                                  322,
+                                                                                                  281,
+                                                                                                  304
+                                                                                              ],
+                                                                                              [
+                                                                                                  355,
+                                                                                                  632,
+                                                                                                  248,
+                                                                                                  305
+                                                                                              ],
+                                                                                              [
+                                                                                                  39,
+                                                                                                  633,
+                                                                                                  271,
+                                                                                                  306
+                                                                                              ],
+                                                                                              [
+                                                                                                  671,
+                                                                                                  633,
+                                                                                                  228,
+                                                                                                  306
+                                                                                              ],
+                                                                                              [
+                                                                                                  1001,
+                                                                                                  634,
+                                                                                                  227,
+                                                                                                  304
+                                                                                              ],
+                                                                                              [
+                                                                                                  22,
+                                                                                                  945,
+                                                                                                  284,
+                                                                                                  295
+                                                                                              ],
+                                                                                              [
+                                                                                                  652,
+                                                                                                  945,
+                                                                                                  283,
+                                                                                                  293
+                                                                                              ],
+                                                                                              [
+                                                                                                  335,
+                                                                                                  946,
+                                                                                                  269,
+                                                                                                  292
+                                                                                              ],
+                                                                                              [
+                                                                                                  969,
+                                                                                                  946,
+                                                                                                  274,
+                                                                                                  293
+                                                                                              ]
+                                                                                          ]
+                                                       },
+                                            "rejection":  "Bottom-row first-column retained obsolete golden circular muzzle beneath the red-black signature rifle, inherited from reference. Two-weapon visual artifact.",
+                                            "sha256":  "647aef6006714c13a86a2072f508965e610ab4643b3e47099457fc8b90f90d49"
+                                        }
+                                    ],
+                        "poseReview":  "Second attempt removes obsolete golden circular muzzle in bottom-left figure that existed in reference and initial generation; correct red-black rifle and hand pose retained. All other15pose identities and facings retained, no duplicate weapon visible. Generative edit is not byte-identical outside target region.",
+                        "attempt":  2,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-extra/source-sheet-00.png",
+                        "sha256":  "d83690e5023f033eb0bee4b3d485dffa91a12f03c6e43a36f2915a92f0c44b6a",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-6edb5452-d12a-4deb-85a0-d1aba4f0904d.png",
+                                                 "sha256":  "647aef6006714c13a86a2072f508965e610ab4643b3e47099457fc8b90f90d49"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/shionne-extra.png",
+                        "sourceGuid":  "cc5d271f39cf61642aa46c1aff0f8d33",
+                        "originalSourceSha256":  "311d70e5f4135a03c8bb879f3222356d33449d728e85ddf4c89e2ded83975561",
+                        "currentSourceSha256":  "ea67d81e0100d0123ffac68d39a7248df7ca08143038b30d2cf6f3acf606067b",
+                        "frameNames":  [
+                                           "shionne-extra_0_0",
+                                           "shionne-extra_0_1",
+                                           "shionne-extra_0_2",
+                                           "shionne-extra_0_3",
+                                           "shionne-extra_1_0",
+                                           "shionne-extra_1_1",
+                                           "shionne-extra_1_2",
+                                           "shionne-extra_1_3",
+                                           "shionne-extra_2_0",
+                                           "shionne-extra_2_1",
+                                           "shionne-extra_2_2",
+                                           "shionne-extra_2_3",
+                                           "shionne-extra_3_0",
+                                           "shionne-extra_3_1",
+                                           "shionne-extra_3_2",
+                                           "shionne-extra_3_3"
+                                       ]
+                    },
+                    {
+                        "key":  "SignatureWeapons-shionne-polish",
+                        "prompt":  "Use case: style-transfer. Asset type: production transparent SD tactical-RPG animation sprite sheet. Image 1 is the EXACT POSE/ORDER/DIRECTION reference; image 2 is the APPROVED character anatomy and crisp illustration style canonical. Redraw all sixteen full-body poses from image 1 natively in the same larger-skull, compact short-torso/short-leg proportions and finely drawn face/hair/glasses/cloth/armor/boots quality as image 2. This is a new illustration, not an upscale. Do NOT copy image 2\u0027s walking poses. Keep every image-1 hand placement, stance, gaze, weapon visibility/occlusion and angle. The head/torso/boot proportions must remain the same model across all sixteen poses, without shrinking the head in the final recovery poses. Preserve the exact original weapon type, number, silhouette and which hand holds it. Four columns, FOUR populated rows, sixteen distinct isolated bodies, ordered left-to-right then top-to-bottom exactly as image 1; the optional bottom fifth row stays completely empty. All 16 figures complete including long weapon tips, hair and boots; give each independent transparent space so no strong art touches adjacent figures or canvas edges. Ignore tiny disconnected crop-fragments at cell edges in image 1; those are NOT body parts or extra poses. True RGBA transparent background, no black/white/checkerboard fill, no ground, no text, no labels, no grid, no border, no effects, no added accessories, no cast shadows. Sharp native clean linework and rich small-scale painted details. Keep four view orientations per row exactly from image 1, never turn a back view into front. Output only this one sheet.\nCharacter Shionne SIGNATURE model, group SignatureWeapons-shionne-polish. Rows1 raised diagonal aim, row2 further-upward diagonal aim, row3 vertical rifle recovery with exactly reference eye states (front eyes open, third column eyes closed), row4 low carried idle. Preserve exact source face orientation in each cell and one rifle throughout. Weapon exclusively one RED-BLACK SILVER-BANDED signature rifle. Never gold gun. Large round skull/short chest/compact leg anatomy from image2, pink ponytail red crown white/gold and dark-red armor. OVERRIDE LAYOUT: output square1:1, four columns by four rows only, generous transparent spacing and at least20px full-figure margins. Every hairstyle and gun fully drawn and separated. Don\u0027t copy tall cramped layout from reference; retain its16pose order exactly.",
+                        "inputs":  [
+                                       "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-polish/reference-00.png",
+                                       "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png"
+                                   ],
+                        "generatedPath":  "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-0fa5ff8f-72e4-4e97-bb8a-5684dee4b80b.png",
+                        "native":  {
+                                       "width":  1254,
+                                       "height":  1254,
+                                       "nonzeroAlphaPixels":  948863,
+                                       "majorComponentsAlpha128":  16,
+                                       "outerStrongMarginsLTRB":  [
+                                                                      17,
+                                                                      21,
+                                                                      5,
+                                                                      15
+                                                                  ],
+                                       "majorComponentRectsTopLeft":  [
+                                                                          [
+                                                                              653,
+                                                                              21,
+                                                                              268,
+                                                                              292
+                                                                          ],
+                                                                          [
+                                                                              20,
+                                                                              22,
+                                                                              281,
+                                                                              292
+                                                                          ],
+                                                                          [
+                                                                              332,
+                                                                              22,
+                                                                              267,
+                                                                              287
+                                                                          ],
+                                                                          [
+                                                                              960,
+                                                                              30,
+                                                                              269,
+                                                                              285
+                                                                          ],
+                                                                          [
+                                                                              643,
+                                                                              326,
+                                                                              288,
+                                                                              291
+                                                                          ],
+                                                                          [
+                                                                              17,
+                                                                              331,
+                                                                              288,
+                                                                              287
+                                                                          ],
+                                                                          [
+                                                                              966,
+                                                                              332,
+                                                                              283,
+                                                                              284
+                                                                          ],
+                                                                          [
+                                                                              347,
+                                                                              333,
+                                                                              273,
+                                                                              281
+                                                                          ],
+                                                                          [
+                                                                              352,
+                                                                              634,
+                                                                              244,
+                                                                              312
+                                                                          ],
+                                                                          [
+                                                                              28,
+                                                                              635,
+                                                                              261,
+                                                                              311
+                                                                          ],
+                                                                          [
+                                                                              670,
+                                                                              635,
+                                                                              232,
+                                                                              311
+                                                                          ],
+                                                                          [
+                                                                              1003,
+                                                                              638,
+                                                                              225,
+                                                                              304
+                                                                          ],
+                                                                          [
+                                                                              28,
+                                                                              959,
+                                                                              259,
+                                                                              280
+                                                                          ],
+                                                                          [
+                                                                              337,
+                                                                              959,
+                                                                              277,
+                                                                              276
+                                                                          ],
+                                                                          [
+                                                                              656,
+                                                                              959,
+                                                                              261,
+                                                                              278
+                                                                          ],
+                                                                          [
+                                                                              972,
+                                                                              960,
+                                                                              270,
+                                                                              278
+                                                                          ]
+                                                                      ]
+                                   },
+                        "poseReview":  "Raised/diagonal aim, further-upward aim, vertical recovery, low idle. Original third-row front-open/third-column-closed eye states maintained. Single signature rifle throughout.",
+                        "retries":  [
+
+                                    ],
+                        "attempt":  1,
+                        "status":  "candidate-native-and-pose-reviewed; Unity packing and continuous transition review pending",
+                        "outputPath":  "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-polish/source-sheet-00.png",
+                        "sha256":  "f8c901ac889fe10b903908df973ebeb60c6626b3d8d801c2719a426eaf3c68d4",
+                        "inputsSha256":  [
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-shionne-polish/reference-00.png",
+                                                 "sha256":  "c4521c4b350e7bff867a04803a6a3161ea243fdce3ac8f59a8c22d32186dd86d"
+                                             },
+                                             {
+                                                 "path":  "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-shionne-premium/source-sheet-00.png",
+                                                 "sha256":  "d327963a503e3af1c11deae19aa3d9738e7fd1fee68fdc38acb7b8dc1e522233"
+                                             }
+                                         ],
+                        "originalSource":  "Assets/TalesTactics/Art/SignatureWeapons/shionne-polish.png",
+                        "sourceGuid":  "47577e94b9d24b44cbd086d22dd0757e",
+                        "originalSourceSha256":  "507a7318ee8e9738b68705d02adc0c98c5d6254f2e4f664f87b6f133f7e7b6bc",
+                        "currentSourceSha256":  "3037dd6b9fb74481ca2e7b46ade348cd4da087777becf45bb8eddda63184b3d0",
+                        "frameNames":  [
+                                           "shionne-polish_0_0",
+                                           "shionne-polish_0_1",
+                                           "shionne-polish_0_2",
+                                           "shionne-polish_0_3",
+                                           "shionne-polish_1_0",
+                                           "shionne-polish_1_1",
+                                           "shionne-polish_1_2",
+                                           "shionne-polish_1_3",
+                                           "shionne-polish_2_0",
+                                           "shionne-polish_2_1",
+                                           "shionne-polish_2_2",
+                                           "shionne-polish_2_3",
+                                           "shionne-polish_3_0",
+                                           "shionne-polish_3_1",
+                                           "shionne-polish_3_2",
+                                           "shionne-polish_3_3"
+                                       ]
+                    }
+                ]
+}

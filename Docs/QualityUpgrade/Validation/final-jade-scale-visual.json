@@ -1,0 +1,1418 @@
+{
+  "schemaVersion": 1,
+  "status": "no_blocking_issue_observed_in_sampled_joins",
+  "reviewedUtc": "2026-10-31T13:50:09.2417513Z",
+  "productionApproval": false,
+  "scope": "Read-only visual review of eight original actual Unity static PNGs (160 slots), 24 original Jade continuous PNGs across four jade.0 Front/Back base/signature sequences, and six Alphen final-b sequence statuses. No PNG edits, Unity operations, source changes, or runtime execution by this reviewer.",
+  "comparison": "final-optical-jade-shionne-alphen.json records the earlier smaller Jade support sheets; this report evaluates the parent-applied candidate PPU adjustments, not new source art.",
+  "staticEvidence": {
+    "directory": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53",
+    "mappingSha256": "c467bc30e559b20cd4974b4c14f902a340f7077c30c108c47a7b54e830e16aef",
+    "passed": true,
+    "wholeRunImages": 16,
+    "wholeRunRenderedSprites": 320,
+    "reviewedImages": 8,
+    "reviewedSprites": 160,
+    "outsideFrameSlots": 0,
+    "sourceFallbackSlots": 0,
+    "productionModified": false,
+    "sourceFilesUnchanged": true,
+    "pixelsPerWorldUnit": 83.84933,
+    "cameraOrthographicSize": 9.1592865,
+    "selectionSha256": "87ae89fd88d691665f7fd066f87d4a9f25cf6bfdee305bbe997f42e369edc46a",
+    "viewed": [
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-base-direction-0.png",
+        "sha256": "93c4a2403bca6036a81e2fb9683d8a36e543249cb1d8a1773188630aef8de283"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-base-direction-1.png",
+        "sha256": "7a84ab365d16373c37438e7ae940685e1ecef4dfc9cd2ad62e8861807dbc72da"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-base-direction-2.png",
+        "sha256": "04d08eea1b1e3cbd99b02ac645fccd15340b4898caab3ecacd221661da8eed01"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-base-direction-3.png",
+        "sha256": "92855cad0ec23ee9fd7534c8ba116e262190baab28052d223e32da789a20b1b4"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-signature-direction-0.png",
+        "sha256": "25b7a9f1401b801039a76b2320de58b3b82068e662cc1f96acefeaefa65ee40b"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-signature-direction-1.png",
+        "sha256": "7dbae3c1bba3c106f3d0e377ca52c492ed721332e493eaa22f01698fec7e3711"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-signature-direction-2.png",
+        "sha256": "2ae1101c9ca6ebfa13c64ea91d19fc5339a62637f88ee28e1771488770829f6b"
+      },
+      {
+        "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\TransitionOptical\\d3315fa6f00543b28535a61078111b53\\jade-signature-direction-3.png",
+        "sha256": "6c9aedf30bf10776752a8e1ebcce3506c5a41e18f458e8bc6841e439febb0b10"
+      }
+    ]
+  },
+  "motionRunEvidence": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\result.json",
+    "sha256": "464b9d5e281f53c37c16ca170e5658041d643f6a7d452c00d83abb07a71e3e03",
+    "status": "passed",
+    "passed": true,
+    "expectedRuns": 104,
+    "completedRuns": 104,
+    "pngCount": 1433,
+    "errors": [],
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true,
+    "note": "Root-produced automated run evidence, not a claim that this reviewer visually inspected all 1433 images."
+  },
+  "findings": [
+    {
+      "id": "jade-standing-scale",
+      "severity": "resolved_in_observed_sample",
+      "detail": "HQ/motion/extra standing height is now close to Premium in both weapon sets. Static enlarged rendering shows no new weapon duplication, limb clipping, or gross standing-foot pivot displacement. Additional blanket enlargement is not recommended."
+    },
+    {
+      "id": "jade-basic-skill-joins",
+      "severity": "no_blocker_observed",
+      "detail": "Viewed 0008/0009 (HQ2 to Premium16), 0043/0044 (Premium16 to HQ2), and 0051/0052 (HQ2 to idle HQ0) for both Front/Back and base/signature. No severe whole-body shrink/growth, reversed facing, detached body, or duplicate spear observed. Hair sweep, casting-arm movement, changed stance and modest body-center shifts remain visible."
+    },
+    {
+      "id": "jade-residual-style",
+      "severity": "nonblocking_visual_difference",
+      "detail": "Premium remains broader and rounder in hair/head silhouette and boots, most evident in signature Front/Back casting poses. Matching standing height through PPU does not make anatomy identical. This report does not certify pixel-identical proportions or perfectly smooth motion at every frame."
+    },
+    {
+      "id": "polish-coverage",
+      "severity": "coverage_limit",
+      "detail": "jade.0 does not use Polish: HQ2 -> Premium16/17 -> HQ2 -> HQ0. Ultimate telemetry contains Polish, but final-b has continuous=false for Jade ultimates and only contact PNGs. Polish is visually covered here by static slots, not adjacent continuous transition images."
+    },
+    {
+      "id": "alphen-final-status",
+      "severity": "status_only",
+      "detail": "All requested six final-b ultimate sequences finish cleanly, return idle, match authored direction and preserve session with no errors/out-of-frame samples. Alphen final-b PNGs were not re-viewed in this pass; prior visual report alphen-transition-visual.json remains the image-review evidence."
+    }
+  ],
+  "standingHeightProbe": {
+    "role": "Read-only corroboration after visual assessment; not an automated anatomy verdict.",
+    "method": "Within each actual screenshot, inspect mapped standing ROI: Premium0, HQ0, motion0, extra0, Polish3. Brown hair first row with >=4 pixels through last foreground row with >=5 pixels, excluding the thin upright spear tip in these selected poses. RGB background distance >35; hair thresholds R>75,G>35,B>20,R>1.3G,R<2.5G,B<0.85G. No pixels written.",
+    "limits": "Approximate hair-to-foot span, not skeletal height. Upper hair width is not skull width. Current common camera differs from the earlier 64-image run; do not compare raw absolute pixels across runs.",
+    "summary": [
+      {
+        "group": "base, 1",
+        "min": 82.0,
+        "max": 83.0
+      },
+      {
+        "group": "base, 2",
+        "min": 82.0,
+        "max": 83.0
+      },
+      {
+        "group": "base, 3",
+        "min": 83.0,
+        "max": 84.0
+      },
+      {
+        "group": "base, 4",
+        "min": 84.0,
+        "max": 86.0
+      },
+      {
+        "group": "base, 5",
+        "min": 83.0,
+        "max": 87.0
+      },
+      {
+        "group": "signature, 1",
+        "min": 88.0,
+        "max": 88.0
+      },
+      {
+        "group": "signature, 2",
+        "min": 87.0,
+        "max": 88.0
+      },
+      {
+        "group": "signature, 3",
+        "min": 91.0,
+        "max": 91.0
+      },
+      {
+        "group": "signature, 4",
+        "min": 90.0,
+        "max": 93.0
+      },
+      {
+        "group": "signature, 5",
+        "min": 87.0,
+        "max": 90.0
+      }
+    ],
+    "raw": [
+      {
+        "mode": "base",
+        "direction": 0,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade_0_0",
+        "ppu": 178.43399,
+        "hairTopY": 77,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 82,
+        "upperHairWidth12Rows": 36,
+        "roi": [
+          559,
+          60,
+          115,
+          117
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 0,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_0",
+        "ppu": 242.273651,
+        "hairTopY": 383,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 38,
+        "roi": [
+          572,
+          354,
+          94,
+          129
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 0,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_0",
+        "ppu": 248.6576,
+        "hairTopY": 688,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 37,
+        "roi": [
+          579,
+          667,
+          82,
+          116
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 0,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_0",
+        "ppu": 236.79837,
+        "hairTopY": 992,
+        "lowerBodyBottomY": 1075,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          582,
+          971,
+          94,
+          110
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 0,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_0",
+        "ppu": 216.098434,
+        "hairTopY": 1298,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 31,
+        "roi": [
+          1355,
+          1274,
+          104,
+          158
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 1,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade_0_1",
+        "ppu": 178.43399,
+        "hairTopY": 76,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 39,
+        "roi": [
+          576,
+          63,
+          114,
+          110
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 1,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_1",
+        "ppu": 242.273651,
+        "hairTopY": 383,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 37,
+        "roi": [
+          574,
+          356,
+          100,
+          127
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 1,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_1",
+        "ppu": 248.6576,
+        "hairTopY": 688,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 83,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          580,
+          666,
+          82,
+          117
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 1,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_1",
+        "ppu": 236.79837,
+        "hairTopY": 992,
+        "lowerBodyBottomY": 1075,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 43,
+        "roi": [
+          578,
+          968,
+          89,
+          123
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 1,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_1",
+        "ppu": 216.098434,
+        "hairTopY": 1297,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          1353,
+          1276,
+          110,
+          157
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 2,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade_0_2",
+        "ppu": 178.43399,
+        "hairTopY": 77,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 82,
+        "upperHairWidth12Rows": 42,
+        "roi": [
+          552,
+          61,
+          126,
+          114
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 2,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_2",
+        "ppu": 242.273651,
+        "hairTopY": 384,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 82,
+        "upperHairWidth12Rows": 36,
+        "roi": [
+          573,
+          358,
+          93,
+          129
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 2,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_2",
+        "ppu": 248.6576,
+        "hairTopY": 687,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 42,
+        "roi": [
+          579,
+          666,
+          88,
+          118
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 2,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_2",
+        "ppu": 236.79837,
+        "hairTopY": 990,
+        "lowerBodyBottomY": 1075,
+        "screenedStandingBodyHeight": 86,
+        "upperHairWidth12Rows": 36,
+        "roi": [
+          566,
+          971,
+          94,
+          119
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 2,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_2",
+        "ppu": 216.098434,
+        "hairTopY": 1297,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 42,
+        "roi": [
+          1375,
+          1280,
+          98,
+          153
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 3,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade_0_3",
+        "ppu": 178.43399,
+        "hairTopY": 77,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 82,
+        "upperHairWidth12Rows": 38,
+        "roi": [
+          564,
+          61,
+          109,
+          115
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 3,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_3",
+        "ppu": 242.273651,
+        "hairTopY": 384,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 82,
+        "upperHairWidth12Rows": 41,
+        "roi": [
+          579,
+          357,
+          87,
+          120
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 3,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_3",
+        "ppu": 248.6576,
+        "hairTopY": 687,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 84,
+        "upperHairWidth12Rows": 38,
+        "roi": [
+          574,
+          666,
+          85,
+          115
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 3,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_3",
+        "ppu": 236.79837,
+        "hairTopY": 990,
+        "lowerBodyBottomY": 1075,
+        "screenedStandingBodyHeight": 86,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          585,
+          968,
+          84,
+          122
+        ]
+      },
+      {
+        "mode": "base",
+        "direction": 3,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_3",
+        "ppu": 216.098434,
+        "hairTopY": 1294,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 87,
+        "upperHairWidth12Rows": 42,
+        "roi": [
+          1375,
+          1277,
+          95,
+          156
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 0,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade-premium_0_0",
+        "ppu": 158.937286,
+        "hairTopY": 71,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 42,
+        "roi": [
+          555,
+          46,
+          127,
+          139
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 0,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_0",
+        "ppu": 213.205109,
+        "hairTopY": 379,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 87,
+        "upperHairWidth12Rows": 33,
+        "roi": [
+          564,
+          352,
+          111,
+          135
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 0,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_0",
+        "ppu": 240.8003,
+        "hairTopY": 680,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 91,
+        "upperHairWidth12Rows": 33,
+        "roi": [
+          573,
+          653,
+          88,
+          124
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 0,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_0",
+        "ppu": 217.687424,
+        "hairTopY": 981,
+        "lowerBodyBottomY": 1073,
+        "screenedStandingBodyHeight": 93,
+        "upperHairWidth12Rows": 31,
+        "roi": [
+          570,
+          958,
+          99,
+          135
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 0,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_0",
+        "ppu": 212.544479,
+        "hairTopY": 1292,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 89,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          1360,
+          1277,
+          99,
+          172
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 1,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade-premium_0_1",
+        "ppu": 158.937286,
+        "hairTopY": 71,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 37,
+        "roi": [
+          558,
+          45,
+          138,
+          129
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 1,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_1",
+        "ppu": 213.205109,
+        "hairTopY": 378,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 43,
+        "roi": [
+          567,
+          350,
+          113,
+          134
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 1,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_1",
+        "ppu": 240.8003,
+        "hairTopY": 680,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 91,
+        "upperHairWidth12Rows": 33,
+        "roi": [
+          586,
+          652,
+          84,
+          134
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 1,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_1",
+        "ppu": 217.687424,
+        "hairTopY": 982,
+        "lowerBodyBottomY": 1073,
+        "screenedStandingBodyHeight": 92,
+        "upperHairWidth12Rows": 33,
+        "roi": [
+          574,
+          957,
+          102,
+          130
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 1,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_1",
+        "ppu": 212.544479,
+        "hairTopY": 1294,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 87,
+        "upperHairWidth12Rows": 40,
+        "roi": [
+          1355,
+          1278,
+          113,
+          171
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 2,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade-premium_0_2",
+        "ppu": 158.937286,
+        "hairTopY": 71,
+        "lowerBodyBottomY": 158,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 38,
+        "roi": [
+          550,
+          46,
+          133,
+          134
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 2,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_2",
+        "ppu": 213.205109,
+        "hairTopY": 378,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 35,
+        "roi": [
+          564,
+          351,
+          105,
+          132
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 2,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_2",
+        "ppu": 240.8003,
+        "hairTopY": 680,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 91,
+        "upperHairWidth12Rows": 36,
+        "roi": [
+          574,
+          654,
+          87,
+          123
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 2,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_2",
+        "ppu": 217.687424,
+        "hairTopY": 984,
+        "lowerBodyBottomY": 1073,
+        "screenedStandingBodyHeight": 90,
+        "upperHairWidth12Rows": 36,
+        "roi": [
+          561,
+          958,
+          102,
+          130
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 2,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_2",
+        "ppu": 212.544479,
+        "hairTopY": 1293,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 34,
+        "roi": [
+          1368,
+          1277,
+          104,
+          171
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 3,
+        "row": 1,
+        "column": 1,
+        "sprite": "jade-premium_0_3",
+        "ppu": 158.937286,
+        "hairTopY": 70,
+        "lowerBodyBottomY": 157,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 39,
+        "roi": [
+          557,
+          45,
+          135,
+          137
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 3,
+        "row": 2,
+        "column": 1,
+        "sprite": "jade-hq_0_3",
+        "ppu": 213.205109,
+        "hairTopY": 378,
+        "lowerBodyBottomY": 465,
+        "screenedStandingBodyHeight": 88,
+        "upperHairWidth12Rows": 35,
+        "roi": [
+          569,
+          350,
+          103,
+          132
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 3,
+        "row": 3,
+        "column": 1,
+        "sprite": "jade-motion_0_3",
+        "ppu": 240.8003,
+        "hairTopY": 680,
+        "lowerBodyBottomY": 770,
+        "screenedStandingBodyHeight": 91,
+        "upperHairWidth12Rows": 37,
+        "roi": [
+          580,
+          654,
+          84,
+          130
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 3,
+        "row": 4,
+        "column": 1,
+        "sprite": "jade-extra_0_3",
+        "ppu": 217.687424,
+        "hairTopY": 984,
+        "lowerBodyBottomY": 1074,
+        "screenedStandingBodyHeight": 91,
+        "upperHairWidth12Rows": 35,
+        "roi": [
+          582,
+          957,
+          93,
+          135
+        ]
+      },
+      {
+        "mode": "signature",
+        "direction": 3,
+        "row": 5,
+        "column": 4,
+        "sprite": "jade-polish_3_3",
+        "ppu": 212.544479,
+        "hairTopY": 1291,
+        "lowerBodyBottomY": 1380,
+        "screenedStandingBodyHeight": 90,
+        "upperHairWidth12Rows": 41,
+        "roi": [
+          1375,
+          1277,
+          96,
+          172
+        ]
+      }
+    ]
+  },
+  "jadeReviewedSequences": [
+    {
+      "sequence": "jade/base/jade.0-Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\timeline.json",
+      "timelineSha256": "242e9937e5007ec47b74178971b7499c51eb8355f105c4833e80660fbb98b873",
+      "frames": 63,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "viewed": [
+        {
+          "frame": 8,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0008.png",
+          "sha256": "15bfbd3637f481b3e30a22b11c3136723b5317e9188710efe1772e48a879e982",
+          "sprite": "jade-hq_2_0",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 9,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0009.png",
+          "sha256": "17fbc6757a31340bb50266a78f74ed406de7d04e49cb1d850b487ad5eff8707f",
+          "sprite": "jade_16_0",
+          "texture": "MotionPremium-jade-v2",
+          "pixelsPerUnit": 178.43399047851562
+        },
+        {
+          "frame": 43,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0043.png",
+          "sha256": "bf667ae31e7955c93381987c7d49bdc14978c1d01feb3f90d7610fffd10b1345",
+          "sprite": "jade_16_0",
+          "texture": "MotionPremium-jade-v2",
+          "pixelsPerUnit": 178.43399047851562
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0044.png",
+          "sha256": "446770ad335a82c03629377b4f92df84c58fbdb2cd6e002f8714832627f1ec9e",
+          "sprite": "jade-hq_2_0",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 51,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0051.png",
+          "sha256": "dc291b219f959c006b15e28cf62c280d751c8ac84b52a47bb542eb1d800ba641",
+          "sprite": "jade-hq_2_0",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 52,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Front\\0052.png",
+          "sha256": "e7fccb6d6cbd48e2be5be31d3360b01a9114bdbb6a6a094364dbe42b2c723d4b",
+          "sprite": "jade-hq_0_0",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        }
+      ]
+    },
+    {
+      "sequence": "jade/base/jade.0-Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\timeline.json",
+      "timelineSha256": "9bc98be6542cffcc4157225e91f61cf7d35d2d8133d696c1e54218255a0bbc1c",
+      "frames": 64,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "viewed": [
+        {
+          "frame": 8,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0008.png",
+          "sha256": "8866dded875f0b0e84a9a967f503709eae49c58ed732a3b96079e73d56fd485b",
+          "sprite": "jade-hq_2_1",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 9,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0009.png",
+          "sha256": "09b5c0ac26d6c5510b8ad59d0a7d9b17c399e42d3a2d64a4b75eb58c1223f007",
+          "sprite": "jade_16_1",
+          "texture": "MotionPremium-jade-v2",
+          "pixelsPerUnit": 178.43399047851562
+        },
+        {
+          "frame": 43,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0043.png",
+          "sha256": "2b8896732778685eccad67a0f71b89a1a04db593d836beef0f875c4f1dde2017",
+          "sprite": "jade_16_1",
+          "texture": "MotionPremium-jade-v2",
+          "pixelsPerUnit": 178.43399047851562
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0044.png",
+          "sha256": "a436f39f87fb5cadb3e3de63f1d1c24ff1ffccaa15ea230bcc1a1c0b264a66bd",
+          "sprite": "jade-hq_2_1",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 51,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0051.png",
+          "sha256": "436679d187b6d013e07f9e6697ddca8b114889658e47da0b89cee97a568c33ad",
+          "sprite": "jade-hq_2_1",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        },
+        {
+          "frame": 52,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\base\\jade.0-Back\\0052.png",
+          "sha256": "7915c6c253af2b5624b55733d8c67608f3bf8a027690263472c1492f1fe82c77",
+          "sprite": "jade-hq_0_1",
+          "texture": "PixelCampaign-jade-hq-v2",
+          "pixelsPerUnit": 242.27365112304688
+        }
+      ]
+    },
+    {
+      "sequence": "jade/signature/jade.0-Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\timeline.json",
+      "timelineSha256": "729be9d82f3d14913c4aa0da1a460324fc81ab82634cd42074ebb4ef3cf9fa98",
+      "frames": 63,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "viewed": [
+        {
+          "frame": 8,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0008.png",
+          "sha256": "51c340dfee145095c614ece87adcb377923be0bc017207c23ee94fb9934f2997",
+          "sprite": "jade-hq_2_0",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 9,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0009.png",
+          "sha256": "61060028522f777e13beec793116aef684be0f03e410f6b06a3860318e9b14db",
+          "sprite": "jade-premium_16_0",
+          "texture": "SignatureWeapons-jade-premium-v2",
+          "pixelsPerUnit": 158.93728637695312
+        },
+        {
+          "frame": 43,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0043.png",
+          "sha256": "307c4a408e3579a3fbdb2f9af378bcd154baec960cc491b59349f499e1039d20",
+          "sprite": "jade-premium_16_0",
+          "texture": "SignatureWeapons-jade-premium-v2",
+          "pixelsPerUnit": 158.93728637695312
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0044.png",
+          "sha256": "5da21ed83e821e9e9f953f16c4df5ab8df230bbc3704530beb73a67ab6798ec6",
+          "sprite": "jade-hq_2_0",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 51,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0051.png",
+          "sha256": "d82f32df9445b84713f71eafa9208228e927e911ade25877f5b3ad13e98aacb6",
+          "sprite": "jade-hq_2_0",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 52,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Front\\0052.png",
+          "sha256": "75ffe40ab0bf0bb9c155c90527d1ef7c8c6bcef8716ca4f23273eebc0caa92d1",
+          "sprite": "jade-hq_0_0",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        }
+      ]
+    },
+    {
+      "sequence": "jade/signature/jade.0-Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\timeline.json",
+      "timelineSha256": "61bbf39c7f3f8b26821996771a2fe94a9cfa779530d85cfdf3b592ecd0ae1b42",
+      "frames": 63,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "viewed": [
+        {
+          "frame": 8,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0008.png",
+          "sha256": "ee18dbcf2f12b3b80ab4b5589558822aa2ffd3a86ce5497789ba691b68d1db9b",
+          "sprite": "jade-hq_2_1",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 9,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0009.png",
+          "sha256": "063d51557c2e9ddd7ab958c63ea9374f7f9e65bc34a221c19e2d1fcb133e4d4f",
+          "sprite": "jade-premium_16_1",
+          "texture": "SignatureWeapons-jade-premium-v2",
+          "pixelsPerUnit": 158.93728637695312
+        },
+        {
+          "frame": 43,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0043.png",
+          "sha256": "c6ddd133a80e151cea42654e8a675f6505f254d44223dc7f3b9237b879890afd",
+          "sprite": "jade-premium_16_1",
+          "texture": "SignatureWeapons-jade-premium-v2",
+          "pixelsPerUnit": 158.93728637695312
+        },
+        {
+          "frame": 44,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0044.png",
+          "sha256": "734e69bb84dc928e80509a703abc8c7182f4d93125df5c45e61cb223468980dd",
+          "sprite": "jade-hq_2_1",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 51,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0051.png",
+          "sha256": "c5d445da5f255e04eefd8822c54b72698b2a6e9e9762806943c310a6a838932e",
+          "sprite": "jade-hq_2_1",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        },
+        {
+          "frame": 52,
+          "path": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\jade\\signature\\jade.0-Back\\0052.png",
+          "sha256": "fd9d64a928a684c2a5d604a2e75d3a005084d55ca4e5f08a618c1eb3a6fc9925",
+          "sprite": "jade-hq_0_1",
+          "texture": "SignatureWeapons-jade-hq-v2",
+          "pixelsPerUnit": 213.20510864257812
+        }
+      ]
+    }
+  ],
+  "polishTelemetryOnly": [
+    {
+      "sequence": "jade/base/jade.ultimate-Front",
+      "timelineSha256": "9b31b383464e6762ffffb0d654f15fdc94bc88afade4d1181888609194c454ec",
+      "continuous": false,
+      "frames": 73,
+      "finished": true,
+      "clean": true,
+      "polishFrames": [
+        {
+          "frame": 0,
+          "sprite": "jade-polish_2_0",
+          "file": ""
+        },
+        {
+          "frame": 1,
+          "sprite": "jade-polish_2_0",
+          "file": ""
+        },
+        {
+          "frame": 62,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 63,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 64,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 65,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 66,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        }
+      ],
+      "limitation": "Telemetry only for this sequence; final-b stores contact.png, not adjacent Polish transition PNGs."
+    },
+    {
+      "sequence": "jade/base/jade.ultimate-Back",
+      "timelineSha256": "c160c71d78a4b2e762b0eeaed1e9220b664ac5b3a1331e78fded59a2c75f24a1",
+      "continuous": false,
+      "frames": 73,
+      "finished": true,
+      "clean": true,
+      "polishFrames": [
+        {
+          "frame": 0,
+          "sprite": "jade-polish_2_1",
+          "file": ""
+        },
+        {
+          "frame": 1,
+          "sprite": "jade-polish_2_1",
+          "file": ""
+        },
+        {
+          "frame": 62,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 63,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 64,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 65,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 66,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        }
+      ],
+      "limitation": "Telemetry only for this sequence; final-b stores contact.png, not adjacent Polish transition PNGs."
+    },
+    {
+      "sequence": "jade/signature/jade.ultimate-Front",
+      "timelineSha256": "ce27f61567d5ef23a4f6d24738ccec58dfad15eb99d7925f1b20f0657e0c6c74",
+      "continuous": false,
+      "frames": 73,
+      "finished": true,
+      "clean": true,
+      "polishFrames": [
+        {
+          "frame": 0,
+          "sprite": "jade-polish_2_0",
+          "file": ""
+        },
+        {
+          "frame": 1,
+          "sprite": "jade-polish_2_0",
+          "file": ""
+        },
+        {
+          "frame": 63,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 64,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 65,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 66,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        },
+        {
+          "frame": 67,
+          "sprite": "jade-polish_3_0",
+          "file": ""
+        }
+      ],
+      "limitation": "Telemetry only for this sequence; final-b stores contact.png, not adjacent Polish transition PNGs."
+    },
+    {
+      "sequence": "jade/signature/jade.ultimate-Back",
+      "timelineSha256": "8be4dd1cbd1cfc561fd58f3357dd94126b6af9bf71bbfa219ac2362c9a103fde",
+      "continuous": false,
+      "frames": 74,
+      "finished": true,
+      "clean": true,
+      "polishFrames": [
+        {
+          "frame": 0,
+          "sprite": "jade-polish_2_1",
+          "file": ""
+        },
+        {
+          "frame": 1,
+          "sprite": "jade-polish_2_1",
+          "file": ""
+        },
+        {
+          "frame": 63,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 64,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 65,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 66,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        },
+        {
+          "frame": 67,
+          "sprite": "jade-polish_3_1",
+          "file": ""
+        }
+      ],
+      "limitation": "Telemetry only for this sequence; final-b stores contact.png, not adjacent Polish transition PNGs."
+    }
+  ],
+  "alphenStatusOnly": [
+    {
+      "sequence": "alphen/base/alphen.ultimate-Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\base\\alphen.ultimate-Front\\timeline.json",
+      "timelineSha256": "b6bd6b4fc50d30cceb7fc80f329ba89e3e50c046201f4f2fb14c114987d48ffd",
+      "frames": 75,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    },
+    {
+      "sequence": "alphen/base/alphen.ultimate-Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\base\\alphen.ultimate-Back\\timeline.json",
+      "timelineSha256": "fd1c925375b9fbaa349aa5c092531595d1f62b499f38554cb1c07d71bd053d0d",
+      "frames": 74,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    },
+    {
+      "sequence": "alphen/signature/alphen.ultimate-Front",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\signature\\alphen.ultimate-Front\\timeline.json",
+      "timelineSha256": "d7fcc7647492199d26befc1db3117cf99e28ad5b19cf0cc4b07db3d29e57e42d",
+      "frames": 73,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    },
+    {
+      "sequence": "alphen/signature/alphen.ultimate-Back",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\signature\\alphen.ultimate-Back\\timeline.json",
+      "timelineSha256": "1462af7f130a96f15fd28dba371735badb6b0e23b90da63d62e6e0e89b79059c",
+      "frames": 74,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    },
+    {
+      "sequence": "alphen/signature/alphen.ultimate-Left",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\signature\\alphen.ultimate-Left\\timeline.json",
+      "timelineSha256": "989ad3ccbdbfe82c2145ef146ed37a9fc5e11a8423003c534560b10dcde0d822",
+      "frames": 74,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    },
+    {
+      "sequence": "alphen/signature/alphen.ultimate-Right",
+      "timelinePath": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-b\\alphen\\signature\\alphen.ultimate-Right\\timeline.json",
+      "timelineSha256": "4610fdf04cafe639edfaf8680d726dea0ba71e9db8f674b0f8bd5cb16e1927c4",
+      "frames": 74,
+      "continuous": true,
+      "finished": true,
+      "clean": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "outsideFrameSamples": 0,
+      "visualReinspectionThisPass": false
+    }
+  ],
+  "limits": [
+    "Static comparisons cannot prove all 3850 selected poses or arbitrary runtime transitions.",
+    "Jade visual sequence review covers only the 24 named frames, not every recorded frame or real-time video.",
+    "This is a candidate preview review; production import and post-import runtime checks belong to the parent.",
+    "No human input, save/load flow, gameplay balance, or performance conclusion follows from these captures."
+  ]
+}

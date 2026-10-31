@@ -1,0 +1,2028 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-31T12:58:15.109430+00:00",
+  "status": "Eight selected native candidates; not applied to production or Unity validated",
+  "tool": "Built-in image_gen.imagegen only; one call per asset/repair. No Python raster editing, resizing, alpha cleanup or post-generation pixel mutation.",
+  "character": "tear",
+  "scope": "Eight transition continuity atlases, 16 frames each (128 intended poses). Base and signature weapons retained as separate appearances.",
+  "sourceUnchanged": true,
+  "selectionCount": 8,
+  "attemptCount": 9,
+  "limitations": [
+    "Corresponding existing canonical styles differ: base uses pale golden hair, signature uses warm brown hair. These candidates retain that existing category difference; no cross-appearance palette unification was performed.",
+    "Requested 1122x1402. PixelCampaign-tear-polish native output is 1072x1467; no resizing was performed. Other seven selected sheets are1122x1402. Actual dimensions and bounds are recorded per job.",
+    "Read-only alpha component checks are not the full Unity component ownership/packing audit.",
+    "Native alpha>128 has 16 independent bodies and zero image-edge contacts per selected image. Faint alpha pixels and nominal grid gutters may require explicit lossless component packing.",
+    "No live animation, movement anchor, per-frame apparent body-size or weapon-map engine validation performed by this agent."
+  ],
+  "jobs": [
+    {
+      "key": "PixelCampaign-tear-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+      "sourceSha256": "23a3029657bbcefbebae3de0d2812990bdf33c35b71aaea99f34f82349cecbcc",
+      "sourceMetaSha256": "ebe89e496e373aca1bf6f8cdcb2adb3aa1052a4f5ebb00e6140de1f1f1962eeb",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-tear-hq\\reference-manifest.json",
+      "referenceManifestSha256": "3174928fe3d49218c057d7a83f7e38b0e426a1f8305c7a6f48779d6d988c73bc",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-hq/source-sheet-00.png",
+      "selectedSha256": "1f24bb1d27cfd5d2dfeb001b2ec97025e8efc7602c64dfec61697354df745c6a",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-hq_0_0",
+        "tear-hq_0_1",
+        "tear-hq_0_2",
+        "tear-hq_0_3",
+        "tear-hq_1_0",
+        "tear-hq_1_1",
+        "tear-hq_1_2",
+        "tear-hq_1_3",
+        "tear-hq_2_0",
+        "tear-hq_2_1",
+        "tear-hq_2_2",
+        "tear-hq_2_3",
+        "tear-hq_3_0",
+        "tear-hq_3_1",
+        "tear-hq_3_2",
+        "tear-hq_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-tear-hq",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-bdef7056-9d8c-449d-b5b8-88295016ae8a.png",
+        "sha256": "1f24bb1d27cfd5d2dfeb001b2ec97025e8efc7602c64dfec61697354df745c6a",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 836050,
+        "alphaPositive": 736994,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 38310,
+            "x": 40,
+            "y": 30,
+            "width": 219,
+            "height": 274,
+            "centerX": 155.0,
+            "centerY": 182.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 38738,
+            "x": 310,
+            "y": 44,
+            "width": 230,
+            "height": 259,
+            "centerX": 421.0,
+            "centerY": 176.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 36715,
+            "x": 578,
+            "y": 30,
+            "width": 237,
+            "height": 275,
+            "centerX": 692.0,
+            "centerY": 170.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 35932,
+            "x": 875,
+            "y": 30,
+            "width": 221,
+            "height": 275,
+            "centerX": 984.0,
+            "centerY": 174.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 38610,
+            "x": 11,
+            "y": 345,
+            "width": 267,
+            "height": 221,
+            "centerX": 134.0,
+            "centerY": 454.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 34634,
+            "x": 302,
+            "y": 346,
+            "width": 264,
+            "height": 220,
+            "centerX": 419.0,
+            "centerY": 455.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 33606,
+            "x": 573,
+            "y": 345,
+            "width": 259,
+            "height": 220,
+            "centerX": 680.0,
+            "centerY": 450.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 33442,
+            "x": 852,
+            "y": 345,
+            "width": 263,
+            "height": 221,
+            "centerX": 1006.0,
+            "centerY": 450.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 38613,
+            "x": 35,
+            "y": 587,
+            "width": 220,
+            "height": 285,
+            "centerX": 145.0,
+            "centerY": 752.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 34933,
+            "x": 314,
+            "y": 586,
+            "width": 203,
+            "height": 286,
+            "centerX": 414.0,
+            "centerY": 752.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 35525,
+            "x": 584,
+            "y": 589,
+            "width": 212,
+            "height": 283,
+            "centerX": 694.0,
+            "centerY": 737.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 34698,
+            "x": 893,
+            "y": 587,
+            "width": 202,
+            "height": 286,
+            "centerX": 988.0,
+            "centerY": 738.5,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 37208,
+            "x": 19,
+            "y": 887,
+            "width": 243,
+            "height": 257,
+            "centerX": 139.0,
+            "centerY": 1031.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 37919,
+            "x": 310,
+            "y": 887,
+            "width": 250,
+            "height": 257,
+            "centerX": 434.0,
+            "centerY": 1027.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 35668,
+            "x": 580,
+            "y": 886,
+            "width": 236,
+            "height": 259,
+            "centerX": 697.0,
+            "centerY": 1028.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 36508,
+            "x": 869,
+            "y": 886,
+            "width": 237,
+            "height": 259,
+            "centerX": 988.0,
+            "centerY": 1028.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-tear-hq",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRow 1: idle in four viewpoints, free arm relaxed, staff upright at the original side. Row 2: energetic horizontal staff thrust; wide planted feet. Row 3: eyes closed prayer, hands grasp upright staff; the BACK cell must show the staff head above the center of the hair, NOT disappear. Row 4: defensive broad stance with two hands gripping the diagonal staff, exactly the original diagonal in each direction.\nBase weapon: one ornate GOLD staff with a star/flower gold head surrounding a ROUND deep-blue ORB, exactly Image 1. Never replace with a silver horn or pointed crystal.\nCharacter identity: Tear, blue eyes, long pale golden ash-blonde hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-bdef7056-9d8c-449d-b5b8-88295016ae8a.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-bdef7056-9d8c-449d-b5b8-88295016ae8a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-hq/source-sheet-00.png",
+          "outputSha256": "1f24bb1d27cfd5d2dfeb001b2ec97025e8efc7602c64dfec61697354df745c6a",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-hq/reference-00.png",
+              "sha256": "14d745a890fbd90f4e1a9a08c0e515eeb6ee0381db5ff85ba639fa7795a51a01"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png",
+              "sha256": "209414a551c4e76b19e03ba4c5c109eea248f06aed3a188f8cd12b17e4568b3f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-tear-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-motion.png",
+      "sourceSha256": "d4409d2f4ad783dbcbe67173d23af22950cf98996f9cf87920f675d0ef621b4d",
+      "sourceMetaSha256": "21722dc567759ee1923858cefeb36066d3264b8fdad7528b4ebadd81426fffad",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-tear-motion\\reference-manifest.json",
+      "referenceManifestSha256": "a1cf25c2b3321310cff2d5d610ae3bb2d03285e3d01ffe7a31145c6ffb637c2a",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-motion/source-sheet-00.png",
+      "selectedSha256": "470553e7d052e4aa9cfe08f7005bead29cc96ba52d2f55550f7225fe8a5a690e",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-motion_0_0",
+        "tear-motion_0_1",
+        "tear-motion_0_2",
+        "tear-motion_0_3",
+        "tear-motion_1_0",
+        "tear-motion_1_1",
+        "tear-motion_1_2",
+        "tear-motion_1_3",
+        "tear-motion_2_0",
+        "tear-motion_2_1",
+        "tear-motion_2_2",
+        "tear-motion_2_3",
+        "tear-motion_3_0",
+        "tear-motion_3_1",
+        "tear-motion_3_2",
+        "tear-motion_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-tear-motion",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5d50650c-d74a-4f20-b06e-5c7cd2217ad5.png",
+        "sha256": "470553e7d052e4aa9cfe08f7005bead29cc96ba52d2f55550f7225fe8a5a690e",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 858665,
+        "alphaPositive": 714379,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 38992,
+            "x": 47,
+            "y": 37,
+            "width": 226,
+            "height": 281,
+            "centerX": 150.0,
+            "centerY": 185.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 36916,
+            "x": 303,
+            "y": 37,
+            "width": 219,
+            "height": 280,
+            "centerX": 417.0,
+            "centerY": 180.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 36851,
+            "x": 571,
+            "y": 38,
+            "width": 225,
+            "height": 282,
+            "centerX": 688.0,
+            "centerY": 192.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 37247,
+            "x": 866,
+            "y": 37,
+            "width": 228,
+            "height": 281,
+            "centerX": 976.0,
+            "centerY": 187.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 39644,
+            "x": 46,
+            "y": 337,
+            "width": 231,
+            "height": 285,
+            "centerX": 151.0,
+            "centerY": 488.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 36450,
+            "x": 310,
+            "y": 348,
+            "width": 220,
+            "height": 277,
+            "centerX": 423.0,
+            "centerY": 489.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 37402,
+            "x": 569,
+            "y": 347,
+            "width": 235,
+            "height": 280,
+            "centerX": 691.0,
+            "centerY": 498.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38617,
+            "x": 853,
+            "y": 344,
+            "width": 246,
+            "height": 283,
+            "centerX": 974.0,
+            "centerY": 494.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 37954,
+            "x": 31,
+            "y": 655,
+            "width": 241,
+            "height": 270,
+            "centerX": 153.0,
+            "centerY": 807.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 37987,
+            "x": 302,
+            "y": 648,
+            "width": 236,
+            "height": 277,
+            "centerX": 423.0,
+            "centerY": 799.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 37338,
+            "x": 566,
+            "y": 659,
+            "width": 240,
+            "height": 270,
+            "centerX": 683.0,
+            "centerY": 810.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 37741,
+            "x": 855,
+            "y": 657,
+            "width": 246,
+            "height": 271,
+            "centerX": 984.0,
+            "centerY": 808.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 22343,
+            "x": 12,
+            "y": 1008,
+            "width": 271,
+            "height": 139,
+            "centerX": 142.0,
+            "centerY": 1082.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 22629,
+            "x": 306,
+            "y": 1003,
+            "width": 257,
+            "height": 140,
+            "centerX": 429.0,
+            "centerY": 1082.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 20904,
+            "x": 572,
+            "y": 1015,
+            "width": 258,
+            "height": 133,
+            "centerX": 705.0,
+            "centerY": 1083.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 20661,
+            "x": 848,
+            "y": 1013,
+            "width": 264,
+            "height": 136,
+            "centerX": 978.0,
+            "centerY": 1082.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-tear-motion",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRows 1 and 2: two different walking steps, keep the original opposing feet and small stride changes; staff upright and visible, including the BACK staff head at the right of the hair in BOTH rows. Row 3: hurt recoil with eyes squeezed shut and open mouth, body leaning backward but retaining staff in the original hand. Row 4: four different collapsed/prone views, lying horizontally, head and boots and the complete horizontal staff on the ground plane as in Image 1; no actual floor or shadow. Do not reinterpret the prone poses as standing.\nBase weapon: one ornate GOLD staff with a star/flower gold head surrounding a ROUND deep-blue ORB, exactly Image 1. Never replace with a silver horn or pointed crystal.\nCharacter identity: Tear, blue eyes, long pale golden ash-blonde hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-motion/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5d50650c-d74a-4f20-b06e-5c7cd2217ad5.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5d50650c-d74a-4f20-b06e-5c7cd2217ad5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-motion/source-sheet-00.png",
+          "outputSha256": "470553e7d052e4aa9cfe08f7005bead29cc96ba52d2f55550f7225fe8a5a690e",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-motion/reference-00.png",
+              "sha256": "77e692daa781a2056c4b30ba0a4a6aa03388e233ae8694ae2929cb6cffa034dc"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png",
+              "sha256": "209414a551c4e76b19e03ba4c5c109eea248f06aed3a188f8cd12b17e4568b3f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-tear-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-extra.png",
+      "sourceSha256": "cec68394c1e82c939d94657ac46c6545d63c41387f018142a1df7c41750ebf02",
+      "sourceMetaSha256": "ba97655c2c20afeeda1dbc044ae1d0b12646f342866682e294311dae5c4f0936",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-tear-extra\\reference-manifest.json",
+      "referenceManifestSha256": "3d25c67f841136bf9ad7f2605498387b61b283104451e4b97e81c086f823e538",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-extra/source-sheet-00.png",
+      "selectedSha256": "4c48952a3ad38e4a578ab847baf1628339b742583511d45d5f3967e15b62449f",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-extra_0_0",
+        "tear-extra_0_1",
+        "tear-extra_0_2",
+        "tear-extra_0_3",
+        "tear-extra_1_0",
+        "tear-extra_1_1",
+        "tear-extra_1_2",
+        "tear-extra_1_3",
+        "tear-extra_2_0",
+        "tear-extra_2_1",
+        "tear-extra_2_2",
+        "tear-extra_2_3",
+        "tear-extra_3_0",
+        "tear-extra_3_1",
+        "tear-extra_3_2",
+        "tear-extra_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-tear-extra",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e1c81d8f-a37b-4e2a-b047-566eef876c2c.png",
+        "sha256": "4c48952a3ad38e4a578ab847baf1628339b742583511d45d5f3967e15b62449f",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 801495,
+        "alphaPositive": 771549,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 40567,
+            "x": 39,
+            "y": 29,
+            "width": 228,
+            "height": 284,
+            "centerX": 157.0,
+            "centerY": 177.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 41245,
+            "x": 306,
+            "y": 43,
+            "width": 251,
+            "height": 269,
+            "centerX": 420.0,
+            "centerY": 174.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 38424,
+            "x": 584,
+            "y": 32,
+            "width": 243,
+            "height": 282,
+            "centerX": 703.0,
+            "centerY": 172.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 38468,
+            "x": 869,
+            "y": 33,
+            "width": 238,
+            "height": 281,
+            "centerX": 988.0,
+            "centerY": 172.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 40149,
+            "x": 36,
+            "y": 340,
+            "width": 230,
+            "height": 273,
+            "centerX": 155.0,
+            "centerY": 478.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 40548,
+            "x": 315,
+            "y": 342,
+            "width": 237,
+            "height": 271,
+            "centerX": 429.0,
+            "centerY": 477.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 38133,
+            "x": 582,
+            "y": 340,
+            "width": 240,
+            "height": 273,
+            "centerX": 701.0,
+            "centerY": 475.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38178,
+            "x": 870,
+            "y": 342,
+            "width": 236,
+            "height": 269,
+            "centerX": 986.0,
+            "centerY": 477.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 38645,
+            "x": 38,
+            "y": 633,
+            "width": 225,
+            "height": 289,
+            "centerX": 151.0,
+            "centerY": 803.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 36020,
+            "x": 315,
+            "y": 632,
+            "width": 216,
+            "height": 290,
+            "centerX": 421.0,
+            "centerY": 802.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 37596,
+            "x": 577,
+            "y": 635,
+            "width": 219,
+            "height": 287,
+            "centerX": 697.0,
+            "centerY": 792.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 37940,
+            "x": 882,
+            "y": 636,
+            "width": 217,
+            "height": 286,
+            "centerX": 979.0,
+            "centerY": 794.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 37968,
+            "x": 15,
+            "y": 945,
+            "width": 272,
+            "height": 223,
+            "centerX": 137.0,
+            "centerY": 1057.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 36575,
+            "x": 301,
+            "y": 943,
+            "width": 258,
+            "height": 224,
+            "centerX": 440.0,
+            "centerY": 1055.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 35872,
+            "x": 576,
+            "y": 946,
+            "width": 261,
+            "height": 222,
+            "centerX": 693.0,
+            "centerY": 1055.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 36150,
+            "x": 850,
+            "y": 949,
+            "width": 261,
+            "height": 220,
+            "centerX": 993.0,
+            "centerY": 1058.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-tear-extra",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRows 1 and 2: distinct small walking steps with original foot placement, staff visible in all four directions including BACK at the right of the hair. Row 3: eyes-closed prayer with upright staff in front, BACK cell shows the staff head above the center of the hair. Row 4: forward attacking thrust with spread feet, staff head points diagonally forward exactly as Image 1. Keep all back-facing and left-facing weapon tips visible where seen in Image 1.\nBase weapon: one ornate GOLD staff with a star/flower gold head surrounding a ROUND deep-blue ORB, exactly Image 1. Never replace with a silver horn or pointed crystal.\nCharacter identity: Tear, blue eyes, long pale golden ash-blonde hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-extra/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e1c81d8f-a37b-4e2a-b047-566eef876c2c.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e1c81d8f-a37b-4e2a-b047-566eef876c2c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-extra/source-sheet-00.png",
+          "outputSha256": "4c48952a3ad38e4a578ab847baf1628339b742583511d45d5f3967e15b62449f",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-extra/reference-00.png",
+              "sha256": "4f4829ae45d21c85c08106fb8891c3b97d90fe66f4ef067f45aae52de2e99b8b"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png",
+              "sha256": "209414a551c4e76b19e03ba4c5c109eea248f06aed3a188f8cd12b17e4568b3f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-tear-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/tear-polish.png",
+      "sourceSha256": "05a6beb0c542ebd91a4107244b5bf17a00283fff56f3c537d44f2d462a6bb0de",
+      "sourceMetaSha256": "7c7ce1f8d53f990f476462dfe9d4c1e2381d7a4b686996a0aa6f90bb94fcf701",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-tear-polish\\reference-manifest.json",
+      "referenceManifestSha256": "0e16761cbdcaf9f6fee410b5a1c9a1db0e9e2655474cf636f24f9f8781bacd1a",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-polish/source-sheet-00.png",
+      "selectedSha256": "1ece80132100cda848794327fbafc1afbd8bab3ecb4ad55aad68798e14f448b4",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-polish_0_0",
+        "tear-polish_0_1",
+        "tear-polish_0_2",
+        "tear-polish_0_3",
+        "tear-polish_1_0",
+        "tear-polish_1_1",
+        "tear-polish_1_2",
+        "tear-polish_1_3",
+        "tear-polish_2_0",
+        "tear-polish_2_1",
+        "tear-polish_2_2",
+        "tear-polish_2_3",
+        "tear-polish_3_0",
+        "tear-polish_3_1",
+        "tear-polish_3_2",
+        "tear-polish_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-tear-polish",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-2bc0829d-286b-443e-902e-2b17b38596bc.png",
+        "sha256": "1ece80132100cda848794327fbafc1afbd8bab3ecb4ad55aad68798e14f448b4",
+        "width": 1072,
+        "height": 1467,
+        "alphaZero": 931562,
+        "alphaPositive": 641062,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 36500,
+            "x": 27,
+            "y": 45,
+            "width": 230,
+            "height": 230,
+            "centerX": 149.0,
+            "centerY": 165.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 30674,
+            "x": 302,
+            "y": 39,
+            "width": 215,
+            "height": 235,
+            "centerX": 418.0,
+            "centerY": 162.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 32145,
+            "x": 551,
+            "y": 52,
+            "width": 228,
+            "height": 218,
+            "centerX": 670.0,
+            "centerY": 166.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 33197,
+            "x": 829,
+            "y": 50,
+            "width": 216,
+            "height": 221,
+            "centerX": 932.0,
+            "centerY": 160.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 34361,
+            "x": 25,
+            "y": 319,
+            "width": 225,
+            "height": 220,
+            "centerX": 139.0,
+            "centerY": 435.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 32563,
+            "x": 280,
+            "y": 321,
+            "width": 255,
+            "height": 217,
+            "centerX": 390.0,
+            "centerY": 432.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 33794,
+            "x": 548,
+            "y": 321,
+            "width": 248,
+            "height": 218,
+            "centerX": 661.0,
+            "centerY": 431.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 33106,
+            "x": 812,
+            "y": 319,
+            "width": 243,
+            "height": 221,
+            "centerX": 943.0,
+            "centerY": 430.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 34956,
+            "x": 36,
+            "y": 570,
+            "width": 204,
+            "height": 285,
+            "centerX": 139.0,
+            "centerY": 747.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 31544,
+            "x": 317,
+            "y": 574,
+            "width": 179,
+            "height": 281,
+            "centerX": 408.0,
+            "centerY": 746.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 31301,
+            "x": 582,
+            "y": 571,
+            "width": 179,
+            "height": 284,
+            "centerX": 684.0,
+            "centerY": 738.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 31346,
+            "x": 865,
+            "y": 570,
+            "width": 179,
+            "height": 285,
+            "centerX": 942.0,
+            "centerY": 736.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 34642,
+            "x": 27,
+            "y": 887,
+            "width": 226,
+            "height": 238,
+            "centerX": 134.0,
+            "centerY": 1007.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 33147,
+            "x": 292,
+            "y": 889,
+            "width": 231,
+            "height": 236,
+            "centerX": 420.0,
+            "centerY": 1007.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 32931,
+            "x": 563,
+            "y": 893,
+            "width": 232,
+            "height": 233,
+            "centerX": 669.0,
+            "centerY": 1012.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 32858,
+            "x": 827,
+            "y": 893,
+            "width": 224,
+            "height": 233,
+            "centerX": 944.0,
+            "centerY": 1012.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-tear-polish",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRow 1: two-handed windup, staff pulled behind/along the shoulder; right-facing cell has the staff head behind on its left, left-facing cell has it behind on its right. Row 2: two-handed staff thrust at chest height, weapon head forward. Row 3: raised upright staff, front and back centered above face/hair, right and left views hold it high ahead of face. Row 4: eyes-closed relaxed recovery, staff lowered diagonally across waist; BACK cell staff head is visible to the left of the hair. Do not replace windup/recovery with idle.\nBase weapon: one ornate GOLD staff with a star/flower gold head surrounding a ROUND deep-blue ORB, exactly Image 1. Never replace with a silver horn or pointed crystal.\nCharacter identity: Tear, blue eyes, long pale golden ash-blonde hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-polish/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-2bc0829d-286b-443e-902e-2b17b38596bc.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-2bc0829d-286b-443e-902e-2b17b38596bc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-tear-polish/source-sheet-00.png",
+          "outputSha256": "1ece80132100cda848794327fbafc1afbd8bab3ecb4ad55aad68798e14f448b4",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-tear-polish/reference-00.png",
+              "sha256": "6d36a521e67344a41907fb90360bc78938bd3b42bc6d3d782b44eb8adc8972a3"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-tear/source-sheet-00.png",
+              "sha256": "209414a551c4e76b19e03ba4c5c109eea248f06aed3a188f8cd12b17e4568b3f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-tear-hq",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/tear-hq.png",
+      "sourceSha256": "5e63a2d57315d8ea89653f09307369f71ffe2d93ce40ae5a481f1b8a522ac9ee",
+      "sourceMetaSha256": "069c7a11f48bd9976fdc734c9b9a58ed2741b32b7473e93cf9270dbeb8b0b580",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-tear-hq\\reference-manifest.json",
+      "referenceManifestSha256": "239c4c50916cadec5aca3bc27e242346797f5156652ec51d01014cb04ea1d33a",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-hq/source-sheet-00.png",
+      "selectedSha256": "05a78b0688bdd623ce85405fdf6294418589c993b8ff35329cb6d2bdf7d49abe",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-hq_0_0",
+        "tear-hq_0_1",
+        "tear-hq_0_2",
+        "tear-hq_0_3",
+        "tear-hq_1_0",
+        "tear-hq_1_1",
+        "tear-hq_1_2",
+        "tear-hq_1_3",
+        "tear-hq_2_0",
+        "tear-hq_2_1",
+        "tear-hq_2_2",
+        "tear-hq_2_3",
+        "tear-hq_3_0",
+        "tear-hq_3_1",
+        "tear-hq_3_2",
+        "tear-hq_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-tear-hq",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f07657e7-6510-44d6-a79c-ffc2fbbaf7be.png",
+        "sha256": "05a78b0688bdd623ce85405fdf6294418589c993b8ff35329cb6d2bdf7d49abe",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 936228,
+        "alphaPositive": 636816,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 34870,
+            "x": 27,
+            "y": 29,
+            "width": 215,
+            "height": 262,
+            "centerX": 136.0,
+            "centerY": 179.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 35696,
+            "x": 307,
+            "y": 24,
+            "width": 222,
+            "height": 267,
+            "centerX": 417.0,
+            "centerY": 174.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 30735,
+            "x": 589,
+            "y": 30,
+            "width": 211,
+            "height": 261,
+            "centerX": 689.0,
+            "centerY": 166.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 32091,
+            "x": 880,
+            "y": 31,
+            "width": 219,
+            "height": 260,
+            "centerX": 993.0,
+            "centerY": 168.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 34814,
+            "x": 20,
+            "y": 347,
+            "width": 272,
+            "height": 211,
+            "centerX": 137.0,
+            "centerY": 454.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 34139,
+            "x": 299,
+            "y": 347,
+            "width": 270,
+            "height": 211,
+            "centerX": 412.0,
+            "centerY": 455.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 32165,
+            "x": 568,
+            "y": 347,
+            "width": 265,
+            "height": 211,
+            "centerX": 675.0,
+            "centerY": 451.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 31829,
+            "x": 849,
+            "y": 347,
+            "width": 258,
+            "height": 211,
+            "centerX": 1001.0,
+            "centerY": 451.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 33721,
+            "x": 40,
+            "y": 584,
+            "width": 214,
+            "height": 278,
+            "centerX": 150.0,
+            "centerY": 755.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 32795,
+            "x": 320,
+            "y": 583,
+            "width": 208,
+            "height": 279,
+            "centerX": 423.0,
+            "centerY": 758.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 32405,
+            "x": 584,
+            "y": 587,
+            "width": 200,
+            "height": 276,
+            "centerX": 693.0,
+            "centerY": 746.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 32526,
+            "x": 894,
+            "y": 587,
+            "width": 201,
+            "height": 276,
+            "centerX": 984.0,
+            "centerY": 746.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 34957,
+            "x": 15,
+            "y": 889,
+            "width": 232,
+            "height": 244,
+            "centerX": 132.0,
+            "centerY": 1029.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 35862,
+            "x": 312,
+            "y": 886,
+            "width": 245,
+            "height": 247,
+            "centerX": 437.0,
+            "centerY": 1024.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 32589,
+            "x": 579,
+            "y": 891,
+            "width": 223,
+            "height": 242,
+            "centerX": 689.0,
+            "centerY": 1023.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 34229,
+            "x": 872,
+            "y": 887,
+            "width": 237,
+            "height": 246,
+            "centerX": 989.0,
+            "centerY": 1025.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-tear-hq",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRow 1: idle in four viewpoints, free arm relaxed, staff upright at the original side. Row 2: energetic horizontal staff thrust; wide planted feet. Row 3: eyes closed prayer, hands grasp upright staff; the BACK cell must show the staff head above the center of the hair, NOT disappear. Row 4: defensive broad stance with two hands gripping the diagonal staff, exactly the original diagonal in each direction.\nSignature weapon: one long dark navy staff with SILVER crescent/fork metal cradle, a pointed IVORY spiral horn and small PURPLE gemstone, exactly Image 1. Never replace with a blue orb or gold staff.\nCharacter identity: Tear, blue eyes, long warm brown hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f07657e7-6510-44d6-a79c-ffc2fbbaf7be.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f07657e7-6510-44d6-a79c-ffc2fbbaf7be.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-hq/source-sheet-00.png",
+          "outputSha256": "05a78b0688bdd623ce85405fdf6294418589c993b8ff35329cb6d2bdf7d49abe",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-hq/reference-00.png",
+              "sha256": "6bdd09e590ebce59a4da405aa6faa432f91c4b4a758460434077f8f6de2489dc"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png",
+              "sha256": "fed1fd81552f570bc40dd7be6bed9b32ba39c88bc8239ef23d3eef625645a684"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-tear-motion",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/tear-motion.png",
+      "sourceSha256": "fda518af02b4235c9c88043f950c608cf6aa5cf1545f477af41b3c501e49ec47",
+      "sourceMetaSha256": "adb369d2db12e4c6675c5e351936fc1906f30e170f47ee8cbea161efdb7c8ebe",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-tear-motion\\reference-manifest.json",
+      "referenceManifestSha256": "8397b986cb87020650b5d858f0d256b50099bca7161700859d45ac5ce71edfd4",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-motion/source-sheet-00.png",
+      "selectedSha256": "cff6bd9dd65e7073c131228ebf9245912aa7373b8b8b6dd21ff7246d21c26572",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-motion_0_0",
+        "tear-motion_0_1",
+        "tear-motion_0_2",
+        "tear-motion_0_3",
+        "tear-motion_1_0",
+        "tear-motion_1_1",
+        "tear-motion_1_2",
+        "tear-motion_1_3",
+        "tear-motion_2_0",
+        "tear-motion_2_1",
+        "tear-motion_2_2",
+        "tear-motion_2_3",
+        "tear-motion_3_0",
+        "tear-motion_3_1",
+        "tear-motion_3_2",
+        "tear-motion_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-tear-motion",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fe29151e-0eac-46c4-be24-8d45f11a7479.png",
+        "sha256": "cff6bd9dd65e7073c131228ebf9245912aa7373b8b8b6dd21ff7246d21c26572",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 954512,
+        "alphaPositive": 618532,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 39379,
+            "x": 46,
+            "y": 39,
+            "width": 220,
+            "height": 300,
+            "centerX": 146.0,
+            "centerY": 200.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 38486,
+            "x": 305,
+            "y": 37,
+            "width": 222,
+            "height": 303,
+            "centerX": 422.0,
+            "centerY": 192.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 36765,
+            "x": 569,
+            "y": 51,
+            "width": 224,
+            "height": 289,
+            "centerX": 683.0,
+            "centerY": 204.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 38323,
+            "x": 860,
+            "y": 44,
+            "width": 229,
+            "height": 295,
+            "centerX": 973.0,
+            "centerY": 198.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 39003,
+            "x": 50,
+            "y": 356,
+            "width": 225,
+            "height": 298,
+            "centerX": 151.0,
+            "centerY": 516.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 38802,
+            "x": 311,
+            "y": 361,
+            "width": 224,
+            "height": 292,
+            "centerX": 429.0,
+            "centerY": 514.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 36236,
+            "x": 571,
+            "y": 363,
+            "width": 216,
+            "height": 291,
+            "centerX": 687.0,
+            "centerY": 524.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38249,
+            "x": 872,
+            "y": 363,
+            "width": 226,
+            "height": 290,
+            "centerX": 979.0,
+            "centerY": 519.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 36081,
+            "x": 35,
+            "y": 679,
+            "width": 227,
+            "height": 279,
+            "centerX": 149.0,
+            "centerY": 836.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 35951,
+            "x": 315,
+            "y": 678,
+            "width": 237,
+            "height": 281,
+            "centerX": 435.0,
+            "centerY": 831.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 35726,
+            "x": 589,
+            "y": 687,
+            "width": 225,
+            "height": 273,
+            "centerX": 708.0,
+            "centerY": 841.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 35739,
+            "x": 871,
+            "y": 690,
+            "width": 223,
+            "height": 270,
+            "centerX": 982.0,
+            "centerY": 838.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 20555,
+            "x": 17,
+            "y": 1041,
+            "width": 271,
+            "height": 134,
+            "centerX": 144.0,
+            "centerY": 1118.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 21080,
+            "x": 307,
+            "y": 1039,
+            "width": 255,
+            "height": 137,
+            "centerX": 425.0,
+            "centerY": 1121.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 20147,
+            "x": 581,
+            "y": 1057,
+            "width": 258,
+            "height": 121,
+            "centerX": 710.0,
+            "centerY": 1120.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 17791,
+            "x": 859,
+            "y": 1050,
+            "width": 252,
+            "height": 126,
+            "centerX": 980.0,
+            "centerY": 1121.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-tear-motion",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRows 1 and 2: two different walking steps, keep the original opposing feet and small stride changes; staff upright and visible, including the BACK staff head at the right of the hair in BOTH rows. Row 3: hurt recoil with eyes squeezed shut and open mouth, body leaning backward but retaining staff in the original hand. Row 4: four different collapsed/prone views, lying horizontally, head and boots and the complete horizontal staff on the ground plane as in Image 1; no actual floor or shadow. Do not reinterpret the prone poses as standing.\nSignature weapon: one long dark navy staff with SILVER crescent/fork metal cradle, a pointed IVORY spiral horn and small PURPLE gemstone, exactly Image 1. Never replace with a blue orb or gold staff.\nCharacter identity: Tear, blue eyes, long warm brown hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-motion/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fe29151e-0eac-46c4-be24-8d45f11a7479.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fe29151e-0eac-46c4-be24-8d45f11a7479.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-motion/source-sheet-00.png",
+          "outputSha256": "cff6bd9dd65e7073c131228ebf9245912aa7373b8b8b6dd21ff7246d21c26572",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-motion/reference-00.png",
+              "sha256": "372b1dacdddc437976d6caf0fbbca458f2b658ef8f794657950a4e4226200fe7"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png",
+              "sha256": "fed1fd81552f570bc40dd7be6bed9b32ba39c88bc8239ef23d3eef625645a684"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-tear-extra",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/tear-extra.png",
+      "sourceSha256": "630b7bbc5d5d8b800c38ce00febd74e05d7e38e605df09f9c78c0bd09e8a197b",
+      "sourceMetaSha256": "a6409a996099114160a584251e92317903475ef4a126ad0d5fb909595b4899fb",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-tear-extra\\reference-manifest.json",
+      "referenceManifestSha256": "f1365ec962e713e1be8efd538ebfe7a5cad39a824dba3bb1f20db3f26b0b3089",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-extra/source-sheet-00.png",
+      "selectedSha256": "a141c6399b6ac9977eee5f17d86619c249f9ef55440a6564edbd6173d769f65c",
+      "selectedAttempt": 2,
+      "frameNames": [
+        "tear-extra_0_0",
+        "tear-extra_0_1",
+        "tear-extra_0_2",
+        "tear-extra_0_3",
+        "tear-extra_1_0",
+        "tear-extra_1_1",
+        "tear-extra_1_2",
+        "tear-extra_1_3",
+        "tear-extra_2_0",
+        "tear-extra_2_1",
+        "tear-extra_2_2",
+        "tear-extra_2_3",
+        "tear-extra_3_0",
+        "tear-extra_3_1",
+        "tear-extra_3_2",
+        "tear-extra_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-tear-extra",
+        "attempt": 2,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-9644beec-dcaa-4a2c-af42-fc202cf8f8c1.png",
+        "sha256": "a141c6399b6ac9977eee5f17d86619c249f9ef55440a6564edbd6173d769f65c",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 904611,
+        "alphaPositive": 668433,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 36931,
+            "x": 16,
+            "y": 13,
+            "width": 221,
+            "height": 281,
+            "centerX": 131.0,
+            "centerY": 163.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 36065,
+            "x": 302,
+            "y": 13,
+            "width": 228,
+            "height": 277,
+            "centerX": 416.0,
+            "centerY": 162.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 32061,
+            "x": 578,
+            "y": 13,
+            "width": 212,
+            "height": 282,
+            "centerX": 688.0,
+            "centerY": 167.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 34445,
+            "x": 875,
+            "y": 17,
+            "width": 233,
+            "height": 276,
+            "centerX": 989.0,
+            "centerY": 162.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 35701,
+            "x": 15,
+            "y": 311,
+            "width": 219,
+            "height": 273,
+            "centerX": 131.0,
+            "centerY": 461.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 35779,
+            "x": 309,
+            "y": 309,
+            "width": 224,
+            "height": 280,
+            "centerX": 423.0,
+            "centerY": 460.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 32052,
+            "x": 578,
+            "y": 315,
+            "width": 220,
+            "height": 270,
+            "centerX": 690.0,
+            "centerY": 460.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 34269,
+            "x": 882,
+            "y": 312,
+            "width": 225,
+            "height": 273,
+            "centerX": 989.0,
+            "centerY": 459.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 38360,
+            "x": 14,
+            "y": 600,
+            "width": 231,
+            "height": 303,
+            "centerX": 130.0,
+            "centerY": 785.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 37205,
+            "x": 306,
+            "y": 600,
+            "width": 224,
+            "height": 304,
+            "centerX": 422.0,
+            "centerY": 785.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 34428,
+            "x": 587,
+            "y": 601,
+            "width": 206,
+            "height": 301,
+            "centerX": 704.0,
+            "centerY": 777.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 36133,
+            "x": 891,
+            "y": 602,
+            "width": 217,
+            "height": 301,
+            "centerX": 981.0,
+            "centerY": 780.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 37449,
+            "x": 5,
+            "y": 948,
+            "width": 274,
+            "height": 224,
+            "centerX": 124.0,
+            "centerY": 1062.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 36975,
+            "x": 290,
+            "y": 953,
+            "width": 262,
+            "height": 221,
+            "centerX": 431.0,
+            "centerY": 1067.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 35233,
+            "x": 567,
+            "y": 949,
+            "width": 264,
+            "height": 224,
+            "centerX": 684.0,
+            "centerY": 1059.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 35962,
+            "x": 852,
+            "y": 951,
+            "width": 264,
+            "height": 222,
+            "centerX": 995.0,
+            "centerY": 1061.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-tear-extra",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRows 1 and 2: distinct small walking steps with original foot placement, staff visible in all four directions including BACK at the right of the hair. Row 3: eyes-closed prayer with upright staff in front, BACK cell shows the staff head above the center of the hair. Row 4: forward attacking thrust with spread feet, staff head points diagonally forward exactly as Image 1. Keep all back-facing and left-facing weapon tips visible where seen in Image 1.\nSignature weapon: one long dark navy staff with SILVER crescent/fork metal cradle, a pointed IVORY spiral horn and small PURPLE gemstone, exactly Image 1. Never replace with a blue orb or gold staff.\nCharacter identity: Tear, blue eyes, long warm brown hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-extra/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54ec2204-c0c3-4302-8e2d-c4d1e0d2d11b.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54ec2204-c0c3-4302-8e2d-c4d1e0d2d11b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "rejected-missing-visible-back-prayer-gloves",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-extra/source-sheet-00-rejected-01.png",
+          "outputSha256": "9a2ddb19d8ccac5feb3423e92e1b4c124cfd74854713ea2b6ca0a2ff695d0885",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-extra/reference-00.png",
+              "sha256": "673cc56d46b368a92857afff32c9a732456bef0c1b5d1d3ea04a90f975dd328f"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png",
+              "sha256": "fed1fd81552f570bc40dd7be6bed9b32ba39c88bc8239ef23d3eef625645a684"
+            }
+          ]
+        },
+        {
+          "key": "SignatureWeapons-tear-extra",
+          "attempt": 2,
+          "prompt": "Edit Image 1, the new premium Tear signature staff 16-frame sheet. Fix ONLY row 3 column 2 (the BACK-facing prayer pose), using Image 2's corresponding exact pose: both white-gloved hands/white cuffs peek out just above and beside the crown of her brown hair, gripping the upright staff in front of her head. The silver crescent and ivory horn with purple gem remain visible above the center of her hair. Currently those two small white-gloved hand areas are missing. Restore them to match the prayer pose; do not expose a face on the back view. Keep the small rounded head, short compact body, brown hair, dress and staff design from Image 1. All other 15 characters retain their current pose, direction, proportions and weapon. Keep 1122x1402 transparent-alpha canvas, four columns, same row-major16poses, last row empty. All characters/staff remain complete and isolated. No effects, ground, text or new elements.",
+          "references": [
+            "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54ec2204-c0c3-4302-8e2d-c4d1e0d2d11b.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-extra/reference-00.png"
+          ],
+          "status": "selected-pending-engine-review",
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-9644beec-dcaa-4a2c-af42-fc202cf8f8c1.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-9644beec-dcaa-4a2c-af42-fc202cf8f8c1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-extra/source-sheet-00.png",
+          "outputSha256": "a141c6399b6ac9977eee5f17d86619c249f9ef55440a6564edbd6173d769f65c",
+          "inputs": [
+            {
+              "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54ec2204-c0c3-4302-8e2d-c4d1e0d2d11b.png",
+              "sha256": "9a2ddb19d8ccac5feb3423e92e1b4c124cfd74854713ea2b6ca0a2ff695d0885"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-extra/reference-00.png",
+              "sha256": "673cc56d46b368a92857afff32c9a732456bef0c1b5d1d3ea04a90f975dd328f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-tear-polish",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/tear-polish.png",
+      "sourceSha256": "0428fd191bfc9010e7b0ce7bcf0489b4feb91ad3f83ef99f10a4a07f28c4ae82",
+      "sourceMetaSha256": "e34bcf411152e67c987ce4aca1199145bdb030842f4c1c5c10a0f8f8c86cf5b4",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-tear-polish\\reference-manifest.json",
+      "referenceManifestSha256": "a15a01bc143726d4bb992edfc3066eded627ec7d2109bd3a8719fbe214d57a81",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-polish/source-sheet-00.png",
+      "selectedSha256": "ff1dec44494f7c20a89d5896391a15f8354dfc712d5f22c3440c786a1be0640c",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "tear-polish_0_0",
+        "tear-polish_0_1",
+        "tear-polish_0_2",
+        "tear-polish_0_3",
+        "tear-polish_1_0",
+        "tear-polish_1_1",
+        "tear-polish_1_2",
+        "tear-polish_1_3",
+        "tear-polish_2_0",
+        "tear-polish_2_1",
+        "tear-polish_2_2",
+        "tear-polish_2_3",
+        "tear-polish_3_0",
+        "tear-polish_3_1",
+        "tear-polish_3_2",
+        "tear-polish_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Signature extra first attempt rejected and repaired for missing visible back-prayer white-glove areas. All sixteen poses and original staff direction were reviewed in each selected sheet. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-tear-polish",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-db7e0185-341d-4aa9-a1ab-107b0fcc4dcd.png",
+        "sha256": "ff1dec44494f7c20a89d5896391a15f8354dfc712d5f22c3440c786a1be0640c",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 913842,
+        "alphaPositive": 659202,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 36051,
+            "x": 17,
+            "y": 58,
+            "width": 245,
+            "height": 228,
+            "centerX": 153.0,
+            "centerY": 175.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 31498,
+            "x": 300,
+            "y": 43,
+            "width": 240,
+            "height": 249,
+            "centerX": 425.0,
+            "centerY": 182.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 33312,
+            "x": 568,
+            "y": 65,
+            "width": 231,
+            "height": 224,
+            "centerX": 693.0,
+            "centerY": 177.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 33892,
+            "x": 851,
+            "y": 62,
+            "width": 235,
+            "height": 227,
+            "centerX": 955.0,
+            "centerY": 175.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 35096,
+            "x": 11,
+            "y": 341,
+            "width": 242,
+            "height": 222,
+            "centerX": 124.0,
+            "centerY": 457.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 34781,
+            "x": 277,
+            "y": 337,
+            "width": 273,
+            "height": 224,
+            "centerX": 390.0,
+            "centerY": 453.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 35900,
+            "x": 573,
+            "y": 341,
+            "width": 273,
+            "height": 222,
+            "centerX": 696.0,
+            "centerY": 453.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 34021,
+            "x": 864,
+            "y": 339,
+            "width": 248,
+            "height": 224,
+            "centerX": 1002.0,
+            "centerY": 453.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 32676,
+            "x": 29,
+            "y": 588,
+            "width": 207,
+            "height": 284,
+            "centerX": 133.0,
+            "centerY": 766.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 32895,
+            "x": 317,
+            "y": 588,
+            "width": 206,
+            "height": 284,
+            "centerX": 421.0,
+            "centerY": 766.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 32214,
+            "x": 595,
+            "y": 590,
+            "width": 190,
+            "height": 286,
+            "centerX": 703.0,
+            "centerY": 765.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 32123,
+            "x": 909,
+            "y": 589,
+            "width": 188,
+            "height": 287,
+            "centerX": 990.0,
+            "centerY": 763.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 34904,
+            "x": 21,
+            "y": 911,
+            "width": 235,
+            "height": 238,
+            "centerX": 129.0,
+            "centerY": 1034.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 33081,
+            "x": 296,
+            "y": 913,
+            "width": 238,
+            "height": 237,
+            "centerX": 426.0,
+            "centerY": 1030.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 34170,
+            "x": 582,
+            "y": 911,
+            "width": 245,
+            "height": 239,
+            "centerX": 693.0,
+            "centerY": 1036.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 33754,
+            "x": 867,
+            "y": 913,
+            "width": 234,
+            "height": 237,
+            "centerX": 991.0,
+            "centerY": 1036.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-tear-polish",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Tear game animation reference sheet. Body/style continuity reference: Image 2, current premium Tear. Redraw Image 1 with the SAME compact large-head / short-body anatomy, short arms and legs, face size, broad long hair silhouette, crisp high-quality anime SD linework and polished shading as Image 2. Image 2 is style and anatomy ONLY: do NOT copy its poses. Preserve ALL sixteen poses and expressions, precise viewpoints, hand grip, foot placement, weapon exposure/occlusion, row-major ordering from Image 1. Source stray cropped fragments outside characters are not additional sprites; omit those artifacts.\nDeliver an actual transparent-alpha PNG sprite sheet, canvas 1122 x 1402, exactly 4 equal columns x 5 equal rows. Exactly 16 complete separated character poses in the first four rows; row 5 entirely transparent. Direction columns exactly front, back, facing right, facing left as Image 1. Native standing character body height about 220-240px INCLUDING head/hair, weapon can extend slightly higher within cell. Each complete character and its complete weapon fits inside its own cell with at least 16px fully transparent margin at every grid boundary. Broad transparent space, no touching cells, no cropped staff tips. Keep the SAME head/body scale in every pose, shorter compact legs like Image 2, not the tall slender proportions of Image 1.\nRow 1: two-handed windup, staff pulled behind/along the shoulder; right-facing cell has the staff head behind on its left, left-facing cell has it behind on its right. Row 2: two-handed staff thrust at chest height, weapon head forward. Row 3: raised upright staff, front and back centered above face/hair, right and left views hold it high ahead of face. Row 4: eyes-closed relaxed recovery, staff lowered diagonally across waist; BACK cell staff head is visible to the left of the hair. Do not replace windup/recovery with idle.\nSignature weapon: one long dark navy staff with SILVER crescent/fork metal cradle, a pointed IVORY spiral horn and small PURPLE gemstone, exactly Image 1. Never replace with a blue orb or gold staff.\nCharacter identity: Tear, blue eyes, long warm brown hair matching the corresponding premium Image 2, side-swept fringe, dark brown dress/tunic with white panels and precise gold trim, white gloves and white/gold boots. No hat. Preserve original number of weapons, limbs and hands. Back views retain any staff/head peeking above or beside hair that Image 1 shows, despite Image 2 hiding its weapon in some back cells. Actual transparency, no backdrop/checkerboard, no text, labels, floor, shadows, effects, aura or glow, extra floating fragments. Do not merge, duplicate, mirror, crop or reorder poses. Priority: exact pose/direction/weapon continuity and consistent premium body proportions.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-polish/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-db7e0185-341d-4aa9-a1ab-107b0fcc4dcd.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-db7e0185-341d-4aa9-a1ab-107b0fcc4dcd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected-pending-engine-review",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-polish/source-sheet-00.png",
+          "outputSha256": "ff1dec44494f7c20a89d5896391a15f8354dfc712d5f22c3440c786a1be0640c",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-tear-polish/reference-00.png",
+              "sha256": "19a0623484add4268088a92321704ee71f113c97b235c3863f850dfd73be3624"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-tear-premium/source-sheet-00.png",
+              "sha256": "fed1fd81552f570bc40dd7be6bed9b32ba39c88bc8239ef23d3eef625645a684"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "Generated candidates; native lossless packing passed. Actual transition review in progress.",
+  "notes": "Alphen motion first retry was triggered by RGB display behind transparent alpha; original was not verified opaque. Selected retry preserved full poses and alpha. No assertion of absent alpha on initial output.",
+  "attempts": [
+    {
+      "key": "alphen-hq-gen",
+      "prompt": "Edit target IMAGE 1: remake exactly its SIXTEEN existing Alphen game sprites (4 columns x 4 occupied rows, plus an entirely transparent empty fifth row) as a production transparent sprite sheet. IMAGE 2 is the ONLY character proportion and rendering style reference: precisely match its large head relative to torso, short sturdy limbs, boot size, white hair shape, cobalt blue scarf, black silver armor, crisp detailed cel shading, orange flame sword. This is required to prevent the character changing head/body proportions between animation frames. Transfer IMAGE 2 proportions/style into ALL SIXTEEN poses in IMAGE 1, while preserving IMAGE 1 pose, facing, arm/leg orientation, sword direction and number of weapons in EACH exact corresponding cell. Do NOT copy image2 poses into target. Target row1 is four idle facing directions; row2 is four attack poses; row3 holds sword upright in four directions; row4 guarding with sword across body. Keep rear poses facing away and maintain left/right. One complete body and one flaming sword per cell, fully visible with transparent padding; ignore stray clipped fragments belonging to another cell in image1. Canvas 4 columns x 5 rows, only first16cells occupied, lastrow entirely transparent, no text/grid/background/shadow/disconnected VFX. Bodies roughly same scale as style reference, head size constant even in bent poses. High detail clean game art, no blurry upscaling.",
+      "inputs": null,
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-d6df1115-b9b1-4987-8506-2358c56eb653.png",
+      "previous": null
+    },
+    {
+      "key": "PixelCampaign-alphen-motion-transition",
+      "prompt": "EDIT target IMAGE1's exact sixteen existing Alphen sprites. IMAGE2 is the canonical SAME-character proportion/rendering reference: larger round white-haired head, short sturdy legs/torso, substantial boots, identical blue scarf and black/silver armor and flaming sword. Make all IMAGE1 poses use precisely IMAGE2 head-to-body proportion and detailed clean cel shading, to remove animation proportion popping. DO NOT copy image2 poses. Rows 1 and 2 are different forward walking strides in four directions. Row3 crouching injured/impact poses, row4 prone unconscious lying horizontally. Preserve every stride direction, foot, arm and lying orientation. Preserve IMAGE1 exact cell order and four directions including true back views. Each sprite remains ONE body with ONE sword as shown, no duplicates or new accessories. 4 columns by 5 rows, exactly16 occupied cells in first4rows; fifthrow fully transparent. Keep all opaque parts safely inside canvas and separated by transparent corridors, at least15px outer clearance, full sword/flames/cape not clipped, no stray cropped neighbor fragments. Constant native head/boot scale between all cells including crouching/lying; body height naturally differs by posture. Crisp high-detail production sprites on true alpha background, no text/grid/shadows.",
+      "inputs": null,
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-eb769609-6acb-40e5-b89a-33d00e994e1d.png",
+      "previous": null
+    },
+    {
+      "key": "PixelCampaign-alphen-motion-transition-v2",
+      "prompt": "Precise background removal. Keep all sixteen existing character sprites and their exact pose, scale, facial proportions, armor, cape, boots and weapon unchanged. Remove the entire blue/gray/orange blurred background and soft light halos, replace with genuinely TRANSPARENT alpha=0. Keep only the crisp sixteen character silhouettes including the actual sharply defined orange flames attached to their swords. No cast shadows or floor. Do not redraw or rearrange characters. The empty fifth row and all gaps must be completely transparent. PNG with real alpha, no black/white/checkerboard backdrop.",
+      "inputs": null,
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-e4e35ea9-c86b-4fe9-8a83-65415798b035.png",
+      "previous": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-eb769609-6acb-40e5-b89a-33d00e994e1d.png"
+    },
+    {
+      "key": "PixelCampaign-alphen-extra-transition",
+      "prompt": "EDIT target IMAGE1's exact sixteen existing Alphen sprites. IMAGE2 is the canonical SAME-character proportion/rendering reference: larger round white-haired head, short sturdy legs/torso, substantial boots, identical blue scarf and black/silver armor and flaming sword. Make all IMAGE1 poses use precisely IMAGE2 head-to-body proportion and detailed clean cel shading, to remove animation proportion popping. DO NOT copy image2 poses. Rows 1 and 2 are distinct forward walking footwork poses in four directions. Row3 raises the flame sword OVERHEAD with both arms, row4 crouches with sword across the body. Preserve every original stance, foot, arm and sword orientation. Preserve IMAGE1 exact cell order and four directions including true back views. Each sprite remains ONE body with ONE sword as shown, no duplicates or new accessories. 4 columns by 5 rows, exactly16 occupied cells in first4rows; fifthrow fully transparent. Keep all opaque parts safely inside canvas and separated by transparent corridors, at least15px outer clearance, full sword/flames/cape not clipped, no stray cropped neighbor fragments. Constant native head/boot scale between all cells including crouching/lying; body height naturally differs by posture. Crisp high-detail production sprites on true alpha background, no text/grid/shadows.",
+      "inputs": null,
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-14c9981b-9eab-4175-8414-cb39539d5cf4.png",
+      "previous": null
+    },
+    {
+      "key": "PixelCampaign-alphen-polish-transition",
+      "prompt": "Edit target IMAGE1 exactly: sixteen Alphen animation sprites in 4 columns and 4 occupied rows, fifth row entirely empty transparent. Match IMAGE2's SAME character proportions precisely: large white-haired head, short sturdy torso/legs, thick boots, detailed cel-shaded black silver armor and blue scarf. Target original poses and exact facing order must remain unchanged: row1 sword lifted overhead, row2 sword horizontal/slanted attack followthrough, row3 sword upright guard/channel, row4 idle/recovery. All four facing directions including rear faces stay exactly as target. Use the same consistent head/boot scale for all16 poses; do not make recovery skinny or small-headed. Keep target's SINGLE flaming sword in its exact direction and correct arms/legs. Transparent PNG, no painted background or soft halos, no labels/grid. Separate each full silhouette with transparent gutters and at least16px canvas margin, keep all flame tips/cape/feet intact. Ignore stray cropped neighbor scraps in target. Do not change pose order or turn rear poses toward the viewer.",
+      "inputs": null,
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-81c0c52e-96e4-4820-bf71-4462d38a0e2c.png",
+      "previous": null
+    },
+    {
+      "key": "SignatureWeapons-alphen-hq-transition",
+      "prompt": "Edit target IMAGE 1, preserving exactly all SIXTEEN Alphen poses in their current row-major order and facing directions. Redraw them to precisely match IMAGE 2 character style/proportions: oversized white hair/head, short sturdy body and boots, black armor with refined gold/silver highlights, blue scarf, one black/red glowing jagged sword. IMAGE 2 is a STYLE / BODY-RATIO reference only: NEVER replace target poses with reference poses. Target row1 idle, row2 attack, row3 upright sword raised in front, row4 cross-body guard; each row has front/back/rightward/leftward views. Preserve each target sword angle and correct hand ownership, cape silhouette, foot stance, rear face hidden. Do not invent another sword. Make head to torso ratio and armor identical to image2 so animation doesn't pop between poses. Native high-detail crisp cel-shaded game sprites with RGBA transparent background, four columns and four occupied rows plus entirely blank transparent fifth row. Full uncut bodies and sword tips, separate transparent gutters, no text, no grid, no checkerboard/color background, no shadow. Only redraw sixteen existing poses, no duplication/extra figures.",
+      "inputs": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-hq/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+      ],
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-08e10ae3-b6c7-458f-abb2-0d4a685e531f.png",
+      "previous": null
+    },
+    {
+      "key": "SignatureWeapons-alphen-motion-transition",
+      "prompt": "Edit target IMAGE 1. Redraw exactly its SIXTEEN Alphen animation frames, same order, same facing, same pose per cell, in the precise large-head short-sturdy-body high-detail game style of IMAGE 2. Image2 supplies proportions, short boots, white hair, refined black/gold armor, blue scarf; never copy its poses. Keep target's one jagged black/red sword and its exact position/visible vs hidden state per frame. Target row1 walking stride A, row2 distinct walking stride B, row3 injury/recoil, row4 four PRONE horizontal knocked-down poses. Columns front/back/rightward/leftward; facing/eyes hidden from back must remain. Larger head than old target, shorter limbs matching image2 even while prone; identical body/head scale across cells so no animation pop. Each whole body and sword uncut inside cell with transparent gutters. Production RGBA sprite sheet, four columns, first4rows occupied (16 sprites), transparent blank fifth row. No background of any kind, no baked checkerboard, no floor/shadow/text/extra figures. Preserve exact independent leg positions distinguishing row1 and row2. Do not replace prone poses with standing or crouching. Crisp polished detailed cel shading; render native, no blurry enlargement.",
+      "inputs": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-motion/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+      ],
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-b695afcd-df75-4c0a-a99d-3e9c68d525c3.png",
+      "previous": null
+    },
+    {
+      "key": "SignatureWeapons-alphen-extra-transition",
+      "prompt": "Edit IMAGE 1 target sprite sheet. Exactly SIXTEEN separate Alphen sprites, in same original 4-column order, same exact pose and facing per cell. Use IMAGE 2 only for character proportions / rendering: same large white head relative to short sturdy black-and-gold armored body and small boots, blue scarf and black/red jagged signature sword. Target first row stepping stance A, second row stepping stance B, third row holding sword OVER HEAD with two arms, fourth row low cross-body sword guard. Each row front/back/rightward/leftward views. Preserve those poses, exact sword direction, correct hands and visible/hidden parts; don't replace with style-reference poses. Remove stray cropped fragments from other cells visible in target, but keep every complete intended sprite. One body and one sword per cell; full sword/feet/hair/scarf must be entirely visible with transparent gutters, never cropped. RGBA transparent background, four columns, first four rows occupied and fifth row EMPTY TRANSPARENT. No backdrop/checkerboard/text/shadows. Rich crisp native cel shading, detailed gold/silver armor accents exactly like style ref, preserve anatomy and face direction, no extra figures or weapons. Keep head, boots, hands scale stable between poses.",
+      "inputs": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-extra/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+      ],
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-6635ab2c-d11e-4843-a460-7820f5d622cc.png",
+      "previous": null
+    },
+    {
+      "key": "SignatureWeapons-alphen-polish-transition",
+      "prompt": "Edit IMAGE 1 target sheet into sixteen polished high-detail game sprites with the EXACT large white head/short black-gold armored body/small sturdy boots/blue scarf character proportions and rendering of IMAGE 2. Image2 is solely a STYLE and proportion reference; preserve IMAGE1 individual 16 poses, facing directions, weapon positions. Row1 overhead sword anticipation, row2 low forward attack follow-through, row3 sword held vertical in front, row4 relaxed sword-down idle. Each row four directions front/back/rightward/leftward. Preserve one jagged black-red sword in its exact intended hand and orientation for every frame. Do not add weapons/effects. Make front and side eyes correct, back face fully hidden, head/boot size consistent in every pose; no skinny long-body frame remains. Native RGBA TRANSPARENT sprite sheet4columns x5rows, first16cells occupied, fifth row blank transparent, fully uncut body/scarf/hair/sword tips, clear gutters. No text, no backgrounds/checkerboard/floor/shadows, no extra figures. Rich crisp cel shading matching canonical perfectly, no blurry upscaling. Retain slight pose differences necessary for animation.",
+      "inputs": [
+        "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-polish/reference-00.png",
+        "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-00.png"
+      ],
+      "generated": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a1382c-15f7-70d2-a550-3a56303cb362\\exec-e975afe3-9a3e-4e60-b81b-3d7bb14097ff.png",
+      "previous": null
+    }
+  ]
+}

@@ -1,5 +1,17 @@
 # 아키텍처
 
+## 캐릭터 품질 후속 개선 — 구현·원화 적용·사후 검증 완료
+
+`CharacterMotionClips`는 기존 방향별 원화에서 시전 포즈열을 선택하고, `DirectionalSpriteClip`의 phase pacing과 `CombatMotionProfile`은 기존 판정 경계 안에서 포즈 체류와 이동 곡선을 조정한다. `ImpactPolish`는 기존 효과 메시·풀을 사용해 검흔·꽃잎·지면 꽃문양을 연결한다. Core 판정·Content 정의·저장 형식은 이 표현 계층과 분리한다.
+
+`QualityMotionAtlasTools`는 생성 원화의 RGBA 값을 보존하며 연결 요소를 분리하고 정수 이동으로 패킹한다. 선택103시트·3,850프레임을 적용했으며 전체159시트·4,898프레임의 이름·Sprite ID·local fileID와 장비 연결을 유지한다. 현재/최초 source 해시와 선택 후보 해시는 서로 다른 근거이므로 적용 후 과거 입력 기록을 덮어쓰지 않는다.
+
+`SdCharacterArtImporter.ApplyApprovedRevision`은 승인된 측정·현재 source 해시·편집 capability를 검사하고 동기 import 뒤 실제 sprite rect·PPU·pivot·GUID/local ID를 검증한다. PNG 교체·복원은 같은 폴더의 임시 파일을 flush한 뒤 원자적으로 교체하며, 잠금/지원 불가를 제자리 덮어쓰기로 우회하지 않는다. 별도 일괄 트랜잭션은 Editor 주기 사이에 작업하고 자기 소유 PNG/meta/측정/manifest만 롤백한다. 보호 Content·장비·폰트는 읽기 검증 대상이며 전역 SaveAssets나 사용자 수정 덮어쓰기를 하지 않는다.
+
+후보 검수는 `CharacterData`·`EquipmentData`·`EquipmentAppearance`를 메모리에 복제하여 별도 배우1명에 연결한다. 전장6명은 당시 원본이므로 후보 캡처 성공을 실제 production의 판정·저장 검증으로 해석하지 않는다. 적용 후에는 production을 참조하는 진입점으로 다시 검사한다. 적용 후 전체 EditMode435/435(30.03초)·PlayMode247/247(608.92초), 검수 Windows 빌드와 실제 Director 아군 기술176/176회를 확인했다. DLL 검사는 일반/검수 타입 분리의 근거이며 플레이 실행과 구분한다. 아군 기술 검수는 반응/자동 타이밍을 끈 훈련 fixture이다. 별도 Windows 캠페인20화 자동 진행에서 실제 이야기 버튼·명령·구매/장비·보상·타이틀 재로드를 확인했으며 성능은6명 전장 아군과 별도 표현 배우의 대표10효과×일반/축소20회를 PNG 없이 측정했다. 이 fixture는 실제 Director 판정 검사와 분리한다. 최종 일반 빌드에서 검수/테스트 타입 제외를 재확인하고20초 시작·정상 종료·타이틀 표시를 확인했다. 일반 시작에 따른 허용된 창 설정 변경은 보고한 뒤 이번 실행 백업으로만 복원했으며 사용자 파일 최종 일치를 확인했다. [현재 적용 결과와 검수 범위](QualityUpgrade/README.md).
+
+빌드 산출물은 production 에셋이나 재현에 필요한 Packed 입력과 구분한다. 이번 로컬 Windows/검수 빌드 폴더는 모든 파일 SHA를 확인한 뒤 `D:/TalesTacticsBuildArchive/QualityUpgradeWindows20261101`·`QualityUpgradeReview20261101`에 이관했고, 기존 `Builds/QualityUpgradeWindows`·`QualityUpgradeReview`는 junction으로 연결했다. 이는 현재 작업 PC의 공간 관리이며 새 클론에 빌드/junction이 존재한다고 가정하지 않는다. 최종 빌드의 캐시된 packed-assets 출력은0바이트여서 그 파일로 raw 제작 원화의 패키지 비포함을 새로 입증하지는 않았다. 디스크 부족 검수 빌드의 실패와 재시도는 [검증 기록](VALIDATION.md)에 별도로 남긴다.
+
 ## SD 후속 보완과 실제 캠페인 검수
 
 `BattlePreparationGuidance`는 현재 메인 화의 합류 조건과 직전 화의 조건 차이로 이번 합류 동료를 구한다. 별도 알림 저장 플래그나 미래 동료 목록은 만들지 않는다. 거점 안내는 편성 필터를 초기화해 동료 목록으로 연결하고, 성장 바로가기는 출전 중인 무료 합류 훈련 대상부터 고른다. 목록 조회와 화면 이동은 저장하지 않으며 기존 명시적 훈련·저장 트랜잭션을 유지한다. 합류 배지는 모델 선택 버튼의 자식이고 raycast를 받지 않는다.
@@ -12,7 +24,7 @@
 
 SD 전환은 기존 2.5D 전장과 애니메이션 클립을 유지하고, 캐릭터 원화를 다시 그리는 방식이다. 대상은 `PixelCampaign` 62장, `MotionPremium` 10장, `Crossover` 35장, `SignatureWeapons` 52장으로 총 159장이다. 원본 시트의 스프라이트 이름 4,898개(직접 참조 이름 4,870개)를 보존하며, `SdCharacterArtImporter`는 원본 텍스처 GUID와 스프라이트 ID·local fileID를 유지한 채 측정된 rect·pivot·outline·PPU를 적용한다. 이동·공격·피격·쓰러짐과 방향별 보정 스트립, 장착 무기의 외형 참조를 개별 프레임으로 유지한다.
 
-`Tools/MeasureSdCharacterArt.py`와 `Docs/SdCharacters`의 JSON은 원본 집합, 해시, 프레임 측정과 육안 검수 근거를 분리한다. 후보만 불러오는 `ImportCandidate`는 제작 중 확인에 사용하고, `ApplyCompleteProduction`은 현재 Content·전용무기 에셋이 참조하는 전체 원본 집합과 manifest가 정확히 일치하며 모든 후보가 승인된 경우에만 원본을 교체한다. 누락·중복·해시 불일치는 적용을 중단하고, 적용 예외에는 PNG와 meta를 복원한다. 후보 중복 PNG의 최종 보관 위치는 로컬 `Temp`이며, Git에는 기존 production 경로의 적용 원화와 제작 근거를 남기는 구조다. [제작·측정 절차](SdCharacters/README.md).
+`Tools/MeasureSdCharacterArt.py`와 `Docs/SdCharacters`의 JSON은 원본 집합, 해시, 프레임 측정과 육안 검수 근거를 분리한다. 후보만 불러오는 `ImportCandidate`는 제작 중 확인에 사용하고, `ApplyCompleteProduction`은 현재 Content·전용무기 에셋이 참조하는 전체 원본 집합과 manifest가 정확히 일치하며 모든 후보가 승인된 경우에만 원본을 교체한다. 누락·중복·해시 불일치는 적용을 중단하고, 적용 예외에는 PNG와 meta를 복원한다. 과거 SD 후보의 로컬 아카이브와 이번 품질 개선의 선택 의존성을 구분한다. 이번 `Art/SdCharacters/QualityUpgrade20261031/Packed`의 선택 PNG/meta와 연결된 측정 JSON은 `selected-revisions.json`·production manifest·감사가 참조하므로 함께 보존하며 임의로 `Temp`에 옮기지 않는다. raw Generated·참조 시트·대량 실행 캡처는 로컬 제작 이력이다. 일반 프로젝트 실행과 빌드는 기존 production 경로의 적용 원화를 사용한다. [제작·측정 절차](SdCharacters/README.md).
 
 공통 UI는 `SdUiTheme`·`SdUiIconArt`·`SdUiInk`가 잉크색, 장식 패널과 실제 아이콘의 셀 명암을 연결한다. 지형은 새 타일·식생·구조물 원화와 `SdTerrainAtlas`의 실측 UV, 단계형 명암을 사용하고, VFX는 `Impact.shader`·`SkillVisualLanguage`에서 외곽선과 색 면을 맞춘다. 10인 초상화는 기존 5×2 리소스 배치를 유지한다. 이 변경의 범위는 표현 계층이며 Core 전투 규칙·Content 정의·저장 형식은 유지한다. 실제 엔진 적용·레이아웃·빌드 결과와 한계는 [검증 기록](VALIDATION.md)에 별도로 기록한다.
 

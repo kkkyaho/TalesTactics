@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 3,
+  "kind": "derived-compact-windows-validation-summary-not-raw-wrapper",
+  "generatedUtc": "2026-10-31T16:04:06.791558+00:00",
+  "status": "scoped-validation-complete",
+  "archives": {
+    "roster": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeReview/SkillRosterVfx/bf9491e67d584d30804a565a7aa96fdc/result.json",
+        "sha256": "c42f7f19339351de6c1d7bd82535d16bc589ad01853432734839f73e2a4d7670",
+        "bytes": 212966
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-roster-final.json",
+      "sha256": "c42f7f19339351de6c1d7bd82535d16bc589ad01853432734839f73e2a4d7670",
+      "byteExactCopy": true
+    },
+    "campaign": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeReview/CampaignFlowReviews/56ca649134d646c6ab5eca3664d01496/report.json",
+        "sha256": "f1bfa04d1722ae85b4782ca52c7e1a848b4f2b52c95a8edef44dead5339f698c",
+        "bytes": 961860
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-campaign-final.json",
+      "sha256": "f1bfa04d1722ae85b4782ca52c7e1a848b4f2b52c95a8edef44dead5339f698c",
+      "byteExactCopy": true
+    },
+    "performance": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeReview/QualityPresentationReviews/4f07b133955d4440926f1f2f75285fe0/result.json",
+        "sha256": "d204c342b596b4007cdc0340c86b7a4b1330a6bbace45e789c7506404040603d",
+        "bytes": 49193
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-performance-final.json",
+      "sha256": "d204c342b596b4007cdc0340c86b7a4b1330a6bbace45e789c7506404040603d",
+      "byteExactCopy": true
+    },
+    "reviewBuild": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeReview/build-result.txt",
+        "sha256": "e0908fb1db32e5a7c51f31fb3ca15e30860b378fc0707984be6e8e0fad6dcd0a",
+        "bytes": 1388
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-review-build-final.txt",
+      "sha256": "e0908fb1db32e5a7c51f31fb3ca15e30860b378fc0707984be6e8e0fad6dcd0a",
+      "byteExactCopy": true
+    },
+    "normalBuild": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeWindows/build-result.txt",
+        "sha256": "723b1a765443a7633b49caa44335264e3471c0b300805d2937b5c5f1e4c7c35e",
+        "bytes": 1208
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-normal-build-final.txt",
+      "sha256": "723b1a765443a7633b49caa44335264e3471c0b300805d2937b5c5f1e4c7c35e",
+      "byteExactCopy": true
+    },
+    "normalStartup": {
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/normal-startup-f04e22a0644345f4a9d2f2dbe39a67ba/normal-startup.json",
+        "sha256": "95c3f0b839f0b2b344a45fcdaa427135acddbda9fd508a0f32001a936b19553b",
+        "bytes": 13630
+      },
+      "archive": "Docs/QualityUpgrade/Validation/windows-normal-startup-final.json",
+      "sha256": "95c3f0b839f0b2b344a45fcdaa427135acddbda9fd508a0f32001a936b19553b",
+      "byteExactCopy": true
+    }
+  },
+  "wrapperChecks": {
+    "inspect": {
+      "mode": "Inspect",
+      "runId": "a640548d0a824a17a9bfaba1d1264fdf",
+      "startedUtc": "2026-10-31T15:50:48.9594047Z",
+      "finishedUtc": "2026-10-31T15:51:21.8799689Z",
+      "passed": true,
+      "interactiveWindow": false,
+      "windowStyle": "Hidden",
+      "executedReviewPlayer": false,
+      "normalStartupExecuted": false,
+      "baselineMatched": true,
+      "backupVerified": true,
+      "userFilesUnchanged": true,
+      "exitCode": null,
+      "forcedTermination": false,
+      "gracefulCloseRequested": false,
+      "exeSHA256": null,
+      "runtimeSHA256": null,
+      "errors": [],
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/inspect-a640548d0a824a17a9bfaba1d1264fdf/validation.json",
+        "sha256": "209e80e496bbe1d4f5bd5af491850fab175273378d81b9482e2da1d1e48336e1",
+        "bytes": 1740973
+      },
+      "userSnapshotEntriesBefore": 4322,
+      "userSnapshotEntriesAfter": 4322,
+      "recordedSnapshotNamesSizesAndHashesEqual": true,
+      "omitted": "Full before/after snapshots and thousands of individual user-relative filenames are intentionally not duplicated; exact source SHA identifies the local raw wrapper."
+    },
+    "roster": {
+      "mode": "Roster",
+      "runId": "bf9491e67d584d30804a565a7aa96fdc",
+      "startedUtc": "2026-10-31T15:51:22.0085765Z",
+      "finishedUtc": "2026-10-31T15:53:39.0299411Z",
+      "passed": true,
+      "interactiveWindow": true,
+      "windowStyle": "Normal",
+      "executedReviewPlayer": true,
+      "normalStartupExecuted": false,
+      "baselineMatched": true,
+      "backupVerified": true,
+      "userFilesUnchanged": true,
+      "exitCode": 0,
+      "forcedTermination": false,
+      "gracefulCloseRequested": false,
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "runtimeSHA256": "33591342c53a0b43599125ca4490c0fa51bec836546245969eb2ce89b139714b",
+      "errors": [],
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/roster-bf9491e67d584d30804a565a7aa96fdc/validation.json",
+        "sha256": "a93dfef6e398a2b305ae4711a8f1acab1751fc679c741ab34d94b86c6dbde1e7",
+        "bytes": 1741568
+      },
+      "userSnapshotEntriesBefore": 4322,
+      "userSnapshotEntriesAfter": 4322,
+      "recordedSnapshotNamesSizesAndHashesEqual": true,
+      "omitted": "Full before/after snapshots and thousands of individual user-relative filenames are intentionally not duplicated; exact source SHA identifies the local raw wrapper."
+    },
+    "campaign": {
+      "mode": "CampaignFlow",
+      "runId": "56ca649134d646c6ab5eca3664d01496",
+      "startedUtc": "2026-10-31T15:53:39.1423992Z",
+      "finishedUtc": "2026-10-31T15:58:47.6685445Z",
+      "passed": true,
+      "interactiveWindow": true,
+      "windowStyle": "Normal",
+      "executedReviewPlayer": true,
+      "normalStartupExecuted": false,
+      "baselineMatched": true,
+      "backupVerified": true,
+      "userFilesUnchanged": true,
+      "exitCode": 0,
+      "forcedTermination": false,
+      "gracefulCloseRequested": false,
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "runtimeSHA256": "33591342c53a0b43599125ca4490c0fa51bec836546245969eb2ce89b139714b",
+      "errors": [],
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/campaignflow-56ca649134d646c6ab5eca3664d01496/validation.json",
+        "sha256": "ba1695046ae1309ce96bb06eb992775558828fcad9624f9ef1339c4c89009ea9",
+        "bytes": 1741590
+      },
+      "userSnapshotEntriesBefore": 4322,
+      "userSnapshotEntriesAfter": 4322,
+      "recordedSnapshotNamesSizesAndHashesEqual": true,
+      "omitted": "Full before/after snapshots and thousands of individual user-relative filenames are intentionally not duplicated; exact source SHA identifies the local raw wrapper."
+    },
+    "performance": {
+      "mode": "Performance",
+      "runId": "4f07b133955d4440926f1f2f75285fe0",
+      "startedUtc": "2026-10-31T15:58:47.7967742Z",
+      "finishedUtc": "2026-10-31T16:00:44.8414385Z",
+      "passed": true,
+      "interactiveWindow": true,
+      "windowStyle": "Normal",
+      "executedReviewPlayer": true,
+      "normalStartupExecuted": false,
+      "baselineMatched": true,
+      "backupVerified": true,
+      "userFilesUnchanged": true,
+      "exitCode": 0,
+      "forcedTermination": false,
+      "gracefulCloseRequested": false,
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "runtimeSHA256": "33591342c53a0b43599125ca4490c0fa51bec836546245969eb2ce89b139714b",
+      "errors": [],
+      "source": {
+        "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/performance-4f07b133955d4440926f1f2f75285fe0/validation.json",
+        "sha256": "f4fc13de2c1e23900599049cf43354df5e76183e39e23a52937d01f43b2ca0fc",
+        "bytes": 1741602
+      },
+      "userSnapshotEntriesBefore": 4322,
+      "userSnapshotEntriesAfter": 4322,
+      "recordedSnapshotNamesSizesAndHashesEqual": true,
+      "omitted": "Full before/after snapshots and thousands of individual user-relative filenames are intentionally not duplicated; exact source SHA identifies the local raw wrapper."
+    }
+  },
+  "reviewBuild": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 3,
+    "durationSeconds": 44.729153,
+    "sizeBytes": 2241797650,
+    "warningSummary": [
+      "No RuntimePipelineConfig: Pipeline disabled in Player.",
+      "Hidden/Core/DebugOccluder stripped for pipeline tags.",
+      "Hidden/Core/DebugOcclusionTest stripped for pipeline tags."
+    ],
+    "rawLog": "windows-review-build-final.txt"
+  },
+  "typeIsolation": {
+    "source": {
+      "localPath": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/WindowsValidation/inspect-a640548d0a824a17a9bfaba1d1264fdf/player-type-isolation.json",
+      "sha256": "245314c09d2505cabeeeab82f37533e51e10a91fa46b5485f375c3cefb2f4873",
+      "bytes": 16825
+    },
+    "passedAtInspection": true,
+    "normalReviewFixtureTypes": 0,
+    "normalEditorTypes": 0,
+    "reviewEditorTypes": 0,
+    "normalDirectorCallsReviewBootstrap": false,
+    "reviewDirectorCallsReviewBootstrap": true,
+    "normalRuntimeSha256AtInspection": "1fe30165afa0e4efe095402d1f2d86bab8dc38adc6129a0c095b9f32aebdbec2",
+    "reviewRuntimeSha256UsedByAllThreeRuns": "33591342c53a0b43599125ca4490c0fa51bec836546245969eb2ce89b139714b",
+    "limitation": "The initial Inspect record remains historical. The newly rebuilt normal runtime was separately rechecked by the final normal-startup report and passed with zero review/editor/test types or references; its SHA is recorded in normalStartup.normalTypeIsolation."
+  },
+  "roster": {
+    "status": "passed",
+    "expected": 176,
+    "completed": 176,
+    "uniqueAlliedSkills": 88,
+    "heroes": [
+      "alphen",
+      "cless",
+      "farah",
+      "jade",
+      "kisara",
+      "mint",
+      "natalia",
+      "shionne",
+      "tear",
+      "velvet"
+    ],
+    "normalRows": 88,
+    "reducedRows": 88,
+    "all176RowsPass": [
+      "executed",
+      "clean",
+      "beforeContactUnchanged",
+      "resolverMatches",
+      "gridMatches",
+      "unityRandomUnchanged",
+      "titleClosed",
+      "exact state hash match",
+      "one resolution",
+      "expected combat RNG draws",
+      "six allied models",
+      "valid contact frame"
+    ],
+    "errors": 0,
+    "contactPngCount": 176,
+    "captureWidth": 1920,
+    "captureHeight": 1080,
+    "simulatedFps": 30,
+    "allContactPngPathsExistAndAreUnique": true,
+    "profileSeenRows": 170,
+    "signaturePathExceptions": [
+      "cless.0-normal",
+      "cless.0-reduced",
+      "jade.3-normal",
+      "jade.3-reduced",
+      "jade.6-normal",
+      "jade.6-reduced"
+    ],
+    "profileNote": "SkillRosterVfxFixture.Scenario.ExpectProfile is false for non-None SkillSignatures; the six listed rows use that separate authored signature path. No universal profileSeen claim.",
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "limits": [
+      "Actual BattleDirector allied actions in a training fixture, reactions and automatic timing disabled.",
+      "No enemy AI, signature-equipment equip matrix or human playthrough claim.",
+      "Contact stills are not peak-effect images; simulated 30fps is not performance FPS."
+    ]
+  },
+  "campaign": {
+    "status": "Completed",
+    "completedEpisodes": 20,
+    "checks": 46057,
+    "saveReloadChecks": 175,
+    "errors": 0,
+    "allTwentyEpisodesPass": [
+      "rewardApplied",
+      "pendingEndingSaved",
+      "completedEndingReloaded",
+      "endingCleared",
+      "nextStageUnlocked",
+      "duplicateRewardPrevented",
+      "permanentStateRoundTripPreserved",
+      "permanent before/after reload hash match"
+    ],
+    "beforeStoryLines": 94,
+    "afterStoryLines": 91,
+    "purchaseTransactions": 24,
+    "goldSpent": 7320,
+    "enemySkills": 58,
+    "bossPreparations": 36,
+    "bossSkills": 20,
+    "policy": "naturalGrowthPurchases",
+    "purchasePolicy": "Before each battle, use available owned upgrades then buy higher fixed-stat-score compatible items with current gold; highest improvement per gold first, no selling, no catch-up training. Real CampaignInventory.TryBuy and EquipmentLoadout.TrySave transactions.",
+    "configuration": {
+      "difficulty": "Standard",
+      "enemySpeedMode": 0,
+      "timeScale": 4.0,
+      "teamTurns": true,
+      "reactions": false,
+      "autoTiming": false,
+      "missionEvents": false,
+      "purchases": true,
+      "ct": false,
+      "utilityEnemyAI": false,
+      "skipEnemyAnimations": false
+    },
+    "userFilesUnchanged": true,
+    "limits": [
+      "Automated commands, not human playtime or a manual campaign completion.",
+      "Player movement/skills/facing use public BattleDirector paths; enemy turns use its normal coroutine. Story and result controls use rendered uGUI buttons.",
+      "Fresh isolated save; reward seed 17, production combat seed 17. No level/HP/outcome injection, no forced victories, no content regeneration.",
+      "timeScale accelerates presentation only. Wall seconds include automation/CPU/frame waits; scaled seconds and summed windup/recovery are separate proxies, not a human-duration estimate.",
+      "Fixed preferred party and one-action UtilityPlanner cannot establish optimal strategy, economy or balance. Dialogue is rendered and advanced automatically, not read by a person.",
+      "Pending after-story cursor is checked by disk reload after each advanced line; actual title reload is performed after each completed episode. This run does not restart a process mid-dialogue.",
+      "No optional personal scenarios, selling, manual timing success, free catch-up, rewinds or retry assistance."
+    ]
+  },
+  "performance": {
+    "status": "passed",
+    "expected": 20,
+    "completed": 20,
+    "normalRows": 10,
+    "reducedRows": 10,
+    "representativeSkills": [
+      "alphen.ultimate",
+      "boss.artorius.1",
+      "boss.legretta.2",
+      "farah.ultimate",
+      "jade.ultimate",
+      "kisara.ultimate",
+      "mint.ultimate",
+      "natalia.ultimate",
+      "tear.ultimate",
+      "velvet.ultimate"
+    ],
+    "catalogSkillCountNotRunCount": 182,
+    "pngCount": 0,
+    "allRowsSixModelsAndStateCleanupChecks": true,
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "observed": {
+      "environment": "Standalone review player",
+      "graphicsDevice": "NVIDIA GeForce RTX 3060",
+      "graphicsApi": "Direct3D11",
+      "limitation": "Uncapped real wall-frame samples include scene, Editor/OS scheduling and read-only sampling. No PNG/readback or per-frame file IO. Not isolated GPU time or release-player certification.",
+      "width": 1920,
+      "height": 1080,
+      "samples": 29007,
+      "vSyncCount": 0,
+      "targetFrameRate": -1,
+      "gc0": 642,
+      "gc1": 642,
+      "gc2": 642,
+      "peakEffects": 1,
+      "transitionSamplesOmitted": 20,
+      "meanMs": 1.656574010848999,
+      "p50Ms": 1.5807000398635864,
+      "p95Ms": 2.1891000270843506,
+      "p99Ms": 2.6303999423980713,
+      "maxMs": 72.82929992675781,
+      "managedBefore": 7323648,
+      "managedAfter": 7761920,
+      "allocatedBefore": 435850196,
+      "allocatedAfter": 435850038,
+      "peakAllocated": 436734999,
+      "reservedBefore": 567345152,
+      "reservedAfter": 567345152
+    },
+    "limits": [
+      "Warmed representative presentation cases, not all 182 skills or actual Director combat.",
+      "Uncapped standalone review-player wall-frame timing on this PC, not isolated GPU time or release-player certification.",
+      "Short-run memory/GC observations do not establish long-duration leak freedom or performance on other PCs."
+    ]
+  },
+  "representativeCaptures": {
+    "manifest": "Docs/QualityUpgrade/Evidence/actual-capture-manifest.json",
+    "manifestSha256": "d91166a0ccb2482efa535805fe1dd5fca9c2d9eba0469f10e946771d6c1a6645",
+    "count": 6,
+    "totalPngBytes": 29053200,
+    "allSixArchiveHashesMatch": true,
+    "manualReviewAttribution": "Root reports all six manually viewed; this archival pass verified their hashes only.",
+    "capturePhase": "First contact frame; not a peak-effect frame",
+    "limits": [
+      "Six representative stills, not manual inspection of every animation frame.",
+      "The fixture deliberately clusters six allies around the presentation actor; name and HP labels overlap in this crowded setup.",
+      "Motion smoothness and timing are also assessed by automated phase/recovery checks, not by a still image."
+    ]
+  },
+  "pending": [],
+  "preservation": "Copied three raw player reports and build output byte for byte. Source wrapper hashes are preserved without copying thousands of filename entries. No engine/player commands, source changes or user-file writes were performed by this archival pass.",
+  "previousAuthoredSummarySha256": "86573b66022036cd8b1845e010ef64c17f756446b39d1a1c2384d25b9156b3f7",
+  "updatedUtc": "2026-10-31T16:13:54.662031+00:00",
+  "normalBuild": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "durationSeconds": 61.3938916,
+    "sizeBytes": 2241463980,
+    "warningSummary": [
+      "No RuntimePipelineConfig: Pipeline disabled in Player.",
+      "VfxUpgradeReview.cs uses deprecated DEVELOPMENT_BUILD directive."
+    ],
+    "uncompiledChangesWarningPresent": false,
+    "rawLog": "windows-normal-build-final.txt",
+    "startupStatus": "passed-with-classified-settings-change-and-exact-restoration"
+  },
+  "packedAssetExclusionCheck": {
+    "localPath": "C:/dev/TalesTactics/Builds/QualityUpgradeWindows/packed-assets.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "status": "not-established",
+    "reason": "The available packed-assets listing is empty; it cannot establish that candidate Generated/Packed paths are absent from the shipped asset bundles. This is separate from DLL type isolation."
+  },
+  "normalStartup": {
+    "runId": "f04e22a0644345f4a9d2f2dbe39a67ba",
+    "passed": true,
+    "observedSeconds": 20,
+    "responsiveWindowObserved": true,
+    "engineInitialized": true,
+    "exitCode": 0,
+    "gracefulExit": true,
+    "ownProcessStopped": true,
+    "forcedTermination": false,
+    "errors": [],
+    "runtimeWarningCount": 4,
+    "runtimeWarnings": [
+      {
+        "line": 29,
+        "text": "Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldGaussianPostProcessPass'). PostProcessing render passes will not execute."
+      },
+      {
+        "line": 30,
+        "text": "Shader 'Hidden/Universal Render Pipeline/GaussianDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldGaussianPostProcessPass'). PostProcessing render passes will not execute."
+      },
+      {
+        "line": 31,
+        "text": "Shader 'Hidden/Universal Render Pipeline/BokehDepthOfField' is not supported or has been stripped from the build (in 'DepthOfFieldBokehPostProcessPass'). PostProcessing render passes will not execute."
+      },
+      {
+        "line": 32,
+        "text": "Shader 'Hidden/Universal Render Pipeline/PaniniProjection' is not supported or has been stripped from the build (in 'PaniniProjectionPostProcessPass'). PostProcessing render passes will not execute."
+      }
+    ],
+    "baselineMatched": true,
+    "freshBackupVerified": true,
+    "afterStopStable": true,
+    "userFilesUnchangedDuringRun": false,
+    "settingsChanges": [
+      {
+        "name": "settings.json",
+        "beforeSha256": "a7551acd83fe0b695fae21ea42fc020e204817272457a9c07368a6d1cc853e4f",
+        "afterSha256": "3bded62fa846a08b3cb3f7dee38f2617b678456aadd6c05945e36b77ce0d26a4",
+        "afterBytes": 525,
+        "fields": [
+          {
+            "field": "WindowMaximized",
+            "before": "True",
+            "after": "False",
+            "basis": "WindowDisplayController.Store"
+          },
+          {
+            "field": "SeenContextHints",
+            "before": null,
+            "after": "0",
+            "basis": "Explicit root authorization: absent field serialized as default zero only"
+          }
+        ],
+        "serializationOnly": false
+      }
+    ],
+    "restorationAttempted": true,
+    "restored": [
+      {
+        "name": "settings.json",
+        "restored": true,
+        "sha256": "a7551acd83fe0b695fae21ea42fc020e204817272457a9c07368a6d1cc853e4f",
+        "from": "This run fresh byte backup, never the historical backup"
+      }
+    ],
+    "finalUserFilesMatchBefore": true,
+    "storageConclusion": "settings.json changed during execution: WindowMaximized True to False and previously absent SeenContextHints to 0. Only that file was restored from this run fresh byte backup after allowed-field/hash/locking checks. Final full snapshot equals the pre-run snapshot; do not describe the run as byte-unchanged or zero-restoration.",
+    "normalTypeIsolation": {
+      "passed": true,
+      "runtimeSHA256": "1fe30165afa0e4efe095402d1f2d86bab8dc38adc6129a0c095b9f32aebdbec2",
+      "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "reviewFixtureTypes": 0,
+      "editorTypes": 0,
+      "editorOrTestReferences": 0,
+      "editorOrTestAssemblies": 0,
+      "legacyDebugTypes": 0,
+      "reviewBootstrapCalledFromDirectorStart": false
+    },
+    "limits": [
+      "Startup/process/window evidence only; no human playthrough, gameplay interaction or screenshot produced by this script. Root performs the actual window capture separately.",
+      "WindowDisplayController can change settings at startup/exit. This is reported as changed-and-restored, never falsely byte-unchanged during execution.",
+      "Only settings.json and settings.json.bak can be restored, after complete user-file comparison and exclusive-lock current/backup hash checks. Campaign, unknown setting fields, added/deleted files and unrelated changes fail without automatic overwrite.",
+      "No power-loss atomicity across two settings files; a write error fails and preserves all evidence/backups. No previous process is ever terminated."
+    ]
+  },
+  "actualNormalTitleObservation": {
+    "attribution": "Root agent direct Sky observations, reported after the final startup; not performed by this archival pass.",
+    "windowHandle": 48892818,
+    "freshSuccessiveObservations": 2,
+    "observed": "Normal title screen with readable New/Load controls inside the window. No gameplay input. An earlier stale first Sky frame is not treated as evidence.",
+    "imageFilesArchived": false,
+    "limitation": "Sky returned inline images only; no capture payload/file was saved. The durable six Roster contact PNGs are separate evidence and are not title screenshots."
+  },
+  "versionControlScope": "Implementation and the enumerated validations are complete. Check develop history for version-control integration; this report is not evidence of a commit, push, main merge or public release."
+}

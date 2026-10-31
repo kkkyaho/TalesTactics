@@ -1,0 +1,663 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "Read-only selected actual Unity consecutive transition images",
+  "status": "changes_requested",
+  "productionApproval": false,
+  "unityExecutedByReviewer": false,
+  "resultFile": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\result.json",
+  "resultSha256": "0f11123d660440c541ce1e08597c00442b365a1add886458f2bfb4860533d278",
+  "candidateSelectionSha256": "9cf76a7965578440d766cbf1909477fae9307331c48898c84d319904fcfa1c57",
+  "automaticEvidence": {
+    "completedRuns": 96,
+    "expectedRuns": 96,
+    "pngCount": 1077,
+    "passed": true,
+    "errors": [],
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true
+  },
+  "scope": {
+    "owners": [
+      "mint",
+      "tear"
+    ],
+    "equipment": [
+      "base",
+      "signature"
+    ],
+    "directions": [
+      "Front",
+      "Back"
+    ],
+    "skillIds": [
+      "mint.0",
+      "tear.0"
+    ],
+    "timelines": 8,
+    "telemetrySamples": 508,
+    "imagesOpened": 48,
+    "framesPerTimeline": [
+      0,
+      8,
+      9,
+      43,
+      44,
+      52
+    ],
+    "transitionMeaning": "0 HQ idle; 8 HQ preparation; 9 premium16; 43 premium16 recovery; 44 HQ preparation; 52 HQ idle.",
+    "clessContinuousReviewedBy": "parent /root, not this reviewer"
+  },
+  "findings": [
+    {
+      "id": "MINT-SIG-BACK-HEAD",
+      "severity": "visible_continuity_difference",
+      "owner": "mint",
+      "equipment": "signature",
+      "directions": [
+        "Back"
+      ],
+      "frames": [
+        8,
+        9,
+        43,
+        44
+      ],
+      "observation": "Premium16 rear cap and hair are visibly wider than HQ preparation/idle; premium has a plain oval rear cap while HQ has a gold cross/ribbon decoration. Face/body height does not jump by the same amount.",
+      "interpretation": "Not clipping, extra staff, or whole-character displacement. It is a remaining illustration proportion/detail difference, more evident from the back.",
+      "recommendation": "Do not fix only by enlarging the whole HQ sprite: comparable overall height is already close. If uniform transition appearance is required, align the cap/hair drawing or explicitly accept this residual art difference."
+    },
+    {
+      "id": "TEAR-CAST-SCALE",
+      "severity": "visible_continuity_difference_needs_calibration",
+      "owner": "tear",
+      "equipment": [
+        "base",
+        "signature"
+      ],
+      "directions": [
+        "Front",
+        "Back"
+      ],
+      "frames": [
+        8,
+        9,
+        43,
+        44,
+        52
+      ],
+      "observation": "On entry to premium16 and return to HQ, head/hair and body visibly expand/shrink together. Base is more pronounced; signature shows a smaller but visible version. The staff remains singular and complete when not authored behind the body.",
+      "interpretation": "Raised arms, a crossed leg and flared cloth explain part of the silhouette change, but the head/face mass also changes. It should not be called visually seamless based on automatic pass.",
+      "recommendation": "Use static same-standing-pose calibration before changing PPU; base support about 1.07 and signature support about 1.10-1.14 are supported by the standing samples. Do not blindly enlarge all support by the larger cast16 apparent change, since premium16 has additional pose/body variation."
+    }
+  ],
+  "observations": [
+    "Mint base Front/Back: no severe head/body discontinuity, visible extra staff, clipping or gross foot-position jump in these six boundary images.",
+    "Mint signature Front: hair/cloth flares more in premium, but no comparable severe full-body scale jump; the face is unobscured in visible-face poses.",
+    "Every reviewed body, head and weapon remains within the render frame. No duplicate weapon was observed.",
+    "Tear signature Back premium16 staff is hidden by the authored rear-body pose; this alone is not a missing-weapon regression.",
+    "Front and Back are separately framed runs, so absolute pixel size across different runs is not compared.",
+    "Feet remain close at boundaries; small root motion/pose shifts exist. No calibrated anatomical foot landmark measurement was performed."
+  ],
+  "standingCalibration": {
+    "source": "TransitionOptical/3c2adf83184840d1ade77ae3678c5033, actual shared-camera renders",
+    "method": "Read-only RGB foreground extent in a 25px-wide vertical band centred on the world anchor. max channel difference from corner background >25; removes most side-held staff extent. This is a body-band proxy, not exact anatomy; AA/pose uncertainty 1-2px.",
+    "base": {
+      "premium0": [
+        58,
+        59,
+        58,
+        57
+      ],
+      "hq0": [
+        55,
+        53,
+        53,
+        55
+      ],
+      "motion0": [
+        55,
+        53,
+        55,
+        53
+      ],
+      "extra0": [
+        57,
+        53,
+        53,
+        54
+      ],
+      "polish3": [
+        55,
+        55,
+        54,
+        54
+      ]
+    },
+    "signature": {
+      "premium0": [
+        61,
+        62,
+        59,
+        59
+      ],
+      "hq0": [
+        53,
+        54,
+        54,
+        54
+      ],
+      "motion0": [
+        55,
+        56,
+        53,
+        54
+      ],
+      "extra0": [
+        54,
+        53,
+        52,
+        52
+      ],
+      "polish3": [
+        55,
+        56,
+        56,
+        56
+      ]
+    }
+  },
+  "limitations": [
+    "48 actual images were opened, not all 508 telemetry frames or all 1077 images in final-a. This is boundary sampling, not a human real-time playthrough.",
+    "The selected first spells use HQ preparation and HQ idle; they do not use polish sprites. No polish-to-idle coverage is falsely claimed here; polish representative samples were covered by the separate static report.",
+    "Normal/reduced VFX visibility, timing judgement, actual combat hit resolution and six-ally board readability are outside these isolated-model motion samples.",
+    "Original/source and save immutability are root-generated telemetry, independently read here; no player or Unity process was launched by this reviewer.",
+    "Automatic 96/96 passed means harness invariants passed, not final art approval; the visible continuity differences above remain."
+  ],
+  "reviews": [
+    {
+      "owner": "mint",
+      "equipment": "base",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\timeline.json",
+      "timelineSha256": "6e4a0597b4bed8d2c9776f64b602ccbfb3f94cf28fca15074f48b7b23d67aee1",
+      "telemetryFrames": 64,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "no_severe_defect_in_reviewed_boundaries",
+      "findings": [],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0000.png",
+          "sha256": "7ca9a4bf3c5169efa460aa82b7dcd6c47498d8edc9d521568b7b0eb834df2700",
+          "sprite": "mint-hq_0_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0008.png",
+          "sha256": "e8e391bd3180ca1570fc5a4fe64e29b376ea98e426f8ba1ab463da951aa4d6ce",
+          "sprite": "mint-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0009.png",
+          "sha256": "ec395899a7bcb2a4f2e99d1d2eac629106653031de027097c8785adfe4b729bb",
+          "sprite": "mint_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0043.png",
+          "sha256": "75b15781376164ee806e8f924e7b66a7d8fe44bc4902fc63e401bd4cd3fd9867",
+          "sprite": "mint_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0044.png",
+          "sha256": "501a194dda1445726d53dd39170360e7ff60e3a32b01162537d94a0b272758e7",
+          "sprite": "mint-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Front\\0052.png",
+          "sha256": "3523dddbb96ec077038068bf4b6dd036855e1069133f1c14317155f870cbabf7",
+          "sprite": "mint-hq_0_0",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "mint",
+      "equipment": "base",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\timeline.json",
+      "timelineSha256": "2a6dfe5c642197f9f162f9c34422206dec654aaa663824b62f37f3577fd3e033",
+      "telemetryFrames": 63,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "no_severe_defect_in_reviewed_boundaries",
+      "findings": [],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0000.png",
+          "sha256": "4dd15ae58948c15aed725d9608ed67a03ae265bdbc108335df3724c5a72ebaec",
+          "sprite": "mint-hq_0_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0008.png",
+          "sha256": "b49417ca21223ca35975a02749aa67a5257e9c304b5a31a10c8204f454db396e",
+          "sprite": "mint-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0009.png",
+          "sha256": "1f982e64a4806d3ce8812792c6dc6aae3f393bafada8492ec5f7ce14f954ac9c",
+          "sprite": "mint_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0043.png",
+          "sha256": "f3090e18a0206f2b22fe6c9b50a414b786f0efad2a836a369f1ae05b6babda63",
+          "sprite": "mint_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0044.png",
+          "sha256": "9d13cc616df562dbad33bb0b23245992c3aac815b16409955d96b0befcab89e6",
+          "sprite": "mint-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\base\\mint.0-Back\\0052.png",
+          "sha256": "01b65ce2fcd96c56e16e2e47d83db45e7242c3500eefbc98961aa72f4974f9ee",
+          "sprite": "mint-hq_0_1",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "mint",
+      "equipment": "signature",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\timeline.json",
+      "timelineSha256": "b66b8ec5eae656fca090f6781efb017c618a5a20be33b0c9667c0421b7e2e7df",
+      "telemetryFrames": 63,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "no_severe_defect_in_reviewed_boundaries",
+      "findings": [],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0000.png",
+          "sha256": "61450138b08dac7b5b91e867f454374abd2d3e9d1c87d698ae36ecf060a7470f",
+          "sprite": "mint-hq_0_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0008.png",
+          "sha256": "a797a2b8efe130bb8bafa5d02c84b65ae7e25d4893b89d7be1fba67303392fe1",
+          "sprite": "mint-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0009.png",
+          "sha256": "e5b151c8e9799fe07b6ce36c7c871c20670a3e5e6b29b1f394d67f7f0162843d",
+          "sprite": "mint-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0043.png",
+          "sha256": "f0108391b49df8719aeff3f27108e85b002ad3932165b370be33892710e65eff",
+          "sprite": "mint-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0044.png",
+          "sha256": "d02f9f351362e98933c3c9ac62035f80a7703b38f917e0faf6449ca1e234d4f2",
+          "sprite": "mint-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Front\\0052.png",
+          "sha256": "16ca91ee7bfea21bebc2f2299eb6225e2db4686cf8b13f9826b7913b3f73bed3",
+          "sprite": "mint-hq_0_0",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "mint",
+      "equipment": "signature",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\timeline.json",
+      "timelineSha256": "ec91fc3240acd525a58b3ea89c446e4f0cd982deaee8d34e09c8ea1f6643d086",
+      "telemetryFrames": 64,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "changes_requested",
+      "findings": [
+        "MINT-SIG-BACK-HEAD"
+      ],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0000.png",
+          "sha256": "c31fcd4555534709aaef1c927005b094e0860ae026e9a546296a557b406a942c",
+          "sprite": "mint-hq_0_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0008.png",
+          "sha256": "da10c81af40ea889879003baf97f095da88043edaa0426db86b59922a0cc0097",
+          "sprite": "mint-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0009.png",
+          "sha256": "9be779e8d2238df8bffa6cf06a564c9625a734e69ffcf9b78355c0617ff0aee7",
+          "sprite": "mint-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0043.png",
+          "sha256": "f70cd8d4a1c674394583528126687bcdd875c9605528e88141d5fe423bb075bd",
+          "sprite": "mint-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0044.png",
+          "sha256": "d322b59c89828dcf7a428f23013407b4b536e853cade59eae08c2b22e3049ca8",
+          "sprite": "mint-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\mint\\signature\\mint.0-Back\\0052.png",
+          "sha256": "c6e76da49420ef5d4574aa5574495a99330bf77569a2bb64320f274d43eeb27a",
+          "sprite": "mint-hq_0_1",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "tear",
+      "equipment": "base",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\timeline.json",
+      "timelineSha256": "1dd936f0fd12177d880afa152b16f3e80ed3ebe11e5e99b41d46c08e9374fb41",
+      "telemetryFrames": 64,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "changes_requested",
+      "findings": [
+        "TEAR-CAST-SCALE"
+      ],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0000.png",
+          "sha256": "a3479eb9c1fb4be7587164c0f34e17f946b168f422a247ba881f1c94c4d13ad3",
+          "sprite": "tear-hq_0_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0008.png",
+          "sha256": "fe5ef07ca34a194d9029b0f34c9101e72e83c9c8348fb7e760b90c96a04e7029",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0009.png",
+          "sha256": "a19e5cedb7f6536bb90909b6c596308cd6ab619e4172f2f2071e28ae70d3c4f4",
+          "sprite": "tear_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0043.png",
+          "sha256": "bb07721234c16b25a355d380e1bfb88b3fd0f692820d7d0632960cd4910f6974",
+          "sprite": "tear_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0044.png",
+          "sha256": "4b05e8289de28abc9ab0328b7899d2ae5924aa12ae6d4280e4565a95abdb6122",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Front\\0052.png",
+          "sha256": "9710b10444e6f5f911fefc43711bf823ccb5aedf3ba3e1246eea56ffe1fa9b5c",
+          "sprite": "tear-hq_0_0",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "tear",
+      "equipment": "base",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\timeline.json",
+      "timelineSha256": "4d4d98794f2f6fb3975270b5b17cc93ebe381c51ef33e9fe447557f09795bd87",
+      "telemetryFrames": 63,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "changes_requested",
+      "findings": [
+        "TEAR-CAST-SCALE"
+      ],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0000.png",
+          "sha256": "df23dba810eda990a4394330ee5a64e3138ce05adfb357fe445bfd28b9e17294",
+          "sprite": "tear-hq_0_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0008.png",
+          "sha256": "99f7dd5287f4c9d48ca6a5efa580db34aebd7b88e83acca2f9dc36d1aa0d7260",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0009.png",
+          "sha256": "787988f9035ca49266aacf10a5efa13c7bbb1137bda6dbbb61c80fe0c902a611",
+          "sprite": "tear_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0043.png",
+          "sha256": "2cba829eef3ce08cea192947005fd91304eeb0262a0a20fcaf4d339523878b3c",
+          "sprite": "tear_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0044.png",
+          "sha256": "45e71cd59b5ca0391879c2d13001db545820e94460b35d7854a0a6ebbf944166",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\base\\tear.0-Back\\0052.png",
+          "sha256": "9a5349f3aec074633ba62175499419fa0154b7c10c96edd48996835c25e92011",
+          "sprite": "tear-hq_0_1",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "tear",
+      "equipment": "signature",
+      "facing": "Front",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\timeline.json",
+      "timelineSha256": "f9cde598d02bf5c549a56164e24e84bf9f8a24eb748cadb2434a05ec935b5d0d",
+      "telemetryFrames": 64,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "changes_requested",
+      "findings": [
+        "TEAR-CAST-SCALE"
+      ],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0000.png",
+          "sha256": "ede9d4816f313249c97461c719f5df1972a0819a0ab802a287a5ae360949b862",
+          "sprite": "tear-hq_0_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0008.png",
+          "sha256": "03ecb1b67ac20df391cb479972c798b056317b2d30468d5562c12dbba091eaf3",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0009.png",
+          "sha256": "eb0e28e69054f9efbdf2cb805ad1529333ff5e655e9bfafefbc45746e0d524b4",
+          "sprite": "tear-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0043.png",
+          "sha256": "09cd3acd87eaf27b803a7b28b3a4200525668c159275064972c590c3c90a266e",
+          "sprite": "tear-premium_16_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0044.png",
+          "sha256": "79218dc65a03a41c858b8a1e004e3848e51ca7e35b8b55ace54cdd1064256be3",
+          "sprite": "tear-hq_2_0",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Front\\0052.png",
+          "sha256": "e6295f0d710747d1c11b7aaeb21d78c976dcc35f2a1b76b5540d78dcaf3b9a94",
+          "sprite": "tear-hq_0_0",
+          "visuallyOpened": true
+        }
+      ]
+    },
+    {
+      "owner": "tear",
+      "equipment": "signature",
+      "facing": "Back",
+      "timeline": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\timeline.json",
+      "timelineSha256": "f56832567986d69e71ef4af89c78972b99a3672e1b6c5ed4c4a7f9a2652cac71",
+      "telemetryFrames": 63,
+      "finished": true,
+      "clean": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "insideFrameAllSamples": true,
+      "visualConclusion": "changes_requested",
+      "findings": [
+        "TEAR-CAST-SCALE"
+      ],
+      "images": [
+        {
+          "frame": 0,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0000.png",
+          "sha256": "ab91432ca092bd68619d1bcad661751959dc5d794cba3faf85f4d5531396c88f",
+          "sprite": "tear-hq_0_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 8,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0008.png",
+          "sha256": "3e81e0b9ea7977bd7ade07ce2a59d8d87558b28d8741e2422d506e7e528b843c",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 9,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0009.png",
+          "sha256": "0245995efa637cffc1eb7903cc63621876442c9d189667efdfdfa164858ef78d",
+          "sprite": "tear-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 43,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0043.png",
+          "sha256": "59dd92a88a544b79b72ba4b964dd122232c2dc2e8b47e6b05537948e5af219b1",
+          "sprite": "tear-premium_16_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 44,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0044.png",
+          "sha256": "c7d9f4f68460defd1762df99cd004e73b17ed787a618c3753dc13e6f6d4e6330",
+          "sprite": "tear-hq_2_1",
+          "visuallyOpened": true
+        },
+        {
+          "frame": 52,
+          "file": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\CandidateMotion\\final-a\\tear\\signature\\tear.0-Back\\0052.png",
+          "sha256": "a25a74db994b0c6476e398b1ce659a3bef591438c1546b331c6bd054c434cb58",
+          "sprite": "tear-hq_0_1",
+          "visuallyOpened": true
+        }
+      ]
+    }
+  ]
+}

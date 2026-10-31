@@ -1,0 +1,2122 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-31T12:42:31.689449+00:00",
+  "status": "Eight selected native candidates; not applied to production or Unity validated",
+  "tool": "Built-in image_gen.imagegen only; one call per asset/repair. No Python raster editing, resizing, alpha cleanup or post-generation pixel mutation.",
+  "character": "mint",
+  "scope": "Eight transition continuity atlases, 16 frames each (128 intended poses). Base and signature weapons retained as separate appearances.",
+  "sourceUnchanged": true,
+  "selectionCount": 8,
+  "attemptCount": 12,
+  "limitations": [
+    "Read-only alpha component checks are not the full Unity component ownership/packing audit.",
+    "Native alpha>128 has 16 independent bodies and zero image-edge contacts per selected image. Faint alpha pixels and nominal grid gutters may require explicit lossless component packing.",
+    "No live animation, movement anchor, per-frame apparent body-size or weapon-map engine validation performed by this agent."
+  ],
+  "jobs": [
+    {
+      "key": "PixelCampaign-mint-hq",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+      "sourceSha256": "65de516b2e74dc6d79164193a9e69c3cfd74f24ef8a9d5d8cba7f031a75ebcd0",
+      "sourceMetaSha256": "1f05e68f21c9f5c08dcef3910bb027ed937d037805d2a2405f2328e066d86b4b",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-mint-hq\\reference-manifest.json",
+      "referenceManifestSha256": "693a2ca2e73651b60018c109ee610234b7244cdc1bbeccc7b7a50e35023d9def",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-hq/source-sheet-00.png",
+      "selectedSha256": "f2bd3b80fba2d8ab0dc5fbef9cea693b5e8588139bf09259738253c72376832d",
+      "selectedAttempt": 2,
+      "frameNames": [
+        "mint-hq_0_0",
+        "mint-hq_0_1",
+        "mint-hq_0_2",
+        "mint-hq_0_3",
+        "mint-hq_1_0",
+        "mint-hq_1_1",
+        "mint-hq_1_2",
+        "mint-hq_1_3",
+        "mint-hq_2_0",
+        "mint-hq_2_1",
+        "mint-hq_2_2",
+        "mint-hq_2_3",
+        "mint-hq_3_0",
+        "mint-hq_3_1",
+        "mint-hq_3_2",
+        "mint-hq_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-mint-hq",
+        "attempt": 2,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5dba5fca-edc7-47e0-99ae-66760727ce10.png",
+        "sha256": "f2bd3b80fba2d8ab0dc5fbef9cea693b5e8588139bf09259738253c72376832d",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 844949,
+        "alphaPositive": 728095,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 39641,
+            "x": 24,
+            "y": 27,
+            "width": 231,
+            "height": 255,
+            "centerX": 138.0,
+            "centerY": 162.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 40191,
+            "x": 298,
+            "y": 28,
+            "width": 240,
+            "height": 253,
+            "centerX": 413.0,
+            "centerY": 160.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 37146,
+            "x": 564,
+            "y": 30,
+            "width": 235,
+            "height": 256,
+            "centerX": 680.0,
+            "centerY": 162.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 37660,
+            "x": 849,
+            "y": 30,
+            "width": 242,
+            "height": 252,
+            "centerX": 971.0,
+            "centerY": 160.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 42145,
+            "x": 14,
+            "y": 305,
+            "width": 257,
+            "height": 252,
+            "centerX": 149.0,
+            "centerY": 436.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 41560,
+            "x": 290,
+            "y": 305,
+            "width": 273,
+            "height": 251,
+            "centerX": 409.0,
+            "centerY": 435.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 38903,
+            "x": 557,
+            "y": 309,
+            "width": 267,
+            "height": 248,
+            "centerX": 680.0,
+            "centerY": 438.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38345,
+            "x": 848,
+            "y": 308,
+            "width": 263,
+            "height": 248,
+            "centerX": 988.0,
+            "centerY": 435.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 42375,
+            "x": 26,
+            "y": 576,
+            "width": 231,
+            "height": 270,
+            "centerX": 141.0,
+            "centerY": 724.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 41810,
+            "x": 308,
+            "y": 576,
+            "width": 224,
+            "height": 270,
+            "centerX": 417.0,
+            "centerY": 722.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 38188,
+            "x": 580,
+            "y": 581,
+            "width": 221,
+            "height": 265,
+            "centerX": 691.0,
+            "centerY": 717.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 38792,
+            "x": 869,
+            "y": 581,
+            "width": 224,
+            "height": 267,
+            "centerX": 978.0,
+            "centerY": 717.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 45187,
+            "x": 16,
+            "y": 870,
+            "width": 248,
+            "height": 260,
+            "centerX": 140.0,
+            "centerY": 1003.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 42675,
+            "x": 306,
+            "y": 869,
+            "width": 230,
+            "height": 260,
+            "centerX": 420.0,
+            "centerY": 1001.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 39894,
+            "x": 573,
+            "y": 873,
+            "width": 238,
+            "height": 258,
+            "centerX": 688.0,
+            "centerY": 1008.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 42490,
+            "x": 866,
+            "y": 877,
+            "width": 237,
+            "height": 255,
+            "centerX": 979.0,
+            "centerY": 1008.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-mint-hq",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRow 1: four idle views. Row 2: staff thrust attack with original energetic expression. Row 3: eyes-closed prayer/casting, hands together on staff, back view hides hands. Row 4: open-palm support/guard stance; preserve exactly which hand carries staff.\nBase weapon: ornate gold star/flower crown surrounding one round deep-blue orb, long dark shaft and gold bottom. NEVER replace this with a pointed crystal.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3d695372-e553-46aa-88b9-4bab32d14753.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3d695372-e553-46aa-88b9-4bab32d14753.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "rejected: weapon visibility differs; retained for provenance",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-hq/source-sheet-00-rejected-01.png",
+          "outputSha256": "bf60df0528cd2bc49920be84ea5bf7c60c1da6ce01f7f33b10f8a792526aa1c9",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-hq/reference-00.png",
+              "sha256": "570a7be4d47af9ad88f38fde293dd8f4a47241f6273d9684d81ae53f46b77a19"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        },
+        {
+          "index": 0,
+          "key": "PixelCampaign-mint-hq",
+          "attempt": 2,
+          "references": [
+            "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3d695372-e553-46aa-88b9-4bab32d14753.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "prompt": "Precise sprite-sheet correction. Image 1 is the edit target (premium compact Mint candidate). Image 2 is the exact pose and weapon-visibility authority. Image 3 is the approved premium proportions/style reference. Keep Image 1's compact large-head/short-body proportions, crisp premium linework and every intact pose. Correct ONLY row 3 column 2 and row 4 column 2. Row 3 column 2 is the back-facing prayer pose: the original Image 2 shows a small ornate GOLD STAFF HEAD containing the BLUE ROUND ORB peeking ABOVE-LEFT of the cleric cap; restore that visible gold-and-blue staff-head portion, with the shaft/hand still occluded behind her body. Row 4 column 2 back-facing open-palm stance: there must be ONE open free palm on the LEFT side of the cell and her OTHER hand gripping the ornate blue-orb staff on the RIGHT side, fully matching Image 2. The current Image 1 incorrectly has two open palms and no staff there; replace the right open palm with the correct gloved staff-gripping hand and staff. Preserve exactly 16 separate characters, original four directional columns and four pose rows, canvas 1122x1402 with the fifth row blank and real transparent alpha. Do not change character proportions, move/reorder poses, crop, add effects, glow, text, background or shadows. Do not erase any staff part that is visible in Image 2. This is a small local weapon-visibility repair, not a redesign. All 16 bodies and their weapons must remain isolated and completely inside the canvas.",
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5dba5fca-edc7-47e0-99ae-66760727ce10.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-5dba5fca-edc7-47e0-99ae-66760727ce10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; source pose/weapon visibility repair visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-hq/source-sheet-00.png",
+          "outputSha256": "f2bd3b80fba2d8ab0dc5fbef9cea693b5e8588139bf09259738253c72376832d",
+          "inputs": [
+            {
+              "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3d695372-e553-46aa-88b9-4bab32d14753.png",
+              "sha256": "bf60df0528cd2bc49920be84ea5bf7c60c1da6ce01f7f33b10f8a792526aa1c9"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-hq/reference-00.png",
+              "sha256": "570a7be4d47af9ad88f38fde293dd8f4a47241f6273d9684d81ae53f46b77a19"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-mint-motion",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-motion.png",
+      "sourceSha256": "6e339bc8253b3fe6607bacbde26825118f5fc94efe560425cb20533099d5b9e9",
+      "sourceMetaSha256": "89e7c6eaafbd53be37cb8f5086ea3db38fbcd97b62b8eed589c680c2ad8d4434",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-mint-motion\\reference-manifest.json",
+      "referenceManifestSha256": "735d3ae613fde1f4582dd6cac89c50262a352bab84d3e7c8df95880a0f41518a",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-motion/source-sheet-00.png",
+      "selectedSha256": "9583363db01d7b8f27856b41670bd0e8d36100a8d70ddb057ad8b753c4e44158",
+      "selectedAttempt": 2,
+      "frameNames": [
+        "mint-motion_0_0",
+        "mint-motion_0_1",
+        "mint-motion_0_2",
+        "mint-motion_0_3",
+        "mint-motion_1_0",
+        "mint-motion_1_1",
+        "mint-motion_1_2",
+        "mint-motion_1_3",
+        "mint-motion_2_0",
+        "mint-motion_2_1",
+        "mint-motion_2_2",
+        "mint-motion_2_3",
+        "mint-motion_3_0",
+        "mint-motion_3_1",
+        "mint-motion_3_2",
+        "mint-motion_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-mint-motion",
+        "attempt": 2,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fb329dc9-645b-4ad4-86d7-efa5a57ac8ea.png",
+        "sha256": "9583363db01d7b8f27856b41670bd0e8d36100a8d70ddb057ad8b753c4e44158",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 863095,
+        "alphaPositive": 709949,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 42451,
+            "x": 34,
+            "y": 48,
+            "width": 241,
+            "height": 273,
+            "centerX": 154.0,
+            "centerY": 188.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 40324,
+            "x": 319,
+            "y": 59,
+            "width": 222,
+            "height": 266,
+            "centerX": 433.0,
+            "centerY": 197.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 39108,
+            "x": 589,
+            "y": 54,
+            "width": 235,
+            "height": 268,
+            "centerX": 704.0,
+            "centerY": 197.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 39364,
+            "x": 860,
+            "y": 50,
+            "width": 238,
+            "height": 271,
+            "centerX": 980.0,
+            "centerY": 195.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 43220,
+            "x": 34,
+            "y": 341,
+            "width": 245,
+            "height": 273,
+            "centerX": 156.0,
+            "centerY": 480.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 41246,
+            "x": 313,
+            "y": 345,
+            "width": 230,
+            "height": 269,
+            "centerX": 432.0,
+            "centerY": 484.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 38672,
+            "x": 583,
+            "y": 343,
+            "width": 234,
+            "height": 269,
+            "centerX": 694.0,
+            "centerY": 485.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 43133,
+            "x": 868,
+            "y": 341,
+            "width": 233,
+            "height": 272,
+            "centerX": 988.0,
+            "centerY": 490.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 43149,
+            "x": 30,
+            "y": 640,
+            "width": 243,
+            "height": 276,
+            "centerX": 150.0,
+            "centerY": 779.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 42368,
+            "x": 323,
+            "y": 649,
+            "width": 221,
+            "height": 268,
+            "centerX": 438.0,
+            "centerY": 787.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 38949,
+            "x": 596,
+            "y": 644,
+            "width": 228,
+            "height": 270,
+            "centerX": 705.0,
+            "centerY": 780.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 40872,
+            "x": 873,
+            "y": 647,
+            "width": 223,
+            "height": 270,
+            "centerX": 986.0,
+            "centerY": 786.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 26588,
+            "x": 17,
+            "y": 949,
+            "width": 278,
+            "height": 151,
+            "centerX": 150.0,
+            "centerY": 1034.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 26171,
+            "x": 311,
+            "y": 947,
+            "width": 254,
+            "height": 152,
+            "centerX": 426.0,
+            "centerY": 1035.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 25077,
+            "x": 577,
+            "y": 953,
+            "width": 259,
+            "height": 148,
+            "centerX": 714.0,
+            "centerY": 1034.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 25026,
+            "x": 841,
+            "y": 955,
+            "width": 266,
+            "height": 147,
+            "centerX": 969.0,
+            "centerY": 1037.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-mint-motion",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRows 1 and 2: distinct walking gait phases, retain which foot leads. Row 3: hurt/staggering with eyes closed and same arm/leg pose. Row 4: collapsed prone/unconscious on side/front/back exactly as reference, horizontal staff held near floor. Do not replace prone poses with standing sprites.\nBase weapon: ornate gold star/flower crown surrounding one round deep-blue orb, long dark shaft and gold bottom. NEVER replace this with a pointed crystal.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-motion/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e9ffe9f3-eca0-48dc-bb11-f745278bae3e.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e9ffe9f3-eca0-48dc-bb11-f745278bae3e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "rejected: weapon visibility differs; retained for provenance",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-motion/source-sheet-00-rejected-01.png",
+          "outputSha256": "38fee2733acb473964c34e5e047f9f7cc6d935547c3a399dae45de9ce9e76419",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-motion/reference-00.png",
+              "sha256": "495135457bf0ff49887d1d69a7c111f942e23841a291feecf869913918b983c5"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "key": "PixelCampaign-mint-motion",
+          "attempt": 2,
+          "references": [
+            "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e9ffe9f3-eca0-48dc-bb11-f745278bae3e.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-motion/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "prompt": "Precise sprite-sheet correction. Image 1 is the edit target (premium compact Mint candidate). Image 2 is the exact pose and weapon-visibility authority. Image 3 is the approved premium proportions/style reference. Keep Image 1's compact large-head/short-body proportions, crisp premium linework and every intact pose. Correct ONLY row 2 column 4, the left-facing walking pose. Image 1 mistakenly omits her staff. Restore the ornate GOLD round-BLUE-ORB staff behind/right of her hair, with the head visible near shoulder/hat height on the RIGHT side of the cell and her right-side glove gripping the dark shaft, as seen in the exact corresponding cell of Image 2. Keep the forward open free hand and walking foot positions unchanged. Do not add, remove or change the visible staff in any other cell. Preserve exactly 16 separate characters, original four directional columns and four pose rows, canvas 1122x1402 with the fifth row blank and real transparent alpha. Do not change character proportions, move/reorder poses, crop, add effects, glow, text, background or shadows. Do not erase any staff part that is visible in Image 2. This is a small local weapon-visibility repair, not a redesign. All 16 bodies and their weapons must remain isolated and completely inside the canvas.",
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fb329dc9-645b-4ad4-86d7-efa5a57ac8ea.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-fb329dc9-645b-4ad4-86d7-efa5a57ac8ea.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; source pose/weapon visibility repair visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-motion/source-sheet-00.png",
+          "outputSha256": "9583363db01d7b8f27856b41670bd0e8d36100a8d70ddb057ad8b753c4e44158",
+          "inputs": [
+            {
+              "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e9ffe9f3-eca0-48dc-bb11-f745278bae3e.png",
+              "sha256": "38fee2733acb473964c34e5e047f9f7cc6d935547c3a399dae45de9ce9e76419"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-motion/reference-00.png",
+              "sha256": "495135457bf0ff49887d1d69a7c111f942e23841a291feecf869913918b983c5"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-mint-extra",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-extra.png",
+      "sourceSha256": "cb6d02d42b2b814e0a7409d98dd0b4de5f852f43fcce23f7ff0b73a15c57a37a",
+      "sourceMetaSha256": "c45cb9f711cc2f90813a778d33e068e8d8b4845aa5f572bdeeb2ed722b031b7e",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-mint-extra\\reference-manifest.json",
+      "referenceManifestSha256": "53df1ddd036c308f9241bb3430d11b5de6781aa0d757024fe0ee847dc3c303af",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-extra/source-sheet-00.png",
+      "selectedSha256": "15ed2e7315daef059be83c8d38bd338068a056c5e39d3e8d003f9f70e906d4ac",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "mint-extra_0_0",
+        "mint-extra_0_1",
+        "mint-extra_0_2",
+        "mint-extra_0_3",
+        "mint-extra_1_0",
+        "mint-extra_1_1",
+        "mint-extra_1_2",
+        "mint-extra_1_3",
+        "mint-extra_2_0",
+        "mint-extra_2_1",
+        "mint-extra_2_2",
+        "mint-extra_2_3",
+        "mint-extra_3_0",
+        "mint-extra_3_1",
+        "mint-extra_3_2",
+        "mint-extra_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-mint-extra",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-cdadf5e6-cb2c-4aec-9fd5-2a9aed0fa2e8.png",
+        "sha256": "15ed2e7315daef059be83c8d38bd338068a056c5e39d3e8d003f9f70e906d4ac",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 811065,
+        "alphaPositive": 761979,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 40742,
+            "x": 41,
+            "y": 38,
+            "width": 229,
+            "height": 263,
+            "centerX": 150.0,
+            "centerY": 171.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 41672,
+            "x": 309,
+            "y": 36,
+            "width": 236,
+            "height": 265,
+            "centerX": 427.0,
+            "centerY": 166.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 37121,
+            "x": 589,
+            "y": 39,
+            "width": 219,
+            "height": 262,
+            "centerX": 701.0,
+            "centerY": 168.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 37349,
+            "x": 859,
+            "y": 39,
+            "width": 228,
+            "height": 263,
+            "centerX": 969.0,
+            "centerY": 167.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 42390,
+            "x": 34,
+            "y": 323,
+            "width": 236,
+            "height": 267,
+            "centerX": 147.0,
+            "centerY": 458.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 38494,
+            "x": 315,
+            "y": 324,
+            "width": 214,
+            "height": 266,
+            "centerX": 424.0,
+            "centerY": 463.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 37838,
+            "x": 582,
+            "y": 325,
+            "width": 235,
+            "height": 264,
+            "centerX": 699.0,
+            "centerY": 456.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38703,
+            "x": 850,
+            "y": 323,
+            "width": 239,
+            "height": 266,
+            "centerX": 972.0,
+            "centerY": 455.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 41616,
+            "x": 40,
+            "y": 608,
+            "width": 230,
+            "height": 267,
+            "centerX": 153.0,
+            "centerY": 753.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 40308,
+            "x": 312,
+            "y": 606,
+            "width": 222,
+            "height": 267,
+            "centerX": 424.0,
+            "centerY": 747.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 39246,
+            "x": 586,
+            "y": 608,
+            "width": 227,
+            "height": 265,
+            "centerX": 703.0,
+            "centerY": 744.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 39001,
+            "x": 861,
+            "y": 607,
+            "width": 227,
+            "height": 266,
+            "centerX": 971.0,
+            "centerY": 742.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 46258,
+            "x": 14,
+            "y": 894,
+            "width": 258,
+            "height": 254,
+            "centerX": 149.0,
+            "centerY": 1021.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 46089,
+            "x": 305,
+            "y": 891,
+            "width": 256,
+            "height": 258,
+            "centerX": 427.0,
+            "centerY": 1019.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 40842,
+            "x": 574,
+            "y": 892,
+            "width": 252,
+            "height": 256,
+            "centerX": 692.0,
+            "centerY": 1019.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 43332,
+            "x": 864,
+            "y": 896,
+            "width": 241,
+            "height": 253,
+            "centerX": 982.0,
+            "centerY": 1025.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-mint-extra",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRows 1 and 2: distinct small walking/step poses; row 2 back view conceals the staff completely exactly as reference. Row 3: eyes-closed prayer/casting. Row 4: open-palm support/guard with staff in the original hand.\nBase weapon: ornate gold star/flower crown surrounding one round deep-blue orb, long dark shaft and gold bottom. NEVER replace this with a pointed crystal.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-extra/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-cdadf5e6-cb2c-4aec-9fd5-2a9aed0fa2e8.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-cdadf5e6-cb2c-4aec-9fd5-2a9aed0fa2e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; 16 poses/directions/weapon visibility visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-extra/source-sheet-00.png",
+          "outputSha256": "15ed2e7315daef059be83c8d38bd338068a056c5e39d3e8d003f9f70e906d4ac",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-extra/reference-00.png",
+              "sha256": "75febf25ec9984b6229ed09220c5ae7c7307f73e5b61eabc6087f75cadc04339"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "PixelCampaign-mint-polish",
+      "source": "Assets/TalesTactics/Art/PixelCampaign/mint-polish.png",
+      "sourceSha256": "797eb23efbbe8da094503e95d8239ea2c030fb4a60721a5ebe5225b410be376c",
+      "sourceMetaSha256": "827d59075dfb9ecd81467b77f484e19687f5fd53dbd3251b16b8114da9a23f94",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\PixelCampaign-mint-polish\\reference-manifest.json",
+      "referenceManifestSha256": "ce7f71411cb148ce51089735b7e53796057d1dabf5b1b6b4551954ea258c9ec5",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-polish/source-sheet-00.png",
+      "selectedSha256": "912bf524c9f7556ad08b4a3c21862a37207a1ff4a3e0f8617196841dc95cfdaa",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "mint-polish_0_0",
+        "mint-polish_0_1",
+        "mint-polish_0_2",
+        "mint-polish_0_3",
+        "mint-polish_1_0",
+        "mint-polish_1_1",
+        "mint-polish_1_2",
+        "mint-polish_1_3",
+        "mint-polish_2_0",
+        "mint-polish_2_1",
+        "mint-polish_2_2",
+        "mint-polish_2_3",
+        "mint-polish_3_0",
+        "mint-polish_3_1",
+        "mint-polish_3_2",
+        "mint-polish_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "PixelCampaign-mint-polish",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-123251d4-d5e2-46dd-a14f-6831de1e2bb1.png",
+        "sha256": "912bf524c9f7556ad08b4a3c21862a37207a1ff4a3e0f8617196841dc95cfdaa",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 908046,
+        "alphaPositive": 664998,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 40061,
+            "x": 47,
+            "y": 35,
+            "width": 222,
+            "height": 281,
+            "centerX": 151.0,
+            "centerY": 196.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 39256,
+            "x": 301,
+            "y": 34,
+            "width": 218,
+            "height": 281,
+            "centerX": 412.0,
+            "centerY": 197.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 33895,
+            "x": 587,
+            "y": 46,
+            "width": 204,
+            "height": 271,
+            "centerX": 684.0,
+            "centerY": 208.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 36727,
+            "x": 884,
+            "y": 34,
+            "width": 196,
+            "height": 283,
+            "centerX": 988.0,
+            "centerY": 200.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 37209,
+            "x": 17,
+            "y": 354,
+            "width": 262,
+            "height": 232,
+            "centerX": 168.0,
+            "centerY": 473.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 35948,
+            "x": 300,
+            "y": 354,
+            "width": 256,
+            "height": 234,
+            "centerX": 407.0,
+            "centerY": 472.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 35623,
+            "x": 556,
+            "y": 358,
+            "width": 274,
+            "height": 232,
+            "centerX": 673.0,
+            "centerY": 479.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 34098,
+            "x": 841,
+            "y": 358,
+            "width": 266,
+            "height": 232,
+            "centerX": 993.0,
+            "centerY": 480.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 37030,
+            "x": 50,
+            "y": 608,
+            "width": 205,
+            "height": 286,
+            "centerX": 151.0,
+            "centerY": 775.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 36262,
+            "x": 320,
+            "y": 608,
+            "width": 201,
+            "height": 286,
+            "centerX": 421.0,
+            "centerY": 780.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 34366,
+            "x": 579,
+            "y": 610,
+            "width": 194,
+            "height": 286,
+            "centerX": 692.0,
+            "centerY": 778.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 34444,
+            "x": 907,
+            "y": 607,
+            "width": 189,
+            "height": 290,
+            "centerX": 984.0,
+            "centerY": 776.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 37302,
+            "x": 22,
+            "y": 920,
+            "width": 235,
+            "height": 243,
+            "centerX": 140.0,
+            "centerY": 1044.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 36025,
+            "x": 312,
+            "y": 924,
+            "width": 234,
+            "height": 238,
+            "centerX": 422.0,
+            "centerY": 1044.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 33392,
+            "x": 578,
+            "y": 924,
+            "width": 229,
+            "height": 244,
+            "centerX": 688.0,
+            "centerY": 1050.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 32484,
+            "x": 875,
+            "y": 926,
+            "width": 224,
+            "height": 242,
+            "centerX": 993.0,
+            "centerY": 1050.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "PixelCampaign-mint-polish",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRow 1: staff raised over shoulder/head, same arm silhouette. Row 2: staff extended forward horizontally/thrust. Row 3: staff raised vertically along center/front, same hand placement. Row 4: eyes-closed relaxed recovery, lowered staff and same open free hand.\nBase weapon: ornate gold star/flower crown surrounding one round deep-blue orb, long dark shaft and gold bottom. NEVER replace this with a pointed crystal.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment. In row 4 column 2 (back view), keep the visible staff on the RIGHT of the image and the single raised/open free hand on the LEFT. Do not draw two open palms and do not erase that staff.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-polish/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-123251d4-d5e2-46dd-a14f-6831de1e2bb1.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-123251d4-d5e2-46dd-a14f-6831de1e2bb1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; 16 poses/directions/weapon visibility visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/PixelCampaign-mint-polish/source-sheet-00.png",
+          "outputSha256": "912bf524c9f7556ad08b4a3c21862a37207a1ff4a3e0f8617196841dc95cfdaa",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/PixelCampaign-mint-polish/reference-00.png",
+              "sha256": "56340f93b4dd441cc2d145e1676f824915f0935ab14ed70fd7f4a53666968767"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/MotionPremium-mint/sheet-00-v6.png",
+              "sha256": "69610d5808e3142c98fd81ed23437a525231a08e212c2842fee610972fe08af8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-mint-hq",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/mint-hq.png",
+      "sourceSha256": "59a982a651b8936753f8b4fc86bb3577224643cebf8ef50e1a74c463b4657a34",
+      "sourceMetaSha256": "7e99b466d03b77a5482dc3acc78afa1aef4f24dddb61f19052b18f7a2484809a",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-mint-hq\\reference-manifest.json",
+      "referenceManifestSha256": "17c55f3340c79d5bc0d10c895901b99778c3dea32d55268471c63dd677f1de99",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-hq/source-sheet-00.png",
+      "selectedSha256": "e251339e80c065395d1f705435d6be4b75a70a3e7fe14be9ce95fabd2e23eb96",
+      "selectedAttempt": 2,
+      "frameNames": [
+        "mint-hq_0_0",
+        "mint-hq_0_1",
+        "mint-hq_0_2",
+        "mint-hq_0_3",
+        "mint-hq_1_0",
+        "mint-hq_1_1",
+        "mint-hq_1_2",
+        "mint-hq_1_3",
+        "mint-hq_2_0",
+        "mint-hq_2_1",
+        "mint-hq_2_2",
+        "mint-hq_2_3",
+        "mint-hq_3_0",
+        "mint-hq_3_1",
+        "mint-hq_3_2",
+        "mint-hq_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-mint-hq",
+        "attempt": 2,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-50d3fb36-b608-419d-b624-38d330775323.png",
+        "sha256": "e251339e80c065395d1f705435d6be4b75a70a3e7fe14be9ce95fabd2e23eb96",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 837478,
+        "alphaPositive": 735566,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 43294,
+            "x": 34,
+            "y": 59,
+            "width": 232,
+            "height": 272,
+            "centerX": 143.0,
+            "centerY": 205.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 40783,
+            "x": 307,
+            "y": 66,
+            "width": 224,
+            "height": 261,
+            "centerX": 425.0,
+            "centerY": 209.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 39323,
+            "x": 573,
+            "y": 59,
+            "width": 214,
+            "height": 273,
+            "centerX": 688.0,
+            "centerY": 207.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 39487,
+            "x": 879,
+            "y": 56,
+            "width": 213,
+            "height": 276,
+            "centerX": 977.0,
+            "centerY": 200.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 42080,
+            "x": 16,
+            "y": 360,
+            "width": 255,
+            "height": 251,
+            "centerX": 148.0,
+            "centerY": 493.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 41066,
+            "x": 294,
+            "y": 360,
+            "width": 259,
+            "height": 253,
+            "centerX": 418.0,
+            "centerY": 498.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 37362,
+            "x": 564,
+            "y": 372,
+            "width": 268,
+            "height": 240,
+            "centerX": 688.0,
+            "centerY": 502.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38371,
+            "x": 846,
+            "y": 366,
+            "width": 262,
+            "height": 244,
+            "centerX": 988.0,
+            "centerY": 497.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 41351,
+            "x": 34,
+            "y": 637,
+            "width": 228,
+            "height": 269,
+            "centerX": 146.0,
+            "centerY": 785.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 39340,
+            "x": 314,
+            "y": 640,
+            "width": 214,
+            "height": 265,
+            "centerX": 420.0,
+            "centerY": 786.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 36488,
+            "x": 581,
+            "y": 640,
+            "width": 202,
+            "height": 267,
+            "centerX": 690.0,
+            "centerY": 781.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 37616,
+            "x": 884,
+            "y": 639,
+            "width": 207,
+            "height": 265,
+            "centerX": 979.0,
+            "centerY": 778.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 45335,
+            "x": 24,
+            "y": 927,
+            "width": 234,
+            "height": 263,
+            "centerX": 142.0,
+            "centerY": 1067.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 43597,
+            "x": 307,
+            "y": 928,
+            "width": 233,
+            "height": 262,
+            "centerX": 426.0,
+            "centerY": 1065.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 41048,
+            "x": 582,
+            "y": 931,
+            "width": 228,
+            "height": 259,
+            "centerX": 704.0,
+            "centerY": 1069.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 42685,
+            "x": 878,
+            "y": 929,
+            "width": 224,
+            "height": 261,
+            "centerX": 990.0,
+            "centerY": 1070.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-mint-hq",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRow 1: four idle views. Row 2: staff thrust attack with original energetic expression. Row 3: eyes-closed prayer/casting, hands together on staff, back view hides hands. Row 4: open-palm support/guard stance; preserve exactly which hand carries staff.\nSignature weapon: straight black/silver shaft, gold collar/tip, single faceted bright blue pointed crystal. NEVER replace this with a round orb or ornate star head.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment. In row 4 column 2 (back view), keep the visible staff on the RIGHT of the image and the single raised/open free hand on the LEFT. Do not draw two open palms and do not erase that staff.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3da004eb-9b6c-4b65-bcd3-536289ee1335.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3da004eb-9b6c-4b65-bcd3-536289ee1335.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "rejected: weapon visibility differs; retained for provenance",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-hq/source-sheet-00-rejected-01.png",
+          "outputSha256": "b63e4d1d799811c65345e206b5ab6432839109f9c2b01a1046027190d35973be",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-hq/reference-00.png",
+              "sha256": "cba2741f6af899b5911eb97e6e86ee98dcec46aaf5bac0425f736e3dce46f493"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "key": "SignatureWeapons-mint-hq",
+          "attempt": 2,
+          "references": [
+            "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3da004eb-9b6c-4b65-bcd3-536289ee1335.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-hq/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "prompt": "Precise sprite-sheet correction. Image 1 is the edit target (premium compact Mint candidate). Image 2 is the exact pose and weapon-visibility authority. Image 3 is the approved premium proportions/style reference. Keep Image 1's compact large-head/short-body proportions, crisp premium linework and every intact pose. Correct ONLY row 3 column 2, the back-facing prayer pose. Restore the small pointed BLUE CRYSTAL staff head, gold collar and tiny adjoining shaft portion peeking ABOVE-LEFT of her cap, exactly like the corresponding cell of Image 2. Image 1 currently hides the entire staff in this cell, which is wrong. Her hands and rest of the staff remain concealed behind her body; only the original exposed crystal portion should be restored. Preserve exactly 16 separate characters, original four directional columns and four pose rows, canvas 1122x1402 with the fifth row blank and real transparent alpha. Do not change character proportions, move/reorder poses, crop, add effects, glow, text, background or shadows. Do not erase any staff part that is visible in Image 2. This is a small local weapon-visibility repair, not a redesign. All 16 bodies and their weapons must remain isolated and completely inside the canvas.",
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-50d3fb36-b608-419d-b624-38d330775323.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-50d3fb36-b608-419d-b624-38d330775323.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; source pose/weapon visibility repair visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-hq/source-sheet-00.png",
+          "outputSha256": "e251339e80c065395d1f705435d6be4b75a70a3e7fe14be9ce95fabd2e23eb96",
+          "inputs": [
+            {
+              "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-3da004eb-9b6c-4b65-bcd3-536289ee1335.png",
+              "sha256": "b63e4d1d799811c65345e206b5ab6432839109f9c2b01a1046027190d35973be"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-hq/reference-00.png",
+              "sha256": "cba2741f6af899b5911eb97e6e86ee98dcec46aaf5bac0425f736e3dce46f493"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-mint-motion",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/mint-motion.png",
+      "sourceSha256": "d0b2833180b9fb66d670bc7d2f4f5a523caadbd6f755bb617af6cf43e6764546",
+      "sourceMetaSha256": "1d70ae05adbccdb5ad6050de6f8936c610eaf53c8af57194682692619df13e67",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-mint-motion\\reference-manifest.json",
+      "referenceManifestSha256": "46d5235c7f839043cfaf5e2cb2f6d81129f1ec46593b284dfcb6759f20142786",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-motion/source-sheet-00.png",
+      "selectedSha256": "65b5f2b79bd2cb65af1d6db849d052e53120ee9421866db76804f164bda3c9f2",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "mint-motion_0_0",
+        "mint-motion_0_1",
+        "mint-motion_0_2",
+        "mint-motion_0_3",
+        "mint-motion_1_0",
+        "mint-motion_1_1",
+        "mint-motion_1_2",
+        "mint-motion_1_3",
+        "mint-motion_2_0",
+        "mint-motion_2_1",
+        "mint-motion_2_2",
+        "mint-motion_2_3",
+        "mint-motion_3_0",
+        "mint-motion_3_1",
+        "mint-motion_3_2",
+        "mint-motion_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-mint-motion",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-340a0582-bdca-4121-a535-9feb3f17ae30.png",
+        "sha256": "65b5f2b79bd2cb65af1d6db849d052e53120ee9421866db76804f164bda3c9f2",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 945425,
+        "alphaPositive": 627619,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 37424,
+            "x": 35,
+            "y": 93,
+            "width": 215,
+            "height": 261,
+            "centerX": 137.0,
+            "centerY": 230.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 37195,
+            "x": 314,
+            "y": 96,
+            "width": 217,
+            "height": 258,
+            "centerX": 425.0,
+            "centerY": 233.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 36485,
+            "x": 590,
+            "y": 93,
+            "width": 225,
+            "height": 261,
+            "centerX": 702.0,
+            "centerY": 232.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 34565,
+            "x": 885,
+            "y": 95,
+            "width": 214,
+            "height": 258,
+            "centerX": 990.0,
+            "centerY": 234.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 37756,
+            "x": 38,
+            "y": 384,
+            "width": 216,
+            "height": 257,
+            "centerX": 142.0,
+            "centerY": 521.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 38585,
+            "x": 306,
+            "y": 387,
+            "width": 230,
+            "height": 259,
+            "centerX": 423.0,
+            "centerY": 526.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 35998,
+            "x": 593,
+            "y": 387,
+            "width": 220,
+            "height": 256,
+            "centerX": 701.0,
+            "centerY": 522.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 38229,
+            "x": 878,
+            "y": 387,
+            "width": 216,
+            "height": 258,
+            "centerX": 992.0,
+            "centerY": 530.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 37772,
+            "x": 40,
+            "y": 678,
+            "width": 223,
+            "height": 253,
+            "centerX": 143.0,
+            "centerY": 806.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 39103,
+            "x": 314,
+            "y": 677,
+            "width": 221,
+            "height": 256,
+            "centerX": 426.0,
+            "centerY": 811.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 36608,
+            "x": 596,
+            "y": 682,
+            "width": 210,
+            "height": 251,
+            "centerX": 703.0,
+            "centerY": 815.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 37014,
+            "x": 875,
+            "y": 683,
+            "width": 223,
+            "height": 250,
+            "centerX": 990.0,
+            "centerY": 819.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 19772,
+            "x": 18,
+            "y": 1000,
+            "width": 253,
+            "height": 130,
+            "centerX": 144.0,
+            "centerY": 1073.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 22092,
+            "x": 304,
+            "y": 1000,
+            "width": 245,
+            "height": 136,
+            "centerX": 415.0,
+            "centerY": 1078.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 20938,
+            "x": 571,
+            "y": 1005,
+            "width": 257,
+            "height": 127,
+            "centerX": 703.0,
+            "centerY": 1074.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 19545,
+            "x": 861,
+            "y": 1008,
+            "width": 246,
+            "height": 120,
+            "centerX": 980.0,
+            "centerY": 1074.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-mint-motion",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRows 1 and 2: distinct walking gait phases, retain which foot leads. Row 3: hurt/staggering with eyes closed and same arm/leg pose. Row 4: collapsed prone/unconscious on side/front/back exactly as reference, horizontal staff held near floor. Do not replace prone poses with standing sprites.\nSignature weapon: straight black/silver shaft, gold collar/tip, single faceted bright blue pointed crystal. NEVER replace this with a round orb or ornate star head.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment. Especially row 2 column 4, the blue crystal staff MUST remain visible on the right/back side of her hair exactly as Image 1. All four prone sprites must have wider transparent gaps, shorten the composition's footprint within each cell without changing the curled pose; no neighboring prone bodies may touch.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-motion/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-340a0582-bdca-4121-a535-9feb3f17ae30.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-340a0582-bdca-4121-a535-9feb3f17ae30.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; 16 poses/directions/weapon visibility visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-motion/source-sheet-00.png",
+          "outputSha256": "65b5f2b79bd2cb65af1d6db849d052e53120ee9421866db76804f164bda3c9f2",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-motion/reference-00.png",
+              "sha256": "de02ad884bbf1d00d2ff4601feffc992f42e16b11f0fdaf6061c5350179c026e"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-mint-extra",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/mint-extra.png",
+      "sourceSha256": "66667c94f126310304d336984ae9614004def8d8a02faea60d0beed34799c134",
+      "sourceMetaSha256": "8c17fcc1d7923fad44bcadc2001531c85e5264a7d345798e15f60e9e120f68a9",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-mint-extra\\reference-manifest.json",
+      "referenceManifestSha256": "9c7668796171163816e20832967f8792de7b05c3028a16860760634a9c25e15e",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-extra/source-sheet-00.png",
+      "selectedSha256": "6ae5e25c35e13cbbde48f583b3ef897520f04190617c1282114a670241b2622f",
+      "selectedAttempt": 1,
+      "frameNames": [
+        "mint-extra_0_0",
+        "mint-extra_0_1",
+        "mint-extra_0_2",
+        "mint-extra_0_3",
+        "mint-extra_1_0",
+        "mint-extra_1_1",
+        "mint-extra_1_2",
+        "mint-extra_1_3",
+        "mint-extra_2_0",
+        "mint-extra_2_1",
+        "mint-extra_2_2",
+        "mint-extra_2_3",
+        "mint-extra_3_0",
+        "mint-extra_3_1",
+        "mint-extra_3_2",
+        "mint-extra_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-mint-extra",
+        "attempt": 1,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f9ea89fd-887b-4790-b0c0-2de6d441b1cd.png",
+        "sha256": "6ae5e25c35e13cbbde48f583b3ef897520f04190617c1282114a670241b2622f",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 856645,
+        "alphaPositive": 716399,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 37740,
+            "x": 27,
+            "y": 80,
+            "width": 230,
+            "height": 250,
+            "centerX": 137.0,
+            "centerY": 210.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 37991,
+            "x": 301,
+            "y": 74,
+            "width": 227,
+            "height": 252,
+            "centerX": 419.0,
+            "centerY": 205.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 35363,
+            "x": 578,
+            "y": 81,
+            "width": 225,
+            "height": 246,
+            "centerX": 699.0,
+            "centerY": 209.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 35177,
+            "x": 865,
+            "y": 81,
+            "width": 231,
+            "height": 246,
+            "centerX": 975.0,
+            "centerY": 210.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 39386,
+            "x": 30,
+            "y": 355,
+            "width": 232,
+            "height": 261,
+            "centerX": 139.0,
+            "centerY": 489.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 37840,
+            "x": 301,
+            "y": 354,
+            "width": 230,
+            "height": 258,
+            "centerX": 417.0,
+            "centerY": 490.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 36041,
+            "x": 579,
+            "y": 356,
+            "width": 225,
+            "height": 255,
+            "centerX": 699.0,
+            "centerY": 488.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 35862,
+            "x": 869,
+            "y": 354,
+            "width": 224,
+            "height": 257,
+            "centerX": 975.0,
+            "centerY": 487.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 39193,
+            "x": 22,
+            "y": 634,
+            "width": 238,
+            "height": 247,
+            "centerX": 140.0,
+            "centerY": 771.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 39437,
+            "x": 299,
+            "y": 628,
+            "width": 239,
+            "height": 250,
+            "centerX": 417.0,
+            "centerY": 767.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 36400,
+            "x": 581,
+            "y": 630,
+            "width": 212,
+            "height": 252,
+            "centerX": 698.0,
+            "centerY": 764.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 36171,
+            "x": 880,
+            "y": 630,
+            "width": 214,
+            "height": 253,
+            "centerX": 976.0,
+            "centerY": 764.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 42262,
+            "x": 22,
+            "y": 912,
+            "width": 242,
+            "height": 248,
+            "centerX": 141.0,
+            "centerY": 1040.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 39296,
+            "x": 299,
+            "y": 912,
+            "width": 233,
+            "height": 238,
+            "centerX": 418.0,
+            "centerY": 1036.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 36948,
+            "x": 572,
+            "y": 913,
+            "width": 232,
+            "height": 248,
+            "centerX": 692.0,
+            "centerY": 1042.5,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 39583,
+            "x": 867,
+            "y": 913,
+            "width": 233,
+            "height": 248,
+            "centerX": 982.0,
+            "centerY": 1042.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-mint-extra",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRows 1 and 2: distinct small walking/step poses; row 2 back view conceals the staff completely exactly as reference. Row 3: eyes-closed prayer/casting. Row 4: open-palm support/guard with staff in the original hand.\nSignature weapon: straight black/silver shaft, gold collar/tip, single faceted bright blue pointed crystal. NEVER replace this with a round orb or ornate star head.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment. In row 4 column 2 (back view), keep the visible staff on the RIGHT of the image and the single raised/open free hand on the LEFT. Do not draw two open palms and do not erase that staff.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-extra/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f9ea89fd-887b-4790-b0c0-2de6d441b1cd.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-f9ea89fd-887b-4790-b0c0-2de6d441b1cd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; 16 poses/directions/weapon visibility visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-extra/source-sheet-00.png",
+          "outputSha256": "6ae5e25c35e13cbbde48f583b3ef897520f04190617c1282114a670241b2622f",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-extra/reference-00.png",
+              "sha256": "94351396978402e31056e8a8090fb9966c47bf1cf7336cc21803d4fee7da6900"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "SignatureWeapons-mint-polish",
+      "source": "Assets/TalesTactics/Art/SignatureWeapons/mint-polish.png",
+      "sourceSha256": "89218f45953494721b2882f898b335f3f8db8e94b94a40da392bb48af07bae36",
+      "sourceMetaSha256": "f50814998a9c5ca5db9e6aec698633c73ad1a80ad4be09aa368be90e3fb49120",
+      "referenceManifest": "C:\\dev\\TalesTactics\\Logs\\QualityUpgrade20261031\\References\\SignatureWeapons-mint-polish\\reference-manifest.json",
+      "referenceManifestSha256": "ab3f4e6072cf1e165ba4dbdc710c6f7e629e579dab6df1cfef7aa2aa3cedab74",
+      "selected": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-polish/source-sheet-00.png",
+      "selectedSha256": "a04d725be3dbf9239ec2165db7d3f5c01128eb2ecdca67e426660eca480500d5",
+      "selectedAttempt": 2,
+      "frameNames": [
+        "mint-polish_0_0",
+        "mint-polish_0_1",
+        "mint-polish_0_2",
+        "mint-polish_0_3",
+        "mint-polish_1_0",
+        "mint-polish_1_1",
+        "mint-polish_1_2",
+        "mint-polish_1_3",
+        "mint-polish_2_0",
+        "mint-polish_2_1",
+        "mint-polish_2_2",
+        "mint-polish_2_3",
+        "mint-polish_3_0",
+        "mint-polish_3_1",
+        "mint-polish_3_2",
+        "mint-polish_3_3"
+      ],
+      "visualReview": "Reviewed all sixteen cells against the exact pose reference for directions, gait/attack/prayer/hurt/prone/recovery silhouettes and staff visibility. Four first attempts rejected and repaired for missing staff/head portions. Premium compact proportions retained. Small facial/hair/embroidery details are redrawn; anatomical equivalence and transition pop still require actual Unity review.",
+      "nativeAudit": {
+        "key": "SignatureWeapons-mint-polish",
+        "attempt": 2,
+        "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54dea910-3ad0-482d-bd4c-5cde4601eb70.png",
+        "sha256": "a04d725be3dbf9239ec2165db7d3f5c01128eb2ecdca67e426660eca480500d5",
+        "width": 1122,
+        "height": 1402,
+        "alphaZero": 885924,
+        "alphaPositive": 687120,
+        "alpha128EdgePixels": 0,
+        "bodyComponents": 16,
+        "parts": [
+          {
+            "pixels": 39800,
+            "x": 40,
+            "y": 38,
+            "width": 223,
+            "height": 271,
+            "centerX": 141.0,
+            "centerY": 199.0,
+            "imageEdge": false,
+            "candidateCell": 0
+          },
+          {
+            "pixels": 41550,
+            "x": 296,
+            "y": 39,
+            "width": 229,
+            "height": 278,
+            "centerX": 413.0,
+            "centerY": 201.0,
+            "imageEdge": false,
+            "candidateCell": 1
+          },
+          {
+            "pixels": 36774,
+            "x": 583,
+            "y": 47,
+            "width": 219,
+            "height": 265,
+            "centerX": 697.0,
+            "centerY": 205.0,
+            "imageEdge": false,
+            "candidateCell": 2
+          },
+          {
+            "pixels": 38040,
+            "x": 881,
+            "y": 43,
+            "width": 216,
+            "height": 271,
+            "centerX": 990.0,
+            "centerY": 203.0,
+            "imageEdge": false,
+            "candidateCell": 3
+          },
+          {
+            "pixels": 37588,
+            "x": 20,
+            "y": 350,
+            "width": 263,
+            "height": 232,
+            "centerX": 167.0,
+            "centerY": 471.0,
+            "imageEdge": false,
+            "candidateCell": 4
+          },
+          {
+            "pixels": 38232,
+            "x": 301,
+            "y": 348,
+            "width": 268,
+            "height": 235,
+            "centerX": 417.0,
+            "centerY": 472.0,
+            "imageEdge": false,
+            "candidateCell": 5
+          },
+          {
+            "pixels": 35641,
+            "x": 561,
+            "y": 351,
+            "width": 274,
+            "height": 235,
+            "centerX": 680.0,
+            "centerY": 475.0,
+            "imageEdge": false,
+            "candidateCell": 6
+          },
+          {
+            "pixels": 34456,
+            "x": 850,
+            "y": 351,
+            "width": 259,
+            "height": 235,
+            "centerX": 992.0,
+            "centerY": 474.0,
+            "imageEdge": false,
+            "candidateCell": 7
+          },
+          {
+            "pixels": 40077,
+            "x": 37,
+            "y": 594,
+            "width": 223,
+            "height": 296,
+            "centerX": 149.0,
+            "centerY": 772.0,
+            "imageEdge": false,
+            "candidateCell": 8
+          },
+          {
+            "pixels": 38512,
+            "x": 313,
+            "y": 598,
+            "width": 218,
+            "height": 291,
+            "centerX": 422.0,
+            "centerY": 774.0,
+            "imageEdge": false,
+            "candidateCell": 9
+          },
+          {
+            "pixels": 34374,
+            "x": 581,
+            "y": 596,
+            "width": 186,
+            "height": 296,
+            "centerX": 689.0,
+            "centerY": 770.0,
+            "imageEdge": false,
+            "candidateCell": 10
+          },
+          {
+            "pixels": 35149,
+            "x": 914,
+            "y": 596,
+            "width": 188,
+            "height": 296,
+            "centerX": 994.0,
+            "centerY": 768.0,
+            "imageEdge": false,
+            "candidateCell": 11
+          },
+          {
+            "pixels": 41120,
+            "x": 34,
+            "y": 917,
+            "width": 234,
+            "height": 250,
+            "centerX": 148.0,
+            "centerY": 1048.0,
+            "imageEdge": false,
+            "candidateCell": 12
+          },
+          {
+            "pixels": 39802,
+            "x": 314,
+            "y": 917,
+            "width": 226,
+            "height": 253,
+            "centerX": 433.0,
+            "centerY": 1051.0,
+            "imageEdge": false,
+            "candidateCell": 13
+          },
+          {
+            "pixels": 34932,
+            "x": 592,
+            "y": 921,
+            "width": 214,
+            "height": 254,
+            "centerX": 699.0,
+            "centerY": 1053.0,
+            "imageEdge": false,
+            "candidateCell": 14
+          },
+          {
+            "pixels": 36491,
+            "x": 872,
+            "y": 917,
+            "width": 225,
+            "height": 257,
+            "centerX": 985.0,
+            "centerY": 1051.0,
+            "imageEdge": false,
+            "candidateCell": 15
+          }
+        ],
+        "geometryPass": true,
+        "scope": "Read-only reuse of Tools/MeasureSdCharacterArt.components at alpha>128, major component >1000px; verifies 16 detached bodies and no opaque image-edge contacts. It does not assign all faint pixels, verify poses, or constitute Unity packing/render approval."
+      },
+      "attempts": [
+        {
+          "key": "SignatureWeapons-mint-polish",
+          "attempt": 1,
+          "prompt": "Edit target: Image 1, a 16-frame Mint game animation reference sheet. Style/body continuity reference: Image 2, approved premium Mint; use Image 2 ONLY for the exact large-head-to-short-body proportions, short arms/legs, face size, hat shape, crisp premium anime SD linework and shading. Completely redraw Image 1 at native detail so its character body matches Image 2, while preserving every one of Image 1's 16 poses and expressions, directional viewpoints, arm/hand/foot positions, staff exposure/occlusion and row-major order. Do not copy the poses of Image 2.\nDeliver an actual transparent-alpha PNG sprite sheet, 1122 x 1402 canvas, precisely 4 equal columns x 5 equal rows. Exactly 16 separate whole-body characters occupy the first four rows, row 5 entirely transparent. Direction columns match Image 1 exactly: front, back, facing right, facing left. Keep each complete character and its complete weapon entirely inside its own cell with at least 16px fully transparent outer margins/gutters at every grid boundary. Consistent native standing body height about 220-240px INCLUDING hat, and identical anatomical head/body scale across all 16 poses. Keep broad empty transparent space around sprites. All poses have the SAME short compact legs and rounded large face as premium Image 2; do not retain Image 1's taller slender body.\nRow 1: staff raised over shoulder/head, same arm silhouette. Row 2: staff extended forward horizontally/thrust. Row 3: staff raised vertically along center/front, same hand placement. Row 4: eyes-closed relaxed recovery, lowered staff and same open free hand.\nSignature weapon: straight black/silver shaft, gold collar/tip, single faceted bright blue pointed crystal. NEVER replace this with a round orb or ornate star head.\nCharacter identity: Mint, long golden-blonde hair, blue eyes, white/lavender-purple cleric cap with a gold cross, purple/ivory priestess dress with precise gold embroidery and trim, white gloves, small shoes. Preserve the original weapon count and weapon visibility for EACH cell, including weapons hidden behind the body in back views. No extra staff where the reference hides it. Match premium face/body/hat proportions and compact silhouette across idle, walking, hurt and prone poses. Transparent negative space, no backdrop, no checkerboard, no shadows, no floor, no text, no cell labels, no VFX, no aura or glow, no detached artifacts. Do not crop, merge, overlap, duplicate, mirror or reorder characters. This is a production animation continuity candidate, pose fidelity and consistent proportions are more important than embellishment. In row 4 column 2 (back view), keep the visible staff on the RIGHT of the image and the single raised/open free hand on the LEFT. Do not draw two open palms and do not erase that staff.",
+          "references": [
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-polish/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e14be1f3-2000-4d7c-a8b4-237774f5e36f.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e14be1f3-2000-4d7c-a8b4-237774f5e36f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "rejected: weapon visibility differs; retained for provenance",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-polish/source-sheet-00-rejected-01.png",
+          "outputSha256": "0044a21b91e01beff8828ee7643674013d8a0e128fcd8aee9a86c24a280b18ef",
+          "inputs": [
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-polish/reference-00.png",
+              "sha256": "fbb3cbb6b75f5abc2b1b921ebc71bcab78d1df3c287ff0e2fe50e1e205d1b129"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "key": "SignatureWeapons-mint-polish",
+          "attempt": 2,
+          "references": [
+            "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e14be1f3-2000-4d7c-a8b4-237774f5e36f.png",
+            "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-polish/reference-00.png",
+            "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png"
+          ],
+          "prompt": "Precise sprite-sheet correction. Image 1 is the edit target (premium compact Mint candidate). Image 2 is the exact pose and weapon-visibility authority. Image 3 is the approved premium proportions/style reference. Keep Image 1's compact large-head/short-body proportions, crisp premium linework and every intact pose. Correct ONLY row 3 column 2, the back-facing vertical staff blocking pose. The pointed BLUE CRYSTAL at the top of her staff MUST stick up visibly ABOVE the CENTER of her cap, exactly as Image 2. Image 1 wrongly removes that blue crystal head. Restore that small visible blue crystal and gold collar above the cap; retain the concealed shaft and hands below. Keep all other 15 sprites and their poses/weapons unchanged. Preserve exactly 16 separate characters, original four directional columns and four pose rows, canvas 1122x1402 with the fifth row blank and real transparent alpha. Do not change character proportions, move/reorder poses, crop, add effects, glow, text, background or shadows. Do not erase any staff part that is visible in Image 2. This is a small local weapon-visibility repair, not a redesign. All 16 bodies and their weapons must remain isolated and completely inside the canvas.",
+          "generatedPath": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54dea910-3ad0-482d-bd4c-5cde4601eb70.png",
+          "outputHint": "Generated images are saved to C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f as C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-54dea910-3ad0-482d-bd4c-5cde4601eb70.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "status": "selected candidate; source pose/weapon visibility repair visually checked",
+          "preservedPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-polish/source-sheet-00.png",
+          "outputSha256": "a04d725be3dbf9239ec2165db7d3f5c01128eb2ecdca67e426660eca480500d5",
+          "inputs": [
+            {
+              "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a15ecb-f85b-74d0-999d-ed7070bf6f9f\\exec-e14be1f3-2000-4d7c-a8b4-237774f5e36f.png",
+              "sha256": "0044a21b91e01beff8828ee7643674013d8a0e128fcd8aee9a86c24a280b18ef"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-polish/reference-00.png",
+              "sha256": "fbb3cbb6b75f5abc2b1b921ebc71bcab78d1df3c287ff0e2fe50e1e205d1b129"
+            },
+            {
+              "path": "C:/dev/TalesTactics/Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-mint-premium/sheet-00-v5.png",
+              "sha256": "5009de346688dd64a6918013f69e3edcdc4cf54db753c6dbbd34162b96f81fcf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

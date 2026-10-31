@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "New native redraw candidates only; production not modified; engine approval pending.",
+  "records": [
+    {
+      "group": "SignatureWeapons-alphen-premium",
+      "character": "alphen-signature",
+      "sheetIndex": 3,
+      "usedFrames": 12,
+      "sourceManifest": "Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-premium/reference-manifest.json",
+      "referencePath": "Logs/QualityUpgrade20261031/References/SignatureWeapons-alphen-premium/reference-03.png",
+      "supportingReference": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-03.png",
+      "outputPath": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-03-v2.png",
+      "attempt": 2,
+      "targetFrames": [
+        "alphen-premium_17_0",
+        "alphen-premium_17_1",
+        "alphen-premium_17_2",
+        "alphen-premium_17_3"
+      ],
+      "state": "Selected candidate for root Unity continuous-motion comparison; native component ownership passed; runtime approval pending",
+      "inputOrder": [
+        "current candidate sheet (edit this)",
+        "original source pose reference (pose identity only)"
+      ],
+      "actualOpticalEvidence": "Logs/QualityUpgrade20261031/AllOptical/SignatureWeapons-alphen-premium-direction-0..3.png",
+      "prompt": "Surgical sprite-sheet correction. EDIT THE FIRST IMAGE, preserve its transparent RGBA background, exact canvas/aspect ratio, 4 columns, 3 occupied rows (12 sprites) and lower 2 rows entirely empty. Second image is ORIGINAL SMALL POSE REFERENCE only; do not upscale or copy its low-resolution drawing. Keep first image's clean high-definition SD rendering, colors and unique single black-red sword. ONLY correct the FOUR FIGURES IN OCCUPIED ROW THREE: these are the same character's final frame17 facing front, back, right, left. They currently shrink anatomically relative to occupied row TWO (frame16). Match row-three SKULL / HAIR MASS SIZE, armored TORSO volume, limb thickness, BOOT size, and SWORD size to the same-facing figure directly above in row two. Make a carefully redrawn anatomically consistent transition, roughly 10-15% larger body anatomy where needed. The third-row crouched/leaning POSE, knee bends, head angle, gaze, cape gesture, weapon orientation and single-sword identity must remain exactly the original final pose; do not stand these figures upright or copy frame16's pose. Judge anatomical dimensions, NOT entire silhouette bounding box or cape/sword spread. Row-two sword/scarf/face details set the scale. Preserve all eight figures in rows one and two UNCHANGED, same positions and dimensions. Row3 same cell centers and foot baselines, can expand upward into existing ample empty gap. Keep every full figure and full sword contained within its own cell, with clear transparent separation and exterior margins; no overlap/cropping. No new effects, props, duplicates, labels, borders, shadows or background. Genuine alpha transparency, not black pixels or checkerboard. Deliver one complete sprite sheet.",
+      "generatedPath": "C:/Users/USER-PC/.codex/generated_images/01a15ec9-e8f6-7ad1-9028-9126f8191dbc/exec-d0b830d2-949c-40b4-8781-d988b4c29f37.png",
+      "visualReview": "Twelve ordered poses remain. Row-three crouch, gaze, single sword and weapon orientation retained. Skull/hair, shoulder/torso and boot scale visually closer to corresponding row-two figure; crouched silhouette is correctly shorter. First eight figures retain poses but AI edit does not preserve their exact pixels. No claim of completed runtime pop removal.",
+      "outputSha256": "4886163c27bc488a2b21d1414090406fee4d6a2a1b10d7d7c9ae61df2d5afe3c",
+      "byteIdenticalToGeneratedOutput": true,
+      "exactFrames": [
+        {
+          "index": 60,
+          "sheetIndex": 3,
+          "cellIndex": 0,
+          "name": "alphen-premium_15_0",
+          "originalSpriteId": "a097865c4e8b45848afbfa55bcf3e3c3",
+          "originalInternalId": "575811333",
+          "sourceRect": {
+            "x": 671.0,
+            "y": 193.0,
+            "width": 115.0,
+            "height": 132.0
+          },
+          "sourcePivot": {
+            "x": 0.6608690023422241,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 61,
+          "sheetIndex": 3,
+          "cellIndex": 1,
+          "name": "alphen-premium_15_1",
+          "originalSpriteId": "3c6ed7c42cc989a478b3270285c29ea6",
+          "originalInternalId": "-1462763914",
+          "sourceRect": {
+            "x": 816.0,
+            "y": 193.0,
+            "width": 122.0,
+            "height": 130.0
+          },
+          "sourcePivot": {
+            "x": 0.5491799712181091,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 62,
+          "sheetIndex": 3,
+          "cellIndex": 2,
+          "name": "alphen-premium_15_2",
+          "originalSpriteId": "9766f1b6cb3c52f459040c24e27dcd8b",
+          "originalInternalId": "1779512126",
+          "sourceRect": {
+            "x": 956.0,
+            "y": 193.0,
+            "width": 120.0,
+            "height": 132.0
+          },
+          "sourcePivot": {
+            "x": 0.699999988079071,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 63,
+          "sheetIndex": 3,
+          "cellIndex": 3,
+          "name": "alphen-premium_15_3",
+          "originalSpriteId": "3b89666070264334a959a1b87015b9b9",
+          "originalInternalId": "1224865093",
+          "sourceRect": {
+            "x": 1110.0,
+            "y": 193.0,
+            "width": 123.0,
+            "height": 120.0
+          },
+          "sourcePivot": {
+            "x": 0.47154501080513,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 64,
+          "sheetIndex": 3,
+          "cellIndex": 4,
+          "name": "alphen-premium_16_0",
+          "originalSpriteId": "a570a55ab953fdb4691b8619b8af7439",
+          "originalInternalId": "1468526604",
+          "sourceRect": {
+            "x": 17.0,
+            "y": 55.0,
+            "width": 134.0,
+            "height": 109.0
+          },
+          "sourcePivot": {
+            "x": 0.5223879814147949,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 65,
+          "sheetIndex": 3,
+          "cellIndex": 5,
+          "name": "alphen-premium_16_1",
+          "originalSpriteId": "4fa46b2fcfd97164a8dc1be84103b0e7",
+          "originalInternalId": "921513630",
+          "sourceRect": {
+            "x": 196.0,
+            "y": 55.0,
+            "width": 112.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.44642800092697144,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 66,
+          "sheetIndex": 3,
+          "cellIndex": 6,
+          "name": "alphen-premium_16_2",
+          "originalSpriteId": "1cb54f022858b6c4492444d9477ca0cf",
+          "originalInternalId": "-1216610465",
+          "sourceRect": {
+            "x": 326.0,
+            "y": 54.0,
+            "width": 140.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.5071420073509216,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 67,
+          "sheetIndex": 3,
+          "cellIndex": 7,
+          "name": "alphen-premium_16_3",
+          "originalSpriteId": "0a7000bcfa228804183379c5974daa57",
+          "originalInternalId": "841133859",
+          "sourceRect": {
+            "x": 489.0,
+            "y": 54.0,
+            "width": 118.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.4661009907722473,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 68,
+          "sheetIndex": 3,
+          "cellIndex": 8,
+          "name": "alphen-premium_17_0",
+          "originalSpriteId": "516b6c79be8568f4893d12b133c23ce8",
+          "originalInternalId": "-1268788335",
+          "sourceRect": {
+            "x": 647.0,
+            "y": 54.0,
+            "width": 132.0,
+            "height": 109.0
+          },
+          "sourcePivot": {
+            "x": 0.4848479926586151,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 69,
+          "sheetIndex": 3,
+          "cellIndex": 9,
+          "name": "alphen-premium_17_1",
+          "originalSpriteId": "6937be100b283c84ba37c3f268a47da6",
+          "originalInternalId": "144946655",
+          "sourceRect": {
+            "x": 822.0,
+            "y": 55.0,
+            "width": 110.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.49090901017189026,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 70,
+          "sheetIndex": 3,
+          "cellIndex": 10,
+          "name": "alphen-premium_17_2",
+          "originalSpriteId": "6e9ec74fd9a72734fb51d4d05d964098",
+          "originalInternalId": "1579459165",
+          "sourceRect": {
+            "x": 956.0,
+            "y": 55.0,
+            "width": 137.0,
+            "height": 107.0
+          },
+          "sourcePivot": {
+            "x": 0.525547981262207,
+            "y": 0.009999999776482582
+          }
+        },
+        {
+          "index": 71,
+          "sheetIndex": 3,
+          "cellIndex": 11,
+          "name": "alphen-premium_17_3",
+          "originalSpriteId": "2fac28b33ed6a0e4d872bdb5c604c8f6",
+          "originalInternalId": "-919063340",
+          "sourceRect": {
+            "x": 1118.0,
+            "y": 54.0,
+            "width": 124.0,
+            "height": 108.0
+          },
+          "sourcePivot": {
+            "x": 0.41935500502586365,
+            "y": 0.009999999776482582
+          }
+        }
+      ],
+      "manifestSha256": "ebccc59c353c66cf67d8ad8186115bf11b265a254fb24cac8abf79105a7f4d76",
+      "referenceSha256": "bbd6453e7bfa82eab21186d0e2eeb1b3706080b1776a1c468546c1aa2bf33e38",
+      "sourceIdentity": {
+        "source": "Assets/TalesTactics/Art/SignatureWeapons/alphen-premium.png",
+        "sourceGuid": "3c9a3cd4097363848b8ec324f3563d33",
+        "sourceSha256": "e003c63c810f8dd9f0e9e437790339d3aaf8a59faf3a029a99a97d136b98fb6e",
+        "currentSourceSha256": "aa0fd0668d2a2af816f9b09a49b487f802465ada5c65eef834696bfb17cb43ea",
+        "sourceMetaSha256": "25ebe3163ce96de52c4f4f81f04ad2152331d282718e72acbdcac66c86b0b8ed"
+      },
+      "supportingReferenceSha256": "0f729fe97ade875a7495e4dcaf77e5d7c0442d4055f40ed32ea4e6b55f690a7f",
+      "nativeAnalysis": {
+        "name": "alphen-signature-3-attempt2",
+        "passed": true,
+        "explicitLayout": true,
+        "width": 1072,
+        "height": 1467,
+        "usedFrames": 12,
+        "componentSeeds": [
+          145,
+          1317,
+          410,
+          1317,
+          680,
+          1317,
+          950,
+          1317,
+          145,
+          1017,
+          410,
+          1017,
+          680,
+          1017,
+          950,
+          1017,
+          145,
+          747,
+          410,
+          747,
+          680,
+          747,
+          950,
+          747
+        ],
+        "columnCuts": [],
+        "rowColumnCuts": [],
+        "rowCutsFromTop": [],
+        "nativeRgbaHistogramSha256": "14569c52634f7b67c532db91dcf1ff0fbb5b0ee32ea68fb3c7c59da78f723e2b",
+        "nativePixelCount": 489114,
+        "ownedPixelCount": 489114,
+        "uniqueOwnedPixelCount": 489114,
+        "allNativeRgbaPixelsPreserved": true,
+        "alphaAbove8OuterMarginsLeftRightBottomTop": [
+          8,
+          9,
+          569,
+          31
+        ],
+        "minimumSameRowHorizontalAlpha8Gap": -2,
+        "sameRowHorizontalAlpha8Gaps": [
+          1,
+          10,
+          23,
+          6,
+          -2,
+          12,
+          5,
+          -2,
+          11
+        ],
+        "frames": [
+          {
+            "index": 0,
+            "strongComponentX": 19,
+            "strongComponentY": 1152,
+            "strongComponentWidth": 248,
+            "strongComponentHeight": 282,
+            "alphaAbove8Bounds": [
+              17,
+              1151,
+              255,
+              285
+            ],
+            "nativePixelCount": 41995
+          },
+          {
+            "index": 1,
+            "strongComponentX": 279,
+            "strongComponentY": 1151,
+            "strongComponentWidth": 265,
+            "strongComponentHeight": 284,
+            "alphaAbove8Bounds": [
+              273,
+              1149,
+              272,
+              287
+            ],
+            "nativePixelCount": 44556
+          },
+          {
+            "index": 2,
+            "strongComponentX": 556,
+            "strongComponentY": 1151,
+            "strongComponentWidth": 229,
+            "strongComponentHeight": 284,
+            "alphaAbove8Bounds": [
+              555,
+              1149,
+              230,
+              287
+            ],
+            "nativePixelCount": 38911
+          },
+          {
+            "index": 3,
+            "strongComponentX": 809,
+            "strongComponentY": 1150,
+            "strongComponentWidth": 244,
+            "strongComponentHeight": 266,
+            "alphaAbove8Bounds": [
+              808,
+              1149,
+              246,
+              268
+            ],
+            "nativePixelCount": 37702
+          },
+          {
+            "index": 4,
+            "strongComponentX": 12,
+            "strongComponentY": 844,
+            "strongComponentWidth": 261,
+            "strongComponentHeight": 259,
+            "alphaAbove8Bounds": [
+              11,
+              842,
+              263,
+              263
+            ],
+            "nativePixelCount": 42602
+          },
+          {
+            "index": 5,
+            "strongComponentX": 282,
+            "strongComponentY": 844,
+            "strongComponentWidth": 260,
+            "strongComponentHeight": 258,
+            "alphaAbove8Bounds": [
+              280,
+              842,
+              265,
+              262
+            ],
+            "nativePixelCount": 44647
+          },
+          {
+            "index": 6,
+            "strongComponentX": 547,
+            "strongComponentY": 843,
+            "strongComponentWidth": 248,
+            "strongComponentHeight": 255,
+            "alphaAbove8Bounds": [
+              543,
+              842,
+              253,
+              258
+            ],
+            "nativePixelCount": 40796
+          },
+          {
+            "index": 7,
+            "strongComponentX": 809,
+            "strongComponentY": 843,
+            "strongComponentWidth": 247,
+            "strongComponentHeight": 253,
+            "alphaAbove8Bounds": [
+              808,
+              841,
+              249,
+              257
+            ],
+            "nativePixelCount": 39622
+          },
+          {
+            "index": 8,
+            "strongComponentX": 9,
+            "strongComponentY": 576,
+            "strongComponentWidth": 257,
+            "strongComponentHeight": 228,
+            "alphaAbove8Bounds": [
+              8,
+              574,
+              260,
+              232
+            ],
+            "nativePixelCount": 39398
+          },
+          {
+            "index": 9,
+            "strongComponentX": 278,
+            "strongComponentY": 576,
+            "strongComponentWidth": 260,
+            "strongComponentHeight": 230,
+            "alphaAbove8Bounds": [
+              273,
+              575,
+              271,
+              233
+            ],
+            "nativePixelCount": 43679
+          },
+          {
+            "index": 10,
+            "strongComponentX": 548,
+            "strongComponentY": 570,
+            "strongComponentWidth": 252,
+            "strongComponentHeight": 229,
+            "alphaAbove8Bounds": [
+              542,
+              569,
+              259,
+              232
+            ],
+            "nativePixelCount": 37996
+          },
+          {
+            "index": 11,
+            "strongComponentX": 813,
+            "strongComponentY": 571,
+            "strongComponentWidth": 248,
+            "strongComponentHeight": 224,
+            "alphaAbove8Bounds": [
+              812,
+              570,
+              251,
+              227
+            ],
+            "nativePixelCount": 37210
+          }
+        ]
+      }
+    }
+  ],
+  "selectedSheets": [
+    {
+      "group": "SignatureWeapons-alphen-premium",
+      "sheetIndex": 3,
+      "path": "Assets/TalesTactics/Art/SdCharacters/QualityUpgrade20261031/Generated/SignatureWeapons-alphen-premium/source-sheet-03-v2.png",
+      "sha256": "4886163c27bc488a2b21d1414090406fee4d6a2a1b10d7d7c9ae61df2d5afe3c",
+      "targetFrames": [
+        "alphen-premium_17_0",
+        "alphen-premium_17_1",
+        "alphen-premium_17_2",
+        "alphen-premium_17_3"
+      ]
+    }
+  ],
+  "reviewedLayouts": "Docs/QualityUpgrade/Generation/alphen-signature-final-refinement-layouts.json",
+  "evidence": "Docs/QualityUpgrade/Validation/alphen-signature-final-component-native.json",
+  "automaticCorridorFailure": "Docs/QualityUpgrade/Validation/alphen-signature-final-auto-native.json",
+  "generationStopped": true,
+  "scopeLimit": "Only one approved additional sheet correction generated. Source PNG/meta, runtime and production importer unchanged by this task. Pure .NET analysis is not a Unity test or rendered-motion approval. Component bbox includes weapon; no numeric anatomical height claim."
+}

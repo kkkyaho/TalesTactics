@@ -224,7 +224,12 @@ namespace TalesTactics
         {
             if(phase!="before"&&phase!="after")throw new InvalidOperationException("Review phase must be before or after");
             yield return null;battle=FindAnyObjectByType<BattleDirector>();userFiles=Snapshot(Application.persistentDataPath);
-            saveRoot=Path.Combine(directory,"isolated-save",Guid.NewGuid().ToString("N"));battle.ConfigureStorage(saveRoot);battle.Hud.HideTitle();battle.Audio.PersonalMusicEnabled=false;
+            saveRoot=Path.Combine(directory,"isolated-save",Guid.NewGuid().ToString("N"));
+#if TALESTACTICS_REVIEW && !UNITY_EDITOR
+            // Use the same per-run path that BattleDirector chose before its first load.
+            saveRoot=ReviewStorageBootstrap.Resolve(Environment.GetCommandLineArgs(),Application.dataPath,Application.persistentDataPath)??throw new InvalidOperationException("Missing roster review bootstrap.");
+#endif
+            battle.ConfigureStorage(saveRoot);battle.Hud.HideTitle();battle.Audio.PersonalMusicEnabled=false;
             battle.Preferences.TextScale=1;battle.Preferences.Reactions=false;battle.Preferences.MissionEvents=false;battle.Campaign.AutoTiming=false;battle.TrainingMode=true;
             for(int chapter=1;chapter<=20;chapter++)battle.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(chapter));
             if(!battle.SavePreparation())throw new InvalidOperationException("Could not seed isolated save");

@@ -8,6 +8,50 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        // Inspect the alpha actually imported for rendering, without requiring readable assets
+        // or UnityEditor APIs. Count every strong-alpha piece, including detached weapons.
+        sealed class PoseAlphaPixels
+        {
+            public readonly int Width,Height;
+            public readonly byte[] Alpha;
+            public PoseAlphaPixels(int width,int height,Color32[] pixels)
+            {
+                Width=width;Height=height;Alpha=new byte[pixels.Length];
+                for(int i=0;i<pixels.Length;i++)Alpha[i]=pixels[i].a;
+            }
+        }
+        static float VisiblePoseHeight(Sprite art,Dictionary<Texture2D,PoseAlphaPixels> cache)
+        {
+            var texture=art.texture;
+            if(!cache.TryGetValue(texture,out var image))
+            {
+                var previous=RenderTexture.active;RenderTexture target=null;Texture2D readback=null;
+                try
+                {
+                    target=RenderTexture.GetTemporary(texture.width,texture.height,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear);
+                    target.filterMode=FilterMode.Point;
+                    Graphics.Blit(texture,target);RenderTexture.active=target;
+                    readback=new Texture2D(texture.width,texture.height,TextureFormat.RGBA32,false,true){hideFlags=HideFlags.HideAndDontSave};
+                    readback.ReadPixels(new Rect(0,0,texture.width,texture.height),0,0,false);
+                    image=new PoseAlphaPixels(texture.width,texture.height,readback.GetPixels32());cache.Add(texture,image);
+                }
+                finally
+                {
+                    RenderTexture.active=previous;
+                    if(target!=null)RenderTexture.ReleaseTemporary(target);
+                    if(readback!=null)Object.Destroy(readback);
+                }
+            }
+            var r=art.rect;
+            var rect=new RectInt(Mathf.RoundToInt(r.x),Mathf.RoundToInt(r.y),Mathf.RoundToInt(r.width),Mathf.RoundToInt(r.height));
+            Assert.That(rect.width>0&&rect.height>0&&rect.xMin>=0&&rect.yMin>=0&&rect.xMax<=image.Width&&rect.yMax<=image.Height,Is.True,art.name+" imported rect");
+            Assert.That(art.pixelsPerUnit>0&&!float.IsNaN(art.pixelsPerUnit)&&!float.IsInfinity(art.pixelsPerUnit),Is.True,art.name+" PPU");
+            int first=rect.yMax,last=rect.yMin-1;
+            for(int y=rect.yMin;y<rect.yMax;y++)for(int x=rect.xMin;x<rect.xMax;x++)
+                if(image.Alpha[y*image.Width+x]>128){first=Mathf.Min(first,y);last=Mathf.Max(last,y);}
+            Assert.That(last,Is.GreaterThanOrEqualTo(first),art.name+" has no alpha>128 pixels");
+            return (last-first+1)/art.pixelsPerUnit;
+        }
         [UnityTest] public IEnumerator AllCharacterPosesRenderInFourCameraDirections()
         {
             var camera=director.Board.BattleCamera;
@@ -17,12 +61,19 @@ namespace TalesTactics.PlayModeTests
             foreach(var data in director.Catalog.Characters)
             {
                 var unique=new HashSet<Sprite>();
-                foreach(var action in actions)foreach(Facing facing in System.Enum.GetValues(typeof(Facing)))
+                var pixels=new Dictionary<Texture2D,PoseAlphaPixels>();
+                try
                 {
-                    var art=data.Poses.Get(action,facing);Assert.That(art,Is.Not.Null,data.Id+action+facing);
-                    Assert.That(unique.Add(art),Is.True,"Each pose/direction needs its own sprite: "+data.Id);
-                    Assert.That(art.bounds.size.y,Is.InRange(0.8f,1.6f),"Pose scale: "+art.name);
+                    foreach(var action in actions)foreach(Facing facing in System.Enum.GetValues(typeof(Facing)))
+                    {
+                        var art=data.Poses.Get(action,facing);Assert.That(art,Is.Not.Null,data.Id+action+facing);
+                        Assert.That(unique.Add(art),Is.True,"Each pose/direction needs its own sprite: "+data.Id);
+                        Assert.That(VisiblePoseHeight(art,pixels),Is.InRange(0.8f,1.6f),"Visible pose scale (alpha>128): "+art.name);
+                    }
                 }
+                finally{pixels.Clear();}
+                // Release the temporary readback texture before loading the next hero atlas.
+                yield return null;
                 var owner=new UnitRuntime(data,Team.Player,director.Catalog.Rules);owners.Add(owner);
                 var go=new GameObject("Pose check "+data.Id);go.transform.SetParent(director.transform);
                 var renderer=go.AddComponent<SpriteRenderer>();var motion=go.AddComponent<CharacterMotion>();

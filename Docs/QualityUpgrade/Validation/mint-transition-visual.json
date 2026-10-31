@@ -1,0 +1,833 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-10-31T13:06:09.993293+00:00",
+  "status": "No new severe visual blocker found in the inspected Mint transition samples",
+  "reviewer": "Independent campaign_progression_runner agent; no Unity execution or art/source changes during this inspection",
+  "engineResult": {
+    "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/result.json",
+    "sha256": "0d91394b9cf44dbf335c420ed0722f73f78a5eed7de0af7bfb7bc84dd93b5193",
+    "scope": "Presentation-only fixture: six original battlefield allies plus one isolated native-sprite actor. CharacterMotion, ImpactPool prepare/travel and CombatEffect contact APIs use authored timing. One staged recipient per effect; no multi-recipient/HP-number/audio/resolver/AI/turn/campaign certification. Use SkillRosterVfxReview separately for actual Director execution.",
+    "expectedRuns": 72,
+    "completedRuns": 72,
+    "status": "passed",
+    "pngCount": 777,
+    "errors": [],
+    "userFilesUnchanged": true,
+    "isolatedFilesUnchanged": true,
+    "sessionUnchanged": true,
+    "candidateOriginalsUnchanged": true,
+    "candidateCleanupComplete": true
+  },
+  "visualScope": {
+    "actualRenderPNGsInspected": 43,
+    "newBaseContinuousBoundaryPNGs": 24,
+    "newSignatureRepresentativePNGs": 12,
+    "earlierComparisonPNGs": 7,
+    "referencePNGsInspected": 1,
+    "all72RunsVisuallyReviewed": false
+  },
+  "findings": [
+    {
+      "area": "HQ to premium body continuity",
+      "verdict": "Improved in sampled Front and Back mint.0 transitions",
+      "evidence": "Frames 8\u21929 and43\u219244. New HQ head/face/short body are closer to the premium cast than the slender earlier HQ. The raised staff enlarges the complete sprite bounding box; this is not itself body growth."
+    },
+    {
+      "area": "Recovery and idle",
+      "verdict": "No severe pop, missing limb, clipping, or duplicate staff seen",
+      "evidence": "Every image44 through52 reviewed in both Front andBack. Frame52 changes from prayer to idle with the same compact identity. Staff has a single connected visible shaft/head where not occluded by the pose."
+    },
+    {
+      "area": "Foot anchor",
+      "verdict": "No conspicuous teleport in inspected boundaries",
+      "evidence": "Boot contact region stays visually aligned through8\u21929,43\u219244 and51\u219252 in each sequence. This is a qualitative screen inspection, not a calibrated anatomical foot-pivot measurement; small differences and authored lift/pose motion remain."
+    },
+    {
+      "area": "Signature appearance",
+      "verdict": "One blue-crystal staff retained, appropriate visible face and directional silhouette in twelve representative release/contact images",
+      "evidence": "Attack, mint.0 and ultimate in four directions. These single images do not validate their complete transitions."
+    },
+    {
+      "area": "Ultimate Back side face",
+      "verdict": "Inherited authored turning pose; not a new transition-sheet regression",
+      "evidence": "mint/signature/mint.ultimate-Back/contact.png is mint-premium_12_1 (viewFacingBack). Earlier heroes image and source reference-02 cell9 also show the turned side face.",
+      "sourceReference": {
+        "path": "Logs/QualityUpgrade20261031/References/SignatureWeapons-mint-premium/reference-02.png",
+        "sha256": "e58548d9d0693ae8e34f29e47913de6dd298fcea180c1eb510dc46ae90343740",
+        "cellIndex": 9,
+        "sprite": "mint-premium_12_1"
+      }
+    }
+  ],
+  "severeNewFindings": [],
+  "limitations": [
+    "The engine automatic72/72 result is bounded presentation/state evidence and does not certify visual quality. This independent review inspected Mint only, not Farah or Alphen.",
+    "Camera framing changed since the earlier heroes run. Larger absolute on-screen dimensions are not a measured art-size improvement; the judgement compares head/body proportions within each sequence.",
+    "Only base mint.0 Front/Back has continuous PNGs. Signature and Polish preparation/recovery do not have continuous-image coverage in this run; their telemetry or a single contact image cannot certify every transitional drawing.",
+    "These samples do not certify walking/hurt/dead transitions, all128support poses, all skills, six-character battlefield readability with effects, actual gameplay judgement, or production import.",
+    "No claim of exact anatomy, pixel-exact feet, flawless fine hair/trim continuity, or human gameplay completion. No further generation was performed."
+  ],
+  "transitionTelemetry": [
+    {
+      "direction": "Front",
+      "timeline": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/timeline.json",
+      "sha256": "c066777a70440f6508b15a11df8e8f8bfec373621f67bda404ec4340f1f4b601",
+      "frames": [
+        {
+          "frame": 8,
+          "sprite": "mint-hq_2_0",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04423873871564865,
+            "z": 0.016897663474082947
+          }
+        },
+        {
+          "frame": 9,
+          "sprite": "mint_16_0",
+          "texture": "MotionPremium-mint-v2",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.045187730342149734,
+            "z": 0.017766563221812248
+          }
+        },
+        {
+          "frame": 43,
+          "sprite": "mint_16_0",
+          "texture": "MotionPremium-mint-v2",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.06855164468288422,
+            "z": -0.010718987323343754
+          }
+        },
+        {
+          "frame": 44,
+          "sprite": "mint-hq_2_0",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.06466037034988403,
+            "z": -0.009055555798113346
+          }
+        },
+        {
+          "frame": 51,
+          "sprite": "mint-hq_2_0",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043527498841285706,
+            "z": -0.0011423254618421197
+          }
+        },
+        {
+          "frame": 52,
+          "sprite": "mint-hq_0_0",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04206225275993347,
+            "z": -0.0006598550244234502
+          }
+        }
+      ]
+    },
+    {
+      "direction": "Back",
+      "timeline": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/timeline.json",
+      "sha256": "98bc36199d1ddd349d4cd0b23c2c724ebb5b6fc804bc08b4deceb0408dfd1abf",
+      "frames": [
+        {
+          "frame": 8,
+          "sprite": "mint-hq_2_1",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04423873871564865,
+            "z": 0.016897663474082947
+          }
+        },
+        {
+          "frame": 9,
+          "sprite": "mint_16_1",
+          "texture": "MotionPremium-mint-v2",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.045187946408987045,
+            "z": 0.0177666787058115
+          }
+        },
+        {
+          "frame": 43,
+          "sprite": "mint_16_1",
+          "texture": "MotionPremium-mint-v2",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.06855164468288422,
+            "z": -0.010718987323343754
+          }
+        },
+        {
+          "frame": 44,
+          "sprite": "mint-hq_2_1",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.06466037034988403,
+            "z": -0.009055555798113346
+          }
+        },
+        {
+          "frame": 51,
+          "sprite": "mint-hq_2_1",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.043527498841285706,
+            "z": -0.0011423254618421197
+          }
+        },
+        {
+          "frame": 52,
+          "sprite": "mint-hq_0_1",
+          "texture": "PixelCampaign-mint-hq-v1",
+          "localPosition": {
+            "x": 0.0,
+            "y": 0.04206225275993347,
+            "z": -0.0006598550244234502
+          }
+        }
+      ]
+    }
+  ],
+  "mintRunTelemetry": [
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "",
+      "facing": "Front",
+      "continuous": false,
+      "frames": 36,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "",
+      "facing": "Back",
+      "continuous": false,
+      "frames": 35,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 35,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 36,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "",
+      "facing": "Front",
+      "continuous": true,
+      "frames": 63,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "",
+      "facing": "Back",
+      "continuous": true,
+      "frames": 63,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 63,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 64,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "",
+      "facing": "Front",
+      "continuous": false,
+      "frames": 72,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "",
+      "facing": "Back",
+      "continuous": false,
+      "frames": 72,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 72,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 72,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "bc-rod",
+      "facing": "Front",
+      "continuous": false,
+      "frames": 35,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "bc-rod",
+      "facing": "Back",
+      "continuous": false,
+      "frames": 35,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "bc-rod",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 35,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.attack",
+      "equipment": "bc-rod",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 36,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "bc-rod",
+      "facing": "Front",
+      "continuous": false,
+      "frames": 64,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "bc-rod",
+      "facing": "Back",
+      "continuous": false,
+      "frames": 63,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "bc-rod",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 64,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.0",
+      "equipment": "bc-rod",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 64,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "bc-rod",
+      "facing": "Front",
+      "continuous": false,
+      "frames": 74,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "bc-rod",
+      "facing": "Back",
+      "continuous": false,
+      "frames": 74,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "bc-rod",
+      "facing": "Left",
+      "continuous": false,
+      "frames": 74,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    },
+    {
+      "owner": "mint",
+      "skill": "mint.ultimate",
+      "equipment": "bc-rod",
+      "facing": "Right",
+      "continuous": false,
+      "frames": 74,
+      "finished": true,
+      "clean": true,
+      "preparationObserved": true,
+      "releaseObserved": true,
+      "returnedIdle": true,
+      "authoredDirectionMatches": true,
+      "sessionUnchanged": true,
+      "errors": [],
+      "unobservedAuthoredSprites": []
+    }
+  ],
+  "inspectedImages": [
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0008.png",
+      "sha256": "e8e391bd3180ca1570fc5a4fe64e29b376ea98e426f8ba1ab463da951aa4d6ce",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0009.png",
+      "sha256": "ec395899a7bcb2a4f2e99d1d2eac629106653031de027097c8785adfe4b729bb",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0043.png",
+      "sha256": "75b15781376164ee806e8f924e7b66a7d8fe44bc4902fc63e401bd4cd3fd9867",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0044.png",
+      "sha256": "501a194dda1445726d53dd39170360e7ff60e3a32b01162537d94a0b272758e7",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0045.png",
+      "sha256": "5401957da09717faffb55572e1b6fafd9efb2b02c7250615ec3f590b1051797a",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0046.png",
+      "sha256": "e0c73318e940e356df43ce13fddf0cdb86a1666d71e6373ec7f6e965cf4c3a2e",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0047.png",
+      "sha256": "624a2711c0764851aecdf6f155a9f9163fc027fb4ac1863b452ad8e0b34ff2d0",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0048.png",
+      "sha256": "3b2d06487d9fd119ea7ac4d12022073b7e0ed14889c05ed91dd9ce5013937acf",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0049.png",
+      "sha256": "be7006360e730ed5305a14ee86f19a094921709fde117cccc5c80b2f10d8891b",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0050.png",
+      "sha256": "b558833f67eda08ba003accf1a8d5dbecc0631855f64b3d061383d6b4efa1046",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0051.png",
+      "sha256": "e208757e702134d669a1190922d352a736effb93bae2538a033138cbf37a863f",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Front/0052.png",
+      "sha256": "3523dddbb96ec077038068bf4b6dd036855e1069133f1c14317155f870cbabf7",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0008.png",
+      "sha256": "b49417ca21223ca35975a02749aa67a5257e9c304b5a31a10c8204f454db396e",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0009.png",
+      "sha256": "1f982e64a4806d3ce8812792c6dc6aae3f393bafada8492ec5f7ce14f954ac9c",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0043.png",
+      "sha256": "f3090e18a0206f2b22fe6c9b50a414b786f0efad2a836a369f1ae05b6babda63",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0044.png",
+      "sha256": "9d13cc616df562dbad33bb0b23245992c3aac815b16409955d96b0befcab89e6",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0045.png",
+      "sha256": "2d1c9d21dad786839319e0d75d355ef0faf7d9d82113a44acded68e252ed7d63",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0046.png",
+      "sha256": "020231694d6acc985304d0d5bd146eb41b5f219c595ff2a747674a1efa50a6e9",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0047.png",
+      "sha256": "7f0e813d8c72d7792beac12d9a962ee6b31ebcc8b9e439123c83f9d62873364c",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0048.png",
+      "sha256": "ed8423dee9bdbac426d32cdc2f629f3f5f9aae055b2826d909f6389807a30d07",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0049.png",
+      "sha256": "21699cf98b813e8fbf0d44e504d3e5188409eb164e3241f6614417e3e608b4ea",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0050.png",
+      "sha256": "b4c52fa670ea17123d9f20b539df3604c0aa786af77939a22a55eab80ec5f225",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0051.png",
+      "sha256": "848df26c2d48b638de752abd3c6c6e4f82aaa674e3d6c462aed9fd5092031c3e",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/base/mint.0-Back/0052.png",
+      "sha256": "01b65ce2fcd96c56e16e2e47d83db45e7242c3500eefbc98961aa72f4974f9ee",
+      "reason": "Direct inspection of HQ preparation / premium cast / HQ recovery / idle transition; no image editing."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.attack-Front/contact.png",
+      "sha256": "97192d4fbdc4c31154fba39800cbb65092eb9307a71bc1f036f5d63f4a462dab",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.attack-Back/contact.png",
+      "sha256": "e7bf6ccd4801be003fc01faf7d6a7f4e7f8b933a2a0eaa19832e75056b1ac30d",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.attack-Right/contact.png",
+      "sha256": "27913e01d82cddb66f9a457f26efff1156621fee9a4ff0edfa1f9602b9347434",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.attack-Left/contact.png",
+      "sha256": "aa7fcc4970f0f14a99e1a87864262063351c4095e43097cdbea69ae3425d9ed0",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.0-Front/contact.png",
+      "sha256": "eaef9b3f117f0cb823ccef6e85720db426e6770e2201976b018788e633976c63",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.0-Back/contact.png",
+      "sha256": "5df1d94f1354d726892aecd5dad9584bada2eb13e738589c54fa6f45651e1a9c",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.0-Right/contact.png",
+      "sha256": "3ac3407955dda38e10e8fa06a2427f08a7d3cd8db671ded60d2e81a5258c4d88",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.0-Left/contact.png",
+      "sha256": "f797de1a560fd7b116a93a8ef87efa4f247194a3f087613dba1a89abfad4d716",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.ultimate-Front/contact.png",
+      "sha256": "d045a68b903b470613551f58a8643107a81fadc38b58e401326f63331771f66b",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.ultimate-Back/contact.png",
+      "sha256": "87c0a1f31dc0b74b574c6d4c3de3401d9f45d6c746254c3c6d36d1c88cff7a53",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.ultimate-Right/contact.png",
+      "sha256": "99eaf4caaf18612a0512b0eb10fbd92f7c08a73b8ca334b6d59b2e4a92948cc3",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/transitions-mint-farah-alphen/mint/signature/mint.ultimate-Left/contact.png",
+      "sha256": "7450926ff516fe7add8da73b93df7c4aa8ce3eb2deb615602d52b4ce188ec0fd",
+      "reason": "Representative signature weapon release/contact image; not a continuous-image claim."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Front/0008.png",
+      "sha256": "54efb1ec30541223334592eb7c46aa8e87c7399ce94c91d36e958e3cc076454b",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Front/0009.png",
+      "sha256": "2054caee4881546cc84e4f2ca4045ae19ed9ac374ca7db10fcacc34a82161f6a",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Front/0044.png",
+      "sha256": "edc772ecd0565a5172309cdfebb8df50869e5871f9a0fba5769a9ae94440597a",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Front/0052.png",
+      "sha256": "c1659a3fddf5ad393f8355f0cfce40f2fa7fe5a1bb7a508d58c90fcf6a831045",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Back/0008.png",
+      "sha256": "fd746b4eb148019400f865d2321b5ed901eae015c70286ccbc688beb0be35501",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/base/mint.0-Back/0009.png",
+      "sha256": "7160c4c2dc955e0c90afa2d6aada1a935972064377adc9cb7a12b94ecb785957",
+      "reason": "Earlier candidate comparison. Camera framing differs; compare anatomy within each sequence, not absolute pixel size between runs."
+    },
+    {
+      "path": "Logs/QualityUpgrade20261031/CandidateMotion/heroes-177690b2c5284580981b1dbba171aed0/mint/signature/mint.ultimate-Back/contact.png",
+      "sha256": "cfe055a3ecb628c38176e8f47cc1df679848020cdd43145cdbb35e207a112251",
+      "reason": "Confirms back-view turning face was already present before transition-sheet replacement."
+    }
+  ]
+}
