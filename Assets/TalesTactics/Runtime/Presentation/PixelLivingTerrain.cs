@@ -69,8 +69,11 @@ namespace TalesTactics
                     float noise=DetailNoise(s,side,7);float h=near.WorldPosition(step).y-.28f;
                     float cluster=Mathf.Lerp(DetailNoise(s/3,side,23+stage),DetailNoise(s/3+1,side,23+stage),(s%3)/3f);
                     var a=new Vector3(x,h,z);var away=(new Vector3(x,0,z)-playableCenter).normalized;
-                    var b=a+away*(1.15f+cluster*.85f+noise*.4f)-Vector3.up*(.62f+noise*.3f);
-                    bool rockPatch=Verdant&&(s==rockA||s==rockB);
+                    var profile=ExteriorLandform(side,t,noise);
+                    var b=a+away*profile.x-Vector3.up*profile.y;
+                    // Broad outcrops and narrow gullies break the green belt into separate patches.
+                    // The rectangle of playable tiles remains exact; only scenery outside it moves.
+                    bool rockPatch=Verdant&&(s==rockA||s==rockB||profile.x<1.0f||profile.z>.42f);
                     inner.Add(a);outer.Add(b);exposed.Add(rockPatch);
                     if(Verdant)
                     {
@@ -86,7 +89,7 @@ namespace TalesTactics
                         if(!rockPatch&&(s%3==0||noise>.55f))Tree(3,Vector3.Lerp(a,b,.68f),.60f+cluster*.38f,noise>.5f);
                         float height=2.25f+cluster*.65f+noise*.35f;
                         var foot=b-away*.22f;
-                        if(!rockPatch&&Mathf.Abs(s-opening)>1.55f&&noise>.26f&&CanPlaceCanopy(tallTrees,foot,height))
+                        if(!rockPatch&&profile.x>1.35f&&Mathf.Abs(s-opening)>1.55f&&noise>.26f&&CanPlaceCanopy(tallTrees,foot,height))
                         {
                             int species=Mathf.Min(2,(int)(DetailNoise(s,side,37)*3));
                             Tree(species,foot,height,DetailNoise(s,side,39)>.5f);
@@ -95,7 +98,12 @@ namespace TalesTactics
                         if(!rockPatch&&noise>.35f)Foliage(9,Vector3.Lerp(a,b,.3f),.27f+cluster*.18f);
                         if(!rockPatch&&noise>.55f)Foliage(0,b-Vector3.up*.45f,.85f+noise*.2f);
                     }
-                    else if(s%2==0)geometry[stage==2?6:wall].Rock(b-Vector3.up*.5f,.65f+noise*.4f,.9f+noise*.5f,s+side*19);
+                    else if(profile.x>1.25f&&noise>.54f)
+                    {
+                        // Sparse fallen blocks, never a regular row of tall cylindrical battlements.
+                        float radius=.38f+noise*.32f;
+                        geometry[stage==2?6:wall].Rock(b-Vector3.up*.5f,radius,.40f+noise*.15f,s+side*19);
+                    }
                 }
             }
             for(int i=0;i<inner.Count;i++)
@@ -104,9 +112,9 @@ namespace TalesTactics
                 if(Verdant&&!exposed[i])exterior.Quad(inner[i],inner[next],outer[next],outer[i]);
                 else if(Verdant)geometry[6].Quad(inner[i],inner[next],outer[next],outer[i]);
                 else geometry[stage==2?6:wall].Quad(inner[i],inner[next],outer[next],outer[i]);
-                // Deep world-space cliff faces hide the underside and connect the skirt to the ravine.
-                var materialIndex=Verdant||stage==2?6:wall;
-                geometry[materialIndex].Quad(outer[i]-Vector3.up*3,outer[i],outer[next],outer[next]-Vector3.up*3,.85f,new Vector2(2,3));
+                // Connected uneven shelves replace the constant-depth vertical curtain. Their
+                // shared endpoint profile keeps corners closed without changing the playable grid.
+                DressExteriorCliff(outer[i],outer[next]);
                 if(Verdant&&!exposed[i]&&DetailNoise(i,stage,43)>.58f)Foliage(0,outer[i]-Vector3.up*1.15f,1.3f+DetailNoise(i,stage,47)*.3f);
             }
             if(Verdant){var mesh=exterior.Flush(transform,"Continuous forest surroundings",meadow);if(mesh!=null)meshes.Add(mesh);}

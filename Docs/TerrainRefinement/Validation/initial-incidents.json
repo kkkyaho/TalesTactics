@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "event": "Initial terrain PlayMode",
+      "result": "2 of 4 failed",
+      "evidence": "terrain-tests-attempt1.json",
+      "causes": [
+        "Existing north buttress entered corner standing space. Related beacon and sluice bases were also moved outside the half-tile edge.",
+        "GPU negative-control produced zero difference because the offscreen probe did not account for projection Y flip and backface culling."
+      ],
+      "resolution": "Product landmarks moved, GPU probe winding/depth corrected; thresholds unchanged. Followup 4/4 passed in 7.2s."
+    },
+    {
+      "event": "Script reload while preparing test attempt2",
+      "result": "Editor busy; run_tests connection socket hang up",
+      "evidence": "Observed tool responses, no separate original command output file",
+      "resolution": "Inspected same Editor; compilationFailed=false, compiling=false, playMode=stopped. Started test again after reload, completed4/4."
+    },
+    {
+      "event": "CLI beta15 compatibility aliases",
+      "result": "New multiword aliases tried before fallback emitted no-command log entries on Pipeline0.7.",
+      "resolution": "Use installed flat command names (eval/editor_status/editor_play). No package upgrade."
+    }
+  ]
+}

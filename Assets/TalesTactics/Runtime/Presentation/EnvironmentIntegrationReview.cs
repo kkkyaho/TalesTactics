@@ -23,21 +23,21 @@ namespace TalesTactics
             public float groundError,pathError;public bool shadow,insideCamera,materialSupported;
         }
         [Serializable] public sealed class MaterialEvidence
-        {public string name,shader;public bool supported;public string[] environmentProperties;}
+        {public string name,shader,mainTexture;public bool supported;public string[] environmentProperties;}
         [Serializable] public sealed class Row
         {
-            public string scenario,phase,file,state,fixture;public int episode,stage,width,height,rotation,allies,models,tiles,pickChecks,pickMatches,buttons,texts;
+            public string scenario,phase,file,state,fixture;public int episode,stage,width,height,rotation,allies,models,tiles,pickChecks,pickMatches,buttons,texts,terrainMeshes,terrainVertices;
             public float cameraYaw,orthographicSize,textScale,battlefieldScreenFraction;public Vector3 cameraPosition;public Rect battlefieldViewport;
             public Model[] units;public MaterialEvidence[] materials;public string[] issues;
         }
         [Serializable] public sealed class Report
         {
-            public int schema=1,expectedCaptures=52,completedCaptures;public bool complete,passed,userFilesUnchanged,campaignsUnchanged=true;
+            public int schema=2,expectedCaptures=90,completedCaptures;public bool complete,passed,userFilesUnchanged,campaignsUnchanged=true;
             public string status="Running",startedUtc,finishedUtc,output,storage,unityVersion;public Row[] rows;public string[] errors,userFilesBefore,userFilesAfter;
-            public string scope="Five isolated presentation fixtures: actual Director opening boards for main episodes 1/11/16/20 with joined allies at authored EntryLevel, plus six-ally Lv25 training. Prior completion flags/levels exist only in new in-memory fixtures. No natural progression, story completion, rewards, AI/balance or full-campaign claim.";
-            public string captures="52 unedited ScreenCapture frames: each board idle at 0/90/180 degrees, legal Director movement in flight/at arrival, and a damage-pose-only fixture at 1280x720; two additional character focus frames; command and skill-list HUD at 1280x720 and 1024x768. Damage does not execute the resolver or change HP. No effect/skill-execution claim.";
+            public string scope="Eight isolated presentation fixtures spanning all six terrain themes: actual Director opening boards for main episodes 1/11/12/15/16/17/20 with joined allies at authored EntryLevel, plus six-ally Lv25 training. Prior completion flags/levels exist only in new in-memory fixtures. No natural progression, story completion, rewards, AI/balance or full-campaign claim.";
+            public string captures="90 unedited ScreenCapture frames: each board idle at 0/90/180/270 degrees, legal Director movement in flight/at arrival, and a damage-pose-only fixture at 1280x720; two additional character focus frames; command and skill-list HUD at 1280x720 and 1024x768. Damage does not execute the resolver or change HP. No effect/skill-execution claim.";
             public string checks="Active model count, authored non-null sprites, finite ground/path placement, contact-shadow presence, supported materials, tile-pick round trips, rotation state/RNG invariance, actual legal movement completion, damage-fixture state invariance, visible UI glyph/button boundaries and exact requested resolution. Sprite AABB camera containment is telemetry only because transparent artwork padding is not visible geometry.";
-            public string limitations="Automated pass is not visual approval. Inspect PNGs for palette harmony, terrain occlusion, visible foot anchoring, contact-shadow quality, character/background separation and UI readability. Four campaign opening boards and one training board are not all maps/poses/resolutions or performance coverage. User-storage hashing is top-level save/settings files; external wrapper may additionally hash the entire tree. No user files are restored.";
+            public string limitations="Automated pass is not visual approval. Inspect PNGs for palette harmony, terrain occlusion, visible foot anchoring, contact-shadow quality, character/background separation and UI readability. Seven campaign opening boards and one training board are not all maps/poses/resolutions or performance coverage. User-storage hashing is top-level save/settings files; external wrapper may additionally hash the entire tree. No user files are restored.";
         }
         readonly List<Row> rows=new List<Row>();readonly List<string> errors=new List<string>();
         Report report=new Report();BattleDirector battle;string directory,storage,scenario,campaignBefore;int episode,rotation;
@@ -99,11 +99,11 @@ namespace TalesTactics
             if(!Application.isEditor)Require(SamePath(battle.Profiles.Root,storage),"Director used storage outside this isolated run.");
             battle.ConfigureStorage(storage);battle.Audio.PersonalMusicEnabled=false;battle.Audio.SetVolumes(0,0);
             // WindowDisplayController may write only this isolated settings file after resolution changes.
-            foreach(int number in new[]{1,11,16,20,0})
+            foreach(int number in new[]{1,11,12,15,16,17,20,0})
             {
                 yield return Resolution(new Vector2Int(1280,720));yield return BeginBoard(number);
                 string state=SkillRosterVfxFixture.State(battle.Session.Units),grid=SkillRosterVfxFixture.GridState(battle.Session.Grid,battle.Session.Units);int draws=battle.Session.Resolver.RandomDraws;
-                for(int r=0;r<3;r++)
+                for(int r=0;r<4;r++)
                 {
                     rotation=r*90;if(r>0)battle.Board.RotateCamera(90);yield return Settle();yield return Capture("idle");
                     Require(state==SkillRosterVfxFixture.State(battle.Session.Units)&&grid==SkillRosterVfxFixture.GridState(battle.Session.Grid,battle.Session.Units)&&draws==battle.Session.Resolver.RandomDraws,"Camera rotation changed gameplay state/RNG.");
@@ -170,7 +170,7 @@ namespace TalesTactics
         }
         IEnumerator Capture(string phase)
         {
-            Require(rows.Count<52,"Capture budget exceeded.");float prior=Time.timeScale;Time.timeScale=0;
+            Require(rows.Count<report.expectedCaptures,"Capture budget exceeded.");float prior=Time.timeScale;Time.timeScale=0;
             try
             {
                 Canvas.ForceUpdateCanvases();yield return new WaitForEndOfFrame();var camera=battle.Board.BattleCamera;var issues=new List<string>();
@@ -198,7 +198,9 @@ namespace TalesTactics
                 CheckUi(issues,out int buttons,out int texts);if(Screen.width!=requested.x||Screen.height!=requested.y)issues.Add("Capture resolution mismatch.");
                 var materials=battle.Board.GetComponentsInChildren<Renderer>().SelectMany(r=>r.sharedMaterials).Where(m=>m!=null).Distinct().Select(MaterialInfo).ToArray();
                 foreach(var mat in materials)if(!mat.supported)issues.Add("Unsupported material: "+mat.name);
-                var row=new Row{scenario=scenario,episode=episode,stage=battle.Session.CampaignStage,phase=phase,fixture=phase=="damage-pose-only"?"Presentation API only; no damage applied.":"Actual Director opening and legal movement; seeded isolated profile.",width=Screen.width,height=Screen.height,rotation=rotation,cameraYaw=camera.transform.eulerAngles.y,cameraPosition=camera.transform.position,orthographicSize=camera.orthographicSize,textScale=battle.Preferences.TextScale,battlefieldViewport=battle.Hud.BattlefieldViewport,battlefieldScreenFraction=battle.Hud.BattlefieldViewport.width*battle.Hud.BattlefieldViewport.height,state=battle.State.GetType().Name,allies=units.Count(u=>u.Team==Team.Player),models=active.Length,tiles=battle.Session.Grid.Tiles.Count,pickChecks=picks,pickMatches=matches,buttons=buttons,texts=texts,units=models.ToArray(),materials=materials,issues=issues.ToArray()};
+                var terrain=battle.Board.GetComponentInChildren<PixelBattlefield>();
+                var terrainGeometry=terrain==null?Array.Empty<MeshFilter>():terrain.GetComponentsInChildren<MeshFilter>();
+                var row=new Row{terrainMeshes=terrainGeometry.Length,terrainVertices=terrainGeometry.Sum(f=>f.sharedMesh==null?0:f.sharedMesh.vertexCount),scenario=scenario,episode=episode,stage=battle.Session.CampaignStage,phase=phase,fixture=phase=="damage-pose-only"?"Presentation API only; no damage applied.":"Actual Director opening and legal movement; seeded isolated profile.",width=Screen.width,height=Screen.height,rotation=rotation,cameraYaw=camera.transform.eulerAngles.y,cameraPosition=camera.transform.position,orthographicSize=camera.orthographicSize,textScale=battle.Preferences.TextScale,battlefieldViewport=battle.Hud.BattlefieldViewport,battlefieldScreenFraction=battle.Hud.BattlefieldViewport.width*battle.Hud.BattlefieldViewport.height,state=battle.State.GetType().Name,allies=units.Count(u=>u.Team==Team.Player),models=active.Length,tiles=battle.Session.Grid.Tiles.Count,pickChecks=picks,pickMatches=matches,buttons=buttons,texts=texts,units=models.ToArray(),materials=materials,issues=issues.ToArray()};
                 row.file=$"{rows.Count:D2}-{scenario}-{phase}-{Screen.width}x{Screen.height}-r{rotation}.png";
                 var image=ScreenCapture.CaptureScreenshotAsTexture();try{File.WriteAllBytes(Path.Combine(directory,row.file),image.EncodeToPNG());}finally{Destroy(image);}
                 rows.Add(row);Write();
@@ -217,7 +219,7 @@ namespace TalesTactics
                 if(!material.HasProperty(name))continue;int index=shader.FindPropertyIndex(name);if(index<0)continue;
                 var kind=shader.GetPropertyType(index);values.Add(name+"="+(kind==UnityEngine.Rendering.ShaderPropertyType.Color?material.GetColor(name).ToString():kind==UnityEngine.Rendering.ShaderPropertyType.Vector?material.GetVector(name).ToString():material.GetFloat(name).ToString("R",System.Globalization.CultureInfo.InvariantCulture)));
             }
-            return new MaterialEvidence{name=material.name,shader=shader==null?null:shader.name,supported=shader!=null&&shader.isSupported,environmentProperties=values.ToArray()};
+            return new MaterialEvidence{name=material.name,mainTexture=material.mainTexture==null?null:material.mainTexture.name,shader=shader==null?null:shader.name,supported=shader!=null&&shader.isSupported,environmentProperties=values.ToArray()};
         }
         static bool Visible(Graphic g)=>g.isActiveAndEnabled&&g.canvasRenderer.GetInheritedAlpha()>.01f&&g.color.a>.01f;
         static bool InScroll(Transform t)=>t.GetComponentInParent<ScrollRect>()!=null;

@@ -1,5 +1,13 @@
 # 검증 기록 — 2026-11-01
 
+## 2026-11-01 — 바닥 반복·물결·외곽 후속 개선
+
+최종 실제 Unity **[EditMode437/437 · 21.21초](TerrainRefinement/Validation/full-editmode-final.json)**·**[PlayMode258/258 · 647.92초](TerrainRefinement/Validation/full-playmode-final.json)**, 실패·건너뜀·미결정0이다. 표적 지형5/5는 전체56맵 재생성/타일·RNG·피킹/형상 예산,6테마 발밑 공간,24조건 육지·물 단차 접합, 실제 GPU의 타일 UV 연속성을 확인했다. 최초2/4는 장식 침범과 GPU 검사 투영/컬링 문제였으며 제품 장식과 검사 설정을 보완했다. 단차 접합 추가 중 취소한 전체 실행은 통과로 세지 않는다. [검사 범위·원시 실패 이력](TerrainRefinement/README.md).
+
+최종 Editor90/90 및 재질 스캔용 별도90/90, 일반/검수 Windows 빌드 성공·오류0, Windows **90/90·정상 종료0·강제 종료 없음·오류/배치 issues0**을 확인했다. 1/11/12/15/16/17/20화와6인 훈련,6테마·4방향·합법 이동·피격 포즈·2해상도 명령/기술 UI 범위이며 자연 성장·전체 캠페인·프레임률 측정을 뜻하지 않는다. 일반/검수 타입·IL 분리를 통과했다. 빌드 경고는 일반4/검수6으로 기존 Pipeline 설정·사용 중단 예정 API·URP 내부 셰이더 경고를 원문에 보존했다. [Windows 요약](TerrainRefinement/Validation/windows-summary.json) · [실제 PNG6장 출처](TerrainRefinement/Evidence/actual-capture-manifest.json) · [같은 카메라의 전후 비교](TerrainRefinement/comparison.html).
+
+Windows 검수 직전/직후 사용자 전체4,534파일·디렉터리 목록은 동일하다. 작업 전체로는 Unity 테스트가 `TestResults.xml`을 갱신하고 `StorageTests`에106파일을 추가했으며 기존 게임 저장·설정은 유지했다. [전체 작업 비교](TerrainRefinement/Validation/whole-task-user-tree.json). 기존 dirty12파일은 이번 시작 시점의 바이트 백업으로 검사 산출물3개만 복원해 모두 초기SHA와 같고 커밋에서 제외했다. [복원 근거](TerrainRefinement/Validation/protected-restoration.json). 일반 실행본 수동 플레이·공개 릴리즈는 이번 검증 범위가 아니다.
+
 ## 2026-11-01 — 전장 환경광·접지·지형/HUD 통합
 
 최종 실제 Unity **[EditMode437/437 (12.75초)](EnvironmentIntegration/Validation/editmode-final.json)**·**[PlayMode255/255 (630.07초)](EnvironmentIntegration/Validation/playmode-final.json)**, 실패·건너뜀·미결정0이다. 최초 PlayMode253/255의 간격/색상 exact 비교2건은 제품 기준을 유지하고 미세 수치 허용치를 적용한 뒤 전체 재실행으로 확인했다. 중간0개 테스트는 성공으로 세지 않았다. [실패 이력과 적용 범위](EnvironmentIntegration/README.md).

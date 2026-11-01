@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 5.77,
+  "summary": {
+    "total": 4,
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.TerrainPresentationTests.EveryCampaignTerrainRebuildIsDeterministicAndCannotChangeRulesOrPicking",
+      "Status": "Passed",
+      "Duration": 5.5200087,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.TerrainPresentationTests.FracturedPerimetersStayBelowStandingSpaceAndHaveLowIrregularSilhouettes",
+      "Status": "Failed",
+      "Duration": 0.1423812,
+      "Message": "  Theme 0 decoration intrudes into standing space at (-0.28, 4.28) in Architecture batch 4\r\n  Expected: False\r\n  But was:  True\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.TerrainPresentationTests+<FracturedPerimetersStayBelowStandingSpaceAndHaveLowIrregularSilhouettes>d__8.MoveNext () [0x0020d] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\TerrainPresentationTests.cs:130\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.TerrainPresentationTests.HeightReliefUsesTheActualDropAndKeepsLargeDropsAndStandingCentersClear",
+      "Status": "Passed",
+      "Duration": 0.0508345,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.TerrainPresentationTests.WorldSpaceFloorWaterAndWaterfallsDoNotRestartAtTileUvSeams",
+      "Status": "Failed",
+      "Duration": 0.0213752,
+      "Message": "  The seam probe must distinguish cell-local texture coordinates\r\n  Expected: greater than 8\r\n  But was:  0.0f\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.TerrainPresentationTests+<WorldSpaceFloorWaterAndWaterfallsDoNotRestartAtTileUvSeams>d__9.MoveNext () [0x001be] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\TerrainPresentationTests.cs:170\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    }
+  ]
+}

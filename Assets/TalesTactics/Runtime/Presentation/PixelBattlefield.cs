@@ -43,7 +43,7 @@ namespace TalesTactics
             foliage=Resources.Load<Texture2D>(Art+"Foliage");
             architecture=Resources.Load<Texture2D>(Art+"Architecture");architectureSprites=new Sprite[16];
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
-            floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloor")));
+            floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloorWeathered")));
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
             floorMaterial.SetFloat("_DetailContrast",.82f);
             InitializeLivingTerrain();
@@ -74,17 +74,11 @@ namespace TalesTactics
                 {
                     var edge=p+outward*.50f;
                     if(wet){Waterfall(edge,outward,1,p.y-bottom);continue;}
-                    geometry[wall].Box(edge+Vector3.down*.17f,new Vector3(d.x==0?1.015f:.20f,.34f,d.y==0?1.015f:.20f));
-                    var support=edge+Vector3.up*(bottom-p.y)*.5f;
-                    geometry[wall].Box(support-outward*.15f,new Vector3(d.x==0?1.01f:.24f,p.y-bottom,d.y==0?1.01f:.24f),.76f);
-                    geometry[wall].Box(edge-Vector3.up*.28f,new Vector3(d.x==0?.95f:.28f,.25f,d.y==0?.95f:.28f));
-                    geometry[stage==2?5:wall].Box(edge+Vector3.up*.075f,new Vector3(d.x==0?.99f:.16f,.15f,d.y==0?.99f:.16f));
+                    DressPerimeter(tile,map,outward,step);
                     float edgeNoise=DetailNoise(x,z,41+d.x*3+d.y*7);
-                    if(edgeNoise>.73f)geometry[wall].Box(edge+Vector3.up*.13f,Vector3.one*.20f);
                     if(edgeNoise>.47f)Foliage(stage==2?6:0,edge+outward*.27f-Vector3.up*.80f,.83f+edgeNoise*.22f);
                     if(edgeNoise<.12f)DressedProp(stage>=3?11:3,edge-outward*.02f,.66f,false);
                     if(edgeNoise>.30f&&edgeNoise<.63f)Foliage(stage==2?4:2,edge+outward*.06f,.25f+edgeNoise*.09f);
-                    if(stage==2)geometry[6].Rock(edge+outward*.25f+Vector3.up*(bottom-p.y-.5f),1.15f,p.y-bottom+.4f,x*31+z*17);
                 }
                 else if(n.Terrain==TerrainType.Water&&!wet)
                 {
@@ -109,7 +103,7 @@ namespace TalesTactics
         {
             int maxX=0,maxZ=0;foreach(var t in map.Tiles.Values){maxX=Mathf.Max(maxX,t.Coordinate.x);maxZ=Mathf.Max(maxZ,t.Coordinate.y);}
             floorMaterial.SetVector("_FloorExtent",new Vector4(maxX+1,maxZ+1,0,0));
-            if(stage!=2)BoundaryVaults(map,step,maxX,maxZ);
+            if(stage>=3)BoundaryVaults(map,step,maxX,maxZ);
             float northHeight=map[new Vector2Int(maxX/2,maxZ)].Height*step;
             if(stage==3||stage==5)
             {
@@ -120,14 +114,14 @@ namespace TalesTactics
             if(stage==4)
             {
                 float h=map[new Vector2Int(maxX,maxZ/2)].Height*step;
-                for(int z=2;z<maxZ;z+=5){var c=new Vector3(maxX+.92f,h,z);geometry[wall].Box(c-Vector3.up*.27f,new Vector3(1,.55f,1.8f));DressedProp(12,c,2.25f,true);}
+                for(int z=2;z<maxZ;z+=5){var c=new Vector3(maxX+1.15f,h,z);geometry[wall].Box(c-Vector3.up*.27f,new Vector3(1,.55f,1.8f));DressedProp(12,c,2.25f,true);}
             }
             if(stage==2)
             {
-                var beacon=new Vector3(maxX+.8f,map[new Vector2Int(maxX,maxZ-1)].Height*step,maxZ-1);
+                var beacon=new Vector3(maxX+1.32f,map[new Vector2Int(maxX,maxZ-1)].Height*step,maxZ-1);
                 geometry[5].Box(beacon-Vector3.up*.2f,new Vector3(1.4f,.4f,1.4f));DressedProp(6,beacon,1.75f,true);
             }
-            if(stage<=1)for(int side=0;side<2;side++){var p=new Vector3(side==0?-.65f:maxX+.65f,northHeight,maxZ+.25f);Buttress(p,.92f);DressedProp(1,p,2.25f,true);}
+            if(stage<=1)for(int side=0;side<2;side++){var p=new Vector3(side==0?-1.10f:maxX+1.10f,northHeight,maxZ+.65f);Buttress(p,.92f);DressedProp(1,p,2.25f,true);}
             // Exterior silhouettes never add colliders or alter playable coordinates.
             if(stage==2)
             {
@@ -160,11 +154,28 @@ namespace TalesTactics
                 {
                     if(map[tile.Coordinate+d]!=null)continue;
                     var outward=new Vector3(d.x,0,d.y);var across=Vector3.Cross(outward,Vector3.up);
-                    var edge=tile.WorldPosition(step)+outward*.525f;
-                    var left=edge-across*.5f;var right=edge+across*.5f;
+                    int salt=113+d.x*3+d.y*7;
+                    int along=d.x==0?tile.Coordinate.x:tile.Coordinate.y;
+                    float cluster=DetailNoise(along/3,salt,stage);
+                    // Intact bays alternate with exposed, collapsed foundations. The roofline remains
+                    // architectural, but the facade no longer wraps every side as one unbroken box.
+                    if(cluster<.32f||DetailNoise(along,salt,117)<.16f)continue;
+                    var edge=tile.WorldPosition(step)+outward*.503f;
                     float length=d.x==0?maxX+1:maxZ+1;float k=d.x==0?tile.Coordinate.x:tile.Coordinate.y;float sign=d.x==0?across.x:across.z;
-                    float u0=Mathf.Clamp((k+.5f-sign*.5f)/length,.001f,.999f),u1=Mathf.Clamp((k+.5f+sign*.5f)/length,.001f,.999f);
-                    facade.Panel(new Vector3(left.x,bottom,left.z),left-Vector3.up*.3f,right-Vector3.up*.3f,new Vector3(right.x,bottom,right.z),u0,u1);
+                    int profileSalt=71+d.x*3+d.y*7;
+                    for(int part=0;part<3;part++)
+                    {
+                        float leftT=-.5f+part/3f,rightT=-.5f+(part+1)/3f;
+                        var left=edge+across*leftT;var right=edge+across*rightT;
+                        // Follow the actual three-piece rock profile so the painted bays cannot
+                        // float in front of it or disappear behind a protruding foundation.
+                        var upperLeft=PerimeterLayer(left,outward,1,profileSalt)+outward*.006f;
+                        var upperRight=PerimeterLayer(right,outward,1,profileSalt)+outward*.006f;
+                        var lowerLeft=PerimeterLayer(left,outward,2,profileSalt)+outward*.006f;
+                        var lowerRight=PerimeterLayer(right,outward,2,profileSalt)+outward*.006f;
+                        float u0=Mathf.Clamp((k+.5f+sign*leftT)/length,.001f,.999f),u1=Mathf.Clamp((k+.5f+sign*rightT)/length,.001f,.999f);
+                        facade.Panel(lowerLeft,upperLeft,upperRight,lowerRight,u0,u1);
+                    }
                 }
             }
             var mesh=facade.Flush(transform,"Architecture facade",material);if(mesh!=null)meshes.Add(mesh);

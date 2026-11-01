@@ -46,33 +46,81 @@ Shader "TalesTactics/Architectural Terrain"
                 o.normalWS=TransformObjectToWorldNormal(v.normalOS); o.world=TransformObjectToWorld(v.positionOS.xyz);
                 o.uv=v.uv; o.color=v.color; return o;
             }
+            // Stable, low-frequency variation joins adjacent cells without moving the authored paving.
+            float SurfaceHash(float2 p)
+            {
+                float3 q=frac(float3(p.x,p.y,p.x)*.1031);
+                q+=dot(q,q.yzx+33.33);
+                return frac((q.x+q.y)*q.z);
+            }
+            float SurfaceNoise(float2 p)
+            {
+                float2 cell=floor(p),f=frac(p);f=f*f*(3-2*f);
+                return lerp(lerp(SurfaceHash(cell),SurfaceHash(cell+float2(1,0)),f.x),
+                            lerp(SurfaceHash(cell+float2(0,1)),SurfaceHash(cell+1),f.x),f.y);
+            }
+            float2 MirroredSurfaceUV(float2 p)
+            {
+                // Atlas regions are illustrations, not seamless tiles. Reflection keeps their edges joined.
+                return abs(frac(p*.5)*2-1);
+            }
             half4 frag(Varyings i):SV_Target
             {
                 float2 local=frac(i.uv);
                 if(_WorldFloor>.5) local=saturate((i.world.xz+.5)/_FloorExtent.xy);
                 if(_WorldCliff>.5) local=frac(float2((i.world.x+i.world.z)*.17,(i.world.y+4.5)*.18));
-                if(_Water>0.5) local=frac(i.uv+float2(sin(i.world.z*2+_Time.y*.7)*.012,_Time.y*.035));
+                float2 waterPlane=i.world.xz;
+                float waterNoise=0;
+                if(_Water>.5)
+                {
+                    // One coordinate field spans the river; vertical curtains flow down their world height.
+                    float vertical=1-step(.5,abs(i.normalWS.y));
+                    float across=abs(i.normalWS.z)>abs(i.normalWS.x)?i.world.x:i.world.z;
+                    waterPlane=lerp(i.world.xz,float2(across,i.world.y),vertical);
+                    waterNoise=SurfaceNoise(waterPlane*.34+float2(8.7,2.1));
+                    float2 drift=lerp(float2(.025,-.019),float2(0,.12),vertical)*_Time.y;
+                    local=MirroredSurfaceUV(waterPlane*.21+drift+(waterNoise-.5)*.13);
+                }
                 float2 uv=_AtlasRect.xy+local*_AtlasRect.zw;
                 half3 c=SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,uv).rgb;
-                float relief=dot(c-SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,uv+float2(.0015,.0015)).rgb,float3(.3,.5,.2));
-                if(_LivingFloor>.5&&i.normalWS.y>.7)
+                float relief=0;
+                if(_Water<.5)
+                    relief=dot(c-SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,uv+float2(.0015,.0015)).rgb,float3(.3,.5,.2));
+                if(_WorldFloor>.5&&i.normalWS.y>.7)
                 {
-                    float patch=sin(i.world.x*.63+sin(i.world.z*.91))*sin(i.world.z*.57+cos(i.world.x*.75));
-                    float edge=min(min(i.world.x+.5,_FloorExtent.x-.5-i.world.x),min(i.world.z+.5,_FloorExtent.y-.5-i.world.z));
-                    float moss=smoothstep(.22,.70,patch)*.58+(1-smoothstep(0,1.5,edge))*.23;
-                    half3 grass=SAMPLE_TEXTURE2D(_MeadowTex,sampler_MeadowTex,frac(i.world.xz*.23)).rgb;
-                    c=lerp(c,grass,saturate(moss));
+                    float broad=SurfaceNoise(i.world.xz*.27+float2(4.1,9.7));
+                    float broken=SurfaceNoise(i.world.xz*.79+float2(17.3,2.9));
+                    // Preserve stone joints and tile readability; only broad weathering varies across the map.
+                    c*=lerp(.94,1.04,broad*.75+broken*.25);
+                    if(_LivingFloor>.5)
+                    {
+                        float edge=min(min(i.world.x+.5,_FloorExtent.x-.5-i.world.x),min(i.world.z+.5,_FloorExtent.y-.5-i.world.z));
+                        float patch=broad*.78+broken*.22;
+                        float moss=smoothstep(.44,.72,patch)*.54;
+                        // Broken edge pockets replace the uniform green strip along the whole rectangle.
+                        moss+=(1-smoothstep(0,1.25,edge))*smoothstep(.32,.72,broken)*.22;
+                        float2 meadowUV=MirroredSurfaceUV(i.world.xz*.19+float2(broad,broken)*.12);
+                        half3 grass=SAMPLE_TEXTURE2D(_MeadowTex,sampler_MeadowTex,meadowUV).rgb;
+                        c=lerp(c,grass,saturate(moss));
+                    }
                 }
                 if(_WorldCliff>.5) {
                     half3 top=SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,frac(i.world.xz*.17)).rgb;
                     c=lerp(c,top,smoothstep(.4,.85,abs(normalize(i.normalWS).y)));
                 }
-                if(_Water>0.5) {
-                    float2 uv2=_AtlasRect.xy+frac(i.uv*1.09+float2(_Time.y*.018,-_Time.y*.026))*_AtlasRect.zw;
-                    c=lerp(c,SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,uv2).rgb,.32);
-                    c*=.83+.12*sin(i.world.x*2.7+i.world.z*1.4+_Time.y*.8);
-                    float glint=pow(saturate(sin(i.world.x*7.1+i.world.z*3.7+_Time.y*1.1)*sin(i.world.z*5.3-_Time.y*.7)),12);
-                    c+=half3(.32,.55,.55)*glint;
+                if(_Water>.5)
+                {
+                    float vertical=1-step(.5,abs(i.normalWS.y));
+                    float2 secondary=float2(waterPlane.x*.8+waterPlane.y*.6,-waterPlane.x*.6+waterPlane.y*.8);
+                    secondary=lerp(secondary,waterPlane,vertical);
+                    float2 drift=lerp(float2(-.014,.021),float2(0,.083),vertical)*_Time.y;
+                    float2 uv2=_AtlasRect.xy+MirroredSurfaceUV(secondary*.163+drift+float2(.37,.69))*_AtlasRect.zw;
+                    c=lerp(c,SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,uv2).rgb,.38);
+                    c*=.87+.10*waterNoise;
+                    float wave=sin(dot(waterPlane,float2(2.3,1.1))+_Time.y*.7+waterNoise*2);
+                    float glint=smoothstep(.82,.99,wave)*smoothstep(.28,.78,waterNoise);
+                    // Quiet broad highlights leave shore edges and tactical overlays readable.
+                    c+=half3(.12,.19,.19)*glint;
                 }
                 half key=saturate(dot(normalize(i.normalWS),normalize(float3(-.45,.85,-.35))));
                 c=lerp(half3(.43,.44,.43),c,_DetailContrast);

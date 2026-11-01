@@ -1,0 +1,41 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit.\nAsset type: production 2D Unity game floor texture, a single square illustration mapped once across the entire tactical plaza.\nInput image: the attached RuinsFloor.png is the EDIT TARGET and exact style/palette reference.\nPrimary request: rework this worn ancient stone pavement to remove all five repeated floral emblem plaques and all framed symbolic stones. Replace those areas with naturally connected, differently shaped and differently sized weathered flagstones. Break the mechanical repetition of the paving layout across the whole image.\nPreserve: the reference's warm beige and cool gray stone family, restrained olive moss in some narrow joints, hand-painted anime/cel-shaded treatment, crisp readable moderately dark stone joints, subdued broad light and shadow color planes, and pure orthographic directly-overhead flat-ground view. The ground must remain appropriate under small SD characters and tactical overlays.\nSurface: irregular flagstones fitted as an old open plaza, some rounded or chipped corners, a few fine cracks and lightly worn patches, scattered small moss pockets. Stones should form a broad calm connected walking surface with variation in shape and size, not a uniform brick pattern. Sparse moss, no dense grass carpet. Low surface relief only, no raised or sunken geometry.\nComposition: pavement fills the entire image edge-to-edge. One uninterrupted flat texture image, no inset panels, no sheet layout, no border. No perspective, no isometric view, no surrounding scene, no horizon, no cast shadows from unseen objects.\nAvoid: every flower symbol, medallion, engraved emblem, framed ornament, checkerboard, regular grid, straight repeating brick rows, words, UI, characters, props, pillars, stairs, walls, foliage objects, debris piles, deep gaps, holes, height steps, or protruding rocks.\nOutput: highest quality 2048x2048 square opaque PNG texture. Do not add lettering, watermark, or branding.",
+  "input": {
+    "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Resources\\TalesTactics\\TerrainArt\\RuinsFloor.png",
+    "sha256": "f121c920500b29b8d8a491b0e5a706c90579422f7218cae4b28d5a4ee9282e57",
+    "bytes": 3180410,
+    "width": 1254,
+    "height": 1254
+  },
+  "generated": {
+    "path": "C:\\Users\\USER-PC\\.codex\\generated_images\\01a19709-3bb0-7420-bdd5-ed743823d7ea\\exec-a61cdbd6-4cc8-4987-9fb4-0a37f723e27c.png",
+    "sha256": "4cb5c4ce07fe39a7e211816ddffde5846fd5aa0acb4ba21d446ee80c7e54e7b1",
+    "bytes": 3100314,
+    "width": 1254,
+    "height": 1254
+  },
+  "project_asset": {
+    "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Resources\\TalesTactics\\TerrainArt\\RuinsFloorWeathered.png",
+    "sha256": "4cb5c4ce07fe39a7e211816ddffde5846fd5aa0acb4ba21d446ee80c7e54e7b1",
+    "bytes": 3100314,
+    "width": 1254,
+    "height": 1254
+  },
+  "requested_resolution": "2048x2048",
+  "actual_resolution": "1254x1254",
+  "resolution_note": "Built-in edit returned source-native 1254x1254 despite prompt requesting 2048. No resampling or upscaling was performed.",
+  "meta_guid": "f831cf5bb86f4a6195a477f11d3de830",
+  "meta_import_settings": "Copied RuinsFloor.png.meta verbatim except fresh GUID",
+  "visual_review": {
+    "passed": true,
+    "reviewed": [
+      "All five flower medallions and their frames removed",
+      "Orthographic flat stone pavement; no added perspective, text, objects, heights, or shadows",
+      "Reference beige-gray stone and olive moss palette retained",
+      "Irregular differently sized worn flagstones replace repetitive emblem anchors"
+    ]
+  },
+  "source_preserved": true,
+  "other_floor_assets_changed": false
+}

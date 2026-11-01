@@ -16,7 +16,9 @@ preview.8은 기존 메인20화·개인30단계와 거점·편성·장비 UX를 
 
 2026-11-01 전장 환경 통합으로 캐릭터·지형·식생의 장별 환경광, 발 접촉 그림자와 이동 중 접지, 수목 군집·외곽 바위·고저차 표현을 개선했습니다. 상단 HUD와 기본 명령 창도 줄였습니다. 최종 Unity EditMode437/437·PlayMode255/255, 일반/검수 Windows 빌드와 실제 전장52/52캡처 검증을 완료했습니다. [현재 실제 화면·변경점·한계](Docs/EnvironmentIntegration/README.md).
 
-이전 개선별 기록은 아래에 보존합니다. 현재 화면은 SD 전환 갤러리를 우선합니다.
+2026-11-01 후속 지형 개선으로 반복 꽃 문장이 없는 새 판석, 연속 물결, 폭이 다른 외곽 바위·골과 육지/물 단차 접합을 적용했습니다. 최종 실제 EditMode437/437·PlayMode258/258, 일반/검수 Windows 빌드 및 Windows90/90캡처를 확인했습니다. [같은 카메라의 전후 비교](Docs/TerrainRefinement/comparison.html) · [현재 검증과 한계](Docs/TerrainRefinement/README.md).
+
+이전 개선별 기록은 아래에 보존합니다. 현재 전장 지형은 위 후속 개선의 실제 Windows 캡처를 우선합니다.
 
 - [거점·대화·장비 정비 화면과 검증](Docs/IntermissionUx/README.md)
 - [전용무기 이미지·장착 외형과 검증](Docs/SignatureWeapons/README.md)

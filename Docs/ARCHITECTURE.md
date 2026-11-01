@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 바닥 연속성과 비정형 외곽
+
+`PixelBattlefield`의 유적·성소(theme 0/1)는 기존 원본을 보존하고 `RuinsFloorWeathered`를 로드한다. `Terrain.shader`는 전체 맵의 바닥 UV를 유지하면서 세계 좌표로 낮은 주파수의 풍화 명암·이끼 군집을 만든다. 수면/폭포는 타일 로컬 UV 대신 연속 세계 좌표의 두 흐름을 사용한다. 지형·난수·경로 데이터는 변경하지 않는다.
+
+`PixelTerrainPerimeter`는 서 있는 타일 윗면의 반 타일 경계를 유지한 채 아래쪽 3단 바위 단면을 만든다. 좌표로 결정하는 공유 단면과 모서리·서로 다른 높이·물 접점의 연결 면을 같은 재질 배치에 넣는다. `PixelLivingTerrain`의 주변부는 사면별로 폭이 다른 돌출부·골을 만들며 좁은 곳의 녹지 띠를 바위로 끊는다. 표현용 메시에는 충돌체를 추가하지 않으며 생성은 전장 구성 시에만 수행한다.
+
+`EnvironmentIntegrationReview` schema 2는 실제 Director로 메인 1/11/12/15/16/17/20화와 6인 훈련을 구성해 6개 지형 테마·4방향 회전·합법 이동·피격 포즈·1280×720/1024×768 명령/기술 창의 90개 캡처를 수집한다. 새 바닥 텍스처 이름과 메시·정점 수를 기록한다. 과거 schema 1의 52장 증거는 변경하지 않는다. 일반 빌드 제외·검수 저장 격리 구조는 유지한다. [구현·검증 범위](TerrainRefinement/README.md).
+
 ## 전장 환경광·접지·HUD 통합
 
 `BattleEnvironmentPalette`와 `EnvironmentLight.cginc`가 장 테마별 주광·반사광·수목 명암을 지형, 식생, 배우에 공유한다. `UnitTone`의 미술 채도/대비와 환경광은 행동 종료의 `_Saturation`·`_Brightness`와 별도여서 전술 상태 표시를 유지한다. `GroundedUnitVisual`은 기존 `CharacterMotion` 뒤에 실행되며 실제 배우 위치와 지면을 기준으로 두 겹 접촉 그림자와 renderer property block을 갱신한다. 들림은 그림자의 크기·농도로 표현하며 그림자 평면은 지면에 남는다. 구조 민간인도 같은 조명과 접지를 사용하고 구조·호송 시 기존 표시 수명을 따른다.
