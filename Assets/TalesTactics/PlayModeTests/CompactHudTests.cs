@@ -7,6 +7,45 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
+        [UnityTest] public IEnumerator SlimBattleHeaderLeavesMapGapsAndKeepsSixAllySelectionAtLargeText()
+        {
+            director.Preferences.TextScale=1.3f;
+            director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,2,3,4,5});
+            director.BeginBattle();yield return null;yield return new WaitForEndOfFrame();
+            var allies=director.Session.Units.Where(u=>u.Team==Team.Player).ToArray();Assert.That(allies.Length,Is.EqualTo(6));
+            var resources=allies.Select(u=>$"{u.CurrentHP}/{u.CurrentMP}/{u.Moved}/{u.Acted}").ToArray();
+            var header=(RectTransform)director.Hud.transform.Find("Header");
+            Assert.That(header.GetComponent<UnityEngine.UI.Image>().enabled,Is.False,"Empty space between the small header cards must reveal the battlefield.");
+            var objective=(RectTransform)header.Find("BattleObjectiveBackdrop");var turn=(RectTransform)header.Find("BattleTurnBackdrop");
+            var a=new Vector3[4];var b=new Vector3[4];objective.GetWorldCorners(a);turn.GetWorldCorners(b);
+            Assert.That(a[2].x,Is.LessThan(b[0].x),"The objective must not crowd the six-portrait turn card.");
+            var gap=new Vector2((a[2].x+b[0].x)*.5f,(a[0].y+a[1].y)*.5f);
+            var hits=new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            UnityEngine.EventSystems.EventSystem.current.RaycastAll(new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){position=gap},hits);
+            Assert.That(hits,Is.Empty,"Transparent gaps must not consume battlefield input.");
+            var portraits=header.GetComponentsInChildren<UnityEngine.UI.Button>().Where(x=>x.name.StartsWith("아군 선택: ")).ToArray();
+            Assert.That(portraits.Length,Is.EqualTo(6));
+            var inner=turn.rect;inner.xMin+=8;inner.xMax-=8;inner.yMin+=8;inner.yMax-=8;
+            foreach(var portrait in portraits)
+            {
+                var corners=new Vector3[4];((RectTransform)portrait.transform).GetWorldCorners(corners);
+                Assert.That(corners.All(c=>inner.Contains(turn.InverseTransformPoint(c))),Is.True,portrait.name);
+            }
+            foreach(var unit in allies)
+            {
+                Click("아군 선택: "+unit.Data.Id);yield return null;yield return new WaitForEndOfFrame();
+                Assert.That(director.Session.Active,Is.SameAs(unit));
+                foreach(var label in header.GetComponentsInChildren<TMPro.TMP_Text>().Concat(director.Hud.transform.Find("Commands").GetComponentsInChildren<TMPro.TMP_Text>()))
+                {label.ForceMeshUpdate();Assert.That(label.isTextOverflowing,Is.False,label.text);}
+            }
+            Assert.That(allies.Select(u=>$"{u.CurrentHP}/{u.CurrentMP}/{u.Moved}/{u.Acted}"),Is.EqualTo(resources));
+            var dock=(RectTransform)director.Hud.transform.Find("BattleCommandDock");
+            Assert.That(dock.rect.height,Is.LessThanOrEqualTo(450),"Routine commands must leave more battlefield visible than the old tall list.");
+            Click("Move / 이동");yield return null;Assert.That(director.State,Is.TypeOf<MoveSelectionState>());
+            director.State.Cancel();yield return null;
+            Click("Skill / 스킬");yield return null;Assert.That(director.State,Is.TypeOf<ActionSelectionState>());
+            Assert.That(((RectTransform)director.Hud.transform.Find("Commands")).rect.width,Is.GreaterThanOrEqualTo(316),"Skill descriptions retain their reading width.");
+        }
         [UnityTest] public IEnumerator CompactUnitSummaryAndDetailsPreserveBattleAndInput()
         {
             director.BeginBattle();yield return null;
@@ -33,7 +72,9 @@ namespace TalesTactics.PlayModeTests
                 {
                     var iconRight=r.InverseTransformPoint(icon.rectTransform.TransformPoint(icon.rectTransform.rect.max)).x;
                     var textLeft=r.InverseTransformPoint(caption.rectTransform.TransformPoint(caption.rectTransform.rect.min)).x;
-                    Assert.That(textLeft-iconRight,Is.GreaterThanOrEqualTo(8),"Command icon and caption need separate horizontal areas: "+button.name);
+                    // World-to-canvas transforms can round an authored 8 px gap to 7.99994 px.
+                    const float requiredGap=8f,transformTolerance=.001f;
+                    Assert.That(textLeft-iconRight+transformTolerance,Is.GreaterThanOrEqualTo(requiredGap),"Command icon and caption require an 8 px gap (0.001 px transform tolerance): "+button.name);
                 }
             }
             director.SkillCommand();yield return null;
@@ -49,6 +90,8 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Hud.IntermissionHubOpen,Is.True);Click("출전 편성");yield return null;
             Assert.That(director.Hud.transform.Find("Unit").GetComponent<UnityEngine.UI.Image>().enabled,Is.True,"Preparation restores its ornate navigation frame after the shared battle dock.");
             Assert.That(director.Hud.transform.Find("Unit").GetComponent<UnityEngine.UI.Image>().raycastTarget,Is.True);
+            Assert.That(director.Hud.transform.Find("Header").GetComponent<UnityEngine.UI.Image>().enabled,Is.True,"The preparation header regains its surface after the battle header's separated cards.");
+            Assert.That(director.Hud.transform.Find("Header").GetComponent<UnityEngine.UI.Image>().raycastTarget,Is.True);
             Assert.That(director.Hud.transform.Find("PreparationContent/FormationModels").gameObject.activeInHierarchy,Is.True);
         }
     }

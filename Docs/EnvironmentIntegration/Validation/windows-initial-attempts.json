@@ -1,0 +1,26 @@
+[
+  {
+    "run": "e834e03dbf064a75b765917a991d845e",
+    "source": "C:\\dev\\TalesTactics\\Logs\\EnvironmentIntegration20261101\\Windows-e834e03dbf064a75b765917a991d845e\\validation.json",
+    "sha256": "2e51658e3037634ab1aefd2fad2a0a1fdc71f3983ea4237e4ef714877d4592fc",
+    "originalWrapperPassed": false,
+    "exitCode": 0,
+    "userFilesUnchanged": true,
+    "originalErrors": [
+      "Missing expected live models/allies: episode-11|idle|1280x720|0"
+    ],
+    "acceptedAsFinalVisualEvidence": false,
+    "reason": "Wrapper expected six active allies in episode 11, but CrossoverFronts reserves the eastern half: three active and three reserved. Game rules were unchanged; wrapper expectation was corrected to three."
+  },
+  {
+    "run": "3802dd4d5d0d4fe3936b32e97fb690cb",
+    "source": "C:\\dev\\TalesTactics\\Logs\\EnvironmentIntegration20261101\\Windows-3802dd4d5d0d4fe3936b32e97fb690cb\\validation.json",
+    "sha256": "8c220bb589a43bf07ccb8747c45137272edd4b2e7b31c1416fcec4f9c21c9991",
+    "originalWrapperPassed": true,
+    "exitCode": 0,
+    "userFilesUnchanged": true,
+    "originalErrors": [],
+    "acceptedAsFinalVisualEvidence": false,
+    "reason": "Runtime/old external checks passed, but manual PNG inspection found black images from a hidden game window. This run is rejected as visual evidence. The wrapper now rejects nearly uniform images; final run uses a visible game window."
+  }
+]

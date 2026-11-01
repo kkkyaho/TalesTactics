@@ -9,7 +9,7 @@ namespace TalesTactics
     // normal players do not contain this type or change their storage behavior.
     public static class ReviewStorageBootstrap
     {
-        static readonly string[] Switches={"--quality-presentation-review","--campaign-flow-review","--skill-roster-vfx-review"};
+        static readonly string[] Switches={"--quality-presentation-review","--campaign-flow-review","--skill-roster-vfx-review","--environment-integration-review"};
         public static string Resolve(string[] arguments,string playerDataPath,string userDataPath)
         {
             var args=arguments??Array.Empty<string>();var selected=args.Select((value,index)=>new{value,index}).Where(a=>Switches.Contains(a.value)).ToArray();
@@ -24,6 +24,7 @@ namespace TalesTactics
                 folder="QualityPresentationReviews";storage="isolated-save";
             }
             else if(option==Switches[1]){folder="CampaignFlowReviews";storage="Storage";}
+            else if(option==Switches[3]){folder="EnvironmentIntegrationReviews";storage="Storage";}
             else
             {
                 var phases=args.Select((value,index)=>new{value,index}).Where(a=>a.value=="--roster-phase").ToArray();

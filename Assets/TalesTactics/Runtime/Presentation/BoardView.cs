@@ -135,7 +135,8 @@ namespace TalesTactics
                 else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera);motions[u]=motion;}
                 var hp=new GameObject("HP "+u.Data.Id,typeof(RectTransform));hp.transform.SetParent(healthCanvas.transform,false);
                 hp.AddComponent<UnitHealthDisplay>().Initialize(battle,u,g.transform);
-                CreateContactShadow(g.transform);
+                var contact=CreateContactShadow(g.transform);
+                g.AddComponent<GroundedUnitVisual>().Initialize(sr,contact,u,root.GetComponent<PixelBattlefield>(),battle.Session.CampaignStage);
         }
         public bool Pick(Vector2 screen,out Vector2Int p)
         {

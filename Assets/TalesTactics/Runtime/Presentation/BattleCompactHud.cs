@@ -8,9 +8,11 @@ namespace TalesTactics
         RectTransform battleDock;
         float targetContextHeight=124;
         bool NarrowBattleHud=>Screen.width<=1100;
-        float BattleDockWidth=>NarrowBattleHud?364:316;
-        float BattleDockTop=>124;
-        float CommandMenuHeight=>54+46*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(battle.Session.Active?.CanUndoMove==true?7:6):battle.Session.Active?.CanUndoMove==true?6:5);
+        // Dense forecasts/skill cards keep their reading width. Routine commands need less map space.
+        bool SmallBattleDock=>battle.State is CommandState||battle.State is MoveSelectionState||battle.State is FacingSelectionState;
+        float BattleDockWidth=>SmallBattleDock?(NarrowBattleHud?316:288):(NarrowBattleHud?364:316);
+        float BattleDockTop=>116;
+        float CommandMenuHeight=>!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?216:172;
         public bool UnitDetailsOpen=>unitDetails!=null&&unitDetails.gameObject.activeSelf;
         bool SkillPanel=>battle.State is ActionSelectionState||battle.State is SkillDetailsState;
         string BattleTitle=>battle.State is CommandState?"행동 선택":battle.State is ActionSelectionState?"기술 선택":
@@ -26,8 +28,11 @@ namespace TalesTactics
             bool open=!(battle.State is BattleEndState)&&!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen&&!battle.StoryActive;
             bool summaryVisible=!(targeting&&NarrowBattleHud);
             commands.gameObject.SetActive(open);left.gameObject.SetActive(open&&summaryVisible);
-            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-112),new Vector2(-12,-12));
-            float width=BattleDockWidth,summaryHeight=178,contentTop=BattleDockTop+(summaryVisible?summaryHeight:12);
+            Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-108),new Vector2(-12,-12));
+            header.GetComponent<UnityEngine.UI.Image>().enabled=false;
+            header.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            header.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+            float width=BattleDockWidth,summaryHeight=166,contentTop=BattleDockTop+(summaryVisible?summaryHeight:12);
             float contentHeight=SkillPanel?SkillCardHeight+24:targeting?targetContextHeight:battle.State is CommandState?CommandMenuHeight:battle.State is MoveSelectionState?148:340;
             if(facing)contentHeight=0;
             Place(left,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-summaryHeight),new Vector2(12+width,-BattleDockTop));
@@ -37,7 +42,7 @@ namespace TalesTactics
                 battleDock=Panel("BattleCommandDock",new Vector2(0,1),new Vector2(0,1),Vector2.zero,Vector2.zero);
                 battleDock.SetAsFirstSibling();
             }
-            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+64;
+            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+56;
             Place(battleDock,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-dockHeight),new Vector2(12+width,-BattleDockTop));
             battleDock.gameObject.SetActive(open);
             // These two retained panels share one backdrop and never drift away from one another.
@@ -48,7 +53,7 @@ namespace TalesTactics
                 part.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             }
             if(tacticalToolbar!=null)
-                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+20),new Vector2(width,-BattleDockTop-dockHeight+58));
+                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+20),new Vector2(width,-BattleDockTop-dockHeight+56));
             if(!facing)InsetBattleCommands();
             Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(width+36,12),new Vector2(-12,108));
             if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
@@ -78,7 +83,7 @@ namespace TalesTactics
             float side=(BattleDockWidth+36)*scale,bottom=20*scale;
             return new Rect(side/Screen.width,bottom/Screen.height,
                 Mathf.Max(1,Screen.width-side-12*scale)/Screen.width,
-                Mathf.Max(1,Screen.height-bottom-124*scale)/Screen.height);
+                Mathf.Max(1,Screen.height-bottom-BattleDockTop*scale)/Screen.height);
         }
         void PlaceCommandBesideUnit()
         {
@@ -119,38 +124,39 @@ namespace TalesTactics
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
-                r.anchorMin=new Vector2(0,1);r.anchorMax=Vector2.one;r.pivot=new Vector2(.5f,1);
-                int row=i==6&&!battle.Session.Active.CanUndoMove?5:i;
-                r.anchoredPosition=new Vector2(0,-34-row*46);r.sizeDelta=new Vector2(-36,42);
+                int row=i==6?3:i/2,column=i%2;
+                r.pivot=new Vector2(.5f,1);
+                Place(r,new Vector2(i==6?0:column*.5f,1),new Vector2(i==6?1:(column+1)*.5f,1),
+                    new Vector2(i==6||column==0?24:4,-34-row*44-40),new Vector2(i==6||column==1?-24:-4,-34-row*44));
                 child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
                 child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
                 var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
                 colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
                 var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=18;text.fontSizeMin=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
                 FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo","endturn"}[i],new Vector2(0,.5f),new Vector2(0,.5f),formationGold);
-                var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(32,32);icon.anchoredPosition=new Vector2(28,0);
-                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(56,0),new Vector2(-12,0));
+                var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(24,24);icon.anchoredPosition=new Vector2(20,0);
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(40,0),new Vector2(-4,0));
             }
         }
         void DrawUnitSummary(UnitRuntime u)
         {
             var portrait=FormationRect(left,"Portrait",Vector2.zero,Vector2.zero);
-            portrait.offsetMin=new Vector2(24,48);portrait.offsetMax=new Vector2(96,138);StatusPortrait(portrait,u.Data);
+            portrait.offsetMin=new Vector2(24,44);portrait.offsetMax=new Vector2(84,116);StatusPortrait(portrait,u.Data);
 
-            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,22,26,18);title.rectTransform.offsetMin=new Vector2(108,title.rectTransform.offsetMin.y);title.rectTransform.offsetMax=new Vector2(-24,title.rectTransform.offsetMax.y);
-            SummaryBar("HP",u.CurrentHP,u.Stats.HP,50,new Color(.25f,.78f,.49f));
-            SummaryBar("MP",u.CurrentMP,u.Stats.MP,78,new Color(.25f,.57f,.95f));
-            SummaryBar("SP",u.SpecialGauge,100,106,new Color(.93f,.69f,.28f));
-            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",140,24,14);
-            status.rectTransform.offsetMin=new Vector2(26,status.rectTransform.offsetMin.y);
+            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,20,26,18);title.rectTransform.offsetMin=new Vector2(24,title.rectTransform.offsetMin.y);title.rectTransform.offsetMax=new Vector2(-24,title.rectTransform.offsetMax.y);
+            SummaryBar("HP",u.CurrentHP,u.Stats.HP,48,new Color(.25f,.78f,.49f));
+            SummaryBar("MP",u.CurrentMP,u.Stats.MP,74,new Color(.25f,.57f,.95f));
+            SummaryBar("SP",u.SpecialGauge,100,100,new Color(.93f,.69f,.28f));
+            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",132,24,14);
+            status.rectTransform.offsetMin=new Vector2(24,status.rectTransform.offsetMin.y);
             status.rectTransform.offsetMax=new Vector2(-90,status.rectTransform.offsetMax.y);
-            Button(left,"능력",138,()=>ShowUnitDetails(u),true,30);
-            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(66,30);button.anchoredPosition=new Vector2(-24,-138);
+            Button(left,"능력",130,()=>ShowUnitDetails(u),true,30);
+            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(62,30);button.anchoredPosition=new Vector2(-24,-130);
         }
         void SummaryBar(string title,int value,int maximum,float y,Color color)
         {
             var bg=new GameObject(title+"Bar",typeof(RectTransform),typeof(UnityEngine.UI.Image));bg.transform.SetParent(left,false);
-            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(108,-y-24),new Vector2(-24,-y));
+            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(96,-y-24),new Vector2(-24,-y));
             bg.GetComponent<UnityEngine.UI.Image>().color=new Color(.07f,.1f,.17f);bg.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
             var fill=new GameObject("Fill",typeof(RectTransform),typeof(UnityEngine.UI.Image));fill.transform.SetParent(bg.transform,false);
             Place(fill.GetComponent<RectTransform>(),Vector2.zero,new Vector2(Mathf.Clamp01((float)value/Mathf.Max(1,maximum)),1),Vector2.zero,Vector2.zero);

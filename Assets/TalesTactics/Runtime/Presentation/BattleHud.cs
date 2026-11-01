@@ -23,6 +23,9 @@ namespace TalesTactics
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
             if(battleDock!=null)battleDock.gameObject.SetActive(false);
+            header.GetComponent<UnityEngine.UI.Image>().enabled=true;
+            header.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
+            header.GetComponent<UnityEngine.UI.Outline>().enabled=true;
             left.GetComponent<UnityEngine.UI.Image>().enabled=true;
             left.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
             left.GetComponent<UnityEngine.UI.Outline>().enabled=true;

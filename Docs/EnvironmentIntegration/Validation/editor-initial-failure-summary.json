@@ -1,0 +1,10 @@
+{
+  "source": "C:\\dev\\TalesTactics\\Logs\\EnvironmentIntegration20261101\\Editor-2cc51df028fc4a8aae63031c0c2c84bb\\result.json",
+  "sha256": "eefc779dacab47ed14d842aa2614b43c5e90b476281c17e21d89babeae5eebea",
+  "bytes": 3028532,
+  "passed": false,
+  "completedCaptures": 50,
+  "errorCount": 3573,
+  "firstError": "UnityException: CreateImpl is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call it in Awake or Start instead. Called from MonoBehaviour 'GroundedUnitVisual' on game object '크레스 알베인'.\nSee \"Script Serialization\" page in the Unity Manual for further details.\nUnityEngine.MaterialPropertyBlock..ctor () (at <d5ea965f39d74501b56f4006ef80da34>:0)\nTalesTactics.GroundedUnitVisual..ctor () (at Assets/TalesTactics/Runtime/Presentation/GroundedUnitVisual.cs:9)\nUnityEngine.GameObject:AddComponent()\nTalesTactics.BoardView:CreateUnitVisual(UnitRuntime) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:139)\nTalesTactics.BoardView:Build(BattleSession) (at Assets/TalesTactics/Runtime/Presentation/BoardView.cs:116)\nTalesTactics.BattleDirector:BeginBattle() (at Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs:167)\nTalesTactics.<BeginBoard>d__33:MoveNext() (at Assets/TalesTactics/Runtime/Presentation/EnvironmentIntegrationReview.cs:132)\nTalesTactics.<Start>d__30:MoveNext() (at Assets/TalesTactics/Runtime/Presentation/EnvironmentIntegrationReview.cs:84)\nUnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)\n",
+  "correction": "MaterialPropertyBlock allocation moved out of MonoBehaviour field initialization into Initialize. The original JSON and PNGs remain local; this document is a derived summary, not the complete failure report."
+}

@@ -1,5 +1,13 @@
 # 아키텍처
 
+## 전장 환경광·접지·HUD 통합
+
+`BattleEnvironmentPalette`와 `EnvironmentLight.cginc`가 장 테마별 주광·반사광·수목 명암을 지형, 식생, 배우에 공유한다. `UnitTone`의 미술 채도/대비와 환경광은 행동 종료의 `_Saturation`·`_Brightness`와 별도여서 전술 상태 표시를 유지한다. `GroundedUnitVisual`은 기존 `CharacterMotion` 뒤에 실행되며 실제 배우 위치와 지면을 기준으로 두 겹 접촉 그림자와 renderer property block을 갱신한다. 들림은 그림자의 크기·농도로 표현하며 그림자 평면은 지면에 남는다. 구조 민간인도 같은 조명과 접지를 사용하고 구조·호송 시 기존 표시 수명을 따른다.
+
+`PixelEnvironmentLight`는 배치한 수목의 범위와 높이로 발 위치의 그늘을 구하고, `PixelTerrainRelief`는 실제 타일 고저차에 벽면과 한 단계 이동 가능한 경계의 계단을 표현한다. 외곽 수목은 간격 있는 군집으로, 녹지 절벽은 바위와 풀 사이의 열린 구간으로 나눈다. 추가 표현은 기존 지형 배칭을 사용하며 새 이동 판정·충돌·경로나 Content 수정은 없다. 상단 HUD는 목표/최대 6인/시스템 버튼으로 분리하고 명령 도크를 2열로 축소해 전장의 빈 영역을 입력 가능하게 유지한다.
+
+`EnvironmentIntegrationReview`는 Editor 또는 `TALESTACTICS_REVIEW` 전용이다. Windows의 `--environment-integration-review <GUID>`는 `ReviewStorageBootstrap`에서 Director의 저장 로드 전에 실행별 `Storage`로 격리한다. 1/11/16/20화 시작 및 6인 훈련의 52개 실제 캡처와 이동·지면/그림자·타일 선택·UI 경계·셰이더를 검사한다. 장별 선행 플래그/레벨은 검수용 메모리에만 있으므로 자연 성장·전체 캠페인 완주나 기술 전수 실행으로 세지 않는다. [표현 변경과 현재 검증 근거](EnvironmentIntegration/README.md).
+
 ## 캐릭터 품질 후속 개선 — 구현·원화 적용·사후 검증 완료
 
 `CharacterMotionClips`는 기존 방향별 원화에서 시전 포즈열을 선택하고, `DirectionalSpriteClip`의 phase pacing과 `CombatMotionProfile`은 기존 판정 경계 안에서 포즈 체류와 이동 곡선을 조정한다. `ImpactPolish`는 기존 효과 메시·풀을 사용해 검흔·꽃잎·지면 꽃문양을 연결한다. Core 판정·Content 정의·저장 형식은 이 표현 계층과 분리한다.

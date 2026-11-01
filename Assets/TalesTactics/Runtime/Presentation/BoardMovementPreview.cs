@@ -36,9 +36,9 @@ namespace TalesTactics
             l.startColor=l.endColor=color;l.numCornerVertices=2;l.numCapVertices=2;
             l.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;l.receiveShadows=false;SetColor(l,color);return l;
         }
-        void CreateContactShadow(Transform parent)
+        GroundOverlay CreateContactShadow(Transform parent)
         {
-            var shadow=Overlay("Contact shadow",parent,-3);shadow.transform.localPosition=Vector3.up*.018f;shadow.Shadow();
+            var shadow=Overlay("Contact shadow",parent,-3);shadow.transform.localPosition=Vector3.up*.018f;shadow.Shadow();return shadow;
         }
         void DrawMovementPreview(List<Vector2Int> path)
         {

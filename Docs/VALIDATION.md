@@ -1,5 +1,13 @@
 # 검증 기록 — 2026-11-01
 
+## 2026-11-01 — 전장 환경광·접지·지형/HUD 통합
+
+최종 실제 Unity **[EditMode437/437 (12.75초)](EnvironmentIntegration/Validation/editmode-final.json)**·**[PlayMode255/255 (630.07초)](EnvironmentIntegration/Validation/playmode-final.json)**, 실패·건너뜀·미결정0이다. 최초 PlayMode253/255의 간격/색상 exact 비교2건은 제품 기준을 유지하고 미세 수치 허용치를 적용한 뒤 전체 재실행으로 확인했다. 중간0개 테스트는 성공으로 세지 않았다. [실패 이력과 적용 범위](EnvironmentIntegration/README.md).
+
+Editor52/52·종료0·설정 복원, 일반/REVIEW Windows 빌드, 일반 DLL 검수/테스트 타입 제외 및 Windows52/52 실제 캡처를 확인했다. Windows 오류/배치 issues0·정상 종료0·사용자 전체 저장 트리 불변이다. 1/11/16/20화 시작 및6인 훈련의 회전·실제 합법 이동·피격 포즈·두 해상도 명령/기술 목록 범위다. 자연 성장·기술 전수·전체 캠페인·성능 측정을 이번 결과에 합산하지 않는다. [Windows 검증 요약](EnvironmentIntegration/Validation/windows-summary.json), [실제 캡처와 SHA](EnvironmentIntegration/Evidence/actual-capture-manifest.json).
+
+작업 전 dirty 파일은 커밋에서 제외한다. 최종 대조에서 동적 폰트는 초기 해시와 같고 생성 CSV2개는 테스트 후 해시가 달라졌다. CSV의 초기 바이트 백업이 없어 임의 HEAD 복원을 하지 않았다. [보호 파일 대조](EnvironmentIntegration/Validation/preexisting-dirty-files.json)에 이 한계를 기록했다. 일반 실행본 시작/수동 플레이·공개 릴리즈는 이번 검증 범위가 아니다.
+
 ## 2026-11-01 — 추가 품질 개선 원화 적용·사후 회귀 완료
 
 선택 **103시트·3,850프레임**을 실제 production에 적용했다. 기존 전체 **159시트·4,898프레임**의 식별자와 보호 Content·장비·폰트537파일 바이트 보존을 확인했다. 앞선 네 적용 실패와 전체 롤백은 별도 기록으로 남기고, 다섯 번째 성공과 구별한다. [적용 결과](QualityUpgrade/Validation/production-application.json), [적용 범위·실패 이력](QualityUpgrade/README.md).

@@ -43,15 +43,46 @@ namespace TalesTactics.PlayModeTests
                     director.SelectedStage=stage;director.BeginBattle();director.StopAllCoroutines();yield return null;
                     var view=Object.FindAnyObjectByType<CrossoverCivilianView>();Assert.That(view,Is.Not.Null);
                     Assert.That(view.GetComponentsInChildren<SpriteRenderer>().Length,Is.EqualTo(3));
+                    yield return new WaitForEndOfFrame();
+                    var people=view.GetComponentsInChildren<SpriteRenderer>();var environment=people[0].sharedMaterial;
+                    var shadows=view.GetComponentsInChildren<GroundOverlay>();var shadowMeshes=shadows.Select(s=>s.GetComponent<MeshFilter>().sharedMesh).ToArray();
+                    Assert.That(environment.shader.name,Is.EqualTo("TalesTactics/UnitTone"));Assert.That(environment.shader.isSupported,Is.True);
+                    Assert.That(people.All(p=>p.sharedMaterial==environment),Is.True);Assert.That(shadows.Length,Is.EqualTo(3));
+                    Assert.That(shadows.All(s=>s.GetComponent<MeshRenderer>().sharedMaterial==environment),Is.True);
+                    Assert.That(view.GetComponentsInChildren<Collider>(true),Is.Empty,"Civilian art and contact shadows must not intercept tile picks.");
+                    foreach(var person in people)
+                    {
+                        var block=new MaterialPropertyBlock();person.GetPropertyBlock(block);
+                        Assert.That(block.GetFloat("_EnvironmentLight"),Is.GreaterThan(0));
+                        var expectedKey=BattleEnvironmentPalette.Key(BattleEnvironmentPalette.Theme(stage));
+                        var actualKey=block.GetColor("_KeyColor");
+                        for(var channel=0;channel<4;channel++)
+                            Assert.That(actualKey[channel],Is.EqualTo(expectedKey[channel]).Within(.00001f),
+                                $"Civilian key colour stage {stage}, channel {channel}: expected {expectedKey[channel]:R}, actual {actualKey[channel]:R}, error {Mathf.Abs(actualKey[channel]-expectedKey[channel]):R}");
+                        var contact=view.transform.Find("Civilian contact shadow "+person.name.Last());
+                        Assert.That(Vector3.Distance(contact.position,person.transform.position-Vector3.up*.022f),Is.LessThan(.001f));
+                        var anchor=block.GetVector("_GroundAnchor");Assert.That(anchor.y,Is.EqualTo(person.transform.position.y-.04f).Within(.001f));
+                    }
                     director.Session.Crossover.State.Nodes=1;yield return new WaitForSeconds(2);
                     var rescued=view.transform.Find("Civilian group 0");
                     Assert.That(rescued.gameObject.activeSelf,Is.EqualTo(stage==21));
+                    var rescuedShadow=view.transform.Find("Civilian contact shadow 0");
+                    Assert.That(rescuedShadow.gameObject.activeSelf,Is.EqualTo(rescued.gameObject.activeSelf),"A hidden rescued group must not leave a shadow behind.");
                     if(stage==21)
                     {
                         var lead=director.Session.Units.First(u=>u.Team==Team.Player);
                         Assert.That(Vector3.Distance(rescued.position,director.Session.Grid[lead.Position].WorldPosition(director.Session.Rules.TileHeight)),Is.LessThan(1.5f));
+                        var before=rescued.position;
+                        // Explicit position fixture verifies visual follow; legal animated movement has its own regression.
+                        var destination=director.Session.Grid.Reachable(lead,out _).Keys.Where(p=>GridMap.Distance(p,lead.Position)>=2).OrderBy(p=>p.x).ThenBy(p=>p.y).First();
+                        Assert.That(director.Session.Grid.Place(lead,destination),Is.True);director.RefreshViews();yield return new WaitForSeconds(2);
+                        Assert.That(Vector3.Distance(rescued.position,before),Is.GreaterThan(.2f),"Linked evacuees must follow a moving escort.");
+                        Assert.That(Vector3.Distance(rescued.position,director.Session.Grid[lead.Position].WorldPosition(director.Session.Rules.TileHeight)),Is.LessThan(1.5f));
+                        Assert.That(Vector3.Distance(rescuedShadow.position,rescued.position-Vector3.up*.022f),Is.LessThan(.001f));
                     }
-                    director.Restart();yield return null;
+                    director.Restart();yield return null;yield return null;
+                    Assert.That(environment==null,Is.True,"Civilian view must release its owned material.");
+                    Assert.That(shadowMeshes.All(m=>m==null),Is.True,"Civilian shadows must release their owned meshes.");
                 }
             }
             finally{director.Restart();director.Catalog=original;Object.Destroy(review);}

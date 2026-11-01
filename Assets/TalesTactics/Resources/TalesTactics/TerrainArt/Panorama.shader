@@ -17,8 +17,8 @@ Shader "TalesTactics/Atmospheric Panorama"
                 fixed3 c=tex2D(_MainTex,i.uv).rgb;
                 half l=dot(c,half3(.2126,.7152,.0722));
                 c=lerp(l.xxx,c,.72);
-                c=(c-.35)*.68+.30;
-                return fixed4(lerp(c*.80,_Atmosphere.rgb,.26),1);
+                c=(c-.35)*.80+.30;
+                return fixed4(lerp(c*.90,_Atmosphere.rgb,.18),1);
             }
             ENDCG
         }

@@ -23,20 +23,23 @@ namespace TalesTactics
         public int Chapter=>stage;
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
-            stage=chapter>=CampaignStages.LegacyCount?CrossoverCampaign.TerrainTheme(chapter):Mathf.Clamp(chapter,0,5);wall=stage>=3?14:4;bottom=stage==2?-1.8f:-1.15f;
+            stage=BattleEnvironmentPalette.Theme(chapter);wall=stage>=3?14:4;bottom=stage==2?-1.8f:-1.15f;
             view=camera;spriteMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));spriteMaterial.name="Terrain foliage tone";owned.Add(spriteMaterial);
+            BattleEnvironmentPalette.ApplyScenery(spriteMaterial,stage);
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
             {
                 var m=shader!=null?new Material(shader):new Material(source);m.name="Architectural terrain "+i;owned.Add(m);
                 m.SetTexture("_MainTex",atlas);m.SetVector("_AtlasRect",new Vector4(i%4*.25f+.0025f,(3-i/4)*.25f+.0025f,.245f,.245f));
                 m.SetColor("_BaseColor",Color.white);
-                m.SetColor("_KeyColor",stage==2?new Color(1.08f,.98f,.85f):stage==3?new Color(.92f,.99f,1.10f):stage==5?new Color(1.08f,1.02f,.97f):new Color(1.02f,1.01f,.94f));
-                m.SetColor("_FillColor",stage==2?new Color(.92f,.78f,.70f):new Color(.76f,.86f,.95f));
+                BattleEnvironmentPalette.ApplyTerrain(m,stage);
                 if(i==8||i==9)m.SetFloat("_Water",1);surfaces[i]=m;geometry[i]=new TerrainGeometry();
             }
             surfaces[6].SetTexture("_MainTex",Resources.Load<Texture2D>(Art+"Cliff"));
             surfaces[6].SetVector("_AtlasRect",new Vector4(0,0,1,1));surfaces[6].SetFloat("_WorldCliff",1);
+            // The same authored rock reads as cool weathered stone in forests and muted ochre in canyons.
+            if(Verdant){surfaces[6].SetFloat("_ArtSaturation",.12f);surfaces[6].SetColor("_BaseColor",new Color(.64f,.73f,.73f,1));}
+            else if(stage==2){surfaces[6].SetFloat("_ArtSaturation",.65f);surfaces[6].SetColor("_BaseColor",new Color(.9f,.9f,.9f,1));}
             foliage=Resources.Load<Texture2D>(Art+"Foliage");
             architecture=Resources.Load<Texture2D>(Art+"Architecture");architectureSprites=new Sprite[16];
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
@@ -49,7 +52,7 @@ namespace TalesTactics
             {
                 var panoramaShader=Resources.Load<Shader>(Art+"Panorama");
                 var m=panoramaShader!=null?new Material(panoramaShader):new Material(source);m.name="Chapter panorama "+stage;owned.Add(m);m.mainTexture=distant;
-                m.SetColor("_Atmosphere",stage==2?new Color(.25f,.22f,.22f):new Color(.13f,.21f,.27f));
+                BattleEnvironmentPalette.ApplyPanorama(m,stage);
                 backdrop=new GameObject("Chapter panorama").transform;backdrop.SetParent(transform,false);
                 var quad=new TerrainGeometry();quad.Quad(new Vector3(-.5f,-.5f,0),new Vector3(-.5f,.5f,0),new Vector3(.5f,.5f,0),new Vector3(.5f,-.5f,0));
                 meshes.Add(quad.Flush(backdrop,"Panorama surface",m));backgroundAspect=(float)distant.width/distant.height;
@@ -66,7 +69,7 @@ namespace TalesTactics
             Vector3 p=tile.WorldPosition(step);int x=tile.Coordinate.x,z=tile.Coordinate.y;bool wet=tile.Terrain==TerrainType.Water;
             foreach(var d in Directions)
             {
-                var n=map[tile.Coordinate+d];var outward=new Vector3(d.x,0,d.y);var across=new Vector3(d.y,0,-d.x);
+                var n=map[tile.Coordinate+d];var outward=new Vector3(d.x,0,d.y);
                 if(n==null)
                 {
                     var edge=p+outward*.50f;
@@ -76,26 +79,23 @@ namespace TalesTactics
                     geometry[wall].Box(support-outward*.15f,new Vector3(d.x==0?1.01f:.24f,p.y-bottom,d.y==0?1.01f:.24f),.76f);
                     geometry[wall].Box(edge-Vector3.up*.28f,new Vector3(d.x==0?.95f:.28f,.25f,d.y==0?.95f:.28f));
                     geometry[stage==2?5:wall].Box(edge+Vector3.up*.075f,new Vector3(d.x==0?.99f:.16f,.15f,d.y==0?.99f:.16f));
-                    if((x+z)%2==0){geometry[wall].Box(edge+Vector3.up*.17f,Vector3.one*.24f);Foliage(stage==2?6:0,edge+outward*.27f-Vector3.up*.95f,1.05f);}
-                    if((x+z)%7==1)DressedProp(stage>=3?11:3,edge-outward*.02f,.74f,false);
-                    if((x+z)%3==1)Foliage(stage==2?4:2,edge+outward*.06f,.32f);
+                    float edgeNoise=DetailNoise(x,z,41+d.x*3+d.y*7);
+                    if(edgeNoise>.73f)geometry[wall].Box(edge+Vector3.up*.13f,Vector3.one*.20f);
+                    if(edgeNoise>.47f)Foliage(stage==2?6:0,edge+outward*.27f-Vector3.up*.80f,.83f+edgeNoise*.22f);
+                    if(edgeNoise<.12f)DressedProp(stage>=3?11:3,edge-outward*.02f,.66f,false);
+                    if(edgeNoise>.30f&&edgeNoise<.63f)Foliage(stage==2?4:2,edge+outward*.06f,.25f+edgeNoise*.09f);
                     if(stage==2)geometry[6].Rock(edge+outward*.25f+Vector3.up*(bottom-p.y-.5f),1.15f,p.y-bottom+.4f,x*31+z*17);
                 }
                 else if(n.Terrain==TerrainType.Water&&!wet)
                 {
                     var edge=p+outward*.47f;
                     geometry[wall].Box(edge-Vector3.up*.15f,new Vector3(d.x==0?.99f:.12f,.4f,d.y==0?.99f:.12f));
+                    if(n.Height<tile.Height)DressHeightBoundary(tile,n,outward,step);
                     if((x+z)%3==0)Foliage(stage==2?4:10,edge-Vector3.up*.08f,.3f);
                 }
                 else if(n.Height<tile.Height&&!wet)
                 {
-                    float rise=(tile.Height-n.Height)*step;
-                    for(int k=0;k<2;k++)
-                    {
-                        float stairHeight=rise*(2-k)/3f;
-                        var center=p+outward*(.55f+k*.12f)-Vector3.up*(rise-stairHeight*.5f);
-                        geometry[wall].Box(center,new Vector3(d.x==0?.99f:.13f,stairHeight,d.y==0?.99f:.13f));
-                    }
+                    DressHeightBoundary(tile,n,outward,step);
                 }
             }
             DressLivingTile(tile,map,step);

@@ -17,6 +17,7 @@ Shader "TalesTactics/Architectural Terrain"
         _LivingFloor("Vegetation blend",Float)=0
         _SurfaceRelief("Material relief",Float)=0
         _Dapple("Canopy light",Float)=0
+        _ArtSaturation("Art saturation",Range(0,1))=1
     }
     SubShader
     {
@@ -28,13 +29,14 @@ Shader "TalesTactics/Architectural Terrain"
             #pragma vertex vert
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "../EnvironmentLight.cginc"
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
             TEXTURE2D(_MeadowTex); SAMPLER(sampler_MeadowTex);
             CBUFFER_START(UnityPerMaterial)
             float4 _AtlasRect, _BaseColor, _KeyColor, _FillColor;
             float _Water, _Unlit,_WorldFloor,_WorldCliff,_DetailContrast;float4 _FloorExtent;
             float4 _TerrainShadows[24];int _ShadowCount;
-            float _LivingFloor,_SurfaceRelief,_Dapple;
+            float _LivingFloor,_SurfaceRelief,_Dapple,_ArtSaturation;
             CBUFFER_END
             struct Attributes {float4 positionOS:POSITION; float3 normalOS:NORMAL; float2 uv:TEXCOORD0; float4 color:COLOR;};
             struct Varyings {float4 positionCS:SV_POSITION; float3 normalWS:TEXCOORD0; float2 uv:TEXCOORD1; float3 world:TEXCOORD2; float4 color:COLOR;};
@@ -74,14 +76,14 @@ Shader "TalesTactics/Architectural Terrain"
                 }
                 half key=saturate(dot(normalize(i.normalWS),normalize(float3(-.45,.85,-.35))));
                 c=lerp(half3(.43,.44,.43),c,_DetailContrast);
+                c=TalesPalette(c,_ArtSaturation,1);
                 // Broad cel planes retain the new painted shapes instead of adding noisy relief.
                 key=.35*step(.22,key)+.38*step(.56,key)+.27*step(.82,key);
                 half3 illumination=lerp(_FillColor.rgb*.76,_KeyColor.rgb*1.02,key);
                 illumination*=1+clamp(relief*2,-.08,.08)*_SurfaceRelief;
-                float dapple=sin(i.world.x*1.37+sin(i.world.z*1.8))*sin(i.world.z*1.63+cos(i.world.x*2.2));
-                illumination*=1-_Dapple*smoothstep(-.4,.6,dapple)*saturate(i.normalWS.y);
+                illumination*=1-_Dapple*TalesCanopy(i.world.xz)*saturate(i.normalWS.y);
                 illumination=lerp(illumination,1,_Unlit);
-                // Architectural depth is shaded independently of the unlit character art.
+                // Terrain and sprites share canopy coordinates and chapter light colors.
                 half depth=lerp(.58,1,saturate((i.world.y+4.5)/4.5));
                 float occlusion=1;
                 for(int s=0;s<_ShadowCount;s++)

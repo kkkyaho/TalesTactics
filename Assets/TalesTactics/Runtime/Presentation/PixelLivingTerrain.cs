@@ -38,9 +38,11 @@ namespace TalesTactics
             {
                 var neighbor=map[tile.Coordinate+d];
                 bool edge=neighbor==null||!neighbor.Walkable||neighbor.Terrain==TerrainType.Water;
-                if(!edge||DetailNoise(x+d.x,z+d.y,3)<.34f)continue;
-                var foot=p+new Vector3(d.x,0,d.y)*.43f+Vector3.up*.02f;
-                Foliage(Verdant?2:stage==2?4:15,foot,Verdant?.22f:stage==2?.18f:.12f);
+                float noise=DetailNoise(x,z,17+d.x*3+d.y*7);
+                if(!edge||noise<.38f)continue;
+                var outward=new Vector3(d.x,0,d.y);var tangent=Vector3.Cross(outward,Vector3.up);
+                var foot=p+outward*.45f+tangent*((noise-.5f)*.44f)+Vector3.up*.015f;
+                Foliage(Verdant?(noise>.74f?9:2):stage==2?4:15,foot,(Verdant?.18f:stage==2?.15f:.10f)*(1+noise*.32f));
                 if(Verdant&&neighbor==null)Foliage(0,foot-Vector3.up*.5f,.7f);
             }
         }
@@ -50,24 +52,48 @@ namespace TalesTactics
             // A broken, irregular skirt joins the playable architecture to real world-space scenery.
             // It stays below the walkable surface and has no colliders.
             // Continuous irregular perimeter, not separate floating square grass tiles.
-            var inner=new List<Vector3>();var outer=new List<Vector3>();
+            var inner=new List<Vector3>();var outer=new List<Vector3>();var exposed=new List<bool>();var tallTrees=new List<Vector4>();
             for(int side=0;side<4;side++)
             {
                 int segments=(side%2==0?maxX:maxZ)+2;
+                // Every side has an opening, so camera rotation never reveals another uniform fence.
+                float opening=segments*(.30f+DetailNoise(side,stage,29)*.36f);
+                // Two separated exposures per side break the flower band without filling the board.
+                int rockA=Mathf.FloorToInt(segments*(.14f+DetailNoise(side,stage,59)*.16f));
+                int rockB=Mathf.FloorToInt(segments*(.62f+DetailNoise(side,stage,61)*.16f));
                 for(int s=0;s<segments;s++)
                 {
                     float t=(float)s/segments;float x=side==0?Mathf.Lerp(-.5f,maxX+.5f,t):side==1?maxX+.5f:side==2?Mathf.Lerp(maxX+.5f,-.5f,t):-.5f;
                     float z=side==0?-.5f:side==1?Mathf.Lerp(-.5f,maxZ+.5f,t):side==2?maxZ+.5f:Mathf.Lerp(maxZ+.5f,-.5f,t);
                     var near=map[new Vector2Int(Mathf.Clamp(Mathf.RoundToInt(x),0,maxX),Mathf.Clamp(Mathf.RoundToInt(z),0,maxZ))];if(near==null)continue;
                     float noise=DetailNoise(s,side,7);float h=near.WorldPosition(step).y-.28f;
-                    var a=new Vector3(x,h,z);var away=(new Vector3(x,0,z)-playableCenter).normalized;var b=a+away*(2.1f+noise*1.7f)-Vector3.up*(.9f+noise*.3f);
-                    inner.Add(a);outer.Add(b);
+                    float cluster=Mathf.Lerp(DetailNoise(s/3,side,23+stage),DetailNoise(s/3+1,side,23+stage),(s%3)/3f);
+                    var a=new Vector3(x,h,z);var away=(new Vector3(x,0,z)-playableCenter).normalized;
+                    var b=a+away*(1.15f+cluster*.85f+noise*.4f)-Vector3.up*(.62f+noise*.3f);
+                    bool rockPatch=Verdant&&(s==rockA||s==rockB);
+                    inner.Add(a);outer.Add(b);exposed.Add(rockPatch);
                     if(Verdant)
                     {
-                        Tree(3,Vector3.Lerp(a,b,.7f),.7f+noise*.5f);
-                        if(s%2==0)Tree((s+side)%3,b-away*.4f,2.7f+noise*1.6f);
-                        Foliage(9,Vector3.Lerp(a,b,.3f),.38f+noise*.25f);
-                        Foliage(0,b-Vector3.up*.45f,1.1f);
+                        if(rockPatch)
+                        {
+                            var outward=side==0?Vector3.back:side==1?Vector3.right:side==2?Vector3.forward:Vector3.left;
+                            var rock=Vector3.Lerp(a,b,.66f)+outward*.12f-Vector3.up*.28f;
+                            // Rock's authored radial variation is at most 1.03. Keep every vertex
+                            // outside the grid boundary, even on the narrowest corner of the skirt.
+                            float radius=Mathf.Min(.42f+noise*.12f,(Vector3.Dot(rock-a,outward)-.10f)/1.05f);
+                            geometry[6].Rock(rock,radius,.58f+noise*.16f,side*37+s);
+                        }
+                        if(!rockPatch&&(s%3==0||noise>.55f))Tree(3,Vector3.Lerp(a,b,.68f),.60f+cluster*.38f,noise>.5f);
+                        float height=2.25f+cluster*.65f+noise*.35f;
+                        var foot=b-away*.22f;
+                        if(!rockPatch&&Mathf.Abs(s-opening)>1.55f&&noise>.26f&&CanPlaceCanopy(tallTrees,foot,height))
+                        {
+                            int species=Mathf.Min(2,(int)(DetailNoise(s,side,37)*3));
+                            Tree(species,foot,height,DetailNoise(s,side,39)>.5f);
+                            tallTrees.Add(new Vector4(foot.x,foot.z,height,0));
+                        }
+                        if(!rockPatch&&noise>.35f)Foliage(9,Vector3.Lerp(a,b,.3f),.27f+cluster*.18f);
+                        if(!rockPatch&&noise>.55f)Foliage(0,b-Vector3.up*.45f,.85f+noise*.2f);
                     }
                     else if(s%2==0)geometry[stage==2?6:wall].Rock(b-Vector3.up*.5f,.65f+noise*.4f,.9f+noise*.5f,s+side*19);
                 }
@@ -75,16 +101,27 @@ namespace TalesTactics
             for(int i=0;i<inner.Count;i++)
             {
                 int next=(i+1)%inner.Count;
-                if(Verdant)exterior.Quad(inner[i],inner[next],outer[next],outer[i]);
+                if(Verdant&&!exposed[i])exterior.Quad(inner[i],inner[next],outer[next],outer[i]);
+                else if(Verdant)geometry[6].Quad(inner[i],inner[next],outer[next],outer[i]);
                 else geometry[stage==2?6:wall].Quad(inner[i],inner[next],outer[next],outer[i]);
                 // Deep world-space cliff faces hide the underside and connect the skirt to the ravine.
-                var materialIndex=stage==2?6:wall;
+                var materialIndex=Verdant||stage==2?6:wall;
                 geometry[materialIndex].Quad(outer[i]-Vector3.up*3,outer[i],outer[next],outer[next]-Vector3.up*3,.85f,new Vector2(2,3));
-                if(Verdant&&i%2==0)Foliage(0,outer[i]-Vector3.up*1.3f,1.8f);
+                if(Verdant&&!exposed[i]&&DetailNoise(i,stage,43)>.58f)Foliage(0,outer[i]-Vector3.up*1.15f,1.3f+DetailNoise(i,stage,47)*.3f);
             }
             if(Verdant){var mesh=exterior.Flush(transform,"Continuous forest surroundings",meadow);if(mesh!=null)meshes.Add(mesh);}
         }
-        void Tree(int index,Vector3 foot,float height)
+        static bool CanPlaceCanopy(List<Vector4> placed,Vector3 foot,float height)
+        {
+            foreach(var tree in placed)
+            {
+                float clearance=(tree.z+height)*.40f;
+                float dx=foot.x-tree.x,dz=foot.z-tree.y;
+                if(dx*dx+dz*dz<clearance*clearance)return false;
+            }
+            return true;
+        }
+        void Tree(int index,Vector3 foot,float height,bool mirrored=false)
         {
             if(trees==null)return;
             if(canopySprites[index]==null)
@@ -98,7 +135,7 @@ namespace TalesTactics
             }
             var sprite=canopySprites[index];var go=new GameObject("Forest canopy "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);
             go.transform.localPosition=foot;go.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);go.transform.rotation=view.transform.rotation;
-            var renderer=go.GetComponent<SpriteRenderer>();renderer.sprite=sprite;renderer.sharedMaterial=spriteMaterial;renderer.color=Color.white;billboards.Add(go.transform);canopy.Add(renderer);
+            var renderer=go.GetComponent<SpriteRenderer>();renderer.sprite=sprite;renderer.sharedMaterial=spriteMaterial;renderer.color=Color.white;renderer.flipX=mirrored;billboards.Add(go.transform);canopy.Add(renderer);
             if(index<3&&shadowCasters.Count<24)shadowCasters.Add(new Vector4(foot.x,foot.z,height,foot.y));
         }
         void UpdateLivingCanopy()

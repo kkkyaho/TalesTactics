@@ -6,6 +6,7 @@ namespace TalesTactics
     public sealed class CrossoverCivilianView:MonoBehaviour
     {
         BattleDirector battle;SpriteRenderer[] people;bool escort,phantoms;
+        Material environment;MaterialPropertyBlock properties;GroundOverlay[] shadows;PixelBattlefield terrain;int theme;
         public static void Create(BattleDirector battle,Transform parent)
         {
             int stage=battle.Session.CampaignStage;
@@ -15,14 +16,20 @@ namespace TalesTactics
             if(battle.Catalog.Civilians==null||battle.Catalog.Civilians.Length<4)return;
             var root=new GameObject("Civilian rescue groups");root.transform.SetParent(parent,false);
             var view=root.AddComponent<CrossoverCivilianView>();view.battle=battle;view.escort=episode==16;view.phantoms=episode==18;
+            view.theme=BattleEnvironmentPalette.Theme(stage);view.terrain=parent.GetComponent<PixelBattlefield>();
+            view.environment=new Material(Resources.Load<Shader>("TalesTactics/UnitTone")){name="Civilian environment tone"};
+            view.properties=new MaterialPropertyBlock();view.shadows=new GroundOverlay[3];
             view.people=Enumerable.Range(0,3).Select(i=>{
                 var person=new GameObject("Civilian group "+i);person.transform.SetParent(root.transform,false);
-                var renderer=person.AddComponent<SpriteRenderer>();renderer.sharedMaterial=battle.Board.SpriteMaterial;
+                var renderer=person.AddComponent<SpriteRenderer>();renderer.sharedMaterial=view.environment;
                 person.transform.localScale=Vector3.one*.78f;
                 person.transform.position=battle.Session.Grid[CrossoverBattle.Nodes[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.04f;
+                var shade=new GameObject("Civilian contact shadow "+i);shade.transform.SetParent(root.transform,false);
+                var contact=shade.AddComponent<GroundOverlay>();contact.Initialize(view.environment,-3);contact.Shadow(BattleEnvironmentPalette.Shadow(view.theme));shade.transform.localScale=Vector3.one*.78f;view.shadows[i]=contact;
                 return renderer;
             }).ToArray();
         }
+        void OnDestroy(){if(environment!=null)Destroy(environment);}
         void LateUpdate()
         {
             var session=battle?.Session;if(session?.Crossover==null)return;
@@ -30,7 +37,7 @@ namespace TalesTactics
             for(int i=0;i<people.Length;i++)
             {
                 bool linked=(session.Crossover.State.Nodes&(1<<i))!=0;var person=people[i];
-                person.gameObject.SetActive(!linked||escort);
+                person.gameObject.SetActive(!linked||escort);shadows[i].gameObject.SetActive(person.gameObject.activeSelf);
                 if(!person.gameObject.activeSelf)continue;
                 Facing facing=escort&&linked?lead.Facing:Facing.Front;
                 person.sprite=battle.Catalog.Civilians[i].Get(CharacterMotion.ViewFacing(facing,camera.transform.rotation));
@@ -44,6 +51,8 @@ namespace TalesTactics
                 }
                 else target+=camera.transform.right*.24f;
                 person.transform.position=Vector3.MoveTowards(person.transform.position,target+Vector3.up*.04f,Time.deltaTime*6);
+                var foot=person.transform.position-Vector3.up*.04f;shadows[i].transform.position=foot+Vector3.up*.018f;
+                if(person.sprite!=null){person.GetPropertyBlock(properties);BattleEnvironmentPalette.ApplyUnit(properties,theme,foot,person.sprite.bounds,terrain!=null?terrain.GroundShadeAt(foot):1);person.SetPropertyBlock(properties);}
             }
         }
     }

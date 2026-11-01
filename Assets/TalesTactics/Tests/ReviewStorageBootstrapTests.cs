@@ -24,6 +24,20 @@ namespace TalesTactics.Tests
             Assert.That(rosterRoot,Is.EqualTo(Path.GetFullPath(Path.Combine(Root,"Build","SkillRosterVfx",Id,"isolated-save",Id))));
             Assert.That(rosterRoot,Is.Not.EqualTo(flowRoot));Assert.That(ReviewStorageBootstrap.Resolve(roster,Data,User),Is.EqualTo(rosterRoot));
         }
+        [Test] public void EnvironmentModeStartsInTheExactPerRunIsolatedStorage()
+        {
+            var args=new[]{"TalesTactics.exe","--environment-integration-review",Id,"-logFile",Path.Combine(Root,"environment.log")};
+            string expected=Path.GetFullPath(Path.Combine(Root,"Build","EnvironmentIntegrationReviews",Id,"Storage"));
+            Assert.That(ReviewStorageBootstrap.Resolve(args,Data,User),Is.EqualTo(expected));
+            Assert.That(ReviewStorageBootstrap.Resolve(args,Data,User),Is.Not.EqualTo(Path.GetFullPath(User)));
+            Assert.Throws<ArgumentException>(()=>ReviewStorageBootstrap.Resolve(new[]{"--environment-integration-review",Guid.Empty.ToString("N")},Data,User));
+            Assert.Throws<ArgumentException>(()=>ReviewStorageBootstrap.Resolve(new[]{"--environment-integration-review","../User"},Data,User));
+        }
+        [Test] public void EnvironmentModeCannotMixWithAnotherReviewOrReuseItsOwnSwitch()
+        {
+            foreach(string other in new[]{"--quality-presentation-review","--campaign-flow-review","--skill-roster-vfx-review","--environment-integration-review","--crossover-review"})
+                Assert.Throws<ArgumentException>(()=>ReviewStorageBootstrap.Resolve(new[]{"--environment-integration-review",Id,other,Id,"motion"},Data,User),other);
+        }
         [Test] public void InvalidReviewArgumentsCannotFallBackToUserStorage()
         {
             foreach(var args in new[]{

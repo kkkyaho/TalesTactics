@@ -40,12 +40,21 @@ namespace TalesTactics
             for(int i=0;i<4;i++){var art=ornaments[i];art.transform.localPosition=new Vector3((i%2==0?-1:1)*(radius-.075f),.002f,(i/2==0?-1:1)*(radius-.075f));art.transform.localRotation=Quaternion.Euler(90,0,0);art.transform.localScale=Vector3.one*.22f;art.color=new Color(1,1,1,color.a);art.enabled=enabled;}
             Apply();
         }
-        public void Shadow()
+        public void Shadow()=>Shadow(new Color(.09f,.14f,.16f));
+        public void Shadow(Color tint)
         {
-            Clear();vertices.Add(Vector3.zero);colors.Add(new Color(.025f,.03f,.04f,.32f));
+            Clear();
+            // Broad cast shade plus denser foot contact, both feathered to transparent.
+            ShadowLobe(new Vector3(.13f,0,.10f),new Vector2(.42f,.32f),tint,.22f);
+            ShadowLobe(Vector3.zero,new Vector2(.22f,.16f),tint,.42f);
+            Apply();
+        }
+        void ShadowLobe(Vector3 center,Vector2 radius,Color tint,float opacity)
+        {
+            int start=vertices.Count;vertices.Add(center);colors.Add(new Color(tint.r,tint.g,tint.b,opacity));
             const int sides=32;
-            for(int i=0;i<=sides;i++){float a=i*Mathf.PI*2/sides;vertices.Add(new Vector3(Mathf.Cos(a)*.34f,0,Mathf.Sin(a)*.25f));colors.Add(new Color(.025f,.03f,.04f,0));}
-            for(int i=1;i<=sides;i++){triangles.Add(0);triangles.Add(i);triangles.Add(i+1);}Apply();
+            for(int i=0;i<=sides;i++){float a=i*Mathf.PI*2/sides;vertices.Add(center+new Vector3(Mathf.Cos(a)*radius.x,0,Mathf.Sin(a)*radius.y));colors.Add(new Color(tint.r,tint.g,tint.b,0));}
+            for(int i=1;i<=sides;i++){triangles.Add(start);triangles.Add(start+i);triangles.Add(start+i+1);}
         }
         public void Apply(){mesh.Clear();mesh.SetVertices(vertices);mesh.SetColors(colors);mesh.SetTriangles(triangles,0);mesh.RecalculateBounds();}
         void OnEnable(){if(surface!=null)surface.enabled=true;if(ornaments!=null)foreach(var art in ornaments)art.enabled=true;}

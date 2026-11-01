@@ -9,7 +9,7 @@ namespace TalesTactics
         Transform FoliageQuad(int index,Vector3 position,float height)
         {
             if(foliage==null)return null;
-            if(foliageMaterial==null){foliageMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));foliageMaterial.mainTexture=foliage;foliageMaterial.name="Foliage atlas details";owned.Add(foliageMaterial);}
+            if(foliageMaterial==null){foliageMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));foliageMaterial.mainTexture=foliage;foliageMaterial.name="Foliage atlas details";BattleEnvironmentPalette.ApplyScenery(foliageMaterial,stage);owned.Add(foliageMaterial);}
             if(foliageQuads[index]==null)
             {
                 var r=SdTerrainAtlas.Foliage(index,foliage);
