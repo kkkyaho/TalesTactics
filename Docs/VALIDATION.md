@@ -1,4 +1,16 @@
-# 검증 기록 — 2026-11-01
+# 검증 기록 — 2026-11-02
+
+## 2026-11-02 — 전투 HUD 분리·머리 위 HP 정리
+
+최종 실제 Unity **[EditMode448/448 · 15.56초](BattleHudRedesign/Validation/editmode-final.json)**·**[PlayMode264/264 · 649.44초](BattleHudRedesign/Validation/playmode-final.json)**를 통과했다. 실패·건너뜀·미결정0이며 별도 전체 실행이다. [검증 대상 소스·메타·머리 좌표54개 SHA](BattleHudRedesign/Validation/source-manifest.json)와 현재 파일의 일치를 확인했다. 캐릭터 옆 명령/기술창, 좌측 하단 상태/예측창, 상단 턴 종료, 상시 목표·자동 안내 제거, 실제 맵 호버·방향 입력·HP 표현과 아이콘 캐시 수명 회귀를 포함한다.
+
+첫 전체251/263과 두 번째262/263 실패, 표적39/41·40/41과 발견0개 실행은 최종 통과 수치에 합산하지 않는다. 두 번째 전체의 선택 장식4→0은 여러 조건을 합친 개수 검사여서 실패 원인을 하나로 확정할 수 없다. 검사를 분리하고 별도 수명 회귀에서 입증한 Unity-null Sprite/Texture 캐시 결함을 고쳤다. 방향4종×카메라4방향의 실제 UI 클릭16회와 수명 검사를 포함한 표적4/4·10.93초 뒤 전체를 다시 실행했다. 첫 빌드의 Pipeline5초 타임아웃과 오류1 이력도 보존한다. [실패 원본·보완 범위](BattleHudRedesign/README.md#실패와-보완-이력).
+
+최종 **[Editor05 32/32](BattleHudRedesign/Validation/editor-final.json)**와 **[Windows32/32 · 정상 종료0](BattleHudRedesign/Validation/windows-summary.json)**를 확인했다. Windows 오류·배치 문제0, 강제 종료 없음이다. 메인1화2인과 격리Lv25훈련6인,1920×1080/1280×720의 명령·기술·방향·합법 예측·적 호버·좌우 이동·줌/글자130% 범위다. 첫 선택의 정상 턴 초기화를 별도로 확인한 뒤 조회 상태/격자/RNG 불변을 검사했다. [32상태 원시 결과](BattleHudRedesign/Validation/windows-final.json)와 [전체32장 출처/SHA·보관6PNG](BattleHudRedesign/Evidence/actual-capture-manifest.json)를 남겼다. 실제PNG7장을 육안 확인했으며 모든32장의 수동 미술 승인을 뜻하지 않는다.
+
+최종 일반 Windows 빌드 **21.77초·오류0·경고1**, REVIEW 빌드 **49.02초·오류0·경고6**이다. 대기 상태로 남은 delayCall 예약 대신 일회성 EditorApplication.update에서 실행했다. 일반 경고는 Pipeline 런타임 설정 누락이며 검수의 추가5건은 기존 API/지시문 사용 중단 안내다. [일반 빌드](BattleHudRedesign/Validation/windows-normal-build.json) · [검수 빌드](BattleHudRedesign/Validation/windows-review-build.json)와 메시지 원문을 보존했다. [일반](BattleHudRedesign/Validation/windows-normal-types.json)/[REVIEW](BattleHudRedesign/Validation/windows-review-types.json) DLL 타입·IL 분리와 실행파일/런타임SHA를 확인했다. 이는 일반 실행본의 수동 플레이나 공개 릴리즈 검증과 별도다.
+
+Windows 검수 전후 사용자 캠페인/설정 파일 가족과 격리 캠페인이 유지됐고 기존 실행 게임은 보존했다. 사용 중인 Player.log 등은 저장 불변 범위에서 제외한다. 작업 전 수정된11파일은 검증 중 바뀐 동적 폰트·검수CSV2개만 이번 작업 초기 바이트 백업으로 복원했고 모두 초기SHA와 일치한다. 기존 변경을 HEAD로 되돌리지 않았으며 커밋 범위에서 제외한다. [보호 파일11개·복원3개 근거](BattleHudRedesign/Validation/protected-restoration.json). 밀집된6인 방향 선택에서는 일부 표식이 앞의 민트 모델과 겹치는 한계를 남긴다. 다른PC/DPI·초광폭/극소창·물리 게임패드·전체 수동 캠페인·장시간 GPU 성능을 이번 결과로 보증하지 않는다. [적용 화면과 한계](BattleHudRedesign/README.md).
 
 ## 2026-11-01 — 바닥 반복·물결·외곽 후속 개선
 

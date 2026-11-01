@@ -17,7 +17,7 @@ namespace TalesTactics
         }
         public bool ActionFeedbackVisible=>actionFeedbackActive&&!string.IsNullOrEmpty(messageValue);
         public bool HasBattleMessage=>!string.IsNullOrEmpty(messageValue);
-        public string DisplayBattleMessage=>State is FacingSelectionState?"방향 선택 · Enter 확정 · Esc 취소":
+        public string DisplayBattleMessage=>
             TutorialActive&&!(State is TargetSelectionState&&Target.HasValue)?TutorialInstruction:Message;
         public void ShowActionFeedback(string text)
         {

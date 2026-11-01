@@ -123,6 +123,24 @@ namespace TalesTactics
             if(units.ContainsKey(unit))battle.Hud.CombatFeedback.Number(unit,delta,cost);
             yield break;
         }
+        // Conservative screen bounds include weapons and cloth so local menus do not cover actors.
+        public Rect UnitScreenBounds(UnitRuntime unit)
+        {
+            if(sprites.TryGetValue(unit,out var sprite)&&sprite!=null&&sprite.sprite!=null)
+            {
+                var bounds=sprite.sprite.bounds;var low=new Vector2(float.PositiveInfinity,float.PositiveInfinity);var high=-low;
+                for(int i=0;i<4;i++)
+                {
+                    var local=new Vector3((i&1)==0?bounds.min.x:bounds.max.x,(i&2)==0?bounds.min.y:bounds.max.y,0);
+                    var screen=BattleCamera.WorldToScreenPoint(sprite.transform.TransformPoint(local));
+                    low=Vector2.Min(low,screen);high=Vector2.Max(high,screen);
+                }
+                return Rect.MinMaxRect(low.x,low.y,high.x,high.y);
+            }
+            var foot=BattleCamera.WorldToScreenPoint(battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight));
+            var head=BattleCamera.WorldToScreenPoint(HeadWorld(unit));
+            return new Rect(foot.x-38,foot.y-14,76,Mathf.Max(74,head.y-foot.y+28));
+        }
         public Vector3 HeadWorld(UnitRuntime unit)
         {
             if(sprites.TryGetValue(unit,out var sprite)&&sprite!=null)

@@ -37,7 +37,7 @@ namespace TalesTactics
             if(shownForecast!=f){shownForecast=f;forecastRowIndex=0;}
             var name=Label(commands,skill.DisplayName,10,34,21);name.rectTransform.offsetMax=new Vector2(-66,name.rectTransform.offsetMax.y);
             var back=CloseIcon(commands,"예측 취소",()=>battle.State.Cancel());
-            back.sizeDelta=new Vector2(44,36);back.anchoredPosition=new Vector2(-16,-8);
+            back.sizeDelta=new Vector2(44,36);back.anchoredPosition=new Vector2(-16,-14);
             var costs=new System.Collections.Generic.List<string>();int mp=battle.Session.Resolver.MPCost(u,skill),hp=battle.Session.Resolver.HPCost(u,skill);
             if(mp>0)costs.Add("MP "+mp);if(hp>0)costs.Add("HP "+hp);if(skill.GaugeCost>0)costs.Add("SP "+skill.GaugeCost);
             if(f==null||f.Rows.Count==0)

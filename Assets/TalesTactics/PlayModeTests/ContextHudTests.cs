@@ -11,7 +11,7 @@ namespace TalesTactics.PlayModeTests
     {
         Vector2 OutsideContext=>new Vector2(Screen.width-2,Screen.height*.5f);
         Vector2 TileScreen(Vector2Int p)=>director.Board.BattleCamera.WorldToScreenPoint(director.Session.Grid[p].WorldPosition(director.Catalog.Rules.TileHeight)+Vector3.up*.05f);
-        [UnityTest] public IEnumerator ContextOutsideClickCancelsOneStepAndUndoesOnlyUncommittedMove()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator ContextOutsideClickCancelsOneStepAndUndoesOnlyUncommittedMove()
         {
             director.BeginBattle();yield return null;var u=director.Session.Active;var origin=u.Position;int mp=u.CurrentMP;
             director.SkillCommand();yield return null;director.HandleBattleClick(OutsideContext);yield return null;
@@ -31,7 +31,7 @@ namespace TalesTactics.PlayModeTests
             director.HandleBattleClick(OutsideContext);Assert.That(u.Position,Is.EqualTo(destination));
             director.SetState(new ActionExecutionState(director));director.HandleBattleClick(OutsideContext);Assert.That(director.State,Is.TypeOf<ActionExecutionState>());
         }
-        [UnityTest] public IEnumerator ContextTargetClickAndTabWorkWithoutNavigationWindow()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator ContextTargetClickAndTabWorkWithoutNavigationWindow()
         {
             var keyboard=InputSystem.AddDevice<Keyboard>();SkillData skill=null;
             try
@@ -44,24 +44,26 @@ namespace TalesTactics.PlayModeTests
                 yield return KeyboardPress(keyboard,Key.LeftShift,Key.Tab);Assert.That(director.Target,Is.EqualTo(targets.Last()));
                 Assert.That(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="실행"),Is.False);
                 var panel=(RectTransform)director.Hud.transform.Find("Commands");
-                Assert.That(panel.anchorMin,Is.EqualTo(new Vector2(0,1)));
+                Assert.That(director.Hud.transform.Find("Unit").gameObject.activeInHierarchy,Is.False,"The fixed information area shows prediction while choosing a target.");
+                var forecastBounds=SplitHudScreenRect(panel);
+                Assert.That(forecastBounds.xMin,Is.LessThan(Screen.width*.05f));Assert.That(forecastBounds.yMin,Is.LessThan(Screen.height*.05f));
                 var cancel=(RectTransform)panel.Find("예측 취소");
                 Assert.That(cancel.GetComponentInChildren<TacticalIcon>().Kind,Is.EqualTo("close"));
-                var dock=(RectTransform)director.Hud.transform.Find("BattleCommandDock");var inset=dock.rect;inset.xMin+=8;inset.xMax-=8;inset.yMin+=8;inset.yMax-=8;
+                var inset=panel.rect;inset.xMin+=8;inset.xMax-=8;inset.yMin+=8;inset.yMax-=8;
                 var closeCorners=new Vector3[4];cancel.GetWorldCorners(closeCorners);
-                Assert.That(closeCorners.All(p=>inset.Contains(dock.InverseTransformPoint(p))),Is.True,"The illustrated close hit target stays inside the dock's safe inset.");
+                Assert.That(closeCorners.All(p=>inset.Contains(panel.InverseTransformPoint(p))),Is.True,"The illustrated close hit target stays inside the forecast card's safe inset.");
                 for(int i=0;i<4;i++)
                 {
                     var old=panel.position;director.Board.RotateCamera(90);yield return null;
-                    Assert.That(Vector3.Distance(old,panel.position),Is.LessThan(.01f),"Forecast stays in the left dock during camera rotation.");
-                    var corners=new Vector3[4];panel.GetWorldCorners(corners);Assert.That(corners.All(c=>c.x>=0&&c.x<=Screen.width&&c.y>=0&&c.y<=Screen.height),Is.True);
+                    Assert.That(Vector3.Distance(old,panel.position),Is.LessThan(.01f),"Prediction remains in the fixed bottom-left information area during camera rotation.");
+                    AssertSplitHudPanelOnScreen(panel);AssertSplitHudPanelContents(panel,8);
                 }
                 director.HandleBattleClick(OutsideContext);Assert.That(director.State,Is.TypeOf<ActionSelectionState>());Assert.That(director.Target,Is.Null);
                 director.SelectSkill(skill);director.CycleTarget(1);yield return KeyboardPress(keyboard,Key.Enter);Assert.That(director.State,Is.TypeOf<ActionExecutionState>());
             }
             finally{InputSystem.RemoveDevice(keyboard);if(skill!=null)Object.Destroy(skill);}
         }
-        [UnityTest] public IEnumerator HoverPreviewsAndMouseClickCastsWithoutConfirmation()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator HoverPreviewsAndMouseClickCastsWithoutConfirmation()
         {
             var mouse=InputSystem.AddDevice<Mouse>();
             try
@@ -83,7 +85,7 @@ namespace TalesTactics.PlayModeTests
             }
             finally{InputSystem.RemoveDevice(mouse);}
         }
-        [UnityTest] public IEnumerator ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator ContextMouseOutsideCancelsButSkillRowClickKeepsTargeting()
         {
             var mouse=InputSystem.AddDevice<Mouse>();
             try

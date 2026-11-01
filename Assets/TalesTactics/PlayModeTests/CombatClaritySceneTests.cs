@@ -10,7 +10,7 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator SkillCueUsesFixedViewportAndNeverDuplicatesUltimate()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator SkillCueUsesFixedViewportAndNeverDuplicatesUltimate()
         {
             director.BeginBattle();yield return null;director.StopAllCoroutines();
             var caster=director.Session.Active;var skill=Object.Instantiate(caster.Data.Skills[0]);
@@ -39,7 +39,7 @@ namespace TalesTactics.PlayModeTests
             }
             finally{Object.Destroy(skill);}
         }
-        [UnityTest] public IEnumerator SkillCueWaitsBehindModalAndRetainsReadableFastBattleDwell()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator SkillCueWaitsBehindModalAndRetainsReadableFastBattleDwell()
         {
             director.BeginBattle();yield return null;director.StopAllCoroutines();
             var caster=director.Session.Active;var skill=caster.Data.Skills.First(s=>s.Animation!=AnimationKind.Attack&&!s.IsUltimate);
@@ -61,7 +61,7 @@ namespace TalesTactics.PlayModeTests
                 yield return new WaitForSeconds(.7f);Assert.That(director.Hud.BattleSkillCueVisible,Is.False);
             }
         }
-        [UnityTest] public IEnumerator CrowdedSixAlliesKeepNumbersAndFocusedHealthInsideViewport()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CrowdedSixAlliesKeepNumbersAndFocusedHealthInsideViewport()
         {
             director.Deployment.Clear();director.Deployment.AddRange(new[]{0,1,2,3,4,5});
             director.BeginBattle();yield return null;director.StopAllCoroutines();
@@ -84,7 +84,15 @@ namespace TalesTactics.PlayModeTests
                     var occupied=new List<Rect>(feedback.NumberScreenBounds);
                     Assert.That(occupied.Count,Is.EqualTo(units.Length+2));
                     var displays=Object.FindObjectsByType<UnitHealthDisplay>(FindObjectsSortMode.None);
-                    Assert.That(displays.Single(d=>d.Unit==director.Session.Active).Bar.enabled,Is.True);
+                    var activeHealth=displays.Single(d=>d.Unit==director.Session.Active);
+                    if(!activeHealth.Bar.enabled)
+                    {
+                        var reservations=new List<Rect>();director.Hud.AppendCombatLabelReservations(reservations);
+                        reservations.AddRange(displays.Where(d=>d.Bar.enabled).Select(d=>d.ScreenBounds));
+                        float scale=Mathf.Clamp(Screen.height/1080f,.8f,1.5f);
+                        Assert.That(UnitHealthLayout.TryPlaceNearHead(activeHealth.ScreenOrigin,activeHealth.OccupiedSize,safe,reservations,scale,out _),Is.False,
+                            "A focused gauge may be suppressed only when the immediate head neighbourhood is obstructed; the fixed status card remains readable.");
+                    }
                     Assert.That(displays.Single(d=>d.Unit==director.Session.Active).Detailed,Is.False,"Current impact values take precedence over duplicated HP detail.");
                     occupied.AddRange(displays.Where(d=>d.Bar.enabled).Select(d=>d.ScreenBounds));
                     for(int a=0;a<occupied.Count;a++)

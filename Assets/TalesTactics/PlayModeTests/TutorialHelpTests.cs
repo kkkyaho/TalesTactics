@@ -42,6 +42,7 @@ namespace TalesTactics.PlayModeTests
             director.Confirm();yield return FinishTutorialAction();
             Assert.That(fighter.CurrentHP,Is.GreaterThan(hp));Assert.That(mint.CurrentMP,Is.EqualTo(mp-heal.MPCost));
             Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Waiting));mint.AddStatus(StatusKind.Song,2);Click("Wait / 방향 선택");yield return null;
+            Assert.That(director.DisplayBattleMessage,Does.Contain("4/4").And.Contain("발밑 방향 표식"),"The explicit drill keeps its instruction even though ordinary facing has no text card.");
             Click("Left");yield return null;Assert.That(mint.Facing,Is.EqualTo(Facing.Left));Assert.That(director.Tutorial,Is.EqualTo(TutorialStep.Complete));
             Assert.That(mint.Statuses.Single(s=>s.Kind==StatusKind.Song).Turns,Is.EqualTo(1));
             Assert.That(director.RewardPending,Is.False);Click("처음부터 연습");yield return null;

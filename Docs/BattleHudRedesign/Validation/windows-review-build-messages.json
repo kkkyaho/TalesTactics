@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var r=UnityEditor.Build.Reporting.BuildReport.GetLatestReport(); return new {result=r.summary.result.ToString(),errors=r.summary.totalErrors,warnings=r.summary.totalWarnings,messages=r.steps.SelectMany(s=>s.messages).Where(m=>m.type==UnityEngine.LogType.Error||m.type==UnityEngine.LogType.Warning).Select(m=>new{type=m.type.ToString(),content=m.content}).ToArray()};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "result": "Succeeded",
+        "errors": 0,
+        "warnings": 6,
+        "messages": [
+          {
+            "type": "Warning",
+            "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+          },
+          {
+            "type": "Warning",
+            "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(101,128): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'"
+          },
+          {
+            "type": "Warning",
+            "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(101,72): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+          },
+          {
+            "type": "Warning",
+            "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(162,108): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'"
+          },
+          {
+            "type": "Warning",
+            "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(162,54): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+          },
+          {
+            "type": "Warning",
+            "content": "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

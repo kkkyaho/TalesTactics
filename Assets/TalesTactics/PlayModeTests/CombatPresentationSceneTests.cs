@@ -7,7 +7,7 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator GrowthFeedbackUsesSnapshotsAndClearsOnRetry()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator GrowthFeedbackUsesSnapshotsAndClearsOnRetry()
         {
             director.BeginBattle();yield return null;var u=director.Session.Active;u.Level=8;u.EXP=68;
             var gain=ActionExperience.Grant(u,47);director.Hud.CombatFeedback.Enqueue(gain);
@@ -19,7 +19,7 @@ namespace TalesTactics.PlayModeTests
             director.Restart();yield return null;Assert.That(director.Hud.CombatFeedback.PendingCount,Is.Zero);
             Assert.That(GameObject.Find("Experience feedback"),Is.Null);
         }
-        [UnityTest] public IEnumerator AllElementsRenderPooledGeometryWithoutChangingCombatOrRandom()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator AllElementsRenderPooledGeometryWithoutChangingCombatOrRandom()
         {
             director.BeginBattle();yield return null;var target=director.Session.Units.First(u=>u.Team==Team.Enemy);int hp=target.CurrentHP;
             var holder=new GameObject("Particle pool fixture");var pool=holder.AddComponent<ImpactPool>();
@@ -40,15 +40,22 @@ namespace TalesTactics.PlayModeTests
             }
             finally{Object.Destroy(holder);}
         }
-        [UnityTest] public IEnumerator OverheadFacingSurvivesHeightAndTextScale()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator GroundFacingSurvivesHeightAndTextScale()
         {
             director.BeginBattle();yield return null;var unit=director.Session.Active;
             foreach(int height in new[]{0,2,4})foreach(float scale in new[]{1f,1.3f})
             {
                 director.Session.Grid[unit.Position].Height=height;director.Preferences.TextScale=scale;director.RefreshViews();director.SetState(new FacingSelectionState(director));yield return new WaitForEndOfFrame();
                 var head=director.Board.BattleCamera.WorldToScreenPoint(director.Board.HeadWorld(unit));
+                var ground=director.Board.BattleCamera.WorldToScreenPoint(director.Session.Grid[unit.Position].WorldPosition(director.Catalog.Rules.TileHeight));
+                var canvasScale=director.Hud.GetComponent<Canvas>().scaleFactor;
+                var arrows=director.Hud.GetComponentsInChildren<FacingArrowGraphic>();
+                var center=new Vector2(arrows.Average(a=>a.transform.position.x),arrows.Average(a=>a.transform.position.y));
+                Assert.That(Vector2.Distance(center,new Vector2(ground.x,ground.y)),Is.LessThan(2),"Direction controls remain anchored to the tile surface after height changes.");
                 foreach(var arrow in director.Hud.GetComponentsInChildren<FacingArrowGraphic>())
-                {Assert.That(arrow.transform.position.y,Is.GreaterThan(head.y));Assert.That(arrow.rectTransform.rect.width,Is.EqualTo(22*scale).Within(.01f));}
+                {Assert.That(arrow.transform.position.y,Is.LessThan(head.y));Assert.That(arrow.rectTransform.rect.width,Is.EqualTo(30*scale).Within(.01f));
+                    Assert.That(Vector2.Distance(arrow.transform.position,ground),Is.LessThan(65*scale*canvasScale));
+                    Assert.That(((RectTransform)arrow.transform.parent).rect.width,Is.GreaterThanOrEqualTo(44*scale));}
                 director.State.Cancel();
             }
         }

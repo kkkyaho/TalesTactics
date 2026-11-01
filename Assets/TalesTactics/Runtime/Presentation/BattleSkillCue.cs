@@ -11,7 +11,7 @@ namespace TalesTactics
         public void ShowBattleSkillCue(UnitRuntime caster,SkillData skill,float duration)
         {
             ClearBattleSkillCue();
-            // Ultimates already have a portrait cue in the command dock. Never duplicate it.
+            // Ultimates already have an independent portrait cue in the upper HUD band. Never duplicate it.
             if(caster==null||skill==null||skill.IsUltimate||skill.Animation==AnimationKind.Attack)return;
             var card=Panel("BattleSkillCue",Vector2.zero,Vector2.zero,Vector2.zero,new Vector2(480,78));
             card.GetComponent<Image>().raycastTarget=false;

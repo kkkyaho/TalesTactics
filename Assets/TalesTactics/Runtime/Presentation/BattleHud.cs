@@ -18,11 +18,11 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){UpdateContextHints();if(TitleOpen){if(battleDock!=null)battleDock.gameObject.SetActive(false);UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(battle.Session!=null&&!(battle.State is BattleEndState)&&!battle.StoryActive&&!InputModalOpen);}
+        void LateUpdate(){UpdateContextHints();if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
-            if(battleDock!=null)battleDock.gameObject.SetActive(false);
+
             header.GetComponent<UnityEngine.UI.Image>().enabled=true;
             header.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
             header.GetComponent<UnityEngine.UI.Outline>().enabled=true;
@@ -36,6 +36,7 @@ namespace TalesTactics
             commands.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
             commands.GetComponent<UnityEngine.UI.Outline>().enabled=true;
             var footerGroup=footer.GetComponent<CanvasGroup>();if(footerGroup!=null){footerGroup.alpha=1;footerGroup.blocksRaycasts=true;}
+            foreach(var p in new[]{header,left,commands}){var fit=p.GetComponent<FramedContent>();if(fit!=null)fit.enabled=true;}
             PreparationLayout();
             RefreshEquipmentResponsiveLayout();
         }
@@ -162,7 +163,7 @@ namespace TalesTactics
                 Button(commands,"Move / 이동",55,battle.MoveCommand,!u.Moved);Button(commands,"Attack / 공격",101,battle.AttackCommand,!u.Acted);
                 Button(commands,"Skill / 스킬",147,battle.SkillCommand,battle.CanOpenSkills);Button(commands,"Guard / 가드",193,battle.Guard,!u.Acted);
                 if(u.CanUndoMove)Button(commands,"Undo Move / 이동 취소",239,battle.Undo);Button(commands,"Wait / 방향 선택",285,battle.WaitCommand);
-                if(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler)Button(commands,"아군 턴 종료",331,ShowEndPhaseConfirmation);
+
                 ArrangeCommandMenu();ApplyTutorialCommands();
             }
             else if(SkillPanel)DrawSkillCards(u);
@@ -171,7 +172,7 @@ namespace TalesTactics
                 DrawTargetForecast();
             }
             else if(battle.State is FacingSelectionState)DrawFacingArrows();
-            else if(battle.State is MoveSelectionState){Label(commands,"이동 위치",8,26,16);moveRisk=Label(commands,"방향키 · 마우스로 선택",38,44,13);Button(commands,"취소",92,()=>battle.State.Cancel(),true,36);}
+            else if(battle.State is MoveSelectionState){Label(commands,"이동 위치",8,26,16);moveRisk=Label(commands,"",38,44,13);Button(commands,"취소",92,()=>battle.State.Cancel(),true,36);}
             else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,"타이밍 입력 (Space)",280,battle.TimingInput);}
         }
         public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":"Space / 버튼 입력")}";}

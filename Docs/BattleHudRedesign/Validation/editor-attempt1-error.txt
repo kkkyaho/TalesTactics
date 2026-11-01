@@ -1,0 +1,39 @@
+HUD review finalization failed: System.IO.IOException: Sharing violation on path C:\Users\USER-PC\AppData\LocalLow\LocalTactics\TalesTactics\Player.log
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize) [0x00000] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int)
+  at System.IO.File.ReadAllBytes (System.String path) [0x00000] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 
+  at TalesTactics.BattleHudRedesignReview+<>c__DisplayClass43_0.<Snapshot>b__1 (System.String p) [0x00000] in C:\dev\TalesTactics\Assets\TalesTactics\Runtime\Presentation\BattleHudRedesignReview.cs:240 
+  at System.Linq.Enumerable+SelectIPartitionIterator`2[TSource,TResult].PreallocatingToArray (System.Int32 count) [0x0001e] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at System.Linq.Enumerable+SelectIPartitionIterator`2[TSource,TResult].ToArray () [0x00023] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at System.Linq.Enumerable.ToArray[TSource] (System.Collections.Generic.IEnumerable`1[T] source) [0x0001f] in <f1b392d8fe224ca2b1f9fab1000b77eb>:0 
+  at TalesTactics.BattleHudRedesignReview.Snapshot (System.String root) [0x0001f] in C:\dev\TalesTactics\Assets\TalesTactics\Runtime\Presentation\BattleHudRedesignReview.cs:240 
+  at TalesTactics.BattleHudRedesignReview.Finish () [0x00051] in C:\dev\TalesTactics\Assets\TalesTactics\Runtime\Presentation\BattleHudRedesignReview.cs:250 
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+TalesTactics.BattleHudRedesignReview:Finish () (at Assets/TalesTactics/Runtime/Presentation/BattleHudRedesignReview.cs:255)
+TalesTactics.BattleHudRedesignReview/<Start>d__25:MoveNext () (at Assets/TalesTactics/Runtime/Presentation/BattleHudRedesignReview.cs:83)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/TalesTactics/Runtime/Presentation/BattleHudRedesignReview.cs Line: 255)
+
+GPU Resident Drawer disposed.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            9.233 ms
+	Integration:            48.017 ms
+	Integration of assets:  0.006 ms
+	Thread Wait Time:       0.006 ms
+	Total Operation Time:   57.263 ms
+Unloading 90 unused Assets / (0.8 MB). Loaded Objects now: 14576.
+Memory consumption went from 1.01 GB to 1.01 GB.
+Total: 50.166600 ms (FindLiveObjects: 0.842800 ms CreateObjectMapping: 0.301100 ms MarkObjects: 42.360900 ms  DeleteObjects: 6.272100 ms)
+
+[Licensing::Client] Successfully resolved entitlement details
+GPU Resident Drawer created.
+Scanning for USB devices : 1.875ms
+Scanning for USB devices : 1.802ms

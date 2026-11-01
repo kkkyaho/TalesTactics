@@ -1,0 +1,2019 @@
+{
+    "schema": 1,
+    "expectedCaptures": 32,
+    "completedCaptures": 8,
+    "complete": false,
+    "passed": false,
+    "userFilesUnchanged": true,
+    "campaignsUnchanged": true,
+    "status": "Stopped or failed",
+    "startedUtc": "2026-11-01T14:39:04.9468591Z",
+    "finishedUtc": "2026-11-01T14:39:09.2397121Z",
+    "output": "C:\\dev\\TalesTactics\\Logs\\HudRedesign20261101\\Editor-02",
+    "storage": "C:\\dev\\TalesTactics\\Logs\\HudRedesign20261101\\Editor-02\\Storage",
+    "unityVersion": "6000.6.0f1",
+    "rows": [
+        {
+            "scenario": "command",
+            "state": "CommandState",
+            "file": "00-command-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 11,
+            "raycasts": 11,
+            "texts": 16,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 3.3686373233795166,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 635.999755859375,
+                "y": 330.4158935546875,
+                "width": 240.0,
+                "height": 326.4000244140625
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 959.999755859375,
+                "y": 431.2159118652344
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 922.9998168945313,
+                        "y": 639.6087646484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 959.9998168945313,
+                        "y": 639.6087646484375
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1047.7054443359375,
+                        "y": 555.1347045898438,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1084.7054443359375,
+                        "y": 555.1347045898438
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2179.64990234375,
+                        "y": 1654.902099609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2216.64990234375,
+                        "y": 1654.902099609375
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1402.637451171875,
+                        "y": 1402.700927734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1439.637451171875,
+                        "y": 1402.700927734375
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2150.871337890625,
+                        "y": 893.5015869140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2187.871337890625,
+                        "y": 893.5015869140625
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1877.478271484375,
+                        "y": 1249.353271484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1914.478271484375,
+                        "y": 1249.353271484375
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1580.103271484375,
+                        "y": 1839.6065673828125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1617.103271484375,
+                        "y": 1839.6065673828125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2577.74853515625,
+                        "y": 1163.8135986328125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2614.74853515625,
+                        "y": 1163.8135986328125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1930.238525390625,
+                        "y": 1780.22802734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1967.238525390625,
+                        "y": 1780.22802734375
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2429.061279296875,
+                        "y": 1442.33154296875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2466.061279296875,
+                        "y": 1442.33154296875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2078.92578125,
+                        "y": 1501.7100830078125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2115.92578125,
+                        "y": 1501.7100830078125
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "skills",
+            "state": "ActionSelectionState",
+            "file": "01-skills-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 5,
+            "raycasts": 5,
+            "texts": 18,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 3.3686373233795166,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 492.0,
+                "y": 384.4159851074219,
+                "width": 384.0,
+                "height": 218.39999389648438
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 959.9999389648438,
+                "y": 431.2159729003906
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 922.9998168945313,
+                        "y": 639.6087646484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 960.0,
+                        "y": 639.60888671875
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1047.7054443359375,
+                        "y": 555.1347045898438,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1084.70556640625,
+                        "y": 555.134765625
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2179.64990234375,
+                        "y": 1654.902099609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2216.650146484375,
+                        "y": 1654.9022216796875
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1402.637451171875,
+                        "y": 1402.700927734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1439.6375732421875,
+                        "y": 1402.700927734375
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2150.871337890625,
+                        "y": 893.5015869140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2187.871337890625,
+                        "y": 893.501708984375
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1877.478271484375,
+                        "y": 1249.353271484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1914.478515625,
+                        "y": 1249.3533935546875
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1580.103271484375,
+                        "y": 1839.6065673828125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1617.103515625,
+                        "y": 1839.6065673828125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2577.74853515625,
+                        "y": 1163.8135986328125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2614.748779296875,
+                        "y": 1163.813720703125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1930.238525390625,
+                        "y": 1780.22802734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1967.2386474609375,
+                        "y": 1780.22802734375
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2429.061279296875,
+                        "y": 1442.33154296875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2466.0615234375,
+                        "y": 1442.33154296875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2078.92578125,
+                        "y": 1501.7100830078125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2115.926025390625,
+                        "y": 1501.710205078125
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "facing",
+            "state": "FacingSelectionState",
+            "file": "02-facing-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 6,
+            "raycasts": 6,
+            "texts": 11,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 3.3686373233795166,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 854.4000244140625,
+                "y": 347.2159729003906,
+                "width": 211.199951171875,
+                "height": 167.99996948242188
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 959.9999389648438,
+                "y": 431.2159729003906
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 922.9998168945313,
+                        "y": 639.6087646484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 960.0,
+                        "y": 639.60888671875
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1047.7054443359375,
+                        "y": 555.1347045898438,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1084.70556640625,
+                        "y": 555.134765625
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2179.64990234375,
+                        "y": 1654.902099609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2216.650146484375,
+                        "y": 1654.9022216796875
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1402.637451171875,
+                        "y": 1402.700927734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1439.6375732421875,
+                        "y": 1402.700927734375
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2150.871337890625,
+                        "y": 893.5015869140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2187.871337890625,
+                        "y": 893.501708984375
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1877.478271484375,
+                        "y": 1249.353271484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1914.478515625,
+                        "y": 1249.3533935546875
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1580.103271484375,
+                        "y": 1839.6065673828125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1617.103515625,
+                        "y": 1839.6065673828125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2577.74853515625,
+                        "y": 1163.8135986328125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2614.748779296875,
+                        "y": 1163.813720703125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1930.238525390625,
+                        "y": 1780.22802734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1967.2386474609375,
+                        "y": 1780.22802734375
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2429.061279296875,
+                        "y": 1442.33154296875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2466.0615234375,
+                        "y": 1442.33154296875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2078.92578125,
+                        "y": 1501.7100830078125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2115.926025390625,
+                        "y": 1501.710205078125
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "target-forecast",
+            "state": "TargetSelectionState",
+            "file": "03-target-forecast-allies2-1920x1080.png",
+            "active": "mint",
+            "statusName": "민트 아드네이드  Lv.1",
+            "skill": "mint.0",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 3,
+            "raycasts": 3,
+            "texts": 15,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 3.685631036758423,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 16.80004119873047,
+                "y": 16.80001449584961,
+                "width": 408.0,
+                "height": 499.2000427246094
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 1016.989990234375,
+                "y": 397.11712646484375
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": false,
+            "forecastTargets": 1,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 866.010009765625,
+                        "y": 664.7952880859375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 903.010009765625,
+                        "y": 664.7952880859375
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 979.989990234375,
+                        "y": 587.5866088867188,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1016.989990234375,
+                        "y": 587.5866088867188
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2014.578125,
+                        "y": 1592.765380859375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2051.578125,
+                        "y": 1592.765380859375
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1304.39501953125,
+                        "y": 1362.25537109375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1341.39501953125,
+                        "y": 1362.25537109375
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1988.27490234375,
+                        "y": 896.8511962890625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2025.27490234375,
+                        "y": 896.8511962890625
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1738.3956298828125,
+                        "y": 1222.096923828125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1775.3956298828125,
+                        "y": 1222.096923828125
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1466.5972900390625,
+                        "y": 1761.58349609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1503.5972900390625,
+                        "y": 1761.58349609375
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2378.4375,
+                        "y": 1143.9141845703125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2415.4375,
+                        "y": 1143.9141845703125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1786.6180419921875,
+                        "y": 1707.312255859375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1823.6180419921875,
+                        "y": 1707.312255859375
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2242.537841796875,
+                        "y": 1398.4774169921875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2279.537841796875,
+                        "y": 1398.4774169921875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1922.517333984375,
+                        "y": 1452.7489013671875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1959.517333984375,
+                        "y": 1452.7489013671875
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "enemy-hover",
+            "state": "CommandState",
+            "file": "04-enemy-hover-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "록 골렘  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 11,
+            "raycasts": 11,
+            "texts": 16,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 3.3686373233795166,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 636.0000610351563,
+                "y": 330.4158935546875,
+                "width": 240.0,
+                "height": 326.4000244140625
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 960.0,
+                "y": 431.2159118652344
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 923.0,
+                        "y": 639.6087646484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 960.0,
+                        "y": 639.6087646484375
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1047.7056884765625,
+                        "y": 555.1347045898438,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1084.7056884765625,
+                        "y": 555.1347045898438
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2179.650146484375,
+                        "y": 1654.902099609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2216.650146484375,
+                        "y": 1654.902099609375
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1402.6376953125,
+                        "y": 1402.700927734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1439.6376953125,
+                        "y": 1402.700927734375
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2150.87158203125,
+                        "y": 893.5015869140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2187.87158203125,
+                        "y": 893.5015869140625
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1877.478515625,
+                        "y": 1249.353271484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1914.478515625,
+                        "y": 1249.353271484375
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1580.103515625,
+                        "y": 1839.6065673828125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1617.103515625,
+                        "y": 1839.6065673828125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2577.748779296875,
+                        "y": 1163.8135986328125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2614.748779296875,
+                        "y": 1163.8135986328125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1930.2386474609375,
+                        "y": 1780.22802734375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1967.2386474609375,
+                        "y": 1780.22802734375
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2429.0615234375,
+                        "y": 1442.33154296875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2466.0615234375,
+                        "y": 1442.33154296875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2078.926025390625,
+                        "y": 1501.7100830078125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2115.926025390625,
+                        "y": 1501.7100830078125
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "left-edge",
+            "state": "CommandState",
+            "file": "05-left-edge-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 11,
+            "raycasts": 11,
+            "texts": 16,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 7.098241806030273,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 225.59970092773438,
+                "y": 462.03094482421875,
+                "width": 240.00006103515625,
+                "height": 326.4000244140625
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 345.5997314453125,
+                "y": 270.0308837890625
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 308.59979248046875,
+                        "y": 368.92864990234375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 345.59979248046875,
+                        "y": 368.92864990234375
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 367.7817687988281,
+                        "y": 328.8394470214844,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 404.7817687988281,
+                        "y": 328.8394470214844
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 904.9725341796875,
+                        "y": 850.7599487304688,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 941.9725341796875,
+                        "y": 850.7599487304688
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 536.2230224609375,
+                        "y": 731.0718994140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 573.2230224609375,
+                        "y": 731.0718994140625
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 891.31494140625,
+                        "y": 489.4194030761719,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 928.31494140625,
+                        "y": 489.4194030761719
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 761.5698852539063,
+                        "y": 658.2971801757813,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 798.5698852539063,
+                        "y": 658.2971801757813
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 620.4435424804688,
+                        "y": 938.415771484375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 657.4435424804688,
+                        "y": 938.415771484375
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1093.899658203125,
+                        "y": 617.7022705078125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1130.899658203125,
+                        "y": 617.7022705078125
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 786.6084594726563,
+                        "y": 910.2362670898438,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 823.6084594726563,
+                        "y": 910.2362670898438
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1023.3365478515625,
+                        "y": 749.8795166015625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1060.3365478515625,
+                        "y": 749.8795166015625
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 857.1715698242188,
+                        "y": 778.05908203125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 894.1715698242188,
+                        "y": 778.05908203125
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "right-edge",
+            "state": "CommandState",
+            "file": "06-right-edge-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 11,
+            "raycasts": 11,
+            "texts": 16,
+            "randomDraws": 0,
+            "textScale": 1.0,
+            "orthographicSize": 7.098241806030273,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 974.020263671875,
+                "y": 231.2733612060547,
+                "width": 240.0,
+                "height": 326.4000244140625
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 1298.020263671875,
+                "y": 332.07330322265625
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1261.020263671875,
+                        "y": 430.9710388183594,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1298.020263671875,
+                        "y": 430.9710388183594
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1320.2022705078125,
+                        "y": 390.8818359375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1357.2022705078125,
+                        "y": 390.8818359375
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1857.3931884765625,
+                        "y": 912.8023681640625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1894.3931884765625,
+                        "y": 912.8023681640625
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1488.6435546875,
+                        "y": 793.1143188476563,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1525.6435546875,
+                        "y": 793.1143188476563
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1843.735595703125,
+                        "y": 551.4617919921875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1880.735595703125,
+                        "y": 551.4617919921875
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1713.990478515625,
+                        "y": 720.339599609375,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1750.990478515625,
+                        "y": 720.339599609375
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1572.8642578125,
+                        "y": 1000.4581909179688,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1609.8642578125,
+                        "y": 1000.4581909179688
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 2046.320068359375,
+                        "y": 679.7446899414063,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2083.320068359375,
+                        "y": 679.7446899414063
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1739.0289306640625,
+                        "y": 972.2786254882813,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1776.0289306640625,
+                        "y": 972.2786254882813
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1975.757080078125,
+                        "y": 811.9219360351563,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 2012.757080078125,
+                        "y": 811.9219360351563
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1809.592041015625,
+                        "y": 840.1014404296875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1846.592041015625,
+                        "y": 840.1014404296875
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        },
+        {
+            "scenario": "zoom-text130",
+            "state": "CommandState",
+            "file": "07-zoom-text130-allies2-1920x1080.png",
+            "active": "cless",
+            "statusName": "크레스 알베인  Lv.1",
+            "skill": "",
+            "width": 1920,
+            "height": 1080,
+            "allies": 2,
+            "buttons": 11,
+            "raycasts": 11,
+            "texts": 16,
+            "randomDraws": 0,
+            "textScale": 1.2999999523162842,
+            "orthographicSize": 5.577190399169922,
+            "status": {
+                "serializedVersion": "2",
+                "x": 16.800039291381836,
+                "y": 16.80000877380371,
+                "width": 504.0,
+                "height": 184.80001831054688
+            },
+            "commands": {
+                "serializedVersion": "2",
+                "x": 385.16754150390625,
+                "y": 403.7843017578125,
+                "width": 240.0,
+                "height": 326.4000244140625
+            },
+            "viewport": {
+                "serializedVersion": "2",
+                "x": 0.008750000968575478,
+                "y": 0.015555556863546371,
+                "width": 0.9825000166893005,
+                "height": 0.8644444346427917
+            },
+            "actor": {
+                "x": 505.1675109863281,
+                "y": 211.7842559814453
+            },
+            "facingHintOpen": false,
+            "objectiveVisible": false,
+            "statusVisible": true,
+            "forecastTargets": 0,
+            "health": [
+                {
+                    "id": "cless",
+                    "selected": true,
+                    "visible": true,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 468.1675720214844,
+                        "y": 337.65411376953125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 505.1675720214844,
+                        "y": 337.65411376953125
+                    },
+                    "hp": 190
+                },
+                {
+                    "id": "mint",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 543.4900512695313,
+                        "y": 286.63153076171875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 580.4900512695313,
+                        "y": 286.63153076171875
+                    },
+                    "hp": 135
+                },
+                {
+                    "id": "golem",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1227.1873779296875,
+                        "y": 950.8939819335938,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1264.1873779296875,
+                        "y": 950.8939819335938
+                    },
+                    "hp": 380
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 757.8698120117188,
+                        "y": 798.563720703125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 794.8698120117188,
+                        "y": 798.563720703125
+                    },
+                    "hp": 145
+                },
+                {
+                    "id": "mage",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1209.804931640625,
+                        "y": 491.00604248046875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1246.804931640625,
+                        "y": 491.00604248046875
+                    },
+                    "hp": 100
+                },
+                {
+                    "id": "archer",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1044.6749267578125,
+                        "y": 705.94140625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1081.6749267578125,
+                        "y": 705.94140625
+                    },
+                    "hp": 110
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 865.0596923828125,
+                        "y": 1062.4559326171875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 902.0596923828125,
+                        "y": 1062.4559326171875
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1467.6400146484375,
+                        "y": 654.2750854492188,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1504.6400146484375,
+                        "y": 654.2750854492188
+                    },
+                    "hp": 180
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1076.542236328125,
+                        "y": 1026.591064453125,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1113.542236328125,
+                        "y": 1026.591064453125
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "sentinel",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1377.8323974609375,
+                        "y": 822.500732421875,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1414.8323974609375,
+                        "y": 822.500732421875
+                    },
+                    "hp": 0
+                },
+                {
+                    "id": "boundary-device",
+                    "selected": false,
+                    "visible": false,
+                    "detailed": false,
+                    "bounds": {
+                        "serializedVersion": "2",
+                        "x": 1166.349853515625,
+                        "y": 858.365478515625,
+                        "width": 74.0,
+                        "height": 16.0
+                    },
+                    "anchor": {
+                        "x": 1203.349853515625,
+                        "y": 858.365478515625
+                    },
+                    "hp": 180
+                }
+            ],
+            "issues": []
+        }
+    ],
+    "errors": [
+        "System.InvalidOperationException: Browsing, cancelling, selection or camera controls mutated gameplay state/grid/RNG.\r\n  at TalesTactics.BattleHudRedesignReview+<Run>d__27.MoveNext () [0x009c9] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\BattleHudRedesignReview.cs:131 \r\n  at TalesTactics.BattleHudRedesignReview+<Start>d__25.MoveNext () [0x00092] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\BattleHudRedesignReview.cs:77 "
+    ],
+    "userFilesBefore": [
+        "campaign-slot2.json:f6828b20c9621c91f5f8b57c7c0c16b84811f017813ffbe2aebe763ee21e1d35",
+        "campaign-slot2.json.bak:41005c21046173323040419ac5552f5b86a83f1946bc429da46462d8e09b6851",
+        "campaign.json:e38bcff0268db166761ed39a9342865d76d2c2b1e4df1fa17ecf9603f9363c59",
+        "campaign.json.bak:3c3ba4a4e0b00153302f13552b76dc2e82e24d0a8cd56aba2edbe1ff0fe388b9",
+        "campaign.json.v1.bak:324e361730b35c466bebe77a4d9e4730ed9bb8764bb8298fce26807e6c7081c1",
+        "campaign.json.v2.bak:15b253b1c0ac332c33f0bfa73c5203b765553b8499e337ff881a59099afb0f3e",
+        "settings.json:1bdbc8b4fbe971f6b1cf938d53eb2df6ad5c77096f28a12bae7daf675aca760a",
+        "settings.json.bak:551ba46a228f7c125c79e23507b4abf07015eebe401a357f3bda4deaa8495264"
+    ],
+    "userFilesAfter": [
+        "campaign-slot2.json:f6828b20c9621c91f5f8b57c7c0c16b84811f017813ffbe2aebe763ee21e1d35",
+        "campaign-slot2.json.bak:41005c21046173323040419ac5552f5b86a83f1946bc429da46462d8e09b6851",
+        "campaign.json:e38bcff0268db166761ed39a9342865d76d2c2b1e4df1fa17ecf9603f9363c59",
+        "campaign.json.bak:3c3ba4a4e0b00153302f13552b76dc2e82e24d0a8cd56aba2edbe1ff0fe388b9",
+        "campaign.json.v1.bak:324e361730b35c466bebe77a4d9e4730ed9bb8764bb8298fce26807e6c7081c1",
+        "campaign.json.v2.bak:15b253b1c0ac332c33f0bfa73c5203b765553b8499e337ff881a59099afb0f3e",
+        "settings.json:1bdbc8b4fbe971f6b1cf938d53eb2df6ad5c77096f28a12bae7daf675aca760a",
+        "settings.json.bak:551ba46a228f7c125c79e23507b4abf07015eebe401a357f3bda4deaa8495264"
+    ],
+    "scope": "Two actual Director boards: main episode 1 with its two joined allies and an isolated Lv25 six-ally training fixture. Both at 1920x1080 and 1280x720, covering command, skills, ground facing, legal target forecasts, enemy hover, left/right camera pans and zoom with larger text. Thirty-two unedited ScreenCapture PNGs.",
+    "checks": "Fixed status bounds; command/status separation; removal of persistent objective and facing instruction text; active button center raycasts; actual UI submit to skill/wait and cancel; visible glyph/frame/screen boundaries; short overhead labels; camera/selection/menu browsing state, grid, RNG and campaign invariance; user-storage campaign/settings file-family hashes including backups.",
+    "limitations": "Programmatic UI submit and Unity EventSystem raycasts are not operating-system mouse/keyboard automation. Live Player.log/Player-prev.log and unrelated files are explicitly excluded from persistent-save hashing. Opening boards do not prove a campaign playthrough, balance, all resolutions, all six-person arrangements or manual visual approval. Edge rows record achieved actor positions because map panning remains bounded. Inspect PNGs for artwork and occlusion."
+}

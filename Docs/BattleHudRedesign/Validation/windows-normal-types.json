@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "passed": true,
+  "review": false,
+  "checkedUtc": "2026-11-01T15:58:44.1846534Z",
+  "playerRoot": "D:\\TalesTacticsBuildArchive\\HudRedesignWindowsFinal20261102",
+  "runtimeSHA256": "e47e4f8376d840d739056136d0cd73cb376007d07a59c4a49442c1a2d7286a5e",
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "cecilPath": "C:\\dev\\TalesTactics\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "assemblies": [
+    {
+      "file": "TalesTactics.Runtime.dll",
+      "sha256": "e47e4f8376d840d739056136d0cd73cb376007d07a59c4a49442c1a2d7286a5e",
+      "typeCount": 452,
+      "references": [
+        "netstandard",
+        "UnityEngine.CoreModule",
+        "UnityEngine.AudioModule",
+        "UnityEngine.AnimationModule",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.InputSystem",
+        "UnityEngine.UIModule",
+        "UnityEngine.UnityWebRequestModule",
+        "UnityEngine.PhysicsModule",
+        "UnityEngine.JSONSerializeModule",
+        "UnityEngine.TextRenderingModule",
+        "UnityEngine.UnityWebRequestAudioModule"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "Production battle/HUD types present",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "TalesTactics.BattleHudRedesignReview matches requested build mode",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "TalesTactics.ReviewStorageBootstrap matches requested build mode",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "TalesTactics.CampaignPlayerReview excluded from non-development build",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "TalesTactics.PersistencePlayerReview excluded from non-development build",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "Known review/fixture types excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Known review/fixture IL references excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Director has no review storage bootstrap call",
+      "passed": true,
+      "observed": false
+    },
+    {
+      "name": "Editor/test types excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Editor/test assemblies excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Editor/test references excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "NUnit/UnityTest attributes excluded",
+      "passed": true,
+      "observed": []
+    }
+  ],
+  "reviewFixtureTypes": [],
+  "reviewIlReferences": [],
+  "editorOrTestTypes": [],
+  "editorOrTestAssemblies": [],
+  "editorOrTestReferences": [],
+  "testAttributes": [],
+  "checksScope": "Mono.Cecil metadata and IL inspection; no Unity tests or player execution. Storage isolation at runtime, visual quality, build warnings and gameplay are separate checks.",
+  "failures": []
+}

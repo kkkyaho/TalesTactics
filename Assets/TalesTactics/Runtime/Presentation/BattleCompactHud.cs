@@ -5,163 +5,173 @@ namespace TalesTactics
     public sealed partial class BattleHud
     {
         RectTransform unitDetails;
-        RectTransform battleDock;
+
+        UnitRuntime summaryUnit, commandAnchorUnit;
+        int commandSide=-1,summaryHP=-1,summaryMP=-1,summarySP=-1,summaryLevel=-1;
         float targetContextHeight=124;
         bool NarrowBattleHud=>Screen.width<=1100;
-        // Dense forecasts/skill cards keep their reading width. Routine commands need less map space.
-        bool SmallBattleDock=>battle.State is CommandState||battle.State is MoveSelectionState||battle.State is FacingSelectionState;
-        float BattleDockWidth=>SmallBattleDock?(NarrowBattleHud?316:288):(NarrowBattleHud?364:316);
-        float BattleDockTop=>116;
-        float CommandMenuHeight=>!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?216:172;
+        float BattleDockWidth=>SkillPanel?320:battle.State is TargetSelectionState?340:200;
+        float BattleDockTop=>110;
+        float CommandMenuHeight=>32+48*(battle.Session.Active?.CanUndoMove==true?6:5);
         public bool UnitDetailsOpen=>unitDetails!=null&&unitDetails.gameObject.activeSelf;
         bool SkillPanel=>battle.State is ActionSelectionState||battle.State is SkillDetailsState;
-        string BattleTitle=>battle.State is CommandState?"행동 선택":battle.State is ActionSelectionState?"기술 선택":
-            battle.State is SkillDetailsState?"기술 정보":battle.State is TargetSelectionState?"대상 선택":
-            battle.State is MoveSelectionState?"이동 위치":battle.State is FacingSelectionState?"방향 선택":
-            battle.State is ActionExecutionState?"행동 중":battle.State is BattleEndState?"전투 결과":"턴 진행";
+        string BattleTitle=>battle.State is ActionExecutionState?"행동 중":"턴 진행";
         void HalfButton(Transform parent,int column)
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
             bool facing=battle.State is FacingSelectionState;
             bool targeting=battle.State is TargetSelectionState;
-            bool open=!(battle.State is BattleEndState)&&!MissionOpen&&!UnitDetailsOpen&&!SystemMenuOpen&&!HelpOpen&&!battle.StoryActive;
-            bool summaryVisible=!(targeting&&NarrowBattleHud);
-            commands.gameObject.SetActive(open);left.gameObject.SetActive(open&&summaryVisible);
+            bool open=!(battle.State is BattleEndState)&&!InputModalOpen&&!battle.StoryActive;
+            bool commandVisible=facing||SkillPanel||targeting||battle.State is MoveSelectionState||
+                battle.State is CommandState&&battle.Session.Active?.Team==Team.Player||battle.TimingActive||battle.State is TutorialCompleteState;
+
+            left.gameObject.SetActive(open&&!targeting);
+            commands.gameObject.SetActive(open&&commandVisible);
+            foreach(var part in new[]{header,left,commands})
+            {
+                var fit=part.GetComponent<FramedContent>();if(fit!=null)fit.enabled=false;
+                part.GetComponent<UnityEngine.UI.Outline>().enabled=false;
+            }
             Place(header,new Vector2(0,1),Vector2.one,new Vector2(12,-108),new Vector2(-12,-12));
             header.GetComponent<UnityEngine.UI.Image>().enabled=false;
             header.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
-            header.GetComponent<UnityEngine.UI.Outline>().enabled=false;
-            float width=BattleDockWidth,summaryHeight=166,contentTop=BattleDockTop+(summaryVisible?summaryHeight:12);
-            float contentHeight=SkillPanel?SkillCardHeight+24:targeting?targetContextHeight:battle.State is CommandState?CommandMenuHeight:battle.State is MoveSelectionState?148:340;
-            if(facing)contentHeight=0;
-            Place(left,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-summaryHeight),new Vector2(12+width,-BattleDockTop));
-            Place(commands,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-contentTop-contentHeight),new Vector2(12+width,-contentTop));
-            if(battleDock==null)
+            // A stable information dock; it never follows the actor or the camera.
+            Place(left,Vector2.zero,Vector2.zero,new Vector2(14,14),new Vector2(434,168));
+            left.GetComponent<UnityEngine.UI.Image>().enabled=true;
+            left.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;
+            var focused=battle.HoveredUnit?.Alive==true?battle.HoveredUnit:battle.HealthHoveredUnit?.Alive==true?battle.HealthHoveredUnit:battle.Session.Active;
+            if(open&&focused!=null){if(focused!=summaryUnit){Clear(left);DrawUnitSummary(focused);}UpdateSummaryValues(focused);}
+            commands.GetComponent<UnityEngine.UI.Image>().enabled=!facing;
+            commands.GetComponent<UnityEngine.UI.Image>().raycastTarget=!facing;
+            if(facing)UpdateFacingArrows();
+            else if(open&&commandVisible)
             {
-                battleDock=Panel("BattleCommandDock",new Vector2(0,1),new Vector2(0,1),Vector2.zero,Vector2.zero);
-                battleDock.SetAsFirstSibling();
+                float height=SkillPanel?SkillCardHeight+24:targeting?targetContextHeight+24:
+                    battle.State is CommandState?CommandMenuHeight:battle.State is MoveSelectionState?152:340;
+                if(targeting)
+                {
+                    // Forecast stays in a fixed information area, leaving target tiles unobstructed.
+                    Place(commands,Vector2.zero,Vector2.zero,new Vector2(14,14),new Vector2(14+BattleDockWidth,14+height));
+                }
+                else PlaceBesideUnits(commands,battle.Session.Active.Position,BattleDockWidth,height);
             }
-            float dockHeight=(summaryVisible?summaryHeight:12)+contentHeight+56;
-            Place(battleDock,new Vector2(0,1),new Vector2(0,1),new Vector2(12,-BattleDockTop-dockHeight),new Vector2(12+width,-BattleDockTop));
-            battleDock.gameObject.SetActive(open);
-            // These two retained panels share one backdrop and never drift away from one another.
-            foreach(var part in new[]{left,commands})
-            {
-                part.GetComponent<UnityEngine.UI.Image>().enabled=false;
-                part.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
-                part.GetComponent<UnityEngine.UI.Outline>().enabled=false;
-            }
-            if(tacticalToolbar!=null)
-                Place(tacticalToolbar,new Vector2(0,1),new Vector2(0,1),new Vector2(24,-BattleDockTop-dockHeight+20),new Vector2(width,-BattleDockTop-dockHeight+56));
-            if(!facing)InsetBattleCommands();
-            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(width+36,12),new Vector2(-12,108));
-            if(facing){UpdateFacingArrows();Place(footer,new Vector2(1,0),new Vector2(1,0),new Vector2(-372,12),new Vector2(-12,56));}
-            // Messages stay available in contextual states; ordinary command selection needs only the objective.
-            bool showMessage=open&&(facing||battle.TutorialActive||battle.HasBattleMessage);
+            if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);
+            // Only real feedback and explicit tutorial lessons occupy the message area.
+            Place(footer,Vector2.zero,new Vector2(1,0),new Vector2(454,14),new Vector2(-14,112));
+            bool showMessage=open&&(battle.TutorialActive||battle.HasBattleMessage)&&!string.IsNullOrWhiteSpace(battle.DisplayBattleMessage);
             footer.GetComponent<UnityEngine.UI.Image>().enabled=showMessage;
-            footer.GetComponent<UnityEngine.UI.Outline>().enabled=showMessage;
+            footer.GetComponent<UnityEngine.UI.Outline>().enabled=false;
             var group=footer.GetComponent<CanvasGroup>();if(group==null)group=footer.gameObject.AddComponent<CanvasGroup>();
             group.alpha=showMessage?1:0;group.blocksRaycasts=false;
             footer.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
         }
-        // Commands share a backdrop with Unit rather than their own visible frame.
-        // Reserve that backdrop's inner border even for legacy movement/timing labels.
-        void InsetBattleCommands()
-        {
-            float width=commands.rect.width,inset=24;
-            foreach(Transform child in commands)
-            {
-                if(!child.gameObject.activeSelf||FramedContent.IsDecoration(child)||!(child is RectTransform r))continue;
-                float low=r.anchorMin.x*width+r.offsetMin.x,high=r.anchorMax.x*width+r.offsetMax.x;
-                if(low<inset)r.offsetMin=new Vector2(r.offsetMin.x+inset-low,r.offsetMin.y);
-                if(high>width-inset)r.offsetMax=new Vector2(r.offsetMax.x-(high-width+inset),r.offsetMax.y);
-            }
-        }
         Rect BattleViewport(float scale)
         {
-            float side=(BattleDockWidth+36)*scale,bottom=20*scale;
-            return new Rect(side/Screen.width,bottom/Screen.height,
-                Mathf.Max(1,Screen.width-side-12*scale)/Screen.width,
-                Mathf.Max(1,Screen.height-bottom-BattleDockTop*scale)/Screen.height);
-        }
-        void PlaceCommandBesideUnit()
-        {
-            var unit=battle.Session.Active;if(unit==null||battle.Board.BattleCamera==null)return;
-            PlaceBesideUnits(commands,unit.Position,250,94+46*(!battle.TutorialActive&&battle.Session.Scheduler is TeamTurnScheduler?(unit.CanUndoMove?7:6):unit.CanUndoMove?6:5));
+            // The former full-height left dock no longer reserves a third of the battlefield.
+            float edge=14*scale,top=108*scale;
+            return new Rect(edge/Screen.width,edge/Screen.height,
+                Mathf.Max(1,Screen.width-2*edge)/Screen.width,Mathf.Max(1,Screen.height-top-edge)/Screen.height);
         }
         void PlaceBesideUnits(RectTransform window,Vector2Int position,float width,float height)
         {
-            var camera=battle.Board.BattleCamera;
-            float scale=GetComponent<Canvas>().scaleFactor,w=Screen.width/scale,h=Screen.height/scale;
+            var camera=battle.Board.BattleCamera;if(camera==null)return;
+            float scale=Mathf.Max(.01f,GetComponent<Canvas>().scaleFactor),w=Screen.width/scale,h=Screen.height/scale;
+            var actor=battle.Session.Active;
             var projected=camera.WorldToScreenPoint(battle.Session.Grid[position].WorldPosition(battle.Catalog.Rules.TileHeight));
             var p=new Vector2(projected.x/scale,projected.y/scale);
-            bool skillContext=window==commands&&(SkillPanel||battle.State is TargetSelectionState);
-            float gap=skillContext?90:60,sideY=skillContext?p.y+50-height*.5f:p.y-40;
-            var candidates=new[]{new Vector2(p.x-width-gap,sideY),new Vector2(p.x+gap,sideY),new Vector2(p.x-width*.5f,p.y+145),new Vector2(p.x-width*.5f,p.y-height-24)};
-            var best=Vector2.zero;float bestScore=float.PositiveInfinity;
-            foreach(var candidate in candidates)
+            var actorBounds=battle.Board.UnitScreenBounds(actor);
+            float leftEdge=actorBounds.xMin/scale-width-18,rightEdge=actorBounds.xMax/scale+18;
+            var candidates=new[]{
+                new Vector2(leftEdge,p.y+52-height*.5f),new Vector2(rightEdge,p.y+52-height*.5f),
+                new Vector2(leftEdge,p.y+145-height),new Vector2(rightEdge,p.y+145-height),
+                new Vector2(p.x-width*.5f,p.y+160),new Vector2(p.x-width*.5f,p.y-height-48),
+                new Vector2(leftEdge-90,p.y+52-height*.5f),new Vector2(rightEdge+90,p.y+52-height*.5f),
+                new Vector2(leftEdge-150,p.y+52-height*.5f),new Vector2(rightEdge+150,p.y+52-height*.5f)};
+            if(commandAnchorUnit!=actor){commandSide=-1;commandAnchorUnit=actor;}
+            var best=Vector2.zero;float bestScore=float.PositiveInfinity;int side=0;
+            for(int i=0;i<candidates.Length;i++)
             {
-                var low=new Vector2(Mathf.Clamp(candidate.x,12,w-width-12),Mathf.Clamp(candidate.y,198,Mathf.Max(198,h-height-124)));
-                var rect=new Rect(low,new Vector2(width,height));float score=Vector2.SqrMagnitude(rect.center-p)*.000001f;
-                if(skillContext&&candidate==candidates[2])score+=1;
+                var low=new Vector2(Mathf.Clamp(candidates[i].x,14,Mathf.Max(14,w-width-14)),
+                    Mathf.Clamp(candidates[i].y,14,Mathf.Max(14,h-height-114)));
+                var rect=new Rect(low,new Vector2(width,height));
+                float score=Vector2.SqrMagnitude(rect.center-(p+new Vector2(0,60)))*.002f;
+                // Prefer the previous side until it obstructs something, avoiding camera-pan jitter.
+                if(commandSide>=0&&i!=commandSide)score+=18;
+                if(rect.Overlaps(new Rect(8,8,432,168)))score+=100000;
                 foreach(var unit in battle.Session.Units.Where(u=>u.Alive))
                 {
-                    var screen=camera.WorldToScreenPoint(battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight));
-                    var body=new Rect(screen.x/scale-34,screen.y/scale-10,68,130);
-                    if(rect.Overlaps(body))score+=unit.Position==position?1000:10;
+                    var bounds=battle.Board.UnitScreenBounds(unit);
+                    var body=new Rect(bounds.x/scale-8,bounds.y/scale-8,bounds.width/scale+16,bounds.height/scale+16);
+                    float overlapWidth=Mathf.Min(rect.xMax,body.xMax)-Mathf.Max(rect.xMin,body.xMin);
+                    float overlapHeight=Mathf.Min(rect.yMax,body.yMax)-Mathf.Max(rect.yMin,body.yMin);
+                    if(overlapWidth>0&&overlapHeight>0)score+=overlapWidth*overlapHeight*(unit==actor?100:5);
                 }
-                if(score<bestScore){bestScore=score;best=low;}
+                if(score<bestScore){bestScore=score;best=low;side=i;}
             }
+            commandSide=side;
             Place(window,Vector2.zero,Vector2.zero,best,best+new Vector2(width,height));
         }
         void ArrangeCommandMenu()
         {
-            var commandHeading=Label(commands,"유닛 명령",4,24,15);commandHeading.color=formationGold;commandHeading.rectTransform.offsetMin=new Vector2(24,commandHeading.rectTransform.offsetMin.y);
-            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소","아군 턴 종료"};
-            string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소","아군 턴 종료"};
+            string[] names={"Move / 이동","Attack / 공격","Skill / 스킬","Guard / 가드","Wait / 방향 선택","Undo Move / 이동 취소"};
+            string[] labels={"이동","공격",battle.Session.Active.Acted&&battle.CanOpenSkills?"연계 기술":"기술","방어","대기","이동 취소"};
             for(int i=0;i<names.Length;i++)
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
-                int row=i==6?3:i/2,column=i%2;
-                r.pivot=new Vector2(.5f,1);
-                Place(r,new Vector2(i==6?0:column*.5f,1),new Vector2(i==6?1:(column+1)*.5f,1),
-                    new Vector2(i==6||column==0?24:4,-34-row*44-40),new Vector2(i==6||column==1?-24:-4,-34-row*44));
-                child.GetComponent<UnityEngine.UI.Outline>().enabled=false;
-                child.GetComponent<UnityEngine.UI.Image>().color=Color.white;
-                var button=child.GetComponent<UnityEngine.UI.Button>();var colors=button.colors;
-                colors.normalColor=new Color(.035f,.055f,.11f,0);colors.highlightedColor=new Color(.14f,.3f,.45f);colors.selectedColor=colors.highlightedColor;colors.pressedColor=new Color(.25f,.42f,.56f);colors.disabledColor=new Color(.035f,.055f,.11f,0);button.colors=colors;
+                Place(r,new Vector2(0,1),Vector2.one,new Vector2(14,-16-i*48-44),new Vector2(-14,-16-i*48));
+                StyleButton(child,HudRole.Quiet);
                 var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=18;text.fontSizeMin=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
-                FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo","endturn"}[i],new Vector2(0,.5f),new Vector2(0,.5f),formationGold);
-                var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(24,24);icon.anchoredPosition=new Vector2(20,0);
-                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(40,0),new Vector2(-4,0));
+                FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo"}[i],new Vector2(0,.5f),new Vector2(0,.5f),Color.white);
+                var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(32,32);icon.anchoredPosition=new Vector2(26,0);
+                Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(52,0),new Vector2(-8,0));
             }
         }
         void DrawUnitSummary(UnitRuntime u)
         {
+            summaryUnit=u;summaryHP=u.CurrentHP;summaryMP=u.CurrentMP;summarySP=u.SpecialGauge;summaryLevel=u.Level;
             var portrait=FormationRect(left,"Portrait",Vector2.zero,Vector2.zero);
-            portrait.offsetMin=new Vector2(24,44);portrait.offsetMax=new Vector2(84,116);StatusPortrait(portrait,u.Data);
+            portrait.offsetMin=new Vector2(16,16);portrait.offsetMax=new Vector2(118,138);StatusPortrait(portrait,u.Data);
+            var inspect=FormationRect(portrait,"능력",Vector2.zero,Vector2.one);
+            var hit=inspect.gameObject.AddComponent<UnityEngine.UI.Image>();hit.color=Color.clear;hit.raycastTarget=true;hit.canvasRenderer.cullTransparentMesh=false;
+            var button=inspect.gameObject.AddComponent<UnityEngine.UI.Button>();button.targetGraphic=hit;button.onClick.AddListener(()=>ShowUnitDetails(u));
 
-            var title=Label(left,u.Data.DisplayName+"  Lv"+u.Level,20,26,18);title.rectTransform.offsetMin=new Vector2(24,title.rectTransform.offsetMin.y);title.rectTransform.offsetMax=new Vector2(-24,title.rectTransform.offsetMax.y);
-            SummaryBar("HP",u.CurrentHP,u.Stats.HP,48,new Color(.25f,.78f,.49f));
-            SummaryBar("MP",u.CurrentMP,u.Stats.MP,74,new Color(.25f,.57f,.95f));
-            SummaryBar("SP",u.SpecialGauge,100,100,new Color(.93f,.69f,.28f));
-            var status=Label(left,$"이동 {(u.Moved?"완료":"가능")} · 행동 {(u.Acted?"완료":"가능")}",132,24,14);
-            status.rectTransform.offsetMin=new Vector2(24,status.rectTransform.offsetMin.y);
-            status.rectTransform.offsetMax=new Vector2(-90,status.rectTransform.offsetMax.y);
-            Button(left,"능력",130,()=>ShowUnitDetails(u),true,30);
-            var button=(RectTransform)left.GetChild(left.childCount-1);button.anchorMin=new Vector2(1,1);button.anchorMax=Vector2.one;button.pivot=new Vector2(1,1);button.sizeDelta=new Vector2(62,30);button.anchoredPosition=new Vector2(-24,-130);
+            var title=Label(left,u.Data.DisplayName+"  Lv."+u.Level,14,28,20);title.name="UnitName";
+            Place(title.rectTransform,new Vector2(0,1),Vector2.one,new Vector2(132,-42),new Vector2(-16,-14));
+            SummaryBar("HP",u.CurrentHP,u.Stats.HP,50,new Color(.18f,.58f,.46f));
+            SummaryBar("MP",u.CurrentMP,u.Stats.MP,80,new Color(.19f,.43f,.65f));
+            SummaryBar("SP",u.SpecialGauge,100,110,new Color(.58f,.48f,.29f));
         }
         void SummaryBar(string title,int value,int maximum,float y,Color color)
         {
+            var caption=Label(left,title,y,24,15);
+            Place(caption.rectTransform,new Vector2(0,1),Vector2.one,new Vector2(132,-y-24),new Vector2(-244,-y));
             var bg=new GameObject(title+"Bar",typeof(RectTransform),typeof(UnityEngine.UI.Image));bg.transform.SetParent(left,false);
-            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(96,-y-24),new Vector2(-24,-y));
-            bg.GetComponent<UnityEngine.UI.Image>().color=new Color(.07f,.1f,.17f);bg.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            Place(bg.GetComponent<RectTransform>(),new Vector2(0,1),Vector2.one,new Vector2(170,-y-24),new Vector2(-16,-y));
+            var surface=bg.GetComponent<UnityEngine.UI.Image>();surface.color=Color.white;surface.raycastTarget=false;OrnatePanel.Apply(surface,6);
+            var fit=bg.GetComponent<FramedContent>();if(fit!=null)fit.enabled=false;
             var fill=new GameObject("Fill",typeof(RectTransform),typeof(UnityEngine.UI.Image));fill.transform.SetParent(bg.transform,false);
-            Place(fill.GetComponent<RectTransform>(),Vector2.zero,new Vector2(Mathf.Clamp01((float)value/Mathf.Max(1,maximum)),1),Vector2.zero,Vector2.zero);
-            fill.GetComponent<UnityEngine.UI.Image>().color=color*.55f;fill.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
-            var label=Label(bg.transform,$"{title}   {value} / {maximum}",0,24,16);label.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
+            float ratio=Mathf.Clamp01((float)value/Mathf.Max(1,maximum));
+            Place(fill.GetComponent<RectTransform>(),Vector2.zero,new Vector2(ratio,1),new Vector2(7,5),new Vector2(7-14*ratio,-5));
+            fill.GetComponent<UnityEngine.UI.Image>().color=color;fill.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            if(ratio<=0)fill.SetActive(false);
+            var label=Label(bg.transform,$"{value} / {maximum}",0,24,15);label.name="Value";label.alignment=TMPro.TextAlignmentOptions.MidlineRight;
+            Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(9,0),new Vector2(-10,0));
+        }
+        void UpdateSummaryValues(UnitRuntime u)
+        {
+            if(summaryHP==u.CurrentHP&&summaryMP==u.CurrentMP&&summarySP==u.SpecialGauge&&summaryLevel==u.Level)return;
+            summaryHP=u.CurrentHP;summaryMP=u.CurrentMP;summarySP=u.SpecialGauge;summaryLevel=u.Level;
+            left.Find("UnitName").GetComponent<TMPro.TMP_Text>().text=u.Data.DisplayName+"  Lv."+u.Level;
+            UpdateSummaryBar("HP",u.CurrentHP,u.Stats.HP);UpdateSummaryBar("MP",u.CurrentMP,u.Stats.MP);UpdateSummaryBar("SP",u.SpecialGauge,100);
+        }
+        void UpdateSummaryBar(string name,int value,int maximum)
+        {
+            var bar=left.Find(name+"Bar");if(bar==null)return;
+            var fill=(RectTransform)bar.Find("Fill");float ratio=Mathf.Clamp01((float)value/Mathf.Max(1,maximum));
+            fill.gameObject.SetActive(ratio>0);fill.anchorMax=new Vector2(ratio,1);fill.offsetMax=new Vector2(7-14*ratio,-5);
+            bar.Find("Value").GetComponent<TMPro.TMP_Text>().text=$"{value} / {maximum}";
         }
         void DrawCameraControls()
         {

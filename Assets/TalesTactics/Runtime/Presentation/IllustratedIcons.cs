@@ -16,7 +16,7 @@ namespace TalesTactics
         static readonly Dictionary<string,Sprite> sprites=new Dictionary<string,Sprite>();
         static Dictionary<string,Region> regions;
         static Texture2D Load(string name)
-        {if(!textures.TryGetValue(name,out var texture))textures[name]=texture=Resources.Load<Texture2D>("TalesTactics/Ornate/"+name);return texture;}
+        {if(!textures.TryGetValue(name,out var texture)||texture==null)textures[name]=texture=Resources.Load<Texture2D>("TalesTactics/Ornate/"+name);return texture;}
         public static Region Get(string key,bool compact=false)
         {
             if(regions==null)
@@ -32,7 +32,7 @@ namespace TalesTactics
         {var uv=region.UV;if(corner<0)return uv;return new Rect(uv.x+(corner%2)*uv.width*.5f,uv.y+(corner/2)*uv.height*.5f,uv.width*.5f,uv.height*.5f);}
         public static Sprite Sprite(string key,int corner=-1)
         {
-            string id=key+":"+corner;if(sprites.TryGetValue(id,out var sprite))return sprite;
+            string id=key+":"+corner;if(sprites.TryGetValue(id,out var sprite)&&sprite!=null)return sprite;
             var region=Get(key);if(region==null)return null;var uv=PartUV(region,corner);var texture=region.Texture;
             var pixels=new Rect(uv.x*texture.width,uv.y*texture.height,uv.width*texture.width,uv.height*texture.height);
             sprite=UnityEngine.Sprite.Create(texture,pixels,new Vector2(.5f,.5f),Mathf.Max(pixels.width,pixels.height),0,SpriteMeshType.FullRect);

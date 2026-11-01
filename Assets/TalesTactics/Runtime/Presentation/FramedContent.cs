@@ -19,7 +19,7 @@ namespace TalesTactics
         void LateUpdate()=>Fit();
         public void Fit()
         {
-            if(lastFrame==Time.frameCount)return;lastFrame=Time.frameCount;
+            if(!isActiveAndEnabled||lastFrame==Time.frameCount)return;lastFrame=Time.frameCount;
             var ancestor=transform.parent!=null?transform.parent.GetComponentInParent<FramedContent>():null;
             if(ancestor!=null)ancestor.Fit();
             var image=GetComponent<UnityEngine.UI.Image>();if(image==null||!image.enabled)return;

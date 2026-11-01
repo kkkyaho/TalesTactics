@@ -11,8 +11,30 @@ namespace TalesTactics.PlayModeTests
     {
         Vector2 CameraDragPoint()
         {
-            var v=director.Hud.BattlefieldViewport;
-            return new Vector2(v.center.x*Screen.width,v.center.y*Screen.height);
+            Canvas.ForceUpdateCanvases();
+            var v=director.Hud.BattlefieldViewport;var step=CameraDragStep();
+            var area=new Rect(v.x*Screen.width+8,v.y*Screen.height+8,v.width*Screen.width-16,v.height*Screen.height-16);
+            var hits=new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            foreach(float y in new[]{.5f,.7f,.3f,.85f,.15f})
+            foreach(float x in new[]{.5f,.7f,.3f,.85f,.15f})
+            {
+                var point=new Vector2(Mathf.Lerp(area.xMin,area.xMax,x),Mathf.Lerp(area.yMin,area.yMax,y));
+                bool clear=true;
+                // Local commands follow the actor and can occupy the viewport center.
+                // Establish a genuinely free map gesture, including its destination,
+                // instead of changing production UI hit testing to satisfy a fixed point.
+                for(int i=0;i<=4;i++)
+                {
+                    var sample=point+step*(i*.25f);
+                    if(!area.Contains(sample)){clear=false;break;}
+                    hits.Clear();UnityEngine.EventSystems.EventSystem.current.RaycastAll(
+                        new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current){position=sample},hits);
+                    if(hits.Count>0){clear=false;break;}
+                }
+                if(clear)return point;
+            }
+            Assert.Fail("No raycast-free camera drag path exists in the battlefield viewport.");
+            return Vector2.zero;
         }
         Vector2 CameraDragStep()
         {
@@ -25,7 +47,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(director.Board.CameraDragging,Is.True);
             director.HandleCameraDrag(to,false,true);director.HandleCameraDrag(to,false,false);
         }
-        [UnityTest] public IEnumerator CameraPanSurvivesZoomRotationAndHudFitsWithoutDrifting()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CameraPanSurvivesZoomRotationAndHudFitsWithoutDrifting()
         {
             director.BeginBattle();yield return null;yield return new WaitForEndOfFrame();
             var board=director.Board;var camera=board.BattleCamera;var active=director.Session.Active;
@@ -48,7 +70,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(Quaternion.Angle(rotation,camera.transform.rotation),Is.LessThan(.01f));Assert.That(camera.orthographicSize,Is.EqualTo(size).Within(.01f));
             Assert.That(active.Position,Is.EqualTo(originalPosition));Assert.That(active.Moved||active.Acted,Is.False);
         }
-        [UnityTest] public IEnumerator CameraPanClampsAtMapEdgesAndRestartsAtOverview()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CameraPanClampsAtMapEdgesAndRestartsAtOverview()
         {
             director.BeginBattle();yield return null;yield return new WaitForEndOfFrame();
             var board=director.Board;board.ZoomCamera(.55f);
@@ -69,7 +91,7 @@ namespace TalesTactics.PlayModeTests
             director.Restart();yield return null;director.BeginBattle();yield return null;
             Assert.That(board.CameraPanOffset,Is.EqualTo(Vector3.zero));
         }
-        [UnityTest] public IEnumerator CameraMiddleDragIgnoresUiAndConsumesSelectionHoverAndCancel()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CameraMiddleDragIgnoresUiAndConsumesSelectionHoverAndCancel()
         {
             var mouse=InputSystem.AddDevice<Mouse>();
             try
@@ -89,6 +111,9 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(director.Board.CameraPanOffset.sqrMagnitude,Is.GreaterThan(.01f));
                 Assert.That(director.State,Is.SameAs(state));Assert.That(active.Position,Is.EqualTo(position));Assert.That(director.HealthHoveredUnit,Is.Null);
                 var offset=director.Board.CameraPanOffset;
+                yield return new WaitForEndOfFrame();
+                // The local menu follows the camera; re-enter its rendered hit target.
+                ui=r.TransformPoint(r.rect.center);
                 InputSystem.QueueStateEvent(mouse,new MouseState{position=ui}.WithButton(MouseButton.Middle));yield return null;
                 Assert.That(director.Board.CameraDragging,Is.False);
                 InputSystem.QueueStateEvent(mouse,new MouseState{position=point}.WithButton(MouseButton.Middle));yield return null;
@@ -105,7 +130,7 @@ namespace TalesTactics.PlayModeTests
             }
             finally{InputSystem.RemoveDevice(mouse);}
         }
-        [UnityTest] public IEnumerator CameraMiddleButtonDoesNotBlockModalEscapeOrTimingInput()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CameraMiddleButtonDoesNotBlockModalEscapeOrTimingInput()
         {
             var mouse=InputSystem.AddDevice<Mouse>();var keyboard=InputSystem.AddDevice<Keyboard>();
             try

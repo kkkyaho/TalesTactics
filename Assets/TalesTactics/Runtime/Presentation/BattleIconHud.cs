@@ -21,19 +21,14 @@ namespace TalesTactics
         }
         void DrawTacticalHeader()
         {
-            bool arriving=battle.Session.ReinforcementsArrived&&battle.Session.Scheduler is TeamTurnScheduler eventTurn&&eventTurn.Round==3&&eventTurn.Phase==Team.Player;
-            BattleHeaderBackdrop("BattleObjectiveBackdrop",new Vector2(0,1),new Vector2(0,-76),new Vector2(426,0));
-            var title=Label(header,battle.TutorialActive?"입문 연습":arriving?"적 증원 2명 도착":BriefVictory(battle.Session,battle.Session.CampaignStage,battle.TrainingMode),16,34,18);
-            title.name="Battle objective";
-            Place(title.rectTransform,new Vector2(0,1),new Vector2(0,1),new Vector2(18,-64),new Vector2(408,-12));title.enableAutoSizing=true;title.fontSizeMin=14;title.fontSizeMax=18;title.textWrappingMode=TMPro.TextWrappingModes.Normal;title.alignment=TextAlignmentOptions.MidlineLeft;
             int i=0;
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
-            float turnWidth=Mathf.Max(256,orderNow.Length*48+36);
+            float turnWidth=Mathf.Max(210,orderNow.Length*48+72);
             BattleHeaderBackdrop("BattleTurnBackdrop",new Vector2(.5f,1),new Vector2(-turnWidth*.5f,-92),new Vector2(turnWidth*.5f,0));
             if(team!=null)
             {
-                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round} · 턴 미확정 {orderNow.Count(team.CanSelect)}명":$"적군 턴 {team.Round}",1,22,14);
+                var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round}":$"적군 턴 {team.Round}",1,22,14);
                 phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-turnWidth*.5f+12,-30),new Vector2(turnWidth*.5f-12,-8));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=12;phase.fontSizeMax=14;
             }
             foreach(var unit in orderNow)
@@ -60,6 +55,14 @@ namespace TalesTactics
                 else FormationText(state,i.ToString()+(previous>=0&&previous!=rank?(previous>rank?"↑":"↓"):""),Vector2.zero,Vector2.one,10,TextAlignmentOptions.Center);
                 if(unit==battle.Session.Active)IconSelectionCorners.Add(g.transform);
                 var border=g.AddComponent<UnityEngine.UI.Outline>();border.effectColor=unit==battle.Session.Active?formationTeal:new Color(.22f,.31f,.39f);border.effectDistance=new Vector2(1,-1);
+            }
+            if(team!=null&&!battle.TutorialActive)
+            {
+                Button(header,"아군 턴 종료",0,ShowEndPhaseConfirmation,team.Phase==Team.Player&&battle.State is CommandState,32);
+                var end=(RectTransform)header.GetChild(header.childCount-1);
+                Place(end,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(turnWidth*.5f-43,-41),new Vector2(turnWidth*.5f-11,-9));
+                end.GetComponentInChildren<TMP_Text>().text="";
+                FormationIcon(end,"endturn",new Vector2(.1f,.1f),new Vector2(.9f,.9f),Color.white);
             }
             lastOrder=orderNow;
         }

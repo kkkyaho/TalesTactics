@@ -55,6 +55,7 @@ namespace TalesTactics
             }
             missionWindow.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.065f,.11f,1);
             missionOverlay.gameObject.SetActive(true);missionOverlay.SetAsLastSibling();SetMainInteraction(false);Clear(missionWindow);
+            missionWindow.sizeDelta=new Vector2(456,battle.Session!=null?640:580);
             var s=battle.Session;bool training=s!=null?s.CampaignStage<0:battle.TrainingMode;int stage=s?.CampaignStage??(training?-1:battle.SelectedStage);
             var title=Label(missionWindow,training?"훈련 임무":CampaignStages.Title(stage),16,36,22);title.rectTransform.offsetMax=new Vector2(-62,title.rectTransform.offsetMax.y);
             CloseIcon(missionWindow,"임무 정보 닫기",()=>CloseMission());
@@ -115,6 +116,11 @@ namespace TalesTactics
                     Button(missionWindow,"임무 적 기술 보기",476,()=>{var inspected=unit??MissionEnemyPreview(data,missionEnemy,stage,training);CloseMission();ShowUnitSkills(inspected);},true,40);
                 }
                 Button(missionWindow,missionDetails?"적 요약 보기":"적 상세 보기",532,()=>{missionDetails=!missionDetails;RenderMission();},true,36);
+            }
+            if(s!=null)
+            {
+                Button(missionWindow,battle.ThreatLabel+" · V",580,()=>{battle.CycleThreat();RenderMission();},true,36);HalfButton(missionWindow,0);
+                Button(missionWindow,"전술 도움말",580,()=>{CloseMission();ShowTacticalHelp();},true,36);HalfButton(missionWindow,1);
             }
         }
         public bool CloseMission()

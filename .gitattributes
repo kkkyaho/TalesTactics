@@ -4,3 +4,7 @@ Docs/SdPolish/Validation/normal-startup*.log -text -diff
 # Keep hash-pinned quality validation and provenance artifacts byte-exact.
 Docs/QualityUpgrade/**/*.json -text whitespace=cr-at-eol
 Docs/QualityUpgrade/**/*.txt -text whitespace=cr-at-eol
+
+# Preserve raw HUD validation reports and log excerpts byte for byte.
+Docs/BattleHudRedesign/**/*.json -text whitespace=cr-at-eol
+Docs/BattleHudRedesign/Validation/*.txt -text whitespace=-blank-at-eol,cr-at-eol

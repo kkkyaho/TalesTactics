@@ -22,7 +22,7 @@ namespace TalesTactics
             TacticalMarkers();
             var u=battle.Session.Active;
             bool visible=!battle.StoryActive&&!battle.Hud.InputModalOpen;
-            Marker(ref activeMarker,"Active unit",visible&&u!=null&&u.Alive&&!(battle.State is FacingSelectionState)?u.Position:(Vector2Int?)null,new Color(.35f,.78f,.78f,.86f),.43f);
+            Marker(ref activeMarker,"Active unit",visible&&u!=null&&u.Alive?u.Position:(Vector2Int?)null,new Color(.35f,.78f,.78f,.86f),.43f);
             Marker(ref targetMarker,"Selected target",visible?battle.Target:null,new Color(.86f,.69f,.37f,.8f),.43f);
         }
         void Marker(ref GroundOverlay marker,string name,Vector2Int? position,Color color,float radius)

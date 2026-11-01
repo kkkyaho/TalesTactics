@@ -20,10 +20,12 @@ namespace TalesTactics
         public void AppendCombatLabelReservations(List<Rect> bounds,bool includeNumbers=true)
         {
             if(BattleSkillCueVisible)bounds.Add(BattleSkillCueScreenBounds);
+            if(UltimateCueVisible)bounds.Add(UltimateCueScreenBounds);
             if(ContextHintOpen)bounds.Add(ContextHintScreenBounds);
             // The facing command panel becomes four interactive arrows over the actor.
             // Keep all passive HP/number labels outside that complete interaction region.
-            if(battle.State is FacingSelectionState&&commands!=null&&commands.gameObject.activeInHierarchy)
+            if(left!=null&&left.gameObject.activeInHierarchy)bounds.Add(CombatLabelPlacement.ScreenRect(left));
+            if(commands!=null&&commands.gameObject.activeInHierarchy)
                 bounds.Add(CombatLabelPlacement.ScreenRect(commands));
             var footerGroup=footer!=null?footer.GetComponent<CanvasGroup>():null;
             if(footer!=null&&footer.gameObject.activeInHierarchy&&footerGroup!=null&&footerGroup.alpha>.01f)

@@ -155,13 +155,13 @@ namespace TalesTactics
             ((TeamTurnScheduler)battle.Session.Scheduler).Restore(units,playerIndices,new[]{playerIndices[0]},1,active);battle.Session.Active=active;
             battle.SetState(new CommandState(battle));battle.Message="";battle.Hud.UpdateBattleMessageText();
             Private(battle,"learnedContextHints",0);battle.Preferences.SeenContextHints=7^(int)kind;
-            battle.Hud.HideContextHints();Private(battle.Hud,"contextHintReadyAt",0f);Private(battle.Hud,"shownContextHint",ContextHintKind.None);
+            battle.Hud.HideContextHints();
             if(kind==ContextHintKind.FacingConfirm)battle.WaitCommand();battle.Hud.UpdateContextHints();
         }
         IEnumerator CheckHint(ContextHintKind kind,Vector2Int size,float scale)
         {
             ResetHint(kind);yield return new WaitForSecondsRealtime(1.7f);yield return Settle();
-            yield return Inspect("hint-"+kind,size,scale,extra:()=>Require(battle.Hud.ActiveContextHint==kind,"Expected hint "+kind+" was not visible."));
+            yield return Inspect("quiet-controls-"+kind,size,scale,extra:()=>Require(!battle.Hud.ContextHintOpen&&battle.Hud.ActiveContextHint==ContextHintKind.None,"An automatic help card interrupted ordinary combat."));
             if(kind==ContextHintKind.MapPan)
             {
                 battle.Hud.ShowHelp();yield return Settle();yield return Inspect("hint-hidden-by-modal",size,scale,expectHidden:true,extra:()=>Require(!battle.Hud.ContextHintOpen,"Hint is visible over help."));battle.Hud.CloseHelp();
@@ -182,9 +182,9 @@ namespace TalesTactics
         IEnumerator CheckDismiss(Vector2Int size,float scale)
         {
             ResetHint(ContextHintKind.MapPan);yield return new WaitForSecondsRealtime(1.7f);yield return Settle();
-            Require(battle.Hud.ActiveContextHint==ContextHintKind.MapPan,"Dismiss fixture did not reach the map hint in a player command state.");
-            var close=battle.Hud.GetComponentsInChildren<Button>().Single(b=>b.name=="조작 안내 닫기");close.onClick.Invoke();yield return Settle();
-            yield return Inspect("hint-dismissed",size,scale,extra:()=>{Require(battle.HasLearnedContextHint(ContextHintKind.MapPan)&&!battle.Hud.ContextHintOpen,"Dismiss did not keep hint closed.");Require((new PreferenceFile(Path.Combine(storage,"settings.json")).Load().SeenContextHints&1)!=0,"Dismiss was not persisted.");});
+            Require(!battle.Hud.ContextHintOpen,"Unseen operations must not open automatic tutorial cards.");
+            battle.Hud.DismissContextHint();yield return Settle();
+            yield return Inspect("no-automatic-hint",size,scale,extra:()=>Require(!battle.HasLearnedContextHint(ContextHintKind.MapPan)&&!battle.Hud.ContextHintOpen,"A no-op dismissal must not acknowledge an unperformed operation."));
         }
         static void Private(object target,string name,object value)
         {var field=target.GetType().GetField(name,BindingFlags.Instance|BindingFlags.NonPublic);if(field==null)throw new MissingFieldException(target.GetType().Name,name);field.SetValue(target,value);}

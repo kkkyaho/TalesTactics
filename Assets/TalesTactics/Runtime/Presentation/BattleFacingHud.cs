@@ -14,37 +14,42 @@ namespace TalesTactics
                 var button=g.GetComponent<UnityEngine.UI.Button>();button.targetGraphic=hit;button.transition=UnityEngine.UI.Selectable.Transition.None;
                 button.onClick.AddListener(()=>battle.ChooseFacing(facing));
                 var hover=g.AddComponent<FacingPointer>();hover.Battle=battle;hover.Direction=facing;
-                var art=new GameObject("Overhead arrow",typeof(RectTransform),typeof(FacingArrowGraphic));art.transform.SetParent(g.transform,false);
-                var r=(RectTransform)art.transform;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(22,22);
+                var art=new GameObject("Ground direction pointer",typeof(RectTransform),typeof(CanvasRenderer),typeof(FacingArrowGraphic));art.transform.SetParent(g.transform,false);
+                var r=(RectTransform)art.transform;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(30,30);
                 art.GetComponent<FacingArrowGraphic>().raycastTarget=false;
             }
-            message.text="방향 선택 · Enter 확정 · Esc 취소";
-            message.rectTransform.sizeDelta=new Vector2(-20,28);message.fontSizeMin=12;message.fontSizeMax=14;
+            // Selecting a pointer is the confirmation. The optional tutorial still owns
+            // its lesson text; normal combat has no second instruction panel.
             UpdateFacingArrows();
         }
         void UpdateFacingArrows()
         {
             var unit=battle.Session.Active;var camera=battle.Board.BattleCamera;if(unit==null||camera==null)return;
-            float scale=GetComponent<Canvas>().scaleFactor,zoom=battle.Preferences?.TextScale??1;
-            var screen=camera.WorldToScreenPoint(battle.Board.HeadWorld(unit));
-            var center=new Vector2(screen.x/scale,screen.y/scale+58*zoom);
+            float scale=Mathf.Max(.01f,GetComponent<Canvas>().scaleFactor),zoom=battle.Preferences?.TextScale??1;
+            var ground=battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
+            var screen=camera.WorldToScreenPoint(ground);
+            var center=new Vector2(screen.x/scale,screen.y/scale);
             float w=Screen.width/scale,h=Screen.height/scale;
-            center.x=Mathf.Clamp(center.x,76*zoom,w-76*zoom);center.y=Mathf.Clamp(center.y,68*zoom,h-86-62*zoom);
-            var half=new Vector2(72,60)*zoom;Place(commands,Vector2.zero,Vector2.zero,center-half,center+half);
-            var origin=camera.WorldToScreenPoint(Vector3.zero);
+            var half=new Vector2(88,70)*zoom;
+            center.x=Mathf.Clamp(center.x,half.x+8,w-half.x-8);center.y=Mathf.Clamp(center.y,half.y+8,h-half.y-8);
+            Place(commands,Vector2.zero,Vector2.zero,center-half,center+half);
+            var origin=camera.WorldToScreenPoint(ground);
             foreach(Transform child in commands)
             {
                 if(!child.gameObject.activeSelf||!Enum.TryParse<Facing>(child.name,out var facing))continue;
-                var d=SkillResolver.FacingVector(facing);var point=camera.WorldToScreenPoint(new Vector3(d.x,0,d.y))-origin;
+                var d=SkillResolver.FacingVector(facing);var point=camera.WorldToScreenPoint(ground+new Vector3(d.x,0,d.y))-origin;
                 var direction=new Vector2(point.x,point.y).normalized;
-                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(38,38)*zoom;r.anchoredPosition=direction*44*zoom;
-                var arrow=child.GetComponentInChildren<FacingArrowGraphic>();arrow.rectTransform.sizeDelta=new Vector2(22,22)*zoom;
+                // A shallow ground ellipse keeps the artwork at boot level, while the
+                // invisible 44px targets remain easy to hit with mouse or controller.
+                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(44,44)*zoom;
+                r.anchoredPosition=new Vector2(direction.x*62,direction.y*44)*zoom;
+                var arrow=child.GetComponentInChildren<FacingArrowGraphic>();arrow.rectTransform.sizeDelta=new Vector2(30,30)*zoom;
                 arrow.SetDirection(direction);
-                bool selected=facing==battle.PendingFacing;
-                arrow.color=selected?new Color32(247,207,132,255):new Color32(232,207,162,255);
+                arrow.color=facing==battle.PendingFacing?new Color(.43f,.96f,.9f,1):new Color(.86f,.82f,.72f,1);
             }
         }
     }
+    [RequireComponent(typeof(CanvasRenderer))]
     public sealed class FacingArrowGraphic:UnityEngine.UI.MaskableGraphic
     {
         Vector2 direction=Vector2.up;
@@ -58,9 +63,9 @@ namespace TalesTactics
             float w=region.width/(float)region.height,h=1;
             float boundX=Mathf.Abs(direction.y)*w+Mathf.Abs(direction.x)*h,boundY=Mathf.Abs(direction.x)*w+Mathf.Abs(direction.y)*h;
             float scale=Mathf.Min(r.width/boundX,r.height/boundY)*.5f;
-            float brightness=color.r>.94f?1:.68f;var tint=new Color(brightness,brightness,brightness,color.a);var points=new[]{new Vector2(-w,-h),new Vector2(-w,h),new Vector2(w,h),new Vector2(w,-h)};
+            var points=new[]{new Vector2(-w,-h),new Vector2(-w,h),new Vector2(w,h),new Vector2(w,-h)};
             var uvs=new[]{new Vector2(uv.xMin,uv.yMin),new Vector2(uv.xMin,uv.yMax),new Vector2(uv.xMax,uv.yMax),new Vector2(uv.xMax,uv.yMin)};
-            for(int i=0;i<4;i++)vh.AddVert((Vector3)r.center+rotation*(Vector3)(points[i]*scale),tint,uvs[i]);
+            for(int i=0;i<4;i++)vh.AddVert((Vector3)r.center+rotation*(Vector3)(points[i]*scale),color,uvs[i]);
             vh.AddTriangle(0,1,2);vh.AddTriangle(0,2,3);
         }
     }

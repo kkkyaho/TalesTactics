@@ -12,7 +12,7 @@
 
 `BattleEnvironmentPalette`와 `EnvironmentLight.cginc`가 장 테마별 주광·반사광·수목 명암을 지형, 식생, 배우에 공유한다. `UnitTone`의 미술 채도/대비와 환경광은 행동 종료의 `_Saturation`·`_Brightness`와 별도여서 전술 상태 표시를 유지한다. `GroundedUnitVisual`은 기존 `CharacterMotion` 뒤에 실행되며 실제 배우 위치와 지면을 기준으로 두 겹 접촉 그림자와 renderer property block을 갱신한다. 들림은 그림자의 크기·농도로 표현하며 그림자 평면은 지면에 남는다. 구조 민간인도 같은 조명과 접지를 사용하고 구조·호송 시 기존 표시 수명을 따른다.
 
-`PixelEnvironmentLight`는 배치한 수목의 범위와 높이로 발 위치의 그늘을 구하고, `PixelTerrainRelief`는 실제 타일 고저차에 벽면과 한 단계 이동 가능한 경계의 계단을 표현한다. 외곽 수목은 간격 있는 군집으로, 녹지 절벽은 바위와 풀 사이의 열린 구간으로 나눈다. 추가 표현은 기존 지형 배칭을 사용하며 새 이동 판정·충돌·경로나 Content 수정은 없다. 상단 HUD는 목표/최대 6인/시스템 버튼으로 분리하고 명령 도크를 2열로 축소해 전장의 빈 영역을 입력 가능하게 유지한다.
+`PixelEnvironmentLight`는 배치한 수목의 범위와 높이로 발 위치의 그늘을 구하고, `PixelTerrainRelief`는 실제 타일 고저차에 벽면과 한 단계 이동 가능한 경계의 계단을 표현한다. 외곽 수목은 간격 있는 군집으로, 녹지 절벽은 바위와 풀 사이의 열린 구간으로 나눈다. 추가 표현은 기존 지형 배칭을 사용하며 새 이동 판정·충돌·경로나 Content 수정은 없다. 당시 추가한 상단 분리 카드와 2열 명령 도크는 후속 HUD 작업에서 아래의 고정 상태창·유닛 옆 명령창 구조로 갱신했다.
 
 `EnvironmentIntegrationReview`는 Editor 또는 `TALESTACTICS_REVIEW` 전용이다. Windows의 `--environment-integration-review <GUID>`는 `ReviewStorageBootstrap`에서 Director의 저장 로드 전에 실행별 `Storage`로 격리한다. 1/11/16/20화 시작 및 6인 훈련의 52개 실제 캡처와 이동·지면/그림자·타일 선택·UI 경계·셰이더를 검사한다. 장별 선행 플래그/레벨은 검수용 메모리에만 있으므로 자연 성장·전체 캠페인 완주나 기술 전수 실행으로 세지 않는다. [표현 변경과 현재 검증 근거](EnvironmentIntegration/README.md).
 
@@ -54,11 +54,15 @@ Editor 전용 `CampaignProgressionAudit`은 새 격리 저장으로 실제 카�
 
 ## 전장 정보 배치와 조작 안내
 
-`BattleSkillCue`는 일반 기술명을 전장 상단의 고정 영역에 표시하고, 궁극기는 기존 초상화 알림을 사용한다. `CombatLabelPlacement`가 화면 픽셀 좌표로 배너·경험치·하단 문구·조작 안내·방향 선택 화살표 영역을 예약한 뒤 피해 숫자를 배치한다. `UnitHealthLayout`은 대상/시전자/호버/현재 행동자의 우선순위에 따라 HP·이름을 이어 배치한다. 혼잡한 비선택 HP바만 압축 또는 일시 숨김하며 기존 연결선을 유지한다. 전투 해석기와 행동 타이밍은 변경하지 않는다.
+`BattleCompactHud`는 `Unit`을 좌측 하단의 고정 상태창으로, `Commands`를 활성 유닛 옆의 세로 명령창으로 배치한다. 상태창은 `HoveredUnit`·실제 맵 호버인 `HealthHoveredUnit`·활성 유닛 순으로 대상을 고르고 초상화·이름·레벨·HP·MP·SP를 갱신한다. 명령은 이동·공격·기술·방어·대기 5개이며 `CanUndoMove`일 때 이동 취소를 추가한다. 기술 목록은 같은 유닛 옆 창을 사용한다. `TargetSelectionState`에서는 `Unit`을 숨기고 `Commands`를 좌측 하단에 고정하여 예측을 표시한다. 유닛 옆 배치는 화면 경계·상태창·유닛 몸체와의 겹침을 평가하고 이전 방향을 우선해 카메라 이동 중 불필요한 좌우 전환을 줄인다. `BattlefieldViewport`는 기존 왼쪽 도크의 세로 예약 영역을 제거하고 화면 가장자리와 상단 여백만 둔다.
+
+`BattleIconHud`는 상단에 턴·최대 6명의 아군 초상화·전체 아군 턴 종료 아이콘을 표시한다. 긴 목표 문단과 별도 위험 도구 모음은 표시하지 않으며 위험 범위 전환·전술 도움말은 `BattleMissionHud` 안에 둔다. `BattleFacingHud`는 유닛 지면 좌표에 4방향 일러스트를 배치하고 그림보다 넓은 클릭 영역을 제공한다. 클릭 또는 기존 방향키·Enter로 확정하며 일반 전투의 방향 안내 문구는 만들지 않는다.
+
+`BattleSkillCue`는 일반 기술명을 전장 상단의 고정 영역에 표시하고, 궁극기는 기존 초상화 알림을 사용한다. `CombatLabelPlacement`와 HUD 예약 영역은 고정 상태창·유닛 옆 창·배너·경험치·행동 결과·방향 표식과 피해 숫자가 겹치지 않도록 사용한다. `UnitHealthDisplay`는 선택·호버·최근 HP 변화·부상 상태를 중심으로 금속 테두리의 청록/적색 HP바를 표시하고 이름·수치를 중복 표시하지 않는다. `UnitHealthLayout`은 머리 근처에서만 위치를 보정하고 자리가 없으면 압축하거나 숨긴다. 원거리 연결선과 화면 밖 유닛의 가장자리 고정 표시는 사용하지 않는다. 전투 해석기와 행동 타이밍은 변경하지 않는다.
 
 `BattleActionFeedback`는 일반 `Message`와 만료되는 행동 결과를 구분한다. 기존 직렬화 이름은 `FormerlySerializedAs`로 보존한다. 반격·지원도 같은 3.2초 채널을 사용하고, 다음 명령 진입 시 이전 결과를 지운다. 모달·대화·타이밍 입력 중에는 타이머를 멈추며, 만료 시 기존 TMP 텍스트만 갱신하여 선택 포커스와 버튼을 재생성하지 않는다.
 
-`BattleContextHintHud`는 전장 하단에 입력을 막지 않는 카드 하나를 표시한다. `BoardCameraPan`의 실제 이동, `ShowUnitSkills`와 일반 상태창 기술 탭의 실제 전투 적 조회, 유효한 `ChooseFacing`이 완료를 기록한다. `BattleContextHints`는 전역 `PlayerPreferences.SeenContextHints`를 현재 설정에 합쳐 한 번 저장한다. 보호된 파일과 실패 시에는 메모리에서만 유지하고 캠페인 저장·화면 설정 적용은 호출하지 않는다. 설정 초안 저장에도 이미 배운 비트를 합친다. 기존 설정 버전/캠페인 형식과 선택형 입문 연습은 유지한다. [구현·검증](CombatClarity/README.md).
+`BattleContextHintHud`는 일반 전투에서 자동 조작 안내 카드를 생성하지 않는다. 기존 호출부와 설정 호환을 위해 조회·닫기 API는 유지하며 열린 안내는 항상 없다. `BattleContextHints`의 학습 비트와 기존 `PlayerPreferences.SeenContextHints` 저장 호환, 선택형 입문 연습·도움말은 유지한다. 입문 연습의 명시적 수업 문구와 실제 행동 결과까지 제거하는 것은 아니다. [이전 전장 가독성·조작 안내 구현 이력](CombatClarity/README.md).
 
 
 ## 전체 기술 연출 프로필
@@ -80,7 +84,7 @@ Editor 전용 `CampaignProgressionAudit`은 새 격리 저장으로 실제 카�
 
 장비 초안은 캠페인 인스턴스와 훈련 모드별로 분리한 캐릭터별 `EquipmentLoadout`이다. 캐릭터·정비 메뉴를 바꿔도 유지되지만 저장은 명시적으로 확정한 캐릭터에만 적용한다. 초안은 공유 재고를 예약하지 않으며 확정 시 수량을 다시 검사한다. 구매 비교 대상은 합류 여부와 `CanEquip` 조건을 모두 만족해야 한다. 구매·바로 장착은 `TryBuy`의 저장 콜백에서 새 committed loadout의 `TrySave`를 실행해 실제 저장을 한 번만 호출한다. 실패 시 장비·재고·골드를 각각 기존 트랜잭션이 되돌린다. 다른 슬롯의 미적용 초안을 몰래 확정하지 않는다.
 
-전투의 `Unit`, `Commands`, `Threat controls`는 기존 기능을 유지한 채 공통 `BattleCommandDock` 배경 안에 배치한다. 기술·대상 예측이 명령 영역을 대체하고, 작은 화면의 예측은 중복 상태 요약을 숨긴다. `BattleForecast` 요약은 기존 복제 시뮬레이션의 실제 대상 수·적 전투불능·아군 순 HP 감소·적 반응 공격을 집계한다. HP 자원 비용은 아군 피해 집계에서 제외한다. 논리 격자와 전투 규칙은 유지하며, 카메라 기본 각도와 장식 외벽·원경 대비만 조정한다. 혼잡으로 옮긴 HP바는 원래 유닛 위치로 연결선을 표시한다.
+`BattleForecast` 요약은 기존 복제 시뮬레이션의 실제 대상 수·적 전투불능·아군 순 HP 감소·적 반응 공격을 집계한다. HP 자원 비용은 아군 피해 집계에서 제외한다. 현재 상태창·명령·예측 배치는 위 ‘전장 정보 배치와 조작 안내’를 따른다. 이전 `BattleCommandDock` 공통 배경과 멀리 이동한 HP바의 연결선은 사용하지 않는다. 논리 격자와 전투 규칙은 유지한다.
 
 ## 공통 일러스트 아이콘
 
@@ -145,7 +149,7 @@ Editor 전용 `CampaignProgressionAudit`은 새 격리 저장으로 실제 카�
 
 `SkillVfxTiming`과 `BoardView.PlaySkillRelease`는 준비 뒤 투사체 이동 구간을 삽입한다. 기존 Resolver를 도착 뒤 한 번 호출하므로 피해·회복 숫자와 접촉 효과가 같은 판정 시점에 시작한다. `ImpactArt`는 검기·얼음·번개·회복 아틀라스와 인접 프레임 보간, 유성 낙하와 잔광을 기존 풀에서 렌더링한다. `Impact.shader`는 지원되는 카메라의 깊이 텍스처로 지면 교차를 완화한다. 범위 공격은 중앙의 큰 패턴 한 번과 실제 대상별 작은 접촉 효과로 나누며 고유 패턴을 유지한다.
 
-`SkillAudioPalette`는 6계열 준비/접촉 효과음을 로컬에서 합성·캐시하고 기존 음소거·볼륨·동시 재생 제한을 따른다. `UltimateSkillCue`는 명령 영역 안에 초상화와 기술명을 잠시 표시하고 입력을 가로채지 않는다. 축소 효과는 미술 식별성을 남기면서 표시량과 음량을 낮춘다. `VfxUpgradeReview`는 Editor/검수 빌드에서만 존재하며 격리 저장·아군6명·실제 기술 경로로 변경 전후 화면과 상태 보존을 기록한다. [구현 범위·실제 비교·검증](VfxUpgrade/README.md).
+`SkillAudioPalette`는 6계열 준비/접촉 효과음을 로컬에서 합성·캐시하고 기존 음소거·볼륨·동시 재생 제한을 따른다. `UltimateSkillCue`는 HUD 직계 오버레이로 턴 표시 아래 고정 영역에 초상화와 기술명을 잠시 표시한다. 행동 중 로컬 명령창이 숨겨져도 유지되며 입력을 가로채지 않는다. 모달에서는 숨기고 재시작 시 정리한다. 축소 효과는 미술 식별성을 남기면서 표시량과 음량을 낮춘다. `VfxUpgradeReview`는 Editor/검수 빌드에서만 존재하며 격리 저장·아군6명·실제 기술 경로로 변경 전후 화면과 상태 보존을 기록한다. [구현 범위·실제 비교·검증](VfxUpgrade/README.md).
 
 `ImpactChoreography`는 기존 `ImpactParticles` 풀에 준비/접촉 연출을 추가한다. 준비 효과는 움직이는 `CharacterMotion` 위치를 따르며, 불꽃 흐름·다중 화염·연기와 공격자 중심의 세 겹 검격 리본을 그린다. 준비 단계는 피해를 처리하지 않는다. `BoardActionPresentation`의 준비/복귀 시간과 `CharacterMotion`의 가속/접촉 정지/복귀를 함께 사용한다. `VfxQualityReview`는 별도 검수 빌드에서 실제 기술 실행을 촬영하며 일반 빌드에서는 제외한다. [범위와 근거](VfxQuality/README.md).
 
@@ -175,7 +179,7 @@ Editor 전용 `CampaignProgressionAudit`은 새 격리 저장으로 실제 카�
 
 `HudButtonAccent`는 주 행동/탭/보조 버튼의 배경·테두리와 비입력 밑줄을 관리한다. 포커스는 금색, 선택과 마우스 호버는 청록색으로 표시하며 실제 Button 콜백·입력 모달 차단 경로를 유지한다. 상단 아군 초상은 기존 팀 턴 선택 API를 사용하고 이동/행동 아이콘 또는 완료 체크를 보여 준다.
 
-`UnitHealthLayout`는 각 `UnitHealthDisplay.LateUpdate`가 산출한 화면 좌표를 받은 뒤 선택/호버 우선순위로 겹침을 검사하여 Y 위치를 보정한다. 상세 이름/수치 영역을 포함한 크기를 사용하며 모델 위치·피격 판정에는 관여하지 않는다. `SkillVisualLanguage`는 기술 데이터에서 모양·속성·사거리 표시를 공통 계산한다.
+`UnitHealthLayout`는 각 `UnitHealthDisplay.LateUpdate`가 산출한 머리 좌표를 받은 뒤 선택/호버 우선순위와 HUD 예약 영역으로 겹침을 검사한다. 작은 HP바 크기로 머리 주변에서만 위치를 보정하며 공간이 없으면 압축하거나 숨긴다. 이름·정확한 수치는 고정 상태창에서 확인하고 모델 위치·피격 판정에는 관여하지 않는다. `SkillVisualLanguage`는 기술 데이터에서 모양·속성·사거리 표시를 공통 계산한다.
 
 `MissionMapPreview`는 실제 캠페인 맵을 별도로 생성하여 CanvasRenderer 메시로 그린다. 도착/호위 목표는 금색이며 플레이 중 GridMap이나 난수를 변경하지 않는다. `BattlePurchasePreview`는 저장 객체를 생성·수정하는 CampaignSave.Get 대신 기존 진척 또는 임시 기본값을 읽고, 재고를 연결하지 않은 EquipmentLoadout 초안으로 구매 예정 장비의 능력치를 비교한다. 실제 거래와 저장은 기존 CampaignInventory 경로를 사용한다.
 
@@ -294,9 +298,9 @@ SpeedTurnScheduler는 매 라운드 시작 시 살아 있는 모든 팀 유닛�
 
 BattleHud가 Canvas 배율을 반영한 전장 viewport를 제공한다. BoardView는 해당 영역에 카메라를 배치하고 전장 bounds를 투영해 전체 타일이 UI에 가리지 않도록 맞춘다.
 
-실제 Unity EditMode 92개, PlayMode 51개 및 Windows 빌드/기본 입력 검수 완료. 결과와 남은 한계는 VALIDATION.md를 따른다.
+초기 구현 당시 실제 Unity EditMode 92개, PlayMode 51개와 Windows 빌드/기본 입력 검수를 완료했다. 이 수치는 현재 변경의 검증으로 재사용하지 않으며 최신 결과와 한계는 VALIDATION.md를 따른다.
 
-화면 비율이 1.2 미만이면 전투 중 하단 2열 HUD를 사용한다. viewport와 패널 배치는 동일 조건으로 계산하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
+현재 전투 HUD는 좌측 하단 고정 상태창과 유닛 옆 명령창을 사용하며, 이전의 화면 비율 1.2 기준 하단 2열 분기는 사용하지 않는다. viewport는 상단과 화면 가장자리 여백을 반영하며, 카메라의 회전/배율은 화면 크기 변경 시 유지하고 전투 시작 시 초기화한다. 카메라 조작은 전투 상태를 변경하지 않는다. 타이밍 회전 연출 중에는 카메라 회전/초기화를 잠근다.
 
 ActionSelection → SkillDetails → TargetSelection 순서로 스킬을 조회한다. 상세 조회는 CanUse 결과를 보여 주며 전투 상태/자원을 소모하지 않는다. SkillResolver.Describe와 Preview가 실제 SkillData 효과를 표시하고, AffectCaster 효과는 시전자 대상으로 구분한다.
 
@@ -341,7 +345,7 @@ CombatTuning은 기존 에셋의 기하·속성·저항을 명시적으로 적�
 
 CTTurnScheduler는 ITurnScheduler의 선택 가능한 구현체로 CT1000/행동·SPD/틱·잔여 CT·순서 미리보기 복사본을 사용한다. BattleDirector.UseCT/UseUtilityAI를 출전 전 설정하고 세션 생성 시 고정한다. UtilityPlanner는 사용 가능한 기술과 도달 위치/목표를 점수화하며 실제 실행은 기존 SkillResolver와 EnemyTurn 코루틴을 사용한다. 기본 모드는 기존 SPD/기본 AI다.
 
-BattleObjectives의 DefeatBoss, ReachDestination(일반/호위), SurviveTurns가 IVictoryCondition을 구현한다. BattleSession.EndTurn이 생존 카운터와 상태 종료를 한 번만 처리한다. 특수 목표는 훈련 맵만 허용하며 캠페인 생성자로 특수 목표를 요청하면 거부한다. 목표 설명은 HUD 하단에 표시하고 금색 타일/HP 막대로 목표를 표시한다. 세부 조건과 한계는 TACTICAL_SYSTEMS.md를 따른다.
+BattleObjectives의 DefeatBoss, ReachDestination(일반/호위), SurviveTurns가 IVictoryCondition을 구현한다. BattleSession.EndTurn이 생존 카운터와 상태 종료를 한 번만 처리한다. 특수 목표는 훈련 맵만 허용하며 캠페인 생성자로 특수 목표를 요청하면 거부한다. 목표 설명은 임무 창에서 조회하고 금색 타일/HP 막대로 목표를 표시한다. 일반 전투 HUD에는 긴 목표 설명을 상시 표시하지 않는다. 세부 조건과 한계는 TACTICAL_SYSTEMS.md를 따른다.
 
 CampaignEconomy.Prepare는 승리 시 최초/반복 EXP·골드·추가 장비 추첨 결과를 CampaignReward에 고정한다. BattleDirector가 이 객체를 실패/예외 후에도 보관하며 TryReward는 재추첨 없이 모든 수량·골드·성장·완료 플래그를 원자적으로 저장/복원한다. 성공한 객체의 Applied는 중복 적용을 차단한다. 최초/반복 상태가 달라진 오래된 객체도 거부한다. 기존 stage 인자 TryReward 오버로드는 추가 추첨 없는 결정적 호환 경로이며 실제 게임은 준비한 CampaignReward 경로를 사용한다.
 
@@ -378,9 +382,9 @@ AnimationPolishImporter는 BattleCatalog의 영웅/적20종에만 보충 시트�
 
 ## 2026-10-04 — 전투 HUD 공간 분리
 
-BattleCompactHud는 기존 BattleHud의 전투 레이아웃을 보완하는 partial이다. 좌하단 Unit 패널은344×174 Canvas 단위의 요약, 상세 정보는 별도 UnitDetails 패널이다. 상세창은 CanvasGroup.interactable로 기존 버튼을 잠그고 BattleDirector/GamepadPointer의 전장·카메라 입력을 차단한다. 닫기/취소는 전투 State와 HP/MP를 변경하지 않는다. Refresh 또는 Restart에서 상세창을 닫고 원래 상호작용을 복원한다.
+이 절은 2026-10-04 당시 구현 기록이다. BattleCompactHud는 기존 BattleHud의 전투 레이아웃을 보완하는 partial이며 당시 좌하단 Unit 패널은344×174 Canvas 단위의 요약, 상세 정보는 별도 UnitDetails 패널이었다. 현재 크기와 배치 계약은 위 「전장 정보 배치와 조작 안내」를 따른다. 상세창은 CanvasGroup.interactable로 기존 버튼을 잠그고 BattleDirector/GamepadPointer의 전장·카메라 입력을 차단한다. 닫기/취소는 전투 State와 HP/MP를 변경하지 않는다. Refresh 또는 Restart에서 상세창을 닫고 원래 상호작용을 복원한다.
 
-CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 제한 배치한다. Skill 목록/상세는 오른쪽 패널로 전장 viewport와 분리하고 TargetSelection은 하단으로 이동한다. 기존 Button 오브젝트 이름을 유지해 게임패드/자동 검수 경로를 보존하며 표시 문구만 간결하게 바꾼다. 기존 데이터·Scene·출전/상점/장비 구조는 재생성하지 않는다.
+당시 CommandState의 세로 메뉴는 활성 캐릭터의 화면 좌표 바깥쪽에 제한 배치하고 Skill 목록/상세는 오른쪽 패널, TargetSelection은 하단에 두었다. 현재 기술 목록은 유닛 옆 명령창을 대체하고 대상 예측은 좌측 하단 상태창 자리에 고정한다. 기존 Button 오브젝트 이름을 유지해 게임패드/자동 검수 경로를 보존하며 표시 문구만 간결하게 바꾼다. 기존 데이터·Scene·출전/상점/장비 구조는 재생성하지 않는다.
 
 ## 전장 가독성과 출전 준비 UI
 
@@ -424,11 +428,11 @@ BattleHud.Initialize는 ScaleWithScreenSize CanvasScaler에 Expand를 적용해 
 
 BattleIconHud는 전투 상단 초상 순서, 4행 단위 사용 가능 기술 목록, 선택 기술 요약과 상세 창을 담당한다. TacticalIcon은 CanvasRenderer를 가진 MaskableGraphic으로 직접 도형을 그리며 클릭을 가로채지 않는다. 사용 조건과 비용은 SkillResolver가 판정한다. 페이지 전환은 ActionSelectionState로 돌아가 이전 페이지 기술의 실행 버튼을 남기지 않는다. 전체 설명은 기존 입력 차단을 사용하는 상세 모달에서 제공한다.
 
-BattleCompactHud는 유닛 옆 세로 5줄 명령, 작은 캐릭터 요약, 대상 가까이의 결과 패널과 화면 경계 처리를 담당한다. BoardView는 전체 화면 카메라로 배경을 렌더링하되 BattlefieldViewport를 타일 배치의 안전 영역으로 사용한다. 카메라 크기와 중심 오프셋에 안전 영역 비율을 반영하므로 UI 때문에 검은 띠가 생기지 않는다. 기존 전투 상태/저장 형식/규칙 데이터는 유지한다.
+BattleCompactHud는 유닛 옆 세로 5줄 명령과 조건부 이동 취소, 좌측 하단 고정 상태창, 대상 선택 중 그 자리를 대체하는 고정 예측창과 화면 경계 처리를 담당한다. BoardView는 전체 화면 카메라로 배경을 렌더링하되 BattlefieldViewport를 타일 배치의 안전 영역으로 사용한다. 카메라 크기와 중심 오프셋에 안전 영역 비율을 반영하므로 UI 때문에 검은 띠가 생기지 않는다. 기존 전투 상태/저장 형식/규칙 데이터는 유지한다.
 
 ## 간결한 방향 UI와 아군 경로 통과
 
-BattleFacingHud는 월드 Facing을 CharacterMotion.ViewFacing으로 화면 방향에 대응시킨다. 캐릭터 투영 위치 주위에20×20 꺾쇠와40×40 투명 클릭 영역을 놓고 매 프레임 카메라와 화면 경계에 맞춘다. 기존 ChooseFacing 경로로 방향을 확정하고 턴을 종료한다. Commands 패널 배경/레이캐스트는 방향 선택 중에만 숨기며 상태 전환 시 복구한다.
+BattleFacingHud는 유닛 지면 좌표와 월드 Facing의 방향 벡터를 카메라로 투영해 발밑의 얕은 타원 위에 일러스트 표식을 배치한다. 현재 기본 그림은30×30, 투명 클릭 영역은44×44 Canvas 단위이며 글자 배율과 화면 경계를 반영한다. 이전20×20 꺾쇠 표시는 사용하지 않는다. 기존 ChooseFacing 경로로 방향을 확정하고 턴을 종료한다. Commands 패널 배경/레이캐스트는 방향 선택 중에만 숨기며 상태 전환 시 복구한다.
 
 GridMap.Reachable은 내부 탐색에 CanTraverse를 사용해 같은 팀 점유 칸을 통과한다. 전체 탐색 후 점유된 다른 유닛의 칸을 도착 후보에서 제외하며 parents에는 통과 경로를 남긴다. CanEnter와 Place의 빈 칸 제약은 유지해 강제 이동 및 최종 점유가 겹치지 않는다. 애니메이션의 중간 통과는 시각 위치만 움직인다.
 
@@ -440,7 +444,7 @@ SelectSkill은 마지막 기술을 기억하고 이전 Target을 지운 후 Targ
 
 ## 캐릭터 옆 컨텍스트와 외부 클릭
 
-BattleCompactHud는 기술 목록과 대상 확인창에 PlaceBesideUnits를 적용하며 기준 위치는 항상 Session.Active.Position이다. 피해 미리보기는 Commands 안으로 합치고 별도 Message 대상 패널은 숨긴다. 일반 대상 전환은 키보드 Tab/Shift+Tab과 기존 패드 트리거 경로를 사용한다.
+BattleCompactHud는 기술 목록에 PlaceBesideUnits를 적용하며 기준 위치는 Session.Active.Position이다. 대상 확인창은 Unit 상태창을 숨긴 좌측 하단에 고정하므로 PlaceBesideUnits를 사용하지 않는다. 피해 미리보기는 Commands 안으로 합치고 별도 Message 대상 패널은 숨긴다. 일반 대상 전환은 키보드 Tab/Shift+Tab과 기존 패드 트리거 경로를 사용한다.
 
 BattleDirector.HandleBattleClick은 마우스와 GamepadPointer.Submit의 전장 클릭을 공통 처리한다. UI 레이캐스트/모달/이야기/행동 연출/결과를 먼저 제외하고, 유효 이동 경로나 타겟이면 선택을 수행한다. 나머지는 State.Cancel로 한 단계만 되돌린다. CommandState에서는 CanUndoMove일 때에만 Undo하며 튜토리얼은 기존 제한을 유지한다. 메뉴 선택과 이동 취소를 한 클릭으로 연쇄 실행하지 않는다.
 
@@ -513,7 +517,7 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 ## 캐릭터·전투 표시와 Windows 창 (2026-10-12)
 
 - `CharacterVisualSizing`은 기존 전면 스프라이트의 몸체 비율(제이드 .82, 민트 .96, 나머지 1)과 1.22 월드 높이를 공유한다. `CharacterModelImage`는 무기까지 포함한 폭에 맞춰 몸체를 축소하지 않고 발 기준으로 그린다. 전투는 `Body Scale` 부모를 두어 자식 `CharacterMotion`의 애니메이션 스케일을 보존한다. 몬스터 크기는 유지한다.
-- `UnitHealthDisplay`/`HealthBarGraphic`은 전장 카메라 위치를 Overlay Canvas에 투영하여 최대 HP 트랙·잔여 HP·손실 잔상을 그린다. 선택/호버에만 숫자를 보여주고 HUD보다 아래에서 렌더링한다. 사망/스토리/모달에는 숨긴다.
+- 당시 `UnitHealthDisplay`/`HealthBarGraphic`은 Overlay Canvas에 HP 트랙·잔여 HP·손실 잔상과 선택/호버 숫자를 표시했다. 현재 HUD는 머리 좌표에 작은 HP바만 표시하고 이름·수치는 고정 상태창으로 통합한다. 선택·호버·최근 HP 변화·부상 상태를 우선하며 사망/스토리/모달에는 숨긴다.
 - `BoardMovementPreview`는 이동 영역 외곽, 가는 경로와 화살촉, 목적지 유령 모델을 관리한다. 상태 취소와 보드 재생성 시 함께 정리한다. `PendingFacing`은 실제 방향과 분리하며 `FacingPointer` 호버/방향키는 미리보기, 클릭/Enter는 확정이다.
 - `CanOpenSkills`와 행동 상태는 `SkillResolver.CanUse`의 실제 연계 가능 조건을 사용한다. 일반 행동 이후 연계 플래그만 남은 상태에서 빈 기술 탭이 열리지 않는다.
 - `WindowDisplayController`는 크기 변경 안정화 후 `SavePreferences(..., false)`로 창 크기를 기록한다. Windows `IsZoomed`/`IsIconic`을 사용해 최대화/최소화를 구분하고 `WindowMaximized`와 복원용 Width/Height를 따로 보관한다. PlayerSettings의 resizableWindow를 켰다. 기존 v1 설정은 새 bool 필드가 false로 복원된다. 해상도 프리셋을 적용하면 최대화 기억을 해제한다.
@@ -528,8 +532,8 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 
 ## 지면 방향 선택 (2026-10-13)
 
-- `GroundOverlay.Arrow`는 사각 몸통과 삼각 화살촉으로 채워진 평면 화살표를 만든다. `BoardMovementPreview`는 방향 선택 상태에서 네 방향 메쉬를 캐릭터 뒤에 표시하고, `PendingFacing`이 바뀔 때만 선택색을 갱신한다. 모달/스토리/상태 종료 때 숨기며 보드 리셋 때 캐시를 함께 정리한다.
-- `BattleFacingHud`에는 투명한 버튼만 남긴다. 카메라로 화살표의 지면 범위를 투영해 위치·크기를 맞추므로 화면 비율이나 회전이 바뀌어도 시각 표시와 클릭 위치가 분리되지 않는다. 최소 클릭 크기는 Canvas 좌표32×24이다. 별도의 화면 방향 꺾쇠와 선형 미리보기는 제거했다.
+- 이 절은 2026-10-13 당시 지면 메시 화살표 구현 기록이다. 당시 `GroundOverlay.Arrow`와 `BoardMovementPreview`가 네 방향 평면 메시와 선택색을 관리했다. 현재 방향 선택은 `BattleFacingHud`의 일러스트 UI로 대체했으며 지면 메시 화살표를 함께 표시하지 않는다.
+- 당시 `BattleFacingHud`는 지면 화살표에 맞춘 최소32×24 투명 클릭 영역만 제공했다. 현재는30×30 일러스트 자식과44×44 클릭 영역을 함께 배치한다. 현재 계약과 화면 경계 처리는 위 「전장 정보 배치와 조작 안내」를 따른다.
 - `FacingPointer`·방향키의 미리보기, 클릭/Enter 확정, Esc 취소는 기존 경로를 유지한다. 실제 전투 방향은 확정할 때만 변경한다. 검증과 실제 화면은 `GroundFacing/README.md`.
 
 ## 캐릭터 모션과 상태창 (2026-10-13)
@@ -543,7 +547,7 @@ V6 중단 기록의 `HasOpening`이 참일 때만 시작 기록을 복원한다.
 
 ## 전투 공통 창의 내부 여백
 
-`BattleCompactHud.InsetBattleCommands`는 자체 장식 프레임을 숨기고 공통 BattleCommandDock을 사용하는 명령 영역에 좌우 24px을 확보한다. 프레임 장식과 전장 방향 화살표는 제외한다. 하단 도구 영역에는 64px 높이를 예약한다. `UiSafeLayoutReview`는 이 공통 창도 다른 창과 동일한 `FramedContent.ContentRect`로 버튼 모서리·TMP 글자를 검사하며, 현재80상태와 진행 결과를 기록한다. [검증](FinalUiBounds/README.md).
+이 절은 이전 공통 도크의 내부 여백 검수 기록이다. 당시 `BattleCompactHud.InsetBattleCommands`는 `BattleCommandDock`에 좌우24px과 하단64px을 예약했고 `UiSafeLayoutReview`가80상태의 경계를 검사했다. 현재 두 구현은 제거했으며 `Unit` 고정 상태창과 독립 `Commands` 창에 명시적 안쪽 여백을 적용한다. 새 `BattleHudRedesignReview`는 비활성 FramedContent 대신 실제 패널 사각형과 명시적 여백으로 검사한다. [이전 검증](FinalUiBounds/README.md) · [현재 HUD 계약과 검증 범위](BattleHudRedesign/README.md).
 
 
 ## 플레이 테스트 피드백 연결 (2026-10-18)

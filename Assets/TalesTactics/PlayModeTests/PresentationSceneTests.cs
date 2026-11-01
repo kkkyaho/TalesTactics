@@ -7,7 +7,7 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator ArtDirectionsMotionAndCameraRotationRemainConnected()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator ArtDirectionsMotionAndCameraRotationRemainConnected()
         {
             foreach(var data in director.Catalog.Characters)
             {
@@ -22,13 +22,22 @@ namespace TalesTactics.PlayModeTests
             director.Board.SetAnimation(unit,AnimationKind.Idle);
             foreach(Facing facing in System.Enum.GetValues(typeof(Facing)))
             {
-                unit.Facing=facing;director.Board.Sync();director.Board.RotateCamera(90);yield return null;
+                unit.Facing=facing;director.Board.Sync();director.Board.RotateCamera(90);yield return null;yield return new WaitForEndOfFrame();
                 var expected=CharacterMotion.ViewFacing(facing,director.Board.BattleCamera.transform.rotation);
                 Assert.That(motion.GetComponent<SpriteRenderer>().sprite,Is.EqualTo(unit.Data.Sprites.Get(expected)));
-                var bar=Object.FindObjectsByType<UnitHealthDisplay>().Single(h=>h.name=="HP "+unit.Data.Id).transform;
-                var screenHead=director.Board.BattleCamera.WorldToScreenPoint(motion.transform.position+director.Board.BattleCamera.transform.up*1.3f);
-                var screenBar=bar.position;
-                Assert.That(screenBar.y,Is.GreaterThan(screenHead.y),"HP bar must stay above the billboard head after camera rotation.");
+                var display=Object.FindObjectsByType<UnitHealthDisplay>().Single(h=>h.Unit==unit);
+                var renderer=motion.GetComponent<SpriteRenderer>();
+                Assert.That(UnitHeadAnchors.TryGetLocal(renderer.sprite,out var headLocal),Is.True);
+                var screenHead=director.Board.BattleCamera.WorldToScreenPoint(renderer.transform.TransformPoint(headLocal));
+                float scale=Mathf.Clamp(Screen.height/1080f,.8f,1.5f);
+                Assert.That(display.ScreenOrigin.x,Is.EqualTo(screenHead.x).Within(.5f),"The gauge follows the view-specific head center after rotation.");
+                Assert.That(display.ScreenOrigin.y-screenHead.y,Is.EqualTo(5*scale).Within(.5f),"Keep a small screen-space gap above the visible crown, independent of camera zoom.");
+                if(display.Bar.enabled)
+                {
+                    var shift=new Vector2(display.ScreenBounds.center.x,display.ScreenBounds.yMin)-display.ScreenOrigin;
+                    Assert.That(Mathf.Abs(shift.x),Is.LessThanOrEqualTo(UnitHealthLayout.MaximumHorizontalShift*scale+.1f));
+                    Assert.That(Mathf.Abs(shift.y),Is.LessThanOrEqualTo(UnitHealthLayout.MaximumVerticalShift*scale+.1f));
+                }
             }
         }
         [UnityTest] public IEnumerator EffectsExpireAndRestartCleansPresentation()

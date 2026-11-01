@@ -7,17 +7,21 @@ namespace TalesTactics.PlayModeTests
 {
     public partial class BattleSceneTests
     {
-        [UnityTest] public IEnumerator CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator CompactSkillsExposeOnlyUsableSkillsWithoutSpendingCosts()
         {
             director.BeginBattle();yield return null;
             var unit=director.Session.Active;int hp=unit.CurrentHP,mp=unit.CurrentMP;
-            Click("Skill / 스킬");yield return null;
+            Click("Skill / 스킬");yield return new WaitForEndOfFrame();
             var found=new System.Collections.Generic.HashSet<string>();
             for(int page=0;page<4;page++)
             {
                 var cards=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.name.Contains(" · MP")).ToArray();
                 Assert.That(cards.Length,Is.InRange(1,4));
-                Assert.That(((RectTransform)director.Hud.transform.Find("Commands")).rect.width,Is.EqualTo(((RectTransform)director.Hud.transform.Find("Unit")).rect.width).Within(.01f));
+                var commands=(RectTransform)director.Hud.transform.Find("Commands");
+                var status=(RectTransform)director.Hud.transform.Find("Unit");
+                Assert.That(commands.rect.width,Is.LessThan(status.rect.width),"The local skill list and fixed status card have independent widths.");
+                AssertSplitHudPanelOnScreen(commands);AssertSplitHudPanelContents(commands,8);
+                Assert.That(SplitHudScreenRect(commands).Overlaps(SplitHudScreenRect(status)),Is.False,"Browsing skills must preserve the fixed status area.");
                 foreach(var card in cards)
                 {
                     found.Add(card.name.Split(new[]{" · MP"},System.StringSplitOptions.None)[0]);
@@ -33,7 +37,7 @@ namespace TalesTactics.PlayModeTests
                 }
                 var next=director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().SingleOrDefault(b=>b.name=="다음 기술 페이지");
                 if(next==null||!next.IsInteractable())break;
-                Click(next.name);yield return null;
+                Click(next.name);yield return new WaitForEndOfFrame();
             }
             Assert.That(found,Is.EquivalentTo(unit.Data.Skills.Concat(new[]{unit.Data.UltimateSkill}).Where(s=>s!=null&&director.Session.Resolver.CanUse(unit,s,director.IsFollowup(s))==null).Select(s=>s.DisplayName)));
             Click("기술 상세");yield return null;Assert.That(director.Hud.UnitDetailsOpen,Is.True);
@@ -48,20 +52,20 @@ namespace TalesTactics.PlayModeTests
             director.GetComponent<GamepadPointer>().MoveTo(new Vector2(Screen.width-2,Screen.height/2));director.GetComponent<GamepadPointer>().Submit();yield return null;Assert.That(director.State,Is.TypeOf<CommandState>());
             unit.Acted=false;unit.CurrentMP=mp;Assert.That(unit.CurrentHP,Is.EqualTo(hp));
         }
-        [UnityTest] public IEnumerator DirectSkillSelectionClearsOldTargetAndExecutesOnce()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator DirectSkillSelectionClearsOldTargetAndExecutesOnce()
         {
             director.BeginBattle();yield return null;var unit=director.Session.Active;
             var enemy=director.Session.Units.First(u=>u.Team==Team.Enemy);
             Assert.That(director.Session.Grid.Place(enemy,new Vector2Int(2,2)),Is.True);director.Board.Sync();
             var skill=unit.Data.Skills.First(s=>s.Target==TargetType.Enemy&&s.Gate==SkillGate.None&&s.MPCost>0&&!s.IsLionHowl&&s.MinRange<=1&&s.Range>=1);
             int mp=unit.CurrentMP,hp=enemy.CurrentHP;director.Target=enemy.Position;
-            Click("Skill / 스킬");yield return null;Click(skill.DisplayName+" · MP"+skill.MPCost);yield return null;
+            Click("Skill / 스킬");yield return new WaitForEndOfFrame();Click(skill.DisplayName+" · MP"+skill.MPCost);yield return null;
             Assert.That(director.State,Is.TypeOf<TargetSelectionState>());Assert.That(director.Target,Is.Null);Assert.That(unit.CurrentMP,Is.EqualTo(mp));
             director.HandleBattleClick(TileScreen(enemy.Position));director.HandleBattleClick(TileScreen(enemy.Position));director.Confirm();
             float deadline=Time.realtimeSinceStartup+10;while(director.State is ActionExecutionState&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.That(unit.CurrentMP,Is.EqualTo(mp-skill.MPCost));Assert.That(enemy.CurrentHP,Is.LessThan(hp));Assert.That(unit.Acted,Is.True);
         }
-        [UnityTest] public IEnumerator FullScreenSceneryKeepsTilesInHudSafeAreaAcrossRotations()
+        [UnityTest, Category("BattleHudRedesign")] public IEnumerator FullScreenSceneryKeepsTilesInHudSafeAreaAcrossRotations()
         {
             director.BeginBattle();yield return null;
             foreach(bool skills in new[]{false,true})
