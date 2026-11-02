@@ -1,0 +1,1458 @@
+{
+  "runId": "54e635fc2a714e39b4ec06a9e4a3d27b",
+  "unityVersion": "6000.6.0f1",
+  "sourceHeadBefore": "e081a592d398aa0354b04a827fb3833a277552d2",
+  "summaryResult": "Succeeded",
+  "summaryOutputPath": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics.exe",
+  "buildGuid": "0cb57f01d94e4d2dba0a5894d2301adf",
+  "platform": "StandaloneWindows64",
+  "platformGroup": "Standalone",
+  "buildStartedAt": "2026-11-02T15:56:54.3559965Z",
+  "buildEndedAt": "2026-11-02T16:01:12.3986439Z",
+  "summaryOptions": "None",
+  "totalTimeTicks": 2580426474,
+  "totalTimeSeconds": 258.04264739999996,
+  "totalSize": 2266381424,
+  "totalErrors": 0,
+  "totalWarnings": 2,
+  "summaryProperties": [
+    {
+      "name": "assetBundleOptions",
+      "type": "UnityEditor.BuildAssetBundleOptions",
+      "value": "None",
+      "error": null
+    },
+    {
+      "name": "buildContentOptions",
+      "type": "UnityEditor.BuildContentOptions",
+      "value": "None",
+      "error": null
+    },
+    {
+      "name": "buildEndedAt",
+      "type": "System.DateTime",
+      "value": "2026-11-02T16:01:12.3986439Z",
+      "error": null
+    },
+    {
+      "name": "buildManifestHash",
+      "type": "UnityEngine.Hash128",
+      "value": "00000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "name": "buildName",
+      "type": "System.String",
+      "value": "TalesTactics",
+      "error": null
+    },
+    {
+      "name": "buildProfileGuid",
+      "type": "UnityEngine.GUID",
+      "value": "00000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "name": "buildProfilePath",
+      "type": "System.String",
+      "value": "",
+      "error": null
+    },
+    {
+      "name": "buildSessionGuid",
+      "type": "UnityEngine.GUID",
+      "value": "51e7c8d0c3dcea44da184a89a48938f2",
+      "error": null
+    },
+    {
+      "name": "buildStartedAt",
+      "type": "System.DateTime",
+      "value": "2026-11-02T15:56:54.3559965Z",
+      "error": null
+    },
+    {
+      "name": "buildType",
+      "type": "UnityEditor.Build.Reporting.BuildType",
+      "value": "Player",
+      "error": null
+    },
+    {
+      "name": "contentSourceBuildSessionGuid",
+      "type": "UnityEngine.GUID",
+      "value": "00000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "name": "dataPath",
+      "type": "System.String",
+      "value": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data",
+      "error": null
+    },
+    {
+      "name": "guid",
+      "type": "UnityEngine.GUID",
+      "value": "0cb57f01d94e4d2dba0a5894d2301adf",
+      "error": null
+    },
+    {
+      "name": "multiProcessEnabled",
+      "type": "System.Boolean",
+      "value": "False",
+      "error": null
+    },
+    {
+      "name": "options",
+      "type": "UnityEditor.BuildOptions",
+      "value": "None",
+      "error": null
+    },
+    {
+      "name": "outputPath",
+      "type": "System.String",
+      "value": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics.exe",
+      "error": null
+    },
+    {
+      "name": "platform",
+      "type": "UnityEditor.BuildTarget",
+      "value": "StandaloneWindows64",
+      "error": null
+    },
+    {
+      "name": "platformGroup",
+      "type": "UnityEditor.BuildTargetGroup",
+      "value": "Standalone",
+      "error": null
+    },
+    {
+      "name": "result",
+      "type": "UnityEditor.Build.Reporting.BuildResult",
+      "value": "Succeeded",
+      "error": null
+    },
+    {
+      "name": "totalErrors",
+      "type": "System.Int32",
+      "value": "0",
+      "error": null
+    },
+    {
+      "name": "totalSize",
+      "type": "System.UInt64",
+      "value": "2266381424",
+      "error": null
+    },
+    {
+      "name": "totalTime",
+      "type": "System.TimeSpan",
+      "value": "2580426474",
+      "error": null
+    },
+    {
+      "name": "totalWarnings",
+      "type": "System.Int32",
+      "value": "2",
+      "error": null
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "depth": 0,
+      "name": "Build player",
+      "durationTicks": 2572473187,
+      "durationSeconds": 257.2473187,
+      "messages": []
+    },
+    {
+      "index": 1,
+      "depth": 1,
+      "name": "Call PrepareForBuild callbacks",
+      "durationTicks": 266185,
+      "durationSeconds": 0.0266185,
+      "messages": []
+    },
+    {
+      "index": 2,
+      "depth": 1,
+      "name": "Call internal build started callbacks",
+      "durationTicks": 16950,
+      "durationSeconds": 0.001695,
+      "messages": []
+    },
+    {
+      "index": 3,
+      "depth": 1,
+      "name": "Preprocess Player",
+      "durationTicks": 20387666,
+      "durationSeconds": 2.0387665999999998,
+      "messages": [
+        {
+          "stepIndex": 3,
+          "messageIndex": 0,
+          "step": "Preprocess Player",
+          "type": "Log",
+          "content": "1 URP assets included in build\r\n- PC_RPAsset - Assets/Settings/PC_RPAsset.asset\r\n\t - PC_Renderer - Assets/Settings/PC_Renderer.asset - UnityEngine.Rendering.Universal.UniversalRendererData\r\n"
+        },
+        {
+          "stepIndex": 3,
+          "messageIndex": 1,
+          "step": "Preprocess Player",
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunInfo.json' (2310 bytes)"
+        },
+        {
+          "stepIndex": 3,
+          "messageIndex": 2,
+          "step": "Preprocess Player",
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunSettings.json' (23 bytes)"
+        },
+        {
+          "stepIndex": 3,
+          "messageIndex": 3,
+          "step": "Preprocess Player",
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "depth": 1,
+      "name": "Save scenes before build",
+      "durationTicks": 23452,
+      "durationSeconds": 0.0023452,
+      "messages": []
+    },
+    {
+      "index": 5,
+      "depth": 1,
+      "name": "Prepare For Build",
+      "durationTicks": 1664799,
+      "durationSeconds": 0.1664799,
+      "messages": []
+    },
+    {
+      "index": 6,
+      "depth": 1,
+      "name": "ProducePlayerScriptAssemblies",
+      "durationTicks": 285355250,
+      "durationSeconds": 28.535525,
+      "messages": []
+    },
+    {
+      "index": 7,
+      "depth": 2,
+      "name": "Prebuild Cleanup and Recompile",
+      "durationTicks": 232207143,
+      "durationSeconds": 23.220714299999997,
+      "messages": []
+    },
+    {
+      "index": 8,
+      "depth": 3,
+      "name": "Compile scripts",
+      "durationTicks": 221515680,
+      "durationSeconds": 22.151567999999997,
+      "messages": [
+        {
+          "stepIndex": 8,
+          "messageIndex": 0,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "depth": 3,
+      "name": "Generate and validate platform script types",
+      "durationTicks": 284814,
+      "durationSeconds": 0.028481399999999997,
+      "messages": []
+    },
+    {
+      "index": 10,
+      "depth": 1,
+      "name": "Verify Build setup",
+      "durationTicks": 15209164,
+      "durationSeconds": 1.5209164,
+      "messages": []
+    },
+    {
+      "index": 11,
+      "depth": 2,
+      "name": "GetUnityAssemblies",
+      "durationTicks": 8972896,
+      "durationSeconds": 0.89728959999999991,
+      "messages": []
+    },
+    {
+      "index": 12,
+      "depth": 2,
+      "name": "GetPlayerAssemblies",
+      "durationTicks": 6002758,
+      "durationSeconds": 0.6002758,
+      "messages": []
+    },
+    {
+      "index": 13,
+      "depth": 2,
+      "name": "Check old data build",
+      "durationTicks": 4537,
+      "durationSeconds": 0.00045369999999999997,
+      "messages": []
+    },
+    {
+      "index": 14,
+      "depth": 1,
+      "name": "Prepare assets for target platform",
+      "durationTicks": 41080,
+      "durationSeconds": 0.004108,
+      "messages": []
+    },
+    {
+      "index": 15,
+      "depth": 1,
+      "name": "Prepare splash screen",
+      "durationTicks": 538621,
+      "durationSeconds": 0.053862099999999996,
+      "messages": [
+        {
+          "stepIndex": 15,
+          "messageIndex": 0,
+          "step": "Prepare splash screen",
+          "type": "Log",
+          "content": "Including Unity Splash Screen logo because 'Show Unity Logo' is enabled."
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "depth": 1,
+      "name": "Build scripts DLLs",
+      "durationTicks": 457544,
+      "durationSeconds": 0.0457544,
+      "messages": []
+    },
+    {
+      "index": 17,
+      "depth": 2,
+      "name": "GetSystemAssemblies",
+      "durationTicks": 32508,
+      "durationSeconds": 0.0032508,
+      "messages": []
+    },
+    {
+      "index": 18,
+      "depth": 1,
+      "name": "Building scenes",
+      "durationTicks": 562702245,
+      "durationSeconds": 56.2702245,
+      "messages": []
+    },
+    {
+      "index": 19,
+      "depth": 2,
+      "name": "Building scene Assets/TalesTactics/Scenes/TestBattle.unity",
+      "durationTicks": 562619975,
+      "durationSeconds": 56.2619975,
+      "messages": []
+    },
+    {
+      "index": 20,
+      "depth": 1,
+      "name": "Build GlobalGameManagers file",
+      "durationTicks": 9840037,
+      "durationSeconds": 0.98400369999999993,
+      "messages": []
+    },
+    {
+      "index": 21,
+      "depth": 1,
+      "name": "Writing asset files",
+      "durationTicks": 774186903,
+      "durationSeconds": 77.4186903,
+      "messages": []
+    },
+    {
+      "index": 22,
+      "depth": 2,
+      "name": "Packaging assets - globalgamemanagers.assets",
+      "durationTicks": 54531222,
+      "durationSeconds": 5.4531222,
+      "messages": []
+    },
+    {
+      "index": 23,
+      "depth": 2,
+      "name": "Packaging assets - resources.assets",
+      "durationTicks": 31187271,
+      "durationSeconds": 3.1187270999999996,
+      "messages": []
+    },
+    {
+      "index": 24,
+      "depth": 2,
+      "name": "Packaging assets - sharedassets0.assets = additional assets for scene 0: Assets/TalesTactics/Scenes/TestBattle.unity",
+      "durationTicks": 683668368,
+      "durationSeconds": 68.3668368,
+      "messages": []
+    },
+    {
+      "index": 25,
+      "depth": 1,
+      "name": "Building Resources/unity_builtin_extra",
+      "durationTicks": 35890541,
+      "durationSeconds": 3.5890541,
+      "messages": []
+    },
+    {
+      "index": 26,
+      "depth": 1,
+      "name": "Write data build dirty tracking information",
+      "durationTicks": 19352467,
+      "durationSeconds": 1.9352467,
+      "messages": []
+    },
+    {
+      "index": 27,
+      "depth": 1,
+      "name": "Postprocess built player",
+      "durationTicks": 715377583,
+      "durationSeconds": 71.5377583,
+      "messages": []
+    },
+    {
+      "index": 28,
+      "depth": 2,
+      "name": "Setup incremental player build",
+      "durationTicks": 7399187,
+      "durationSeconds": 0.73991869999999993,
+      "messages": []
+    },
+    {
+      "index": 29,
+      "depth": 2,
+      "name": "Incremental player build",
+      "durationTicks": 696970045,
+      "durationSeconds": 69.697004499999991,
+      "messages": []
+    },
+    {
+      "index": 30,
+      "depth": 2,
+      "name": "Report output files",
+      "durationTicks": 2925226,
+      "durationSeconds": 0.29252259999999997,
+      "messages": []
+    },
+    {
+      "index": 31,
+      "depth": 1,
+      "name": "Call Post-Process callbacks",
+      "durationTicks": 77590982,
+      "durationSeconds": 7.7590981999999995,
+      "messages": []
+    }
+  ],
+  "files": [
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/globalgamemanagers",
+      "role": "GlobalGameManagers",
+      "sizeBytes": 131188
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/globalgamemanagers.assets",
+      "role": "SharedAssets",
+      "sizeBytes": 636080
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/globalgamemanagers.assets.resS",
+      "role": "StreamingResourceFile",
+      "sizeBytes": 3078368
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/level0",
+      "role": "Scene",
+      "sizeBytes": 5424
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/resources.assets",
+      "role": "ResourcesFile",
+      "sizeBytes": 21797612
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/resources.assets.resS",
+      "role": "StreamingResourceFile",
+      "sizeBytes": 210731840
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Resources/unity_builtin_extra",
+      "role": "BuiltInShaders",
+      "sizeBytes": 527988
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/RuntimeInitializeOnLoads.json",
+      "role": "GlobalGameManagers",
+      "sizeBytes": 4283
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/ScriptingAssemblies.json",
+      "role": "GlobalGameManagers",
+      "sizeBytes": 5016
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/sharedassets0.assets",
+      "role": "SharedAssets",
+      "sizeBytes": 16695408
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/sharedassets0.assets.resS",
+      "role": "StreamingResourceFile",
+      "sizeBytes": 1887744960
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/sharedassets0.resource",
+      "role": "StreamingResourceFile",
+      "sizeBytes": 24358528
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/boot.config",
+      "role": "BootConfig",
+      "sizeBytes": 156
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/StreamingAssets/Licenses/NotoSansCJK-NOTICE.txt",
+      "role": "txt",
+      "sizeBytes": 531
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/StreamingAssets/Licenses/NotoSansCJK-OFL.txt",
+      "role": "txt",
+      "sizeBytes": 4393
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Plugins/x86_64/libonigwrap.dll",
+      "role": "dll",
+      "sizeBytes": 551336
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Assembly-CSharp.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 3584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Mono.Security.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 241152
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/mscorlib.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 4632064
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/netstandard.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 90112
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Newtonsoft.Json.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 691712
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Buffers.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 4608
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Collections.Immutable.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 252680
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.ComponentModel.Composition.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 257024
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Configuration.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 124928
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Core.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 1113088
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Data.DataSetExtensions.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 29696
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Data.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 2125312
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 2641920
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Drawing.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 489984
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.EnterpriseServices.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 44544
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.IO.Compression.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 114688
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.IO.Compression.FileSystem.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 18432
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Memory.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 4608
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Net.Http.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 122880
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Numerics.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 119296
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Reflection.Metadata.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 487584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Runtime.CompilerServices.Unsafe.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 19256
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Runtime.Serialization.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 934400
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Security.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 320000
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.ServiceModel.Internals.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 215040
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Transactions.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 35328
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Xml.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 3160064
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/System.Xml.Linq.dll",
+      "role": "DependentManagedLibrary",
+      "sizeBytes": 136704
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/TalesTactics.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 704000
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.AI.Navigation.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 23040
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Burst.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 5120
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 442368
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 5120
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.Tests.CoreCLR.InternalJobNestedPrivate.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4608
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.Tests.CoreCLR.PrivateJobNested.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.Tests.CoreCLR.ProtectedJobNested.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Collections.Tests.CoreCLR.PublicJobPrivateGeneric.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4608
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.InputSystem.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 1078272
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.InputSystem.ForUI.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 14848
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.InternalAPIEngineBridge.004.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.InternalAPIEngineBridge.ObjectDispatcher.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 5632
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.InternalAPIEngineBridge.RenderPipelines.Core.Runtime.Shared.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 3584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.PathTracing.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 152576
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Pipeline.Attributes.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4608
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Profiling.Core.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 8192
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipeline.Universal.ShaderLibrary.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 7680
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Core.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 1075200
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Core.Runtime.Shared.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 11264
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Core.ShaderLibrary.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 3584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.GPUDriven.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 272896
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 3584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Universal.2D.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 214016
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Universal.Config.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 4096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Universal.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 733696
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.RenderPipelines.Universal.Shaders.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 3584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Scripting.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 70568
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.SurfaceCache.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 35328
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.TextMeshPro.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 438784
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.Timeline.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 120832
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.UnifiedRayTracing.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 96768
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 86016
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.VisualScripting.Core.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 549888
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.VisualScripting.DocCodeExamples.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 6144
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.VisualScripting.Flow.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 334336
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/Unity.VisualScripting.State.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 27136
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AccessibilityModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 49584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AdaptivePerformanceModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 122280
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 87472
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AMDModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 21936
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 121264
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AnimationModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 218024
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ARModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 27568
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AssetBundleModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 42928
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.AudioModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 142248
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.BurstModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 337840
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ClothModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 38312
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ClusterInputModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 30120
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28592
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ContentLoadModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 56240
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.CoreModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 2026920
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.CrashReportingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.DirectorModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 42928
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 225712
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.DSPGraphModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 33200
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.GameCenterModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 46504
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.GIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26032
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.GraphicsStateCollectionSerializerModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 14248
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.GridModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 32680
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.HierarchyCoreModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 111528
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.HierarchyModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 113584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.HotReloadModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26024
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.IdentifiersModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 16816
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ImageConversionModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 34216
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.IMGUIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 190888
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.InputForUIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 56744
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.InputLegacyModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 42928
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.InputModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 32688
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.InsightsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 15784
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 29096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.LocalizationModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 29096
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ManagedKernelModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 14248
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.MarshallingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 100784
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.MathematicsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 740776
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.MultiplayerModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 18352
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.NVIDIAModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 41392
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 169384
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 27056
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.Physics2DModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 222640
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.PhysicsBackendPhysXModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 14256
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.PhysicsCore2DModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 482728
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.PhysicsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 181672
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.PropertiesModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 124848
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.RenderAs2DModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 27568
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26032
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28072
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ScriptingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 65968
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.ShaderVariantAnalyticsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26032
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 30640
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 34216
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.StreamingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28072
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.SubstanceModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 31144
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.SubsystemsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 42928
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TerrainModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 132520
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 27568
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TetgenModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26024
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 86448
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 313776
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TextRenderingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 39344
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TilemapModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 75696
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TimelineFoundationModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 167336
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.TLSModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 34224
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.U2DRuntimeModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 73648
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UI.dll",
+      "role": "ManagedLibrary",
+      "sizeBytes": 269312
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UIElementsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 2532264
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UIModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 56744
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UmbraModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 26032
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 36776
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 61872
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityConnectModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 29616
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityConsentModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 16304
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityCurlModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28080
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 30632
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 30640
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 80816
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 29616
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 35240
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.VectorGraphicsModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 229296
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.VehiclesModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 33192
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.VFXModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 82344
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.VideoModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 48560
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 43952
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.WindModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 28584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Managed/UnityEngine.XRModule.dll",
+      "role": "ManagedEngineAPI",
+      "sizeBytes": 96176
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Plugins/x86_64/lib_burst_generated.dll",
+      "role": "dll",
+      "sizeBytes": 530944
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_BackUpThisFolder_ButDontShipItWithYourGame/x86_64/lib_burst_generated.txt",
+      "role": "txt",
+      "sizeBytes": 228650
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/app.info",
+      "role": "info",
+      "sizeBytes": 25
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics_Data/Resources/unity default resources",
+      "role": "unity default resources",
+      "sizeBytes": 5919584
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/TalesTactics.exe",
+      "role": "exe",
+      "sizeBytes": 667136
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/dstorage.dll",
+      "role": "dll",
+      "sizeBytes": 206904
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/dstoragecore.dll",
+      "role": "dll",
+      "sizeBytes": 1482784
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
+      "role": "dll",
+      "sizeBytes": 7834544
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
+      "role": "dll",
+      "sizeBytes": 611240
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+      "role": "browser",
+      "sizeBytes": 1605
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+      "role": "aspx",
+      "sizeBytes": 60575
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/2.0/machine.config",
+      "role": "config",
+      "sizeBytes": 29066
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/2.0/settings.map",
+      "role": "map",
+      "sizeBytes": 2622
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/2.0/web.config",
+      "role": "config",
+      "sizeBytes": 11635
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+      "role": "browser",
+      "sizeBytes": 1605
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+      "role": "aspx",
+      "sizeBytes": 60575
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.0/machine.config",
+      "role": "config",
+      "sizeBytes": 33598
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.0/settings.map",
+      "role": "map",
+      "sizeBytes": 2622
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.0/web.config",
+      "role": "config",
+      "sizeBytes": 18802
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+      "role": "browser",
+      "sizeBytes": 1605
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+      "role": "aspx",
+      "sizeBytes": 60575
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.5/machine.config",
+      "role": "config",
+      "sizeBytes": 34056
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.5/settings.map",
+      "role": "map",
+      "sizeBytes": 2622
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/4.5/web.config",
+      "role": "config",
+      "sizeBytes": 18811
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/browscap.ini",
+      "role": "ini",
+      "sizeBytes": 311984
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/config",
+      "role": "config",
+      "sizeBytes": 3815
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+      "role": "xml",
+      "sizeBytes": 25817
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/UnityCrashHandler64.exe",
+      "role": "exe",
+      "sizeBytes": 1772976
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/UnityPlayer.dll",
+      "role": "dll",
+      "sizeBytes": 38669232
+    },
+    {
+      "path": "D:/TalesTacticsBuildArchive/WindowsPreview9/D3D12/D3D12Core.dll",
+      "role": "dll",
+      "sizeBytes": 4725304
+    }
+  ]
+}

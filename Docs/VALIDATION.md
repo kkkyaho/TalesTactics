@@ -1,5 +1,15 @@
 # 검증 기록 — 2026-11-03
 
+## 2026-11-03 — Preview9 로컬 패키지 검증·공개 업로드 대기
+
+릴리즈 소스는 `e081a592d398aa0354b04a827fb3833a277552d2`이며 `v0.1.0-preview.9` 태그 생성·원격 반영을 완료했다. 검증된 `develop` 소스를 `main`에 fast-forward 통합하고 원격 반영했다. 대용량 ZIP 공개 업로드는 자동 승인 검토에서 거부되어 사용자 승인 대기 중이다. 최신 공개 다운로드는 Preview8이며 Preview9 게시·익명 다운로드 검증은 미완료다. [현재 릴리즈 기록](Distribution/Preview9/README.md).
+
+첫 BuildReport는 성공했지만 strict 파일 보존 검사와 실제 패키지 실행이 실패했다. shader null→Blitter→URP 초기화 오류와 첫 ZIP을 [Attempt1](Distribution/Preview9/Validation/Attempt1)로 보존하고 배포에서 제외했다. 릴리즈 전용 작업 폴더의 재import로 참조를 복구한 **Final2 일반 빌드는 137.8605326초·오류0·경고3**이며 전후 semantic source 검사·필수 셰이더 참조·검수 코드 제외가 통과했다. `sourceCleanBefore/After: false`, `protectedFilesUnchanged: false`는 그대로 남겼다. Editor 정상 종료 뒤 추적 파일 **5,715개 의미 동등성과 최종 소스 clean**을 확인했다. [BuildReport](Distribution/Preview9/Validation/Final2/build-report.json), [완료 결과](Distribution/Preview9/Validation/Final2/build-result.json), [후속 복원](Distribution/Preview9/Validation/Final2/serialization-restore.json).
+
+최종 ZIP은 **826,022,703 bytes·202개 파일과 manifest**, SHA-256 `5781b06d4020863a89c4af6c86360475f441f7dde397bcee1fc482621fbd9151`이다. 압축 해제한 일반 실행본의 **60.1474727초** 및 추가 **120.1229641초** 검사는 초기화·응답·로그 오류 후보0·정상 종료0이며 강제 종료나 설정 복원이 없었다. 각 실행 사용자 **4,960파일·2,383디렉터리**는 불변이고 최상위 Player.log/Player-prev.log만 제외했다. 배포 파일 202개도 실행 전후 검사를 통과했다. [패키지](Distribution/Preview9/Validation/Final2/package.json), [60초 실행](Distribution/Preview9/Validation/Final2/startup-summary.json), [추가 실행](Distribution/Preview9/Validation/Final2/startup-visual-observation-summary.json).
+
+최신 릴리즈의 타이틀·한글 UI 육안 검수는 미완료다. 첫 관측은 창이 이미 종료됐고, 추가 관측은 검은 캡처2회와 창 활성화 실패였다. 이후 WTS 조회에서 Windows 세션 잠김(`SessionFlags: 0`)을 확인했다. 잠금은 조회 시점의 상태이며 이전 캡처 당시 상태나 게임 렌더 실패를 단독으로 입증하지 않는다. 개발 단계의 기존 화면 검증과 이번 패키지 육안 검증을 구분한다. [시각 관측](Distribution/Preview9/Validation/Final2/visual-startup-observed.json), [잠금 상태](Distribution/Preview9/Validation/Final2/session-lock-state.json).
+
 ## 2026-11-02~03 — 플레이 피드백 일괄 반영
 
 벽·기둥 가림, 발 고정 대기·미세한 시선/눈매, 알펜 몸체 크기, 등장 전 거점 숨김·등장 전투 강제 출전·합류 평균 레벨, 지정 로컬 음악6곡과 기존 곡의 상황별 배치를 적용했다. [구현·전체 증거](PlaytestFeedback/README.md), [대기 원본 비교](PlaytestFeedback/Evidence/gallery.html), [Windows 원본 화면](PlaytestFeedback/Evidence/Windows/gallery.html).

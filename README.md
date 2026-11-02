@@ -4,6 +4,8 @@ Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입
 
 ## 다운로드와 현재 버전
 
+현재 소스 `e081a592…`는 **`v0.1.0-preview.9` 태그로 원격 보관**했으며 `main`에 통합하고 원격 반영했습니다. 로컬 Windows ZIP과 시작·정상 종료 검증은 통과했습니다. **공개 ZIP 업로드는 자동 승인 검토에서 거부되어 사용자 승인 대기 중**이고, 잠긴 Windows 세션에서의 최신 타이틀 육안 검수도 미완료입니다. 최신 공개 다운로드는 아래 preview.8을 유지합니다. [Preview9의 실제 결과·실패 이력·남은 단계](Docs/Distribution/Preview9/README.md).
+
 [Windows 공개 테스트판 0.1.0-preview.8 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8) · [배포 검증과 저장 호환](Docs/Distribution/Preview8/README.md)
 
 ZIP을 **새 폴더에 모두 풀고** `TalesTactics.exe`를 실행하세요. 실행 파일과 같은 폴더의 데이터·DLL이 함께 필요합니다. 업데이트 전 저장 백업과 패키지 무결성 검사 방법은 [배포 안내](Docs/Distribution/README.md)를 따릅니다.

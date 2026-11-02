@@ -12,3 +12,10 @@ Docs/BattleHudRedesign/Validation/*.txt -text whitespace=-blank-at-eol,cr-at-eol
 # Preserve playtest feedback reports and raw Windows logs for SHA verification.
 Docs/PlaytestFeedback/**/*.json -text whitespace=cr-at-eol
 Docs/PlaytestFeedback/Validation/*.log -text -diff
+
+# Preserve Preview9 release provenance and validation JSON byte for byte.
+Docs/Distribution/Preview9/**/*.json -text whitespace=cr-at-eol
+Docs/Distribution/Preview9/**/*.log -text -diff
+Docs/Distribution/Preview9/**/*.cs -text whitespace=cr-at-eol
+Docs/Distribution/Preview9/**/*.py -text whitespace=cr-at-eol
+Docs/Distribution/Preview9/**/*.ps1 -text whitespace=cr-at-eol

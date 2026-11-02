@@ -1,0 +1,108 @@
+{
+  "passed": false,
+  "runId": "34758f3ef0df4a6bb1377b063421d2be",
+  "mode": "Startup",
+  "ownProcess": {
+    "id": 84880,
+    "startedTicks": 639292326824043503,
+    "exe": "D:\\TalesTacticsBuildArchive\\Preview9Extracted\\TalesTactics.exe"
+  },
+  "secondsObserved": 60.9161992,
+  "initialized": true,
+  "responding": true,
+  "exitCode": 0,
+  "forcedTermination": false,
+  "userFilesUnchanged": true,
+  "settingsRestored": true,
+  "settingsChanges": [
+    {
+      "name": "settings.json",
+      "changedFields": [
+        "Height",
+        "Width"
+      ],
+      "observedSHA256": "18d1cddccef9c8b642e922a35e059c90e56228e3141a2005b7a6ea6a86993dfc",
+      "restoreSHA256": "cf76e1511f70f03a7b007dad619bed79fb19f3212ef15ce732d266e6cdc75ad7"
+    },
+    {
+      "name": "settings.json.bak",
+      "changedFields": [
+        "Width"
+      ],
+      "observedSHA256": "8c02335d032a7db53fcf2fd1cd44df6faf0bfd08a39087c2fa8053f550415f59",
+      "restoreSHA256": "f79a70b9599420c12c84add3765e08e1fd3bffd78f3b1a31387f8c8190513bd2"
+    }
+  ],
+  "errors": [
+    "Initialization evidence missing or player log contains error candidates."
+  ],
+  "wrapperSHA256": "fbdbd1ce3ced0a9bca90d2c1c0813d20207b8fb027b2eb3775363f5d769b8a6c",
+  "logErrorCandidateCount": 623688,
+  "firstLogErrors": [
+    {
+      "line": 33,
+      "text": "NullReferenceException: Object reference not set to an instance of an object"
+    },
+    {
+      "line": 40,
+      "text": "UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)"
+    },
+    {
+      "line": 41,
+      "text": "UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)"
+    },
+    {
+      "line": 42,
+      "text": "UnityEngine.DebugLogHandler:LogException(Exception, Object)"
+    },
+    {
+      "line": 43,
+      "text": "UnityEngine.Logger:LogException(Exception, Object)"
+    },
+    {
+      "line": 44,
+      "text": "UnityEngine.Debug:LogException(Exception)"
+    },
+    {
+      "line": 53,
+      "text": "NullReferenceException: Object reference not set to an instance of an object"
+    },
+    {
+      "line": 60,
+      "text": "UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)"
+    },
+    {
+      "line": 61,
+      "text": "UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)"
+    },
+    {
+      "line": 62,
+      "text": "UnityEngine.DebugLogHandler:LogException(Exception, Object)"
+    },
+    {
+      "line": 63,
+      "text": "UnityEngine.Logger:LogException(Exception, Object)"
+    },
+    {
+      "line": 64,
+      "text": "UnityEngine.Debug:LogException(Exception)"
+    }
+  ],
+  "rawEvidence": {
+    "startup.json": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\ReleasePreview9\\PackagedStartup\\startup.json",
+      "bytes": 76146948,
+      "sha256": "123392264a8f5af041cb81099822e2d97782d3a1a06fe7670c5406fef0d628a2"
+    },
+    "player.log": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\ReleasePreview9\\PackagedStartup\\player.log",
+      "bytes": 179103970,
+      "sha256": "4af7ea3faefaeba92ef1f5b3dfe9b6120292ff13b697c684301e87abee41c50f"
+    },
+    "log-findings.json": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\ReleasePreview9\\PackagedStartup\\log-findings.json",
+      "bytes": 68792148,
+      "sha256": "43fa32e1ea142933e7c0a0edd166a7503a5d0aa26d545d9276159e9ccf04dab6"
+    }
+  }
+}

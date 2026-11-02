@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "observedUtc": "2026-11-02T16:13:20.0782490Z",
+  "passed": false,
+  "status": "Visual verification incomplete",
+  "sourceOwnProcess": "C:/dev/TalesTactics/Logs/ReleasePreview9/PackagedStartup/own-process.json",
+  "ownPid": 84880,
+  "ownStartedTicks": 639292326824043503,
+  "executable": "D:/TalesTacticsBuildArchive/Preview9Extracted/TalesTactics.exe",
+  "windowId": 2033326,
+  "windowTitle": "TalesTactics",
+  "selection": "Exactly one fresh sky.list_windows returned app matching the owned executable path",
+  "observations": [
+    "Initial native window screenshot was uniformly black.",
+    "Fresh window selection and second native screenshot were also uniformly black."
+  ],
+  "activationAttempts": 1,
+  "activationResult": "computer-use request timed out: activate_window",
+  "recovery": "A final fresh window listing contained no uniquely matching owned player; no second activation was performed.",
+  "gameInputSent": false,
+  "otherWindowsActivated": false,
+  "processStartedByObserver": false,
+  "processStoppedByObserver": false,
+  "restarted": false,
+  "titleVisible": false,
+  "koreanUiVerified": false,
+  "menuLayoutVerified": false,
+  "limits": "Hidden-window black capture does not establish a game rendering defect or a successful title-screen render. Wrapper startup, user-storage preservation and normal-exit findings are separate. The observer did not restart or close any process."
+}

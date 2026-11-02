@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "status": "Visual verification incomplete: owned window was no longer available",
+  "checkedAtUtc": "2026-11-02T16:42:30.0499974Z",
+  "observer": "character_depth_audit",
+  "ownProcessEvidence": "C:/dev/TalesTactics/Logs/ReleasePreview9/PackagedStartupFinal2/own-process.json",
+  "ownProcess": {
+    "id": 76300,
+    "startedTicks": 639292344584915608,
+    "exe": "D:/TalesTacticsBuildArchive/Preview9ExtractedFinal2/TalesTactics.exe"
+  },
+  "method": "Read the owned-process marker, then obtain a fresh native sky.list_windows inventory and match the exact executable path.",
+  "freshWindowInventoryCount": 1,
+  "matchingWindowCount": 0,
+  "ownProcessPresentAtFollowUp": false,
+  "windowSelected": false,
+  "activationAttempts": 0,
+  "snapshotCount": 0,
+  "titleVisible": null,
+  "koreanUiVerified": null,
+  "menuLayoutVerified": null,
+  "screenshotPath": null,
+  "requestedScreenshotExists": false,
+  "gameplayInputSent": false,
+  "otherWindowsSelectedOrActivated": false,
+  "observerLaunchedOrClosedProcesses": false,
+  "limitation": "The owned process had already left the available native window inventory when observation began. No actual title-screen screenshot was captured, so this record cannot establish visual rendering or Korean menu correctness and is not evidence of a rendering failure. No replacement launch was performed. Earlier failed visual-startup evidence remains unchanged."
+}

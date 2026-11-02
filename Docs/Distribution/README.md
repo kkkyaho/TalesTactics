@@ -2,6 +2,8 @@
 
 최신 공개 테스트 배포는 **[0.1.0-preview.8](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8)**이다. 전체 기술 연출·UI 경계와 전장 조작·정보 조회 개선을 포함한다. Windows ZIP·체크섬을 공개했고 서버 SHA256·익명 다운로드를 확인했다. [최신 패키지·검증 기록과 저장 호환 안내](Preview8/README.md)를 따른다. 아래 preview.1 내용은 최초 배포 도구 구축 당시 기록이다.
 
+**Preview9는 소스 태그·로컬 패키지 검증까지 완료했고 공개 ZIP 업로드는 승인 대기 중이다.** `v0.1.0-preview.9` 태그를 `e081a592…`에 생성·원격 반영했고 이 소스를 `main`에 통합하고 원격 반영했다. 최종 ZIP 826,022,703 bytes·202파일과 압축 해제 후 60초/120초 시작·정상 종료 검사는 통과했다. 최신 타이틀 육안 검수는 Windows 세션 잠금·검은 캡처·활성화 실패로 미완료다. 대용량 ZIP 공개 업로드가 자동 승인 검토에서 거부되어 사용자 승인 대기 중이며, 공개 게시·다운로드 검증은 아직 하지 않았다. [Preview9 실제 결과·첫 실패 보존·남은 단계](Preview9/README.md).
+
 검증된 WindowsAccessibility 일반 빌드를 `TalesTactics-0.1.0-preview.1-windows-x64.zip`으로 패키징했다. 배포 ZIP은 **Builds/Releases**에 있으며199,546,142바이트(약190.3MiB), 파일202개와 manifest를 포함한다. ZIP/실행 파일/저장 백업은 Git에 올리지 않는다. Git에는 도구·사용 안내·검증 기록만 포함한다.
 
 SHA256: `10e792b1f683da7ece10d6d7f69267fbc3aba487cad56e2e737591575e739a11`

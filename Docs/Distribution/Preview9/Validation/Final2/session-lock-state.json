@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02T16:47:33.4951214Z",
+  "method": "Read-only WTSQuerySessionInformationW against the current local server, session 1, WTSSessionInfoEx (25); marshal and validate WTSINFOEX level 1; free the returned buffer.",
+  "osVersion": "10.0.22631.0",
+  "sessionId": 1,
+  "level": 1,
+  "sessionState": 0,
+  "sessionStateMeaning": "WTSActive",
+  "sessionFlags": 0,
+  "sessionFlagsMeaning": "WTS_SESSIONSTATE_LOCK",
+  "locked": true,
+  "bytesReturned": 232,
+  "marshalledStructureBytes": 232,
+  "sessionIdAndLevelValidated": true,
+  "corroboratingProcesses": [
+    { "name": "LockApp", "id": 3988, "sessionId": 1 },
+    { "name": "LogonUI", "id": 80708, "sessionId": 1 }
+  ],
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoex_level1_w",
+  "interpretation": "On this Windows version, SessionFlags 0 means the session is locked. The reversed flag defect documented for Windows 7 and Windows Server 2008 R2 does not apply to this OS version. Active connection state does not imply an unlocked desktop.",
+  "relatedVisualEvidence": "Docs/Distribution/Preview9/Validation/Final2/visual-startup-observed.json",
+  "limitation": "This read-only query establishes the session state at the recorded time, after the two black native captures. It does not independently prove the exact session state at those earlier capture times or establish a game rendering failure. Title/menu/Korean UI verification remains incomplete.",
+  "uiActionsPerformed": false,
+  "unlockAttempted": false,
+  "gameOrEditorStartedStoppedOrChanged": false,
+  "earlierEvidenceModified": false
+}

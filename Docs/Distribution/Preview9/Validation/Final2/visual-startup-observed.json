@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "status": "Visual verification incomplete: two black captured frames and window activation failure",
+  "observer": "character_depth_audit",
+  "ownProcessEvidence": "C:/dev/TalesTactics/Logs/ReleasePreview9/PackagedVisualFinal2/own-process.json",
+  "ownProcess": {
+    "id": 82860,
+    "startedTicks": 639292346222784462,
+    "exe": "D:/TalesTacticsBuildArchive/Preview9ExtractedFinal2/TalesTactics.exe"
+  },
+  "window": {
+    "id": 7210668,
+    "app": "process:D:\\TalesTacticsBuildArchive\\Preview9ExtractedFinal2\\TalesTactics.exe",
+    "title": "TalesTactics"
+  },
+  "method": "Read the owned-process marker. Select the unique exact executable match from a fresh sky.list_windows result, then capture with sky.get_window_state. After activation failure, refresh the native inventory, reselect the same exact executable, capture again, and retry activation once.",
+  "observations": [
+    {
+      "observedAtUtc": "2026-11-02T16:43:59.192Z",
+      "width": 1920,
+      "height": 1041,
+      "appearance": "Entire captured frame appears black; no title artwork or menu text visible."
+    },
+    {
+      "observedAtUtc": "2026-11-02T16:44:26.844Z",
+      "width": 1920,
+      "height": 1041,
+      "appearance": "Entire captured frame still appears black; no title artwork or menu text visible."
+    }
+  ],
+  "freshWindowInventoryCount": 2,
+  "matchingWindowCountPerInventory": [1, 1],
+  "snapshotCount": 2,
+  "activationAttempts": 2,
+  "activationErrors": [
+    "failed to activate captured window",
+    "failed to activate captured window"
+  ],
+  "titleVisibleInCapturedFrames": false,
+  "koreanUiVerified": false,
+  "menuLayoutVerified": false,
+  "screenshot": {
+    "path": "Docs/Distribution/Preview9/Evidence/title-final2.jpg",
+    "mimeType": "image/jpeg",
+    "bytes": 32307,
+    "sha256": "440B94A1767484D7E955807C6A95C8736A202934079CDB2AB8D9FDEA878EF879",
+    "sourceObservation": 2,
+    "transformation": "None; original native screenshot JPEG bytes preserved."
+  },
+  "pngProduced": false,
+  "gameplayInputSent": false,
+  "otherWindowsSelectedOrActivated": false,
+  "observerLaunchedOrClosedProcesses": false,
+  "limitation": "Both captures were black, but foreground activation failed. These observations do not distinguish an actual game rendering defect from a native capture or window presentation limitation. No title/menu/Korean UI visual pass is claimed. The API returns JPEG, so the raw screenshot is saved with a .jpg extension rather than mislabelled as PNG. Further UI attempts stopped after the documented single recovery attempt. Earlier failed and missed-window evidence remains unchanged."
+}
