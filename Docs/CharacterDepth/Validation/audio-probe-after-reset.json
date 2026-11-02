@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=UnityEngine.Object.FindFirstObjectByType<TalesTactics.BattleDirector>().Audio.GetComponent<UnityEngine.AudioSource>();return new{frame=UnityEngine.Time.frameCount,dsp=UnityEngine.AudioSettings.dspTime,samples=s.timeSamples,s.isPlaying,paused=UnityEngine.AudioListener.pause};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 31055,
+        "dsp": 6541.482666666667,
+        "samples": 0,
+        "isPlaying": false,
+        "paused": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -7,6 +7,7 @@ Shader "TalesTactics/Architectural Terrain"
         _BaseColor("Tint",Color)=(1,1,1,1)
         _KeyColor("Sunlight",Color)=(1,.96,.88,1)
         _FillColor("Ambient",Color)=(.78,.84,.9,1)
+        _KeyDirection("World sunlight direction",Vector)=(-.45,.85,-.35,0)
         _Water("Flowing surface",Float)=0
         _Unlit("Unlit",Float)=0
         _WorldFloor("Continuous floor",Float)=0
@@ -33,7 +34,7 @@ Shader "TalesTactics/Architectural Terrain"
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
             TEXTURE2D(_MeadowTex); SAMPLER(sampler_MeadowTex);
             CBUFFER_START(UnityPerMaterial)
-            float4 _AtlasRect, _BaseColor, _KeyColor, _FillColor;
+            float4 _AtlasRect, _BaseColor, _KeyColor, _FillColor, _KeyDirection;
             float _Water, _Unlit,_WorldFloor,_WorldCliff,_DetailContrast;float4 _FloorExtent;
             float4 _TerrainShadows[24];int _ShadowCount;
             float _LivingFloor,_SurfaceRelief,_Dapple,_ArtSaturation;
@@ -122,7 +123,7 @@ Shader "TalesTactics/Architectural Terrain"
                     // Quiet broad highlights leave shore edges and tactical overlays readable.
                     c+=half3(.12,.19,.19)*glint;
                 }
-                half key=saturate(dot(normalize(i.normalWS),normalize(float3(-.45,.85,-.35))));
+                half key=saturate(dot(normalize(i.normalWS),normalize(_KeyDirection.xyz)));
                 c=lerp(half3(.43,.44,.43),c,_DetailContrast);
                 c=TalesPalette(c,_ArtSaturation,1);
                 // Broad cel planes retain the new painted shapes instead of adding noisy relief.

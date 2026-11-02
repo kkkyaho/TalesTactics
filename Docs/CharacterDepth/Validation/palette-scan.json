@@ -1,0 +1,193 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var d=UnityEngine.Object.FindFirstObjectByType<TalesTactics.BattleDirector>(); return new { frame=UnityEngine.Time.frameCount, playing=UnityEngine.Application.isPlaying, defaults=System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(System.Linq.Enumerable.Where(System.Linq.Enumerable.SelectMany(UnityEngine.Object.FindObjectsByType<UnityEngine.Renderer>(),r=>r.sharedMaterials),m=>m!=null&&m.name.Contains(\"Default-Material\")),m=>m.name)), fonts=System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Distinct(System.Linq.Enumerable.Select(d.Hud.GetComponentsInChildren<TMPro.TMP_Text>(),t=>t.font.name))), panels=System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(d.Hud.GetComponentsInChildren<UnityEngine.UI.Image>(),i=>new {i.name,sprite=i.sprite==null?null:i.sprite.name,tint=i.color.ToString()})), particles=UnityEngine.Object.FindObjectsByType<UnityEngine.ParticleSystem>().Length };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "frame": 4661,
+        "playing": true,
+        "defaults": [],
+        "fonts": [
+          "Korean"
+        ],
+        "panels": [
+          {
+            "name": "Header",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 0.980)"
+          },
+          {
+            "name": "BattleTurnBackdrop",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "아군 선택: cless",
+            "sprite": null,
+            "tint": "RGBA(0.080, 0.350, 0.390, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "아군 선택: mint",
+            "sprite": null,
+            "tint": "RGBA(0.070, 0.110, 0.170, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "아군 턴 종료",
+            "sprite": null,
+            "tint": "RGBA(0.078, 0.153, 0.231, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "메뉴 · 저장/설정",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "임무 · 적 정보",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Unit",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 0.980)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "능력",
+            "sprite": null,
+            "tint": "RGBA(0.000, 0.000, 0.000, 0.000)"
+          },
+          {
+            "name": "HPBar",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Fill",
+            "sprite": null,
+            "tint": "RGBA(0.180, 0.580, 0.460, 1.000)"
+          },
+          {
+            "name": "MPBar",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Fill",
+            "sprite": null,
+            "tint": "RGBA(0.190, 0.430, 0.650, 1.000)"
+          },
+          {
+            "name": "SPBar",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Commands",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 0.980)"
+          },
+          {
+            "name": "Move / 이동",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Attack / 공격",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Skill / 스킬",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Guard / 가드",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Wait / 방향 선택",
+            "sprite": null,
+            "tint": "RGBA(0.059, 0.122, 0.188, 1.000)"
+          },
+          {
+            "name": "Frame",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 1.000)"
+          },
+          {
+            "name": "Message",
+            "sprite": "SdPanel",
+            "tint": "RGBA(1.000, 1.000, 1.000, 0.980)"
+          }
+        ],
+        "particles": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

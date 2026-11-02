@@ -1,5 +1,21 @@
 # 검증 기록 — 2026-11-02
 
+## 2026-11-02 — 캐릭터 입체감 적용과 Windows 검증
+
+실루엣 투영 그림자, 맵과 캐릭터의 공통 광원 방향, 몸체의 완만한 명암과 바닥 세부 대비 조정을 적용했다. 실제 Unity **[EditMode452/452 · 34.07초](CharacterDepth/Validation/full-editmode-final.json)**를 통과했다. 전체 **[PlayMode269/270 · 743.61초](CharacterDepth/Validation/full-playmode-attempt1.json)**에서는 새 그림자 검사5개와 UI 회귀가 통과했고, 기존 전체 음악 재생 검사1개가 실패했다. Editor의 오디오 DSP 시간이 진행하지 않는 상태를 확인한 뒤 동일한 오디오 설정으로 장치를 재초기화했으며, 수정하지 않은 해당 검사는 별도 실행에서1/1 · 1.54초로 통과했다. 전체270/270의 한 번의 정상 실행으로 표현하지 않는다. [실패 원본·오디오 진단·복구 범위](CharacterDepth/README.md).
+
+최종 **[Editor 환경90/90](CharacterDepth/Validation/editor-environment-final.json)** 및 **[HUD32/32](CharacterDepth/Validation/editor-hud-final.json)**에서 오류·배치 문제0, 사용자 캠페인/설정 불변을 확인했다. 최종 Windows도 **[환경90/90](CharacterDepth/Validation/windows-environment-final.json)**·**[HUD32/32](CharacterDepth/Validation/windows-hud-final.json)**, 오류·배치 문제0이며 환경 타일 피킹은 **1,276/1,276**이다. 두 Windows 실행 모두 정상 종료0·강제 종료/정리 요청 없음이며, 전장90행의 새 그림자 셰이더 지원과 모든 PNG의 실제 크기·비단색·SHA를 확인했다. [환경 외부 검증](CharacterDepth/Validation/windows-environment-validation.json) · [HUD 외부 검증](CharacterDepth/Validation/windows-hud-validation.json). 자동122상태 검사와 선택한 실제 PNG의 육안 확인은 별개이며 모든 애니메이션 프레임의 수동 승인을 뜻하지 않는다. [전후 비교](CharacterDepth/comparison.html) · [육안 검수 범위](CharacterDepth/Validation/visual-review.md) · [보관 PNG 출처·SHA](CharacterDepth/Evidence/actual-capture-manifest.json).
+
+최종 일반 Windows 빌드는 **64.8602659초·오류0·경고1**, REVIEW 빌드는 **57.0643018초·오류0·경고6**으로 helper 판정까지 통과했다. 일반 실행본은 `D:/TalesTacticsBuildArchive/CharacterDepthWindows20261102Final/TalesTactics.exe`, 검수 실행본은 별도 `CharacterDepthReview20261102` 폴더에 있다. [일반 원본](CharacterDepth/Validation/windows-normal-build-final.json) · [검수 원본](CharacterDepth/Validation/windows-review-build-final.json). 일반 경고는 Pipeline 런타임 설정 없음이며 검수 추가5건은 기존 API/지시문 사용 중단 안내다. 일반 DLL에서 Review/Fixture 타입·호출과 Editor/테스트 참조가 제외되고 검수 DLL은 최초 저장 접근 전 격리 진입을 포함함을 [환경](CharacterDepth/Validation/windows-environment-type-isolation.json)·[HUD](CharacterDepth/Validation/windows-hud-type-isolation.json) 실행 시 각각 확인했다. 일반 실행본의 수동 플레이나 공개 릴리즈 검증은 아니다.
+
+첫 일반 빌드는 세션 연결 해제 후 완료 보고서를 회수했으나 `summaryResult=Succeeded`와 함께 오류2·경고4가 있어 helper `passed=false`였다. 잘못된 `editor status` 명령과 Pipeline 메인 스레드4000ms 타임아웃 원문을 보존했으며 오류를 제외해 통과로 바꾸지 않았다. 최초 JSON에서 빠진 배열은 같은 Build GUID의 완료 보고서로부터32단계·10메시지를 별도 회수했지만 당시 보호 파일 snapshot·독립 Editor 로그 배열은 복원하지 못했다. 첫 폴더를 유지하고 새 Final 폴더로 재빌드했다. [첫 helper 결과](CharacterDepth/Validation/windows-normal-build-attempt1.json) · [회수한 보고서](CharacterDepth/Validation/windows-normal-report-attempt1.json) · [중단 당시 기록](CharacterDepth/Validation/handoff-state.json).
+
+첫 Windows 환경 실행은 내부90행·정상 종료0·저장 불변이어도 처음10장이 검은 화면이라 외부 PNG 검사를 실패했고 최종 성공 수치에 합산하지 않는다. [실패 원본](CharacterDepth/Validation/windows-environment-attempt1.json). 시작 해상도를1024×768로 바꿔 첫1280×720 전환을 실제 수행하고 새 실행에서 네이티브 창을 한 번 활성화한 뒤 최종90장을 다시 촬영했다. 이어진 HUD32장은 추가 활성화 없이 완료했다. 제품 소스 변경이나 검은 화면의 보정·교체는 없었다.
+
+최종 Windows7장(전장00/02/04/82/89와 HUD00/31)을 육안 확인해 추가 결함이 없었으며, 대표4PNG를 보정 없이 보관하고 원본SHA를 대조했다. 6인 전후 비교의 화면 크기·인원·카메라 배율·글자 크기·viewport·배우 화면 좌표도 [같은 조건](CharacterDepth/Evidence/before-after-camera.json)임을 확인했다. 모든122장이나 모든 모션을 육안 검수했다는 뜻은 아니다.
+
+각 최종 Windows 실행 전후 사용자 트리 **4,797파일·2,296디렉터리**가 동일했고 기존 사용자 게임 PID30016의 실행 정체성을 유지했다. 정확히 최상위 `Player.log`·`Player-prev.log`만 제외하며 다른 파일·백업·하위 경로는 포함한다. [검증 대상 소스·메타16개 SHA](CharacterDepth/Validation/source-manifest.json)가 동일해 재개 후 Unity 테스트를 반복하지 않았다. 작업 전체의 초기 수정 **12파일**과 원래 사용자 저장/설정 **8파일**도 최종SHA가 일치했다. 동적 폰트·검수CSV2개·임시background 설정은 이번 작업 초기 바이트 백업으로만 복원했다. Editor는 중지·TestBattle dirty=false·background=false·auto-tick true/16ms이며 영속 auto-tick(-1,false)도 초기값과 같다. [최종 파일 대조와 Editor 상태](CharacterDepth/Validation/final-state.json). 구현과 열거한 검증을 완료했으며 버전 관리 반영 상태는 `develop` 이력에서 확인한다. `main`과 공개 릴리즈는 이번 작업의 범위가 아니다.
+
 ## 2026-11-02 — 전투 HUD 분리·머리 위 HP 정리
 
 최종 실제 Unity **[EditMode448/448 · 15.56초](BattleHudRedesign/Validation/editmode-final.json)**·**[PlayMode264/264 · 649.44초](BattleHudRedesign/Validation/playmode-final.json)**를 통과했다. 실패·건너뜀·미결정0이며 별도 전체 실행이다. [검증 대상 소스·메타·머리 좌표54개 SHA](BattleHudRedesign/Validation/source-manifest.json)와 현재 파일의 일치를 확인했다. 캐릭터 옆 명령/기술창, 좌측 하단 상태/예측창, 상단 턴 종료, 상시 목표·자동 안내 제거, 실제 맵 호버·방향 입력·HP 표현과 아이콘 캐시 수명 회귀를 포함한다.

@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 
 namespace TalesTactics.Tests
@@ -58,6 +60,56 @@ namespace TalesTactics.Tests
             Assert.That(ReviewStorageBootstrap.Resolve(new[]{"TalesTactics.exe","-logFile","external.log"},Data,User),Is.Null);
             Assert.That(ReviewStorageBootstrap.Resolve(new[]{"TalesTactics.exe","--crossover-review",Id},Data,User),Is.Null);
             Assert.That(ReviewStorageBootstrap.Resolve(null,Data,User),Is.Null);
+        }
+        [TestCase("EnvironmentIntegrationReview")][TestCase("BattleHudRedesignReview")]
+        public void StorageSnapshotIgnoresOnlyLockedUnityLiveLogs(string reviewType)
+        {
+            string root=Path.Combine(Path.GetTempPath(),"TalesTactics-review-snapshot-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(root);
+            try
+            {
+                var kept=new[]{"campaign.json","settings.json","campaign.json.tmp","notes.bin","Other.log","Player.log.bak"};
+                foreach(string name in kept)File.WriteAllText(Path.Combine(root,name),"protected");
+                using(var current=new FileStream(Path.Combine(root,"pLaYeR.LoG"),FileMode.CreateNew,FileAccess.ReadWrite,FileShare.None))
+                using(var previous=new FileStream(Path.Combine(root,"Player-prev.log"),FileMode.CreateNew,FileAccess.ReadWrite,FileShare.None))
+                {
+                    var before=ReviewSnapshot(reviewType,root);
+                    Assert.That(before.Select(s=>s.Substring(0,s.IndexOf(':'))),Is.EquivalentTo(kept));
+                    current.WriteByte(1);current.Flush();previous.WriteByte(2);previous.Flush();
+                    Assert.That(ReviewSnapshot(reviewType,root),Is.EqualTo(before),"Volatile locked logs must not invalidate save preservation.");
+                }
+            }
+            finally{DeleteSnapshotFixture(root);}
+        }
+        [TestCase("EnvironmentIntegrationReview")][TestCase("BattleHudRedesignReview")]
+        public void StorageSnapshotDetectsUnrelatedAndTemporaryFileChanges(string reviewType)
+        {
+            string root=Path.Combine(Path.GetTempPath(),"TalesTactics-review-snapshot-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(root);
+            try
+            {
+                File.WriteAllText(Path.Combine(root,"campaign.json"),"save");var before=ReviewSnapshot(reviewType,root);
+                string other=Path.Combine(root,"notes.bin");File.WriteAllText(other,"before");var added=ReviewSnapshot(reviewType,root);
+                Assert.That(added,Is.Not.EqualTo(before),"Unknown top-level files must be protected.");
+                File.WriteAllText(other,"after!");var changed=ReviewSnapshot(reviewType,root);
+                Assert.That(changed,Is.Not.EqualTo(added),"Equal-length edits must be detected by the hash.");
+                string temporary=Path.Combine(root,"settings.json.tmp");File.WriteAllText(temporary,"pending");var withTemporary=ReviewSnapshot(reviewType,root);
+                Assert.That(withTemporary,Is.Not.EqualTo(changed),"Temporary save files must not be silently excluded.");
+                File.Delete(temporary);Assert.That(ReviewSnapshot(reviewType,root),Is.EqualTo(changed));
+                File.Delete(other);Assert.That(ReviewSnapshot(reviewType,root),Is.EqualTo(before));
+            }
+            finally{DeleteSnapshotFixture(root);}
+        }
+        static string[] ReviewSnapshot(string reviewType,string root)
+        {
+            var type=typeof(BattleDirector).Assembly.GetType("TalesTactics."+reviewType);Assert.That(type,Is.Not.Null);
+            var snapshot=type.GetMethod("Snapshot",BindingFlags.Static|BindingFlags.NonPublic);Assert.That(snapshot,Is.Not.Null);
+            return (string[])snapshot.Invoke(null,new object[]{root});
+        }
+        static void DeleteSnapshotFixture(string root)
+        {
+            var directory=new DirectoryInfo(root);
+            if(!string.Equals(directory.Parent.FullName,Path.GetFullPath(Path.GetTempPath()).TrimEnd(Path.DirectorySeparatorChar,Path.AltDirectorySeparatorChar),StringComparison.OrdinalIgnoreCase)||!directory.Name.StartsWith("TalesTactics-review-snapshot-",StringComparison.Ordinal))
+                throw new InvalidOperationException("Refusing cleanup outside the owned temporary fixture.");
+            if(directory.Exists)directory.Delete(true);
         }
     }
 }

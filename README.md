@@ -18,7 +18,9 @@ preview.8은 기존 메인20화·개인30단계와 거점·편성·장비 UX를 
 
 2026-11-01 후속 지형 개선으로 반복 꽃 문장이 없는 새 판석, 연속 물결, 폭이 다른 외곽 바위·골과 육지/물 단차 접합을 적용했습니다. 최종 실제 EditMode437/437·PlayMode258/258, 일반/검수 Windows 빌드 및 Windows90/90캡처를 확인했습니다. [같은 카메라의 전후 비교](Docs/TerrainRefinement/comparison.html) · [현재 검증과 한계](Docs/TerrainRefinement/README.md).
 
-이전 개선별 기록은 아래에 보존합니다. 현재 전장 지형은 위 후속 개선의 실제 Windows 캡처를 우선합니다.
+2026-11-02 캐릭터 입체감 개선으로 발 접촉 음영에 원화 실루엣을 따르는 몸 그림자를 더하고, 캐릭터·지형 광원과 바닥 대비를 맞췄습니다. 이동·모션·카메라에 따라 그림자가 갱신되며 물·단차·맵 밖에서는 끊깁니다. 원화와 전투 규칙은 유지했습니다. 일반·검수 Windows 빌드와 실제 전장 **90/90**·HUD **32/32** 캡처를 확인했습니다. 전체 PlayMode의 초기 오디오 실패와 별도 복구 재검사는 상세 기록에서 구분합니다. [실제 전후 비교](Docs/CharacterDepth/comparison.html) · [구현·검증과 한계](Docs/CharacterDepth/README.md).
+
+이전 개선별 기록은 아래에 보존합니다. 현재 접지·명암은 캐릭터 입체감 개선의 실제 화면을, 지형 구조는 위 후속 개선 기록을 함께 참고합니다.
 
 - [전투 HUD 개편: 캐릭터 옆 명령·고정 상태창·간결한 HP 표시](Docs/BattleHudRedesign/README.md)
 - [거점·대화·장비 정비 화면과 검증](Docs/IntermissionUx/README.md)

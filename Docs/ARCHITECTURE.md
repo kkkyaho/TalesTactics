@@ -1,5 +1,11 @@
 # 아키텍처
 
+## 캐릭터 입체감과 실루엣 투영
+
+`ProjectedUnitShadow`는 현재 Sprite의 정점·UV·alpha를 월드 광원 반대 방향으로 지면에 투영한다. `GroundedUnitVisual`의 모션 이후 갱신과 `CrossoverCivilianView`가 프레임·반전·크기·들림·숨김 상태를 전달한다. 같은 높이의 육지 타일 경계로 삼각형을 클리핑하고 물·다른 높이·맵 밖에서는 끊는다. 평면 billboard가 광원과 평행할 때 폭이 사라지지 않도록 최소 폭을 보강한다. 지형/유닛은 `BattleEnvironmentPalette.KeyDirection`을 공유하며, UnitTone의 약한 몸 명암은 완료 상태 채도·밝기와 별도다.
+
+`PixelBattlefield`가 전장 공유 그림자 재질과 지형 참조를 소유한다. 유닛별 메시와 최대128개 Sprite geometry 캐시는 해당 컴포넌트에서 정리하며 새 충돌체·게임 난수·저장 데이터는 없다. 몸 그림자(-5)는 위험 범위(-4)·접촉 그림자(-3)·선택(-2)보다 먼저 그린다. 전장/HUD 검수기는 사용 중인 Unity 로그2개만 저장 불변 검사에서 제외하고, 비활성 FramedContent는 실제 표시 사각형으로 검사한다. [구현·회귀·실제 화면](CharacterDepth/README.md).
+
 ## 바닥 연속성과 비정형 외곽
 
 `PixelBattlefield`의 유적·성소(theme 0/1)는 기존 원본을 보존하고 `RuinsFloorWeathered`를 로드한다. `Terrain.shader`는 전체 맵의 바닥 UV를 유지하면서 세계 좌표로 낮은 주파수의 풍화 명암·이끼 군집을 만든다. 수면/폭포는 타일 로컬 UV 대신 연속 세계 좌표의 두 흐름을 사용한다. 지형·난수·경로 데이터는 변경하지 않는다.

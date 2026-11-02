@@ -34,10 +34,11 @@ namespace TalesTactics
         {
             public int schema=2,expectedCaptures=90,completedCaptures;public bool complete,passed,userFilesUnchanged,campaignsUnchanged=true;
             public string status="Running",startedUtc,finishedUtc,output,storage,unityVersion;public Row[] rows;public string[] errors,userFilesBefore,userFilesAfter;
+            public string[] userFileHashExclusions=new[]{"Player.log","Player-prev.log"};
             public string scope="Eight isolated presentation fixtures spanning all six terrain themes: actual Director opening boards for main episodes 1/11/12/15/16/17/20 with joined allies at authored EntryLevel, plus six-ally Lv25 training. Prior completion flags/levels exist only in new in-memory fixtures. No natural progression, story completion, rewards, AI/balance or full-campaign claim.";
             public string captures="90 unedited ScreenCapture frames: each board idle at 0/90/180/270 degrees, legal Director movement in flight/at arrival, and a damage-pose-only fixture at 1280x720; two additional character focus frames; command and skill-list HUD at 1280x720 and 1024x768. Damage does not execute the resolver or change HP. No effect/skill-execution claim.";
             public string checks="Active model count, authored non-null sprites, finite ground/path placement, contact-shadow presence, supported materials, tile-pick round trips, rotation state/RNG invariance, actual legal movement completion, damage-fixture state invariance, visible UI glyph/button boundaries and exact requested resolution. Sprite AABB camera containment is telemetry only because transparent artwork padding is not visible geometry.";
-            public string limitations="Automated pass is not visual approval. Inspect PNGs for palette harmony, terrain occlusion, visible foot anchoring, contact-shadow quality, character/background separation and UI readability. Seven campaign opening boards and one training board are not all maps/poses/resolutions or performance coverage. User-storage hashing is top-level save/settings files; external wrapper may additionally hash the entire tree. No user files are restored.";
+            public string limitations="Automated pass is not visual approval. Inspect PNGs for palette harmony, terrain occlusion, visible foot anchoring, contact-shadow quality, character/background separation and UI readability. Seven campaign opening boards and one training board are not all maps/poses/resolutions or performance coverage. User-storage hashing covers every top-level file, including backups and temporary files, except the exact case-insensitive Unity live-log names Player.log and Player-prev.log. An external wrapper may additionally hash nested files and directory paths with the same root-log exclusions. No user files are restored.";
         }
         readonly List<Row> rows=new List<Row>();readonly List<string> errors=new List<string>();
         Report report=new Report();BattleDirector battle;string directory,storage,scenario,campaignBefore;int episode,rotation;
@@ -240,13 +241,26 @@ namespace TalesTactics
                     var lo=text.transform.TransformPoint(glyph.bottomLeft);var hi=text.transform.TransformPoint(glyph.topRight);
                     if(!screen.Contains(RectTransformUtility.WorldToScreenPoint(null,lo))||!screen.Contains(RectTransformUtility.WorldToScreenPoint(null,hi))){issues.Add("Glyph outside screen: "+text.name);break;}
                     if(button!=null){var rect=(RectTransform)button.transform;var allowed=rect.rect;allowed.xMin-=1;allowed.xMax+=1;allowed.yMin-=1;allowed.yMax+=1;if(!allowed.Contains(rect.InverseTransformPoint(lo))||!allowed.Contains(rect.InverseTransformPoint(hi))){issues.Add("Glyph outside button: "+button.name);break;}}
-                    if(frame!=null&&frame.GetComponent<Image>()?.enabled==true){var allowed=frame.ContentRect;allowed.xMin-=2;allowed.xMax+=2;allowed.yMin-=2;allowed.yMax+=2;if(!allowed.Contains(frame.transform.InverseTransformPoint(lo))||!allowed.Contains(frame.transform.InverseTransformPoint(hi))){issues.Add("Glyph outside frame: "+frame.name);break;}}
+                    if(frame!=null&&frame.GetComponent<Image>()?.enabled==true)
+                    {
+                        // Explicit battle layouts disable FramedContent, so its cached ContentRect
+                        // is not the rendered frame. Match the HUD review's actual-frame contract.
+                        var allowed=frame.enabled?frame.ContentRect:((RectTransform)frame.transform).rect;
+                        if(!frame.enabled&&(frame.name=="Unit"||frame.name=="Commands")){allowed.xMin+=14;allowed.xMax-=14;allowed.yMin+=14;allowed.yMax-=14;}
+                        allowed.xMin-=2;allowed.xMax+=2;allowed.yMin-=2;allowed.yMax+=2;
+                        if(!allowed.Contains(frame.transform.InverseTransformPoint(lo))||!allowed.Contains(frame.transform.InverseTransformPoint(hi))){issues.Add("Glyph outside frame: "+frame.name);break;}
+                    }
                 }
             }
         }
         static string[] Snapshot(string root)
         {
-            if(!Directory.Exists(root))return Array.Empty<string>();using(var sha=SHA256.Create())return Directory.GetFiles(root).OrderBy(p=>p,StringComparer.OrdinalIgnoreCase).Select(p=>Path.GetFileName(p)+":"+BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(p))).Replace("-","").ToLowerInvariant()).ToArray();
+            if(!Directory.Exists(root))return Array.Empty<string>();
+            // Unity's two live logs are volatile process output, not saves; a running game may lock them.
+            // All other top-level files remain protected, including unknown names, backups and .tmp files.
+            using(var sha=SHA256.Create())return Directory.GetFiles(root)
+                .Where(p=>!string.Equals(Path.GetFileName(p),"Player.log",StringComparison.OrdinalIgnoreCase)&&!string.Equals(Path.GetFileName(p),"Player-prev.log",StringComparison.OrdinalIgnoreCase))
+                .OrderBy(p=>p,StringComparer.OrdinalIgnoreCase).Select(p=>Path.GetFileName(p)+":"+BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(p))).Replace("-","").ToLowerInvariant()).ToArray();
         }
         void Require(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}
         void Write(){report.rows=rows.ToArray();report.errors=errors.ToArray();report.completedCaptures=rows.Count;File.WriteAllText(Path.Combine(directory,"result.json"),JsonUtility.ToJson(report,true));}

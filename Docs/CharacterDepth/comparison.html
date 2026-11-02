@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>캐릭터 입체감 · 실제 전후 화면</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,"Malgun Gothic",sans-serif;background:#101820;color:#e6eceb}*{box-sizing:border-box}body{max-width:1380px;margin:0 auto;padding:32px 24px 64px}h1{font-size:clamp(24px,3vw,36px);margin-bottom:10px}p{color:#b8c8ca;line-height:1.65}.controls{display:flex;gap:8px;align-items:center;margin:22px 0 14px;flex-wrap:wrap}button{font:inherit;padding:10px 18px;border:1px solid #506570;border-radius:7px;background:#1c2a35;color:#dce7e6;cursor:pointer}button[aria-pressed=true]{background:#c5ab6b;color:#17212a;border-color:#c5ab6b}button:focus-visible{outline:3px solid #75ddd0;outline-offset:3px}#label{margin-left:10px;color:#75ddd0}figure{margin:0}img{display:block;width:100%;height:auto;border:1px solid #384b54;border-radius:8px}figcaption{font-size:14px;color:#abbec3;margin:10px 0 24px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid figure:first-child{grid-column:1/-1}a{color:#78d8cc}h2{font-size:21px;margin:36px 0 15px}@media(max-width:700px){body{padding:18px 12px}.grid{grid-template-columns:1fr}}
+</style>
+<h1>발은 바닥에, 몸은 그 위에</h1>
+<p>같은 6인 훈련·카메라·글자 크기에서 촬영한 실제 게임 화면입니다. 몸 형태를 따르는 짧은 그림자, 지형과 같은 광원, 낮춘 바닥 대비를 적용했습니다. 원화와 캐릭터 크기는 유지했습니다.</p>
+<div class="controls" aria-label="전후 화면 선택">
+<button type="button" id="before" aria-pressed="false">적용 전</button><button type="button" id="after" aria-pressed="true">적용 후</button><span id="label" aria-live="polite">적용 후 · Windows 실행 화면</span>
+</div>
+<figure><img id="comparison" src="Evidence/after-six-allies.png" alt="몸 그림자와 환경 명암을 적용한 6인 전투 화면"><figcaption>1280 × 720 · 훈련 6인 · 확대 / 글자 130%. 물결은 시간에 따라 움직이므로 두 캡처의 수면 모양은 다릅니다. AI 목업이 아닌 편집하지 않은 실행 캡처입니다.</figcaption></figure>
+<h2>발밑과 지형 경계 확인</h2>
+<div class="grid">
+<figure><img src="Evidence/after-character-close.png" alt="크레스와 민트의 발 접촉 음영과 옆으로 뻗은 몸 그림자"><figcaption>인물 근접: 진한 발 접촉 음영과 옅은 몸 그림자를 함께 사용합니다.</figcaption></figure>
+<figure><img src="Evidence/after-opposite-view.png" alt="반대 방향 카메라의 전장과 캐릭터 그림자"><figcaption>카메라를 돌려도 광원은 월드 방향을 유지합니다.</figcaption></figure>
+<figure><img src="Evidence/after-small-skill-ui.png" alt="1024×768 화면의 전장과 기술 선택창"><figcaption>작은 화면: 선택·위험 표시와 기술 UI의 가독성을 유지합니다.</figcaption></figure>
+</div>
+<p>몸 그림자는 같은 높이의 육지에만 투영하는 2.5D 표현입니다. 물·단차·맵 밖에서는 끊기며 벽이나 다른 유닛에 그림자를 드리우지는 않습니다. <a href="README.md">구현·실제 검증·한계</a></p>
+<script>
+const picture=document.querySelector('#comparison'),label=document.querySelector('#label');
+function select(after){picture.src=after?'Evidence/after-six-allies.png':'../BattleHudRedesign/Evidence/31-zoom-text130-allies6-1280x720.png';picture.alt=after?'몸 그림자와 환경 명암을 적용한 6인 전투 화면':'적용 전 6인 전투 화면';label.textContent=after?'적용 후 · Windows 실행 화면':'적용 전 · 이전 HUD 검증 화면';document.querySelector('#before').setAttribute('aria-pressed',String(!after));document.querySelector('#after').setAttribute('aria-pressed',String(after));}
+document.querySelector('#before').addEventListener('click',()=>select(false));document.querySelector('#after').addEventListener('click',()=>select(true));
+</script>
+</html>

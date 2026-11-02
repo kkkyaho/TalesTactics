@@ -35,9 +35,10 @@ namespace TalesTactics
         {
             public int schema=1,expectedCaptures=32,completedCaptures;public bool complete,passed,userFilesUnchanged,campaignsUnchanged=true;
             public string status="Running",startedUtc,finishedUtc,output,storage,unityVersion;public Row[] rows;public StateEvidence[] states;public string[] errors,userFilesBefore,userFilesAfter;
+            public string[] userFileHashExclusions=new[]{"Player.log","Player-prev.log"};
             public string scope="All allies receive their normal first selection before the strict browsing invariant, with exact expected TurnsStarted initialization checked and recorded. Two actual Director boards: main episode 1 with its two joined allies and an isolated Lv25 six-ally training fixture. Both at 1920x1080 and 1280x720, covering command, skills, ground facing, legal target forecasts, enemy hover, left/right camera pans and zoom with larger text. Thirty-two unedited ScreenCapture PNGs.";
-            public string checks="Fixed status bounds; command/status separation; removal of persistent objective and facing instruction text; active button center raycasts; actual UI submit to skill/wait and cancel; visible glyph/frame/screen boundaries; short overhead labels; camera/selection/menu browsing state, grid, RNG and campaign invariance; user-storage campaign/settings file-family hashes including backups.";
-            public string limitations="Programmatic UI submit and Unity EventSystem raycasts are not operating-system mouse/keyboard automation. Live Player.log/Player-prev.log and unrelated files are explicitly excluded from persistent-save hashing. Opening boards do not prove a campaign playthrough, balance, all resolutions, all six-person arrangements or manual visual approval. Edge rows record achieved actor positions because map panning remains bounded. Inspect PNGs for artwork and occlusion.";
+            public string checks="Fixed status bounds; command/status separation; removal of persistent objective and facing instruction text; active button center raycasts; actual UI submit to skill/wait and cancel; visible glyph/frame/screen boundaries; short overhead labels; camera/selection/menu browsing state, grid, RNG and campaign invariance; hashes of all top-level user-storage files except the two explicitly listed Unity live logs.";
+            public string limitations="Programmatic UI submit and Unity EventSystem raycasts are not operating-system mouse/keyboard automation. Only the exact case-insensitive top-level names Player.log and Player-prev.log are excluded from user-storage hashing; unknown files, backups and temporary files remain included. Nested files and directory paths require an external wrapper. Opening boards do not prove a campaign playthrough, balance, all resolutions, all six-person arrangements or manual visual approval. Edge rows record achieved actor positions because map panning remains bounded. Inspect PNGs for artwork and occlusion.";
         }
         readonly List<Row> rows=new List<Row>();readonly List<StateEvidence> states=new List<StateEvidence>();readonly List<string> errors=new List<string>();
         Report report=new Report();BattleDirector battle;string directory,storage,campaignBefore;Vector2Int requested;
@@ -312,11 +313,10 @@ namespace TalesTactics
         static string[] Snapshot(string root)
         {
             if(!Directory.Exists(root))return Array.Empty<string>();
-            // These four persistence families include backups, migration backups and temp files.
-            // Player.log/Player-prev.log are volatile process output and may be locked by a running game.
-            var names=new[]{"campaign.json","campaign-slot2.json","campaign-slot3.json","settings.json"};
+            // Unity's two live logs are volatile process output, not saves; a running game may lock them.
+            // All other top-level files remain protected, including unknown names, backups and .tmp files.
             using(var sha=SHA256.Create())return Directory.GetFiles(root)
-                .Where(p=>names.Any(n=>string.Equals(Path.GetFileName(p),n,StringComparison.OrdinalIgnoreCase)||Path.GetFileName(p).StartsWith(n+".",StringComparison.OrdinalIgnoreCase)))
+                .Where(p=>!string.Equals(Path.GetFileName(p),"Player.log",StringComparison.OrdinalIgnoreCase)&&!string.Equals(Path.GetFileName(p),"Player-prev.log",StringComparison.OrdinalIgnoreCase))
                 .OrderBy(p=>p,StringComparer.OrdinalIgnoreCase).Select(p=>Path.GetFileName(p)+":"+BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(p))).Replace("-","").ToLowerInvariant()).ToArray();
         }
         static void Require(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}

@@ -6,7 +6,7 @@ namespace TalesTactics
     public sealed class GroundedUnitVisual:MonoBehaviour
     {
         SpriteRenderer actor;GroundOverlay shadow;MeshRenderer surface;UnitRuntime unit;PixelBattlefield terrain;
-        MaterialPropertyBlock properties;
+        MaterialPropertyBlock properties;ProjectedUnitShadow projectedShadow;
         int theme;float bodyScale;
         public int Theme=>theme;
         public Vector3 GroundAnchor{get;private set;}
@@ -15,10 +15,13 @@ namespace TalesTactics
             properties=new MaterialPropertyBlock();actor=sprite;shadow=contact;surface=contact.GetComponent<MeshRenderer>();unit=owner;terrain=scenery;theme=BattleEnvironmentPalette.Theme(chapter);
             bodyScale=Mathf.Clamp(CharacterVisualSizing.Scale(owner.Data),.65f,1.45f);
             shadow.Shadow(BattleEnvironmentPalette.Shadow(theme));
+            var cast=new GameObject("Projected body shadow");cast.transform.SetParent(transform,false);
+            projectedShadow=cast.AddComponent<ProjectedUnitShadow>();
+            projectedShadow.Initialize(actor,terrain!=null?terrain.GroundMap:null,terrain!=null?terrain.HeightStep:0,theme,terrain!=null?terrain.ProjectedShadowMaterial:null);
         }
         void LateUpdate()
         {
-            if(actor==null||actor.sprite==null||shadow==null)return;
+            if(actor==null||actor.sprite==null||shadow==null){if(projectedShadow!=null)projectedShadow.UpdateProjection(GroundAnchor,0,false);return;}
             var delta=actor.transform.position-transform.position;
             GroundAnchor=transform.position+new Vector3(delta.x,0,delta.z);
             float lift=Mathf.Max(0,delta.y-.06f);
@@ -29,6 +32,8 @@ namespace TalesTactics
             properties.Clear();actor.GetPropertyBlock(properties);
             BattleEnvironmentPalette.ApplyUnit(properties,theme,GroundAnchor,actor.sprite.bounds,terrain!=null?terrain.GroundShadeAt(GroundAnchor):1);
             actor.SetPropertyBlock(properties);
+            projectedShadow.UpdateProjection(GroundAnchor,lift,unit.Alive);
         }
+        void OnDisable(){if(projectedShadow!=null)projectedShadow.UpdateProjection(GroundAnchor,0,false);}
     }
 }

@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var t=System.AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(\"Unity.Pipeline.Editor.Commands.AutoTickCommand\")).First(x=>x!=null); var f=System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic; var s=UnityEngine.SceneManagement.SceneManager.GetActiveScene(); return new {playing=UnityEditor.EditorApplication.isPlaying,background=UnityEngine.Application.runInBackground,scene=s.path,dirty=s.isDirty,autoTickEnabled=t.GetProperty(\"IsEnabled\",f).GetValue(null),autoTickInterval=t.GetProperty(\"CurrentIntervalMs\",f).GetValue(null),persistedInterval=UnityEditor.SessionState.GetInt(\"Unity.Pipeline.AutoTick.IntervalMs\",-1),persistedEnabled=UnityEditor.SessionState.GetBool(\"Unity.Pipeline.AutoTick.Enabled\",false)};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "background": false,
+        "scene": "Assets/TalesTactics/Scenes/TestBattle.unity",
+        "dirty": false,
+        "autoTickEnabled": true,
+        "autoTickInterval": 16,
+        "persistedInterval": -1,
+        "persistedEnabled": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

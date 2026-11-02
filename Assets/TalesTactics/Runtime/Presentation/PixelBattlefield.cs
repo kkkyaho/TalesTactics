@@ -21,11 +21,16 @@ namespace TalesTactics
         int stage,wall;float bottom,backgroundAspect;
         public int DecorationMeshCount=>meshes.Count;
         public int Chapter=>stage;
+        public GridMap GroundMap{get;private set;}
+        public float HeightStep{get;private set;}
+        public Material ProjectedShadowMaterial{get;private set;}
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
             stage=BattleEnvironmentPalette.Theme(chapter);wall=stage>=3?14:4;bottom=stage==2?-1.8f:-1.15f;
             view=camera;spriteMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));spriteMaterial.name="Terrain foliage tone";owned.Add(spriteMaterial);
             BattleEnvironmentPalette.ApplyScenery(spriteMaterial,stage);
+            ProjectedShadowMaterial=new Material(Resources.Load<Shader>("TalesTactics/ProjectedUnitShadow")){name="Projected unit shadow"};
+            owned.Add(ProjectedShadowMaterial);
             var atlas=Resources.Load<Texture2D>(Art+"Surfaces");var shader=Resources.Load<Shader>(Art+"Terrain");
             for(int i=0;i<16;i++)
             {
@@ -45,7 +50,7 @@ namespace TalesTactics
             floorMaterial=new Material(surfaces[0]);owned.Add(floorMaterial);floorMaterial.name="Continuous chapter pavement";
             floorMaterial.SetTexture("_MainTex",Resources.Load<Texture2D>(Art+(stage==2?"CanyonFloor":stage==3||stage==5?"ObservatoryFloor":stage==4?"SluiceFloor":"RuinsFloorWeathered")));
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
-            floorMaterial.SetFloat("_DetailContrast",.82f);
+            floorMaterial.SetFloat("_DetailContrast",.76f);
             InitializeLivingTerrain();
             var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)
@@ -101,6 +106,7 @@ namespace TalesTactics
         }
         public void Complete(GridMap map,float step)
         {
+            GroundMap=map;HeightStep=step;
             int maxX=0,maxZ=0;foreach(var t in map.Tiles.Values){maxX=Mathf.Max(maxX,t.Coordinate.x);maxZ=Mathf.Max(maxZ,t.Coordinate.y);}
             floorMaterial.SetVector("_FloorExtent",new Vector4(maxX+1,maxZ+1,0,0));
             if(stage>=3)BoundaryVaults(map,step,maxX,maxZ);

@@ -112,6 +112,26 @@ namespace TalesTactics.PlayModeTests
                 }
             }
         }
+        [UnityTest, Category("CharacterDepth")] public IEnumerator EnvironmentReviewUsesRenderedDisabledFramesAndStillRejectsEscapingGlyphs()
+        {
+            director.BeginBattle();director.StopAllCoroutines();yield return null;yield return new WaitForEndOfFrame();Canvas.ForceUpdateCanvases();
+            var bar=(RectTransform)director.Hud.transform.Find("Unit/HPBar");
+            Assert.That(bar.GetComponent<FramedContent>().enabled,Is.False,"The production HP track uses explicit layout.");
+            var value=bar.GetComponentsInChildren<TMPro.TMP_Text>().Single(t=>t.name=="Value");var position=value.rectTransform.anchoredPosition;
+            var probe=new GameObject("Environment review boundary probe");probe.SetActive(false);
+            try
+            {
+                var type=typeof(BattleDirector).Assembly.GetType("TalesTactics.EnvironmentIntegrationReview");Assert.That(type,Is.Not.Null);
+                var review=probe.AddComponent(type);const System.Reflection.BindingFlags flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+                type.GetField("battle",flags).SetValue(review,director);var check=type.GetMethod("CheckUi",flags);
+                var issues=new System.Collections.Generic.List<string>();check.Invoke(review,new object[]{issues,0,0});
+                Assert.That(issues.Where(s=>s.StartsWith("Glyph outside frame:")),Is.Empty,"Valid explicit HUD rectangles must not be tested against inactive cached ContentRect values.");
+                value.rectTransform.anchoredPosition+=Vector2.up*(bar.rect.height*2);value.ForceMeshUpdate();
+                issues.Clear();check.Invoke(review,new object[]{issues,0,0});
+                Assert.That(issues,Does.Contain("Glyph outside frame: HPBar"),"The existing two-pixel tolerance must still reject text moved outside its actual track.");
+            }
+            finally{value.rectTransform.anchoredPosition=position;Object.DestroyImmediate(probe);}
+        }
         [UnityTest, Category("BattleHudRedesign")] public IEnumerator FrameInsetRemainsStableAfterHundredsOfFrames()
         {
             director.Hud.ShowIntermissionHub();yield return null;yield return null;

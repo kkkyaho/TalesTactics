@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var config=UnityEngine.AudioSettings.GetConfiguration();bool reset=UnityEngine.AudioSettings.Reset(config);return new{reset,before=config,after=UnityEngine.AudioSettings.GetConfiguration(),dsp=UnityEngine.AudioSettings.dspTime};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "reset": true,
+        "before": {
+          "speakerMode": 2,
+          "dspBufferSize": 1024,
+          "sampleRate": 48000,
+          "numRealVoices": 32,
+          "numVirtualVoices": 512
+        },
+        "after": {
+          "speakerMode": 2,
+          "dspBufferSize": 1024,
+          "sampleRate": 48000,
+          "numRealVoices": 32,
+          "numVirtualVoices": 512
+        },
+        "dsp": 6511.530666666667
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
