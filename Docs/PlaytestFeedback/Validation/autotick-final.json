@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var type=System.Linq.Enumerable.First(System.AppDomain.CurrentDomain.GetAssemblies(),a=>a.GetType(\"Unity.Pipeline.Editor.Commands.AutoTickCommand\")!=null).GetType(\"Unity.Pipeline.Editor.Commands.AutoTickCommand\");var flags=System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.NonPublic;return new{enabled=type.GetField(\"s_Enabled\",flags).GetValue(null),interval=type.GetField(\"s_IntervalMs\",flags).GetValue(null),persisted=UnityEditor.SessionState.GetBool(\"Unity.Pipeline.AutoTick.Enabled\",true),persistedInterval=UnityEditor.SessionState.GetInt(\"Unity.Pipeline.AutoTick.IntervalMs\",16)};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "enabled": true,
+        "interval": 16,
+        "persisted": true,
+        "persistedInterval": 16
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

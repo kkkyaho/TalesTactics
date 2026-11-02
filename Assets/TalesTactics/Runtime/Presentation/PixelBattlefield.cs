@@ -210,7 +210,7 @@ namespace TalesTactics
             }
             var sprite=architectureSprites[index];var go=new GameObject("Architectural detail "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);
             go.transform.localPosition=position+Vector3.up*.015f;go.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);
-            var renderer=go.GetComponent<SpriteRenderer>();renderer.sharedMaterial=spriteMaterial;renderer.sprite=sprite;
+            var renderer=go.GetComponent<SpriteRenderer>();renderer.sharedMaterial=spriteMaterial;renderer.sprite=sprite;StandingSpriteDepth.Configure(renderer);
             billboards.Add(go.transform);go.transform.rotation=view.transform.rotation;
             if(shadow)shadowCasters.Add(new Vector4(position.x,position.z,height,position.y));
         }

@@ -18,18 +18,19 @@ namespace TalesTactics
         public static bool IsMain(int stage)=>stage>=FirstStage&&stage<=LastStage;
         public static CrossoverEpisode Episode(int stage)=>IsMain(stage)?Episodes[stage-FirstStage]:throw new ArgumentOutOfRangeException(nameof(stage));
         public static string Flag(int number)=>"crossover.chapter"+number;
-        public static bool Joined(string id,int number)
+        public static int Introduction(string id)
         {
             switch(id)
             {
-                case "cless":case "mint":return true;
-                case "alphen":case "shionne":return number>=2;
-                case "farah":return number>=3;
-                case "tear":case "jade":case "natalia":return number>=4;
-                case "velvet":case "kisara":return number>=5;
-                default:return false;
+                case "cless":case "mint":return 1;
+                case "alphen":case "shionne":return 2;
+                case "farah":return 3;
+                case "tear":case "jade":case "natalia":return 4;
+                case "velvet":case "kisara":return 5;
+                default:return 0;
             }
         }
+        public static bool Joined(string id,int number)=>Introduction(id)>0&&Introduction(id)<=Math.Max(1,number);
         public static GridMap Map(int stage)
         {
             int n=Episode(stage).Number;var map=new GridMap();

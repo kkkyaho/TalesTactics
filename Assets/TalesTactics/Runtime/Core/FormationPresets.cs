@@ -27,6 +27,7 @@ namespace TalesTactics
             if(preset?.Members==null||preset.Equipment==null)return "저장된 프리셋이 없습니다.";
             var members=preset.Members.Select(id=>Array.FindIndex(catalog.Characters,c=>c.Id==id)).ToArray();
             if(members.Length<1||members.Length>catalog.Rules.MaxDeployment||members.Any(i=>i<0)||members.Distinct().Count()!=members.Length)return "편성 캐릭터를 확인할 수 없습니다.";
+            if(catalog.CrossoverReady&&members.Any(i=>!CampaignRecruitment.Joined(save,catalog.Characters[i].Id)))return "아직 합류하지 않은 동료가 있는 프리셋입니다.";
             var draft=JsonUtility.FromJson<CampaignSave>(JsonUtility.ToJson(save));var seen=new HashSet<string>();
             foreach(var entry in preset.Equipment)
             {

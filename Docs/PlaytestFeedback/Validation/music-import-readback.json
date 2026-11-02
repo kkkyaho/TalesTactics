@@ -1,0 +1,99 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var library=UnityEditor.AssetDatabase.LoadAssetAtPath<TalesTactics.AudioLibrary>(\"Assets/TalesTactics/Content/AudioLibrary.asset\");return new{entries=library.Entries.Length,tracks=System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(System.Linq.Enumerable.Where(library.Entries,e=>e.Clip!=null&&UnityEditor.AssetDatabase.GetAssetPath(e.Clip).Contains(\"LocalMusic/\")),e=>{var path=UnityEditor.AssetDatabase.GetAssetPath(e.Clip);var i=(UnityEditor.AudioImporter)UnityEditor.AssetImporter.GetAtPath(path);var s=i.defaultSampleSettings;return new{id=e.Id,path,seconds=e.Clip.length,channels=e.Clip.channels,frequency=e.Clip.frequency,loadType=e.Clip.loadType.ToString(),compression=s.compressionFormat.ToString(),quality=s.quality,background=i.loadInBackground,preload=s.preloadAudioData};}))};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "entries": 24,
+        "tracks": [
+          {
+            "id": "title.local",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/99AA233359F955C515.mp3",
+            "seconds": 257.985321,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          },
+          {
+            "id": "intermission.local",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/Tales of Destiny 2 - Wilderness.mp3",
+            "seconds": 188.16,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          },
+          {
+            "id": "battle.spirit",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/9953EC3359F9562305.mp3",
+            "seconds": 181.551025,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          },
+          {
+            "id": "battle.sky",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/9993893359F955C218.mp3",
+            "seconds": 119.562447,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          },
+          {
+            "id": "battle.good-wine",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/99898D3359F955C018.mp3",
+            "seconds": 85.6032639,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          },
+          {
+            "id": "battle.decisive",
+            "path": "Assets/TalesTactics/Audio/LocalMusic/99852C3359F955BE1A.mp3",
+            "seconds": 96.62694,
+            "channels": 2,
+            "frequency": 44100,
+            "loadType": "Streaming",
+            "compression": "Vorbis",
+            "quality": 0.85,
+            "background": true,
+            "preload": true
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

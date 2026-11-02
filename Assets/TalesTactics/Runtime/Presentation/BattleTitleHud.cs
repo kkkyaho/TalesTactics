@@ -18,7 +18,7 @@ namespace TalesTactics
         public void ShowTitle()
         {
             if(battle.Session!=null||battle.StoryActive)return;
-            CloseMission();CloseHelp();CloseSystemMenu();CloseUnitDetails();battle.Audio.StopAll();
+            CloseMission();CloseHelp();CloseSystemMenu();CloseUnitDetails();battle.Audio.StopAll();battle.Audio.PlayTitle();
             if(titleRoot==null)
             {
                 titleRoot=Panel("TitleScreen",Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);titleRoot.GetComponent<UnityEngine.UI.Outline>().enabled=false;

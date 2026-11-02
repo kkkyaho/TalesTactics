@@ -143,7 +143,7 @@ namespace TalesTactics
             }
             var sprite=canopySprites[index];var go=new GameObject("Forest canopy "+index,typeof(SpriteRenderer));go.transform.SetParent(transform,false);
             go.transform.localPosition=foot;go.transform.localScale=Vector3.one*(height/sprite.bounds.size.y);go.transform.rotation=view.transform.rotation;
-            var renderer=go.GetComponent<SpriteRenderer>();renderer.sprite=sprite;renderer.sharedMaterial=spriteMaterial;renderer.color=Color.white;renderer.flipX=mirrored;billboards.Add(go.transform);canopy.Add(renderer);
+            var renderer=go.GetComponent<SpriteRenderer>();renderer.sprite=sprite;renderer.sharedMaterial=spriteMaterial;renderer.color=Color.white;renderer.flipX=mirrored;StandingSpriteDepth.Configure(renderer);billboards.Add(go.transform);canopy.Add(renderer);
             if(index<3&&shadowCasters.Count<24)shadowCasters.Add(new Vector4(foot.x,foot.z,height,foot.y));
         }
         void UpdateLivingCanopy()

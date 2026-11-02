@@ -54,7 +54,7 @@ namespace TalesTactics
             var end=line.GetPosition(path.Count-1);var direction=(end-line.GetPosition(path.Count-2)).normalized;
             pathArrow.transform.SetPositionAndRotation(end+Vector3.up*.01f,Quaternion.LookRotation(Vector3.up,direction));pathArrow.transform.localScale=Vector3.one*.32f;
             if(destinationGhost==null)
-            {var g=new GameObject("Destination ghost");g.transform.SetParent(root,false);destinationGhost=g.AddComponent<SpriteRenderer>();destinationGhost.sharedMaterial=SpriteMaterial;destinationGhost.sortingOrder=5;}
+            {var g=new GameObject("Destination ghost");g.transform.SetParent(root,false);destinationGhost=g.AddComponent<SpriteRenderer>();destinationGhost.sharedMaterial=UnitToneMaterial;StandingSpriteDepth.Configure(destinationGhost);}
             destinationGhost.enabled=true;destinationGhost.color=new Color(.55f,1,1,.65f);
             previewDestination=path[path.Count-1];UpdateMovementPreview();
         }

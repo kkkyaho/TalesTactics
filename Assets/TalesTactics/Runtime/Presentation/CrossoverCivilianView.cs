@@ -21,7 +21,7 @@ namespace TalesTactics
             view.properties=new MaterialPropertyBlock();view.shadows=new GroundOverlay[3];view.projectedShadows=new ProjectedUnitShadow[3];
             view.people=Enumerable.Range(0,3).Select(i=>{
                 var person=new GameObject("Civilian group "+i);person.transform.SetParent(root.transform,false);
-                var renderer=person.AddComponent<SpriteRenderer>();renderer.sharedMaterial=view.environment;
+                var renderer=person.AddComponent<SpriteRenderer>();renderer.sharedMaterial=view.environment;StandingSpriteDepth.Configure(renderer);
                 person.transform.localScale=Vector3.one*.78f;
                 person.transform.position=battle.Session.Grid[CrossoverBattle.Nodes[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.04f;
                 var shade=new GameObject("Civilian contact shadow "+i);shade.transform.SetParent(root.transform,false);

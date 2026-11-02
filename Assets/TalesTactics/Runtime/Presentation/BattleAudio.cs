@@ -30,7 +30,6 @@ namespace TalesTactics
             if(source.clip==clip&&source.isPlaying)return;
             source.clip=clip;source.Play();
         }
-        public void PlayBattle(bool boss)=>Play(boss&&Entry("boss")?.Clip!=null?"boss":"battle");
         public void BeginTheme(string id)
         {
             var clip=MusicClip(id);if(clip==null||themeActive)return;

@@ -1,0 +1,21 @@
+{
+  "derivedSummary": true,
+  "source": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\CampaignWindows-ca3e0c0b576a4526a64209185b749905\\validation.json",
+  "sourceSHA256": "A068EA12DDBB1F980BE9DC3B09C18DA441ED00B2D6F93FD8CFC1B032842E7FEC",
+  "passed": false,
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "userFilesUnchanged": true,
+  "userFilesBeforeCount": 4959,
+  "userDirectoriesBeforeCount": 2383,
+  "errorPrefix": "Invalid array passed in, ',' expected. (4178): {\n    \"status\": \"Completed\",\n    \"startedUtc\": \"2026-11-02T15:06:57.5569434Z\",\n    \"finishedUtc\": \"2026-11-02T15:11:28.2745534Z\",\n   ",
+  "reportPath": "D:/TalesTacticsBuildArchive/PlaytestFeedbackReview20261102Final3/CampaignFlowReviews/ca3e0c0b576a4526a64209185b749905/report.json",
+  "reportSHA256": "D73A4A3A909D0B25983B5CFA1190E3CF978C7EDB4CFB3AA22B7C987A9D8F4CE7",
+  "gameStatus": "Completed",
+  "completedStages": 20,
+  "checks": 24652,
+  "saveReloadChecks": 175,
+  "gameErrors": [],
+  "classification": "The Windows player completed 20 episodes and exited 0, but the external Windows PowerShell 5.1 wrapper failed to parse UTF-8 Korean speaker names under CP949. The wrapper result is failed and is not counted as a completed external validation. Exact local originals remain unmodified."
+}

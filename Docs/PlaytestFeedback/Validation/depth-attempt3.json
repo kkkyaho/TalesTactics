@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 0.12,\r\n  \"summary\": {\r\n    \"total\": 1,\r\n    \"passed\": 0,\r\n    \"failed\": 1,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"TalesTactics.PlayModeTests.StandingSpriteOcclusionTests.UprightDepthKeepsRearWallsBehindBodyButAllowsFrontWallsToHideIt\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 0.083694,\r\n      \"Message\": \"  Actor reference render is absent. Colors: RGBA(0, 0, 0, 255):65536\\r\\n  Expected: greater than 1500\\r\\n  But was:  0\\r\\n\",\r\n      \"StackTrace\": \"at TalesTactics.PlayModeTests.StandingSpriteOcclusionTests+<UprightDepthKeepsRearWallsBehindBodyButAllowsFrontWallsToHideIt>d__3.MoveNext () [0x00348] in C:\\\\dev\\\\TalesTactics\\\\Assets\\\\TalesTactics\\\\PlayModeTests\\\\StandingSpriteOcclusionTests.cs:40\\r\\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\\\Library\\\\PackageCache\\\\com.unity.test-framework@7a3849e09bd0\\\\UnityEngine.TestRunner\\\\NUnitExtensions\\\\Attributes\\\\TestEnumerator.cs:52\\r\\n\"\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>캐릭터 대기 표현 — 실제 GPU 캡처</title>
+<style>
+  :root{color-scheme:dark;font-family:system-ui,sans-serif;background:#151a20;color:#e6e9ee}
+  body{max-width:1220px;margin:36px auto;padding:0 20px;line-height:1.65}
+  h1{font-size:1.7rem;margin-bottom:8px} p{max-width:950px;color:#bfc8d3}
+  a{color:#9fcbff} main{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:30px}
+  section{border:1px solid #394350;border-radius:12px;padding:16px;background:#1b222b}
+  h2{font-size:1.1rem;margin:0 0 12px} figure{margin:0} img{display:block;width:100%;height:auto;cursor:pointer;background:#0d1318;border-radius:6px}
+  figcaption{min-height:2em;font-size:.88rem;color:#bfc8d3;margin-top:8px;overflow-wrap:anywhere}
+  .controls{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+  button{font:inherit;border:1px solid #566170;border-radius:6px;background:#222e3d;color:#e6e9ee;padding:5px 10px;cursor:pointer}
+  button[aria-pressed=true]{background:#284e75;border-color:#9fcbff}button:focus-visible,img:focus-visible{outline:2px solid #f5cf73;outline-offset:3px}
+  footer{font-size:.9rem;margin:28px 0;color:#bfc8d3} .hint{font-size:.9rem}
+</style>
+<h1>캐릭터 대기 표현 — 실제 GPU 캡처</h1>
+<p>Unity URP에서 렌더한 384×384 PNG 7장입니다. 원본을 보정·합성하지 않고 그대로 복사했습니다. 버튼 또는 이미지를 누르면 상태가 바뀝니다. 눈 긴장과 시선은 작은 변화이며 완전한 눈 감기는 포함하지 않습니다.</p>
+<p class="hint"><a href="manifest.json">원본 경로·SHA-256</a> · <a href="../Validation/visual-review.md">42장 시각 검수 범위와 한계</a></p>
+<main>
+  <section data-prefix="alphen-base-face" data-states="neutral,tension,focus">
+    <h2>알펜 — 눈매와 시선</h2>
+    <figure><img src="alphen-base-face-neutral.png" alt="알펜 기본 장비 얼굴 neutral 상태" tabindex="0"><figcaption aria-live="polite">alphen-base-face-neutral.png</figcaption></figure>
+    <div class="controls"><button data-state="neutral" aria-pressed="true">기본</button><button data-state="tension" aria-pressed="false">눈 긴장</button><button data-state="focus" aria-pressed="false">시선</button></div>
+    <a class="original" href="alphen-base-face-neutral.png">현재 원본 PNG 열기</a>
+  </section>
+  <section data-prefix="jade-base-face" data-states="neutral,tension">
+    <h2>제이드 — 안경 안쪽의 눈 긴장</h2>
+    <figure><img src="jade-base-face-neutral.png" alt="제이드 기본 장비 얼굴 neutral 상태" tabindex="0"><figcaption aria-live="polite">jade-base-face-neutral.png</figcaption></figure>
+    <div class="controls"><button data-state="neutral" aria-pressed="true">기본</button><button data-state="tension" aria-pressed="false">눈 긴장</button></div>
+    <a class="original" href="jade-base-face-neutral.png">현재 원본 PNG 열기</a>
+  </section>
+  <section data-prefix="alphen-base-body" data-states="neutral,settle">
+    <h2>알펜 — 발 고정과 상체 움직임</h2>
+    <figure><img src="alphen-base-body-neutral.png" alt="알펜 기본 장비 전신 neutral 상태" tabindex="0"><figcaption aria-live="polite">alphen-base-body-neutral.png</figcaption></figure>
+    <div class="controls"><button data-state="neutral" aria-pressed="true">기본</button><button data-state="settle" aria-pressed="false">체중 이동</button></div>
+    <a class="original" href="alphen-base-body-neutral.png">현재 원본 PNG 열기</a>
+  </section>
+</main>
+<footer>GPU5 실행: 8a00a36dbe2d46039b3efdc124d0d8a4 · 전체 캡처 100장 중 직접 육안 확인 42장 · 이 페이지에는 대표 7장만 포함합니다. 경고 수정 후 GPU6과 <a href="../Validation/idle-gpu5-gpu6-comparison.json">100PNG 파일·픽셀 동일성</a>을 확인했습니다. 정지 표본 비교이며 연속 영상이나 전장 전체 검수를 뜻하지 않습니다.</footer>
+<script>
+  for (const panel of document.querySelectorAll('section[data-prefix]')) {
+    const states=panel.dataset.states.split(',');
+    const img=panel.querySelector('img');
+    const alt=img.alt.replace(' neutral 상태','');
+    let current=0;
+    function show(index){
+      current=index;
+      const state=states[index],name=panel.dataset.prefix+'-'+state+'.png';
+      img.src=name;img.alt=alt+' '+state+' 상태';
+      panel.querySelector('figcaption').textContent=name;
+      panel.querySelector('.original').href=name;
+      for(const button of panel.querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.state===state));
+    }
+    for(const button of panel.querySelectorAll('button'))button.addEventListener('click',()=>show(states.indexOf(button.dataset.state)));
+    img.addEventListener('click',()=>show((current+1)%states.length));
+    img.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();show((current+1)%states.length);}});
+  }
+</script>
+</html>

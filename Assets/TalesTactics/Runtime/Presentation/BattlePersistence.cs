@@ -36,9 +36,9 @@ namespace TalesTactics
         bool WriteProgress(CampaignSave save,bool preserveCheckpoint)
         {
             var previous=save.SuspendedBattle;bool hadCheckpoint=save.HasSuspendedBattle;var timestamp=save.SavedAt;var deployment=save.Deployment;int stage=save.SelectedStage;
-            if(!preserveCheckpoint)save.SuspendedBattle=null;
             save.SavedAt=DateTime.UtcNow.ToString("o");save.Deployment=Deployment.ToArray();save.SelectedStage=SelectedStage;
-            if(Profiles.Store.Save(save)){SaveNotice="저장 완료 · 슬롯 "+(Profiles.Slot+1)+" · "+DateTime.Now.ToString("HH:mm:ss");return true;}
+            bool saved=preserveCheckpoint?Profiles.Store.Save(save):CampaignRecruitment.TryConsumeCheckpoint(save,Profiles.Store.Save);
+            if(saved){SaveNotice="저장 완료 · 슬롯 "+(Profiles.Slot+1)+" · "+DateTime.Now.ToString("HH:mm:ss");return true;}
             save.SuspendedBattle=previous;save.HasSuspendedBattle=hadCheckpoint;save.SavedAt=timestamp;save.Deployment=deployment;save.SelectedStage=stage;
             SaveNotice=Profiles.Store.Notice;return false;
         }

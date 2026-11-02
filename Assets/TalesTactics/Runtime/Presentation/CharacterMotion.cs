@@ -21,6 +21,7 @@ namespace TalesTactics
         public bool Presenting=>presenting;
         bool timingSpin;
         float spinProgress;
+        readonly CharacterIdlePresentation idle=new CharacterIdlePresentation();
         public AnimationKind Action=>action;
         public UnitRuntime Owner=>unit;
         public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera)
@@ -98,7 +99,7 @@ namespace TalesTactics
             var color=art!=null?Color.white:unit.Data.PlaceholderColor;
             switch(action)
             {
-                case AnimationKind.Idle: bob=Mathf.Sin(t*3)*.004f;break;
+                case AnimationKind.Idle:break; // The shader settles the upper body while the feet stay planted.
                 case AnimationKind.Walk:if(frame==null){bob=Mathf.Abs(Mathf.Sin(t*14))*0.055f;angle=Mathf.Sin(t*14)*2;}break;
                 case AnimationKind.Attack:case AnimationKind.Skill:
                     float motionTime=presenting?(released?windup+Time.time-releasedAt:Mathf.Min(t,windup)):t;
@@ -137,6 +138,9 @@ namespace TalesTactics
             transform.localPosition=offset;
             transform.rotation=cameraView.transform.rotation*Quaternion.Euler(0,0,angle);
             transform.localScale=new Vector3(1,scaleY,1);sprite.color=color;
+            idle.Apply(sprite,unit.Data,view,CharacterIdlePresentation.Sample(unit.Data.Id,Time.time),
+                action==AnimationKind.Idle&&!presenting&&!timingSpin&&unit.Alive&&sprite.enabled&&!sprite.forceRenderingOff);
         }
+        void OnDisable()=>idle.Clear(sprite);
     }
 }

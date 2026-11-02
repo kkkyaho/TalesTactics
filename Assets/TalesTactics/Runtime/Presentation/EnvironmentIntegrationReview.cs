@@ -277,7 +277,9 @@ namespace TalesTactics
             catch(Exception e){Debug.LogError("Environment review finalization failed: "+e);}
             finally
             {
-                Time.timeScale=oldScale;Application.runInBackground=oldBackground;
+                // A hidden standalone player must keep ticking until deferred Quit completes.
+                // Editor restores immediately; standalone restores during OnDestroy.
+                if(Application.isEditor){Time.timeScale=oldScale;Application.runInBackground=oldBackground;}
 #if UNITY_EDITOR
                 try{RestoreEditorResolution();}catch(Exception e)
                 {

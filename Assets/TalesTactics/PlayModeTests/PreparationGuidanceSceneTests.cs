@@ -9,20 +9,21 @@ namespace TalesTactics.PlayModeTests
     {
         // Explicit preparation fixture: no simulated victory, reward or automatic balance claim.
         // The shared fixture redirects every write to its unique temporary profile directory.
-        void PreparationGuidanceEpisode(int episode)
+        void PreparationGuidanceEpisode(int episode,bool alreadyIntroduced=false)
         {
             TitleSetup();Assert.That(director.StartTitleGame(0),Is.True);
             for(int number=1;number<episode;number++)director.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(number));
             director.SelectedStage=CrossoverCampaign.FirstStage+episode-1;
             director.Campaign.SelectedStage=director.SelectedStage;
+            if(alreadyIntroduced)director.Campaign.StoryProgress.Add(CampaignRecruitment.Flag(episode));
         }
         string PreparationButtonText(string name)=>FormationControl(name).GetComponentInChildren<TMPro.TMP_Text>().text;
         string[] PreparationArrivalIds()=>director.Hud.GetComponentsInChildren<TMPro.TMP_Text>()
             .Where(t=>t.name.StartsWith("CurrentEpisodeArrival-")).Select(t=>t.name.Substring("CurrentEpisodeArrival-".Length)).ToArray();
 
-        [UnityTest] public IEnumerator ArrivalGuidanceShowsOnlyCurrentJoinedCompanionsAndBrowsingDoesNotSave()
+        [UnityTest] public IEnumerator ArrivalGuidanceShowsAlreadyIntroducedCompanionsAndBrowsingDoesNotSave()
         {
-            PreparationGuidanceEpisode(2);int writes=0;director.PersistCampaign=_=>{writes++;return true;};
+            PreparationGuidanceEpisode(2,true);int writes=0;director.PersistCampaign=_=>{writes++;return true;};
             director.Hud.ShowDeployment();yield return null;
             Click("병과 필터");yield return null;Click("병과 필터");yield return null;
             Assert.That(director.Hud.GetComponentInChildren<FormationRosterScroll>().Content.childCount,Is.EqualTo(1));
@@ -35,7 +36,7 @@ namespace TalesTactics.PlayModeTests
             Assert.That(PreparationArrivalIds(),Is.EquivalentTo(new[]{"alphen","shionne"}));
             Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(before));Assert.That(director.Deployment,Is.EqualTo(party));Assert.That(writes,Is.Zero);
 
-            director.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(2));director.Hud.ShowIntermissionHub();yield return null;
+            director.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(2));director.Campaign.StoryProgress.Add(CampaignRecruitment.Flag(3));director.Hud.ShowIntermissionHub();yield return null;
             Assert.That(PreparationButtonText("합류 동료 편성 보기"),Does.Contain("파라").And.Not.Contain("알펜").And.Not.Contain("시온"));
             Click("합류 동료 편성 보기");yield return null;
             Assert.That(PreparationArrivalIds(),Is.EquivalentTo(new[]{"farah"}),"Earlier companions must not remain marked as current arrivals.");
@@ -74,7 +75,7 @@ namespace TalesTactics.PlayModeTests
 
         [UnityTest] public IEnumerator ArrivalAndTrainingGuidancePreserveFullSixMemberPartyAndTrainingModeIsReadOnly()
         {
-            PreparationGuidanceEpisode(5);
+            PreparationGuidanceEpisode(5,true);
             director.Deployment.Clear();director.Deployment.AddRange(new[]{"cless","mint","alphen","shionne","farah","jade"}.Select(id=>System.Array.FindIndex(director.Catalog.Characters,c=>c.Id==id)));
             var party=director.Deployment.ToArray();int writes=0;director.PersistCampaign=_=>{writes++;return true;};
             director.Hud.ShowIntermissionHub();yield return null;

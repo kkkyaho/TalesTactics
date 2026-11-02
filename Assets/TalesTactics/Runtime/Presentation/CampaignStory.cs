@@ -42,7 +42,7 @@ namespace TalesTactics
                 string prefix=CampaignStages.Id(stage)+".route.";bool left=Campaign.StoryProgress.Contains(prefix+"left"),right=Campaign.StoryProgress.Contains(prefix+"right");
                 if(left||right){int choice=left?0:1;storyLines=storyLines.Concat(new[]{new StoryLine("선택의 기록",PersonalScenarios.RouteName(stage,choice)+"을 먼저 연결했다. 동료들이 그 길을 지키는 동안 "+PersonalScenarios.RouteName(stage,1-choice)+"까지 이어 모두의 귀환로를 확보했다.")}).ToArray();}
             }
-            StoryIndex = 0; StoryStage = stage; StoryActive = true; Audio.Play("story");
+            StoryIndex = 0; StoryStage = stage; StoryActive = true; Audio.PlayStory(stage,after);
             Hud.ShowStoryLine(storyLines[StoryIndex], StoryIndex + 1, storyLines.Length);
         }
         public void AdvanceStory()

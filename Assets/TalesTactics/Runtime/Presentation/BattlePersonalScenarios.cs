@@ -9,10 +9,9 @@ namespace TalesTactics
         public bool IsJoined(CharacterData character)
         {
             if(!Catalog.CrossoverReady)return true;
-            int episode=1;while(episode<20&&Campaign.StoryProgress.Contains(CrossoverCampaign.Flag(episode)))episode++;
-            return CrossoverCampaign.Joined(character.Id,episode);
+            return CampaignRecruitment.Joined(Campaign,character.Id);
         }
-        public bool CanDeploy(int index)=>index>=0&&index<Catalog.Characters.Length&&(TrainingMode||!CrossoverCampaign.IsMain(SelectedStage)||CrossoverCampaign.Joined(Catalog.Characters[index].Id,CrossoverCampaign.Episode(SelectedStage).Number));
+        public bool CanDeploy(int index)=>index>=0&&index<Catalog.Characters.Length&&(TrainingMode||IsJoined(Catalog.Characters[index])&&(!CrossoverCampaign.IsMain(SelectedStage)||CrossoverCampaign.Joined(Catalog.Characters[index].Id,CrossoverCampaign.Episode(SelectedStage).Number)));
         public void NormalizeDeployment()
         {
             Deployment.RemoveAll(i=>!CanDeploy(i));
@@ -76,7 +75,7 @@ namespace TalesTactics
             Label(center,"왼쪽 (2,7) 또는 오른쪽 (10,7)의 신호부터 확보하세요.\n선택한 첫 신호 뒤에는 나머지 신호와 중앙 (6,10)을 연결합니다.\n구출 불가 분기는 없습니다.",110,175,21);
             Button(center,PersonalScenarios.RouteName(battle.SelectedStage,0)+"부터",320,()=>battle.ChooseScenarioRoute(0),true,60);
             Button(center,PersonalScenarios.RouteName(battle.SelectedStage,1)+"부터",395,()=>battle.ChooseScenarioRoute(1),true,60);
-            Button(commands,"돌아가기",30,()=>{if(PersonalScenarios.Contains(battle.SelectedStage))ShowPersonalScenarios();else ShowDeployment();},true,50);
+            Button(commands,"돌아가기",30,()=>{if(battle.Session!=null||battle.StoryActive)return;battle.Audio.PlayIntermission();if(PersonalScenarios.Contains(battle.SelectedStage))ShowPersonalScenarios();else ShowDeployment();},true,50);
         }
     }
 }

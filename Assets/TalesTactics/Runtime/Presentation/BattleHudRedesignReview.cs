@@ -340,7 +340,9 @@ namespace TalesTactics
             }
             finally
             {
-                Time.timeScale=oldScale;Application.runInBackground=oldBackground;
+                // A hidden standalone player must keep ticking until deferred Quit completes.
+                // Editor restores immediately; standalone restores during OnDestroy.
+                if(Application.isEditor){Time.timeScale=oldScale;Application.runInBackground=oldBackground;}
 #if UNITY_EDITOR
                 try{RestoreEditorResolution();}catch(Exception e){exit=1;report.passed=false;report.status="Stopped or failed";errors.Add("Resolution restore failed: "+e);try{Write();}catch(Exception writeError){Debug.LogError(writeError);}}
                 finally{UnityEditor.SessionState.SetInt("TalesTactics.BattleHudRedesignReviewExit",exit);UnityEditor.EditorApplication.isPlaying=false;}

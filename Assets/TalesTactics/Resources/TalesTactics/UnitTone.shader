@@ -17,11 +17,14 @@ Shader "TalesTactics/UnitTone"
         _GroundAnchor ("Ground anchor",Vector)=(0,0,0,0)
         _SpriteSpan ("Sprite vertical span",Vector)=(0,1,0,0)
         _KeyDirection ("World sunlight direction",Vector)=(-.45,.85,-.35,0)
+        _StandingDepth ("Upright sprite depth",Range(0,1))=0
         _BodyVolume ("Authored body light",Range(0,.15))=0
+        [HideInInspector] _IdleMotion ("Idle motion",Vector)=(0,0,0,0)
+        [HideInInspector] _IdleFace ("Idle face",Vector)=(0,0,0,0)
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" "CanUseSpriteAtlas"="True" }
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" "CanUseSpriteAtlas"="True" "DisableBatching"="True" }
         Cull Off ZWrite Off Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
@@ -30,13 +33,16 @@ Shader "TalesTactics/UnitTone"
             #pragma fragment frag
             #include "UnityCG.cginc"
             #include "EnvironmentLight.cginc"
+            #include "StandingSpriteDepth.cginc"
+            #include "CharacterIdle.cginc"
             struct appdata {float4 vertex:POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;};
-            struct v2f {float4 position:SV_POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;float3 world:TEXCOORD1;float height:TEXCOORD2;float side:TEXCOORD3;};
+            struct v2f {float4 position:SV_POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;float3 world:TEXCOORD1;float height:TEXCOORD2;float side:TEXCOORD3;float2 local:TEXCOORD4;};
             sampler2D _MainTex;fixed4 _Color,_EnvironmentTint;half _Saturation,_Brightness,_ArtSaturation,_ArtContrast,_EnvironmentLight,_CanopyShade,_GroundShade;
             half4 _KeyColor,_FillColor;float4 _GroundAnchor,_SpriteSpan,_KeyDirection;half _BodyVolume;
             v2f vert(appdata v)
             {
-                v2f o;o.position=UnityObjectToClipPos(v.vertex);o.uv=v.uv;o.color=v.color*_Color;
+                v2f o;o.position=StandingSpriteClip(v.vertex);o.uv=v.uv;o.color=v.color*_Color;
+                o.local=v.vertex.xy;
                 o.world=mul(unity_ObjectToWorld,v.vertex).xyz;
                 o.height=saturate((v.vertex.y-_SpriteSpan.x)/max(.01,_SpriteSpan.y));
                 float width=saturate((v.vertex.x-_SpriteSpan.z)/max(.01,_SpriteSpan.w))*2-1;
@@ -45,7 +51,7 @@ Shader "TalesTactics/UnitTone"
             }
             fixed4 frag(v2f i):SV_Target
             {
-                fixed4 c=tex2D(_MainTex,i.uv);half gray=dot(c.rgb,half3(.2126,.7152,.0722));
+                fixed4 c=CharacterIdlePixel(_MainTex,i.uv,i.local);half gray=dot(c.rgb,half3(.2126,.7152,.0722));
                 c.rgb=TalesPalette(c.rgb,_ArtSaturation,_ArtContrast);
                 half3 light=lerp(_FillColor.rgb,_KeyColor.rgb,smoothstep(0,.75,i.height));
                 // A restrained broad side plane preserves the painted face/armor details.

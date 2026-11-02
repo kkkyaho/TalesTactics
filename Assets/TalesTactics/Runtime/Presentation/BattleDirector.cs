@@ -152,6 +152,14 @@ namespace TalesTactics
             if(!TrainingMode&&!CanPlayCampaignStage(SelectedStage))return;
             NormalizeDeployment();
             if(StoryActive||Campaign.HasPendingAfterStory||Session!=null||Deployment.Count<1||!TrainingMode&&!CampaignStages.Unlocked(Campaign,SelectedStage))return;completed=false;RewardPending=false;
+            if(!TrainingMode)
+            {
+                var previous=Deployment.ToArray();
+                var party=CampaignRecruitment.BattleDeployment(Campaign,Catalog,SelectedStage,previous);
+                Deployment.Clear();Deployment.AddRange(party);
+                if(!CampaignRecruitment.TryBegin(Campaign,Catalog,SelectedStage,PersistCampaign))
+                {Deployment.Clear();Deployment.AddRange(previous);SaveNotice="합류 동료 저장 실패 · 출전을 시작하지 않았습니다. 다시 시도하세요.";Hud.ShowIntermissionHub();return;}
+            }
             battleStage=SelectedStage;battleTraining=TrainingMode;pendingReward=null;
             Session=new BattleSession(Catalog,Deployment,TrainingMode?25:1,TrainingMode?25:CampaignStages.EnemyLevel(SelectedStage),TrainingMode?-1:SelectedStage,UseCT,UseUtilityAI,TrainingMode?TrainingObjective:ObjectiveKind.Eliminate,teamTurns:!UseCT&&!UseFixedSpeedOrder,phaseSurvival:true,tacticalCombat:true,bossEncounters:true,difficulty:Preferences.Difficulty,missionEvents:Preferences.MissionEvents,reactions:Preferences.Reactions,expandedEncounters:true);
             foreach(var u in Session.Units.Where(u=>u.Team==Team.Player))

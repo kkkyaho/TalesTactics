@@ -1,0 +1,71 @@
+{
+  "derivedSummary": true,
+  "source": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\WindowsHud-504eb11b980e4101b55ee0be8274cded\\validation.json",
+  "sourceSHA256": "C39169963879F58B17004A2C786E01F8FFEB2264C6352864E5DC119321831067",
+  "schema": 2,
+  "validationKind": "character-depth-hud",
+  "mode": "Review",
+  "runId": "504eb11b980e4101b55ee0be8274cded",
+  "startedUtc": "2026-11-02T15:04:10.0922829Z",
+  "finishedUtc": "2026-11-02T15:04:49.9726337Z",
+  "passed": true,
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\PlaytestFeedback\\Validation\\Validate-PlaytestFeedbackHud.ps1",
+  "wrapperSHA256": "fc09356da5e5a65d03221e856e466b9e9b67d30f312ef9e6d725068a7d40224c",
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "windowStyle": "Hidden",
+  "timeoutSeconds": 240,
+  "normalBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackWindows20261102Final2",
+  "reviewBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3",
+  "sourceReport": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\BattleHudRedesignReviews\\504eb11b980e4101b55ee0be8274cded\\result.json",
+  "output": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\BattleHudRedesignReviews\\504eb11b980e4101b55ee0be8274cded",
+  "expectedStorage": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\BattleHudRedesignReviews\\504eb11b980e4101b55ee0be8274cded\\Storage",
+  "reportValid": true,
+  "expectedRows": 32,
+  "verifiedPngCount": 32,
+  "userRoot": "C:\\Users\\USER-PC\\AppData\\LocalLow\\LocalTactics\\TalesTactics",
+  "userFilesUnchanged": true,
+  "preflightUserTreeStable": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "baseline": "Fresh recursive user-tree SHA256 snapshot excluding only root Player.log and Player-prev.log; no prior baseline dependency.",
+  "allowExistingPlayers": false,
+  "requiredExistingPlayerId": 0,
+  "existingPidsPreserved": [],
+  "existingPlayers": [],
+  "existingPlayerChecks": [],
+  "existingPlayersUnchanged": true,
+  "ownProcess": {
+    "id": 80828,
+    "startedTicks": 639292286667278718,
+    "exe": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\TalesTactics.exe"
+  },
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "e1b86be6b46f9cc888da19f07b40839af386970c879458015e6c23212bab9d22",
+  "playerLog": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\WindowsHud-504eb11b980e4101b55ee0be8274cded\\player.log",
+  "errors": [],
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run is 32 HUD captures: eight command/skills/facing/forecast/hover/pan/zoom states at two resolutions and two/six allies. It is not natural progression, balance, all poses/maps, performance or human art approval.",
+    "Runtime shadow type evidence and nonblank HUD images do not prove silhouette correctness, opacity, clipping at terrain edges, direction or stable foot contact. Those require targeted tests and manual inspection of the actual PNGs.",
+    "Capture manifest retains actor position, orthographic size and viewport for later comparison. This wrapper does not itself establish matching camera framing against earlier captures.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player."
+  ],
+  "userTreeBeforeCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "userTreeAfterCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "omittedRawFields": "Recursive user tree entries remain in the exact local source, with SHA256 above; this versioned summary preserves verdicts/counts and does not reproduce user filenames."
+}

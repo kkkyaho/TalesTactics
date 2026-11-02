@@ -17,6 +17,7 @@ namespace TalesTactics
         {
             if(battle.Session!=null||battle.StoryActive)return;
             if(battle.ResumePendingEnding())return;
+            battle.Audio.PlayIntermission();
             if(!battle.TrainingMode&&battle.Catalog.CrossoverReady)battle.SelectCurrentMain();
             BeginPreparation("출전 준비");hubLayout=true;left.gameObject.SetActive(false);commands.gameObject.SetActive(false);HubLayout();
             StoryBackdrop(center);

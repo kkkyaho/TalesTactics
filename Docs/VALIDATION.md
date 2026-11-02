@@ -1,4 +1,20 @@
-# 검증 기록 — 2026-11-02
+# 검증 기록 — 2026-11-03
+
+## 2026-11-02~03 — 플레이 피드백 일괄 반영
+
+벽·기둥 가림, 발 고정 대기·미세한 시선/눈매, 알펜 몸체 크기, 등장 전 거점 숨김·등장 전투 강제 출전·합류 평균 레벨, 지정 로컬 음악6곡과 기존 곡의 상황별 배치를 적용했다. [구현·전체 증거](PlaytestFeedback/README.md), [대기 원본 비교](PlaytestFeedback/Evidence/gallery.html), [Windows 원본 화면](PlaytestFeedback/Evidence/Windows/gallery.html).
+
+실제 Unity **EditMode469/469(17.97초)**를 통과했다. 전체 PlayMode는 **281/282(712.14초)**이며 새12개 검사는 모두 통과했다. 유일 실패는 기존 상점 검사의 “전원 합류” fixture가 새 등장 규칙에서는 미합류인 상태였기 때문이다. 준비 상태를 고치고 전제 assertion을 추가한 뒤 기존7종 구매·장착·가격·재로드 검사 **1/1(9.10초)**를 통과했다. 제품 코드는 이 수정에서 바뀌지 않았고, 이를 단일 전체282/282 실행으로 합산하지 않는다. [전체 Edit](PlaytestFeedback/Validation/editmode-final.json), [전체 Play 최초](PlaytestFeedback/Validation/playmode-full-attempt1.json), [상점 별도 재검사](PlaytestFeedback/Validation/playmode-shop-final.json).
+
+이후 DX11 셰이더의 초기화 경고를 단일 반환·유효 눈 반지름 가드로 고쳤다. 최종 대기 GPU **1/1(5.64초)**·깊이 GPU **1/1(0.29초)**를 다시 통과했고 전후100PNG의 SHA·RGBA가 모두 동일했다. 초기 피부 재구성의 시각 불합격과 검사 fixture 실패는 성공 이력에 합산하지 않는다. 직접 확인한 얼굴/전신42장과 Windows 전장10·HUD6장만 시각 승인 범위다. Windows6축 표본 점수4/3/4/4/4/4이며 전체 palette 자동 스캔·모션 영상·성능 측정은 하지 않았다. 알펜의 Windows 전장 표본은 없으며 native alpha 높이·GPU 렌더/사이징 검사와 구분한다. [비교 증거](PlaytestFeedback/Validation/idle-gpu5-gpu6-comparison.json), [Windows 시각 검토](PlaytestFeedback/Validation/windows-visual-review.md).
+
+일반 Windows Final2 **78.0067608초·오류0·경고4**, REVIEW Final3 **33.5064796초·오류0·경고7** 빌드와 일반 DLL 검수/테스트 타입 제외를 확인했다. 새 shader/API 경고는 제거했으며 기존 Pipeline·SD 검수 API·DEVELOPMENT_BUILD 경고는 남아 있다. REVIEW의 미컴파일 Editor 변경 경고는 검수 전용 런타임 API 한 줄 수정 후 빌드할 때 발생했다. Editor import/postprocess 변경은 없고 Player에는 새 overload가 컴파일됐다. 일반 Final2 후 바뀐 소스는 일반 빌드에서 전부 제외되는 LocalMusicReview 한 줄뿐이다. [일반 BuildReport](PlaytestFeedback/Validation/build-normal-final.json), [REVIEW BuildReport](PlaytestFeedback/Validation/build-review-final.json).
+
+Windows 전장 **90/90**·HUD **32/32**·음악 **14/14** 외부 검수는 모두 정상 종료0·오류0, 사용자 전체4,959파일·2,383디렉터리 불변(최상위 Player.log/Player-prev.log 두 이름만 제외)이다. 음악 검사는 짧은 구간의 클립 선택·샘플/DSP 진행·비영점 출력 관측이며 전곡 청취·각 곡 PCM의 독립 식별·루프 경계 검수가 아니다. 일반 실행본 수동 플레이나 공개 배포는 이번 범위에 포함하지 않는다. DOF/Panini shader 관련 런타임 경고는 실행 로그에 보존한다.
+
+캠페인 최초 게임 실행은20화·24,652검사·175저장 재로드·정상 종료0으로 완료됐지만 외부 PS5 래퍼가 BOM 없는 UTF-8 한글 화자명을 CP949로 읽어 JSON 파싱에 실패했다. 실패 판정은 보존하고 UTF-8 읽기를 명시했다. 기존 원본93파일과 실패 결과의 해시를 유지한 독립 동일 assertion은20화·48PNG·40저장 비교를 통과했다. 이후 새 GUID 전체 실행은 **20/20화·24,626검사·175재로드·48PNG·40저장 JSON 비교(271.47초)**를 통과했고 외부 래퍼도 **PASS·정상 종료0·오류0·강제 정리 없음·사용자 전체 트리 불변**으로 완료했다. [최종 외부 요약](PlaytestFeedback/Validation/windows-campaign-summary.json), [실제 게임 결과](PlaytestFeedback/Validation/windows-campaign-player-report.json), [20화별 캡처·저장 비교](PlaytestFeedback/Validation/windows-campaign-stage-manifest.json). [최초 실패 요약](PlaytestFeedback/Validation/windows-campaign-attempt1-summary.json).
+
+검증 소스70개 SHA는 마지막 재빌드 후 동일하다. 작업 전 수정12파일·사용자 실제 저장/설정8파일의 초기 바이트를 보존했고, 테스트가 생성한 font/CSV는 별도 보존 후 작업 시작 백업으로 복원했다. TestResults.xml은 생성 테스트 결과로 변경되었으며 사용자 저장과 구분한다. Editor는 중지·씬clean·runInBackground=false, auto-tick true/16ms 및 저장 설정 true/16ms로 원래 상태와 같다. 최종 console groundTruth는 오류0·경고7이며 과거 오류77개인 캡처 버퍼와 구분한다. [보호 파일](PlaytestFeedback/Validation/preexisting-files-final.json), [사용자 파일](PlaytestFeedback/Validation/user-files-final.json), [소스 SHA](PlaytestFeedback/Validation/source-final-sha256.json), [현재 콘솔과 과거 버퍼](PlaytestFeedback/Validation/console-final.json).
 
 ## 2026-11-02 — 캐릭터 입체감 적용과 Windows 검증
 

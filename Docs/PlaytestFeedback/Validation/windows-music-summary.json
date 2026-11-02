@@ -1,0 +1,137 @@
+{
+  "derivedSummary": true,
+  "source": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\validation.json",
+  "sourceSHA256": "C84349363F657AAED12B55A039C175330CCE857B948F4AB3AF9803B1C406B4B1",
+  "schema": 1,
+  "validationKind": "local-music",
+  "mode": "Review",
+  "runId": "5a3a52233f48485cb962dc78ada41685",
+  "startedUtc": "2026-11-02T15:05:25.2416334Z",
+  "finishedUtc": "2026-11-02T15:05:56.6169512Z",
+  "passed": true,
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\PlaytestFeedback\\Validation\\Validate-LocalMusicWindows.ps1",
+  "wrapperSHA256": "3a59d189522efeee2a7d53f67a4b78aeb3f17f7d001e36a0fdd48e3daddba1cd",
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "windowStyle": "Hidden",
+  "timeoutSeconds": 180,
+  "normalBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackWindows20261102Final2",
+  "reviewBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3",
+  "sourceReport": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\LocalMusicReviews\\5a3a52233f48485cb962dc78ada41685\\result.json",
+  "output": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\LocalMusicReviews\\5a3a52233f48485cb962dc78ada41685",
+  "expectedStorage": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\LocalMusicReviews\\5a3a52233f48485cb962dc78ada41685\\Storage",
+  "reportValid": true,
+  "expectedRows": 14,
+  "verifiedAudioRows": 14,
+  "userRoot": "C:\\Users\\USER-PC\\AppData\\LocalLow\\LocalTactics\\TalesTactics",
+  "userFilesUnchanged": true,
+  "preflightUserTreeStable": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "baseline": "Fresh recursive user-tree SHA256 snapshot excluding only root Player.log and Player-prev.log; no prior baseline dependency.",
+  "allowExistingPlayers": false,
+  "requiredExistingPlayerId": 0,
+  "existingPidsPreserved": [],
+  "existingPlayers": [],
+  "existingPlayerChecks": [],
+  "existingPlayersUnchanged": true,
+  "ownProcess": {
+    "id": 80628,
+    "startedTicks": 639292287423996612,
+    "exe": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\TalesTactics.exe"
+  },
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "e1b86be6b46f9cc888da19f07b40839af386970c879458015e6c23212bab9d22",
+  "playerLog": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\player.log",
+  "errors": [],
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run validates six supplied MP3s and 14 start/transition/theme playback intervals with advancing samples/DSP and nonzero output, not full songs, loop seams, listening quality, all campaign encounters or balance.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player."
+  ],
+  "userTreeBeforeCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "userTreeAfterCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "omittedRawFields": "Only recursive userFilesBefore/userFilesAfter entries are omitted. Exact entries remain in the local source with its SHA256 above; counts and all other validation fields are preserved.",
+  "typeIsolationPassed": true,
+  "rawEvidence": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\validation.json",
+      "bytes": 4415174,
+      "sha256": "C84349363F657AAED12B55A039C175330CCE857B948F4AB3AF9803B1C406B4B1"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\user-tree-before.json",
+      "bytes": 1566440,
+      "sha256": "766E8D6744355A8626DAF6F5A4695E696B231EAB3200EBD535DA0D731A2A46A4"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\user-tree-after.json",
+      "bytes": 1566440,
+      "sha256": "766E8D6744355A8626DAF6F5A4695E696B231EAB3200EBD535DA0D731A2A46A4"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\player-type-isolation.json",
+      "bytes": 366320,
+      "sha256": "68C5841CF5CA3B741DBFA1C53D0C506AC555FB548E1E70EDAA93576A0CB5279B"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\player-report.json",
+      "bytes": 12073,
+      "sha256": "C61E7814F98DF0B9A00C50F758C001E1D9C22881C46CA6697A30DC54D74810E4"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\audio-manifest.json",
+      "bytes": 7071,
+      "sha256": "6A8D4F9F986D0AAEE3B609D1F28A0BAD6BA71310951DA1AE720548D017915EB3"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\player.log",
+      "bytes": 1623,
+      "sha256": "65F1B6D8F6205E61EAAF09B576B2EB0DB456A8A58E2AF9740CDCCE90304D800F"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\log-findings.json",
+      "bytes": 6,
+      "sha256": "B423BB45501E0FA49D3B77E635F800A29F1FDCF5A58E00C7E04A7FF7833045F2"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\launch-plan.json",
+      "bytes": 1393,
+      "sha256": "30517DC105360C1C8689CD9AB76ABE8AA535C610E5EA1414B1F4FEF240AE1307"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\own-process.json",
+      "bytes": 165,
+      "sha256": "B7D4B411BD39B4EC502B337E8F2F84133F4425E91FFE7075B5FEA4B2F5A7E8ED"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\process-samples.json",
+      "bytes": 229,
+      "sha256": "AFE394C9F9AB8C7AB0B99F86B4EC81BF36084112253C12D5C8AC670C5C4AA6E6"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\existing-players-before.json",
+      "bytes": 6,
+      "sha256": "B423BB45501E0FA49D3B77E635F800A29F1FDCF5A58E00C7E04A7FF7833045F2"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\LocalMusicWindows-5a3a52233f48485cb962dc78ada41685\\existing-players-after.json",
+      "bytes": 6,
+      "sha256": "B423BB45501E0FA49D3B77E635F800A29F1FDCF5A58E00C7E04A7FF7833045F2"
+    }
+  ]
+}

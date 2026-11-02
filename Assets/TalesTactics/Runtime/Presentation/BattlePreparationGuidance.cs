@@ -10,8 +10,8 @@ namespace TalesTactics
             CampaignStages.Unlocked(battle.Campaign,battle.SelectedStage)&&FormationProgress(character).Level<PreparationTrainingTarget;
         CharacterData[] PreparationTrainees()=>JoinedCharacters().Where(PreparationTrainingAvailable)
             .OrderByDescending(c=>battle.Deployment.Contains(Array.IndexOf(battle.Catalog.Characters,c))).ToArray();
-        // This describes the current episode, not an unread notification. No new save flag
-        // or speculative future companion is needed, and the label disappears next episode.
+        // Only companions already met in this episode get this badge. The shared joined
+        // roster hides future introductions; this is not a separate unread notification.
         CharacterData[] CurrentEpisodeArrivals()
         {
             if(battle.TrainingMode||!battle.Catalog.CrossoverReady||!CrossoverCampaign.IsMain(battle.SelectedStage))return Array.Empty<CharacterData>();

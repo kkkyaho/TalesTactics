@@ -39,14 +39,18 @@ namespace TalesTactics.PlayModeTests
         }
         [UnityTest] public IEnumerator SevenStandardWeaponCardsPurchaseEquipAndReloadThroughActualShop()
         {
-            // Isolated preparation fixture with all companions joined; not a campaign victory simulation.
-            PreparationGuidanceEpisode(5);director.Campaign.Gold=2000;int purchases=0;
+            // Isolated preparation after episode 5's introductions, before its completion.
+            // All companions can receive gear; this does not simulate a campaign victory.
+            PreparationGuidanceEpisode(5,true);director.Campaign.Gold=2000;int purchases=0;
+            Assert.That(director.Catalog.Characters.All(director.IsJoined),Is.True,"The seven-weapon shop fixture requires every companion to have joined.");
+            Assert.That(director.Campaign.StoryProgress,Does.Not.Contain(CrossoverCampaign.Flag(5)));
             string[] ids={"training-staff","steel-claw","steel-fist","training-spear","reinforced-bow","infantry-rifle","steel-shield"};
             foreach(string id in ids)
             {
                 director.Hud.ShowDeployment();yield return null;Click("장비 상점");yield return null;
                 if(director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="무기")){Click("무기");yield return null;}
                 var item=director.Catalog.Equipment.Single(e=>e.Id==id);string name=item.DisplayName+" · 240G";
+                Assert.That(director.Catalog.Characters.Any(c=>director.IsJoined(c)&&EquipmentLoadout.CanEquip(c,item,EquipmentSlot.Weapon)),Is.True,"Missing joined purchase recipient: "+id);
                 for(int page=0;page<8&&!director.Hud.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name==name);page++){Click("다음 상품");yield return null;}
                 yield return new WaitForEndOfFrame();
                 var card=FormationControl(name);

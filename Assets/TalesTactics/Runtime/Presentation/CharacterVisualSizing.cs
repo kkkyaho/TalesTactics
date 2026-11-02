@@ -7,7 +7,9 @@ namespace TalesTactics
     public static class CharacterVisualSizing
     {
         public const float BodyHeight=1.22f;
-        public static float BodyFraction(CharacterData c)=>c.Id=="jade"?.82f:c.Id=="mint"?.96f:1f;
+        // Alphen's 319px frame includes 77px of support padding; his strong-alpha body is 242px.
+        // .80 places that body at 1.157 world units, alongside the other authored SD heroes.
+        public static float BodyFraction(CharacterData c)=>c.Id=="jade"?.82f:c.Id=="mint"?.96f:c.Id=="alphen"?.80f:1f;
         public static bool IsHero(CharacterData c)=>c!=null&&(c.Id=="cless"||c.Id=="mint"||c.Id=="farah"||c.Id=="jade"||c.Id=="tear"||c.Id=="natalia"||c.Id=="velvet"||c.Id=="alphen"||c.Id=="shionne"||c.Id=="kisara");
         public static float Scale(CharacterData c)
         {

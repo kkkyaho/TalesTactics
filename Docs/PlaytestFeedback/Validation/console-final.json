@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "console",
+    "parameters": {
+      "level": "error",
+      "tail": "1"
+    },
+    "result": {
+      "entries": [
+        {
+          "seq": 4415,
+          "timestampUtc": "2026-11-02T13:57:31.9087242Z",
+          "level": "error",
+          "logType": "Exception",
+          "message": "UnityException: CreateImpl is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call it in Awake or Start instead. Called from MonoBehaviour 'CharacterMotion' on game object 'Motion pacing test actor'.\nSee \"Script Serialization\" page in the Unity Manual for further details.",
+          "stackTrace": "UnityEngine.MaterialPropertyBlock..ctor () (at <d5ea965f39d74501b56f4006ef80da34>:0)\nTalesTactics.CharacterIdlePresentation..ctor () (at Assets/TalesTactics/Runtime/Presentation/CharacterIdlePresentation.cs:19)\nTalesTactics.CharacterMotion..ctor () (at Assets/TalesTactics/Runtime/Presentation/CharacterMotion.cs:24)\nUnityEngine.GameObject:AddComponent()\nTalesTactics.Tests.MotionPacingTests:OrdinarySpellRuntimeShowsPhasesAndRecoversWithStableReleaseAndEquipment() (at Assets/TalesTactics/Tests/MotionPacingTests.cs:112)\nSystem.Reflection.MethodBase:Invoke(Object, Object[])\nNUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])\nNUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions()\n",
+          "seeded": false
+        }
+      ],
+      "cursor": 4715,
+      "session": "7cecb19c2fe045a39aa0605264f13fa4",
+      "returned": 1,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 77,
+        "warn": 534,
+        "log": 492
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-11-02T15:09:54.4779239Z",
+        "ageMs": 55,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 7,
+        "consoleLogs": 3,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

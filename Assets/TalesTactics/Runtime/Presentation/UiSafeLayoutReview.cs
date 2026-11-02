@@ -209,6 +209,8 @@ namespace TalesTactics
             {
                 battle.Campaign=new CampaignSave{SelectedStage=CrossoverCampaign.FirstStage+episode-1};
                 for(int number=1;number<episode;number++)battle.Campaign.StoryProgress.Add(CrossoverCampaign.Flag(number));
+                // Post-introduction preparation fixture; never reveal future recruits before their story.
+                battle.Campaign.StoryProgress.Add(CampaignRecruitment.Flag(episode));
                 battle.SelectedStage=battle.Campaign.SelectedStage;battle.TrainingMode=false;
                 battle.Deployment.Clear();battle.Deployment.AddRange(party.Select(id=>Array.FindIndex(battle.Catalog.Characters,c=>c.Id==id)));
                 if(battle.Deployment.Any(index=>index<0))throw new InvalidOperationException("Guidance fixture companion missing from catalog");

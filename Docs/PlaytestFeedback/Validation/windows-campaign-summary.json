@@ -1,0 +1,72 @@
+{
+  "derivedSummary": true,
+  "source": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\CampaignWindows-eaa2e9b6b9dc49ef8d3d86294088f12b\\validation.json",
+  "sourceSHA256": "71A691B4519E2A0474B41982BA8DF26BF23240C14DD213BC78D3FE3BA5FFDABD",
+  "schema": 1,
+  "validationKind": "campaign-flow",
+  "mode": "Review",
+  "runId": "eaa2e9b6b9dc49ef8d3d86294088f12b",
+  "startedUtc": "2026-11-02T15:14:54.9128532Z",
+  "finishedUtc": "2026-11-02T15:20:02.9683033Z",
+  "passed": true,
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\PlaytestFeedback\\Validation\\Validate-PlaytestCampaignWindows.ps1",
+  "wrapperSHA256": "c2b50603e6809b2e533743e17ee30c8b54228307ca3b292bc99d1c7833e4f68e",
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "windowStyle": "Hidden",
+  "timeoutSeconds": 900,
+  "normalBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackWindows20261102Final2",
+  "reviewBuild": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3",
+  "sourceReport": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\CampaignFlowReviews\\eaa2e9b6b9dc49ef8d3d86294088f12b\\report.json",
+  "output": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\CampaignFlowReviews\\eaa2e9b6b9dc49ef8d3d86294088f12b",
+  "expectedStorage": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\CampaignFlowReviews\\eaa2e9b6b9dc49ef8d3d86294088f12b\\Storage",
+  "reportValid": true,
+  "expectedStages": 20,
+  "verifiedStages": 20,
+  "expectedCaptures": 48,
+  "verifiedCaptures": 48,
+  "userRoot": "C:\\Users\\USER-PC\\AppData\\LocalLow\\LocalTactics\\TalesTactics",
+  "userFilesUnchanged": true,
+  "preflightUserTreeStable": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "baseline": "Fresh recursive user-tree SHA256 snapshot excluding only root Player.log and Player-prev.log; no prior baseline dependency.",
+  "allowExistingPlayers": false,
+  "requiredExistingPlayerId": 0,
+  "existingPidsPreserved": [],
+  "existingPlayers": [],
+  "existingPlayerChecks": [],
+  "existingPlayersUnchanged": true,
+  "ownProcess": {
+    "id": 82756,
+    "startedTicks": 639292293115361877,
+    "exe": "D:\\TalesTacticsBuildArchive\\PlaytestFeedbackReview20261102Final3\\TalesTactics.exe"
+  },
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "e1b86be6b46f9cc888da19f07b40839af386970c879458015e6c23212bab9d22",
+  "playerLog": "C:\\dev\\TalesTactics\\Logs\\PlaytestFeedback20261102\\CampaignWindows-eaa2e9b6b9dc49ef8d3d86294088f12b\\player.log",
+  "errors": [],
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run covers all 20 main episodes with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 4, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player."
+  ],
+  "userTreeBeforeCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "userTreeAfterCounts": {
+    "directories": 2383,
+    "files": 4959
+  },
+  "omittedRawFields": "Recursive user tree entries remain in the exact local source, with SHA256 above; this versioned summary preserves verdicts/counts and does not reproduce user filenames."
+}

@@ -34,6 +34,8 @@ namespace TalesTactics
         {
             public string status="Running",startedUtc,finishedUtc,unityVersion,output,policy="naturalGrowthPurchases",difficulty="Standard",stopReason;
             public int completedStages,checks,saveReloadChecks,enemySpeedMode;public float timeScale=4;public bool complete,userFilesUnchanged,teamTurns=true,reactions=false,autoTiming=false,missionEvents=false,purchases=true,ct,utilityEnemyAI,skipEnemyAnimations;
+            public string[] userFileHashExclusions=new[]{"Player.log","Player-prev.log"};
+            public string userFileHashScope="All top-level persistentDataPath files except the two case-insensitive Unity log names; the external Windows wrapper separately checks the recursive tree.";
             public string purchasePolicy="Before each battle, use available owned upgrades then buy higher fixed-stat-score compatible items with current gold; highest improvement per gold first, no selling, no catch-up training. Real CampaignInventory.TryBuy and EquipmentLoadout.TrySave transactions.";
             public string[] limits={"Automated commands, not human playtime or a manual campaign completion.","Player movement/skills/facing use public BattleDirector paths; enemy turns use its normal coroutine. Story and result controls use rendered uGUI buttons.","Fresh isolated save; reward seed 17, production combat seed 17. No level/HP/outcome injection, no forced victories, no content regeneration.","timeScale accelerates presentation only. Wall seconds include automation/CPU/frame waits; scaled seconds and summed windup/recovery are separate proxies, not a human-duration estimate.","Fixed preferred party and one-action UtilityPlanner cannot establish optimal strategy, economy or balance. Dialogue is rendered and advanced automatically, not read by a person.","Pending after-story cursor is checked by disk reload after each advanced line; actual title reload is performed after each completed episode. This run does not restart a process mid-dialogue.","No optional personal scenarios, selling, manual timing success, free catch-up, rewinds or retry assistance."};
             public StageRow[] stages;public string[] errors;
@@ -85,7 +87,17 @@ namespace TalesTactics
         }
         IEnumerator Run()
         {
-            yield return null;battle=FindAnyObjectByType<BattleDirector>();Require(battle!=null&&battle.enabled&&battle.Catalog.CrossoverReady,"Current crossover battle scene is ready.");
+            yield return null;
+            if(!Application.isEditor)
+            {
+                // The wrapper starts at 1024x768. Recreate the hidden player's swapchain
+                // before the first capture instead of accepting an unpresented black frame.
+                Screen.SetResolution(1280,720,FullScreenMode.Windowed);
+                for(int frame=0;frame<4;frame++)yield return null;
+                yield return Settle();
+                Require(Screen.width==1280&&Screen.height==720,"Standalone campaign capture size is 1280x720.");
+            }
+            battle=FindAnyObjectByType<BattleDirector>();Require(battle!=null&&battle.enabled&&battle.Catalog.CrossoverReady,"Current crossover battle scene is ready.");
             storage=Path.Combine(directory,"Storage");battle.ConfigureStorage(storage);battle.Hud.ShowTitle();Require(battle.StartTitleGame(0),"Fresh title game starts in isolated slot.");
             report.difficulty=battle.Preferences.Difficulty.ToString();report.teamTurns=!battle.UseCT&&!battle.UseFixedSpeedOrder;report.ct=battle.UseCT;report.utilityEnemyAI=battle.UseUtilityAI;report.reactions=battle.Preferences.Reactions;report.autoTiming=battle.Campaign.AutoTiming;report.missionEvents=battle.Preferences.MissionEvents;report.enemySpeedMode=battle.Preferences.EnemySpeedMode;report.skipEnemyAnimations=battle.Preferences.SkipEnemyAnimations;
             Require(report.teamTurns&&!report.ct&&!report.utilityEnemyAI&&!report.reactions&&!report.autoTiming&&!report.missionEvents&&report.difficulty=="Standard"&&report.enemySpeedMode==0&&!report.skipEnemyAnimations,"Fresh defaults match the documented review conditions.");
@@ -98,18 +110,18 @@ namespace TalesTactics
                 purchases.Clear();actions.Clear();captures.Clear();unitRows.Clear();observedTurns.Clear();observedIntent.Clear();
                 current=new StageRow{episode=episode,stage=stage,goldEntry=battle.Campaign.Gold};rows.Add(current);
                 var joined=battle.Catalog.Characters.Where(battle.IsJoined).ToArray();current.joined=joined.Select(c=>c.Id).ToArray();
-                Require(current.joined.OrderBy(s=>s).SequenceEqual(battle.Catalog.Characters.Where(c=>CrossoverCampaign.Joined(c.Id,episode)).Select(c=>c.Id).OrderBy(s=>s)),"Joined roster follows story progression.");
+                Require(current.joined.OrderBy(s=>s).SequenceEqual(battle.Catalog.Characters.Where(c=>CrossoverCampaign.Joined(c.Id,Math.Max(1,episode-1))).Select(c=>c.Id).OrderBy(s=>s)),"Preparation contains only companions introduced in prior episodes.");
                 var selected=Preferred.Select(id=>joined.FirstOrDefault(c=>c.Id==id)).Where(c=>c!=null).Take(battle.Catalog.Rules.MaxDeployment).ToArray();
                 battle.Deployment.Clear();battle.Deployment.AddRange(selected.Select(c=>Array.IndexOf(battle.Catalog.Characters,c)));battle.NormalizeDeployment();
                 PrepareEquipment(selected);
                 foreach(var c in selected)if(CampaignPromotion.Unavailable(battle.Campaign.Get(c.Id),c,battle.Campaign.StoryProgress)==null)Require(CampaignPromotion.TrySave(battle.Campaign,c,battle.PersistCampaign),"Eligible promotion saves.");
                 Require(battle.SavePreparation(),"Preparation saves.");CheckDisk();battle.Hud.ShowIntermissionHub();yield return Settle();
-                current.party=selected.Select(c=>c.Id).ToArray();current.goldSpent=purchases.Sum(p=>p.price);current.goldBeforeReward=battle.Campaign.Gold;
+                current.party=CampaignRecruitment.BattleDeployment(battle.Campaign,battle.Catalog,stage,battle.Deployment).Select(i=>battle.Catalog.Characters[i].Id).ToArray();current.goldSpent=purchases.Sum(p=>p.price);current.goldBeforeReward=battle.Campaign.Gold;
                 Click("전투 시작");yield return Settle();Require(battle.StoryActive&&battle.StoryStage==stage&&battle.Session==null,"Battle cannot begin before its story.");
                 yield return ReadStory(false);
                 if(episode==13){Require(battle.Session==null,"Episode 13 waits for route selection.");Click(PersonalScenarios.RouteName(stage,0)+"부터");}
                 yield return Settle();Require(battle.Session!=null&&battle.Session.CampaignStage==stage,"Story completion begins actual battle.");
-                Require(battle.Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data.Id).SequenceEqual(current.party),"Actual deployment matches selected joined party.");
+                Require(battle.Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data.Id).SequenceEqual(current.party),"Actual deployment reserves places for this episode's introductions.");
                 AttachBattle();current.status="Fighting";Write();
                 if(episode==1||episode==11||episode==16||episode==20)yield return Capture("battle-start");
                 began=Time.realtimeSinceStartupAsDouble;scaledBegan=Time.timeAsDouble;frameBegan=Time.frameCount;
@@ -300,7 +312,12 @@ namespace TalesTactics
         void Log(string message,string trace,LogType type){if(type==LogType.Error||type==LogType.Exception||type==LogType.Assert){errors.Add(message+"\n"+trace);Write();}}
         static string[] SnapshotFiles(string root)
         {
-            if(!Directory.Exists(root))return Array.Empty<string>();using(var sha=SHA256.Create())return Directory.GetFiles(root).OrderBy(f=>f,StringComparer.OrdinalIgnoreCase).Select(f=>Path.GetFileName(f)+":"+BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(f)))).ToArray();
+            if(!Directory.Exists(root))return Array.Empty<string>();
+            // Only Unity's exact root live-log names are volatile output, not save data.
+            // Every other top-level file, including backups, unknown files and .tmp, is hashed.
+            using(var sha=SHA256.Create())return Directory.GetFiles(root)
+                .Where(f=>!string.Equals(Path.GetFileName(f),"Player.log",StringComparison.OrdinalIgnoreCase)&&!string.Equals(Path.GetFileName(f),"Player-prev.log",StringComparison.OrdinalIgnoreCase))
+                .OrderBy(f=>f,StringComparer.OrdinalIgnoreCase).Select(f=>Path.GetFileName(f)+":"+BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(f)))).ToArray();
         }
         void Finish()
         {
@@ -316,7 +333,9 @@ namespace TalesTactics
             }
             finally
             {
-                try{Time.timeScale=oldTimeScale;Application.runInBackground=oldBackground;}
+                // A hidden standalone player must keep ticking until Application.Quit completes.
+                // OnDestroy still restores both values when its object is actually destroyed.
+                try{if(Application.isEditor){Time.timeScale=oldTimeScale;Application.runInBackground=oldBackground;}}
                 catch(Exception e){exit=1;Debug.LogError("Campaign flow review restoration failed: "+e);}
                 finally
                 {

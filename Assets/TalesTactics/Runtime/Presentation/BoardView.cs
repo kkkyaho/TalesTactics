@@ -27,6 +27,7 @@ namespace TalesTactics
             if(root==null||battle.TimingActive)return;
             RemoveAppliedCameraPan();
             BattleCamera.transform.RotateAround(battlefieldBounds.center,Vector3.up,degrees);
+            StandingSpriteDepth.Configure(BattleCamera);
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
         }
@@ -35,6 +36,7 @@ namespace TalesTactics
         public void ResetCamera()
         {
             ClearCameraPan();focusAction=false;zoom=1;BattleCamera.transform.SetPositionAndRotation(initialPosition,initialRotation);
+            StandingSpriteDepth.Configure(BattleCamera);
             if(root==null||battle.Session==null)return;
             FitBattlefield(true);
             foreach(var sprite in sprites.Values)sprite.transform.rotation=BattleCamera.transform.rotation;
@@ -79,6 +81,7 @@ namespace TalesTactics
             // A higher tactical angle reveals neighboring cells instead of the vertical facade.
             initialRotation=Quaternion.Euler(57,BattleCamera.transform.eulerAngles.y,0);
             BattleCamera.transform.rotation=initialRotation;initialPosition=BattleCamera.transform.position;
+            StandingSpriteDepth.Configure(BattleCamera);
             BattleCamera.allowMSAA=false;BattleCamera.allowHDR=false;BattleCamera.allowDynamicResolution=false;
             // Clear the screen during setup and transitions before the battlefield is available.
             var background=new GameObject("Screen Background Camera",typeof(Camera));
@@ -130,7 +133,7 @@ namespace TalesTactics
         {
                 var g=new GameObject(u.Data.DisplayName);g.transform.SetParent(root,false);units[u]=g.transform;
                 var visual=new GameObject("Directional Sprite");var sizeRoot=new GameObject("Body Scale");sizeRoot.transform.SetParent(g.transform,false);sizeRoot.transform.localScale=Vector3.one*CharacterVisualSizing.Scale(u.Data);visual.transform.SetParent(sizeRoot.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
-                var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=UnitToneMaterial;sprites[u]=sr;
+                var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=UnitToneMaterial;StandingSpriteDepth.Configure(sr);sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
                 else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera);motions[u]=motion;}
                 var hp=new GameObject("HP "+u.Data.Id,typeof(RectTransform));hp.transform.SetParent(healthCanvas.transform,false);
