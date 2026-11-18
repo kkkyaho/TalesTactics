@@ -243,7 +243,7 @@ namespace TalesTactics
             for(int i=0;i<units.Length;i++)new CheckpointUnit(source.Units[i]).Apply(units[i],grid,director.Catalog);
             foreach(var tile in source.Grid.Tiles.Values)grid[tile.Coordinate].Occupant=tile.Occupant==null?null:units[source.Units.IndexOf(tile.Occupant)];
             var resolver=new SkillResolver(grid,units,source.Rules,tacticalCombat:source.Resolver.TacticalCombat,reactions:source.Resolver.ReactionsEnabled,actionExperience:source.Resolver.ActionExperienceEnabled);
-            resolver.CrossoverState=source.Resolver.CrossoverState?.Copy();resolver.RestoreRandom(source.Resolver.RandomDraws);return resolver;
+            resolver.CrossoverState=source.Resolver.CrossoverState?.Copy();resolver.CrossoverSignals=(Vector2Int[])source.Resolver.CrossoverSignals.Clone();resolver.CrossoverEnemySpawns=source.Resolver.CrossoverEnemySpawns==null?null:(Vector2Int[])source.Resolver.CrossoverEnemySpawns.Clone();resolver.RestoreRandom(source.Resolver.RandomDraws);return resolver;
         }
         void RequireClosedTitle()
         {

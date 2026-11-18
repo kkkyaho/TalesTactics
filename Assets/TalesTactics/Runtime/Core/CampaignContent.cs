@@ -13,15 +13,16 @@ namespace TalesTactics
     public static partial class CampaignContent
     {
         public static string Location(int stage) => stage>=CampaignStages.LegacyCount?CampaignStages.Title(stage):stage >= 3 ? ExpansionLocation(stage) : stage == 0 ? "유적 외곽 · 갈라진 물길" : stage == 1 ? "심층 제단 · 수호자의 계단" : "바람 협곡 · 끊어진 연락로";
-        public static string Briefing(int stage) => CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Episode(stage).Briefing:PersonalScenarios.Contains(stage)?PersonalScenarios.Arc(stage).Conflicts[PersonalScenarios.Tier(stage)]:stage >= 3 ? ExpansionBriefing(stage) : stage == 0
+        public static string Briefing(int stage) => CrossoverTacticalMissions.Contains(stage)?CrossoverTacticalMissions.Get(stage).Description:CrossoverOpeningMissions.Contains(stage)?CrossoverOpeningMissions.Description(CrossoverCampaign.Episode(stage).Number):CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Episode(stage).Briefing:PersonalScenarios.Contains(stage)?PersonalScenarios.Arc(stage).Conflicts[PersonalScenarios.Tier(stage)]:stage >= 3 ? ExpansionBriefing(stage) : stage == 0
             ? "물길의 돌다리와 북쪽 우회로로 진입하세요.\n목표: 모든 적 격파. 보상: 120G / 생명의 부적."
             : stage == 1 ? "계단을 따라 중앙 고지로 진입하세요.\n목표: 첫 수호자 격파. 보상: 180G / 철검."
             : "두 돌다리로 물길을 건너 동쪽 능선을 확보하세요.\n목표: 봉화 (11,8)에 아군 도착. 적 Lv4 / 최초 240G·EXP30 / 강화 갑옷.";
 
-        public static GridMap Map(int stage)
+        public static GridMap Map(int stage,int openingRevision=1,int tacticsRevision=1)
         {
             if (stage < 0 || stage >= CampaignStages.Count) throw new ArgumentOutOfRangeException(nameof(stage));
-            if(stage>=CampaignStages.LegacyCount)return CrossoverCampaign.Map(PersonalScenarios.Contains(stage)?CrossoverCampaign.FirstStage+(stage-PersonalScenarios.FirstStage)%CrossoverCampaign.EpisodeCount:stage);
+            if(CrossoverTacticalMissions.Applies(stage,tacticsRevision))return CrossoverTacticalMissions.Get(stage).Map();
+            if(stage>=CampaignStages.LegacyCount)return CrossoverCampaign.Map(PersonalScenarios.Contains(stage)?CrossoverCampaign.FirstStage+(stage-PersonalScenarios.FirstStage)%CrossoverCampaign.EpisodeCount:stage,PersonalScenarios.Contains(stage)?0:openingRevision,0);
             if (stage >= 3) return ExpansionMap(stage);
             var map = new GridMap(); int width = stage == 0 ? 11 : stage == 1 ? 12 : 13, depth = stage == 0 ? 9 : 10;
             for (int x = 0; x < width; x++) for (int z = 0; z < depth; z++)
@@ -40,9 +41,9 @@ namespace TalesTactics
             return map;
         }
 
-        public static Vector2Int PlayerSpawn(int stage, int index) => stage>=CampaignStages.LegacyCount?CrossoverCampaign.PlayerSpawn(index):stage >= 3 ? ExpansionPlayerSpawn(stage,index) : stage == 0
+        public static Vector2Int PlayerSpawn(int stage, int index) => CrossoverTacticalMissions.Contains(stage)?CrossoverTacticalMissions.Get(stage).PlayerSpawns[index]:CrossoverOpeningMissions.Contains(stage)?CrossoverOpeningMissions.PlayerPosition(CrossoverCampaign.Episode(stage).Number,index):stage>=CampaignStages.LegacyCount?CrossoverCampaign.PlayerSpawn(index):stage >= 3 ? ExpansionPlayerSpawn(stage,index) : stage == 0
             ? new Vector2Int(1 + index % 2, 1 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 3, 1 + index / 3) : new Vector2Int(1 + index % 2, 3 + index / 2);
-        public static Vector2Int EnemySpawn(int stage, int index) => stage>=CampaignStages.LegacyCount?CrossoverCampaign.EnemySpawn(index):stage >= 3 ? ExpansionEnemySpawn(stage,index) : stage == 0
+        public static Vector2Int EnemySpawn(int stage, int index) => CrossoverTacticalMissions.Contains(stage)?CrossoverTacticalMissions.Get(stage).EnemySpawns[index]:CrossoverOpeningMissions.Contains(stage)?CrossoverOpeningMissions.EnemyPosition(CrossoverCampaign.Episode(stage).Number,index):stage>=CampaignStages.LegacyCount?CrossoverCampaign.EnemySpawn(index):stage >= 3 ? ExpansionEnemySpawn(stage,index) : stage == 0
             ? new Vector2Int(8 + index % 2, 4 + index / 2) : stage == 1 ? new Vector2Int(4 + index % 2 * 3, 7 + index / 2) : new Vector2Int(10 + index % 2, 3 + index / 2 * 3);
 
         public static StoryLine[] Story(int stage, bool after)

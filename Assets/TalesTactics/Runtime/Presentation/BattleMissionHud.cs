@@ -69,7 +69,7 @@ namespace TalesTactics
                 Label(defeat,s?.Crossover!=null?s.Crossover.DefeatDescription:!training&&stage==16?"진행 중인 전선의 아군 전원 전투불능":!training&&stage==21?"선두 출전 아군 전투불능 또는 아군 전멸":escort?"아군 전멸 또는 호위 대상 전투불능":"아군 전원 전투불능",36,42,18);
                 if(missionDetails)
                 {
-                    var detail=Label(missionWindow,(s!=null?MissionBriefing.Victory(s):training?TrainingMission():PreparationVictory(stage))+"\n\n"+MissionBriefing.Terrain(stage)+(s?.BossEncounters==true?"\n호위 1명당 피해 -25% (최대 75%)":""),342,174,18);
+                    var detail=Label(missionWindow,(s!=null?MissionBriefing.Victory(s):training?TrainingMission():PreparationVictory(stage))+"\n\n"+MissionBriefing.Terrain(stage,s?.Crossover?.State.OpeningRevision??1,s?.Crossover?.State.TacticsRevision??1)+(s?.BossEncounters==true?"\n호위 1명당 피해 -25% (최대 75%)":""),342,174,18);
                 }
                 else if(s?.BossEncounters==true)
                 {

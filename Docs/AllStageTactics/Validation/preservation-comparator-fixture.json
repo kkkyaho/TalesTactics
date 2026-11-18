@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-18T14:16:40.1227930Z",
+  "script": "C:\\dev\\TalesTactics\\Docs\\AllStageTactics\\Validation\\Compare-AllStageBaseline.ps1",
+  "scriptSHA256": "cfb291fe09deb991f7c68f587bc8ec93ad861e3fd7a20d34984e11e5fb3637f4",
+  "passed": true,
+  "results": [
+    {
+      "engine": "7.6.9",
+      "passed": true,
+      "parseErrors": 0,
+      "checks": [
+        "Original case-insensitive parameter overwrite reproduced",
+        "Unchanged nonempty tree and empty directory",
+        "Changed root file retained",
+        "Removed TestResults retained",
+        "StorageTests addition and empty-directory removal retained",
+        "Timestamp-only change classified separately",
+        "Empty tree comparison",
+        "Root existence change detected"
+      ],
+      "checkedFunctionNames": [
+        "Under-Path",
+        "File-Map",
+        "Timestamp-Text",
+        "Compare-Trees"
+      ],
+      "userTreeRead": false,
+      "userTreeWrites": false,
+      "fixture": "In-memory rows and directory names only; full comparator main body and snapshot functions were not executed."
+    },
+    {
+      "engine": "5.1.22621.6133",
+      "passed": true,
+      "parseErrors": 0,
+      "checks": [
+        "Original case-insensitive parameter overwrite reproduced",
+        "Unchanged nonempty tree and empty directory",
+        "Changed root file retained",
+        "Removed TestResults retained",
+        "StorageTests addition and empty-directory removal retained",
+        "Timestamp-only change classified separately",
+        "Empty tree comparison",
+        "Root existence change detected"
+      ],
+      "checkedFunctionNames": [
+        "Under-Path",
+        "File-Map",
+        "Timestamp-Text",
+        "Compare-Trees"
+      ],
+      "userTreeRead": false,
+      "userTreeWrites": false,
+      "fixture": "In-memory rows and directory names only; full comparator main body and snapshot functions were not executed."
+    }
+  ]
+}

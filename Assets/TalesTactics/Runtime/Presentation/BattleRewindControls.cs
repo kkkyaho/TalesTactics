@@ -6,7 +6,6 @@ namespace TalesTactics
 {
     public sealed partial class BattleDirector
     {
-        bool guardRecorded;
         IEnumerator PresentReactions(float speed=1)
         {
             foreach(var strike in Session.Resolver.LastReactions)
@@ -27,7 +26,7 @@ namespace TalesTactics
             BattleSession restored;UnityEngine.Random.State random;
             try{restored=Session.RewindLast(out random);}catch(Exception){SaveNotice="행동 기록을 복원할 수 없습니다. 현재 전투를 유지했습니다.";return false;}
             Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();Hud.CloseUnitDetails();StopAllCoroutines();ClearTacticalSelection();
-            Session=restored;UnityEngine.Random.state=random;completed=false;pendingReward=null;RewardPending=false;guardRecorded=false;
+            Session=restored;UnityEngine.Random.state=random;completed=false;pendingReward=null;RewardPending=false;
             SelectedSkill=null;Target=null;Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);
             SetState(new CommandState(this));ShowActionFeedback("행동을 되돌렸습니다. 남은 횟수 "+Session.RewindsLeft);return true;
         }

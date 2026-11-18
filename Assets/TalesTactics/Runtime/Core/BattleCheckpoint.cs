@@ -41,6 +41,7 @@ namespace TalesTactics
             var session=new BattleSession(catalog,Deployment,1,1,Stage,CT,Utility,legacyCampaign:Version==1||LegacyMission,teamTurns:TeamTurns,phaseSurvival:Version>=4&&PhaseSurvival,tacticalCombat:Version>=4&&TacticalCombat,bossEncounters:Version>=5&&BossEncounters,difficulty:Version>=7?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=7&&MissionEvents,reactions:Version>=8&&Reactions,actionExperience:Version>=9&&ActionExperience,expandedEncounters:Version>=10&&ExpandedEncounters);
             if(Version>=7)session.RestoreMissionEvents(ReinforcementsArrived,CaptureProgress);
             if(Units==null||Units.Count!=session.Units.Count||Active<0||Active>=Units.Count)throw new InvalidDataException("Invalid unit roster");
+            session.Crossover?.PrepareRestore(Crossover);
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++){Units[i].Apply(session.Units[i],session.Grid,catalog);if(Version<11){session.Units[i].BossTimeRules=false;session.Units[i].TimeStopResistance=0;}}
             if(session.Crossover!=null){if(Version<11)throw new InvalidDataException("Crossover checkpoint requires version 11");session.Crossover.Restore(Crossover);}
@@ -54,6 +55,7 @@ namespace TalesTactics
             if(Version>=6&&HasOpening)
             {
                 if(Opening==null||Opening.Stage!=Stage||Opening.Deployment==null||!Opening.Deployment.SequenceEqual(Deployment))throw new InvalidDataException("Opening does not match checkpoint");
+                if(session.Crossover!=null&&(Opening.Crossover==null||Opening.Crossover.OpeningRevision!=Crossover.OpeningRevision||Opening.Crossover.TacticsRevision!=Crossover.TacticsRevision))throw new InvalidDataException("Opening layout revision mismatch");
                 if(Opening.Restore(catalog).ExpandedEncounters!=session.ExpandedEncounters)throw new InvalidDataException("Opening encounter mismatch");session.Opening=Opening;
             }
             if(Version>=8)
@@ -65,6 +67,7 @@ namespace TalesTactics
                 {
                     var snapshot=BattleSession.ReadFrame(frame);
                     if(snapshot.Stage!=Stage||(snapshot.Version>=10&&snapshot.ExpandedEncounters)!=(Version>=10&&ExpandedEncounters)||!snapshot.Deployment.SequenceEqual(Deployment)||snapshot.Reactions!=Reactions||(snapshot.Version>=9&&snapshot.ActionExperience)!=(Version>=9&&ActionExperience)||snapshot.CT!=CT||snapshot.TeamTurns!=TeamTurns||snapshot.MissionEvents!=MissionEvents||snapshot.Difficulty!=Difficulty)throw new InvalidDataException("History does not match battle");
+                    if(session.Crossover!=null&&(snapshot.Crossover==null||snapshot.Crossover.OpeningRevision!=Crossover.OpeningRevision||snapshot.Crossover.TacticsRevision!=Crossover.TacticsRevision))throw new InvalidDataException("History layout revision mismatch");
                     snapshot.Restore(catalog);session.History.Add(frame);
                 }
             }

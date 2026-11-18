@@ -1,5 +1,5 @@
 {
-  "state": "AwaitingExplicitArtifactUploadApproval",
+  "state": "CancelledUserMusicLocalOnly",
   "tag": "v0.1.0-preview.9",
   "tagPushed": true,
   "sourceCommit": "e081a592d398aa0354b04a827fb3833a277552d2",
@@ -15,5 +15,19 @@
   "approvalReviewReason": "Automatic review rejected external upload of the build artifact because it required explicit authorization for the exact payload and GitHub destination.",
   "mainSourcePushed": true,
   "mainSourceCommit": "e081a592d398aa0354b04a827fb3833a277552d2",
-  "tagObject": "def59218e6eba30f15d7e07847103b2e07a1357f"
+  "tagObject": "def59218e6eba30f15d7e07847103b2e07a1357f",
+  "uploadRequestCancelledByUser": true,
+  "userInstruction": "음원은 로컬커밋만 해줘",
+  "userMusicPolicy": "local-only",
+  "publicationWritesDisabled": true,
+  "remoteHistoryCleanupApproved": false,
+  "remoteHistoryRewritten": false,
+  "localSnapshotBranch": "codex/local-only-music-20261103",
+  "policyRecordedUtc": "2026-11-02T20:43:32.972698+00:00",
+  "latestUserInstruction": "그럼 원격에는 올리지 말아줘",
+  "noRemoteUploadConfirmedAfterExplainingEmbeddedMusic": true,
+  "localOnlyScope": [
+    "user-provided audio source files",
+    "release artifacts containing that audio"
+  ]
 }

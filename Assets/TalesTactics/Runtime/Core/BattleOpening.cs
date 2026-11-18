@@ -32,6 +32,7 @@ namespace TalesTactics
             if((Version<1||Version>6)||Stage< -1||Stage>=CampaignStages.Count||CT&&TeamTurns||!Enum.IsDefined(typeof(ObjectiveKind),Objective)||Deployment==null||Deployment.Length<1||Deployment.Length>catalog.Rules.MaxDeployment||Deployment.Distinct().Count()!=Deployment.Length||Deployment.Any(i=>i<0||i>=catalog.Characters.Length))throw new InvalidDataException("Invalid battle opening");
             var session=new BattleSession(catalog,Deployment,campaignStage:Stage,useCT:CT,utilityAI:Utility,objective:Objective,legacyCampaign:Legacy,teamTurns:TeamTurns,phaseSurvival:PhaseSurvival,tacticalCombat:TacticalCombat,bossEncounters:BossEncounters,difficulty:Version>=2?Difficulty:BattleDifficulty.Standard,missionEvents:Version>=2&&MissionEvents,reactions:Version>=3&&Reactions,actionExperience:Version>=4&&ActionExperience,expandedEncounters:Version>=5&&ExpandedEncounters);
             if(Units==null||Units.Count!=session.Units.Count)throw new InvalidDataException("Invalid opening roster");
+            session.Crossover?.PrepareRestore(Crossover);
             foreach(var tile in session.Grid.Tiles.Values)tile.Occupant=null;
             for(int i=0;i<Units.Count;i++)
             {

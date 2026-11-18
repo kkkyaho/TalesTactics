@@ -30,6 +30,8 @@ namespace TalesTactics
             }
             Resolver=new SkillResolver(Grid,Copies.Values.ToArray(),battle.Rules,tacticalCombat:battle.TacticalCombat,reactions:battle.Resolver.ReactionsEnabled,actionExperience:battle.Resolver.ActionExperienceEnabled);
             Resolver.CrossoverState=battle.Crossover?.State.Copy();
+            Resolver.CrossoverSignals=(Vector2Int[])battle.Resolver.CrossoverSignals.Clone();
+            Resolver.CrossoverEnemySpawns=battle.Resolver.CrossoverEnemySpawns==null?null:(Vector2Int[])battle.Resolver.CrossoverEnemySpawns.Clone();
         }
     }
     public sealed class ForecastRow
@@ -78,7 +80,7 @@ namespace TalesTactics
                 {
                     if(e.Chance<1)effects.Add(SkillSummary.Effect(e)+$" {e.Chance:P0}");
                 }
-                foreach(var status in after.Statuses.Where(s=>!original.Has(s.Kind)||original.Statuses.First(x=>x.Kind==s.Kind).Turns!=s.Turns))effects.Add(StatusText.Name(status.Kind)+" "+status.Turns+"턴");
+                foreach(var status in after.Statuses.Where(s=>!original.Has(s.Kind)||original.Statuses.First(x=>x.Kind==s.Kind).Turns!=s.Turns))effects.Add(status.Kind==StatusKind.Guard?"방어 · 다음 자기 턴까지":StatusText.Name(status.Kind)+" "+status.Turns+"턴");
                 foreach(var status in original.Statuses.Where(s=>!after.Has(s.Kind)))effects.Add(StatusText.Name(status.Kind)+" 해제");
                 if(after.Position!=original.Position)effects.Add("위치 "+after.Position);
                 if(after.ProtectionUsed&&!original.ProtectionUsed)effects.Add("인접 보호 1회 사용");

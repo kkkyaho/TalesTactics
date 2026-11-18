@@ -48,7 +48,7 @@ namespace TalesTactics.Tests
         [Test] public void ClessContractRequiresCombatCareGuardAndReturnSealInsteadOfBossDeath()
         {
             var c=AuthoredCrossoverCatalog();c.Characters[0].Id="cless";var b=new BattleSession(c,new[]{0},campaignStage:28);var hero=b.Units[0];
-            b.Crossover.State.Nodes=7;b.Grid.Place(hero,CrossoverBattle.ContractSeal);
+            b.Crossover.State.Nodes=b.Crossover.RequiredNodeMask;Assert.That(b.Grid.Place(hero,b.Crossover.ContractPosition),Is.True);
             Assert.That(b.Result,Is.EqualTo(BattleResult.Ongoing));
             b.Crossover.State.TrialProgress=7;Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));Assert.That(b.Crossover.Boss.Alive,Is.True);
         }
@@ -75,16 +75,16 @@ namespace TalesTactics.Tests
         [Test] public void OriginContractRequiresWestEastNorthSignalsInOrder()
         {
             var c=AuthoredCrossoverCatalog();c.Characters[0].Id="cless";var b=new BattleSession(c,new[]{0},campaignStage:28);var hero=b.Units[0];
-            b.Grid.Place(hero,CrossoverBattle.Nodes[1]);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.Zero);
-            b.Grid.Place(hero,CrossoverBattle.Nodes[0]);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(1));
-            b.Grid.Place(hero,CrossoverBattle.Nodes[1]);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(3));
-            var device=b.Grid[CrossoverBattle.Nodes[2]].Occupant;device.Damage(99999,b.Grid);
-            b.Grid.Place(hero,CrossoverBattle.Nodes[2]);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(7));
+            var signals=b.Crossover.SignalPositions;Assert.That(signals.Length,Is.EqualTo(3));
+            Assert.That(b.Grid.Place(hero,signals[1]),Is.True);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.Zero);
+            Assert.That(b.Grid.Place(hero,signals[0]),Is.True);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(1));
+            Assert.That(b.Grid.Place(hero,signals[1]),Is.True);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(3));
+            Assert.That(b.Grid.Place(hero,signals[2]),Is.True);b.Crossover.Update();Assert.That(b.Crossover.State.Nodes,Is.EqualTo(7));
         }
         [Test] public void CollapseWarnsThenChangesMovementCostAndRestoresThroughCheckpoint()
         {
             var c=AuthoredCrossoverCatalog();var b=new BattleSession(c,new[]{0},campaignStage:21);b.Advance();var hero=b.Units[0];var boss=b.Crossover.Boss;
-            b.Grid.Place(hero,new Vector2Int(5,11));boss.BeginTurn();var skill=boss.Data.Skills.Single(s=>s.BossMechanic==BossMechanic.Collapse);
+            PlaceCrossoverPatternTarget(b,boss,hero);boss.BeginTurn();var skill=boss.Data.Skills.Single(s=>s.BossMechanic==BossMechanic.Collapse);
             Assert.That(b.Resolver.Execute(boss,skill,hero.Position,out _),Is.True);int hp=hero.CurrentHP;int cost=b.Grid[hero.Position].MovementCost;
             b.Crossover.OnTurnEnded(hero);Assert.That(hero.CurrentHP,Is.EqualTo(hp));Assert.That(b.Grid[hero.Position].MovementCost,Is.EqualTo(cost));
             boss.BeginTurn();b.Crossover.OnTurnEnded(boss);Assert.That(hero.CurrentHP,Is.EqualTo(hp-hero.Stats.HP/8));Assert.That(b.Grid[hero.Position].MovementCost,Is.EqualTo(2));

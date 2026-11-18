@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "baseline": "Logs/AllStageTactics20261118/editor-baseline.json",
+  "final": "Logs/AllStageTactics20261118/editor-restored.json",
+  "fields": [
+    "play",
+    "background",
+    "development",
+    "optionsEnabled",
+    "options",
+    "scene",
+    "dirty",
+    "pipeline",
+    "autoTickSessionFallback",
+    "autoTickIntervalSessionFallback",
+    "actualAutoTick",
+    "actualAutoTickInterval"
+  ],
+  "differences": [],
+  "state": {
+    "play": false,
+    "background": false,
+    "development": false,
+    "optionsEnabled": true,
+    "options": "DisableDomainReload, DisableSceneReload",
+    "scene": "Assets/TalesTactics/Scenes/TestBattle.unity",
+    "dirty": false,
+    "pipeline": "PC_RPAsset",
+    "autoTickSessionFallback": false,
+    "autoTickIntervalSessionFallback": -1,
+    "actualAutoTick": true,
+    "actualAutoTickInterval": 16
+  },
+  "scope": "The recorded Editor fields match the fresh task baseline. No GameView-size change was made by this task; a separate fresh size baseline was not captured."
+}

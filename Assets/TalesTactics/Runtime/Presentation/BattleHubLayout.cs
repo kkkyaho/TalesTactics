@@ -48,7 +48,7 @@ namespace TalesTactics
             }
             var preview=FormationRect(mission,"HubMapPreview",new Vector2(.04f,.045f),new Vector2(.44f,.27f));
             var mapArt=Resources.Load<Texture2D>("TalesTactics/MenuPreviews/Stage"+battle.SelectedStage);
-            if(mapArt!=null){var imageBounds=FormationRect(preview,"MapImage",Vector2.zero,Vector2.one);var mapImage=imageBounds.gameObject.AddComponent<UnityEngine.UI.RawImage>();mapImage.texture=mapArt;mapImage.raycastTarget=false;var fit=imageBounds.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=16f/9;}
+            if(mapArt!=null&&!CrossoverOpeningMissions.Contains(battle.SelectedStage)&&!CrossoverTacticalMissions.Contains(battle.SelectedStage)){var imageBounds=FormationRect(preview,"MapImage",Vector2.zero,Vector2.one);var mapImage=imageBounds.gameObject.AddComponent<UnityEngine.UI.RawImage>();mapImage.texture=mapArt;mapImage.raycastTarget=false;var fit=imageBounds.gameObject.AddComponent<UnityEngine.UI.AspectRatioFitter>();fit.aspectMode=UnityEngine.UI.AspectRatioFitter.AspectMode.FitInParent;fit.aspectRatio=16f/9;}
             else preview.gameObject.AddComponent<MissionMapPreview>().Initialize(battle.SelectedStage);
             FormationText(mission,"전장 미리보기",new Vector2(.47f,.17f),new Vector2(.96f,.26f),19);
             FormationText(mission,"권장 Lv."+CampaignStages.Get(battle.SelectedStage).EntryLevel+" · 최대 "+battle.Catalog.Rules.MaxDeployment+"명",new Vector2(.47f,.06f),new Vector2(.96f,.17f),17);

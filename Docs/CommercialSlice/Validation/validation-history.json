@@ -1,0 +1,2294 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-17T14:41:56.5019209Z",
+  "state": "completed",
+  "complete": true,
+  "scope": "대표 1~3화 전투·크레스/민트 성장·이야기/가독성 개선 및 보상 비교 통합 범위의 구현 검증을 완료했다. 12개 Unity 결과와 재로드/도구 오류, 중간 보존 감사, 최초 Normal 입력 일치 거부를 보존하고 최종 두 빌드·입력 연결, Review Windows 20화, 최종 보호/저장 보존 및 Editor 설정 복원 증거를 함께 기록한다.",
+  "latestInputEvidence": {
+    "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/final-preservation.json",
+    "bytes": 10622,
+    "sha256": "7e16de7e78d172218937c0a04307638e22e640c893d558141922b33ea47e0a4e",
+    "lastWriteUtc": "2026-11-17T15:28:08.2962782Z"
+  },
+  "inputEvidenceNote": "latestInputEvidence는 이번 갱신에서 읽은 최신 검증 결과 JSON이다. 수정 시각은 실제 실행 시각 자체가 아니다. Unity 테스트 결과, 빌드 입력/바이너리 연결, Windows 실행 증거를 별도 필드에 기록하며 각 범위를 구분한다.",
+  "entries": [
+    {
+      "id": "editmode-attempt-1",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/full-editmode-attempt1.json",
+        "bytes": 145580,
+        "sha256": "e607bfd11d7810cac6999626cb8c3be9d3d870c76480fffa81727dc27f83d30f",
+        "lastWriteUtc": "2026-11-17T14:14:34.0038691Z"
+      },
+      "mode": "EditMode",
+      "filter": "assembly: TalesTactics.Tests",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "failed",
+      "durationSeconds": 52.31,
+      "counts": {
+        "total": 537,
+        "passed": 536,
+        "failed": 1,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "test_fixture_direction_setup",
+      "failures": [
+        {
+          "FullName": "TalesTactics.Tests.BattleRuleTests.ClessBulwarkUsesOneSharedProtectionAndForecastPreservesIt",
+          "Status": "Failed",
+          "Duration": 0.006929,
+          "Message": "  Expected: 166\r\n  But was:  172\r\n",
+          "StackTrace": "at TalesTactics.Tests.BattleRuleTests.ClessBulwarkUsesOneSharedProtectionAndForecastPreservesIt () [0x001c3] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Tests\\GrowthCombatTests.cs:83\r\n"
+        }
+      ],
+      "targetedResults": null,
+      "resolution": "superseded_by_editmode_final",
+      "note": "보호 효과 예측과 직접 Execute 비교에서 예상 HP 166, 실제 172. 직접 Execute 이전 Facing 설정이 빠진 fixture를 수정했다. 제품 판정을 완화한 것으로 분류하지 않는다.",
+      "supersededBy": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/full-editmode-final.json"
+    },
+    {
+      "id": "editmode-final",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/full-editmode-final.json",
+        "bytes": 145325,
+        "sha256": "1f820a99f3da1b0a9cfc79ead6cf1835d71d4c68566d0575276b0e20e87a7500",
+        "lastWriteUtc": "2026-11-17T14:19:38.5455577Z"
+      },
+      "mode": "EditMode",
+      "filter": "assembly: TalesTactics.Tests",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 32.99,
+      "counts": {
+        "total": 537,
+        "passed": 537,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": null,
+      "resolution": "passed_for_recorded_source",
+      "note": "Facing을 실제 Director처럼 목표 방향으로 맞춘 fixture 수정 후 전체 537개 통과. 이후 제품 UI 수정까지 이 기록이 포괄한다고 해석하지 않는다.",
+      "supersededBy": null
+    },
+    {
+      "id": "commercialslice-1080p-attempt-1",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/target-playmode-1080p-attempt1.json",
+        "bytes": 2505,
+        "sha256": "7641fa2f54f077f23719587055135b74478c4b8252839a4ae9259659421efe6f",
+        "lastWriteUtc": "2026-11-17T14:20:47.3282662Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: CommercialSlice",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "failed",
+      "durationSeconds": 25.52,
+      "counts": {
+        "total": 4,
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "product_controller_focus_after_layout",
+      "failures": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen",
+          "Status": "Failed",
+          "Duration": 14.3209728,
+          "Message": "  성장 방향 선택 controller pointer\r\n  Expected: less than 2\r\n  But was:  22.8219624f\r\n",
+          "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests.AssertGrowthFocus (System.String name) [0x00054] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\GrowthPathSceneTests.cs:24\r\nat TalesTactics.PlayModeTests.BattleSceneTests+<ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen>d__140.MoveNext () [0x0065b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\GrowthPathSceneTests.cs:60\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+        }
+      ],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen",
+          "Status": "Failed",
+          "Duration": 14.3209728
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthModalRespectsUnlockTrainingOtherModalAndStoryAndRollsBackFailedSave",
+          "Status": "Passed",
+          "Duration": 1.9975483
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningStoriesUseChapterArtWithoutChangingCampaignProgress",
+          "Status": "Passed",
+          "Duration": 4.8354799
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningThreeBattlefieldsExposeRealObjectivesTerrainAndJoinedDeploymentForVisualReview",
+          "Status": "Passed",
+          "Duration": 4.3389613
+        }
+      ],
+      "resolution": "superseded_by_1080p_attempt_2",
+      "note": "성장 방향 창을 닫은 뒤 최종 레이아웃보다 먼저 커서 위치를 맞춰 2px 미만 조건에 실패했다(22.8219624px). 테스트 허용치를 늘리지 않고 다음 프레임 레이아웃 이후 제품의 포커스를 다시 맞추도록 수정했다.",
+      "supersededBy": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/target-playmode-1080p-attempt2.json"
+    },
+    {
+      "id": "commercialslice-1080p-attempt-2",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/target-playmode-1080p-attempt2.json",
+        "bytes": 1695,
+        "sha256": "05bee925fda5c28ebaeda40897ea6e29644ed543f9f15c7705a9b679a2e4b3ea",
+        "lastWriteUtc": "2026-11-17T14:25:05.9823617Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: CommercialSlice",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 28.46,
+      "counts": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen",
+          "Status": "Passed",
+          "Duration": 17.6490054
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthModalRespectsUnlockTrainingOtherModalAndStoryAndRollsBackFailedSave",
+          "Status": "Passed",
+          "Duration": 2.2787351
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningStoriesUseChapterArtWithoutChangingCampaignProgress",
+          "Status": "Passed",
+          "Duration": 4.0475636
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningThreeBattlefieldsExposeRealObjectivesTerrainAndJoinedDeploymentForVisualReview",
+          "Status": "Passed",
+          "Duration": 4.3743709
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "성장 UI 포커스 제품 수정 후 성장 2개·이야기 1개·초반 전장 1개 모두 통과. 성장 검사만 4개 수행한 결과가 아니다.",
+      "supersededBy": null
+    },
+    {
+      "id": "commercialslice-720p-attempt-1",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-commercialslice-720p-attempt1.json",
+        "bytes": 523,
+        "sha256": "ffe30b7c5be784ab186395c6ff38fc376ae7d6da38b40f2efe81d24630e78ec3",
+        "lastWriteUtc": "2026-11-17T14:26:18.4708342Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: CommercialSlice",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "no_tests_executed",
+      "durationSeconds": 0.0,
+      "counts": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "test_discovery_zero_execution",
+      "failures": [],
+      "targetedResults": null,
+      "resolution": "no_tests_executed_not_a_pass",
+      "note": "명령 응답 success=true와 completed에도 테스트가 0개이므로 통과로 세지 않는다. 후속 도메인 재로드 기록과 4개 실제 실행 성공은 있으나 이 0건 결과가 정확한 근본 원인을 입증하지는 않는다.",
+      "supersededBy": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-commercialslice-720p-attempt2.json"
+    },
+    {
+      "id": "commercialslice-720p-attempt-2",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-commercialslice-720p-attempt2.json",
+        "bytes": 1694,
+        "sha256": "c70388bd560c077ea0b356638b93372035abb7b7654abf8e5dd1631d815be3dd",
+        "lastWriteUtc": "2026-11-17T14:29:58.2382977Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: CommercialSlice",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 20.92,
+      "counts": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen",
+          "Status": "Passed",
+          "Duration": 14.090473
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthModalRespectsUnlockTrainingOtherModalAndStoryAndRollsBackFailedSave",
+          "Status": "Passed",
+          "Duration": 1.5469164
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningStoriesUseChapterArtWithoutChangingCampaignProgress",
+          "Status": "Passed",
+          "Duration": 2.6385263
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningThreeBattlefieldsExposeRealObjectivesTerrainAndJoinedDeploymentForVisualReview",
+          "Status": "Passed",
+          "Duration": 2.6023173
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "도메인 재로드 후 CommercialSlice 4개가 실제 실행되어 모두 통과했다.",
+      "supersededBy": null
+    },
+    {
+      "id": "rewardcomparison-720p-attempt-2",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt2.json",
+        "bytes": 2277,
+        "sha256": "da472c7e0aacfe30978c3f04c72dfa6ad47ad26c1ea90ea85547273694c7769d",
+        "lastWriteUtc": "2026-11-17T14:30:38.8381623Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: RewardComparison",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "failed",
+      "durationSeconds": 17.36,
+      "counts": {
+        "total": 3,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "product_reward_controller_focus",
+      "failures": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+          "Status": "Failed",
+          "Duration": 13.5241316,
+          "Message": "  보상 상세 닫기 / active controller pointer follows focus\r\n  Expected: less than 2\r\n  But was:  403.713013f\r\n",
+          "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests.AssertRewardComparisonPointer (System.String name) [0x00054] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\RewardComparisonSceneTests.cs:89\r\nat TalesTactics.PlayModeTests.BattleSceneTests+<RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding>d__257.MoveNext () [0x0078b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\RewardComparisonSceneTests.cs:200\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+        }
+      ],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+          "Status": "Failed",
+          "Duration": 13.5241316
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+          "Status": "Passed",
+          "Duration": 2.0417702
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+          "Status": "Passed",
+          "Duration": 1.7552739
+        }
+      ],
+      "resolution": "resolved_by_product_fix_and_720p_attempt_4",
+      "note": "보상 상세 닫기에서 활성 컨트롤러 커서가 2px 미만 조건에 실패했다(403.713013px). 원래 2/3 실패 기록을 보존한다. 제품의 최종 레이아웃 이후 포커스 갱신 수정 후 attempt4에서 같은 3개 검사가 모두 통과했다.",
+      "supersededBy": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt4.json"
+    },
+    {
+      "id": "rewardcomparison-720p-attempt-3-reload",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-720p-attempt3-reload.json",
+        "bytes": 288,
+        "sha256": "9d0ed297eba718704a28419246699dc241144645499cabd50815a2788c423b85",
+        "lastWriteUtc": "2026-11-17T14:40:05.0799909Z"
+      },
+      "mode": "infrastructure",
+      "filter": "No run_tests result: failure during prior ReloadDomain step",
+      "transportSuccess": false,
+      "runnerStatus": "not_started",
+      "outcome": "test_not_executed",
+      "durationSeconds": null,
+      "counts": null,
+      "summaryMatchesRows": null,
+      "failureClassification": "pipeline_main_thread_timeout_before_tests",
+      "failures": [
+        {
+          "code": "COMMAND_FAILED",
+          "message": "Pipeline server returned 400 Bad Request: Internal Server Error. Main thread operation timed out after 5000ms"
+        }
+      ],
+      "targetedResults": [],
+      "resolution": "recovered_before_attempt_4",
+      "note": "실제 테스트 시작 전 ReloadDomain 메인 스레드 호출이 5000ms에 시간 초과했다. 자동 tick 확인 후 명시적 도메인 재로드와 ready 확인을 거쳐 attempt4에서 실제 3개 실행이 성공했다. 이 항목은 테스트 실패/0개 통과 집계가 아닌 실행 전 인프라 장애다. 이 5000ms 제한을 테스트 실행시간으로 해석하지 않는다.",
+      "supersededBy": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt4.json"
+    },
+    {
+      "id": "rewardcomparison-720p-attempt-4",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt4.json",
+        "bytes": 1416,
+        "sha256": "b26301715357155f8f3dd1b8fb0b3e2f46d777852f8240702dc9ba24e1c3ba43",
+        "lastWriteUtc": "2026-11-17T14:42:09.7382523Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: RewardComparison",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 31.49,
+      "counts": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+          "Status": "Passed",
+          "Duration": 26.7584276
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+          "Status": "Passed",
+          "Duration": 2.6438572
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+          "Status": "Passed",
+          "Duration": 2.0254454
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "보상 상세창의 최종 레이아웃 이후 포커스를 다시 맞추는 제품 수정 후 기존 2px 미만 조건을 포함한 3개 검사가 모두 통과했다.",
+      "supersededBy": null
+    },
+    {
+      "id": "commercialslice-768p-attempt-4",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-commercialslice-768p-attempt4.json",
+        "bytes": 1698,
+        "sha256": "c41b4fa8a8255ffbad4309267c2c9ec3956ab7cdf4fd40fa1bbfc021b8bfdecc",
+        "lastWriteUtc": "2026-11-17T14:42:52.9889818Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: CommercialSlice",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 21.15,
+      "counts": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.ClessAndMintGrowthChoicesSaveOnceAndKeepControllerFocusAndScaledTextInsideScreen",
+          "Status": "Passed",
+          "Duration": 14.2132644
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.GrowthModalRespectsUnlockTrainingOtherModalAndStoryAndRollsBackFailedSave",
+          "Status": "Passed",
+          "Duration": 1.7893738
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningStoriesUseChapterArtWithoutChangingCampaignProgress",
+          "Status": "Passed",
+          "Duration": 2.1596481
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningThreeBattlefieldsExposeRealObjectivesTerrainAndJoinedDeploymentForVisualReview",
+          "Status": "Passed",
+          "Duration": 2.9499046
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "1024x768 Editor GameView에서 성장 2개·이야기 1개·초반 전장 1개가 모두 통과했다.",
+      "supersededBy": null
+    },
+    {
+      "id": "rewardcomparison-768p-attempt-4",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-768p-attempt4.json",
+        "bytes": 1414,
+        "sha256": "3e78af8e3a2ba31d13c9706ad91f71351c733e1fbb2184089f053a60bcbb07bd",
+        "lastWriteUtc": "2026-11-17T14:43:33.5659043Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: RewardComparison",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 17.33,
+      "counts": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+          "Status": "Passed",
+          "Duration": 13.6097259
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+          "Status": "Passed",
+          "Duration": 1.9285168
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+          "Status": "Passed",
+          "Duration": 1.73351
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "1024x768 Editor GameView에서 보상 비교 3개가 모두 통과했다.",
+      "supersededBy": null
+    },
+    {
+      "id": "rewardcomparison-1080p-attempt-4",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/ui-rewardcomparison-1080p-attempt4.json",
+        "bytes": 1416,
+        "sha256": "e0d860d712e2c317fda915e25fef66f8ab370019fb651a93b22f5a5c3024a5ff",
+        "lastWriteUtc": "2026-11-17T14:44:15.0713949Z"
+      },
+      "mode": "PlayMode",
+      "filter": "category: RewardComparison",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 23.37,
+      "counts": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": [
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+          "Status": "Passed",
+          "Duration": 18.6007437
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+          "Status": "Passed",
+          "Duration": 2.4132588
+        },
+        {
+          "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+          "Status": "Passed",
+          "Duration": 2.3167065
+        }
+      ],
+      "resolution": "passed_for_recorded_source",
+      "note": "1920x1080 Editor GameView에서 보상 비교 3개가 모두 통과했다.",
+      "supersededBy": null
+    },
+    {
+      "id": "playmode-full-final",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/full-playmode-final.json",
+        "bytes": 82069,
+        "sha256": "126e090a99bc40c232f0769839f07027de718913ef15b1c4c9e8f8d69437f4bd",
+        "lastWriteUtc": "2026-11-17T15:03:12.1972515Z"
+      },
+      "mode": "PlayMode",
+      "filter": "assembly: TalesTactics.PlayModeTests",
+      "transportSuccess": true,
+      "runnerStatus": "completed",
+      "outcome": "passed",
+      "durationSeconds": 1097.76,
+      "counts": {
+        "total": 297,
+        "passed": 297,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "summaryMatchesRows": true,
+      "failureClassification": "none",
+      "failures": [],
+      "targetedResults": null,
+      "resolution": "passed_for_recorded_source",
+      "note": "제품 UI 수정 이후 전체 PlayMode 297개를 실제 실행했고 모두 통과했다. 실행 시작 응답의 running/0개 Summary는 결과 집계가 아니며 완료된 test_status 결과와 297개 Passed 행을 확인했다. Windows 빌드·캠페인 검증은 별도다.",
+      "supersededBy": null
+    }
+  ],
+  "currentEvidenceSummary": [
+    {
+      "area": "EditMode full suite",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/full-editmode-final.json",
+      "passed": 537,
+      "total": 537,
+      "durationSeconds": 32.99
+    },
+    {
+      "area": "CommercialSlice targeted PlayMode 1920x1080",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/target-playmode-1080p-attempt2.json",
+      "passed": 4,
+      "total": 4,
+      "durationSeconds": 28.46
+    },
+    {
+      "area": "CommercialSlice targeted PlayMode 1280x720",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/ui-commercialslice-720p-attempt2.json",
+      "passed": 4,
+      "total": 4,
+      "durationSeconds": 20.92
+    },
+    {
+      "area": "RewardComparison targeted PlayMode 1280x720",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt4.json",
+      "passed": 3,
+      "total": 3,
+      "durationSeconds": 31.49
+    },
+    {
+      "area": "CommercialSlice targeted PlayMode 1024x768",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/ui-commercialslice-768p-attempt4.json",
+      "passed": 4,
+      "total": 4,
+      "durationSeconds": 21.15
+    },
+    {
+      "area": "RewardComparison targeted PlayMode 1024x768",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/ui-rewardcomparison-768p-attempt4.json",
+      "passed": 3,
+      "total": 3,
+      "durationSeconds": 17.33
+    },
+    {
+      "area": "RewardComparison targeted PlayMode 1920x1080",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/ui-rewardcomparison-1080p-attempt4.json",
+      "passed": 3,
+      "total": 3,
+      "durationSeconds": 23.37
+    },
+    {
+      "area": "PlayMode full suite",
+      "status": "passed_for_recorded_source",
+      "latestEvidence": "Docs/CommercialSlice/Validation/full-playmode-final.json",
+      "passed": 297,
+      "total": 297,
+      "durationSeconds": 1097.76
+    },
+    {
+      "area": "Windows Normal build and input identity",
+      "status": "passed_for_recorded_inputs",
+      "latestEvidence": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-normal-binary-source-after.json",
+      "durationSeconds": 67.2941321,
+      "errors": 0,
+      "warnings": 3,
+      "inputsUnchanged": true,
+      "inputCount": 3037
+    },
+    {
+      "area": "Windows Review build and input identity",
+      "status": "passed_for_recorded_inputs",
+      "latestEvidence": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-review-binary-source-after.json",
+      "durationSeconds": 42.2166559,
+      "errors": 0,
+      "warnings": 6,
+      "inputsUnchanged": true,
+      "inputCount": 3037
+    },
+    {
+      "area": "Windows Review main campaign",
+      "status": "passed_for_review_build",
+      "latestEvidence": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/CampaignWindows-5063e4b1da144f958d6611eaf9930305/validation.json",
+      "stages": 20,
+      "checks": 24697,
+      "saveReloadChecks": 176,
+      "captures": 48,
+      "exitCode": 0
+    },
+    {
+      "area": "Final user data and protected file preservation",
+      "status": "passed_for_user_saves_and_protected_files",
+      "latestEvidence": "C:\\dev\\TalesTactics\\Docs\\CommercialSlice\\Validation\\final-preservation.json",
+      "protectedUnchanged": 12,
+      "rootUserFilesUnchanged": 9,
+      "wholeTaskTreeUnchanged": false,
+      "testAddedFiles": 130,
+      "testAddedDirectories": 70,
+      "testChangedFiles": 1
+    },
+    {
+      "area": "Final Editor settings restoration",
+      "status": "restored",
+      "latestEvidence": "C:\\dev\\TalesTactics\\Docs\\CommercialSlice\\Validation\\editor-final-state.json",
+      "play": false,
+      "sceneDirty": false,
+      "gameViewSelectedIndex": 3,
+      "gameViewTotal": 7
+    },
+    {
+      "area": "Representative Windows visual review",
+      "status": "recorded_for_two_representative_captures",
+      "latestEvidence": "C:/dev/TalesTactics/Docs/CommercialSlice/Evidence/windows-visual-review.json",
+      "manuallyViewedCaptures": 2,
+      "automaticallyValidatedCaptures": 48
+    }
+  ],
+  "supportingEvidence": [
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/full-editmode-final-request.json",
+      "bytes": 918,
+      "sha256": "448365f829f53745045221d13f26576d5f69cb819624e6f95b035c5ad33f5d5d",
+      "lastWriteUtc": "2026-11-17T14:18:46.0637474Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/target-playmode-1080p-attempt2-request.json",
+      "bytes": 914,
+      "sha256": "a47b8ecc2a516e096f26edee932b3fd8e7b1d458aea3721108a90b1d8b1e47e5",
+      "lastWriteUtc": "2026-11-17T14:24:18.6600701Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-commercialslice-720p-attempt2-reload.json",
+      "bytes": 562,
+      "sha256": "a6c399d1269fb57d4db8b8f8c78891da4a1c9df986f322704f07dd61d2778db3",
+      "lastWriteUtc": "2026-11-17T14:29:20.0850144Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-commercialslice-720p-attempt2-request.json",
+      "bytes": 914,
+      "sha256": "a47b8ecc2a516e096f26edee932b3fd8e7b1d458aea3721108a90b1d8b1e47e5",
+      "lastWriteUtc": "2026-11-17T14:29:26.4923733Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-720p-attempt2-request.json",
+      "bytes": 916,
+      "sha256": "29ae6f7f87694f9cc0d71b0d0c29eb23edc19578b84875d5fa3d21870a501b8f",
+      "lastWriteUtc": "2026-11-17T14:30:07.0972271Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/view-720p-actual.json",
+      "bytes": 1309,
+      "sha256": "f362b4ec04150300d2f0456eb3ab2545c9252af3aba38ed189afe56764f1e6d3",
+      "lastWriteUtc": "2026-11-17T14:27:49.2153509Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-720p-attempt4-reload.json",
+      "bytes": 566,
+      "sha256": "6dc7c4e7ae44097d87cec8db9572dcee7eff79f1988fb068d57a75c8c1b85449",
+      "lastWriteUtc": "2026-11-17T14:41:20.871692Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-720p-attempt4-ready.json",
+      "bytes": 570,
+      "sha256": "a91e4f5468f043931107f075b3eddda3489bb5e1196135ca669c751c835f6ec0",
+      "lastWriteUtc": "2026-11-17T14:41:26.5571265Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-720p-attempt4-request.json",
+      "bytes": 919,
+      "sha256": "f7643497e0aa73db98ad410de4ccfefc2d3fc5de3489cdde97f4501508c99f49",
+      "lastWriteUtc": "2026-11-17T14:41:27.3054756Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-commercialslice-768p-attempt4-request.json",
+      "bytes": 917,
+      "sha256": "467a5bb7bdb0d746b9b3d08dbd0861dd3a2e0acfa468aff173b081239df13f2d",
+      "lastWriteUtc": "2026-11-17T14:42:21.3383766Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-768p-attempt4-request.json",
+      "bytes": 919,
+      "sha256": "f7643497e0aa73db98ad410de4ccfefc2d3fc5de3489cdde97f4501508c99f49",
+      "lastWriteUtc": "2026-11-17T14:43:01.8281356Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/ui-rewardcomparison-1080p-attempt4-request.json",
+      "bytes": 919,
+      "sha256": "f7643497e0aa73db98ad410de4ccfefc2d3fc5de3489cdde97f4501508c99f49",
+      "lastWriteUtc": "2026-11-17T14:43:43.3637928Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/view-720p-matrix-set.json",
+      "bytes": 796,
+      "sha256": "c42d77a35f45e4f148caf4b56678eb4b5fc3c8a3a11375bcef3a56ef75c96a79",
+      "lastWriteUtc": "2026-11-17T14:41:20.0181675Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/view-768p-matrix-set.json",
+      "bytes": 796,
+      "sha256": "862e1725da896f7c3e698a6e63e623b5f986650ed6575f155865439fa481cc3b",
+      "lastWriteUtc": "2026-11-17T14:42:13.7558571Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/view-1080p-matrix-set.json",
+      "bytes": 798,
+      "sha256": "ce660cd1bf336a07969d0feadeb5221093fb70e2b5c702eb6b8469fba63c12bd",
+      "lastWriteUtc": "2026-11-17T14:43:36.1825389Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/full-playmode-final-request.json",
+      "bytes": 940,
+      "sha256": "c025c610582b7b1d76dd6088e3e482cbe3b97888d6313d5a097e14b289826970",
+      "lastWriteUtc": "2026-11-17T14:44:47.7550916Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/full-playmode-final-status.json",
+      "bytes": 82069,
+      "sha256": "126e090a99bc40c232f0769839f07027de718913ef15b1c4c9e8f8d69437f4bd",
+      "lastWriteUtc": "2026-11-17T15:03:12.1972515Z"
+    }
+  ],
+  "captureReports": [
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/Opening-b3a9d55e2a704279bce2210b470b06ea/capture-report.json",
+        "bytes": 3158,
+        "sha256": "ad6f57f7be9b5d18bda9f53cbf93148c0531356e87feebbf5070e92be3d95856",
+        "lastWriteUtc": "2026-11-17T14:24:53.6971205Z"
+      },
+      "completed": true,
+      "scope": "Production scene wiring and available GameView captures; no battle completion, balance or human visual approval claim.",
+      "captures": [
+        {
+          "episode": 1,
+          "stage": 6,
+          "width": 1920,
+          "height": 1080,
+          "textScale": 1.0,
+          "partyCount": 2,
+          "png": "episode-01-battle.png"
+        },
+        {
+          "episode": 2,
+          "stage": 7,
+          "width": 1920,
+          "height": 1080,
+          "textScale": 1.0,
+          "partyCount": 4,
+          "png": "episode-02-battle.png"
+        },
+        {
+          "episode": 3,
+          "stage": 8,
+          "width": 1920,
+          "height": 1080,
+          "textScale": 1.0,
+          "partyCount": 5,
+          "png": "episode-03-battle.png"
+        }
+      ],
+      "interpretation": "실제 전장 배치/표시 연결과 캡처 크기 기록이다. 전투 완주·밸런스·사람의 시각 승인 근거로 사용하지 않는다."
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/Opening-8bc9ca21865647a182bcaf855dcd1447/capture-report.json",
+        "bytes": 3155,
+        "sha256": "e74577b53fd863c31139429265f6183fcbecdbdf75ae54922b2adaaa24958fc7",
+        "lastWriteUtc": "2026-11-17T14:29:53.111506Z"
+      },
+      "completed": true,
+      "scope": "Production scene wiring and available GameView captures; no battle completion, balance or human visual approval claim.",
+      "captures": [
+        {
+          "episode": 1,
+          "stage": 6,
+          "width": 1280,
+          "height": 720,
+          "textScale": 1.0,
+          "partyCount": 2,
+          "png": "episode-01-battle.png"
+        },
+        {
+          "episode": 2,
+          "stage": 7,
+          "width": 1280,
+          "height": 720,
+          "textScale": 1.0,
+          "partyCount": 4,
+          "png": "episode-02-battle.png"
+        },
+        {
+          "episode": 3,
+          "stage": 8,
+          "width": 1280,
+          "height": 720,
+          "textScale": 1.0,
+          "partyCount": 5,
+          "png": "episode-03-battle.png"
+        }
+      ],
+      "interpretation": "실제 전장 배치/표시 연결과 캡처 크기 기록이다. 전투 완주·밸런스·사람의 시각 승인 근거로 사용하지 않는다."
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/Opening-28579ef08c3e49899e9414803adfdbe9/capture-report.json",
+        "bytes": 3155,
+        "sha256": "e455f3b282b18d039be8e8bc3ebc5fc526d76901ba97e40d16fa17735a425a34",
+        "lastWriteUtc": "2026-11-17T14:42:48.0185155Z"
+      },
+      "completed": true,
+      "scope": "Production scene wiring and available GameView captures; no battle completion, balance or human visual approval claim.",
+      "captures": [
+        {
+          "episode": 1,
+          "stage": 6,
+          "width": 1024,
+          "height": 768,
+          "textScale": 1.0,
+          "partyCount": 2,
+          "png": "episode-01-battle.png"
+        },
+        {
+          "episode": 2,
+          "stage": 7,
+          "width": 1024,
+          "height": 768,
+          "textScale": 1.0,
+          "partyCount": 4,
+          "png": "episode-02-battle.png"
+        },
+        {
+          "episode": 3,
+          "stage": 8,
+          "width": 1024,
+          "height": 768,
+          "textScale": 1.0,
+          "partyCount": 5,
+          "png": "episode-03-battle.png"
+        }
+      ],
+      "interpretation": "실제 1024x768 Editor 전장 배치/표시 연결과 캡처 크기 기록이다. 전투 완주·밸런스·사람의 시각 승인을 뜻하지 않는다."
+    }
+  ],
+  "classificationBasis": [
+    {
+      "file": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Tests/GrowthCombatTests.cs",
+        "bytes": 15218,
+        "sha256": "cdfd345fd46a3b5f3e7567e3482edd5171d59f6e2b9046a7748358cadf862b88",
+        "lastWriteUtc": "2026-11-17T14:16:09.3261978Z"
+      },
+      "observation": "ClessBulwarkUsesOneSharedProtectionAndForecastPreservesIt에서 Execute 전에 enemy.Facing=SkillResolver.Toward(...)를 설정한다. 현재 파일 읽기와 담당자 원인 분석을 결합한 fixture 분류이며 이전 테스트 당시 소스 해시를 재구성한 것은 아니다."
+    },
+    {
+      "file": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Runtime/Presentation/BattleGrowthPathHud.cs",
+        "bytes": 5952,
+        "sha256": "e41a7ebe9e629b0a232d783e5cb569063b5d4dce6d338464fe2f1a44ed9d1904",
+        "lastWriteUtc": "2026-11-17T14:23:46.7106906Z"
+      },
+      "observation": "RefreshGrowthFocus는 다음 프레임과 WaitForEndOfFrame 이후 선택 상태를 확인하고 FocusButton을 다시 호출한다. 제품 변경의 현재 읽기 확인이며 과거 실행의 소스 영수증은 아니다."
+    },
+    {
+      "file": {
+        "path": "C:/dev/TalesTactics/Assets/TalesTactics/Runtime/Presentation/BattleRewardDetailsHud.cs",
+        "bytes": 9538,
+        "sha256": "7f0a0533ba31f1a90c566ffe3046093a1463a85100b3cb5ec72a8c7a30f98766",
+        "lastWriteUtc": "2026-11-17T14:35:15.9718176Z"
+      },
+      "observation": "RefreshRewardDetailsFocus가 다음 프레임과 WaitForEndOfFrame 뒤 선택된 버튼에 FocusButton을 다시 적용한다. 현재 제품 코드 읽기 근거이며 과거 실행 당시 전체 소스 동일성 영수증은 아니다."
+    }
+  ],
+  "pending": [],
+  "limitations": [
+    "success=true는 도구 명령 성공이다. tests=0 또는 failed>0 결과를 테스트 통과로 해석하지 않는다.",
+    "성장 1080p 최초 실패와 보상 비교 실패는 제품 커서 동작 문제로 분리하고 테스트 fixture 문제로 축소하지 않는다.",
+    "도메인 재로드 후 발견/실행이 회복된 것은 관측했지만 0건의 근본 원인을 단정하지 않는다.",
+    "화면 크기는 별도 캡처 보고서로 확인했으며 모든 텍스트·배치의 수동 시각 승인을 의미하지 않는다.",
+    "이후 생성되는 결과는 이 파일에 자동 반영되지 않는다. 다음 검증 결과를 읽고 이력을 갱신해야 한다.",
+    "attempt3 재로드의 5000ms 오류는 테스트 시작 전 인프라 실패다. 이후 명시적 재로드 성공과 표적 검사 성공으로 해소했으며 근본 원인을 재현해 입증한 것은 아니다.",
+    "보상 비교의 세 화면 크기에서 각 28장, 총 84장의 캡처 파일 존재와 manifest의 실제 크기·글자 배율을 확인했다. PNG 시각 품질의 수동 승인 또는 자연 캠페인 밸런스를 뜻하지 않는다.",
+    "BuildReport 성공과 SourceAfter 입력 일치 성공은 별도 조건이다. 최초 Normal 빌드의 성공 보고를 입력 변경 거부나 최종 재빌드 완료로 대체하지 않는다.",
+    "이전 보존 감사의 글꼴 불일치는 과거 관측으로 보존했다. 최종 감사는 Windows 실행과 Editor 복원 증거 이후 수행됐고 보호 12개·저장/설정 9개는 초기 바이트와 일치했다. StorageTests 130개 파일/70개 폴더 추가와 TestResults.xml 변경 때문에 전체 작업 트리는 불변이 아니다.",
+    "최종 감사 도우미의 고정 purpose 문구는 intermediate로 남아 있다. 실제 실행 시각, Windows 종료, Editor 복원 기록과 final-preservation의 명시적 해석을 근거로 최종 감사로 연결했다.",
+    "Windows 캠페인은 Standard/naturalGrowthPurchases/timeScale 4의 Review 자동 실행이다. 대표 PNG 2장을 담당자가 직접 보았고 48장 전체는 디코딩/비균일 픽셀만 검사했다. 일반 실행의 모든 해상도, 모든 규칙 조합, 사람의 난이도·재미·장기 밸런스 승인은 이번 구현 범위 밖이다.",
+    "전체 EditMode는 최종 UI 전용 수정 이전이며, 최종 전체 PlayMode 이후 제품 소스 변경은 없었다는 792개 검증 당시 소스 manifest 대조를 최종 보존 요약에서 확인했다. 깨끗한 별도 체크아웃에서의 완전 재현 빌드 증명으로 확대하지 않는다."
+  ],
+  "updatedUtc": "2026-11-17T15:30:59.3113246Z",
+  "previousHistorySHA256": "5743fbc98a422588e424b4c1925d4cc748c122a43ac76280f21a9109acaa3353",
+  "resolvedFindings": [
+    {
+      "finding": "RewardComparison controller pointer after modal layout",
+      "status": "resolved_in_targeted_editor_tests",
+      "originalFailure": "Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt2.json",
+      "passingEvidence": [
+        "Docs/CommercialSlice/Validation/ui-rewardcomparison-720p-attempt4.json",
+        "Docs/CommercialSlice/Validation/ui-rewardcomparison-768p-attempt4.json",
+        "Docs/CommercialSlice/Validation/ui-rewardcomparison-1080p-attempt4.json"
+      ],
+      "limit": "세 화면 크기의 Editor 표적 검증이며 전체 PlayMode/Windows 완료를 뜻하지 않는다."
+    }
+  ],
+  "rewardCaptureReports": [
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-45cc2813f80a4395951738b6b1ff05d2/manifest.json",
+        "bytes": 10156,
+        "sha256": "d288cb745d48db2e1ee16a5b3a06405fa62b2afbc5fcfb53cd148159f60b8c3c",
+        "lastWriteUtc": "2026-11-17T14:42:01.9243438Z"
+      },
+      "test": "RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 20,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1280,
+          "screenHeight": 720
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-3f3a9677289c4b19bd505559a9ef1eae/manifest.json",
+        "bytes": 2444,
+        "sha256": "79fd73a26915066cb9f22c79fda8fd0e0c1560a3615f747d89188fc2afe477e1",
+        "lastWriteUtc": "2026-11-17T14:42:04.6019048Z"
+      },
+      "test": "RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1280,
+          "screenHeight": 720
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-7287490ca0b9424ab93cfdfe20fcf9be/manifest.json",
+        "bytes": 2475,
+        "sha256": "aeb7d8fe2bc4e36f66dd7db04ca57cf8bcb6e7d1f99e05ae55040a2b8c33241a",
+        "lastWriteUtc": "2026-11-17T14:42:06.6310321Z"
+      },
+      "test": "RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1280,
+          "screenHeight": 720
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-c424097b3ade43439bb56a2c8eb3233b/manifest.json",
+        "bytes": 10156,
+        "sha256": "7961a6016d4797e7513688d4ae40063d69ab963c2ab18989b48530c49f20c06e",
+        "lastWriteUtc": "2026-11-17T14:43:20.8486159Z"
+      },
+      "test": "RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 20,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1024,
+          "screenHeight": 768
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-8e57926f75384a5c83ab8f26356d1a6f/manifest.json",
+        "bytes": 2444,
+        "sha256": "545ff4638c7ab92dff04f6a3f9271ae3eeda5bf8959467da4b1bd54bb0c3c2f2",
+        "lastWriteUtc": "2026-11-17T14:43:22.8235268Z"
+      },
+      "test": "RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1024,
+          "screenHeight": 768
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-b04518bc2c6646ca80f5beb4363d82a1/manifest.json",
+        "bytes": 2475,
+        "sha256": "14c48949d399181dc28810fa42c2df6efa2809e7c8b015273ff78e862ec5caf2",
+        "lastWriteUtc": "2026-11-17T14:43:24.5410576Z"
+      },
+      "test": "RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1024,
+          "screenHeight": 768
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-37764e3c258a472ab35796271470c5eb/manifest.json",
+        "bytes": 10196,
+        "sha256": "20ea12b07106f50034133460d9ab1104f72d21f86f135c65b8aad23ff56ff970",
+        "lastWriteUtc": "2026-11-17T14:44:07.5020337Z"
+      },
+      "test": "RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 20,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1920,
+          "screenHeight": 1080
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-1621ef085a3645b182688689182d0172/manifest.json",
+        "bytes": 2452,
+        "sha256": "043a0d7b16b4e5a96cfc0819b3ea5e7246c50e67f154f28582e7b0d81ca16091",
+        "lastWriteUtc": "2026-11-17T14:44:09.9164121Z"
+      },
+      "test": "RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1920,
+          "screenHeight": 1080
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    },
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/RewardComparison20261117/PlayMode-c7c95294901c430880a2cfd066703a37/manifest.json",
+        "bytes": 2483,
+        "sha256": "2c33a914450981686c797ee70cd94dc2e859653594342daf1077f2312914d2f2",
+        "lastWriteUtc": "2026-11-17T14:44:12.2829365Z"
+      },
+      "test": "RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment",
+      "complete": true,
+      "scope": "Editor PlayMode at the actual Game View size; synthetic prerequisite/victory/input fixtures exercise production result and comparison UI. These captures do not establish required desktop resolutions or natural campaign balance.",
+      "captureCount": 4,
+      "actualScreenSizes": [
+        {
+          "screenWidth": 1920,
+          "screenHeight": 1080
+        }
+      ],
+      "actualTextScales": [
+        1.0,
+        1.2999999523162842
+      ],
+      "missingPNG": 0
+    }
+  ],
+  "preservationAudits": [
+    {
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/preservation-audit-6079397bb628457b8f672133642dcf53.json",
+        "bytes": 3175472,
+        "sha256": "5324d34115100dd9ea882e0133548fa19fe36ca416b37e984d87a8cac1c092c2",
+        "lastWriteUtc": "2026-11-17T15:09:39.4885089Z"
+      },
+      "status": "intermediate_requires_final_recheck",
+      "startedUtc": "2026-11-17T15:09:06.2585068Z",
+      "finishedUtc": "2026-11-17T15:09:39.2495445Z",
+      "protectedTotal": 12,
+      "protectedUnchanged": 11,
+      "protectedDifferences": [
+        {
+          "path": "Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset",
+          "baselineSHA256": "47A4ABE37BB2F4DAFE993B6AE753218BD1A95D10099C174815D072EF12DF0613",
+          "currentSHA256": "3696568561e366f2db71f8d94bb7e90c76330f6b8ed5deacf3b749460c9bb2d3",
+          "exists": true,
+          "unchanged": false,
+          "error": null
+        }
+      ],
+      "rootSaveFilesTotal": 9,
+      "rootSaveFilesUnchanged": 9,
+      "summary": {
+        "baselineExists": true,
+        "currentExists": true,
+        "currentFiles": 5272,
+        "currentDirectories": 2552,
+        "addedFiles": 130,
+        "changedFiles": 1,
+        "removedFiles": 0,
+        "addedDirectories": 70,
+        "removedDirectories": 0
+      },
+      "addedFileGroups": [
+        {
+          "Name": "StorageTests path; included in comparison",
+          "Count": 130
+        }
+      ],
+      "addedDirectoryGroups": [
+        {
+          "Name": "StorageTests path; included in comparison",
+          "Count": 70
+        }
+      ],
+      "changedFiles": [
+        {
+          "name": "TestResults.xml",
+          "classification": "Result-like path; included in comparison"
+        }
+      ],
+      "enumerationErrors": 0,
+      "reparsePoints": 0,
+      "concurrentChanges": 0,
+      "testResultsObservation": "변경된 루트 TestResults.xml은 실제 전체 PlayMode 결과 297/297 Passed다. 별도로 130개 추가 파일/70개 추가 폴더가 모두 StorageTests 아래에 있다. 검사 출력도 비교에서 제외하지 않았다.",
+      "restorationEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/TestGenerated-4e2b4ace721d428f9b5b55b088a43cf4/restoration.json",
+        "bytes": 1611,
+        "sha256": "f016a72cf7047f14252baf02fdaf903d7fefe65534ee365fae5bb6e32c3fce7c",
+        "lastWriteUtc": "2026-11-17T15:05:05.6203385Z"
+      },
+      "limit": "3개 검사 생성물의 보관 및 초기 바이트 복원 기록 이후 빌드 중 글꼴 파일 재변경을 관측했다. 감사자는 사용자 저장·보호 파일을 복원/삭제하지 않았다. 전체 저장 트리가 불변이라고 주장하지 않으며 최종 빌드/실행 종료 후 감사를 대체하지 않는다.",
+      "resolvedByFinalEvidence": "C:\\dev\\TalesTactics\\Docs\\CommercialSlice\\Validation\\final-preservation.json"
+    }
+  ],
+  "toolingIncidents": [
+    {
+      "id": "preservation-audit-powershell-51-array",
+      "classification": "local_audit_tool_compatibility",
+      "productFailure": false,
+      "status": "fixed_and_audit_completed",
+      "error": "Cannot convert System.Object[] to System.String required ChildPath",
+      "observation": "PS5.1에서 @(Get-Content | ConvertFrom-Json)은 12개 객체 배열을 한 요소로 감쌌다(wrappedCount=1, wrappedElementType=System.Object[]). 직접 대입은 directCount=12, 요소 PSCustomObject였다.",
+      "fix": "감사 스크립트의 protectedInput 대입에서 외부 @()만 제거했다.",
+      "scriptEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/Audit-UserPreservation.ps1",
+        "bytes": 8126,
+        "sha256": "6e6904bdf113b9fce855c83266b5154658e15f4c01fb52d1c311333a39e35cf5",
+        "lastWriteUtc": "2026-11-17T15:08:36.037861Z"
+      },
+      "auditEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/preservation-audit-6079397bb628457b8f672133642dcf53.json",
+        "bytes": 3175472,
+        "sha256": "5324d34115100dd9ea882e0133548fa19fe36ca416b37e984d87a8cac1c092c2",
+        "lastWriteUtc": "2026-11-17T15:09:39.4885089Z"
+      },
+      "limit": "최초 오류의 별도 원본 로그는 이 항목에 없다. 원인 재현과 수정 후 실제 감사 출력을 구분한다."
+    },
+    {
+      "id": "preservation-audit-process-execution-policy",
+      "classification": "local_script_loading_policy",
+      "productFailure": false,
+      "status": "resolved_for_single_process",
+      "observation": "수정된 스크립트의 첫 powershell.exe -File 실행은 실행 정책 때문에 로딩 전에 거부됐다. 다음 실행에서 해당 프로세스에만 -ExecutionPolicy Bypass를 지정해 완료했으며 시스템 정책은 영구 변경하지 않았다.",
+      "auditEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/preservation-audit-6079397bb628457b8f672133642dcf53.json",
+        "bytes": 3175472,
+        "sha256": "5324d34115100dd9ea882e0133548fa19fe36ca416b37e984d87a8cac1c092c2",
+        "lastWriteUtc": "2026-11-17T15:09:39.4885089Z"
+      },
+      "limit": "Unity/게임 테스트 실행 실패가 아니다."
+    },
+    {
+      "id": "windows-build-dispatch-attempt-1",
+      "classification": "local_cli_native_argument_serialization",
+      "productFailure": false,
+      "status": "rejected_before_build_then_retry_scheduled",
+      "evidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/build-dispatch-attempt1.json",
+        "bytes": 1114,
+        "sha256": "0c8890ce6fcff622ce4ed90e3f4b47d0b643b47500adb9bf92ace59801a015ed",
+        "lastWriteUtc": "2026-11-17T15:08:49.3511022Z"
+      },
+      "error": "INVALID_COMMAND_ARGS",
+      "buildScheduled": false,
+      "buildExecuted": false,
+      "counts": null,
+      "note": "--args requires JArray but received [C:/dev/TalesTactics/Builds/CommercialSliceWindows20261117] after native argument quote loss.",
+      "resolution": "Second invocation uses PowerShell7 Standard native argument passing; actual build was scheduled.",
+      "evidenceLimitation": "The retry wrapper changed preflight prefixes but its write paths retained build-normal- names, so the first fixed dispatch/before receipt files were overwritten. Original GUID input evidence and script remain. Current fixed receipt belongs to attempt2.",
+      "scope": "Reconstructed dispatch diagnostic from the observed shell/CLI output, not a byte-preserved original response file.",
+      "limit": "이 파일은 관측한 출력에 근거한 재구성 진단이며 원본 응답 바이트가 아니다. 최초 고정 receipt가 재시도에서 덮어써진 한계를 보존한다. 재시도 Scheduled는 빌드 성공을 뜻하지 않는다."
+    }
+  ],
+  "latestOperationalEvidence": {
+    "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/final-preservation.json",
+    "bytes": 10622,
+    "sha256": "7e16de7e78d172218937c0a04307638e22e640c893d558141922b33ea47e0a4e",
+    "lastWriteUtc": "2026-11-17T15:28:08.2962782Z"
+  },
+  "buildAttempts": [
+    {
+      "id": "normal-build-attempt-1",
+      "kind": "Normal",
+      "buildRunId": "281661f1b05f472a824e4fa5f7fb0b1a",
+      "status": "build_succeeded_source_identity_rejected",
+      "buildReportEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-build-normal-attempt1.json",
+        "bytes": 231598,
+        "sha256": "9b8fd91de74b2238f9db0a899cba8ac40bbda734585e61febe29f9eeb3449cb0",
+        "lastWriteUtc": "2026-11-17T15:09:28.3691094Z"
+      },
+      "buildStatus": "Succeeded",
+      "buildComplete": true,
+      "buildPassed": true,
+      "durationSeconds": 133.51197919999998,
+      "errors": 0,
+      "warnings": 4,
+      "warningMessages": [
+        {
+          "stepIndex": 3,
+          "messageIndex": 3,
+          "step": "Preprocess Player",
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 0,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        },
+        {
+          "stepIndex": 22,
+          "messageIndex": 0,
+          "step": "Packaging assets - globalgamemanagers.assets",
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        },
+        {
+          "stepIndex": 22,
+          "messageIndex": 1,
+          "step": "Packaging assets - globalgamemanagers.assets",
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        }
+      ],
+      "startedUtc": "2026-11-17T15:07:13.4836633Z",
+      "finishedUtc": "2026-11-17T15:09:28.3645845Z",
+      "sourceAfterEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Normal-After-0786a9b7af59453694e62dc38201ac4c/after-binary-source.json",
+        "bytes": 90939,
+        "sha256": "a7b867d4c14cc32f728b4da10f026efa4baa596308fee1a55afe5159b1cacce1",
+        "lastWriteUtc": "2026-11-17T15:10:13.568167Z"
+      },
+      "sourceAfterPassed": false,
+      "sourceAfterFailures": [
+        "Source inputs were added, deleted or changed between captures."
+      ],
+      "comparisonEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Normal-After-0786a9b7af59453694e62dc38201ac4c/input-comparison.json",
+        "bytes": 1204,
+        "sha256": "55172d8d3e522ebf286a3e6a049ed7f06d8ae38385edc4748d8110a4b7f6dec5",
+        "lastWriteUtc": "2026-11-17T15:09:56.0103629Z"
+      },
+      "comparison": {
+        "unchanged": false,
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "path": "Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset",
+            "before": {
+              "path": "Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset",
+              "bytes": 159530,
+              "sha256": "47a4abe37bb2f4dafe993b6ae753218bd1a95d10099c174815d072ef12df0613",
+              "lastWriteUtc": "2026-11-05T21:37:38.4902364Z"
+            },
+            "after": {
+              "path": "Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset",
+              "bytes": 178596,
+              "sha256": "3696568561e366f2db71f8d94bb7e90c76330f6b8ed5deacf3b749460c9bb2d3",
+              "lastWriteUtc": "2026-11-17T15:07:14.9986631Z"
+            }
+          }
+        ]
+      },
+      "acceptedAsFinalBuild": false,
+      "failureClassification": "build_input_identity_changed_during_build",
+      "note": "BuildReport 자체는 성공했다. 전후 전체 입력 비교에서 KoreanFallback.asset 단 1개가 바뀌어 SourceAfter가 false였고 최종 검증용 빌드로 채택하지 않았다. 빌드 컴파일 실패나 게임 테스트 실패와 구분한다.",
+      "buildProtectedScopeLimit": "BuildReport.protectedFilesUnchanged=true는 도우미가 검사한 Content/Packages/ProjectSettings 범위 결과다. Resources 글꼴을 포함한 전체 입력 불변은 별도 SourceAfter 검사가 거부했으므로 이 값만으로 보호 12개 모두 불변이라고 해석하지 않는다.",
+      "preservation": {
+        "originalOutput": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceWindows20261117",
+        "archivedOutput": "C:/dev/TalesTactics/Builds/CommercialSliceWindows20261117-Attempt1",
+        "operation": "Root reported a path-checked directory move without deletion",
+        "evidenceScope": "보관 경로와 이동 행위는 담당 실행자 보고다. 이 이력 작업에서 출력 폴더 감사를 추가로 수행하지 않았다. BuildReport의 output은 당시 원래 경로를 유지한다."
+      },
+      "recovery": {
+        "generatedFontCopy": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/FontReload-281d456f636744cc96c1ac17dc760511/generated-before-reload.asset",
+        "reloadEvidence": {
+          "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/FontReload-281d456f636744cc96c1ac17dc760511/reload.json",
+          "bytes": 641,
+          "sha256": "afb08fabaea37e46a3adfa61282ac46fcb65909557773d5b526a5a1323e726bf",
+          "lastWriteUtc": "2026-11-17T15:13:36.0032667Z"
+        },
+        "reloadSuccess": true,
+        "dirty": false,
+        "sceneDirty": false,
+        "nextBeforeEvidence": {
+          "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Normal-Before-7e4789d34f304cb7821eaf22fc58e538/before-source.json",
+          "bytes": 87111,
+          "sha256": "7e8aef624a1e9b30eadc69f57a49530e264f20a99229b5c24d0ac92ed354e6a0",
+          "lastWriteUtc": "2026-11-17T15:14:18.6471196Z"
+        },
+        "nextInputManifestEvidence": {
+          "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Normal-Before-7e4789d34f304cb7821eaf22fc58e538/inputs-before.json",
+          "bytes": 1103725,
+          "sha256": "6e8f706e0827eed14b836485dae53198fbeb5fbaba56f1b1a048bddf469f4b4b",
+          "lastWriteUtc": "2026-11-17T15:14:18.5994457Z"
+        },
+        "restoredFontRecordedInNextInputs": {
+          "path": "Assets/TalesTactics/Resources/TalesTactics/KoreanFallback.asset",
+          "bytes": 159530,
+          "sha256": "47a4abe37bb2f4dafe993b6ae753218bd1a95d10099c174815d072ef12df0613",
+          "lastWriteUtc": "2026-11-05T21:37:38.4902364Z"
+        },
+        "note": "담당 실행자가 생성된 글꼴 사본을 보존하고 초기 바이트를 복원한 뒤 강제 동기 재임포트했다. reload.json의 dirty/sceneDirty=false와 다음 Before 입력에 기록된 초기 SHA256을 확인했다. 라이브 원본이나 사용자 저장의 새 감사는 수행하지 않았다."
+      }
+    },
+    {
+      "id": "normal-build-final-retry",
+      "kind": "Normal",
+      "buildRunId": "2df0ffec68564e498c655861cfb728ca",
+      "status": "build_and_input_identity_passed",
+      "buildReportEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-build-normal.json",
+        "bytes": 229629,
+        "sha256": "405e5f9e040f1934ab2ceec6a19fec725b627f5ac93ca42b7ea3aed7319225ca",
+        "lastWriteUtc": "2026-11-17T15:15:27.367129Z"
+      },
+      "sourceBeforeEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-normal-source-before.json",
+        "bytes": 87111,
+        "sha256": "7e8aef624a1e9b30eadc69f57a49530e264f20a99229b5c24d0ac92ed354e6a0",
+        "lastWriteUtc": "2026-11-17T15:14:18.6471196Z"
+      },
+      "sourceAfterEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-normal-binary-source-after.json",
+        "bytes": 90852,
+        "sha256": "daec2ae4fe6903be6c5f15751284a2b2c299e9e81830280acf4418125f1893d9",
+        "lastWriteUtc": "2026-11-17T15:16:06.5572098Z"
+      },
+      "comparisonEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Normal-After-616561dd79c44639addf91e18609a809/input-comparison.json",
+        "bytes": 149,
+        "sha256": "f36e6a41c361f2b54e09349eac8080ef59c2d298f2f361dc192ee2f64a0c5708",
+        "lastWriteUtc": "2026-11-17T15:15:49.8874787Z"
+      },
+      "buildStatus": "Succeeded",
+      "buildComplete": true,
+      "buildPassed": true,
+      "durationSeconds": 67.2941321,
+      "errors": 0,
+      "warnings": 3,
+      "warningMessages": [
+        {
+          "stepIndex": 3,
+          "messageIndex": 3,
+          "step": "Preprocess Player",
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        },
+        {
+          "stepIndex": 22,
+          "messageIndex": 0,
+          "step": "Packaging assets - globalgamemanagers.assets",
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        },
+        {
+          "stepIndex": 22,
+          "messageIndex": 1,
+          "step": "Packaging assets - globalgamemanagers.assets",
+          "type": "Warning",
+          "content": "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+        }
+      ],
+      "buildGuid": "261e029ed93048088ba6831bdfbe9892",
+      "output": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceWindows20261117",
+      "sourceBeforePassed": true,
+      "sourceAfterPassed": true,
+      "inputCount": 3037,
+      "inputAggregateSHA256": "fb661e7f2a22187cfeb41752365797745893c7a3a06c46dbe7c5416a9e44ce0f",
+      "inputsUnchanged": true,
+      "buildProtectedInputDisagreements": [],
+      "outputCount": 200,
+      "outputAggregateSHA256": "47791e5d9d81a0be09596271e55df15f1b272c2b2bfb86ccf4f3da4ff3172b03",
+      "binaries": [
+        {
+          "path": "TalesTactics.exe",
+          "bytes": 667136,
+          "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+          "lastWriteUtc": "2026-11-17T15:14:57.71264Z"
+        },
+        {
+          "path": "TalesTactics_Data/Managed/TalesTactics.Runtime.dll",
+          "bytes": 721920,
+          "sha256": "8e904a4e0113b8553f700c9844182ee99fcba008e7abc988b1774f603493a8d0",
+          "lastWriteUtc": "2026-11-17T15:15:03.5492021Z"
+        },
+        {
+          "path": "UnityPlayer.dll",
+          "bytes": 38669232,
+          "sha256": "8698332fa0d299291b58e71a505db6f20a8f291a2b7349421f93a4f9838ed895",
+          "lastWriteUtc": "2026-11-17T15:14:57.7802815Z"
+        }
+      ],
+      "acceptedAsFinalBuild": true,
+      "note": "실제 완료 BuildReport와 Before/After 전체 입력 비교가 통과했다. 문서 사본의 해시를 After가 참조한 BuildReport/Before 해시와 대조했고 BuildGuid가 일치한다. 입력 캡처는 설치된 Unity·Library 캐시를 포함하는 완전한 재현 빌드 증명은 아니다.",
+      "requestEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/build-final-normal-request.json",
+        "bytes": 1204,
+        "sha256": "3b87e88747f07df5ae07f3d91d470d35842d0280489764cc9cd258331d271d0a",
+        "lastWriteUtc": "2026-11-17T15:14:19.8555929Z"
+      },
+      "dispatchObservation": {
+        "status": "Scheduled",
+        "buildCompletedAtDispatch": false,
+        "note": "기존 Scheduled 관측을 보존하고 후속 완료 증거로 상태를 갱신했다."
+      }
+    },
+    {
+      "id": "review-build-final",
+      "kind": "Review",
+      "buildRunId": "f45b05f6f04f460ba71eca31e6c890e9",
+      "status": "build_and_input_identity_passed",
+      "buildReportEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-build-review.json",
+        "bytes": 232330,
+        "sha256": "07073aace6ea42ac4c273f934ade6a0306e0c6a87ed7e184e9a7ca60c47e4b39",
+        "lastWriteUtc": "2026-11-17T15:17:09.9050666Z"
+      },
+      "sourceBeforeEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-review-source-before.json",
+        "bytes": 87110,
+        "sha256": "673a921cb6b48254a3a72521c2417e8c7ce4985c7dbfdffc7985e61a785c269b",
+        "lastWriteUtc": "2026-11-17T15:16:25.5820086Z"
+      },
+      "sourceAfterEvidence": {
+        "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-review-binary-source-after.json",
+        "bytes": 90906,
+        "sha256": "e760013b9b6cdf6244c6cc38df30e053dfd6af44c328e6757cee2abcdd0ef52e",
+        "lastWriteUtc": "2026-11-17T15:17:50.1813828Z"
+      },
+      "comparisonEvidence": {
+        "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/BuildSource-Review-After-1444ebf123684d6d83ac8d8871aadfd2/input-comparison.json",
+        "bytes": 149,
+        "sha256": "f36e6a41c361f2b54e09349eac8080ef59c2d298f2f361dc192ee2f64a0c5708",
+        "lastWriteUtc": "2026-11-17T15:17:36.7751239Z"
+      },
+      "buildStatus": "Succeeded",
+      "buildComplete": true,
+      "buildPassed": true,
+      "durationSeconds": 42.2166559,
+      "errors": 0,
+      "warnings": 6,
+      "warningMessages": [
+        {
+          "stepIndex": 3,
+          "messageIndex": 3,
+          "step": "Preprocess Player",
+          "type": "Warning",
+          "content": "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds."
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 0,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(101,128): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'"
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 1,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(101,72): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 2,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(162,108): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'"
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 3,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\SdMotionDirectionReview.cs(162,54): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+        },
+        {
+          "stepIndex": 8,
+          "messageIndex": 4,
+          "step": "Compile scripts",
+          "type": "Warning",
+          "content": "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details."
+        }
+      ],
+      "buildGuid": "faabcbe739dc46c8a859a47c6fc300cf",
+      "output": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceReview20261117",
+      "sourceBeforePassed": true,
+      "sourceAfterPassed": true,
+      "inputCount": 3037,
+      "inputAggregateSHA256": "fb661e7f2a22187cfeb41752365797745893c7a3a06c46dbe7c5416a9e44ce0f",
+      "inputsUnchanged": true,
+      "buildProtectedInputDisagreements": [],
+      "outputCount": 200,
+      "outputAggregateSHA256": "911e8cc8940dc9a142e3bcb4f4f8625bcc83041a36f15808eda128e817c95200",
+      "binaries": [
+        {
+          "path": "TalesTactics.exe",
+          "bytes": 667136,
+          "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+          "lastWriteUtc": "2026-11-17T15:16:40.8085273Z"
+        },
+        {
+          "path": "TalesTactics_Data/Managed/TalesTactics.Runtime.dll",
+          "bytes": 1132032,
+          "sha256": "25aede9f94e87485d47d4fb90ee5fe015c7058046a2a9d48a3a18461d2051314",
+          "lastWriteUtc": "2026-11-17T15:16:47.8571185Z"
+        },
+        {
+          "path": "UnityPlayer.dll",
+          "bytes": 38669232,
+          "sha256": "8698332fa0d299291b58e71a505db6f20a8f291a2b7349421f93a4f9838ed895",
+          "lastWriteUtc": "2026-11-17T15:16:40.9577724Z"
+        }
+      ],
+      "acceptedAsFinalBuild": true,
+      "note": "실제 완료 BuildReport와 Before/After 전체 입력 비교가 통과했다. 문서 사본의 해시를 After가 참조한 BuildReport/Before 해시와 대조했고 BuildGuid가 일치한다. 입력 캡처는 설치된 Unity·Library 캐시를 포함하는 완전한 재현 빌드 증명은 아니다."
+    }
+  ],
+  "windowsCampaignValidation": {
+    "id": "windows-full-campaign-final",
+    "status": "passed_for_review_build",
+    "evidence": {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/CampaignWindows-5063e4b1da144f958d6611eaf9930305/validation.json",
+      "bytes": 2542638,
+      "sha256": "cf4cddf825c2c939bb53e2863d833c4132b7ca5daa0a46be003a858f898e1d05",
+      "lastWriteUtc": "2026-11-17T15:23:25.7705976Z"
+    },
+    "isolatedSaveEvidence": {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/CampaignWindows-5063e4b1da144f958d6611eaf9930305/isolated-campaign.json",
+      "bytes": 349,
+      "sha256": "a68966addd9f0968ea3f229c72df9f0b6ca98d6036a679a65c3a4c9de5f49311",
+      "lastWriteUtc": "2026-11-17T15:23:22.6894259Z"
+    },
+    "runtimeReportEvidence": {
+      "path": "C:/dev/TalesTactics/Builds/CommercialSliceReview20261117/CampaignFlowReviews/5063e4b1da144f958d6611eaf9930305/report.json",
+      "bytes": 1387513,
+      "sha256": "d192f92822814b872851018be52cee7dc7ac891525230ce957a46f4d44163d55",
+      "lastWriteUtc": "2026-11-17T15:23:19.9548782Z"
+    },
+    "runId": "5063e4b1da144f958d6611eaf9930305",
+    "startedUtc": "2026-11-17T15:18:22.3903381Z",
+    "finishedUtc": "2026-11-17T15:23:25.5999366Z",
+    "passed": true,
+    "reportValid": true,
+    "reportComplete": true,
+    "expectedStages": 20,
+    "verifiedStages": 20,
+    "completedChapters": 20,
+    "checks": 24697,
+    "saveReloadChecks": 176,
+    "stageReloadChecksSum": 176.0,
+    "expectedCaptures": 48,
+    "verifiedCaptures": 48,
+    "capturesListed": 48,
+    "exitCode": 0,
+    "forcedTermination": false,
+    "economyPassed": true,
+    "normalPlayerStarted": false,
+    "executedReviewPlayer": true,
+    "policy": "naturalGrowthPurchases",
+    "profile": "full-campaign",
+    "difficulty": "Standard",
+    "timeScale": 4.0,
+    "teamTurns": true,
+    "reactions": false,
+    "autoTiming": false,
+    "missionEvents": false,
+    "ct": false,
+    "utilityEnemyAI": false,
+    "purchases": true,
+    "skipEnemyAnimations": false,
+    "errors": [],
+    "userFilesUnchangedDuringRun": true,
+    "preflightUserTreeStable": true,
+    "userTreeExcludedRootFiles": [
+      "Player.log",
+      "Player-prev.log"
+    ],
+    "existingPlayersUnchanged": true,
+    "sourceManifestHashMatches": true,
+    "runtimeReportHashMatches": true,
+    "executedBinaryHashesMatchFinalReview": true,
+    "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+    "runtimeSHA256": "25aede9f94e87485d47d4fb90ee5fe015c7058046a2a9d48a3a18461d2051314",
+    "stages": [
+      {
+        "episode": 1,
+        "stage": 6,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 2,
+        "stage": 7,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 3,
+        "stage": 8,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 4,
+        "stage": 9,
+        "status": "Completed",
+        "saveReloadChecks": 10,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 5,
+        "stage": 10,
+        "status": "Completed",
+        "saveReloadChecks": 10,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 6,
+        "stage": 11,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 7,
+        "stage": 12,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 8,
+        "stage": 13,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 9,
+        "stage": 14,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 10,
+        "stage": 15,
+        "status": "Completed",
+        "saveReloadChecks": 10,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 11,
+        "stage": 16,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 12,
+        "stage": 17,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 13,
+        "stage": 18,
+        "status": "Completed",
+        "saveReloadChecks": 9,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 14,
+        "stage": 19,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 15,
+        "stage": 20,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 16,
+        "stage": 21,
+        "status": "Completed",
+        "saveReloadChecks": 8,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 17,
+        "stage": 22,
+        "status": "Completed",
+        "saveReloadChecks": 7,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 18,
+        "stage": 23,
+        "status": "Completed",
+        "saveReloadChecks": 7,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 19,
+        "stage": 24,
+        "status": "Completed",
+        "saveReloadChecks": 7,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      },
+      {
+        "episode": 20,
+        "stage": 25,
+        "status": "Completed",
+        "saveReloadChecks": 15,
+        "rewardApplied": true,
+        "pendingEndingSaved": true,
+        "completedEndingReloaded": true,
+        "endingCleared": true,
+        "nextStageUnlocked": true,
+        "duplicateRewardPrevented": true,
+        "permanentStateRoundTripPreserved": true
+      }
+    ],
+    "limits": [
+      "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+      "The REVIEW run covers main episodes 1 through 20 with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 4, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+      "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+      "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+      "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+      "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+      "Build success and normal-release startup must be established separately; this script does not build or start the normal player. Source labels are caller-supplied; DLL hashes are measured here and any source manifest is identified separately.",
+      "This run verifies current production objectives and preserved reward/economy rules. No before/after action, growth or timing equality is required. The retained RewardVariety contract checks the current reward table, actual purchases, inventory, gold and growth independently. Sale values are arithmetic only: no item is sold by this review.",
+      "Role skill counts classify authored effects and may overlap. Healing-skill count does not measure HP restored; guards/waits are committed player commands. Frame-sampled enemy seconds may include frame-boundary uncertainty. No human pacing or balance approval."
+    ],
+    "note": "검토용 Windows 바이너리의 실제 production 전투·보상·이야기·저장/재로드를 자동 정책으로 20화까지 실행했다. 24,697은 실행 중 확인 항목 수로 Unity 테스트 24,697개를 뜻하지 않는다. 일반 바이너리는 이 실행에서 시작하지 않았다. 실행 구간의 재귀 저장 트리 보존과 후속 최종 사용자 저장/보호 파일 감사가 각각 통과했다. 전체 작업 트리는 테스트 출력 증가로 불변이 아니다."
+  },
+  "finalPreservation": {
+    "evidence": {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/final-preservation.json",
+      "bytes": 10622,
+      "sha256": "7e16de7e78d172218937c0a04307638e22e640c893d558141922b33ea47e0a4e",
+      "lastWriteUtc": "2026-11-17T15:28:08.2962782Z"
+    },
+    "auditEvidence": {
+      "path": "C:/dev/TalesTactics/Logs/CommercialSlice20261117/preservation-audit-fc314f5535414258a30b4a66465bfe76.json",
+      "bytes": 1764365,
+      "sha256": "01977cdbbb34bd6a39410482100e16cb86e8e28a5918fea27a097713fb3eb11c",
+      "lastWriteUtc": "2026-11-17T15:25:53.3854855Z"
+    },
+    "status": "passed_for_user_saves_and_protected_files",
+    "passed": true,
+    "protectedTotal": 12,
+    "protectedUnchanged": 12,
+    "rootUserFileCount": 9,
+    "rootUserFilesUnchanged": true,
+    "rootFiles": [
+      {
+        "name": "campaign-slot2.json",
+        "currentSHA256": "f6828b20c9621c91f5f8b57c7c0c16b84811f017813ffbe2aebe763ee21e1d35",
+        "baselineSHA256": "f6828b20c9621c91f5f8b57c7c0c16b84811f017813ffbe2aebe763ee21e1d35",
+        "unchanged": true
+      },
+      {
+        "name": "campaign-slot2.json.bak",
+        "currentSHA256": "41005c21046173323040419ac5552f5b86a83f1946bc429da46462d8e09b6851",
+        "baselineSHA256": "41005c21046173323040419ac5552f5b86a83f1946bc429da46462d8e09b6851",
+        "unchanged": true
+      },
+      {
+        "name": "campaign-slot3.json",
+        "currentSHA256": "e407c8dac745418e6035ac070440412be71dc76ce765110407036a94933e5d3a",
+        "baselineSHA256": "e407c8dac745418e6035ac070440412be71dc76ce765110407036a94933e5d3a",
+        "unchanged": true
+      },
+      {
+        "name": "campaign.json",
+        "currentSHA256": "409bf2b4688db91c858a46417bafa91a195effc72dae9701038c790c74d65f78",
+        "baselineSHA256": "409bf2b4688db91c858a46417bafa91a195effc72dae9701038c790c74d65f78",
+        "unchanged": true
+      },
+      {
+        "name": "campaign.json.bak",
+        "currentSHA256": "dad7ea85a5dd22194a357f0e277f670bc845d05dbb08495c6811345a57a2b1e5",
+        "baselineSHA256": "dad7ea85a5dd22194a357f0e277f670bc845d05dbb08495c6811345a57a2b1e5",
+        "unchanged": true
+      },
+      {
+        "name": "campaign.json.v1.bak",
+        "currentSHA256": "324e361730b35c466bebe77a4d9e4730ed9bb8764bb8298fce26807e6c7081c1",
+        "baselineSHA256": "324e361730b35c466bebe77a4d9e4730ed9bb8764bb8298fce26807e6c7081c1",
+        "unchanged": true
+      },
+      {
+        "name": "campaign.json.v2.bak",
+        "currentSHA256": "15b253b1c0ac332c33f0bfa73c5203b765553b8499e337ff881a59099afb0f3e",
+        "baselineSHA256": "15b253b1c0ac332c33f0bfa73c5203b765553b8499e337ff881a59099afb0f3e",
+        "unchanged": true
+      },
+      {
+        "name": "settings.json",
+        "currentSHA256": "cf76e1511f70f03a7b007dad619bed79fb19f3212ef15ce732d266e6cdc75ad7",
+        "baselineSHA256": "cf76e1511f70f03a7b007dad619bed79fb19f3212ef15ce732d266e6cdc75ad7",
+        "unchanged": true
+      },
+      {
+        "name": "settings.json.bak",
+        "currentSHA256": "f79a70b9599420c12c84add3765e08e1fd3bffd78f3b1a31387f8c8190513bd2",
+        "baselineSHA256": "f79a70b9599420c12c84add3765e08e1fd3bffd78f3b1a31387f8c8190513bd2",
+        "unchanged": true
+      },
+      {
+        "name": "TestResults.xml",
+        "currentSHA256": "37532c4de292cf0b231a50f66b5c4f8645496eb2b93228fff6414f75c18906bd",
+        "baselineSHA256": "6207fee41310ce08511dd911824c5ba35190f630d008f6fc2c40742b9566fd36",
+        "unchanged": false
+      }
+    ],
+    "wholeTaskTreeUnchanged": false,
+    "summary": {
+      "baselineExists": true,
+      "currentExists": true,
+      "currentFiles": 5272,
+      "currentDirectories": 2552,
+      "addedFiles": 130,
+      "changedFiles": 1,
+      "removedFiles": 0,
+      "addedDirectories": 70,
+      "removedDirectories": 0
+    },
+    "changedFiles": [
+      {
+        "name": "TestResults.xml",
+        "classification": "Result-like path; included in comparison",
+        "baseline": {
+          "name": "TestResults.xml",
+          "bytes": 237669,
+          "sha256": "6207fee41310ce08511dd911824c5ba35190f630d008f6fc2c40742b9566fd36"
+        },
+        "current": {
+          "name": "TestResults.xml",
+          "bytes": 244192,
+          "sha256": "37532c4de292cf0b231a50f66b5c4f8645496eb2b93228fff6414f75c18906bd",
+          "lastWriteUtc": "2026-11-17T15:03:11.1236579Z",
+          "error": null
+        }
+      }
+    ],
+    "addedFilesClassification": "All 130 added files and 70 added directories are StorageTests artifacts; no removed files or directories.",
+    "enumerationErrors": 0,
+    "reparsePoints": 0,
+    "concurrentChanges": 0,
+    "baselineExcludedRootLogs": [
+      "Player.log",
+      "Player-prev.log"
+    ],
+    "auditStartedUtc": "2026-11-17T15:25:44.0898011Z",
+    "auditFinishedUtc": "2026-11-17T15:25:53.1798304Z",
+    "auditOriginalPurpose": "Intermediate preservation audit while Unity verification is in progress; not final preservation proof.",
+    "auditPurposeNote": "The audit helper retains a fixed intermediate-purpose label. This final interpretation uses its timestamp after the completed Windows run and restored Editor state; the unchanged source and explicit differences are independently checked here.",
+    "ordering": {
+      "windowsFinishedUtc": "2026-11-17T15:23:25.5999366Z",
+      "editorFinalEvidenceWrittenUtc": "2026-11-17T15:25:22.0214854Z",
+      "auditStartedAfterWindowsAndEditorEvidence": true
+    },
+    "testedSource": {
+      "manifest": "source-final-tests.json",
+      "manifestSHA256": "e2d777d090f304d59a03ea9521bd253c7e72f320ef37f3369fe5cbc792f3dd59",
+      "count": 792,
+      "allCurrentHashesMatch": true
+    },
+    "limits": [
+      "Root saves/settings and 12 pre-existing modified files are byte-preserved. The entire task user tree is not unchanged: test artifacts were created and TestResults.xml updated.",
+      "Only the exact root Unity Player.log and Player-prev.log were excluded by the recursive baseline. No user save was removed or reset.",
+      "No current source code change was made after the final full PlayMode run; EditMode preceded final UI-only fixes. This is not a clean-checkout reproducibility claim."
+    ],
+    "classificationNote": "rootFiles는 TestResults.xml까지 포함해 10개를 모두 보존한다. 불변을 요구하는 사용자 저장·설정은 9개이며, 결과 XML의 변경은 changedFiles에 남긴다. 최초 요약 생성에서 결과 XML까지 사용자 파일 불변 대상으로 간주했던 거부는 담당자 보고상 보고서 판정 오류다. 분류 수정으로 데이터나 제품 소스를 바꾸지 않았으며 최초 거부의 별도 원본 응답은 여기서 인용하지 않는다."
+  },
+  "finalEditorState": {
+    "evidence": {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/editor-final-state.json",
+      "bytes": 972,
+      "sha256": "bb08f07837055eea87af1b8381b53b9570e1a759d51cdf492fa9ee912f854d0a",
+      "lastWriteUtc": "2026-11-17T15:25:22.0214854Z"
+    },
+    "status": "restored",
+    "commandSuccess": true,
+    "evaluationSuccess": true,
+    "state": {
+      "play": false,
+      "background": false,
+      "development": false,
+      "optionsEnabled": true,
+      "options": "DisableDomainReload, DisableSceneReload",
+      "scene": "Assets/TalesTactics/Scenes/TestBattle.unity",
+      "dirty": false,
+      "pipeline": "PC_RPAsset",
+      "autoTickSessionFallback": false,
+      "autoTickIntervalSessionFallback": -1,
+      "actualAutoTick": true,
+      "actualAutoTickInterval": 16
+    },
+    "gameViewRestore": {
+      "selectedIndex": 3,
+      "total": 7,
+      "expectedTotal": 7
+    },
+    "gameViewRestoreSuccess": true,
+    "scope": "최종 편집기 상태와 기존 GameView 선택/목록 복원. actualAutoTick=true, interval=16은 보고된 복원 상태이며 임의로 false라고 해석하지 않는다."
+  },
+  "finalWindowsSummary": {
+    "evidence": {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-campaign-summary.json",
+      "bytes": 5308,
+      "sha256": "3cd120999f1a7bdb4a7723c069752e2f54e02f96294f66aa0fa8de07b42c1e62",
+      "lastWriteUtc": "2026-11-17T15:28:08.5347773Z"
+    },
+    "passed": true,
+    "runId": "5063e4b1da144f958d6611eaf9930305",
+    "completedStages": 20,
+    "checks": 24697,
+    "saveReloadChecks": 176,
+    "captures": 48,
+    "savedStageJsonCount": 40,
+    "exitCode": 0,
+    "wrapperElapsedSeconds": 303.2095985,
+    "playerTypeIsolationPassed": true,
+    "userFilesUnchangedDuringWindowsRun": true,
+    "economy": {
+      "passed": true,
+      "contractVersion": 2,
+      "startingGold": 300,
+      "totalGoldReward": 12900,
+      "totalPurchaseSpend": 7300,
+      "finalGold": 5900,
+      "salesExecuted": 0,
+      "limits": "Sale values are price/2 arithmetic for unequipped ownership, not sale transactions or human economic/balance approval. Review source and binary identity are established separately; report, saved inventory, purchase arithmetic, fixed reward mapping, seeded additional drops and growth are checked here."
+    },
+    "rawValidation": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\CommercialSlice20261117\\CampaignWindows-5063e4b1da144f958d6611eaf9930305\\validation.json",
+      "sha256": "cf4cddf825c2c939bb53e2863d833c4132b7ca5daa0a46be003a858f898e1d05"
+    },
+    "rawPlayerReport": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\CommercialSlice20261117\\CampaignWindows-5063e4b1da144f958d6611eaf9930305\\player-report.json",
+      "sha256": "d192f92822814b872851018be52cee7dc7ac891525230ce957a46f4d44163d55"
+    },
+    "limits": [
+      "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+      "The REVIEW run covers main episodes 1 through 20 with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 4, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+      "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+      "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+      "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+      "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+      "Build success and normal-release startup must be established separately; this script does not build or start the normal player. Source labels are caller-supplied; DLL hashes are measured here and any source manifest is identified separately.",
+      "This run verifies current production objectives and preserved reward/economy rules. No before/after action, growth or timing equality is required. The retained RewardVariety contract checks the current reward table, actual purchases, inventory, gold and growth independently. Sale values are arithmetic only: no item is sold by this review.",
+      "Role skill counts classify authored effects and may overlap. Healing-skill count does not measure HP restored; guards/waits are committed player commands. Frame-sampled enemy seconds may include frame-boundary uncertainty. No human pacing or balance approval."
+    ]
+  },
+  "windowsVisualReview": {
+    "evidence": {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Evidence/windows-visual-review.json",
+      "bytes": 1990,
+      "sha256": "0cf49fa6a67e0aadd1f1f3ed491ba1262fbfa8abf3dd4ff957d3da2ef11b27f2",
+      "lastWriteUtc": "2026-11-17T15:28:08.5678455Z"
+    },
+    "scope": "Two representative Windows captures manually inspected; all 48 captures only decoded and checked for nonuniform pixels by automated validation.",
+    "reviewedRepresentativeCaptureCount": 2,
+    "captures": [
+      {
+        "source": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceReview20261117\\CampaignFlowReviews\\5063e4b1da144f958d6611eaf9930305\\episode-01-battle-start.png",
+        "copy": "C:\\dev\\TalesTactics\\Docs\\CommercialSlice\\Evidence\\windows-episode1-battle.png",
+        "sourceSHA256": "e6c50d58d920e2276b33222ed04f8519b94e1547ecfa1812a76df94c9d9be5d2",
+        "copySHA256": "e6c50d58d920e2276b33222ed04f8519b94e1547ecfa1812a76df94c9d9be5d2",
+        "manuallyViewed": true,
+        "preview": "Original PNG viewed as an in-memory resized JPEG at 1024x576; committed PNG is byte-identical to the player capture."
+      },
+      {
+        "source": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceReview20261117\\CampaignFlowReviews\\5063e4b1da144f958d6611eaf9930305\\episode-20-battle-result.png",
+        "copy": "C:\\dev\\TalesTactics\\Docs\\CommercialSlice\\Evidence\\windows-episode20-result.png",
+        "sourceSHA256": "3ab08af43a3f30d036e8521b0621d118d24065c3531ad6a99993f2e435a965a4",
+        "copySHA256": "3ab08af43a3f30d036e8521b0621d118d24065c3531ad6a99993f2e435a965a4",
+        "manuallyViewed": true,
+        "preview": "Original PNG viewed as an in-memory resized JPEG at 1024x576; committed PNG is byte-identical to the player capture."
+      }
+    ],
+    "observations": [
+      "Episode1: unit silhouettes, active command buttons, HP/MP, top turn portraits, water/central route and objective markers visible; small distant units still require zoom for detailed reading.",
+      "Episode20: all six growth cards, reward item, gold, save completion and continue button visible without obvious clipping."
+    ],
+    "limits": "Human difficulty, enjoyment, all-resolution standalone review and complete 48-image manual approval were not established.",
+    "reviewAttribution": "담당 root가 기록한 두 대표 캡처의 직접 시각 검수다. 이력 작성자는 기록과 보관 PNG 해시를 확인했으며 48장 전체를 직접 검수했다고 주장하지 않는다."
+  },
+  "finalEvidence": [
+    {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/final-preservation.json",
+      "bytes": 10622,
+      "sha256": "7e16de7e78d172218937c0a04307638e22e640c893d558141922b33ea47e0a4e",
+      "lastWriteUtc": "2026-11-17T15:28:08.2962782Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/editor-final-state.json",
+      "bytes": 972,
+      "sha256": "bb08f07837055eea87af1b8381b53b9570e1a759d51cdf492fa9ee912f854d0a",
+      "lastWriteUtc": "2026-11-17T15:25:22.0214854Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Validation/windows-campaign-summary.json",
+      "bytes": 5308,
+      "sha256": "3cd120999f1a7bdb4a7723c069752e2f54e02f96294f66aa0fa8de07b42c1e62",
+      "lastWriteUtc": "2026-11-17T15:28:08.5347773Z"
+    },
+    {
+      "path": "C:/dev/TalesTactics/Docs/CommercialSlice/Evidence/windows-visual-review.json",
+      "bytes": 1990,
+      "sha256": "0cf49fa6a67e0aadd1f1f3ed491ba1262fbfa8abf3dd4ff957d3da2ef11b27f2",
+      "lastWriteUtc": "2026-11-17T15:28:08.5678455Z"
+    }
+  ],
+  "completionScope": {
+    "implementedSlice": "대표 1~3화 전투 차별화, 크레스·민트 성장 효과, 이야기/가독성 개선 및 기존 보상 비교 변경의 통합 검증",
+    "status": "completed",
+    "technicalPending": [],
+    "outOfScope": [
+      "20개 스테이지 전면 재설계",
+      "사람의 난이도·재미·장기 경제 밸런스 승인",
+      "모든 선택 규칙 조합과 선택 시나리오 완주",
+      "모든 해상도에서 일반 실행 파일을 수동 검수하거나 48개 PNG 전체를 직접 승인"
+    ],
+    "scopeNote": "범위 밖 항목은 이번 구현의 미완료 작업이 아니다. 일반 실행 파일은 빌드/입력 연결까지 검증했고 캠페인 실행은 Review 바이너리로 수행했다."
+  },
+  "completedUtc": "2026-11-17T15:30:59.3113246Z"
+}

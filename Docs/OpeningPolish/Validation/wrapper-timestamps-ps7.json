@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "validationKind": "offline-wrapper-timestamp-logic",
+  "gameOrUnityExecuted": false,
+  "shellVersion": "7.6.5",
+  "decodedJsonTimestampType": "System.DateTime",
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\OpeningPolish\\Validation\\Validate-OpeningCampaignWindows.ps1",
+  "wrapperSHA256": "17ae95e31ae12fafb49b28062d11c460400fc6286e28c985d8d61c28692885f7",
+  "testScript": "C:\\dev\\TalesTactics\\Docs\\OpeningPolish\\Validation\\Test-OpeningWrapperTimestamps.ps1",
+  "testScriptSHA256": "afba02e497605400fb3f6fff135b6f8a17ca17541e9e02551fe20a2495a652c3",
+  "tests": [
+    {
+      "name": "PowerShell 5 string timestamps retain UTC and fractional ticks",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "Typed UTC DateTime remains UTC",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "Typed local DateTime converts once",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "Typed DateTimeOffset +09:00 represents the same instant",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "ISO +09:00 string represents the same instant",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "Current PowerShell ConvertFrom-Json timestamp types work without string coercion",
+      "passed": true,
+      "expectedRejected": false
+    },
+    {
+      "name": "Missing timezone is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Unspecified DateTime kind is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Malformed ISO value is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Non-date input is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Start earlier than launch minus 5 seconds is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Finish earlier than start is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Finish beyond now plus 5 seconds is rejected",
+      "passed": true,
+      "expectedRejected": true
+    },
+    {
+      "name": "Existing exactly 5 second tolerance boundaries remain valid",
+      "passed": true,
+      "expectedRejected": false
+    }
+  ],
+  "limits": "Tests only timestamp normalization and the unchanged invocation bounds. No player report or prior failed wrapper run is promoted to a successful execution."
+}

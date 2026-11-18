@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 17.36,\r\n  \"summary\": {\r\n    \"total\": 3,\r\n    \"passed\": 2,\r\n    \"failed\": 1,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 13.5241316,\r\n      \"Message\": \"  보상 상세 닫기 / active controller pointer follows focus\\r\\n  Expected: less than 2\\r\\n  But was:  403.713013f\\r\\n\",\r\n      \"StackTrace\": \"at TalesTactics.PlayModeTests.BattleSceneTests.AssertRewardComparisonPointer (System.String name) [0x00054] in C:\\\\dev\\\\TalesTactics\\\\Assets\\\\TalesTactics\\\\PlayModeTests\\\\RewardComparisonSceneTests.cs:89\\r\\nat TalesTactics.PlayModeTests.BattleSceneTests+<RewardCompanionComparisonCyclesSavedLoadoutsWithKeyboardWithoutWritingOrSkippingEnding>d__257.MoveNext () [0x0078b] in C:\\\\dev\\\\TalesTactics\\\\Assets\\\\TalesTactics\\\\PlayModeTests\\\\RewardComparisonSceneTests.cs:200\\r\\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\\\Library\\\\PackageCache\\\\com.unity.test-framework@7a3849e09bd0\\\\UnityEngine.TestRunner\\\\NUnitExtensions\\\\Attributes\\\\TestEnumerator.cs:52\\r\\n\"\r\n    },\r\n    {\r\n      \"FullName\": \"TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonFiltersUnjoinedAndDisablesSingleOrEmptyRecipients\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 2.0417702,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    },\r\n    {\r\n      \"FullName\": \"TalesTactics.PlayModeTests.BattleSceneTests.RewardCompanionComparisonShowsLowerStatsReplacedEffectsAndSameEquipment\",\r\n      \"Status\": \"Passed\",\r\n      \"Duration\": 1.7552739,\r\n      \"Message\": null,\r\n      \"StackTrace\": null\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

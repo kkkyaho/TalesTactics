@@ -72,7 +72,7 @@ namespace TalesTactics
             if(CaptureMission)Victory=new CaptureDestination(this);
             if(objective==ObjectiveKind.Escort){ObjectiveUnit=Units.First(u=>u.Team==Team.Player);Victory=new ReachDestination(Destination,ObjectiveUnit);}
             if(objective==ObjectiveKind.Survive)Victory=new SurviveTurns(phaseSurvival&&teamTurns&&!useCT?4:12,phaseSurvival&&teamTurns&&!useCT);
-            if(objective==ObjectiveKind.Crossover){Crossover=new CrossoverBattle(this);Victory=Crossover;ObjectiveUnit=Crossover.Boss;Resolver.StateChanged=Crossover.Update;Resolver.SkillResolved=Crossover.OnResolved;Resolver.CrossoverState=Crossover.State;}
+            if(objective==ObjectiveKind.Crossover){Crossover=new CrossoverBattle(this);Victory=Crossover;ObjectiveUnit=Crossover.Boss;Resolver.StateChanged=Crossover.Update;Resolver.SkillResolved=Crossover.OnResolved;Crossover.SynchronizeResolver();}
         }
         void BeginActive(){turnEnded=false;if(Active!=null&&(!(Scheduler is TeamTurnScheduler team)||team.Begin(Active)))Active.BeginTurn();}
         public void Advance(){Active=Scheduler.Next(Units);AdvanceMissionEvents();BeginActive();}

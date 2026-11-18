@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval_file",
+    "parameters": {
+      "file": "Logs/AllStageTactics20261118/RestoreSessionFinal.cs",
+      "timeout": "10000"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "play": false,
+        "background": false,
+        "development": false,
+        "optionsEnabled": true,
+        "options": "DisableDomainReload, DisableSceneReload",
+        "scene": "Assets/TalesTactics/Scenes/TestBattle.unity",
+        "dirty": false,
+        "pipeline": "PC_RPAsset",
+        "autoTickSessionFallback": false,
+        "autoTickIntervalSessionFallback": -1,
+        "actualAutoTick": true,
+        "actualAutoTickInterval": 16
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

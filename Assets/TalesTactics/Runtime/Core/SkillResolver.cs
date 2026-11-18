@@ -15,6 +15,8 @@ namespace TalesTactics
         public Action StateChanged;
         public Action<UnitRuntime,SkillData,Vector2Int> SkillResolved;
         public CrossoverBattleState CrossoverState;
+        public Vector2Int[] CrossoverSignals=CrossoverBattle.Nodes;
+        public Vector2Int[] CrossoverEnemySpawns;
         public int LastHealing,LastDrain,LastInterruptions,LastKisaraGuardedDamage;
         double NextRoll(){RandomDraws++;return random.NextDouble();}
         public void RestoreRandom(int draws){if(draws<0||draws>1000000)throw new System.IO.InvalidDataException("Invalid combat RNG");random=new System.Random(seed);RandomDraws=0;for(int i=0;i<draws;i++)NextRoll();}
@@ -42,7 +44,7 @@ namespace TalesTactics
         public int HPCost(UnitRuntime u,SkillData s)=>Mathf.CeilToInt((s.HPCost+Mathf.CeilToInt(u.Stats.HP*s.HPPercentCost))*(SignatureWeaponRules.Has(u,EquipmentEffect.FlamingOath)?.7f:1f));
         public int MPCost(UnitRuntime u,SkillData s)=>Mathf.Max(0,Mathf.CeilToInt(s.MPCost*(u.Trait==TacticalTrait.Focus?.8f:1f)*(u.Equipment.Any(e=>e!=null&&e.Effect==EquipmentEffect.EfficientCasting)?.85f:1f)*(SignatureWeaponRules.Has(u,EquipmentEffect.MercifulRod)&&s.Effects.Any(e=>e.Kind==EffectKind.Heal||e.Kind==EffectKind.Revive)?.75f:1f)));
         public int Healing(UnitRuntime u,SkillEffect e)=>Mathf.Max(0,Mathf.RoundToInt((u.Stats.MAG*e.Power+e.Flat)*(u.Trait==TacticalTrait.Healer?1.25f:1f)*(u.Equipment.Any(item=>item!=null&&item.Effect==EquipmentEffect.Restorative)?1.2f:1f)));
-        public UnitRuntime Protector(UnitRuntime target)=>units.FirstOrDefault(u=>u!=target&&u.Team==target.Team&&u.Alive&&!u.CrossoverReserve&&!u.ProtectionUsed&&u.Has(StatusKind.Guard)&&!u.Has(StatusKind.Stun)&&!u.Has(StatusKind.Sleep)&&u.Trait==TacticalTrait.Protector&&GridMap.Distance(u.Position,target.Position)==1);
+        public UnitRuntime Protector(UnitRuntime target)=>units.FirstOrDefault(u=>u!=target&&u.Team==target.Team&&u.Alive&&!u.CrossoverReserve&&!u.ProtectionUsed&&u.Has(StatusKind.Guard)&&!u.Has(StatusKind.Stun)&&!u.Has(StatusKind.Sleep)&&(u.Trait==TacticalTrait.Protector||GrowthPaths.Protects(u))&&GridMap.Distance(u.Position,target.Position)==1);
         public bool ValidTarget(UnitRuntime u,SkillData s,UnitRuntime t)
         {
             if(t==null||t.CrossoverReserve)return false;
@@ -55,7 +57,7 @@ namespace TalesTactics
         {var area=new HashSet<Vector2Int>(AreaTiles(u,s,p));return units.Where(t=>ValidTarget(u,s,t)&&area.Contains(t.Position)&&
             (s.BossMechanic!=BossMechanic.HighWater||grid[t.Position].Height==0)&&
             (s.BossMechanic!=BossMechanic.FinalStop||CrossoverState==null||CrossoverState.Nodes!=7)&&
-            (s.BossMechanic!=BossMechanic.Sanctuary||!CrossoverBattle.Nodes.Where((n,i)=>CrossoverState!=null&&(CrossoverState.Nodes&(1<<i))!=0).Any(n=>GridMap.Distance(n,t.Position)<=1)));}
+            (s.BossMechanic!=BossMechanic.Sanctuary||!CrossoverSignals.Where((n,i)=>CrossoverState!=null&&(CrossoverState.Nodes&(1<<i))!=0).Any(n=>GridMap.Distance(n,t.Position)<=1)));}
         public float DirectionMultiplier(UnitRuntime attacker,UnitRuntime defender)
         {
             var d=attacker.Position-defender.Position;
@@ -117,6 +119,7 @@ namespace TalesTactics
                 if(e.Kind==EffectKind.Damage)effect+=" · "+ElementalRules.Name(s.Element)+" ×"+ElementalRules.Multiplier(recipient.Data,s.Element).ToString("0.##");
                 messages.Add((e.AffectCaster?"시전자: ":"")+effect);
             }
+            string growth=GrowthPaths.ActionDescription(u,s);if(growth.Length>0)messages.Add(growth);
             return string.Join(" / ",messages);
         }
         public string Describe(UnitRuntime u,SkillData s)
@@ -134,6 +137,7 @@ namespace TalesTactics
             if(s.IsLionHowl)details+="\n조건 충족 시 타이밍 궁극기 연계";
             if(s.Id!=null&&s.Id.StartsWith("boss.")&&u.CrossoverBoss)details+="\n예고 후 다음 자기 턴 발동 · 발동 뒤 빈틈";
             string mechanic=CrossoverSkillText.Mechanic(s.BossMechanic);if(mechanic.Length>0)details+="\n"+mechanic;
+            string growth=GrowthPaths.ActionDescription(u,s);if(growth.Length>0)details+="\n"+growth;
             return details;
         }
         static string EffectDescription(SkillEffect e)
@@ -183,6 +187,7 @@ namespace TalesTactics
             if(!InRange(u,s,p)||targets.Length==0&&!committed){message="Invalid target";return false;}
             if(s.Target==TargetType.FallenAlly&&targets.All(t=>grid[t.Position].Occupant!=null)){message="Revival tile is occupied";return false;}
             var experience=ActionExperienceEnabled?new ActionExperience(u,s):null;
+            var growthRecipients=!followup&&GrowthPaths.HasActionEffect(u,s)?new HashSet<UnitRuntime>():null;
             u.CurrentMP-=MPCost(u,s);u.CurrentHP-=HPCost(u,s);u.SpecialGauge-=s.GaugeCost;
             if(s.IsUltimate&&u.UltimateTrial&&u.Level<s.UnlockLevel)u.UltimateTrialUsed=true;
             if(s.Cooldown>0)u.Cooldowns[s.Id]=s.Cooldown+1;
@@ -201,6 +206,7 @@ namespace TalesTactics
                     if(e.Kind==EffectKind.Damage&&t.Alive)
                     {
                         int damage=DamagePreview(u,t,e,s);int actual=Mathf.Min(damage,t.CurrentHP);
+                        if(actual>0&&!e.Magic&&!e.AffectCaster&&u.Data.Id=="cless")growthRecipients?.Add(t);
                         var protector=Protector(t);if(damage>0&&protector!=null)protector.ProtectionUsed=true;
                         if(t.Has(StatusKind.Guard)&&DirectionMultiplier(u,t)!=rules.RearMultiplier)t.GuardIgnition=true;
                         t.Damage(damage,grid);experience?.Damage(t,actual,!t.Alive);int priorCasterHP=u.CurrentHP;u.CurrentHP=Mathf.Min(u.Stats.HP,u.CurrentHP+Mathf.RoundToInt(actual*(e.Drain+(SignatureWeaponRules.Has(u,EquipmentEffect.UnboundBlade)?.1f:0))));LastDrain+=u.CurrentHP-priorCasterHP;
@@ -219,11 +225,12 @@ namespace TalesTactics
                     else if((e.Kind==EffectKind.Pull||e.Kind==EffectKind.Push)&&t.Alive)Displace(t,e.Kind==EffectKind.Pull?p:u.Position,e.Distance,e.Kind==EffectKind.Push);
                     else if(e.Kind==EffectKind.Move&&t.Alive)Displace(t,p,e.Distance,false);
                     if((e.Kind==EffectKind.Heal||e.Kind==EffectKind.Revive)&&t.CurrentHP>previousHP)
-                    {LastHealing+=t.CurrentHP-previousHP;signatureRecovery=true;if(SignatureWeaponRules.Has(u,EquipmentEffect.RoyalMercy))t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Root);}
+                    {if(e.Kind==EffectKind.Heal&&!e.AffectCaster&&u.Data.Id=="mint")growthRecipients?.Add(t);LastHealing+=t.CurrentHP-previousHP;signatureRecovery=true;if(SignatureWeaponRules.Has(u,EquipmentEffect.RoyalMercy))t.Statuses.RemoveAll(x=>x.Kind==StatusKind.Root);}
                     if(wasPreparing&&(t.IntentPhase!=1||t.Has(StatusKind.Stun)||t.Has(StatusKind.Sleep)))LastInterruptions++;
                     experience?.Effect(t,e,previousHP,previousStatuses,hadStatus,previousGauge,previousPosition);
                 }
             }
+            string growthNote=ResolveGrowthAction(u,growthRecipients);
             if(attack){if(CrossoverState==null||!CrossoverState.Hazards.Any(h=>h.Kind==BossMechanic.GaugeSeal&&h.Position==u.Position))u.SpecialGauge=Mathf.Clamp(u.SpecialGauge+rules.GaugePerAttack+(SignatureWeaponRules.Has(u,EquipmentEffect.ResoluteFists)?5:0),0,100);if(u.Has(StatusKind.ConsumeClaw))u.ClawAttacks++;}
             if(signatureRecovery&&SignatureWeaponRules.Has(u,EquipmentEffect.ThornRelease))u.SpecialGauge=Mathf.Min(100,u.SpecialGauge+10);
             if(u.Data.Id=="kisara"&&attack)u.GuardIgnition=false;
@@ -237,8 +244,8 @@ namespace TalesTactics
                 foreach(var r in LastReactions){if(!gains.ContainsKey(r.Actor))gains[r.Actor]=0;gains[r.Actor]+=r.Experience;}
                 foreach(var pair in gains){var gain=ActionExperience.Grant(pair.Key,pair.Value);if(gain!=null)LastExperience.Add(gain);}
             }
-            message=u.Data.DisplayName+" : "+s.DisplayName+(LastReactions.Count>0?"\n"+string.Join(" · ",LastReactions.Select(x=>x.Text)):"");
-            CrossoverBossTactics.Resolve(u,s,p,grid,units,CrossoverState);SkillResolved?.Invoke(u,s,p);StateChanged?.Invoke();
+            message=u.Data.DisplayName+" : "+s.DisplayName+(growthNote.Length>0?"\n"+growthNote:"")+(LastReactions.Count>0?"\n"+string.Join(" · ",LastReactions.Select(x=>x.Text)):"");
+            CrossoverBossTactics.Resolve(u,s,p,grid,units,CrossoverState,CrossoverEnemySpawns);SkillResolved?.Invoke(u,s,p);StateChanged?.Invoke();
             return true;
         }
         void Displace(UnitRuntime u,Vector2Int center,int distance,bool away)

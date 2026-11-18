@@ -1,0 +1,78 @@
+{
+  "utc": "2026-11-03T14:25:04.873451+00:00",
+  "baseCommit": "2bcc30ffe300a783dc74df430b725bddbd29b71e",
+  "files": [
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/BattleDirector.cs",
+      "bytes": 22955,
+      "sha256": "4d5ad420bec788320e7117529cf972ef37ce47cd47eeb2eedfa6a7f6d3295552"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/BattleStates.cs",
+      "bytes": 3841,
+      "sha256": "93d186e019dcd832e81644422e4a0e57b5871d12e2805072cb29629f127245e1"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/BattleTacticalControls.cs",
+      "bytes": 6726,
+      "sha256": "c19d95d5631feafd14fa5eb8af7f1be7992e3630837e27cfd3f32a1ec88e33d9"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/BattleRewindControls.cs",
+      "bytes": 3306,
+      "sha256": "7c337fe122dcf5ba505e33e65d7f0341d8297729834d08edf69bbc516fa9af69"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/BoardView.cs",
+      "bytes": 17659,
+      "sha256": "bb55af4090222c529725c3898ce4ddf59d08771b9f40c53ab23cf17a18d52570"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/CharacterMotion.cs",
+      "bytes": 9928,
+      "sha256": "4ea7a5def80bb7b2e113f7cf98a57d218fe98960fe9e7f7f4885930effc30aa5"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/CampaignFlowReview.cs",
+      "bytes": 38127,
+      "sha256": "37d0718bbfd6c72c4ba8d6a902e0af7fca520601d7cd7f883bcb1c106ae6e0bc"
+    },
+    {
+      "path": "Assets/TalesTactics/PlayModeTests/LocomotionSceneTests.cs",
+      "bytes": 9850,
+      "sha256": "b358a571885ba2fd620c364296a48d5a8fb86eed0a014e81fae00a7f4a829cc7"
+    },
+    {
+      "path": "Assets/TalesTactics/PlayModeTests/OpeningControlSceneTests.cs",
+      "bytes": 9651,
+      "sha256": "d475af4041486361aa9eccd86e22cf3e052286c11d616bae7147bc8c1bcd80c5"
+    },
+    {
+      "path": "Assets/TalesTactics/PlayModeTests/OpeningControlSceneTests.cs.meta",
+      "bytes": 60,
+      "sha256": "7380e4f244dd8989af51ae75c68faaf3565bcdefa68930b308f729b2f02b3b24"
+    },
+    {
+      "path": "Docs/OpeningPolish/Validation/Build-OpeningPolish.cs",
+      "bytes": 17275,
+      "sha256": "12fedc23719e0dda75b17cf537cf302c7a2141f6c4fdf60d3b1b5c4932e28e33"
+    },
+    {
+      "path": "Docs/OpeningPolish/Validation/Validate-OpeningCampaignWindows.ps1",
+      "bytes": 45303,
+      "sha256": "eb2366d4aceab520084a57728b18231b466bde8eb226f6d1f6b4d976d86c074c"
+    },
+    {
+      "path": "Docs/OpeningPolish/Validation/Test-OpeningWrapperTimestamps.ps1",
+      "bytes": 5547,
+      "sha256": "afba02e497605400fb3f6fff135b6f8a17ca17541e9e02551fe20a2495a652c3"
+    },
+    {
+      "path": "Docs/OpeningPolish/Validation/Test-OpeningWrapperProcesses.ps1",
+      "bytes": 9274,
+      "sha256": "771057482a85f9db5f8da1a62d51f9c7a0448c7552471936a4c21517f9959b08"
+    }
+  ],
+  "scope": "Changed product/test sources and validation helpers. Full tracked build-input receipts are retained in Logs/OpeningPolish20261103/source-before-build.json and source-after-build.json.",
+  "note": "Product/test code is unchanged after successful Unity suites and Windows builds. Only the external validation wrapper gained timestamp/process-read handling; its offline checks and fresh Windows runs are recorded separately."
+}

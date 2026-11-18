@@ -22,6 +22,17 @@ namespace TalesTactics.Tests
             if(!followup)actor.BeginTurn();
             Assert.That(b.Resolver.Execute(actor,skill,aim,out var message,followup),Is.True,skill.Id+": "+message);
         }
+        static void PlaceTrialParticipants(BattleSession b,UnitRuntime actor,UnitRuntime healer)
+        {
+            var boss=b.Crossover.Boss;
+            foreach(var attackTile in b.Grid.Neighbors(boss.Position).Where(t=>t.Walkable&&(t.Occupant==null||t.Occupant==actor)&&Math.Abs(t.Height-b.Grid[boss.Position].Height)<=1&&!b.Crossover.SignalPositions.Contains(t.Coordinate)&&t.Coordinate!=b.Crossover.ExitPosition&&t.Coordinate!=b.Crossover.ContractPosition))
+            {
+                var healTile=b.Grid.Neighbors(attackTile.Coordinate).FirstOrDefault(t=>t.Walkable&&(t.Occupant==null||t.Occupant==healer)&&t.Coordinate!=boss.Position&&Math.Abs(t.Height-attackTile.Height)<=1&&!b.Crossover.SignalPositions.Contains(t.Coordinate)&&t.Coordinate!=b.Crossover.ExitPosition&&t.Coordinate!=b.Crossover.ContractPosition);
+                if(healTile==null)continue;
+                Assert.That(b.Grid.Place(actor,attackTile.Coordinate),Is.True);Assert.That(b.Grid.Place(healer,healTile.Coordinate),Is.True);return;
+            }
+            Assert.Fail("No adjacent attack/healing fixture on the authored trial map");
+        }
         [Test] public void SixtyInstalledSkillsMatchAuthoredRulesAndDirectionalMotionReferences()
         {
             Assert.That(CrossoverBossSources.Entries.Length,Is.EqualTo(20));
@@ -62,7 +73,11 @@ namespace TalesTactics.Tests
                     var p=pending.Dequeue();foreach(var d in new[]{Vector2Int.up,Vector2Int.down,Vector2Int.left,Vector2Int.right})
                     {var q=p+d;var tile=b.Grid[q];if(tile!=null&&tile.Walkable&&Math.Abs(tile.Height-b.Grid[p].Height)<=1&&seen.Add(q))pending.Enqueue(q);}
                 }
-                foreach(var p in CrossoverBattle.Nodes.Concat(new[]{CrossoverBattle.Exit,CrossoverBattle.ContractSeal}))Assert.That(seen,Has.Member(p),"Unreachable marker "+stage+" "+p);
+                var markers=(b.Crossover.UsesNodes?b.Crossover.SignalPositions:Array.Empty<Vector2Int>())
+                    .Concat(b.Crossover.UsesExit?new[]{b.Crossover.ExitPosition}:Array.Empty<Vector2Int>())
+                    .Concat(b.Crossover.UsesContract?new[]{b.Crossover.ContractPosition}:Array.Empty<Vector2Int>())
+                    .Concat(b.Crossover.ObjectiveDevices.Select(u=>u.Position));
+                foreach(var p in markers)Assert.That(seen,Has.Member(p),"Unreachable marker "+stage+" "+p);
                 b.Opening=BattleOpening.Capture(b,Catalog);b.Advance();int turns=0;
                 while(b.Active.Team!=Team.Player&&turns++<100){b.EndTurn();b.Advance();}
                 b.RecordAction("state before action");b.Crossover.State.Actions++;
@@ -76,7 +91,7 @@ namespace TalesTactics.Tests
         public void PersonalTrialConditionsRespondToActualCharacterSkills(string owner)
         {
             var b=Trial(owner);var actor=b.Units[0];var healer=b.Units[1];var boss=b.Crossover.Boss;
-            Assert.That(b.Grid.Place(actor,new Vector2Int(5,11)),Is.True);Assert.That(b.Grid.Place(healer,new Vector2Int(5,12)),Is.True);
+            PlaceTrialParticipants(b,actor,healer);
             actor.SpecialGauge=100;actor.CurrentHP=actor.Stats.HP/2;
             switch(owner)
             {
@@ -110,12 +125,12 @@ namespace TalesTactics.Tests
             }
             // Mission conditions are exercised independently of the balance simulation.
             if(b.Crossover.UsesNodes)
-                foreach(var p in CrossoverBattle.Nodes){var occupant=b.Grid[p].Occupant;if(occupant!=null&&occupant!=actor){occupant.Damage(99999,b.Grid);b.Crossover.Update();}Assert.That(b.Grid.Place(actor,p),Is.True);b.Crossover.Update();}
+                foreach(var p in b.Crossover.SignalPositions){Assert.That(b.Grid.Place(actor,p),Is.True);b.Crossover.Update();}
             if(owner=="jade"||owner=="natalia"||owner=="alphen")foreach(var device in b.Units.Where(u=>u.Data.Id=="boundary-device"))device.Damage(99999,b.Grid);
             if(owner!="cless"&&owner!="mint"&&owner!="shionne"&&owner!="natalia")
                 for(int i=0;i<3&&boss.Alive;i++){boss.Damage(99999,b.Grid);boss.BeginTurn();boss.Acted=true;boss.EndTurn();}
-            if(b.Crossover.UsesExit)Assert.That(b.Grid.Place(actor,CrossoverBattle.Exit),Is.True);
-            if(b.Crossover.UsesContract)Assert.That(b.Grid.Place(actor,CrossoverBattle.ContractSeal),Is.True);
+            if(b.Crossover.UsesExit)Assert.That(b.Grid.Place(actor,b.Crossover.ExitPosition),Is.True);
+            if(b.Crossover.UsesContract)Assert.That(b.Grid.Place(actor,b.Crossover.ContractPosition),Is.True);
             b.Crossover.Update();Assert.That(b.Result,Is.EqualTo(BattleResult.Victory),owner);
         }
         [Test] public void TwentyMainMapsHaveDistinctTerrainAndKeepLegacyMapsUntouched()

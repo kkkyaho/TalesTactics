@@ -30,7 +30,7 @@ namespace TalesTactics
             {
                 var t=battle.Grid[p];
                 // Keep rescue/return routes open and leave alternate lanes every second tile.
-                if(t==null||!t.Walkable||Nodes.Contains(p)||p==Exit||kind==BossMechanic.Boundary&&(p.x+p.y)%2==0)continue;
+                if(t==null||!t.Walkable||SignalPositions.Contains(p)||p==ExitPosition||kind==BossMechanic.Boundary&&(p.x+p.y)%2==0)continue;
                 State.Hazards.RemoveAll(h=>h.Position==p&&h.Kind==kind);
                 State.Hazards.Add(new CrossoverHazard{X=p.x,Y=p.y,Kind=kind,Owner=owner,Expires=actor.TurnsStarted+(kind==BossMechanic.Collapse?3:2),TriggerTurn=kind==BossMechanic.Collapse?actor.TurnsStarted+1:0});
             }

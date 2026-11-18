@@ -1,0 +1,17 @@
+{
+  "testedSourceCount": 410,
+  "unchangedCount": 408,
+  "changes": [
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/AllStagesCampaignFlowReview.cs",
+      "testedSHA256": "D89CBA5679E5638DB6F77AD33247FBA8A22141BB51CAFCAE5CE710F7A76EB442",
+      "currentSHA256": "23A31EF048DBB0C5FCEC626715EA2199404DD730F355860AD5EEFF7142475543"
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/CampaignFlowReview.cs",
+      "testedSHA256": "3469A4F84F839D4C7283DA0D10C5220AB5140883CB2317D774079FAF0B53B306",
+      "currentSHA256": "A73BF2FF1104868DC8D183361954791D7F84A5C4C778F434AC51AEBDC823BCBA"
+    }
+  ],
+  "classification": "Both files are wrapped in UNITY_EDITOR || TALESTACTICS_REVIEW and excluded from the normal player. Changes only improve automated legal-command party/trial planning. Production gameplay and test sources remain unchanged. New compile/build and full Windows REVIEW rerun validate the policy changes; prior Unity test results are not rerun results for these review-only edits."
+}

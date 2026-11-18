@@ -96,11 +96,11 @@ namespace TalesTactics.PlayModeTests
             b.Crossover.Update();
             if(CrossoverCampaign.IsMain(b.CampaignStage)&&CrossoverCampaign.Episode(b.CampaignStage).Number==11)
                 foreach(var unit in b.Units.Where(u=>u.Team==Team.Enemy&&u.Alive).ToArray())unit.Damage(99999,b.Grid);
-            b.Crossover.State.Nodes=7;
+            b.Crossover.State.Nodes=b.Crossover.RequiredNodeMask;
             if(PersonalScenarios.Contains(b.CampaignStage)&&PersonalScenarios.Tier(b.CampaignStage)==2)
             {b.Crossover.State.TrialProgress=PersonalScenarios.Arc(b.CampaignStage).Owner=="cless"?7:1;b.Crossover.State.TrialActions=3;}
             var hero=PersonalScenarios.Contains(b.CampaignStage)?b.Units.First(u=>u.Team==Team.Player&&u.Data.Id==PersonalScenarios.Arc(b.CampaignStage).Owner):b.Units.First(u=>u.Team==Team.Player&&u.Alive&&!u.CrossoverReserve);
-            if(b.Crossover.UsesContract)b.Grid.Place(hero,CrossoverBattle.ContractSeal);else if(b.Crossover.UsesExit)b.Grid.Place(hero,CrossoverBattle.Exit);
+            if(b.Crossover.UsesContract)Assert.That(b.Grid.Place(hero,b.Crossover.ContractPosition),Is.True);else if(b.Crossover.UsesExit)Assert.That(b.Grid.Place(hero,b.Crossover.ExitPosition),Is.True);
             b.Crossover.Update();Assert.That(b.Result,Is.EqualTo(BattleResult.Victory),"Stage "+b.CampaignStage);
             director.SetState(new BattleEndState(director));
         }

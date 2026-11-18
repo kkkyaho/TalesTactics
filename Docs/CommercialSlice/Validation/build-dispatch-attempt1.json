@@ -1,0 +1,15 @@
+{
+  "recordedUtc": "2026-11-17T15:08:47.0998884Z",
+  "scope": "Reconstructed dispatch diagnostic from the observed shell/CLI output, not a byte-preserved original response file.",
+  "attempt": 1,
+  "shell": "Windows PowerShell 5.1",
+  "command": "run_script CommercialSliceBuild.Run",
+  "result": "INVALID_COMMAND_ARGS",
+  "message": "--args requires JArray but received [C:/dev/TalesTactics/Builds/CommercialSliceWindows20261117] after native argument quote loss.",
+  "buildScheduled": false,
+  "buildExecuted": false,
+  "outputDirectoriesAbsentBeforeRetry": true,
+  "retainedBeforeManifest": "Logs/CommercialSlice20261117/BuildSource-Normal-Before-86a804dbfd964ad3969c6d4c59368445/before-source.json",
+  "evidenceLimitation": "The retry wrapper changed preflight prefixes but its write paths retained build-normal- names, so the first fixed dispatch/before receipt files were overwritten. Original GUID input evidence and script remain. Current fixed receipt belongs to attempt2.",
+  "resolution": "Second invocation uses PowerShell7 Standard native argument passing; actual build was scheduled."
+}

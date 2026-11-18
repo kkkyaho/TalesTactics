@@ -1,0 +1,178 @@
+{
+  "utc": "2026-11-06T09:51:03.103422+09:00",
+  "actualUnityEditAttempt1": {
+    "summary": {
+      "total": 475,
+      "passed": 474,
+      "failed": 1,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-editmode-attempt1.json",
+      "sha256": "d0b2fd8869bdd6bcf5e0583d7501194bd96d4ce678972cc911f365a6ac1e1c8b"
+    },
+    "reason": "The newly written test wrongly required EquipmentData.Icon on legacy atlas-backed equipment. Product EquipmentArt already renders these using EquipmentIcons. Test now calls production EquipmentArt and checks its actual sprite or atlas texture/UV; no product or Content change."
+  },
+  "actualUnityEditFinal": {
+    "summary": {
+      "total": 475,
+      "passed": 475,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-editmode-final.json",
+      "sha256": "71981d7f88f97f8aaf4ef3ba71c884c17c6831b049634315361151b7c1885a3a"
+    },
+    "durationSeconds": 24.67
+  },
+  "playUndiscovered": {
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\targeted-playmode-undiscovered.json",
+      "sha256": "d2f1d60269da3cc2db54fd4054270b14021dd06cdd40c809b103591c3ed5b187"
+    },
+    "actualTestsExecuted": 0,
+    "invalidMeta": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety20261106\\RewardVarietySceneTests-invalid-guid.meta",
+      "sha256": "fd5517ad9467e75e8c44fcf17293f26b73337b69084b06951bc0dbcc44243af0"
+    },
+    "reason": "New PlayMode test meta GUID had 33 hex characters. Unity Editor.log explicitly reported invalid GUID and ignored the source. Corrected only this new meta to a generated 32-character GUID through the Editor; imported it and recompiled. 290 PlayMode tests, including all 3 new RewardVariety cases, were then discovered.",
+    "repair": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety20261106\\repair-play-test-guid.json",
+      "sha256": "4ea5dfd6a4ae16d61ae5a28475322fd8942cb6c6d3f757e601e9644301d55525"
+    },
+    "discovery": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety20261106\\play-tests-after-guid-fix.json",
+      "sha256": "2f3897d2e919575537dddea3aa866dd122fe423c89a1049816ae250fb9faa87b"
+    }
+  },
+  "productSourceUnchangedSinceImplementation": true,
+  "limits": "Failed and zero-test runs remain separate evidence. Final full PlayMode and Windows After have now passed, as linked above. Manual reward satisfaction, long-term balance, ordinary-player startup and public release are outside this validation.",
+  "fullPlayEmptyRuns": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-empty-attempt.json",
+      "sha256": "d2f1d60269da3cc2db54fd4054270b14021dd06cdd40c809b103591c3ed5b187",
+      "actualTestsExecuted": 0
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-empty-assembly-attempt.json",
+      "sha256": "d2f1d60269da3cc2db54fd4054270b14021dd06cdd40c809b103591c3ed5b187",
+      "actualTestsExecuted": 0
+    }
+  ],
+  "fullPlayRecovery": "After the 3 targeted cases passed, two subsequent full-run attempts returned 0 results despite 290 discovered tests. A script-domain reload without source/settings changes restored an actual 290-case run. Root cause not established; no package code was patched. Completion is separate evidence.",
+  "fullPlayAttempt1": {
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-attempt1.json",
+      "sha256": "145edbb09554b9c2ce32b314315f77374238c1403d10db8dc3f56170545fefae"
+    },
+    "rawXml": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-attempt1.xml",
+      "sha256": "aac4b9d5dfa045a17296f29d6945f99960db8e176dd4dee45313721478a7cf03"
+    },
+    "total": 290,
+    "passed": 289,
+    "failed": 1,
+    "durationSeconds": 666.0975733,
+    "failure": "ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame: expected abs(localPosition.x) <0.01, actual 0.048052039. The unchanged test read the transform after WaitForSeconds without waiting for the current LateUpdate. A stale-frame observation is plausible, but the historical root cause is not established because the failing run did not record frame timing or the motion start time. The original failed JSON and raw XML are preserved; product motion has not changed."
+  },
+  "resumeUtc": "2026-11-10T06:44:50.754265+09:00",
+  "motionTestCorrection": {
+    "sourcePath": "Assets/TalesTactics/PlayModeTests/CombatEffectsSceneTests.cs",
+    "test": "TalesTactics.PlayModeTests.BattleSceneTests.ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame",
+    "originalSource": {
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety20261110\\CombatEffectsSceneTests-before.cs.txt",
+      "sha256": "0c4d6544fd1c0c75e6ca94c8e6320f9a5ca1044952742b3dcde6178321ab605b"
+    },
+    "correctedSource": {
+      "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\CombatEffectsSceneTests.cs",
+      "sha256": "89cf832898e7e496c05d1dad9957bb93b7d9721eeadd37998b98aad035a36143"
+    },
+    "historicalRootCauseEstablished": false,
+    "sourceFindings": [
+      "CharacterMotion writes the observed transform in LateUpdate. WaitForSeconds alone does not guarantee that the resumed frame has completed LateUpdate.",
+      "CharacterIdlePresentation changes shader property blocks, not transform position, and is disabled during attack and timing spin. Product CharacterMotion and idle presentation were not modified."
+    ],
+    "changes": [
+      "Use captureDeltaTime=1/60 and timeScale=1 inside this test; restore both previous values in finally.",
+      "Observe transforms after WaitForEndOfFrame while preserving the original abs(x)<0.01 planted-position and abs(x)>0.03 repeated-lunge thresholds.",
+      "Verify that the first attack clock stays stable, selecting the same attack restarts its clock, and the repeated attack performs a new lunge.",
+      "Verify ten timing-spin updates retain their start time and planted X position, with idle deformation disabled during attacks and spin.",
+      "ClearTiming must restore AnimationKind.Idle, planted X position, and the idle shader activation flag.",
+      "Failure diagnostics include frame, current time, start time, elapsed time, delta time, action, presenting flag, and X position."
+    ]
+  },
+  "sourceTestedFinal": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\source-tested-final.json",
+    "sha256": "11a340c2adce2cba6d62b97d3a49df907b755d6e525dd9e5bc3508e25948a8ed"
+  },
+  "actualUnityMotionTargetFinal": {
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "durationSeconds": 44.51,
+    "rawXmlDurationSeconds": 44.5124972,
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\motion-target-final.json",
+      "sha256": "30d056718fc39435f6eb40a7b0d5433e4c197462c2f358495f0a3da1b40a4bbf"
+    },
+    "rawXml": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\motion-target-final.xml",
+      "sha256": "70479f15401b6347d0f1442e2f9275ea5af815319bfe498a7bbb8316770c4cba"
+    }
+  },
+  "fullPlayFinal": {
+    "summary": {
+      "total": 290,
+      "passed": 290,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "durationSeconds": 673.68,
+    "rawXmlDurationSeconds": 673.6830211,
+    "receipt": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-final.json",
+      "sha256": "91b88555b19f86d622e0de925b345c81ce07f328b560a049a579ef229f77f467"
+    },
+    "rawXml": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\full-playmode-final.xml",
+      "sha256": "6207fee41310ce08511dd911824c5ba35190f630d008f6fc2c40742b9566fd36"
+    }
+  },
+  "countingPolicy": "The motion target run (1/1) and earlier reward target run (3/3) are subsets of the final full PlayMode run (290/290), not additional unique tests. Keep the existing full EditMode result (475/475) separate. Failed runs and zero-test selections remain historical evidence and are not counted as passing coverage.",
+  "updatedUtc": "2026-11-09T22:02:39.5690820Z",
+  "completionUtc": "2026-11-09T22:16:09.033912+00:00",
+  "finalWindows": {
+    "windows-build-normal.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-build-normal.json",
+      "sha256": "8bfadf6fe321d382f7f4f073d0b5942ccd807609f4331bbd8bd14f1fc14498e5"
+    },
+    "windows-build-review.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-build-review.json",
+      "sha256": "7de51bd0031a8ea9ae5487df821c7c9298679d2e16d1cbe95a9b1095852becd2"
+    },
+    "windows-after-summary.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-after-summary.json",
+      "sha256": "2c81f2817d5544e2b274306bd4ddc8ac293f87f723ccdf693f9d0f1c7e027594"
+    },
+    "windows-comparison.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-comparison.json",
+      "sha256": "7014be0fca5073d2e4d8a5ebef12a5c976ad4bb56c50b2838c0104dc0dbe927e"
+    },
+    "after-binary-source.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\after-binary-source.json",
+      "sha256": "2937c0c20f6e194196041ff77f6ea98e3bc26ccbacc6574839fc8474f17b3e30"
+    },
+    "final-state.json": {
+      "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\final-state.json",
+      "sha256": "552cd1413db70b033b57e697ae20dc3bb3b585b6f3ba3cd792ec9c0881582c9d"
+    }
+  }
+}

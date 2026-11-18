@@ -40,7 +40,7 @@ namespace TalesTactics.Tests
         {
             var b=new BattleSession(CrossoverTestCatalog(),new[]{0},campaignStage:14);b.Advance();
             Assert.That(b.Crossover.Boss.Data.Id,Is.EqualTo("artorius"));
-            b.Crossover.State.Nodes=7;b.Grid.Place(b.Active,CrossoverBattle.Exit);
+            b.Crossover.State.Nodes=b.Crossover.RequiredNodeMask;Assert.That(b.Grid.Place(b.Active,b.Crossover.ExitPosition),Is.True);
             Assert.That(b.Result,Is.EqualTo(BattleResult.Ongoing),"Seals still active");
             foreach(var device in b.Units.Where(u=>u.Data.Id=="boundary-device"))device.Damage(99999,b.Grid);
             Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));Assert.That(b.Crossover.Boss.Alive,Is.True);
@@ -50,7 +50,7 @@ namespace TalesTactics.Tests
             var b=new BattleSession(CrossoverTestCatalog(),new[]{0},campaignStage:23);var boss=b.Crossover.Boss;
             boss.Damage(99999,b.Grid);boss.BossPhaseLock=false;boss.Damage(99999,b.Grid);
             Assert.That(boss.Alive,Is.False);Assert.That(b.Result,Is.EqualTo(BattleResult.Ongoing));
-            b.Crossover.State.Nodes=7;Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));
+            b.Crossover.State.Nodes=b.Crossover.RequiredNodeMask;Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));
         }
         [Test] public void SplitFrontNeverActivatesBothBossesTogether()
         {
@@ -70,7 +70,7 @@ namespace TalesTactics.Tests
             }
             boss.Damage(99999,b.Grid);Assert.That(b.Result,Is.EqualTo(BattleResult.Ongoing));
             foreach(var u in b.Units.Where(u=>u.Data.Id=="boundary-device"))u.Damage(99999,b.Grid);
-            b.Crossover.State.Nodes=7;Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));Assert.That(CampaignStages.HasNext(25),Is.False);
+            b.Crossover.State.Nodes=b.Crossover.RequiredNodeMask;Assert.That(b.Result,Is.EqualTo(BattleResult.Victory));Assert.That(CampaignStages.HasNext(25),Is.False);
         }
         [Test] public void TwentyEpisodeRewardsProgressIndependentlyFromLegacyAndOptionalWeapons()
         {

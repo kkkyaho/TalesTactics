@@ -14,7 +14,8 @@ namespace TalesTactics
             var before=gear.Preview(progress.Level,progress.Promoted);var after=gear.Preview(progress.Level,true);
             var profile=IntermissionPanel(center,"GrowthCharacter",Vector2.zero,new Vector2(.46f,1));
             var promotion=IntermissionPanel(center,"Promotion",new Vector2(.46f,0),Vector2.one);
-            FormationText(profile,"캐릭터 정보",new Vector2(.02f,.92f),new Vector2(.98f,1),24).color=formationGold;
+            FormationText(profile,"캐릭터 정보",new Vector2(.02f,.92f),new Vector2(.50f,1),24).color=formationGold;
+            FormationText(profile,"성장: "+GrowthPaths.Name(progress.Growth)+" · "+GrowthPaths.Role(c,progress.Growth),new Vector2(.50f,.92f),new Vector2(.98f,1),16).color=formationTeal;
             IntermissionPortrait(profile,c,new Vector2(.02f,.62f),new Vector2(.50f,.92f));
             FormationText(profile,FormationWords(c.DisplayName),new Vector2(.51f,.81f),new Vector2(.99f,.92f),23);
             FormationText(profile,progress.Promoted?c.PromotionJob:c.Job,new Vector2(.51f,.72f),new Vector2(.99f,.81f),18).color=formationGold;
@@ -58,6 +59,7 @@ namespace TalesTactics
                 if(trait==value)IconSelectionCorners.Add(card);
                 FormationText(card,TacticalDevelopment.TraitName(value)+(progress.Trait==value?" · 적용 중":""),new Vector2(.20f,.62f),new Vector2(.98f,.99f),20).color=trait==value?formationTeal:formationGold;
                 string effect=value==TacticalTrait.Protector?"방어 중 인접 아군 피해 -30%\n자기 턴마다 1회 · 이동 -1":TacticalDevelopment.TraitDescription(value).Replace("MOV","이동").Replace("DEF","방어").Replace("STR","공격");
+                if(value==TacticalTrait.Protector&&c.Id=="cless"&&progress.Growth==GrowthPath.Bulwark)effect="성장 수호와 보호 횟수 공유"+"\n피해 감소 중첩 없음 · 이동 -1";
                 FormationText(card,effect,new Vector2(.20f,.02f),new Vector2(.98f,.62f),16);
             }
             FormationText(commands,"준비 중 무료 변경 · 저장 후 다음 전투부터 적용",new Vector2(.025f,.015f),new Vector2(.975f,.11f),17).color=formationTeal;

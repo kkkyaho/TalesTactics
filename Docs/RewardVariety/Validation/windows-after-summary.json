@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "validationKind": "reward-variety-campaign-flow",
+  "mode": "Review",
+  "runId": "3db2b87c5ea449029bedbd714ca6a406",
+  "phase": "After",
+  "startedUtc": "2026-11-09T22:05:00.7890981Z",
+  "finishedUtc": "2026-11-09T22:10:18.6901528Z",
+  "passed": true,
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\Validate-RewardCampaignWindows.ps1",
+  "wrapperSHA256": "5a2816c248435da60e305dca4a5b94ab132dda528ca96f5e5c61a7daed3ce6b2",
+  "contract": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\Reward-CampaignContract.ps1",
+  "contractSHA256": "5a173ecb82d1c86c6a9c0030bb8988331887f51d77c4d26c6282701521a6ff9e",
+  "priceManifest": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\equipment-prices.json",
+  "priceManifestSHA256": "09dbd4b6fd43a990b80189185cd45410781417cc62fb837e6ad2154f279e750f",
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "windowStyle": "Hidden",
+  "timeoutSeconds": 900,
+  "normalBuild": "D:\\TalesTacticsBuildArchive\\RewardVarietyWindows20261106",
+  "reviewBuild": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106",
+  "sourceReport": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\CampaignFlowReviews\\3db2b87c5ea449029bedbd714ca6a406\\report.json",
+  "sourceReportSHA256": "bd6877ee8f9f644caa5580629a24ebeec5db4891b4836168f3efb8718ddaee63",
+  "sourceLabel": "Reward variety candidate A based on 73a0557; final working tree built 2026-11-10 KST",
+  "sourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\after-binary-source.json",
+    "sha256": "2937c0c20f6e194196041ff77f6ea98e3bc26ccbacc6574839fc8474f17b3e30",
+    "note": "Caller-supplied source/build receipt; inspect separately for source-to-binary mapping."
+  },
+  "output": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\CampaignFlowReviews\\3db2b87c5ea449029bedbd714ca6a406",
+  "expectedStorage": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\CampaignFlowReviews\\3db2b87c5ea449029bedbd714ca6a406\\Storage",
+  "reportValid": true,
+  "expectedStages": 20,
+  "verifiedStages": 20,
+  "expectedCaptures": 48,
+  "verifiedCaptures": 48,
+  "userRoot": "C:\\Users\\USER-PC\\AppData\\LocalLow\\LocalTactics\\TalesTactics",
+  "userFilesUnchanged": true,
+  "preflightUserTreeStable": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "baseline": "Fresh recursive user-tree SHA256 snapshot excluding only root Player.log and Player-prev.log; no prior baseline dependency.",
+  "allowExistingPlayers": false,
+  "requiredExistingPlayerId": 0,
+  "existingPidsPreserved": [],
+  "existingPlayers": [],
+  "existingPlayerChecks": [],
+  "existingPlayersUnchanged": true,
+  "ownProcess": {
+    "id": 39844,
+    "startedTicks": 639298587229279729,
+    "exe": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\TalesTactics.exe"
+  },
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "e6aa6af73531ef25bd84f2b9f44c397c0adf7410dbcfcab480ede241ffdf117b",
+  "baselineValidation": "C:/dev/TalesTactics/Logs/RewardVariety/CampaignWindows-Before-b4c6ce58d32a4107a82a4250dddddf7e/validation.json",
+  "comparison": {
+    "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-comparison.json",
+    "sha256": "7014be0fca5073d2e4d8a5ebef12a5c976ad4bb56c50b2838c0104dc0dbe927e",
+    "scope": "Detailed original comparison archived separately without duplicating its full payload in this summary."
+  },
+  "playerLog": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\player.log",
+  "errors": [],
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run covers main episodes 1 through 20 with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 4, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player. Source labels are caller-supplied; DLL hashes are measured here and any source manifest is identified separately.",
+    "The same purchase/equip policy may respond to different guaranteed rewards. Purchase history, growth, actions, equipment, inventory and gold differences are reported; post-episode-6 equality is not a pass requirement. Sale values are arithmetic only: no item is sold by this review.",
+    "Role skill counts classify authored effects and may overlap. Healing-skill count does not measure HP restored; guards/waits are committed player commands. Frame-sampled enemy seconds may include frame-boundary uncertainty. No human pacing or balance approval."
+  ],
+  "archiveKind": "Original validation fields excluding full user file arrays and duplicate economy/comparison payloads. Detailed comparison is replaced by its archive reference. Original validation retained locally with SHA256.",
+  "originalValidation": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\validation.json",
+    "sha256": "146417e10d9edfdb7d97a168a6ba2e809c1f2ee5d7f24038c0ccba58e20ab71b"
+  },
+  "gameSummary": {
+    "status": "Completed",
+    "complete": true,
+    "checks": 26713,
+    "saveReloadChecks": 176,
+    "startedUtc": "2026-11-09T22:05:52.6677898Z",
+    "finishedUtc": "2026-11-09T22:10:08.9605822Z",
+    "errors": [],
+    "elapsedSeconds": 256.292793
+  },
+  "archives": [
+    {
+      "original": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\player-report.json",
+      "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-after-player-report.json",
+      "sha256": "bd6877ee8f9f644caa5580629a24ebeec5db4891b4836168f3efb8718ddaee63"
+    },
+    {
+      "original": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\reward-economy.json",
+      "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-after-economy.json",
+      "sha256": "b5e395d461696f11777578b0a1f51a8f9df4947e31ecbf9c9c5f0ba854541786"
+    },
+    {
+      "original": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\stage-manifest.json",
+      "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-after-stage-manifest.json",
+      "sha256": "0c3af20f0fa2b444a1167cf8ca1bc52ea437a63fec851e3bc1f2d83be633e178"
+    },
+    {
+      "original": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\player-type-isolation.json",
+      "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-after-type-isolation.json",
+      "sha256": "c30de35ea45667e2f38cc7f35e91eb1b9ae3e03a96ec76230d25d55eb3544858"
+    },
+    {
+      "original": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\comparison.json",
+      "archive": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-comparison.json",
+      "sha256": "7014be0fca5073d2e4d8a5ebef12a5c976ad4bb56c50b2838c0104dc0dbe927e"
+    }
+  ],
+  "userTreeReceipts": [
+    {
+      "phase": "before",
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\user-tree-before.json",
+      "sha256": "46c01f1958111ff03b6231df1f38623b68b4a4136777c58c15d14b81f29b2902"
+    },
+    {
+      "phase": "after",
+      "path": "C:\\dev\\TalesTactics\\Logs\\RewardVariety\\CampaignWindows-After-3db2b87c5ea449029bedbd714ca6a406\\user-tree-after.json",
+      "sha256": "46c01f1958111ff03b6231df1f38623b68b4a4136777c58c15d14b81f29b2902"
+    }
+  ]
+}

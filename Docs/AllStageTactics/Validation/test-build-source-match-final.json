@@ -1,0 +1,160 @@
+{
+  "schema": "all-stage-tactics-test-build-source-match-final-v1",
+  "startedUtc": "2026-11-18T14:06:07.4073126Z",
+  "finishedUtc": "2026-11-18T14:06:08.0376705Z",
+  "passed": true,
+  "status": "expected_review_policy_differences_only",
+  "exactOriginalTestedSourceMatch": false,
+  "purpose": "Cross-compare original tested source against final Normal and REVIEW build inputs after two approved review-only policy corrections. This does not represent an unchanged rerun of all original tests.",
+  "testedSourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\source-at-stable-tests.json",
+    "sha256": "c77a8a966e68d9bc47150e24756bdb79ad2a72205e9cb1210a5ffec0abf594dd",
+    "bytes": 68214,
+    "lastWriteUtc": "2026-11-18T13:03:06.0813119Z"
+  },
+  "testedSourceCount": 410,
+  "testedSourceFileTypes": {
+    "csharp": 400,
+    "assemblyDefinition": 4,
+    "shader": 6
+  },
+  "approvedPostTestChanges": [
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/AllStagesCampaignFlowReview.cs",
+      "originalTestedSHA256": "d89cba5679e5638db6f77ad33247fba8a22141bb51cafcae5ce710f7a76eb442",
+      "currentFile": {
+        "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\AllStagesCampaignFlowReview.cs",
+        "sha256": "23a31ef048dbb0c5fcec626715ea2199404dd730f355860ad5eeff7142475543",
+        "bytes": 25448,
+        "lastWriteUtc": "2026-11-18T13:55:18.1549419Z"
+      },
+      "changeClassification": "approved_post_test_review_policy_change",
+      "scope": "UNITY_EDITOR or TALESTACTICS_REVIEW only; all-stages profile main-party and trial-action policy."
+    },
+    {
+      "path": "Assets/TalesTactics/Runtime/Presentation/CampaignFlowReview.cs",
+      "originalTestedSHA256": "3469a4f84f839d4c7283da0d10c5220ab5140883cb2317d774079faf0b53b306",
+      "currentFile": {
+        "path": "C:\\dev\\TalesTactics\\Assets\\TalesTactics\\Runtime\\Presentation\\CampaignFlowReview.cs",
+        "sha256": "a73bf2ff1104868dc8d183361954791d7f84a5c4c778f434ac51aebdc823bcba",
+        "bytes": 39924,
+        "lastWriteUtc": "2026-11-18T13:55:18.1559470Z"
+      },
+      "changeClassification": "approved_post_test_review_policy_change",
+      "scope": "UNITY_EDITOR or TALESTACTICS_REVIEW only; all-stages profile main-party and trial-action policy."
+    }
+  ],
+  "comparisonMethod": "Exact ordinal relative-path match and SHA-256 equality. The 408 non-policy source files must match the original frozen test manifest in each build. Exactly two approved policy files must differ from the original and match their currently frozen files in both final build input manifests. Duplicate paths are rejected. Input evidence hashes, sizes and last-write times are checked for read-time stability.",
+  "comparisons": [
+    {
+      "kind": "Normal",
+      "passed": true,
+      "status": "expected_review_policy_differences_only",
+      "sourceToBinaryReceipt": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Normal-After-851ab9905fad4935b3c9ea255778f075\\after-binary-source.json",
+        "sha256": "981b9ab459f9dd8570ddaf51592bba4ab8c3d7caf64a89b41c40b01368296229",
+        "bytes": 88978,
+        "lastWriteUtc": "2026-11-18T14:00:53.5014431Z"
+      },
+      "sourceToBinaryReceiptPassed": true,
+      "buildInputManifest": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Normal-After-851ab9905fad4935b3c9ea255778f075\\inputs-after.json",
+        "sha256": "1ecf02bd104f2d81604acb3873472b13f2436b3bae71cf89d3781cae7adcd414",
+        "bytes": 816652,
+        "lastWriteUtc": "2026-11-18T14:00:38.9087031Z"
+      },
+      "buildInputCount": 3055,
+      "buildInputAggregateSHA256": "547559273814f513fdd5f331dd345424e03453e99bceb139fa1d9d81058bb6b4",
+      "testedSourceComparisonCount": 410,
+      "unchangedCount": 408,
+      "approvedDifferenceCount": 2,
+      "approvedDifferences": [
+        {
+          "path": "Assets/TalesTactics/Runtime/Presentation/AllStagesCampaignFlowReview.cs",
+          "originalTestedSHA256": "d89cba5679e5638db6f77ad33247fba8a22141bb51cafcae5ce710f7a76eb442",
+          "finalBuildSHA256": "23a31ef048dbb0c5fcec626715ea2199404dd730f355860ad5eeff7142475543",
+          "currentFileSHA256": "23a31ef048dbb0c5fcec626715ea2199404dd730f355860ad5eeff7142475543",
+          "currentMatchesBuild": true
+        },
+        {
+          "path": "Assets/TalesTactics/Runtime/Presentation/CampaignFlowReview.cs",
+          "originalTestedSHA256": "3469a4f84f839d4c7283da0d10c5220ab5140883cb2317d774079faf0b53b306",
+          "finalBuildSHA256": "a73bf2ff1104868dc8d183361954791d7f84a5c4c778f434ac51aebdc823bcba",
+          "currentFileSHA256": "a73bf2ff1104868dc8d183361954791d7f84a5c4c778f434ac51aebdc823bcba",
+          "currentMatchesBuild": true
+        }
+      ],
+      "unexpectedDifferenceCount": 0,
+      "unexpectedDifferences": []
+    },
+    {
+      "kind": "Review",
+      "passed": true,
+      "status": "expected_review_policy_differences_only",
+      "sourceToBinaryReceipt": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Review-After-759b569c5cf54fd8b8b3c22841d44f9b\\after-binary-source.json",
+        "sha256": "eec2d74ade7f8e68fdab9eeae53927dbd348d9eb4ec6841397a5ad28f8403913",
+        "bytes": 89009,
+        "lastWriteUtc": "2026-11-18T14:03:48.6875491Z"
+      },
+      "sourceToBinaryReceiptPassed": true,
+      "buildInputManifest": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Review-After-759b569c5cf54fd8b8b3c22841d44f9b\\inputs-after.json",
+        "sha256": "437a7c2e34de9b4c3ef472a861e5af77446eb28325e92abaa309474f58241d67",
+        "bytes": 816652,
+        "lastWriteUtc": "2026-11-18T14:03:35.5150102Z"
+      },
+      "buildInputCount": 3055,
+      "buildInputAggregateSHA256": "547559273814f513fdd5f331dd345424e03453e99bceb139fa1d9d81058bb6b4",
+      "testedSourceComparisonCount": 410,
+      "unchangedCount": 408,
+      "approvedDifferenceCount": 2,
+      "approvedDifferences": [
+        {
+          "path": "Assets/TalesTactics/Runtime/Presentation/AllStagesCampaignFlowReview.cs",
+          "originalTestedSHA256": "d89cba5679e5638db6f77ad33247fba8a22141bb51cafcae5ce710f7a76eb442",
+          "finalBuildSHA256": "23a31ef048dbb0c5fcec626715ea2199404dd730f355860ad5eeff7142475543",
+          "currentFileSHA256": "23a31ef048dbb0c5fcec626715ea2199404dd730f355860ad5eeff7142475543",
+          "currentMatchesBuild": true
+        },
+        {
+          "path": "Assets/TalesTactics/Runtime/Presentation/CampaignFlowReview.cs",
+          "originalTestedSHA256": "3469a4f84f839d4c7283da0d10c5220ab5140883cb2317d774079faf0b53b306",
+          "finalBuildSHA256": "a73bf2ff1104868dc8d183361954791d7f84a5c4c778f434ac51aebdc823bcba",
+          "currentFileSHA256": "a73bf2ff1104868dc8d183361954791d7f84a5c4c778f434ac51aebdc823bcba",
+          "currentMatchesBuild": true
+        }
+      ],
+      "unexpectedDifferenceCount": 0,
+      "unexpectedDifferences": []
+    }
+  ],
+  "totalSourceComparisons": 820,
+  "totalUnchangedComparisons": 816,
+  "totalApprovedDifferenceComparisons": 4,
+  "totalUnexpectedDifferences": 0,
+  "unexpectedDifferences": [],
+  "productAndTestSourceUnchanged": {
+    "passed": true,
+    "scope": "All 408 files in the original tested-source set other than the two approved review-policy files match both final build inputs. Includes production C#, test C#, assembly definitions and shaders within that set.",
+    "changedProductSourceFiles": [],
+    "changedTestSourceFiles": [],
+    "changedShaderFiles": []
+  },
+  "verificationState": {
+    "originalEditMode": "703/703 passed before the review-policy correction",
+    "originalPlayMode": "299/300 passed; one external Pipeline timeout-log failure passed on an unchanged targeted 1/1 rerun, before the review-policy correction",
+    "newWindowsCampaign": "in_progress",
+    "newWindowsCampaignCompletionClaim": false,
+    "reviewPolicyChanges": "Read-only reviewed and built; actual final Windows run remains the behavioral verification."
+  },
+  "limitations": [
+    "This file records a read-only evidence comparison, not a new Unity test, build or player execution. Only this new JSON is written.",
+    "The original tested-source set is 400 C# files, 4 assembly definitions and 6 shaders, totalling 410. The earlier Attempt1 file incorrectly described all 410 as C# and assembly-definition files; its hash comparisons remain valid. Attempt1 evidence is preserved unchanged.",
+    "The 410-to-3055 comparison is a subset comparison. It does not establish that all non-source inputs were identical at original test execution time. Additional build inputs are expected.",
+    "The original full test results do not constitute a full-suite rerun after the two review-policy edits. Their other 408 frozen source inputs are unchanged; successful final campaign execution is still pending.",
+    "Matching endpoint hashes does not prove absence of transient edits, deterministic compilation, imported Library-state identity, runtime dependency inclusion or human visual/balance quality.",
+    "Separately hashed source-to-binary receipts provide build provenance. This comparison does not independently rerun BuildReport or binary-output checks.",
+    "Local-only audio, source provenance and build artifacts remain subject to the local-only music policy. No upload is performed."
+  ]
+}

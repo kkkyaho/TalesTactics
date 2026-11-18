@@ -6,7 +6,7 @@ namespace TalesTactics
 {
     [Serializable] public sealed class CrossoverBattleState
     {
-        public int Nodes,Segment,Choice,Actions;
+        public int Nodes,Segment,Choice,Actions,OpeningRevision,TacticsRevision;
         public List<CrossoverHazard> Hazards=new List<CrossoverHazard>();
         public int LastShape,LastArea,LastRange=4;
         public int ReplayShape,ReplayArea;
@@ -18,7 +18,7 @@ namespace TalesTactics
             int index=-1;for(int i=0;i<units.Count;i++)if(units[i]==unit){index=i;break;}
             if(unit.Alive)BrokenDevices.Remove(index);else if(index>=0&&!BrokenDevices.Contains(index))BrokenDevices.Add(index);
         }
-        public CrossoverBattleState Copy()=>new CrossoverBattleState{Nodes=Nodes,Segment=Segment,Choice=Choice,Actions=Actions,LastShape=LastShape,LastArea=LastArea,LastRange=LastRange,ReplayShape=ReplayShape,ReplayArea=ReplayArea,TrialProgress=TrialProgress,TrialActions=TrialActions,BrokenDevices=new List<int>(BrokenDevices??new List<int>()),Hazards=(Hazards??new List<CrossoverHazard>()).Select(h=>h.Copy()).ToList()};
+        public CrossoverBattleState Copy()=>new CrossoverBattleState{OpeningRevision=OpeningRevision,TacticsRevision=TacticsRevision,Nodes=Nodes,Segment=Segment,Choice=Choice,Actions=Actions,LastShape=LastShape,LastArea=LastArea,LastRange=LastRange,ReplayShape=ReplayShape,ReplayArea=ReplayArea,TrialProgress=TrialProgress,TrialActions=TrialActions,BrokenDevices=new List<int>(BrokenDevices??new List<int>()),Hazards=(Hazards??new List<CrossoverHazard>()).Select(h=>h.Copy()).ToList()};
     }
     public sealed partial class CrossoverBattle : IVictoryCondition
     {
@@ -42,21 +42,23 @@ namespace TalesTactics
             if(Boss.Data.Id=="ganabelt"){enemies[3].Summoned=true;Deactivate(enemies[3]);}
             if(episode==11&&enemies.Length>4){enemies[4].CrossoverBoss=true;enemies[4].BossPhase=1;Deactivate(enemies[4]);}
             if(episode==11)PrepareFronts();
+            ConfigureOpening();
+            State.TacticsRevision=CrossoverTacticalMissions.Contains(battle.CampaignStage)?CrossoverTacticalMissions.CurrentRevision:0;
         }
         void Deactivate(UnitRuntime unit){unit.CurrentHP=0;if(battle.Grid[unit.Position]?.Occupant==unit)battle.Grid[unit.Position].Occupant=null;}
         public void Restore(CrossoverBattleState state)
         {
             if(state==null||state.Nodes<0||state.Nodes>7||state.Segment<0||state.Segment>1||state.Choice<0||state.Choice>1||state.Actions<0||state.Actions>100000||episode!=11&&state.Segment!=0)throw new System.IO.InvalidDataException("Invalid crossover objective state");
-            State=state.Copy();
+            PrepareRestore(state);State=state.Copy();
             if(episode!=11&&battle.Units.Any(u=>u.CrossoverReserve))throw new System.IO.InvalidDataException("Reserve outside split-front mission");
-            ValidateHazards();battle.Resolver.CrossoverState=State;RefreshBoundaries();
+            ValidateHazards();SynchronizeResolver();RefreshBoundaries();
         }
         public void Update()
         {
             foreach(var unit in battle.Units)State.RecordDevice(unit,battle.Units);
             bool ordered=personal&&PersonalScenarios.Tier(battle.CampaignStage)==1||episode==13;
             bool contract=IsTrial&&TrialOwner=="cless";
-            for(int i=0;i<Nodes.Length;i++)if((!ordered||State.Nodes!=0||i==State.Choice)&&(!contract||(State.Nodes&((1<<i)-1))==((1<<i)-1))&&battle.Units.Any(u=>u.Team==Team.Player&&u.Alive&&!u.CrossoverReserve&&u.Position==Nodes[i]))State.Nodes|=1<<i;
+            var signals=SignalPositions;for(int i=0;i<signals.Length;i++)if((!ordered||State.Nodes!=0||i==State.Choice)&&(!contract||(State.Nodes&((1<<i)-1))==((1<<i)-1))&&battle.Units.Any(u=>u.Team==Team.Player&&u.Alive&&!u.CrossoverReserve&&u.Position==signals[i]))State.Nodes|=1<<i;
             if(episode==11&&State.Segment==0&&!Boss.Alive)
             {
                 ActivateEasternFront();
@@ -64,7 +66,7 @@ namespace TalesTactics
         }
         public void OnTurnEnded(UnitRuntime unit){if(unit.Team==Team.Player&&unit.Alive)State.Actions++;ApplyHazards(unit);CompleteWesternTurn(unit);Update();}
         bool DevicesDown=>!Enemies.Any(u=>u.Data.Id=="boundary-device"&&u.Alive);
-        bool AtExit=>battle.Units.Any(u=>u.Team==Team.Player&&u.Alive&&u.Position==Exit);
+        bool AtExit=>battle.Units.Any(u=>u.Team==Team.Player&&u.Alive&&u.Position==ExitPosition);
         public string Description
         {
             get
@@ -72,13 +74,15 @@ namespace TalesTactics
                 if(personal)
                 {
                     var arc=PersonalScenarios.Arc(battle.CampaignStage);
-                    return PersonalScenarios.Tier(battle.CampaignStage)==1?"선택한 길부터 구조 신호 연결 ("+NodeCount+"/3) 후 출구 도착":TrialDescription;
+                    return (RevisedTactics?TacticalLayout.Name+" · ":"")+(PersonalScenarios.Tier(battle.CampaignStage)==1?"선택한 길부터 구조 신호 연결 ("+NodeCount+"/3) 후 출구 도착":TrialDescription);
                 }
-                return MainDescription(episode,Boss.Data.DisplayName,State.Segment);
+                return MainDescription(episode,Boss.Data.DisplayName,State.Segment,State.OpeningRevision,State.TacticsRevision);
             }
         }
-        public static string MainDescription(int episode,string bossName,int segment=0)
+        public static string MainDescription(int episode,string bossName,int segment=0,int openingRevision=1,int tacticsRevision=1)
         {
+                if(CrossoverTacticalMissions.Applies(CrossoverCampaign.FirstStage+episode-1,tacticsRevision)&&episode!=11)return CrossoverTacticalMissions.Get(CrossoverCampaign.FirstStage+episode-1).Description;
+                if(openingRevision==1&&episode>=1&&episode<=3)return CrossoverOpeningMissions.Description(episode);
                 switch(episode)
                 {
                     case 3:return "마을 보호 · 구조 신호 3개 연결 후 출구 도착";
@@ -96,21 +100,23 @@ namespace TalesTactics
                     default:return bossName+" 저지 · 예고 공격의 범위를 벗어나거나 준비를 취소";
                 }
         }
-        public int NodeCount=>Enumerable.Range(0,3).Count(i=>(State.Nodes&(1<<i))!=0);
+        public int NodeCount=>Enumerable.Range(0,SignalPositions.Length).Count(i=>(State.Nodes&(1<<i))!=0);
         public string DefeatDescription=>episode==11?"진행 중인 전선의 아군 전원 전투불능":episode==16?"선두 출전 아군 전투불능 또는 아군 전멸":"아군 전원 전투불능";
         public string HazardDescription=>State.Hazards.Count==0?"":string.Join(" · ",State.Hazards.GroupBy(h=>h.Kind).Select(g=>(g.Key==BossMechanic.Collapse?"붕괴 예고/잔해":g.Key==BossMechanic.Mines?"지뢰":g.Key==BossMechanic.FlameField?"화염":g.Key==BossMechanic.IceTrail?"얼음":g.Key==BossMechanic.Boundary?"통행 봉쇄":"게이지 봉인")+" "+g.Count()+"칸"));
-        public bool UsesNodes=>HasSignals(battle.CampaignStage);
-        public bool UsesExit=>HasExit(battle.CampaignStage);
+        public bool UsesNodes=>HasSignals(battle.CampaignStage,State.OpeningRevision,State.TacticsRevision);
+        public bool UsesExit=>HasExit(battle.CampaignStage,State.OpeningRevision,State.TacticsRevision);
         public bool UsesContract=>IsTrial&&TrialOwner=="cless";
-        public static bool HasSignals(int stage)
+        public static bool HasSignals(int stage,int openingRevision=1,int tacticsRevision=1)
         {
             if(PersonalScenarios.Contains(stage))return PersonalScenarios.Tier(stage)==1||new[]{"cless","mint","farah","tear","natalia","shionne","kisara"}.Contains(PersonalScenarios.Arc(stage).Owner);
-            return CrossoverCampaign.IsMain(stage)&&new[]{3,7,9,13,16,18,20}.Contains(CrossoverCampaign.Episode(stage).Number);
+            if(CrossoverTacticalMissions.Applies(stage,tacticsRevision))return CrossoverTacticalMissions.Get(stage).Signals.Length>0;
+            return CrossoverOpeningMissions.Applies(stage,openingRevision)?stage!=CrossoverCampaign.FirstStage+1:CrossoverCampaign.IsMain(stage)&&new[]{3,7,9,13,16,18,20}.Contains(CrossoverCampaign.Episode(stage).Number);
         }
-        public static bool HasExit(int stage)
+        public static bool HasExit(int stage,int openingRevision=1,int tacticsRevision=1)
         {
             if(PersonalScenarios.Contains(stage))return PersonalScenarios.Tier(stage)==1||new[]{"mint","natalia","shionne"}.Contains(PersonalScenarios.Arc(stage).Owner);
-            return CrossoverCampaign.IsMain(stage)&&new[]{3,9,16}.Contains(CrossoverCampaign.Episode(stage).Number);
+            if(CrossoverTacticalMissions.Applies(stage,tacticsRevision))return TacticalUsesExit(CrossoverTacticalMissions.Get(stage).Goal);
+            return CrossoverOpeningMissions.Applies(stage,openingRevision)?stage!=CrossoverCampaign.FirstStage:CrossoverCampaign.IsMain(stage)&&new[]{3,9,16}.Contains(CrossoverCampaign.Episode(stage).Number);
         }
         public BattleResult Evaluate(IReadOnlyList<UnitRuntime> units)
         {
@@ -118,6 +124,8 @@ namespace TalesTactics
             if(episode==11&&FrontDefeated)return BattleResult.Defeat;
             bool win;
             if(personal)win=PersonalScenarios.Tier(battle.CampaignStage)==1?State.Nodes==7&&AtExit:TrialComplete;
+            else if(RevisedOpening)win=OpeningVictory;
+            else if(RevisedTactics)win=TacticalVictory;
             else switch(episode)
             {
                 case 3:case 16:win=State.Nodes==7&&AtExit;break;

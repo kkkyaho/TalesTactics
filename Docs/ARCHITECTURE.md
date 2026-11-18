@@ -1,5 +1,37 @@
 # 아키텍처
 
+## 전체 전장 배치와 저장 호환
+
+`TacticalMissionLayout`은 전장 이름·장소·안내·목표 종류, 아군 6자리·적 9자리, 신호·출구·계약 좌표와 맵 생성기를 묶는다. `MainTacticalMissions`는 메인 4~20화, `PersonalTacticalMissions`는 개인 구조/시련 20개를 정의한다. 대화 단계는 포함하지 않는다. 지형 생성 후 배치 칸을 강제로 열지 않으며, 모든 활성·전투불능·예비·소환 자리는 실제 통행 가능한 칸으로 작성한다. 메인 11화는 기존 `PrepareFronts`의 편성 인원별 서/동 배치를 유지한다.
+
+`CrossoverBattleState.TacticsRevision` 0은 기존 후반/개인 전장, 1은 새 전장이다. 초반의 `OpeningRevision`과 독립적으로 저장한다. `PrepareRestore`는 각 버전의 맵을 먼저 복원하고 이후 저장 유닛과 위험 지형을 적용한다. 체크포인트에 포함된 재시도/되감기 상태가 다른 지형 버전을 담으면 복원을 거부한다. 필드가 없는 기존 JSON은 0으로 해석하며 기존 완료·합류·성장·보상 기록을 변환하지 않는다.
+
+`CrossoverTacticalBattle`은 현재 전투 버전의 목표와 좌표를 제공한다. 신호·출구·장치·계약·소환진은 `MissionMapPreview`, `BoardCrossoverView`, 경로 선택창과 임무 HUD가 공유한다. `SynchronizeResolver`는 보호 신호와 소환 위치를 실제 스킬 판정에 연결하고, `BattleProjection`은 복사본을 사용한다. 개인 시련 승패는 기존 실제 행동 조건으로 평가한다. [전체 적용 범위와 검증](AllStageTactics/README.md).
+
+## 대표 초반 전투·성장 효과·이야기 배경
+
+`CrossoverOpeningMissions`는 새로 시작하는 메인 1~3화의 지형·배치·목표를 정의한다. 1화는 중앙 다리 너머 신호 1개와 수호자, 2화는 좌우 감옥 장치 2개와 남쪽 퇴로, 3화는 세 다리 너머 신호 3개와 북쪽 출구를 요구한다. 2·3화는 보스가 살아 있어도 목표를 달성하면 승리한다. 새 깊은 물은 통과할 수 없다. 이후 메인과 개인 전투는 위의 TacticsRevision으로 별도 관리한다.
+
+`CrossoverBattleState.OpeningRevision`의 0은 기존 초반 전투, 1은 새 구성을 뜻한다. 필드가 없는 이전 저장은 0으로 읽는다. `BattleCheckpoint.Restore`와 `BattleOpening.Restore`는 저장된 유닛을 배치하기 전에 `PrepareRestore`로 해당 개정의 높이·지형·통행 여부·이동 비용을 복원한다. 중단 저장·재도전·되감기는 이 개정 값을 함께 보존한다. 전투의 `SignalPositions`·`ExitPosition`을 승리 조건, 목표 표시, 위험 지형의 목표 타일 보호에서 공유한다.
+
+성장은 기존 `GrowthPath` 값(`Unselected`·`Assault`·`Bulwark`), 능력치 보정과 Lv10 해금을 유지하며 `GrowthCombat`에 캐릭터별 전투 효과를 연결한다. 크레스의 돌파는 이동 후 기본 물리 공격으로 실제 피해를 준 적을 행동당 한 번 1칸 밀며 보스·장치·지원 공격·반격·연계를 제외한다. 수호는 방어 중 인접 아군을 보호하고 기존 호위 특성과 `ProtectionUsed`를 공유하므로 횟수와 피해 감소가 중첩되지 않는다. 민트는 다른 아군의 단일 회복으로 HP가 실제 증가했을 때 돌파는 성가 1턴, 수호는 대상의 다음 자기 턴 시작까지 방어를 부여한다. 기존 상태 갱신 규칙을 사용해 같은 효과의 배율을 중첩하지 않는다. 성장 선택은 기존 장비 적용·체크포인트 경로를 따르고, 분리된 `BattleProjection`도 같은 `SkillResolver`를 실행해 밀침과 상태 효과를 예측한다.
+
+`StorySceneArt`는 장의 지형 테마에 맞는 기존 파노라마를 읽고, 화면 비율에 따라 중앙 UV를 잘라 원본 비율을 유지한다. 원화를 읽지 못하면 `FormationBackdrop`을 사용한다. `BattleStoryHud`는 이 배경 위에 장소·화 제목·대사를 배치한다. 출전 준비의 `MissionMapPreview`는 실제 전투와 같은 `CampaignContent.Map(stage)`의 `GridMap` 생성 경로와 목표 좌표 정의로 지형·출구·신호·감옥 장치를 그린다. 새 전장에서는 이전 지도 원화가 실제 지형 미리보기를 덮지 않도록 한다. [구현 범위와 현재 검증 상태](CommercialSlice/README.md).
+
+## 메인 확정 장비 보상 분산
+
+`CrossoverCampaign.Chapter`의 단일 확정 장비 표를 `CampaignStages.Get`으로 조회해 `CampaignEconomy.Preview`의 출전 전 안내와 `CampaignStages.TryReward`의 실제 지급이 공유한다. 메인 7~13화는 일반 무기 7종, 14~20화는 방어구·장신구로 분산하고, 1~6화는 기존 수호의 메달을 유지한다. 최초·재클리어 모두 해당 화의 확정 장비를 1개 지급하며 기존 보유 수량 상한을 따른다.
+
+기존 저장의 보유 메달·장착 장비·완료 플래그를 변환하지 않고 완료한 화에 새 보상을 소급 지급하지 않는다. 이후 실제 승리 보상부터 같은 표를 적용한다. 개인 이야기·과거 6장 보상과 골드·EXP·무작위 추가 드롭 규칙은 유지하며 새 아이템·가격·능력치나 저장 형식은 추가하지 않는다. [보상표와 적용 범위](RewardVariety/README.md).
+
+## 초반 조작 확정과 이동 시간
+
+`FacingSelectionState.GuardOnConfirm`은 방어 의도만 보관한다. `ChooseFacing`에서 방어/대기 기록을 한 번 만든 뒤 행동권·이동 취소 잠금·방어 효과·방향을 확정한다. 상태를 취소하면 전투 데이터와 되감기 이력을 건드리지 않는다. 무효 대상과 맵 밖의 실제 포인터 이동은 `ClearTargetPreview`로 대상·예측·효과 영역을 해제하고 기술 사거리를 복원한다. 포인터가 움직이지 않을 때의 키보드 대상 선택은 유지한다.
+
+`BoardView.AnimateMove`는 `Time.timeAsDouble`의 경로 전체 경과 시간으로 구간과 보간값을 구해 타일 경계의 초과 프레임 시간을 보존한다. 명시적 이동 배속은 `CharacterMotion.WalkFacing`에도 전달되어 원화와 대체 보행 흔들림이 같은 속도로 진행한다. 상태 전환에서 보행 배속을 초기화하며 전역 시간 배율·전투 판정·저장 형식은 변경하지 않는다.
+
+`CampaignFlowReview`의 선택형 `--campaign-opening-profile`은 기존 GUID 검수 저장 격리 안에서 메인 1~3화를 시간 배율 1로 진행한다. 기본 20화 검수는 유지하며 전후 명령·성장·보상·저장 결과와 실제 소요 시간을 분리 기록한다. [구현과 검증 범위](OpeningPolish/README.md).
+
 ## 플레이 테스트 피드백: 깊이·대기 표현·합류·음악
 
 `StandingSpriteDepth`는 서 있는 캐릭터·민간인·수목·소품과 이동 미리보기에만 깊이 보정을 켠다. `UnitTone`은 화면 좌표를 유지하면서 픽셀 깊이를 발 위치의 수직 몸체에 맞춘다. 카메라의 수평 시선축과 발 pivot으로 투명 Sprite를 정렬해 고저차가 있는 소품도 카메라 회전에 맞게 앞뒤가 정해진다. 지면 장식과 월드 VFX는 기존 깊이 규칙을 유지한다.

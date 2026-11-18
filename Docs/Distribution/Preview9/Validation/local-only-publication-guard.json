@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "mode": "draft-upload",
+      "passed": true,
+      "message": "Publication disabled: user-provided music is local-only; this Preview9 package must not be uploaded or published.",
+      "credentialOrPackageOrNetworkCalls": 0
+    },
+    {
+      "mode": "publish",
+      "passed": true,
+      "message": "Publication disabled: user-provided music is local-only; this Preview9 package must not be uploaded or published.",
+      "credentialOrPackageOrNetworkCalls": 0
+    },
+    {
+      "mode": "verify",
+      "passed": true,
+      "scope": "Only confirmed the read-only preflight remains reachable; no network or release verification performed."
+    }
+  ],
+  "scriptSHA256": "e85085e45ffdde6abc1cef32ac50a9d10d66a39bb5d58643a7afab441bad27c3",
+  "userAudioFiles": [
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/9953EC3359F9562305.mp3",
+      "bytes": 6075425,
+      "sha256": "15b974b7cbf295e40de0d5fd03848a2ed259839a9839502a683c68e05ec4e3c2",
+      "sameAsExistingCommit": true
+    },
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/99852C3359F955BE1A.mp3",
+      "bytes": 3011111,
+      "sha256": "60795178d607b4f39b33ae060761c5bac2ca9e4785128b6e0fc56c349c7b7704",
+      "sameAsExistingCommit": true
+    },
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/99898D3359F955C018.mp3",
+      "bytes": 2705181,
+      "sha256": "9f19ffd36fe67296ac6017543d9d05974558e6d6978b216cdd6280cfd9af6302",
+      "sameAsExistingCommit": true
+    },
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/9993893359F955C218.mp3",
+      "bytes": 3772321,
+      "sha256": "7e86314d9c6ca6896b36e4e8e49ed4d9ed0fb49876871d74b75a34e4e2b0f3ec",
+      "sameAsExistingCommit": true
+    },
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/99AA233359F955C515.mp3",
+      "bytes": 8214008,
+      "sha256": "391cfff8272ae7d6d05bad77001a85afbb14f14b2f704b9b8a93498628d9539e",
+      "sameAsExistingCommit": true
+    },
+    {
+      "path": "Assets/TalesTactics/Audio/LocalMusic/Tales of Destiny 2 - Wilderness.mp3",
+      "bytes": 3010716,
+      "sha256": "c9e16eed15ba9c8a0bcb7d7e718932baeab08f5b2e540622b6705e9bdc109d12",
+      "sameAsExistingCommit": true
+    }
+  ],
+  "remoteWrites": false,
+  "unityTestsRun": false,
+  "scope": "Offline publication policy checks and local audio byte preservation. Does not remove existing remote audio history."
+}

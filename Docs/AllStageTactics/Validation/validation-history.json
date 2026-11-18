@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "scope": "AllStageTactics task; failed and superseded attempts are not counted as passes.",
+  "events": [
+    {
+      "kind": "tool-setup",
+      "result": "failed",
+      "detail": "Initial sandbox startup failed. Native Computer Use node runtime reset/retry also failed. Unity CLI ran through the authorized escalated shell. Incorrect set_auto_tick/--enabled arguments were corrected to set_autotick --enable. No test success is inferred from these attempts."
+    },
+    {
+      "kind": "compile",
+      "result": "fixed",
+      "detail": "Three new NUnit collection assertions initially used an incompatible Does.Not.Contain overloads for UnitRuntime/Vector2Int. They were corrected to Has.No.Member before the final actual Unity test runs."
+    },
+    {
+      "kind": "test-dispatch",
+      "result": "not-counted",
+      "detail": "An early test dispatch overlapped domain reload and timed out; a returned cached 297-test result belonged to the previous task. A target run was later canceled during source/reload preparation. Neither is a current success."
+    },
+    {
+      "kind": "editmode-final",
+      "result": "passed",
+      "total": 703,
+      "passed": 703,
+      "durationSeconds": 64.68,
+      "evidence": "full-editmode.json"
+    },
+    {
+      "kind": "playmode-full",
+      "result": "failed",
+      "total": 300,
+      "passed": 299,
+      "failed": 1,
+      "durationSeconds": 1211.52,
+      "evidence": "full-playmode-attempt1.json",
+      "detail": "The agent sent a Pipeline status eval while PlayMode tests were executing. It timed out and emitted an unhandled Error in AcceleratedMovementAdvancesTheAuthoredWalkAtTheSameRate. The recorded failure is the tool log, not a movement assertion."
+    },
+    {
+      "kind": "playmode-retry-dispatch",
+      "result": "not-counted",
+      "detail": "A domain reload request timed out but queued the reload. A retry sent before the reload settled also timed out and returned the cached full-run result. This was not treated as a new test run."
+    },
+    {
+      "kind": "playmode-target-retry",
+      "result": "passed",
+      "total": 1,
+      "passed": 1,
+      "durationSeconds": 38.37,
+      "evidence": "playmode-movement-retry.json",
+      "detail": "The same movement test passed after reload settled, with no source changes. Full 299/300 plus this 1/1 retry is not a single full 300/300 execution."
+    },
+    {
+      "kind": "generated-protected-files",
+      "result": "restored",
+      "evidence": "protected-generated-restore.json",
+      "detail": "Tests regenerated the fallback font and two CSVs. Generated copies were retained locally, exact fresh-baseline bytes restored, and the loaded font synchronously reimported and confirmed clean."
+    },
+    {
+      "kind": "source-check",
+      "result": "passed",
+      "evidence": "Attempt1/test-build-source-match.json",
+      "detail": "All 410 frozen tested-source hashes match both completed builds' 3,055 input files. User artwork and local music are among build inputs; this is not clean-clone or hermetic reproducibility."
+    },
+    {
+      "kind": "windows-attempt1",
+      "result": "failed",
+      "completedStages": 31,
+      "stage": 37,
+      "playerCommands": 500,
+      "evidence": "Attempt1/windows-campaign-failure.json",
+      "detail": "Tear was level6 while Holy Song requires level10 (gauge cost0). The automated preferred party had not developed her. The command cap terminated with exit1, no forced termination and unchanged user tree."
+    },
+    {
+      "kind": "review-policy-only",
+      "result": "recompiled",
+      "evidence": "post-test-review-policy-changes.json",
+      "detail": "Two REVIEW/editor-only files changed to prioritize actual prerequisite growth, avoid non-attacking devices/blocked approaches, and reserve Velvet injury for real drain. All remaining408 frozen source files match. Skill requirements and game rules remain unchanged. The frozen410 consist of400 C#,4 asmdef,6 shader files; earlier Attempt1 prose omitted shaders."
+    },
+    {
+      "kind": "normal-build-final-dispatch",
+      "result": "response-timeout-build-succeeded",
+      "detail": "run_script response timed out after10000ms while the scheduled build proceeded. The new Build-7c0acaca4af447f0b010411d13b13021 final BuildReport succeeded; no duplicate request was made."
+    },
+    {
+      "kind": "windows-final",
+      "result": "passed",
+      "completedStages": 50,
+      "combatStages": 40,
+      "dialogueStages": 10,
+      "checks": 38833,
+      "saveReloadChecks": 391,
+      "captures": 180,
+      "exitCode": 0,
+      "evidence": "windows-campaign-summary.json"
+    },
+    {
+      "kind": "preservation-report",
+      "result": "comparison-function-corrected",
+      "detail": "The completed user snapshot was retained when Compare-Trees overwrote its Before/After parameters through case-insensitive before/after loop variables. Only comparison row variables were renamed. Original failed receipt retained; same captured snapshots reevaluated, with PS5.1 and PS7 fixtures. Final preservation evidence separately links final Windows before/after snapshots and rechecks protected files."
+    }
+  ],
+  "rawEvidenceDirectory": "C:/dev/TalesTactics/Logs/AllStageTactics20261118",
+  "limits": "Some early CLI/compile errors are retained in the conversation and project log rather than separate immutable raw receipt files. This history describes their scope without fabricating missing receipts."
+}

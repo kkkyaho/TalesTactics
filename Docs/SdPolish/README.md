@@ -46,4 +46,6 @@
 
 첫 시작 검사는20초 내 창 핸들을 관찰하지 못해 실패했으며 자기 프로세스만 종료했다. [초기 원본](Validation/windows-startup-complete.json)을 유지한다. 재실행은5.02초부터60.02초까지 창/응답 정상, 오류 로그0·정상 종료(exit0, 강제종료 없음)였다. 자동 저장으로 `WindowMaximized true→false`, `SeenContextHints` 누락→기본값0만 바뀌었으므로, 시작 검수 JSON의 저장 불변 실패를 통과로 바꾸지 않았다. 원본 해시와 같은 백업으로 해당 설정 파일 하나만 바이트 복원했고 **사용자8파일 최종 SHA256 일치**를 별도로 확인했다. [재실행 원본](Validation/windows-startup-complete-retry.json), [복원 내역·최종 파일 비교](Validation/user-files-restored-final.json), [기존 프로세스 보존](Validation/existing-processes-complete-retry.json). 실행 검사에는 기존 비사용 후처리 셰이더 경고4줄이 있었으며 오류와 구분한다. 다른PC 성능이나 사람의 조작 검증으로 확대하지 않는다.
 
-반복 메달 보상은 [분산 설계](../StandardWeapons/reward-options.md)만 작성했고 실제 지급은 바꾸지 않았다. 다른 PC/DPI·장시간 성능·사람이 이야기를 읽으며 진행하는 전체 캠페인, 가격/장비 구매와 무료 훈련 안내의 체감 판단은 별도 검수다. 기존 저장 형식과 EXP/보상/전용무기 수치는 이번 후속 보완에서 바꾸지 않았다.
+2026-10-27의 반복 메달 보상 작업은 [분산 설계](../StandardWeapons/reward-options.md) 작성까지였으며 당시 실제 지급은 바꾸지 않았다. 다른 PC/DPI·장시간 성능·사람이 이야기를 읽으며 진행하는 전체 캠페인, 가격/장비 구매와 무료 훈련 안내의 체감 판단은 별도 검수다. 기존 저장 형식과 EXP/보상/전용무기 수치는 당시 후속 보완에서 바꾸지 않았다.
+
+2026-11-06~10에는 별도 후속 작업으로 후보 A의 메인 7~20화 보상표를 구현했다. 실제 Unity·Windows 검증을 완료했으며 [보상 다양화의 현재 상태](../RewardVariety/README.md)에서 확인한다. 이 문서의 2026-10-27 검증 수치를 새 보상표의 검증 결과로 사용하지 않는다.

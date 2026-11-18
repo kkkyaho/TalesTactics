@@ -1,0 +1,175 @@
+{
+    "passed":  true,
+    "validationKind":  "offline-reward-wrapper-contract",
+    "gameOrUnityExecuted":  false,
+    "shellVersion":  "5.1.22621.6133",
+    "wrapper":  "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\Validate-RewardCampaignWindows.ps1",
+    "wrapperSHA256":  "5a2816c248435da60e305dca4a5b94ab132dda528ca96f5e5c61a7daed3ce6b2",
+    "contract":  "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\Reward-CampaignContract.ps1",
+    "contractSHA256":  "836e98cdf9c3fc27271e09c7809e5fbcc061acb7b302e2468a7f61702ae48f88",
+    "priceManifest":  "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\equipment-prices.json",
+    "priceManifestSHA256":  "09dbd4b6fd43a990b80189185cd45410781417cc62fb837e6ad2154f279e750f",
+    "historicReport":  "C:\\dev\\TalesTactics\\Docs\\PlaytestFeedback\\Validation\\windows-campaign-player-report.json",
+    "historicReportSHA256":  "c50f9769278830011c368c78f83f4c3d6b7deb0af3a054650dd16cbfacfd43e7",
+    "testScript":  "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\Test-RewardWrapperContract.ps1",
+    "testScriptSHA256":  "a649bff26b588981d93c16ac02f6dbb4906eeee21b00f1b4d11efbccbffc2f93",
+    "tests":  [
+                  {
+                      "name":  "Storage/process/UTC/PNG functions match verified OpeningPolish after newline normalization",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "All 27 frozen equipment source bytes and integer sale prices match",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Candidate A expected IDs cover all 20 episodes",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Out-of-range episode is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid reward phase/episode."
+                  },
+                  {
+                      "name":  "Unknown phase is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid reward phase/episode."
+                  },
+                  {
+                      "name":  "Duplicate inventory entries are rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Duplicate item quantity entry: guardian-medal"
+                  },
+                  {
+                      "name":  "Zero inventory count is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid item quantity entry: guardian-medal:0"
+                  },
+                  {
+                      "name":  "Inventory above existing cap is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid item quantity entry: guardian-medal:100"
+                  },
+                  {
+                      "name":  "Malformed inventory entry is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid item quantity entry: ../guardian-medal:1"
+                  },
+                  {
+                      "name":  "Missing item price is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Missing frozen item price: missing-item"
+                  },
+                  {
+                      "name":  "Historic complete campaign satisfies independent unchanged economic ledger",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Synthetic candidate A validates changed rewards and exact inventory transitions",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Comparison passes invariant gates while reporting designed inventory differences",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Changed post-reward battle commands are reported without rejecting reward semantics",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Changed opening-six outcomes fail the opening preservation gate",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Changed execution policy fails the conditions gate",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  },
+                  {
+                      "name":  "Missing phase-A guaranteed reward is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Guaranteed reward or unchanged seed-17 additional drop differs in episode 7"
+                  },
+                  {
+                      "name":  "Changed deterministic bonus drop is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Guaranteed reward or unchanged seed-17 additional drop differs in episode 1"
+                  },
+                  {
+                      "name":  "Changed gold reward is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Gold reward or ledger differs in episode 7"
+                  },
+                  {
+                      "name":  "Changed purchase price is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid price or purchase transaction in episode 1"
+                  },
+                  {
+                      "name":  "Changed purchase balance is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Invalid price or purchase transaction in episode 1"
+                  },
+                  {
+                      "name":  "Unjoined purchaser is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Purchase recipient has not joined preparation in episode 1"
+                  },
+                  {
+                      "name":  "Missing cumulative reward inventory is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Inventory is not previous inventory plus actual purchases and rewards in episode 7"
+                  },
+                  {
+                      "name":  "Changed saved growth is rejected",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Growth is not action EXP plus unchanged 35 mission EXP: episode 7, cless"
+                  },
+                  {
+                      "name":  "Incomplete campaign cannot pass economic validation",
+                      "passed":  true,
+                      "expectedRejected":  true,
+                      "observedError":  "Economic validation requires all 20 episodes."
+                  },
+                  {
+                      "name":  "Historical source report was not modified",
+                      "passed":  true,
+                      "expectedRejected":  false,
+                      "observedError":  null
+                  }
+              ],
+    "limits":  "Pure logic checks plus read-only validation of earlier campaign evidence. Candidate A report/save fixtures are synthetic. This is not a new game playthrough, build, Unity test, sale or approval of prior failed evidence."
+}

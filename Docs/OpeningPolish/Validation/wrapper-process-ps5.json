@@ -1,0 +1,134 @@
+{
+    "validationKind":  "offline-wrapper-process-identity",
+    "startedUtc":  "2026-11-03T14:23:03.0405707Z",
+    "powershellVersion":  "5.1.22621.6133",
+    "gameOrUnityExecuted":  false,
+    "realProcessAccess":  false,
+    "processSignalsSent":  false,
+    "wrapper":  "C:\\dev\\TalesTactics\\Docs\\OpeningPolish\\Validation\\Validate-OpeningCampaignWindows.ps1",
+    "wrapperSHA256":  "eb2366d4aceab520084a57728b18231b466bde8eb226f6d1f6b4d976d86c074c",
+    "testScriptSHA256":  "771057482a85f9db5f8da1a62d51f9c7a0448c7552471936a4c21517f9959b08",
+    "passed":  true,
+    "tests":  17,
+    "results":  [
+                    {
+                        "name":  "Null main module becomes valid before deadline",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  209,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Never-valid path rejects within bounded wait",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  106,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Absent process is a normal exit",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  9,
+                        "error":  null
+                    },
+                    {
+                        "name":  "HasExited snapshot is a normal exit",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  10,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Null module followed by exit is a normal exit",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  129,
+                        "error":  null
+                    },
+                    {
+                        "name":  "PID mismatch rejects immediately",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  16,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Start-time mismatch rejects immediately",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  9,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Executable mismatch rejects immediately",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  8,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Unpinned baseline rejects PID reuse during module wait",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  136,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Equivalent path casing is accepted",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  8,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Owned-process guard uses shared retry and exact identity",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  119,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Existing baseline captures only a verified identity",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  115,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Exited baseline emits no null identity row",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  52,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Existing-player exit is recorded as not preserved",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  16,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Existing-player mismatch still rejects",
+                        "passed":  true,
+                        "queries":  1,
+                        "elapsedMilliseconds":  17,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Live property-read failure is not suppressed",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  85,
+                        "error":  null
+                    },
+                    {
+                        "name":  "Property-read race followed by confirmed exit returns null",
+                        "passed":  true,
+                        "queries":  2,
+                        "elapsedMilliseconds":  121,
+                        "error":  null
+                    }
+                ]
+}

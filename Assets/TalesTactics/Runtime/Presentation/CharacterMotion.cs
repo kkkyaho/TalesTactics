@@ -9,7 +9,7 @@ namespace TalesTactics
         UnitRuntime unit;
         Camera cameraView;
         AnimationKind action;
-        float started;
+        float started,walkSpeed=1;
         Facing facing;
         bool presenting, released;
         float windup=0.18f,recovery=0.3f,releasedAt;
@@ -28,7 +28,7 @@ namespace TalesTactics
         {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
         public void Set(AnimationKind kind)
         {
-            presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;casting=false;phaseClip=null;
+            presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;casting=false;phaseClip=null;walkSpeed=1;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
             facing=unit.Facing;
@@ -56,7 +56,8 @@ namespace TalesTactics
         {damageDirection=direction;damageStrength=heavy?1.4f:1;}
         public void Spin(float progress){timingSpin=true;spinProgress=Mathf.Clamp01(progress);}
         public void EndSpin(){timingSpin=false;Set(AnimationKind.Idle);}
-        public void WalkFacing(Facing value){facing=value;}
+        public void WalkFacing(Facing value,float speed=1)
+        {facing=value;walkSpeed=float.IsNaN(speed)||float.IsInfinity(speed)?1:Mathf.Max(1,speed);}
         public static Facing ViewFacing(Facing world,Quaternion cameraRotation)
         {
             var f=SkillResolver.FacingVector(world);
@@ -80,7 +81,8 @@ namespace TalesTactics
                 view=ViewDirection(Quaternion.Euler(0,spinProgress*720,0)*new Vector3(direction.x,0,direction.y),cameraView.transform.rotation);
             }
             float t=Time.time-started, bob=0,angle=0,x=0,scaleY=1;
-            var frame=action==AnimationKind.Walk?unit.Data.Poses?.Walk?.Sample(view,t,true):
+            float walkTime=t*walkSpeed;
+            var frame=action==AnimationKind.Walk?unit.Data.Poses?.Walk?.Sample(view,walkTime,true):
                 action==AnimationKind.Dead?unit.Data.Poses?.Dead?.Sample(view,t,false):null;
             if(presenting)
             {
@@ -100,7 +102,7 @@ namespace TalesTactics
             switch(action)
             {
                 case AnimationKind.Idle:break; // The shader settles the upper body while the feet stay planted.
-                case AnimationKind.Walk:if(frame==null){bob=Mathf.Abs(Mathf.Sin(t*14))*0.055f;angle=Mathf.Sin(t*14)*2;}break;
+                case AnimationKind.Walk:if(frame==null){bob=Mathf.Abs(Mathf.Sin(walkTime*14))*0.055f;angle=Mathf.Sin(walkTime*14)*2;}break;
                 case AnimationKind.Attack:case AnimationKind.Skill:
                     float motionTime=presenting?(released?windup+Time.time-releasedAt:Mathf.Min(t,windup)):t;
                     float swing=Mathf.Sin(Mathf.Clamp01(motionTime/(presenting?windup+recovery:0.42f))*Mathf.PI);x=sign*swing*0.14f;angle=-sign*swing*9;break;

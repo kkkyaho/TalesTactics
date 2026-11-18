@@ -200,7 +200,9 @@ namespace TalesTactics
         {
             statusUnit=null;if(statusBackdrop!=null)statusBackdrop.gameObject.SetActive(false);
             bool open=UnitDetailsOpen;if(unitDetails!=null)unitDetails.gameObject.SetActive(false);
-            SetMainInteraction(true);return open;
+            SetMainInteraction(true);RestoreGrowthPathFocus();
+            if(rewardDetailsSource!=null&&rewardDetailsSource.gameObject.activeInHierarchy)FocusRewardDetailsControl(rewardDetailsSource);
+            rewardDetailsSource=null;return open;
         }
         void SetMainInteraction(bool enabled)
         {

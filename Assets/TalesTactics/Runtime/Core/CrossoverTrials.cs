@@ -55,7 +55,7 @@ namespace TalesTactics
                 var owner=battle.Units.FirstOrDefault(u=>u.Team==Team.Player&&u.Data.Id==TrialOwner);if(owner==null||!owner.Alive)return false;
                 switch(TrialOwner)
                 {
-                    case "cless":return State.TrialProgress==7&&State.Nodes==7&&owner.Position==ContractSeal;
+                    case "cless":return State.TrialProgress==7&&State.Nodes==7&&owner.Position==ContractPosition;
                     case "mint":case "shionne":return State.TrialActions>=3&&State.Nodes==7&&AtExit;
                     case "farah":return State.Nodes==7&&!Boss.Alive;
                     case "tear":return State.TrialProgress==1&&State.Nodes==7&&!Boss.Alive;

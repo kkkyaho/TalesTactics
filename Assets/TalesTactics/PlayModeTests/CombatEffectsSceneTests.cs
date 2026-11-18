@@ -9,20 +9,65 @@ namespace TalesTactics.PlayModeTests
     {
         [UnityTest] public IEnumerator ConsecutiveAttackMotionRestartsWithoutRestartingTimingEveryFrame()
         {
-            director.BeginBattle();yield return null;
-            var caster=director.Session.Active;
-            var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
-            director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.5f);
-            Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f));
-            director.Board.SetAnimation(caster,AnimationKind.Attack);yield return new WaitForSeconds(0.12f);
-            Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.GreaterThan(0.03f));
-            director.Board.ShowTimingSpin(caster,0);
-            var clock=typeof(CharacterMotion).GetField("started",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
-            float started=(float)clock.GetValue(motion);
-            for(float t=0;t<0.15f;t+=Time.deltaTime){director.Board.ShowTimingSpin(caster,t);yield return null;}
-            Assert.That((float)clock.GetValue(motion),Is.EqualTo(started));
-            Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),"Spin stays grounded instead of lunging every update");
-            director.Board.ClearTiming();
+            float captureDelta=Time.captureDeltaTime,timeScale=Time.timeScale;
+            try
+            {
+                // Fixed simulation steps keep the short attack sample inside its motion window.
+                // Observe only after LateUpdate, which owns the sprite's transform and idle shader.
+                Time.timeScale=1;Time.captureDeltaTime=1f/60f;yield return null;
+                director.BeginBattle();yield return new WaitForEndOfFrame();
+                var caster=director.Session.Active;
+                Assert.That(caster.Team,Is.EqualTo(Team.Player),"This motion fixture must not run an automatic enemy turn.");
+                var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
+                var renderer=motion.GetComponent<SpriteRenderer>();var block=new MaterialPropertyBlock();
+                var clock=typeof(CharacterMotion).GetField("started",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+                Assert.That(clock,Is.Not.Null);
+                float Started()=>(float)clock.GetValue(motion);
+                string Describe(string phase)=>$"{phase}: frame={Time.frameCount}, time={Time.time:F6}, started={Started():F6}, elapsed={Time.time-Started():F6}, delta={Time.deltaTime:F6}, action={motion.Action}, presenting={motion.Presenting}, x={motion.transform.localPosition.x:F6}";
+                void AssertIdleShader(bool active,string phase)
+                {
+                    renderer.GetPropertyBlock(block);
+                    Assert.That(block.GetVector("_IdleMotion").w,Is.EqualTo(active?1f:0f),Describe(phase));
+                }
+
+                director.Board.SetAnimation(caster,AnimationKind.Attack);float firstStarted=Started();
+                Assert.That(firstStarted,Is.EqualTo(Time.time),Describe("First attack starts now"));
+                yield return new WaitForSeconds(0.5f);yield return new WaitForEndOfFrame();
+                Assert.That(motion.Action,Is.EqualTo(AnimationKind.Attack),Describe("First attack remains selected"));
+                Assert.That(Started(),Is.EqualTo(firstStarted),Describe("First attack clock must not restart itself"));
+                Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),Describe("First attack returns to its planted position"));
+                AssertIdleShader(false,"Attack must not apply idle deformation");
+
+                director.Board.SetAnimation(caster,AnimationKind.Attack);float secondStarted=Started();
+                Assert.That(secondStarted,Is.EqualTo(Time.time),Describe("Repeated attack starts now"));
+                Assert.That(secondStarted,Is.GreaterThan(firstStarted),Describe("Repeated attack must restart the clock"));
+                yield return new WaitForSeconds(0.12f);yield return new WaitForEndOfFrame();
+                Assert.That(motion.Action,Is.EqualTo(AnimationKind.Attack),Describe("Repeated attack remains selected"));
+                Assert.That(Started(),Is.EqualTo(secondStarted),Describe("Repeated attack clock remains stable"));
+                Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.GreaterThan(0.03f),Describe("Repeated attack performs a new lunge"));
+                AssertIdleShader(false,"Repeated attack must not apply idle deformation");
+
+                director.Board.ShowTimingSpin(caster,0);float spinStarted=Started();
+                Assert.That(spinStarted,Is.EqualTo(Time.time),Describe("Timing spin starts now"));
+                Assert.That(spinStarted,Is.GreaterThan(secondStarted),Describe("Timing spin starts a new motion"));
+                for(int frame=0;frame<=9;frame++)
+                {
+                    director.Board.ShowTimingSpin(caster,frame/9f);yield return new WaitForEndOfFrame();
+                    Assert.That(motion.Action,Is.EqualTo(AnimationKind.Skill),Describe("Timing spin stays selected"));
+                    Assert.That(Started(),Is.EqualTo(spinStarted),Describe("Repeated timing updates must not restart the clock"));
+                    Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),Describe("Spin stays grounded instead of lunging every update"));
+                    AssertIdleShader(false,"Timing spin must not apply idle deformation");
+                }
+                director.Board.ClearTiming();yield return new WaitForEndOfFrame();
+                Assert.That(motion.Action,Is.EqualTo(AnimationKind.Idle),Describe("Clearing timing restores idle"));
+                Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),Describe("Idle keeps the feet planted"));
+                AssertIdleShader(true,"Clearing timing restores idle presentation");
+            }
+            finally
+            {
+                Time.captureDeltaTime=captureDelta;Time.timeScale=timeScale;
+                if(director!=null&&director.Board!=null)director.Board.ClearTiming();
+            }
         }
         SkillData PresentationSkill(TargetType target,params SkillEffect[] effects)
         {

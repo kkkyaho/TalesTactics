@@ -5,8 +5,19 @@ namespace TalesTactics
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class MissionMapPreview:UnityEngine.UI.MaskableGraphic
     {
-        GridMap map;Vector2Int? goal;bool signals,contract;
-        public void Initialize(int stage){map=CampaignContent.Map(stage);var kind=CampaignMissions.Kind(stage);goal=CrossoverBattle.HasExit(stage)?CrossoverBattle.Exit:kind==ObjectiveKind.Reach||kind==ObjectiveKind.Escort?CampaignMissions.Destination(stage):(Vector2Int?)null;signals=CrossoverBattle.HasSignals(stage);contract=PersonalScenarios.Contains(stage)&&PersonalScenarios.Tier(stage)==2&&PersonalScenarios.Arc(stage).Owner=="cless";raycastTarget=false;SetVerticesDirty();}
+        GridMap map;Vector2Int? goal;Vector2Int[] signalPositions,devicePositions;Vector2Int contractPosition;bool signals,contract;
+        public void Initialize(int stage)
+        {
+            map=CampaignContent.Map(stage);var kind=CampaignMissions.Kind(stage);
+            goal=CrossoverBattle.HasExit(stage)?CrossoverTacticalMissions.Exit(stage):
+                kind==ObjectiveKind.Reach||kind==ObjectiveKind.Escort?CampaignMissions.Destination(stage):(Vector2Int?)null;
+            signals=CrossoverBattle.HasSignals(stage);signalPositions=CrossoverTacticalMissions.Signals(stage);
+            devicePositions=stage==CrossoverCampaign.FirstStage+1
+                ?new[]{CrossoverOpeningMissions.EnemyPosition(2,4),CrossoverOpeningMissions.EnemyPosition(2,5)}
+                :CrossoverTacticalMissions.RequiresDevices(stage)?new[]{4,5,8}.Select(i=>CrossoverTacticalMissions.Get(stage).EnemySpawns[i]).ToArray():System.Array.Empty<Vector2Int>();
+            contract=PersonalScenarios.Contains(stage)&&PersonalScenarios.Tier(stage)==2&&PersonalScenarios.Arc(stage).Owner=="cless";
+            contractPosition=CrossoverTacticalMissions.Contract(stage);raycastTarget=false;SetVerticesDirty();
+        }
         protected override void OnPopulateMesh(UnityEngine.UI.VertexHelper vh)
         {
             vh.Clear();if(map==null)return;var r=rectTransform.rect;
@@ -15,10 +26,11 @@ namespace TalesTactics
             Vector2 origin=r.center-new Vector2(width,depth)*size*.5f;
             foreach(var t in map.Tiles.Values)
             {
-                var p=origin+(Vector2)t.Coordinate*size;Color tint=!t.Walkable?new Color(.20f,.26f,.31f):t.Terrain==TerrainType.Water?new Color(.12f,.39f,.49f):Color.Lerp(new Color(.30f,.41f,.46f),new Color(.51f,.60f,.61f),t.Height*.22f);
+                var p=origin+(Vector2)t.Coordinate*size;Color tint=t.Terrain==TerrainType.Water?(t.Walkable?new Color(.12f,.39f,.49f):new Color(.08f,.22f,.40f)):!t.Walkable?new Color(.20f,.26f,.31f):Color.Lerp(new Color(.30f,.41f,.46f),new Color(.51f,.60f,.61f),t.Height*.22f);
                 if(t.Coordinate==goal)tint=new Color(.94f,.73f,.29f);
-                if(signals&&CrossoverBattle.Nodes.Contains(t.Coordinate))tint=new Color(.2f,.9f,.7f);
-                if(contract&&t.Coordinate==CrossoverBattle.ContractSeal)tint=new Color(.8f,.7f,1);
+                if(signals&&signalPositions.Contains(t.Coordinate))tint=new Color(.2f,.9f,.7f);
+                if(devicePositions.Contains(t.Coordinate))tint=new Color(.96f,.52f,.24f);
+                if(contract&&t.Coordinate==contractPosition)tint=new Color(.8f,.7f,1);
                 Quad(vh,new Rect(p+Vector2.one*.65f,Vector2.one*(size-1.3f)),tint);
             }
         }

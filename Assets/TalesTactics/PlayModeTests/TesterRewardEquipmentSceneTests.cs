@@ -73,7 +73,7 @@ namespace TalesTactics.PlayModeTests
                     var panel=director.Hud.transform.Find("UnitDetails");
                     var expected=(string)typeof(BattleHud).GetMethod("ReadableBonus",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(director.Hud,new object[]{reward.Item});
                     Assert.That(panel.GetComponentsInChildren<TMPro.TMP_Text>().Single(t=>t.name=="RewardItemEffects").text,Is.EqualTo(expected));
-                    Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().Select(b=>b.name),Is.EquivalentTo(new[]{"보상 상세 닫기"}));
+                    Assert.That(panel.GetComponentsInChildren<UnityEngine.UI.Button>().Select(b=>b.name),Is.EquivalentTo(new[]{"이전 보상 비교 동료","다음 보상 비교 동료","보상 상세 닫기"}));
                     foreach(var text in panel.GetComponentsInChildren<TMPro.TMP_Text>()){text.ForceMeshUpdate();Assert.That(text.isTextOverflowing,Is.False,text.text);}
                     if(scale==1)Click("보상 상세 닫기");else yield return KeyboardPress(keyboard,Key.Escape);
                     yield return null;Assert.That(director.Hud.InputModalOpen,Is.False);

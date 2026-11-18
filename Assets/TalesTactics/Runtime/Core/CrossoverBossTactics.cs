@@ -59,7 +59,7 @@ namespace TalesTactics
                     foreach(var aim in aims)
                     {
                         if(!battle.Resolver.InRange(unit,skill,aim)||battle.Resolver.CanUse(unit,skill)!=null)continue;
-                        if(unit.Data.Id=="rassius"&&skill.Target!=TargetType.Self&&battle.Crossover?.UsesNodes==true&&battle.Resolver.AreaTiles(unit,skill,aim).Any(tile=>CrossoverBattle.Nodes.Where((node,i)=>(battle.Crossover.State.Nodes&(1<<i))==0).Any(node=>GridMap.Distance(node,tile)<=1)))continue;
+                        if(unit.Data.Id=="rassius"&&skill.Target!=TargetType.Self&&battle.Crossover?.UsesNodes==true&&battle.Resolver.AreaTiles(unit,skill,aim).Any(tile=>battle.Crossover.SignalPositions.Where((node,i)=>(battle.Crossover.State.Nodes&(1<<i))==0).Any(node=>GridMap.Distance(node,tile)<=1)))continue;
                         float score=battle.Resolver.Targets(unit,skill,aim).Count()*100-GridMap.Distance(origin,p);
                         if(score>best){best=score;result=new EnemyPlan{Destination=p,PrepareSkill=skill,PrepareAim=aim,Guard=true};}
                     }
@@ -70,13 +70,13 @@ namespace TalesTactics
                 result.Destination=positions.OrderBy(p=>opponents.Min(t=>GridMap.Distance(p,t.Position))).ThenBy(p=>GridMap.Distance(origin,p)).First();
             return result;
         }
-        public static void Resolve(UnitRuntime actor,SkillData skill,Vector2Int aim,GridMap grid,IReadOnlyList<UnitRuntime> units,CrossoverBattleState state=null)
+        public static void Resolve(UnitRuntime actor,SkillData skill,Vector2Int aim,GridMap grid,IReadOnlyList<UnitRuntime> units,CrossoverBattleState state=null,Vector2Int[] spawnPositions=null)
         {
             if(!actor.CrossoverBoss)return;
             switch(skill.BossMechanic)
             {
                 case BossMechanic.Summon:
-                    Summon(actor,grid,units);
+                    Summon(actor,grid,units,spawnPositions:spawnPositions);
                     break;
                 case BossMechanic.DrainMP:
                     foreach(var target in units.Where(u=>u.Team!=actor.Team&&u.Alive&&GridMap.Distance(u.Position,aim)<=1&&GridMap.Distance(u.Position,actor.Position)<=4))
@@ -97,11 +97,11 @@ namespace TalesTactics
         }
         public static void Prepare(BattleSession battle,UnitRuntime actor,EnemyPlan plan)
         {
-            if(battle!=null&&plan.PrepareSkill?.BossMechanic==BossMechanic.CloneNova)Summon(actor,battle.Grid,battle.Units,3);
+            if(battle!=null&&plan.PrepareSkill?.BossMechanic==BossMechanic.CloneNova)Summon(actor,battle.Grid,battle.Units,3,battle.Crossover?.EnemySpawnPositions);
             if(battle?.Crossover!=null&&plan.PrepareSkill?.BossMechanic==BossMechanic.Replay)
             {var state=battle.Crossover.State;state.ReplayShape=state.LastShape;state.ReplayArea=state.LastArea;}
         }
-        static void Summon(UnitRuntime actor,GridMap grid,IReadOnlyList<UnitRuntime> units,int maximum=2)
+        static void Summon(UnitRuntime actor,GridMap grid,IReadOnlyList<UnitRuntime> units,int maximum=2,Vector2Int[] spawnPositions=null)
         {
             if(!units.Any(u=>u.Team==actor.Team&&u.Data.Id=="boundary-device"&&u.Alive))return;
             if(actor.Data.Id=="jahmir"||actor.Data.Id=="demitel"&&actor.CurrentHP<actor.Stats.HP/2)maximum=1;
@@ -109,7 +109,7 @@ namespace TalesTactics
             foreach(var minion in enemies.Where(u=>u.Summoned&&!u.Alive&&!u.CrossoverReserve))
             {
                 if(alive>=maximum)break;
-                var p=CrossoverCampaign.EnemySpawn(Array.IndexOf(enemies,minion));
+                int index=Array.IndexOf(enemies,minion);var p=spawnPositions!=null?spawnPositions[index]:CrossoverCampaign.EnemySpawn(index);
                 if(grid[p]?.Walkable!=true||grid[p].Occupant!=null)continue;
                 minion.CurrentHP=Math.Max(1,minion.Stats.HP/(actor.Data.Id=="ganabelt"?4:2));minion.CurrentMP=minion.Stats.MP;
                 minion.Statuses.Clear();minion.IntentPhase=0;minion.IntentSkill=null;minion.CounterUsed=false;minion.SupportUsed=false;

@@ -177,14 +177,22 @@ namespace TalesTactics
         }
         public IEnumerator AnimateMove(UnitRuntime u,List<Vector2Int> path,float speed=1)
         {
-            SetAnimation(u,AnimationKind.Walk);
-            for(int i=1;i<path.Count;i++)
+            if(path==null||path.Count<2)yield break;
+            float rate=float.IsNaN(speed)||float.IsInfinity(speed)?1:Mathf.Max(1,speed);
+            SetAnimation(u,AnimationKind.Walk);motions.TryGetValue(u,out var motion);
+            double began=Time.timeAsDouble,progress=0;
+            // One clock for the whole path retains the fraction of a frame that crosses a tile.
+            // The explicit movement rate also drives the authored gait, without global time changes.
+            while(progress<path.Count-1)
             {
-                if(motions.TryGetValue(u,out var motion))motion.WalkFacing(SkillResolver.Toward(path[i-1],path[i]));
+                int i=(int)progress+1;
+                if(motion!=null)motion.WalkFacing(SkillResolver.Toward(path[i-1],path[i]),rate);
                 Vector3 from=battle.Session.Grid[path[i-1]].WorldPosition(battle.Catalog.Rules.TileHeight),to=battle.Session.Grid[path[i]].WorldPosition(battle.Catalog.Rules.TileHeight);
-                for(float t=0;t<1;t+=Time.deltaTime*Mathf.Max(1,speed)/battle.Catalog.Rules.StepSeconds){units[u].position=Vector3.Lerp(from,to,t);yield return null;}
-                units[u].position=to;
+                units[u].position=Vector3.Lerp(from,to,(float)(progress-(i-1)));yield return null;
+                progress=(Time.timeAsDouble-began)*rate/Mathf.Max(.001f,battle.Catalog.Rules.StepSeconds);
             }
+            if(motion!=null)motion.WalkFacing(SkillResolver.Toward(path[path.Count-2],path[path.Count-1]),rate);
+            units[u].position=battle.Session.Grid[path[path.Count-1]].WorldPosition(battle.Catalog.Rules.TileHeight);
         }
         public void ClearHighlights(){foreach(var edge in movementEdges)if(edge!=null)edge.enabled=false;foreach(var p in tiles)SetColor(p.Value,colors[p.Key]);foreach(var border in rangeBorders.Values)border.enabled=false;if(line!=null)line.positionCount=0;if(destinationMarker!=null)destinationMarker.enabled=false;ClearMovementPreview();}
         public void ShowRange(IEnumerable<Vector2Int> points,Color color){ClearHighlights();foreach(var p in points)if(tiles.TryGetValue(p,out var r)){SetColor(r,Color.Lerp(colors[p],color,0.22f));ShowBorder(p,Color.Lerp(color,Color.white,0.15f),.018f);}}

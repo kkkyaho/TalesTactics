@@ -12,28 +12,29 @@ using UnityEngine.EventSystems;
 namespace TalesTactics
 {
     // A rendered automated playthrough of public Director/UI paths, not a human playtest.
-    public sealed class CampaignFlowReview:MonoBehaviour
+    public sealed partial class CampaignFlowReview:MonoBehaviour
     {
         [Serializable] public sealed class UnitRow
         {
-            public string id,team;public string[] equipment;public int entryLevel,entryEXP,exitLevel,exitEXP,battleExitLevel,battleExitEXP,actionEXP,entryMP,minMP,exitMP,maxMP,hp,maxHP,turns,skills,mpSpent,preparations,incapacitatedTurns,bossPhase;public bool alive;
+            public string id,team;public string[] equipment;public int entryLevel,entryEXP,exitLevel,exitEXP,battleExitLevel,battleExitEXP,actionEXP,entryMP,minMP,exitMP,maxMP,hp,maxHP,turns,skills,mpSpent,preparations,incapacitatedTurns,bossPhase,damageSkills,healingSkills,supportSkills,guardCommands,waitCommands,moves;public bool alive;
         }
         [Serializable] public sealed class PurchaseRow {public string character,item;public int price,goldBefore,goldAfter;}
         [Serializable] public sealed class ActionRow
         {
-            public int sequence,round,turn,mpBefore,mpAfter,hpAfter,x,y,bossPhase,intentPhase;public string actor,team,kind,skill,outcome;public float nominalWindupRecoverySeconds;
+            public string skillGate;public bool songAction;public int actualHealing,actualDrain,actualInterruptions,actualGuardedDamage,hpCost;public int sequence,round,turn,mpBefore,mpAfter,hpAfter,x,y,bossPhase,intentPhase;public string actor,team,kind,skill,outcome;public float nominalWindupRecoverySeconds;
         }
         [Serializable] public sealed class StageRow
         {
-            public int episode,stage,beforeLines,afterLines,pendingEndingCursorChecks,playerCommands,playerPhases,enemyTurns,enemySkills,bossPreparations,bossSkills,nodes,segment,finalBossPhase,saveReloadChecks,goldEntry,goldSpent,goldBeforeReward,goldReward,goldAfterReward;
+            public string kind="main",owner,capturePrefix;public int tier=-1,trialProgress,trialActions,tacticsRevision;public int episode,stage,beforeLines,afterLines,pendingEndingCursorChecks,playerCommands,playerPhases,enemyTurns,enemySkills,bossPreparations,bossSkills,nodes,segment,finalBossPhase,saveReloadChecks,goldEntry,goldSpent,goldBeforeReward,goldReward,goldAfterReward;
             public string status="Preparing",stopReason,permanentStateBeforeReloadHash,permanentStateAfterReloadHash;public bool rewardApplied,pendingEndingSaved,completedEndingReloaded,endingCleared,nextStageUnlocked,duplicateRewardPrevented,permanentStateRoundTripPreserved;
-            public double battleWallSeconds,scaledSimulationSeconds,nominalSkillAnimationSecondsProxy;public int measuredFrames;
+            public double battleWallSeconds,scaledSimulationSeconds,nominalSkillAnimationSecondsProxy,playerMoveWallSeconds,playerSkillWallSeconds,enemyPhaseWallSeconds;public int measuredFrames;
             public string[] joined,party,beforeSpeakers,afterSpeakers,rewardItems,inventoryAfterReward;public UnitRow[] units;public PurchaseRow[] purchases;public ActionRow[] actions;public string[] captures;
         }
         [Serializable] public sealed class Report
         {
             public string status="Running",startedUtc,finishedUtc,unityVersion,output,policy="naturalGrowthPurchases",difficulty="Standard",stopReason;
-            public int completedStages,checks,saveReloadChecks,enemySpeedMode;public float timeScale=4;public bool complete,userFilesUnchanged,teamTurns=true,reactions=false,autoTiming=false,missionEvents=false,purchases=true,ct,utilityEnemyAI,skipEnemyAnimations;
+            public string profile="full-campaign",timingScope="Battle wall time excludes story/captures; move and skill wall times use the public coroutine; enemy phase is sampled per frame. Automated measurements, not human playtime.";
+            public int requestedCombatStages,completedCombatStages,completedPersonalStages,completedDialogueStages;public string[] signatureWeapons;public int requestedStages=20,completedStages,checks,saveReloadChecks,enemySpeedMode;public float timeScale=4;public bool complete,userFilesUnchanged,teamTurns=true,reactions=false,autoTiming=false,missionEvents=false,purchases=true,ct,utilityEnemyAI,skipEnemyAnimations;
             public string[] userFileHashExclusions=new[]{"Player.log","Player-prev.log"};
             public string userFileHashScope="All top-level persistentDataPath files except the two case-insensitive Unity log names; the external Windows wrapper separately checks the recursive tree.";
             public string purchasePolicy="Before each battle, use available owned upgrades then buy higher fixed-stat-score compatible items with current gold; highest improvement per gold first, no selling, no catch-up training. Real CampaignInventory.TryBuy and EquipmentLoadout.TrySave transactions.";
@@ -46,7 +47,7 @@ namespace TalesTactics
         readonly Dictionary<UnitRuntime,UnitRow> unitRows=new Dictionary<UnitRuntime,UnitRow>();
         readonly Dictionary<UnitRuntime,int> observedTurns=new Dictionary<UnitRuntime,int>();readonly Dictionary<UnitRuntime,string> observedIntent=new Dictionary<UnitRuntime,string>();
         readonly UtilityPlanner planner=new UtilityPlanner();
-        BattleDirector battle;Report report;StageRow current;string directory,storage;float requestedTimeScale=4,oldTimeScale;bool oldBackground,finished;string[] userBefore;double began,scaledBegan;int frameBegan;
+        BattleDirector battle;Report report;StageRow current;string directory,storage;float requestedTimeScale=4,oldTimeScale;int requestedStages=20;bool oldBackground,finished,openingProfile,allStagesProfile,measuringBattle;string[] userBefore;double began,scaledBegan;int frameBegan;
 
 #if UNITY_EDITOR
         public static void BeginEditor(string output,float speed=4)
@@ -61,7 +62,9 @@ namespace TalesTactics
             if(Application.isEditor)return;var args=Environment.GetCommandLineArgs();int i=Array.IndexOf(args,"--campaign-flow-review");if(i<0)return;
             if(i+1>=args.Length||!Guid.TryParseExact(args[i+1],"N",out _)){Application.Quit(2);return;}
             string output=Path.Combine(Path.GetDirectoryName(Application.dataPath),"CampaignFlowReviews",args[i+1]);ValidateOutput(output);
-            new GameObject("Campaign flow review").AddComponent<CampaignFlowReview>().directory=output;
+            var review=new GameObject("Campaign flow review").AddComponent<CampaignFlowReview>();review.directory=output;
+            if(args.Contains("--campaign-all-stages-profile")){if(args.Contains("--campaign-opening-profile")){Application.Quit(2);return;}review.allStagesProfile=true;}
+            if(args.Contains("--campaign-opening-profile")){review.openingProfile=true;review.requestedStages=3;review.requestedTimeScale=1;}
         }
         static void ValidateOutput(string path)
         {
@@ -73,7 +76,7 @@ namespace TalesTactics
         {
             oldTimeScale=Time.timeScale;oldBackground=Application.runInBackground;Application.runInBackground=true;
             Directory.CreateDirectory(directory);userBefore=SnapshotFiles(Application.persistentDataPath);Application.logMessageReceived+=Log;
-            report=new Report{startedUtc=DateTime.UtcNow.ToString("o"),unityVersion=Application.unityVersion,output=directory,timeScale=requestedTimeScale};Write();
+            report=new Report{startedUtc=DateTime.UtcNow.ToString("o"),unityVersion=Application.unityVersion,output=directory,timeScale=requestedTimeScale,requestedStages=allStagesProfile?50:requestedStages,requestedCombatStages=allStagesProfile?40:requestedStages,profile=allStagesProfile?"all-stages-natural":openingProfile?"opening-three-normal-time":"full-campaign"};if(allStagesProfile)ConfigureAllStagesReport();Write();
             var stack=new Stack<IEnumerator>();stack.Push(Run());
             while(stack.Count>0)
             {
@@ -103,15 +106,15 @@ namespace TalesTactics
             Require(report.teamTurns&&!report.ct&&!report.utilityEnemyAI&&!report.reactions&&!report.autoTiming&&!report.missionEvents&&report.difficulty=="Standard"&&report.enemySpeedMode==0&&!report.skipEnemyAnimations,"Fresh defaults match the documented review conditions.");
             var drops=new System.Random(17);battle.RewardRoll=()=>drops.Next(10000);
             battle.Audio.SetVolumes(0,0);battle.Audio.PersonalMusicEnabled=false;Time.timeScale=requestedTimeScale;
-            for(int episode=1;episode<=20;episode++)
+            for(int episode=1;episode<=requestedStages;episode++)
             {
                 int stage=CrossoverCampaign.FirstStage+episode-1;
                 Require(battle.Session==null&&!battle.StoryActive&&battle.SelectedStage==stage,"Main flow selects the expected next episode "+episode);
                 purchases.Clear();actions.Clear();captures.Clear();unitRows.Clear();observedTurns.Clear();observedIntent.Clear();
-                current=new StageRow{episode=episode,stage=stage,goldEntry=battle.Campaign.Gold};rows.Add(current);
+                current=new StageRow{episode=episode,stage=stage,capturePrefix="episode-"+episode.ToString("00"),goldEntry=battle.Campaign.Gold};rows.Add(current);
                 var joined=battle.Catalog.Characters.Where(battle.IsJoined).ToArray();current.joined=joined.Select(c=>c.Id).ToArray();
                 Require(current.joined.OrderBy(s=>s).SequenceEqual(battle.Catalog.Characters.Where(c=>CrossoverCampaign.Joined(c.Id,Math.Max(1,episode-1))).Select(c=>c.Id).OrderBy(s=>s)),"Preparation contains only companions introduced in prior episodes.");
-                var selected=Preferred.Select(id=>joined.FirstOrDefault(c=>c.Id==id)).Where(c=>c!=null).Take(battle.Catalog.Rules.MaxDeployment).ToArray();
+                var selected=allStagesProfile?AllStagesMainParty(joined):Preferred.Select(id=>joined.FirstOrDefault(c=>c.Id==id)).Where(c=>c!=null).Take(battle.Catalog.Rules.MaxDeployment).ToArray();
                 battle.Deployment.Clear();battle.Deployment.AddRange(selected.Select(c=>Array.IndexOf(battle.Catalog.Characters,c)));battle.NormalizeDeployment();
                 PrepareEquipment(selected);
                 foreach(var c in selected)if(CampaignPromotion.Unavailable(battle.Campaign.Get(c.Id),c,battle.Campaign.StoryProgress)==null)Require(CampaignPromotion.TrySave(battle.Campaign,c,battle.PersistCampaign),"Eligible promotion saves.");
@@ -123,9 +126,9 @@ namespace TalesTactics
                 yield return Settle();Require(battle.Session!=null&&battle.Session.CampaignStage==stage,"Story completion begins actual battle.");
                 Require(battle.Session.Units.Where(u=>u.Team==Team.Player).Select(u=>u.Data.Id).SequenceEqual(current.party),"Actual deployment reserves places for this episode's introductions.");
                 AttachBattle();current.status="Fighting";Write();
-                if(episode==1||episode==11||episode==16||episode==20)yield return Capture("battle-start");
+                if(allStagesProfile||openingProfile||episode==1||episode==11||episode==16||episode==20)yield return Capture("battle-start");
                 began=Time.realtimeSinceStartupAsDouble;scaledBegan=Time.timeAsDouble;frameBegan=Time.frameCount;
-                yield return Fight();ObserveUnits();
+                measuringBattle=true;yield return Fight();measuringBattle=false;ObserveUnits();
                 current.battleWallSeconds=Time.realtimeSinceStartupAsDouble-began;current.scaledSimulationSeconds=Time.timeAsDouble-scaledBegan;current.measuredFrames=Time.frameCount-frameBegan;
                 Require(battle.Session.Result==BattleResult.Victory,"Automated legal commands achieved victory in episode "+episode);
                 Require(battle.State is BattleEndState&&!battle.RewardPending,"Actual victory state persisted rewards.");
@@ -135,7 +138,7 @@ namespace TalesTactics
                 current.pendingEndingSaved=battle.Campaign.HasPendingAfterStory&&battle.Campaign.PendingAfterStoryStage==stage;Require(current.pendingEndingSaved,"Victory persists required ending.");
                 CheckGrowth();CheckDisk();
                 string rewards=RewardFingerprint(battle.Campaign);battle.CompleteBattle();battle.SaveBattleReward();current.duplicateRewardPrevented=rewards==RewardFingerprint(battle.Campaign);Require(current.duplicateRewardPrevented,"Repeated completion cannot duplicate rewards.");
-                if(episode==1||episode==11||episode==16||episode==20)yield return Capture("battle-result");
+                if(allStagesProfile||openingProfile||episode==1||episode==11||episode==16||episode==20)yield return Capture("battle-result");
                 Click("결과 계속");yield return Settle();Require(battle.StoryActive,"Result Continue opens mandatory ending.");
                 yield return ReadStory(true);
                 Require(battle.Session==null&&!battle.StoryActive,"Ending finishes at preparation.");
@@ -151,10 +154,12 @@ namespace TalesTactics
                 Require(current.permanentStateRoundTripPreserved,"Title round trip preserves the entire campaign except SavedAt, plus live deployment and selected stage.");
                 Require(!battle.StoryActive&&!battle.Campaign.HasPendingAfterStory,"Reload does not repeat a completed ending.");
                 current.completedEndingReloaded=true;
-                current.status="Completed";report.completedStages++;Write();
+                current.status="Completed";report.completedStages++;report.completedCombatStages++;Write();
                 Debug.Log("CAMPAIGN_FLOW episode="+episode+" commands="+current.playerCommands+" enemySkills="+current.enemySkills+" spent="+current.goldSpent+" reward="+current.goldReward);
             }
-            Require(FindButton("전투 시작")!=null&&!FindButton("전투 시작").interactable,"Final main-complete hub does not start episode 21.");
+            if(requestedStages==20)Require(FindButton("전투 시작")!=null&&!FindButton("전투 시작").interactable,"Final main-complete hub does not start episode 21.");
+            else Require(battle.SelectedStage==CrossoverCampaign.FirstStage+requestedStages&&FindButton("전투 시작")!=null&&FindButton("전투 시작").interactable,"Opening profile stops at the unlocked next episode's preparation.");
+            if(allStagesProfile)yield return RunPersonalArcs();
             report.complete=true;
         }
         IEnumerator ReadStory(bool after)
@@ -176,6 +181,7 @@ namespace TalesTactics
                 Require(body.text==line.Text,"Rendered story text matches the active story line.");speakers.Add(index+":"+line.Speaker);
                 if(index==0)yield return Capture(after?"after-story":"before-story");
                 var next=FindButton("다음 대사")??FindButton("이야기 마치기");Require(next!=null,"Story exposes its next/finish control.");Click(next.name);yield return null;
+                if(allStagesProfile&&!after&&PersonalScenarios.Contains(current.stage)&&PersonalScenarios.Tier(current.stage)==0&&speakers.Count==expectedLines)break;
                 if(after&&battle.StoryActive)
                 {
                     CheckDisk();Require(battle.Campaign.HasPendingAfterStory&&battle.Campaign.PendingAfterStoryStage==current.stage&&battle.Campaign.PendingAfterStoryLine==battle.StoryIndex,"Pending ending persists the next unread line.");current.pendingEndingCursorChecks++;
@@ -187,6 +193,7 @@ namespace TalesTactics
         }
         void AttachBattle()
         {
+            current.tacticsRevision=battle.Session.Crossover.State.TacticsRevision;
             foreach(var u in battle.Session.Units)
             {
                 unitRows.Add(u,new UnitRow{id=u.Data.Id,team=u.Team.ToString(),entryLevel=u.Level,entryEXP=u.EXP,exitLevel=u.Level,exitEXP=u.EXP,entryMP=u.CurrentMP,minMP=u.CurrentMP,equipment=u.Equipment.Select(e=>e!=null?e.Id:"").ToArray()});observedTurns[u]=u.TurnsStarted;observedIntent[u]="";
@@ -194,10 +201,16 @@ namespace TalesTactics
             // The existing Crossover.OnResolved callback remains registered.
             battle.Session.Resolver.SkillResolved+=OnResolved;ObserveUnits();
         }
-        void Update(){if(!finished&&battle?.Session!=null&&current!=null&&current.status=="Fighting")ObserveUnits();}
+        void Update()
+        {
+            if(finished||battle?.Session==null||current==null||current.status!="Fighting")return;
+            ObserveUnits();
+            if(measuringBattle&&battle.Session.Result==BattleResult.Ongoing&&battle.Session.Active?.Team==Team.Enemy)current.enemyPhaseWallSeconds+=Time.unscaledDeltaTime;
+        }
         void ObserveUnits()
         {
             if(battle?.Session==null)return;
+            current.tacticsRevision=battle.Session.Crossover.State.TacticsRevision;
             foreach(var u in battle.Session.Units)
             {
                 if(!unitRows.TryGetValue(u,out var r))continue;
@@ -215,8 +228,11 @@ namespace TalesTactics
         void OnResolved(UnitRuntime actor,SkillData skill,Vector2Int aim)
         {
             if(!unitRows.TryGetValue(actor,out var u))return;u.skills++;int cost=battle.Session.Resolver.MPCost(actor,skill);u.mpSpent+=cost;
+            if(skill.Effects.Any(e=>e.Kind==EffectKind.Damage))u.damageSkills++;
+            if(skill.Effects.Any(e=>e.Kind==EffectKind.Heal||e.Kind==EffectKind.Revive))u.healingSkills++;
+            if(skill.Effects.Any(e=>e.Kind!=EffectKind.Damage&&e.Kind!=EffectKind.Heal&&e.Kind!=EffectKind.Revive&&e.Kind!=EffectKind.Move))u.supportSkills++;
             float proxy=BoardView.Windup(skill)+BoardView.Recovery(skill);current.nominalSkillAnimationSecondsProxy+=proxy;
-            actions.Add(new ActionRow{sequence=actions.Count+1,round=(battle.Session.Scheduler as TeamTurnScheduler)?.Round??0,turn=actor.TurnsStarted,actor=actor.Data.Id,team=actor.Team.ToString(),kind="skill-resolved",skill=skill.Id,mpBefore=-1,mpAfter=actor.CurrentMP,hpAfter=actor.CurrentHP,x=aim.x,y=aim.y,bossPhase=actor.BossPhase,intentPhase=actor.IntentPhase,outcome="Executed",nominalWindupRecoverySeconds=proxy});ObserveUnits();
+            actions.Add(new ActionRow{sequence=actions.Count+1,round=(battle.Session.Scheduler as TeamTurnScheduler)?.Round??0,turn=actor.TurnsStarted,actor=actor.Data.Id,team=actor.Team.ToString(),kind="skill-resolved",skillGate=skill.Gate.ToString(),songAction=skill.Effects.Any(e=>e.Status==StatusKind.Song),actualHealing=battle.Session.Resolver.LastHealing,actualDrain=battle.Session.Resolver.LastDrain,actualInterruptions=battle.Session.Resolver.LastInterruptions,actualGuardedDamage=battle.Session.Resolver.LastKisaraGuardedDamage,hpCost=battle.Session.Resolver.HPCost(actor,skill),skill=skill.Id,mpBefore=-1,mpAfter=actor.CurrentMP,hpAfter=actor.CurrentHP,x=aim.x,y=aim.y,bossPhase=actor.BossPhase,intentPhase=actor.IntentPhase,outcome="Executed",nominalWindupRecoverySeconds=proxy});ObserveUnits();
         }
         IEnumerator Fight()
         {
@@ -227,24 +243,30 @@ namespace TalesTactics
                 Require(current.playerCommands<500,"Battle exceeded 500 player-command limit; no forced outcome.");
                 if(!battle.IsPlayerCommand){yield return null;continue;}
                 var session=battle.Session;var actor=session.Active;current.playerCommands++;
-                var plan=ObjectivePlan(session,actor,planner.Plan(session,actor));
+                var plan=allStagesProfile?AllStagesPlan(session,actor):ObjectivePlan(session,actor,planner.Plan(session,actor));
                 if(plan.Destination!=actor.Position)
                 {
-                    var destination=plan.Destination;yield return battle.MoveUnit(destination);
+                    var destination=plan.Destination;double moveBegan=Time.realtimeSinceStartupAsDouble;yield return battle.MoveUnit(destination);current.playerMoveWallSeconds+=Time.realtimeSinceStartupAsDouble-moveBegan;
+                    if(actor.Position==destination&&unitRows.TryGetValue(actor,out var moved))moved.moves++;
                     actions.Add(new ActionRow{sequence=actions.Count+1,actor=actor.Data.Id,team="Player",kind="move",x=destination.x,y=destination.y,outcome=actor.Position==destination?"Moved":"Rejected",round=((TeamTurnScheduler)session.Scheduler).Round,turn=actor.TurnsStarted,mpAfter=actor.CurrentMP,hpAfter=actor.CurrentHP});
                 }
                 if(battle.State is BattleEndState)break;
                 if(battle.IsPlayerCommand&&session.Active==actor&&plan.Skill!=null&&(plan.Aim.HasValue||plan.Target!=null))
                 {
                     var aim=plan.Aim??plan.Target.Position;int mp=actor.CurrentMP,previous=actions.Count;
-                    yield return battle.Execute(plan.Skill,aim);
+                    double skillBegan=Time.realtimeSinceStartupAsDouble;yield return battle.Execute(plan.Skill,aim);current.playerSkillWallSeconds+=Time.realtimeSinceStartupAsDouble-skillBegan;
                     if(actions.Count==previous)actions.Add(new ActionRow{sequence=actions.Count+1,actor=actor.Data.Id,team="Player",kind="skill-rejected",skill=plan.Skill.Id,mpBefore=mp,mpAfter=actor.CurrentMP,hpAfter=actor.CurrentHP,x=aim.x,y=aim.y,outcome=battle.Message,round=((TeamTurnScheduler)session.Scheduler).Round,turn=actor.TurnsStarted});
                 }
                 if(battle.State is BattleEndState)break;
+                if(allStagesProfile&&battle.IsPlayerCommand&&session.Active==actor&&actor.FlamingChain)yield return ExecuteNaturalFollowup(session,actor);
+                if(battle.State is BattleEndState)break;
                 if(battle.IsPlayerCommand&&session.Active==actor)
                 {
-                    if(plan.Guard&&!actor.Acted)battle.Guard();else battle.WaitCommand();
+                    bool guarding=plan.Guard&&!actor.Acted;
+                    if(guarding)battle.Guard();else battle.WaitCommand();
                     Require(battle.State is FacingSelectionState,"Command finishes through actual facing selection.");battle.ChooseFacing(actor.Facing);
+                    if(unitRows.TryGetValue(actor,out var finishedUnit)){if(guarding)finishedUnit.guardCommands++;else finishedUnit.waitCommands++;}
+                    ObserveAction(actor,guarding?"guard":"wait","Facing confirmed");
                 }
                 if(actions.Count>=seenActions+20){seenActions=actions.Count;Write();}
                 yield return null;
@@ -253,10 +275,12 @@ namespace TalesTactics
         }
         EnemyPlan ObjectivePlan(BattleSession s,UnitRuntime u,EnemyPlan plan)
         {
-            if(s.Units.Any(e=>e.Team==Team.Enemy&&e.Alive&&!e.CrossoverReserve))return plan;
+            // Prison extraction can end as soon as both required locks are broken;
+            // the other missions retain the established combat-first review policy.
+            if(!s.Crossover.PrisonRouteOpen&&s.Units.Any(e=>e.Team==Team.Enemy&&e.Alive&&!e.CrossoverReserve))return plan;
             Vector2Int? goal=null;
-            if(s.Crossover.UsesNodes&&s.Crossover.State.Nodes!=7)goal=current.episode==13&&s.Crossover.State.Nodes==0?CrossoverBattle.Nodes[s.Crossover.State.Choice]:CrossoverBattle.Nodes.Where((p,i)=>(s.Crossover.State.Nodes&(1<<i))==0).OrderBy(p=>GridMap.Distance(u.Position,p)).First();
-            else if(s.Crossover.UsesExit)goal=CrossoverBattle.Exit;
+            if(s.Crossover.UsesNodes&&!s.Crossover.AllSignalsConnected)goal=current.episode==13&&s.Crossover.State.Nodes==0?s.Crossover.SignalPositions[s.Crossover.State.Choice]:s.Crossover.SignalPositions.Where((p,i)=>(s.Crossover.State.Nodes&(1<<i))==0).OrderBy(p=>GridMap.Distance(u.Position,p)).First();
+            else if(s.Crossover.UsesExit)goal=s.Crossover.ExitPosition;
             if(!goal.HasValue)return plan;
             var distance=new Dictionary<Vector2Int,int>{{goal.Value,0}};var queue=new Queue<Vector2Int>();queue.Enqueue(goal.Value);
             while(queue.Count>0){var p=queue.Dequeue();foreach(var tile in s.Grid.Neighbors(p)){if(!tile.Walkable||Math.Abs(tile.Height-s.Grid[p].Height)>u.Stats.JMP||tile.Occupant!=null&&tile.Occupant!=u||distance.ContainsKey(tile.Coordinate))continue;distance[tile.Coordinate]=distance[p]+1;queue.Enqueue(tile.Coordinate);}}
@@ -302,7 +326,7 @@ namespace TalesTactics
         void Click(string name){var button=FindButton(name);Require(button!=null&&button.interactable,"Visible enabled button: "+name);ExecuteEvents.Execute(button.gameObject,new BaseEventData(EventSystem.current),ExecuteEvents.submitHandler);}
         static IEnumerator Settle(){yield return null;yield return null;Canvas.ForceUpdateCanvases();yield return new WaitForEndOfFrame();}
         IEnumerator Capture(string label)
-        {yield return Settle();string path="episode-"+current.episode.ToString("00")+"-"+label+".png";var image=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(directory,path),image.EncodeToPNG());Destroy(image);captures.Add(path);Write();}
+        {yield return Settle();string path=(current.capturePrefix??("episode-"+current.episode.ToString("00")))+"-"+label+".png";var image=ScreenCapture.CaptureScreenshotAsTexture();File.WriteAllBytes(Path.Combine(directory,path),image.EncodeToPNG());Destroy(image);captures.Add(path);Write();}
         void Require(bool ok,string message){report.checks++;if(!ok)throw new InvalidOperationException(message);}
         void Write()
         {

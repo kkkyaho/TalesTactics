@@ -12,18 +12,18 @@ namespace TalesTactics
             int stage=battle.Session.CampaignStage;
             bool personal=PersonalScenarios.Contains(stage)&&PersonalScenarios.Tier(stage)==1;
             int episode=CrossoverCampaign.IsMain(stage)?CrossoverCampaign.Episode(stage).Number:0;
-            if(!personal&&!new[]{3,7,13,16,18}.Contains(episode))return;
+            if(!personal&&!new[]{1,3,7,13,16,18}.Contains(episode)||battle.Session.Crossover?.UsesNodes!=true)return;
             if(battle.Catalog.Civilians==null||battle.Catalog.Civilians.Length<4)return;
             var root=new GameObject("Civilian rescue groups");root.transform.SetParent(parent,false);
             var view=root.AddComponent<CrossoverCivilianView>();view.battle=battle;view.escort=episode==16;view.phantoms=episode==18;
             view.theme=BattleEnvironmentPalette.Theme(stage);view.terrain=parent.GetComponent<PixelBattlefield>();
             view.environment=new Material(Resources.Load<Shader>("TalesTactics/UnitTone")){name="Civilian environment tone"};
-            view.properties=new MaterialPropertyBlock();view.shadows=new GroundOverlay[3];view.projectedShadows=new ProjectedUnitShadow[3];
-            view.people=Enumerable.Range(0,3).Select(i=>{
+            int count=battle.Session.Crossover.SignalPositions.Length;view.properties=new MaterialPropertyBlock();view.shadows=new GroundOverlay[count];view.projectedShadows=new ProjectedUnitShadow[count];
+            view.people=Enumerable.Range(0,count).Select(i=>{
                 var person=new GameObject("Civilian group "+i);person.transform.SetParent(root.transform,false);
                 var renderer=person.AddComponent<SpriteRenderer>();renderer.sharedMaterial=view.environment;StandingSpriteDepth.Configure(renderer);
                 person.transform.localScale=Vector3.one*.78f;
-                person.transform.position=battle.Session.Grid[CrossoverBattle.Nodes[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.04f;
+                person.transform.position=battle.Session.Grid[battle.Session.Crossover.SignalPositions[i]].WorldPosition(battle.Catalog.Rules.TileHeight)+Vector3.up*.04f;
                 var shade=new GameObject("Civilian contact shadow "+i);shade.transform.SetParent(root.transform,false);
                 var contact=shade.AddComponent<GroundOverlay>();contact.Initialize(view.environment,-3);contact.Shadow(BattleEnvironmentPalette.Shadow(view.theme));shade.transform.localScale=Vector3.one*.78f;view.shadows[i]=contact;
                 var cast=new GameObject("Civilian projected shadow "+i);cast.transform.SetParent(root.transform,false);
@@ -46,7 +46,7 @@ namespace TalesTactics
                 person.sprite=battle.Catalog.Civilians[i].Get(CharacterMotion.ViewFacing(facing,camera.transform.rotation));
                 person.color=phantoms?new Color(.65f,.85f,1,.72f):Color.white;
                 person.transform.rotation=camera.transform.rotation;
-                var target=session.Grid[linked&&escort?lead.Position:CrossoverBattle.Nodes[i]].WorldPosition(session.Rules.TileHeight);
+                var target=session.Grid[linked&&escort?lead.Position:battle.Session.Crossover.SignalPositions[i]].WorldPosition(session.Rules.TileHeight);
                 if(linked&&escort)
                 {
                     var direction=SkillResolver.FacingVector(lead.Facing);

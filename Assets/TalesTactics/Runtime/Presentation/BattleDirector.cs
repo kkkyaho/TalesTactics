@@ -99,6 +99,7 @@ namespace TalesTactics
                 if(mouse.delta.ReadValue().sqrMagnitude>0){KeyboardTile=null;PreviewTile(p);}
 
             }
+            else if(mouse.delta.ReadValue().sqrMagnitude>0){KeyboardTile=null;ClearTargetPreview();}
         }
         // Only a gesture begun on the map owns battle input; modals and timing release it.
         public bool HandleCameraDrag(Vector2 screen,bool pressed,bool held)
@@ -179,9 +180,9 @@ namespace TalesTactics
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
         public bool CanOpenSkills=>Session?.Active!=null&&(!Session.Active.Acted||Session.Active.Data.Skills.Any(s=>s!=null&&IsFollowup(s)&&Session.Resolver.CanUse(Session.Active,s,true)==null));
         public void SkillCommand(){if(IsPlayerCommand&&CanOpenSkills&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
-        public void WaitCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Waiting)){guardRecorded=false;SetState(new FacingSelectionState(this));}}
+        public void WaitCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Waiting))SetState(new FacingSelectionState(this));}
         public void Undo(){if(!TutorialActive&&IsPlayerCommand&&Session.Active.CanUndoMove){RecordAction("이동 취소");if(Session.UndoMove()){RefreshViews();Hud.Refresh();}}}
-        public void Guard(){if(!TutorialActive&&IsPlayerCommand&&!Session.Active.Acted){RecordAction("방어");guardRecorded=true;Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);SetState(new FacingSelectionState(this));}}
+        public void Guard(){if(!TutorialActive&&IsPlayerCommand&&!Session.Active.Acted)SetState(new FacingSelectionState(this,true));}
         public bool IsFollowup(SkillData s)=>Session.Active.Acted&&Session.Active.FlamingChain&&s.Gate==SkillGate.FlamingEdge;
         public void SelectSkill(SkillData s)
         {
@@ -194,11 +195,19 @@ namespace TalesTactics
         {
             if(!TutorialTargetAllowed(p))return;
             var u=Session.Active;var targets=Session.Resolver.Targets(u,SelectedSkill,p).ToArray();
-            if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){Target=null;Message="유효한 타겟을 선택하세요.";Hud.Refresh();return;}
+            if(!Session.Resolver.InRange(u,SelectedSkill,p)||targets.Length==0){ClearTargetPreview("유효한 타겟을 선택하세요.");return;}
             Target=p;Forecast=BattleForecast.Create(Session,u,SelectedSkill,p,IsFollowup(SelectedSkill));Message=Forecast.Cost+(string.IsNullOrEmpty(Forecast.Reactions)?"":"\n"+Forecast.Reactions);Board.ShowArea(p,SelectedSkill.Area);Board.RefreshFocus();Hud.Refresh();
         }
         public void Confirm(){if(State is TargetSelectionState&&Target.HasValue)StartCoroutine(Execute(SelectedSkill,Target.Value,IsFollowup(SelectedSkill)));}
-        public void ChooseFacing(Facing f){if(!(State is FacingSelectionState)||!TutorialAllows(TutorialStep.Waiting))return;if(!guardRecorded)RecordAction("대기");guardRecorded=false;Session.Active.Facing=f;LearnContextHint(ContextHintKind.FacingConfirm);RefreshViews();if(!TutorialEndTurn())SetState(new TurnEndState(this));}
+        public void ChooseFacing(Facing f)
+        {
+            if(!(State is FacingSelectionState facing)||!TutorialAllows(TutorialStep.Waiting))return;
+            // Choosing guard is only an intent until a direction is confirmed. Cancelling
+            // the facing state must preserve the action, movement undo and rewind history.
+            RecordAction(facing.GuardOnConfirm?"방어":"대기");
+            if(facing.GuardOnConfirm){Session.Active.Acted=true;Session.Active.CanUndoMove=false;Session.Active.AddStatus(StatusKind.Guard,2);}
+            Session.Active.Facing=f;LearnContextHint(ContextHintKind.FacingConfirm);RefreshViews();if(!TutorialEndTurn())SetState(new TurnEndState(this));
+        }
         public IEnumerator MoveUnit(Vector2Int p)
         {
             if(!TutorialAllows(TutorialStep.Movement)||TutorialActive&&p!=TutorialDestination)yield break;

@@ -1,0 +1,68 @@
+{
+  "utc": "2026-11-09T22:04:59.162174+00:00",
+  "sourceCommitBase": "73a05570767c616e47675c6da8c686c976c308cf",
+  "branch": "develop",
+  "sourceLabel": "Reward variety candidate A working tree based on 73a0557; final attack test timing repair; local-only music retained",
+  "inputManifest": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\build-inputs-final.json",
+    "sha256": "85492a4989b2c60ba68ef04d869ffffc53b27bb476671d79aae98f6ecd00e076",
+    "bytes": 466114
+  },
+  "postBuildInputs": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\build-inputs-final-verification.json",
+    "sha256": "003e2096daaa3742a046098ae53cef439a50f5b64934b056656c3a60e135c724",
+    "bytes": 295
+  },
+  "testSourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\source-tested-final.json",
+    "sha256": "11a340c2adce2cba6d62b97d3a49df907b755d6e525dd9e5bc3508e25948a8ed",
+    "bytes": 1592
+  },
+  "builds": [
+    {
+      "kind": "normal",
+      "receipt": {
+        "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-build-normal.json",
+        "sha256": "8bfadf6fe321d382f7f4f073d0b5942ccd807609f4331bbd8bd14f1fc14498e5",
+        "bytes": 231517
+      },
+      "buildGuid": "47e84370a0314cfb9c4272a6f4e1e741",
+      "output": "D:\\TalesTacticsBuildArchive\\RewardVarietyWindows20261106",
+      "binaries": [
+        {
+          "path": "D:\\TalesTacticsBuildArchive\\RewardVarietyWindows20261106\\TalesTactics.exe",
+          "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+          "bytes": 667136
+        },
+        {
+          "path": "D:\\TalesTacticsBuildArchive\\RewardVarietyWindows20261106\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+          "sha256": "7bae755087672ba1df77c476302cbc757dfff7602c235c2c89f079363f37467c",
+          "bytes": 705536
+        }
+      ]
+    },
+    {
+      "kind": "review",
+      "receipt": {
+        "path": "C:\\dev\\TalesTactics\\Docs\\RewardVariety\\Validation\\windows-build-review.json",
+        "sha256": "7de51bd0031a8ea9ae5487df821c7c9298679d2e16d1cbe95a9b1095852becd2",
+        "bytes": 232262
+      },
+      "buildGuid": "64f35e010f82445098fd45b1442b5381",
+      "output": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106",
+      "binaries": [
+        {
+          "path": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\TalesTactics.exe",
+          "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+          "bytes": 667136
+        },
+        {
+          "path": "D:\\TalesTacticsBuildArchive\\RewardVarietyReview20261106\\TalesTactics_Data\\Managed\\TalesTactics.Runtime.dll",
+          "sha256": "e6aa6af73531ef25bd84f2b9f44c397c0adf7410dbcfcab480ede241ffdf117b",
+          "bytes": 1114624
+        }
+      ]
+    }
+  ],
+  "scope": "Actual same-Editor BuildPlayer receipts for final source inputs, coupled with output SHA256. Full input manifest covers tracked Assets/Packages/ProjectSettings plus new tests, not untracked art candidates. All outputs remain local. Metadata isolation and actual Windows campaign completion are separate receipts."
+}

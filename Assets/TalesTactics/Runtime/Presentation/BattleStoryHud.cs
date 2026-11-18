@@ -26,9 +26,10 @@ namespace TalesTactics
         void StoryBackdrop(Transform parent)
         {
             var r = FormationRect(parent, "StoryBackdrop", Vector2.zero, Vector2.one);
-            var image = r.gameObject.AddComponent<UnityEngine.UI.RawImage>();
-            image.texture = Resources.Load<Texture2D>("TalesTactics/FormationBackdrop");
-            image.color = new Color(.65f,.72f,.85f,1); image.raycastTarget = false;
+            r.gameObject.AddComponent<StorySceneArt>().Initialize(battle.StoryStage);
+            var headerShade = FormationRect(parent,"StoryHeaderShade",new Vector2(0,.82f),Vector2.one);
+            var shade = headerShade.gameObject.AddComponent<UnityEngine.UI.Image>();
+            shade.color = new Color(.025f,.045f,.075f,.88f); shade.raycastTarget = false;
         }
         public void ShowStoryLine(StoryLine line, int number, int count)
         {
@@ -38,8 +39,10 @@ namespace TalesTactics
             storyOverlay = null; StoryBackdrop(storyPanel);
             var title = FormationText(storyPanel, CampaignStages.Title(battle.StoryStage), new Vector2(.04f,.86f), new Vector2(.96f,.96f), 25);
             title.color = formationGold;
+            var location = FormationText(storyPanel, StorySceneArt.Location(battle.StoryStage), new Vector2(.04f,.82f), new Vector2(.96f,.865f), 17);
+            location.name = "StoryLocation"; location.color = formationTeal;
             storyControls = FormationRect(storyPanel,"StoryControls",Vector2.zero,Vector2.one);
-            var box = IntermissionPanel(storyControls,"DialogueBox",new Vector2(.04f,.105f),new Vector2(.96f,.46f));
+            var box = IntermissionPanel(storyControls,"DialogueBox",new Vector2(.04f,.105f),new Vector2(.96f,.50f));
             var portrait = StoryPortrait(line.Speaker);
             float textLeft = portrait != null ? .27f : .035f;
             if (portrait != null) IntermissionPortrait(box,portrait,new Vector2(.01f,.02f),new Vector2(.25f,.98f));

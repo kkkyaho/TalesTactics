@@ -9,16 +9,16 @@ namespace TalesTactics
         {return session.Crossover!=null?session.Crossover.DefeatDescription:session.Objective==ObjectiveKind.Escort?"아군 전원 전투불능 또는 "+session.ObjectiveUnit.Data.DisplayName+" 전투불능":"아군 전원 전투불능";}
         public static string Progress(BattleSession session)
         {
-            if(session.Crossover!=null)return session.Crossover.Description+(session.Crossover.UsesNodes?"\n구조 신호 "+session.Crossover.NodeCount+" / 3":"")+(session.Crossover.State.Hazards.Count>0?"\n"+session.Crossover.HazardDescription:"");
+            if(session.Crossover!=null)return session.Crossover.Description+(session.Crossover.UsesNodes?"\n구조 신호 "+session.Crossover.NodeCount+" / "+session.Crossover.SignalPositions.Length:"")+(session.Crossover.ObjectiveDevices.Length>0?"\n"+(session.Crossover.PrisonDevices.Length>0?"감옥 장치 ":"목표 장치 ")+session.Crossover.ObjectiveDevices.Count(u=>!u.Alive)+" / "+session.Crossover.ObjectiveDevices.Length:"")+(session.Crossover.State.Hazards.Count>0?"\n"+session.Crossover.HazardDescription:"");
             int alive=session.Units.Count(u=>u.Team==Team.Enemy&&u.Alive),total=session.Units.Count(u=>u.Team==Team.Enemy);
             if(session.Objective==ObjectiveKind.Survive)return session.ObjectiveDescription;
             if(session.Objective==ObjectiveKind.Reach||session.Objective==ObjectiveKind.Escort)return session.ObjectiveDescription;
             if(session.Objective==ObjectiveKind.Boss)return "보스 HP "+session.ObjectiveUnit.CurrentHP+" / "+session.ObjectiveUnit.Stats.HP+(session.BossEncounters?" · 방벽 "+session.Resolver.BossWardPercent(session.ObjectiveUnit)+"%":"");
             return "적 잔존 "+alive+" / "+total;
         }
-        public static string Terrain(int stage)
+        public static string Terrain(int stage,int openingRevision=1,int tacticsRevision=1)
         {
-            if(stage>=CampaignStages.LegacyCount&&stage<CampaignStages.Count)return CrossoverCampaign.TerrainHint(stage);
+            if(stage>=CampaignStages.LegacyCount&&stage<CampaignStages.Count)return CrossoverCampaign.TerrainHint(stage,openingRevision,tacticsRevision);
             switch(stage)
             {
                 case 0:return "첫 교전 · 부상자를 회복하고 아군 전열을 함께 전진시키세요.";

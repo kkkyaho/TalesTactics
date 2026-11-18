@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-17T15:28:08.5076286Z",
+  "passed": true,
+  "runId": "5063e4b1da144f958d6611eaf9930305",
+  "startedUtc": "2026-11-17T15:18:22.3903381Z",
+  "finishedUtc": "2026-11-17T15:23:25.5999366Z",
+  "wrapperElapsedSeconds": 303.2095985,
+  "reportStartedUtc": "2026-11-17T15:18:45.9885522Z",
+  "reportFinishedUtc": "2026-11-17T15:23:19.9388194Z",
+  "completedStages": 20,
+  "checks": 24697,
+  "saveReloadChecks": 176,
+  "expectedCaptures": 48,
+  "verifiedCaptures": 48,
+  "savedStageJsonCount": 40,
+  "exitCode": 0,
+  "errors": [],
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "userFilesUnchangedDuringWindowsRun": true,
+  "preflightUserTreeStable": true,
+  "existingPlayersUnchanged": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "sourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\CommercialSlice20261117\\BuildSource-Review-After-1444ebf123684d6d83ac8d8871aadfd2\\after-binary-source.json",
+    "sha256": "e760013b9b6cdf6244c6cc38df30e053dfd6af44c328e6757cee2abcdd0ef52e",
+    "note": "Caller-supplied source/build receipt; inspect separately for source-to-binary mapping."
+  },
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "25aede9f94e87485d47d4fb90ee5fe015c7058046a2a9d48a3a18461d2051314",
+  "playerTypeIsolationPassed": true,
+  "economy": {
+    "passed": true,
+    "contractVersion": 2,
+    "startingGold": 300,
+    "totalGoldReward": 12900,
+    "totalPurchaseSpend": 7300,
+    "finalGold": 5900,
+    "salesExecuted": 0,
+    "limits": "Sale values are price/2 arithmetic for unequipped ownership, not sale transactions or human economic/balance approval. Review source and binary identity are established separately; report, saved inventory, purchase arithmetic, fixed reward mapping, seeded additional drops and growth are checked here."
+  },
+  "isolatedCampaign": {
+    "path": "C:\\dev\\TalesTactics\\Builds\\CommercialSliceReview20261117\\CampaignFlowReviews\\5063e4b1da144f958d6611eaf9930305\\Storage\\campaign.json",
+    "sha256": "d5ab2daddb1fa5d6b1b51101d0262228cd92e07cfb1dd16a8a3a01e4c54d4e27",
+    "bytes": 10241,
+    "version": 3,
+    "completedChapters": 20,
+    "saveReloadChecks": 176,
+    "pngCount": 48
+  },
+  "rawValidation": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\CommercialSlice20261117\\CampaignWindows-5063e4b1da144f958d6611eaf9930305\\validation.json",
+    "sha256": "cf4cddf825c2c939bb53e2863d833c4132b7ca5daa0a46be003a858f898e1d05"
+  },
+  "rawPlayerReport": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\CommercialSlice20261117\\CampaignWindows-5063e4b1da144f958d6611eaf9930305\\player-report.json",
+    "sha256": "d192f92822814b872851018be52cee7dc7ac891525230ce957a46f4d44163d55"
+  },
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run covers main episodes 1 through 20 with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 4, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player. Source labels are caller-supplied; DLL hashes are measured here and any source manifest is identified separately.",
+    "This run verifies current production objectives and preserved reward/economy rules. No before/after action, growth or timing equality is required. The retained RewardVariety contract checks the current reward table, actual purchases, inventory, gold and growth independently. Sale values are arithmetic only: no item is sold by this review.",
+    "Role skill counts classify authored effects and may overlap. Healing-skill count does not measure HP restored; guards/waits are committed player commands. Frame-sampled enemy seconds may include frame-boundary uncertainty. No human pacing or balance approval."
+  ]
+}

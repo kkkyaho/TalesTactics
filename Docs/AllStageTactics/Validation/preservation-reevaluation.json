@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "purpose": "Re-evaluate the already captured task baseline and current-tree snapshot with the minimally fixed pure comparison function; preserve the original failed invocation.",
+  "startedUtc": "2026-11-18T14:17:37.5844216Z",
+  "finishedUtc": "2026-11-18T14:17:41.3333333Z",
+  "comparisonExecutedSuccessfully": true,
+  "script": "C:\\dev\\TalesTactics\\Docs\\AllStageTactics\\Validation\\Compare-AllStageBaseline.ps1",
+  "scriptSHA256": "cfb291fe09deb991f7c68f587bc8ec93ad861e3fd7a20d34984e11e5fb3637f4",
+  "originalScriptSHA256": "c1e4bc2ca884b58307f58bd491e5644a7069d72748aa8d097058eeae4c7235e3",
+  "fix": "Only five lines in Compare-Trees: per-file $before/$after renamed $beforeRow/$afterRow. PowerShell variable names are case-insensitive, so the old locals replaced the $Before/$After snapshot parameters.",
+  "originalFailure": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef\\preservation.json",
+    "bytes": 2996,
+    "sha256": "e11cdd336dacfa1e7e3e26eeacfe4bd7352ffb47c075676de33366ab4ebe4d3a",
+    "lastWriteUtc": "2026-11-18T14:12:49.6167518Z"
+  },
+  "baseline": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Baseline-d8380e47deed41c19c7b19acfa08ce42\\baseline.json",
+    "bytes": 2084,
+    "sha256": "973a76b3c68ad03c23bdde0c21534e98641bf983e47cc41c461b8b56a56b1160",
+    "lastWriteUtc": "2026-11-18T12:41:04.2472817Z"
+  },
+  "baselineTree": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Baseline-d8380e47deed41c19c7b19acfa08ce42\\user-tree.json",
+    "bytes": 1489483,
+    "sha256": "d75389aa4af84ceb899c4a1f85eda8687ddd4dd03f06ad340033094bd7354347",
+    "lastWriteUtc": "2026-11-18T12:41:04.0612554Z"
+  },
+  "capturedCurrentTree": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef\\user-tree-current.json",
+    "bytes": 1507724,
+    "sha256": "b32e622d9c989bdcaba1149f55d9e1557f5eeafc0d5ee27f5ff0a2888a83be78",
+    "lastWriteUtc": "2026-11-18T14:12:47.8709597Z"
+  },
+  "originalProtectedComparison": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef\\protected-comparison.json",
+    "bytes": 7887,
+    "sha256": "8e188cee82e98e8b643b4f26a6f6ce8d24e0fd98e04ca57a87e3018a817afbcf",
+    "lastWriteUtc": "2026-11-18T14:08:52.0712298Z"
+  },
+  "fixture": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-Reevaluation-e011ca7f08cd4991963c84d5bc5ac55c\\function-fixture.json",
+    "sha256": "9c1247446351debf8fe54dee4400ed1a362b51be18cd071e5cfa2326844885b2"
+  },
+  "comparison": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-Reevaluation-e011ca7f08cd4991963c84d5bc5ac55c\\user-tree-comparison.json",
+    "sha256": "f7bef9585f5479c9f26e2d1e2104246370371fb4a3415ecd07f772431dd09915"
+  },
+  "originalSnapshotCapturedUtc": "2026-11-18T14:12:47.7166996Z",
+  "originalSnapshotRaceChecked": true,
+  "originalUserTreeSnapshotSucceeded": true,
+  "protectedExactBytesAtOriginalRead": true,
+  "protectedCount": 12,
+  "wholeTaskTreeUnchanged": false,
+  "rootFilesUnchanged": false,
+  "beforeFiles": 5272,
+  "afterFiles": 5337,
+  "beforeDirectories": 2552,
+  "afterDirectories": 2587,
+  "counts": {
+    "filesAdded": 65,
+    "filesRemoved": 0,
+    "filesChanged": 1,
+    "timestampOnly": 0,
+    "directoriesAdded": 35,
+    "directoriesRemoved": 0
+  },
+  "rootFileNamesAtBaseline": [
+    "campaign-slot2.json",
+    "campaign-slot2.json.bak",
+    "campaign-slot3.json",
+    "campaign.json",
+    "campaign.json.bak",
+    "campaign.json.v1.bak",
+    "campaign.json.v2.bak",
+    "settings.json",
+    "settings.json.bak",
+    "TestResults.xml"
+  ],
+  "rootFileChanges": [
+    {
+      "name": "TestResults.xml",
+      "kind": "changed"
+    }
+  ],
+  "fileChangesByTopLevel": [
+    {
+      "topLevel": "<root>",
+      "added": 0,
+      "removed": 0,
+      "changed": 1
+    },
+    {
+      "topLevel": "StorageTests",
+      "added": 65,
+      "removed": 0,
+      "changed": 0
+    }
+  ],
+  "finalGitAndProtectedResamplePerformed": false,
+  "newUserTreeSnapshotPerformed": false,
+  "userTreeReadsByReevaluation": false,
+  "writesToUserTree": false,
+  "unityOrPlayersStarted": false,
+  "gitInvoked": false,
+  "originalFailurePreserved": true,
+  "limits": [
+    "The captured tree timestamp is the original snapshot time, not the re-evaluation time. Current user data was not re-read.",
+    "The original invocation stopped before its final protected-file resample and Git state checks; this pure comparison does not turn those unexecuted checks into successes.",
+    "Every file/directory difference, including StorageTests and root TestResults, remains in user-tree-comparison.json. The complete tree may differ even when user save/settings bytes are unchanged.",
+    "Any claim of final current preservation requires explicit linkage to later wrapper/state evidence by the caller; this record does not independently establish that linkage."
+  ]
+}

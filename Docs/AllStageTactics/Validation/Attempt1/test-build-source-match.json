@@ -1,0 +1,74 @@
+{
+  "schema": "all-stage-tactics-test-build-source-match-v1",
+  "startedUtc": "2026-11-18T13:46:42.7243350Z",
+  "finishedUtc": "2026-11-18T13:46:43.3253982Z",
+  "passed": true,
+  "purpose": "Read-only cross-comparison of the frozen tested-source manifest against both completed Windows build input manifests.",
+  "testedSourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\source-at-stable-tests.json",
+    "sha256": "c77a8a966e68d9bc47150e24756bdb79ad2a72205e9cb1210a5ffec0abf594dd",
+    "bytes": 68214,
+    "lastWriteUtc": "2026-11-18T13:03:06.0813119Z"
+  },
+  "testedSourceCount": 410,
+  "comparisonMethod": "Exact ordinal relative-path match; case-insensitive SHA-256 hexadecimal equality. Every tested-source row must occur with the same hash in each build input manifest. Duplicate paths are rejected. Input JSON files are SHA-256/length/last-write checked before and after reading.",
+  "comparisons": [
+    {
+      "kind": "Normal",
+      "passed": true,
+      "sourceToBinaryReceipt": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Normal-After-65491bb28122455793716f982018ff84\\after-binary-source.json",
+        "sha256": "a70859c4edacbc802ce7d271049621e2b453e2e64eb03e06a031aa8af4223aca",
+        "bytes": 88975,
+        "lastWriteUtc": "2026-11-18T13:37:01.6214774Z"
+      },
+      "buildInputManifest": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Normal-After-65491bb28122455793716f982018ff84\\inputs-after.json",
+        "sha256": "114d66df74b3bebc85b5e27a62cb84fb14879520bb83b3aa3d5d181457f38945",
+        "bytes": 816652,
+        "lastWriteUtc": "2026-11-18T13:36:40.7812145Z"
+      },
+      "buildInputCount": 3055,
+      "testedSourceComparisonCount": 410,
+      "matchedCount": 410,
+      "differenceCount": 0,
+      "differences": [],
+      "buildInputAggregateSHA256": "7e3ee0e01702bcc4522dc467259c861f46fa84a1322ff6b5b2415de289d17051",
+      "sourceToBinaryReceiptPassed": true
+    },
+    {
+      "kind": "Review",
+      "passed": true,
+      "sourceToBinaryReceipt": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Review-After-291ba5b92bd1463880017d792a06d1c9\\after-binary-source.json",
+        "sha256": "a15ee80c8bfb353c81717b8a3a51b2c9d0d7c13abea9bd14459b1b2c28af49b5",
+        "bytes": 89005,
+        "lastWriteUtc": "2026-11-18T13:42:04.5477851Z"
+      },
+      "buildInputManifest": {
+        "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\BuildSource-Review-After-291ba5b92bd1463880017d792a06d1c9\\inputs-after.json",
+        "sha256": "8f1a86a048cfea36e2c48a90a7623a46b866ef265e83adef39ae66cd3ac215d5",
+        "bytes": 816652,
+        "lastWriteUtc": "2026-11-18T13:41:51.3434888Z"
+      },
+      "buildInputCount": 3055,
+      "testedSourceComparisonCount": 410,
+      "matchedCount": 410,
+      "differenceCount": 0,
+      "differences": [],
+      "buildInputAggregateSHA256": "7e3ee0e01702bcc4522dc467259c861f46fa84a1322ff6b5b2415de289d17051",
+      "sourceToBinaryReceiptPassed": true
+    }
+  ],
+  "totalComparisons": 820,
+  "totalDifferences": 0,
+  "differences": [],
+  "limitations": [
+    "This is evidence-file comparison, not a new Unity test, build or player execution.",
+    "The tested-source manifest contains 410 C# and assembly-definition files. The comparison establishes their inclusion and byte identity within each 3055-file build input manifest; it does not establish that every non-source build input was identical at test execution time.",
+    "Build input manifests include tracked, untracked and ignored project inputs. Additional build inputs beyond the frozen tested-source set are expected and are not treated as differences.",
+    "Matching endpoint hashes does not prove absence of transient edits, deterministic compilation, Library import-state identity, or runtime dependency inclusion.",
+    "The separately hashed source-to-binary receipts supply build provenance. This comparison does not independently rerun their BuildReport or output-binary checks and does not claim Windows campaign completion or visual quality.",
+    "Local-only audio, source provenance and build artifacts remain subject to the local-only music policy; no upload is performed."
+  ]
+}

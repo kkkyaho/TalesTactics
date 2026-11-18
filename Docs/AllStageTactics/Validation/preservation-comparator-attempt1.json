@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "purpose": "AllStageTactics preservation comparison against the fresh task-start baseline at the stated invocation timestamp; no implied earlier/later state.",
+  "runId": "57cac18d3ea54095abd2f645733989ef",
+  "startedUtc": "2026-11-18T14:08:50.7917241Z",
+  "finishedUtc": "2026-11-18T14:12:49.5772266Z",
+  "passed": false,
+  "project": "C:\\dev\\TalesTactics",
+  "output": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef",
+  "script": "C:\\dev\\TalesTactics\\Docs\\AllStageTactics\\Validation\\Compare-AllStageBaseline.ps1",
+  "scriptSHA256": "c1e4bc2ca884b58307f58bd491e5644a7069d72748aa8d097058eeae4c7235e3",
+  "baseline": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Baseline-d8380e47deed41c19c7b19acfa08ce42\\baseline.json",
+  "baselineSHA256": "973a76b3c68ad03c23bdde0c21534e98641bf983e47cc41c461b8b56a56b1160",
+  "baselineVerified": true,
+  "protectedCount": 12,
+  "protectedExactBytesUnchanged": false,
+  "protectedChanged": [],
+  "wholeTaskTreeUnchanged": null,
+  "rootFilesUnchanged": null,
+  "requiredGitBranch": "develop",
+  "gitDevelop": false,
+  "errors": [
+    "System.Management.Automation.PropertyNotFoundException: The property 'directories' cannot be found on this object. Verify that the property exists.\r\n   at System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\r\n   at System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)"
+  ],
+  "writesToUserTree": false,
+  "restoredFiles": [],
+  "deletedFiles": [],
+  "unityOrPlayersStarted": false,
+  "gitMutated": false,
+  "excludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "limits": "File contents/paths and all directory paths are compared. Timestamp-only file changes are reported separately but do not change byte equality. Full-tree changes, including tests, are never excluded. Read locks and double inventories reject observed races/reparse points, but do not prove atomic filesystem state or detect change-and-restore to identical bytes/timestamps. The caller determines whether this timestamp is after all required tests/builds/state restoration.",
+  "artifacts": [
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef\\protected-comparison.json",
+      "sha256": "8e188cee82e98e8b643b4f26a6f6ce8d24e0fd98e04ca57a87e3018a817afbcf"
+    },
+    {
+      "path": "C:\\dev\\TalesTactics\\Logs\\AllStageTactics20261118\\Preservation-57cac18d3ea54095abd2f645733989ef\\user-tree-current.json",
+      "sha256": "b32e622d9c989bdcaba1149f55d9e1557f5eeafc0d5ee27f5ff0a2888a83be78"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 """Prepare/publish only kkkyaho/TalesTactics v0.1.0-preview.9 (Python 3.10+).
 
+The user has restricted the supplied music to local commits. Mutation modes
+are disabled for this music-containing Preview9 package.
+
 This file does nothing when imported. Do not run until release authorization,
 package validation, and the exact remote tag are ready. All modes require the
 same local ZIP, its .zip.sha256 sidecar, full source SHA, and pinned ZIP SHA256.
@@ -302,6 +305,10 @@ def check_assets(api, release_id, files, complete):
 
 
 def execute(args, evidence, save):
+    if args.mode in ('draft-upload', 'publish'):
+        evidence.update({'phase': 'blocked-local-only-music-policy', 'mutationAttempted': False})
+        save()
+        raise SafetyError('Publication disabled: user-provided music is local-only; this Preview9 package must not be uploaded or published.')
     files, notes, manifest = local_inputs(args)
     evidence.update({'phase': 'local-verified', 'sourceCommit': manifest['sourceCommit'],
                      'notesSHA256': hashlib.sha256(notes.encode('utf-8')).hexdigest(),
@@ -424,8 +431,9 @@ def main():
                 evidence.update({'passed': False, 'finishedUtc': now(),
                                  'failure': str(error) if isinstance(error, SafetyError) else
                                  'Operation stopped (' + type(error).__name__ + '); raw details withheld.',
-                                 'remoteState': 'No rollback/deletion attempted. A requested mutation may have '
-                                                'completed remotely; inspect the existing release before retrying.'})
+                                 'remoteState': ('No rollback/deletion attempted. A requested mutation may have '
+                                                 'completed remotely; inspect the existing release before retrying.')
+                                                if evidence.get('mutationAttempted') else 'No remote mutation was attempted.'})
                 save()
                 print(json.dumps({'passed': False, 'phase': evidence['phase'], 'failure': evidence['failure']}))
                 return 1

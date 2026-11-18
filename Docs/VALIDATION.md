@@ -1,8 +1,69 @@
-# 검증 기록 — 2026-11-03
+# 검증 기록 — 2026-11-18
 
-## 2026-11-03 — Preview9 로컬 패키지 검증·공개 업로드 대기
+## 2026-11-18 — 전체 전장 전술 구성
 
-릴리즈 소스는 `e081a592d398aa0354b04a827fb3833a277552d2`이며 `v0.1.0-preview.9` 태그 생성·원격 반영을 완료했다. 검증된 `develop` 소스를 `main`에 fast-forward 통합하고 원격 반영했다. 대용량 ZIP 공개 업로드는 자동 승인 검토에서 거부되어 사용자 승인 대기 중이다. 최신 공개 다운로드는 Preview8이며 Preview9 게시·익명 다운로드 검증은 미완료다. [현재 릴리즈 기록](Distribution/Preview9/README.md).
+메인1~3화는 유지하고 메인4~20화와 개인 전투20개의 지형·진입 경로·목표를 확장했다. 출전 미리보기·목표 표시·이야기 장소가 같은 배치를 참조하며, 개인 대화10개와 고유 시련 행동 조건·성장·보상은 유지한다. 신규 TacticsRevision과 기존 저장의 개정0을 분리해 복원·재시도·되감기 호환을 검사했다. [전체 적용 내용](AllStageTactics/README.md).
+
+실제 Unity6000.6.0f1 [전체 EditMode703/703·64.68초](AllStageTactics/Validation/full-editmode.json)를 통과했다. [전체 PlayMode299/300·1211.52초](AllStageTactics/Validation/full-playmode-attempt1.json)는 검사 중 보낸 Pipeline 상태 조회의 시간 초과 Error 로그가 이동 검사1개에 섞여 실패했다. 같은 검사를 소스 변경 없이 재실행해 [1/1·38.37초](AllStageTactics/Validation/playmode-movement-retry.json) 통과했다. 단일 전체300/300 결과로 표현하지 않는다. 신규 전체 전장 Scene 검사3개는 전체 실행에서 통과했다.
+
+첫 Windows 실행은 티아가 홀리 송 습득 전인 레벨6에서 시련37의 명령 상한에 도달해31개 완료·종료1로 끝났다. 검수 전용 두 파일에서 티아·벨벳의 실제 출전 경험치 성장과 행동 선택을 보완한 후 다시 컴파일·빌드·실행했다. 제품 규칙·검사 소스는 동일하다. 검사 당시410개 소스(400C#·4asmdef·6shader) 중408개는 최종 빌드와 동일하고 두 검수 정책 파일의 변경 해시는 별도로 기록했다. [소스 대조](AllStageTactics/Validation/test-build-source-match-final.json), [실패·재검 이력](AllStageTactics/Validation/validation-history.json).
+
+최종 일반 Windows [54.9237265초·오류0·경고7](AllStageTactics/Validation/windows-build-normal.json), REVIEW [42.6048664초·오류0·경고6](AllStageTactics/Validation/windows-build-review.json) 빌드에 성공했다. 각3055개 입력이 빌드 전후 일치하며 실제 BuildReport·EXE·DLL 해시를 연결했다. 일반 빌드 요청의 응답 시간 초과 이후 실제 빌드는 성공했으며 중복 요청하지 않았다. 경고는 기존 Pipeline 설정·검수 API/지시문 안내다. 초기 빌드·실패 실행은 Attempt1 경로로 보존했다.
+
+최종 실제 Windows REVIEW는 [50/50개(전투40·대화10)·38,833검사·391재로드·180PNG·100저장 JSON·정상 종료0](AllStageTactics/Validation/windows-campaign-summary.json)을 통과했다. 고유 시련의 실제 노래·취소·흡혈·HP지불·방어 피격과 전용 무기10개, 구매·보상·재고·최종6,400G를 검증했다. 오류·강제 종료·저장 복원 삭제가 없고 해당 Windows 실행 동안 사용자 재귀 트리는 동일했다. 일반 실행본의 [검수 타입/IL·Editor·테스트 참조 제외](AllStageTactics/Validation/windows-player-type-isolation.json)는 통과했지만 일반 실행본을 실행한 결과는 아니다.
+
+[최종 보존 기록](AllStageTactics/Validation/final-preservation.json): 새 작업 기준 보호12파일과 실제 저장/설정9파일을 유지했다. 테스트가 StorageTests65파일·35폴더를 추가하고 TestResults.xml을 변경했으며 삭제0이다. 전체 사용자 트리 불변으로 표현하지 않는다. 보존 비교 함수의 PowerShell 대소문자 변수 충돌은 원본 실패와 완성된 스냅샷을 보존한 뒤 수정·재평가했고 PS5.1/7 임시 검사 각8개를 통과했다. [Editor 상태12항목 복원](AllStageTactics/Validation/editor-state-comparison.json)을 확인했다. 이번 작업은 GameView 크기의 별도 시작 기준을 수집하지 않았으며 크기 변경 명령도 보내지 않았다.
+
+[최종 실행 대표 화면4장](AllStageTactics/Evidence/visual-review.json)을 육안 확인했다. PNG180개의 자동 픽셀 검사는 모든 화면의 수동 승인과 다르다. Standard·seed17·4배속의 한 정책과 개인별 한 분기만 실행했으며 사람의 난이도·목표 이해·재미, 모든 경로 조합, 대화 중 프로세스 재시작은 별도 확인 대상이다. 기존 사용자 수정·미추적 원화가 포함된 작업 폴더이므로 깨끗한 클론 재현성을 주장하지 않는다. 로컬 develop 커밋만 수행하며 사용자 음원 포함 이력·빌드의 원격 업로드·main 통합·릴리즈 게시는 하지 않는다.
+
+
+## 2026-11-17~18 — 대표 초반 전투·성장·이야기와 보상 비교
+
+메인1~3화의 서로 다른 목표·경로, 크레스·민트 성장 방향의 전투 효과, 장별 이야기 배경과 전장 가독성, 보상 상세의 동료별 실제 장비 비교를 적용했다. 기존 중단 전투는 저장 개정 번호에 따라 종전 맵·목표를 복원한다. [범위·로컬 실행본·후속 플레이 항목](CommercialSlice/README.md).
+
+실제 전체 [EditMode537/537·32.99초](CommercialSlice/Validation/full-editmode-final.json), 최종 전체 [PlayMode297/297·1097.76초](CommercialSlice/Validation/full-playmode-final.json)를 통과했다. 실패·건너뜀·미결정0이며 표적 결과를 합산하지 않는다. EditMode 이후 전투 규칙은 유지됐고 마지막 UI 수정은 최종 PlayMode에 포함됐다. CommercialSlice4/4·보상비교3/3을 각각1920×1080·1280×720·1024×768에서 글자100/130%로 검사했다. 초기536/537, 성장 커서 실패, 보상 재열기 커서 실패, 테스트0개와 재로드 시간 초과는 [이력](CommercialSlice/Validation/validation-history.json)에 남겼다. 실패 조건을 완화하지 않고 실제 호출 순서와 제품의 최종 레이아웃/포커스를 보완했다.
+
+일반 Windows 빌드 [67.2941321초·오류0·경고3](CommercialSlice/Validation/windows-build-normal.json), REVIEW [42.2166559초·오류0·경고6](CommercialSlice/Validation/windows-build-review.json)가 성공했다. 각각3,037개 입력 SHA가 빌드 전후 일치하며 BuildReport·EXE·런타임 DLL에 연결했다. 첫 실제 일반 빌드는 성공 보고 뒤 폰트 입력 변경을 감지해 소스 연결을 거부했고, 생성본 보존·초기 폰트 복원/동기 재가져오기 뒤 최종 재빌드를 통과했다. 초기PowerShell5 호출 실패의 일부 원문 고정 파일은 후속 호출로 덮어써져 [재구성 기록의 한계](CommercialSlice/Validation/build-dispatch-attempt1.json)를 명시했다. 경고 원문은 보존했다.
+
+새 Windows REVIEW 실행은 [20/20화·24,697검사·176재로드·48PNG·40저장 JSON·정상 종료0](CommercialSlice/Validation/windows-campaign-summary.json)를 통과했다. 오류0·강제 종료 없음이며 실제 보상/구매/재고/성장과 최종5,900G를 검증했다. 해당 실행 구간의 사용자 재귀 트리는 동일했다. 일반 실행본의 [검수 타입/IL·Editor/테스트 참조 제외](CommercialSlice/Validation/windows-player-type-isolation.json)는 통과했지만 일반 실행본을 시작한 결과는 아니다. 자동 캠페인은 전투 우선 정책·Standard·4배속이며 사람의 목표 이해도·우회 공략·난이도·재미·실제 플레이시간 승인이 아니다.
+
+[Editor 대표 화면](CommercialSlice/Evidence/visual-review.md)과 Windows1화 전장·20화 결과 [2장](CommercialSlice/Evidence/windows-visual-review.json)을 육안 확인했다. 모든 캡처를 수동 승인한 것은 아니다. 최종 [보존 검사](CommercialSlice/Validation/final-preservation.json)는 보호12파일·루트 저장/설정9파일·테스트 소스792개 일치와 Editor/GameView 복원을 확인했다. 전체 작업에서는 StorageTests130파일·70폴더 추가와 TestResults.xml 변경이 있으며 삭제0이다. 사용자 트리 전체 불변으로 표현하지 않는다. 기존 사용자 수정·미추적 원화를 포함한 작업 폴더에서 검증한 것으로 깨끗한 클론 재현성 주장은 아니다. 완료 변경은 로컬 develop에만 보존하며 사용자 제공 음원 포함 이력·빌드를 원격/main/릴리즈에 추가 반영하지 않는다.
+
+## 2026-11-17 초기 기록 — 보상 비교 실행 전 장애 (아래 내용은 당시 상태)
+
+보상 상세에 호환 합류 동료 전환과 현재/후보 장비 효과·전체 능력치 비교를 구현했다. 실제 Unity 참조를 사용하는 Roslyn 정적 소스 컴파일은 통과했으나, **이번 변경의 실제 Unity 테스트·화면 검수·Windows 빌드는 아직 실행하지 못했다.** 기존 11월10일의 통과 결과는 아래 기록된 이전 변경의 결과다.
+
+Unity 시작 시 `Scene Backup Detected` 안내로 Pipeline이 준비되지 않았고, Windows Computer Use 초기화도 두 번 실패했다. 복구 자료를 보존하도록 사용자에게 안내 처리를 요청했다. 새 PlayMode 검사와 [재개 절차](RewardComparison/README.md)를 준비했으며 미검증 변경의 완료 커밋·푸시는 수행하지 않았다. 작업 전 수정 12개 파일은 `Logs/RewardComparison20261117/protected.json`의 SHA256과 바이트 사본으로 보존한다.
+
+## 2026-11-06~10 — 메인 7~20화 확정 보상 다양화
+
+실제 전체 [EditMode475/475·24.67초](RewardVariety/Validation/full-editmode-final.json), [PlayMode290/290·673.68초](RewardVariety/Validation/full-playmode-final.json)를 각각 별도 전체 실행으로 통과했다. 실패·건너뜀·미결정0이며 표적 보상3/3·모션1/1을 합산하지 않는다. 신규 검사는 보상표·실제 카탈로그·지급/미리보기·저장 실패/예외 복원·중복 방지·상한·기존 메달/완료 저장 보존·UI 장착/타이틀 재로드를 포함한다. 첫 EditMode의 atlas 아이콘 전제 오류, 신규 meta GUID 오류, 전체0개 실행2회, 첫 전체Play289/290과 기존 모션 검사 타이밍 보정을 별도 보존했다. 위치 허용치를 유지한 테스트 보정이며 제품 모션 변경은 없다. 당시 단일 실패의 역사적 원인은 확정하지 않는다. [실패·복구 이력](RewardVariety/Validation/validation-history.json).
+
+일반 Windows 빌드 [94.33468초·오류0·경고4](RewardVariety/Validation/windows-build-normal.json), REVIEW [36.3786166초·오류0·경고6](RewardVariety/Validation/windows-build-review.json)가 성공했다. 경고는 기존 Pipeline 설정·폐기 예정 검수 API/지시문·내부 디버그 셰이더 stripping이며 원문을 보존했다. [일반 검수 타입/IL·Editor/테스트 참조 제외](RewardVariety/Validation/windows-after-type-isolation.json)는 메타데이터 검사이고 일반 실행본 시작·수동 플레이 완료를 뜻하지 않는다. 최종 입력2,320개의 SHA와 실제 BuildReport/EXE/DLL을 [소스 연결 기록](RewardVariety/Validation/after-binary-source.json)에 남겼다.
+
+실제 Windows [Before](RewardVariety/Validation/windows-before-summary.json)는20/20화·26,934검사·175재로드·260.25초, [After](RewardVariety/Validation/windows-after-summary.json)는20/20화·26,713검사·176재로드·256.29초다. 각각48PNG·40저장 JSON·오류0·정상 종료0·강제 종료/정리 없음·사용자 트리 불변이다. seed17·4배속·편성/구매 정책·첫6화 결과·추가 드롭이 같고 이후 보상표·거래·재고·성장을 검증했다. 총 구매7290→7300G, 최종 골드5910→5900G이며 지팡이240G·단련 갑옷650G 구매 감소와 강화 갑옷900G 추가 구매의 차이다. 실제 매각은 없으며 확정 보상의 산술 매각가950G 감소와 구분한다. 후반 행동·성장·장착은 실제로 달라졌고 동일성을 강제하지 않는다. [전후 비교](RewardVariety/Validation/windows-comparison.json). 고정 자동 정책1회씩의 관측이며 난이도·성능·장기 경제·사람의 만족도 승인이 아니다.
+
+Editor 상세7/14/17화3장과 Windows20화 결과1장을 육안 확인했다. [Editor 범위](RewardVariety/Evidence/visual-review.md) · [Windows 원본 근거](RewardVariety/Evidence/windows-visual-review.json). 모든48장 수동 검수는 아니다. Windows 도구 PS5.1/PS7.6.9 각36/36 및 Before 저장40개 추가 계약 검사는 실제 게임 실행과 별도이며 초기26개 결과도 보존했다. [도구 증거](RewardVariety/Validation/TOOLS.md).
+
+작업 전 수정12파일과 최종 소스6개·빌드 입력2,320개·기록한 Editor 상태가 일치한다. 폰트·CSV·임시 백그라운드 설정은 생성본을 보존하고 초기 바이트로 [복원](RewardVariety/Validation/protected-restoration.json)했다. [최종 상태](RewardVariety/Validation/final-state.json). 전체 작업에서는 StorageTests128파일 추가와 TestResults.xml 변경이 있었고,11월10일 재개 구간에서는 기존5,142파일·2,482디렉터리 중 TestResults.xml만 변경됐다. [사용자 트리 비교](RewardVariety/Validation/whole-task-user-tree.json). 기존 저장·설정은 보존했다. 구현과 열거한 검증을 완료했으며 [현재 실행본·한계](RewardVariety/README.md)를 따른다. 음원 포함 소스/실행본은 로컬 전용이고 main·원격·릴리즈 반영은 수행하지 않는다.
+
+## 2026-11-03 — 초반 조작 확정·대상 해제·배속 보행
+
+실제 Unity 전체 [EditMode469/469 · 23.36초](OpeningPolish/Validation/full-editmode.json), [PlayMode287/287 · 712.43초](OpeningPolish/Validation/full-playmode.json)를 각각 한 번의 전체 실행으로 통과했다. 실패·건너뜀·미결정0이다. 신규 방어 취소/확정/중단 저장·대상 해제 입력3개와 배속 보행2개, 기존 저장·전투·튜토리얼·GPU 회귀를 포함한다. 이동 표적2/2는 별도 실행이며 전체 수에 더하지 않는다.
+
+일반 Windows 빌드는 [98.8486772초·오류0·경고7](OpeningPolish/Validation/windows-build-normal.json), REVIEW는 [73.5150718초·오류0·경고6](OpeningPolish/Validation/windows-build-review.json)로 성공했다. 경고는 기존 Pipeline 런타임 설정 및 검수 코드 API/지시문 사용 중단 안내이며 원문을 보존했다. 수정 전 비교용 빌드도 별도 보관한다. 일반/검수 DLL의 검수 타입·부트스트랩 IL 분리도 확인했다. 일반 실행본을 이번에 직접 시작하거나 수동 플레이한 결과는 아니다.
+
+Windows 같은 조건 비교는 [수정 전](OpeningPolish/Validation/windows-before.json)과 [수정 후](OpeningPolish/Validation/windows-after.json) 각각 메인3/3화·저장 재로드25회·PNG12/12장·정상 종료0을 통과했다. 강제 종료와 정리 신호는 없었다. seed17·1배속·편성·구매 정책이 같고, 명령·행동·HP/MP·레벨·보상·저장 결과가 모두 동일했다. [전후 비교](OpeningPolish/Validation/windows-comparison.json). 1배속 전투 시간 차이는 각 화0.06~0.11초 감소로 작으며 단일 자동 실행 결과를 일반 성능 향상으로 확대하지 않는다. 수정 후 실제1280×720 화면3장(1화 시작·3화 시작·3화 후일담)의 한글·인물·지도·UI를 확인했다. [원본 PNG·해시·확인 범위](OpeningPolish/Evidence/manifest.json).
+
+초기 입력3개 실행의 실패 중1개는 SetUp에 섞인 도구 timeout 로그이며 나머지2개는 방어 취소 후 잔류와 이전 대상 유지 assertion이다. 이후 0개 선택 결과는 미실행으로 보존했다. 스크립트 재로드 뒤 전체287개가 실제 실행됐지만 0개 결과의 근본 원인을 확정하지 않는다. 첫 Windows 실행은 게임3화 완료/exit0에도 PowerShell 날짜 해석 문제로 wrapper가 실패했다. 두 번째는 시작 직후 프로세스 경로 읽기에서 실패했으며 이후 게임3화 완료·프로세스 소멸만 관측했고 종료 코드는 회수하지 못했다. 두 기록을 성공으로 다시 분류하지 않는다. [실패 요약과 원본 해시](OpeningPolish/Validation/windows-before-failures.json).
+
+작업 시작의 사용자 수정12파일은 초기 SHA와 같다. 검증이 갱신한 폰트·적 배속 CSV·전술 CSV3개만 생성본을 따로 보관한 뒤 초기 바이트로 복원했다. [복원 기록](OpeningPolish/Validation/protected-restoration.json). 전체 사용자 트리는 Unity 검사 산출물 `TestResults.xml`1개가 바뀌고 `StorageTests`에54파일이 추가돼4,960→5,014파일이 됐다. 기존 파일 제거는 없고 실제 저장·설정은 유지됐다. 이를 전체 트리 불변으로 표현하지 않는다. [작업 전체 대조](OpeningPolish/Validation/whole-task-user-tree.json). 최종 Windows 전후 두 실행에서는 각각5,014파일·2,412디렉터리가 그대로였으며 루트 Unity 로그2개만 제외했다. 빌드 후 추적 입력2,316개·구현/검사 도구14개·기존 수정12개 SHA와 기록한 Editor 상태도 일치했다. [최종 보존 확인](OpeningPolish/Validation/final-state.json).
+
+[적용 내용·측정 범위·한계](OpeningPolish/README.md). 사용자 음원과 실행본은 로컬에만 보관한다.
+
+## 2026-11-03 — Preview9 로컬 패키지 검증·음원 로컬 전용·공개 업로드 취소
+
+릴리즈 소스는 `e081a592d398aa0354b04a827fb3833a277552d2`이며 `v0.1.0-preview.9` 태그 생성·원격 반영을 완료했다. 검증된 `develop` 소스를 `main`에 fast-forward 통합하고 원격 반영했다. 최초 대용량 ZIP 업로드 시도는 실행 전 자동 승인 검토에서 거부됐다. 이후 사용자가 음원을 로컬 커밋 전용으로 지정하여 현재 음원 포함 ZIP의 공개 업로드 요청을 취소하고 게시 도구의 쓰기 동작을 차단했다. 기존 원격 음원 이력은 아직 제거하지 않았다. [현황](LocalMusicPolicy.md). 최신 공개 다운로드는 Preview8이며 Preview9 게시·익명 다운로드 검증은 미완료다. [현재 릴리즈 기록](Distribution/Preview9/README.md).
 
 첫 BuildReport는 성공했지만 strict 파일 보존 검사와 실제 패키지 실행이 실패했다. shader null→Blitter→URP 초기화 오류와 첫 ZIP을 [Attempt1](Distribution/Preview9/Validation/Attempt1)로 보존하고 배포에서 제외했다. 릴리즈 전용 작업 폴더의 재import로 참조를 복구한 **Final2 일반 빌드는 137.8605326초·오류0·경고3**이며 전후 semantic source 검사·필수 셰이더 참조·검수 코드 제외가 통과했다. `sourceCleanBefore/After: false`, `protectedFilesUnchanged: false`는 그대로 남겼다. Editor 정상 종료 뒤 추적 파일 **5,715개 의미 동등성과 최종 소스 clean**을 확인했다. [BuildReport](Distribution/Preview9/Validation/Final2/build-report.json), [완료 결과](Distribution/Preview9/Validation/Final2/build-result.json), [후속 복원](Distribution/Preview9/Validation/Final2/serialization-restore.json).
 

@@ -1,0 +1,26 @@
+{
+  "source": "C:/dev/TalesTactics/Logs/AllStageTactics20261118/Build-3cd3bae76b7c49fca5dd40025f458aac/build-result.json",
+  "sourceSHA256": "e29be6383af7f9d36befb72bd5e795b4c90a24e7e20c07671febc49743895d68",
+  "status": "Succeeded",
+  "complete": true,
+  "passed": true,
+  "unityVersion": "6000.6.0f1",
+  "output": "C:\\dev\\TalesTactics\\Builds\\AllStageTacticsWindows20261118",
+  "scene": "Assets/TalesTactics/Scenes/TestBattle.unity",
+  "target": "StandaloneWindows64",
+  "options": "None",
+  "extraScriptingDefines": [],
+  "buildGuid": "1a9b13b552a4475d98ee12eb5b14a35a",
+  "totalTimeSeconds": 117.04408439999999,
+  "totalSize": 2267617397,
+  "totalErrors": 0,
+  "totalWarnings": 4,
+  "protectedFilesUnchanged": true,
+  "warningMessages": [
+    "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.",
+    "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+    "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build.",
+    "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+  ],
+  "scope": "Actual Unity BuildReport summary; full report and step messages retained locally. A successful build is not a normal-player playthrough."
+}

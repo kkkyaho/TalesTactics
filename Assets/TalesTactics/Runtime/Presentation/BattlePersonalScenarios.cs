@@ -72,7 +72,8 @@ namespace TalesTactics
         {
             BeginPreparation("먼저 열 길을 선택하세요");
             Label(center,"두 길을 모두 돕습니다.",35,50,25);
-            Label(center,"왼쪽 (2,7) 또는 오른쪽 (10,7)의 신호부터 확보하세요.\n선택한 첫 신호 뒤에는 나머지 신호와 중앙 (6,10)을 연결합니다.\n구출 불가 분기는 없습니다.",110,175,21);
+            var signals=CrossoverTacticalMissions.Signals(battle.SelectedStage);
+            Label(center,"서쪽 "+signals[0]+" 또는 동쪽 "+signals[1]+"의 신호부터 확보하세요.\n선택한 첫 신호 뒤에는 나머지 신호와 "+signals[2]+"의 신호를 연결합니다.\n두 길 모두 구출할 수 있습니다.",110,175,21);
             Button(center,PersonalScenarios.RouteName(battle.SelectedStage,0)+"부터",320,()=>battle.ChooseScenarioRoute(0),true,60);
             Button(center,PersonalScenarios.RouteName(battle.SelectedStage,1)+"부터",395,()=>battle.ChooseScenarioRoute(1),true,60);
             Button(commands,"돌아가기",30,()=>{if(battle.Session!=null||battle.StoryActive)return;battle.Audio.PlayIntermission();if(PersonalScenarios.Contains(battle.SelectedStage))ShowPersonalScenarios();else ShowDeployment();},true,50);

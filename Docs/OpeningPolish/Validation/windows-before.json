@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "validationKind": "opening-campaign-flow",
+  "mode": "Review",
+  "runId": "c921967e47df482e8c83af71d547fa57",
+  "phase": "Before",
+  "startedUtc": "2026-11-03T14:23:51.4701480Z",
+  "finishedUtc": "2026-11-03T14:27:25.8979207Z",
+  "passed": true,
+  "wrapper": "C:\\dev\\TalesTactics\\Docs\\OpeningPolish\\Validation\\Validate-OpeningCampaignWindows.ps1",
+  "wrapperSHA256": "eb2366d4aceab520084a57728b18231b466bde8eb226f6d1f6b4d976d86c074c",
+  "normalPlayerStarted": false,
+  "executedReviewPlayer": true,
+  "windowStyle": "Hidden",
+  "timeoutSeconds": 900,
+  "normalBuild": "D:\\TalesTacticsBuildArchive\\OpeningPolishWindows20261103",
+  "reviewBuild": "D:\\TalesTacticsBuildArchive\\OpeningPolishBefore20261103",
+  "sourceReport": "D:\\TalesTacticsBuildArchive\\OpeningPolishBefore20261103\\CampaignFlowReviews\\c921967e47df482e8c83af71d547fa57\\report.json",
+  "sourceReportSHA256": "524b4a4669aacdee276205c165682eeaa8fe9a321a7bf2f04e43f27060878efd",
+  "sourceLabel": "2bcc30f plus opening measurement helper; before input and movement fixes",
+  "sourceManifest": {
+    "path": "C:\\dev\\TalesTactics\\Logs\\OpeningPolish20261103\\source-before-build.json",
+    "sha256": "5f696e10d7e7d4f73534cd5c9390edfbe30e50a424b84fef38c71f1d95b7ba05",
+    "note": "Caller-supplied source/build receipt; inspect separately for source-to-binary mapping."
+  },
+  "output": "D:\\TalesTacticsBuildArchive\\OpeningPolishBefore20261103\\CampaignFlowReviews\\c921967e47df482e8c83af71d547fa57",
+  "expectedStorage": "D:\\TalesTacticsBuildArchive\\OpeningPolishBefore20261103\\CampaignFlowReviews\\c921967e47df482e8c83af71d547fa57\\Storage",
+  "reportValid": true,
+  "expectedStages": 3,
+  "verifiedStages": 3,
+  "expectedCaptures": 12,
+  "verifiedCaptures": 12,
+  "userRoot": "C:\\Users\\USER-PC\\AppData\\LocalLow\\LocalTactics\\TalesTactics",
+  "userFilesUnchanged": true,
+  "preflightUserTreeStable": true,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "baseline": "Fresh recursive user-tree SHA256 snapshot excluding only root Player.log and Player-prev.log; no prior baseline dependency.",
+  "userFilesBefore": {
+    "files": 5014,
+    "directories": 2412,
+    "scope": "Counts only in this excerpt; full tree hashes remain in the original receipt identified below."
+  },
+  "userFilesAfter": {
+    "files": 5014,
+    "directories": 2412,
+    "scope": "Counts only in this excerpt; full tree hashes remain in the original receipt identified below."
+  },
+  "allowExistingPlayers": false,
+  "requiredExistingPlayerId": 0,
+  "existingPidsPreserved": [],
+  "existingPlayers": [],
+  "existingPlayerChecks": [],
+  "existingPlayersUnchanged": true,
+  "ownProcess": {
+    "id": 108880,
+    "startedTicks": 639293126398764865,
+    "exe": "D:\\TalesTacticsBuildArchive\\OpeningPolishBefore20261103\\TalesTactics.exe"
+  },
+  "exitCode": 0,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "exeSHA256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+  "runtimeSHA256": "aade58b8b29c3d769536b737ec666ccad3eb84d2797d0ec8b0164004679721b8",
+  "baselineValidation": "",
+  "comparison": null,
+  "playerLog": "C:\\dev\\TalesTactics\\Logs\\OpeningPolish\\CampaignWindows-Before-c921967e47df482e8c83af71d547fa57\\player.log",
+  "errors": [],
+  "limits": [
+    "Metadata/IL inspection is distinct from execution. Inspect mode never starts a player.",
+    "The REVIEW run covers main episodes 1 through 3 with the existing deterministic legal-command planner, story UI, rewards and title reloads. It is automated execution at timeScale 1, not human completion time, strategy/balance approval, optional scenarios or a mid-dialogue process restart. PNG validation checks decoding and nonuniform pixels, not human visual quality.",
+    "User-tree evidence includes all files and empty directory paths except the exact case-insensitive root names Player.log and Player-prev.log, which are volatile Unity output and may be locked by existing players. Nested Player.log, other logs, unknown files, backups and temporary files remain included. Reparse points fail before launch. No user file is written, deleted, backed up or restored.",
+    "Only the PID plus start time plus executable identity created here may be signaled. Existing players block launch unless -AllowExistingPlayers is supplied, then their identities are checked without signaling them.",
+    "Concurrent existing players may independently change user storage. Any such change fails preservation evidence; this wrapper neither attributes the change nor restores files.",
+    "The campaign harness hashes every top-level user file except the same two exact Unity log names and records those exclusions in its report. This wrapper independently protects the complete recursive tree under the policy above.",
+    "Build success and normal-release startup must be established separately; this script does not build or start the normal player. Source labels are caller-supplied; DLL hashes are measured here and any source manifest is identified separately.",
+    "Role skill counts classify authored effects and may overlap. Healing-skill count does not measure HP restored; guards/waits are committed player commands. Frame-sampled enemy seconds may include frame-boundary uncertainty. No human pacing or balance approval."
+  ],
+  "originalReceipt": "C:\\dev\\TalesTactics\\Logs\\OpeningPolish\\CampaignWindows-Before-c921967e47df482e8c83af71d547fa57\\validation.json",
+  "originalReceiptSHA256": "593c9a646fb51052a3e4a47d37b0f55772099f966ba61e5d02a13a467e66dbe4"
+}

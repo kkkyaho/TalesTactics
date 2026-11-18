@@ -24,6 +24,6 @@ namespace TalesTactics
         public static bool HasWave(int stage,bool teamTurns)=>teamTurns&&(stage==2||stage==4);
         public static int Initial(int stage,bool teamTurns)=>Total(stage)-(HasWave(stage,teamTurns)?2:0);
         public static CharacterData Enemy(BattleCatalog catalog,int stage,int index)=>stage>=CampaignStages.LegacyCount?CrossoverCampaign.Enemy(catalog,stage,index):CampaignEnemies.Resolve(catalog,stage,slots[stage][index]);
-        public static Vector2Int Position(int stage,int index)=>stage>=CampaignStages.LegacyCount?CrossoverCampaign.EnemySpawn(index):positions[stage][index];
+        public static Vector2Int Position(int stage,int index)=>stage>=CampaignStages.LegacyCount?CampaignContent.EnemySpawn(stage,index):positions[stage][index];
     }
 }

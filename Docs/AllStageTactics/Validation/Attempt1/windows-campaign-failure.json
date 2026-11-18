@@ -1,0 +1,23 @@
+{
+  "passed": false,
+  "source": "C:/dev/TalesTactics/Logs/AllStageTactics20261118/CampaignWindows-766eacae84bf4ffcabfc1844701e59a1/validation.json",
+  "sourceSHA256": "9BF2FB1D2690233D073B5A4AEA079DB68B0BD9982240A6F22E8CE0AF99C05011",
+  "report": "C:/dev/TalesTactics/Builds/AllStageTacticsReview20261118-Attempt1/CampaignFlowReviews/766eacae84bf4ffcabfc1844701e59a1/report.json",
+  "reportSHA256": "66C72D1E814238E8D001DE0896E32B8001AC2BB31D8C30EF3F4244DE95E2A148",
+  "status": "Stopped",
+  "completedStages": 31,
+  "checks": 90985,
+  "failedStage": 37,
+  "playerCommands": 500,
+  "errors": [
+    "System.InvalidOperationException: Battle exceeded 500 player-command limit; no forced outcome.\r\n  at TalesTactics.CampaignFlowReview.Require (System.Boolean ok, System.String message) [0x00016] in <2740b31956164ce29bab29feea550f51>:0 \r\n  at TalesTactics.CampaignFlowReview+<Fight>d__54.MoveNext () [0x00072] in <2740b31956164ce29bab29feea550f51>:0 \r\n  at TalesTactics.CampaignFlowReview+<Start>d__46.MoveNext () [0x00151] in <2740b31956164ce29bab29feea550f51>:0 "
+  ],
+  "wrapperErrors": [
+    "Campaign player exited 1; preserving its report."
+  ],
+  "exitCode": 1,
+  "forcedTermination": false,
+  "cleanupRequested": false,
+  "userFilesUnchanged": true,
+  "rootCause": "Automated Preferred party omitted Tear, leaving her at level6 while Holy Song requires level10. Trial planner guarded instead of making legal growth actions. This failed automated run is not a completed campaign or proof of an impossible player trial."
+}

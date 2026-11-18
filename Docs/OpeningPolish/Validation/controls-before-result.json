@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "duration": 100.4,
+  "summary": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningGuardCancelPreservesMoveHistoryAndSuspendState",
+      "Status": "Failed",
+      "Duration": 88.2599247,
+      "Message": "SetUp : Unhandled log message: '[Error] Failed to handle /api/exec request: Main thread operation timed out after 20000ms'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "Unity.Pipeline.BasePipelineServer/<HandleExecRequest>d__115:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2071)\r\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)\r\nUnity.Pipeline.BasePipelineServer/<ExecuteGated>d__105:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:1403)\r\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)\r\nUnity.Pipeline.BasePipelineServer/<>c__DisplayClass115_0/<<HandleExecRequest>b__0>d:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2032)\r\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<object>:SetException (System.Exception)\r\nUnity.Pipeline.BasePipelineServer/<ExecuteCommandByName>d__133:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2478)\r\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<object>:SetException (System.Exception)\r\nUnity.Pipeline.BasePipelineServer/<ExecuteCommand>d__134:MoveNext () (at ./Library/PackageCache/com.unity.pipeline@ab05e9cd7f74/Runtime/Common/BasePipelineServer.cs:2517)\r\nSystem.Threading._ThreadPoolWaitCallback:PerformWaitCallback ()\r\n\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningGuardConfirmCommitsOnceAndRewindsToTheUncommittedMove",
+      "Status": "Failed",
+      "Duration": 9.1739354,
+      "Message": "  A later wait must not inherit a cancelled guard intent.\r\n  Expected: False\r\n  But was:  True\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<OpeningGuardConfirmCommitsOnceAndRewindsToTheUncommittedMove>d__188.MoveNext () [0x0031b] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\OpeningControlSceneTests.cs:74\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.OpeningMouseLeavesTargetClearsForecastAndCannotCastTheOldTarget",
+      "Status": "Failed",
+      "Duration": 2.6360349,
+      "Message": "  The old target cannot remain armed after the cursor moves onto an empty tile.\r\n  Expected: null\r\n  But was:  (6, 8)\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<OpeningMouseLeavesTargetClearsForecastAndCannotCastTheOldTarget>d__190.MoveNext () [0x003eb] in C:\\dev\\TalesTactics\\Assets\\TalesTactics\\PlayModeTests\\OpeningControlSceneTests.cs:102\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    }
+  ]
+}

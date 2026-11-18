@@ -31,8 +31,10 @@ namespace TalesTactics
             }
         }
         public static bool Joined(string id,int number)=>Introduction(id)>0&&Introduction(id)<=Math.Max(1,number);
-        public static GridMap Map(int stage)
+        public static GridMap Map(int stage,int openingRevision=1,int tacticsRevision=1)
         {
+            if(CrossoverTacticalMissions.Applies(stage,tacticsRevision))return CrossoverTacticalMissions.Get(stage).Map();
+            if(CrossoverOpeningMissions.Applies(stage,openingRevision))return CrossoverOpeningMissions.Map(stage);
             int n=Episode(stage).Number;var map=new GridMap();
             for(int x=0;x<13;x++)for(int z=0;z<13;z++)
             {
@@ -71,8 +73,10 @@ namespace TalesTactics
         }
         public static Vector2Int PlayerSpawn(int index)=>new Vector2Int(4+index%3,1+index/3);
         public static int TerrainTheme(int stage)=>new[]{0,2,4,3,1,0,4,3,1,5,2,3,4,5,1,2,4,1,5,5}[(stage-FirstStage)%20];
-        public static string TerrainHint(int stage)
+        public static string TerrainHint(int stage,int openingRevision=1,int tacticsRevision=1)
         {
+            if(CrossoverTacticalMissions.Applies(stage,tacticsRevision))return CrossoverTacticalMissions.Get(stage).Hint;
+            if(CrossoverOpeningMissions.Applies(stage,openingRevision))return CrossoverOpeningMissions.Hint(Episode(stage).Number);
             if(PersonalScenarios.Contains(stage))stage=FirstStage+(stage-PersonalScenarios.FirstStage)%EpisodeCount;
             return new[]{"양쪽 기둥 사이로 진입 · 수호자의 강타 뒤 핵을 공략", "감옥 벽의 두 입구를 나눠 사용 · 도끼 예고에서 이탈", "세 다리로 마을을 연결 · 물 위 이동 비용 2", "문서고 통로와 가로 샛길 · 정면 반격을 피하고 측면 진입", "동쪽 고지와 두 긴 벽 · 호위와 지휘관을 분리", "착취실 양쪽을 열고 연결 장치부터 정지", "강 양쪽 고지의 주민 신호를 연결", "분신 소환진을 점령하거나 분신부터 제거", "중앙 문과 좌우 우회로 · 봉인주를 파괴하고 북쪽 출구로", "넓은 제단에서 레이저와 충격파를 분산 회피", "서쪽 부대가 자미르를 저지한 뒤 동쪽 부대가 리그렛과 교전", "중앙 제단의 고지와 양쪽 복제 장치", "선택한 피난로부터 연결 · 중앙 고지의 결투에 대비", "세 높이의 계단을 이용해 직선 공격을 분산", "양쪽 고지를 연결하는 세 길 · 집행자의 방어 뒤를 공략", "세 개의 높은 제방으로 피난 행렬을 보호 · 물 위 이동 비용 2", "두 수로의 중앙 교량 · 파도는 높이 0만 공격", "환영 통로 사이 구조 신호를 연결 · 신호 주변은 보호 구역", "북쪽 방벽의 세 문으로 진입 · 봉인망을 먼저 파괴", "중앙 경계핵과 세 귀환 신호 · 봉쇄 사이 안전길을 유지"}[stage-FirstStage];
         }
@@ -87,10 +91,29 @@ namespace TalesTactics
         public static CharacterData Boss(BattleCatalog catalog,string id,bool early=false)
             =>(catalog.CrossoverVariants??Array.Empty<CharacterData>()).FirstOrDefault(c=>c!=null&&c.Id==id&&c.CrossoverEarlyForm==early)
                 ??catalog.Enemies.FirstOrDefault(c=>c!=null&&c.Id==id)??throw new InvalidOperationException("Missing crossover enemy: "+id);
+        // Preview and victory rewards both read Chapter, including repeat clears.
+        // The opening six medals remain available for a full deployed party.
+        static readonly (string Id,string Name)[] laterEquipmentRewards={
+            ("training-staff","수련 지팡이"),
+            ("steel-fist","강철 권갑"),
+            ("infantry-rifle","보병 소총"),
+            ("training-spear","수련 창"),
+            ("reinforced-bow","강화 활"),
+            ("steel-claw","강철 발톱"),
+            ("steel-shield","강철 방패"),
+            ("tempered-armor","단련 갑옷"),
+            ("swift-boots","기동 장화"),
+            ("tempered-armor","단련 갑옷"),
+            ("focus-charm","집중 부적"),
+            ("tempered-armor","단련 갑옷"),
+            ("healer-badge","치유 휘장"),
+            ("tempered-armor","단련 갑옷")
+        };
         public static CampaignStages.Chapter Chapter(int stage)
         {
             var e=Episode(stage);int level=1+(e.Number-1)*2;
-            return new CampaignStages.Chapter(e.Number+"화 · "+e.Title,level,Math.Max(1,level-2),35,120+e.Number*50,"guardian-medal","수호의 메달",BossTimeStop.MajorId(e.Boss));
+            var equipment=e.Number<=6?(Id:"guardian-medal",Name:"수호의 메달"):laterEquipmentRewards[e.Number-7];
+            return new CampaignStages.Chapter(e.Number+"화 · "+e.Title,level,Math.Max(1,level-2),35,120+e.Number*50,equipment.Id,equipment.Name,BossTimeStop.MajorId(e.Boss));
         }
     }
 }

@@ -47,7 +47,8 @@ namespace TalesTactics
     public sealed class ActionExecutionState:BattleState {public ActionExecutionState(BattleDirector b):base(b){}public override void Cancel(){} }
     public sealed class FacingSelectionState:BattleState
     {
-        public FacingSelectionState(BattleDirector b):base(b){}
+        public readonly bool GuardOnConfirm;
+        public FacingSelectionState(BattleDirector b,bool guardOnConfirm=false):base(b){GuardOnConfirm=guardOnConfirm;}
         public override void Enter(){B.BeginFacingPreview();B.Board.ClearHighlights();base.Enter();}
     }
     public sealed class TurnEndState:BattleState
