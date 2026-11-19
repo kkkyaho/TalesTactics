@@ -1,5 +1,16 @@
 # 아키텍처
 
+## Windows·Android 공통 게임과 플랫폼 처리
+
+전투 규칙·캐릭터·성장·캠페인·저장 데이터는 Windows와 Android에서 공유한다. `BattleTouchInput`은 모바일 입력을 전장 탭 미리보기와 별도 확정, 드래그 이동, 두 손가락 확대·축소로 연결한다. UI에서 시작했거나 취소된 접촉, 다중 접촉 후 남은 손가락은 전장 행동으로 이어지지 않는다. 상태·활성 유닛·모달 전환 때 이전 터치 선택을 해제한다. PC의 마우스·키보드 경로는 유지한다.
+
+`MobileUiLayout`과 `BattleMobileHud`는 안전영역, 전투 명령 창, 페이지별 기술 선택, 확정·취소와 방향 버튼을 모바일에서 적용한다. 버튼 크기는 Canvas 단위이며 실제 휴대폰의 물리적 터치 크기는 실기기에서 확인해야 한다. 모바일 설정·조작 창은 60 Canvas 단위의 버튼을 배치하고 Android에서 적용하지 않는 PC 해상도·창 모드 선택을 표시하지 않는다. 터치 도움말은 경로·대상 예측 뒤 화면 버튼으로 확정하는 흐름을 따른다. `AndroidRuntimeSettings`는 초기 목표를 30fps로 설정한다. 목표 프레임과 실제 성능 측정은 구분한다.
+
+`BattleMobileLifecycle`은 안전한 아군 명령 경계에서 체크포인트를 저장하며 이동·공격 연출, 적 턴과 미확정 선택 중에는 이전 체크포인트를 보존한다. 앱 전환에서도 같은 규칙을 적용한다. 모바일 이어하기는 다음 안전한 저장 또는 보상 확정까지 복구 지점을 유지하며, PC의 기존 중단 저장 소비 규칙은 유지한다. 모바일 표시 설정은 `settings-mobile.json`으로 분리한다. 기기 간 클라우드 동기화는 포함하지 않는다.
+
+`AndroidBuild`는 별도 검증 checkout에서 ARM64·IL2CPP·가로 화면 APK를 만든다. `AndroidTextureSettingsScope`는 기존 Android 개별 설정을 보존하고 나머지 텍스처에 빌드 중 ASTC 6×6 압축을 적용한 뒤 원래 importer와 메타데이터를 복원한다. 텍스처 복구 기록은 `Library/TalesTactics/AndroidTextureSettingsRecovery.json`에 남긴다. PlayerSettings는 기본값의 생략 상태와 다른 플랫폼 값을 포함한 직렬화 스냅샷을 메모리에만 보관하고, 정상 반환·예외 시 복원 후 전체 일치를 검사한다. 프로세스 강제 종료까지 보장하지 않으므로 사용자 작업 checkout에서 빌드 대상을 전환하지 않는다. [구현·검증 범위](Android/README.md).
+
+
 ## 전체 전장 배치와 저장 호환
 
 `TacticalMissionLayout`은 전장 이름·장소·안내·목표 종류, 아군 6자리·적 9자리, 신호·출구·계약 좌표와 맵 생성기를 묶는다. `MainTacticalMissions`는 메인 4~20화, `PersonalTacticalMissions`는 개인 구조/시련 20개를 정의한다. 대화 단계는 포함하지 않는다. 지형 생성 후 배치 칸을 강제로 열지 않으며, 모든 활성·전투불능·예비·소환 자리는 실제 통행 가능한 칸으로 작성한다. 메인 11화는 기존 `PrepareFronts`의 편성 인원별 서/동 배치를 유지한다.

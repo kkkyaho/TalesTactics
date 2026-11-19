@@ -1,0 +1,90 @@
+{
+  "status": "completed",
+  "duration": 42.27,
+  "summary": {
+    "total": 11,
+    "passed": 8,
+    "failed": 3,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchAttackPreviewsAndInvalidTileDisarmsBeforeExplicitExecution",
+      "Status": "Passed",
+      "Duration": 32.6976303,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchBeginningOnUiCannotBecomeAMapTapOrDrag",
+      "Status": "Failed",
+      "Duration": 1.8185712,
+      "Message": "  Expected: (0.00, 0.00, 0.00)\r\n  But was:  (-0.49, 0.00, -1.34)\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<AndroidTouchBeginningOnUiCannotBecomeAMapTapOrDrag>d__23.MoveNext () [0x002f0] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\AndroidTouchSceneTests.cs:110\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchCancellationModalAndTimingNeverReuseHeldContacts",
+      "Status": "Failed",
+      "Duration": 1.1496375,
+      "Message": "  Expected: null\r\n  But was:  (4, 2)\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<AndroidTouchCancellationModalAndTimingNeverReuseHeldContacts>d__25.MoveNext () [0x002ad] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\AndroidTouchSceneTests.cs:165\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchDragAndPinchNeverCommitAndPinchReleaseCannotTurnIntoATap",
+      "Status": "Passed",
+      "Duration": 1.2644803,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchMoveNeedsExplicitConfirmationAndCancelClearsTheOldDestination",
+      "Status": "Passed",
+      "Duration": 1.4341102,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchTutorialKeepsItsDestinationGateAndRequiresConfirmation",
+      "Status": "Passed",
+      "Duration": 1.3220463,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileForecastRequiresVisibleExecutionButtonAndCancelsWithoutSpendingAction",
+      "Status": "Failed",
+      "Duration": 1.2358941,
+      "Message": "  Expected: <TalesTactics.CommandState>\r\n  But was:  <TalesTactics.ActionSelectionState>\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<MobileForecastRequiresVisibleExecutionButtonAndCancelsWithoutSpendingAction>d__215.MoveNext () [0x002d8] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\MobileUiSceneTests.cs:110\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileMenusStayInSafeAreaAndCombatHasLargeExplicitActions",
+      "Status": "Passed",
+      "Duration": 1.2242083,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(1920,1080,80,24)",
+      "Status": "Passed",
+      "Duration": 0.0039773,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(2340,1080,108,24)",
+      "Status": "Passed",
+      "Duration": 0.0002949,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(1280,720,0,0)",
+      "Status": "Passed",
+      "Duration": 0.0002937,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

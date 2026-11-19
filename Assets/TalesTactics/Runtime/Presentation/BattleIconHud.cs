@@ -24,18 +24,18 @@ namespace TalesTactics
             int i=0;
             var team=battle.Session.Scheduler as TeamTurnScheduler;
             var orderNow=team!=null?battle.Session.Units.Where(u=>u.Team==Team.Player).ToArray():battle.Session.Scheduler.Preview(battle.Session.Units).Take(4).ToArray();
-            float turnWidth=Mathf.Max(210,orderNow.Length*48+72);
-            BattleHeaderBackdrop("BattleTurnBackdrop",new Vector2(.5f,1),new Vector2(-turnWidth*.5f,-92),new Vector2(turnWidth*.5f,0));
+            float turnWidth=Mathf.Max(210,orderNow.Length*(MobileHud?64:48)+(MobileHud?84:72));
+            BattleHeaderBackdrop("BattleTurnBackdrop",new Vector2(.5f,1),new Vector2(-turnWidth*.5f,MobileHud?-116:-92),new Vector2(turnWidth*.5f,0));
             if(team!=null)
             {
                 var phase=Label(header,team.Phase==Team.Player?$"아군 턴 {team.Round}":$"적군 턴 {team.Round}",1,22,14);
-                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-turnWidth*.5f+12,-30),new Vector2(turnWidth*.5f-12,-8));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=12;phase.fontSizeMax=14;
+                phase.name="PhaseLabel";Place(phase.rectTransform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(-turnWidth*.5f+12,MobileHud?-36:-30),new Vector2(turnWidth*.5f-(MobileHud?76:12),-8));phase.alignment=TextAlignmentOptions.Center;phase.enableAutoSizing=true;phase.fontSizeMin=MobileHud?17:12;phase.fontSizeMax=MobileHud?18:14;
             }
             foreach(var unit in orderNow)
             {
                 var g=new GameObject(team!=null?"아군 선택: "+unit.Data.Id:"NextUnit"+i,typeof(RectTransform),typeof(UnityEngine.UI.Image));g.transform.SetParent(header,false);
-                float x=-orderNow.Length*24+i*48+2;
-                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,-82),new Vector2(x+44,-32));
+                float x=MobileHud?-turnWidth*.5f+12+i*64:-orderNow.Length*24+i*48+2;
+                Place((RectTransform)g.transform,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(x,MobileHud?-104:-82),new Vector2(x+(MobileHud?60:44),MobileHud?-40:-32));
                 var img=g.GetComponent<UnityEngine.UI.Image>();img.color=unit==battle.Session.Active?new Color(.08f,.35f,.39f):new Color(.07f,.11f,.17f);img.raycastTarget=true;
                 var art=FormationRect(g.transform,"TurnPortrait",new Vector2(.08f,.34f),new Vector2(.92f,.98f));StatusPortrait(art,unit.Data);
                 if(team!=null&&!team.CanSelect(unit))foreach(var graphic in art.GetComponentsInChildren<UnityEngine.UI.Graphic>())graphic.color=new Color(.43f,.48f,.53f,.8f);
@@ -60,7 +60,7 @@ namespace TalesTactics
             {
                 Button(header,"아군 턴 종료",0,ShowEndPhaseConfirmation,team.Phase==Team.Player&&battle.State is CommandState,32);
                 var end=(RectTransform)header.GetChild(header.childCount-1);
-                Place(end,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(turnWidth*.5f-43,-41),new Vector2(turnWidth*.5f-11,-9));
+                Place(end,new Vector2(.5f,1),new Vector2(.5f,1),new Vector2(turnWidth*.5f-(MobileHud?68:43),MobileHud?-90:-41),new Vector2(turnWidth*.5f-(MobileHud?12:11),MobileHud?-34:-9));
                 end.GetComponentInChildren<TMP_Text>().text="";
                 FormationIcon(end,"endturn",new Vector2(.1f,.1f),new Vector2(.9f,.9f),Color.white);
             }
@@ -81,28 +81,28 @@ namespace TalesTactics
             for(int i=0;i<names.Length;i++)
             {
                 var child=header.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
-                var r=(RectTransform)child;r.sizeDelta=new Vector2(72,38);r.anchoredPosition=new Vector2(-8-(1-i)*80,-8);
-                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=16;
+                var r=(RectTransform)child;r.sizeDelta=MobileHud?new Vector2(84,56):new Vector2(72,38);r.anchoredPosition=new Vector2(-8-(1-i)*(MobileHud?92:80),-8);
+                var text=child.GetComponentInChildren<TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=MobileHud?20:16;text.fontSizeMin=MobileHud?18:14;
                 Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(4,1),new Vector2(-4,-1));StyleButton(child,HudRole.Quiet);
             }
         }
         void DrawSkillCards(UnitRuntime unit)
         {
-            var skills=VisibleSkills;
-            if(skillPageOwner!=unit){skillPageOwner=unit;skillPage=Mathf.Max(0,System.Array.IndexOf(skills,battle.LastSkill))/4;shownSkill=null;}
-            skillPage=Mathf.Clamp(skillPage,0,Mathf.Max(0,(skills.Length-1)/4));
-            var page=skills.Skip(skillPage*4).Take(4).ToArray();
+            var skills=VisibleSkills;int pageSize=MobileHud?3:4;
+            if(skillPageOwner!=unit){skillPageOwner=unit;skillPage=Mathf.Max(0,System.Array.IndexOf(skills,battle.LastSkill))/pageSize;shownSkill=null;}
+            skillPage=Mathf.Clamp(skillPage,0,Mathf.Max(0,(skills.Length-1)/pageSize));
+            var page=skills.Skip(skillPage*pageSize).Take(pageSize).ToArray();
             var legacy=(battle.State as SkillDetailsState)?.Skill;
             shownSkill=legacy??(page.Contains(battle.LastSkill)?battle.LastSkill:page.FirstOrDefault());
-            int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>4;
+            int rows=Mathf.Max(1,page.Length);bool pages=skills.Length>pageSize;
             bool roomy=NarrowBattleHud;
-            float firstRow=roomy?54:42,rowStep=roomy?66:42,rowHeight=roomy?60:40;
-            float briefHeight=roomy?46:26,pageHeight=roomy?34:26,detailHeight=roomy?38:28;
+            float firstRow=MobileHud?72:roomy?54:42,rowStep=roomy?66:42,rowHeight=roomy?60:40;
+            float briefHeight=roomy?46:26,pageHeight=MobileHud?56:roomy?34:26,detailHeight=MobileHud?56:roomy?38:28;
             float infoY=firstRow+rows*rowStep,pageY=infoY+(shownSkill!=null?briefHeight+4:0),buttonsY=pageY+(pages?pageHeight+6:0);
             SkillCardHeight=buttonsY+(shownSkill!=null?detailHeight+16:8);
-            Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",8,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,roomy?36:28);
+            Button(commands,showAllSkills?"기술 · 전체 조회":"기술 · 사용 가능",8,()=>{showAllSkills=!showAllSkills;skillPage=0;battle.Hud.Refresh();},true,MobileHud?56:roomy?36:28);
             var filter=(RectTransform)commands.GetChild(commands.childCount-1);CompactSkillButton(filter);
-            Place(filter,new Vector2(0,1),Vector2.one,new Vector2(24,-8-(roomy?36:28)),new Vector2(-112,-8));
+            Place(filter,new Vector2(0,1),Vector2.one,new Vector2(24,-8-(MobileHud?56:roomy?36:28)),new Vector2(-112,-8));
             var mp=Label(commands,"MP "+unit.CurrentMP,8,roomy?36:28,roomy?17:14);mp.alignment=TextAlignmentOptions.MidlineRight;
             Place(mp.rectTransform,Vector2.one,Vector2.one,new Vector2(-100,-8-(roomy?36:28)),new Vector2(-24,-8));
             var brief=Label(commands,"",infoY,briefHeight,roomy?17:13);brief.enableAutoSizing=true;brief.fontSizeMin=roomy?15:11;brief.fontSizeMax=roomy?17:13;
@@ -137,12 +137,13 @@ namespace TalesTactics
             if(pages)
             {
                 Button(commands,"이전 기술 페이지",pageY,()=>{skillPage--;battle.SetState(new ActionSelectionState(battle));},skillPage>0,pageHeight);HalfButton(commands,0);
-                Button(commands,"다음 기술 페이지",pageY,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/4,pageHeight);HalfButton(commands,1);
+                Button(commands,"다음 기술 페이지",pageY,()=>{skillPage++;battle.SetState(new ActionSelectionState(battle));},skillPage<(skills.Length-1)/pageSize,pageHeight);HalfButton(commands,1);
                 CompactSkillButton(commands.GetChild(commands.childCount-2));CompactSkillButton(commands.GetChild(commands.childCount-1));
                 commands.GetChild(commands.childCount-2).GetComponentInChildren<TMP_Text>().text="‹ 이전";
                 commands.GetChild(commands.childCount-1).GetComponentInChildren<TMP_Text>().text="다음 ›";
             }
             if(shownSkill!=null){Button(commands,"기술 상세",buttonsY,()=>ShowSkillInformation(unit,shownSkill),true,detailHeight);}
+            if(MobileHud){MobileActionButton("기술 선택 취소","취소",SkillCardHeight,battle.CancelTouchSelection);SkillCardHeight+=64;}
         }
         void CompactSkillButton(Transform button)
         {var label=button.GetComponentInChildren<TMP_Text>();label.enableAutoSizing=true;label.fontSizeMin=NarrowBattleHud?16:11;label.fontSizeMax=NarrowBattleHud?18:14;Place(label.rectTransform,Vector2.zero,Vector2.one,new Vector2(8,0),new Vector2(-8,0));}

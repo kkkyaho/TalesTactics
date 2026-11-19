@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var pending=UnityEditor.EditorApplication.delayCall; int removed=0; if(pending!=null) foreach(UnityEditor.EditorApplication.CallbackFunction callback in pending.GetInvocationList()) if(callback.Method.DeclaringType.FullName.StartsWith(\"AndroidFoundationWindowsBuild\")){UnityEditor.EditorApplication.delayCall-=callback;removed++;} return new {removed,building=UnityEditor.BuildPipeline.isBuildingPlayer};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "removed": 1,
+        "building": false
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

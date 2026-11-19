@@ -1,0 +1,94 @@
+{
+  "checkedUtc": "2026-11-19T15:57:08.956139+00:00",
+  "apk": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\Android\\TalesTactics.apk",
+  "expectedRunId": "06d40faadb7142e49cfdba7498d17700",
+  "notBeforeUtc": "2026-11-19T15:41:08.640046+00:00",
+  "passed": true,
+  "networkUsed": false,
+  "uploaded": false,
+  "deviceTested": false,
+  "scope": "Current source-only build identity/freshness, Android metadata and landscape manifest, test signature, ZIP CRC/alignment, ABI and SHA-256 stability. This is not an installation, native execution, ELF page-alignment, performance, touch or audio-playback test. Music exclusion is the explicit successful builder preflight plus ZIP filename check; no claim of decoding Unity serialized audio.",
+  "build": {
+    "runId": "06d40faadb7142e49cfdba7498d17700",
+    "startedUtc": "2026-11-19T15:41:11.6451727Z",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 6,
+    "durationSeconds": 323.445518,
+    "sourceOnly": true,
+    "containsLocalMusic": false,
+    "localMusicChecked": true
+  },
+  "buildResultSHA256": "c2c4e03d62d34a7c5f943b726a702c1dfcfeeee285cc717189a470088d11e872",
+  "buildResultLastWriteUtc": "2026-11-19T15:54:45.927290+00:00",
+  "apkLastWriteUtc": "2026-11-19T15:50:17.750982+00:00",
+  "sizeBytes": 214429140,
+  "sha256": "f245f37069cc2b59861f910b2549c543a3193d0c7f44cebfc6f7e7c24f932478",
+  "toolPaths": {
+    "aapt": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\aapt.exe",
+    "apksignerJar": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\lib\\apksigner.jar",
+    "zipalign": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\zipalign.exe",
+    "java": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\OpenJDK\\bin\\java.exe"
+  },
+  "toolResults": {
+    "badging": {
+      "exitCode": 0,
+      "stdout": "package: name='com.talestactics.game' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\ninstall-location:'preferExternal'\nsdkVersion:'26'\ntargetSdkVersion:'36'\nuses-permission: name='android.permission.INTERNET'\napplication-label:'TalesTactics'\napplication-icon-160:'res/Qu.xml'\napplication-icon-65534:'res/Qu.xml'\napplication: label='TalesTactics' icon='res/Qu.xml'\nlaunchable-activity: name='com.unity3d.player.UnityPlayerActivity'  label='' icon=''\nfeature-group: label=''\n  uses-gl-es: '0x30001'\n  uses-feature-not-required: name='android.hardware.touchscreen'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch.distinct'\n  uses-feature-not-required: name='android.hardware.vulkan.version'\nmain\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\nsupports-any-density: 'true'\nlocales: '--_--'\ndensities: '160' '65534'\nnative-code: 'arm64-v8a'\n",
+      "stderr": ""
+    },
+    "manifest": {
+      "exitCode": 0,
+      "stdout": "N: android=http://schemas.android.com/apk/res/android\n  E: manifest (line=2)\n    A: android:versionCode(0x0101021b)=(type 0x10)0x1\n    A: android:versionName(0x0101021c)=\"0.1.0\" (Raw: \"0.1.0\")\n    A: android:installLocation(0x010102b7)=(type 0x10)0x2\n    A: android:compileSdkVersion(0x01010572)=(type 0x10)0x24\n    A: android:compileSdkVersionCodename(0x01010573)=\"16\" (Raw: \"16\")\n    A: package=\"com.talestactics.game\" (Raw: \"com.talestactics.game\")\n    A: platformBuildVersionCode=(type 0x10)0x24\n    A: platformBuildVersionName=(type 0x10)0x10\n    E: uses-sdk (line=8)\n      A: android:minSdkVersion(0x0101020c)=(type 0x10)0x1a\n      A: android:targetSdkVersion(0x01010270)=(type 0x10)0x24\n    E: supports-screens (line=12)\n      A: android:anyDensity(0x0101026c)=(type 0x12)0xffffffff\n      A: android:smallScreens(0x01010284)=(type 0x12)0xffffffff\n      A: android:normalScreens(0x01010285)=(type 0x12)0xffffffff\n      A: android:largeScreens(0x01010286)=(type 0x12)0xffffffff\n      A: android:xlargeScreens(0x010102bf)=(type 0x12)0xffffffff\n    E: uses-permission (line=19)\n      A: android:name(0x01010003)=\"android.permission.INTERNET\" (Raw: \"android.permission.INTERNET\")\n    E: uses-feature (line=21)\n      A: android:glEsVersion(0x01010281)=(type 0x11)0x30001\n    E: uses-feature (line=22)\n      A: android:name(0x01010003)=\"android.hardware.vulkan.version\" (Raw: \"android.hardware.vulkan.version\")\n      A: android:required(0x0101028e)=(type 0x12)0x0\n    E: uses-feature (line=25)\n      A: android:name(0x01010003)=\"android.hardware.touchscreen\" (Raw: \"android.hardware.touchscreen\")\n      A: android:required(0x0101028e)=(type 0x12)0x0\n    E: uses-feature (line=28)\n      A: android:name(0x01010003)=\"android.hardware.touchscreen.multitouch\" (Raw: \"android.hardware.touchscreen.multitouch\")\n      A: android:required(0x0101028e)=(type 0x12)0x0\n    E: uses-feature (line=31)\n      A: android:name(0x01010003)=\"android.hardware.touchscreen.multitouch.distinct\" (Raw: \"android.hardware.touchscreen.multitouch.distinct\")\n      A: android:required(0x0101028e)=(type 0x12)0x0\n    E: application (line=35)\n      A: android:label(0x01010001)=@0x7f040005\n      A: android:icon(0x01010002)=@0x7f030000\n      A: android:extractNativeLibs(0x010104ea)=(type 0x12)0xffffffff\n      A: android:appCategory(0x01010545)=(type 0x10)0x0\n      A: android:enableOnBackInvokedCallback(0x0101066c)=(type 0x12)0xffffffff\n      E: meta-data (line=41)\n        A: android:name(0x01010003)=\"unity.splash-mode\" (Raw: \"unity.splash-mode\")\n        A: android:value(0x01010024)=(type 0x10)0x0\n      E: meta-data (line=44)\n        A: android:name(0x01010003)=\"unity.splash-enable\" (Raw: \"unity.splash-enable\")\n        A: android:value(0x01010024)=(type 0x12)0xffffffff\n      E: meta-data (line=47)\n        A: android:name(0x01010003)=\"unity.requested-visible-insets\" (Raw: \"unity.requested-visible-insets\")\n        A: android:value(0x01010024)=\"\" (Raw: \"\")\n      E: meta-data (line=50)\n        A: android:name(0x01010003)=\"unity.system-bars-behavior\" (Raw: \"unity.system-bars-behavior\")\n        A: android:value(0x01010024)=\"ShowTransientBarsBySwipe\" (Raw: \"ShowTransientBarsBySwipe\")\n      E: meta-data (line=53)\n        A: android:name(0x01010003)=\"unity.render-outside-safearea\" (Raw: \"unity.render-outside-safearea\")\n        A: android:value(0x01010024)=(type 0x12)0xffffffff\n      E: meta-data (line=56)\n        A: android:name(0x01010003)=\"notch.config\" (Raw: \"notch.config\")\n        A: android:value(0x01010024)=\"portrait|landscape\" (Raw: \"portrait|landscape\")\n      E: meta-data (line=59)\n        A: android:name(0x01010003)=\"unity.auto-report-fully-drawn\" (Raw: \"unity.auto-report-fully-drawn\")\n        A: android:value(0x01010024)=(type 0x12)0xffffffff\n      E: meta-data (line=62)\n        A: android:name(0x01010003)=\"unity.strip-engine-code\" (Raw: \"unity.strip-engine-code\")\n        A: android:value(0x01010024)=(type 0x12)0xffffffff\n      E: meta-data (line=65)\n        A: android:name(0x01010003)=\"unity.run-without-focus\" (Raw: \"unity.run-without-focus\")\n        A: android:value(0x01010024)=(type 0x12)0x0\n      E: meta-data (line=68)\n        A: android:name(0x01010003)=\"unity.auto-set-game-state\" (Raw: \"unity.auto-set-game-state\")\n        A: android:value(0x01010024)=(type 0x12)0xffffffff\n      E: activity (line=72)\n        A: android:theme(0x01010000)=@0x7f050001\n        A: android:name(0x01010003)=\"com.unity3d.player.UnityPlayerActivity\" (Raw: \"com.unity3d.player.UnityPlayerActivity\")\n        A: android:enabled(0x0101000e)=(type 0x12)0xffffffff\n        A: android:exported(0x01010010)=(type 0x12)0xffffffff\n        A: android:launchMode(0x0101001d)=(type 0x10)0x2\n        A: android:screenOrientation(0x0101001e)=(type 0x10)0xb\n        A: android:configChanges(0x0101001f)=(type 0x11)0x40003fff\n        A: android:hardwareAccelerated(0x010102d3)=(type 0x12)0x0\n        A: android:resizeableActivity(0x010104f6)=(type 0x12)0x0\n        E: intent-filter (line=82)\n          E: category (line=83)\n            A: android:name(0x01010003)=\"android.intent.category.LAUNCHER\" (Raw: \"android.intent.category.LAUNCHER\")\n          E: action (line=85)\n            A: android:name(0x01010003)=\"android.intent.action.MAIN\" (Raw: \"android.intent.action.MAIN\")\n        E: meta-data (line=88)\n          A: android:name(0x01010003)=\"unityplayer.UnityActivity\" (Raw: \"unityplayer.UnityActivity\")\n          A: android:value(0x01010024)=(type 0x12)0xffffffff\n        E: meta-data (line=91)\n          A: android:name(0x01010003)=\"notch_support\" (Raw: \"notch_support\")\n          A: android:value(0x01010024)=(type 0x12)0xffffffff\n        E: layout (line=95)\n          A: android:minWidth(0x0101013f)=(type 0x5)0x19000\n          A: android:minHeight(0x01010140)=(type 0x5)0x12c00\n",
+      "stderr": ""
+    },
+    "signature": {
+      "exitCode": 0,
+      "stdout": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=US, O=Android, CN=Android Debug\nSigner #1 certificate SHA-256 digest: bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda\nSigner #1 certificate SHA-1 digest: 7ec011fbbec59fc1deec79dfcf94a3adbb1c2b4e\nSigner #1 certificate MD5 digest: b56239fb48a6074dfe51e6695ff8668a\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 3e32d0e681bfdd99872caac4b0f587e7dc2fe53a79573f5b36ab847155f8f191\nSigner #1 public key SHA-1 digest: 1959dad2287ee246582d13652459e924348dc222\nSigner #1 public key MD5 digest: 466ae48a233f0a9ba85614223edaf10a\n",
+      "stderr": ""
+    },
+    "zipAlignment": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "metadata": {
+    "applicationId": "com.talestactics.game",
+    "versionCode": 1,
+    "versionName": "0.1.0",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "architectures": [
+      "arm64-v8a"
+    ]
+  },
+  "activities": [
+    {
+      "element": "activity",
+      "name": "com.unity3d.player.UnityPlayerActivity",
+      "orientation": 11
+    }
+  ],
+  "landscapeOnly": true,
+  "signerSha256": "bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda",
+  "zip": {
+    "entryCount": 327,
+    "nativeLibraries": [
+      "lib/arm64-v8a/lib_burst_generated.so",
+      "lib/arm64-v8a/libil2cpp.so",
+      "lib/arm64-v8a/libmain.so",
+      "lib/arm64-v8a/libunity.so"
+    ],
+    "streamResourceEntries": [
+      {
+        "name": "assets/bin/Data/sharedassets0.resource",
+        "bytes": 4638496
+      }
+    ],
+    "streamResourceBytes": 4638496,
+    "allMemberCrcsPassed": true,
+    "rawLocalMusicEntries": []
+  },
+  "hashStable": true,
+  "buildResultStable": true
+}

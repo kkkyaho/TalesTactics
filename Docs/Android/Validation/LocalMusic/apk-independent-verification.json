@@ -1,0 +1,314 @@
+{
+  "checkedUtc": "2026-11-19T08:55:23.104046+00:00",
+  "apk": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\Android\\Local\\TalesTactics.apk",
+  "expectedRunId": "1edc145290374332aa26277e0b7c4fb1",
+  "passed": true,
+  "networkUsed": false,
+  "uploaded": false,
+  "deviceTested": false,
+  "scope": "APK build identity, metadata, debug signature, ZIP alignment, native ABI and hash stability. Music string scan is supplemental; authoritative inclusion evidence is Unity BuildReport. No installation, gameplay, decoded PCM, streaming performance or audio focus test.",
+  "build": {
+    "runId": "1edc145290374332aa26277e0b7c4fb1",
+    "startedUtc": "2026-11-19T08:40:24.8896370Z",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "sourceOnly": false,
+    "containsLocalMusic": true,
+    "localMusicChecked": true
+  },
+  "sizeBytes": 234146468,
+  "sha256": "14b83b63efa6df3fcba9d004586c1269d9c5f822c705db47979cf43aa3ec007f",
+  "toolPaths": {
+    "aapt": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\aapt.exe",
+    "apksignerJar": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\lib\\apksigner.jar",
+    "zipalign": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\build-tools\\36.0.0\\zipalign.exe",
+    "java": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.0f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\OpenJDK\\bin\\java.exe"
+  },
+  "toolResults": {
+    "badging": {
+      "exitCode": 0,
+      "stdout": "package: name='com.talestactics.game' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\ninstall-location:'preferExternal'\nsdkVersion:'26'\ntargetSdkVersion:'36'\nuses-permission: name='android.permission.INTERNET'\napplication-label:'TalesTactics'\napplication-icon-160:'res/Qu.xml'\napplication-icon-65534:'res/Qu.xml'\napplication: label='TalesTactics' icon='res/Qu.xml'\nlaunchable-activity: name='com.unity3d.player.UnityPlayerActivity'  label='' icon=''\nfeature-group: label=''\n  uses-gl-es: '0x30001'\n  uses-feature-not-required: name='android.hardware.touchscreen'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch.distinct'\n  uses-feature-not-required: name='android.hardware.vulkan.version'\nmain\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\nsupports-any-density: 'true'\nlocales: '--_--'\ndensities: '160' '65534'\nnative-code: 'arm64-v8a'\n",
+      "stderr": ""
+    },
+    "publicBadging": {
+      "exitCode": 0,
+      "stdout": "package: name='com.talestactics.game' versionCode='1' versionName='0.1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\ninstall-location:'preferExternal'\nsdkVersion:'26'\ntargetSdkVersion:'36'\nuses-permission: name='android.permission.INTERNET'\napplication-label:'TalesTactics'\napplication-icon-160:'res/Qu.xml'\napplication-icon-65534:'res/Qu.xml'\napplication: label='TalesTactics' icon='res/Qu.xml'\nlaunchable-activity: name='com.unity3d.player.UnityPlayerActivity'  label='' icon=''\nfeature-group: label=''\n  uses-gl-es: '0x30001'\n  uses-feature-not-required: name='android.hardware.touchscreen'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch'\n  uses-feature-not-required: name='android.hardware.touchscreen.multitouch.distinct'\n  uses-feature-not-required: name='android.hardware.vulkan.version'\nmain\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\nsupports-any-density: 'true'\nlocales: '--_--'\ndensities: '160' '65534'\nnative-code: 'arm64-v8a'\n",
+      "stderr": ""
+    },
+    "signature": {
+      "exitCode": 0,
+      "stdout": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=US, O=Android, CN=Android Debug\nSigner #1 certificate SHA-256 digest: bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda\nSigner #1 certificate SHA-1 digest: 7ec011fbbec59fc1deec79dfcf94a3adbb1c2b4e\nSigner #1 certificate MD5 digest: b56239fb48a6074dfe51e6695ff8668a\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 3e32d0e681bfdd99872caac4b0f587e7dc2fe53a79573f5b36ab847155f8f191\nSigner #1 public key SHA-1 digest: 1959dad2287ee246582d13652459e924348dc222\nSigner #1 public key MD5 digest: 466ae48a233f0a9ba85614223edaf10a\n",
+      "stderr": ""
+    },
+    "publicSignature": {
+      "exitCode": 0,
+      "stdout": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=US, O=Android, CN=Android Debug\nSigner #1 certificate SHA-256 digest: bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda\nSigner #1 certificate SHA-1 digest: 7ec011fbbec59fc1deec79dfcf94a3adbb1c2b4e\nSigner #1 certificate MD5 digest: b56239fb48a6074dfe51e6695ff8668a\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 3e32d0e681bfdd99872caac4b0f587e7dc2fe53a79573f5b36ab847155f8f191\nSigner #1 public key SHA-1 digest: 1959dad2287ee246582d13652459e924348dc222\nSigner #1 public key MD5 digest: 466ae48a233f0a9ba85614223edaf10a\n",
+      "stderr": ""
+    },
+    "zipAlignment": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "metadata": {
+    "applicationId": "com.talestactics.game",
+    "versionCode": 1,
+    "versionName": "0.1.0",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "architectures": [
+      "arm64-v8a"
+    ]
+  },
+  "publicMetadata": {
+    "applicationId": "com.talestactics.game",
+    "versionCode": 1,
+    "versionName": "0.1.0",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "architectures": [
+      "arm64-v8a"
+    ]
+  },
+  "signerSha256": "bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda",
+  "sameSigningCertificateAsPublicApk": true,
+  "zip": {
+    "entryCount": 327,
+    "nativeLibraries": [
+      "lib/arm64-v8a/lib_burst_generated.so",
+      "lib/arm64-v8a/libil2cpp.so",
+      "lib/arm64-v8a/libmain.so",
+      "lib/arm64-v8a/libunity.so"
+    ],
+    "streamResourceEntries": [
+      {
+        "name": "assets/bin/Data/sharedassets0.resource",
+        "bytes": 24358528
+      }
+    ],
+    "streamResourceBytes": 24358528
+  },
+  "publicZip": {
+    "entryCount": 327,
+    "nativeLibraries": [
+      "lib/arm64-v8a/lib_burst_generated.so",
+      "lib/arm64-v8a/libil2cpp.so",
+      "lib/arm64-v8a/libmain.so",
+      "lib/arm64-v8a/libunity.so"
+    ],
+    "streamResourceEntries": [
+      {
+        "name": "assets/bin/Data/sharedassets0.resource",
+        "bytes": 4638496
+      }
+    ],
+    "streamResourceBytes": 4638496
+  },
+  "stringEvidence": {
+    "scope": "Corroborating length-prefixed string evidence only; not parsed AudioClip objects, not Streaming validation, not audio playback.",
+    "allSixLocalNamesFound": true,
+    "allFourteenOriginalNamesFound": true,
+    "localNames": {
+      "99AA233359F955C515": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381168
+        }
+      ],
+      "Tales of Destiny 2 - Wilderness": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380416
+        }
+      ],
+      "9953EC3359F9562305": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381568
+        }
+      ],
+      "9993893359F955C218": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381968
+        }
+      ],
+      "99898D3359F955C018": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380864
+        }
+      ],
+      "99852C3359F955BE1A": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210382080
+        }
+      ]
+    },
+    "originalNames": {
+      "battle": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381280
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243120
+        }
+      ],
+      "boss": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381376
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243440
+        }
+      ],
+      "story": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381680
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243596
+        }
+      ],
+      "victory": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380544
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243280
+        }
+      ],
+      "cless.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210382288
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243760
+        }
+      ],
+      "mint.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381472
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227243940
+        }
+      ],
+      "farah.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210382384
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227244300
+        }
+      ],
+      "tear.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210382480
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227244480
+        }
+      ],
+      "jade.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381872
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227244656
+        }
+      ],
+      "natalia.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380752
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227244836
+        }
+      ],
+      "velvet.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210381776
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227244124
+        }
+      ],
+      "alphen.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380320
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227245012
+        }
+      ],
+      "shionne.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380640
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227245180
+        }
+      ],
+      "kisara.theme": [
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 210380976
+        },
+        {
+          "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+          "offset": 227245368
+        }
+      ]
+    },
+    "scannedAssets": [
+      {
+        "logicalAsset": "assets/bin/Data/globalgamemanagers",
+        "bytes": 136980
+      },
+      {
+        "logicalAsset": "assets/bin/Data/globalgamemanagers.assets",
+        "bytes": 2922136
+      },
+      {
+        "logicalAsset": "assets/bin/Data/level0",
+        "bytes": 5440
+      },
+      {
+        "logicalAsset": "assets/bin/Data/sharedassets0.assets",
+        "bytes": 227398480
+      }
+    ]
+  },
+  "hashStable": true,
+  "publicApkUnchanged": true
+}

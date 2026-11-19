@@ -1,0 +1,132 @@
+{
+  "status": "completed",
+  "duration": 29.16,
+  "summary": {
+    "total": 17,
+    "passed": 14,
+    "failed": 3,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchAttackPreviewsAndInvalidTileDisarmsBeforeExplicitExecution",
+      "Status": "Passed",
+      "Duration": 12.1087543,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchBeginningOnUiCannotBecomeAMapTapOrDrag",
+      "Status": "Passed",
+      "Duration": 1.3279703,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchCancellationModalAndTimingNeverReuseHeldContacts",
+      "Status": "Passed",
+      "Duration": 1.3121297,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchDragAndPinchNeverCommitAndPinchReleaseCannotTurnIntoATap",
+      "Status": "Passed",
+      "Duration": 1.2006257,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchMoveNeedsExplicitConfirmationAndCancelClearsTheOldDestination",
+      "Status": "Passed",
+      "Duration": 1.3982792,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.AndroidTouchTutorialKeepsItsDestinationGateAndRequiresConfirmation",
+      "Status": "Passed",
+      "Duration": 1.1752184,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileAttackAndSelectionPreviewsNeverReplaceTheLastCompletedCommand",
+      "Status": "Passed",
+      "Duration": 2.3452987,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileAutosaveProtectsUnreadableSlotsAndRetainsFreshRecruitment",
+      "Status": "Passed",
+      "Duration": 1.3780361,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileFailedAutosavePreservesLastFileAndRetriesWithoutLosingBattle",
+      "Status": "Failed",
+      "Duration": 0.9994128,
+      "Message": "  Expected: (1, 3)\r\n  But was:  (1, 1)\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<MobileFailedAutosavePreservesLastFileAndRetriesWithoutLosingBattle>d__217.MoveNext () [0x0022d] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\MobilePersistenceSceneTests.cs:116\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileForecastRequiresVisibleExecutionButtonAndCancelsWithoutSpendingAction",
+      "Status": "Passed",
+      "Duration": 1.1731637,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileMenusStayInSafeAreaAndCombatHasLargeExplicitActions",
+      "Status": "Passed",
+      "Duration": 1.1730439,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileMovementSavesCompletedCommandsAndKeepsPriorSnapshotDuringAnimation",
+      "Status": "Failed",
+      "Duration": 1.1741244,
+      "Message": "  Expected: (1, 3)\r\n  But was:  (1, 1)\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<MobileMovementSavesCompletedCommandsAndKeepsPriorSnapshotDuringAnimation>d__215.MoveNext () [0x001b1] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\MobilePersistenceSceneTests.cs:58\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobilePreferencesAndBackgroundPreparationAreSeparateFromDesktopAndTitle",
+      "Status": "Passed",
+      "Duration": 1.1298983,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.BattleSceneTests.MobileRewardAndEndingTransactionsConsumeAutosaveExactlyOnce",
+      "Status": "Failed",
+      "Duration": 1.1845352,
+      "Message": "  Expected: True\r\n  But was:  False\r\n",
+      "StackTrace": "at TalesTactics.PlayModeTests.BattleSceneTests+<MobileRewardAndEndingTransactionsConsumeAutosaveExactlyOnce>d__218.MoveNext () [0x002f3] in C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Assets\\TalesTactics\\PlayModeTests\\MobilePersistenceSceneTests.cs:138\r\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:52\r\n"
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(1920,1080,80,24)",
+      "Status": "Passed",
+      "Duration": 0.0041663,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(2340,1080,108,24)",
+      "Status": "Passed",
+      "Duration": 0.0002828,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "TalesTactics.PlayModeTests.MobileSafeAreaTests.SafeAreaInsetsKeepExistingMenuAnchorsAndAllowDisplayChanges(1280,720,0,0)",
+      "Status": "Passed",
+      "Duration": 0.0002178,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

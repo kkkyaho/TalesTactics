@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "passed": true,
+  "checkedUtc": "2026-11-19T15:57:49.8499719Z",
+  "scope": "Mono.Cecil metadata and IL inspection of the Android IL2CPP ManagedStripped input assembly. No game assembly execution, Unity tests, native binary verification, APK installation, Android device execution, rendering or gameplay validation.",
+  "runtimePath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Library\\Bee\\artifacts\\Android\\ManagedStripped\\TalesTactics.Runtime.dll",
+  "runtimeSHA256": "2c34bfb6164699b6f5309942c3c43c979ccaf535071a09e80efe0d30a953211f",
+  "runtimeSHA256After": "2c34bfb6164699b6f5309942c3c43c979ccaf535071a09e80efe0d30a953211f",
+  "runtimeBytes": 797696,
+  "runtimeLastWriteUtc": "2026-11-19T15:48:34.7017076Z",
+  "cecilPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff\\Mono.Cecil.dll",
+  "cecilSHA256": "0b71905f5995fc8c5224619c4eb40293e6d401ffce0ede5770a222da76c2120b",
+  "requiredProductionTypes": [
+    "TalesTactics.AndroidRuntimeSettings",
+    "TalesTactics.BattleDirector",
+    "TalesTactics.BattleHud",
+    "TalesTactics.MobileUiLayout"
+  ],
+  "knownExcludedReviewTypes": [
+    "TalesTactics.BattleHudRedesignReview",
+    "TalesTactics.ReviewStorageBootstrap",
+    "TalesTactics.CampaignFlowReview",
+    "TalesTactics.CombatClarityReview",
+    "TalesTactics.CombatPresentationReview",
+    "TalesTactics.CrossoverPlayerReview",
+    "TalesTactics.EnvironmentIntegrationReview",
+    "TalesTactics.HelpGuideReview",
+    "TalesTactics.IntermissionUxReview",
+    "TalesTactics.LocalMusicReview",
+    "TalesTactics.ManualPlayerReview",
+    "TalesTactics.OriginalSkillTrioReview",
+    "TalesTactics.OrnateReview",
+    "TalesTactics.QualityPresentationReview",
+    "TalesTactics.SdMotionDirectionReview",
+    "TalesTactics.SignatureWeaponReview",
+    "TalesTactics.SkillRosterVfxFixture",
+    "TalesTactics.SkillRosterVfxReview",
+    "TalesTactics.TitleScreenReview",
+    "TalesTactics.UiRefinementReview",
+    "TalesTactics.UiSafeLayoutReview",
+    "TalesTactics.VfxQualityReview",
+    "TalesTactics.VfxUpgradeReview",
+    "TalesTactics.CampaignPlayerReview",
+    "TalesTactics.PersistencePlayerReview",
+    "TalesTactics.MenuPreviewBake",
+    "TalesTactics.MenuPreviewBakeRunner"
+  ],
+  "productionTypes": [
+    {
+      "name": "TalesTactics.AndroidRuntimeSettings",
+      "methodCount": 1,
+      "fieldCount": 0
+    },
+    {
+      "name": "TalesTactics.BattleDirector",
+      "methodCount": 217,
+      "fieldCount": 88
+    },
+    {
+      "name": "TalesTactics.BattleHud",
+      "methodCount": 382,
+      "fieldCount": 112
+    },
+    {
+      "name": "TalesTactics.MobileUiLayout",
+      "methodCount": 9,
+      "fieldCount": 4
+    }
+  ],
+  "assemblyReferences": [
+    "mscorlib",
+    "System",
+    "System.Core",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro",
+    "UnityEngine.AnimationModule",
+    "UnityEngine.AudioModule",
+    "UnityEngine.CoreModule",
+    "UnityEngine.JSONSerializeModule",
+    "UnityEngine.PhysicsModule",
+    "UnityEngine.TextRenderingModule",
+    "UnityEngine.UI",
+    "UnityEngine.UIModule",
+    "UnityEngine.UnityWebRequestAudioModule",
+    "UnityEngine.UnityWebRequestModule"
+  ],
+  "typeCount": 489,
+  "methodBodiesInspected": 2806,
+  "instructionsInspected": 142510,
+  "reviewFixtureTypes": [],
+  "reviewTypeReferences": [],
+  "reviewMemberReferences": [],
+  "reviewIlReferences": [],
+  "editorOrTestTypes": [],
+  "editorOrTestAssemblies": [],
+  "editorOrTestReferences": [],
+  "editorOrTestTypeReferences": [],
+  "editorOrTestMemberReferences": [],
+  "editorOrTestIlReferences": [],
+  "testAttributes": [],
+  "androidInitializer": {
+    "method": "System.Void TalesTactics.AndroidRuntimeSettings::Initialize()",
+    "hasBody": true,
+    "attributes": [
+      "UnityEngine.RuntimeInitializeOnLoadMethodAttribute"
+    ],
+    "calls": [
+      "UnityEngine.RuntimePlatform UnityEngine.Application::get_platform()",
+      "System.Void UnityEngine.QualitySettings::set_vSyncCount(System.Int32)",
+      "System.Void UnityEngine.Application::set_targetFrameRate(System.Int32)"
+    ]
+  },
+  "checks": [
+    {
+      "name": "Required Android and battle HUD production types retained",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Android initialization method body retained",
+      "passed": true,
+      "observed": {
+        "method": "System.Void TalesTactics.AndroidRuntimeSettings::Initialize()",
+        "hasBody": true,
+        "attributes": [
+          "UnityEngine.RuntimeInitializeOnLoadMethodAttribute"
+        ],
+        "calls": [
+          "UnityEngine.RuntimePlatform UnityEngine.Application::get_platform()",
+          "System.Void UnityEngine.QualitySettings::set_vSyncCount(System.Int32)",
+          "System.Void UnityEngine.Application::set_targetFrameRate(System.Int32)"
+        ]
+      }
+    },
+    {
+      "name": "reviewFixtureTypes excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "reviewTypeReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "reviewMemberReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "reviewIlReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestTypes excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestAssemblies excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestTypeReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestMemberReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "editorOrTestIlReferences excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "testAttributes excluded",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "name": "Android IL2CPP input unchanged during inspection",
+      "passed": true,
+      "observed": "2c34bfb6164699b6f5309942c3c43c979ccaf535071a09e80efe0d30a953211f"
+    },
+    {
+      "name": "Nonempty method body inspection performed",
+      "passed": true,
+      "observed": {
+        "methods": 2806,
+        "instructions": 142510
+      }
+    }
+  ],
+  "failures": [],
+  "buildContext": {
+    "resultPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\Android\\build-result.json",
+    "resultSHA256": "c2c4e03d62d34a7c5f943b726a702c1dfcfeeee285cc717189a470088d11e872",
+    "runId": "06d40faadb7142e49cfdba7498d17700",
+    "startedUtc": "2026-11-19T15:41:11.6451727Z",
+    "notBeforeUtc": "2026-11-19T15:41:08.6400461Z",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 6,
+    "apkPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\Android\\TalesTactics.apk",
+    "apkSHA256": "f245f37069cc2b59861f910b2549c543a3193d0c7f44cebfc6f7e7c24f932478",
+    "apkBytes": 214429140,
+    "apkLastWriteUtc": "2026-11-19T15:50:17.7509819Z",
+    "runtimeWrittenDuringThisBuild": true,
+    "resultAndApkUnchangedDuringInspection": true
+  }
+}

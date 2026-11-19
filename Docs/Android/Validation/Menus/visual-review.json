@@ -1,0 +1,15 @@
+{
+  "mode": "Windows Editor touchControls=true simulation; no Android device, physical touch or simulated notch",
+  "conditions": 56,
+  "passed": true,
+  "reviewedImages": [
+    "Evidence/Menus/settings-1280.png",
+    "Evidence/Menus/status-help-1280.png"
+  ],
+  "visualFindings": [
+    "Settings controls fit inside the 1280x720 landscape screen at 130 percent text scale.",
+    "Status help text fits after shortening the touch confirmation sentence."
+  ],
+  "scope": "Windows Editor touch simulation. Actual Android device, notches, physical touch target sizes and all non-combat menus remain unverified.",
+  "initialAttempt": "Four conditions for help page 4 overflowed. The text was shortened and all 56 conditions were rechecked."
+}

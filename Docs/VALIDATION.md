@@ -1,4 +1,26 @@
-# 검증 기록 — 2026-11-18
+# 검증 기록 — 2026-11-20
+
+## 2026-11-20 — Android 설정·터치 도움말
+
+Android 설정에서 PC 표시 옵션을 숨기고 설정·조작 버튼을 확대했으며 도움말의 공격·기술·타이밍·편성·대화 안내를 터치 흐름에 맞췄다. 실제 [EditMode 703/703·22.92초](Android/Validation/Menus/editmode.json), [PlayMode 319/319·709.08초](Android/Validation/Menus/playmode.json), 화면 56/56조건을 통과했다. 신규 메뉴 2개는 전체 PlayMode에 포함된다.
+
+일반 Windows 빌드는 90.42초·오류 0·경고 4로 성공했고, 검수·테스트 코드 제외를 확인했다. 일반 EXE를 직접 실행한 결과는 아니다. 음원 제외 Android 빌드는 323.45초·오류 0·경고 6로 성공했다. APK는 214,429,140바이트이며 패키지·ARM64·가로 화면·서명·ZIP 정렬/CRC 검사를 통과했다. 전체 PlayerSettings 복원과 Android IL2CPP 입력 DLL의 검수·테스트 코드 제외도 확인했다.
+
+원본 설정·음원·기존 APK 16개, 실제 저장/설정 9개, 검증본의 영구 설정·메타·폰트 1,221개를 최종 비교해 보존을 확인했다. 작업본·검증본 소스/meta 35개도 일치한다. 시작 기준에 포함된 임시 테스트 장면 메타 1개의 정상 정리는 별도로 기록했다. 테스트 산출물 변화도 별도 집계하며 전체 사용자 폴더 불변으로 표현하지 않는다. 연결 휴대폰 0대로 실제 설치·터치·앱 중단/복귀·성능·음원 재생은 미검증이다. Editor 검사와 APK 빌드 성공을 실기기 플레이 성공으로 표현하지 않는다.
+
+[상세 결과·빌드 증거·실패 이력](Android/MENUS.md). 새 APK·사용자 음원은 업로드하지 않는다. 기존 다운로드에는 이번 메뉴 변경이 포함되지 않으며, 검증된 음원 없는 소스만 공개 develop 반영 대상으로 삼는다.
+
+## 2026-11-19 — PC·Android 병행 개발 기반
+
+터치 선택·별도 실행, 드래그·핀치, 안전영역·전투 명령 UI, 안전한 명령 경계 자동 저장과 모바일 설정·APK 빌드 경로를 추가했다. 실제 Unity [EditMode 703/703·38.4초](Android/Validation/full-editmode-final.json), [PlayMode 317/317·726.49초](Android/Validation/full-playmode-final.json)를 통과했다. 신규 모바일 17개는 전체 317개에 포함되며 Windows Editor에서 실행했다.
+
+일반 Windows [106.32초·오류 0·경고 4](Android/Validation/windows-build-final.json)와 [검수/테스트 코드 제외](Android/Validation/windows-player-type-isolation.json)를 확인했다. 일반 EXE 직접 실행은 하지 않았다. [모바일 모드 화면 6장](Android/Validation/visual-review.json)을 두 가로 비율에서 확인했으며 휴대폰 실행·물리적 버튼 크기 검증과 구분한다. 빌드 후 한글 fallback 캐시 누락은 검증 Editor 재시작 뒤 복구됐고 실패 캡처도 보존했다.
+
+Android 개발 도구 설치 후 [첫 APK](Android/Validation/android-build-final-attempt1.json)는 624.965초·오류 0·경고 6으로 생성됐다. 첫 빌드에서 getter 17개와 텍스처 meta 1,192개는 복원됐지만 PlayerSettings 직렬화 차이 2개가 남아 전체 메모리 스냅샷 복원을 추가했다. [설정 회귀 2개](Android/Validation/android-settings-regression.json)는 통과했으며 최초 회귀 보고서의 실패 원인은 케이스 누락으로 미확정이다. 첫 차이는 검증본에서 복구하고 [저장·정상 종료 후 원래 파일 해시](Android/Validation/android-settings-repair.json)를 확인했다.
+
+보완 후 [최종 두 번째 APK](Android/Validation/android-build-final.json)는 278.0694267초·오류 0·경고 2로 성공했고 [서명·패키지·zipalign](Android/Validation/android-apk-validation.json)을 통과했다. 실제 파일은 214,425,556바이트이며 BuildReport의 별도 집계값 1,211,521,723바이트와 구분한다. [최종 복원 검사](Android/Validation/android-restoration-final.json)는 getter 17개·전체 PlayerSettings 직렬화·텍스처 meta 1,192개·ProjectSettings 27개(파일 총 1,219개)의 일치를 확인했다. 저장·정상 종료 뒤에도 PlayerSettings 원래 해시가 같고 복구 일지가 남지 않았다. [Android IL2CPP 입력 DLL 검사 15/15](Android/Validation/android-managed-isolation-attempt2.json)도 통과했으며 첫 빌드의 런타임 DLL과 같았다. 이는 APK의 네이티브 코드 실행이나 실기기 검증이 아니다.
+
+[최종 보존 검사](Android/Validation/android-final-preservation.json)에서 사용자 파일 750개·실제 저장/설정 9개를 보존하고 작업본·검증본 코드와 meta 32개가 일치했다. 위 전체 테스트와 Windows 빌드는 설정 복원 보완 전 결과다. 코드 입력 440개 중 439개는 유지했고 Editor의 AndroidBuild.cs 1개 변경은 설정 회귀와 두 번째 실제 APK 빌드로 확인했다. 검증 폴더의 동적 글꼴 캐시·설정 변경은 따로 기록했다. 두 APK 요청의 응답 시간 초과 뒤에도 중복 요청 없이 실제 성공 결과를 회수했으며 [Unity Console 오류 0·경고 2와 도구의 과거 시간 초과 오류](Android/Validation/android-console-final.json)를 구분했다. 이후 사용자 명시 승인에 따라 음원 제외 APK와 체크섬을 [Android 테스트 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/android-test-20261119)로 게시했다. 당시 연결 기기 0대로 실기기 실행·성능은 미검증이었으며 코드 커밋·푸시와 정식 릴리즈를 보류했다. 이후 소스 반영 상태는 최신 항목을 따른다. [구현·실패 이력·현재 한계](Android/VALIDATION.md), [실기기 점검표](Android/DEVICE-TEST.md).
 
 ## 2026-11-18 — 전체 전장 전술 구성
 

@@ -18,7 +18,7 @@ namespace TalesTactics
         readonly System.Collections.Generic.List<TMP_FontAsset> ownedFonts=new System.Collections.Generic.List<TMP_FontAsset>();
         readonly Color panel=new Color(0.035f,0.055f,0.11f,0.98f);
         public bool CompactLayout=>battle!=null&&battle.Session!=null&&Screen.width<Screen.height*1.2f;
-        void LateUpdate(){UpdateContextHints();if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);}
+        void LateUpdate(){UpdateMobileLayout();UpdateContextHints();if(TitleOpen){UpdateTitleLayout();return;}UpdateStoryInput();UpdateStatusLayout();UpdateTesterFeedbackLayout();UpdateRewardDetailsLayout();if(left!=null)UpdateLayout();if(tacticalToolbar!=null)tacticalToolbar.gameObject.SetActive(false);}
         void UpdateLayout()
         {
             if(battle.Session!=null){UpdateBattleLayout();return;}
@@ -58,6 +58,7 @@ namespace TalesTactics
         public void Initialize(BattleDirector b)
         {
             battle=b;canvas=GetComponent<RectTransform>();
+            UpdateMobileLayout(false);
             var scaler=GetComponent<UnityEngine.UI.CanvasScaler>();
             if(scaler!=null&&scaler.uiScaleMode==UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize)
                 scaler.screenMatchMode=UnityEngine.UI.CanvasScaler.ScreenMatchMode.Expand;
@@ -155,6 +156,7 @@ namespace TalesTactics
             message.enableAutoSizing=true;message.fontSizeMin=15;message.fontSizeMax=17;
             if(u==null)return;
             DrawUnitSummary(u);DrawSystemEntry(false);DrawMissionEntry();CompactHeaderEntries();
+            if(MobileHud){DrawMobileCameraControls();DrawMobileGestureHint();}
             if(!SkillPanel&&!(battle.State is CommandState)&&!(battle.State is FacingSelectionState)&&!(battle.State is MoveSelectionState)&&!(battle.State is TargetSelectionState))Label(commands,BattleTitle,12,36,20);
             if(battle.State is TutorialCompleteState){Label(commands,"입문 연습 완료",62,70,24);Button(commands,"출전 준비로",160,battle.Restart);Button(commands,"처음부터 연습",215,battle.RepeatTutorial);return;}
             if(battle.State is BattleEndState){DrawResult();return;}
@@ -172,10 +174,10 @@ namespace TalesTactics
                 DrawTargetForecast();
             }
             else if(battle.State is FacingSelectionState)DrawFacingArrows();
-            else if(battle.State is MoveSelectionState){Label(commands,"이동 위치",8,26,16);moveRisk=Label(commands,"",38,44,13);Button(commands,"취소",92,()=>battle.State.Cancel(),true,36);}
-            else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,"타이밍 입력 (Space)",280,battle.TimingInput);}
+            else if(battle.State is MoveSelectionState){if(MobileHud)DrawMobileMoveSelection();else{Label(commands,"이동 위치",8,26,16);moveRisk=Label(commands,"",38,44,13);Button(commands,"취소",92,()=>battle.State.Cancel(),true,36);}}
+            else if(battle.State is ActionExecutionState){timing=Label(commands,"행동 중…",70,180,21);Button(commands,MobileHud?"타이밍 입력":"타이밍 입력 (Space)",MobileHud?268:280,battle.TimingInput,true,MobileHud?56:38);}
         }
-        public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":"Space / 버튼 입력")}";}
+        public void UpdateTiming(){if(timing!=null)timing.text=$"사자전후 → 사후폭쇄진\n\n진행 {battle.TimingProgress:P0}\n입력 구간 40%–75%\n{(battle.TimingSuccess?"성공":MobileHud?"버튼 입력":"Space / 버튼 입력")}";}
         public void Inspect(Vector2Int p){var t=battle.Session.Grid[p];var u=battle.Session.Units.FirstOrDefault(x=>x.Position==p&&x.Alive);battle.InspectUnit(u);battle.Message=$"Tile {p} / 높이 {t.Height} / {t.Terrain} / "+(t.Walkable?$"이동비용 {t.MovementCost}":t.Terrain==TerrainType.Water?"깊은 물 · 통과 불가":"통과 불가")+(u!=null?$"\n{u.Data.DisplayName} HP {u.CurrentHP}/{u.Stats.HP} · "+StatusText.Describe(u)+(u.Team==Team.Enemy?"\n"+EnemyTactics.Describe(u):""):"");Refresh();if(u?.Team==Team.Enemy&&battle.State is CommandState)ShowEnemySummary(u);}
     }
 }

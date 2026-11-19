@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "try { TalesTactics.Editor.AndroidBuild.SourceOnlyApk(); return \"unexpected success\"; } catch(System.InvalidOperationException e) { return new { rejected = true, reason = e.Message, activeTarget = UnityEditor.EditorUserBuildSettings.activeBuildTarget.ToString() }; }"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "rejected": true,
+        "reason": "Open a separate checkout with Android as the active build target first.",
+        "activeTarget": "StandaloneWindows64"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

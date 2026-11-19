@@ -44,7 +44,7 @@ namespace TalesTactics
             catch(System.Exception e){Debug.LogError("Review storage initialization rejected: "+e.Message);enabled=false;Application.Quit(2);return;}
 #endif
             ConfigureStorage(storageRoot,true);Hud.Initialize(this);
-            gameObject.AddComponent<WindowDisplayController>().Initialize(this);
+            if(!Application.isMobilePlatform)gameObject.AddComponent<WindowDisplayController>().Initialize(this);
             if(!CatalogValidation.TryValidate(Catalog,out var error))
             {Debug.LogError("TalesTactics: "+error);Hud.ShowSetupError(error);enabled=false;return;}
             Deployment.RemoveAll(i=>i<0||i>=Catalog.Characters.Length);
@@ -58,6 +58,7 @@ namespace TalesTactics
         {
             UpdateActionFeedback();
             HealthHoveredUnit=null;
+            if(UpdateBattleTouchInput())return;
             var dragMouse=Mouse.current;
             if(HandleCameraDrag(dragMouse!=null?dragMouse.position.ReadValue():Vector2.zero,dragMouse!=null&&dragMouse.middleButton.wasPressedThisFrame,dragMouse!=null&&dragMouse.middleButton.isPressed))return;
             if(Hud.TitleOpen)
@@ -147,7 +148,7 @@ namespace TalesTactics
             }
             State?.Cancel();
         }
-        public void SetState(BattleState state){ClearMessageForState(state);State=state;Target=null;Forecast=null;KeyboardTile=null;state.Enter();Board.RefreshFocus();}
+        public void SetState(BattleState state){ResetTouchForTransition();ClearMessageForState(state);State=state;Target=null;Forecast=null;KeyboardTile=null;state.Enter();Board.RefreshFocus();SaveMobileCommandBoundary();}
         public void BeginBattle()
         {
             if(!TrainingMode&&!CanPlayCampaignStage(SelectedStage))return;
@@ -175,13 +176,13 @@ namespace TalesTactics
             Session.Opening=BattleOpening.Capture(Session,Catalog);
             Board.Build(Session);Audio.PlayBattle(!TrainingMode&&CampaignStages.Get(SelectedStage).BossMusic);Message="";SetState(new TurnStartState(this));
         }
-        public void Restart(){Message="";Hud.HideContextHints();Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowIntermissionHub();}
+        public void Restart(){ResetTouchForTransition();Message="";Hud.HideContextHints();Hud.CloseMission();Hud.CloseSystemMenu();Hud.CloseHelp();ResetTutorial();CloseStory();StopAllCoroutines();ClearTacticalSelection();TimingActive=false;RewardPending=false;Session=null;State=null;Board.ResetBoard();Audio.StopAll();Hud.ShowIntermissionHub();}
         public void MoveCommand(){if(IsPlayerCommand&&!Session.Active.Moved&&TutorialAllows(TutorialStep.Movement))SetState(new MoveSelectionState(this));}
         public void AttackCommand(){if(IsPlayerCommand&&!Session.Active.Acted&&TutorialAllows(TutorialStep.Attack))SelectSkill(Session.Active.Data.BasicAttack);}
         public bool CanOpenSkills=>Session?.Active!=null&&(!Session.Active.Acted||Session.Active.Data.Skills.Any(s=>s!=null&&IsFollowup(s)&&Session.Resolver.CanUse(Session.Active,s,true)==null));
         public void SkillCommand(){if(IsPlayerCommand&&CanOpenSkills&&TutorialAllows(TutorialStep.Healing))SetState(new ActionSelectionState(this));}
         public void WaitCommand(){if(IsPlayerCommand&&TutorialAllows(TutorialStep.Waiting))SetState(new FacingSelectionState(this));}
-        public void Undo(){if(!TutorialActive&&IsPlayerCommand&&Session.Active.CanUndoMove){RecordAction("이동 취소");if(Session.UndoMove()){RefreshViews();Hud.Refresh();}}}
+        public void Undo(){if(!TutorialActive&&IsPlayerCommand&&Session.Active.CanUndoMove){RecordAction("이동 취소");if(Session.UndoMove()){RefreshViews();Hud.Refresh();SaveMobileCommandBoundary();}}}
         public void Guard(){if(!TutorialActive&&IsPlayerCommand&&!Session.Active.Acted)SetState(new FacingSelectionState(this,true));}
         public bool IsFollowup(SkillData s)=>Session.Active.Acted&&Session.Active.FlamingChain&&s.Gate==SkillGate.FlamingEdge;
         public void SelectSkill(SkillData s)

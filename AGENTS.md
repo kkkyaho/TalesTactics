@@ -29,3 +29,14 @@ Unity CLI 계정 ACL 문제 시 Computer Use 스킬의 node_repl + @oai/sky를 �
 ## 음원을 제외한 원격 소스 — 2026-11-18 승인
 
 사용자가 로컬 음원과 원본 develop을 보존한 별도 공개 소스의 검증·푸시를 승인했다. 원격 develop의 최신 소스에는 LocalMusic6곡과 AudioLibrary의 해당 연결이 없고 기존 곡으로 대체 재생한다. 원본 로컬 develop과 공개 develop은 다른 이력이다. 음원 포함 비공개 로컬 커밋을 공개 develop의 부모·merge 부모로 넣지 않는다. 이후 게시도 당시 원격 develop을 단일 부모로 한 음원 제외 소스만 검증하여 일반 푸시한다. 과거 원격 음원 이력·main·태그를 재작성할 권한은 없다. Docs/SourceOnlyPublish/README.md를 먼저 읽는다.
+
+
+## PC·Android 병행 — 사용자 지속 지침 (2026-11-19)
+
+- 앞으로 Windows PC와 Android 모바일을 함께 개발한다. 전투·성장·스토리·스테이지·저장 규칙은 같은 프로젝트에서 공유한다.
+- Android는 가로 화면을 기준으로 터치 선택·예측·명시적 확정, 안전영역, 앱 중단·복귀를 지원한다. PC의 마우스·키보드·패드 동작도 보존한다.
+- 플랫폼에 영향을 주는 변경은 Windows 회귀와 Android 빌드를 함께 확인한다. 휴대폰 미연결 등으로 실제 기기 검증을 하지 못한 경우 그 한계를 명시하며 APK 빌드 성공을 실기기 플레이 성공으로 표현하지 않는다.
+- Android 검증은 별도 작업 폴더에서 수행해 사용자 PC 작업본의 빌드 대상과 설정을 보존한다. 사용자 음원의 로컬 전용 제한은 APK/AAB에도 동일하게 적용한다.
+- 첫 구현과 검증 범위는 `Docs/Android/README.md`를 따른다.
+
+2026-11-19 명시 승인 예외: 검증한 음원 포함 Android APK 1개(SHA256 14b83b63efa6df3fcba9d004586c1269d9c5f822c705db47979cf43aa3ec007f)와 체크섬의 공개 테스트 배포만 허용한다. MP3 원본·소스 이력·다른 빌드의 로컬 전용 제한은 유지한다. 정확한 범위는 Docs/LocalMusicPolicy.md의 승인 예외를 따른다.

@@ -50,9 +50,9 @@ namespace TalesTactics
             {
                 switch(Tutorial)
                 {
-                    case TutorialStep.Movement:return "1/4 이동 · ‘이동’을 누르고 하나뿐인 푸른 목표 타일을 선택하세요.\n취소해도 다시 시도할 수 있습니다. 밝은 모서리 표시는 현재 행동자입니다.";
-                    case TutorialStep.Attack:return "2/4 공격 · ‘공격’ → 적 클릭으로 바로 사용하세요(Tab 선택 후 Enter도 가능).\n금색은 선택 대상입니다. 미리보기만으로는 행동이 소모되지 않습니다.";
-                    case TutorialStep.Healing:return "3/4 회복 · 민트의 ‘기술’ → ‘퍼스트 에이드’.\n연습용으로 다친 크레스를 클릭하면 바로 사용합니다.";
+                    case TutorialStep.Movement:if(UsesTouchControls)return "1/4 이동 · ‘이동’을 누르고 푸른 목표 칸을 터치하세요.\n경로를 확인한 뒤 ‘여기로 이동’을 눌러 확정합니다.";return "1/4 이동 · ‘이동’을 누르고 하나뿐인 푸른 목표 타일을 선택하세요.\n취소해도 다시 시도할 수 있습니다. 밝은 모서리 표시는 현재 행동자입니다.";
+                    case TutorialStep.Attack:if(UsesTouchControls)return "2/4 공격 · ‘공격’ → 적 터치 → 피해·범위 확인 → ‘공격 실행’.\n대상을 터치하는 것만으로 행동이 소모되지는 않습니다.";return "2/4 공격 · ‘공격’ → 적 클릭으로 바로 사용하세요(Tab 선택 후 Enter도 가능).\n금색은 선택 대상입니다. 미리보기만으로는 행동이 소모되지 않습니다.";
+                    case TutorialStep.Healing:if(UsesTouchControls)return "3/4 회복 · 민트의 ‘기술’ → ‘퍼스트 에이드’ → 크레스 터치.\n회복 예측을 확인한 뒤 ‘기술 실행’을 누르세요.";return "3/4 회복 · 민트의 ‘기술’ → ‘퍼스트 에이드’.\n연습용으로 다친 크레스를 클릭하면 바로 사용합니다.";
                     case TutorialStep.Waiting:return "4/4 대기 · 회복으로 MP를 사용했습니다. ‘대기’를 누르세요.\n발밑 방향 표식로 방향을 선택하면 턴과 연습을 마칩니다.";
                     default:return "연습 완료 · 이동, 공격 확정, 회복, 방향 선택을 모두 수행했습니다.\n출전 준비로 돌아가거나 처음부터 다시 연습할 수 있습니다.";
                 }

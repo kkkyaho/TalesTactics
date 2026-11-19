@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "passed": true,
+  "checkedUtc": "2026-11-19T16:00:28.223057+00:00",
+  "summaryGeneratedUtc": "2026-11-19T16:01:28.059830+00:00",
+  "scope": "Read-only SHA-256 preservation checks for the current mobile menu validation. Original settings, user-supplied music and earlier APKs stayed unchanged; actual user saves are checked separately from generated test artifacts.",
+  "preserved": {
+    "workspaceOriginalSettingsMusicAndPreviousApkFiles": 16,
+    "actualUserSaveAndSettingsFiles": 9,
+    "permanentValidationSettingsMetadataAndFontFiles": 1221,
+    "matchingRootAndValidationSourceMetaPairs": 35,
+    "protectedFileChanges": 0,
+    "sourceMetaMismatches": 0
+  },
+  "validationBaselineClassification": {
+    "baselineFileCount": 1222,
+    "permanentFilesPreserved": 1221,
+    "expectedTransientTestMetadataRemoved": 1,
+    "correspondingTemporarySceneAlsoAbsent": true,
+    "temporaryMetadataBaselineSha256": "8cef405722db9e35d0a691efc9df5f77796a723199b4c5817bba09f44d022ab2",
+    "classification": "The unchanged baseline included one Unity TestRunner temporary scene metadata file. Its exact path and hash identify the single expected cleanup; the missing-file observation remains in the full local report. Permanent files are the other 1221 entries."
+  },
+  "persistentTree": {
+    "baselineFileCount": 5469,
+    "currentFileCount": 5534,
+    "wholeTreeUnchanged": false,
+    "nonTestFilesPreserved": true,
+    "testArtifactChanges": {
+      "modified": 1,
+      "missing": 0,
+      "added": 65,
+      "unreadable": 0
+    },
+    "classification": "TestResults.xml and StorageTests/** are generated test artifacts. Changes in those categories are counted separately and do not mean actual player save/settings files changed."
+  },
+  "publicCheckoutMusicExclusion": {
+    "localMusicDirectoryAbsent": true,
+    "localMusicMetaAbsent": true,
+    "mp3FileCount": 0
+  },
+  "evidenceIdentity": {
+    "fullLocalReportSha256": "b7de304a4f70fa65e66733f691a04b08d7ee279d1ac99abef140fe7b33fec85d",
+    "baselineSha256": {
+      "protected": "92811714433e7f793aa31dde782d05b2a9c4019a46e149541aa40088f2de20cc",
+      "validationProtected": "3ecfbfc2b22c0a8fe3da1e6f5a3ba5c0b74a42d2ede46e2804d8008e05f30332",
+      "actualUserSaves": "9dbabc65827935840e027d1ce9d192a93f037df4d46a86bb8864c4059cebacf5",
+      "sourceCandidates": "500e520bac08c9a8c6ff5185fb95094f786c45ecf38e08478514e3fa63d32bfb"
+    },
+    "baselineInputsStableDuringComparison": true
+  },
+  "limitations": [
+    "This summary intentionally omits absolute paths, home-directory names, individual fixture paths and per-file lists. Detailed evidence remains in the local report.",
+    "Protected counts describe the supplied permanent-file baselines and the 35 selected source/meta pairs; the separately reported temporary TestRunner metadata cleanup is not counted as a preserved permanent file. This is not a claim that every workspace file is unchanged.",
+    "Generated test artifacts may change, so the whole persistent directory is only unchanged when wholeTreeUnchanged is true.",
+    "The music exclusion check describes the current validation Assets tree; it does not remove or assess music in earlier remote history.",
+    "This preservation check does not execute Unity tests, install an APK, verify real-device gameplay or publish a build."
+  ]
+}

@@ -28,9 +28,10 @@ namespace TalesTactics
             float scale=Mathf.Max(.01f,GetComponent<Canvas>().scaleFactor),zoom=battle.Preferences?.TextScale??1;
             var ground=battle.Session.Grid[unit.Position].WorldPosition(battle.Catalog.Rules.TileHeight);
             var screen=camera.WorldToScreenPoint(ground);
-            var center=new Vector2(screen.x/scale,screen.y/scale);
-            float w=Screen.width/scale,h=Screen.height/scale;
-            var half=new Vector2(88,70)*zoom;
+            var area=UiScreenArea;
+            var center=new Vector2((screen.x-area.x)/scale,(screen.y-area.y)/scale);
+            float w=area.width/scale,h=area.height/scale;
+            var half=(MobileHud?new Vector2(124,104):new Vector2(88,70))*zoom;
             center.x=Mathf.Clamp(center.x,half.x+8,w-half.x-8);center.y=Mathf.Clamp(center.y,half.y+8,h-half.y-8);
             Place(commands,Vector2.zero,Vector2.zero,center-half,center+half);
             var origin=camera.WorldToScreenPoint(ground);
@@ -41,9 +42,9 @@ namespace TalesTactics
                 var direction=new Vector2(point.x,point.y).normalized;
                 // A shallow ground ellipse keeps the artwork at boot level, while the
                 // invisible 44px targets remain easy to hit with mouse or controller.
-                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=new Vector2(44,44)*zoom;
-                r.anchoredPosition=new Vector2(direction.x*62,direction.y*44)*zoom;
-                var arrow=child.GetComponentInChildren<FacingArrowGraphic>();arrow.rectTransform.sizeDelta=new Vector2(30,30)*zoom;
+                var r=(RectTransform)child;r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.sizeDelta=Vector2.one*(MobileHud?64:44)*zoom;
+                r.anchoredPosition=new Vector2(direction.x*(MobileHud?86:62),direction.y*(MobileHud?68:44))*zoom;
+                var arrow=child.GetComponentInChildren<FacingArrowGraphic>();arrow.rectTransform.sizeDelta=Vector2.one*(MobileHud?44:30)*zoom;
                 arrow.SetDirection(direction);
                 arrow.color=facing==battle.PendingFacing?new Color(.43f,.96f,.9f,1):new Color(.86f,.82f,.72f,1);
             }

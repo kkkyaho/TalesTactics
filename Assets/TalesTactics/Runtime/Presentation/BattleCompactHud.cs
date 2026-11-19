@@ -9,10 +9,10 @@ namespace TalesTactics
         UnitRuntime summaryUnit, commandAnchorUnit;
         int commandSide=-1,summaryHP=-1,summaryMP=-1,summarySP=-1,summaryLevel=-1;
         float targetContextHeight=124;
-        bool NarrowBattleHud=>Screen.width<=1100;
+        bool NarrowBattleHud=>MobileHud||Screen.width<=1100;
         float BattleDockWidth=>SkillPanel?320:battle.State is TargetSelectionState?340:200;
         float BattleDockTop=>110;
-        float CommandMenuHeight=>32+48*(battle.Session.Active?.CanUndoMove==true?6:5);
+        float CommandMenuHeight=>32+(MobileHud?64:48)*(battle.Session.Active?.CanUndoMove==true?6:5);
         public bool UnitDetailsOpen=>unitDetails!=null&&unitDetails.gameObject.activeSelf;
         bool SkillPanel=>battle.State is ActionSelectionState||battle.State is SkillDetailsState;
         string BattleTitle=>battle.State is ActionExecutionState?"행동 중":"턴 진행";
@@ -20,6 +20,7 @@ namespace TalesTactics
         {var r=(RectTransform)parent.GetChild(parent.childCount-1);r.anchorMin=new Vector2(column*.5f,1);r.anchorMax=new Vector2((column+1)*.5f,1);}
         void UpdateBattleLayout()
         {
+            if(MobileHud){UpdateMobileBattleLayout();return;}
             bool facing=battle.State is FacingSelectionState;
             bool targeting=battle.State is TargetSelectionState;
             bool open=!(battle.State is BattleEndState)&&!InputModalOpen&&!battle.StoryActive;
@@ -69,7 +70,13 @@ namespace TalesTactics
         Rect BattleViewport(float scale)
         {
             // The former full-height left dock no longer reserves a third of the battlefield.
-            float edge=14*scale,top=108*scale;
+            float edge=14*scale,top=(MobileHud?136:108)*scale;
+            if(MobileHud)
+            {
+                var area=UiScreenArea;float right=314*scale;
+                return new Rect((area.xMin+edge)/Screen.width,(area.yMin+edge)/Screen.height,
+                    Mathf.Max(1,area.width-edge-right)/Screen.width,Mathf.Max(1,area.height-top-edge)/Screen.height);
+            }
             return new Rect(edge/Screen.width,edge/Screen.height,
                 Mathf.Max(1,Screen.width-2*edge)/Screen.width,Mathf.Max(1,Screen.height-top-edge)/Screen.height);
         }
@@ -120,9 +127,9 @@ namespace TalesTactics
             {
                 var child=commands.Cast<Transform>().FirstOrDefault(t=>t.gameObject.activeSelf&&t.name==names[i]);if(child==null)continue;
                 var r=(RectTransform)child;
-                Place(r,new Vector2(0,1),Vector2.one,new Vector2(14,-16-i*48-44),new Vector2(-14,-16-i*48));
+                Place(r,new Vector2(0,1),Vector2.one,new Vector2(14,-16-i*(MobileHud?64:48)-(MobileHud?56:44)),new Vector2(-14,-16-i*(MobileHud?64:48)));
                 StyleButton(child,HudRole.Quiet);
-                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=18;text.fontSizeMin=16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
+                var text=child.GetComponentInChildren<TMPro.TMP_Text>();text.text=labels[i];text.fontSize=text.fontSizeMax=MobileHud?22:18;text.fontSizeMin=MobileHud?20:16;text.alignment=TMPro.TextAlignmentOptions.MidlineLeft;
                 FormationIcon(child,new[]{"move","attack","skill","guard","wait","undo"}[i],new Vector2(0,.5f),new Vector2(0,.5f),Color.white);
                 var icon=(RectTransform)child.GetChild(child.childCount-1);icon.pivot=new Vector2(.5f,.5f);icon.sizeDelta=new Vector2(32,32);icon.anchoredPosition=new Vector2(26,0);
                 Place(text.rectTransform,Vector2.zero,Vector2.one,new Vector2(52,0),new Vector2(-8,0));

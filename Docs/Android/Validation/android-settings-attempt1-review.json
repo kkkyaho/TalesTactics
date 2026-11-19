@@ -1,0 +1,12 @@
+{
+  "checkedUtc": "2026-11-19T06:20:29.5537230Z",
+  "firstBuildSucceeded": true,
+  "firstBuildApiSettings17Restored": true,
+  "firstBuildMetas1192Restored": true,
+  "fullPlayerSettingsRestored": false,
+  "unexpectedPlayerSettings": [
+    "overrideDefaultApplicationIdentifier: 0 to 1",
+    "il2cppCompilerConfiguration: implicit default became explicit Android Release"
+  ],
+  "remedy": "Capture whole PlayerSettings serialized JSON in memory before setters and restore it last; compilation passed, targeted regression and build retry pending."
+}

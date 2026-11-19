@@ -4,9 +4,15 @@
 
 Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입니다. 현재 플레이 범위는 **경계를 잇는 의지 메인 20화**, **동료 10명의 개인 이야기 30단계**, **전용무기 10종**, **고유 보스 20종과 보스 기술 60개**입니다. 기존 6장 캠페인은 현재 플레이에서 제외되며, 이전 저장의 성장·장비·완료 이력은 보존합니다.
 
+## PC·Android 병행 개발
+
+2026-11-19부터 Windows PC와 Android 모바일을 함께 개발합니다. 전투·성장·스토리·저장은 공통으로 유지하며 Android에 터치 선택·별도 실행, 안전영역과 앱 전환 자동 저장을 적용했습니다. 2026-11-20에는 모바일 설정 버튼과 조작·도움말을 다듬었습니다. [이번 개선과 검증 범위](Docs/Android/MENUS.md) · [구현과 빌드 안내](Docs/Android/README.md).
+
+사용자 승인으로 공개된 [음원 포함 Android 테스트 APK](https://github.com/kkkyaho/TalesTactics/releases/download/android-music-test-20261119/TalesTactics-android-music-test-20261119-arm64.apk)는 2026-11-19 버전이며 이번 메뉴 개선은 포함하지 않습니다. 휴대폰 설치·플레이·앱 복귀·장시간 성능 검증은 미완료입니다. [다운로드 검증](Docs/Android/LOCAL-MUSIC.md) · [실기기 점검표](Docs/Android/DEVICE-TEST.md).
+
 ## 다운로드와 현재 버전
 
-현재 소스 `e081a592…`는 **`v0.1.0-preview.9` 태그로 원격 보관**했으며 `main`에 통합하고 원격 반영했습니다. 로컬 Windows ZIP과 시작·정상 종료 검증은 통과했습니다. **사용자 지침에 따라 음원 포함 ZIP의 공개 업로드는 취소**했으며, 잠긴 Windows 세션에서의 최신 타이틀 육안 검수도 미완료입니다. 최신 공개 다운로드는 아래 preview.8을 유지합니다. [Preview9의 실제 결과·실패 이력·남은 단계](Docs/Distribution/Preview9/README.md).
+현재 소스 `e081a592…`는 **`v0.1.0-preview.9` 태그로 원격 보관**했으며 `main`에 통합하고 원격 반영했습니다. 로컬 Windows ZIP과 시작·정상 종료 검증은 통과했습니다. **사용자 지침에 따라 음원 포함 ZIP의 공개 업로드는 취소**했으며, 잠긴 Windows 세션에서의 최신 타이틀 육안 검수도 미완료입니다. 최신 Windows 공개 다운로드는 아래 preview.8을 유지합니다. [Preview9의 실제 결과·실패 이력·남은 단계](Docs/Distribution/Preview9/README.md).
 
 [Windows 공개 테스트판 0.1.0-preview.8 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8) · [배포 검증과 저장 호환](Docs/Distribution/Preview8/README.md)
 

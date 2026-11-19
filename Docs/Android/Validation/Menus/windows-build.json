@@ -1,0 +1,21 @@
+{
+  "finishedUtc": "2026-11-19T15:38:29.4208058Z",
+  "passed": true,
+  "settingsEqual": true,
+  "error": null,
+  "sourceOnly": true,
+  "devicePlaybackTested": false,
+  "result": "Succeeded",
+  "target": "StandaloneWindows64",
+  "seconds": 90.4190833,
+  "bytes": 2247918675,
+  "errors": 0,
+  "warnings": 4,
+  "output": "C:/dev/TalesTactics/Builds/SourceOnlyPublish20261118/Project/Builds/AndroidMenuWindows20261120/TalesTactics.exe",
+  "messages": [
+    "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.",
+    "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+    "Shader 'Hidden/Core/DebugOccluder': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build.",
+    "Shader 'Hidden/Core/DebugOcclusionTest': All SubShaders were stripped because their RenderPipeline tags do not match any active render pipeline asset configured for this build target. This shader will not render. Configure the matching RenderPipelineAsset in QualitySettings/GraphicsSettings, or remove this shader from the build."
+  ]
+}

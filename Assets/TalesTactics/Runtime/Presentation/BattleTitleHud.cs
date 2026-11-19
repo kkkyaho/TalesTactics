@@ -35,7 +35,7 @@ namespace TalesTactics
                 TitleText(titleContent,"갈라진 세계, 다시 이어지는 이야기.",.33f,.40f,17).color=new Color(.70f,.77f,.83f);
                 var fresh=FormationButton(titleContent,"타이틀 새 게임","새 게임",new Vector2(0,.14f),new Vector2(.88f,.27f),()=>ShowTitleSlots(true),true,26);IntermissionGoldButton(fresh);
                 FormationButton(titleContent,"타이틀 불러오기","저장된 게임 불러오기",new Vector2(0,0),new Vector2(.88f,.13f),()=>ShowTitleSlots(false),true,24);
-                FormationText(titleRoot,"↑ ↓ / Tab 선택     Enter / 패드 A 확인     Esc / 패드 B 돌아가기",new Vector2(.08f,.025f),new Vector2(.72f,.075f),15);
+                FormationText(titleRoot,MobileHud?"원하는 메뉴를 터치하세요":"↑ ↓ / Tab 선택     Enter / 패드 A 확인     Esc / 패드 B 돌아가기",new Vector2(.08f,.025f),new Vector2(.72f,.075f),15);
                 titleOverlay=Panel("TitleSlotsOverlay",Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);titleOverlay.SetParent(titleRoot,false);titleOverlay.GetComponent<UnityEngine.UI.Image>().color=new Color(.01f,.03f,.07f,.88f);
                 titleWindow=Panel("TitleSlotsWindow",Vector2.one*.5f,Vector2.one*.5f,new Vector2(-510,-360),new Vector2(510,360));titleWindow.SetParent(titleOverlay,false);
                 titleConfirm=Panel("TitleConfirm",Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);titleConfirm.SetParent(titleRoot,false);titleConfirm.GetComponent<UnityEngine.UI.Image>().color=new Color(.01f,.03f,.07f,.88f);

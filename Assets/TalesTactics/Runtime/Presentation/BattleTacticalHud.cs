@@ -22,9 +22,10 @@ namespace TalesTactics
         void ShowTacticalHelp()
         {
             PrepareUnitModal(battle.Session.Active);if(!UnitDetailsOpen)return;Clear(unitDetails);
+            if(MobileHud)unitDetails.sizeDelta=new Vector2(560,600);
             Label(unitDetails,"전술 표시와 조작",16,36,23);
-            Label(unitDetails,"위험 영역: 이동 후 공격 가능 · 현재 MP/배치 기준\n공격 예고 영역 · 적이 다음 자기 턴에 공격\n상단 초상: 이동/공격 아이콘 · 두루마리: 완료\n청록 테두리: 현재 선택한 아군\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n메뉴 F5: 행동 되감기 · 전투당 3회\n반격/지원: 능력창에서 남은 횟수 확인",66,320,17);
-            Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
+            Label(unitDetails,MobileHud?"한 손가락 드래그: 맵 이동\n두 손가락 벌리기/모으기: 확대·축소\n상단 회전 / 전체 보기 / 현재 유닛: 카메라 조작\n\n아군 터치 → 명령 선택\n이동할 칸 터치 → 경로 확인 → 여기로 이동\n대상 터치 → 피해·범위 확인 → 공격/기술 실행\n취소 버튼으로 선택을 되돌릴 수 있습니다.\n\n대기·방어는 발밑 방향 표식 터치로 확정합니다.\n임무 화면에서 위험 범위와 목표를 확인하세요.":"위험 영역: 이동 후 공격 가능 · 현재 MP/배치 기준\n공격 예고 영역 · 적이 다음 자기 턴에 공격\n상단 초상: 이동/공격 아이콘 · 두루마리: 완료\n청록 테두리: 현재 선택한 아군\nM 이동 · A 공격 · S 기술 · G 방어 · W 대기\n방향키: 타일·방향 / Enter: 선택\nTab: 대상·메뉴 / Esc·우클릭: 취소\nZ: 이동 취소 / V: 위험 표시\n이동 뒤 행동하면 이동 취소가 잠깁니다.\n메뉴 F5: 행동 되감기 · 전투당 3회\n반격/지원: 능력창에서 남은 횟수 확인",66,320,17);
+            Button(unitDetails,"닫기",MobileHud?510:410,()=>CloseUnitDetails(),true,MobileHud?56:38);
         }
         public void ShowMoveRisk(Vector2Int p,int enemies)
         {if(moveRisk!=null)moveRisk.text="도착 "+p+" · "+(enemies>0?"위험: 적 "+enemies+"명 공격 가능":"현재 위험 범위 밖");}
@@ -33,6 +34,7 @@ namespace TalesTactics
         void DrawTargetForecast()
         {
             commands.GetComponent<UnityEngine.UI.Image>().color=new Color(.035f,.065f,.11f,1);
+            if(MobileHud){DrawMobileTargetForecast();return;}
             var u=battle.Session.Active;var skill=battle.SelectedSkill;var f=battle.Forecast;
             if(shownForecast!=f){shownForecast=f;forecastRowIndex=0;}
             var name=Label(commands,skill.DisplayName,10,34,21);name.rectTransform.offsetMax=new Vector2(-66,name.rectTransform.offsetMax.y);
@@ -78,12 +80,13 @@ namespace TalesTactics
         {
             var forecast=battle.Forecast;if(forecast==null)return;
             PrepareUnitModal(battle.Session.Active);if(!UnitDetailsOpen)return;Clear(unitDetails);
+            if(MobileHud)unitDetails.sizeDelta=new Vector2(560,600);
             Label(unitDetails,"전체 전투 예측",16,36,23);
             Label(unitDetails,forecast.Cost+"\n"+forecast.Note,60,66,16);
-            var text=Label(unitDetails,string.Join("\n\n",forecast.Rows.Skip(page*3).Take(3).Select(r=>r.Text)),132,230,18);text.enableAutoSizing=true;text.fontSizeMin=14;text.fontSizeMax=18;
-            Button(unitDetails,"이전 대상",364,()=>ShowForecast(page-1),page>0,32);HalfButton(unitDetails,0);
-            Button(unitDetails,"다음 대상",364,()=>ShowForecast(page+1),(page+1)*3<forecast.Rows.Count,32);HalfButton(unitDetails,1);
-            Button(unitDetails,"닫기",410,()=>CloseUnitDetails());
+            var text=Label(unitDetails,string.Join("\n\n",forecast.Rows.Skip(page*3).Take(3).Select(r=>r.Text)),132,MobileHud?280:230,18);text.enableAutoSizing=true;text.fontSizeMin=14;text.fontSizeMax=18;
+            Button(unitDetails,"이전 대상",MobileHud?430:364,()=>ShowForecast(page-1),page>0,MobileHud?56:32);HalfButton(unitDetails,0);
+            Button(unitDetails,"다음 대상",MobileHud?430:364,()=>ShowForecast(page+1),(page+1)*3<forecast.Rows.Count,MobileHud?56:32);HalfButton(unitDetails,1);
+            Button(unitDetails,"닫기",MobileHud?510:410,()=>CloseUnitDetails(),true,MobileHud?56:38);
         }
         void ShowTraits(CharacterData c) => ShowGrowth(c);
     }

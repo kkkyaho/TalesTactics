@@ -15,13 +15,15 @@ namespace TalesTactics
         public bool CanPlayCampaignStage(int stage)=>stage>=0&&stage<CampaignStages.Count&&(Catalog.CrossoverReady?stage>=CrossoverCampaign.FirstStage:stage<CampaignStages.LegacyCount);
         public bool CanResumeCampaign=>Campaign.SuspendedBattle!=null&&CanPlayCampaignStage(Campaign.SuspendedBattle.Stage);
         public bool CanSuspend=>IsPlayerCommand&&!battleTraining&&!TutorialActive&&!StoryActive&&!TimingActive&&!RewardPending&&Session.Result==BattleResult.Ongoing;
-        public void ConfigureStorage(string root,bool applyDisplay=false)
+        public void ConfigureStorage(string root,bool applyDisplay=false,bool? mobilePlatform=null)
         {
-            preferenceFile=new PreferenceFile(Path.Combine(root,"settings.json"));Preferences=preferenceFile.Load();
+            ConfigureMobilePersistence(mobilePlatform??Application.isMobilePlatform);
+            string settingsPath=Path.Combine(root,MobilePersistenceEnabled?"settings-mobile.json":"settings.json");
+            preferenceFile=new PreferenceFile(settingsPath);Preferences=preferenceFile.Load();
             Profiles=new CampaignProfiles(root);Campaign=Profiles.Load(Preferences.Slot);PersistCampaign=SaveProgress;
             SaveNotice=string.IsNullOrEmpty(preferenceFile.Notice)?Profiles.Store.Notice:preferenceFile.Notice;
-            if(!File.Exists(Path.Combine(root,"settings.json")))Preferences.AutoTiming=Campaign.AutoTiming;
-            Campaign.AutoTiming=Preferences.AutoTiming;RestorePreparation();ApplyPreferences(applyDisplay&&File.Exists(Path.Combine(root,"settings.json")));
+            if(!File.Exists(settingsPath))Preferences.AutoTiming=Campaign.AutoTiming;
+            Campaign.AutoTiming=Preferences.AutoTiming;RestorePreparation();ApplyPreferences(applyDisplay&&File.Exists(settingsPath));
         }
         void RestorePreparation()
         {
@@ -38,7 +40,7 @@ namespace TalesTactics
             var previous=save.SuspendedBattle;bool hadCheckpoint=save.HasSuspendedBattle;var timestamp=save.SavedAt;var deployment=save.Deployment;int stage=save.SelectedStage;
             save.SavedAt=DateTime.UtcNow.ToString("o");save.Deployment=Deployment.ToArray();save.SelectedStage=SelectedStage;
             bool saved=preserveCheckpoint?Profiles.Store.Save(save):CampaignRecruitment.TryConsumeCheckpoint(save,Profiles.Store.Save);
-            if(saved){SaveNotice="저장 완료 · 슬롯 "+(Profiles.Slot+1)+" · "+DateTime.Now.ToString("HH:mm:ss");return true;}
+            if(saved){if(!preserveCheckpoint)ForgetMobileCheckpoint();MobileSaveNotice="";SaveNotice="저장 완료 · 슬롯 "+(Profiles.Slot+1)+" · "+DateTime.Now.ToString("HH:mm:ss");return true;}
             save.SuspendedBattle=previous;save.HasSuspendedBattle=hadCheckpoint;save.SavedAt=timestamp;save.Deployment=deployment;save.SelectedStage=stage;
             SaveNotice=Profiles.Store.Notice;return false;
         }
@@ -69,12 +71,13 @@ namespace TalesTactics
             try
             {
                 var checkpoint=Campaign.SuspendedBattle;var restored=checkpoint.Restore(Catalog);
-                // Consume the checkpoint atomically before play, preventing repeat rewards from an old checkpoint.
-                if(!WriteProgress(Campaign,false))return false;
+                // Desktop consumes a manual checkpoint before play. Mobile keeps its recovery point
+                // until the next command save; the normal reward transaction still consumes it atomically.
+                if(!WriteProgress(Campaign,MobilePersistenceEnabled))return false;
                 Session=restored;battleStage=checkpoint.Stage;battleTraining=false;completed=false;RewardPending=false;pendingReward=null;
                 SelectedStage=checkpoint.Stage;TrainingMode=false;
                 Deployment.Clear();Deployment.AddRange(checkpoint.Deployment);UnityEngine.Random.state=checkpoint.RandomState;
-                Hud.CloseSystemMenu();Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);SetState(new CommandState(this));Message="중단한 전투를 이어갑니다. 종료 전 다시 중단 저장하세요.";Hud.UpdateBattleMessageText();return true;
+                Hud.CloseSystemMenu();Board.Build(Session);Audio.PlayBattle(CampaignStages.Get(battleStage).BossMusic);SetState(new CommandState(this));Message=MobilePersistenceEnabled?"중단한 전투를 이어갑니다. 아군 명령 시 자동 저장합니다.":"중단한 전투를 이어갑니다. 종료 전 다시 중단 저장하세요.";Hud.UpdateBattleMessageText();return true;
             }
             catch(Exception){SaveNotice="중단 전투가 손상되었거나 호환되지 않습니다. 원본을 유지했습니다.";return false;}
         }
@@ -93,7 +96,7 @@ namespace TalesTactics
         {
             UseCT=Preferences.CT;UseFixedSpeedOrder=Preferences.FixedSpeedOrder;UseUtilityAI=Preferences.Utility;
             Audio.SetVolumes(Preferences.Music,Preferences.Effects);
-            if(display&&!Application.isEditor){Screen.SetResolution(Preferences.Width,Preferences.Height,Preferences.Fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);GetComponent<WindowDisplayController>()?.DisplayApplied();}
+            if(display&&UsesDesktopDisplaySettings&&!Application.isEditor){Screen.SetResolution(Preferences.Width,Preferences.Height,Preferences.Fullscreen?FullScreenMode.FullScreenWindow:FullScreenMode.Windowed);GetComponent<WindowDisplayController>()?.DisplayApplied();}
         }
     }
 }

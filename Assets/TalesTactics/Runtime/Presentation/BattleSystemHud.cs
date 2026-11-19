@@ -32,6 +32,17 @@ namespace TalesTactics
             Button(systemWindow,"화면 / 음량 / 입력",62,()=>{settingsDraft=null;ShowSystemMenu(1);});SystemTab(1);
             Button(systemWindow,"전투 진행",62,()=>{settingsDraft=null;ShowSystemMenu(2);});SystemTab(2);
             Button(systemWindow,"글자 / 조작",62,()=>{settingsDraft=null;ShowSystemMenu(3);});SystemTab(3);
+            bool touchSettings=MobileHud&&(page==3||page==1&&!battle.UsesDesktopDisplaySettings);
+            if(touchSettings)
+            {
+                systemWindow.sizeDelta=new Vector2(820,680);
+                foreach(var button in systemWindow.GetComponentsInChildren<UnityEngine.UI.Button>())
+                {
+                    var rect=(RectTransform)button.transform;
+                    if(button.name=="메뉴 닫기"){rect.sizeDelta=Vector2.one*60;rect.anchoredPosition=new Vector2(-22,-8);}
+                    else {rect.anchoredPosition=new Vector2(rect.anchoredPosition.x,-70);rect.sizeDelta=new Vector2(rect.sizeDelta.x,60);}
+                }
+            }
             if(page==0)DrawSaveMenu();else if(page==1)DrawPreferences();else if(page==2)DrawFlowPreferences();else if(page==6||page==7)DrawSystemGuide(page);else DrawAccessibility();
         }
         void SystemTab(int index)
@@ -40,10 +51,13 @@ namespace TalesTactics
         void DrawAccessibility()
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));var d=settingsDraft;
-            Button(systemWindow,"글자 최대 크기: "+Mathf.RoundToInt(d.TextScale*100)+"%",126,()=>{d.TextScale=d.TextScale<1.1f?1.15f:d.TextScale<1.2f?1.3f:1;ShowSystemMenu(3);},true,48);
-            Label(systemWindow,"M 이동   A 공격   S 기술   G 방어   W 대기\n\nEnter 선택   Esc 취소   Z 이동 취소\n\nTab 대상 전환   V 위험 표시   Q / E 회전",210,220,20);
-            Button(systemWindow,"전체 조작 보기",444,()=>{CloseSystemMenu();ShowHelp(7);},true,36);
-            Button(systemWindow,"글자 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(3);},true,44);
+            Button(systemWindow,"글자 최대 크기: "+Mathf.RoundToInt(d.TextScale*100)+"%",MobileHud?142:126,()=>{d.TextScale=d.TextScale<1.1f?1.15f:d.TextScale<1.2f?1.3f:1;ShowSystemMenu(3);},true,MobileHud?60:48);
+            Label(systemWindow,MobileHud?
+                "이동할 칸 터치 → 경로 확인 → 여기로 이동\n\n대상 터치 → 예측 확인 → 공격 / 기술 실행\n\n한 손가락 드래그: 전장 이동\n두 손가락 벌림 / 모음: 확대 / 축소\n취소 버튼: 이전 선택으로 돌아가기":
+                "M 이동   A 공격   S 기술   G 방어   W 대기\n\nEnter 선택   Esc 취소   Z 이동 취소\n\nTab 대상 전환   V 위험 표시   Q / E 회전",MobileHud?220:210,220,20);
+            Button(systemWindow,"전체 조작 보기",MobileHud?452:444,()=>{CloseSystemMenu();ShowHelp(7);},true,MobileHud?60:36);
+            Button(systemWindow,"글자 설정 저장",526,()=>{battle.SavePreferences(d,false);ShowSystemMenu(3);},true,MobileHud?60:44);
+            Label(systemWindow,battle.SaveNotice,596,36,14);
         }
         void DrawFlowPreferences()
         {
@@ -99,7 +113,7 @@ namespace TalesTactics
         void DrawSystemGuide(int page)
         {
             string text=page==6?
-                "저장 · 이어하기\n아군 명령 중 저장 후 나가기를 선택하세요. 이어한 뒤 종료할 때도 다시 저장해야 합니다. 보상·거래·장비·승급은 자동 저장됩니다. 새 전투 보상 저장 시 이전 중단 기록은 지워집니다.\n\n되돌리기\n전투당 3회, 최근 12개 행동 중 직전 행동 전으로 돌아갑니다. 이후 적 행동과 확률 판정도 함께 되돌립니다. 사용 횟수와 기록은 중단 저장에 남습니다. 훈련·연출 중·승리 후에는 사용할 수 없습니다.\n\n재도전\n출전 당시 편성·장비·레벨·규칙으로 다시 시작합니다. 저장된 성장·골드·장비는 유지됩니다.":
+                (battle.MobilePersistenceEnabled?"저장 · 이어하기\n캠페인 전투는 아군 명령 대기마다 자동 저장됩니다. 앱 종료 후 마지막 저장 상태에서 이어합니다. 훈련·입문 연습은 저장되지 않습니다. 보상·거래·장비·승급은 확정 시 저장됩니다.":"저장 · 이어하기\n아군 명령 중 저장 후 나가기를 선택하세요. 이어한 뒤 종료할 때도 다시 저장해야 합니다. 보상·거래·장비·승급은 자동 저장됩니다. 새 전투 보상 저장 시 이전 중단 기록은 지워집니다.")+"\n\n되돌리기\n전투당 3회, 최근 12개 행동 중 직전 행동 전으로 돌아갑니다. 이후 적 행동과 확률 판정도 함께 되돌립니다. 사용 횟수와 기록은 중단 저장에 남습니다. 훈련·연출 중·승리 후에는 사용할 수 없습니다.\n\n재도전\n출전 당시 편성·장비·레벨·규칙으로 다시 시작합니다. 저장된 성장·골드·장비는 유지됩니다.":
                 "난이도\n여유: 적 Lv−2 / 표준: 기존 / 도전: 적 Lv+2. 보상은 같습니다.\n\n"+(battle.Catalog.CrossoverReady?"임무 규칙\n구조·신호·증원은 각 임무의 목표와 적 정보에서 확인합니다.":"임무 변형\n이전 캠페인의 구조·증원 규칙을 전환합니다.")+"\n\n반격 · 지원\n단일 공격 뒤 인접 지원 50% → 생존 대상 반격 75%. 각자 자기 턴까지 1회이며 사거리·시야와 행동 불가 상태를 따릅니다.\n\n규칙은 다음 출전부터 적용됩니다. 이어하기·재도전은 출전 당시 규칙을 유지합니다. 적 연출 속도는 판정에 영향을 주지 않습니다.";
             Label(systemWindow,text,124,392,20);
             Button(systemWindow,"설명 돌아가기",532,()=>ShowSystemMenu(page==6?0:2),true,40);CaptionLastButton(systemWindow,"돌아가기");
@@ -107,25 +121,29 @@ namespace TalesTactics
         void DrawPreferences()
         {
             if(settingsDraft==null)settingsDraft=JsonUtility.FromJson<PlayerPreferences>(JsonUtility.ToJson(battle.Preferences));
-            var d=settingsDraft;
-            Button(systemWindow,"해상도: "+d.Width+" × "+d.Height,116,()=>{d.WindowMaximized=false;if(d.Width==1280){d.Width=1366;d.Height=768;}else if(d.Width==1366){d.Width=1920;d.Height=1080;}else{d.Width=1280;d.Height=800;}ShowSystemMenu(1);});
-            Button(systemWindow,d.Fullscreen?"화면: 전체 화면":"화면: 창 모드",160,()=>{d.Fullscreen=!d.Fullscreen;ShowSystemMenu(1);});
-            PreferenceRow("음악",d.Music,204,()=>{d.Music=Mathf.Max(0,d.Music-.1f);ShowSystemMenu(1);},()=>{d.Music=Mathf.Min(1,d.Music+.1f);ShowSystemMenu(1);});
-            PreferenceRow("효과음",d.Effects,248,()=>{d.Effects=Mathf.Max(0,d.Effects-.1f);ShowSystemMenu(1);},()=>{d.Effects=Mathf.Min(1,d.Effects+.1f);ShowSystemMenu(1);});
-            Button(systemWindow,"패드 커서 속도: "+d.CursorSpeed.ToString("0.0")+"배",292,()=>{d.CursorSpeed=d.CursorSpeed>=2?.5f:d.CursorSpeed+.25f;ShowSystemMenu(1);});
-            Button(systemWindow,d.AutoTiming?"파라 타이밍: 자동 입력":"파라 타이밍: 수동 입력",336,()=>{d.AutoTiming=!d.AutoTiming;ShowSystemMenu(1);});
-            Button(systemWindow,"다음 전투 턴 순서: "+(d.CT?"CT":d.FixedSpeedOrder?"SPD":"아군 자유 선택"),380,()=>{if(d.CT){d.CT=false;d.FixedSpeedOrder=false;}else if(d.FixedSpeedOrder){d.FixedSpeedOrder=false;d.CT=true;}else d.FixedSpeedOrder=true;ShowSystemMenu(1);});
-            Button(systemWindow,d.Utility?"다음 전투 AI: Utility":"다음 전투 AI: 기본",424,()=>{d.Utility=!d.Utility;ShowSystemMenu(1);});
+            var d=settingsDraft;bool mobile=!battle.UsesDesktopDisplaySettings;
+            if(!mobile)
+            {
+                Button(systemWindow,"해상도: "+d.Width+" × "+d.Height,116,()=>{d.WindowMaximized=false;if(d.Width==1280){d.Width=1366;d.Height=768;}else if(d.Width==1366){d.Width=1920;d.Height=1080;}else{d.Width=1280;d.Height=800;}ShowSystemMenu(1);});
+                Button(systemWindow,d.Fullscreen?"화면: 전체 화면":"화면: 창 모드",160,()=>{d.Fullscreen=!d.Fullscreen;ShowSystemMenu(1);});
+            }
+            float first=mobile?142:204,step=mobile?68:44,height=mobile?60:38;
+            PreferenceRow("음악",d.Music,first,()=>{d.Music=Mathf.Max(0,d.Music-.1f);ShowSystemMenu(1);},()=>{d.Music=Mathf.Min(1,d.Music+.1f);ShowSystemMenu(1);},height);
+            PreferenceRow("효과음",d.Effects,first+step,()=>{d.Effects=Mathf.Max(0,d.Effects-.1f);ShowSystemMenu(1);},()=>{d.Effects=Mathf.Min(1,d.Effects+.1f);ShowSystemMenu(1);},height);
+            Button(systemWindow,"패드 커서 속도: "+d.CursorSpeed.ToString("0.0")+"배",first+step*2,()=>{d.CursorSpeed=d.CursorSpeed>=2?.5f:d.CursorSpeed+.25f;ShowSystemMenu(1);},true,height);
+            Button(systemWindow,d.AutoTiming?"파라 타이밍: 자동 입력":"파라 타이밍: 수동 입력",first+step*3,()=>{d.AutoTiming=!d.AutoTiming;ShowSystemMenu(1);},true,height);
+            Button(systemWindow,"다음 전투 턴 순서: "+(d.CT?"CT":d.FixedSpeedOrder?"SPD":"아군 자유 선택"),first+step*4,()=>{if(d.CT){d.CT=false;d.FixedSpeedOrder=false;}else if(d.FixedSpeedOrder){d.FixedSpeedOrder=false;d.CT=true;}else d.FixedSpeedOrder=true;ShowSystemMenu(1);},true,height);
+            Button(systemWindow,d.Utility?"다음 전투 AI: Utility":"다음 전투 AI: 기본",first+step*5,()=>{d.Utility=!d.Utility;ShowSystemMenu(1);},true,height);
             HalfButton(systemWindow,0);CaptionLastButton(systemWindow,d.Utility?"AI: Utility":"AI: 기본");
-            Button(systemWindow,d.ReducedEffects?"효과: 부드럽게":"효과: 풍부하게",424,()=>{d.ReducedEffects=!d.ReducedEffects;ShowSystemMenu(1);});HalfButton(systemWindow,1);
-            Button(systemWindow,"설정 적용 · 저장",476,()=>{battle.SavePreferences(d);ShowSystemMenu(1);},true,44);
-            Label(systemWindow,"적용하지 않고 닫으면 취소됩니다.\n"+battle.SaveNotice,532,50,16);
+            Button(systemWindow,d.ReducedEffects?"효과: 부드럽게":"효과: 풍부하게",first+step*5,()=>{d.ReducedEffects=!d.ReducedEffects;ShowSystemMenu(1);},true,height);HalfButton(systemWindow,1);
+            Button(systemWindow,"설정 적용 · 저장",mobile?550:476,()=>{battle.SavePreferences(d);ShowSystemMenu(1);},true,mobile?60:44);
+            Label(systemWindow,"적용하지 않고 닫으면 취소됩니다.\n"+battle.SaveNotice,mobile?612:532,50,mobile?14:16);
         }
-        void PreferenceRow(string title,float value,int y,System.Action lower,System.Action higher)
+        void PreferenceRow(string title,float value,float y,System.Action lower,System.Action higher,float height=38)
         {
-            Button(systemWindow,title+" −",y,lower);var a=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);a.anchorMax=new Vector2(.35f,1);
-            var label=Label(systemWindow,Mathf.RoundToInt(value*100)+"%",y,38,18);label.alignment=TMPro.TextAlignmentOptions.Center;
-            Button(systemWindow,title+" +",y,higher);var b=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);b.anchorMin=new Vector2(.65f,1);
+            Button(systemWindow,title+" −",y,lower,true,height);var a=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);a.anchorMax=new Vector2(.35f,1);
+            var label=Label(systemWindow,Mathf.RoundToInt(value*100)+"%",y,height,18);label.alignment=TMPro.TextAlignmentOptions.Center;
+            Button(systemWindow,title+" +",y,higher,true,height);var b=(RectTransform)systemWindow.GetChild(systemWindow.childCount-1);b.anchorMin=new Vector2(.65f,1);
         }
     }
 }

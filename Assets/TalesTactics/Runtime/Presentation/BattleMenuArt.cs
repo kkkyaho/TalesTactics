@@ -19,7 +19,7 @@ namespace TalesTactics
         RectTransform CloseIcon(Transform parent,string name,Action close)
         {
             var button=FormationButton(parent,name,"",Vector2.one,Vector2.one,close);
-            button.pivot=Vector2.one;button.sizeDelta=new Vector2(44,44);button.anchoredPosition=new Vector2(-22,-22);
+            button.pivot=Vector2.one;button.sizeDelta=Vector2.one*(MobileHud?56:44);button.anchoredPosition=new Vector2(-22,-22);
             FormationIcon(button,"close",new Vector2(.15f,.15f),new Vector2(.85f,.85f),Color.white);return button;
         }
     }

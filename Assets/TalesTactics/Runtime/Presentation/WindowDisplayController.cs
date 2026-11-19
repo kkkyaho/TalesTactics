@@ -15,7 +15,7 @@ namespace TalesTactics
         public void DisplayApplied(){ignoreUntil=Time.unscaledTime+1;restore=true;width=height=0;}
         void Update()
         {
-            if(Application.isEditor||battle?.Preferences==null||Time.unscaledTime<ignoreUntil)return;
+            if(Application.isEditor||Application.isMobilePlatform||battle?.Preferences==null||!battle.UsesDesktopDisplaySettings||Time.unscaledTime<ignoreUntil)return;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
             var window=Window;if(window==System.IntPtr.Zero||IsIconic(window))return;
             if(restore){restore=false;if(!Screen.fullScreen&&battle.Preferences.WindowMaximized){ShowWindow(window,3);ignoreUntil=Time.unscaledTime+.5f;return;}}
@@ -37,6 +37,6 @@ namespace TalesTactics
             if(!maximized){draft.Width=width;draft.Height=height;}
             if(!battle.SavePreferences(draft,false))stableAt=Time.unscaledTime+5;
         }
-        void OnApplicationQuit(){if(!Application.isEditor&&battle!=null&&!Screen.fullScreen)Store();}
+        void OnApplicationQuit(){if(!Application.isEditor&&!Application.isMobilePlatform&&battle!=null&&battle.UsesDesktopDisplaySettings&&!Screen.fullScreen)Store();}
     }
 }
