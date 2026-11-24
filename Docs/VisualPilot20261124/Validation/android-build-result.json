@@ -1,0 +1,25 @@
+{
+    "result": "Succeeded",
+    "outputPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\VisualPilot20261124\\Android\\TalesTactics.apk",
+    "applicationId": "com.talestactics.game",
+    "error": "",
+    "runId": "21727ece595e45dd8b4fd5126698b81d",
+    "startedUtc": "2026-11-24T13:31:05.6349131Z",
+    "durationSeconds": 356.4875439,
+    "sizeBytes": 1213590480,
+    "errors": 0,
+    "warnings": 6,
+    "androidTextureOverrides": 373,
+    "preservedTextureOverrides": 0,
+    "sourceOnly": true,
+    "containsLocalMusic": false,
+    "localMusicChecked": true,
+    "messages": [
+        "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.",
+        "Assets\\TalesTactics\\Runtime\\Presentation\\VfxUpgradeReview.cs(1,21): warning UAC0009: DEVELOPMENT_BUILD preprocessor directive has been deprecated. Please use one of the managed code variant directives (such as DEBUG, UNITY_ENABLE_CHECKS or UNITY_INCLUDE_INSTRUMENTATION) if different code paths are desired for different managed code variants. Checking for development build is possible at runtime using Debug.isDebugBuild. See the Conditional Compilation manual page for more details.",
+        "Serialized file \"Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta\" contains a TrueTypeFontImporter object at version 2, below the supported minimum (4). Open and re-save the file to upgrade.",
+        "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Library\\Bee\\artifacts\\Android\\il2cppOutput\\cpp: [Unity.TextMeshPro] - System.Void TMPro.TMP_TextParsingUtilities::.cctor() - Method was given it's own cpp file because it is large and costly to compile",
+        "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Library\\Bee\\artifacts\\Android\\il2cppOutput\\cpp: [Unity.TextMeshPro] - System.Void TMPro.TextMeshPro::GenerateTextMesh() - Method was given it's own cpp file because it is large and costly to compile",
+        "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Library\\Bee\\artifacts\\Android\\il2cppOutput\\cpp: [Unity.TextMeshPro] - System.Void TMPro.TextMeshProUGUI::GenerateTextMesh() - Method was given it's own cpp file because it is large and costly to compile"
+    ]
+}

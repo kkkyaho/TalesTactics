@@ -23,6 +23,15 @@ namespace TalesTactics
             foreach(var material in surfaces){material.SetFloat("_SurfaceRelief",.25f);material.SetFloat("_Dapple",Verdant?.12f:.025f);}
             floorMaterial.SetFloat("_SurfaceRelief",.22f);floorMaterial.SetFloat("_Dapple",Verdant?.11f:.025f);
         }
+        void ApplyVisualPilotEnvironment()
+        {
+            if(!IsVisualPilotStage)return;
+            // Quiet the floor under the actors without changing shared art or the world light.
+            floorMaterial.SetFloat("_DetailContrast",.60f);
+            floorMaterial.SetFloat("_SurfaceRelief",.16f);
+            floorMaterial.SetFloat("_Dapple",.06f);
+            floorMaterial.SetFloat("_ArtSaturation",.64f);
+        }
         static float DetailNoise(int x,int z,int salt=0)
         {unchecked{uint h=(uint)(x*73856093^z*19349663^salt*83492791);h^=h>>13;h*=1274126177;return (h&65535)/65535f;}}
         void DressLivingTile(GridTile tile,GridMap map,float step)
@@ -31,7 +40,8 @@ namespace TalesTactics
             int x=tile.Coordinate.x,z=tile.Coordinate.y;var p=tile.WorldPosition(step);
             if(!tile.Walkable&&Verdant)
             {
-                for(int k=0;k<3;k++)Foliage(k==0?9:2,p+new Vector3((k-1)*.27f,.015f,.22f),.28f+k*.055f);
+                int count=IsVisualPilotStage?1:3;
+                for(int k=0;k<count;k++)Foliage(k==0?9:2,p+new Vector3((k-1)*.27f,.015f,.22f),.28f+k*.055f);
             }
             // Low edge foliage does not cover the tile center or change collision/navigation.
             foreach(var d in Directions)
@@ -39,7 +49,7 @@ namespace TalesTactics
                 var neighbor=map[tile.Coordinate+d];
                 bool edge=neighbor==null||!neighbor.Walkable||neighbor.Terrain==TerrainType.Water;
                 float noise=DetailNoise(x,z,17+d.x*3+d.y*7);
-                if(!edge||noise<.38f)continue;
+                if(!edge||noise<(IsVisualPilotStage?.65f:.38f))continue;
                 var outward=new Vector3(d.x,0,d.y);var tangent=Vector3.Cross(outward,Vector3.up);
                 var foot=p+outward*.45f+tangent*((noise-.5f)*.44f)+Vector3.up*.015f;
                 Foliage(Verdant?(noise>.74f?9:2):stage==2?4:15,foot,(Verdant?.18f:stage==2?.15f:.10f)*(1+noise*.32f));

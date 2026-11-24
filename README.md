@@ -1,8 +1,12 @@
 # TalesTactics
 
-현재 원격용 소스는 사용자 제공 MP3 6곡을 제외하고 기존 곡으로 대체 재생합니다. 최신 전장·성장·보상 개선을 포함하며 로컬 원본과 별도로 검증합니다. 과거 원격 이력의 음원은 이번 변경으로 제거되지 않습니다. [공개 소스 구성과 검증](Docs/SourceOnlyPublish/README.md).
+현재 원격용 소스는 사용자 제공 MP3 6곡을 제외하고 기존 곡으로 대체 재생합니다. 최신 전장·성장·보상 개선을 포함하며 로컬 원본과 별도로 검증합니다. 과거 원격 이력의 음원은 이번 변경으로 제거되지 않습니다. [공개 소스 구성과 검증](https://github.com/kkkyaho/TalesTactics/blob/develop/Docs/SourceOnlyPublish/README.md).
 
 Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입니다. 현재 플레이 범위는 **경계를 잇는 의지 메인 20화**, **동료 10명의 개인 이야기 30단계**, **전용무기 10종**, **고유 보스 20종과 보스 기술 60개**입니다. 기존 6장 캠페인은 현재 플레이에서 제외되며, 이전 저장의 성장·장비·완료 이력은 보존합니다.
+
+## 알펜·6화 그래픽 시범 개선
+
+2026-11-24 알펜의 호흡·눈감음·일반 공격·피격에 새 32개 원화를 적용하고, 메인6화 바닥의 세부 대비와 작은 식생을 줄였습니다. HP바 기준점을 새 머리에 맞추고 공격·피격 후 새 대기 그림으로 이어지도록 했습니다. 다른 캐릭터·스테이지와 전용무기 원화는 유지합니다. [실제 전후 화면](Docs/VisualPilot20261124/Evidence/gallery.html) · [적용 범위·검증·남은 단계](Docs/VisualPilot20261124/README.md).
 
 ## PC·Android 병행 개발
 
@@ -12,7 +16,7 @@ Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입
 
 ## 다운로드와 현재 버전
 
-현재 소스 `e081a592…`는 **`v0.1.0-preview.9` 태그로 원격 보관**했으며 `main`에 통합하고 원격 반영했습니다. 로컬 Windows ZIP과 시작·정상 종료 검증은 통과했습니다. **사용자 지침에 따라 음원 포함 ZIP의 공개 업로드는 취소**했으며, 잠긴 Windows 세션에서의 최신 타이틀 육안 검수도 미완료입니다. 최신 Windows 공개 다운로드는 아래 preview.8을 유지합니다. [Preview9의 실제 결과·실패 이력·남은 단계](Docs/Distribution/Preview9/README.md).
+Preview9 릴리즈 소스 `e081a592…`는 **`v0.1.0-preview.9` 태그로 원격 보관**했으며 `main`에 통합하고 원격 반영했습니다. 로컬 Windows ZIP과 시작·정상 종료 검증은 통과했습니다. **사용자 지침에 따라 음원 포함 ZIP의 공개 업로드는 취소**했으며, 잠긴 Windows 세션에서의 최신 타이틀 육안 검수도 미완료입니다. 최신 Windows 공개 다운로드는 아래 preview.8을 유지합니다. [Preview9의 실제 결과·실패 이력·남은 단계](Docs/Distribution/Preview9/README.md).
 
 [Windows 공개 테스트판 0.1.0-preview.8 다운로드](https://github.com/kkkyaho/TalesTactics/releases/tag/v0.1.0-preview.8) · [배포 검증과 저장 호환](Docs/Distribution/Preview8/README.md)
 

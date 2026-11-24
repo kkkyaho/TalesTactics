@@ -1,0 +1,2267 @@
+{
+  "schemaVersion": 1,
+  "scope": "Only 32 Alphen visual pilot sprite catalog entries. No runtime/gameplay changes.",
+  "sourceLayout": "Docs/VisualPilot20261124/art-layout.json",
+  "method": {
+    "nativePixelAnalysisOnly": true,
+    "sourceImagesModified": false,
+    "coordinateSystem": "ROI and detected hair bounds are rect-local top-left pixels; right/bottom bounds are exclusive. Catalog u/v are rect-local bottom-left normalized coordinates.",
+    "rectOriginConversion": "top = sheet.height - sprite.rect.y - sprite.rect.height",
+    "silverHairMask": "alpha >= 230 AND min(R,G,B) >= 100 AND max(R,G,B)-min(R,G,B) <= 65, inside a visually selected hair-only ROI.",
+    "componentSelection": "Largest 8-connected component. Disconnected blade/glove/armor highlights are excluded. Flame highlights exceed the saturation threshold.",
+    "centerX": "Midpoint of the selected silver-hair component horizontal bounds; not sprite bounds, pivot, blade tip, or a whole-actor centroid.",
+    "anchorY": "Selected silver-hair component top minus 8 native pixels; converted to bottom-origin v.",
+    "visualReview": "Both unmodified 1254x1254 source sheets were viewed at original resolution. Every component bounds/center was checked against its corresponding pose, including raised blades and arms in attack frame 0.",
+    "headRegionExamples": "Front attack 0: hair component x117..217,y59..147 while raised blade extends near y16. Back attack 0: hair y56..120 while overhead blade starts near y13. Right attack 0: hair x152..243 excludes raised glove/arm left of the head.",
+    "normalizationPrecision": 7,
+    "pixelsPerUnit": 188.5
+  },
+  "sources": [
+    {
+      "path": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f7368436b6a115d6248759e0becfeb65380f640c723b0b961450d59854ab923d",
+      "unchangedFromArtLayout": true
+    },
+    {
+      "path": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "79fc248f5926b0bcecd7d6e31b9f2642122dac9dc838047e2479b2c4ff60efb5",
+      "unchangedFromArtLayout": true
+    }
+  ],
+  "catalog": {
+    "path": "Assets/TalesTactics/Resources/TalesTactics/UnitHeadAnchors.json",
+    "backup": "Logs/VisualPilot20261124/Before/Assets/TalesTactics/Resources/TalesTactics/UnitHeadAnchors.json",
+    "beforeSha256": "8f97d88b5a45412acb4feed47963e7cbc57958a7adc5823c5ea308e90641b1ff",
+    "afterSha256": "dc8dd24530c4da74dbf4e58b373e6685b4386cbb2f1329f6375a84709693525f",
+    "oldEntryCount": 168,
+    "addedEntryCount": 32,
+    "newEntryCount": 200,
+    "preservedOriginalPrefixBytes": 16494,
+    "preservedOriginalPrefixSha256": "3df82bebdfd71fa1f5841f89aa0fe36231adac503ecf64611b19c19f8cefc4e7",
+    "preservedOriginalSuffixBytes": 2,
+    "oldEntryOrderAndValuesUnchanged": true
+  },
+  "validation": {
+    "all32UniqueNamesAndDimensions": true,
+    "allNormalizedAnchorsWithinZeroToOne": true,
+    "originalPngHashesUnchanged": true,
+    "originalCatalogPrefixAndSuffixPreserved": true,
+    "existingPilotTestCount": 7,
+    "unityExecutedForThisChange": false,
+    "integrationAssertions": "Existing VerifyClip checks TryGetLocal plus finite normalized bounds for all 32 production sprites."
+  },
+  "frames": [
+    {
+      "sprite": "alphen-pilot-idle-front-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-front-0",
+        "y": 941,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.50958467
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        94,
+        45,
+        229,
+        151
+      ],
+      "hairComponentPixels": 4148,
+      "hairComponentBoundsTopLeftPixels": [
+        100,
+        57,
+        209,
+        137
+      ],
+      "hairCentroidTopLeftPixels": [
+        154.443,
+        94.848
+      ],
+      "otherComponentPixelCounts": [
+        226,
+        33,
+        29,
+        28,
+        24
+      ],
+      "anchorX": 154.5,
+      "hairTopY": 57,
+      "anchorTopLeftPixels": {
+        "x": 154.5,
+        "y": 49
+      },
+      "anchorBottomLeftPixels": {
+        "x": 154.5,
+        "y": 264
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-front-0",
+        "u": 0.4936102,
+        "v": 0.8434505,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0265252,
+        "y": 1.2466844,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-front-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-front-1",
+        "y": 941,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.5079618
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        94,
+        45,
+        229,
+        151
+      ],
+      "hairComponentPixels": 4058,
+      "hairComponentBoundsTopLeftPixels": [
+        102,
+        55,
+        207,
+        134
+      ],
+      "hairCentroidTopLeftPixels": [
+        155.383,
+        92.604
+      ],
+      "otherComponentPixelCounts": [
+        221,
+        44,
+        22,
+        22,
+        16
+      ],
+      "anchorX": 154.5,
+      "hairTopY": 55,
+      "anchorTopLeftPixels": {
+        "x": 154.5,
+        "y": 47
+      },
+      "anchorBottomLeftPixels": {
+        "x": 154.5,
+        "y": 266
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-front-1",
+        "u": 0.4920382,
+        "v": 0.8498403,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0265253,
+        "y": 1.2572945,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-front-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-front-2",
+        "y": 941,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.5079872
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        94,
+        45,
+        229,
+        151
+      ],
+      "hairComponentPixels": 4067,
+      "hairComponentBoundsTopLeftPixels": [
+        100,
+        55,
+        207,
+        133
+      ],
+      "hairCentroidTopLeftPixels": [
+        154.38,
+        92.502
+      ],
+      "otherComponentPixelCounts": [
+        228,
+        35,
+        29,
+        26,
+        26
+      ],
+      "anchorX": 153.5,
+      "hairTopY": 55,
+      "anchorTopLeftPixels": {
+        "x": 153.5,
+        "y": 47
+      },
+      "anchorBottomLeftPixels": {
+        "x": 153.5,
+        "y": 266
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-front-2",
+        "u": 0.4904153,
+        "v": 0.8498403,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0291777,
+        "y": 1.2572945,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-front-3",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-front-3",
+        "y": 941,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.5079618
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        94,
+        45,
+        229,
+        151
+      ],
+      "hairComponentPixels": 4044,
+      "hairComponentBoundsTopLeftPixels": [
+        104,
+        58,
+        210,
+        136
+      ],
+      "hairCentroidTopLeftPixels": [
+        156.291,
+        94.696
+      ],
+      "otherComponentPixelCounts": [
+        222,
+        26,
+        26,
+        15,
+        15
+      ],
+      "anchorX": 157.0,
+      "hairTopY": 58,
+      "anchorTopLeftPixels": {
+        "x": 157.0,
+        "y": 50
+      },
+      "anchorBottomLeftPixels": {
+        "x": 157.0,
+        "y": 263
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-front-3",
+        "u": 0.5,
+        "v": 0.8402556,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0132626,
+        "y": 1.2413793,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-back-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-back-0",
+        "y": 627,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.098726116,
+          "x": 0.50319487
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        88,
+        41,
+        218,
+        137
+      ],
+      "hairComponentPixels": 4139,
+      "hairComponentBoundsTopLeftPixels": [
+        108,
+        54,
+        203,
+        127
+      ],
+      "hairCentroidTopLeftPixels": [
+        155.39,
+        93.884
+      ],
+      "otherComponentPixelCounts": [
+        28,
+        27,
+        25,
+        18,
+        15
+      ],
+      "anchorX": 155.5,
+      "hairTopY": 54,
+      "anchorTopLeftPixels": {
+        "x": 155.5,
+        "y": 46
+      },
+      "anchorBottomLeftPixels": {
+        "x": 155.5,
+        "y": 268
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-back-0",
+        "u": 0.4968051,
+        "v": 0.8535032,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0106101,
+        "y": 1.2572945,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-back-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-back-1",
+        "y": 627,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.098726116,
+          "x": 0.50318474
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        88,
+        41,
+        218,
+        137
+      ],
+      "hairComponentPixels": 4116,
+      "hairComponentBoundsTopLeftPixels": [
+        109,
+        53,
+        202,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        156.172,
+        94.034
+      ],
+      "otherComponentPixelCounts": [
+        34,
+        28,
+        24,
+        19,
+        18
+      ],
+      "anchorX": 155.5,
+      "hairTopY": 53,
+      "anchorTopLeftPixels": {
+        "x": 155.5,
+        "y": 45
+      },
+      "anchorBottomLeftPixels": {
+        "x": 155.5,
+        "y": 269
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-back-1",
+        "u": 0.4952229,
+        "v": 0.8566879,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0132627,
+        "y": 1.2625995,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-back-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-back-2",
+        "y": 627,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.098726116,
+          "x": 0.50319487
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        88,
+        41,
+        218,
+        137
+      ],
+      "hairComponentPixels": 4106,
+      "hairComponentBoundsTopLeftPixels": [
+        108,
+        53,
+        203,
+        127
+      ],
+      "hairCentroidTopLeftPixels": [
+        155.81,
+        93.685
+      ],
+      "otherComponentPixelCounts": [
+        25,
+        24,
+        23,
+        20,
+        16
+      ],
+      "anchorX": 155.5,
+      "hairTopY": 53,
+      "anchorTopLeftPixels": {
+        "x": 155.5,
+        "y": 45
+      },
+      "anchorBottomLeftPixels": {
+        "x": 155.5,
+        "y": 269
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-back-2",
+        "u": 0.4968051,
+        "v": 0.8566879,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0106101,
+        "y": 1.2625995,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-back-3",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-back-3",
+        "y": 627,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.098726116,
+          "x": 0.50318474
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        88,
+        41,
+        218,
+        137
+      ],
+      "hairComponentPixels": 4054,
+      "hairComponentBoundsTopLeftPixels": [
+        109,
+        54,
+        206,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        156.832,
+        94.482
+      ],
+      "otherComponentPixelCounts": [
+        26,
+        25,
+        23,
+        22,
+        22
+      ],
+      "anchorX": 157.5,
+      "hairTopY": 54,
+      "anchorTopLeftPixels": {
+        "x": 157.5,
+        "y": 46
+      },
+      "anchorBottomLeftPixels": {
+        "x": 157.5,
+        "y": 268
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-back-3",
+        "u": 0.5015924,
+        "v": 0.8535032,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0026525,
+        "y": 1.2572945,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-left-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-left-0",
+        "y": 314,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.46645367
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        75,
+        41,
+        214,
+        138
+      ],
+      "hairComponentPixels": 4274,
+      "hairComponentBoundsTopLeftPixels": [
+        82,
+        52,
+        188,
+        130
+      ],
+      "hairCentroidTopLeftPixels": [
+        134.773,
+        89.674
+      ],
+      "otherComponentPixelCounts": [
+        106,
+        20,
+        16,
+        12,
+        12
+      ],
+      "anchorX": 135.0,
+      "hairTopY": 52,
+      "anchorTopLeftPixels": {
+        "x": 135.0,
+        "y": 44
+      },
+      "anchorBottomLeftPixels": {
+        "x": 135.0,
+        "y": 269
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-left-0",
+        "u": 0.4313099,
+        "v": 0.8594249,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0583554,
+        "y": 1.2732095,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-left-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-left-1",
+        "y": 314,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.4665605
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        75,
+        41,
+        214,
+        138
+      ],
+      "hairComponentPixels": 4119,
+      "hairComponentBoundsTopLeftPixels": [
+        84,
+        49,
+        190,
+        126
+      ],
+      "hairCentroidTopLeftPixels": [
+        136.295,
+        86.639
+      ],
+      "otherComponentPixelCounts": [
+        208,
+        25,
+        19,
+        19,
+        14
+      ],
+      "anchorX": 137.0,
+      "hairTopY": 49,
+      "anchorTopLeftPixels": {
+        "x": 137.0,
+        "y": 41
+      },
+      "anchorBottomLeftPixels": {
+        "x": 137.0,
+        "y": 272
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-left-1",
+        "u": 0.4363057,
+        "v": 0.8690096,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0503979,
+        "y": 1.2891247,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-left-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-left-2",
+        "y": 314,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.46645367
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        75,
+        41,
+        214,
+        138
+      ],
+      "hairComponentPixels": 4225,
+      "hairComponentBoundsTopLeftPixels": [
+        84,
+        49,
+        190,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        135.69,
+        87.884
+      ],
+      "otherComponentPixelCounts": [
+        184,
+        27,
+        24,
+        17,
+        16
+      ],
+      "anchorX": 137.0,
+      "hairTopY": 49,
+      "anchorTopLeftPixels": {
+        "x": 137.0,
+        "y": 41
+      },
+      "anchorBottomLeftPixels": {
+        "x": 137.0,
+        "y": 272
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-left-2",
+        "u": 0.4376997,
+        "v": 0.8690096,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0477453,
+        "y": 1.2891247,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-left-3",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-left-3",
+        "y": 314,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.46815288
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        75,
+        41,
+        214,
+        138
+      ],
+      "hairComponentPixels": 4307,
+      "hairComponentBoundsTopLeftPixels": [
+        83,
+        51,
+        191,
+        130
+      ],
+      "hairCentroidTopLeftPixels": [
+        135.909,
+        89.907
+      ],
+      "otherComponentPixelCounts": [
+        90,
+        21,
+        17,
+        17,
+        14
+      ],
+      "anchorX": 137.0,
+      "hairTopY": 51,
+      "anchorTopLeftPixels": {
+        "x": 137.0,
+        "y": 43
+      },
+      "anchorBottomLeftPixels": {
+        "x": 137.0,
+        "y": 270
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-left-3",
+        "u": 0.4363057,
+        "v": 0.8626198,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0530505,
+        "y": 1.2785146,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-right-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-right-0",
+        "y": 0,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.5399361
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        103,
+        40,
+        240,
+        140
+      ],
+      "hairComponentPixels": 3982,
+      "hairComponentBoundsTopLeftPixels": [
+        125,
+        52,
+        230,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        179.311,
+        88.934
+      ],
+      "otherComponentPixelCounts": [
+        71,
+        29,
+        25,
+        24,
+        20
+      ],
+      "anchorX": 177.5,
+      "hairTopY": 52,
+      "anchorTopLeftPixels": {
+        "x": 177.5,
+        "y": 44
+      },
+      "anchorBottomLeftPixels": {
+        "x": 177.5,
+        "y": 270
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-right-0",
+        "u": 0.5670927,
+        "v": 0.8598726,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0450929,
+        "y": 1.2785146,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-right-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-right-1",
+        "y": 0,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.5398089
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        103,
+        40,
+        240,
+        140
+      ],
+      "hairComponentPixels": 3991,
+      "hairComponentBoundsTopLeftPixels": [
+        125,
+        50,
+        231,
+        124
+      ],
+      "hairCentroidTopLeftPixels": [
+        179.236,
+        86.25
+      ],
+      "otherComponentPixelCounts": [
+        135,
+        32,
+        31,
+        22,
+        17
+      ],
+      "anchorX": 178.0,
+      "hairTopY": 50,
+      "anchorTopLeftPixels": {
+        "x": 178.0,
+        "y": 42
+      },
+      "anchorBottomLeftPixels": {
+        "x": 178.0,
+        "y": 272
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-right-1",
+        "u": 0.566879,
+        "v": 0.866242,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0450929,
+        "y": 1.2891246,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-right-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-right-2",
+        "y": 0,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.5415335
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        103,
+        40,
+        240,
+        140
+      ],
+      "hairComponentPixels": 4027,
+      "hairComponentBoundsTopLeftPixels": [
+        125,
+        51,
+        231,
+        126
+      ],
+      "hairCentroidTopLeftPixels": [
+        179.007,
+        87.166
+      ],
+      "otherComponentPixelCounts": [
+        120,
+        27,
+        21,
+        20,
+        18
+      ],
+      "anchorX": 178.0,
+      "hairTopY": 51,
+      "anchorTopLeftPixels": {
+        "x": 178.0,
+        "y": 43
+      },
+      "anchorBottomLeftPixels": {
+        "x": 178.0,
+        "y": 271
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-right-2",
+        "u": 0.5686901,
+        "v": 0.8630573,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0450929,
+        "y": 1.2838196,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-idle-right-3",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "rect": {
+        "name": "alphen-pilot-idle-right-3",
+        "y": 0,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.5398089
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        103,
+        40,
+        240,
+        140
+      ],
+      "hairComponentPixels": 4032,
+      "hairComponentBoundsTopLeftPixels": [
+        125,
+        52,
+        232,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        179.966,
+        88.902
+      ],
+      "otherComponentPixelCounts": [
+        101,
+        25,
+        24,
+        22,
+        19
+      ],
+      "anchorX": 178.5,
+      "hairTopY": 52,
+      "anchorTopLeftPixels": {
+        "x": 178.5,
+        "y": 44
+      },
+      "anchorBottomLeftPixels": {
+        "x": 178.5,
+        "y": 270
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "idle-v1",
+        "sprite": "alphen-pilot-idle-right-3",
+        "u": 0.5684713,
+        "v": 0.8598726,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0477453,
+        "y": 1.2785146,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-front-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-front-0",
+        "y": 941,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.063897766,
+          "x": 0.45846644
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        113,
+        59,
+        237,
+        151
+      ],
+      "hairComponentPixels": 4362,
+      "hairComponentBoundsTopLeftPixels": [
+        117,
+        59,
+        218,
+        148
+      ],
+      "hairCentroidTopLeftPixels": [
+        168.016,
+        103.31
+      ],
+      "otherComponentPixelCounts": [
+        35,
+        21,
+        20,
+        18,
+        17
+      ],
+      "anchorX": 167.5,
+      "hairTopY": 59,
+      "anchorTopLeftPixels": {
+        "x": 167.5,
+        "y": 51
+      },
+      "anchorBottomLeftPixels": {
+        "x": 167.5,
+        "y": 262
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-front-0",
+        "u": 0.5351438,
+        "v": 0.8370607,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.127321,
+        "y": 1.2838196,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-front-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-front-1",
+        "y": 941,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.057507988,
+          "x": 0.4490446
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        66,
+        46,
+        196,
+        157
+      ],
+      "hairComponentPixels": 4975,
+      "hairComponentBoundsTopLeftPixels": [
+        71,
+        60,
+        175,
+        154
+      ],
+      "hairCentroidTopLeftPixels": [
+        123.869,
+        104.729
+      ],
+      "otherComponentPixelCounts": [
+        79,
+        33,
+        27,
+        13,
+        12
+      ],
+      "anchorX": 123.0,
+      "hairTopY": 60,
+      "anchorTopLeftPixels": {
+        "x": 123.0,
+        "y": 52
+      },
+      "anchorBottomLeftPixels": {
+        "x": 123.0,
+        "y": 261
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-front-1",
+        "u": 0.3917197,
+        "v": 0.8338658,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0954908,
+        "y": 1.2891246,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-front-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-front-2",
+        "y": 941,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.063897766,
+          "x": 0.46485624
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        83,
+        44,
+        215,
+        147
+      ],
+      "hairComponentPixels": 4452,
+      "hairComponentBoundsTopLeftPixels": [
+        92,
+        60,
+        197,
+        143
+      ],
+      "hairCentroidTopLeftPixels": [
+        143.878,
+        100.183
+      ],
+      "otherComponentPixelCounts": [
+        37,
+        36,
+        29,
+        27,
+        16
+      ],
+      "anchorX": 144.5,
+      "hairTopY": 60,
+      "anchorTopLeftPixels": {
+        "x": 144.5,
+        "y": 52
+      },
+      "anchorBottomLeftPixels": {
+        "x": 144.5,
+        "y": 261
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-front-2",
+        "u": 0.4616613,
+        "v": 0.8338658,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0053051,
+        "y": 1.2785146,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-damage-front-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-damage-front-0",
+        "y": 941,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.07028754,
+          "x": 0.41719747
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        105,
+        44,
+        242,
+        142
+      ],
+      "hairComponentPixels": 3804,
+      "hairComponentBoundsTopLeftPixels": [
+        120,
+        59,
+        223,
+        132
+      ],
+      "hairCentroidTopLeftPixels": [
+        173.552,
+        95.336
+      ],
+      "otherComponentPixelCounts": [
+        168,
+        30,
+        27,
+        22,
+        21
+      ],
+      "anchorX": 171.5,
+      "hairTopY": 59,
+      "anchorTopLeftPixels": {
+        "x": 171.5,
+        "y": 51
+      },
+      "anchorBottomLeftPixels": {
+        "x": 171.5,
+        "y": 262
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-damage-front-0",
+        "u": 0.5461783,
+        "v": 0.8370607,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.214854,
+        "y": 1.2732095,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-back-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-back-0",
+        "y": 627,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.5479233
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        94,
+        47,
+        216,
+        139
+      ],
+      "hairComponentPixels": 3554,
+      "hairComponentBoundsTopLeftPixels": [
+        112,
+        56,
+        204,
+        121
+      ],
+      "hairCentroidTopLeftPixels": [
+        157.125,
+        91.506
+      ],
+      "otherComponentPixelCounts": [
+        157,
+        99,
+        72,
+        41,
+        34
+      ],
+      "anchorX": 158.0,
+      "hairTopY": 56,
+      "anchorTopLeftPixels": {
+        "x": 158.0,
+        "y": 48
+      },
+      "anchorBottomLeftPixels": {
+        "x": 158.0,
+        "y": 266
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-back-0",
+        "u": 0.5047923,
+        "v": 0.8471338,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0716181,
+        "y": 1.2572945,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-back-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-back-1",
+        "y": 627,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.52388537
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        105,
+        43,
+        231,
+        141
+      ],
+      "hairComponentPixels": 4124,
+      "hairComponentBoundsTopLeftPixels": [
+        126,
+        53,
+        224,
+        130
+      ],
+      "hairCentroidTopLeftPixels": [
+        175.347,
+        92.21
+      ],
+      "otherComponentPixelCounts": [
+        32,
+        28,
+        17,
+        11,
+        10
+      ],
+      "anchorX": 175.0,
+      "hairTopY": 53,
+      "anchorTopLeftPixels": {
+        "x": 175.0,
+        "y": 45
+      },
+      "anchorBottomLeftPixels": {
+        "x": 175.0,
+        "y": 269
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-back-1",
+        "u": 0.5573248,
+        "v": 0.8566879,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0557028,
+        "y": 1.2732095,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-back-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-back-2",
+        "y": 627,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.0955414,
+          "x": 0.5
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        94,
+        39,
+        221,
+        139
+      ],
+      "hairComponentPixels": 3935,
+      "hairComponentBoundsTopLeftPixels": [
+        113,
+        53,
+        209,
+        122
+      ],
+      "hairCentroidTopLeftPixels": [
+        160.443,
+        89.388
+      ],
+      "otherComponentPixelCounts": [
+        64,
+        44,
+        31,
+        30,
+        30
+      ],
+      "anchorX": 161.0,
+      "hairTopY": 53,
+      "anchorTopLeftPixels": {
+        "x": 161.0,
+        "y": 45
+      },
+      "anchorBottomLeftPixels": {
+        "x": 161.0,
+        "y": 269
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-back-2",
+        "u": 0.514377,
+        "v": 0.8566879,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0238727,
+        "y": 1.2679045,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-damage-back-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-damage-back-0",
+        "y": 627,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.09235669,
+          "x": 0.53503186
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        74,
+        41,
+        203,
+        142
+      ],
+      "hairComponentPixels": 4090,
+      "hairComponentBoundsTopLeftPixels": [
+        95,
+        52,
+        186,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        140.868,
+        91.701
+      ],
+      "otherComponentPixelCounts": [
+        249,
+        48,
+        26,
+        18,
+        17
+      ],
+      "anchorX": 140.5,
+      "hairTopY": 52,
+      "anchorTopLeftPixels": {
+        "x": 140.5,
+        "y": 44
+      },
+      "anchorBottomLeftPixels": {
+        "x": 140.5,
+        "y": 270
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-damage-back-0",
+        "u": 0.4474522,
+        "v": 0.8598726,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.1458887,
+        "y": 1.2785146,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-left-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-left-0",
+        "y": 314,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.09904154,
+          "x": 0.48402557
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        65,
+        37,
+        195,
+        140
+      ],
+      "hairComponentPixels": 3797,
+      "hairComponentBoundsTopLeftPixels": [
+        72,
+        44,
+        169,
+        122
+      ],
+      "hairCentroidTopLeftPixels": [
+        119.828,
+        81.681
+      ],
+      "otherComponentPixelCounts": [
+        225,
+        61,
+        54,
+        30,
+        28
+      ],
+      "anchorX": 120.5,
+      "hairTopY": 44,
+      "anchorTopLeftPixels": {
+        "x": 120.5,
+        "y": 36
+      },
+      "anchorBottomLeftPixels": {
+        "x": 120.5,
+        "y": 277
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-left-0",
+        "u": 0.384984,
+        "v": 0.884984,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.1644563,
+        "y": 1.3050397,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-left-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-left-1",
+        "y": 314,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.095846646,
+          "x": 0.43949044
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        49,
+        38,
+        188,
+        140
+      ],
+      "hairComponentPixels": 4510,
+      "hairComponentBoundsTopLeftPixels": [
+        61,
+        51,
+        164,
+        136
+      ],
+      "hairCentroidTopLeftPixels": [
+        110.584,
+        89.378
+      ],
+      "otherComponentPixelCounts": [
+        154,
+        70,
+        30,
+        28,
+        16
+      ],
+      "anchorX": 112.5,
+      "hairTopY": 51,
+      "anchorTopLeftPixels": {
+        "x": 112.5,
+        "y": 43
+      },
+      "anchorBottomLeftPixels": {
+        "x": 112.5,
+        "y": 270
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-left-1",
+        "u": 0.3582803,
+        "v": 0.8626198,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.1352784,
+        "y": 1.2732095,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-left-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-left-2",
+        "y": 314,
+        "width": 313,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.39776358
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        58,
+        36,
+        195,
+        140
+      ],
+      "hairComponentPixels": 4278,
+      "hairComponentBoundsTopLeftPixels": [
+        65,
+        43,
+        169,
+        127
+      ],
+      "hairCentroidTopLeftPixels": [
+        115.399,
+        82.003
+      ],
+      "otherComponentPixelCounts": [
+        237,
+        29,
+        25,
+        15,
+        13
+      ],
+      "anchorX": 117.0,
+      "hairTopY": 43,
+      "anchorTopLeftPixels": {
+        "x": 117.0,
+        "y": 35
+      },
+      "anchorBottomLeftPixels": {
+        "x": 117.0,
+        "y": 278
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-left-2",
+        "u": 0.3738019,
+        "v": 0.8881789,
+        "width": 313,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": -0.0397878,
+        "y": 1.3209549,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-damage-left-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-damage-left-0",
+        "y": 314,
+        "width": 314,
+        "height": 313,
+        "pivot": {
+          "y": 0.092651755,
+          "x": 0.3566879
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        75,
+        38,
+        211,
+        140
+      ],
+      "hairComponentPixels": 4000,
+      "hairComponentBoundsTopLeftPixels": [
+        86,
+        44,
+        190,
+        123
+      ],
+      "hairCentroidTopLeftPixels": [
+        136.936,
+        79.754
+      ],
+      "otherComponentPixelCounts": [
+        171,
+        157,
+        35,
+        20,
+        13
+      ],
+      "anchorX": 138.0,
+      "hairTopY": 44,
+      "anchorTopLeftPixels": {
+        "x": 138.0,
+        "y": 36
+      },
+      "anchorBottomLeftPixels": {
+        "x": 138.0,
+        "y": 277
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-damage-left-0",
+        "u": 0.4394904,
+        "v": 0.884984,
+        "width": 314,
+        "height": 313
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.137931,
+        "y": 1.3156498,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-right-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-right-0",
+        "y": 0,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.10828026,
+          "x": 0.51597446
+        },
+        "x": 0
+      },
+      "roiTopLeftPixels": [
+        132,
+        35,
+        255,
+        140
+      ],
+      "hairComponentPixels": 3649,
+      "hairComponentBoundsTopLeftPixels": [
+        152,
+        41,
+        244,
+        120
+      ],
+      "hairCentroidTopLeftPixels": [
+        196.539,
+        79.597
+      ],
+      "otherComponentPixelCounts": [
+        193,
+        178,
+        111,
+        38,
+        37
+      ],
+      "anchorX": 198.0,
+      "hairTopY": 41,
+      "anchorTopLeftPixels": {
+        "x": 198.0,
+        "y": 33
+      },
+      "anchorBottomLeftPixels": {
+        "x": 198.0,
+        "y": 281
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-right-0",
+        "u": 0.6325879,
+        "v": 0.8949045,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.193634,
+        "y": 1.3103449,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-right-1",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-right-1",
+        "y": 0,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.10509554,
+          "x": 0.46974522
+        },
+        "x": 313
+      },
+      "roiTopLeftPixels": [
+        99,
+        34,
+        232,
+        140
+      ],
+      "hairComponentPixels": 4123,
+      "hairComponentBoundsTopLeftPixels": [
+        121,
+        46,
+        228,
+        128
+      ],
+      "hairCentroidTopLeftPixels": [
+        175.571,
+        84.118
+      ],
+      "otherComponentPixelCounts": [
+        236,
+        40,
+        36,
+        26,
+        22
+      ],
+      "anchorX": 174.5,
+      "hairTopY": 46,
+      "anchorTopLeftPixels": {
+        "x": 174.5,
+        "y": 38
+      },
+      "anchorBottomLeftPixels": {
+        "x": 174.5,
+        "y": 276
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-right-1",
+        "u": 0.5557325,
+        "v": 0.8789809,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.1432361,
+        "y": 1.2891247,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-attack-right-2",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-attack-right-2",
+        "y": 0,
+        "width": 313,
+        "height": 314,
+        "pivot": {
+          "y": 0.10191083,
+          "x": 0.5079872
+        },
+        "x": 627
+      },
+      "roiTopLeftPixels": [
+        97,
+        34,
+        233,
+        140
+      ],
+      "hairComponentPixels": 4109,
+      "hairComponentBoundsTopLeftPixels": [
+        122,
+        46,
+        225,
+        120
+      ],
+      "hairCentroidTopLeftPixels": [
+        173.453,
+        82.437
+      ],
+      "otherComponentPixelCounts": [
+        196,
+        103,
+        30,
+        26,
+        25
+      ],
+      "anchorX": 173.5,
+      "hairTopY": 46,
+      "anchorTopLeftPixels": {
+        "x": 173.5,
+        "y": 38
+      },
+      "anchorBottomLeftPixels": {
+        "x": 173.5,
+        "y": 276
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-attack-right-2",
+        "u": 0.5543131,
+        "v": 0.8789809,
+        "width": 313,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.0769231,
+        "y": 1.2944297,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    },
+    {
+      "sprite": "alphen-pilot-damage-right-0",
+      "sheet": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "rect": {
+        "name": "alphen-pilot-damage-right-0",
+        "y": 0,
+        "width": 314,
+        "height": 314,
+        "pivot": {
+          "y": 0.10191083,
+          "x": 0.4442675
+        },
+        "x": 940
+      },
+      "roiTopLeftPixels": [
+        98,
+        35,
+        234,
+        139
+      ],
+      "hairComponentPixels": 4195,
+      "hairComponentBoundsTopLeftPixels": [
+        117,
+        43,
+        222,
+        126
+      ],
+      "hairCentroidTopLeftPixels": [
+        171.292,
+        81.184
+      ],
+      "otherComponentPixelCounts": [
+        287,
+        28,
+        16,
+        16,
+        10
+      ],
+      "anchorX": 169.5,
+      "hairTopY": 43,
+      "anchorTopLeftPixels": {
+        "x": 169.5,
+        "y": 35
+      },
+      "anchorBottomLeftPixels": {
+        "x": 169.5,
+        "y": 279
+      },
+      "hairTopMarginNativePixels": 8,
+      "catalogEntry": {
+        "texture": "action-v1",
+        "sprite": "alphen-pilot-damage-right-0",
+        "u": 0.5398089,
+        "v": 0.888535,
+        "width": 314,
+        "height": 314
+      },
+      "localPointAtAuthoredPivot": {
+        "x": 0.1591512,
+        "y": 1.3103448,
+        "z": 0
+      },
+      "visualReview": {
+        "reviewedOnUnmodifiedOriginalSheet": true,
+        "selectedComponentIsSilverHair": true,
+        "bladeExcluded": true,
+        "armAndArmorExcluded": true
+      }
+    }
+  ]
+}

@@ -21,11 +21,15 @@ namespace TalesTactics
         int stage,wall;float bottom,backgroundAspect;
         public int DecorationMeshCount=>meshes.Count;
         public int Chapter=>stage;
+        public bool IsVisualPilotStage{get;private set;}
+        // The ruins theme is shared; the pilot belongs only to main episode six.
+        public static bool IsVisualPilotCampaignStage(int chapter)=>chapter==CrossoverCampaign.FirstStage+5;
         public GridMap GroundMap{get;private set;}
         public float HeightStep{get;private set;}
         public Material ProjectedShadowMaterial{get;private set;}
         public void Initialize(int chapter,Material source,Material spriteSource,Camera camera)
         {
+            IsVisualPilotStage=IsVisualPilotCampaignStage(chapter);
             stage=BattleEnvironmentPalette.Theme(chapter);wall=stage>=3?14:4;bottom=stage==2?-1.8f:-1.15f;
             view=camera;spriteMaterial=new Material(Resources.Load<Shader>("TalesTactics/UnitTone"));spriteMaterial.name="Terrain foliage tone";owned.Add(spriteMaterial);
             BattleEnvironmentPalette.ApplyScenery(spriteMaterial,stage);
@@ -52,6 +56,7 @@ namespace TalesTactics
             floorMaterial.SetVector("_AtlasRect",new Vector4(0,0,1,1));floorMaterial.SetFloat("_WorldFloor",1);
             floorMaterial.SetFloat("_DetailContrast",.76f);
             InitializeLivingTerrain();
+            ApplyVisualPilotEnvironment();
             var distant=Resources.Load<Texture2D>(Art+Backgrounds[stage]);
             if(distant!=null)
             {

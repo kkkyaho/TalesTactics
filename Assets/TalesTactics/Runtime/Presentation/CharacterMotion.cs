@@ -22,10 +22,18 @@ namespace TalesTactics
         bool timingSpin;
         float spinProgress;
         readonly CharacterIdlePresentation idle=new CharacterIdlePresentation();
+        AlphenVisualPilotMotion visualPilotMotion;
         public AnimationKind Action=>action;
         public UnitRuntime Owner=>unit;
-        public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera)
-        {sprite=renderer;unit=owner;cameraView=camera;Set(AnimationKind.Idle);}
+        public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera,bool visualPilot=false)
+        {
+            sprite=renderer;unit=owner;cameraView=camera;
+            // The caller scopes the pilot to its stage. Missing assets are loaded once
+            // at initialization and then retain the established presentation fallback.
+            visualPilotMotion=visualPilot&&owner?.Data?.Id=="alphen"?
+                Resources.Load<AlphenVisualPilotMotion>(AlphenVisualPilotMotion.ResourcePath):null;
+            Set(AnimationKind.Idle);
+        }
         public void Set(AnimationKind kind)
         {
             presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;casting=false;phaseClip=null;walkSpeed=1;
@@ -96,7 +104,11 @@ namespace TalesTactics
             if((action==AnimationKind.Attack||action==AnimationKind.Skill)&&(t<0.08f||t>=0.34f))pose=null;
             if(timingSpin)pose=unit.Data.Poses?.Skill?.Sample(view,0,false)??unit.Data.Poses?.Attack?.Get(view);
             if(action==AnimationKind.Damage&&t>=0.28f)pose=null;
-            var art=EquipmentAppearance.Resolve(unit,frame!=null?frame:pose!=null?pose:unit.Data.Sprites?.Get(view));if(art!=null)sprite.sprite=art;
+            var art=EquipmentAppearance.Resolve(unit,frame!=null?frame:pose!=null?pose:unit.Data.Sprites?.Get(view));
+            var pilotArt=visualPilotMotion!=null&&!timingSpin?visualPilotMotion.Sample(unit,action,view,t,presenting,released,
+                released?Mathf.Max(0,Time.time-releasedAt-hold):t,released?Mathf.Max(.01f,recovery-hold):windup):null;
+            if(pilotArt!=null)art=pilotArt;
+            if(art!=null)sprite.sprite=art;
             float sign=view==Facing.Left?-1:1;
             var color=art!=null?Color.white:unit.Data.PlaceholderColor;
             switch(action)
@@ -141,7 +153,7 @@ namespace TalesTactics
             transform.rotation=cameraView.transform.rotation*Quaternion.Euler(0,0,angle);
             transform.localScale=new Vector3(1,scaleY,1);sprite.color=color;
             idle.Apply(sprite,unit.Data,view,CharacterIdlePresentation.Sample(unit.Data.Id,Time.time),
-                action==AnimationKind.Idle&&!presenting&&!timingSpin&&unit.Alive&&sprite.enabled&&!sprite.forceRenderingOff);
+                action==AnimationKind.Idle&&pilotArt==null&&!presenting&&!timingSpin&&unit.Alive&&sprite.enabled&&!sprite.forceRenderingOff);
         }
         void OnDisable()=>idle.Clear(sprite);
     }

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "passed": true,
+  "checkedUtc": "2026-11-24T13:47:10.5721369Z",
+  "artifacts": [
+    {
+      "platform": "windows",
+      "path": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\VisualPilot20261124\\Windows\\TalesTactics.exe",
+      "exists": true,
+      "artifactBytes": 667136,
+      "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+      "result": "Succeeded",
+      "errors": 0,
+      "warnings": 4,
+      "settingsRestored": true,
+      "sourceOnly": true,
+      "userMusicAbsent": true,
+      "managedIsolationPassed": true,
+      "buildReportSeconds": 95.8181805,
+      "buildReportTotalBytes": 2260544131,
+      "reportSha256": "f76cf16c930f0bfee62311a00bfbf4aafebb5de729d00925c04b15126148cced",
+      "passed": true
+    },
+    {
+      "platform": "android",
+      "path": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project\\Builds\\VisualPilot20261124\\Android\\TalesTactics.apk",
+      "exists": true,
+      "artifactBytes": 215089810,
+      "sha256": "b9b4352ec281c6c370afb269f4ccf167814fadc25b42b25f12a093dbf4056aca",
+      "result": "Succeeded",
+      "errors": 0,
+      "warnings": 6,
+      "settingsRestored": true,
+      "sourceOnly": true,
+      "userMusicAbsent": true,
+      "managedIsolationPassed": true,
+      "buildReportSeconds": 356.4875439,
+      "buildReportTotalBytes": 1213590480,
+      "reportSha256": "4393e47f0a18ee899cf2bd62c6391ab4b405b6fb15c8a83e3bccb8e57b954cd6",
+      "passed": true
+    }
+  ],
+  "apkStructureAndSignaturePassed": true,
+  "androidPilotArtPacked": true,
+  "androidPackedArt": [
+    "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+    "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+    "Assets/TalesTactics/Resources/TalesTactics/VisualPilot/AlphenMotion.asset"
+  ],
+  "standalonePlayerGameplayTested": false,
+  "androidDevicePlaybackTested": false,
+  "connectedAndroidDeviceCount": 0,
+  "uploaded": false,
+  "scope": "Local ordinary builds plus static artifact verification. Captured gameplay evidence uses the Editor. File sizes are physical output files; BuildReport total bytes describe a different uncompressed build accounting scope."
+}

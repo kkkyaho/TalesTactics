@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-11-24",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "identity-preserving sprite generation with image reference",
+  "requestedSize": "2048x2048 preferred",
+  "actualSize": "1254x1254, preserved without upscaling",
+  "sourcePixelsChangedAfterGeneration": false,
+  "transparentAlphaPreserved": true,
+  "referenceSource": "Assets/TalesTactics/Art/PixelCampaign/alphen-hq.png",
+  "promptRecord": "art-prompts.md",
+  "layout": "art-layout.json",
+  "sheets": [
+    {
+      "kind": "idle",
+      "sha256": "f7368436b6a115d6248759e0becfeb65380f640c723b0b961450d59854ab923d",
+      "poses": 16,
+      "height": 1254,
+      "path": "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+      "width": 1254,
+      "reference": "800x800 in-memory JPEG preview of existing alphen-hq.png",
+      "bytes": 1655919,
+      "generatedFile": "exec-7b529c41-40b7-4564-932a-a71ce0669d0f.png"
+    },
+    {
+      "kind": "action",
+      "sha256": "79fc248f5926b0bcecd7d6e31b9f2642122dac9dc838047e2479b2c4ff60efb5",
+      "poses": 16,
+      "height": 1254,
+      "path": "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+      "width": 1254,
+      "reference": "800x800 in-memory JPEG preview of the generated idle sheet",
+      "bytes": 1633558,
+      "generatedFile": "exec-6f5fc8b3-6fe9-44d0-a1a4-c8ee31a514e7.png"
+    }
+  ],
+  "notes": [
+    "Generated PNG copied byte-for-byte into project. Unity sprite rects/pivots are metadata only.",
+    "Source pixel analysis and preview resizing do not alter the imported PNG.",
+    "An earlier local-path image-generation request failed before output. Successful requests used one recent in-memory reference preview each.",
+    "This provenance is not a gameplay screenshot or a Unity validation result."
+  ]
+}

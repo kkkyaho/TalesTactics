@@ -1,0 +1,358 @@
+{
+  "schema": 1,
+  "derivedSummary": true,
+  "originalFullResultsRemainLocal": true,
+  "captures": [
+    {
+      "source": "Logs/VisualPilot20261124/MotionBeforeFinal/result.json",
+      "sourceSha256": "1c3a0285daf1dad287f608d69d922010ebccc84b07f816622fe131dcede8e72d",
+      "passed": true,
+      "complete": true,
+      "pilot": false,
+      "pngCount": 297,
+      "closedIdleDirections": [],
+      "sessionUnchanged": true,
+      "gridUnchanged": true,
+      "campaignUnchanged": true,
+      "randomUnchanged": true,
+      "contentUnchanged": true,
+      "cameraRestored": true,
+      "temporaryObjectsRemoved": true,
+      "scope": "An isolated base-weapon Alphen actor on the existing episode-six battlefield. Four directions of six-second idle, one basic-attack presentation and one damage presentation. No combat command, damage calculation, save write or gameplay RNG.",
+      "limitation": "Actual advancing Unity frames. PNG readback/encoding and Editor overhead alter wall cadence; target 12 fps is not a performance measurement or Android-device result. Closeups use the original BattleCamera and omit overlay UI; full-board ScreenCapture includes the current HUD. Visual quality requires human review.",
+      "errors": [],
+      "observedSprites": [
+        {
+          "phase": "attack-prepare",
+          "direction": "Front",
+          "sprite": "alphen_4_0",
+          "frames": 1,
+          "firstElapsed": 0.006099700927734375,
+          "lastElapsed": 0.006099700927734375
+        },
+        {
+          "phase": "attack-prepare",
+          "direction": "Front",
+          "sprite": "alphen_5_0",
+          "frames": 1,
+          "firstElapsed": 0.09079742431640625,
+          "lastElapsed": 0.09079742431640625
+        },
+        {
+          "phase": "attack-prepare",
+          "direction": "Front",
+          "sprite": "alphen_6_0",
+          "frames": 1,
+          "firstElapsed": 0.18022918701171875,
+          "lastElapsed": 0.18022918701171875
+        },
+        {
+          "phase": "attack-prepare",
+          "direction": "Front",
+          "sprite": "alphen_8_0",
+          "frames": 2,
+          "firstElapsed": 0.2689208984375,
+          "lastElapsed": 0.3532562255859375
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen_12_0",
+          "frames": 1,
+          "firstElapsed": 0.7018089294433594,
+          "lastElapsed": 0.7018089294433594
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen_13_0",
+          "frames": 1,
+          "firstElapsed": 0.7887535095214844,
+          "lastElapsed": 0.7887535095214844
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen_14_0",
+          "frames": 1,
+          "firstElapsed": 0.8765830993652344,
+          "lastElapsed": 0.8765830993652344
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen_15_0",
+          "frames": 2,
+          "firstElapsed": 0.9602317810058594,
+          "lastElapsed": 1.0464553833007812
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen-hq_0_0",
+          "frames": 1,
+          "firstElapsed": 1.1303939819335938,
+          "lastElapsed": 1.1303939819335938
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen-hq_1_0",
+          "frames": 3,
+          "firstElapsed": 0.4406929016113281,
+          "lastElapsed": 0.6147117614746094
+        },
+        {
+          "phase": "damage",
+          "direction": "Front",
+          "sprite": "alphen-hq_0_0",
+          "frames": 2,
+          "firstElapsed": 0.3469963073730469,
+          "lastElapsed": 0.4340248107910156
+        },
+        {
+          "phase": "damage",
+          "direction": "Front",
+          "sprite": "alphen-motion_2_0",
+          "frames": 4,
+          "firstElapsed": 0.005908966064453125,
+          "lastElapsed": 0.2609710693359375
+        },
+        {
+          "phase": "idle",
+          "direction": "Back",
+          "sprite": "alphen-hq_0_1",
+          "frames": 69,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.925899505615234
+        },
+        {
+          "phase": "idle",
+          "direction": "Front",
+          "sprite": "alphen-hq_0_0",
+          "frames": 70,
+          "firstElapsed": 0.0,
+          "lastElapsed": 0.0
+        },
+        {
+          "phase": "idle",
+          "direction": "Left",
+          "sprite": "alphen-hq_0_3",
+          "frames": 69,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.977764129638672
+        },
+        {
+          "phase": "idle",
+          "direction": "Right",
+          "sprite": "alphen-hq_0_2",
+          "frames": 69,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.9333648681640625
+        }
+      ]
+    },
+    {
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/result.json",
+      "sourceSha256": "57053c99bfbb153e6bf4e09d5d3e8ebdd7a4a2b7c1a97e13d19d25678f5fcdb5",
+      "passed": true,
+      "complete": true,
+      "pilot": true,
+      "pngCount": 297,
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "sessionUnchanged": true,
+      "gridUnchanged": true,
+      "campaignUnchanged": true,
+      "randomUnchanged": true,
+      "contentUnchanged": true,
+      "cameraRestored": true,
+      "temporaryObjectsRemoved": true,
+      "scope": "An isolated base-weapon Alphen actor on the existing episode-six battlefield. Four directions of six-second idle, one basic-attack presentation and one damage presentation. No combat command, damage calculation, save write or gameplay RNG.",
+      "limitation": "Actual advancing Unity frames. PNG readback/encoding and Editor overhead alter wall cadence; target 12 fps is not a performance measurement or Android-device result. Closeups use the original BattleCamera and omit overlay UI; full-board ScreenCapture includes the current HUD. Visual quality requires human review.",
+      "errors": [],
+      "observedSprites": [
+        {
+          "phase": "attack-prepare",
+          "direction": "Front",
+          "sprite": "alphen-pilot-attack-front-0",
+          "frames": 5,
+          "firstElapsed": 0.0060882568359375,
+          "lastElapsed": 0.353759765625
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen-pilot-attack-front-1",
+          "frames": 4,
+          "firstElapsed": 0.44025421142578125,
+          "lastElapsed": 0.6971054077148438
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen-pilot-attack-front-2",
+          "frames": 4,
+          "firstElapsed": 0.7829513549804688,
+          "lastElapsed": 1.048095703125
+        },
+        {
+          "phase": "attack-release",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-0",
+          "frames": 1,
+          "firstElapsed": 1.135498046875,
+          "lastElapsed": 1.135498046875
+        },
+        {
+          "phase": "damage",
+          "direction": "Front",
+          "sprite": "alphen-pilot-damage-front-0",
+          "frames": 4,
+          "firstElapsed": 0.006011962890625,
+          "lastElapsed": 0.26488494873046875
+        },
+        {
+          "phase": "damage",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-0",
+          "frames": 2,
+          "firstElapsed": 0.351104736328125,
+          "lastElapsed": 0.4347686767578125
+        },
+        {
+          "phase": "idle",
+          "direction": "Back",
+          "sprite": "alphen-pilot-idle-back-0",
+          "frames": 47,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.968315124511719
+        },
+        {
+          "phase": "idle",
+          "direction": "Back",
+          "sprite": "alphen-pilot-idle-back-1",
+          "frames": 11,
+          "firstElapsed": 1.462646484375,
+          "lastElapsed": 2.3357391357421875
+        },
+        {
+          "phase": "idle",
+          "direction": "Back",
+          "sprite": "alphen-pilot-idle-back-2",
+          "frames": 1,
+          "firstElapsed": 4.836555480957031,
+          "lastElapsed": 4.836555480957031
+        },
+        {
+          "phase": "idle",
+          "direction": "Back",
+          "sprite": "alphen-pilot-idle-back-3",
+          "frames": 10,
+          "firstElapsed": 2.4248580932617188,
+          "lastElapsed": 5.0138092041015625
+        },
+        {
+          "phase": "idle",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-0",
+          "frames": 48,
+          "firstElapsed": 0.0,
+          "lastElapsed": 0.0
+        },
+        {
+          "phase": "idle",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-1",
+          "frames": 12,
+          "firstElapsed": 1.4078369140625,
+          "lastElapsed": 2.3482894897460938
+        },
+        {
+          "phase": "idle",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-2",
+          "frames": 1,
+          "firstElapsed": 4.8087921142578125,
+          "lastElapsed": 4.8087921142578125
+        },
+        {
+          "phase": "idle",
+          "direction": "Front",
+          "sprite": "alphen-pilot-idle-front-3",
+          "frames": 10,
+          "firstElapsed": 2.4326629638671875,
+          "lastElapsed": 4.982353210449219
+        },
+        {
+          "phase": "idle",
+          "direction": "Left",
+          "sprite": "alphen-pilot-idle-left-0",
+          "frames": 44,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.948600769042969
+        },
+        {
+          "phase": "idle",
+          "direction": "Left",
+          "sprite": "alphen-pilot-idle-left-1",
+          "frames": 12,
+          "firstElapsed": 1.38665771484375,
+          "lastElapsed": 2.3232421875
+        },
+        {
+          "phase": "idle",
+          "direction": "Left",
+          "sprite": "alphen-pilot-idle-left-2",
+          "frames": 2,
+          "firstElapsed": 4.773963928222656,
+          "lastElapsed": 4.86199951171875
+        },
+        {
+          "phase": "idle",
+          "direction": "Left",
+          "sprite": "alphen-pilot-idle-left-3",
+          "frames": 10,
+          "firstElapsed": 2.4073104858398438,
+          "lastElapsed": 5.032386779785156
+        },
+        {
+          "phase": "idle",
+          "direction": "Right",
+          "sprite": "alphen-pilot-idle-right-0",
+          "frames": 46,
+          "firstElapsed": 0.0,
+          "lastElapsed": 5.925743103027344
+        },
+        {
+          "phase": "idle",
+          "direction": "Right",
+          "sprite": "alphen-pilot-idle-right-1",
+          "frames": 11,
+          "firstElapsed": 1.4627532958984375,
+          "lastElapsed": 2.3162002563476562
+        },
+        {
+          "phase": "idle",
+          "direction": "Right",
+          "sprite": "alphen-pilot-idle-right-2",
+          "frames": 1,
+          "firstElapsed": 4.814910888671875,
+          "lastElapsed": 4.814910888671875
+        },
+        {
+          "phase": "idle",
+          "direction": "Right",
+          "sprite": "alphen-pilot-idle-right-3",
+          "frames": 11,
+          "firstElapsed": 2.4003372192382812,
+          "lastElapsed": 5.0699462890625
+        }
+      ]
+    }
+  ]
+}

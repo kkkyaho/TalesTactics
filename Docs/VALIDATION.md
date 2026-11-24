@@ -1,4 +1,18 @@
-# 검증 기록 — 2026-11-20
+# 검증 기록 — 2026-11-24
+
+## 2026-11-24 — 알펜·메인6화 그래픽 시범
+
+알펜의 기본 대기·눈감음·일반 공격·피격에 4방향 원화32개를 적용하고 메인6화 바닥과 작은 식생의 세부 대비를 줄였다. 새 머리에 맞춘 HP바 기준점과 피격 회복 중 새 대기 복귀를 보완했다. 다른 캐릭터·스테이지·전용무기와 전투 판정·저장 규칙은 유지한다.
+
+최종 실제 Unity [EditMode 710/710·17.85초](VisualPilot20261124/Validation/editmode.json), [PlayMode 321/321·761.16초](VisualPilot20261124/Validation/playmode.json)를 통과했으며 실패·스킵·미확정은0개다. 신규7개·2개는 각각 전체 수에 포함되며 부분 실행 결과를 다시 더하지 않는다.
+
+실제6화의 동일 편성·카메라로 전12장·후14장을 촬영했고 최종4방향의 머리 기준점과 원화별 그림자를 확인했다. 별도 고립 배우에서는 전후 각297개의 실제 진행 프레임으로 대기·눈감음·공격·피격 복귀를 검토했다. 모션 촬영은 전투 명령과 적 반응을 실행하는 검사가 아니며, 2340×1080 화면은 Windows Editor의 가로 화면 검수다. [원본17장 비교](VisualPilot20261124/Evidence/gallery.html), [최종 전장 기록](VisualPilot20261124/Validation/actual-board-final.json), [동작 요약](VisualPilot20261124/Validation/motion-summary.json).
+
+일반 [Windows 빌드](VisualPilot20261124/Validation/windows-build.json)는95.82초·오류0·경고4, [Android 빌드](VisualPilot20261124/Validation/android-build.json)는356.49초·오류0·경고6으로 성공했다. 시간은 BuildReport 기준이다. 실제 APK는215,089,810바이트이며 [서명·ARM64·가로 화면·ZIP CRC/정렬](VisualPilot20261124/Validation/apk-verification.json)과 새 원화 포함, 양 플랫폼 검수/테스트 코드 제외를 확인했다. [산출물과 해시](VisualPilot20261124/Validation/artifact-proof.json).
+
+[최종 보존20조건](VisualPilot20261124/Validation/protection-summary.json)은 실제 저장/설정9개·원본 기존 수정12개·검증본 기존 수정23개·기존 APK3개·설정/폰트29개·동결 제품28개의 보존을 확인했다. 측정 CSV2개는 생성본 보존 후 초기 바이트로 복구했다. [회귀 테스트 출처](VisualPilot20261124/Validation/regression-artifact-provenance.json)에 따라 진단파일65개·폴더35개 추가 및 결과 XML1개 변경을 별도 집계했고 기존 파일 삭제0·예상외 기존 파일 변경0이다. 전체 사용자 트리 불변으로 표현하지 않으며 첫 엄격 검사 실패4조건도 보존했다. [Editor 원래 상태19조건](VisualPilot20261124/Validation/editor-state.json)을 확인했다.
+
+[상세 결과·실패 이력·남은 범위](VisualPilot20261124/README.md). 실제 휴대폰 설치·터치·복귀·발열·지속 성능·음원 재생과 일반 Windows 실행본 직접 플레이는 이번 검증에 포함하지 않는다. 새 APK·사용자 음원은 공개하지 않는다.
 
 ## 2026-11-20 — Android 설정·터치 도움말
 

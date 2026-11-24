@@ -1,0 +1,38 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>알펜·6화 실제 전후 비교</title>
+<style>body{margin:0;background:#111a26;color:#e8edf5;font:16px/1.6 system-ui,sans-serif}main{max-width:1420px;margin:auto;padding:28px}h1{font-size:28px}h2{font-size:21px;margin-top:38px}p{max-width:1000px;color:#bacbda}a{color:#83d9d0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}figure{margin:0;background:#1b293b;border-radius:8px;overflow:hidden}img{display:block;width:100%;height:auto}figcaption{padding:10px 14px}small{display:block;color:#b7c2d1;overflow-wrap:anywhere}@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:16px}}</style><main>
+<h1>알펜·6화 그래픽 시범 개선</h1><p>실제 Unity 실행 화면을 원본 그대로 보존한 비교입니다. 위 전장 비교는 같은 카메라와 편성입니다. 확대 동작 비교는 개선된 전장 위에서 검사용 알펜 1명의 기존/새 원화만 바꿔 촬영했습니다. 바닥의 전후 차이는 위 전장 비교에서 확인하세요. 카메라 확대 화면에는 HUD가 없으며 실제 전장 화면에서 HP바와 그림자를 별도로 확인했습니다.</p>
+<p>대기·눈감음·일반 공격·피격은 새 원화, 이동·기술·궁극기는 기존 원화를 사용합니다. 2340×1080 화면은 Windows Editor 검사이며 휴대폰 플레이 결과가 아닙니다. <a href="manifest.json">원본 해시와 촬영 조건</a></p>
+<h2>실제 6화 전장 · 동일 카메라</h2><div class=grid>
+<figure><a href="before-board-r0.png"><img loading="lazy" src="before-board-r0.png" alt="개선 전"></a><figcaption>개선 전<small>실제 전장</small></figcaption></figure>
+<figure><a href="after-board-r0.png"><img loading="lazy" src="after-board-r0.png" alt="개선 후"></a><figcaption>개선 후<small>실제 전장</small></figcaption></figure>
+</div>
+<h2>반대 방향 · 동일 카메라</h2><div class=grid>
+<figure><a href="before-board-r180.png"><img loading="lazy" src="before-board-r180.png" alt="개선 전"></a><figcaption>개선 전<small>실제 전장</small></figcaption></figure>
+<figure><a href="after-board-r180.png"><img loading="lazy" src="after-board-r180.png" alt="개선 후"></a><figcaption>개선 후<small>실제 전장</small></figcaption></figure>
+</div>
+<h2>대기 · 실제 확대 화면</h2><div class=grid>
+<figure><a href="before-idle-front.png"><img loading="lazy" src="before-idle-front.png" alt="개선 전"></a><figcaption>개선 전<small>alphen-hq_0_0 · 0.195초</small></figcaption></figure>
+<figure><a href="after-idle-front.png"><img loading="lazy" src="after-idle-front.png" alt="개선 후"></a><figcaption>개선 후<small>alphen-pilot-idle-front-0 · 0.198초</small></figcaption></figure>
+</div>
+<h2>일반 공격 · 접촉 원화</h2><div class=grid>
+<figure><a href="before-attack-front.png"><img loading="lazy" src="before-attack-front.png" alt="개선 전"></a><figcaption>개선 전<small>alphen-hq_1_0 · 0.441초</small></figcaption></figure>
+<figure><a href="after-attack-front.png"><img loading="lazy" src="after-attack-front.png" alt="개선 후"></a><figcaption>개선 후<small>alphen-pilot-attack-front-1 · 0.440초</small></figcaption></figure>
+</div>
+<h2>피격 · 실제 자세</h2><div class=grid>
+<figure><a href="before-damage-front.png"><img loading="lazy" src="before-damage-front.png" alt="개선 전"></a><figcaption>개선 전<small>alphen-motion_2_0 · 0.006초</small></figcaption></figure>
+<figure><a href="after-damage-front.png"><img loading="lazy" src="after-damage-front.png" alt="개선 후"></a><figcaption>개선 후<small>alphen-pilot-damage-front-0 · 0.006초</small></figcaption></figure>
+</div>
+<h2>네 방향 눈감음 · 실제 관측 프레임</h2><div class=grid>
+<figure><a href="after-blink-front.png"><img loading="lazy" src="after-blink-front.png" alt="Front"></a><figcaption>Front<small>alphen-pilot-idle-front-2 · 4.809초</small></figcaption></figure>
+<figure><a href="after-blink-back.png"><img loading="lazy" src="after-blink-back.png" alt="Back"></a><figcaption>Back<small>alphen-pilot-idle-back-2 · 4.837초</small></figcaption></figure>
+<figure><a href="after-blink-left.png"><img loading="lazy" src="after-blink-left.png" alt="Left"></a><figcaption>Left<small>alphen-pilot-idle-left-2 · 4.774초</small></figcaption></figure>
+<figure><a href="after-blink-right.png"><img loading="lazy" src="after-blink-right.png" alt="Right"></a><figcaption>Right<small>alphen-pilot-idle-right-2 · 4.815초</small></figcaption></figure>
+</div>
+<h2>피격 후 새 대기 그림으로 복귀</h2><div class=grid>
+<figure><a href="after-damage-recovery.png"><img loading="lazy" src="after-damage-recovery.png" alt="회복 프레임"></a><figcaption>회복 프레임<small>alphen-pilot-idle-front-0 · 0.351초</small></figcaption></figure>
+</div>
+<h2>가로 모바일 화면 비율 · Windows Editor 검사</h2><div class=grid>
+<figure><a href="after-wide-0.png"><img loading="lazy" src="after-wide-0.png" alt="command-ui"></a><figcaption>command-ui<small>실제 전장</small></figcaption></figure>
+<figure><a href="after-wide-1.png"><img loading="lazy" src="after-wide-1.png" alt="skill-ui"></a><figcaption>skill-ui<small>실제 전장</small></figcaption></figure>
+</div>
+</main></html>

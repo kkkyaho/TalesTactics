@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "command": "command",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var r=UnityEditor.Build.Reporting.BuildReport.GetLatestReport();var paths=r.packedAssets.SelectMany(p=>p.contents).Select(c=>c.sourceAssetPath).Where(p=>p.Contains(\"/VisualPilot/\")).Distinct().OrderBy(p=>p).ToArray();return new {platform=r.summary.platform.ToString(),result=r.summary.result.ToString(),output=r.summary.outputPath,artAssets=paths};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "platform": "Android",
+        "result": "Succeeded",
+        "output": "C:/dev/TalesTactics/Builds/SourceOnlyPublish20261118/Project/Builds/VisualPilot20261124/Android/TalesTactics.apk",
+        "artAssets": [
+          "Assets/TalesTactics/Art/VisualPilot/Alphen/action-v1.png",
+          "Assets/TalesTactics/Art/VisualPilot/Alphen/idle-v1.png",
+          "Assets/TalesTactics/Resources/TalesTactics/VisualPilot/AlphenMotion.asset"
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\dev\\TalesTactics\\Builds\\SourceOnlyPublish20261118\\Project"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

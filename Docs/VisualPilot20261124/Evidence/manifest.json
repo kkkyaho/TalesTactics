@@ -1,0 +1,401 @@
+{
+  "schema": 1,
+  "sourceImagesEdited": false,
+  "sourceResults": [
+    {
+      "file": "Logs/VisualPilot20261124/BeforeCapture/Episode06/result.json",
+      "sha256": "3c14775e318ca7becaa360a5761c48bb492664c423b00ed7b918b6487492e2cd"
+    },
+    {
+      "file": "Logs/VisualPilot20261124/ActualEpisode06FinalV2/result.json",
+      "sha256": "405579b572f4cf9bf57b2f21e778f1382b2141632229e97b72ca95256de95569"
+    },
+    {
+      "file": "Logs/VisualPilot20261124/MotionBeforeFinal/result.json",
+      "sha256": "1c3a0285daf1dad287f608d69d922010ebccc84b07f816622fe131dcede8e72d"
+    },
+    {
+      "file": "Logs/VisualPilot20261124/MotionAfterFinal/result.json",
+      "sha256": "57053c99bfbb153e6bf4e09d5d3e8ebdd7a4a2b7c1a97e13d19d25678f5fcdb5"
+    }
+  ],
+  "actualBoardBeforeCount": 12,
+  "actualBoardAfterCount": 14,
+  "motionBeforeCount": 297,
+  "motionAfterCount": 297,
+  "closedIdleDirections": [
+    "Back",
+    "Front",
+    "Left",
+    "Right"
+  ],
+  "images": [
+    {
+      "label": "개선 전",
+      "file": "before-board-r0.png",
+      "source": "Logs/VisualPilot20261124/BeforeCapture/Episode06/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "a4384a23bfbbd8de6479c0bd5b6ecc1d8a3085b62fa8a40783a6f45c62ff9b7b",
+      "width": 1280,
+      "height": 720,
+      "phase": "idle",
+      "cameraPosition": {
+        "x": 15.6741543,
+        "y": 17.6023312,
+        "z": -7.263233
+      },
+      "orthographicSize": 3.36863732,
+      "cameraYaw": 321.072449,
+      "rotation": 0
+    },
+    {
+      "label": "개선 후",
+      "file": "after-board-r0.png",
+      "source": "Logs/VisualPilot20261124/ActualEpisode06FinalV2/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "a50a4128d0dc5b964bf8d57adf83165554047947ee260702951960956b7a3cbc",
+      "width": 1280,
+      "height": 720,
+      "phase": "idle",
+      "cameraPosition": {
+        "x": 15.6741543,
+        "y": 17.6023312,
+        "z": -7.263233
+      },
+      "orthographicSize": 3.36863732,
+      "cameraYaw": 321.072449,
+      "rotation": 0
+    },
+    {
+      "label": "개선 전",
+      "file": "before-board-r180.png",
+      "source": "Logs/VisualPilot20261124/BeforeCapture/Episode06/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "b8a497619672c6dab5a42f7c23864849baa588236c4a1d4d3a30d79340bae08d",
+      "width": 1280,
+      "height": 720,
+      "phase": "idle",
+      "cameraPosition": {
+        "x": 0.17320624,
+        "y": 22.8777962,
+        "z": 11.9284058
+      },
+      "orthographicSize": 3.36863732,
+      "cameraYaw": 141.072449,
+      "rotation": 180
+    },
+    {
+      "label": "개선 후",
+      "file": "after-board-r180.png",
+      "source": "Logs/VisualPilot20261124/ActualEpisode06FinalV2/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "1c53b3babe24d4f8c1a38c8b85cde969e318b5561b682512142cbe6f0cc2b61c",
+      "width": 1280,
+      "height": 720,
+      "phase": "idle",
+      "cameraPosition": {
+        "x": 0.17320624,
+        "y": 22.8777962,
+        "z": 11.9284058
+      },
+      "orthographicSize": 3.36863732,
+      "cameraYaw": 141.072449,
+      "rotation": 180
+    },
+    {
+      "label": "개선 전",
+      "file": "before-idle-front.png",
+      "source": "Logs/VisualPilot20261124/MotionBeforeFinal/Front/idle-000.png",
+      "sha256": "bb3d33316f841af0b5fc720dddb26b95c0f0c8afeea7a892f956005a507aa3e9",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-hq_0_0",
+      "phase": "idle",
+      "viewFacing": "Front",
+      "elapsed": 0.19507217407226562,
+      "frame": 5240,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "개선 후",
+      "file": "after-idle-front.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Front/idle-000.png",
+      "sha256": "640372c17d44e63b9753e474515754e830efbd474593f1f2498fd22bf6a01d4b",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-front-0",
+      "phase": "idle",
+      "viewFacing": "Front",
+      "elapsed": 0.1975250244140625,
+      "frame": 9801,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "개선 전",
+      "file": "before-attack-front.png",
+      "source": "Logs/VisualPilot20261124/MotionBeforeFinal/Front/attack-005.png",
+      "sha256": "15a909a03ecee2ab1715238ca0de9cba4739499fcfdff77601ae354fffb0ba8f",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-hq_1_0",
+      "phase": "attack-release",
+      "viewFacing": "Front",
+      "elapsed": 0.4406929016113281,
+      "frame": 6911,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "개선 후",
+      "file": "after-attack-front.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Front/attack-005.png",
+      "sha256": "59373827b9542d4cc6b9a31f6d798e90b73377b995cacd96119fcefe1880c6c4",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-attack-front-1",
+      "phase": "attack-release",
+      "viewFacing": "Front",
+      "elapsed": 0.44025421142578125,
+      "frame": 11424,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "개선 전",
+      "file": "before-damage-front.png",
+      "source": "Logs/VisualPilot20261124/MotionBeforeFinal/Front/damage-000.png",
+      "sha256": "eac0e0ca452f3f092cf683cae6e2666b525b4aeaff1e47b3feb5f400dafc5c9c",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-motion_2_0",
+      "phase": "damage",
+      "viewFacing": "Front",
+      "elapsed": 0.005908966064453125,
+      "frame": 6971,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "개선 후",
+      "file": "after-damage-front.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Front/damage-000.png",
+      "sha256": "ab0937e657586556b3287cdb37c4bc6a2a5b63300547621785991957117dcbbf",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-damage-front-0",
+      "phase": "damage",
+      "viewFacing": "Front",
+      "elapsed": 0.006011962890625,
+      "frame": 11476,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "Front",
+      "file": "after-blink-front.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Front/idle-054.png",
+      "sha256": "25aa675062fb1ac366a85415d54232b7a43fd26f83829963dacaacd44af162be",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-front-2",
+      "phase": "idle",
+      "viewFacing": "Front",
+      "elapsed": 4.8087921142578125,
+      "frame": 10115,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "Back",
+      "file": "after-blink-back.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Back/idle-054.png",
+      "sha256": "40003397ab065a51381389dccf43afa29aff8f5778590350802914adc2bb7ddd",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-back-2",
+      "phase": "idle",
+      "viewFacing": "Back",
+      "elapsed": 4.836555480957031,
+      "frame": 10508,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "Left",
+      "file": "after-blink-left.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Left/idle-053.png",
+      "sha256": "950b7691f2adaf7f730388a0d2a780a9d316edae61ed77ebf0b02e92e5b7ee36",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-left-2",
+      "phase": "idle",
+      "viewFacing": "Left",
+      "elapsed": 4.773963928222656,
+      "frame": 10916,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "Right",
+      "file": "after-blink-right.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Right/idle-054.png",
+      "sha256": "9d8c02370216129c5926d00d5ba3a7019fad4ec6dc916522655bb7e4a1ab2e35",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-right-2",
+      "phase": "idle",
+      "viewFacing": "Right",
+      "elapsed": 4.814910888671875,
+      "frame": 11310,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "회복 프레임",
+      "file": "after-damage-recovery.png",
+      "source": "Logs/VisualPilot20261124/MotionAfterFinal/Front/damage-004.png",
+      "sha256": "049e883ea64113b1dd5dcd6ec1b70662b63382e39734f80dbd019286b9560c1a",
+      "width": 960,
+      "height": 540,
+      "sprite": "alphen-pilot-idle-front-0",
+      "phase": "damage",
+      "viewFacing": "Front",
+      "elapsed": 0.351104736328125,
+      "frame": 11497,
+      "cameraPosition": {
+        "x": 9.106605529785156,
+        "y": 10.704047203063965,
+        "z": -5.084364891052246
+      },
+      "cameraEuler": {
+        "x": 57.000003814697266,
+        "y": 321.07244873046875,
+        "z": 3.1351903544418747e-06
+      },
+      "cameraSize": 1.2200000286102295
+    },
+    {
+      "label": "command-ui",
+      "file": "after-wide-0.png",
+      "source": "Logs/VisualPilot20261124/ActualEpisode06FinalV2/12-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "1394ffb2bc39dbc2a8b1d0a6d197fd920a40f3671817ced4556e5b8e0b9ff662",
+      "width": 2340,
+      "height": 1080,
+      "phase": "command-ui",
+      "cameraPosition": {
+        "x": 13.3150291,
+        "y": 20.69011,
+        "z": -3.056697
+      },
+      "orthographicSize": 9.976536,
+      "cameraYaw": 321.072449,
+      "rotation": 0
+    },
+    {
+      "label": "skill-ui",
+      "file": "after-wide-1.png",
+      "source": "Logs/VisualPilot20261124/ActualEpisode06FinalV2/13-episode-06-skill-ui-2340x1080-r0.png",
+      "sha256": "64c23443f0ff48dcbe71dc3ce40b2bb0849c95541cfd107148898bdceebfd45d",
+      "width": 2340,
+      "height": 1080,
+      "phase": "skill-ui",
+      "cameraPosition": {
+        "x": 13.3150291,
+        "y": 20.69011,
+        "z": -3.056697
+      },
+      "orthographicSize": 9.976536,
+      "cameraYaw": 321.072449,
+      "rotation": 0
+    }
+  ],
+  "limits": "All PNGs are original Unity captures. Motion uses an isolated actor on the actual episode-six board; full-board captures use the real battle/HUD. Windows Editor capture is not Android device execution. PNG capture cadence is not game performance."
+}

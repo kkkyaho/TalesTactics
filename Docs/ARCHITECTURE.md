@@ -1,5 +1,16 @@
 # 아키텍처
 
+## 알펜·6화 그래픽 시범
+
+`BoardView`는 실제 `BattleSession.CampaignStage`가 메인6화(`CrossoverCampaign.FirstStage+5`, 값11)인 경우에만 `CharacterMotion.Initialize`의 시범 원화를 활성화한다. `PixelBattlefield.Chapter`는 이미 압축된 지형 테마이므로 적용 여부 판단에 쓰지 않는다. 같은 유적 테마의 다른 스테이지는 기존 표현을 유지한다.
+
+`AlphenVisualPilotMotion`은 Resources의 선택적 에셋으로 대기4·일반 공격3·피격1포즈를 네 방향으로 보관한다. 기본 대기는 5.4초 주기 안에서 호흡과 0.1초 눈감음을 선택하며, 실제 원화가 표시될 때만 기존 UV 대기 변형을 끈다. Sprite가 누락되거나 해당 방향·상태·전용 장비 외형이 준비되지 않은 경우 기존 `EquipmentAppearance`와 포즈로 돌아간다. 전용무기 변형은 정확한 Appearance 참조가 있을 때만 새 원화를 선택한다. 전투 판정·입력·저장 구조·공격 준비/판정/회복 시간은 변경하지 않는다.
+
+새 PNG 두 장의 실제 크기는 각각1254×1254이며 원본 alpha와 픽셀을 보존한다. `VisualPilotArtImporter`는 SHA가 일치하는 새 시트 두 장만 명시적으로 가져오고, 측정한 발 피벗과188.5PPU를 Sprite metadata로 연결한다. 기존 CharacterData와 원화/전용무기 참조를 덮어쓰지 않는다. 접촉·몸 그림자는 기존 `GroundedUnitVisual`·`ProjectedUnitShadow`가 현재 Sprite를 따라 갱신한다. 새 32개 포즈는 은색 머리 영역에서 측정한 머리 기준점을 `UnitHeadAnchors`에 추가해 HP바를 정렬하며, 기존 168개 항목을 보존한다. 피격 포즈가 끝난 뒤 남은 반동 구간에는 새 기본 대기 원화를 사용해 옛 그림이 끼어드는 현상을 막는다.
+
+6화 지형의 보정은 해당 `PixelBattlefield` 인스턴스 바닥 재질과 작은 식생 개수에 한정한다. 공유 원화·다른 스테이지의 재질·벽/기둥·지도 규칙·충돌체·게임 난수는 유지한다. 비교용 `VisualPilotCapture`와 importer는 Editor 폴더에 있어 일반 플레이어에서 제외된다. 시범의 실제 검증 결과와 남은 범위는 [전용 기록](VisualPilot20261124/README.md)을 따른다.
+
+
 ## Windows·Android 공통 게임과 플랫폼 처리
 
 전투 규칙·캐릭터·성장·캠페인·저장 데이터는 Windows와 Android에서 공유한다. `BattleTouchInput`은 모바일 입력을 전장 탭 미리보기와 별도 확정, 드래그 이동, 두 손가락 확대·축소로 연결한다. UI에서 시작했거나 취소된 접촉, 다중 접촉 후 남은 손가락은 전장 행동으로 이어지지 않는다. 상태·활성 유닛·모달 전환 때 이전 터치 선택을 해제한다. PC의 마우스·키보드 경로는 유지한다.
