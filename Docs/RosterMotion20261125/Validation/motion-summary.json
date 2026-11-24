@@ -1,0 +1,2219 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "summaryKind": "Read-only aggregation of existing Unity capture evidence",
+  "countsAsUnityTest": false,
+  "captureRunCount": 20,
+  "characterCount": 10,
+  "totalRecordedFrames": 5539,
+  "totalReportedPngs": 5539,
+  "totalActualPngFiles": 5539,
+  "beforeRecordedFrames": 2761,
+  "afterRecordedFrames": 2778,
+  "afterClosedIdleDirectionObservations": 40,
+  "allStatePreservationChecksPassed": true,
+  "captures": [
+    {
+      "characterId": "cless",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/cless/BeforeFinal/result.json",
+        "sha256": "9fc14aabb41a2533940eeb1b8cb096a7d91452da42e6a569a4349b85a2898596",
+        "bytes": 358047
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 281,
+      "reportedPngCount": 281,
+      "actualPngCount": 281,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 5,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "cless",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/result.json",
+        "sha256": "13ae9958900dc0c7c2e6a12beac4e2d3f6521ef8cbca3d3a19f8f6150d111734",
+        "bytes": 364212
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.281000018,
+      "recordedFrameCount": 281,
+      "reportedPngCount": 281,
+      "actualPngCount": 281,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 3,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 38
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "mint",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/mint/BeforeFinal/result.json",
+        "sha256": "7ce75d97343fe0ca5f4121a29f9ca5c72424d8d94c890ce5e3d79f5f29e66eb0",
+        "bytes": 353776
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 277,
+      "reportedPngCount": 277,
+      "actualPngCount": 277,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "mint",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/result.json",
+        "sha256": "e5b71f8f7ee1003aff9289521efd365aff66015257692e004965ee14bfef4439",
+        "bytes": 363009
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.896,
+      "recordedFrameCount": 280,
+      "reportedPngCount": 280,
+      "actualPngCount": 280,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "farah",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/farah/BeforeFinal/result.json",
+        "sha256": "d6fd74164de5feff7c81521ee57c5a2573b2d5a8e9cee2c89f55391d182274b3",
+        "bytes": 360102
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 282,
+      "reportedPngCount": 282,
+      "actualPngCount": 282,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "farah",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/result.json",
+        "sha256": "f03154e0fdb53edc92713dfea5d0534725286e4316712dfa7c73f59968b519fb",
+        "bytes": 366822
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.832,
+      "recordedFrameCount": 283,
+      "reportedPngCount": 283,
+      "actualPngCount": 283,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 38
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "tear",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/tear/BeforeFinal/result.json",
+        "sha256": "7acd20f18fb32e82044624accf685655e4c6a02268b5541809332ada1beddeef",
+        "bytes": 353266
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 277,
+      "reportedPngCount": 277,
+      "actualPngCount": 277,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 35
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "tear",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/result.json",
+        "sha256": "4aa73020adfaf438d941b799f4bd15d45ea979742ed4cce7c96f2cdcc503af08",
+        "bytes": 362678
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 1.07600009,
+      "recordedFrameCount": 280,
+      "reportedPngCount": 280,
+      "actualPngCount": 280,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 34
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 38
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "jade",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/jade/BeforeFinal/result.json",
+        "sha256": "45810b528675bdaca20fddfed35f2974957888bf096c9dde408824042c3fdcbd",
+        "bytes": 352942
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 277,
+      "reportedPngCount": 277,
+      "actualPngCount": 277,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 11,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 10,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "jade",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/result.json",
+        "sha256": "0784c03d1922637f878635e3883bf3a05e057f4269fd766855f1c7f2119cd7ee",
+        "bytes": 358857
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.859,
+      "recordedFrameCount": 277,
+      "reportedPngCount": 277,
+      "actualPngCount": 277,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "natalia",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/natalia/BeforeFinal/result.json",
+        "sha256": "945ab70482bcd69fe7dc63dd02098a22ae3578378999594fd52622a75a3d5c0a",
+        "bytes": 351784
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 276,
+      "reportedPngCount": 276,
+      "actualPngCount": 276,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "natalia",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/result.json",
+        "sha256": "0ac202f947f111b9003eb0ef70038cc418d027b3c78c8bc545c8550d5e74a1b7",
+        "bytes": 360347
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.252,
+      "recordedFrameCount": 277,
+      "reportedPngCount": 277,
+      "actualPngCount": 277,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 3,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 10,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 38
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "velvet",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/velvet/BeforeFinal/result.json",
+        "sha256": "f52f3a73240b81725e3a5b17eb3ed6000e5a48d7500b8e1ce7670ba71dbdda66",
+        "bytes": 356648
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 279,
+      "reportedPngCount": 279,
+      "actualPngCount": 279,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 3,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 72,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "velvet",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/result.json",
+        "sha256": "ed3282a46b53207fef5ccea57de773ed0038769239266e564e2a008e1fbce543",
+        "bytes": 356281
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.792000055,
+      "recordedFrameCount": 274,
+      "reportedPngCount": 274,
+      "actualPngCount": 274,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 66,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 11,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 5,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 38
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "alphen",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/alphen/BeforeFinal/result.json",
+        "sha256": "82a9217445069aef7eb51e652fbe63297d632411a99faa462f04ecbaa5f9c224",
+        "bytes": 341490
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 267,
+      "reportedPngCount": 267,
+      "actualPngCount": 267,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 62,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 4,
+            "attack-release": 8,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 10,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "alphen",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/result.json",
+        "sha256": "b22bd75487307008cfd7316338d79590f459e8bfb9bc9a9889b2866145f3d095",
+        "bytes": 350621
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 1.041,
+      "recordedFrameCount": 274,
+      "reportedPngCount": 274,
+      "actualPngCount": 274,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 65,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 11,
+            "damage": 5,
+            "damage-recovery": 2,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "shionne",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/shionne/BeforeFinal/result.json",
+        "sha256": "a6f8b8652511716cccbaa80b3fc19697c4592cc16f9314257d9b59e356fa14ab",
+        "bytes": 349903
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 273,
+      "reportedPngCount": 273,
+      "actualPngCount": 273,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 65,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 10,
+            "damage": 4,
+            "damage-recovery": 3,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "shionne",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/result.json",
+        "sha256": "4850d0d134bc87f06e59589d1fce953d308c2b43562d887d6e5f48d30076af96",
+        "bytes": 355698
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.217000008,
+      "recordedFrameCount": 273,
+      "reportedPngCount": 273,
+      "actualPngCount": 273,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 35
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 66,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 3,
+            "attack-release": 11,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "kisara",
+      "variant": "BeforeFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/kisara/BeforeFinal/result.json",
+        "sha256": "a020d6b79ae9e600a79b8933acf477f114d0bd57c6e030937397cea95784656f",
+        "bytes": 346724
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": false,
+      "authoredIdleOffsetSeconds": 0.0,
+      "recordedFrameCount": 272,
+      "reportedPngCount": 272,
+      "actualPngCount": 272,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 68,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 4,
+            "attack-release": 13,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 35
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 11,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 13,
+            "damage": 5,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 67,
+          "phaseCounts": {
+            "attack-prepare": 6,
+            "attack-recovery": 5,
+            "attack-release": 11,
+            "damage": 4,
+            "damage-recovery": 4,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": false,
+          "closedIdlePoseSampleCount": 0,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    },
+    {
+      "characterId": "kisara",
+      "variant": "AfterFinal",
+      "source": {
+        "path": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/result.json",
+        "sha256": "afd8a47aef5631ade9fff315fa8d7ba41a1f91ab2d5efab43a6736a8a7ab0c89",
+        "bytes": 362479
+      },
+      "complete": true,
+      "passed": true,
+      "status": "passed",
+      "unityVersion": "6000.6.0f1",
+      "campaignStageIndex": 11,
+      "pilot": true,
+      "authoredIdleOffsetSeconds": 0.514,
+      "recordedFrameCount": 279,
+      "reportedPngCount": 279,
+      "actualPngCount": 279,
+      "pngReferencesMatchPhysicalFiles": true,
+      "discardedColdFrames": 24,
+      "targetFramesPerSecond": 6,
+      "captureFramerate": 0,
+      "timeScale": 1.0,
+      "statePreservation": {
+        "sessionUnchanged": true,
+        "gridUnchanged": true,
+        "campaignUnchanged": true,
+        "randomUnchanged": true,
+        "contentUnchanged": true,
+        "cameraRestored": true,
+        "temporaryObjectsRemoved": true
+      },
+      "snapshotEquality": {
+        "session": true,
+        "grid": true,
+        "campaign": true,
+        "random": true
+      },
+      "closedIdleDirections": [
+        "Back",
+        "Front",
+        "Left",
+        "Right"
+      ],
+      "directions": [
+        {
+          "viewFacing": "Front",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Back",
+          "frameCount": 69,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 5,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 1,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Left",
+          "frameCount": 70,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 5,
+            "damage-recovery": 4,
+            "idle": 36
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 1
+        },
+        {
+          "viewFacing": "Right",
+          "frameCount": 71,
+          "phaseCounts": {
+            "attack-prepare": 7,
+            "attack-recovery": 6,
+            "attack-release": 12,
+            "damage": 4,
+            "damage-recovery": 5,
+            "idle": 37
+          },
+          "closedIdlePoseObserved": true,
+          "closedIdlePoseSampleCount": 1,
+          "blinkSupplementFrameCount": 0,
+          "fullBoardFrameCount": 2
+        }
+      ],
+      "errorCount": 0
+    }
+  ],
+  "scope": "Ten isolated base-weapon actors, before and after presentation, on the existing episode-six battlefield; four directions each, idle/basic-attack/damage/recovery, using actual advancing Unity frames.",
+  "limitations": [
+    "This summary is not an additional EditMode or PlayMode test run.",
+    "PNG capture cadence includes Editor/readback/encoding overhead and is not a performance measurement.",
+    "Closed idle pose means the authored third idle sprite was observed; the back pose has no visible eyelids. Missing before-capture observations do not prove a pre-existing blink never occurred.",
+    "BeforeFinal retains the pre-existing Alphen pilot. The other nine use their earlier presentation.",
+    "No natural campaign progression, damage calculation, save write, Android installation or physical-device gameplay is asserted.",
+    "This mechanical summary does not replace visual review; original result JSON and PNGs remain local."
+  ]
+}

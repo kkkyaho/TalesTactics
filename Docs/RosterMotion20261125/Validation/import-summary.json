@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two actual Unity Sprite Data Provider imports; second run verifies references survive a rerun. Not an EditMode test count.",
+  "passed": true,
+  "runs": [
+    {
+      "source": {
+        "path": "Logs/RosterMotion20261125/Import/first.json",
+        "sha256": "58efb0c1db4b74d4545d10c82cb2675e52ef0693c01d7c8522767b68a2665f37"
+      },
+      "runId": "38c3fa2429254254b7b467128b6a8d8b",
+      "startedUtc": "2026-11-24T20:10:26.2170146Z",
+      "finishedUtc": "2026-11-24T20:10:40.0667434Z",
+      "passed": true,
+      "characters": 9,
+      "sprites": 288,
+      "sheets": 18,
+      "capabilitiesPassed": true,
+      "nativePngBytesUnchanged": true,
+      "preservedSpriteIds": 0,
+      "preservedLocalFileIds": 0
+    },
+    {
+      "source": {
+        "path": "Logs/RosterMotion20261125/Import/second.json",
+        "sha256": "94cc59f0aefa78b13b1eb4b2f091b68a9cb2c1df689d7759e710d14514718518"
+      },
+      "runId": "8a977a4ecf58408da0688afa7486ba91",
+      "startedUtc": "2026-11-24T20:11:14.2926803Z",
+      "finishedUtc": "2026-11-24T20:11:25.1665923Z",
+      "passed": true,
+      "characters": 9,
+      "sprites": 288,
+      "sheets": 18,
+      "capabilitiesPassed": true,
+      "nativePngBytesUnchanged": true,
+      "preservedSpriteIds": 288,
+      "preservedLocalFileIds": 288
+    }
+  ]
+}

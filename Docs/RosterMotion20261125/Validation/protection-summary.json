@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "passed": true,
+  "scope": "Prepublication check against the immutable 83-file product freeze, after both builds and restoration. A later local final check covers the full selected publication manifest before commit.",
+  "checkedUtc": "2026-11-24T21:42:39.2062699Z",
+  "baselineSha256": "cb2d688f2e12323568986d884a584c459dd5acd9ef9aba74999402772e7f955c",
+  "sourceFreezeSha256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+  "checkCount": 13,
+  "failedCheckCount": 0,
+  "sourceFileCount": 83,
+  "sourceCheckoutComparisons": 166,
+  "protectedOriginalFileCopies": 4181,
+  "originalRootDirtyFileCount": 12,
+  "originalValidationDirtyFileCount": 23,
+  "originalArtworkFileCount": 946,
+  "preexistingApkCount": 6,
+  "actualUserSaveFileCount": 9,
+  "wholeUserTreeUnchanged": true,
+  "userTreeBeforeFileCount": 5597,
+  "userTreeFinalFileCount": 5597,
+  "userTreeExcludedRootFiles": [
+    "Player.log",
+    "Player-prev.log"
+  ],
+  "excludeScope": "Only the two player execution logs at the root of the user-data directory are excluded; all 5597 baseline files and all subdirectories are compared.",
+  "finalAddedFiles": 0,
+  "finalChangedFiles": 0,
+  "finalDeletedFiles": 0,
+  "finalAddedDirectories": 0,
+  "finalDeletedDirectories": 0,
+  "regressionArtifacts": {
+    "archivedGeneratedFiles": 65,
+    "archivedGeneratedDirectories": 35,
+    "existingFilesDeleted": 0,
+    "restoredValidationCsvFiles": 2,
+    "priorDiagnosticXmlRestored": true,
+    "scope": "Only new StorageTests artifacts from this validation run were archived and removed from the user tree. Original user files were retained."
+  },
+  "checkNames": [
+    "Immutable baseline report hashes",
+    "Immutable protected original byte copies",
+    "Protected files retain baseline bytes except frozen products",
+    "Final frozen products match in both checkouts",
+    "root pre-commit HEAD and branch unchanged",
+    "validation pre-commit HEAD and branch unchanged",
+    "All original ROOT12 and PUBLIC23 tracked changes retain exact bytes",
+    "All baseline artwork preserved",
+    "All six preexisting APKs preserved",
+    "Whole user tree retains fresh baseline names and bytes",
+    "Nine actual campaign and settings saves exact bytes",
+    "windows build passed and settings restored",
+    "android build passed and settings restored"
+  ],
+  "evidence": [
+    {
+      "file": "protection-prefreeze83.json",
+      "sha256": "63d32e79cda8c40d5c1d723e86c9f78bae16dddb415fd9ed038678e66bdcb6ae"
+    },
+    {
+      "file": "BeforeBuildRegressionRestore/result.json",
+      "sha256": "89e48cc368c1317ae814de97250682584f0699a534ebe3ce087590b3be2744f3"
+    }
+  ],
+  "privacy": "Only counts, nonprivate state and evidence hashes are published. User paths, file lists, save content and supplied-music hashes remain local."
+}

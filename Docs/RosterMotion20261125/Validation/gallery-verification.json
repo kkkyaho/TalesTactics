@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "passed": true,
+  "recordedUtc": "2026-11-24T21:01:06.189557+00:00",
+  "scope": "동료 10명의 최종 실제 Unity 관측으로 만든 공개 대표 장면과 로컬 연속 검수 갤러리의 생성·원본 보존·브라우저 동작 검사입니다.",
+  "publicEvidence": {
+    "gallery": "Docs/RosterMotion20261125/Evidence/gallery.html",
+    "contact": "Docs/RosterMotion20261125/Evidence/contact.html",
+    "manifest": "Docs/RosterMotion20261125/Evidence/manifest.json",
+    "manifestSha256": "a2683f255a699699a81072aac901cd760516fe4d5aa5e93b8f1eb8aea2867104",
+    "characters": 10,
+    "beforeAfterCaptureRuns": 20,
+    "characterPngCount": 60,
+    "boardPngCount": 6,
+    "totalPngCount": 66,
+    "totalPngBytes": 73143267,
+    "allSelectedSourceAndCopySha256AndBytesMatched": true,
+    "sourcePngEdited": false,
+    "discontinuousSnapshotsAnimated": false,
+    "audioOrBuildFilesIncluded": false
+  },
+  "localReview": {
+    "gallery": "Logs/RosterMotion20261125/LocalGallery/FinalTen/gallery.html",
+    "manifest": "Logs/RosterMotion20261125/LocalGallery/FinalTen/manifest.json",
+    "manifestSha256": "2559b06ebdb09fe56cdeef75242a4c5e339e059f2f1ed0939c48f58db8a9c8d9",
+    "referencedPngCount": 5445,
+    "continuousSequenceFrames": 5428,
+    "pngCopies": 0,
+    "publishedSequenceImages": false,
+    "note": "실제 원본 PNG를 상대 경로로 참조합니다. 수천 프레임과 로컬 manifest 원문은 이 공개 요약에 복사하지 않았습니다."
+  },
+  "generator": {
+    "path": "Tools/RosterMotion20261125/BuildEvidence.py",
+    "sha256": "09a1322f26b8cbe01146da5d7555d3ea2c16327ac61ec535d927c06a0e31c235",
+    "publicAndLocalManifestRegenerationByteMatched": true,
+    "publicAndLocalHtmlRegenerationByteMatched": true,
+    "lineEndings": "Windows CRLF"
+  },
+  "browser": {
+    "engine": "Microsoft Edge / Playwright, headless isolated profile",
+    "testedCharacterCount": 10,
+    "playbackControlCases": 60,
+    "testedCombinationsPerCharacter": [
+      "Front/idle",
+      "Front/attack",
+      "Front/damage",
+      "Back/idle",
+      "Left/idle",
+      "Right/idle"
+    ],
+    "observedClockAdvanceAndFinalSourceFrameMatched": true,
+    "decodedImages": {
+      "publicGallery": 66,
+      "publicContact": 20,
+      "localContact": 20
+    },
+    "brokenSelectedImages": 0,
+    "publicAnimationScripts": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "unexpectedFailedRequests": 0,
+    "expectedNavigationLoadCancellations": 0
+  },
+  "initialFailureAndCorrection": {
+    "firstBrowserCheckPassed": false,
+    "issue": "시간 슬라이더 step=0.001이 마지막 관측 시각 6.0012207초를 6.001초로 반올림하여 직전 프레임을 선택했습니다.",
+    "change": "로컬 갤러리의 슬라이더를 step=any로 바꿔 실제 관측 시각을 그대로 선택하도록 보완했습니다.",
+    "finalBrowserCheckPassed": true,
+    "originalFailureReportPreserved": true,
+    "originalHtml": [
+      {
+        "source": "Logs/RosterMotion20261125/LocalGallery/FinalTen/gallery.html",
+        "backup": "Logs/RosterMotion20261125/GalleryValidation/InitialHtml/FinalTen-gallery.html",
+        "sha256": "792213e5c34b5880c634ced4d0f1348237d7b34ade308c83e31a3c6dc07c197a"
+      },
+      {
+        "source": "Logs/RosterMotion20261125/LocalGallery/FirstFiveFinal/gallery.html",
+        "backup": "Logs/RosterMotion20261125/GalleryValidation/InitialHtml/FirstFiveFinal-gallery.html",
+        "sha256": "13055c8bbae5ba1ba47fbf9fc704f533cab2b84b3e5774ba250d21adccb83868"
+      }
+    ],
+    "sourcePngChanged": 0,
+    "publicPngChanged": 0,
+    "manifestChangedBySliderFix": 0,
+    "verificationNote": "초기 재생성 검사는 LF 바이트를 기대해 실패했으며, 실제 Windows write_text의 CRLF 규칙으로 검사만 바로잡았습니다. 이 과정에서 산출물을 바꾸지 않았습니다."
+  },
+  "rawReports": [
+    {
+      "path": "Logs/RosterMotion20261125/GalleryValidation/browser-check.json",
+      "sha256": "9485111c43e60c9dd667cf3cd20369d5976bfd09f66cbee6128bc4cf4263204c"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/GalleryValidation/slider-precision-fix.json",
+      "sha256": "0b4077418727224ae829479a431cbc0b897f75bd109963402313164d05e2ea7b"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/GalleryValidation/browser-check-final.json",
+      "sha256": "f8a3265861b5da193b273aa8bb24dab2256b106914212d78ffdbdc738f56383b"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/GalleryValidation/generation-and-copy-proof.json",
+      "sha256": "895b3d260aaed2ed82f2eed37f5b41d72ed6bf851ed87d373be0bf9e270c1dad"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/Selections/final-ten.json",
+      "sha256": "e0cda089499c8ca82085a4b28e852b98ea1bdf2c7c6c0f3ba13ebde811136657"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/Selections/final-evidence-check-only.json",
+      "sha256": "acea814964c9ca043ed300b894fb04280508a28ab727a1f427a456aa9ae3b10b"
+    }
+  ],
+  "limitations": [
+    "브라우저 검사는 이미지 디코딩과 선택한 60개 재생 제어·마지막 실제 프레임 연결을 확인한 것이며, 모든 연속 프레임을 사람이 시청한 검수가 아닙니다.",
+    "PNG 관측 간격은 게임 성능 측정값이 아니며 보간하거나 새로운 프레임을 만들지 않았습니다.",
+    "실제 6화의 임시 편성과 검사용 배우 관측입니다. Android 실기기·자연 합류·전투 계산·전체 스테이지·장시간 성능을 검증한 결과가 아닙니다."
+  ]
+}

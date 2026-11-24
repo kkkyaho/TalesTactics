@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "character": "natalia",
+  "tool": "builtin image_gen",
+  "mode": "identity-preserve generation",
+  "originalReference": "Assets/TalesTactics/Art/PixelCampaign/natalia-hq.png",
+  "requestedDimensions": {
+    "width": 2048,
+    "height": 2048
+  },
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "idle": [
+      "rest",
+      "inhale",
+      "closed-eyes",
+      "exhale"
+    ],
+    "action": [
+      "windup",
+      "contact",
+      "recovery",
+      "hit"
+    ]
+  },
+  "nativePixelsUnmodified": true,
+  "alphaUnmodified": true,
+  "originalOutputsPreserved": true,
+  "images": [
+    {
+      "kind": "idle",
+      "prompt": "Use case: identity-preserve. The most recent image is the EXACT current game Natalia sprite sheet shown on a gray preview backdrop. Create a NEW production IDLE animation sheet, true transparent RGBA, preferably 2048x2048, preserving her original design. Petite SD anime archer with a short golden-blonde bob, broad dark-brown headband with tiny gold side ornaments, big bright teal eyes, teal short capelet/tunic with white ruffled sleeve trim and a yellow neck ribbon, white-and-teal gold-patterned short flared skirt and long teal/gold trailing side panels, brown cross-body belts, brown arrow quiver and small belt pouch, white gloves/bracers, pale knee boots with brown/gold feet. ONE ornate golden recurved BOW with a visible thin bowstring, bow held by her left hand and right hand relaxed near her waist; preserve the reference handedness, quiver and costume details. Exactly FOUR equal columns x FOUR equal rows =16 separate complete full-body sprites. Rows top-to-bottom FRONT slightly three-quarter toward viewer; BACK fully away; LEFT profile facing screen-left; RIGHT profile facing screen-right. Columns in every row:1 calm vigilant baseline with bow lowered at her side;2 tiny inhale, slight shoulder lift and gentle cape-tip/hair movement;3 natural brief blink with eyes fully CLOSED for front and side views, back subtle cape movement with no face;4 exhale, eyes reopened and return toward baseline. Boots remain planted on the exact same baseline, stable knees/hips, identical head/body size throughout. Keep bow rigid, safely lowered, no drawing or firing arrows during idle. Full bow tips, boots and trailing cloth entirely inside each equal cell with generous transparent safety margin. Preserve the reference's clean dark colored outlines and warm/cool painted cel shading, same SD proportions and youthful determined face. No gray backdrop, no scenery, ground, shadows, text, labels, lines, grid, checkerboard, particles, detached props or duplicate bow. True transparent alpha, no changes of outfit or hairstyle. Use reference only for identity/style and make a new coherent4x4idle sequence.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-f2a7a34d-1442-4fea-9788-d0238577aa1d.png",
+      "referenceUsed": "Original source sheet shown as an in-memory JPEG preview; gray preview backdrop is not a game asset.",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/natalia/idle-v1.png",
+      "sha256": "b4b711616625cdfb20467c4d1f4a2348b39eacbf9292a6ae4be5493e7078eea3",
+      "sourceSha256": "b4b711616625cdfb20467c4d1f4a2348b39eacbf9292a6ae4be5493e7078eea3",
+      "bytes": 1992746,
+      "width": 1254,
+      "height": 1254,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    },
+    {
+      "kind": "action",
+      "prompt": "Use case: identity-preserve. The most recent image is a gray-backed memory preview of the selected Natalia idle sheet, the EXACT identity/style reference. Create her matching production ARCHERY ATTACK AND HIT-REACTION sprite sheet with true transparent RGBA, preferably 2048x2048. Preserve petite SD proportions, blonde bob, brown/gold headband, teal eyes, teal capelet/tunic with white ruffles and yellow ribbon, white-teal gold-patterned skirt and long trailing cloth panels, brown belts/quiver/pouch, white gloves/bracers, pale boots with brown/gold feet. Exactly one ornate GOLDEN RECURVE BOW with continuous string, left hand holds bow, right hand draws string. Exactly FOUR equal columns x FOUR equal rows=16 complete same-scale full-body sprites. Rows top-to-bottom FRONT three-quarter toward viewer; BACK away; LEFT facing screen-left; RIGHT facing screen-right. Four distinct poses per row: col1 WINDUP, raise bow toward that orientation and draw back one nocked arrow, right hand near cheek, focused eye; col2 CONTACT/RELEASE, bow arm extended toward target, right fingers just opened beside cheek as string returns, no detached arrow/projectile visible, decisive slight forward weight; col3 RECOVERY, lower bow toward the reference idle stance and relax shoulders with trailing cloth settling; col4 separate HIT REACTION, small backward flinch with raised shoulder and braced knees, eyes squint, still holds bow low, no arrow. Clearly different draw/release/recover/flinch silhouettes. Keep full bow tips, nocked arrow in windup, hair and trailing cloth inside each equal cell with generous transparent margins and no neighboring overlap. Same head/body scale and boot ground baseline across each row. BACK row no front face. Preserve original outfit, handedness and bow construction, no extra bow limbs, duplicate hands, swords or rifles. Match precise dark colored outlines, warm upper-left highlights and restrained cool cel shadows. No particles, magic flashes, smoke, blood, floating symbols, labels, words, grid, floor, cast shadows or checkerboard. Do not reproduce the gray preview backdrop; actual transparent alpha only.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-165d641c-eb2c-495f-a87f-f55b08a91d37.png",
+      "referenceUsed": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-f2a7a34d-1442-4fea-9788-d0238577aa1d.png (in-memory gray-backed preview)",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/natalia/action-v1.png",
+      "sha256": "1fa744c28774fbe8608f87fd97cee2f08d5113751cf7ded9689eb38d9c14314c",
+      "sourceSha256": "1fa744c28774fbe8608f87fd97cee2f08d5113751cf7ded9689eb38d9c14314c",
+      "bytes": 2137028,
+      "width": 1254,
+      "height": 1254,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    }
+  ],
+  "visualReview": "Viewed original Natalia reference and both generated sheets. Preserved blonde bob/headband, teal-white-gold costume, brown quiver and ornate golden bow. 16 poses per sheet in front/back/left/right rows, blink and drawn-arrow/release/recovery/flinch are visible. Idle inspected on an in-memory gray composite; transparent RGB noise not visible. Runtime slicing, pivots, projectile synchronization and animation timing are separate validation.",
+  "originalReferenceSHA256": "a0ec9e5f6eeaa3956de6c8e0777f7b9d582f29b86acc14e55177b27a0fc34d42",
+  "recordedUtc": "2026-11-24T19:51:26.7411435Z",
+  "generatedSourcePathNote": "Generator cache paths are local provenance identifiers; native destination SHA256 is authoritative. Original absolute-path records are retained in local Logs only.",
+  "observedRowDirections": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ]
+}

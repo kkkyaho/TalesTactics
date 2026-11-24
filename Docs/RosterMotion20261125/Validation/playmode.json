@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 3,
+  "platform": "PlayMode",
+  "status": "completed-with-successful-isolated-retry",
+  "scope": "Full 321-case Unity PlayMode run followed by one unchanged-source isolated retry; the initial full run remains failed",
+  "fullRunPassed": false,
+  "retryPassed": true,
+  "allCasesCoveredByPassingResults": true,
+  "coverage": {
+    "distinctTestCases": 321,
+    "testExecutionsAcrossRuns": 322,
+    "passedInFullRun": 320,
+    "passedOnlyInIsolatedRetry": 1
+  },
+  "fullRun": {
+    "schemaVersion": 2,
+    "platform": "PlayMode",
+    "scope": "Completed full Unity TestRunnerApi PlayMode suite in the separate source-only validation checkout",
+    "status": "completed",
+    "passed": false,
+    "summary": {
+      "total": 321,
+      "passed": 320,
+      "failed": 1,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runDirectory": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset",
+    "runId": "12bde49d-d2f3-465b-81d6-ea3328f7ad5d",
+    "runner": "Unity TestRunnerApi official mode-wide PlayMode filter",
+    "xmlRunResult": "Failed(Child)",
+    "startedUtc": "2026-11-24T21:01:08Z",
+    "startTimestampSource": "XML test-run start-time; RunStarted callback missing",
+    "finishedUtc": "2026-11-24T21:13:21.508008Z",
+    "resultStartedUtc": "2026-11-24T21:01:08.2504524Z",
+    "resultFinishedUtc": "2026-11-24T21:13:21.5080089Z",
+    "collectedUtc": "2026-11-24T21:13:21.5896174Z",
+    "discoveryUtc": "2026-11-24T21:00:54.2217756Z",
+    "queuedUtc": "2026-11-24T21:00:54.2990877Z",
+    "xmlStartedUtc": "2026-11-24T21:01:08Z",
+    "xmlFinishedUtc": "2026-11-24T21:13:21Z",
+    "durationSecondsReportedJson": 733.245832,
+    "durationSecondsXml": 733.245832,
+    "sources": {
+      "resultJson": {
+        "path": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset/full-play-result.json",
+        "sha256": "62fe7159e77fb9d4250dc8436c1a66ac3fb9faa4730b91c13849f15655652859",
+        "bytes": 80425
+      },
+      "resultXml": {
+        "path": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset/full-play-result.xml",
+        "sha256": "db8ee1b9cf82dc2c0dd733bc841fb103ee85c0c880181ac645a379d02eda6938",
+        "bytes": 268219
+      },
+      "queued": {
+        "path": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset/queued.json",
+        "sha256": "6bb46d1dcb5b778adb347bfc053390fa9b3627821f823551de8fc4cc3c11d2ff",
+        "bytes": 167
+      },
+      "discovery": {
+        "path": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset/discovery.json",
+        "sha256": "56b6527333c93125e0395e18a3acde2bf5801d725c06015e7f222da5ea3adeb9",
+        "bytes": 35807
+      },
+      "attached": {
+        "path": "Logs/RosterMotion20261125/Tests/FullPlayAfterCacheReset/attached.json",
+        "sha256": "19ed4ae19f6eb87795b51ff6dbc555bbcb7e57857868ccde4168eadffd4a37b3",
+        "bytes": 235
+      }
+    },
+    "crossChecks": {
+      "completedJson": true,
+      "officialModeWideFilter": true,
+      "declaredTests": null,
+      "discoveredTests": 321,
+      "actualJsonCaseCount": 321,
+      "actualXmlCaseCount": 321,
+      "discoveryAndCompletedNamesMatch": true,
+      "individualNameStatusMultiplicitiesMatch": true,
+      "aggregateCountsMatch": true,
+      "resultAndXmlUtcIntervalMatch": true,
+      "durationMatchesAtCommonReportedPrecision": true,
+      "runStartedCallbackPresent": false
+    },
+    "callbackRecovery": {
+      "attached": true,
+      "attachedUtc": "2026-11-24T21:02:23.8233012Z",
+      "scope": "Collector reattached after PlayMode lifecycle; authoritative RunFinished tree supplies every result, including earlier tests. No new test execution started.",
+      "limitation": "RunStarted was not captured after PlayMode lifecycle callback loss. The same run's authoritative RunFinished tree and XML supply all 321 results; this is not a new execution."
+    },
+    "runIdBinding": {
+      "officialSource": "queued.json",
+      "resultContainsRunId": false,
+      "startedContainsRunId": false,
+      "basis": "All available records come from one explicitly selected task-local execution directory; discovery and completed names, queue/attachment chronology, authoritative result UTC and XML UTC are cross-checked. The collector requires a fresh output directory.",
+      "limitation": "The current result/started schema does not carry the official runId. No missing runId is invented; same-folder chronology and the 321-name equality link those records to queued.json."
+    },
+    "countsAsAdditionalUnityTest": false,
+    "limitations": [
+      "This summary is not another Unity test run. Only the explicitly selected completed API attempt is covered.",
+      "The official runId is recorded in queued.json; the schema linkage and any missing start callback are disclosed above.",
+      "XML UTC fields have one-second precision. When RunStarted is missing, its start time is taken from XML, never fabricated.",
+      "No standalone Windows player execution, APK installation or Android-device gameplay is asserted.",
+      "Raw names, output, stack traces, absolute checkout paths and user storage contents are omitted."
+    ]
+  },
+  "isolatedRetry": {
+    "status": "completed",
+    "passed": true,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "testFullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections",
+    "startedUtc": "2026-11-24T21:16:23Z",
+    "finishedUtc": "2026-11-24T21:16:33Z",
+    "timestampSource": "Actual Unity XML test-run UTC fields; the CLI start invocation contains no timestamp or runId",
+    "durationSecondsReportedJson": 10.59,
+    "durationSecondsXml": 10.5885617,
+    "sources": {
+      "resultJson": {
+        "path": "Logs/RosterMotion20261125/Tests/pose-diagnostic-result.json",
+        "sha256": "44e66bd59c76a9fb4834d00cb3b0091ada68c54ea64ecd06454e84e0fcc3436b",
+        "bytes": 426
+      },
+      "resultXml": {
+        "path": "Logs/RosterMotion20261125/Tests/pose-diagnostic-result.xml",
+        "sha256": "7d58ab7227a6425d3b227b0f6e6e876bd8ea514423d325700a25da969c952246",
+        "bytes": 3501
+      },
+      "startInvocation": {
+        "path": "Logs/RosterMotion20261125/Tests/pose-diagnostic-start.json",
+        "sha256": "27c5b0729ed6509b9d8592d5597c6dcd3993f70c27711d1a7c6c2e9da436cf95",
+        "bytes": 983
+      }
+    },
+    "crossChecks": {
+      "soleFailedFullRunNameMatches": true,
+      "actualJsonCaseCount": 1,
+      "actualXmlCaseCount": 1,
+      "individualNameStatusMatch": true,
+      "exactMethodFilterMatches": true,
+      "aggregateCountsMatch": true,
+      "durationMatchesAtJsonPrecision": true,
+      "xmlIntervalFollowsFullRun": true
+    },
+    "limitation": "The asynchronous invocation's initial zero counts are not results. Its selected name/mode and the actual completed JSON/XML case link the retry; no missing timestamp or runId is fabricated."
+  },
+  "sourceIdentity": {
+    "passed": true,
+    "evidenceKind": "Post-run source identity check and a fresh read-only rehash during summary generation",
+    "sourceFreezeSHA256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+    "fileCountPerCheckout": 83,
+    "checkoutCount": 2,
+    "recordedHashComparisons": 166,
+    "currentHashAndByteCountComparisons": 166,
+    "checkedUtc": "2026-11-24T21:19:09.3119526Z",
+    "sourceFreezeLastWriteUtcReported": "2026-11-24T20:27:02.8163111Z",
+    "sources": {
+      "identity": {
+        "path": "Logs/RosterMotion20261125/Tests/full-retest-source-identity.json",
+        "sha256": "75a7e8a8f3713e240f1aadd086badf63712a6215a156e0cab1b5ea952e70e24a",
+        "bytes": 65164
+      },
+      "freezeManifest": {
+        "path": "Logs/RosterMotion20261125/validation-product-freeze.json",
+        "sha256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+        "bytes": 17593
+      }
+    },
+    "coordinatorRecord": "The fixed manifest was established before regression. The coordinator and validation agent report no product or test edits between the full run and isolated retry; only documentation and tools were edited.",
+    "limitations": [
+      "The run-result JSON files do not contain execution-time source hashes. No retrospective before/after snapshot at each execution boundary is claimed.",
+      "The manifest file timestamp is supporting filesystem metadata, not independent proof of historical source contents. The recorded and freshly rehashed source identity is reported separately from the coordinator's unchanged-source record."
+    ]
+  },
+  "failureReview": {
+    "testFullName": "TalesTactics.PlayModeTests.BattleSceneTests.AllCharacterPosesRenderInFourCameraDirections",
+    "originalFailure": "The full run contains one failed case. Its original failure details remain in the linked JSON and XML evidence.",
+    "finding": "The coordinator reports unchanged test and product code. These artifacts do not establish why the original assertion failed, and a passing isolated retry does not prove that cause is resolved.",
+    "productOrTestChangesForRetry": false
+  },
+  "countsAsAdditionalUnityTest": false,
+  "limitations": [
+    "The full run had 320 passes and one failure; the successful isolated retry does not convert it into a 321/321 passing full run.",
+    "All 321 distinct cases have a passing result across two executions, not in one execution. The original failed result remains linked and retained.",
+    "No source hashes recorded at execution time are invented; the post-run identity evidence and coordinator record have separate scopes.",
+    "The original timing-related failure cause remains unconfirmed and may represent a flaky fixture or another transient issue.",
+    "This read-only summary is not another Unity test, Windows player run, APK installation or Android-device gameplay check.",
+    "Only the affected test's identifier is included; raw stack traces, absolute checkout paths and user storage contents are omitted."
+  ]
+}

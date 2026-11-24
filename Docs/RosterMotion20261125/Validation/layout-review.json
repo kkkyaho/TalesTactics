@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "Read-only file and serialized-reference audit; not a Unity test run",
+  "passed": true,
+  "reviewedUtc": "2026-11-24T20:16:50.095044+00:00",
+  "unityExecuted": false,
+  "productFilesModifiedByAudit": false,
+  "sourceReport": {
+    "path": "Logs/RosterMotion20261125/layout-independent-review.json",
+    "sha256": "9c34f7ac5566a1a13e6647285c422e87a5235b6977d9acf15bd9712161db8586"
+  },
+  "checks": {
+    "total": 1527,
+    "passed": 1527,
+    "failed": 0,
+    "warnings": 0
+  },
+  "art": {
+    "newCharacters": 9,
+    "nativeSheets": 18,
+    "newDirectionalPoses": 288,
+    "nativeGenerationSourcesMatchBytes": 18,
+    "otherMajorPosesInsideImportedRectangles": 0,
+    "opaqueSheetEdgeContactsAlpha64": 0,
+    "opaqueSheetEdgeContactsAlpha128": 0
+  },
+  "bodyScale": {
+    "originalCharacterReferences": 9,
+    "validatedSheetCalibrations": 18,
+    "maximumWorldUnitError": 2.860463443887795e-08
+  },
+  "headAnchors": {
+    "originalEntriesPreserved": 200,
+    "newEntries": 288,
+    "finalEntries": 488,
+    "approvedLandmarksMatchPivotsAndHeadAnchors": true
+  },
+  "serializedBindings": [
+    {
+      "checkout": "root",
+      "newTextures": 18,
+      "newFrames": 288,
+      "profiles": 10,
+      "uniqueResolvedSpriteReferences": 320
+    },
+    {
+      "checkout": "sourceOnly",
+      "newTextures": 18,
+      "newFrames": 288,
+      "profiles": 10,
+      "uniqueResolvedSpriteReferences": 320
+    }
+  ],
+  "originalAlphenAssetsAndMetadataPreserved": true,
+  "developmentAndSourceOnlyMetadataAndProfilesMatchBytes": true,
+  "publicationPrecheck": [
+    {
+      "checkout": "root",
+      "newProductFilesInspected": 71,
+      "audioExecutablesOrArchivesFound": 0
+    },
+    {
+      "checkout": "sourceOnly",
+      "newProductFilesInspected": 71,
+      "audioExecutablesOrArchivesFound": 0
+    }
+  ],
+  "scope": [
+    "Native source SHA-256 and dimensions against final layout and provenance.",
+    "288 unique pose names, reviewed row directions, complete native components and exclusion of neighboring poses.",
+    "Approved feet pivots and head anchors; per-sheet pixels-per-unit relative to nine existing character body heights.",
+    "Original Alphen files and references retained; all 320 final profile references resolved from on-disk texture GUID and local file IDs in both checkouts.",
+    "New product paths inspected for audio, executable and archive files."
+  ],
+  "limits": [
+    "This audit did not execute Unity, run EditMode or PlayMode tests, build players, or validate a physical device.",
+    "Directions and landmarks were checked against reviewed values; this is not an independent visual-art approval.",
+    "The publication precheck covers new product paths only and makes no claim about complete Git history.",
+    "The local full report contains private filesystem evidence; this summary excludes absolute source paths and local-music hashes."
+  ]
+}

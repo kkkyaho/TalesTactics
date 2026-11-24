@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "character": "shionne",
+  "tool": "builtin image_gen",
+  "mode": "identity-preserve generation",
+  "originalReference": "Assets/TalesTactics/Art/PixelCampaign/shionne-hq.png",
+  "requestedDimensions": {
+    "width": 2048,
+    "height": 2048
+  },
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "idle": [
+      "rest",
+      "inhale",
+      "closed-eyes",
+      "exhale"
+    ],
+    "action": [
+      "windup",
+      "contact",
+      "recovery",
+      "hit"
+    ]
+  },
+  "nativePixelsUnmodified": true,
+  "alphaUnmodified": true,
+  "originalOutputsPreserved": true,
+  "images": [
+    {
+      "kind": "idle",
+      "prompt": "Use case: identity-preserve. The most recent image is an in-memory preview of the EXACT current game Shionne sprite reference. Create a NEW production IDLE animation sprite sheet, TRUE transparent RGBA, preferably 2048x2048. Preserve this petite SD anime riflewoman: huge flowing pink high ponytail tied with a dark-red pointed ornament, pink front bangs, large green eyes, white and gold petal-shaped armored skirt panels, dark fitted bodice, ornate white-gold shoulder armor and gloves, dark-red under-skirt/back cloth, pale legs and gold-edged boots. She holds ONE elegant long black-and-gold RIFLE horizontally/diagonally across her body with BOTH hands; this is a firearm with one long barrel and stock, never a staff or sword. Keep exact reference face, costume, head/body proportions and illustrated cel shading. Exactly FOUR equal columns x FOUR equal rows,16 complete same-size full-body poses. Rows top-to-bottom FRONT three-quarter toward viewer; BACK fully facing away; LEFT side facing screen-left; RIGHT side facing screen-right. Columns each row:1 calm alert rest with rifle lowered across waist;2 tiny inhale with barely lifted shoulders and gentle delayed ponytail sway;3 brief blink with eyes fully CLOSED for front and side views, back just subtle hair movement;4 exhale, eyes open again, return toward resting pose. Stable planted boots, same common foot baseline per row, no body scaling, jumping or large sway. Keep rifle hand placement and rigid barrel shape constant, safely lowered, no firing. All complete ponytails and rifle tips fit inside each equal cell with generous transparent padding and no overlap. Warm upper-left highlights, restrained cool body shadows, precise dark colored outlines. No muzzle flashes, particles, text, numbers, labels, grid, scenery, floor, ground shadows, checkerboard or gray backdrop. Genuine transparent alpha. Use the reference solely for identity/style, not its old irregular layout.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-c0cc55a5-6c5f-49a0-918d-e38635fa92f0.png",
+      "referenceUsed": "Original source sheet shown as an in-memory JPEG preview; gray preview backdrop is not a game asset.",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/shionne/idle-v1.png",
+      "sha256": "79032a4e05b6be0d09ed40a44e00e510eda0ca1e20bff37aef59b4a47bc92ce0",
+      "sourceSha256": "79032a4e05b6be0d09ed40a44e00e510eda0ca1e20bff37aef59b4a47bc92ce0",
+      "bytes": 2102433,
+      "width": 1262,
+      "height": 1246,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    },
+    {
+      "kind": "action",
+      "prompt": "Use case: identity-preserve. The most recent visible image is a gray-backed preview of the selected Shionne idle sheet. Preserve that exact SD anime riflewoman identity and clothing and create her matching production ATTACK AND HIT-REACTION sprite sheet on TRUE transparent RGBA, preferably 2048x2048. Same huge flowing pink high ponytail with dark-red pointed tie, green eyes, pink bangs, white-gold shoulder armor and petal skirt panels, dark fitted bodice, crimson under-skirt/back cloth, pale legs and gold boots. ONE black-and-gold long RIFLE with rigid barrel and stock, held correctly with two hands. Exactly FOUR equal columns x FOUR equal rows =16 full-body sprites, all same body/head scale. Rows top-to-bottom FRONT three-quarter toward viewer; BACK facing away; LEFT facing screen-left; RIGHT facing screen-right. In each row column1 WINDUP: lift the rifle from lowered rest into an aiming posture, stock approaching shoulder; column2 CONTACT: rifle aimed forward in that orientation at shoulder height, small braced recoil and determined eye, no muzzle flare; column3 RECOVERY: lower rifle toward the waist-level idle pose as ponytail settles; column4 separate HIT REACTION: small backward flinch with raised shoulder and squint, rifle remains firmly held and angled down. Make the windup, shot/recoil, recovery, and hit poses clearly distinct while modest and grounded. Full rifle barrel, ponytail and boots entirely contained inside each equal cell with generous 10 percent inner safety margin. Stable boot baseline across each row; no neighboring overlap. Back view has no front-facing eye. Preserve exact weapon design and hand ownership, no staff or sword, no duplicate rifle, no extra limbs or accessories. Match precise painted cel shading and colored outlines, warm upper-left highlights and cool character shadows. No bullets, smoke, particles, flashes, blood, impact symbols, text, labels, grid, scenery, floor, cast ground shadows, gray background or checkerboard. Actual transparency; the gray reference is a display-only composite.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-01eba9c2-7f56-4d84-b8c4-e1c9d87b22ea.png",
+      "referenceUsed": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-c0cc55a5-6c5f-49a0-918d-e38635fa92f0.png (in-memory gray-backed preview)",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/shionne/action-v1.png",
+      "sha256": "1be7da7b9a70834b29a5207e16c297dce988ea09cc854a72b2301370df36a39e",
+      "sourceSha256": "1be7da7b9a70834b29a5207e16c297dce988ea09cc854a72b2301370df36a39e",
+      "bytes": 2042730,
+      "width": 1254,
+      "height": 1254,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    }
+  ],
+  "visualReview": "Viewed original Shionne reference and both generated sheets. Preserved large pink ponytail, green eyes, white-gold armor skirt, crimson cloth and black/gold rifle. 16 poses on each sheet, four directional rows, blink and raise/aim/recover/flinch are visible. Idle additionally inspected on a gray memory composite: apparent RGB noise in transparent pixels is not visible; ponytail remains within image. Runtime slicing, pivots and animation timing are separate validation.",
+  "originalReferenceSHA256": "5e5ca22da2eb9f972d08bcbfd3c1c28184d40326a7c03749c9d37df1c7baa491",
+  "recordedUtc": "2026-11-24T19:48:13.0688693Z",
+  "generatedSourcePathNote": "Generator cache paths are local provenance identifiers; native destination SHA256 is authoritative. Original absolute-path records are retained in local Logs only.",
+  "observedRowDirections": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ]
+}

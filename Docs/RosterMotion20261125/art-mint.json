@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "character": "mint",
+  "tool": "builtin image_gen",
+  "mode": "identity-preserve generation",
+  "originalReference": "Assets/TalesTactics/Art/PixelCampaign/mint-hq.png",
+  "requestedDimensions": {
+    "width": 2048,
+    "height": 2048
+  },
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "idle": [
+      "rest",
+      "inhale",
+      "closed-eyes",
+      "exhale"
+    ],
+    "action": [
+      "windup",
+      "contact",
+      "recovery",
+      "hit"
+    ]
+  },
+  "nativePixelsUnmodified": true,
+  "alphaUnmodified": true,
+  "originalOutputsPreserved": true,
+  "images": [
+    {
+      "kind": "idle",
+      "prompt": "Use case: identity-preserve. The most recent visible image is the EXACT identity and style reference, an in-memory preview of the current game's Mint sprite sheet. Create a NEW production idle-animation sprite sheet, true transparent RGBA, preferably 2048x2048. Mint is a petite SD anime healer with very long golden blonde hair, large teal-blue eyes, white cleric cap with purple side panels and a gold cross, white-and-purple long cleric dress with gold trims/cross embroidery, purple ribbons, white gloves, dark small shoes, ONE ornate gold staff with a deep-blue round jewel inside a star-shaped golden head. Preserve the reference face, hair, clothing, staff, large-head/small-body proportions, crisp colored outlines and painted cel shading. Exactly FOUR equal columns and FOUR equal rows =16 separate full-body sprites; no text, labels, grid, floor, background, cast shadows, checkerboard, scenery, or extra props. Rows top to bottom: FRONT three-quarter toward viewer; BACK facing away with no face visible; LEFT side facing screen-left; RIGHT side facing screen-right. Columns in every row: 1 relaxed attentive baseline; 2 gentle inhale with slight shoulder lift and hair tips gently delayed; 3 a brief natural blink with eyes fully closed for front/left/right and subtle hair movement for back; 4 exhale returning toward baseline with eyes open. Tiny breathing and cloth/hair changes only; feet stay planted, same body scale and common foot baseline per row. Keep the staff upright and clearly held in the same hand, stable shape and jewel size, no attack and no magic effects. Every sprite including staff tip and long hair fits comfortably inside its own equal cell with transparent padding; no adjacent overlap. Warm upper-left highlights and restrained cool shadows on the body, no projected ground shadow. Keep original identity, do not simplify into generic priestess or change outfit. Use the visible reference only for identity/style, do not reproduce its old irregular sheet arrangement or gray preview backdrop. Native generated transparent pixels must be usable directly.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-6998c9ea-5c6f-451e-9e7b-2f46cb6c851e.png",
+      "referenceUsed": "Original source sheet shown as an in-memory JPEG preview; preview backdrop is not a game asset.",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/mint/idle-v1.png",
+      "sha256": "fe7c920622d485cf1f1f8ef81abf56f4fae945c291c182f57d552786c9290544",
+      "sourceSha256": "fe7c920622d485cf1f1f8ef81abf56f4fae945c291c182f57d552786c9290544",
+      "bytes": 1816709,
+      "width": 1261,
+      "height": 1247,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    },
+    {
+      "kind": "action",
+      "prompt": "Use case: identity-preserve. The most recent visible image is the selected NEW Mint idle sheet and is the exact identity/style reference. Create its matching production ATTACK AND HIT-REACTION sprite sheet, true transparent RGBA, preferably 2048x2048. Preserve this same petite SD blonde healer, huge teal-blue eyes, very long golden hair, white-and-purple cleric cap with gold cross, white-purple gold-trim embroidered dress, purple ribbons, white gloves and small dark shoes. Exactly ONE long gold staff with deep-blue jewel in its ornate star-shaped head; keep same weapon hand and all costume asymmetry. Exactly 4 equal columns x 4 equal rows, 16 complete same-scale full-body sprites. Rows top-to-bottom FRONT three-quarter toward viewer, BACK away, LEFT facing screen-left, RIGHT facing screen-right. Each row has four distinct coherent poses: col1 WINDUP staff drawn back diagonally with gently coiled torso; col2 CONTACT controlled forward staff thrust with the blue jeweled head leading, firm planted stance and determined expression; col3 RECOVERY staff returns upright and hair settles; col4 separate HIT REACTION a small backward flinch, braced knees, raised shoulder, eyes squint but staff remains held. Modest motion suitable for a gentle healer, no sword, no floating particles or spell circles, no blood or hit symbols. Fixed body/head scale, consistent feet baseline, complete staff and hair fit inside every cell with generous transparent padding and never touch neighbors. Match the reference's precise illustrated cel shading, gold highlights and clean dark colored outlines. BACK row shows the back of the hat and hair, never a front face. Left and right genuinely face their stated directions. No words, labels, grid, backdrop, ground, checkerboard, or cast shadows. Actual transparent alpha, preserve original identity and clothing, no additional limbs or staff copies.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-4c446770-3b76-4688-9526-77479be4c7c1.png",
+      "referenceUsed": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-6998c9ea-5c6f-451e-9e7b-2f46cb6c851e.png",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/mint/action-v1.png",
+      "sha256": "5259870de3ce374d8cc7b74f5c093316f12d8f3a34a7a5adad3bd2fa0daee28d",
+      "sourceSha256": "5259870de3ce374d8cc7b74f5c093316f12d8f3a34a7a5adad3bd2fa0daee28d",
+      "bytes": 1902581,
+      "width": 1254,
+      "height": 1254,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    }
+  ],
+  "visualReview": "Viewed original Mint reference and both generated sheets. All16 poses visible on each; front/back/left/right rows and blink/contact/hit changes are visible. Kept blonde hair, cleric outfit and gold blue-jewel staff. Runtime import, bounding boxes and animation timing remain separate validation.",
+  "originalReferenceSHA256": "febb2c5be6cc583226b6f3fb8ae131c7df009c2a596be6154587fa8b236a9f9d",
+  "recordedUtc": "2026-11-24T19:42:11.6608182Z",
+  "generatedSourcePathNote": "Generator cache paths are local provenance identifiers; native destination SHA256 is authoritative. Original absolute-path records are retained in local Logs only.",
+  "observedRowDirections": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ]
+}

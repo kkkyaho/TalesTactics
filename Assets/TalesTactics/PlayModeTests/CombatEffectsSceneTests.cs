@@ -20,6 +20,8 @@ namespace TalesTactics.PlayModeTests
                 Assert.That(caster.Team,Is.EqualTo(Team.Player),"This motion fixture must not run an automatic enemy turn.");
                 var motion=Object.FindObjectsByType<CharacterMotion>().Single(m=>m.Owner==caster);
                 var renderer=motion.GetComponent<SpriteRenderer>();var block=new MaterialPropertyBlock();
+                var authored=motion.AuthoredProfile;Assert.That(authored,Is.Not.Null,"Actual board allies use authored motion");
+                Assert.That(authored.OwnerId,Is.EqualTo(caster.Data.Id));
                 var clock=typeof(CharacterMotion).GetField("started",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
                 Assert.That(clock,Is.Not.Null);
                 float Started()=>(float)clock.GetValue(motion);
@@ -61,7 +63,9 @@ namespace TalesTactics.PlayModeTests
                 director.Board.ClearTiming();yield return new WaitForEndOfFrame();
                 Assert.That(motion.Action,Is.EqualTo(AnimationKind.Idle),Describe("Clearing timing restores idle"));
                 Assert.That(Mathf.Abs(motion.transform.localPosition.x),Is.LessThan(0.01f),Describe("Idle keeps the feet planted"));
-                AssertIdleShader(true,"Clearing timing restores idle presentation");
+                AssertIdleShader(false,"Authored idle must not receive additional UV deformation");
+                var view=CharacterMotion.ViewFacing(caster.Facing,director.Board.BattleCamera.transform.rotation);
+                Assert.That(renderer.sprite,Is.SameAs(authored.Idle.Frames[0].Get(view)),Describe("Clearing timing restores authored rest"));
             }
             finally
             {

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "character": "tear",
+  "tool": "builtin image_gen",
+  "mode": "identity-preserve generation",
+  "originalReference": "Assets/TalesTactics/Art/PixelCampaign/tear-hq.png",
+  "requestedDimensions": {
+    "width": 2048,
+    "height": 2048
+  },
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "front",
+      "back",
+      "left",
+      "right"
+    ],
+    "idle": [
+      "rest",
+      "inhale",
+      "closed-eyes",
+      "exhale"
+    ],
+    "action": [
+      "windup",
+      "contact",
+      "recovery",
+      "hit"
+    ]
+  },
+  "nativePixelsUnmodified": true,
+  "alphaUnmodified": true,
+  "originalOutputsPreserved": true,
+  "images": [
+    {
+      "kind": "idle",
+      "prompt": "Use case: identity-preserve. Use the most recent visible image ONLY as the exact character/style reference: the current game's Tear sprite sheet. Create a NEW production idle-animation sheet, true transparent RGBA background, preferably 2048x2048, exactly FOUR equal columns x FOUR equal rows with16 separate complete full-body poses. Preserve this same petite SD anime female mage: extremely long flowing ash-blonde/light-brown hair with long side-swept fringe partly covering one eye, large clear blue eyes, dark chocolate-brown high-collared dress/tunic with strong gold piping and angular gold-edged split skirt panels, white underskirt and white gloves, pale boots with dark soles, ONE slender golden staff crowned by a round bright-blue orb inside a small ornate sun/star gold setting. No cleric hat, no cape or new accessories. Preserve the reference face, hairstyle, large-head/small-body proportions, precise dark colored outlines, warm painted cel shading and outfit. Rows top-to-bottom exactly FRONT three-quarter toward viewer; BACK fully away; LEFT side facing screen-left; RIGHT side facing screen-right. Columns each row:1 relaxed attentive rest with staff upright;2 tiny inhale, slightly raised shoulders with delayed movement in long hair tips;3 eyes fully CLOSED in a brief natural blink for front/left/right, back only slight hair motion with no face;4 exhale, eyes reopened, settling to rest. Subtle grounded breathing, stable planted boots on a common baseline across each row, fixed body/head size, no stepping or stretching. Keep one blue-orb staff consistently held in the same hand, upright and stable. Every sprite's complete staff tip and hair must fit well within its equal cell with comfortable transparent padding and no overlap. Warm upper-left highlights and restrained cool body shadows. No words, labels, grid, checkerboard, scenery, floor, ground shadows, spell effects, duplicate weapons or extra limbs. Never reproduce the reference's gray preview background or old irregular sheet layout. The 16 poses must be in a clean 4x4 arrangement with actual transparency.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-ee1e9e99-7804-414e-bc2a-99348489a628.png",
+      "referenceUsed": "Original source sheet shown as an in-memory JPEG preview; gray preview backdrop is not a game asset.",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/tear/idle-v1.png",
+      "sha256": "87b6e889c4876af39056f6dfbaf20ecca8b93f97fd218b18a46aebd1844fdf65",
+      "sourceSha256": "87b6e889c4876af39056f6dfbaf20ecca8b93f97fd218b18a46aebd1844fdf65",
+      "bytes": 2087991,
+      "width": 1261,
+      "height": 1247,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 1
+    },
+    {
+      "kind": "action",
+      "prompt": "Use case: identity-preserve. The most recent visible image is a gray-backed PREVIEW of the selected NEW Tear idle sprite sheet, use it only as EXACT character identity/style reference. Create the matching ATTACK AND HIT-REACTION sheet with TRUE transparent RGBA, preferably 2048x2048, no gray background. Keep the same petite SD anime mage with very long ash-blonde/light-brown flowing hair and side fringe partly covering one blue eye, dark chocolate-brown high-collar dress with angular gold edging and skirt panels, white underskirt/gloves, pale boots with dark soles, ONE golden staff with a bright-blue orb in a gold sun-shaped setting. Same face and head/body scale, same outfit and weapon hand, crisp colored outlines and painted cel shading. Exactly FOUR equal columns x FOUR equal rows=16 complete full-body sprites. Rows top-to-bottom FRONT three-quarter toward viewer; BACK facing away; LEFT facing screen-left; RIGHT facing screen-right. In every row column1 WINDUP: draw the staff diagonally back beside the shoulder, gently coil torso; column2 CONTACT: decisive controlled forward staff thrust, blue orb leads, weight over front boot, focused face; column3 RECOVERY: lower staff back to upright ready stance, hair follows with slight lag; column4 separate HIT REACTION: small backward flinch with braced knees and one shoulder raised, eyes squint, keep staff securely held. No stabbing blade or sword, no huge effects, no magic circles, no projectiles, no blood or hit icons. Keep complete hair and staff tips inside each cell with generous transparent margin, no overlap, same planted foot baseline and same body size in all cells. BACK must show back of head and clothing only; side rows really face left and right. Warm upper-left highlights with restrained cool character shadows. Absolutely no words, labels, grid, checkerboard, floor, ground shadow or scenery. Actual clean alpha edges; do not include the preview backdrop.",
+      "generatedSource": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-c3d74b0d-611a-4ddf-867d-c1af0ea4f3bc.png",
+      "referenceUsed": "local-generated-images/01a20da1-f5b4-7a23-8d4a-42b757e72241/exec-ee1e9e99-7804-414e-bc2a-99348489a628.png (in-memory gray-backed preview)",
+      "destination": "Assets/TalesTactics/Art/RosterMotion20261125/tear/action-v1.png",
+      "sha256": "78f83d8fb1d5df3e5f177e5a05b28997dcc50a4789c3c6314d1c452c512a810a",
+      "sourceSha256": "78f83d8fb1d5df3e5f177e5a05b28997dcc50a4789c3c6314d1c452c512a810a",
+      "bytes": 1733942,
+      "width": 1254,
+      "height": 1254,
+      "pixelFormat": "Format32bppArgb",
+      "cornerAlpha": 0
+    }
+  ],
+  "visualReview": "Viewed original Tear reference and both generated sheets. Kept long ash-blonde hair, brown/gold dress, white gloves and blue-orb gold staff. 16 poses per sheet show four directions and blink/action/hit changes. Idle additionally composited over gray in memory: apparent colored transparent pixels do not appear in the composite. Runtime slicing, pivots and animation timing remain separate validation.",
+  "originalReferenceSHA256": "918b72ca1d843fcbf261226951e19406c717afaee38b45a2a0317c57ef0b6520",
+  "recordedUtc": "2026-11-24T19:45:08.7393165Z",
+  "generatedSourcePathNote": "Generator cache paths are local provenance identifiers; native destination SHA256 is authoritative. Original absolute-path records are retained in local Logs only.",
+  "observedRowDirections": [
+    "front",
+    "back",
+    "left",
+    "right"
+  ]
+}

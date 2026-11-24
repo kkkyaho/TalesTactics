@@ -1,0 +1,3 @@
+var type=System.AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("TalesTactics.PlayModeTests.BattleSceneTests")).First(t=>t!=null);
+var names=type.GetMethods(System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.Instance).Where(m=>m.GetCustomAttributes(false).Any(a=>a.GetType().Name=="UnityTestAttribute")).Select(m=>m.Name).ToArray();
+return new {assembly=type.Assembly.GetName().Name,total=names.Length,targets=names.Where(n=>n.Contains("Consecutive")||n.Contains("Grounding")||n.Contains("Collapse")||n.Contains("ArtDirections")||n.Contains("AttackRecovers")).ToArray()};

@@ -1,0 +1,1475 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "sourceReports": [
+    {
+      "file": "Logs/RosterMotion20261125/VisualReviewFirstFive/inspection.json",
+      "sha256": "34da7d99e1d72e96323e776a3d7d2b3edf094a2fa5bdf59cca69271dc6a67c21"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/root-motion-visual-inspection.json",
+      "sha256": "f4311e25b46c32eb72597324d9013123f7eeb0b19b75ca39ec3d2542718d65c9"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/root-board-visual-inspection.json",
+      "sha256": "864f6a745949ec8c6c546b89c83e3c1d980b54586a8f8574f5da7b20eec5283b"
+    }
+  ],
+  "reviewInstances": {
+    "independentMotion": 135,
+    "independentBoard": 40,
+    "rootMotion": 60,
+    "rootBoard": 8
+  },
+  "uniqueImagesReviewed": 239,
+  "uniqueMotionFramesReviewed": 195,
+  "uniqueBoardFramesReviewed": 44,
+  "blockingProductIssuesObserved": [],
+  "method": "Actual Unity PNG frames viewed in memory contact sheets/local HTML previews. Original PNG bytes unchanged. All 10 playable companions represented.",
+  "limitations": [
+    "Representative visual inspection, not manual approval of every one of the 5,539 motion captures or all80 board captures.",
+    "Static frame inspection does not establish continuous playback feel or Android device performance.",
+    "No phone connected; ordinary Windows executable gameplay was not part of this visual review."
+  ],
+  "fixPass": [
+    "Corrected draft head landmarks that followed weapon/staff ornament and foot landmarks that followed shins; confirmed final crop/pivot in actual images.",
+    "Calibrated each sheet to existing head-to-foot height; added deterministic per-character idle phase offset.",
+    "Final selected images show complete weapons, readable blink/damage poses and restored grounded idle."
+  ],
+  "images": [
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/BeforeFinal/Front/idle-000.png",
+      "sha256": "9b64b014483de91320243a54ab040bce62a48758c893116bdbd056be42762182",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/idle-000.png",
+      "sha256": "970df79bfb10b57e59236c9e3105c58f03483e26a6425ce516fa86ade66f88d7",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/idle-005.png",
+      "sha256": "3cb061410ccd70c0d5e14946cf4300e39aa534d153877d369f420c6b6ecdb85d",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/idle-025.png",
+      "sha256": "9f5688f76a0004cfc01e974f0751ff82271927daf3399274e9929ea99b70df24",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/attack-000.png",
+      "sha256": "a787e9574f6384e07fe5ef26df0ecd01f780e7d34a168b89135b5b9e2ad86483",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/attack-007.png",
+      "sha256": "891d4f0132d0d915fe183e40207c85747232dc813b4548b6b4e4ee05abde2ab7",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/attack-014.png",
+      "sha256": "8a344edb28865ce7de66dbcd0a2ea50ca284dfe1ea489cbc010d70e809f8119c",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/damage-000.png",
+      "sha256": "7b5c4c990e7fe06d2489c944efd2a187789b99af1d151ba37feb3bafc2a98f79",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Front/damage-005.png",
+      "sha256": "e98aa07a4793cc2fa12198f8b855c0d71727ed831dac717ab70b9d612c4f07b4",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/idle-000.png",
+      "sha256": "9d20f19bee5851fefd98b5d93f1422a3e63065a78e6a1b55b1fcdcd200601e8f",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/attack-000.png",
+      "sha256": "acbfe7b4611c8da8295f03e8e104ec47e5287573cbbef122b61b0b7cad071cd9",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/attack-007.png",
+      "sha256": "66bd6d356737b5775bd3181a27bcc8a21485e4c8e5fd5a42b4577bad2aca3847",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/attack-014.png",
+      "sha256": "e392fd67baff29f7d7278f2e249061184ace3676f4a032aa9aa46f42afb4e395",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/damage-000.png",
+      "sha256": "ef394d50486076aedc86d390990780d96d2c7501edacfe6b0498c21c37195458",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Back/damage-005.png",
+      "sha256": "201564d977152d6d897ea0ba052885bcf20968c4fd66007f72191ea2321f2049",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/idle-000.png",
+      "sha256": "6a91c605f4cc0af61a3a4a540d6bb26820ecea859918c38d8471102d94c0272a",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/attack-000.png",
+      "sha256": "632b2a7ab75664abfaa128a861ac8ec4f0d7ecddeeb497463b2e8b68cff0258a",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/attack-007.png",
+      "sha256": "6f5a0cd43a6ace9b0c6c0566e36bd1e83544fc1d6d55cfa7e3eacda663054a68",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/attack-014.png",
+      "sha256": "6933369f4015745711c2896918ddb7e48e20015a08936d2afd97c57daea4ee4c",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/damage-000.png",
+      "sha256": "0a8e11bfe8c4de4e26968da004e03a247690067f580809fff089773f53e24e9d",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Left/damage-004.png",
+      "sha256": "d0510c63869774d6de2c78331a5525fbed06e1bf86dd23979befd68cc117646d",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/idle-000.png",
+      "sha256": "819de636227de545d3f08a13eadb4e508735b83e27f3caefd367f5a40c133e7a",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/attack-000.png",
+      "sha256": "715720e7a32658a1c494ce7a7828437ad6aafd7be36e73d2bd9d2bdef05017bf",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/attack-007.png",
+      "sha256": "5aa6ba79b84e70e0b28d15e7f2c210726371f378205d374977876da15018e9a2",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/attack-014.png",
+      "sha256": "5a0703dd159252f0267a4b5ada25436a50ef00467d1f39fd1a0da09f25a667e2",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/damage-000.png",
+      "sha256": "85e93456a0beb87d54e116a0b1b498272e257e52bb0e2d9500486cb504f09aa5",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/AfterFinal/Right/damage-005.png",
+      "sha256": "70ae6b536504d9868527ce087736dab982d244bb4fd13af3bad8d7fa912a05a7",
+      "kind": "motion",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "d38a92a1f7d902b279616819a728d0ec40b8feae9d1641e61201c61d69118c28",
+      "kind": "board",
+      "note": "6인 편성의 크기·발 접촉 그림자·선택 HP바와 원화 색상 균형 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/01-episode-06-idle-1280x720-r90.png",
+      "sha256": "bd5fbdeb5e554eab993c1313875a731db2191580f517ab6b21706df189f3e26b",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "9213fa8ad1e6eac8db922d22617c1ab00fc64a3592dd4966e0239b586537c7fe",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/03-episode-06-idle-1280x720-r270.png",
+      "sha256": "1baa1bd1387773f9474ca461166925dbe8a9b0339799d090b286f0c4b8c83089",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "ecbe1189191b4c82d4ba76ef86a80fa6f869fdadf1c9af9fcbde3d9e7c63e62f",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/05-episode-06-damage-pose-only-1280x720-r0.png",
+      "sha256": "bcf8156ccd0a90c9b263a0543b3b95c6c0818cf38d9337670d4c183d2e175b7f",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/06-episode-06-command-ui-1280x720-r0.png",
+      "sha256": "f0a8ee65029eb7e0a4a7aa2a2027d7b8c2ed3ff094558d595741a17edaab0681",
+      "kind": "board",
+      "characterId": "cless"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/cless/Actual/07-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "00d25b5f886e54378da9b498ae7900fb42937ae61f2ed38d3bf8bc10dccc5560",
+      "kind": "board",
+      "note": "가로 화면 전체 맵과 명령·상태·상단 HUD 확인; 실제 Android 기기 검수 아님"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/BeforeFinal/Front/idle-000.png",
+      "sha256": "bad7a07fb85d30db327ee1bfbc9522a2324d65dd353102d2e1f132535832d4e4",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/idle-000.png",
+      "sha256": "4fb1885345ab5bc0658ccbcddd5a97301ee07ffe3a5be18e9e820f74b8e400fd",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/idle-001.png",
+      "sha256": "3f69dd2d1bd17845aa5303118159113215fc7790e89ea5594b3708aa3cdbe4f4",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/idle-021.png",
+      "sha256": "d041b1142ece0738af5b598187d83bbba2b4ef92e5e8a535d1badd501a7778ad",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/attack-000.png",
+      "sha256": "feefc84b9367809a89bf1b737bb76017aa460e9f544ce43c843c6ce093c88d37",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/attack-006.png",
+      "sha256": "a7b805ee547ed130602f58055a00ad31a2ea7009612dc8977721c80aa2ccbcf1",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/attack-013.png",
+      "sha256": "71752fec383076ccff50d7e2addd3c2c01e65c8e4eab1de5457e990af42d562e",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/damage-000.png",
+      "sha256": "b890b26df3d3c6caf1a0943f5cc004759553caf8a67c86a56aeef2c61956b1d8",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Front/damage-004.png",
+      "sha256": "71b7414c07049e92cd397536804a7dcc91e558467e9cab69124ad65d5d803b3d",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/idle-000.png",
+      "sha256": "2ffe1d251e747264bbcd3e323fe0d12bd0993598aeb6bb218c9b2dbc133a0efa",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/attack-000.png",
+      "sha256": "f0570c4ded31f22d2aa47f4fd992359a9cf301028c129b911d48a81bcc01fe76",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/attack-007.png",
+      "sha256": "5d29ba3d5d000408f24646a70d14f528db37cfa7c613e0481ce16b612e012cf2",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/attack-013.png",
+      "sha256": "55d1a270e46a52db77f8feddd8cfd395b29dedd9fe6252b5e6b818bfb8e23e35",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/damage-000.png",
+      "sha256": "6bdbbe5e4e63f4e3a2452a35e6e948876a7ce2b9abf49af46adce89e1392f18d",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Back/damage-004.png",
+      "sha256": "efeb8ae2cc5420e5ed5e3b07e67be7b9114cb7e1ef19d97e2df5a9f82f276197",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/idle-000.png",
+      "sha256": "b23dc745c4c5fb0dc6274de1b9d57a75059cf292c1f975f37e9ae3b48fdd6b36",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/attack-000.png",
+      "sha256": "5e5bd1b3aeaf5fe2474b424086db639517e2cbd7ab12c555708dd29a3930a715",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/attack-007.png",
+      "sha256": "342f5c04a0abafc994d1d26bd9bd5f232321f6b6783a06c2ab481cb98fd37335",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/attack-013.png",
+      "sha256": "649d2664067063ca7b57675f9148c89a0930c087110d522a170c1b0a1876f7f0",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/damage-000.png",
+      "sha256": "a0021ce29d013aa4642b7a0718a8d56fc46b787c287c66ed8a9f4f8ce2019b62",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Left/damage-004.png",
+      "sha256": "550a308dcf07b44d4c51d36511c630d3881b540f1bd8239883e2eeaf55fe55db",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/idle-000.png",
+      "sha256": "540d2879023f38304025aac9ebedd8bbb392abc3dbcf1c7477a186d0b720a2d3",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/attack-000.png",
+      "sha256": "4a659e06d8ac429c9d5d9fd5ce3ae1afdceda35c6f2c068584a5266eb4ae8947",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/attack-007.png",
+      "sha256": "aff3ceb65dfce107ddb388cc807c2af32aba3e33d71d9876065e4bd4dfe55ecb",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/attack-014.png",
+      "sha256": "6a631b99ca5e134ee754c8c3cad64d6f2670ea5ede4d4f500f70d7266829c13c",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/damage-000.png",
+      "sha256": "215e5c383e8f16c54331a3bc742e8214607f54c4e0e4572b74c946971a14e403",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/AfterFinal/Right/damage-005.png",
+      "sha256": "df41c940010fe6dbd13fb97abdf5adaafc3d868abae86d4ca7c3a34bccf5fcbc",
+      "kind": "motion",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "a1c0b58c6a074ce521e0c50ef164839f48389829da3c5432d742da2db82cc859",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/01-episode-06-idle-1280x720-r90.png",
+      "sha256": "5d5c066f2f91c39ae6de7965fc65aa9449d40584482c2ab467a41f2fbe4e455f",
+      "kind": "board",
+      "note": "측면 모자와 지팡이 장식 구분·HP바 정렬·발 접지 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "64e4e5f4054ededb7846820683278391ef34fa4db5b42e54f6c4ba9e048d3842",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/03-episode-06-idle-1280x720-r270.png",
+      "sha256": "a6600ff11a750dd4516625b4a40f255e454b7228a837918bc6a30873f254895d",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "414620e29d1b3cbc62e0a27cd84381572662148fb62328185c8533b401949500",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/05-episode-06-damage-pose-only-1280x720-r0.png",
+      "sha256": "5baac7defafb3ee87377e1d03fd3ecaca4f4a0623374a97c8827f7c3c8d89c90",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/06-episode-06-command-ui-1280x720-r0.png",
+      "sha256": "09abca123a63173252e01a616fd9b1667d8f583a33d564e75642a06baa618858",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/mint/Actual/07-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "d0e1f7a7fe471d8ac98af7522f64abfc276b656a75684cd831bf3f1fb18b04b5",
+      "kind": "board",
+      "characterId": "mint"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/BeforeFinal/Front/idle-000.png",
+      "sha256": "550c8289d984d34b9142be8bb6db5d898e3619e292d6d378466afca893c75baf",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/idle-000.png",
+      "sha256": "d27e579ced4a417760313dd6d1788cf21382b42b29b08d72d0b8f7716a136d37",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/idle-002.png",
+      "sha256": "5ac33e0ffc9171b50fd692ba9516fbc1d1ca194a4d1d1e4194666afbf8c2db17",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/idle-blink-supplement.png",
+      "sha256": "1de662609aee4870de52ef3a4fee4444f509ae9f2b24ffb82ed8320fcd9c19a9",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/attack-000.png",
+      "sha256": "d1ad7c50ad3b20e6108159e11664c8fd73531c7fb6066b1064d1265b597021ca",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/attack-006.png",
+      "sha256": "8829813a9b250df05e1ca788fbaffbf1cf54ad26c460070da43b3f597e6115da",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/attack-013.png",
+      "sha256": "beaecc9a0a0d9e01b7880c49de8edf03653a148fd05dabc590cfe0168096aafe",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/damage-000.png",
+      "sha256": "d6f525310c50b3935bab010172102a2a60a5ae064c03a7b7b26de3bffa91ef89",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Front/damage-004.png",
+      "sha256": "7371e1e43ad7dc33a56eb3281bb20764d85cc349955816166e2fe6625554f8a8",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/idle-000.png",
+      "sha256": "797ca968f79a80a5c95bc2f03c7e4969d8162229eec6c7fca82592a103e5a7c2",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/attack-000.png",
+      "sha256": "bfbd4ee3df5b8498dea6d7bcf344ac8e8a1ee286573e40856c8aa5830a3d6267",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/attack-007.png",
+      "sha256": "85433c5bcd9c7c5075d7a58d35710d4f83d173a7c48c96fc5699d621290cf4b9",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/attack-014.png",
+      "sha256": "10baab3a6b7b64d0c5f1706aa410db0b9c6d320b11df01d928d339b39b74db8b",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/damage-000.png",
+      "sha256": "98b1589f0123b095a84f8b803406a1bd83db9536784508c832e5695786438bc5",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Back/damage-005.png",
+      "sha256": "88fe62b6b2fd635c7b7ad613728b9873257717cdf2a1d9165cedcc15345c38af",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/idle-000.png",
+      "sha256": "826450d03429fb5575146a7347ac21edb42d8cc9dd8caf0a3704654eeba076dc",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/attack-000.png",
+      "sha256": "7ccd14aa20705366a0f3fac1259c158370e03f148c88fed05f82fc9531285d3d",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/attack-007.png",
+      "sha256": "2b858a922810e25abf07d62638a85eacd757616360be29129a2c579c1cb8b88c",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/attack-014.png",
+      "sha256": "c26251d7693da22d7dcf9fa94bbc26356f1536be6af85e86b4266614768a0ada",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/damage-000.png",
+      "sha256": "02442f18bb19c106291e60973976c90737333ceb69bfc25920b0d5dd8efe78b9",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Left/damage-004.png",
+      "sha256": "09f01d90a73e877d9533998b82809d78a475bf7be756159c96133813b8176981",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/idle-000.png",
+      "sha256": "38eae0d76645cd08874f5b40a75c3802fbefbba2123bddae57ff4e0f3141d97e",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/attack-000.png",
+      "sha256": "c3d52a61f11203260eb9ae550d7c6b879b8514664b5f61f34c20efda74f17eb4",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/attack-007.png",
+      "sha256": "e43fb3455cc03b9711c69cdd09cb93619844ddf0710668a5409242fa7fa8c758",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/attack-014.png",
+      "sha256": "daa4d1addeeac4e1cd62139e6763b9d0a56c776473c14f25e12bd73c5a7e69fa",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/damage-000.png",
+      "sha256": "631342cad2d3eb6b62cd355aab7221c5fe17310d1550571e37d80e20fecd9c80",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/AfterFinal/Right/damage-005.png",
+      "sha256": "d6b63ce190e980495e22ee2aa7870de966a54093a1eec4e9a2e3e4d02908906c",
+      "kind": "motion",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "2ea2f552b32dbfc37bed580954027769eaeaa0be48ad8d959d5d5b606fec5a04",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/01-episode-06-idle-1280x720-r90.png",
+      "sha256": "6de28209bc4c039e834f05d78c60a846185c784be4b1157b71f27a7d5cb5fb29",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "4c58afb63b5509c153a53bf7f10b390f3e25dfa48d379c17f8a99c1bcf4f7cd5",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/03-episode-06-idle-1280x720-r270.png",
+      "sha256": "e67fff72a67ad79acc570da3c990213b823766d66851b2f94257909b51511587",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "b73914ea0ff0ecd825ac01ba75374ce42262650ea9cdd0d1905dadb8a21d93ca",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/05-episode-06-damage-pose-only-1280x720-r0.png",
+      "sha256": "71b8f6a51f9859887923285f15b71a5352c9feb84f2ce5e5351c773a2d4d9b82",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/06-episode-06-command-ui-1280x720-r0.png",
+      "sha256": "6763a9e98bfe8a3d6f9fb178619e9a07a41b5157e355066d3e678dc6772e0831",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/farah/Actual/07-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "b13dfd7bfb6e66fdf3fb1eb07eee95d78fbcb7e1ab03f0bfb01396a64532b942",
+      "kind": "board",
+      "characterId": "farah"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/BeforeFinal/Front/idle-000.png",
+      "sha256": "fb59dd53a0f286cd510c57c091b639c292073c9e9752c5b845eedfc816de0d96",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/idle-010.png",
+      "sha256": "cb1f609d99a975d5430c0e4e29ae6919b6eaebb447608df2b1f771ca92a6cafe",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/idle-000.png",
+      "sha256": "d28e00c7acf9cbd04d595c9eb99c5d39320e8d385e50ea45b1032686f9607efe",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/idle-020.png",
+      "sha256": "0d499a364a7fbac18bdbfd49213a270557db04d902caef03b6e261bd6e692c8e",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/attack-000.png",
+      "sha256": "f62ae569c410818d507fe5634e16478077245774359ba827be4568794aabbbb0",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/attack-007.png",
+      "sha256": "806e5fc8ccaccb1e7588efda2262aebc2a2309c188db84fc47f550b45be56b1b",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/attack-014.png",
+      "sha256": "f09a452a1388c90cb42ca57b47715115a88b5fbe4516f60b9747d7a43b106e0d",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/damage-000.png",
+      "sha256": "d79308ea08a9e38a12fb63bc6b45d9f27fb6996c54d1a9e3042e8046f949f898",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Front/damage-005.png",
+      "sha256": "691d4eb64fbc23a3700925953157d779819abf3f29d7353c8946d2a85af14334",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/idle-000.png",
+      "sha256": "43b71eeeab1d9658e90b67731d6cf07cf6e9df00a229859b5851aaac06cd553a",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/attack-000.png",
+      "sha256": "405d5e56db3f19e0a09ff6418f51c0d5568d0cb89a6ae2bee0763da8e5387d15",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/attack-007.png",
+      "sha256": "7805df262c101c461732e1762069b178ae51b7a6f6faf73ccfb45afb19afb305",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/attack-013.png",
+      "sha256": "416b2cce48b4270841b1239c5dcd5a83be5c67153577bfc0d50cf8bbb22f21dd",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/damage-000.png",
+      "sha256": "c47c5bcf2184d6f24c1af23b34eab97a85d3e91fe0e312c97b3775630a3413c5",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Back/damage-004.png",
+      "sha256": "9f153becdcc73cb09a214102bd658546bf67df00472874b7032b80c86bea424b",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/idle-000.png",
+      "sha256": "733b1852701c740e58d3348fbda431eef3db98aaba107070cf5515c8915db185",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/attack-000.png",
+      "sha256": "9a524759161d570790c46ead14ecce5e57da45492c28782afa89b4eb6a638ec6",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/attack-007.png",
+      "sha256": "258422a46b738a9e9c32e2ab759f18a88d11bde9deecf509f23274a941d37651",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/attack-013.png",
+      "sha256": "f4005e4c733685f8d362e0ae3d990fc39458f09f2cc3e3e53ddc56abb3874760",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/damage-000.png",
+      "sha256": "33689ded468e6780b268bf2a2fb4ab5be6a9c9a934ea329960369753102b52a3",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Left/damage-005.png",
+      "sha256": "ff504d3ecb4a27ed48d1901643ac74328b1561f74446309458928f1246f435bd",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/idle-000.png",
+      "sha256": "8ba5f93dca67c59a13125e59f24946fc1d0cda37a81c3dd817949816d3aa42fd",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/attack-000.png",
+      "sha256": "24d5748c2103ca393761cdb3f9dff31c3fe9cfaacf1f5377df5b87b66db0a697",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/attack-007.png",
+      "sha256": "0a17f250402287f92b56741a46a4b755f251839d47a86477dd1e235aac0f34a5",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/attack-013.png",
+      "sha256": "b21cae8cd05c28ff078404863e0ef92310f492f334488007c4942be906c26ad0",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/damage-000.png",
+      "sha256": "d7ac5b288b739ae0a73d4eb7ef55e7896181917d958057d9a5bc50cf434940b0",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/AfterFinal/Right/damage-004.png",
+      "sha256": "4020f30a8d15514644f4f815b7ca2897fc298048ba3a2e87e06ceca9afbeee39",
+      "kind": "motion",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "ba7d9482f43b3057773c35c768ca14af2f5bcd4b66f44eb4b49e0c52a89a645b",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/01-episode-06-idle-1280x720-r90.png",
+      "sha256": "18bc4eccfc4b16cb99ad8a54717e7120320fe8954b49e58e45dd6d7997775d6d",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "c81da08a86d7585b0d253570b3352a2460c4db47dfb2d3c1fbf32be59208900b",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/03-episode-06-idle-1280x720-r270.png",
+      "sha256": "19aa29b9d10ffb8be4c91f3cc2de64557c2a96e58c384335e8ee38df13512189",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "d1611e38c858f4b3fbc109f715f7fac5954dfdf1248f343834b372ac0da6a52d",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/05-episode-06-damage-pose-only-1280x720-r0.png",
+      "sha256": "42708825791ea5cf7e38f2496401fee13a87b84ea445d9c95dcff7fa6634750d",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/06-episode-06-command-ui-1280x720-r0.png",
+      "sha256": "599652e43f07d091dbfbc4606fb75ef0f12d988b04c18be20ff7861a3e3ee0c0",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/tear/Actual/07-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "788cbe7d19dca42a4ff01c32b837177f07aad0a897294a1e2587e2868f419f54",
+      "kind": "board",
+      "characterId": "tear"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/BeforeFinal/Front/idle-000.png",
+      "sha256": "c98220d892c032ca9aff83f398b93b047e7258b24a8893e20db0eb96d7bab319",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/idle-000.png",
+      "sha256": "2dea726be5b76116c28668a3e270baeb82060622975a74d4648bc874d0efc3c0",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/idle-001.png",
+      "sha256": "98f186e81e4174cf25881cffd89c5b1e426d27122b9781200d924f47f53205b8",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/idle-021.png",
+      "sha256": "5e3f73c2644d0bdadb2c9ebab01d313ef2879c91cb590a76aa8fd5e6a2a16fba",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/attack-000.png",
+      "sha256": "ea3c2d17220daccf434a1f3da48fed33066025d0b36cf1403fda43e577a581a8",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/attack-007.png",
+      "sha256": "ce07d6e2927f61be2f36b38433f2098d5d18d52bf6de72503020ffa2d8b06a12",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/attack-014.png",
+      "sha256": "3a1aa93622022b51e91b46ed346460a5e2bdfe6613794c99393a5545585875f8",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/damage-000.png",
+      "sha256": "1e721435535615d566564ec77438685f0ec089a39993ba0ad48fee1d793335a7",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Front/damage-005.png",
+      "sha256": "128f77b30365bd74d49ed31390633ee1f8973cec70575f70dff8cb2e1b525615",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/idle-000.png",
+      "sha256": "5a75b4eef4c4779ff124693a6e538838d65027eeed1d7eff84148847faabde0b",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/attack-000.png",
+      "sha256": "57adbcddc42429c08e36ca07e226014ef7c99273bf50e94bc8a104d50e89aeb7",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/attack-007.png",
+      "sha256": "a37bac1e755b8bfb2ad15b17b31909670c065be31af06157f823d04574e85cf3",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/attack-015.png",
+      "sha256": "cd89dd23bd1d9f06318c29c6d2f50cede670713430c05beef6daa255167a5101",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/damage-000.png",
+      "sha256": "2b2459e12325dc2968f2e54331798db2e8c91b780fc14d80878635a0ff629305",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Back/damage-004.png",
+      "sha256": "a5ac18d5107438abe3278717f667608d8311936745eecd3ed8022913df612463",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/idle-000.png",
+      "sha256": "24e65ee98a26c8869156c262077f91c034a18132895c4b2b646928af921e4751",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/attack-000.png",
+      "sha256": "c2d0a535a625494be19aaa825623eecaeecca16a1cb988b90c49f130e05498e4",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/attack-007.png",
+      "sha256": "7f56ca5fb6c4d308cf053d04522ff63e775e24edc07fdab34dfeeea9553f955b",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/attack-014.png",
+      "sha256": "50097804c66d5810efb0da2e46a74fdc9f9e7f1c98f19fb03a5f192aa64e6c1e",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/damage-000.png",
+      "sha256": "bc15fbd5de83efe72fac41e54fe3ad3d4aadf4eb27be122255e24f3e8f5c3ed7",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Left/damage-005.png",
+      "sha256": "d171a97d14743a3b1c6b5ee1cab7c8372f6ac32121be380a4aa32a2acf00cfff",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/idle-000.png",
+      "sha256": "0d02391da7e464228feeaf9a0ac9068e01907bb5105131a58f60f1ad4c780d51",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/attack-000.png",
+      "sha256": "5ee0034efd712b03d93162221312b28f4d3f04d8f1f13871e0a3dc1ae5eee0a5",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/attack-006.png",
+      "sha256": "887740200d07df18b7a9c16f78a18ea72607ff119500075ce1262ece4ec039ac",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/attack-013.png",
+      "sha256": "2be221de887d25ef23afd5a7876a46c400b5c421956f43ef4395ea89216d9500",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/damage-000.png",
+      "sha256": "3b3abddbb67c7e5b6f2ac302e704b494a51eb8441932b07d6b01d289fa448731",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/AfterFinal/Right/damage-004.png",
+      "sha256": "69301cd21ed95de9be961fbf25b28eb0eb5a50c8068942271ab53ef204aaaee9",
+      "kind": "motion",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "a44370f3c5f3ae28126b0cb08590804cab84b46149c502f75569293c429a028c",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/01-episode-06-idle-1280x720-r90.png",
+      "sha256": "204b86455e5299c9d40ce5428203db2ff32154ad2bebe792208100240fdcec8d",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/02-episode-06-idle-1280x720-r180.png",
+      "sha256": "0d4370ca635c2d8d574b951706772dfd0199c143e8680e788a91c4a1fad4c2b7",
+      "kind": "board",
+      "note": "뒤쪽 머리 기준·창 끝과 HP바 분리·원화 뒷면·발 접지 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/03-episode-06-idle-1280x720-r270.png",
+      "sha256": "c892dcb6370f9a47e6e6baab7927269429864274a6db2e9df66387cd2488371e",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "41cbbf16a868c47538af49cf35a9158f99eab41f49c789f1fdc673d024da99ca",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/05-episode-06-damage-pose-only-1280x720-r0.png",
+      "sha256": "7019d3bd90e17ec1318eda46d003d4d493045b25c31d87ecf186a154e176670d",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/06-episode-06-command-ui-1280x720-r0.png",
+      "sha256": "fc22dfbff34837d865c0542d9d47d1e219800956e0fcd169b204812cde4666db",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/jade/Actual/07-episode-06-command-ui-2340x1080-r0.png",
+      "sha256": "0d8ec67296dc1697d04002fc0a26ad5438e0560381f4a1eb0675ce5e9579feec",
+      "kind": "board",
+      "characterId": "jade"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/idle-000.png",
+      "sha256": "38e71e21c03d6edceaed99acdbde1ee29d148e5f17a9a53469a1d7b8fab310b1",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/idle-004.png",
+      "sha256": "ae9b6a315c7276790c602f79bf0fa92fb01fe1797eed650eeac812fe91cdcee6",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/idle-010.png",
+      "sha256": "67ee774b3390de4a14932aef2bf7e8f0042e245376a64a1c8d6d8da0697f5a36",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/idle-024.png",
+      "sha256": "e2c97a4023c14074a6b4247e388a45b97c0a3b4d3ee786fcd67cd5b8e3cb2ebd",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/attack-000.png",
+      "sha256": "12e277802e66ef96c0b432af3e99bf760ef6c91b21466efdf5b651d0ab0888d5",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/attack-007.png",
+      "sha256": "74276c86dffb4db46a000e78295ee3f7814824830f7544ed54f9096ffb5a64b3",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/attack-014.png",
+      "sha256": "bab288f336ad7a0de19ebc5fbaf3617e2703a094ddcf7b68beed56b2cfa6bcd6",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/damage-000.png",
+      "sha256": "ed500980bcf8f83ccc262003d060477743dd9843097137eae53e0032b101f1d0",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Back/attack-007.png",
+      "sha256": "1d745738cf260a43c444c70100396337282cfee5a1618fc86ef01399a3110406",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Left/attack-007.png",
+      "sha256": "7c31b7230e43b329ff8cd513ebcad4466d0b8380ac753d4ca86670fc3d742d52",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Right/attack-007.png",
+      "sha256": "019fe6a25116986cf043e0b3d3ebb48ccdc733e91830dfc74a2ca559c767b2de",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/AfterFinal/Front/damage-004.png",
+      "sha256": "bd7a6baf0077567a0d1626bc5611621c9fdd482eec35e5c97408cd8641780657",
+      "kind": "motion",
+      "characterId": "natalia"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/idle-000.png",
+      "sha256": "78b43c1eb921f81118abfe04f7649890342b4bf49ce4dd6a84f21ae6f0de96c9",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/idle-002.png",
+      "sha256": "45ef52ee01d61742ef7638deda1c1aefcb9b934a295e8d08551faa178a682c96",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/idle-008.png",
+      "sha256": "2aa2bda7f343faf371ca57f1e2f2cca01579c7deabe973cbc955bd11ea84b122",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/idle-022.png",
+      "sha256": "8e585b20dd1619c307ed514f2bd13e39a9104aff4f7f2d7c9582f20177536475",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/attack-000.png",
+      "sha256": "72b28b98b4ad467a26649593df7df30ed03dedd7125e99cee755ec5b1cb9f8c2",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/attack-007.png",
+      "sha256": "ffeefa30772200a698a90ff74b23348747f88268cbfc4eb8d1257f8938f96fe3",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/attack-014.png",
+      "sha256": "5a74dc584dd127b92a73ec5dfd02f879045004884d00c69f67cfeb6b437708cd",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/damage-000.png",
+      "sha256": "8c5f9e2c018338477b62e1fc059fe86f86df6317aaf8b9f2a6fa18bbf7986cb4",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Back/attack-007.png",
+      "sha256": "e204fe468b464b5b78f5f82c8c762cca062b322982eccf88b8de41384389a076",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Left/attack-005.png",
+      "sha256": "a1d3db4c056bbe8a40a858a24c9c5cfbc309406d85fb6aec587de9143954c0b2",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Right/attack-007.png",
+      "sha256": "bd64144551d2eb81bf218604c0265c8fec55e8dd857e972377d25453ed88be9f",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/velvet/AfterFinal/Front/damage-004.png",
+      "sha256": "b34b4075a39a6e6499de5594334f35192de6a99d752acd1e39224ec76c1514ed",
+      "kind": "motion",
+      "characterId": "velvet"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/idle-000.png",
+      "sha256": "10776281a5c086e5d0f077a1b555d06b66d162ebfb8d1ad68de99473dde2f23f",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/idle-006.png",
+      "sha256": "a0655edd41c57fea2b030816f61bfce580a36e17bfa18c092bffcc8b7fe28377",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/idle-010.png",
+      "sha256": "611b6aa065a6b4856637a16408ab4184e606265c7bdbb0f35f9de7e189bd5407",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/idle-020.png",
+      "sha256": "2b084e6bd9d2aa8c16337390e71c4f46afe725f686c1cce0724ed96808f4393d",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/attack-000.png",
+      "sha256": "6e212a244185bcaa419aef6a67fadc70afa13693ccad3fd1543ad327098c2528",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/attack-007.png",
+      "sha256": "a9a0d4bdb54cd170bf3de4593561f5c4abb46c1cc51cbcd206c071a3bad20479",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/attack-014.png",
+      "sha256": "7136eb9c425ab06fb89796a8c5fe77869741d46581b2d92fb7fd17724a489fd2",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/damage-000.png",
+      "sha256": "bc7804d46dfb9279d5df5118bfe61840157eb434b9cee21d79286c65a88fddb8",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Back/attack-007.png",
+      "sha256": "24c197a6fc424871b65bbbce04b07b0e4941e96b54052fe674bcb814eecffc8f",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Left/attack-006.png",
+      "sha256": "e849756a308d41485c74b06ee2c76314e682a2936a201eb822aea10d6ee0e17c",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Right/attack-006.png",
+      "sha256": "419f93b1d1c4ffac6f638ea774c18df1342883cf0b4f7736d3cdda0d357fe57c",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/AfterFinal/Front/damage-005.png",
+      "sha256": "645c0c2a07049d9cbabfa7b8d1161ab939b1cfd4acb46bee712bc766b71b3e0d",
+      "kind": "motion",
+      "characterId": "alphen"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/idle-000.png",
+      "sha256": "8e9c57b22b62fabd0ad86b4064b6176fa012a51eb8cce43e6fe47f98f27abbc6",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/idle-005.png",
+      "sha256": "9bab8088afd2f4f8a4aff1da471d7aa9050c4452dba4f1a38d3fbe9cda0898b2",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/idle-011.png",
+      "sha256": "82c0362233a95016e7a6131135508a464fa6c438c2492e75af3eb39b6a122267",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/idle-025.png",
+      "sha256": "dd3f6fcb2aa8a27b9933b8e069b128c2d6d34c066f0c003e45d0005d2cb4650d",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/attack-000.png",
+      "sha256": "477898c0263ce216c5600f0e2a49a595c94756359004ce02c5bd253c74e4ef02",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/attack-007.png",
+      "sha256": "a896f19ccceb289b197d7b3840959b6a88227c619a1a487cbdd61bcc50126ebf",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/attack-014.png",
+      "sha256": "3b6e747180dd08a97660e304331d3224319760c9a6ea14dafa4d4eaab24f9f35",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/damage-000.png",
+      "sha256": "3ab4526cb0ce1f4a0dc416cf75e5334bbc2fa944b314da87335743a92daebd29",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Back/attack-007.png",
+      "sha256": "13f6c8fd997e6cc23d5ad333842405d079dddd18128ca00ca002b9d0857c80b6",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Left/attack-007.png",
+      "sha256": "54cb37cd87cb4f75437084fed18e61c3e0b2a78cc8d796896d0c3e8c5df31020",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Right/attack-007.png",
+      "sha256": "a980ebc584f0827f7726ed9820e6e8a6eaed883c1222dce554d6f05512605eb6",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/AfterFinal/Front/damage-005.png",
+      "sha256": "d6244367ad32410d001a68cc68589c02500f7e009b8f72b41f6c324c2b7da273",
+      "kind": "motion",
+      "characterId": "shionne"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/idle-000.png",
+      "sha256": "1cd7b5de2467522cf6c62dbb48fad627f350a5d62ac683332406225d61130853",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/idle-003.png",
+      "sha256": "307f0a10d5b54efbe880334123ad504d4048d7d3779cfc52bc08c259cf9ad743",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/idle-009.png",
+      "sha256": "e87169172d9dc184dac0f8d24978a4375791cf83f94a29eeb362f73026367cb4",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/idle-023.png",
+      "sha256": "0f832c612d3086359e6848a2a1eb3d4f675b1ea9057c455373a31ff4fde9f183",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/attack-000.png",
+      "sha256": "b317bca518153b72000e193f0cf1a1ed6be9b964209da43ee9454773f2d76367",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/attack-007.png",
+      "sha256": "7dd54b995ee96a49c1c1039b9aa022a69588692a447ef18eec0f990224318781",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/attack-014.png",
+      "sha256": "e3fd2fdec53bffdfc26af17aa894f7ea8f0d529af8c73c2e2eb4d4c7be24241e",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/damage-000.png",
+      "sha256": "823b3d4755fef7eef8113b4d1402d71e90b6a5b4f10653c4f17c66c54e10978b",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Back/attack-007.png",
+      "sha256": "0370ca05af29c1c24111e776328d1817111ea5d958876b44390e6bb1d25a6039",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Left/attack-007.png",
+      "sha256": "ae03a1b359e32c0501f92d1c81d266e78eef23c7ffc864c6bcaa2855e16bf3d9",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Right/attack-007.png",
+      "sha256": "4fb2620bca39418c8b2c90f78295bb724e148aef8a18a201275a777e77d406bf",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/AfterFinal/Front/damage-004.png",
+      "sha256": "918165b1ae99c9119fc3c79df63fddffac2c8a9cfe5f6d342198dd4fb2871792",
+      "kind": "motion",
+      "characterId": "kisara"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/shionne/Actual/04-episode-06-character-close-1280x720-r0.png",
+      "sha256": "acb0cb968ab52973691c1a5622613b1411b80381de2c5a866debf127172db05a",
+      "kind": "board",
+      "note": "총 전체 길이·머리와 HP바·주변 동료 높이 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/kisara/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "cb409af561bf78e45199d797b7776c20e4d60a5a3c1fbb08b37393422d5ea046",
+      "kind": "board",
+      "note": "방패·철퇴·긴 머리 실루엣과 발·HP바 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/natalia/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "abc2b17ccf3a1e032d324407ec98229ab7260f8155d1a081361b292dab5dd309",
+      "kind": "board",
+      "note": "활·양발·머리 기준과 동료 크기 확인"
+    },
+    {
+      "file": "Logs/RosterMotion20261125/Captures/alphen/Actual/00-episode-06-idle-1280x720-r0.png",
+      "sha256": "ec8b1d435476407249eb7dfc64b2a46ddb1c379e48aa5527839301f10d2b4d29",
+      "kind": "board",
+      "note": "기존 시범 원화 보존과 새 동료 사이 크기 확인"
+    }
+  ]
+}

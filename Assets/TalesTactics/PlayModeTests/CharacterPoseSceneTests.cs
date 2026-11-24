@@ -101,13 +101,15 @@ namespace TalesTactics.PlayModeTests
             var unit=director.Session.Units.First();
             var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.Owner==unit);
             var renderer=motion.GetComponent<SpriteRenderer>();
+            var profile=motion.AuthoredProfile;Assert.That(profile,Is.Not.Null,"Actual board allies use their authored roster profile");
+            Assert.That(profile.OwnerId,Is.EqualTo(unit.Data.Id));
             var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
             director.Board.SetAnimation(unit,AnimationKind.Attack);yield return new WaitForEndOfFrame();
-            Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Sprites.Get(facing)),"Attack starts in the ready pose");
+            Assert.That(renderer.sprite,Is.SameAs(profile.Attack.Frames[0].Get(facing)),"Attack starts in the authored windup pose");
             yield return new WaitForSeconds(0.12f);yield return new WaitForEndOfFrame();
-            Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Attack.Get(facing)));
+            Assert.That(renderer.sprite,Is.SameAs(profile.Attack.Frames[0].Get(facing)),"The first .12 seconds stay in windup before contact");
             yield return new WaitForSeconds(0.35f);yield return new WaitForEndOfFrame();
-            Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Sprites.Get(facing)),"Attack recovers without requiring a state refresh");
+            Assert.That(renderer.sprite,Is.SameAs(profile.Idle.Frames[0].Get(facing)),"Attack recovers to authored rest without requiring a state refresh");
             director.Board.SetAnimation(unit,AnimationKind.Guard);yield return new WaitForSeconds(0.5f);yield return new WaitForEndOfFrame();
             Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Guard.Get(facing)));
             Assert.That(motion.transform.localScale.y,Is.EqualTo(1),"Authored crouch must not be squashed again");
@@ -118,7 +120,7 @@ namespace TalesTactics.PlayModeTests
                 motion.Set(AnimationKind.Cast);yield return new WaitForEndOfFrame();
                 Assert.That(renderer.sprite,Is.EqualTo(copy.Sprites.Get(facing)),"Legacy/enemy assets do not require pose art");
             }
-            finally{motion.Initialize(renderer,unit,director.Board.BattleCamera);Object.Destroy(copy);}
+            finally{motion.InitializeRoster(renderer,unit,director.Board.BattleCamera);Object.Destroy(copy);}
         }
     }
 }

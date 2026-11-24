@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "summaryKind": "Read-only aggregation of an existing actual BoardView matrix",
+  "countsAsUnityTest": false,
+  "source": {
+    "path": "Logs/RosterMotion20261125/StageMatrix/final-v3-result.json",
+    "sha256": "d92067d14540a1d26aa832559238bc35421fea8c13cbd82aa4af95651afc2bbc",
+    "bytes": 907297
+  },
+  "startedUtc": "2026-11-24T20:51:50.2120546Z",
+  "finishedUtc": "2026-11-24T20:52:07.2471450Z",
+  "stageCount": 57,
+  "trainingStageCount": 1,
+  "campaignStageCount": 56,
+  "characterCount": 10,
+  "directions": [
+    "Front",
+    "Back",
+    "Left",
+    "Right"
+  ],
+  "expectedRows": 2280,
+  "observedRows": 2280,
+  "actualRowCount": 2280,
+  "uniqueStageCharacterDirectionCount": 2280,
+  "restored": true,
+  "errorCount": 0,
+  "passedSubcheckCounts": {
+    "correct": 2280,
+    "anchor": 2280,
+    "projected": 2280,
+    "grounded": 2280,
+    "healthPresent": 2280,
+    "finiteHead": 2280,
+    "enemyFallback": 2280
+  },
+  "earlierAttempts": [
+    {
+      "source": {
+        "path": "Logs/RosterMotion20261125/StageMatrix/final-result.json",
+        "sha256": "096e2589a50f49658c5cbf2f5423c6d697dfe12d33d43fa79179f8acfa464328",
+        "bytes": 3874
+      },
+      "passed": false,
+      "expectedRows": 2280,
+      "observedRows": 7,
+      "actualRowCount": 7,
+      "restored": true,
+      "errorCount": 1,
+      "errorTypes": [
+        "System.InvalidOperationException"
+      ],
+      "diagnosis": {
+        "basis": "Validation coordinator investigation; not a field in the original result",
+        "cause": "The fixture changed model facing without calling the real Board.Sync presentation path; only the verification fixture was corrected.",
+        "productFilesChangedForCorrection": false
+      }
+    },
+    {
+      "source": {
+        "path": "Logs/RosterMotion20261125/StageMatrix/final-v2-result.json",
+        "sha256": "0ce2cf639bff3c6e0115b596ed8ace7d2accf7456db926dcc1ea7ea7cb6ceec1",
+        "bytes": 272098
+      },
+      "passed": false,
+      "expectedRows": 2280,
+      "observedRows": 683,
+      "actualRowCount": 683,
+      "restored": true,
+      "errorCount": 1,
+      "errorTypes": [
+        "System.InvalidOperationException"
+      ],
+      "errorSummary": "The fixture's Single selection found no matching element; this incomplete attempt is not counted as passing coverage.",
+      "diagnosis": {
+        "basis": "Validation coordinator investigation, compared with final fixture reserve handling; not a field in the original failed result",
+        "cause": "The fixture tried to select an active render component for a natively inactive reserve actor. The final fixture first verifies native hiding, then temporarily clears reserve flags only for presentation checks.",
+        "productFilesChangedForCorrection": false
+      }
+    }
+  ],
+  "scope": "Actual BoardView.Build for training plus all 56 campaign stages, ten characters, four view directions: 2,280 unique connections. Temporary sessions bypass progression/deployment eligibility in separate roster batches.",
+  "limitations": [
+    "This is renderer linkage verification with forced roster eligibility, not natural campaign traversal, recruitment, unlock, combat damage or save validation.",
+    "This summary and matrix are not added to EditMode/PlayMode test counts.",
+    "No Android installation or physical-device gameplay is claimed.",
+    "Failure evidence is retained separately; only the explicitly selected successful result supplies complete coverage.",
+    "The five temporary reserve overrides broaden renderer coverage only; native stage-16 reserve hiding was checked separately before the overrides."
+  ],
+  "durationSecondsDerived": 17.035091,
+  "reserveOverrides": 5,
+  "reserveObservations": [
+    {
+      "stage": 16,
+      "batch": 0,
+      "characterId": "tear",
+      "nativeReserve": true,
+      "nativeActive": false,
+      "hiddenAsExpected": true,
+      "temporaryPresentationOverride": true
+    },
+    {
+      "stage": 16,
+      "batch": 0,
+      "characterId": "jade",
+      "nativeReserve": true,
+      "nativeActive": false,
+      "hiddenAsExpected": true,
+      "temporaryPresentationOverride": true
+    },
+    {
+      "stage": 16,
+      "batch": 0,
+      "characterId": "natalia",
+      "nativeReserve": true,
+      "nativeActive": false,
+      "hiddenAsExpected": true,
+      "temporaryPresentationOverride": true
+    },
+    {
+      "stage": 16,
+      "batch": 1,
+      "characterId": "shionne",
+      "nativeReserve": true,
+      "nativeActive": false,
+      "hiddenAsExpected": true,
+      "temporaryPresentationOverride": true
+    },
+    {
+      "stage": 16,
+      "batch": 1,
+      "characterId": "kisara",
+      "nativeReserve": true,
+      "nativeActive": false,
+      "hiddenAsExpected": true,
+      "temporaryPresentationOverride": true
+    }
+  ],
+  "reserveScope": "Five native CrossoverReserve actors in stage index 16 were first confirmed inactive and hidden as expected. Only the temporary matrix sessions cleared their reserve flags to test active rendered directions. Original reserve and facing flags were restored before gameplay-preservation comparison. This is not evidence that these reserve actors normally appear or can be deployed there.",
+  "sourceReportedScope": "Actual BoardView.Build for training and every campaign stage in two presentation-only full-roster batches, with real advancing Unity frames and four view directions. Temporary BattleSession values explicitly bypass progression/deployment eligibility to test renderer linkage. Native CrossoverReserve visibility is first asserted and recorded, then reserve flags are temporarily cleared only in matrix sessions so every actor can undergo active rendered-direction checks; original flags are restored before gameplay-preservation comparison. This does not claim natural campaign traversal, unlock changes, damage execution, or Android-device playback. Original isolated session and global RNG are restored.",
+  "verificationSource": {
+    "path": "Tools/RosterMotion20261125/RosterStageMatrix.cs",
+    "sha256": "fe58ce64b0ff2a0d6a3204069395b27cdcdf6be451f45578f84e0ae81438dcdf",
+    "scope": "Current final fixture code, read at summary generation; not a reconstructed copy of the earlier failed fixture versions."
+  }
+}

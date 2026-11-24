@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "generatedUtc": "2026-11-24T21:41:11.136096+00:00",
+  "scope": [
+    "이 문서는 완료된 빌드와 읽기 전용 산출물 검사의 공개 요약입니다.",
+    "83파일은 이번 제품·가져오기 배치 동결 범위이며 저장소 전체 파일 목록이 아닙니다.",
+    "Windows 별도 플레이어 실행이나 Android 설치·실기기 플레이를 수행했다는 의미가 아닙니다.",
+    "원시 로그의 절대경로·도구 출력과 음원·빌드 바이너리는 이 문서에 복사하지 않았습니다."
+  ],
+  "sourceFreeze": {
+    "sha256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+    "fileCount": 83,
+    "publicManifest": {
+      "path": "Docs/RosterMotion20261125/Validation/product-source-freeze.json",
+      "bytes": 17593,
+      "sha256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214"
+    }
+  },
+  "packedPayload": {
+    "countPerPlatform": 30,
+    "characters": 10,
+    "spriteSheets": 20,
+    "motionProfiles": 10,
+    "verification": "각 BuildReport.packedAssets에서 정확한 30개 경로의 포함을 확인했습니다."
+  },
+  "platforms": [
+    {
+      "platform": "Windows",
+      "runId": "954b16cf991f4896a9a2a57c8218c84a",
+      "result": "Succeeded",
+      "passed": true,
+      "startedUtc": "2026-11-24T21:21:48.7998662Z",
+      "finishedUtc": "2026-11-24T21:23:32.6281514Z",
+      "target": "StandaloneWindows64",
+      "seconds": 101.3246561,
+      "durationScope": "seconds는 BuildReport.summary.totalTime 값입니다. 빌드 전후 원화 변환·설정 복원 및 대기 시간은 이 수치에 모두 포함되지 않습니다.",
+      "queuedUtc": "2026-11-24T21:21:45.6993224Z",
+      "queuedToFinishedSeconds": 106.928829,
+      "queuedToFinishedScope": "queuedUtc부터 finishedUtc까지의 벽시계 차이로 계산한 전체 요청 구간입니다. 빌드 전후 처리와 대기가 포함됩니다.",
+      "warnings": 4,
+      "errors": 0,
+      "artifact": {
+        "validationCheckoutRelativePath": "Builds/RosterMotion20261125/Windows/TalesTactics.exe",
+        "bytes": 667136,
+        "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d",
+        "scope": "실행 파일 단일 파일 크기이며 전체 Windows 폴더 크기가 아닙니다."
+      },
+      "sourceFreezeMatchedBeforeAndAfter": true,
+      "sourceFileCount": 83,
+      "requiredPayloadCount": 30,
+      "packedPayloadVerified": true,
+      "settingsRestored": true,
+      "sourceOnly": true,
+      "localMusicChecked": true,
+      "containsLocalMusic": false,
+      "standalonePlayerExecutedByThisVerification": false,
+      "physicalDeviceGameplayTested": false,
+      "evidence": {
+        "final": {
+          "path": "Logs/RosterMotion20261125/Builds/windows-build-final.json",
+          "bytes": 129323,
+          "sha256": "53fd9e35d505dde1319726d1ca0ee3cccaf8924c4428c767f4cead8e5dccd1dd"
+        },
+        "queued": {
+          "path": "Logs/RosterMotion20261125/Builds/windows-queued.json",
+          "bytes": 217,
+          "sha256": "6336b7a1b9ddb6151b888051441521bac62b1f699d92f46705b37b6f495d2c47"
+        },
+        "inner": {
+          "path": "Builds/SourceOnlyPublish20261118/Project/Builds/RosterMotion20261125/Windows/build-result.json",
+          "bytes": 129323,
+          "sha256": "53fd9e35d505dde1319726d1ca0ee3cccaf8924c4428c767f4cead8e5dccd1dd"
+        },
+        "buildReport": {
+          "path": "Logs/RosterMotion20261125/Builds/windows.buildreport",
+          "bytes": 1486316,
+          "sha256": "23e35bbf70654fb5a4622b36bd72ae67dcce7e1ecb2a343bf0b775fe8051b024"
+        }
+      }
+    },
+    {
+      "platform": "Android",
+      "runId": "bc05fb14940243389e3db87246bb3681",
+      "result": "Succeeded",
+      "passed": true,
+      "startedUtc": "2026-11-24T21:26:29.9680645Z",
+      "finishedUtc": "2026-11-24T21:38:42.0461790Z",
+      "target": "Android",
+      "seconds": 197.8337842,
+      "durationScope": "seconds는 BuildReport.summary.totalTime 값입니다. 빌드 전후 원화 변환·설정 복원 및 대기 시간은 이 수치에 모두 포함되지 않습니다.",
+      "queuedUtc": "2026-11-24T21:26:26.9569094Z",
+      "queuedToFinishedSeconds": 735.08927,
+      "queuedToFinishedScope": "queuedUtc부터 finishedUtc까지의 벽시계 차이로 계산한 전체 요청 구간입니다. 빌드 전후 처리와 대기가 포함됩니다.",
+      "warnings": 6,
+      "errors": 0,
+      "artifact": {
+        "validationCheckoutRelativePath": "Builds/RosterMotion20261125/Android/TalesTactics.apk",
+        "bytes": 221893288,
+        "sha256": "e13d1e6f378583610bb6fc452098f0caa18f7bc8b889be637d03fbb2f1d45274",
+        "scope": "APK 단일 파일 크기입니다."
+      },
+      "sourceFreezeMatchedBeforeAndAfter": true,
+      "sourceFileCount": 83,
+      "requiredPayloadCount": 30,
+      "packedPayloadVerified": true,
+      "settingsRestored": true,
+      "sourceOnly": true,
+      "localMusicChecked": true,
+      "containsLocalMusic": false,
+      "standalonePlayerExecutedByThisVerification": false,
+      "physicalDeviceGameplayTested": false,
+      "evidence": {
+        "final": {
+          "path": "Logs/RosterMotion20261125/Builds/android-build-final.json",
+          "bytes": 129687,
+          "sha256": "1c1fd0822954be7830069f1160f02d60fc29c789f44da970421e99a76fb90e38"
+        },
+        "queued": {
+          "path": "Logs/RosterMotion20261125/Builds/android-queued.json",
+          "bytes": 217,
+          "sha256": "fcc150065502646971f956337c78bf9a09918a71af75585e2d22f4f733a93e51"
+        },
+        "inner": {
+          "path": "Builds/SourceOnlyPublish20261118/Project/Builds/RosterMotion20261125/Android/build-result.json",
+          "bytes": 2322,
+          "sha256": "b443f4a05160451e2b319752dba06edbdb8e15b579268c46c6dd0378541a13a1"
+        },
+        "buildReport": {
+          "path": "Logs/RosterMotion20261125/Builds/android.buildreport",
+          "bytes": 1607588,
+          "sha256": "900f5c2ecc812b9d1e11749b6d2a42a2db3f62e55fb04657efaf9f3f895e5519"
+        }
+      }
+    }
+  ],
+  "artifactProof": {
+    "path": "Logs/RosterMotion20261125/Builds/artifact-proof.json",
+    "bytes": 14531,
+    "sha256": "95fc2bc05c96a73491c5c36a58d321786eb57a5d3471dbac363d54b6ca64bac0"
+  },
+  "warningsScope": "경고/오류 수는 실제 BuildReport 값입니다. 경로가 포함될 수 있는 원문 메시지는 로컬 근거에 남깁니다."
+}

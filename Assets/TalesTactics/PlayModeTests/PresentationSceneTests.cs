@@ -17,6 +17,8 @@ namespace TalesTactics.PlayModeTests
             director.BeginBattle();yield return null;
             var unit=director.Session.Units.First();
             var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.Owner==unit);
+            var authored=motion.AuthoredProfile;Assert.That(authored,Is.Not.Null,"Actual board allies use authored motion");
+            Assert.That(authored.OwnerId,Is.EqualTo(unit.Data.Id));
             foreach(AnimationKind action in System.Enum.GetValues(typeof(AnimationKind)))
             {director.Board.SetAnimation(unit,action);yield return null;Assert.That(motion.Action,Is.EqualTo(action));}
             director.Board.SetAnimation(unit,AnimationKind.Idle);
@@ -24,7 +26,7 @@ namespace TalesTactics.PlayModeTests
             {
                 unit.Facing=facing;director.Board.Sync();director.Board.RotateCamera(90);yield return null;yield return new WaitForEndOfFrame();
                 var expected=CharacterMotion.ViewFacing(facing,director.Board.BattleCamera.transform.rotation);
-                Assert.That(motion.GetComponent<SpriteRenderer>().sprite,Is.EqualTo(unit.Data.Sprites.Get(expected)));
+                Assert.That(authored.Idle.Frames.Select(frame=>frame.Get(expected)),Does.Contain(motion.GetComponent<SpriteRenderer>().sprite),"Camera rotation must use an authored idle frame in the actual view");
                 var display=Object.FindObjectsByType<UnitHealthDisplay>().Single(h=>h.Unit==unit);
                 var renderer=motion.GetComponent<SpriteRenderer>();
                 Assert.That(UnitHeadAnchors.TryGetLocal(renderer.sprite,out var headLocal),Is.True);

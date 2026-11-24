@@ -113,6 +113,8 @@ namespace TalesTactics.PlayModeTests
                 {
                     var motion=Object.FindObjectsByType<CharacterMotion>().Single(x=>x.Owner==unit);
                     var renderer=motion.GetComponent<SpriteRenderer>();
+                    var authored=motion.AuthoredProfile;Assert.That(authored,Is.Not.Null,"Actual board allies use authored motion");
+                    Assert.That(authored.OwnerId,Is.EqualTo(unit.Data.Id));
                     var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);
                     unit.CurrentHP=0;director.Board.Sync();yield return new WaitForEndOfFrame();
                     Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Poses.Dead.Frames[0].Get(facing)));
@@ -124,7 +126,7 @@ namespace TalesTactics.PlayModeTests
                     Assert.That(renderer.sprite,Is.EqualTo(final),"Repeated KO refresh must not restart collapse");
                     Assert.That(renderer.transform.localScale.y,Is.EqualTo(1),"Authored collapse must not be squashed");
                     unit.CurrentHP=unit.Stats.HP;director.Board.Sync();yield return new WaitForEndOfFrame();
-                    Assert.That(renderer.sprite,Is.EqualTo(unit.Data.Sprites.Get(facing)));
+                    Assert.That(renderer.sprite,Is.SameAs(authored.Idle.Frames[0].Get(facing)),"Revival immediately returns to authored rest");
                     Assert.That(renderer.transform.localScale.y,Is.InRange(0.99f,1.01f));
                 }
             }

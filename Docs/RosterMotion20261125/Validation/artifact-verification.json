@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "generatedUtc": "2026-11-24T21:41:11.136096+00:00",
+  "scope": [
+    "이 문서는 완료된 빌드와 읽기 전용 산출물 검사의 공개 요약입니다.",
+    "83파일은 이번 제품·가져오기 배치 동결 범위이며 저장소 전체 파일 목록이 아닙니다.",
+    "Windows 별도 플레이어 실행이나 Android 설치·실기기 플레이를 수행했다는 의미가 아닙니다.",
+    "원시 로그의 절대경로·도구 출력과 음원·빌드 바이너리는 이 문서에 복사하지 않았습니다."
+  ],
+  "sourceFreezeSHA256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+  "sourceFileCount": 83,
+  "managedIsolation": [
+    {
+      "platform": "Windows",
+      "passed": true,
+      "runId": "954b16cf991f4896a9a2a57c8218c84a",
+      "inputScope": "Windows 플레이어의 Managed 어셈블리",
+      "runtimeSHA256": "9c774678e337c92a09e7b9b169d0e7ed55d97d7d73e24de14ec4318e2ed1bfdf",
+      "runtimeBytes": 806400,
+      "runtimeUnchangedDuringInspection": true,
+      "runtimeWrittenDuringThisBuild": true,
+      "freshnessScope": "새 출력 폴더와 runId로 확인하며 DLL 복사 시각은 이전일 수 있습니다.",
+      "typeCount": 493,
+      "methodBodiesInspected": 2826,
+      "instructionsInspected": 143343,
+      "requiredProductionTypes": [
+        "TalesTactics.AlphenVisualPilotMotion",
+        "TalesTactics.BattleDirector",
+        "TalesTactics.BattleHud",
+        "TalesTactics.CharacterMotionProfile",
+        "TalesTactics.CharacterMotionRegistry",
+        "TalesTactics.MobileUiLayout"
+      ],
+      "knownExcludedReviewTypeCount": 58,
+      "excludedFindings": {
+        "reviewFixtureTypes": 0,
+        "reviewTypeReferences": 0,
+        "reviewMemberReferences": 0,
+        "reviewIlReferences": 0,
+        "editorOrTestTypes": 0,
+        "editorOrTestAssemblies": 0,
+        "editorOrTestReferences": 0,
+        "editorOrTestTypeReferences": 0,
+        "editorOrTestMemberReferences": 0,
+        "editorOrTestIlReferences": 0,
+        "testAttributes": 0
+      },
+      "checkCount": 14,
+      "failedCheckCount": 0,
+      "evidence": {
+        "path": "Logs/RosterMotion20261125/Builds/windows-managed-isolation.json",
+        "bytes": 8931,
+        "sha256": "5616f113b72c24fcd0d9426216151b6f447c27dc7802d8356e2156cd0023a904"
+      }
+    },
+    {
+      "platform": "Android",
+      "passed": true,
+      "runId": "bc05fb14940243389e3db87246bb3681",
+      "inputScope": "현재 Android 빌드의 IL2CPP ManagedStripped 입력 어셈블리",
+      "runtimeSHA256": "2e5c81305a8db7a67839301a47ce550788cf047d1960941611bf171f1be9f49d",
+      "runtimeBytes": 801792,
+      "runtimeUnchangedDuringInspection": true,
+      "runtimeWrittenDuringThisBuild": true,
+      "freshnessScope": "ManagedStripped 수정 시각이 현재 빌드 시작 이후임을 확인했습니다.",
+      "typeCount": 493,
+      "methodBodiesInspected": 2825,
+      "instructionsInspected": 143294,
+      "requiredProductionTypes": [
+        "TalesTactics.AlphenVisualPilotMotion",
+        "TalesTactics.AndroidRuntimeSettings",
+        "TalesTactics.BattleDirector",
+        "TalesTactics.BattleHud",
+        "TalesTactics.CharacterMotionProfile",
+        "TalesTactics.CharacterMotionRegistry",
+        "TalesTactics.MobileUiLayout"
+      ],
+      "knownExcludedReviewTypeCount": 58,
+      "excludedFindings": {
+        "reviewFixtureTypes": 0,
+        "reviewTypeReferences": 0,
+        "reviewMemberReferences": 0,
+        "reviewIlReferences": 0,
+        "editorOrTestTypes": 0,
+        "editorOrTestAssemblies": 0,
+        "editorOrTestReferences": 0,
+        "editorOrTestTypeReferences": 0,
+        "editorOrTestMemberReferences": 0,
+        "editorOrTestIlReferences": 0,
+        "testAttributes": 0
+      },
+      "checkCount": 15,
+      "failedCheckCount": 0,
+      "evidence": {
+        "path": "Logs/RosterMotion20261125/Builds/android-managed-isolation.json",
+        "bytes": 9733,
+        "sha256": "312ead85aa856283f0b2bb365115a5434c29a534ccf8fab24543aacacfd0481f"
+      }
+    }
+  ],
+  "androidPackage": {
+    "passed": true,
+    "runId": "bc05fb14940243389e3db87246bb3681",
+    "bytes": 221893288,
+    "sha256": "e13d1e6f378583610bb6fc452098f0caa18f7bc8b889be637d03fbb2f1d45274",
+    "applicationId": "com.talestactics.game",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "architectures": [
+      "arm64-v8a"
+    ],
+    "landscapeOnly": true,
+    "signatureVerified": true,
+    "signerSHA256": "bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda",
+    "verifiedSignatureSchemes": [
+      "v2 scheme (APK Signature Scheme v2)"
+    ],
+    "signatureScope": "검사 도구에 고정된 기존 테스트 인증서와 SHA-256이 일치합니다.",
+    "zipAlignmentBytes": 4,
+    "zipAlignmentPassed": true,
+    "zipMemberCount": 357,
+    "allZipMemberCrcsPassed": true,
+    "nativeLibraries": [
+      "lib/arm64-v8a/lib_burst_generated.so",
+      "lib/arm64-v8a/libil2cpp.so",
+      "lib/arm64-v8a/libmain.so",
+      "lib/arm64-v8a/libunity.so"
+    ],
+    "rawLocalMusicZipEntries": 0,
+    "artifactAndReportsUnchangedDuringInspection": true,
+    "toolExitCodes": {
+      "badging": 0,
+      "manifest": 0,
+      "signature": 0,
+      "zipAlignment": 0
+    },
+    "evidence": {
+      "path": "Logs/RosterMotion20261125/Builds/apk-verification.json",
+      "bytes": 11783,
+      "sha256": "7c6482a43daf19aa3d0f8976f7b03e2be9e2311df7b967069049e94db132bfa6"
+    }
+  },
+  "limitations": [
+    "Managed 검사는 메타데이터·타입/멤버 참조·메서드 IL 및 테스트 속성을 검사합니다. Android 네이티브 바이너리 실행 검사가 아닙니다.",
+    "리뷰 코드 제외는 검사 도구가 명시한 타입 목록과 Editor/Test 네임스페이스·어셈블리 규칙의 범위입니다.",
+    "APK 정렬 검사는 zipalign -c 4이며 ELF 페이지 정렬 검증을 의미하지 않습니다.",
+    "음원 제외는 빌더 사전 검사와 ZIP 파일명 검사의 근거입니다. Unity 직렬화 오디오를 디코딩한 검사는 아닙니다.",
+    "설치·성능·터치·음원 재생·실기기 플레이는 이 산출물 검사 범위에 포함되지 않습니다."
+  ],
+  "artifactProof": {
+    "path": "Logs/RosterMotion20261125/Builds/artifact-proof.json",
+    "bytes": 14531,
+    "sha256": "95fc2bc05c96a73491c5c36a58d321786eb57a5d3471dbac363d54b6ca64bac0"
+  }
+}

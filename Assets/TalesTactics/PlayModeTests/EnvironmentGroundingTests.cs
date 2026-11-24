@@ -27,6 +27,8 @@ namespace TalesTactics.PlayModeTests
         {
             director.BeginBattle();yield return null;director.StopAllCoroutines();var unit=director.Session.Active;
             var motion=director.Board.GetComponentsInChildren<CharacterMotion>().Single(m=>m.Owner==unit);var sprite=motion.GetComponent<SpriteRenderer>();
+            var authored=motion.AuthoredProfile;Assert.That(authored,Is.Not.Null,"Actual board allies use authored motion");
+            Assert.That(authored.OwnerId,Is.EqualTo(unit.Data.Id));
             var grounding=motion.GetComponentInParent<GroundedUnitVisual>();Assert.That(grounding,Is.Not.Null);
             int hp=unit.CurrentHP,mp=unit.CurrentMP,draws=director.Session.Resolver.RandomDraws;string campaign=JsonUtility.ToJson(director.Campaign);
             var path=director.Session.Grid.Reachable(unit,out _).Keys.Select(p=>director.Session.Grid.Path(unit,p)).Where(p=>p.Count>=3).OrderBy(p=>p.Count).ThenBy(p=>p.Last().x).ThenBy(p=>p.Last().y).First();
@@ -48,7 +50,7 @@ namespace TalesTactics.PlayModeTests
             {
                 director.Board.RotateCamera(90);yield return new WaitForEndOfFrame();AssertEnvironmentAnchor(grounding,sprite);
                 var facing=CharacterMotion.ViewFacing(unit.Facing,director.Board.BattleCamera.transform.rotation);facings.Add(facing);
-                Assert.That(sprite.sprite,Is.SameAs(EquipmentAppearance.Resolve(unit,unit.Data.Sprites.Get(facing))),"Ground lighting must preserve the actual directional idle sprite.");
+                Assert.That(authored.Idle.Frames.Select(frame=>frame.Get(facing)),Does.Contain(sprite.sprite),"Ground lighting must preserve an authored idle frame for the actual view.");
             }
             Assert.That(facings.Count,Is.EqualTo(4));Assert.That(unit.CurrentHP,Is.EqualTo(hp));Assert.That(unit.CurrentMP,Is.EqualTo(mp));
             Assert.That(director.Session.Resolver.RandomDraws,Is.EqualTo(draws));Assert.That(JsonUtility.ToJson(director.Campaign),Is.EqualTo(campaign));

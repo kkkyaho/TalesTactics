@@ -1,4 +1,16 @@
-# 검증 기록 — 2026-11-24
+# 검증 기록 — 2026-11-25
+
+## 2026-11-25 — 동료 10명 모션 확대
+
+기존 알펜32포즈에9명288포즈를 추가하고, 동료10명의 네 방향 대기·호흡·눈감음·기본 공격·피격을 모든 전장에 연결했다. 발·머리 기준점과 크기, 동료별 대기 시점 차이를 반영했다. 전용무기·고유 기술·적/보스와 전투·성장·저장 규칙은 유지한다. [적용 범위와 실제 전후 화면](RosterMotion20261125/README.md).
+
+실제 Unity [EditMode718/718·23.50초](RosterMotion20261125/Validation/editmode.json)를 통과했다. [전체 PlayMode는320/321·733.25초, 실패한 기존 피격 원화 검사는 동일 소스의 단독 재검1/1·10.59초](RosterMotion20261125/Validation/playmode.json)로 통과했다. 단일 전체321/321 결과로 합산하지 않는다. 기존0.28초 피격 복귀와 검사 대기 시간이 관련될 수 있지만 최초 실패의 실제 경과 시간이 없어 원인은 확정하지 않았다. 0개 실행·메모리 캐시 복구·콜백 재연결과 원문은 [실패 이력](RosterMotion20261125/validation-history.md)에 구분했다.
+
+실제 [전후20회차·5,539PNG](RosterMotion20261125/Validation/motion-summary.json), [실제 전장80장](RosterMotion20261125/Validation/actual-board-summary.json), [57스테이지×10명×4방향2,280/2,280](RosterMotion20261125/Validation/stage-matrix-summary.json)을 확인했다. 마지막 검사는 렌더링 연결을 위한 임시 편성으로 자연 합류/배치 규칙을 우회하며 예비 동료5명의 플래그를 복원한다. [직접 검토239장](RosterMotion20261125/Validation/visual-review.json)과 [대표66장 갤러리·60개 조작](RosterMotion20261125/Validation/gallery-verification.json)은 모든5,539프레임의 수동 승인과 구분한다.
+
+BuildReport 기준 일반 Windows 빌드101.32초·오류0·경고4, Android 빌드197.83초·오류0·경고6에 성공했다. 이 시간은 BuildPipeline 자체 기록이며 전후 원화 변환·설정 복원까지 포함한 전체 대기 시간과 구분한다. [두 빌드 전후83개 입력과30개 실제 포함 에셋](RosterMotion20261125/Validation/build-summary.json), [실행 코드 분리·APK 서명/ABI/가로/ZIP 검사](RosterMotion20261125/Validation/artifact-verification.json)를 확인했다. 검증본은 사용자 음원을 제외한 별도 작업 폴더이고 실행 파일은 로컬에만 보관한다. 별도 Windows 플레이어 실행, 휴대폰 설치·터치·복귀·성능·음원 재생은 수행하지 않았다.
+
+[최종 보존](RosterMotion20261125/Validation/protection-summary.json)은 플레이어 실행 로그를 제외한 사용자 트리5,597파일·실제 저장9개·기존 수정35개·원화946개·APK6개의 이름과 바이트를 확인한다. 새 검사 파일65개·35폴더는 보관 후 정리했고 기존 XML/CSV를 복원했다. [검증 Editor19조건](RosterMotion20261125/Validation/editor-state.json)도 복원했다. 완료한 원화·선택 소스·문서만 원격용 최신 develop의 단일 후속 커밋으로 반영하며 사용자 음원 포함 로컬 이력은 원격에 보내지 않는다. 기존 원격의 과거 음원이 제거됐다는 의미는 아니다.
 
 ## 2026-11-24 — 알펜·메인6화 그래픽 시범
 

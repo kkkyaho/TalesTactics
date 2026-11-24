@@ -135,7 +135,7 @@ namespace TalesTactics
                 var visual=new GameObject("Directional Sprite");var sizeRoot=new GameObject("Body Scale");sizeRoot.transform.SetParent(g.transform,false);sizeRoot.transform.localScale=Vector3.one*CharacterVisualSizing.Scale(u.Data);visual.transform.SetParent(sizeRoot.transform,false);visual.transform.localPosition=Vector3.up*0.04f;
                 var sr=visual.AddComponent<SpriteRenderer>();sr.sharedMaterial=UnitToneMaterial;StandingSpriteDepth.Configure(sr);sprites[u]=sr;
                 if(u.Data.Animator!=null){var a=visual.AddComponent<Animator>();a.runtimeAnimatorController=u.Data.Animator;animators[u]=a;}
-                else{var motion=visual.AddComponent<CharacterMotion>();motion.Initialize(sr,u,BattleCamera,PixelBattlefield.IsVisualPilotCampaignStage(battle.Session.CampaignStage));motions[u]=motion;}
+                else{var motion=visual.AddComponent<CharacterMotion>();motion.InitializeRoster(sr,u,BattleCamera);motions[u]=motion;}
                 var hp=new GameObject("HP "+u.Data.Id,typeof(RectTransform));hp.transform.SetParent(healthCanvas.transform,false);
                 hp.AddComponent<UnitHealthDisplay>().Initialize(battle,u,g.transform);
                 var contact=CreateContactShadow(g.transform);

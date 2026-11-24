@@ -23,19 +23,40 @@ namespace TalesTactics
         float spinProgress;
         readonly CharacterIdlePresentation idle=new CharacterIdlePresentation();
         AlphenVisualPilotMotion visualPilotMotion;
+        CharacterMotionProfile rosterMotion;
+        bool authoredBasicAttack;
+        float rosterIdleOffset;
+        public float AuthoredIdleOffsetSeconds=>rosterIdleOffset;
+        public CharacterMotionProfile AuthoredProfile=>rosterMotion!=null?rosterMotion:visualPilotMotion;
         public AnimationKind Action=>action;
         public UnitRuntime Owner=>unit;
         public void Initialize(SpriteRenderer renderer,UnitRuntime owner,Camera camera,bool visualPilot=false)
         {
-            sprite=renderer;unit=owner;cameraView=camera;
+            sprite=renderer;unit=owner;cameraView=camera;rosterMotion=null;rosterIdleOffset=0;
             // The caller scopes the pilot to its stage. Missing assets are loaded once
             // at initialization and then retain the established presentation fallback.
             visualPilotMotion=visualPilot&&owner?.Data?.Id=="alphen"?
                 Resources.Load<AlphenVisualPilotMotion>(AlphenVisualPilotMotion.ResourcePath):null;
             Set(AnimationKind.Idle);
         }
+        public void InitializeRoster(SpriteRenderer renderer,UnitRuntime owner,Camera camera)
+        {
+            Initialize(renderer,owner,camera,false);
+            rosterMotion=CharacterMotionRegistry.Load(owner?.Data?.Id);
+            rosterIdleOffset=rosterMotion!=null?StableIdleOffset(owner.Data.Id):0;
+            started=Time.time;
+        }
+        static float StableIdleOffset(string characterId)
+        {
+            // Presentation-only FNV-1a: deterministic across processes, no gameplay RNG.
+            uint hash=2166136261;
+            unchecked{foreach(char value in characterId){hash^=value;hash*=16777619;}}
+            // Less than the 1.4s resting interval, including immediately after recovery.
+            return (hash%1201)*.001f;
+        }
         public void Set(AnimationKind kind)
         {
+            authoredBasicAttack=kind==AnimationKind.Attack;
             presenting=false;timingSpin=false;signature=SkillSignature.None;arte=default;casting=false;phaseClip=null;walkSpeed=1;
             if(action!=kind||kind==AnimationKind.Attack||kind==AnimationKind.Skill||kind==AnimationKind.Damage||kind==AnimationKind.Ultimate)
             {action=kind;started=Time.time;}
@@ -44,6 +65,8 @@ namespace TalesTactics
         public void BeginSkill(SkillData skill,float prepare,float recover)
         {
             Set(skill.Animation);started=Time.time;presenting=true;
+            // Shared AnimationKind values do not make a named skill a basic attack.
+            authoredBasicAttack=skill==unit.Data.BasicAttack&&action==AnimationKind.Attack;
             specialUltimate=skill.IsUltimate;released=false;windup=prepare;recovery=recover;signature=SkillSignatures.Resolve(skill);arte=ArteProfiles.Resolve(skill);
             casting=!specialUltimate&&(SkillSignatures.IsSpell(signature)||arte.IsSpell||skill.Animation==AnimationKind.Cast);
             phaseClip=specialUltimate?unit.Data.Poses?.Ultimate:casting?CharacterMotionClips.Casting(unit.Data):
@@ -105,7 +128,9 @@ namespace TalesTactics
             if(timingSpin)pose=unit.Data.Poses?.Skill?.Sample(view,0,false)??unit.Data.Poses?.Attack?.Get(view);
             if(action==AnimationKind.Damage&&t>=0.28f)pose=null;
             var art=EquipmentAppearance.Resolve(unit,frame!=null?frame:pose!=null?pose:unit.Data.Sprites?.Get(view));
-            var pilotArt=visualPilotMotion!=null&&!timingSpin?visualPilotMotion.Sample(unit,action,view,t,presenting,released,
+            var authored=AuthoredProfile;
+            float authoredElapsed=action==AnimationKind.Idle?t+rosterIdleOffset:t;
+            var pilotArt=authored!=null&&!timingSpin&&(action!=AnimationKind.Attack||authoredBasicAttack)?authored.Sample(unit,action,view,authoredElapsed,presenting,released,
                 released?Mathf.Max(0,Time.time-releasedAt-hold):t,released?Mathf.Max(.01f,recovery-hold):windup):null;
             if(pilotArt!=null)art=pilotArt;
             if(art!=null)sprite.sprite=art;

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "platform": "EditMode",
+  "scope": "Completed full Unity EditMode suite in the separate source-only validation checkout",
+  "status": "completed",
+  "passed": true,
+  "summary": {
+    "total": 718,
+    "passed": 718,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "durationSecondsReportedJson": 23.5,
+  "durationSecondsXml": 23.4993064,
+  "startedUtc": "2026-11-24T20:52:54Z",
+  "finishedUtc": "2026-11-24T20:53:18Z",
+  "sources": {
+    "resultJson": {
+      "path": "Logs/RosterMotion20261125/Tests/full-edit-result.json",
+      "sha256": "4648654a3d976faded3962321df4adc2815fe8aa42d05d64ccceb1b0171116ac",
+      "bytes": 174655
+    },
+    "resultXml": {
+      "path": "Logs/RosterMotion20261125/Tests/full-edit-result.xml",
+      "sha256": "4504cf83994bca7fc4219227cdd0a08733b832eb52bd9956e4a4274f8129d444",
+      "bytes": 558861
+    },
+    "startInvocation": {
+      "path": "Logs/RosterMotion20261125/Tests/full-edit-start.json",
+      "sha256": "9891890b6089f43013b62b69bebb1f576a1504b4c69dbf6e02c15b7170c6eb8d",
+      "bytes": 862
+    }
+  },
+  "crossChecks": {
+    "completedJson": true,
+    "unfilteredStartModeMatches": true,
+    "aggregateCountsMatch": true,
+    "individualNameStatusMultiplicitiesMatch": true,
+    "actualJsonCaseCount": 718,
+    "actualXmlCaseCount": 718,
+    "durationMatchesAtJsonPrecision": true,
+    "utcReadFromXml": true
+  },
+  "countsAsAdditionalUnityTest": false,
+  "limitations": [
+    "This is a read-only summary of the existing Unity run, not another test execution.",
+    "Only the named test mode is covered; no result for another mode is implied.",
+    "The JSON duration is rounded; the XML duration and UTC interval are retained separately.",
+    "No standalone Windows player execution, APK installation or Android device gameplay is asserted.",
+    "Raw test names, output, stack traces, absolute checkout paths and user storage contents are omitted."
+  ]
+}

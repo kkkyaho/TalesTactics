@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abdcd4d1a08e40769275fbb1be33d3c3, type: 3}
+  m_Name: farah
+  m_EditorClassIdentifier: TalesTactics.Runtime::TalesTactics.CharacterMotionProfile
+  CharacterId: farah
+  Idle:
+    Frames:
+    - Front: {fileID: 1582949819, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Back: {fileID: -178862703, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Left: {fileID: -901839436, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Right: {fileID: -1552837663, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+    - Front: {fileID: -552793831, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Back: {fileID: 1933614461, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Left: {fileID: -1981522063, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Right: {fileID: -32539142, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+    - Front: {fileID: 1846417786, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Back: {fileID: -1195228292, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Left: {fileID: -714332326, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Right: {fileID: 20972747, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+    - Front: {fileID: 1246612051, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Back: {fileID: 1021681567, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Left: {fileID: 2023946124, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+      Right: {fileID: 1666401421, guid: 0695171c9ccf3e444bbe11f33447e2d9, type: 3}
+    FramesPerSecond: 8
+    ReleaseFrame: 1
+  Attack:
+    Frames:
+    - Front: {fileID: 773825068, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Back: {fileID: -866085163, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Left: {fileID: -1173634636, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Right: {fileID: 832418368, guid: c794f881407ec27468e112f3307180bc, type: 3}
+    - Front: {fileID: -1015957925, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Back: {fileID: -1847040376, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Left: {fileID: -774406219, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Right: {fileID: 869357860, guid: c794f881407ec27468e112f3307180bc, type: 3}
+    - Front: {fileID: -570949050, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Back: {fileID: 276447957, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Left: {fileID: 1002352198, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Right: {fileID: 582594115, guid: c794f881407ec27468e112f3307180bc, type: 3}
+    FramesPerSecond: 8
+    ReleaseFrame: 1
+  Damage:
+    Frames:
+    - Front: {fileID: 1296551358, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Back: {fileID: -497157246, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Left: {fileID: 812010854, guid: c794f881407ec27468e112f3307180bc, type: 3}
+      Right: {fileID: 411031616, guid: c794f881407ec27468e112f3307180bc, type: 3}
+    FramesPerSecond: 8
+    ReleaseFrame: 1
+  EquipmentVariants: []

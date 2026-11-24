@@ -1,14 +1,18 @@
 # 아키텍처
 
-## 알펜·6화 그래픽 시범
+## 동료 전체 원화 모션
 
-`BoardView`는 실제 `BattleSession.CampaignStage`가 메인6화(`CrossoverCampaign.FirstStage+5`, 값11)인 경우에만 `CharacterMotion.Initialize`의 시범 원화를 활성화한다. `PixelBattlefield.Chapter`는 이미 압축된 지형 테마이므로 적용 여부 판단에 쓰지 않는다. 같은 유적 테마의 다른 스테이지는 기존 표현을 유지한다.
+2026-11-25부터 BoardView는 모든 전장에서 CharacterMotion.InitializeRoster를 사용한다. CharacterMotionRegistry는 플레이 가능한 동료10명의 ID만 허용하며 배우 초기화 시 해당 CharacterMotionProfile을 한 번 불러온다. 기존 알펜은 AlphenVisualPilotMotion의 GUID·Resources 경로·32개 Sprite를 유지하고 공통 profile을 상속한다. 나머지9명은 Resources/TalesTactics/CharacterMotion/{id}의 새 profile을 사용한다. 기존 Initialize(..., visualPilot) 호출도 호환한다.
 
-`AlphenVisualPilotMotion`은 Resources의 선택적 에셋으로 대기4·일반 공격3·피격1포즈를 네 방향으로 보관한다. 기본 대기는 5.4초 주기 안에서 호흡과 0.1초 눈감음을 선택하며, 실제 원화가 표시될 때만 기존 UV 대기 변형을 끈다. Sprite가 누락되거나 해당 방향·상태·전용 장비 외형이 준비되지 않은 경우 기존 `EquipmentAppearance`와 포즈로 돌아간다. 전용무기 변형은 정확한 Appearance 참조가 있을 때만 새 원화를 선택한다. 전투 판정·입력·저장 구조·공격 준비/판정/회복 시간은 변경하지 않는다.
+각 profile은 네 방향의 대기4·기본 공격3·피격1, 캐릭터당32포즈를 제공한다. 기본 대기는5.4초 주기 안에서 호흡과0.1초 눈감음을 선택한다. 동료별 고정 FNV 위상차를 대기에만 더해 일제히 숨 쉬거나 눈 감는 현상을 줄인다. 전투 난수는 사용하지 않으며 초기·공격/피격 복귀 때 첫 자세는 열린 눈의 대기다. 실제 새 원화가 표시될 때 기존 UV 대기 변형을 끈다.
 
-새 PNG 두 장의 실제 크기는 각각1254×1254이며 원본 alpha와 픽셀을 보존한다. `VisualPilotArtImporter`는 SHA가 일치하는 새 시트 두 장만 명시적으로 가져오고, 측정한 발 피벗과188.5PPU를 Sprite metadata로 연결한다. 기존 CharacterData와 원화/전용무기 참조를 덮어쓰지 않는다. 접촉·몸 그림자는 기존 `GroundedUnitVisual`·`ProjectedUnitShadow`가 현재 Sprite를 따라 갱신한다. 새 32개 포즈는 은색 머리 영역에서 측정한 머리 기준점을 `UnitHeadAnchors`에 추가해 HP바를 정렬하며, 기존 168개 항목을 보존한다. 피격 포즈가 끝난 뒤 남은 반동 구간에는 새 기본 대기 원화를 사용해 옛 그림이 끼어드는 현상을 막는다.
+기본 공격은 unit.Data.BasicAttack과 같은 기술일 때만 새 공격 프레임을 사용한다. 같은 AnimationKind를 사용하는 고유 기술·보행·방어·사망 등은 기존 포즈를 따른다. 전용무기 원화는 정확한 EquipmentAppearance 참조의 변형이 준비된 경우에만 새 원화로 전환하고, 없으면 기존 무기 모습을 보존한다. 잘못된 소유자·누락 방향·불완전 clip도 기존 표현으로 돌아간다. 피격 포즈의0.28초 경계 이후 남은 반동은 새 대기 그림으로 연결한다. 전투 판정·입력·성장·저장·기술 준비/타격/회복 시간은 유지한다.
 
-6화 지형의 보정은 해당 `PixelBattlefield` 인스턴스 바닥 재질과 작은 식생 개수에 한정한다. 공유 원화·다른 스테이지의 재질·벽/기둥·지도 규칙·충돌체·게임 난수는 유지한다. 비교용 `VisualPilotCapture`와 importer는 Editor 폴더에 있어 일반 플레이어에서 제외된다. 시범의 실제 검증 결과와 남은 범위는 [전용 기록](VisualPilot20261124/README.md)을 따른다.
+RosterMotionArtImporter는 검수한 Docs/RosterMotion20261125/art-layout.json의9명·18PNG·288포즈만 허용한다. 실제 PNG 크기·SHA·프레임 이름·발 피벗을 먼저 확인하고 Unity Sprite Data Provider의 CreateAndDeleteSprite/EditSpriteName/EditSpriteRect/EditPivot 권한을 검사한다. SpriteRect·이름/FileID·outline은 해당 API로 작성하며 기존 Sprite GUID와 localFileID를 재사용한다. 원본 PNG 픽셀·alpha는 수정하지 않는다. 텍스처별 PPU는 기존 캐릭터의 머리–발 높이에 맞춰 측정하고 대기/공격 시트 크기 차이를 보정한다.
+
+288개 포즈의 발·머리 위치는 실제 원화 오버레이로 검수했다. 무기 장식을 머리로 잘못 잡거나 정강이를 발로 잡는 자동 후보를 보완하고 UnitHeadAnchors에 추가한다. 기존200항목은 유지하며 전체488항목이다. 접촉·몸 그림자는 기존 GroundedUnitVisual·ProjectedUnitShadow가 현재 Sprite를 따라 갱신한다. 캐릭터 데이터·기존 원화·전용무기 에셋은 덮어쓰지 않는다.
+
+메인6화 지형의 대비·작은 식생 조정은 이전 시범 범위를 유지한다. 원화 확대가 다른 지형이나 적·보스의 새 원화 제작을 뜻하지는 않는다. importer는 Editor 어셈블리, 별도 검수 도구는 Tools 폴더에 두어 일반 플레이어에서 제외한다. 실제 결과와 한계는 [동료 전체 모션 기록](RosterMotion20261125/README.md), 이전 시범은 [알펜·6화 기록](VisualPilot20261124/README.md)을 따른다.
 
 
 ## Windows·Android 공통 게임과 플랫폼 처리
