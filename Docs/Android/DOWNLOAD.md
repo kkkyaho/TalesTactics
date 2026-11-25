@@ -1,4 +1,24 @@
-# Android 테스트 APK 다운로드 — 2026-11-19
+# Android 테스트 APK 다운로드 — 2026-11-25
+
+## 최신 동료 모션 테스트판
+
+[휴대폰에서 최신 APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk) · [배포 페이지](https://github.com/kkkyaho/TalesTactics/releases/tag/android-roster-test-20261125) · [SHA256 체크섬](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk.sha256)
+
+동료10명의 네 방향 호흡·눈 깜빡임·기본 공격·피격과 최근 모바일 설정·도움말 개선을 포함합니다. 완료된 최신 검증 APK를 그대로 게시했습니다.
+
+- Android8.0/API26 이상·ARM64·가로 화면, 221,893,288바이트(약222MB/211.6MiB).
+- 게임 기본 음악을 사용하며 사용자 제공 MP3 6곡은 제외합니다. 이전 음원 포함판을 교체하면 음악 구성이 바뀝니다.
+- SHA256: e13d1e6f378583610bb6fc452098f0caa18f7bc8b889be637d03fbb2f1d45274.
+- 앱 com.talestactics.game, versionName0.1.0/versionCode1, 기존 테스트 서명 유지. 날짜 태그로 구분하며 버전 번호를 올린 정식 릴리즈가 아닙니다.
+- [게시 기록](Validation/RosterDownload20261125/publish.json) · [익명 API/태그/파일 확인](Validation/RosterDownload20261125/verify.json) · [익명 전체 다운로드·해시 확인](Validation/RosterDownload20261125/anonymous-download.json).
+- 실기기 설치·덮어설치·저장 계승·터치·앱 복귀·성능·음악 재생은 미검증입니다.
+
+휴대폰에서 APK를 다운로드하여 열고, 필요할 때 해당 브라우저의 앱 설치를 허용하세요. 기존 테스트판과 패키지·서명은 같지만 덮어설치는 실기기에서 확인해야 합니다. 기존 앱을 먼저 삭제하면 기기 저장 데이터가 삭제될 수 있습니다.
+
+태그는 공개 소스 e104fc03544fd91b660522dc2cfe803b41b055c0을 가리킵니다. 빌드 실행 ID는 bc05fb14940243389e3db87246bb3681이며 [동료 모션 검증](../RosterMotion20261125/README.md)을 따릅니다. 이번 변경83파일의 빌드 입력·현재 파일·공개 커밋 객체가 일치합니다. 기존 수정이 있던 검증 작업본에서 만들었으므로 깨끗한 클론의 동일 바이트 재현까지 주장하지 않습니다. 새 APK와 체크섬만 게시했으며 main·기존 릴리즈·태그와 음원 제한은 유지합니다.
+
+아래 2026-11-19 배포는 이전 테스트판입니다. 음원 포함판은 그 파일 하나에 대한 기존 승인 예외로 남아 있습니다.
+
 
 ## 음원 포함 테스트판
 

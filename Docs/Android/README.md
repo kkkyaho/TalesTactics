@@ -2,11 +2,15 @@
 
 2026-11-19 사용자가 Windows PC와 Android 모바일의 병행 개발을 요청했다. 전투 규칙·캐릭터·성장·캠페인 데이터·저장 형식은 공통으로 유지하며 입력·UI·표시 설정과 빌드를 플랫폼에 맞춘다.
 
+## 2026-11-25 최신 APK 다운로드
+
+동료10명의 새 모션과 모바일 메뉴 개선을 포함한 [최신 APK](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk)를 사용자 요청에 따라 게시했습니다. 사용자 제공6곡을 제외한 기본 음악 버전입니다. 로그인 없는 전체 다운로드·크기·해시 일치를 확인했습니다. [설치·검증·기존판 구분](DOWNLOAD.md). 실기기 플레이는 아직 확인하지 않았습니다.
+
 ## 2026-11-20 메뉴 개선 — 구현·검증 완료
 
 Android의 PC 전용 표시 설정을 숨기고 설정·조작 버튼을 확대했으며 도움말을 터치 예측·명시적 실행 흐름에 맞췄다. 전체 EditMode 703/703·PlayMode 319/319, 화면 56/56조건, Windows·음원 제외 Android 빌드와 최종 파일 보존 검사를 통과했다. [변경·검증 결과](MENUS.md).
 
-실제 휴대폰 검증은 미완료이며 기존 공개 APK는 이번 메뉴 개선을 포함하지 않는다. 이번에는 음원 없는 소스만 develop 반영 대상으로 삼고, 새 APK와 사용자 음원을 업로드하지 않는다. 원본 로컬 develop의 비공개 음원 조상을 공개 커밋에 연결하지 않는 [소스 전용 반영 방식](https://github.com/kkkyaho/TalesTactics/blob/808d4331aa24a6466062d898574e575073e32afc/Docs/SourceOnlyPublish/README.md)을 유지한다.
+당시 실제 휴대폰 검증은 미완료였고 기존 공개 APK에 메뉴 개선은 포함되지 않았다. 2026-11-20에는 음원 없는 소스만 develop에 반영했으며, 이후 최신 APK 공개 결과는 위 2026-11-25 항목을 따른다. 원본 로컬 develop의 비공개 음원 조상을 공개 커밋에 연결하지 않는 [소스 전용 반영 방식](https://github.com/kkkyaho/TalesTactics/blob/808d4331aa24a6466062d898574e575073e32afc/Docs/SourceOnlyPublish/README.md)을 유지한다.
 
 ## 첫 Android 구현
 
