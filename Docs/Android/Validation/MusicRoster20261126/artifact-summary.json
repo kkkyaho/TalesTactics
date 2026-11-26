@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "runId": "154caf0dc6a649b796227c88645d03fa",
+  "checkedUtc": "2026-11-26T01:05:05.744571+00:00",
+  "apk": {
+    "name": "TalesTactics-android-music-roster-test-20261126-arm64.apk",
+    "bytes": 241614184,
+    "sha256": "c32888454402ce10a221b8ae7e390c39b8c63c7bca2b5797be930b60e161a41b"
+  },
+  "package": {
+    "applicationId": "com.talestactics.game",
+    "versionName": "0.1.0",
+    "versionCode": 1,
+    "minSdk": 26,
+    "targetSdk": 36,
+    "abi": [
+      "arm64-v8a"
+    ]
+  },
+  "signature": {
+    "sha256": "bf8d1d00c3179bcb98c205a66050b27ef759c2938ea4f015368f955e04f06cda",
+    "v2Verified": true,
+    "matchesPreviouslyPublishedTestCertificate": true
+  },
+  "audio": {
+    "userTrackCount": 6,
+    "originalTrackCount": 14,
+    "packedAllWithPositiveResourceBytes": true,
+    "positiveResourceBytesScope": "사용자 제공 6곡 각각의 BuildReport .resource/.resS 컨테이너 bytes가 양수임을 확인했습니다.",
+    "userTrackResourceBytes": 19720032,
+    "userTrackImportsStreaming": true,
+    "originalTracksImportedAndPacked": true,
+    "allSixLocalNamesFound": true,
+    "allFourteenOriginalNamesFound": true,
+    "nameScanScope": "길이가 앞에 기록된 문자열 검사는 보조 근거이며 AudioClip 파싱이나 실제 재생 검사가 아닙니다."
+  },
+  "motion": {
+    "requiredCount": 30,
+    "allIncluded": true,
+    "characters": 10,
+    "spriteSheets": 20,
+    "profiles": 10
+  },
+  "source": {
+    "frozenProductFileCount": 83,
+    "frozenProductSHA256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214",
+    "musicInputFileCount": 14,
+    "musicInputManifestSHA256": "aad8d6114cee85758734dd11b8cbad691965c6649ad5c712d7f569f9ab3d0ed8",
+    "scope": "이번 제품·가져오기 배치 83파일과 별도 음원 입력 14파일의 빌드 전후 검사이며 저장소 전체 재현빌드 검증이 아닙니다."
+  },
+  "build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "seconds": 291.7293509,
+    "settingsRestored": true,
+    "durationScope": "seconds는 BuildReport.summary.totalTime이며 빌드 전후 원화 변환·복원 및 전체 대기 시간을 뜻하지 않습니다."
+  },
+  "apkChecks": {
+    "landscapeOnly": true,
+    "zipAlignmentBytes": 4,
+    "zipAlignmentPassed": true,
+    "allZipMemberCrcsPassed": true,
+    "artifactAndEvidenceUnchanged": true
+  },
+  "deviceTested": false,
+  "installed": false,
+  "audioPlaybackTested": false,
+  "networkUsed": false,
+  "limitations": [
+    "휴대폰 설치·업데이트·저장 계승·실제 음원 재생·성능·오디오 포커스는 검사하지 않았습니다.",
+    "서명과 ZIP 정렬 검사는 통과했지만 ELF 페이지 정렬 또는 네이티브 실행 검사는 아닙니다.",
+    "음원 원본이나 원시 도구 출력은 이 요약에 포함하지 않습니다."
+  ],
+  "evidence": [
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/android-build-final.json",
+      "bytes": 153859,
+      "sha256": "cda049f58a35f28e95cdfb8cc39257c8882abe2cd1fd72e96a2fbb96418a549a"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/android-queued.json",
+      "bytes": 323,
+      "sha256": "71e8028522dd1260da44a083ebc32355882465af1ec6ae902ddb82df15b2c071"
+    },
+    {
+      "path": "Builds/SourceOnlyPublish20261118/Project/Builds/AndroidMusicRoster20261126/Android/build-result.json",
+      "bytes": 974,
+      "sha256": "1d0d2c87252d12155f3455caf5034c4dc41e8e5886df9e34e97af3370b959c7e"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/packed-audio.json",
+      "bytes": 7755,
+      "sha256": "0fe32b5ca42e24b07b8001a7d1730b948f85a75b1a8f19bd9d65bf512fd3e40f"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/audio-imports.json",
+      "bytes": 6242,
+      "sha256": "521423736ffcdf9dd9dab4487fc0d839516f9c8858f46e56bd413bdf8f7e489c"
+    },
+    {
+      "path": "Logs/RosterMotion20261125/validation-product-freeze.json",
+      "bytes": 17593,
+      "sha256": "bd115915a0a6dc064591de2b0ebd455e0ab95dcdba6e97731795d52d62887214"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/android.buildreport",
+      "bytes": 1599152,
+      "sha256": "03c6c09e130201907efb2302289cca5851a9dad0872c55bd6fc84bd41f364091"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/music-inputs.json",
+      "bytes": 4311,
+      "sha256": "aad8d6114cee85758734dd11b8cbad691965c6649ad5c712d7f569f9ab3d0ed8"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/apk-independent-verification-final.json",
+      "bytes": 21632,
+      "sha256": "38d58b4b7694d880aded584da778df8b13cf95ab9b516d7290b295ca3046654e"
+    }
+  ],
+  "verifier": {
+    "path": "Tools/AndroidMusicRoster20261126/VerifyMusicRosterApk.py",
+    "sha256": "b157d20c5e5939c7389bb59d119add09ed53e7da06b8a1a5df4fc08fb7062b02"
+  }
+}

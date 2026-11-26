@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "generatedUtc": "2026-11-26T01:10:49.184604+00:00",
+  "runId": "154caf0dc6a649b796227c88645d03fa",
+  "scope": "This execution checks six supplied tracks and rebuilds the current Android player without changing product code/art; it is not a new full regression suite or physical-device run.",
+  "editMode": {
+    "total": 2,
+    "passed": 2,
+    "durationSeconds": 0.06
+  },
+  "playMode": {
+    "total": 4,
+    "passed": 4,
+    "durationSeconds": 22.4,
+    "platform": "Windows Editor",
+    "scope": "AudioSource/sample progression and scene music/volume routing with six supplied tracks"
+  },
+  "androidBuild": {
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "buildMessages": [
+      "Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.",
+      "Serialized file \"Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta\" contains a TrueTypeFontImporter object at version 2, below the supported minimum (4). Open and re-save the file to upgrade."
+    ],
+    "seconds": 291.7293509,
+    "durationScope": "BuildReport duration, excluding all preparation/target-switch/restoration time",
+    "startedUtc": "2026-11-26T00:49:11.1335195Z",
+    "finishedUtc": "2026-11-26T01:02:53.5806138Z",
+    "sourceFilesMatchedBeforeAndAfter": 83,
+    "sourceFreezeScope": "Frozen product and import-layout file list; this is not a full-repository comparison",
+    "musicInputsMatchedBeforeAndAfter": 14,
+    "userTracksPacked": 6,
+    "rosterAssetsPacked": 30
+  },
+  "preservation": {
+    "passed": true,
+    "settingsRestored": true,
+    "sourceOnlyCheckoutRestored": true,
+    "initiallyClosedRestore": true,
+    "baselineUserFilesRestored": true,
+    "userTreeComparisonScope": "All baseline user files and directories match after restoring the diagnostic TestResults.xml; only root Player.log and Player-prev.log are excluded.",
+    "userTreeExcludedRootFiles": [
+      "Player-prev.log",
+      "Player.log"
+    ],
+    "protectedCount": 4363,
+    "userTreeFileCount": 5597,
+    "actualSaveCount": 9,
+    "originalArtCount": 982,
+    "originalApkCount": 7,
+    "existingFilesDeleted": 0,
+    "restoredInputCount": 1,
+    "archivedTemporaryInputCount": 13
+  },
+  "physicalDeviceTested": false,
+  "windowsStandaloneRebuiltThisTask": false,
+  "apk": {
+    "name": "TalesTactics-android-music-roster-test-20261126-arm64.apk",
+    "bytes": 241614184,
+    "sha256": "c32888454402ce10a221b8ae7e390c39b8c63c7bca2b5797be930b60e161a41b"
+  },
+  "evidence": [
+    {
+      "path": "Logs/AndroidMusicRoster20261126/Builds/android-build-final.json",
+      "bytes": 153859,
+      "sha256": "cda049f58a35f28e95cdfb8cc39257c8882abe2cd1fd72e96a2fbb96418a549a"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/artifact-summary.json",
+      "bytes": 4920,
+      "sha256": "a5e18f991d4f7c89a0c677e7e7794f03568242492a202b4e6c1bcedb93dba8b3"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/final-preservation.json",
+      "bytes": 1940,
+      "sha256": "5beab3879e009a69b04b77276c3c35f258a74329783c86386a7d80ed3bf7202a"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/editmode-result.json",
+      "bytes": 717,
+      "sha256": "529ed8ef5a585e4c931d162156c62686ca81afc750605c051faec173d25c9c05"
+    },
+    {
+      "path": "Logs/AndroidMusicRoster20261126/playmode-result.json",
+      "bytes": 1255,
+      "sha256": "d18d2070ed129884da1ce05ca37d9b28d96e9dde28c24fc79667830d4a452e8d"
+    }
+  ]
+}

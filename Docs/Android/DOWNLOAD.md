@@ -1,10 +1,22 @@
-# Android 테스트 APK 다운로드 — 2026-11-25
+# Android 테스트 APK 다운로드 — 2026-11-26
 
-## 최신 동료 모션 테스트판
+## 2026-11-26 최신 음원 포함 테스트판
 
-[휴대폰에서 최신 APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk) · [배포 페이지](https://github.com/kkkyaho/TalesTactics/releases/tag/android-roster-test-20261125) · [SHA256 체크섬](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk.sha256)
+[휴대폰에서 최신 APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-music-roster-test-20261126/TalesTactics-android-music-roster-test-20261126-arm64.apk) · [배포 페이지](https://github.com/kkkyaho/TalesTactics/releases/tag/android-music-roster-test-20261126) · [체크섬](https://github.com/kkkyaho/TalesTactics/releases/download/android-music-roster-test-20261126/TalesTactics-android-music-roster-test-20261126-arm64.apk.sha256)
 
-동료10명의 네 방향 호흡·눈 깜빡임·기본 공격·피격과 최근 모바일 설정·도움말 개선을 포함합니다. 완료된 최신 검증 APK를 그대로 게시했습니다.
+동료10명의 새 모션과 모바일 개선, 지정 타이틀·인터미션·전투6곡 및 기존 음악을 포함한다. 241,614,184바이트(약230.4MiB), Android8/API26 이상·ARM64·가로 화면. APK 전체를 로그인 없이 다시 받아 원본 크기·해시 일치를 확인했다. [설치·새 검증·공개 범위](MUSIC-ROSTER-20261126.md).
+
+기존 앱을 먼저 삭제하지 말고 APK를 열어 설치한다. 앱 ID와 서명은 기존판과 같지만 실기기 덮어설치·저장 계승·플레이는 미검증이다. versionName0.1.0/versionCode1을 유지하며 날짜 태그로 구분한다.
+
+SHA256: c32888454402ce10a221b8ae7e390c39b8c63c7bca2b5797be930b60e161a41b
+
+아래는 이전 테스트판 기록이다.
+
+## 2026-11-25 동료 모션 테스트판 — 음원 제외
+
+[이전 음원 제외 APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk) · [배포 페이지](https://github.com/kkkyaho/TalesTactics/releases/tag/android-roster-test-20261125) · [SHA256 체크섬](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk.sha256)
+
+동료10명의 네 방향 호흡·눈 깜빡임·기본 공격·피격과 최근 모바일 설정·도움말 개선을 포함합니다. 당시 검증한 APK를 그대로 게시했습니다.
 
 - Android8.0/API26 이상·ARM64·가로 화면, 221,893,288바이트(약222MB/211.6MiB).
 - 게임 기본 음악을 사용하며 사용자 제공 MP3 6곡은 제외합니다. 이전 음원 포함판을 교체하면 음악 구성이 바뀝니다.

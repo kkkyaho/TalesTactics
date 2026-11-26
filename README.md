@@ -10,7 +10,7 @@ Unity **6000.6.0f1** / URP **17.6.0** / Windows 기반 2.5D 턴제 전술 RPG입
 
 메인6화의 바닥·식생 개선은 [2026-11-24 시범 기록](Docs/VisualPilot20261124/README.md)을 따릅니다.
 
-최신 [Android APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk) — 2026-11-25 동료10명 모션·모바일 메뉴 개선 포함, 약222MB, Android8 이상·ARM64. 기본 음악을 사용하며 사용자 제공6곡은 제외합니다. 익명 전체 다운로드·원본 해시 일치를 확인했습니다. [설치 안내·검증 범위](Docs/Android/DOWNLOAD.md).
+최신 [음원 포함 Android APK 다운로드](https://github.com/kkkyaho/TalesTactics/releases/download/android-music-roster-test-20261126/TalesTactics-android-music-roster-test-20261126-arm64.apk) — 2026-11-26 동료10명 모션·모바일 개선·지정6곡과 기존 음악 포함, 약230.4MiB, Android8 이상·ARM64. 새 빌드·음원 포함·익명 전체 다운로드를 확인했습니다. [설치 안내·검증](Docs/Android/MUSIC-ROSTER-20261126.md).
 
 ## PC·Android 병행 개발
 
