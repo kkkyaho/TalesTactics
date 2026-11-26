@@ -2,6 +2,14 @@
 
 2026-11-19 사용자가 Windows PC와 Android 모바일의 병행 개발을 요청했다. 전투 규칙·캐릭터·성장·캠페인 데이터·저장 형식은 공통으로 유지하며 입력·UI·표시 설정과 빌드를 플랫폼에 맞춘다.
 
+## 2026-11-26 APK 제작 기본값 — 사용자 음원 포함
+
+앞으로 만드는 APK에는 사용자 제공6곡과 기존 음악을 항상 포함한다. 이후 제공·교체 음원도 현재 연결대로 포함한다. 별도 검증 작업본에 로컬 음원과 AudioLibrary 연결을 준비하고 아래 LocalApk 경로로 만든다. 공개 소스에는 사용자 음원이 없으므로 그 상태로 빌드한 파일을 사용자용 완료본으로 대신 전달하지 않는다.
+
+빌드 전 음원 파일·AudioLibrary 연결을 확인하고, 빌드 후 BuildReport에서 모든 대상 음원의 포함과 데이터 크기가 양수인지 확인한다. LocalApk는 음원 전체 존재를 강제하지 않으므로 이 확인을 생략하지 않는다. [기존 음원 포함 빌드·검증 방법](LOCAL-MUSIC.md)을 참고하되 새 APK의 검증으로 과거 결과를 대신하지 않는다. 음원 제외 APK는 사용자 명시 요청 시에만 만든다.
+
+이번에는 제작 지침만 변경했으며 아래 기존 APK 링크와 파일은 그대로다. 음원 원본·소스 이력 및 새 음원 포함 APK의 원격 공개 제한은 [음원 정책](../LocalMusicPolicy.md)을 따른다.
+
 ## 2026-11-25 최신 APK 다운로드
 
 동료10명의 새 모션과 모바일 메뉴 개선을 포함한 [최신 APK](https://github.com/kkkyaho/TalesTactics/releases/download/android-roster-test-20261125/TalesTactics-android-roster-test-20261125-arm64.apk)를 사용자 요청에 따라 게시했습니다. 사용자 제공6곡을 제외한 기본 음악 버전입니다. 로그인 없는 전체 다운로드·크기·해시 일치를 확인했습니다. [설치·검증·기존판 구분](DOWNLOAD.md). 실기기 플레이는 아직 확인하지 않았습니다.
@@ -26,13 +34,13 @@ Android의 PC 전용 표시 설정을 숨기고 설정·조작 버튼을 확대�
 Unity 6000.6.0f1의 Android Build Support·SDK·NDK·OpenJDK 설치를 완료했다. 현재 JDK 17.0.18+8·NDK 27.2.12479018·ADB 36.0.0을 사용한다. 사용자가 작업 중인 PC checkout의 대상을 전환하지 않고 별도의 검증 checkout에서 실행한다.
 
 ```powershell
-unity build "<검증 checkout 절대 경로>" --target Android --execute-method TalesTactics.Editor.AndroidBuild.SourceOnlyApk --no-tail --log-file "<로그 절대 경로>"
+unity build "<검증 checkout 절대 경로>" --target Android --execute-method TalesTactics.Editor.AndroidBuild.LocalApk --no-tail --log-file "<로그 절대 경로>"
 ```
 
-- 결과: 검증 checkout의 `Builds/Android/TalesTactics.apk` 및 `build-result.json`.
+- 결과: 검증 checkout의 `Builds/Android/Local/TalesTactics.apk` 및 `build-result.json`.
 - 테스트용 패키지 ID: `com.talestactics.game`. ARM64·IL2CPP, 최소 Android 8/API26·목표 API36, 가로 양방향 회전. 최종 지원 기기 목록은 실기기 결과로 확정한다.
 - 로컬 테스트 서명이며 Play Store 제출용 서명·AAB·스토어 등록은 이번 범위가 아니다.
-- `SourceOnlyApk`는 `Assets/TalesTactics/Audio/LocalMusic`에 메타데이터 외 파일이 있는 checkout을 거부한다. 다른 경로에 놓인 음원까지 자동 판별하지 않으므로 사용자 음원을 옮겨 이 검사를 우회하지 않는다. 로컬 음원 포함 APK는 `LocalApk`로 `Builds/Android/Local/`에 별도 생성할 수 있다. 사용자 제공 음원·이를 포함한 소스 이력과 다른 빌드는 로컬 전용이다. 2026-11-19 명시 승인된 APK 한 개와 체크섬만 공개 예외이며, 정확한 파일과 범위는 [음원 정책](../LocalMusicPolicy.md)의 승인 예외를 따른다. 이 예외는 이번 변경을 포함한 새 APK의 공개를 허용하지 않는다.
+- `SourceOnlyApk`는 `Assets/TalesTactics/Audio/LocalMusic`에 메타데이터 외 파일이 있는 checkout을 거부한다. 다른 경로에 놓인 음원까지 자동 판별하지 않으므로 사용자 음원을 옮겨 이 검사를 우회하지 않는다. 기본 음원 포함 APK는 `LocalApk`로 `Builds/Android/Local/`에 생성한다. 음원 제외 모드는 사용자 명시 요청 시에만 사용한다. 사용자 제공 음원·이를 포함한 소스 이력과 다른 빌드는 로컬 전용이다. 2026-11-19 명시 승인된 APK 한 개와 체크섬만 공개 예외이며, 정확한 파일과 범위는 [음원 정책](../LocalMusicPolicy.md)의 승인 예외를 따른다. 이 예외는 이번 변경을 포함한 새 APK의 공개를 허용하지 않는다.
 - 빌드용 설정은 정상 반환과 예외 처리에서 복원한다. 첫 APK 뒤 getter가 같아도 남는 직렬화 차이 2개를 발견해, 기존 API 복원 뒤 PlayerSettings 전체 메모리 스냅샷을 복원하도록 보완했다. 원시 설정 JSON은 파일·로그에 남기지 않는다. 회귀 2개와 보완 후 두 번째 실제 빌드를 통과했다. getter 17개·전체 직렬화와 텍스처 meta 1,192개·ProjectSettings 27개가 복원됐고, 저장·정상 종료 뒤에도 원래 파일 해시가 같았다. 프로세스 강제 종료는 복원을 보장하지 않으므로 별도 검증 checkout을 사용한다. 기존 원화·저장·Windows 설정을 임의로 재생성하지 않는다.
 - `Assets/TalesTactics` 아래 Android 개별 설정이 없는 텍스처에 빌드 중 ASTC 6×6을 적용하고 원래 importer와 정확한 메타데이터를 복원한다. 원본 크기와 PC 압축 설정은 바꾸지 않는다. 중단된 텍스처 복구 기록은 `Library/TalesTactics/AndroidTextureSettingsRecovery.json`에 남고, 메뉴의 Restore Interrupted Android Texture Settings에서 복구한다.
 - 실행마다 고유 ID와 시작 시간을 기록한다. 기존 APK는 실패 시에도 남을 수 있으므로 파일 존재만으로 성공을 판단하지 않고 해당 실행의 `build-result.json`을 확인한다.
